@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES R — Reliquats et compléments</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_R_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 7</div>
+<h1>FICHES R</h1>
+<h2>Reliquats et compléments</h2>
+<p class="intro">Seizième vague : les reliquats — ces grandes prophéties restées hors des douze catégories. R001 : Joseph — les gerbes prosternées, les trois jours de prison, les sept vaches, la descente en Égypte. R002 : les clauses de l'alliance — malédictions du Lévitique, dispersion et retour du Deutéronome, cantique-témoin, adieux de Josué, prière de Néhémie. R003 : les promesses d'Isaïe et de Michée — socs de charrue, Prince de paix, faune réconciliée, pierre éprouvée, serviteur lumière, et Douma dans la nuit. R004 : les sept lettres aux congrégations. R005 : le trône, les vingt-quatre anciens, le rouleau et l'Agneau. R006 : l'aller et le retour — Osée renvoie en Égypte, Zacharie en ramène. Mêmes dix blocs, mêmes règles.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>10</b><span>blocs par fiche</span></div>
+<div><b>27</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:21</div><audio controls preload="none" src="audio/fiche_R_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_R_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#R001">R001</a>
+<a href="#R002">R002</a>
+<a href="#R003">R003</a>
+<a href="#R004">R004</a>
+<a href="#R005">R005</a>
+<a href="#R006">R006</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#R001"><img src="images/prophe_R001_joseph.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE R001</div>
+<h3><a href="#R001">Joseph — les gerbes, les trois jours, les sept vaches</a></h3>
+<div class="meta">Accomplie (P021, P022, P023, P025) · 🎧 0:23</div></div></div>
+<div class="carte">
+<a class="img" href="#R002"><img src="images/prophe_R002_alliance.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE R002</div>
+<h3><a href="#R002">Les clauses de l'alliance — sept fois, puis le retour</a></h3>
+<div class="meta">Accomplie (P048, P050, P056, P063, P067, P106) / Accomplie+À venir (P062, P064) · 🎧 0:22</div></div></div>
+<div class="carte">
+<a class="img" href="#R003"><img src="images/prophe_R003_promesses.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE R003</div>
+<h3><a href="#R003">Les promesses — socs, Prince, faune, pierre, serviteur, Douma</a></h3>
+<div class="meta">Accomplie (P145, P166, P578, P715, P136) / En cours (P108, P455) / Mixte (P120) / À venir (P124) · 🎧 0:26</div></div></div>
+<div class="carte">
+<a class="img" href="#R004"><img src="images/prophe_R004_eglises.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE R004</div>
+<h3><a href="#R004">Les sept lettres — premier amour, porte ouverte, tièdes vomis</a></h3>
+<div class="meta">1er accomplissement + En cours (P798-P812) · 🎧 0:26</div></div></div>
+<div class="carte">
+<a class="img" href="#R005"><img src="images/prophe_R005_trone.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE R005</div>
+<h3><a href="#R005">Le trône et l'Agneau — vingt-quatre anciens, sept sceaux</a></h3>
+<div class="meta">Accomplie (P816, P817) / En cours (P813, P814, P815, P818) / À venir (P819) · 🎧 0:22</div></div></div>
+<div class="carte">
+<a class="img" href="#R006"><img src="images/prophe_R006_allerretour.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE R006</div>
+<h3><a href="#R006">L'aller et le retour — Osée renvoie, Zacharie ramène</a></h3>
+<div class="meta">Accomplie (P417) / 1er accomplissement (P505) · 🎧 0:22</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Dix blocs par fiche, toujours dans le même ordre. Le dixième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="R001">
+<div class="visuel"><img src="images/prophe_R001_joseph.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE R001 · CATÉGORIE R</div>
+<h3>Joseph — les gerbes, les trois jours, les sept vaches</h3>
+<div class="ref">Genèse 37:5-11 ; Genèse 40:8-23 ; Genèse 41:25-57 ; Genèse 46:1-7</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P021, P022, P023, P025)</span>
+<span class="badge">Système patriarches (XVIIe s. — repères)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche R001 · 0:23</div><audio controls preload="none" src="audio/fiche_R01_joseph.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_R01_joseph.mp3 · 0:23 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 37:5-11 ; Genèse 40:8-23 ; Genèse 41:25-57 ; Genèse 46:1-7</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P021, P022, P023, P025)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système patriarches (XVIIe s. — repères)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P021 (37:5-11 : rêves, prosternation), P022 (40:8-19 : échanson/panetier), P023 (41:25-32 : sept + sept), P025 (46:3-4 : descente, yeux fermés) ; rappel J005 (Gn 49, Shilo)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Vos GERBES se prosternaient devant ma gerbe. » (37:7 — P021 : le premier rêve !)</li>
+<li>« Le SOLEIL, la LUNE et ONZE ÉTOILES se prosternaient. » (37:9 — le second !)</li>
+<li>« Les TROIS sarments : TROIS JOURS… Pharaon te RÉTABLIRA. » (40:12-13 — P022 !)</li>
+<li>« Les TROIS corbeilles : TROIS JOURS… les oiseaux mangeront. » (40:18-19 — P022 !)</li>
+<li>« Les SEPT vaches grasses… SEPT années. Les SEPT maigres… SEPT années. » (41:26-27 — P023 !)</li>
+<li>« Le rêve RÉPÉTÉ DEUX FOIS : la chose est ARRÊTÉE. » (41:32 — P023 : ×2 = certain !)</li>
+<li>« N'aie pas PEUR de descendre… Joseph te FERMERA LES YEUX. » (46:3-4 — P025 !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Joseph, 17 ans, préféré de Jacob, raconte deux rêves : ses frères « le haïrent encore plus », son père « le réprimande » (voir 2008728). Vendu 20 sicles (37:28 — C8), esclave de Potiphar, prisonnier calomnié, il interprète en prison (échanson, panetier — P022), puis devant Pharaon : les deux rêves « ont une seule et même signification » (voir 1101978076). Il a 30 ans passés quand il devient « le personnage le plus important d'Égypte après Pharaon » (voir 1101978076) ; il voyage dans tout le pays, emmagasine, épouse Asnath, père de Manassé et Éphraïm (voir it-1 « Joseph », 1200002515). Puis la famine « bien au-delà des frontières » amène les dix frères, qui « se prosternent » (voir 1200002515 : « réalisant partiellement les deux rêves »). Enfin Jacob descend, rassuré : « Joseph te fermera les yeux » (46:4 — P025).</p>
+<h4>4 · Explication du texte</h4>
+<p>Gerbes (37:7) : onze gerbes des champs — les frères moissonneurs courbés ; astres (37:9) : soleil + lune + onze étoiles — père + mère + frères : toute la maison, ciel et terre. « Partiellement » (voir 1200002515) : les frères d'abord (42:6 — P021), Benjamin ensuite (43:26 — P021), Juda et tous enfin (44:14 ; 50:18 — P021) — l'accomplissement en quatre prosternations. Trois jours (40:12-19 — P022) : même chiffre, destins inverses — l'anniversaire de Pharaon (40:20 — P022) tranche. Sept + sept (41:26-27 — P023) : vaches (bétail) + épis (grain) — les deux nourritures, un seul calendrier. Rêve ×2 (41:32 — P023) : la répétition = l'arrêt — comme « tombée ×2 » (voir L010). « Fermera les yeux » (46:4 — P025) : le geste du fils à la mort du père (49:33 — P025) — la descente promet le retour des yeux, pas du corps.</p>
+<h4>5 · Interprétation</h4>
+<p>« C'est Dieu qui l'avait envoyé en Égypte, non sans raison » (voir 1101978076) : « Dieu m'a envoyé devant vous pour préserver la vie » (45:5-8 — C8). L'échanson rétabli, le panetier pendu (40:20-22 — P022) : la prison valide le prisonnier — deux ans plus tard (41:1 — C8), l'échanson « se souvint enfin » (voir 1101978076). Abondance (41:47-54 — P023) : greniers « comme le sable de la mer » (41:49 — C8) ; famine : « tout pays venait » (41:57 — C8). Le cinquième (41:34 — C8 : impôt de 20 % pendant les grasses) : l'économie du salut. 20 sicles (37:28 — C8) : prix courant d'un esclave — l'élu vendu au tarif. 70 âmes descendent (contexte 46:27) ; une multitude remontera (voir L009 : Ex 12).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">17 ans</td><td>Gerbes + astres (37:7-9)</td></tr>
+<tr><td class="d">20 sicles (C8)</td><td>Dothan → Égypte</td></tr>
+<tr><td class="d">3 jours</td><td>Échanson/panetier (40:20-22)</td></tr>
+<tr><td class="d">7 + 7</td><td>Greniers, puis famine (41:47-54)</td></tr>
+<tr><td class="d">4 prosternations</td><td>42:6 → 50:18</td></tr>
+<tr><td class="d">Descente</td><td>Yeux fermés (46:4 → 49:33)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Pharaon non nommé : Moyen Empire (Sésostris ? Hyksos ? — voir les limites : NON TRANCHÉ). Vizir sémitique : les peintures de Béni-Hassan montrent des pasteurs sémites en Égypte (repère) ; un « intendant des greniers » asiatique n'étonne pas l'égyptologie. Prix : ~20 sicles l'esclave jeune à l'époque (tablettes de Nuzi, fourchette 20-30 — repère). Famine de sept ans : la stèle de Séhel (découverte 1889, texte ptolémaïque TARDIF attribuant 7 ans de famine à Djéser, IIIe dynastie — repère EXTERNE, sans lien : parallèle discuté, NON versé comme preuve — voir les limites). Le cinquième : fiscalité palatiale (Égypte : greniers d'État — voir it-Égypte, L009).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Hébron (maison) → Sichem → Dothan (la citerne — 37:24, C8) : la descente du rêveur. Caravane ismaélite/madianite (37:25-28 — C8) : la route Galaad-Égypte (baume, myrrhe !). Égypte : le delta des greniers, le Nil des vaches (41:2 — C8 : « du Nil montaient » — les vaches du fleuve !). Goshen (contexte 46:28) : le pâturage des 70. Retour : « mes os remonteront » (50:25 — C8) — Moïse les prendra (Ex 13:19 — C8).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Agronomie : 7 grasses + 7 maigres — cycles du Nil (crues hautes/basses — voir L009 : nilomètres) ; stockage « comme le sable » (41:49 — C8) : silos d'État, grain sur pied compté. Économie : impôt du cinquième (41:34 — C8) — 20 % prélevés, 100 % sauvés ; monétisation progressive (argent → bétail → terres → personnes, 47:14-21 — C8) : l'étatisation par la famine. Démographie : 70 → multitude en quatre générations (Ex 1:7 — C8 : « pullulèrent »). Onirologie : le récit ne théorise PAS les rêves — pas de clé générale (voir les limites) : Dieu parle, Joseph transmet, Pharaon décide.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Pharaon : NON NOMMÉ — Hyksos ? Sésostris II/III ? — non tranché (système des patriarches seul, XVIIe s. repère). Séhel : stèle TARDIVE (époque ptolémaïque), roi Djéser (IIIe dyn.) — parallèle, PAS preuve ; aucun lien externe (règle : jw.org/wol uniquement). Les rêves : aucune onirologie tirée — Joseph dit « Dieu » (41:16 — C8), point. C8 : 37:24-28, 41:1, 41:16, 41:34, 41:49, 41:57, 45:5-8, 46:27-28, 47:14-21, 50:25 ; Ex 1:7, 13:19 — aucun P (vérifié : P021-P025 seuls en Gn 37-46 ; P024 = Gn 49, voir J005).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gerbes + astres (37:7-9)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">17 ans</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dothan → Égypte</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">20 sicles (C8)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Échanson/panetier (40:20-22)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3 jours</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Greniers, puis famine (41:47-54)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7 + 7</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">42:6 → 50:18</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">4 prosternations</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Yeux fermés (46:4 → 49:33)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Descente</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200002515">Joseph — Étude perspicace (rasé, 7 ans, frères prosternés)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200002515</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101978076">Les rêves de Pharaon (un seul sens, intendant)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101978076</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/37">Genèse 37 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/37</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/41">Genèse 41 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/41</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche R001 — Joseph — les gerbes, les trois jours, les sept vaches</span><span>Catégorie R</span></div></div>
+</article>
+<article class="fiche" id="R002">
+<div class="visuel"><img src="images/prophe_R002_alliance.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE R002 · CATÉGORIE R</div>
+<h3>Les clauses de l'alliance — sept fois, puis le retour</h3>
+<div class="ref">Lévitique 26:14-45 ; Deutéronome 4:25-31 ; 30:1-10 ; 31:16-21 ; 32:15-43 ; Josué 23:14-16 ; Néhémie 1:8, 9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P048, P050, P056, P063, P067, P106) / Accomplie+À venir (P062, P064)</span>
+<span class="badge">Système alliances (Sinaï → Moab → Sichem → Suse)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche R002 · 0:22</div><audio controls preload="none" src="audio/fiche_R02_alliance.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_R02_alliance.mp3 · 0:22 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Lévitique 26:14-45 ; Deutéronome 4:25-31 ; 30:1-10 ; 31:16-21 ; 32:15-43 ; Josué 23:14-16 ; Néhémie 1:8, 9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P048, P050, P056, P063, P067, P106) / Accomplie+À venir (P062, P064)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système alliances (Sinaï → Moab → Sichem → Suse)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Lévitique/Deutéronome/Josué/Néhémie — P048 (Lv 26:14-39 : malédictions), P050 (Lv 26:40-45 : confession, retour), P056 (Dt 4:25-31 : dispersion, retour), P062 (Dt 30:1-10 : rassemblés, cœur circoncis), P063 (Dt 31:16-21 : apostasie, cantique-témoin), P064 (Dt 32:15-43 : cantique, vengeance), P067 (Jos 23:14-16 : pas une parole tombée), P106 (Né 1:8-9 : rassemblés vers le lieu) ; rappel K008 (Lv 26:34-35, sabbats — versets disjoints)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Je vous punirai SEPT FOIS pour vos péchés. » (Lv 26:18 — P048 : ×4 dans le chapitre !)</li>
+<li>« Votre CIEL comme du FER, votre terre comme du BRONZE. » (26:19 — ciel fermé !)</li>
+<li>« Vos villes en RUINE… vos sanctuaires DÉSERTS. » (26:31 — ruine !)</li>
+<li>« Je vous DISPERSERAI… l'épée DÉGAINÉE derrière vous. » (26:33 — dispersion !)</li>
+<li>« Ils CONFESSERONT… leur cœur INCIRCONCIS s'humiliera. » (26:40-41 — P050 : l'aveu !)</li>
+<li>« Je me souviendrai de mon alliance avec JACOB… ISAAC… ABRAHAM. » (26:42 — remontée !)</li>
+<li>« Tu CHERCHERAS Jéhovah… tu REVIENDRAS. » (Dt 4:29-30 — P056 : chercher-revenir !)</li>
+<li>« Il te RAMÈNERA… il CIRCONCIRA ton cœur. » (Dt 30:3, 6 — P062 : cœur opéré !)</li>
+<li>« Ce CANTIQUE servira de TÉMOIN. » (Dt 31:19 — P063 : le chant-témoin !)</li>
+<li>« Jeshurun est devenu GRAS… et il a REGIMBÉ. » (Dt 32:15 — P064 : le gras rebelle !)</li>
+<li>« Ils ont sacrifié à des DÉMONS. » (32:17 — shedim !)</li>
+<li>« À MOI la vengeance. » (32:35 — cité Rm 12:19 ; Hé 10:30 !)</li>
+<li>« RÉJOUISSEZ-VOUS, nations, avec son peuple. » (32:43 — cité Rm 15:10 !)</li>
+<li>« PAS UNE PAROLE n'est tombée. » (Jos 23:14 — P067 : le bilan !)</li>
+<li>« Je vous RASSEMBLERAI… du BOUT DES CIEUX. » (Né 1:9 — P106 : le retour !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Quatre lieux, un contrat. Sinaï (Lv 26) : le traité — bénédictions (26:3-13), sanctions graduées (26:14-39 — P048), restauration (26:40-45 — P050) ; « Bénédictions en cas d'obéissance ; malédictions en cas de désobéissance (26:1-46) » (voir ad « Lévitique », 1200012675). Moab (Dt 4, 30, 31-32) : Moïse mourant — dispersion annoncée (4:25-31 — P056), retour promis (30:1-10 — P062), apostasie prévue (31:16-21 — P063), cantique déposé comme témoin (32 — P064). Sichem (Jos 23) : Josué mourant — bilan (« pas une parole tombée », 23:14 — P067) et avertissement (23:15-16 — P067). Suse (Né 1) : Néhémie PRIE Moïse — il cite Dt 30:4/4:27 : « du bout des cieux, je rassemblerai » (1:8-9 — P106). K008 a traité Lv 26:34-35, 43 (sabbats) : versets disjoints, pas de doublon.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Sept fois » (26:18, 21, 24, 28 — P048) : la gradation ×4 — avertir, frapper, briser, disperser : chaque refus monte d'un degré. « Ciel de fer » (26:19 — P048) : sécheresse contractuelle. « Cœur incirconcis » (26:40-41 — P050) : l'orgueil comme prépuce — il « s'humiliera », alors Dieu « se souviendra » — dans l'ordre INVERSÉ : Jacob, Isaac, Abraham (26:42 — P050) : on remonte aux sources. « Bout des cieux » (Dt 30:4 ; Né 1:9 — P062, P106) : la diaspora totale — même là, la main ramasse. « Cœur circoncis » (30:6 — P062) : Dieu opère ce qu'il exige (voir Jr 31:31-34 — P062, rappel G002). Cantique-témoin (31:19, 21 — P063) : un chant qu'« on n'oubliera pas » — la mémoire chantée contre l'amnésie. Jeshurun (32:15 — P064 : « droit » — nom d'honneur devenu ironie) : gras → regimbé → abandonné. « Démons » (shedim, 32:17 — P064) : les dieux païens démasqués. « Vigne de Sodome » (32:32 — P064) : la corruption en cépage. « À moi » (32:35 — P064) : la vengeance confisquée aux hommes (Rm 12:19 ; Hé 10:30 — P064). « Nations avec son peuple » (32:43 — P064) : Rm 15:10 — les nations invitées à la joie.</p>
+<h4>5 · Interprétation</h4>
+<p>Exécutions (registre) : P048 → 2R 17 (Samarie — voir L001) + 2R 25 (Jérusalem — voir B) + Lm 4:9-10 (la famine du siège — citée avec retenue). P050 → Esd 1:1-4 (Cyrus — voir J001) ; « je ne les rejetterai pas » (26:44 — P050). P056 → 2R 17:6, 25:21 + Né 1:8-9. P062 → Né 1:8-9 + Jr 31 (nouvelle alliance — voir G002) ; la part finale (« cœur circoncis » plein) : À venir (registre) — aucune date. P063 → Jg 2:11-19 ; 3:5-7 (le cycle : apostasie, oppression, cri, juge). P064 → Rm 12:19, 15:10 ; Hé 10:30 (cités) + Ré 19:2 (À venir — voir I010) ; les malédictions « s'exécuteront à Har-Maguédôn » (voir 1951408 — avenir, aucune date). P067 → Jg 2:11-15 + 2R 17:7-23. P106 → Né 7:6 (recensés) + 8:1-18 (la Loi lue — Esdras !) : le retour CÉLÉBRÉ par la lecture.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Sinaï</td><td>7 fois gradués (Lv 26:18-28)</td></tr>
+<tr><td class="d">Moab</td><td>Dispersion + retour (Dt 4 ; 30)</td></tr>
+<tr><td class="d">Cantique</td><td>Témoin déposé (Dt 31:19)</td></tr>
+<tr><td class="d">Sichem</td><td>Pas une parole tombée (Jos 23:14)</td></tr>
+<tr><td class="d">Suse</td><td>Bout des cieux (Né 1:9)</td></tr>
+<tr><td class="d">Jérusalem</td><td>La Loi lue (Né 8)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>740 (Samarie — voir L001), 607/587 (Jérusalem — voir B002) : les deux dispersions. Lm 4:9-10 (P048) : « heureux les morts par l'épée » — le siège dans l'horreur (3e personne, retenue). Cyrus (Esd 1 — voir J001) : 70 ans, le retour. 42 360 + serviteurs (Esd 2:64-65 — C8) : le retour CHIFFRÉ. Artaxerxés, XXe année (Né 1-2 — C8, Ve s. repère) : Néhémie gouverneur. Esdras lit (Né 8 — P106) : de l'aube à midi, le peuple DEBOUT — la restauration par la lecture. Juges (P063/P067) : ~300 ans de cycles (repère interne).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Sinaï (Lv 26) : le contrat au désert. Moab (Dt) : face à Jéricho — Moïse voit sans entrer. Sichem (Jos 23) : entre Ébal et Garizim — les monts de la malédiction et de la bénédiction (Dt 27 — C8). Suse (Né 1) : Perse — la prière à 1 500 km. « Bout des cieux » (30:4 ; Né 1:9) : Halah, Babylone — et au-delà. Retour : les routes de l'est (Esd 8 — C8 : l'Ahavah !) vers Jérusalem — le lieu choisi (Né 1:9 — P106).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Épidémiologie (26:25 — P048 : « peste au milieu de vous ») : le siège comme bouillon de culture. Agronomie (26:19-20 — P048 : ciel de fer, terre de bronze, force « en vain ») : sécheresse + épuisement — le rendement zéro. Démographie : 42 360 (Esd 2:64 — C8) + 7 337 serviteurs + 200 chantres (2:65-67 — C8) : recensement du retour. Mnémonique (31:19-21 — P063) : le chant-témoin — un cantique s'oublie moins qu'une tablette : pédagogie orale. Juridique : structure suzerain-vassal (traités du Proche-Orient ancien : bénédictions/malédictions — repère) — Lv 26 en traité royal.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>« Sept fois » (Lv 26) : PUNITIF, pas chronologique — aucun lien avec les « sept temps » (Dn 4 — voir F) : deux « sept », deux sens. Lm 4:9-10 : citée comme accomplissement du registre, avec retenue (3e personne). Har-Maguédôn (voir 1951408) + Ré 19:2 (P064) + cœur circoncis (P062) : parts À venir — AUCUNE date. K008 (Lv 26:34-35, 43) : même chapitre, versets disjoints — pas de doublon. C8 : Esd 2:64-67 ; 8 ; Né 2 ; Dt 27 — aucun P (vérifié).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 fois gradués (Lv 26:18-28)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Sinaï</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dispersion + retour (Dt 4 ; 30)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Moab</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Témoin déposé (Dt 31:19)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Cantique</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas une parole tombée (Jos 23:14)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Sichem</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bout des cieux (Né 1:9)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Suse</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La Loi lue (Né 8)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jérusalem</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012675">Lévitique (Livre du) — Auxiliaire (26:1-46, Moïse)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012675</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1951408">Questions de lecteurs (Lv 26/Deut, Har-Maguédôn, 1951)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1951408</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/3/26">Lévitique 26 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/3/26</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/30">Deutéronome 30 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/30</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/32">Deutéronome 32 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/32</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche R002 — Les clauses de l'alliance — sept fois, puis le retour</span><span>Catégorie R</span></div></div>
+</article>
+<article class="fiche" id="R003">
+<div class="visuel"><img src="images/prophe_R003_promesses.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE R003 · CATÉGORIE R</div>
+<h3>Les promesses — socs, Prince, faune, pierre, serviteur, Douma</h3>
+<div class="ref">Ésaïe 2:2-4 ; Michée 4:1-5 ; Ésaïe 9:3-7 ; 11:6-10 ; 28:14-22 ; 49:1-7 ; 21:11, 12 ; Actes 13:46, 47</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P145, P166, P578, P715, P136) / En cours (P108, P455) / Mixte (P120) / À venir (P124)</span>
+<span class="badge">Système promesses (Sion → nations → création)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche R003 · 0:26</div><audio controls preload="none" src="audio/fiche_R03_promesses.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_R03_promesses.mp3 · 0:26 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 2:2-4 ; Michée 4:1-5 ; Ésaïe 9:3-7 ; 11:6-10 ; 28:14-22 ; 49:1-7 ; 21:11, 12 ; Actes 13:46, 47</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P145, P166, P578, P715, P136) / En cours (P108, P455) / Mixte (P120) / À venir (P124)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système promesses (Sion → nations → création)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe/Michée/Actes — P108 (Is 2:2-4 : socs), P455 (Mi 4:1-5 : vigne et figuier), P120 (Is 9:3-7 : Prince de paix), P578 (Is 9:6-7 : trône affermi), P124 (Is 11:6-10 : faune, rameau), P145 (Is 28:14-22 : pierre éprouvée), P166 (Is 49:1-7 : lumière des nations), P715 (Ac 13:46-47 : vers les nations), P136 (Is 21:11-12 : Douma) ; rappels P556/P607 (d1), P777 (d1), P158/P612 (c2), J010 (Madian)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« La MONTAGNE… au-dessus… TOUTES LES NATIONS en foule. » (Is 2:2 — P108 !)</li>
+<li>« Ils forgeront leurs ÉPÉES en SOCS… n'apprendront plus la GUERRE. » (2:4 — les socs !)</li>
+<li>« Chacun sous sa VIGNE et son FIGUIER, NUL ne les effraiera. » (Mi 4:4 — P455 !)</li>
+<li>« Le peuple dans les TÉNÈBRES a vu une GRANDE LUMIÈRE. » (Is 9:2 — P120 : la lumière !)</li>
+<li>« Comme au jour de MADIAN. » (9:4 — Gédéon, voir J010 !)</li>
+<li>« CONSEILLER MERVEILLEUX, DIEU FORT, PÈRE ÉTERNEL, PRINCE DE PAIX. » (9:6 — 4 titres !)</li>
+<li>« PAS DE FIN… sur le TRÔNE de David… le ZÈLE fera cela. » (9:7 — garanti !)</li>
+<li>« Le LOUP avec l'AGNEAU… le LÉOPARD avec le CHEVREAU. » (Is 11:6 — P124 !)</li>
+<li>« L'enfant sur le trou du COBRA. » (11:8 — l'enfant et le cobra !)</li>
+<li>« La terre REMPLIE de la connaissance… comme les EAUX couvrent la mer. » (11:9)</li>
+<li>« Une PIERRE ÉPROUVÉE… FONDEMENT. » (Is 28:16 — P145 : la pierre !)</li>
+<li>« Pas suffisant… je t'ai donné comme LUMIÈRE DES NATIONS. » (Is 49:6 — P166 !)</li>
+<li>« Nous nous TOURNONS vers les nations. » (Ac 13:46 — P715 : le tournant !)</li>
+<li>« GARDE, où en est la nuit ?… Le MATIN arrive, et la NUIT aussi. » (Is 21:11-12 — P136 !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Neuf textes, une espérance. Is 2/Mi 4 : le MÊME oracle chez deux contemporains (Ésaïe à Jérusalem, Michée à Morésheth — voir L001) — Michée ajoute le v.4 (vigne/figuier) et le v.5 (« nous marcherons au nom de Jéhovah » — P455). Is 9 : la Galilée « traitée avec mépris » (9:1 — P120) puis honorée — Zabulon, Nephtali, « Galilée des nations ». Is 11 : le rameau de Jessé (contexte) et sa création réconciliée. Is 28 : les « vantards de Jérusalem » (voir si-1 « Isaïe », 1101990084) réfugiés dans le mensonge. Is 49 : le serviteur — « Sion consolée » (49:1—59:21 ; voir 1101990084). Ac 13 : Antioche de Pisidie — Paul se tourne. Is 21:11-12 : Douma crie depuis Séïr (voir L010 pour le chapitre).</p>
+<h4>4 · Explication du texte</h4>
+<p>Montagne (2:2) : « montagne SYMBOLIQUE de Jéhovah » (voir 1101972015) — le culte élevé au-dessus des « montagnes » (royaumes). Socs (2:4) : forge INVERSE — l'ONU expose la statue (un homme forgeant une épée en soc, offerte par l'URSS — voir 1976800) : « ce n'est pas grâce à des efforts humains » (voir 1976800). Vigne/figuier (Mi 4:4 — P455) : la polyculture de paix — « nul ne les effraiera ». Madian (9:4 — P120/P578) : Gédéon, 300 hommes (voir J010) — la victoire sans armée, modèle du Prince. Bottes au feu (9:5 — P120) : l'équipement militaire brûlé — démobilisation totale. Quatre titres (9:6 — P120/P578, texte vérifié) : conseiller, fort, père, prince — le gouvernement-personne. Zèle (9:7) : « c'est le zèle qui fera cela » (texte vérifié) — la garantie, pas l'homme. Faune (11:6-8 — P124) : 3 tableaux — prédateurs/proies, bétail/enfant conducteur, nourrisson/cobra : la peur abolie aux trois âges. Connaissance-mer (11:9 — P124) : l'océan comme mesure. Racine de Jessé (11:10 — P124) : « les nations chercheront » — l'étendard. Pierre (28:16 — P145) : « précieuse et éprouvée » (voir 1101990084) — posée pendant que les vantards signent « une alliance avec la Mort » (28:15 — P145). Cordeau (28:17 — P145) : le droit comme instrument. Serviteur (49:3, 6 — P166, texte vérifié) : « mon serviteur, ô Israël » PUIS « pas suffisant… lumière des nations » — l'élargissement : « son ministère terrestre s'est limité aux fils d'Israël » mais « appliqué à ses disciples » (voir 2007042, avec Ac 13:46-47 — P715). Douma (21:11 — P136 : « silence, nom prophétique d'Édom » — note vérifiée) : « matin ET nuit » (21:12) — salut et jugement ensemble ; « revenez ! » — l'appel dans la nuit.</p>
+<h4>5 · Interprétation</h4>
+<p>Is 2/Mi 4 (En cours) : « depuis 1935 » (voir 1101972015 : article « La grande multitude ») — la grande foule « a accompli FIGURÉMENT » : socs forgés, guerre désapprise ; le final : aucune date. Is 9 : « commencé à se réaliser dans la seconde moitié de l'an 2 » (voir 1101986072) — naissance (Lc 1:32-33 — P120/P578 ; Mt 1 — P578) ; alliance davidique (2S 7 — voir 1101986072 ; « dès maintenant et pour toujours », 9:7 — texte vérifié) ; plénitude : À venir (P120) — aucune date. Is 11 (À venir — P124) : AUCUNE date (voir les limites). Is 28 : posée (1P 2:6 — P777, voir D), rejetée (Ps 118:22 — P556/P607, voir D), fondement (Ép 2:20 — P145). Is 49 : Siméon (Lc 2:32 — P166 : « lumière des nations » AU TEMPLE), Antioche (Ac 13:46-48 — P715 : Juifs d'abord, nations ensuite ; « tous ceux qui étaient disposés » crurent — 13:48, P715), Rome (Ac 28:28 — P715 : « aux nations… elles écouteront ») ; aujourd'hui : « oints secondés par une grande foule » (voir 2007042). Douma : « région d'Édom ; Abdias » (P136 — voir L003).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Ténèbres</td><td>Galilée méprisée (9:1)</td></tr>
+<tr><td class="d">Lumière</td><td>Prince né (9:6, an 2)</td></tr>
+<tr><td class="d">Pierre</td><td>Posée, rejetée (28:16 → Ps 118)</td></tr>
+<tr><td class="d">Tournant</td><td>Vers les nations (Ac 13:46)</td></tr>
+<tr><td class="d">1935</td><td>L'afflux figuré (Is 2)</td></tr>
+<tr><td class="d">Faune</td><td>Loup + agneau (11:6, À venir)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>An 2 (seconde moitié — voir 1101986072) : naissance du Prince (voir J003 : Bethléhem). Siméon au temple (Lc 2 — P166). ~47 (Ier s. repère) : Antioche de Pisidie (Ac 13 — P715) — le tournant. ~59-61 (repère) : Rome (Ac 28 — P715). 1935 : « La grande multitude » (voir 1101972015) — l'afflux figuratif. XXe s. : statue de l'ONU (Vuchetich, URSS — voir 1976800) : « jusqu'à présent elles n'ont pas converti » — la paix manquée des hommes. Gédéon (voir J010) : le jour de Madian, précédent du Prince.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Sion/Jérusalem (2:3 — P108) : la loi SORT — capitale de la parole. Galilée (9:1 — P120 : Zabulon, Nephtali, « chemin de la mer », Jourdain) : le mépris devenu honneur — Jésus Galiléen (voir C). Madian (9:4) : le torrent de Qishon (voir J010). Antioche (Pisidie — P715) → Rome (P715) : 2 500 km de lumière. « Extrémité de la terre » (Ac 13:47 — P715 ; voir 2007042). Douma (21:11 — P136) : nord de l'Arabie (repère) ; Séïr (21:11 — voir L003). Nations (11:10 ; 49:6 — P124, P166) : la géographie universelle.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Métallurgie (2:4 — P108/P455) : épées → socs, lances → serpes — la forge inverse : l'acier de guerre en acier de paix. Zoologie (11:6-8 — P124) : loup, agneau, léopard, chevreau, veau, lion, cobra — 7 espèces ; « le lion mangera de la paille » (11:7 — P124) : le régime aboli. Architecture (28:16 — P145 ; Ps 118:22 — P556) : pierre d'angle / tête de l'angle — la clé qui tient les deux murs. Optique spirituelle (9:2 ; 49:6 — P120, P166) : ténèbres → grande lumière — pas de physique (voir les limites). Agronomie (Mi 4:4 — P455) : vigne + figuier — polyculture, autarcie, paix.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Is 2/Mi 4 : 1er accomplissement FIGURÉ (voir 1101972015) — le final : AUCUNE date. Is 11 (P124, À venir) : faune littérale ou tableau ? — le texte dit, le temps montrera : NON TRANCHÉ, aucune date. Is 9:6 (« Dieu fort ») : titre du Prince — PAS de débat trinitaire (règle 7 : dogmatique interdite). Is 9:2-5 (P120) + 9:6-7 (P578) : deux P, un texte — même fiche, pas de doublon. Lumière (9:2 ; 49:6) : spirituelle — aucune physique tirée. Douma : oasis et/ou Édom symbolique (note + registre) — les deux versés.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Galilée méprisée (9:1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ténèbres</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prince né (9:6, an 2)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Lumière</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Posée, rejetée (28:16 → Ps 118)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Pierre</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vers les nations (Ac 13:46)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Tournant</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'afflux figuré (Is 2)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1935</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Loup + agneau (11:6, À venir)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Faune</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990084">Isaïe — Toute Écriture n°23 (pierre, serviteur, Sion)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990084</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101972015">Choses désirables (Is 2:2-4, 1935, socs figurés)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101972015</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101986072">Prince de paix face à Har-Maguédôn (David, an 2)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101986072</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2007042">Points marquants d'Isaïe II (49:6, disciples, extrémité)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2007042</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/2">Ésaïe 2 — Bible d'étude, texte vérifié<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/33/4">Michée 4 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/33/4</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche R003 — Les promesses — socs, Prince, faune, pierre, serviteur, Douma</span><span>Catégorie R</span></div></div>
+</article>
+<article class="fiche" id="R004">
+<div class="visuel"><img src="images/prophe_R004_eglises.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE R004 · CATÉGORIE R</div>
+<h3>Les sept lettres — premier amour, porte ouverte, tièdes vomis</h3>
+<div class="ref">Révélation 2:1—3:22</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">1er accomplissement + En cours (P798-P812)</span>
+<span class="badge">Système lettres (Ier s. → depuis 1914)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche R004 · 0:26</div><audio controls preload="none" src="audio/fiche_R04_eglises.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_R04_eglises.mp3 · 0:26 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Révélation 2:1—3:22</td></tr>
+<tr><td class="d">Statut</td><td>1er accomplissement + En cours (P798-P812)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système lettres (Ier s. → depuis 1914)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Révélation — P798 (2:1-7 Éphèse), P799 (2:8-11 Smyrne), P800 (2:12-17 Pergame), P801 (2:18-29 Thyatire), P802 (3:1-6 Sardes), P803 (3:7-13 Philadelphie), P804 (3:14-22 Laodicée), P805 (2:5 repens-toi), P806 (2:10 couronne), P807 (2:23 reins et cœurs), P808 (3:2-3 fortifie), P809 (3:10 heure de l'épreuve), P810 (3:11 je viens vite), P811 (3:16 tiède vomi), P812 (3:19-21 discipline, porte) ; rappels I001-I010 (Ré 6+) ; Jr 17:10 (C8)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Tu as ABANDONNÉ ton PREMIER AMOUR… sinon j'ôterai ton PORTE-LAMPE. » (2:4-5 — P798/P805 !)</li>
+<li>« Au vainqueur : l'ARBRE DE VIE, dans le PARADIS. » (2:7 — le paradis !)</li>
+<li>« Tribulation pendant DIX JOURS… la COURONNE DE VIE. » (2:9-10 — P799/P806 !)</li>
+<li>« Là où est le TRÔNE DE SATAN… l'enseignement de BALAAM. » (2:13-14 — P800 !)</li>
+<li>« La MANNE CACHÉE… une PIERRE BLANCHE, un NOM NOUVEAU. » (2:17 — le nom !)</li>
+<li>« Tu tolères JEZABEL… je scrute les REINS ET LES CŒURS. » (2:20, 23 — P801/P807 !)</li>
+<li>« Tu as la réputation d'être VIVANT, mais tu es MORT. » (3:1 — P802 : morte-vivante !)</li>
+<li>« Ton nom ne sera pas EFFACÉ du LIVRE DE VIE. » (3:5 — le livre !)</li>
+<li>« Une PORTE OUVERTE… l'HEURE DE L'ÉPREUVE… JE VIENS VITE. » (3:8, 10, 11 — P803/P809/P810 !)</li>
+<li>« Une COLONNE dans le temple… la NOUVELLE JÉRUSALEM. » (3:12 — la colonne !)</li>
+<li>« Tu es TIÈDE… je vais te VOMIR. » (3:15-16 — P804/P811 : tiède !)</li>
+<li>« Riche… MISÉRABLE, aveugle et NU. » (3:17 — le bilan !)</li>
+<li>« Voici que je me tiens à la PORTE et je FRAPPE. » (3:19-20 — P812 : on frappe !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Patmos (~96 — repère), « au jour du Seigneur » (1:10 — voir si-1 « Révélation », 1101990127) : écrire « aux sept congrégations » d'Asie (1:11 — P798-P804) — Éphèse, Smyrne, Pergame, Thyatire, Sardes, Philadelphie, Laodicée. « Les sept étoiles : les anges des sept congrégations ; les sept porte-lampes : sept congrégations » (1:20 — voir 1101990127). Sept = « perfection ou plénitude spirituelle » (voir 1101969037) : les sept lettres visent le Ier siècle ET « la condition des oints depuis 1914 » (registre P798). Chaque lettre : « je connais » + diagnostic + « au vainqueur ». Révélation 6+ : voir I.</p>
+<h4>4 · Explication du texte</h4>
+<p>Premier amour (2:4 — P798) : labeur sans flamme — « repens-toi, œuvres d'autrefois » (2:5 — P805), sinon porte-lampe ôté (2:5) : la congrégation éteinte. Dix jours (2:10 — P799/P806) : tribulation LIMITÉE — « fidèle jusqu'à la mort » = couronne. Trône de Satan (2:13 — P800) : Pergame, capitale du culte impérial (repère) — le trône païen face au trône. Balaam (2:14 — P800 : Nb 22-24, voir J006/J007) : la doctrine du piège — idolâtrie + immoralité. Pierre blanche (2:17 — P800) : bulletin d'acquittement (tribunaux antiques — repère) + nom nouveau (connu de Dieu seul). Jézabel (2:20 — P801, nom symbolique — C8 : 1R 16-21) : la corruptrice tolérée. Reins et cœurs (2:23 — P807, avec Jr 17:10 — C8) : le scrutin divin. Morte-vivante (3:1 — P802) : réputation vs réalité — « fortifie ce qui reste » (3:2 — P808 ; 1919 : affermissement — P808). Porte ouverte (3:8 — P803) : l'activité que nul ne ferme. Heure de l'épreuve (3:10 — P809) : gardé PENDANT — protection, pas exemption (grande tribulation — P809). « Je viens vite » (3:11 — P810) : tenir ferme — final À venir. Colonne (3:12 — P803) : stabilité + trois noms (Dieu, Nouvelle Jérusalem, nom nouveau). Tiède (3:15-16 — P804/P811) : ni bouillante ni froide — les eaux de Laodicée (voir géo) : vomi. Riche-misérable (3:17 — P804 : « pauvres, aveugles et nus » — voir 1101990127) : le bilan du banquier. Or/collyre/ blanc (3:18 — P804) : against la banque, la médecine, la laine (voir science). Porte (3:20 — P812) : Christ DEHORS qui frappe — la congrégation sans Christ dedans.</p>
+<h4>5 · Interprétation</h4>
+<p>1er accomplissement : les sept du Ier siècle (registre P798-P804). Depuis 1914 : appel à la repentance (P805), fidélité jusqu'à la mort (P806), scrutin (P807), affermissement 1919 (P808 : « affermissement de l'œuvre »), protection à l'heure (P809), « tiens ferme » (P810), jugement sur la chrétienté tiède (P811 : « jugement sur la chrétienté » — registre, voir les limites), discipline des aimés (P812). Au vainqueur, sept couronnes : paradis (2:7), pas de seconde mort (2:11 — P799), manne + nom (2:17), nations + étoile (2:26-28 — P801), blanc + livre (3:5), colonne + noms (3:12), trône partagé (3:21 — P812). « Commencement de la création de Dieu » (3:14 — P804, voir 1101990127) : cité, non débattu (règle 7).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Patmos (~96)</td><td>Jour du Seigneur (1:10)</td></tr>
+<tr><td class="d">Circuit</td><td>7 villes en boucle</td></tr>
+<tr><td class="d">Ier s.</td><td>7 lettres lues</td></tr>
+<tr><td class="d">1914+</td><td>Oints éprouvés (P805-P812)</td></tr>
+<tr><td class="d">1919</td><td>Affermissement (P808)</td></tr>
+<tr><td class="d">Heure</td><td>Gardés pendant (3:10)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Éphèse : Artémis, théâtre (repères) — Paul y écrivit (Ép 1 — voir 1101969037). Smyrne : fidèle sous les persécutions (Polycarpe, ~155, tradition — repère hedged). Pergame : capitale d'Asie, autel de Zeus, culte impérial (repères). Thyatire : corporations (Lydie la marchande de pourpre, Ac 16:14 — C8). Sardes : Crésus, or du Pactole (repère) — « vivante » de son passé. Philadelphie : ville frontalière, séismes (repère) — la porte tient. Laodicée : séisme 60, relevée SANS aide impériale (Tacite — repère) : « riche » (3:17) — banque, médecine (collyre), laine noire (repères). 1919 : affermissement (P808).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le circuit postal : Éphèse → Smyrne (N) → Pergame (N) → Thyatire (SE) → Sardes (S) → Philadelphie (SE) → Laodicée (S) — ~500 km en boucle (repère) : l'ordre des lettres = l'ordre de la route ! Patmos : l'île de l'exil (à l'ouest). Laodicée : vallée du Lycus — Hiérapolis (eaux CHAUDES) + Colosses (eaux FROIDES) voisines : Laodicée reçoit du TIÈDE par aqueduc (repère) — 3:15-16 en hydrologie ! Philadelphie (« amour fraternel ») : la porte de la Phrygie.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Hydrologie (3:15-16 — P804/P811) : aqueduc calcaire de Laodicée — l'eau arrive tiède et chargée : à vomir — littéralement. Médecine (3:18 — P804 : « collyre ») : école de médecine de Laodicée (collyre phrygien — repère) — Christ prescrit SON collyre. Textile (3:18 : « vêtements blancs ») : Laodicée = laine NOIRE célèbre (repère) — le blanc offert contre le noir vendu. Métallurgie (3:18 : « or épuré par le feu ») : ville de BANQUE (repère) — l'or du ciel contre l'or du coffre. Numérique : 7 lettres, 7 sceaux, 7 trompettes — totalité (voir 1101969037). Juridique : pierre blanche (2:17) = acquittement (repère).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Dix jours (2:10) : durée BRÈVE et limitée — aucun calcul. Trône de Satan (2:13) : culte impérial de Pergame (repère proposé, hedged) — le texte ne détaille pas. « Commencement de la création » (3:14) : CITÉ (voir 1101990127), non débattu — règle 7 (dogmatique interdite). P811 (chrétienté) : formule DU REGISTRE (« jugement sur la chrétienté ») — preuve versée, pas d'attaque (règle 7). « Je viens vite » (P810) : final À venir — AUCUNE date. Ré 6+ : voir I (I001-I010). C8 : Ac 16:14, 19 ; 1R 16-21 (Jézabel) ; Jr 17:10 — aucun P (vérifié).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jour du Seigneur (1:10)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Patmos (~96)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 villes en boucle</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Circuit</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 lettres lues</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier s.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oints éprouvés (P805-P812)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1914+</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Affermissement (P808)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gardés pendant (3:10)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Heure</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990127">Révélation — Toute Écriture n°66 (7 messages, porte-lampes)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990127</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101969037">144 000 marqués du sceau (7 = totalité, 7 porte-lampes)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101969037</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/2">Révélation 2 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/3">Révélation 3 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/3</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche R004 — Les sept lettres — premier amour, porte ouverte, tièdes vomis</span><span>Catégorie R</span></div></div>
+</article>
+<article class="fiche" id="R005">
+<div class="visuel"><img src="images/prophe_R005_trone.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE R005 · CATÉGORIE R</div>
+<h3>Le trône et l'Agneau — vingt-quatre anciens, sept sceaux</h3>
+<div class="ref">Révélation 4:1—5:14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P816, P817) / En cours (P813, P814, P815, P818) / À venir (P819)</span>
+<span class="badge">Système trône (33 → 1914 → soumission)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche R005 · 0:22</div><audio controls preload="none" src="audio/fiche_R05_trone.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_R05_trone.mp3 · 0:22 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Révélation 4:1—5:14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P816, P817) / En cours (P813, P814, P815, P818) / À venir (P819)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système trône (33 → 1914 → soumission)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Révélation — P813 (4:1 : monte ici), P814 (4:4 : 24 anciens), P815 (4:6-8 : 4 créatures, saint), P816 (4:11 : tu es digne, création), P817 (5:2-5 : qui est digne, Lion), P818 (5:9-10 : achetés, royaume et prêtres), P819 (5:13 : toute créature loue) ; rappels J005 (Gn 49:9-10), I (sceaux) ; Ré 4:2-3, 5:11-12 (C8)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MONTE ICI : je te montrerai les choses qui doivent ARRIVER. » (4:1 — P813 : monte !)</li>
+<li>« VINGT-QUATRE anciens… VÊTEMENTS BLANCS… COURONNES D'OR. » (4:4 — P814 !)</li>
+<li>« Une MER DE VERRE… QUATRE créatures PLEINES D'YEUX. » (4:6 — P815 : la mer !)</li>
+<li>« SAINT, SAINT, SAINT est Jéhovah… jour et nuit. » (4:8 — P815 : ×3 !)</li>
+<li>« TU ES DIGNE… car tu as CRÉÉ toutes choses. » (4:11 — P816 : le créateur !)</li>
+<li>« QUI EST DIGNE d'ouvrir le rouleau ?… Et je PLEURAIS beaucoup. » (5:2, 4 — P817 : qui ?)</li>
+<li>« NE PLEURE PLUS… Le LION de Juda… a VAINCU. » (5:5 — le Lion !)</li>
+<li>« Un AGNEAU comme TUÉ… SEPT cornes, SEPT yeux. » (5:6 — l'Agneau !)</li>
+<li>« HARPE… BOLS D'OR… les PRIÈRES des saints. » (5:8 — l'encens !)</li>
+<li>« Tu as ACHETÉ… ROYAUME et PRÊTRES. » (5:9-10 — P818 : achetés !)</li>
+<li>« TOUTE créature… a LOUÉ l'Agneau. » (5:13 — P819 : toutes !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Porte ouverte DANS LE CIEL (4:1 — P813) : Jean monte — « les choses qui doivent arriver » depuis 1914 (« visions du jour du Seigneur » — P813). Salle du trône : Celui qui siège (4:2 — C8 : jaspe, sardoine, arc-en-ciel émeraude — 4:3, C8), 24 trônes (4:4 — P814), mer de verre (4:6 — P815), 4 créatures (4:6-8 — P815 : lion, taureau, homme, aigle — 4:7, P815). Puis le ROULEAU : « écrit en dedans et sur le revers, scellé de sept sceaux » (5:1 — C8, texte vérifié) — cuir, parchemin ou papyrus (voir it-1 « Rouleau », 1200003862) ; « personne ni dans le ciel, ni sur la terre, ni sous la terre » (5:3 — P817, texte vérifié). Les sceaux (ch.6+) : voir I.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Monte ici » (4:1 — P813) : changement de scène — de la terre (ch.2-3, voir R004) au ciel. 24 (4:4 — P814) : 12 + 12 — la plénitude du peuple (tribus + apôtres) ; « rôle attribué aux 144 000 dans l'administration céleste » (P814) ; blanc (pureté) + or (royauté). Mer de verre (4:6 — P815) : le chaos aplani — transparence, stabilité. 4 créatures (4:7 — P815) : lion (courage), taureau (force), homme (intelligence), aigle (perspicacité) — les 4 faces du pouvoir (voir Éz 1 — C8) ; « pleines d'yeux » (4:6, 8 — P815) : vigilance totale. « Saint ×3 » (4:8 — P815 ; Is 6:3 — C8) : la sainteté au superlatif — « jour et nuit », sans relâche. « Tu as créé » (4:11 — P816) : le motif de la gloire — la création (voir K003). Pleurs (5:4 — P817, texte vérifié : « je pleurais beaucoup ») : l'enjeu — sans ouvreur, pas d'avenir. Lion PUIS Agneau (5:5-6 — P817) : « ne pleure plus » — le vainqueur EST la victime : « la racine de David » (5:5 — P817 ; Gn 49:9-10 — P817, voir J005). 7 cornes/yeux (5:6 — P817, texte vérifié) : « les sept esprits envoyés par toute la terre » — pouvoir et vision pléniers. Harpes + encens (5:8 — P817, texte vérifié) : musique + « prières des saints » — le culte répond. « Acheté » (5:9 — P818 : agorazô — du marché !) : « toute tribu, langue, peuple, nation » — « royaume et prêtres » (5:10 — P818 ; « 144 000 rachetés ; depuis 33 et actuellement » — P818 ; voir 1101969037). Myriades (5:11-12 — C8 : « des myriades de myriades ») : l'acclamation chiffrée. Toutes (5:13 — P819) : cieux + terre + sous-terre + mer — 4 zones, zéro exception (Ph 2:10 — C8).</p>
+<h4>5 · Interprétation</h4>
+<p>« Jésus reçoit le droit d'ouvrir le rouleau : 1914 » (P817) : le Lion prend (5:7 — P817, texte vérifié : « il s'avança et prit »). Depuis 1914 : visions (P813), louange céleste (P815), anciens en fonction (P814). Depuis 33 : le rachat en cours (P818 : « depuis 33 de n. è. et actuellement » — Pentecôte, voir R003/P108) — 144 000 « royaume et prêtres » (voir 1101969037). Le rouleau ouvert plus tard (ch.10 — voir it-Rouleau : doux puis amer ; Éz 2-3 — C8 : « chants funèbres ») : comprendre coûte. Soumission universelle (P819, À venir — « lors de la soumission universelle ») : AUCUNE date. Création (4:11 — P816, Accomplie) : « tu as créé » — le passé fonde l'avenir (voir K : science).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Patmos (~96)</td><td>Porte ouverte (4:1)</td></tr>
+<tr><td class="d">Trône</td><td>24 + 4 + mer (4:4-8)</td></tr>
+<tr><td class="d">Digne</td><td>Créateur (4:11)</td></tr>
+<tr><td class="d">Pleurs</td><td>Personne (5:3-4)</td></tr>
+<tr><td class="d">1914</td><td>Lion prend (5:5-7)</td></tr>
+<tr><td class="d">Toutes</td><td>Louange universelle (5:13, À venir)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>33 (Pentecôte — P818 : « depuis 33 » ; Ac 2 — voir R003) : le rachat commence. 1914 : le droit de régner reçu (P817 ; voir E/F — non rediscuté). « Actuellement » (P818) : le rassemblement continue. Patmos ~96 (repère) : la vision écrite (voir R004). Rouleaux antiques : cuir, parchemin, papyrus (voir 1200003862) — le livre avant le livre. Sceaux (7) : cachets d'argile/cire (repère) — inviolabilité graduée. Harpes du temple (repère) : kinnôr — voir L005 (Tyr) et L010 (Ps 137).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le ciel : salle du trône — cosmographie de la vision (trône central, 24 autour, 4 milieu, myriades dehors — 3 cercles !). Patmos → ciel (4:1 — P813) : la montée. « Toute tribu, langue, peuple, nation » (5:9 — P818) : les 4 cercles de l'humanité. « Cieux, terre, sous-terre, mer » (5:13 — P819) : les 4 zones du cosmos — sous la terre : le séjour des morts (voir L010 : la Tombe). Nouvelle Jérusalem (voir R004, 3:12 — P803) : la ville du rouleau ouvert (voir I).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Codicologie (voir 1200003862) : rouleau écrit « en dedans et sur le revers » (5:1 — C8, texte vérifié) — saturation : plus de place, tout est dit ; 7 sceaux — fermeture progressive. Gemmologie (4:3 — C8) : jaspe (translucide), sardoine (rouge), émeraude (arc-en-ciel) — le trône en pierres. Optique (4:3 — C8 : arc-en-ciel ; 4:5 — C8 : « éclairs, voix, tonnerres ») : la théophanie en lumière et son. Zoologie symbolique (4:7 — P815) : 4 animaux-cardinaux. Acoustique (5:11-12 — C8 : myriades « d'une voix forte ») : le chœur chiffré. Arithmétique : 7 (plénitude), 24 (12+12), 4 (universalité).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Is 6:3 (« saint ×3 », séraphins) : C8 — aucun P (vérifié). 4:2-3 (gemmes, arc-en-ciel), 4:5 (éclairs), 5:1 (rouleau), 5:11-12 (myriades) : C8 — décrits, non sur-interprétés. Éz 1 (4 créatures) : C8 — parallèle signalé, non développé. P819 (soumission) : À venir — AUCUNE date. 1914/33 : registre (voir E/F) — non rediscutés. Sceaux (ch.6+) : voir I (I001-I004, I008).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Porte ouverte (4:1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Patmos (~96)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">24 + 4 + mer (4:4-8)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Trône</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Créateur (4:11)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Digne</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Personne (5:3-4)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Pleurs</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lion prend (5:5-7)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Louange universelle (5:13, À venir)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Toutes</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200003862">Rouleau — Étude perspicace (7 sceaux, doux-amer, Ézéchiel)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200003862</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101969037">144 000 marqués du sceau (royaume et prêtres, réutilisé)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101969037</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/4">Révélation 4 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/5">Révélation 5 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/5</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche R005 — Le trône et l'Agneau — vingt-quatre anciens, sept sceaux</span><span>Catégorie R</span></div></div>
+</article>
+<article class="fiche" id="R006">
+<div class="visuel"><img src="images/prophe_R006_allerretour.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE R006 · CATÉGORIE R</div>
+<h3>L'aller et le retour — Osée renvoie, Zacharie ramène</h3>
+<div class="ref">Osée 8:1-14 ; Osée 9:3 (C8) ; Zacharie 10:1-12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P417) / 1er accomplissement (P505)</span>
+<span class="badge">Système allers-retours (Égypte ↔ Assyrie)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche R006 · 0:22</div><audio controls preload="none" src="audio/fiche_R06_allerretour.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_R06_allerretour.mp3 · 0:22 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Osée 8:1-14 ; Osée 9:3 (C8) ; Zacharie 10:1-12</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P417) / 1er accomplissement (P505)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système allers-retours (Égypte ↔ Assyrie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Osée/Zacharie — P417 (Os 8:1-14 : retour en Égypte, Assyrie), P505 (Za 10:1-12 : pluie, rassemblés d'Égypte et d'Assyrie) ; rappels J002 (Béthel), L001 (2R 17:6), L009 (Nil) ; Os 9:3, 2R 15, Dt 11:14 (C8)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Un AIGLE sur la maison de Jéhovah ! » (Os 8:1 — P417 : le vautour !)</li>
+<li>« Israël a REJETÉ le bien… l'ennemi le POURSUIVRA. » (8:3 — rejeté !)</li>
+<li>« Des ROIS SANS MOI… des princes À MON INSU. » (8:4 — sans moi !)</li>
+<li>« Ton VEAU, Samarie… en PIÈCES ! » (8:5-6 — le veau !)</li>
+<li>« Ils ont semé du VENT… moissonneront la TEMPÊTE. » (8:7 — vent-tempête !)</li>
+<li>« Éphraïm… ÂNON SAUVAGE, solitaire. » (8:9 — l'onagre !)</li>
+<li>« Ils RETOURNERONT EN ÉGYPTE. » (8:13 — P417 : l'aller !)</li>
+<li>« Éphraïm retournera en Égypte… en ASSYRIE, l'IMPUR. » (Os 9:3 — C8 : double !)</li>
+<li>« DEMANDEZ la pluie… les NUÉES D'ORAGE. » (Za 10:1 — P505 : la pluie !)</li>
+<li>« De lui la PIERRE D'ANGLE… le CLOU… l'ARC. » (10:4 — 3 titres !)</li>
+<li>« Je les SIFFLERAI… je les RACHÈTERAI. » (10:8 — le sifflet !)</li>
+<li>« Je les ai SEMÉS parmi les peuples… ils REVIENDRONT. » (10:9 — semis !)</li>
+<li>« D'ÉGYPTE… d'ASSYRIE… PAS DE PLACE. » (10:10 — le retour !)</li>
+<li>« La MER avec détresse… le NIL à sec… le SCEPTRE ôté. » (10:11 — nouvel Exode !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Osée (~750, Jéroboam II — contemporain d'Isaïe, Amos, Michée) : marié à Gomer (« épouse de fornication » — voir it-1 « Osée », 1200012037), père de Jizréel, Lo-Ruhamah (« pas de miséricorde »), Lo-Ammi (« pas mon peuple » — voir 1200012037) — sa famille EST le sermon. Ch.8 : le procès — veau (voir 1200012037 : « culte des Baals et du veau »), rois illégitimes, alliances païennes. Zacharie (~520, Darius II — après l'exil, second temple en chantier — voir B005) : ch.10 — la pluie demandée, les bergers jugés (10:3 — P505), le rassemblement chanté (10:8-12 — texte vérifié). Deux sens, mêmes pays : Osée RENVOIE en Égypte (8:13), Zacharie EN RAMÈNE (10:10) — l'aller et le retour.</p>
+<h4>4 · Explication du texte</h4>
+<p>Aigle (8:1 — P417 : vautour/aigle fondant) : l'Assyrie fond sur la maison. « Sans moi » (8:4 — P417) : Zacharie, Shallum, Menahem, Péqah… (2R 15 — C8 : 4 assassinats en 15 ans) — des rois que Dieu n'a pas oints. Veau (8:5-6 — P417) : Béthel (voir J002) — « en pièces » : le veau débité. Vent-tempête (8:7 — P417) : le proverbe climatique — semailles vaines, moisson violente. Ânon (8:9 — P417 : onagre, « solitaire ») : Éphraïm paie ses amants (Assyrie + Égypte — 12:1, C8) au lieu d'être payé. Autels multipliés (8:11 — P417) : « pour pécher » — plus d'autels, plus de péché. Loi étrangère (8:12 — P417) : « regardée comme chose étrange » — la Loi devenue exotique. Pluie (Za 10:1 — P505 : « au temps de la pluie de l'arrière-saison », nuées d'orage — voir 1101972027) : demander à Jéhovah, pas aux théraphim (10:2 — P505 : idoles domestiques menteuses, devins, songes vains). Pierre/clou/arc (10:4 — P505) : de Juda — fondement, stabilité, guerre : le chef complet. Sifflet (10:8 — P505, texte vérifié : « je les sifflerai et les rassemblerai ») : le berger siffle — « pas d'obstacle insurmontable » (voir 1101972027). Semis (10:9 — P505) : « je les ai semés » — la dispersion SEMÉE (elle lèvera !) ; « ils se souviendront… reprendront vie… reviendront ». Pas de place (10:10 — P505, texte vérifié : Galaad + Liban PLEINS) : le retour déborde. Mer/Nil (10:11 — P505, texte vérifié) : « passer la mer avec détresse… Nil desséché… orgueil abaissé… sceptre ôté » — nouvel Exode (voir 1101972027 : « comme la mer Rouge » ; L009 pour le Nil).</p>
+<h4>5 · Interprétation</h4>
+<p>Os 8:13 → 2R 17:6 (P417 — voir L001 : Halah, Habor, Mèdes) ; Os 9:3 (C8, texte vérifié : « retournera en Égypte… en Assyrie, l'impur ») : le double exil — Égypte (fuite) + Assyrie (déportation) ; « rassemblerai la captivité » (formule du registre P417 — voir les limites). Za 10 (1er accomplissement — P505 : 10:6-10) : le retour de l'exil (Esd 1 — voir J001 ; B005) — Galaad et Liban repeuplés ; obstacles : mer, vagues, Nil, orgueil, sceptre (10:11 — voir 1101972027 : Dieu « abattrait les vagues ») ; « supérieurs en Jéhovah » (10:12 — P505). Chiasme : Égypte jugée (Os 8) → Égypte vidée (Za 10) ; Assyrie bourreau (Os 8) → Assyrie abaissée (Za 10:11).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Gomer</td><td>Famille-sermon (Os 1-3, contexte)</td></tr>
+<tr><td class="d">Veau</td><td>Béthel en pièces (8:5-6)</td></tr>
+<tr><td class="d">Vent</td><td>Tempête (8:7 → 2R 17:6)</td></tr>
+<tr><td class="d">Aller</td><td>En Égypte ! (8:13)</td></tr>
+<tr><td class="d">Pluie</td><td>Demandez ! (Za 10:1)</td></tr>
+<tr><td class="d">Retour</td><td>Pas de place (10:10)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Coups d'État (2R 15 — C8 : Zacharie 6 mois, Shallum 1 mois, Menahem tributaire, Péqah, Osée) : « des rois sans moi » (8:4) en actes. Téglath-Phalazar (2R 15:29 — voir A010/L001), Salmanasar/Sargon (2R 17 — voir L001) : l'aigle (8:1) fond. Osée/Égypte (2R 17:4 — C8 : Sô) : l'ânon paie (8:9). Retour (Esd 1-2 — voir J001/B005 ; Né — voir R002) : « pas de place » (10:10) — 42 360 (voir R002). Pluies : premières (oct-nov) et dernières (mars-avr) (Dt 11:14 — C8) — 10:1 demande les dernières.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Samarie (8:5-6 — P417 : le veau — voir J002/L001). Égypte (8:13 ; 9:3 — aller ; 10:10-11 — retour + Nil à sec !). Assyrie (9:3 ; 10:10-11 — déportation ; orgueil abaissé). Galaad (est du Jourdain) + Liban (nord) — 10:10 : l'extension du retour — PLEINS. Mer (10:11 — « avec détresse » : la Rouge ? — voir 1101972027). Routes : Galaad-Égypte (caravanes — voir R001 !), Assyrie-Samarie (déportation — voir L001).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ornithologie (8:1 — P417) : aigle/vautour — le charognard fondant : l'Assyrie en prédateur. Agronomie (8:7 — P417 : vent → tempête ; 10:9 — P505 : dispersion-semis ; 10:1 — P505 : pluie d'arrière-saison) : 3 proverbes climatiques. Zoologie (8:9 — P417 : onagre solitaire) : l'âne sauvage indomptable — Éphraïm. Hydrologie (10:11 — P505 : Nil « profondeurs desséchées ») : voir L009 — le fleuve à sec, deuxième fois. Démographie (10:10 — P505 : « pas de place ») : le retour-surpopulation. Toreutique (8:4 — P417 : « de leur argent et de leur or ils se sont fait des idoles ») : le métal précieux en veau.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Os 9:3 : C8 (hors P417, ch.8 seul) — texte vérifié, versé comme C8. 2R 15 (coups d'État), 2R 17:4 (Sô), Dt 11:14 (pluies), Os 12:1 (huile en Égypte) : C8 — aucun P (vérifié). « Rassemblerai la captivité » (P417) : formule DU REGISTRE — le verset-source (Os 6:11 ?) non développé : registre = vérité (règle 13). Za 10 : « 1er accomplissement » (P505) — la suite : avenir, AUCUNE date. it-Osée (Gomer, ch.1-3) : contexte DU LIVRE — le P417 est au ch.8 : signalé, pas confondu.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Famille-sermon (Os 1-3, contexte)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Gomer</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Béthel en pièces (8:5-6)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Veau</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tempête (8:7 → 2R 17:6)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vent</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">En Égypte ! (8:13)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Aller</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Demandez ! (Za 10:1)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Pluie</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas de place (10:10)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Retour</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012037">Osée (Livre d') — Étude perspicace (Gomer, veau, Baals)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012037</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101972027">Obstacles surmontés (Za 10:8-12, mer, Nil)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101972027</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/28/8">Osée 8 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/28/8</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/38/10">Zacharie 10 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/38/10</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche R006 — L'aller et le retour — Osée renvoie, Zacharie ramène</span><span>Catégorie R</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie R</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>R001 — Joseph — les gerbes, les trois jours, les sept vaches</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gerbes + astres (37:7-9)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">17 ans</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dothan → Égypte</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">20 sicles (C8)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Échanson/panetier (40:20-22)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3 jours</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Greniers, puis famine (41:47-54)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7 + 7</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">42:6 → 50:18</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">4 prosternations</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Yeux fermés (46:4 → 49:33)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Descente</text>
+</svg>
+<h4>R002 — Les clauses de l'alliance — sept fois, puis le retour</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 fois gradués (Lv 26:18-28)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Sinaï</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dispersion + retour (Dt 4 ; 30)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Moab</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Témoin déposé (Dt 31:19)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Cantique</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas une parole tombée (Jos 23:14)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Sichem</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bout des cieux (Né 1:9)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Suse</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La Loi lue (Né 8)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jérusalem</text>
+</svg>
+<h4>R003 — Les promesses — socs, Prince, faune, pierre, serviteur, Douma</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Galilée méprisée (9:1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ténèbres</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prince né (9:6, an 2)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Lumière</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Posée, rejetée (28:16 → Ps 118)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Pierre</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vers les nations (Ac 13:46)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Tournant</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'afflux figuré (Is 2)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1935</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Loup + agneau (11:6, À venir)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Faune</text>
+</svg>
+<h4>R004 — Les sept lettres — premier amour, porte ouverte, tièdes vomis</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jour du Seigneur (1:10)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Patmos (~96)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 villes en boucle</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Circuit</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 lettres lues</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier s.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oints éprouvés (P805-P812)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1914+</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Affermissement (P808)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gardés pendant (3:10)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Heure</text>
+</svg>
+<h4>R005 — Le trône et l'Agneau — vingt-quatre anciens, sept sceaux</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Porte ouverte (4:1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Patmos (~96)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">24 + 4 + mer (4:4-8)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Trône</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Créateur (4:11)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Digne</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Personne (5:3-4)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Pleurs</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lion prend (5:5-7)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Louange universelle (5:13, À venir)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Toutes</text>
+</svg>
+<h4>R006 — L'aller et le retour — Osée renvoie, Zacharie ramène</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Famille-sermon (Os 1-3, contexte)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Gomer</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Béthel en pièces (8:5-6)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Veau</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tempête (8:7 → 2R 17:6)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vent</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">En Égypte ! (8:13)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Aller</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Demandez ! (Za 10:1)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Pluie</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas de place (10:10)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Retour</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 7.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-24 · phase 7, vague
+16 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

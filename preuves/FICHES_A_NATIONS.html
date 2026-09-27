@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES A — Prophéties contre les nations</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_A_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 7</div>
+<h1>FICHES A</h1>
+<h2>Prophéties contre les nations</h2>
+<p class="intro">Les prophètes hébreux n'ont pas seulement annoncé l'avenir d'Israël. Une part considérante de leur message concerne les nations voisines : des villes, des royaumes, des capitales, avec des détails matériels — où tomberont les pierres, qui viendra, combien de temps durera la désolation, et parfois si le site sera réhabité. C'est cette catégorie qui se prête le mieux à la vérification : une prophétie sur une ville se contrôle sur une carte et dans une fouille, pas dans une opinion. Elle est donc placée en tête.</p>
+<div class="chiffres">
+<div><b>9</b><span>fiches</span></div>
+<div><b>10</b><span>blocs par fiche</span></div>
+<div><b>36</b><span>sources</span></div>
+<div><b>9</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:34</div><audio controls preload="none" src="audio/fiche_EF00_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_EF00_intro.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:24</div><audio controls preload="none" src="audio/fiche_FG00_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_FG00_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#F001">F001</a>
+<a href="#F002">F002</a>
+<a href="#F003">F003</a>
+<a href="#F004">F004</a>
+<a href="#F005">F005</a>
+<a href="#F006">F006</a>
+<a href="#F007">F007</a>
+<a href="#F008">F008</a>
+<a href="#F009">F009</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#F001"><img src="images/prophe_F001_tyr.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE F001</div>
+<h3><a href="#F001">Tyr — la ville jetée à la mer</a></h3>
+<div class="meta">Accomplie · 🎧 0:22</div></div></div>
+<div class="carte">
+<a class="img" href="#F002"><img src="images/prophe_F002_sidon.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE F002</div>
+<h3><a href="#F002">Sidon — le jugement sans la désolation définitive</a></h3>
+<div class="meta">Accomplie · 🎧 0:26</div></div></div>
+<div class="carte">
+<a class="img" href="#F003"><img src="images/prophe_F003_babylone.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE F003</div>
+<h3><a href="#F003">Babylone — la gloire des royaumes devenue un tas de ruines</a></h3>
+<div class="meta">Accomplie · 🎧 0:21</div></div></div>
+<div class="carte">
+<a class="img" href="#F004"><img src="images/prophe_F004_egypte.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE F004</div>
+<h3><a href="#F004">L'Égypte — quarante ans, puis un royaume qui ne comptera plus</a></h3>
+<div class="meta">Accomplie · 🎧 0:25</div></div></div>
+<div class="carte">
+<a class="img" href="#F005"><img src="images/prophe_F005_edom.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE F005</div>
+<h3><a href="#F005">Édom — le nid d'aigle vidé, et le nom effacé</a></h3>
+<div class="meta">Accomplie · 🎧 0:22</div></div></div>
+<div class="carte">
+<a class="img" href="#F006"><img src="images/prophe_F006_moab.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE F006</div>
+<h3><a href="#F006">Moab — comme Sodome, un lieu d'orties et une mine de sel</a></h3>
+<div class="meta">Accomplie · 🎧 0:25</div></div></div>
+<div class="carte">
+<a class="img" href="#F007"><img src="images/prophe_F007_ammon.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE F007</div>
+<h3><a href="#F007">Ammon — Gomorrhe, et le dieu Milcom emmené en exil</a></h3>
+<div class="meta">Accomplie · 🎧 0:23</div></div></div>
+<div class="carte">
+<a class="img" href="#F008"><img src="images/prophe_F008_philistie.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE F008</div>
+<h3><a href="#F008">La Philistie — quatre villes nommées, et le bord de la mer en pâturages</a></h3>
+<div class="meta">Accomplie · 🎧 0:24</div></div></div>
+<div class="carte">
+<a class="img" href="#F009"><img src="images/prophe_F009_ninive.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE F009</div>
+<h3><a href="#F009">Ninive et l'Assyrie — la cité du sang oubliée sous son propre tell</a></h3>
+<div class="meta">Accomplie · 🎧 0:22</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Dix blocs par fiche, toujours dans le même ordre. Le dixième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="F001">
+<div class="visuel"><img src="images/prophe_F001_tyr.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE F001 · CATÉGORIE A</div>
+<h3>Tyr — la ville jetée à la mer</h3>
+<div class="ref">Ézéchiel 26:1-21 ; 27:1-36 ; 29:17-20</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dates neutres (332, 315)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche F001 · 0:22</div><audio controls preload="none" src="audio/fiche_A01_tyr.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A01_tyr.mp3 · 0:22 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 26:1-21 ; 27:1-36 ; 29:17-20</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dates neutres (332, 315)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : partie 5 (Ézéchiel), prophéties contre Tyr — P335 à P344</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Ils détruiront les murailles de Tyr et abattront ses tours ; je raclerai sa poussière et je ferai d'elle le roc nu. » (Éz 26:4)</li>
+<li>« On mettra tes pierres, ton bois et ta poussière au milieu des eaux. » (Éz 26:12)</li>
+<li>« Tu ne seras plus rebâtie ; car c'est moi, Jéhovah, qui ai parlé. » (Éz 26:14)</li>
+<li>« Beaucoup de nations feront monter contre toi des troupes… elles feront la guerre contre toi. » (Éz 26:3)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Ézéchiel écrit depuis Babylone, parmi les exilés. Sa prophétie contre Tyr est datée de la onzième année de l'exil, soit 591 avant notre ère environ — pendant que Nabuchodonosor II assiège Tyr depuis le continent. Tyr existe alors en deux parties : la ville continentale, appelée Ousou dans les textes égyptiens et Palétyr dans les textes grecs, et la ville insulaire, bâtie sur un rocher à quelque 800 mètres du rivage, protégée par une double muraille et par deux ports. La ville insulaire passe pour imprenable : aucun ennemi n'a de flotte.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le texte décrit une séquence en trois temps, et non un seul événement. (1) Des « nations » au pluriel monteront contre la ville — Nabuchodonosor n'est donc qu'un premier acteur. (2) Les matériaux de la ville seront jetés « au milieu des eaux » : ce n'est pas le vocabulaire d'une prise ordinaire, où le vainqueur réutilise les pierres ; c'est celui d'une démolition versée à la mer. (3) Le site deviendra un « roc nu », un « lieu où l'on étendra les filets ». Le verset 14 dit explicitement que la ville insulaire ne sera pas rebâtie — ce qui distingue la prophétie de Tyr de celle de Sidon, sa voisine (voir F002).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que la prophétie s'est accomplie en deux acteurs successifs : Nabuchodonosor détruit la ville continentale après un siège de treize ans, puis, plus de deux siècles et demi plus tard, Alexandre le Grand prend la ville insulaire en construisant une digue avec les décombres de la cité continentale. Les publications retiennent que, pour bâtir cette digue, Alexandre fit racler jusqu'au roc le sol de la ville continentale — le « roc nu » du verset 4 — et jeta dans la mer les débris. La Bibliothèque en ligne note que la digue, longue d'environ 800 mètres, est encore visible aujourd'hui.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">591 av. n. è. env.</td><td>Ézéchiel prononce la prophétie depuis Babylone</td></tr>
+<tr><td class="d">588-575 av. n. è.</td><td>Siège de treize ans par Nabuchodonosor II : la ville continentale est prise et détruite ; la ville insulaire reste intacte</td></tr>
+<tr><td class="d">332 av. n. è.</td><td>Alexandre le Grand, ne pouvant approcher l'île, fait construire une digue avec les débris de la cité continentale</td></tr>
+<tr><td class="d">332 av. n. è.</td><td>Siège de sept mois (Arrien) ; la ville insulaire tombe, 8 000 Tyriens tués, 30 000 vendus comme esclaves</td></tr>
+<tr><td class="d">315 av. n. è. - aujourd'hui</td><td>La digue s'ensable, les sédiments s'accumulent : l'ancienne île est devenue une presqu'île ; le port antique est sous les eaux</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le déroulement est connu par les historiens grecs : Arrien (Anabase, II) décrit la construction de la chaussée, le siège de sept mois, et les pertes tyriennes. L'organisation relève que Nabuchodonosor n'avait rien tiré de son long siège — c'est l'objet même du texte d'Ézéchiel 29:18-20, où Dieu promet l'Égypte à Nabuchodonosor « en compensation de la peine que lui a coûtée l'attaque de la ville ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Tyr se trouve sur la côte phénicienne, dans l'actuel Liban, à environ 80 km au sud de Beyrouth. La ville insulaire occupait un plateau rocheux calcaire séparé du continent par un détroit d'environ 800 mètres. Deux ports l'encadraient : le port sidonien au nord, le port égyptien au sud-est. La configuration du site explique à la fois l'orgueil de Tyr (« je suis parfaite en beauté », Éz 27:3) et la méthode d'Alexandre : sans flotte, la seule voie d'accès était de fabriquer la terre ferme.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le point scientifiquement documenté est le devenir de la digue. Construite en 332 avant notre ère, la chaussée a interrompu le transit sédimentaire littoral ; les sables transportés par la dérive côtière s'y sont accumulés pendant des siècles jusqu'à former un isthme définitif. L'ancienne île est aujourd'hui rattachée au continent : le rocher nu d'Ézéchiel 26:4 a littéralement été recouvert, puis doublé, par les apports de sable. L'archéologie sous-marine a par ailleurs repéré, dans les bassins portuaires antiques, les blocs effondrés des murailles — les « pierres, bois et poussière » jetés au milieu des eaux.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Le texte d'Ézéchiel 26:14 annonce que Tyr « ne sera plus rebâtie ». Or une ville moderne — es-Sour — occupe aujourd'hui l'emplacement de l'ancienne île et compte plusieurs milliers d'habitants. Cette fiche ne prétend donc pas que le site est vide ; elle retient que la ville insulaire antique a été détruite et que la cité moderne est bâtie sur l'accumulation sédimentaire, non sur les ruines relevées. L'organisation signale elle-même cet état de fait. Par ailleurs, la date de 332 est une date neutre, admise par toutes les chronologies.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prophétie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">591</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège de 13 ans</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-575</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Digue d'Alexandre</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">332</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de l'île</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">332</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Presqu'île ensablée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1988286">Tyr — la prophétie et la digue d'Alexandre<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1988286</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990087">Ézékiel (livre de) — prophéties contre les nations<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990087</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/101980849">Tyr, le siège de sept mois (332)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/101980849</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1959364">Alexandre a raclé la poussière de Tyr<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1959364</a>
+<a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l'Histoire<br>https://www.jw.org/fr/la-bible-et-vous/histoire/</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche F001 — Tyr — la ville jetée à la mer</span><span>Catégorie A</span></div></div>
+</article>
+<article class="fiche" id="F002">
+<div class="visuel"><img src="images/prophe_F002_sidon.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE F002 · CATÉGORIE A</div>
+<h3>Sidon — le jugement sans la désolation définitive</h3>
+<div class="ref">Ézéchiel 28:20-24 ; Jérémie 27:3-11 ; Joël 3:4-8</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dates neutres (701, 351)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche F002 · 0:26</div><audio controls preload="none" src="audio/fiche_A02_sidon.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A02_sidon.mp3 · 0:26 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 28:20-24 ; Jérémie 27:3-11 ; Joël 3:4-8</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dates neutres (701, 351)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : partie 5 (Ézéchiel), prophéties contre les nations voisines</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Je vais envoyer contre elle la peste, et le sang coulera dans ses rues… et l'on saura que je suis Jéhovah. » (Éz 28:23)</li>
+<li>« Il n'y aura plus pour la maison d'Israël d'épine qui blesse, ni de ronce qui déchire, parmi tous ceux qui les entourent. » (Éz 28:24)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Sidon est la grande rivale de Tyr, sa voisine de trente kilomètres au nord, et son aînée : c'est d'elle que sont parties la plupart des colonies phéniciennes. Au temps d'Ézéchiel, les deux cités se partagent la côte et se disputent la prééminence. Sidon s'est rebellée contre l'Assyrie — elle fut prise par Sennachérib en 701 avant notre ère, un événement que les annales assyriennes rapportent en détail et que la chronologie profane retient sans discussion.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le texte est court — quatre versets — et, fait remarquable, il ne dit pas ce que dit Tyr. Ézéchiel 28:23 annonce la peste, le sang, l'épée : un jugement exécuté. Mais le verset 14 du chapitre 26, qui promet à Tyr de ne plus être rebâtie, n'a pas d'équivalent pour Sidon. La comparaison des deux oracles est l'un des exercices d'exégèse les plus nets de la Bible : deux villes voisines, deux jugements de forme presque identique, et une seule clause de désolation définitive. Le prophète distingue donc, et l'histoire confirme la distinction.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension retenue est celle d'un jugement réellement exécuté sur Sidon, ville prise et détruite à plusieurs reprises dans l'Antiquité, sans que le texte biblique n'annonce sa disparition définitive. Sidon existe toujours, sous le nom de Saïda, au Liban. Cette fiche sert donc de contre-épreuve méthodologique : elle montre que le dossier ne force pas les textes dans le même moule.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">701 av. n. è.</td><td>Sennachérib prend Sidon ; les annales assyriennes rapportent la campagne (date neutre)</td></tr>
+<tr><td class="d">VIᵉ siècle av. n. è.</td><td>Domination babylonienne, puis perse : Sidon devient la base de la flotte perse</td></tr>
+<tr><td class="d">351 av. n. è.</td><td>Artaxerxès III Ochos détruit Sidon après sa révolte (date neutre)</td></tr>
+<tr><td class="d">333-332 av. n. è.</td><td>Sidon ouvre ses portes à Alexandre sans combat, contrairement à Tyr</td></tr>
+<tr><td class="d">Aujourd'hui</td><td>Saïda, troisième ville du Liban, occupe le site antique</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Les annales de Sennachérib, conservées sur plusieurs prismes d'argile, décrivent la prise de Sidon et l'installation d'un roi vassal. La destruction de 351 par Artaxerxès III est rapportée par les historiens grecs (Diodore de Sicile). La Bible avait annoncé pour Sidon un jugement par l'épée et par la peste, non une disparition ; l'histoire donne des destructions répétées suivies de reconstructions.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Sidon occupe une presqu'île basse de la côte libanaise, à une quarantaine de kilomètres au sud de Beyrouth. Contrairement à Tyr, elle n'a jamais été une île : c'est une avancée de terre prolongée par deux caps, avec un port naturel abrité au nord. Cette configuration — accessible par terre — explique que la ville ait été prise à plusieurs reprises là où l'île de Tyr résistait.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Les fouilles du site de Saïda, rendues difficiles par l'urbanisme moderne, ont livré des niveaux d'occupation continus depuis l'âge du bronze : la strate archéologique confirme que la ville a été détruite et rebâtie, et non abandonnée. C'est précisément ce que permettait l'absence de clause de désolation définitive dans le texte.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Cette fiche est la plus fragile de la catégorie sur le plan démonstratif, et c'est volontaire qu'elle y figure en deuxième position : elle montre que le dossier ne cherche pas à faire coïncider les textes de force. Le texte de Sophonie 2:4-7 et de Zacharie 9:5-7, qui visent la Philistie, emploient des formules de désolation plus fortes que celles d'Ézéchiel 28 pour Sidon.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sennachérib</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Perse</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIᵉ s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Artaxerxès III</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">351</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ouvre ses portes</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">332</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Saïda</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200014127">Sidon (article de référence)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200014127</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990087">Ézékiel (livre de) — prophéties contre les nations<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990087</a>
+<a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l'Histoire<br>https://www.jw.org/fr/la-bible-et-vous/histoire/</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche F002 — Sidon — le jugement sans la désolation définitive</span><span>Catégorie A</span></div></div>
+</article>
+<article class="fiche" id="F003">
+<div class="visuel"><img src="images/prophe_F003_babylone.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE F003 · CATÉGORIE A</div>
+<h3>Babylone — la gloire des royaumes devenue un tas de ruines</h3>
+<div class="ref">Isaïe 13:1-22 ; 44:27, 28 ; 45:1, 2 ; Jérémie 50:1-46 ; 51:1-64</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dates neutres (539) + système biblique (607)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche F003 · 0:21</div><audio controls preload="none" src="audio/fiche_A03_babylone.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A03_babylone.mp3 · 0:21 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Isaïe 13:1-22 ; 44:27, 28 ; 45:1, 2 ; Jérémie 50:1-46 ; 51:1-64</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dates neutres (539) + système biblique (607)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : partie 4 (Jérémie) — P238 à P245 ; P267 à P269</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Babylone, joyau des royaumes… sera comme Sodome et Gomorrhe,que Dieu détruisit. Elle ne sera jamais habitée. » (Is 13:19, 20)</li>
+<li>« Je dessécherai ses fleuves… je mettrai à sec sa source. » (Jér 51:36)</li>
+<li>« On ne prendra plus de toi de pierre d'angle, ni de pierre de fondation ; car tu deviendras des solitudes pour toujours. » (Jér 51:26)</li>
+<li>« Je dis aux eaux : ‹Desséchez-vous›… devant Cyrus. » (Is 44:27, 28)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Isaïe écrit au VIIIᵉ siècle avant notre ère, à une époque où Babylone n'est pas encore la puissance qu'elle deviendra : c'est l'Assyrie qui domine. Nommer Babylone comme la « gloire des royaumes » relève donc de la prédiction, non de la description. Jérémie, un siècle plus tard, écrit sous la domination babylonienne elle-même et annonce la chute de l'empire qui tient Juda captif. Isaïe nomme même le libérateur : Cyrus, plus de cent cinquante ans avant son règne.</p>
+<h4>4 · Explication du texte</h4>
+<p>Deux prophéties distinctes sont à ne pas confondre. (1) La chute politique de Babylone, opérée par Cyrus en 539 : c'est l'objet d'Isaïe 44-45 et de Jérémie 51. (2) La désolation finale du site, annoncée en Isaïe 13:20 et Jérémie 51:26 : « jamais habitée », « plus de pierre d'angle ». La première s'accomplit en une nuit ; la seconde s'étale sur des siècles. Le vocabulaire de Jérémie 51:26 — « tu deviendras des solitudes pour toujours » — porte sur l'emplacement, pas sur l'empire.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que la désolation de Babylone s'est accomplie progressivement, et non d'un seul coup : après la prise de la ville en 539, Babylone demeure une cité importante sous les Perses et sous les Séleucides, puis décline lentement jusqu'à l'abandon. La Bibliothèque en ligne cite le voyageur Claudius J. Rich qui, en 1811, ne put découvrir la moindre trace des larges murs de la ville, et nota qu'aucun arbre ne poussait sur ses ruines à l'exception d'un seul, très vieux, qui rendait la désolation plus apparente.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIᵉ s. av. n. è.</td><td>Isaïe annonce la gloire puis la chute de Babylone, et nomme Cyrus (Is 44:28 ; 45:1)</td></tr>
+<tr><td class="d">VIIᵉ-VIᵉ s. av. n. è.</td><td>Babylone devient la puissance dominante ; Nabuchodonosor II détruit Jérusalem en 607</td></tr>
+<tr><td class="d">539 av. n. è.</td><td>Cyrus prend la ville dans la nuit, le 16 Tashritu, par le lit détourné de l'Euphrate (date neutre)</td></tr>
+<tr><td class="d">331 av. n. è.</td><td>Alexandre entre à Babylone ; il projette d'en faire sa capitale mais y meurt en 323</td></tr>
+<tr><td class="d">IIᵉ s. av. n. è. - IIᵉ s. de n. è.</td><td>Déclin progressif sous les Parthes ; la ville se vide</td></tr>
+<tr><td class="d">1811 de n. è.</td><td>Claudius J. Rich ne retrouve plus trace des murs : le site est un champ de ruines</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Trois documents profanes convergent. La Chronique de Nabonide, tablette cunéiforme, rapporte la prise de la ville et situe l'entrée des troupes de Gubaru le 16 Tashritu. Le cylindre de Cyrus, autre document cunéiforme, présente la prise de Babylone du point de vue perse et confirme la politique de Cyrus envers les dieux des villes conquises. Hérodote et Xénophon rapportent le détournement du fleuve, que Xénophon (Cyropédie, VII) décrit comme le passage de l'armée par le lit de l'Euphrate pendant une fête.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Babylone se trouve à environ 90 km au sud de Bagdad, sur les deux rives de l'Euphrate, dans une plaine alluviale plate. La ville était traversée par le fleuve, avec un pont et, selon Hérodote, des quais maçonnés. Son enceinte intérieure encerclait environ 850 hectares. Le régime hydrique du site est la clé de son abandon : l'Euphrate a modifié son cours, et la nappe salée est remontée dans les terres irriguées pendant des siècles.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La salinisation des sols est le mécanisme le mieux documenté de l'abandon de Babylone. L'irrigation prolongée, sans drainage suffisant, provoque la remontée des sels par capillarité ; les rendements s'effondrent, les terres sont abandonnées. L'archéologie ajoute un facteur : les fouilles ont montré que les briques crues des monuments, une fois les toits effondrés, se dissolvent sous l'effet des pluies et redeviennent de la terre — d'où l'expression « tas de ruines » de Jérémie 51:37.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Isaïe 13:20 dit « elle ne sera jamais habitée ». Le site de Babylone a pourtant connu des occupations tardives : un village hellénistique, un camp romain, et aujourd'hui même une agglomération moderne (Al-Hillah voisine, et le village de Qwaresh sur le tell). Cette fiche retient la lecture de l'organisation : la ville impériale a cessé d'être habitée en tant que ville, et son emplacement est resté un champ de ruines pendant des siècles. La date de 539 est une date neutre.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Isaïe nomme Cyrus</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIᵉ s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérusalem dévastée</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Babylone</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort d'Alexandre</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">323</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rich : plus de murs</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1811</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/101972329">Quand Jérusalem a-t-elle été dévastée par Babylone ?<br>https://wol.jw.org/fr/wol/d/r30/lp-f/101972329</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau d'accomplissements (Babylone, Rich 1811)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1965684">Une date pivot de l'Histoire — 537<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1965684</a>
+<a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l'Histoire<br>https://www.jw.org/fr/la-bible-et-vous/histoire/</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche F003 — Babylone — la gloire des royaumes devenue un tas de ruines</span><span>Catégorie A</span></div></div>
+</article>
+<article class="fiche" id="F004">
+<div class="visuel"><img src="images/prophe_F004_egypte.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE F004 · CATÉGORIE A</div>
+<h3>L'Égypte — quarante ans, puis un royaume qui ne comptera plus</h3>
+<div class="ref">Ézéchiel 29:1-21 ; 30:1-26 ; 31:1-18 ; 32:1-32 ; Jérémie 43:8-13 ; 46:1-28</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système biblique (607)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche F004 · 0:25</div><audio controls preload="none" src="audio/fiche_A04_egypte.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A04_egypte.mp3 · 0:25 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 29:1-21 ; 30:1-26 ; 31:1-18 ; 32:1-32 ; Jérémie 43:8-13 ; 46:1-28</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système biblique (607)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : partie 5 (Ézéchiel), prophéties contre l'Égypte</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Pendant quarante ans il ne sera pas habité. Je ferai du pays d'Égypte le plus désert de tous les pays. » (Éz 29:11, 12)</li>
+<li>« Au bout de quarante ans, je rassemblerai les Égyptiens… et là ils deviendront un royaume insignifiant. » (Éz 29:13, 14)</li>
+<li>« Il n'y aura plus de prince du pays d'Égypte. » (Éz 30:13)</li>
+<li>« Je donnerai l'Égypte au roi Nabuchodonosor… ce sera un salaire pour son armée. » (Éz 29:19, 20)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Ézéchiel 29 est daté de la dixième année de l'exil, dans le dixième mois : la prophétie est prononcée alors que Juda, contre l'avis de Jérémie, compte sur l'Égypte pour résister à Babylone. Après l'assassinat de Guedalia en 607, les rescapés de Juda fuient en Égypte, emmenant Jérémie de force, malgré l'avertissement du prophète. Ézéchiel annonce alors que l'Égypte elle-même tombera et que les fugitifs n'y trouveront pas le refuge espéré.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le chapitre distingue deux horizons. Le premier est la désolation de quarante ans (v. 11-12) : une durée chiffrée, comme les soixante-dix ans de Jérusalem. Le second est un état durable : l'Égypte redeviendra un peuple, mais « un royaume insignifiant », et « il n'y aura plus de prince » — c'est-à-dire plus de souverain égyptien sur le trône. Remarque de lecture : le texte ne dit pas que l'Égypte disparaîtra, comme Édom ; il dit qu'elle cessera de compter. Les deux annonces sont de nature différente et doivent être évaluées séparément.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension retenue est que les quarante ans firent suite à la conquête de l'Égypte par Neboukadnetsar, après 607, et que l'Égypte ne retrouva jamais la place qui était la sienne au temps des grandes dynasties. La Bibliothèque en ligne écrit expressément : « Même si l'histoire profane ne fournit aucune preuve de cette désolation, nous pouvons être convaincus qu'elle a bel et bien eu lieu parce que Jéhovah est Celui qui accomplit toujours ses prophéties. » Cette phrase est citée ici en entier parce qu'elle définit la nature de l'argument.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d"> après 607 av. n. è.</td><td>Les rescapés de Juda fuient en Égypte malgré l'avertissement de Jérémie (Jér 42-43)</td></tr>
+<tr><td class="d"> après 607 av. n. è.</td><td>Neboukadnetsar monte contre l'Égypte et la conquiert ; les fugitifs n'échappent pas aux Babyloniens</td></tr>
+<tr><td class="d"> période de 40 ans</td><td>Désolation annoncée par Ézéchiel 29:11, 12</td></tr>
+<tr><td class="d"> au terme des 40 ans</td><td>Retour des déportés égyptiens au pays de Patros ; l'Égypte redevient un royaume, mais insignifiant</td></tr>
+<tr><td class="d">525 av. n. è.</td><td>L'Égypte est conquise par Cambyse II, fils de Cyrus (date neutre)</td></tr>
+<tr><td class="d">332 av. n. è.</td><td>L'Égypte passe sous domination grecque, puis romaine ; plus jamais de pharaon indigène sur le trône après Nectanébo II</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le fait déclencheur est attesté par la Bible (Jérémie 43-44) et par des inscriptions égyptiennes du VIᵉ siècle mentionnant des campagnes babyloniennes. En revanche — et c'est le point d'honnêteté majeur de cette fiche — l'histoire profane ne documente pas de quarante années de désolation de la vallée du Nil. Les annales égyptiennes de cette période sont lacunaires, ce qui laisse la place au débat sans le trancher.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Ézéchiel 29:10 borne le pays « de Migdol à Syène, à la frontière de l'Éthiopie » : soit du delta du Nil, au nord, jusqu'à Assouan (l'ancienne Syène), au sud, sur plus de 1 000 kilomètres de vallée. Le « pays de Patros » du verset 14 désigne la Haute-Égypte. La géographie est donc précise et couvre la totalité du pays habité.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La stèle de Mesha n'a rien à voir ici ; le document qui compte est archéologique : les niveaux de destruction du VIᵉ siècle relevés sur plusieurs sites du delta, et la disparition quasi totale des archives officielles égyptiennes pour cette période. L'argumentaire scientifique est donc négatif : absence de preuve, non preuve d'absence. Cette fiche le dit explicitement.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>**C'est la fiche la plus faible de la catégorie sur le plan documentaire**, et elle doit être présentée comme telle. L'histoire profane ne fournit aucune preuve des quarante années de désolation ; l'organisation le reconnaît et fonde sa conviction sur la fiabilité du prophète, non sur un document. En revanche, la seconde partie de la prophétie — plus de prince égyptien sur le trône — est, elle, vérifiable et vérifiée : depuis Nectanébo II (IVᵉ siècle avant notre ère), l'Égypte n'a plus eu de souverain indigène jusqu'à l'époque moderne.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite en Égypte</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Conquête babylonienne</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">après 607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Désolation annoncée</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">40 ans</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cambyse II</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">525</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Domination grecque</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">332</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2007562">Points marquants du livre d'Ézékiel — II<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2007562</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990087">Ézékiel (livre de) — prophéties contre Tyr, l'Égypte et Édom<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990087</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/29">Ézéchiel 29 (texte)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/29</a>
+<a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l'Histoire<br>https://www.jw.org/fr/la-bible-et-vous/histoire/</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche F004 — L'Égypte — quarante ans, puis un royaume qui ne comptera plus</span><span>Catégorie A</span></div></div>
+</article>
+<article class="fiche" id="F005">
+<div class="visuel"><img src="images/prophe_F005_edom.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE F005 · CATÉGORIE A</div>
+<h3>Édom — le nid d'aigle vidé, et le nom effacé</h3>
+<div class="ref">Abdias 1-21 ; Jérémie 49:7-22 ; Ézéchiel 35:1-15 ; Joël 3:19 ; Malachie 1:2-5</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système biblique (607) + dates neutres (105)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche F005 · 0:22</div><audio controls preload="none" src="audio/fiche_A05_edom.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A05_edom.mp3 · 0:22 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Abdias 1-21 ; Jérémie 49:7-22 ; Ézéchiel 35:1-15 ; Joël 3:19 ; Malachie 1:2-5</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système biblique (607) + dates neutres (105)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : partie 6 (les Douze), Abdias — prophétie vers 607</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« À cause de ta violence contre ton frère Jacob, tu seras couvert de honte, et tu seras exterminé pour toujours. » (Abd 10)</li>
+<li>« Quand tu placerais ton nid haut comme l'aigle… je t'en ferai descendre. » (Abd 4)</li>
+<li>« Il ne sera plus habité ; il ne sera le séjour d'aucun homme. » (Jér 49:18)</li>
+<li>« Je ferai de la montagne de Séir une solitude et un désert. » (Éz 35:7)</li>
+<li>« S'ils disent : ‹Nous relèverons les ruines›, je renverserai. » (Mal 1:4)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Édom descend d'Ésaü, frère jumeau de Jacob ; la parenté est donc de premier degré, et c'est ce qui donne à l'oracle sa tonalité : l'accusation porte sur une trahison entre frères. Lors de la chute de Jérusalem en 607, les Édomites se tiennent « comme l'un d'eux » : ils pillent, ils barrent les routes aux fuyards, ils livrent les rescapés. Abdias écrit peu après. Leur capitale, Séla — la Pétra des Grecs — est une forteresse taillée dans le grès, accessible par une seule faille, le Siq.</p>
+<h4>4 · Explication du texte</h4>
+<p>L'oracle d'Abdias porte sur deux chefs d'accusation : l'orgueil (v. 3-4 : « toi qui habites les creux des rochers… quand tu placerais ton nid haut comme l'aigle ») et la violence envers un frère (v. 10-14). La formulation de Malachie est la plus frappante pour l'exégèse : elle anticipe l'objection — « nous relèverons les ruines » — et y répond par avance, « je renverserai ». C'est un texte écrit contre une reconstruction que personne n'a encore tentée au moment où il est rédigé.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension retenue est un accomplissement en deux temps. (1) Cinq ans environ après la destruction de Jérusalem, les armées de Neboukadnetsar montent contre Édom : les hauteurs de Pétra ne sauvent personne. (2) Un siècle et demi plus tard, Édom tente de se relever — c'est l'objet de Malachie — et disparaît. La Bibliothèque en ligne ajoute que vers 105 de notre ère Rome conquit la capitale nabatéenne, que la route des caravanes fut abandonnée, et que « l'existence même de Pétra fut oubliée ».</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">607 av. n. è.</td><td>Édom se tient aux côtés des Babyloniens lors de la chute de Jérusalem (Abd 11-14)</td></tr>
+<tr><td class="d">~602 av. n. è.</td><td>Les armées de Neboukadnetsar montent contre Édom, environ cinq ans après la chute de Jérusalem</td></tr>
+<tr><td class="d">Vᵉ-IVᵉ s. av. n. è.</td><td>Les Nabatéens s'installent à Pétra ; les Édomites sont repoussés vers le Néguev (Idumée)</td></tr>
+<tr><td class="d"> après 443 av. n. è.</td><td>Malachie : Édom dit « nous relèverons les ruines » ; la réponse est « je renverserai »</td></tr>
+<tr><td class="d">~105 de n. è.</td><td>Rome annexe la capitale nabatéenne ; la route des caravanes est détournée</td></tr>
+<tr><td class="d"> après 70 de n. è.</td><td>Le nom d'Idumée disparaît de l'histoire</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La disparition du nom est le fait le mieux documenté. Après la destruction de Jérusalem par les Romains en 70 de notre ère, le nom d'Idumée cesse d'être employé : aucune source postérieure ne désigne plus un peuple édomite. La Bibliothèque en ligne relève par ailleurs que le site de Pétra fut oublié au point que les voyageurs européens ne le redécouvrirent qu'au XIXᵉ siècle.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Édom occupe le plateau montagneux à l'est de la Arabah, entre la mer Morte et le golfe d'Aqaba : la montagne de Séir, territoire de grès rouge entaillé de gorges. Pétra est installée dans un cirque rocheux fermé, alimenté par une source (Aïn Mousa) et accessible par le Siq, une faille de plus d'un kilomètre. La sécurité du site venait de là : un seul passage, qu'une poignée d'hommes suffisait à tenir.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'argument scientifique tient à l'hydrologie nabatéenne. Pétra ne vivait pas de la pluie mais d'un système de barrages, de citernes et de conduites taillées dans la paroi, qui captaient les crues du wadi et les stockaient pour l'année. Ce système supposait un entretien permanent. Quand la route des caravanes se déplaça vers le nord, la population partit, l'entretien cessa, et l'ensemble du dispositif hydraulique se colmata définitivement.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Abdias 10 dit « tu seras exterminé pour toujours ». Au sens strict, des Édomites ont survécu : une partie d'entre eux s'est fondue dans la population de Judée sous le nom d'Iduméens, et Hérode le Grand était d'origine iduméenne. Cette fiche retient donc l'accomplissement sur le peuple en tant que nation et sur le territoire en tant que pays : Édom n'existe plus comme royaume, et son sol est resté désolé. L'organisation emploie d'ailleurs cette nuance quand elle parle d'« Édom typique ».</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trahison d'Édom</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Neboukadnetsar</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~602</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nabatéens à Pétra</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve s.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rome annexe</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">105</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le nom disparaît</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">après 70</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1957604">La plus étrange ville bâtie par l'homme (Pétra, Séla)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1957604</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau d'accomplissements (Édom, Jér. 49:17, 18)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990087">Ézékiel (livre de) — prophéties contre Édom<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990087</a>
+<a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l'Histoire<br>https://www.jw.org/fr/la-bible-et-vous/histoire/</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche F005 — Édom — le nid d'aigle vidé, et le nom effacé</span><span>Catégorie A</span></div></div>
+</article>
+<article class="fiche" id="F006">
+<div class="visuel"><img src="images/prophe_F006_moab.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE F006 · CATÉGORIE A</div>
+<h3>Moab — comme Sodome, un lieu d'orties et une mine de sel</h3>
+<div class="ref">Isaïe 15:1-9 ; 16:1-14 ; Jérémie 48:1-47 ; Ézéchiel 25:8-11 ; Sophonie 2:8-11 ; Amos 2:1-3</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système biblique (607)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche F006 · 0:25</div><audio controls preload="none" src="audio/fiche_A06_moab.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A06_moab.mp3 · 0:25 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Isaïe 15:1-9 ; 16:1-14 ; Jérémie 48:1-47 ; Ézéchiel 25:8-11 ; Sophonie 2:8-11 ; Amos 2:1-3</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système biblique (607)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : partie 6 (les Douze) et partie 4 (Jérémie 48)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Moab deviendra comme Sodome… un lieu envahi par les orties, une mine de sel et un désert permanent. » (Soph 2:9)</li>
+<li>« Ar est dévastée, Moab est réduite au silence… Kir est dévastée, Moab est réduite au silence. » (Is 15:1)</li>
+<li>« Nébo sera dévastée… Kiriathaïm sera prise… Beth-Gamul, Beth-Diblaïthaïm… » (Jér 48:1, 22)</li>
+<li>« Je ramènerai les captifs de Moab dans la suite des jours. » (Jér 48:47)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Moab occupe le plateau à l'est de la mer Morte, entre le wadi Arnon au nord et le wadi Zered au sud. Le peuple descend de Lot (Genèse 19:37), ce qui en fait un parent d'Israël — et l'un de ses adversaires les plus constants. Au IXᵉ siècle, le roi Mesha se libère de la domination d'Israël ; deux siècles plus tard, Moab est l'un des voisins qui se réjouissent de la chute de Jérusalem. Sophonie écrit avant 648, Jérémie avant 607.</p>
+<h4>4 · Explication du texte</h4>
+<p>La particularité de cet oracle est sa précision toponymique : Jérémie 48 nomme une trentaine de villes moabites, dont plusieurs ne sont connues que par ce texte. Le verset 47 contient par ailleurs une ouverture inattendue — « je ramènerai les captifs de Moab dans la suite des jours » — qui montre que l'oracle n'est pas une condamnation sans appel mais un jugement temporel, comme pour l'Égypte. La formule de Sophonie, « comme Sodome », est la plus dure du recueil.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension retenue est que la condamnation fut exécutée par les Babyloniens, puis par les tribus arabes du désert qui achevèrent de dissoudre l'entité nationale moabite. La Bibliothèque en ligne, dans son article de référence sur Moab, écrit : « Depuis des siècles, les Moabites ont cessé d'exister en tant que peuple. De nos jours, il ne reste plus que des ruines sur les sites identifiés comme étant ceux d'anciennes villes moabites telles que Nébo, Aroër, Bethgamul et Baal-Méon. De nombreux autres endroits sont aujourd'hui inconnus. »</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d"> avant 648 av. n. è.</td><td>Sophonie : Moab deviendra comme Sodome, une mine de sel</td></tr>
+<tr><td class="d"> avant 607 av. n. è.</td><td>Jérémie nomme une trentaine de villes moabites et annonce leur dévastation</td></tr>
+<tr><td class="d"> après 607 av. n. è.</td><td>Les Babyloniens de Neboukadnetsar exécutent le jugement annoncé en Jérémie 25 et 27</td></tr>
+<tr><td class="d">VIᵉ s. av. n. è.</td><td>Invasion de tribus du désert d'Arabie</td></tr>
+<tr><td class="d"> après 537 av. n. è.</td><td>Cyrus autorise vraisemblablement les exilés moabites à rentrer (Jér 48:47)</td></tr>
+<tr><td class="d"> aujourd'hui</td><td>Il ne reste que des ruines : Nébo, Aroër, Bethgamul, Baal-Méon ; de nombreux sites sont inconnus</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le document profane décisif est la **stèle de Mesha**, découverte en 1868 à Dhiban et conservée au Louvre. Gravée vers 840 avant notre ère en alphabet moabite, elle mentionne le roi Mesha, le dieu Kemosh, le roi d'Israël Omri et le nom de Jéhovah — c'est la plus ancienne attestation extra-biblique du tétragramme. Elle prouve l'existence, la langue et la toponymie du royaume de Moab que décrit la Bible.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le plateau moabite culmine entre 800 et 1 000 mètres, dominant la mer Morte de plus de 1 200 mètres. C'est une région de hautes terres cultivables, bien arrosée comparée à la dépression du Rift, ce qui explique la densité des villes mentionnées par Jérémie. L'Arnon (l'actuel wadi Mujib) entaille le plateau d'une gorge profonde qui formait la frontière naturelle du royaume.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La formule de Sophonie — « une mine de sel et un désert permanent » — décrit un mécanisme réel : sur le pourtour aride de la mer Morte, l'évaporation concentre les sels dans les sols nus, et les terres abandonnées à l'est de la mer Morte se couvrent d'efflorescences salines qui interdisent durablement la remise en culture. Les prospections archéologiques du plateau montrent une interruption de l'habitat sédentaire après l'époque perse.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Sophonie 2:9 dit « un désert permanent ». La région est aujourd'hui partiellement cultivée et habitée — la ville moderne de Madaba et ses environs sont densément peuplés. Cette fiche retient l'accomplissement sur le peuple (les Moabites n'existent plus comme nation) et sur les villes nommées (de nombreux sites ne sont plus identifiés). Elle ne prétend pas que le territoire est vide.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 648</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie 48</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babyloniens</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">après 607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tribus arabes</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIᵉ s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ruines non identifiées</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200013028">Moab (article de référence)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200013028</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau d'accomplissements (Moab et Ammon)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/36/2">Sophonie 2 (texte)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/36/2</a>
+<a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l'Histoire<br>https://www.jw.org/fr/la-bible-et-vous/histoire/</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche F006 — Moab — comme Sodome, un lieu d'orties et une mine de sel</span><span>Catégorie A</span></div></div>
+</article>
+<article class="fiche" id="F007">
+<div class="visuel"><img src="images/prophe_F007_ammon.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE F007 · CATÉGORIE A</div>
+<h3>Ammon — Gomorrhe, et le dieu Milcom emmené en exil</h3>
+<div class="ref">Jérémie 49:1-6 ; Ézéchiel 25:1-7 ; 21:28-32 ; Sophonie 2:8-11 ; Amos 1:13-15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système biblique (607)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche F007 · 0:23</div><audio controls preload="none" src="audio/fiche_A07_ammon.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A07_ammon.mp3 · 0:23 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 49:1-6 ; Ézéchiel 25:1-7 ; 21:28-32 ; Sophonie 2:8-11 ; Amos 1:13-15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système biblique (607)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : partie 6 (les Douze) et partie 4 (Jérémie 49)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Les Ammonites deviendront comme Gomorrhe, un lieu envahi par les orties, une mine de sel et un désert permanent. » (Soph 2:9)</li>
+<li>« Voici que des jours viennent… où je ferai entendre contre Rabba des fils d'Ammon le cri de guerre ; elle deviendra un tas de ruines. » (Jér 49:2)</li>
+<li>« Milcom s'en ira en exil, ses prêtres et ses chefs avec lui. » (Jér 49:3, d'après le texte)</li>
+<li>« Après cela, je ramènerai les captifs des fils d'Ammon. » (Jér 49:6)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Ammon occupe le plateau au nord-est de Moab, autour de Rabba — l'actuelle Amman, capitale de la Jordanie. Comme Moab, le peuple descend de Lot (Genèse 19:38). L'histoire d'Ammon est faite d'affrontements répétés avec Israël : au temps des Juges, sous Saül, sous David, et encore sous Josaphat. L'oracle de Jérémie porte un grief précis : les Ammonites se sont approprié l'héritage de la tribu de Gad pendant que celle-ci était déportée.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le grief de Jérémie 49:1 est juridique autant que religieux : « Israël n'a-t-il pas de fils ? Pourquoi Malcam a-t-il pris possession de Gad ? » Le dieu ammonite Milcom — appelé Malcam, « leur roi », dans un jeu de mots hébreu fréquent — est présenté comme un usurpateur de territoire. L'annonce que « Milcom s'en ira en exil » est donc ironique : un dieu qui part en captivité est un dieu qui ne protège pas son peuple. Comme pour Moab, le verset 6 ouvre sur un retour des captifs, ce qui borne le jugement dans le temps.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension retenue est que l'oracle s'est accompli par les Babyloniens, puis par l'absorption progressive du peuple ammonite dans les populations arabes de la région. La Bibliothèque en ligne indique que Cyrus permit vraisemblablement aux exilés ammonites de rentrer, en accomplissement de Jérémie 49:6, et que « comme Sophonie l'avait prophétisé, les fils d'Ammon étaient devenus comme Gomorrhe, une solitude désolée ».</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d"> avant 648 av. n. è.</td><td>Sophonie : Ammon deviendra comme Gomorrhe</td></tr>
+<tr><td class="d"> avant 607 av. n. è.</td><td>Jérémie annonce la dévastation de Rabba et l'exil de Milcom</td></tr>
+<tr><td class="d"> après 607 av. n. è.</td><td>Les Ammonites se réjouissent de la chute de Jérusalem (Éz 25:3, 6) et sont jugés à leur tour</td></tr>
+<tr><td class="d">VIᵉ-Vᵉ s. av. n. è.</td><td>Le royaume disparaît comme entité politique</td></tr>
+<tr><td class="d">IIIᵉ s. de n. è. env.</td><td>La domination ammonite s'efface définitivement</td></tr>
+<tr><td class="d"> aujourd'hui</td><td>Amman, capitale de la Jordanie, occupe le site antique de Rabba</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le nom même du dieu Milcom est attesté par l'épigraphie ammonite : plusieurs inscriptions et sceaux mentionnent Milcom comme divinité nationale, confirmant le renseignement biblique. La citadelle d'Amman, au sommet du djebel el-Qal'a, conserve des niveaux ammonites des VIIIᵉ-VIᵉ siècles.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Rabba-Amman est installée sur un site défensif exceptionnel : une acropole dominant un cirque de collines, à 800 mètres d'altitude, sur le plateau de Transjordanie, contrôlant la route commerciale qui remontait d'Arabie vers Damas. La ville était alimentée par le wadi Amman et par des sources. Cette position de carrefour a toujours été sa richesse — et la cause de sa convoitise.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Comme pour Moab, la formule « une mine de sel et un désert permanent » renvoie à un processus mesurable : la steppe qui s'étend à l'est d'Amman reçoit moins de 200 mm de précipitations par an, seuil en dessous duquel l'agriculture sédentaire n'est plus possible sans irrigation. Les sols y sont riches en carbonates et en sels ; les terres abandonnées s'y dégradent très vite et ne se restaurent pas seules.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Sophonie 2:9 annonce un « désert permanent » pour Ammon. Or Amman est aujourd'hui une métropole de plus de quatre millions d'habitants et l'une des capitales les plus vivantes du Proche-Orient. Cette fiche ne peut donc pas être présentée comme la preuve d'un vide. Ce qui s'est accompli est la disparition du peuple ammonite en tant que nation, et la fin de son culte — le dieu Milcom n'a plus d'adorateurs. C'est l'objet exact de l'oracle, qui vise un peuple et son dieu, non un sol.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 648</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie 49</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugement</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">après 607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Royaume effacé</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amman, 4 millions</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010244">Ammonites (article de référence)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010244</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau d'accomplissements (Moab et Ammon)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/36/2">Sophonie 2 (texte)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/36/2</a>
+<a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l'Histoire<br>https://www.jw.org/fr/la-bible-et-vous/histoire/</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche F007 — Ammon — Gomorrhe, et le dieu Milcom emmené en exil</span><span>Catégorie A</span></div></div>
+</article>
+<article class="fiche" id="F008">
+<div class="visuel"><img src="images/prophe_F008_philistie.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE F008 · CATÉGORIE A</div>
+<h3>La Philistie — quatre villes nommées, et le bord de la mer en pâturages</h3>
+<div class="ref">Amos 1:6-8 ; Jérémie 25:20 ; 47:1-7 ; Ézéchiel 25:15-17 ; Sophonie 2:4-7 ; Zacharie 9:5-7</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système biblique (607) + dates neutres (701, 604)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche F008 · 0:24</div><audio controls preload="none" src="audio/fiche_A08_philistie.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A08_philistie.mp3 · 0:24 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Amos 1:6-8 ; Jérémie 25:20 ; 47:1-7 ; Ézéchiel 25:15-17 ; Sophonie 2:4-7 ; Zacharie 9:5-7</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système biblique (607) + dates neutres (701, 604)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : partie 6 (les Douze), Amos et Sophonie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Gaza sera une ville abandonnée, et Ascalon sera dévastée. Asdod sera chassée en plein jour, et Ékrôn sera déracinée. » (Soph 2:4)</li>
+<li>« Le bord de la mer deviendra des pâturages, avec des puits pour les bergers et des enclos pour les moutons. » (Soph 2:6)</li>
+<li>« Le roi disparaîtra de Gaza, et Ascalon ne sera plus habitée. » (Zach 9:5)</li>
+<li>« J'exterminerai d'Asdod les habitants et d'Ascalon celui qui tient le sceptre ;… les restes des Philistins périront. » (Am 1:8)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La Philistie est une pentapole : cinq villes-États sur la plaine côtière du sud — Gaza, Ascalon, Asdod, Ékron et Gath. Leurs habitants sont arrivés au XIIᵉ siècle dans le sillage des « peuples de la mer » ; ils ne sont pas sémites, et la Bible garde la trace de cette origine (Amos 9:7 : « de Caphtor »). Amos écrit vers 804 avant notre ère, Sophonie avant 648, Jérémie avant 607 — soit trois prophètes sur deux siècles, tous avec le même message.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le détail le plus remarquable est toponymique : Zacharie 9:5 omet Gath. Or Gath disparaît précisément des sources après la campagne de Hazaël d'Aram, à la fin du IXᵉ siècle — la Bible cesse de la citer comme ville philistine, et le silence de Zacharie, deux siècles plus tard, enregistre cette disparition sans la commenter. Autre détail : Sophonie 2:6 prévoit que « le bord de la mer deviendra des pâturages, avec des puits pour les bergers » — un renseignement sur l'usage futur du sol, et non sur la destruction des murailles.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension retenue est que l'ensemble de la pentapole a été frappée, conformément aux trois oracles successifs, et que les Philistins ont cessé d'exister comme peuple distinct. Les publications relèvent que le jugement fut exécuté par vagues : les Assyriens, puis les Babyloniens, les Grecs et enfin les Hasmonéens.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">804 av. n. è. env.</td><td>Amos : le feu dans les murs de Gaza, les habitants d'Asdod exterminés (Am 1:6-8)</td></tr>
+<tr><td class="d">701 av. n. è.</td><td>Sennachérib conquiert Ascalon et Ékron (date neutre)</td></tr>
+<tr><td class="d">604 av. n. è.</td><td>Neboukadnetsar prend Ascalon ; la ville est détruite (date neutre)</td></tr>
+<tr><td class="d"> avant 648 av. n. è.</td><td>Sophonie : Gaza abandonnée, Asdod chassée, Ékron déracinée, le bord de mer en pâturages</td></tr>
+<tr><td class="d"> avant 607 av. n. è.</td><td>Jérémie 47 : « avant que Pharaon ne frappe Gaza » — l'oracle est daté d'un événement contemporain</td></tr>
+<tr><td class="d">IIᵉ s. av. n. è.</td><td>Les Hasmonéens font disparaître les dernières cités philistines</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Aucune source profane ne mentionne plus les Philistins après l'époque perse : le nom même de la région, Palestina, est une survivance toponymique grecque puis romaine du mot « Philistin », alors que le peuple a disparu depuis longtemps.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La plaine philistine est une bande de plaine côtière sableuse d'une quarantaine de kilomètres de large, entre le mont Carmel au nord et le désert du Néguev au sud, coupée de la Judée par les contreforts de la Shéféla. Gaza est le débouché méridional de la route de l'encens ; Ascalon et Asdod sont des ports. Leur richesse venait du commerce, et leur vulnérabilité de leur position sur l'axe militaire égypto-assyrien.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le document décisif est l'**inscription royale d'Ékron**, découverte en 1993 à Tel Miqne. Gravée dans le calcaire vers le VIIᵉ siècle avant notre ère, elle mentionne « Ékron » et nomme cinq de ses rois, dont Akish, fils de Padi — le même nom que le roi d'Ékron mentionné dans les annales assyriennes de Sennachérib et dans la Bible. L'identification du site est donc assurée par l'épigraphie, et non par une supposition.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Sophonie 2:4-7 et Zacharie 9:5-7 annoncent que Gaza et Ascalon ne seront plus habitées. Les deux villes existent aujourd'hui, et Gaza est l'une des agglomérations les plus densément peuplées du monde. Cette fiche retient l'accomplissement sur les Philistins en tant que peuple — disparu — et sur la pentapole en tant que système politique — dissous. La prophétie vise une nation et ses cités-États, pas l'usage immémorial d'un site côtier.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amos</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">804</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sennachérib</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Neboukadnetsar à Ascalon</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">604</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 648</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hasmonéens</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IIᵉ s.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200002422">Amos (livre d') — article de référence<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200002422</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/36/2">Sophonie 2 (texte et renvois)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/36/2</a>
+<a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l'Histoire<br>https://www.jw.org/fr/la-bible-et-vous/histoire/</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau d'accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche F008 — La Philistie — quatre villes nommées, et le bord de la mer en pâturages</span><span>Catégorie A</span></div></div>
+</article>
+<article class="fiche" id="F009">
+<div class="visuel"><img src="images/prophe_F009_ninive.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE F009 · CATÉGORIE A</div>
+<h3>Ninive et l'Assyrie — la cité du sang oubliée sous son propre tell</h3>
+<div class="ref">Nahum 1:1-15 ; 2:1-13 ; 3:1-19 ; Sophonie 2:13-15 ; Jonas 3:1-10</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système biblique (632)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche F009 · 0:22</div><audio controls preload="none" src="audio/fiche_A09_ninive.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A09_ninive.mp3 · 0:22 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Nahum 1:1-15 ; 2:1-13 ; 3:1-19 ; Sophonie 2:13-15 ; Jonas 3:1-10</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système biblique (632)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : partie 6 (les Douze), Nahum — P447 à P450 ; P463 à P469 ; P479 à P482</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Il dévastera Ninive, il la rendra aussi aride que le désert. » (Soph 2:13)</li>
+<li>« Des troupeaux se coucheront au milieu d'elle, toutes les bêtes sauvages, en troupes. » (Soph 2:14)</li>
+<li>« La porte des fleuves est ouverte, et le palais s'effondre. » (Nah 2:6)</li>
+<li>« Il est dépouillé, il est emmené ; et ses servantes gémissent comme des colombes. » (Nah 2:7)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Ninive est la dernière capitale de l'Assyrie, sur la rive orientale du Tigre, en face de l'actuelle Mossoul. Elle a mis à sac Samarie en 740, envahi Juda en 732 et fait plier Jérusalem sous Ézéchias. Nahum écrit avant sa chute, à une date où l'Assyrie est encore redoutable : annoncer la destruction de Ninive relève de l'invraisemblable. Jonas, deux siècles plus tôt, y avait prêché, et la ville s'était repentie temporairement.</p>
+<h4>4 · Explication du texte</h4>
+<p>Nahum 2:6 est le verset le plus discuté : « la porte des fleuves est ouverte ». L'expression fait difficulté, mais deux lectures existent — soit les écluses du système de canaux qui alimentait Ninive, soit une brèche ouverte dans la muraille par une crue du Tigre. Les historiens grecs (Diodore de Sicile, d'après Ctésias) rapportent qu'une crue détruisit une portion des remparts, ouvrant la voie aux assiégeants. La Bible et la tradition grecque se rejoignent donc sur un mode de prise par l'eau.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah retient la date de 632 avant notre ère pour la chute de Ninive — en appliquant le système chronologique biblique — tout en signalant que la chronologie profane place l'événement en 612. Cette fiche suit la règle du dossier : **un seul système chronologique par contenu**. Elle retient 632 et signale l'écart, ce qui est la pratique constante du dossier pour Ninive.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">844 av. n. è. env.</td><td>Jonas prêche à Ninive ; la ville se repent temporairement</td></tr>
+<tr><td class="d"> avant 632 av. n. è.</td><td>Nahum annonce la dévastation totale de la cité du sang</td></tr>
+<tr><td class="d">632 av. n. è.</td><td>Ninive tombe devant les Babyloniens et les Mèdes (système biblique ; 612 en chronologie profane)</td></tr>
+<tr><td class="d"> après la chute</td><td>La ville n'est pas relevée ; le site devient un tell inhabité</td></tr>
+<tr><td class="d">1842-1849 de n. è.</td><td>Botta, puis Layard, cherchent Ninive : l'emplacement avait été oublié</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La Chronique babylonienne rapporte la prise de la ville et la fin de l'empire assyrien. Le fait le plus frappant est l'oubli du site : pendant des siècles, on ne savait plus où était Ninive. Les voyageurs du XVIIIᵉ siècle situaient encore l'emplacement de la ville ailleurs. Ce n'est qu'au milieu du XIXᵉ siècle que les fouilles de Paul-Émile Botta et d'Austen Henry Layard révélèrent les palais de Sennachérib et d'Assurbanipal.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Ninive occupe la rive orientale du Tigre, à l'emplacement des tells de Kuyundjik et de Nabi Yunus, dans l'agglomération actuelle de Mossoul (Irak). La ville était alimentée par un réseau de canaux captant les eaux du Tigre et du wadi Khosr, et protégée par une enceinte de quelque 12 kilomètres de périmètre. Le Khosr traversait la ville — d'où l'expression de Nahum sur la « porte des fleuves ».</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'archéologie a confirmé le mécanisme de la prise : les fouilles ont révélé, dans les niveaux correspondant à la chute, des dépôts de crue et des squelettes pris dans les décombres, ainsi que des traces d'incendie généralisé. L'épaisseur des couches de destruction est considérable. Les campagnes de dégagement des années 2020 ont de nouveau mis au jour les bas-reliefs du palais nord, effondrés lors de la prise.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Deux limites. (1) Chronologique : cette fiche retient 632 selon le système biblique et signale 612 pour la chronologie profane ; les deux ne doivent jamais figurer comme équivalentes dans un même document. (2) Géographique : Sophonie 2:13-15 annonce une désolation telle que « des troupeaux se coucheront au milieu d'elle ». Ninive est aujourd'hui englobée dans l'agglomération de Mossoul : l'accomplissement porte sur la cité antique, jamais relevée, et non sur l'absence d'habitat moderne autour du tell.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jonas</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">844</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahum</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 632</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">632</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Site perdu</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">oubli</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Botta et Layard</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1842</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200013302">Nahum — le livre et son accomplissement<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200013302</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200013311">Ninive (article de référence)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200013311</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/36/2">Sophonie 2 (texte)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/36/2</a>
+<a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l'Histoire<br>https://www.jw.org/fr/la-bible-et-vous/histoire/</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche F009 — Ninive et l'Assyrie — la cité du sang oubliée sous son propre tell</span><span>Catégorie A</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie A</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>F001 — Tyr — la ville jetée à la mer</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prophétie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">591</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège de 13 ans</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-575</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Digue d'Alexandre</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">332</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de l'île</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">332</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Presqu'île ensablée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>F002 — Sidon — le jugement sans la désolation définitive</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sennachérib</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Perse</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIᵉ s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Artaxerxès III</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">351</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ouvre ses portes</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">332</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Saïda</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>F003 — Babylone — la gloire des royaumes devenue un tas de ruines</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Isaïe nomme Cyrus</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIᵉ s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérusalem dévastée</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Babylone</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort d'Alexandre</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">323</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rich : plus de murs</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1811</text>
+</svg>
+<h4>F004 — L'Égypte — quarante ans, puis un royaume qui ne comptera plus</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite en Égypte</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Conquête babylonienne</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">après 607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Désolation annoncée</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">40 ans</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cambyse II</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">525</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Domination grecque</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">332</text>
+</svg>
+<h4>F005 — Édom — le nid d'aigle vidé, et le nom effacé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trahison d'Édom</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Neboukadnetsar</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~602</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nabatéens à Pétra</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve s.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rome annexe</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">105</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le nom disparaît</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">après 70</text>
+</svg>
+<h4>F006 — Moab — comme Sodome, un lieu d'orties et une mine de sel</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 648</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie 48</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babyloniens</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">après 607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tribus arabes</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIᵉ s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ruines non identifiées</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>F007 — Ammon — Gomorrhe, et le dieu Milcom emmené en exil</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 648</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie 49</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugement</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">après 607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Royaume effacé</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amman, 4 millions</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>F008 — La Philistie — quatre villes nommées, et le bord de la mer en pâturages</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amos</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">804</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sennachérib</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Neboukadnetsar à Ascalon</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">604</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 648</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hasmonéens</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IIᵉ s.</text>
+</svg>
+<h4>F009 — Ninive et l'Assyrie — la cité du sang oubliée sous son propre tell</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jonas</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">844</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahum</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">av. 632</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">632</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Site perdu</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">oubli</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Botta et Layard</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1842</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 7.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-24 · phase 7, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

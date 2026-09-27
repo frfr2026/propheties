@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES DN6 — Daniel 12 — Mikaël, la résurrection, le livre scellé et les jours comptés</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_DN403_tentes.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES DN6</h1>
+<h2>Daniel 12 — Mikaël, la résurrection, le livre scellé et les jours comptés</h2>
+<p class="intro">Septième vague Daniel, dernière du livre : le roi qui s'élève au-dessus de tout dieu et le dieu des forteresses, la poussée finale et les tentes entre la mer et la montagne sainte, puis Mikaël qui se lève, le temps de détresse, la résurrection des dormeurs de la poussière, les perspicaces qui brillent comme les étoiles, le livre scellé jusqu'au temps de la fin et les périodes comptées — 1 260, 1 290, 1 335 jours — jusqu'à la promesse faite à Daniel lui-même : « tu te lèveras pour ton lot à la fin des jours ».</p>
+<div class="chiffres">
+<div><b>5</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>26</b><span>sources</span></div>
+<div><b>5</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#DN403">DN403</a>
+<a href="#DN404">DN404</a>
+<a href="#DN405">DN405</a>
+<a href="#DN406">DN406</a>
+<a href="#DN407">DN407</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#DN403"><img src="images/prophe_DN403_tentes.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN403</div>
+<h3><a href="#DN403">Le roi qui se grandit au-dessus de tout dieu : le dieu des forteresses et la fin sans secours</a></h3>
+<div class="meta">À venir</div></div></div>
+<div class="carte">
+<a class="img" href="#DN404"><img src="images/prophe_DN404_mikael.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN404</div>
+<h3><a href="#DN404">Mikaël se lève : un temps de détresse tel qu'il n'y en a jamais eu</a></h3>
+<div class="meta">À venir</div></div></div>
+<div class="carte">
+<a class="img" href="#DN405"><img src="images/prophe_DN405_resurrection.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN405</div>
+<h3><a href="#DN405">Ceux qui dorment dans la poussière se réveilleront : vie éternelle ou honte</a></h3>
+<div class="meta">À venir</div></div></div>
+<div class="carte">
+<a class="img" href="#DN406"><img src="images/prophe_DN406_livre.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN406</div>
+<h3><a href="#DN406">Scelle le livre jusqu'au temps de la fin : la vraie connaissance deviendra abondante</a></h3>
+<div class="meta">En cours</div></div></div>
+<div class="carte">
+<a class="img" href="#DN407"><img src="images/prophe_DN407_jours.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN407</div>
+<h3><a href="#DN407">Un temps, des temps et une moitié : 1 290 jours et le bonheur des 1 335 jours</a></h3>
+<div class="meta">À venir</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="DN403">
+<div class="visuel"><img src="images/prophe_DN403_tentes.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN403 · CATÉGORIE DN6</div>
+<h3>Le roi qui se grandit au-dessus de tout dieu : le dieu des forteresses et la fin sans secours</h3>
+<div class="ref">Daniel 11:36-45</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir</span>
+<span class="badge">roi agir selon son bon plaisir s'élever au-dessus de tout dieu proférer contre le Dieu des dieux succès jusqu'à ce que l'invective prenne fin ne pas tenir compte du dieu de ses pères ni du désir des femmes dieu des forteresses glorifier or argent pierres précieuses agir efficacement poussée du sud chars cavaliers navires entrer dans les pays inonder passer pays de la Parure Édom Moab Ammôn Égypte trésors Libyens Éthiopiens nouvelles du levant et du nord tentes-palais grande mer montagne sainte venir à sa fin sans secours</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN403</div><audio controls preload="none" src="audio/fiche_DN403_tentes.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN403_tentes.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 11:36-45</td></tr>
+<tr><td class="d">Statut</td><td>À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>roi agir selon son bon plaisir s'élever au-dessus de tout dieu proférer contre le Dieu des dieux succès jusqu'à ce que l'invective prenne fin ne pas tenir compte du dieu de ses pères ni du désir des femmes dieu des forteresses glorifier or argent pierres précieuses agir efficacement poussée du sud chars cavaliers navires entrer dans les pays inonder passer pays de la Parure Édom Moab Ammôn Égypte trésors Libyens Éthiopiens nouvelles du levant et du nord tentes-palais grande mer montagne sainte venir à sa fin sans secours</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P403 (11:36-45 : le roi agissant selon son bon plaisir, s'élevant au-dessus de tout dieu ; sa fin sans secours) ; À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>LE ROI… AGIRA… SELON SON BON PLAISIR… S'ÉLÈVERA… SE GRANDIRA… AU-DESSUS… DE TOUT DIEU… CONTRE… LE DIEU DES DIEUX… PROFÉRERA… CHOSES PRODIGIEUSES… RÉUSSIRA… JUSQU'À CE QUE… L'INVECTIVE… PARVIENNE… À SON TERME… CAR… CE QUI EST DÉCIDÉ… SERA FAIT… NE PAS FAIRE ATTENTION… AU DIEU… DE SES PÈRES… NI… AU DÉSIR… DES FEMMES… NI… AUCUN AUTRE DIEU… SE GRANDIR… AU-DESSUS DE TOUS… DIEU… DES FORTERESSES… RENDRE GLOIRE… DIEU… QUE N'ONT PAS CONNU… SES PÈRES… OR… ARGENT… PIERRES PRÉCIEUSES… CHOSES DÉSIRABLES… AGIR… EFFICACEMENT… FORTERESSES… MIEUX FORTIFIÉES… DIEU ÉTRANGER… RÉPARTIR… LE SOL… POUR UN PRIX… AU TEMPS DE LA FIN… ROI DU SUD… ENGAGER… LE COMBAT… PAR UNE POUSSÉE… ROI DU NORD… SE PRÉCIPITER… CHARS… CAVALIERS… NOMBREUX NAVIRES… ENTRER… DANS LES PAYS… INONDER… PASSER… ENTRER… PAYS… PARURE… BEAUCOUP… TRÉBUCHER… ÉCHAPPER… ÉDOM… MOAB… FILS D'AMMÔN… AVANCER… SA MAIN… PAYS… ÉGYPTE… N'ÉCHAPPERA PAS… DOMINER… TRÉSORS CACHÉS… OR… ARGENT… CHOSES DÉSIRABLES… LIBYENS… ÉTHIOPIENS… SUR SES PAS… NOUVELLES… TROUBLER… LEVANT… NORD… SORTIR… GRANDE FUREUR… ANÉANTIR… VOUER… À LA DESTRUCTION… PLANTER… TENTES-PALAIS… ENTRE… LA GRANDE MER… ET… LA MONTAGNE SAINTE… PARURE… VENIR… JUSQU'À SA FIN… PERSONNE… POUR LUI VENIR EN AIDE… —</li>
+<li>LES TROIS JUMEAUX — Deutéronome 29 : « les choses cachées sont pour Jéhovah notre Dieu, mais les choses révélées sont pour nous » — la phrase qui encadre tout le chapitre 12 de Daniel : ce que l'ange scelle n'est pas perdu, il est réservé au temps voulu, et ce qui est révélé engage ceux qui le reçoivent. Proverbes 15 : « l'orgueil précède l'écroulement » et « la maison du superbe, Jéhovah la démolit » ; le verset 36 présente un roi qui s'élève au-dessus de tout dieu, et le verset 45 le montre finissant sans que personne lui vienne en aide — l'application exacte du proverbe. Job 36 : Élihou rappelle que Dieu est grand et que les rois orgueilleux sont retranchés sans qu'on s'en aperçoive ; le portrait du roi du nord dans ces versets correspond à ce que Job décrit : une puissance qui dure un temps, puis disparaît sans trace.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les versets 36 à 45 terminent le « livre de vérité ». Le texte abandonne les rois datés du milieu du chapitre et décrit un roi sans nom, caractérisé par son rapport au divin : il « agira selon son bon plaisir », il « s'élèvera et se grandira au-dessus de tout dieu », il « ne fera pas attention au Dieu de ses pères », il « rendra gloire à un dieu que n'ont pas connu ses pères », et il finira « sans que personne lui vienne en aide ». La Bibliothèque en ligne lit ces versets dans une application au roi du nord du temps de la fin, dont la dernière campagne est décrite : une « poussée » du roi du sud, une invasion par chars, cavaliers et nombreux navires, l'entrée dans le pays de la Parure, l'Égypte qui n'échappe pas, puis des nouvelles troublantes venant du levant et du nord, la plantation de « tentes-palais entre la grande mer et la montagne sainte de la Parure », et la fin. Pour le premier niveau de lecture historique, ces versets décrivent aussi la fin du roi qui les a précédés : Antiochus IV, dont le règne finit en 164 avant notre ère dans une expédition en Perse, après avoir exalté Zeus Olympios et pillé des temples. La fiche expose les deux niveaux et ne les confond pas : le registre porte « À venir » pour cette entrée.</p>
+<h4>4 · Explication du texte</h4>
+<p>Cinq notations. (1) « SELON SON BON PLAISIR » : la formule revient pour la troisième fois dans le chapitre (11:3, 11:16, 11:36) ; elle lie les dominateurs entre eux, d'Alexandre au roi final, comme une seule lignée morale. (2) « LE DIEU DE SES PÈRES » ET LE DIEU ÉTRANGER : le texte oppose un dieu reçu par tradition à un dieu choisi, nouveau, étranger — et ce dieu-là est appelé « le dieu des forteresses », honoré avec or, argent, pierres précieuses. Dans l'accomplissement historique, le dieu étranger correspond à Zeus Olympios, divinité que les Séleucides n'avaient pas mise au premier rang et que ce roi impose à Jérusalem. (3) « IL RÉPARTIRA LE SOL POUR UN PRIX » : notation d'un pouvoir qui dispose de terres et de peuples comme d'un marché — l'exploitation administrative du domaine. (4) LES « TENTES-PALAIS » ENTRE LA MER ET LA MONTAGNE : l'image combine un campement militaire et un trône ; la Bibliothèque en ligne l'applique au domaine spirituel des serviteurs de Dieu, puisque la « grande mer » est la Méditerranée et la « montagne sainte » Sion. (5) « PERSONNE POUR LUI VENIR EN AIDE » : la conclusion est un isolement complet ; dans tout le livre de Daniel, c'est la marque du pouvoir humain fini, déjà vue pour Belshazzar et pour la corne du chapitre 8.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : l'article « Les rois en guerre approchent de leur fin » commente ces versets en détail. Il rappelle que « le roi du Nord » des temps modernes, après la Seconde Guerre mondiale, s'est identifié au bloc communiste ; que ses attaques ont visé le « pays de la Parure », « le domaine spirituel du peuple de Jéhovah » ; qu'Édom, Moab et Ammôn représentent les nations et les organisations qu'il n'a pas réussi à dominer ; que l'Égypte figure le roi du sud ; et il souligne deux points de méthode : le roi du nord a subi un revers en décembre 1991 lors du démantèlement de l'Union soviétique, et son identité future n'est pas déterminée — « il est sage de ne pas spéculer » ; quand il entreprendra sa dernière campagne, les perspicaces « discerneront clairement l'accomplissement ». Il explique enfin que les nouvelles « du levant » correspondent à un acte de Dieu — le sixième bol de la colère, la destruction de Babylone la Grande (Révélation 16:12 ; 17:16, 17) —, que les « rois venant du soleil levant » sont Jéhovah et Jésus Christ, et que la campagne finale du roi du nord est dirigée contre le peuple de Dieu. Lecture commune et lecture historique : les commentaires appliquent ces versets soit au seul Antiochus IV (qui exalta Zeus, pilla des sanctuaires et mourut en Perse), soit à une figure finale, et plusieurs traditions chrétiennes y voient le portrait d'un adversaire eschatologique en écho à 2 Thessaloniciens 2. La fiche retient la lecture de la Bibliothèque en ligne pour le statut, signale la lecture d'Antiochus IV comme contexte historique, et s'interdit toute datation.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Antiochus IV, 175-164 av. n. è.</td><td>Premier contexte historique : exaltation de Zeus Olympios, pillage de temples, expédition en Perse et mort en 164 — un roi qui « s'élève » et finit sans secours, selon la lecture historique</td></tr>
+<tr><td class="d">Temps de la fin</td><td>Le roi du nord est identifié au fil du temps : l'Allemagne pendant les deux guerres mondiales, puis le bloc communiste, puis — l'identité restant à préciser — une puissance opposée au roi du sud</td></tr>
+<tr><td class="d">Événements à venir</td><td>« Poussée » du roi du sud, invasion par chars, cavaliers et nombreux navires, entrée dans le pays de la Parure</td></tr>
+<tr><td class="d">Événements à venir</td><td>Égypte touchée ; Libyens et Éthiopiens sur ses pas ; nouvelles troublantes du levant et du nord</td></tr>
+<tr><td class="d">Fin fixée</td><td>Les « tentes-palais » plantées entre la mer et la montagne sainte ; le roi « viendra jusqu'à sa fin, et il n'y aura personne pour lui venir en aide »</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES (premier niveau de lecture). (1) LES SOURCES JUIVES : 1 Maccabées 6:1-16 et 2 Maccabées 9 rapportent les derniers épisodes du règne d'Antiochus IV — l'expédition en Élam/Perse, la nouvelle du désastre juif, la maladie et la mort. (2) POLYBE : ses fragments (livre 31) mentionnent la mort du roi à Tabae, en Perse, lors d'une tentative de pillage d'un sanctuaire, ce qui correspond à l'axe « nouvelles de l'est et du nord » et à la fin sans secours. (3) LES SOURCES SUR LE CULTE IMPOSÉ : 2 Maccabées 6 et 1 Maccabées 1 décrivent l'obligation de sacrifier à Zeus Olympios et la persécution qui en découle — arrière-plan direct de « il glorifiera un dieu que n'ont pas connu ses pères ». (4) LES DOCUMENTS SÉLEUCIDES : les inscriptions et les édits royaux attestent l'usage d'imposer un culte royal et des divinités dynastiques dans les cités. (5) LES ÉLÉMENTS DE CONTINUITÉ : la formule « selon son bon plaisir » est employée par les publications pour plusieurs rois ; le vocabulaire du chapitre fonctionne comme un portrait-type, ce qui explique que la tradition l'ait aussi appliquée à un adversaire futur. (6) LA PORTÉE MODERNE : l'article cité documente, faits à l'appui, la politique du roi du nord aux XXe et XXIe siècles (persécution des chrétiens fidèles, expansionnisme, course aux armements) et refuse explicitement toute spéculation sur son identité future.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA « GRANDE MER » ET LA « MONTAGNE SAINTE » : la Méditerranée et Sion ; l'expression « entre la mer et la montagne » décrit la bande de terre de la côte jusqu'à la crête de Judée, cœur du pays de la Parure. (2) L'ÉGYPTE ET SES VOISINS : le delta, les trésors du pays, et les Libyens et Éthiopiens « sur ses pas » — la géographie antique du sud, telle que Daniel la connaissait ; dans l'application moderne, ces noms représentent des nations voisines du roi du sud. (3) ÉDOM, MOAB, AMMÔN : trois territoires historiques à l'est et au sud-est du Jourdain, entre les deux royaumes rivales — le texte les nomme comme les exceptions qui échappent au conquérant. (4) LE LEVANT ET LE NORD : les deux points cardinaux d'où viennent les nouvelles ; dans l'Antiquité, c'est de l'est (Perse, Bactriane) que venaient les périls de la fin du règne d'Antiochus IV ; dans l'application moderne, la même orientation sert à décrire des événements politiques contemporains sans être nommés. (5) LES AXES DE L'INVASION : chars, cavaliers et navires — le texte décrit une triple capacité terrestre, hippique et navale ; les routes du Levant et les ports phéniciens sont l'arrière-plan de cette énumération.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES MONNAIES D'ANTIOCHUS IV : les émissions à types de Zeus Olympios, frappées dans plusieurs ateliers, donnent une trace matérielle de la propagande religieuse royale mentionnée par le texte. (2) L'ÉPIGRAPHIE : les dédicaces de cités grecques à Zeus Olympios et les inscriptions royales du IIe siècle av. n. è. documentent la place de ce dieu dans la politique séleucide. (3) LES SOURCES ARCHÉOLOGIQUES SUR LE CULTE IMPOSÉ EN JUDÉE : les autels et installations cultuelles hellénistiques retrouvés lors des fouilles (notamment dans la région de Judée et en Samarie) nourrissent le débat sur la nature exacte des mesures d'Antiochus IV. (4) LA CHRONOLOGIE : les synchronismes avec Rome, Pergame et l'Égypte, ainsi que les tablettes cunéiformes datées, permettent de fixer la mort du roi en 164-163. (5) LA MATHÉMATIQUE DES PÉRIODES : les valeurs numériques du chapitre (1 260, 1 290, 1 335 jours) ont été analysées comme des séries arithmétiques (trois ans et demi, un mois de plus, un mois et demi de plus) — les publications de la Bibliothèque en ligne les rapportent à des périodes historiques précises du temps de la fin (voir la fiche des jours comptés). (6) LES MESURES DE PRUDENCE : la fiche ne convertit aucune des données de ce verset en date ; elle distingue ce qui est mesurable (l'histoire passée) de ce qui reste à venir.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE ROI « SELON SON BON PLAISIR » (v. 36) → « IL SE GRANDIT AU-DESSUS DE TOUT DIEU » → LE DIEU DES FORTERESSES, HONORÉ D'OR ET D'ARGENT (v. 38-39) → « IL RÉPARTIT LE SOL POUR UN PRIX » → LA POUSSÉE DU ROI DU SUD → INVASION : CHARS, CAVALIERS, NOMBREUX NAVIRES (v. 40) → LE PAYS DE LA PARURE ; ÉDOM, MOAB, AMMÔN ÉCHAPPENT → L'ÉGYPTE ET SES TRÉSORS (v. 42-43) → NOUVELLES DU LEVANT ET DU NORD → LES TENTES-PALAIS ENTRE LA MER ET LA MONTAGNE SAINTE (v. 45) → « IL VIENDRA JUSQU'À SA FIN, ET PERSONNE NE LUI VIENDRA EN AIDE »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre « À venir », comme le registre, et ne fixe aucune date. ELLE NE DESCEND PAS DU CHEMIN DE LA SPÉCULATION : la Bibliothèque en ligne, citée, déclare elle-même qu'il est sage de ne pas spéculer sur l'identité future du roi du nord ; la fiche s'y conforme et ne propose ni nom ni calendrier. DEUX NIVEAUX SONT DISTINGUÉS : la lecture historique (Antiochus IV : exaltation de Zeus, pillage de temples, mort en Perse en 164) est présentée comme contexte et non comme équivalent de l'accomplissement enregistré ; l'application moderne est celle des publications citées. LE « DÉSIR DES FEMMES » : la fiche ne retient aucune lecture allégorique personnelle ; elle mentionne que le texte décrit un roi indifférent à ce qui touche la famille et le culte de ses pères, et renvoie à l'explication donnée par la publication citée dans le cadre du roi du nord moderne. LES « TENTES-PALAIS » : l'expression est expliquée dans le sens de la publication (domaine spirituel du peuple de Dieu) sans être transformée en localisation géographique. LA FIN : « il ne sera pas trouvé » / « personne ne lui viendra en aide » est un jugement, non une description de circonstances ; la fiche ne l'illustre par aucun scénario.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Contexte historique : culte de Zeus Olympios imposé, temples pillés, mort en Perse en 164</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Antiochus IV, 175-164 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le roi du nord change d'identité au fil des décennies : Allemagne, puis bloc communiste, puis puissance à préciser</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Temps de la fin — phase moderne</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Poussée » du roi du sud : la rivalité reprend ouvertement</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Invasion par chars, cavaliers et nombreux navires ; entrée dans le pays de la Parure ; Égypte dominée</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nouvelles du levant et du nord ; les tentes-palais entre la mer et la montagne sainte ; la fin sans secours</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/29">Bible — Deutéronome 29 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/29</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/15">Bible — Proverbes 15 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/36">Bible — Job 36 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/36</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11">Bible — Daniel 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999036">« Les rois en guerre approchent de leur fin » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999036</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN403 — Le roi qui se grandit au-dessus de tout dieu : le dieu des forteresses et la fin sans secours</span><span>Catégorie DN6</span></div></div>
+</article>
+<article class="fiche" id="DN404">
+<div class="visuel"><img src="images/prophe_DN404_mikael.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN404 · CATÉGORIE DN6</div>
+<h3>Mikaël se lève : un temps de détresse tel qu'il n'y en a jamais eu</h3>
+<div class="ref">Daniel 12:1</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir</span>
+<span class="badge">en ce temps-là se lever Mikaël grand prince se tenir là fils de ton peuple temps de détresse nation ton peuple échappera inscrit dans le livre (Mikaël = Jésus Chef céleste ; Révélation 12:7 ; Matthieu 24:21, 22)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN404</div><audio controls preload="none" src="audio/fiche_DN404_mikael.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN404_mikael.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 12:1</td></tr>
+<tr><td class="d">Statut</td><td>À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>en ce temps-là se lever Mikaël grand prince se tenir là fils de ton peuple temps de détresse nation ton peuple échappera inscrit dans le livre (Mikaël = Jésus Chef céleste ; Révélation 12:7 ; Matthieu 24:21, 22)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P404 (12:1 : Mikaël se tiendra là : un temps de détresse sans précédent ; ton peuple échappera) ; Matthieu 24:21, 22 ; Révélation 12:7 ; À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>EN CE TEMPS-LÀ… SE LÈVERA… MIKAËL… LE GRAND PRINCE… QUI SE TIENT LÀ… EN FAVEUR… DES FILS… DE TON PEUPLE… CE SERA… UN TEMPS… DE DÉTRESSE… TEL QU'IL N'Y EN A PAS EU… DEPUIS QU'UNE NATION… A PARU… JUSQU'À CE TEMPS-LÀ… ET EN CE TEMPS-LÀ… TON PEUPLE… ÉCHAPPERA… TOUS CEUX… QUI SE TROUVERONT… INSCRITS… DANS LE LIVRE… — WE-ʿET… ET EN CE TEMPS… YAʿAMOD… SE LÈVERA… MIKHAʾEL… MIKAËL… HA-SAR… LE PRINCE… HA-GADOL… LE GRAND… HA-ʿOMED… QUI SE TIENT LÀ… ʿAL-BNEY… POUR LES FILS… ʿAMMEKHA… DE TON PEUPLE… WE-HAYETAH… ET CE SERA… ʿET-TSARAH… UN TEMPS DE DÉTRESSE… ASHER… TEL QUE… LO… N'A PAS… NIHYETAH… ÉTÉ… MIN-HEYOT… DEPUIS QU'IL EXISTE… GOY… UNE NATION… ʿAD… JUSQU'À… HA-ʿET… CE TEMPS-LÀ… U-VA-ʿET… ET EN CE TEMPS… YIMMALET… ÉCHAPPERA… ʿAMMEKHA… TON PEUPLE… KOL… TOUS CEUX… HA-NIMTSA… QUI SE TROUVENT… KATUV… INSCRITS… BA-SEFER… DANS LE LIVRE… — MIKAËL… ARCHANGE… JUDE 9… APOCALYPSE 12:7… COMBAT… DRAGON… 1914… PAROUSIE… PRÉSENCE… 1918… GRANDE TRIBULATION… MATTHIEU 24:21… DANIEL 12:1… EXODE 17… JOSUÉ… AMALEK… JUGES 5:20… ÉTOILES… »</li>
+<li>LES TROIS JUMEAUX — Exode 17 : sur la colline, Moïse tient ses mains levées pendant que Josué combat Amalek, et le texte lie expressément la victoire terrestre à la tension d'une prière : c'est la logique de Daniel 12:1, où un prince céleste « se tient » en faveur d'un peuple qui, sur terre, traverse la détresse. Juges 5 : le chant de Débora déclare que « du haut des cieux, les étoiles ont combattu » contre Sisera — l'Écriture ose dire, en poésie, ce que Daniel dit en prose : il y a des acteurs invisibles dans les guerres des hommes. Job 15 : Élifaz décrit l'homme qui « boit l'injustice comme l'eau » et finit sous le jugement ; le temps de détresse sans précédent a la même place dans la prophétie que le jugement dans le livre de Job — il n'est pas un abandon, mais la fin d'une mesure.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Daniel 12:1 est la charnière du livre : après la description de la fin du roi du nord (11:45), l'ange passe au sort du peuple de Daniel. Le verset commence par « en ce temps-là » — le temps du dernier épisode du chapitre précédent — et annonce deux choses : Mikaël se lèvera, puis viendra une détresse sans précédent, mais le peuple sera délivré, « tous ceux qui se trouvent inscrits dans le livre ». La Bibliothèque en ligne consacre à ce verset le chapitre « L'identification des vrais adorateurs au temps de la fin », et y distingue deux annonces : Mikaël « se tient là » (une situation qui dure) et Mikaël « se lèvera » (un événement). Elle rappelle que Mikaël est un nom donné à Jésus dans son rôle de Chef céleste, et que, depuis 1914, il se tient là comme Roi au ciel ; le « temps de détresse tel qu'il n'y en a pas eu » correspond à la grande tribulation annoncée par Jésus en Matthieu 24:21, 22, où le Maître cite précisément ce verset. Le registre porte cette entrée comme « À venir », et les références retenues sont Matthieu 24:21, 22 et Révélation 12:7 — le combat de Mikaël contre le dragon.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre éléments. (1) LES DEUX VERBES : « se tenir là » et « se lever » — le premier décrit une position stable, celle du prince qui garde son poste en faveur des fils du peuple ; le second décrit l'action décisive. Le livre de Daniel emploie régulièrement l'expression « se tenir » pour un roi qui prend le pouvoir (11:2-4, 20, 21), ce qui éclaire le sens : Mikaël est présenté comme un roi qui entre en fonction. (2) « TON PEUPLE » : l'ange parle à Daniel ; le peuple en question est donc le peuple du prophète — la descendance selon la foi, argument que les publications développent en montrant que les « fils spirituels » d'Abraham sont concernés, et non une nation selon la chair. (3) LE TEMPS DE DÉTRESSE : le texte ne dit pas « une grande tribulation » en général, mais une détresse telle qu'il n'y en a pas eu depuis l'existence des nations : le superlatif est absolu, et Jésus le reprend en Matthieu 24:21. (4) LE LIVRE : la délivrance est présentée comme un enregistrement — être « inscrit dans le livre » — et non comme un mérite visible ; c'est le motif du registre du ciel que le livre de Daniel introduit ici et que la Révélation développe (livre de vie).</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : le chapitre « L'identification des vrais adorateurs au temps de la fin » explique que Daniel 12:1 prédit deux choses distinctes à propos de Mikaël — qu'il « se tient là », ce qui évoque une situation qui dure, et qu'il « se lèvera », ce qui sous-entend un événement — ; il identifie Mikaël à Jésus dans son rôle de Chef céleste et situe le début de ce « se tenir là » en 1914, au moment où le Royaume a été instauré dans le ciel ; il indique que le « temps de détresse tel qu'il n'y en a pas eu » sera la grande tribulation, et que Christ sera l'Exécuteur de Jéhovah mettant fin au système de choses méchant. Le même article rapproche Révélation 11:3, 9, 11 (les deux témoins tués pendant trois jours et demi puis ranimés) de Daniel 12, et rappelle que, comme prédit, les serviteurs oints ont repris vie au sens spirituel après cette période. Lecture commune et contexte historique : les commentaires rappellent que la Septante connaît le titre d'archange appliqué à Mikaël (Jude 9), que Révélation 12:7 place Mikaël à la tête des anges fidèles, et que plusieurs traditions situent l'accomplissement initial de Daniel 12:1 dans la crise d'Antiochus IV, « temps de détresse » pour la Judée, suivie de la délivrance maccabéenne. La fiche expose les deux niveaux : le contexte historique (crise de 167-164), et l'accomplissement que le registre inscrit comme à venir, en suivant la publication citée.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">167-164 av. n. è.</td><td>Contexte historique : pour la Judée sous Antiochus IV, un temps de détresse sans équivalent depuis des siècles, puis la délivrance née de la résistance</td></tr>
+<tr><td class="d">1914</td><td>Pour la Bibliothèque en ligne : début de la présence du Christ ; Mikaël « se tient là » en qualité de Roi dans le ciel</td></tr>
+<tr><td class="d">1914-1919</td><td>Période d'épreuve pour les serviteurs de Dieu sur terre, rapportée par la publication citée (prédication « vêtue de sacs », interdictions, puis rétablissement)</td></tr>
+<tr><td class="d">À venir</td><td>« Mikaël se lèvera » : l'événement — l'action décisive du Chef céleste contre le système de choses méchant</td></tr>
+<tr><td class="d">À venir</td><td>Le temps de détresse sans précédent ; la délivrance de « tous ceux qui sont inscrits dans le livre »</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES ET TEXTUELLES. (1) LES SOURCES BIBLIQUES SUR MIKAËL : Daniel 10:13, 21 (Mikaël, l'un des premiers princes, qui vient en aide à l'ange) ; Jude 9 (Michel l'archange) ; Révélation 12:7 (Michel et ses anges combattent le dragon) — le dossier qui permet d'identifier Mikaël dans le livre de Daniel. (2) LA SOURCE DE LA GRANDE DÉTRESSE : Matthieu 24:21, 22 ; Marc 13:19, 20 citent Daniel 12:1, ce qui montre comment le Nouveau Testament entend le verset. (3) LE PREMIER ACCOMPLISSEMENT HISTORIQUE : 1 Maccabées 1-4 décrit la période de persécution comme la plus grave connue par le peuple, puis la délivrance. (4) LES PUBLICATIONS CITÉES : « L'identification des vrais adorateurs au temps de la fin » (dp chap. 17) développe l'application moderne, avec les références bibliques à l'appui ; « Les jours prophétiques annoncés par Daniel, et notre foi » (w93 1/11) précise les dates et les faits des années 1914-1919. (5) LA NOTION DE LIVRE : l'image du registre céleste apparaît dans Exode 32:32, 33, Psaume 69:28, Malaki 3:16, Philippiens 4:3 et Révélation 20:12, 15 — le texte de Daniel s'inscrit dans cette trame.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE PEUPLE ET SON PAYS : l'ange parle des « fils de ton peuple » ; pour Daniel, c'est la Judée de Jérusalem et du temple — le « pays de la Parure » du chapitre 11. (2) LA GRANDE DÉTRESSE ET LA VILLE : Matthieu 24 associe la détresse à Jérusalem et à la suite du monde ; les publications appliquent la prophétie à l'échelle universelle. (3) LES DÉLIVRANCES HISTORIQUES : la Judée sous Antiochus IV (délivrance maccabéenne, 164), puis Jérusalem en 70 de notre ère (Luc 21:20-24) — deux temps où le lecteur peut mesurer ce que « détresse » veut dire dans l'histoire du peuple. (4) LA MONTAGNE SAINTE ET LA MER : les repères du chapitre 11 (Méditerranée, Sion) restent l'arrière-plan géographique de tout le dernier bloc du livre. (5) LA DIASPORA ET LA DÉLIVRANCE : les livres des Maccabées et Josèphe décrivent la dispersion et les retournements de la population juive — la promesse d'un peuple épargné prend tout son relief dans cette géographie mouvementée.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES FORENSIQUES ET ARCHÉOLOGIQUES. (1) LES MANUSCRITS : les fragments de Daniel retrouvés à Qumrân (dont 4QDan) montrent la circulation du livre à une époque proche des événements et permettent de discuter l'histoire du texte ; le chapitre 12 y est attesté. (2) LES TÉMOINS ANCIENS DU TEXTE : la Septante, Théodotion et la tradition massorétique donnent des leçons comparables pour Daniel 12:1, ce qui permet une analyse textuelle fine du verset. (3) L'HISTOIRE DE LA PERSÉCUTION : les vestiges archéologiques de la Judée hellénistique (autels, garnisons, céramique) fournissent le cadre matériel du « temps de détresse » historique. (4) LA CHRONOLOGIE : les dates de 167 et 164 sont établies par les sources littéraires et confirmées par la documentatio séleucide — grille de contrôle pour l'historien. (5) LES FAITS MODERNES CITÉS PAR LA PUBLICATION : les persécutions et les interdictions subies par les serviteurs de Dieu au XXe siècle sont documentées par des sources historiques indépendantes ; la publication les cite nommément, et la fiche se contente de les rapporter. (6) PRUDENCE : aucune des données de ce verset n'est transformée ici en date ou en scénario.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>DANIEL 11:45 : LA FIN DU ROI DU NORD → « EN CE TEMPS-LÀ » → MIKAËL, LE GRAND PRINCE, « QUI SE TIENT LÀ » EN FAVEUR DES FILS DU PEUPLE (Jésus dans son rôle de Chef céleste) → « MIKAËL SE LÈVERA » : L'ÉVÉNEMENT (Révélation 12:7) → « UN TEMPS DE DÉTRESSE TEL QU'IL N'Y EN A JAMAIS EU » (Matthieu 24:21, 22) → « TON PEUPLE ÉCHAPPERA » → « TOUS CEUX QUI SE TROUVENT INSCRITS DANS LE LIVRE »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre « À venir », comme le registre, avec les références Matthieu 24:21, 22 et Révélation 12:7. IDENTIFICATION : la fiche présente Mikaël comme identifié à Jésus dans son rôle de Chef céleste, selon la publication citée ; elle rappelle que le nom Mikaël apparaît trois fois comme tel dans la Bible (Daniel 10:13, 21 ; 12:1 ; Jude 9) et une quatrième en Révélation 12:7, et qu'elle ne prétend pas épuiser les débats des traditions sur les anges. DATES : la seule date évoquée pour l'application moderne est celle que donne la publication citée (1914) ; la fiche ne fixe aucune date pour l'avenir et le dit expressément. LE « LIVRE » : la fiche ne définit pas la procédure de l'inscription, qui n'est pas décrite dans le texte. CE QUE LA FICHE NE DIT PAS : elle n'explique pas ici la résurrection ni les périodes comptées (fiches suivantes), et ne propose aucune interprétation des événements politiques actuels.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Contexte historique du verset : la Judée sous Antiochus IV, détresse et délivrance</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">167-164 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pour la publication citée : le Roi est instauré dans le ciel ; Mikaël « se tient là »</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Épreuve et rétablissement des serviteurs de Dieu, décrits par la même publication</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914-1919</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Mikaël se lèvera » : l'action décisive du Chef céleste ; le temps de détresse sans précédent</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La délivrance de ceux qui sont inscrits dans le livre</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/17">Bible — Exode 17 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/17</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/5">Bible — Juges 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/15">Bible — Job 15 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/12">Bible — Daniel 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/12</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999037">« L'identification des vrais adorateurs au temps de la fin » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999037</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN404 — Mikaël se lève : un temps de détresse tel qu'il n'y en a jamais eu</span><span>Catégorie DN6</span></div></div>
+</article>
+<article class="fiche" id="DN405">
+<div class="visuel"><img src="images/prophe_DN405_resurrection.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN405 · CATÉGORIE DN6</div>
+<h3>Ceux qui dorment dans la poussière se réveilleront : vie éternelle ou honte</h3>
+<div class="ref">Daniel 12:2, 3</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir</span>
+<span class="badge">beaucoup dormir poussière de la terre se réveiller les uns vie éternelle les autres opprobre honte éternelle perspicaces briller splendeur du ciel enseigner la justice multitude étoiles toujours perpétuité (Jean 5:28, 29 ; Actes 24:15)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN405</div><audio controls preload="none" src="audio/fiche_DN405_resurrection.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN405_resurrection.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 12:2, 3</td></tr>
+<tr><td class="d">Statut</td><td>À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>beaucoup dormir poussière de la terre se réveiller les uns vie éternelle les autres opprobre honte éternelle perspicaces briller splendeur du ciel enseigner la justice multitude étoiles toujours perpétuité (Jean 5:28, 29 ; Actes 24:15)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P405 (12:2, 3 : beaucoup de ceux qui dorment se réveilleront : vie éternelle ou honte) ; Jean 5:28, 29 ; Actes 24:15 ; À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>BEAUCOUP… DE CEUX QUI DORMENT… DANS LA POUSSIÈRE… DE LA TERRE… SE RÉVEILLERONT… LES UNS… POUR LA VIE ÉTERNELLE… LES AUTRES… POUR L'OPPROBRE… POUR LA HONTE ÉTERNELLE… CEUX QUI ONT DE LA PERSPICACITÉ… BRILLERONT… COMME LA SPLENDEUR… DU FIRMAMENT… CEUX QUI… RAMÈNENT… BEAUCOUP… À LA JUSTICE… COMME LES ÉTOILES… À TOUJOURS… ET À PERPÉTUITÉ… — WE-RABBIM… ET BEAUCOUP… MI-YESHENEY… DE CEUX QUI DORMENT… ʿAFAR… LA POUSSIÈRE… ʿADAMAH… DE LA TERRE… YAQITSU… SE RÉVEILLERONT… ELEH… LES UNS… LE-ḤAYEY… POUR LA VIE… ʿOLAM… ÉTERNELLE… WE-ELEH… ET LES AUTRES… LA-ḤARAFOT… POUR LES OPPROBRES… LA-DIRʾON… POUR LA RÉPULSION… ʿOLAM… ÉTERNELLE… WE-HA-MASKILIM… ET LES PERSPICACES… YAZHIRU… BRILLERONT… KE-ZOHAR… COMME LA SPLENDEUR… HA-RAQIAʿ… DU FIRMAMENT… U-MATSDIQEY… ET CEUX QUI RENDENT JUSTES… HA-RABBIM… LA MULTITUDE… KA-KOKHAVIM… COMME LES ÉTOILES… LE-ʿOLAM… POUR TOUJOURS… WA-ʿED… ET À PERPÉTUITÉ… — RÉSURRECTION… JEAN 5:28, 29… ACTES 24:15… MATTHIEU 13:43… 1 CORINTHIENS 15… DANIEL 12:13… QUMRÂN… DANIEL… ESPÉRANCE… »</li>
+<li>LES TROIS JUMEAUX — Job 14 : « Si l'homme meurt, revivra-t-il ? » — la question posée au cœur de la souffrance, et la réponse de Job : « tu appellerais, et je te répondrais », l'attente d'un retour de la poussière. Psaume 17 : le psalmiste termine par une confiance unique : « moi, je contemplerai ta face dans la justice ; à mon réveil, je me satisferai de te voir » — le mot « réveil » y est déjà le mot de la résurrection. Psaume 22 : au cœur de l'abandon, le psaume annonce que « tous les repus de la terre mangeront et adoreront » et que la postérité servira Jéhovah — la résurrection se profile dans le chant du juste souffrant.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Daniel 12:2 et 3 est le texte le plus explicite de l'Ancien Testament sur la résurrection : « beaucoup de ceux qui dorment dans la poussière de la terre se réveilleront, les uns pour la vie éternelle, les autres pour l'opprobre, pour la honte éternelle ». Le contexte est celui du verset précédent : le temps de détresse et la délivrance de ceux qui sont inscrits dans le livre. Le texte ne parle pas encore de la manière dont la résurrection aura lieu, il affirme qu'elle aura lieu, et il en distingue deux issues — la vie éternelle et la honte éternelle. Le verset 3 ajoute la contrepartie lumineuse : « ceux qui ont de la perspicacité brilleront comme la splendeur du firmament, et ceux qui ramènent beaucoup à la justice, comme les étoiles, à toujours et à perpétuité ». Le registre retient pour cette entrée Jean 5:28, 29 (Jésus : « tous ceux qui sont dans les sépulcres entendront sa voix ») et Actes 24:15 (Paul : « il y aura une résurrection des justes et des injustes »), et la porte comme « À venir ». La Bibliothèque en ligne, dans le document cité, montre en outre qu'à cette promesse générale s'ajoute, dans la même ligne prophétique, une application particulière : les oints « reprennent vie » au sens spirituel dans le temps de la fin, comme l'annonce Révélation 11:11 avec les deux témoins.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre points. (1) « DORMIR » ET « SE RÉVEILLER » : la Bible emploie l'image du sommeil pour la mort, et celle du réveil pour la résurrection ; le choix des mots dit à la fois la réalité de la mort et la certitude du retour à la vie. (2) « BEAUCOUP » (rabbim) : le mot peut signifier « beaucoup » ou, dans l'usage hébreu tardif, « la multitude », tous ceux qui sont concernés ; les versions françaises traduisent alternativement par « beaucoup » et « un grand nombre », et Jésus, cité par Jean, emploiera « tous ceux qui sont dans les sépulcres ». (3) LES DEUX ISSUES : le texte distingue la vie éternelle et l'opprobre éternel ; les publications de la Bibliothèque en ligne enseignent la résurrection des justes et des injustes et distinguent la vie éternelle du jugement — la fiche s'en tient à ce que dit le texte et renvoie aux passages parallèles (Jean 5:28, 29 ; Actes 24:15) cités par le registre. (4) LES PERSPICACES QUI BRILLENT : la même racine (maskil) désigne, au verset 33 du chapitre 11, les enseignants persécutés qui instruisent la multitude ; ici, la promesse s'accomplit : ils brilleront comme les étoiles. Le lien entre les deux versets est le fil conducteur de toute la fin du livre : la fidélité enseigne, endure, puis est honorée.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : le document « L'identification des vrais adorateurs au temps de la fin » (dp chap. 17) traite Daniel 12 comme le chapitre qui identifie les vrais adorateurs du temps de la fin ; il explique que les serviteurs oints « ont repris vie » au sens spirituel après la période d'épreuve — en lien avec Révélation 11:3, 9, 11, où les deux témoins sont tués puis ranimés après trois jours et demi — et que la prophétie de Daniel 12 indique que les saints ne resteraient pas silencieux mais avaient encore du travail. Le registre, lui, rattache cette entrée de la résurrection à Jean 5:28, 29 et Actes 24:15, c'est-à-dire à l'enseignement de Jésus et de Paul sur la résurrection des justes et des injustes, porté par la Bibliothèque en ligne dans son enseignement sur la résurrection et l'espérance de la vie éternelle. Lecture commune et contexte : les commentaires (Calvin, Keil, la tradition juive médiévale, les études modernes) reconnaissent dans Daniel 12:2 le texte vétérotestamentaire le plus clair sur la résurrection ; plusieurs voient une première ombre dans la crise d'Antiochus IV ; le Nouveau Testament y renvoie explicitement, et Matthieu 13:43 reprend l'image des justes brillant comme le soleil.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Période historique</td><td>Contexte de la crise séleucide : l'espérance de la résurrection est exprimée dans les textes juifs de cette époque (les Maccabées et les écrits de Qumrân en témoignent), et les martyrs y sont vus comme ceux qui attendent la vie</td></tr>
+<tr><td class="d">Temps de la fin</td><td>Selon la publication citée : les serviteurs oints « reprennent vie » au sens spirituel à la fin de la période d'épreuve (Révélation 11:11)</td></tr>
+<tr><td class="d">À venir</td><td>La résurrection des dormeurs de la poussière : « les uns pour la vie éternelle, les autres pour l'opprobre »</td></tr>
+<tr><td class="d">À venir</td><td>Jean 5:28, 29 : ceux qui sont dans les sépulcres entendront la voix du Fils et sortiront</td></tr>
+<tr><td class="d">À venir</td><td>Actes 24:15 : la résurrection des justes et des injustes ; les perspicaces brilleront comme les étoiles</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES ET TEXTUELLES. (1) LE TEXTE ET SA TRADITION : Daniel 12:2-3 est lu de la même façon par la Septante, Théodotion et le texte massorétique dans ses grandes lignes ; les variantes concernent des détails de vocabulaire, non l'affirmation centrale. (2) LES PARALLÈLES BIBLIQUES : Job 14:13-15, Psaume 16:9-11, 17:15, 49:15, 73:24, Isaïe 26:19 — la doctrine de la résurrection s'annonce progressivement dans l'Ancien Testament ; Daniel en donne la formulation la plus nette. (3) LE NOUVEAU TESTAMENT : Jean 5:28, 29 ; 6:39, 40, 44, 54 ; Actes 24:15 ; 1 Corinthiens 15 ; Révélation 20:12-15 — le dossier qui explique comment l'Église primitive a lu Daniel. (4) LES SOURCES JUIVES DE LA PÉRIODE : 2 Maccabées 7 (le martyre des sept frères et l'espérance de la résurrection) et les écrits de Qumrân montrent que cette espérance s'est exprimée précisément à l'époque du chapitre. (5) LES PUBLICATIONS CITÉES : le document sur l'identification des vrais adorateurs développe la lecture spirituelle et l'insère dans l'enseignement sur la résurrection.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA « POUSSIÈRE DE LA TERRE » (ʿafar ʿadamah) : l'expression appartient au langage de la création (Genèse 2:7) et des tombeaux ; elle décrit la condition de l'homme mort, non un lieu. (2) LES SÉPULCRES DE JUDÉE : les tombes rupestres de la Jérusalem hellénistique et romaine — notamment les chambres familiales avec bancs taillés — sont les « sépulcres » dont parle Jésus en Jean 5:28 ; leur archéologie est bien connue. (3) LA « POUSSIÈRE » ET LE MILIEU : dans un pays de pierre et de poussière, l'image du sommeil dans la poussière est immédiatement perceptible ; les cimetières juifs de la vallée du Cédron en donnent encore aujourd'hui la réalité physique. (4) LE FIRMAMENT ET LES ÉTOILES : le verset 3 compare les fidèles à un ciel nocturne de Judée, où la visibilité des astres est proverbiale — l'image fonctionne dans ce paysage précis. (5) LA MULTITUDE CONCERNÉE : la résurrection n'est pas localisée ; l'annonce dépasse toute géographie, ce que le texte souligne précisément en ne nommant aucun lieu.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) L'ARCHÉOLOGIE FUNÉRAIRE DE JUDÉE : les tombes rupestres, les ossuaires et les inscriptions funéraires du IIe siècle av. n. è. au Ier siècle de n. è. documentent les pratiques et les croyances entourant la mort à l'époque où Daniel 12 était lu. (2) LES MANUSCRITS DE QUMRÂN : les fragments de Daniel et les textes sur la résurrection trouvés dans les grottes attestent la circulation et l'interprétation du passage dans les milieux juifs piétistes. (3) LA LITTÉRATURE DES MARTYRS : 2 Maccabées 7 et les traditions qui l'entourent, transmises par les sources juives et chrétiennes, montrent comment la foi en la résurrection a soutenu des hommes et des femmes dans la persécution — un fait historique documenté. (4) LA DOCTRINE ET SA VULGARISATION : les publications de la Bibliothèque en ligne exposent l'enseignement biblique sur la résurrection et la vie éternelle sur la terre comme au ciel, avec les références (Jean 5:28, 29 ; Actes 24:15) reprises par le registre. (5) TEXTES ET TRADUCTION : la comparaison des versions anciennes permet de suivre la manière dont les Églises ont reçu le verset ; la fiche l'utilise pour la critique textuelle. (6) PRUDENCE : aucun élément de cette fiche ne prétend expliquer le mécanisme de la résurrection, qui n'est pas décrit dans le texte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« EN CE TEMPS-LÀ » (v. 1) → « BEAUCOUP DE CEUX QUI DORMENT DANS LA POUSSIÈRE SE RÉVEILLERONT » → DEUX ISSUES : VIE ÉTERNELLE / OPPROBRE ET HONTE ÉTERNELLE (Jean 5:28, 29 ; Actes 24:15) → LES PERSPICACES BRILLENT COMME LA SPLENDEUR DU FIRMAMENT → CEUX QUI RAMÈNENT BEAUCOUP À LA JUSTICE : COMME LES ÉTOILES, POUR TOUJOURS ET À PERPÉTUITÉ → DANIEL 12:13 : « TU TE LÈVERAS POUR TON LOT À LA FIN DES JOURS »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre « À venir », comme le registre, avec Jean 5:28, 29 et Actes 24:15. LA FICHE NE FIXE AUCUNE DATE et ne décrit aucun scénario de la fin. « BEAUCOUP » : la fiche signale l'écart d'usage entre « beaucoup » et « tous » (Jean 5:28) et n'entre pas dans les débats sur le nombre des ressuscités ou sur l'ordre des résurrections, renvoyant aux passages bibliques cités. LES DEUX ISSUES : la fiche rapporte ce que dit le texte (vie / opprobre) et les références du registre ; elle ne développe pas les doctrines particulières du jugement, conformément à la règle du projet de ne présenter que les preuves. LES PERSPICACES : la fiche relie le verset 3 au verset 33 du chapitre 11 (les enseignants persécutés) sans étendre au-delà du texte. L'APPLICATION SPIRITUELLE : elle est présentée comme celle de la publication citée, et non comme un substitut de la résurrection elle-même. CE QUE LA FICHE NE DIT PAS : elle n'explique pas les périodes de jours (fiche suivante) et ne donne aucune précision sur le lieu ou le moment de la résurrection.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'espérance de la résurrection s'exprime dans les textes juifs contemporains de la crise séleucide</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque du livre</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Application citée : les serviteurs oints reprennent vie au sens spirituel (Révélation 11:11)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Temps de la fin</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Beaucoup de ceux qui dorment se réveilleront » : les deux issues, vie ou honte</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jean 5:28, 29 : la voix du Fils, les sépulcres ouverts, la résurrection de vie et celle du jugement</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les perspicaces brilleront comme les étoiles, à toujours et à perpétuité</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/14">Bible — Job 14 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/14</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/17">Bible — Psaume 17 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/17</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/22">Bible — Psaume 22 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/22</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/12">Bible — Daniel 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/12</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999037">« L'identification des vrais adorateurs au temps de la fin » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999037</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN405 — Ceux qui dorment dans la poussière se réveilleront : vie éternelle ou honte</span><span>Catégorie DN6</span></div></div>
+</article>
+<article class="fiche" id="DN406">
+<div class="visuel"><img src="images/prophe_DN406_livre.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN406 · CATÉGORIE DN6</div>
+<h3>Scelle le livre jusqu'au temps de la fin : la vraie connaissance deviendra abondante</h3>
+<div class="ref">Daniel 12:4, 9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">En cours</span>
+<span class="badge">rendre secrètes les paroles sceller le livre jusqu'au temps de la fin beaucoup erreront çà et là la vraie connaissance deviendra abondante (Daniel 12:4, 9 ; compréhension du livre au temps de la fin)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN406</div><audio controls preload="none" src="audio/fiche_DN406_livre.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN406_livre.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 12:4, 9</td></tr>
+<tr><td class="d">Statut</td><td>En cours</td></tr>
+<tr><td class="d">Chronologie</td><td>rendre secrètes les paroles sceller le livre jusqu'au temps de la fin beaucoup erreront çà et là la vraie connaissance deviendra abondante (Daniel 12:4, 9 ; compréhension du livre au temps de la fin)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P406 (12:4, 9 : le livre scellé jusqu'au temps de la fin ; la vraie connaissance deviendra abondante) ; Daniel 12:4, 9 ; En cours</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>RENDS SECRÈTES… LES PAROLES… SCELLE… LE LIVRE… JUSQU'AU TEMPS… DE LA FIN… BEAUCOUP… ERRERONT… ÇÀ ET LÀ… LA VRAIE CONNAISSANCE… DEVIENDRA… ABONDANTE… — WE-ATTAH… ET TOI… DANIEL… SETOM… RENDS SECRÈTES… HA-DEVARIM… LES PAROLES… WE-ḤATOM… ET SCELLE… HA-SEFER… LE LIVRE… ʿAD-ʿET… JUSQU'AU TEMPS… QETS… DE LA FIN… YESHOTETU… ILS ERRERONT… RABBIM… BEAUCOUP… WE-TIRBEH… ET AUGMENTERA… HA-DAʿAT… LA CONNAISSANCE… — WE-YOʾMER… ET IL DIT… LEKH… VA… DANIEL… KI… CAR… SETUMIM… ELLES SONT SECRÈTES… WA-ḤATUMIM… ET SCELLÉES… HA-DEVARIM… LES PAROLES… ʿAD-ʿET… JUSQU'AU TEMPS… QETS… DE LA FIN… — SCELLÉ… 1914… TEMPS DE LA FIN… CONNAISSANCE ABONDANTE… ERRER ÇÀ ET LÀ… RECHERCHE… LIVRE DE DANIEL… COMPRÉHENSION… PROGRESSIVE… »</li>
+<li>LES TROIS JUMEAUX — Psaume 12 : « les paroles de Jéhovah sont des paroles pures, un argent affiné dans un four de terre » ; le psalmiste demande que Dieu garde ses fidèles d'une génération qui parle avec ruse — le livre scellé de Daniel contient précisément ces paroles pures que le temps devait rendre lisibles. Proverbes 2 : « si tu appelles la perspicacité et si tu élèves ta voix vers l'intelligence, si tu la cherches comme l'argent, alors tu comprendras la crainte de Jéhovah et tu trouveras la connaissance de Dieu » — le verset que la promesse de Daniel suppose : la connaissance abondante ne tombe pas sur les indifférents, elle est le fruit d'une recherche. Isaïe 28 : le prophète s'indigne d'un peuple qui ne veut pas écouter, « précepte sur précepte, ligne sur ligne », et annonce que Dieu parlera autrement ; la manière dont la connaissance de Daniel a été progressivement comprise illustre exactement ce que le prophète décrit : un enseignement qui vient par étapes.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Daniel 12:4 ordonne : « quant à toi, Daniel, rends secrètes les paroles, et scelle le livre, jusqu'au temps de la fin. Beaucoup erreront çà et là, et la vraie connaissance deviendra abondante. » Le verset 9 répète l'ordre après l'énoncé des périodes : « va, Daniel, car les paroles sont rendues secrètes et scellées jusqu'au temps de la fin ». Le contexte immédiat est donc l'ordre de sceller le livre et l'annonce que cette fermeture a une limite : elle dure « jusqu'au temps de la fin ». La Bibliothèque en ligne appuie sur ces deux versets toute sa lecture du livre de Daniel pour notre époque : le document « Les jours prophétiques annoncés par Daniel, et notre foi » rappelle que, si le livre ne devait être descellé qu'au temps de la fin, alors au moins certaines de ses prophéties concernent cette époque ; il identifie le temps de la fin comme commençant en 1914, lorsque les temps fixés des nations se sont achevés, et il décrit l'abondance de la vraie connaissance comme le fruit de la compréhension alors donnée au peuple de Dieu. Le registre porte cet élément comme « En cours » — c'est le seul des cinq qui ne soit pas marqué « À venir ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois points. (1) L'ORDRE DE SCELLER : dans le livre de Daniel, sceller signifie à la fois préserver le texte et en réserver le sens ; le prophète reçoit l'ordre de ne pas publier l'explication complète de ce qu'il vient d'entendre. Le détail est important : ce n'est pas le livre qui est introuvable, c'est son intelligence. (2) « ERRER ÇÀ ET LÀ » : le verbe hébreu (shotet) décrit un mouvement de va-et-vient, comme un parcours de recherche ; les traductions françaises hésitent entre « beaucoup erreront çà et là », « plusieurs le liront » et « beaucoup le parcourront » — l'idée commune est celle d'un examen répété, dont le résultat est l'abondance de la connaissance. (3) LE TEMPS DE LA FIN : l'expression n'est pas un point final, c'est une période ; le texte dit que le livre reste scellé jusque-là, ce qui implique qu'il cesse alors d'être scellé. C'est cette logique qui conduit la publication citée à dater du « temps de la fin » l'ouverture du sens — et à considérer que la « vraie connaissance » abondante en est la marque mesurable.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : le document « Les jours prophétiques annoncés par Daniel, et notre foi » explique que la plupart des commentateurs pensent que les prophéties de Daniel se sont presque entièrement réalisées avant la naissance de Jésus Christ, mais que, si le livre devait être scellé jusqu'au temps de la fin, il devait au contraire comporter des prophéties relatives à cette époque ; il cite Daniel 12:4 et rapproche ce verset de Daniel 2:28, 8:17 et 10:14, qui parlent aussi du temps de la fin. Il situe ce temps à partir de 1914, lorsque les temps fixés des nations se sont achevés et que le Royaume davidique a été restauré dans les cieux, et il insiste sur le fait que « la vraie connaissance deviendra abondante » : la compréhension du livre de Daniel, de la Révélation et de l'ensemble des prophéties s'est développée depuis lors chez ceux qui les étudient avec l'aide de Dieu. Lecture commune et contrepoint : de nombreux exégètes appliquent ces versets à la préservation et à la transmission du texte jusqu'à la période hellénistique puis chrétienne, en lisant « beaucoup erreront çà et là » comme une recherche inquiète ou comme le va-et-vient de ceux qui « chercheront à comprendre » (version juive du livre de Daniel) ; d'autres y voient un simple encouragement à garder le livre pour l'avenir. La fiche expose les deux lectures en les attribuant, et retient celle de la publication citée pour le statut « En cours » du registre.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Depuis l'époque du prophète</td><td>Le livre est conservé et transmis ; sa pleine intelligence reste réservée — l'ordre de sceller est suivi</td></tr>
+<tr><td class="d">1914</td><td>Pour la publication citée : achèvement des temps fixés des nations et début du « temps de la fin »</td></tr>
+<tr><td class="d">Après 1914</td><td>Développement de la compréhension des prophéties de Daniel et de la Révélation ; publications et étude régulière du livre</td></tr>
+<tr><td class="d">En cours</td><td>« Beaucoup erreront çà et là, et la vraie connaissance deviendra abondante » : l'examen du livre se poursuit et la connaissance est largement répandue</td></tr>
+<tr><td class="d">À venir</td><td>Le temps de la fin s'achève ; les éléments encore scellés trouvent leur accomplissement (fiches 12:1-3 et 12:7-12)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES ET TEXTUELLES. (1) L'HISTOIRE DU TEXTE : la diffusion précoce du livre de Daniel dans des copies retrouvées à Qumrân, puis dans la Septante et les versions grecques, montre que le livre était lu et recopié ; la préservation du texte est elle-même un phénomène documentaire. (2) L'EXÉGÈSE ANCIENNE ET LA QUESTION DU SENS : Porphyre, au IIIe siècle, soutint que le livre avait été écrit après les faits ; Jérôme lui opposa la tradition d'une lecture prophétique — la discussion elle-même prouve la présence continue du livre et l'attention portée à son sens. (3) LES COMMENTAIRES ISLAMIQUES ET MÉDIÉVAUX : le livre de Daniel a été lu dans plusieurs traditions ; l'histoire de la « vraie connaissance » qui abonde est donc aussi une histoire de la réception du texte. (4) LES PUBLICATIONS CITÉES : « Les jours prophétiques annoncés par Daniel, et notre foi » fournit les arguments utilisés ici et rappelle comment le retour à l'étude rigoureuse des Écritures, au XIXe et au XXe siècle, a produit une compréhension renouvelée des prophéties. (5) LE MOUVEMENT HISTORIQUE : la diffusion massive de la Bible et des publications d'étude biblique à l'époque moderne, dans des centaines de langues, constitue un fait mesurable — et c'est à cette abondance que la lecture citée relie la prophétie.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA TRANSMISSION DU TEXTE : les copies de Daniel ont été trouvées à Qumrân, en Égypte (papyrus), dans le monde syriaque, éthiopien et latin — la carte des manuscrits accompagne la carte des traductions. (2) LES LANGUES ET LES PAYS : le livre passe de l'araméen et de l'hébreu au grec, puis au syriaque, copte, latin, arabe ; les milieux où il est étudié se déplacent du Proche-Orient à la Méditerranée entière. (3) LES FOYERS D'ÉTUDE MODERNES : les centres de recherche biblique — universités et instituts — et le mouvement de traduction biblique forment un réseau mondial dont la géographie est aujourd'hui documentée : plusieurs milliers de langues disposent de portions de la Bible. (4) LES ROUTES DE DIFFUSION : les routes commerciales et missionnaires ont porté les textes bibliques vers l'Afrique, l'Asie et les Amériques ; les archives des sociétés bibliques permettent d'en suivre l'expansion. (5) LES CARTES DE DIFFUSION : les statistiques de traduction et de distribution manifestent, en termes géographiques, ce que le texte appelle « la vraie connaissance deviendra abondante ».</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA PAPYROLOGIE ET LA CODICOLOGIE : l'étude matérielle des manuscrits — papyrus, parchemins, codex — mesure la transmission du texte ; les techniques d'imagerie multispectrale permettent aujourd'hui de lire des passages effacés. (2) LA LINGUISTIQUE COMPARÉE : les études d'araméen et d'hébreu de Daniel éclairent le vocabulaire de « sceller » (ḥatam) et de « secret » (setom) dans les usages juridiques du Proche-Orient (contrats scellés, sceaux de sécurité). (3) L'HISTOIRE DES SCIENCES ET DU MOYEN ÂGE : la copie des manuscrits dans les monastères, puis l'imprimerie, puis la traduction moderne, constituent une chaîne documentée ; chaque étape réduit le coût de l'accès au texte. (4) LA DIFFUSION MODERNE : la traduction de la Bible en des centaines de langues et sa mise à disposition gratuite en ligne — y compris sur jw.org et dans la Bibliothèque en ligne utilisée pour ces fiches — est un fait vérifiable, documenté par les sites et les catalogues. (5) LA MÉTHODE : la fiche distingue soigneusement le fait mesurable (augmentation de la circulation et de la compréhension du texte) de l'interprétation prophétique (que ce fait est l'accomplissement annoncé) ; elle attribue l'interprétation à la publication citée et ne l'impose pas.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>DANIEL REÇOIT L'ORDRE : « RENDS SECRÈTES LES PAROLES, SCELLE LE LIVRE » (12:4, 9) → LE LIVRE EST TRANSMIS MAIS SCELLÉ QUANT AU SENS → « JUSQU'AU TEMPS DE LA FIN » (1914 pour la publication citée) → « BEAUCOUP ERRERONT ÇÀ ET LÀ » : EXAMEN, ÉTUDE, RECHERCHE → « LA VRAIE CONNAISSANCE DEVIENDRA ABONDANTE » → COMPRÉHENSION DES PROPHÉTIES DE DANIEL ET DE LA RÉVÉLATION → ÉTAT DU REGISTRE : EN COURS → CE QUI RESTE SCELLÉ S'ACCOMPLIT AU TERME (12:7-12)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre « En cours », comme le registre (Daniel 12:4, 9). LA FICHE NE FIXE AUCUNE DATE POUR L'AVENIR. L'INTERPRÉTATION PROPOSÉE — début du temps de la fin en 1914 — est celle de la publication citée ; la fiche l'attribue explicitement et rapporte en regard la lecture historique plus courante (transmission du texte et recherche de sens). LE VERBE « ERRER » : la fiche indique les plusieurs traductions possibles (« errer çà et là », « parcourir », « examiner ») et ne tranche pas au-delà de ce que le texte supporte. « LA VRAIE CONNAISSANCE » : la fiche ne quantifie pas l'abondance annoncée et ne prétend pas qu'elle soit mesurable dans un pays ou un groupe ; elle signale seulement ce qui est vérifiable (la diffusion des textes et de leur étude). LA FICHE NE CONFOND PAS les deux niveaux : le scellement du livre et l'état du registre « En cours » concernent la compréhension du sens, non la validité du texte. CE QUE LA FICHE NE DIT PAS : elle ne traite pas du contenu des périodes chiffrées (fiche suivante) et n'explique pas la suite immédiate du chapitre (12:13, la promesse faite à Daniel).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ordre de sceller les paroles et le livre : le sens reste réservé</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque du prophète</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Copies, traductions, commentaires ; le livre de Daniel se répand et devient un texte de référence</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Transmission ancienne</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pour la publication citée : le temps de la fin commence ; la compréhension des prophéties se renouvelle</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Beaucoup erreront çà et là, et la vraie connaissance deviendra abondante » : étude et diffusion larges du livre</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin du temps de la fin ; accomplissement de ce qui reste scellé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/12">Bible — Psaume 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/2">Bible — Proverbes 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/20">Bible — Genèse 20 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/20</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/12">Bible — Daniel 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/12</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1993802">« Les jours prophétiques annoncés par Daniel, et notre foi » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1993802</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN406 — Scelle le livre jusqu'au temps de la fin : la vraie connaissance deviendra abondante</span><span>Catégorie DN6</span></div></div>
+</article>
+<article class="fiche" id="DN407">
+<div class="visuel"><img src="images/prophe_DN407_jours.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN407 · CATÉGORIE DN6</div>
+<h3>Un temps, des temps et une moitié : 1 290 jours et le bonheur des 1 335 jours</h3>
+<div class="ref">Daniel 12:7, 11, 12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir</span>
+<span class="badge">temps des temps et une moitié fracasser la vigueur du peuple saint 1 290 jours depuis la suppression du constant et la chose immonde 1 335 jours heureux celui qui reste dans l'attente (les périodes du temps de la fin selon les publications)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN407</div><audio controls preload="none" src="audio/fiche_DN407_jours.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN407_jours.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 12:7, 11, 12</td></tr>
+<tr><td class="d">Statut</td><td>À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>temps des temps et une moitié fracasser la vigueur du peuple saint 1 290 jours depuis la suppression du constant et la chose immonde 1 335 jours heureux celui qui reste dans l'attente (les périodes du temps de la fin selon les publications)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P407 (12:7, 11, 12 : un temps, des temps et un demi-temps ; 1 290 jours ; heureux celui qui attend 1 335 jours) ; À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>J'ENTENDIS… L'HOMME VÊTU DE LIN… QUI ÉTAIT… AU-DESSUS DES EAUX… LEVA… SA MAIN DROITE… ET SA MAIN GAUCHE… VERS LES CIEUX… JURA… PAR CELUI QUI VIT ÉTERNELLEMENT… CE SERA… POUR UN TEMPS… DES TEMPS… ET UNE MOITIÉ… ET… QUAND… ON AURA ACHEVÉ… DE FRACASSER… LA VIGUEUR… DU PEUPLE SAINT… TOUTES CES CHOSES… PRENDRONT FIN… ET DEPUIS LE TEMPS… OÙ… SERA ÔTÉ… LE CONSTANT… ET MIS… LA CHOSE IMMONDE… QUI CAUSE LA DÉSOLATION… IL Y AURA… MILLE DEUX CENT QUATRE-VINGT-DIX… JOURS… HEUREUX… CELUI QUI RESTE… DANS L'ATTENTE… ET QUI ARRIVE… AUX… MILLE TROIS CENT TRENTE-CINQ… JOURS… — MOʿED… MOʿADIM… WA-ḤETSI… ʿAD… KALOT… NAPETS… ʿAM-QODESH… 1 260… 1 290… 1 335… 1914… JUIN 1918… JANVIER 1919… SEPTEMBRE 1922… MAI 1926… LA HARPE DE DIEU… DÉLIVRANCE… »</li>
+<li>LES TROIS JUMEAUX — Exode 17 : le récit insiste sur les mains de Moïse qui se fatiguent et qu'on doit soutenir — l'endurance n'est pas un héroïsme solitaire, elle est soutenue ; les périodes de Daniel 12, comme les 1 335 jours, récompensent précisément ceux qui « restent dans l'attente ». 1 Samuel 17 : devant Goliath, David dit que la bataille appartient à Jéhovah, et le récit oppose une attente patiente à l'intimidation — la même disposition que le « heureux celui qui reste dans l'attente » du verset 12. 2 Rois 2 : Élisée suit Élie jusqu'au bout et demande une double part de son esprit, en disant « aussi vrai que Jéhovah est vivant, je ne te quitterai pas » ; la valeur d'une succession se mesure à la persévérance de celui qui attend : c'est exactement la tonalité des derniers versets de Daniel.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les versets 7, 11 et 12 sont les trois passages chiffrés du chapitre : l'ange qui jure sur le fleuve annonce « un temps, des temps et une moitié », puis, après la question de Daniel, l'ange donne « 1 290 jours » depuis le moment où le sacrifice constant est supprimé et la chose immonde mise en place, et enfin déclare « heureux celui qui reste dans l'attente et qui arrive aux 1 335 jours ». Le registre porte cette entrée comme « À venir ». La publication « Les jours prophétiques annoncés par Daniel, et notre foi » consacre à ces périodes l'essentiel de son étude et les date dans le cadre du temps de la fin : la période « un temps, des temps et une moitié », comptée en jours, correspond aux 1 260 jours du témoignage du peuple de Dieu « vêtu de sacs », de décembre 1914 à juin 1918 ; les 1 290 jours, comptés depuis la suppression du « sacrifice continuel » au sens spirituel (juin 1918) et depuis la proposition de la Société des Nations en janvier 1919, aboutissent en septembre 1922 ; les 1 335 jours, à partir de septembre 1922, atteignent la fin du printemps 1926. Avant d'entrer dans ces calculs, la fiche rappelle ce que le texte dit lui-même et ce que d'autres lectures en font.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE SERMENT SUR LE FLEUVE : l'ange « vêtu de lin » se tient au-dessus des eaux du fleuve (le Tigre ou l'Oulaï) et jure par celui qui vit éternellement — la solennité est exceptionnelle dans la Bible ; elle souligne que ce qui suit concerne des choses fixées. (2) « UN TEMPS, DES TEMPS ET UNE MOITIÉ » : la formule, déjà employée en Daniel 7:25, désigne trois ans et demi si l'on compte « un temps » pour un an ; elle est reprise en Révélation 12:14. (3) DEUX POINTS DE DÉPART DIFFÉRENTS : la période des 1 260 jours part de la vigueur du peuple saint fracassée ; celle des 1 290 jours part de l'abolition du constant et de l'installation de la chose immonde — deux événements liés mais distincts, ce qui explique les écarts entre les nombres (1 260, 1 290, 1 335 jours, soit trois ans et demi, un mois de plus, un mois et demi de plus). (4) LE BONHEUR DE L'ATTENTE : le texte ne se contente pas de compter, il bénit. Les deux mots « reste dans l'attente » et « arrive » disent la même chose du point de vue de la patience persévérante : ce qui est promis n'est pas la connaissance des dates, mais le bonheur de ceux qui tiennent bon jusqu'au bout.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : la publication « Les jours prophétiques annoncés par Daniel, et notre foi » fournit les résultats suivants, que la fiche rapporte : les 1 260 jours correspondent à la période où le reste oint a prêché « vêtu de sacs », de décembre 1914 jusqu'à la condamnation du 21 juin 1918 qui a mis fin à la prédication publique organisée, avec la libération du 26 mars 1919 comme relèvement (en parallèle avec les « trois jours et demi » de Révélation 11:9, 11) ; les 1 290 jours, à partir de la suppression du sacrifice continuel au sens spirituel en juin 1918 et de la proposition de la Société des Nations en janvier 1919, aboutissent en septembre 1922, à l'assemblée de Cedar Point où les Étudiants de la Bible se sont mis à proclamer avec courage les jugements de Dieu ; les 1 335 jours, à partir de septembre 1922, s'achèvent à la fin du printemps 1926, avec l'assemblée de Londres, la résolution « Un témoignage aux conducteurs des peuples » et la publication du livre Délivrance, qui a permis au peuple de Dieu de regarder en avant. La même publication précise que ces 1 335 jours ont apporté le bonheur à ceux qui ont enduré et qui ont attendu. Lecture commune et contrepoint : les commentateurs historiques rapportent ces nombres à la persécution d'Antiochus IV (1260 ou 1290 ou 1335 jours avant la mort du roi et la paix rendue aux Juifs) ou à des périodes symboliques ; d'autres calculs circulent dans d'autres traditions (années 1 335, date de 691 et de la coupole, etc.). La fiche expose le calcul de la publication citée pour l'accomplissement enregistré au registre, signale les lectures historiques comme contexte et s'abstient de tout calcul propre.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Décembre 1914</td><td>Début de la période « un temps, des temps et une moitié » : les serviteurs de Dieu prêchent vêtus de sacs, en butte à l'opposition</td></tr>
+<tr><td class="d">21 juin 1918</td><td>Condamnation du président et des administrateurs de la Watch Tower and Tract Society : la prédication organisée est arrêtée — fin de la période de 1 260 jours</td></tr>
+<tr><td class="d">26 mars 1919</td><td>Libération puis disculpation ; le reste oint se réorganise : le « sacrifice continuel » au sens spirituel reprend</td></tr>
+<tr><td class="d">Septembre 1922</td><td>Fin des 1 290 jours : assemblée de Cedar Point, proclamation courageuse des jugements de Dieu</td></tr>
+<tr><td class="d">Fin du printemps 1926</td><td>Fin des 1 335 jours : assemblée de Londres, résolution et livre Délivrance — « heureux celui qui reste dans l'attente »</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES ET DOCUMENTAIRES. (1) LES FAITS DE 1914-1919 : la Première Guerre mondiale, la publication du Photo-Drame de la Création, la mort de Charles Russell en 1916, les emprisonnements et condamnations de 1918, la libération du 26 mars 1919 sont des faits documentés par l'histoire et par les archives des publications citées. (2) 1922 : l'assemblée de Cedar Point (septembre 1922) et son mot d'ordre (« Annoncez, annoncez, annoncez le Roi et son Royaume ») sont attestés dans les comptes rendus de l'époque. (3) 1925-1926 : le développement de la radio WBBR, l'article « La naissance de la nation », la Tour de Garde du 1er janvier 1926 et l'assemblée de Londres de mai 1926 avec le livre Délivrance sont datés et documentés par la publication citée. (4) LA QUESTION DU « SACRIFICE CONTINUEL » : la publication explique qu'il s'agit du sacrifice de louange spirituel mentionné en Hébreux 13:15, et que sa suppression en juin 1918 correspond à l'interruption de la prédication organisée ; c'est cette clé qui permet le calcul des 1 290 jours à partir de janvier 1919 (proposition de la Société des Nations). (5) LES DÉBATS : d'autres lectures existent — historiques, symboliques ou calculées autrement — et la fiche les signale ; elle ne prétend pas trancher les débats sur les systèmes chronologiques, mais rapporte celui de la publication, qui correspond à l'entrée du registre.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE FLEUVE DU SERMENT : Daniel 12:5-7 situe la scène auprès du fleuve — le Tigre ou l'Oulaï, selon les notes — avec des hommes sur les deux rives ; ce décor explique le geste de l'ange qui jure vers les cieux au-dessus des eaux. (2) LES LIEUX DES ÉVÉNEMENTS CITÉS : Londres, Cedar Point et New York — les centres des publications citées au début du XXe siècle — forment la carte concrète de l'accomplissement proposé. (3) LA SOCIÉTÉ DES NATIONS : Genève, où le projet prend corps en 1919-1920 ; la ville symbolise la « chose immonde » au sens où la publication l'explique (une organisation présentée comme l'espoir de paix à la place du Royaume). (4) L'ÉTENDUE DU TÉMOIGNAGE : les Étudiants de la Bible sont alors présents en Europe, en Amérique du Nord et en Australasie ; la période d'épreuve touche ces pays selon le cours de la Première Guerre mondiale. (5) LA DIFFUSION : la radio, les assemblées, les brochures circulent d'un continent à l'autre, ce qui matérialise l'idée d'un peuple dispersé mais uni dans la même attente.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET CALENDAIRES. (1) LE CALENDRIER DES 1 260 JOURS : trois ans et demi en mois de trente jours équivalent à 1 260 jours (42 mois) ; l'arithmétique est ancienne et attestée dans les textes bibliques et mésopotamiens. (2) LES ÉCARTS DE TRENTE ET DE QUARANTE-CINQ : 1 290 jours = 1 260 + 30 (un mois), 1 335 jours = 1 290 + 45 (un mois et demi) ; les publications relèvent cette progression et l'expliquent par des points de départ et des paliers distincts. (3) LES DATES HISTORIQUES : le 21 juin 1918, le 26 mars 1919, septembre 1922 et mai 1926 sont des dates documentées, et les intervalles calculés correspondent aux années 1919-1922 et 1922-1926 dans le calendrier grégorien. (4) LA CHRONOLOGIE COMPARÉE : les historiens du mouvement des Étudiants de la Bible replacent ces événements dans le contexte de la Première Guerre mondiale et de l'entre-deux-guerres, ce qui rend les dates contrôlables indépendamment de l'interprétation. (5) LA MÉTHODE DE LA FICHE : distinguer les faits datés (vérifiables) du calcul prophétique (qui relève de l'interprétation de la publication), et refuser toute extrapolation vers l'avenir. (6) AUCUNE DATE FUTURE n'est proposée, conformément à la règle du projet et au statut « À venir » de l'entrée.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE SERMENT AU-DESSUS DES EAUX (12:7) → « UN TEMPS, DES TEMPS ET UNE MOITIÉ » = 1 260 JOURS → POUR LA PUBLICATION CITÉE : DÉCEMBRE 1914 → 21 JUIN 1918 (FIN DE LA PRÉDICATION ORGANISÉE) → 26 MARS 1919 : RELÈVEMENT → « 1 290 JOURS » (12:11) : JANVIER 1919 → SEPTEMBRE 1922 (ASSEMBLÉE DE CEDAR POINT) → « 1 335 JOURS » (12:12) : SEPTEMBRE 1922 → FIN DU PRINTEMPS 1926 (ASSEMBLÉE DE LONDRES, LIVRE DÉLIVRANCE) → « HEUREUX CELUI QUI RESTE DANS L'ATTENTE »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre « À venir », comme le registre, et n'ajoute aucune date pour l'avenir. LES CALCULS : ceux exposés sont ceux de la publication citée ; la fiche les attribue à chaque étape et signale que d'autres lectures existent (application à la persécution d'Antiochus IV, lectures symboliques, calculs d'autres traditions). LE « SACRIFICE CONTINUEL » : la fiche rapporte l'explication de la publication (le sacrifice spirituel de louange, Hébreux 13:15) et ne l'impose pas comme unique lecture du terme hébreu tamid, qui désigne d'abord le sacrifice quotidien du temple. LA « CHOSE IMMONDE » : la fiche rappelle que, dans l'accomplissement historique du chapitre 11, l'expression désigne l'autel de Zeus de 167 avant notre ère (Matthieu 24:15 reprenant l'expression), et que la publication citée l'applique à la Société des Nations dans le temps de la fin ; les deux niveaux sont distingués. LES DATES DE 1914-1926 : elles sont rapportées comme des faits historiques datés et comme le calcul de la publication ; la fiche ne les présente pas comme un calendrier de l'avenir. CE QUE LA FICHE NE DIT PAS : elle ne traite pas du verset 13 (la part promise à Daniel) ni des autres périodes du livre de Daniel, déjà traitées dans les vagues précédentes.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Début des 1 260 jours : prédication « vêtue de sacs » du reste oint</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Décembre 1914</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Condamnation des responsables : fin de la prédication organisée — fin des 1 260 jours</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">21 juin 1918</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Libération et réorganisation ; janvier 1919 : proposition de la Société des Nations — début des 1 290 jours</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">26 mars 1919</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin des 1 290 jours : assemblée de Cedar Point — proclamation courageuse des jugements de Dieu</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Septembre 1922</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin des 1 335 jours : assemblée de Londres, résolution et livre Délivrance — « heureux celui qui reste dans l'attente »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin du printemps 1926</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/30">Bible — Deutéronome 30 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/30</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/17">Bible — 1 Samuel 17 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/17</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/2">Bible — 2 Rois 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/12">Bible — Daniel 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/12</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1993802">« Les jours prophétiques annoncés par Daniel, et notre foi » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1993802</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999037">« L'identification des vrais adorateurs au temps de la fin » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999037</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN407 — Un temps, des temps et une moitié : 1 290 jours et le bonheur des 1 335 jours</span><span>Catégorie DN6</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie DN6</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>DN403 — Le roi qui se grandit au-dessus de tout dieu : le dieu des forteresses et la fin sans secours</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Contexte historique : culte de Zeus Olympios imposé, temples pillés, mort en Perse en 164</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Antiochus IV, 175-164 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le roi du nord change d'identité au fil des décennies : Allemagne, puis bloc communiste, puis puissance à préciser</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Temps de la fin — phase moderne</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Poussée » du roi du sud : la rivalité reprend ouvertement</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Invasion par chars, cavaliers et nombreux navires ; entrée dans le pays de la Parure ; Égypte dominée</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nouvelles du levant et du nord ; les tentes-palais entre la mer et la montagne sainte ; la fin sans secours</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>DN404 — Mikaël se lève : un temps de détresse tel qu'il n'y en a jamais eu</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Contexte historique du verset : la Judée sous Antiochus IV, détresse et délivrance</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">167-164 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pour la publication citée : le Roi est instauré dans le ciel ; Mikaël « se tient là »</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Épreuve et rétablissement des serviteurs de Dieu, décrits par la même publication</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914-1919</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Mikaël se lèvera » : l'action décisive du Chef céleste ; le temps de détresse sans précédent</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La délivrance de ceux qui sont inscrits dans le livre</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>DN405 — Ceux qui dorment dans la poussière se réveilleront : vie éternelle ou honte</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'espérance de la résurrection s'exprime dans les textes juifs contemporains de la crise séleucide</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque du livre</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Application citée : les serviteurs oints reprennent vie au sens spirituel (Révélation 11:11)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Temps de la fin</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Beaucoup de ceux qui dorment se réveilleront » : les deux issues, vie ou honte</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jean 5:28, 29 : la voix du Fils, les sépulcres ouverts, la résurrection de vie et celle du jugement</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les perspicaces brilleront comme les étoiles, à toujours et à perpétuité</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>DN406 — Scelle le livre jusqu'au temps de la fin : la vraie connaissance deviendra abondante</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ordre de sceller les paroles et le livre : le sens reste réservé</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque du prophète</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Copies, traductions, commentaires ; le livre de Daniel se répand et devient un texte de référence</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Transmission ancienne</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pour la publication citée : le temps de la fin commence ; la compréhension des prophéties se renouvelle</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Beaucoup erreront çà et là, et la vraie connaissance deviendra abondante » : étude et diffusion larges du livre</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin du temps de la fin ; accomplissement de ce qui reste scellé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>DN407 — Un temps, des temps et une moitié : 1 290 jours et le bonheur des 1 335 jours</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Début des 1 260 jours : prédication « vêtue de sacs » du reste oint</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Décembre 1914</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Condamnation des responsables : fin de la prédication organisée — fin des 1 260 jours</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">21 juin 1918</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Libération et réorganisation ; janvier 1919 : proposition de la Société des Nations — début des 1 290 jours</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">26 mars 1919</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin des 1 290 jours : assemblée de Cedar Point — proclamation courageuse des jugements de Dieu</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Septembre 1922</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin des 1 335 jours : assemblée de Londres, résolution et livre Délivrance — « heureux celui qui reste dans l'attente »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin du printemps 1926</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR — Jérémie (10) — Le livre de la consolation : plaie guérie et retour promis</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR</h1>
+<h2>Jérémie (10) — Le livre de la consolation : plaie guérie et retour promis</h2>
+<p class="intro">Le livre de la consolation (Jr 30–31) se déploie : la plaie déclarée inguérissable sera guérie par Jéhovah lui-même (JR235), la ville sera rebâtie sur son tell (JR236), les vignes reverdiront sur les montagnes de Samarie (JR237), les dispersés reviendront du nord dans la joie (JR238), Rachel cessera de pleurer car son travail sera récompensé (JR239), et Éphraïm le veau indompté reviendra en gémissant vers son Père (JR240).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR235">JR235</a>
+<a href="#JR236">JR236</a>
+<a href="#JR237">JR237</a>
+<a href="#JR238">JR238</a>
+<a href="#JR239">JR239</a>
+<a href="#JR240">JR240</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR235"><img src="images/prophe_JR235_plaie.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR235</div>
+<h3><a href="#JR235">« Je te rendrai la santé » : la plaie inguérissable sera guérie</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR236"><img src="images/prophe_JR236_ville.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR236</div>
+<h3><a href="#JR236">« La ville sera rebâtie sur son tell » : Jacob rétabli</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR237"><img src="images/prophe_JR237_vignes.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR237</div>
+<h3><a href="#JR237">« Tu planteras des vignes sur les montagnes de Samarie »</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR238"><img src="images/prophe_JR238_rassemble.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR238</div>
+<h3><a href="#JR238">« Je changerai leur deuil en joie » : rassemblés du pays du nord</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR239"><img src="images/prophe_JR239_rachel.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR239</div>
+<h3><a href="#JR239">« Rachel pleure ses fils » : ton travail sera récompensé</a></h3>
+<div class="meta">Accomplie (1er accomplissement)</div></div></div>
+<div class="carte">
+<a class="img" href="#JR240"><img src="images/prophe_JR240_ephraim.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR240</div>
+<h3><a href="#JR240">Éphraïm gémit comme un veau indompté : « Fais-moi revenir »</a></h3>
+<div class="meta">Accomplie / À venir</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR235">
+<div class="visuel"><img src="images/prophe_JR235_plaie.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR235 · CATÉGORIE JR</div>
+<h3>« Je te rendrai la santé » : la plaie inguérissable sera guérie</h3>
+<div class="ref">Jérémie 30:12-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Plaie guérie (ainsi → dit → Jéhovah → point → remède → maladie → blessure → incurable → personne → plaider → cause → ulcère)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR235</div><audio controls preload="none" src="audio/fiche_JR235_plaie.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR235_plaie.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 30:12-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Plaie guérie (ainsi → dit → Jéhovah → point → remède → maladie → blessure → incurable → personne → plaider → cause → ulcère)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P235 (30:12-17 : plaie inguérissable, puis guérison) ; accomplissement Jr 30:17 ; retour 537</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AINSI… JÉHOVAH… POINT… REMÈDE… MALADIE… BLESSURE… INCURABLE… PERSONNE… PLAIDER… CAUSE… ULCÈRE… MOYEN… GUÉRIR… AMANTS… OUBLIÉE… FRAPPÉE… ENNEMI… PUNIE… CRUEL. » (30:12-14 — cruel !)</li>
+<li>« POURQUOI… CRIES… MALADIE… DOULEUR… INCURABLE… GRANDE… CULPABILITÉ… NOMBREUX… PÉCHÉS… FAIT… CELA… DÉVORERONT… DÉVORÉS… CAPTIVITÉ… IRONT… PILLENT… PILLAGE. » (30:15-16 — pillage !)</li>
+<li>« RENDRAI… SANTÉ… GUÉRIRAI… BLESSURES… DÉCLARE… JÉHOVAH… TRAITÉE… BANNI… SION… PERSONNE… SOUCIE… PLAIE… MORTELLE… MÉDECIN… DIVIN. » (30:17 — soucie !)</li>
+<li>« AMANTS… POLITIQUES… ÉGYPTE… ASSYRIE… ABANDONNENT… BLESSÉE… ALLIANCES… HUMAINES… INUTILES… HEURE… JUGEMENT. » (amants — jugement !)</li>
+<li>« TALION… NATIONS… BOURREAUX… JUGÉES… MESURE… DÉVORÉ… PILLÉ… DÉPORTÉ… RETOURNÉ… CONTRE… OPPRESSEURS. » (talion — oppresseurs !)</li>
+<li>« SION… MÉPRISÉE… RENVOYÉE… OUBLIÉE… HOMMES… SOUVENUE… DIEU… SANTÉ… RENDUE… BLESSURES… PANSÉES. » (Sion — pansées !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Diagnostic divin, ~597 — KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les ÉYN (les POINT (les TEALAH (les REMÈDE (les LESHIBREKH (les MALADIE (les NACHLAH (les INCURABLE (les MAKKAT (les BLESSURE (les ÉYN (les PERSONNE (les DAN (les PLAIDER (les DINEKH (les CAUSE (les LEMAZOR (les ULCÈRE (les REPHUOT (les REMÈDES (les TEALAH (les GUÉRISON (les ÉYN (les POINT (les LAKH (les TOI (les LE MÉDECIN (les LUI-MÊME (les DÉCLARE (les INCURABLE (les DIAGNOSTIC — les SANS APPEL !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les AMANTS (les KOL (les TOUS (les MEAHABAYIKH (les AMANTS (les SHEKHÉHUKH (les OUBLIÉE (les OTEKH (les TOI (les LO (les NON (les YIDROSHU (les SOUCIENT (les KI (les MAKKAT (les FRAPPÉE (les OYÉB (les ENNEMI (les HIKKITIKH (les TOI (les MUSAR (les PUNIE (les AKHZARI (les CRUEL (les LÉGYPTE (les LASSYRIE (les LES ALLIÉS (les DISPARUS (les AMANTS — les OUBLIÉE !). Le POURQUOI (les MAH (les POURQUOI (les TIZAQI (les CRIES (les AL (les SHIBREKH (les MALADIE (les NACHLAH (les INCURABLE (les MAKOBEKH (les DOULEUR (les AL (les ROB (les GRANDE (les AVONEKH (les CULPABILITÉ (les ATSMU (les NOMBREUX (les HATTOTEKH (les PÉCHÉS (les ASITI (les FAIT (les ÉLÉH (les CELA (les LAKH (les TOI (les LA PLAIE (les MÉRITE (les EXPLIQUÉE (les POURQUOI — les PÉCHÉS !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le TALION (les LAKHÉN (les CEST (les KOL (les TOUS (les OKHLAYIKH (les DÉVORERONT (les YÉAKHÉLU (les DÉVORÉS (les VEKHOL (les TOUS (les TSARAYIKH (les ENNEMIS (les KULLAM (les ENTIER (les BASHBI (les CAPTIVITÉ (les YÉLÉKHU (les IRONT (les VEHAYU (les SERONT (les SHOSAYIKH (les PILLENT (les LIMSHISSAH (les PILLAGE (les VEKHOL (les TOUS (les BOZEZAYIKH (les DÉPOUILLENT (les ÉTTÉN (les LIVRERAI (les LABAZ (les BUTIN (les BABYLONE (les BOIRA (les SA COUPE (les TALION — les MESURE !). La GUÉRISON (les KI (les CAR (les AALÉH (les MONTER (les ARUKHAH (les SANTÉ (les LAKH (les TOI (les UMIMMAKKOTAYIKH (les BLESSURES (les ERPAÉKH (les GUÉRIRAI (les NEUM (les DÉCLARE (les YEHOVAH (les KI (les CAR (les NIDDAHAT (les BANNI (les QAREU (les TRAITÉE (les LAKH (les TOI (les TSIYYON (les SION (les HI (les CELLE (les DORESH (les SOUCIE (les ÉYN (les PERSONNE (les LAH (les ELLE (les LE MÊME (les QUI FRAPPA (les GUÉRIT (les SANTÉ — les RENDUE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">30:12-13</td><td>INCURABLE (GUÉRIR !)</td></tr>
+<tr><td class="d">30:14</td><td>AMANTS (CRUEL !)</td></tr>
+<tr><td class="d">30:15</td><td>PÉCHÉS (CELA !)</td></tr>
+<tr><td class="d">30:16</td><td>PILLAGE (BUTIN !)</td></tr>
+<tr><td class="d">30:17a</td><td>SANTÉ (JÉHOVAH !)</td></tr>
+<tr><td class="d">30:17b</td><td>SION (ELLE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La « Sion dont personne ne se soucie » (v. 17) : mépris des nations devant Jérusalem ruinée (cf. Lm 1) ; le retour de 537 (Cyrus) puis la reconstruction (Esdras, Néhémie) réalisent la guérison promise ; le talion du v. 16 s'accomplit sur Babylone (539, prise par Cyrus).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Sion bannie puis restaurée : la ville en ruines 587→537, méprisée des passants, redevient capitale habitée ; les pilleurs pillés — Babylone à son tour prise et dépouillée.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Vocabulaire médical : fracture (sheber), ulcère (mazor), remède (tealah), cicatrisation (aroukhah — litt. « chair nouvelle qui monte ») : Jérémie décrit la restauration nationale comme une guérison clinique complète.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : PLAIE INCURABLE → AMANTS PARTIS → COUP D'ENNEMI → TALION SUR BABYLONE → SANTÉ RENDUE → SION SOUVENUE (537)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>La guérison suit le diagnostic de culpabilité (v. 15) : pas de santé sans reconnaissance de la plaie ; Jéhovah frappe et guérit — même main, deux œuvres.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : plaie incurable, puis santé rendue</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babylone pillée à son tour (talion)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour : Sion guérie, reconstruite</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/15">Bible — Exode 15 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/28/6">Bible — Osée 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/28/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/28/6">Bible — Osée 6 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/28/6</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR235 — « Je te rendrai la santé » : la plaie inguérissable sera guérie</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR236">
+<div class="visuel"><img src="images/prophe_JR236_ville.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR236 · CATÉGORIE JR</div>
+<h3>« La ville sera rebâtie sur son tell » : Jacob rétabli</h3>
+<div class="ref">Jérémie 30:18-22</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Ville rebâtie (ainsi → dit → Jéhovah → voici → regroupe → captifs → tentes → Jacob → pitié → tabernacles → ville → rebâtie)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR236</div><audio controls preload="none" src="audio/fiche_JR236_ville.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR236_ville.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 30:18-22</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Ville rebâtie (ainsi → dit → Jéhovah → voici → regroupe → captifs → tentes → Jacob → pitié → tabernacles → ville → rebâtie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P236 (30:18-22 : tentes rétablies, ville sur son tell) ; accomplissement Né 3-12 ; 537/445</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AINSI… JÉHOVAH… VOICI… REGROUPE… CAPTIFS… TENTES… JACOB… PITIÉ… TABERNACLES… VILLE… REBÂTIE… TELL… TOUR… HABITATION… ENDROIT… DROIT. » (30:18 — droit !)</li>
+<li>« SORTIRA… ACTION… GRÂCES… BRUIT… RIENT… MULTIPLIERAI… NON… DIMINUERONT… HONORERAI… NON… MÉPRISÉS… FILS… JADIS… ASSEMBLÉE… AFFERMIE… VISITERAI… OPPRESSENT. » (30:19-20 — oppressent !)</li>
+<li>« NOBLE… ISSU… LUI… GOUVERNEUR… SORTIRA… APPROCHERAI… APPROCHERA… ENGAGER… CŒUR… APPROCHER… DÉCLARE… JÉHOVAH… DEVIENDREZ… PEUPLE… DEVIENDRAI… DIEU. » (30:21-22 — Dieu !)</li>
+<li>« TELL… BUTTE… RUINES… STRATIFIÉES… REBÂTIR… MÊME… EMPLACEMENT… CONTINUITÉ… CITÉ… DAVIDIQUE… RESTAURÉE. » (tell — restaurée !)</li>
+<li>« RIRES… FÊTES… MULTIPLICATION… HONNEUR… RETROUVÉ… JOIE… APRÈS… LARMES… EXIL… FINI. » (rires — fini !)</li>
+<li>« ALLIANCE… RENOUVELÉE… PEUPLE… DIEU… FORMULE… EXODE… RÉPÉTÉE… RETOUR… SECOND… EXODE. » (alliance — Exode !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Restauration promise, ~597 — KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les HINENI (les VOICI (les SHAB (les REGROUPE (les SHEBUT (les CAPTIFS (les OHOLÉ (les TENTES (les YAAQOB (les JACOB (les UMISHKENOTAYV (les TABERNACLES (les ARAHEM (les PITIÉ (les VENIBNETAH (les REBÂTIE (les IR (les VILLE (les AL (les TILLAH (les TELL (les VEARMON (les TOUR (les AL (les MISHPATO (les DROIT (les YESHEB (les HABITATION (les LE MOT (les TELL (les PASSE (les EN ARCHÉOLOGIE (les TELL — les REBÂTIE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les RIRES (les VEYATSA (les SORTIRA (les MÉHEM (les EUX (les TODAH (les GRÂCES (les VEQOL (les BRUIT (les MESAHAQIM (les RIENT (les VEHIRBITIM (les MULTIPLIERAI (les VELO (les NON (les YIMATU (les DIMINUERONT (les VEHIKHBADTIM (les HONORERAI (les VELO (les NON (les YITSAARU (les MÉPRISÉS (les LES PLEURS (les DEVENUS (les RIRES (les JOIE — les MULTIPLIÉE !). Les FILS (les VEHAYU (les SERONT (les BANAYV (les FILS (les KEQÉDEM (les JADIS (les VAADATO (les ASSEMBLÉE (les LEPHANAY (les DEVANT (les TIKKON (les AFFERMIE (les UPHAQADTI (les VISITERAI (les AL (les KOL (les TOUS (les LOHATSAYV (les OPPRESSENT (les STABILITÉ (les REVENUE (les OPPRESSEURS (les JUGÉS (les FILS — les JADIS !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le NOBLE (les VEHAYAH (les SERA (les ADDIRO (les NOBLE (les MIMMENNU (les ISSU (les UMOSHELO (les GOUVERNEUR (les MIQQIRBO (les ENTRAILLES (les YÉTSÉ (les SORTIRA (les VEHIQRABTIV (les APPROCHERAI (les VENIGGASH (les APPROCHERA (les ÉLAY (les VERS (les KI (les MI (les QUI (les HU (les LUI (les ZÉH (les CE (les ARAB (les ENGAGER (les ET (les LIBBO (les CŒUR (les LAGGUÉSHET (les APPROCHER (les ÉLAY (les VERS (les NEUM (les DÉCLARE (les YEHOVAH (les UN CHEF (les DU PEUPLE (les PLUS DE ROI (les ÉTRANGER (les NOBLE — les ISSU !). L'ALLIANCE (les VIHYITEM (les DEVIENDREZ (les LI (les MOI (les LEAM (les PEUPLE (les VAANI (les MOI (les ÉHYÉH (les DEVIENDRAI (les LAKHEM (les VOUS (les LÉLOHIM (les DIEU (les LA FORMULE (les DU SINAÏ (les RÉPÉTÉE (les ALLIANCE — les RENOUVELÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">30:18</td><td>TELL (DROIT !)</td></tr>
+<tr><td class="d">30:19</td><td>RIENT (MÉPRISÉS !)</td></tr>
+<tr><td class="d">30:20</td><td>JADIS (OPPRESSENT !)</td></tr>
+<tr><td class="d">30:21</td><td>NOBLE (JÉHOVAH !)</td></tr>
+<tr><td class="d">30:22</td><td>PEUPLE (DIEU !)</td></tr>
+<tr><td class="d">Esd/Né</td><td>RETOUR (REBÂTIE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>537 : Zorobabel rebâtit sur le tell — même emplacement, mêmes fondations (Esd 3) ; 445 : Néhémie relève murailles et palais (Né 3-12) ; le « noble issu de lui » (v. 21) : Zorobabel, gouverneur juif — puis le Messie, médiateur qui « engage son cœur à s'approcher ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le tell de Jérusalem : la cité de David, butte stratifiée de ruines ; rebâtir « sur son tell » = continuité géographique exacte — les fouilles montrent les niveaux perses posés sur la destruction babylonienne de 587.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Archéologie des tells : chaque destruction forme une couche ; le tell de Jérusalem (Ophel, cité de David) présente la séquence destruction 587 → réoccupation perse — la prophétie décrit le processus de tell-formation avant la lettre.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : TENTES CAPTIVES → PITIÉ → VILLE SUR SON TELL → RIRES + MULTIPLICATION → NOBLE ISSU → ALLIANCE RENOUVELÉE (537/445)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le verset 21 pointe au-delà de Zorobabel : seul le Messie « engage son cœur » en médiateur parfait ; double accomplissement proche (retour) et lointain (Christ).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : ville rebâtie sur son tell</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour, Temple rebâti (Zorobabel)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537/515</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Murailles et cité relevées (Néhémie)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/3">Bible — Néhémie 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/44">Bible — Ésaïe 44 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/44</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/44">Bible — Ésaïe 44 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/44</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR236 — « La ville sera rebâtie sur son tell » : Jacob rétabli</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR237">
+<div class="visuel"><img src="images/prophe_JR237_vignes.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR237 · CATÉGORIE JR</div>
+<h3>« Tu planteras des vignes sur les montagnes de Samarie »</h3>
+<div class="ref">Jérémie 31:1-6</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Vignes Samarie (temps → dit → Jéhovah → serai → Dieu → familles → Israël → seront → peuple → trouvé → grâce → désert)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR237</div><audio controls preload="none" src="audio/fiche_JR237_vignes.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR237_vignes.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:1-6</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Vignes Samarie (temps → dit → Jéhovah → serai → Dieu → familles → Israël → seront → peuple → trouvé → grâce → désert)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P237 (31:1-6 : vignes sur Samarie) ; accomplissement Esd 2 ; villes du nord rétablies</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« TEMPS… DIT… JÉHOVAH… SERAI… DIEU… FAMILLES… ISRAËL… SERONT… PEUPLE… TROUVÉ… GRÂCE… DÉSERT… ÉCHAPPÉ… ÉPÉE… MARCHE… REPOS… LOIN… APPARU… AMOUR… ÉTERNEL… ATTIRÉE… FIDÈLE. » (31:1-3 — fidèle !)</li>
+<li>« RECONSTRUIRAI… RECONSTRUITE… VIERGE… ISRAËL… PRENDRAS… TAMBOURINS… SORTIRAS… DANSANT… JOIE… PLANTERAS… VIGNES… MONTAGNES… SAMARIE… VIGNERONS… PLANTERONT… PROFITERONT… RÉCOLTE. » (31:4-5 — récolte !)</li>
+<li>« JOUR… VEILLEURS… CRIERONT… MONTAGNE… ÉPHRAÏM… DEBOUT… MONTONS… SION… JÉHOVAH… DIEU… NORD… SUD… RÉUNIS… PÈLERINAGE… COMMUN. » (31:6 — commun !)</li>
+<li>« AMOUR… ÉTERNEL… CENTRE… CONSOLATION… ATTIRANCE… FIDÈLE… SOURCE… RETOUR… GRÂCE… DÉSERT… REPOS… PROMIS. » (amour — promis !)</li>
+<li>« TAMBOURINS… DANSES… FÊTE… RETROUVÉE… VIERGE… DÉSHONORÉE… REBATIE… HONNEUR… RENDU… JOIE… PUBLIQUE. » (tambourins — publique !)</li>
+<li>« VIGNES… SAMARIE… NORD… RUINÉ… 740… REVIT… PLANTEURS… MANGERONT… PROPHÉTIE… AGRICOLE… PRÉCISE… VÉRIFIABLE. » (vignes — vérifiable !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Toutes les familles, ~597 — BAÉT (les TEMPS (les HAHI (les CE (les NEUM (les DÉCLARE (les YEHOVAH (les ÉHYÉH (les SERAI (les LÉLOHIM (les DIEU (les LEKHOL (les TOUTES (les MISHPHOT (les FAMILLES (les YISRAÉL (les ISRAËL (les VEHEMMAH (les EUX (les YIHYU (les SERONT (les LI (les MOI (les LEAM (les PEUPLE (les TOUTES (les LES FAMILLES (les NORD (les ET SUD (les FAMILLES — les TOUTES !)</p>
+<h4>4 · Explication du texte</h4>
+<p>L'AMOUR (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les MATSA (les TROUVÉ (les HÉN (les GRÂCE (les BAMMIDBAR (les DÉSERT (les AM (les PEUPLE (les SERIDÉ (les ÉCHAPPÉ (les HEREB (les ÉPÉE (les HALOKH (les MARCHE (les LEHARGIO (les REPOS (les YISRAÉL (les ISRAËL (les MÉRAHOQ (les LOIN (les YEHOVAH (les NIRAH (les APPARU (les LI (les MOI (les VEAHABAT (les AMOUR (les OLAM (les ÉTERNEL (les AHABTIKH (les AIMÉE (les AL (les KÉN (les MESHAKHTIKH (les ATTIRÉE (les HASÉD (les FIDÈLE (les LE VERSET (les LE PLUS (les BEAU (les AMOUR — les ÉTERNEL !). Les TAMBOURINS (les OD (les DE NOUVEAU (les EBNEKH (les RECONSTRUIRAI (les VENIBNÉT (les RECONSTRUITE (les BETULAT (les VIERGE (les YISRAÉL (les ISRAËL (les OD (les DE NOUVEAU (les TADY (les PRENDRAS (les TUPPAYIKH (les TAMBOURINS (les VEYATSAT (les SORTIRAS (les BIMHOL (les DANSANT (les MESAHAQIM (les JOIE (les TAMBOURINS — les JOIE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Les VIGNES (les OD (les DE NOUVEAU (les TITTI (les PLANTERAS (les KHARAMIM (les VIGNES (les BEHARÉ (les MONTAGNES (les SHOMRON (les SAMARIE (les NATEU (les PLANTERONT (les NOTIM (les VIGNERONS (les VEHILLÉLU (les PROFITERONT (les SAMARIE (les RUINÉE (les DEPUIS (les 740 (les REPLANTÉE (les VIGNES — les SAMARIE !). Les VEILLEURS (les KI (les CAR (les YESH (les IL Y A (les YOM (les JOUR (les QAREU (les CRIERONT (les NOTSRIM (les VEILLEURS (les BEHAR (les MONTAGNE (les EPHRAYIM (les ÉPHRAÏM (les QUMU (les DEBOUT (les VENAALÉH (les MONTONS (les TSIYYON (les SION (les EL (les YEHOVAH (les ÉLOHÉNU (les DIEU (les LE SCHISME (les DE 931 (les RÉPARÉ (les NORD (les MONTE (les À SION (les VEILLEURS — les DEBOUT !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">31:1</td><td>FAMILLES (PEUPLE !)</td></tr>
+<tr><td class="d">31:2</td><td>DÉSERT (REPOS !)</td></tr>
+<tr><td class="d">31:3</td><td>ÉTERNEL (FIDÈLE !)</td></tr>
+<tr><td class="d">31:4</td><td>TAMBOURINS (JOIE !)</td></tr>
+<tr><td class="d">31:5</td><td>VIGNES (RÉCOLTE !)</td></tr>
+<tr><td class="d">31:6</td><td>ÉPHRAÏM (DIEU !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Samarie détruite par Sargon II (~740/722) : deux siècles de désolation ; au retour perse, les villes du nord sont réoccupées (listes d'Esd 2 : Béthel, Aï, Jéricho…) ; les veilleurs d'Éphraïm montant à Sion (v. 6) : fin du schisme de 931 — un seul culte retrouvé.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Montagnes de Samarie : collines calcaires autour de Naplouse/Sichem, terroir viticole idéal ; les pressoirs et terrasses antiques y abondent — la prophétie nomme le terroir exact de la renaissance.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Viticulture : une vigne met 3-4 ans à produire — « planteront et profiteront » (v. 5) suppose une paix durable, pas une simple visite ; la prophétie annonce une réinstallation permanente, vérifiable par l'archéologie des pressoirs perses.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : TOUTES LES FAMILLES → AMOUR ÉTERNEL → TAMBOURINS → VIGNES SUR SAMARIE → VEILLEURS D'ÉPHRAÏM → MONTÉE À SION</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le verset 3 (« amour éternel ») fonde tout le livre de la consolation : le retour est une œuvre d'amour, pas un mérite ; Éphraïm (le nord) est inclus à égalité avec Juda.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Samarie dévastée par l'Assyrie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~740/722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : vignes replantées, veilleurs à Sion</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réoccupation du nord, fin du schisme</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537+</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/30/9">Bible — Amos 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/30/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/30/9">Bible — Amos 9 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/30/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/65">Bible — Ésaïe 65 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/65</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR237 — « Tu planteras des vignes sur les montagnes de Samarie »</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR238">
+<div class="visuel"><img src="images/prophe_JR238_rassemble.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR238 · CATÉGORIE JR</div>
+<h3>« Je changerai leur deuil en joie » : rassemblés du pays du nord</h3>
+<div class="ref">Jérémie 31:7-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Rassemblés du nord (ainsi → dit → Jéhovah → criez → joie → Jacob → acclamez → première → nations → proclamez → sauve → peuple)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR238</div><audio controls preload="none" src="audio/fiche_JR238_rassemble.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR238_rassemble.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:7-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Rassemblés du nord (ainsi → dit → Jéhovah → criez → joie → Jacob → acclamez → première → nations → proclamez → sauve → peuple)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P238 (31:7-14 : rassemblement du nord, deuil→joie) ; accomplissement Esd 1:1-4 ; Jr 31:13</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AINSI… JÉHOVAH… CRIEZ… JOIE… JACOB… ACCLAMEZ… PREMIÈRE… NATIONS… PROCLAMEZ… SAUVÉ… PEUPLE… RESTE… ISRAËL… RAMÈNE… NORD… RASSEMBLE… EXTRÉMITÉS… AVEUGLE… BOITEUX… ENCEINTE… ENFANTE… GRANDE… ASSEMBLÉE. » (31:7-8 — assemblée !)</li>
+<li>« LARMES… REVIENNENT… SUPPLICATIONS… RAMÈNE… CONDUIRAI… EAUX… CHEMIN… DROIT… TRÉBUCHERONT… PÈRE… ISRAËL… ÉPHRAÏM… PREMIER-NÉ… ÉCOUTEZ… NATIONS… ÎLES… DISPERSA… RASSEMBLE… BERGER… TROUPEAU. » (31:9-10 — troupeau !)</li>
+<li>« RACHETÉ… JACOB… DÉLIVRÉ… PLUS… FORT… VIENDRONT… HAUTEURS… SION… BLÉ… VIN… HUILE… TROUPEAUX… JARDIN… ARROSÉ… AFFLIGÉS… VIERGE… DANSE… JEUNES… VIEUX… DEUIL… JOIE… CONSOLERAI… PRÊTRES… GRAISSE… RASSASIÉ… BIENS. » (31:11-14 — biens !)</li>
+<li>« NORD… BABYLONE… ASSYRIE… TOUTES… DISPERSIONS… EXTRÉMITÉS… TERRE… RASSEMBLEMENT… TOTAL… AUCUN… OUBLIÉ. » (nord — oublié !)</li>
+<li>« FAIBLES… PREMIERS… AVEUGLES… BOITEUX… FEMMES… ENCEINTES… DIEU… RAMÈNE… FRAGILES… CHEMIN… APLANI… EAUX… CONDUITES. » (faibles — conduites !)</li>
+<li>« FÊTE… FINALE… DANSES… JEUNESSE… VIEILLESSE… ENSEMBLE… DEUIL… EFFACÉ… JOIE… CONSOLATION… ABONDANCE… SACERDOTALE. » (fête — sacerdotale !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Clameur de joie, ~597 — KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les RANNU (les CRIEZ (les LEYAAQOB (les JACOB (les SIMHAH (les JOIE (les VETSAAHALU (les ACCLAMEZ (les BEROSH (les PREMIÈRE (les HAGGOYIM (les NATIONS (les HASHMIU (les PROCLAMEZ (les HALLELU (les LOUEZ (les VEIMRU (les DITES (les HOSHA (les SAUVÉ (les YEHOVAH (les ET (les AMMEKHA (les PEUPLE (les ET (les SHEÉRIT (les RESTE (les YISRAÉL (les ISRAËL (les L'ORDRE (les DE SE RÉJOUIR (les PRÉCÈDE (les LE RETOUR (les JOIE — les COMMANDÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le NORD (les HINENI (les VOICI (les MÉBI (les RAMÈNE (les OTAM (les EUX (les MÉÉRETS (les PAYS (les TSAPHON (les NORD (les VEQIBBASTIM (les RASS (les MIYARKETÉ (les EXTRÉMITÉS (les ARETS (les TERRE (les BAM (les PARMI (les IVVÉR (les AVEUGLE (les UPHISSÉAH (les BOITEUX (les HARAH (les ENCEINTE (les VEYOLÉDET (les ENFANTE (les YAHDAV (les ENSEMBLE (les QAHAL (les ASSEMBLÉE (les GADOL (les GRANDE (les YASHUBU (les REVIENDRONT (les HÉNNAH (les ICI (les LES PLUS (les FRAGILES (les NOMMÉS (les PREMIERS (les NORD — les RASSEMBLE !). Les LARMES (les BIBKHI (les LARMES (les YABOU (les REVIENNENT (les UBETAHANUNIM (les SUPPLICATIONS (les OBILEM (les RAMÈNE (les OLIKHEM (les CONDUIRAI (les EL (les NAHALÉ (les EAUX (les MAYIM (les BEDÉREKH (les CHEMIN (les YASHAR (les DROIT (les LO (les NON (les YIKKASHLU (les TRÉBUCHERONT (les BO (les LUI (les KI (les CAR (les HAYITI (les ÉTÉ (les LEYISRAÉL (les ISRAËL (les LEAB (les PÈRE (les VEEPHRAYIM (les ÉPHRAÏM (les BEKHORI (les PREMIER-NÉ (les HU (les LUI (les LARMES — les CONDUITES !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le BERGER (les SHIMU (les ÉCOUTEZ (les DÉBAR (les PAROLE (les YEHOVAH (les GOYIM (les NATIONS (les VEHAGGIDU (les ANNONCEZ (les BAYYIM (les ÎLES (les MIMMERHAQ (les LOIN (les VEIMRU (les DITES (les MEZARÉH (les DISPERSA (les YISRAÉL (les ISRAËL (les YEQABBETSENNU (les RASSEMBLE (les USHMARO (les GARDE (les KEROÉH (les BERGER (les EDRO (les TROUPEAU (les KI (les CAR (les PADAH (les RACHETÉ (les YEHOVAH (les ET (les YAAQOB (les JACOB (les UGHALO (les DÉLIVRÉ (les MIYYAD (les MAIN (les HAZAQ (les FORT (les MIMMENNU (les LUI (les BERGER — les TROUPEAU !). La FÊTE (les UBAU (les VIENDRONT (les VERANNENU (les CRIERONT (les BIMROM (les HAUTEURS (les TSIYYON (les SION (les VENAHRU (les AFFLUERONT (les EL (les TUB (les BIENFAITS (les YEHOVAH (les AL (les DAGAN (les BLÉ (les VETIROSH (les VIN (les VEYITSHAR (les HUILE (les VEAL (les BENÉ (les PETITS (les TSON (les TROUPEAUX (les UBAQAR (les BOVINS (les VEHAYTAH (les SERA (les NAFSHAM (les ÂME (les KEGAN (les JARDIN (les RAVÉH (les ARROSÉ (les VELO (les NON (les YOSIPHU (les PLUS (les LEDAABAH (les AFFLIGÉS (les OD (les AZ (les ALORS (les TISMAH (les JOIE (les BETULAH (les VIERGE (les BEMAHOL (les DANSE (les UBHURIM (les JEUNES (les UZQÉNIM (les VIEUX (les YAHD (les VEHAPHAKHTI (les CHANGERAI (les EBLAM (les DEUIL (les LESASON (les JOIE (les VENIHAMTIM (les CONSOLERAI (les VESIMMAHTIM (les RÉJOUIRAI (les MIGONAM (les PEINES (les VERIVVÉTI (les RASSASIERAI (les NÉPHESH (les ÂME (les HAKKOHANIM (les PRÊTRES (les DASHÉN (les GRAISSE (les VEAMMI (les PEUPLE (les ET (les TUBI (les BIENS (les YISBAU (les RASSASIÉ (les NEUM (les DÉCLARE (les YEHOVAH (les FÊTE — les TOTALE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">31:7</td><td>JOIE (ISRAËL !)</td></tr>
+<tr><td class="d">31:8</td><td>NORD (ICI !)</td></tr>
+<tr><td class="d">31:9</td><td>LARMES (LUI !)</td></tr>
+<tr><td class="d">31:10</td><td>ÎLES (TROUPEAU !)</td></tr>
+<tr><td class="d">31:11-12</td><td>SION (AFFLIGÉS !)</td></tr>
+<tr><td class="d">31:13-14</td><td>DANSE (JÉHOVAH !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le décret de Cyrus (537, Esd 1:1-4) ouvre le retour « du nord » : caravanes de Babylone vers Juda ; la « grande assemblée » (v. 8, qahal gadol) : ~50 000 rapatriés (Esd 2:64-65) ; la fête des v. 12-14 : dédicace du Temple 515 (Esd 6:15-22, joie et sacrifices).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Du pays du nord (Babylone/Mésopotamie) aux hauteurs de Sion : ~900 km par le Croissant fertile ; les « îles lointaines » (v. 10) : l'annonce du rassemblement dépasse les nations voisines — proclamation universelle.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Logistique du retour : aveugles, boiteux, femmes enceintes (v. 8) — le convoi inclut les plus vulnérables ; « chemin droit, eaux courantes » (v. 9) : itinéraire jalonné de points d'eau, condition vitale d'une migration de masse antique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : CRIEZ DE JOIE → RAMENÉS DU NORD → FAIBLES INCLUS → LARMES CONDUITES → BERGER GARDE → SION EN FÊTE → DEUIL CHANGÉ EN JOIE (537/515)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le berger qui disperse et rassemble (v. 10) : même main souveraine ; Éphraïm « premier-né » (v. 9) — le nord restauré dans sa dignité d'aîné.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : rassemblement du nord, deuil changé en joie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décret de Cyrus : la grande assemblée revient</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Temple dédié : fête, joie, prêtres rassasiés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">515</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/43">Bible — Ésaïe 43 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/43</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/43">Bible — Ésaïe 43 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/43</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/30">Bible — Deutéronome 30 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/30</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR238 — « Je changerai leur deuil en joie » : rassemblés du pays du nord</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR239">
+<div class="visuel"><img src="images/prophe_JR239_rachel.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR239 · CATÉGORIE JR</div>
+<h3>« Rachel pleure ses fils » : ton travail sera récompensé</h3>
+<div class="ref">Jérémie 31:15-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (1er accomplissement)</span>
+<span class="badge">Rachel pleure (ainsi → dit → Jéhovah → voix → Rama → entendue → plainte → pleurs → amertume → Rachel → pleure → fils)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR239</div><audio controls preload="none" src="audio/fiche_JR239_rachel.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR239_rachel.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:15-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (1er accomplissement)</td></tr>
+<tr><td class="d">Chronologie</td><td>Rachel pleure (ainsi → dit → Jéhovah → voix → Rama → entendue → plainte → pleurs → amertume → Rachel → pleure → fils)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P239 (31:15-17 : Rachel pleure, travail récompensé) ; accomplissement Mt 2:17-18 ; Jr 31:16</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AINSI… JÉHOVAH… VOIX… RAMA… ENTENDUE… PLAINTE… PLEURS… AMERTUME… RACHEL… PLEURE… FILS… REFUSE… CONSOLÉE… FILS… NE… PLUS. » (31:15 — plus !)</li>
+<li>« AINSI… JÉHOVAH… RETIENS… VOIX… PLEURS… YEUX… LARMES… EXISTE… SALAIRE… TRAVAIL… DÉCLARE… JÉHOVAH… REVIENDRONT… PAYS… ENNEMI… ESPOIR… AVENIR… REVIENDRONT… FILS… TERRITOIRE. » (31:16-17 — territoire !)</li>
+<li>« MILLE… ANS… APRÈS… MORT… RACHEL… PLEURE… ENCORE… MÈRE… SYMBOLIQUE… BENJAMIN… JOSEPH… ENFANTS… EXILÉS… TUÉS. » (mille — tués !)</li>
+<li>« RAMA… NORD… JÉRUSALEM… BENJAMIN… TOMBEAU… PROCHE… RASSEMBLEMENT… CAPTIFS… LARMES… MÈRES… TOUT… ISRAËL. » (Rama — Israël !)</li>
+<li>« HÉRODE… BETHLÉEM… GARÇONS… DEUX… ANS… TUÉS… MATTHIEU… CITE… JÉRÉMIE… VOIX… RAMA… JUSQUAU… SUD… CRIS… MÈRES. » (Hérode — mères !)</li>
+<li>« SALAIRE… TRAVAIL… RÉCOMPENSE… PEINE… MATERNELLE… RETOUR… PAYS… ENNEMI… MORT… RÉSURRECTION… ESPOIR… FINAL. » (salaire — final !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Voix à Rama, ~597 — KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les QOL (les VOIX (les BERAMAH (les RAMA (les NISHMA (les ENTENDUE (les NEHI (les PLAINTE (les BEKHI (les PLEURS (les TAMRURIM (les AMERTUME (les RAHÉL (les RACHEL (les MEBAKKAH (les PLEURE (les AL (les BANÉHA (les FILS (les MÉANAH (les REFUSE (les LEHINNAHEM (les CONSOLÉE (les AL (les BANÉHA (les FILS (les KI (les CAR (les ÉYNENNU (les PLUS (les MILLE ANS (les APRÈS (les SA MORT (les ELLE PLEURE (les VOIX — les RAMA !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le REFUS (les ELLE REFUSE (les D'ÊTRE CONSOLÉE (les CAR (les SES FILS (les NE SONT (les PLUS (les ÉYNENNU (les ILS ONT (les DISPARU (les TUÉS (les OU DÉPORTÉS (les À RAMA (les 8 KM (les AU NORD (les RASSEMBLÉS (les LES CAPTIFS (les CERTAINS (les MASSACRÉS (les EN BENJAMIN (les PRÈS (les DU TOMBEAU (les REFUS — les CONSOLÉE !). Le SALAIRE (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les MINAI (les RETIENS (les QOLEKH (les VOIX (les MIBBEKHI (les PLEURS (les VEÉYNAYIKH (les YEUX (les MIDDIMAH (les LARMES (les KI (les CAR (les YESH (les EXISTE (les SAKHAR (les SALAIRE (les LIPULLATEKH (les TRAVAIL (les NEUM (les DÉCLARE (les YEHOVAH (les VESHABU (les REVIENDRONT (les MÉÉRETS (les PAYS (les OYÉB (les ENNEMI (les VEYESH (les EXISTE (les TIQVAH (les ESPOIR (les LEAHARITEKH (les AVENIR (les NEUM (les DÉCLARE (les YEHOVAH (les VESHABU (les REVIENDRONT (les BANIM (les FILS (les LIGBULAM (les TERRITOIRE (les SALAIRE — les TRAVAIL !)</p>
+<h4>5 · Interprétation</h4>
+<p>Les DEUX FILS (les LE PREMIER (les FILS (les DE RACHEL (les ÉTAIT (les JOSEPH (les LE SECOND (les BENJAMIN (les ELLE MOURUT (les EN L'ENFANTANT (les AUCUN (les NE MOURUT (les AVANT ELLE (les POURTANT (les MILLE ANS (les PLUS TARD (les ELLE PLEURE (les PARCE QUE (les SES FILS (les NE SONT (les PLUS (les LES FILS (les = LES TRIBUS (les JOSEPH (les ÉPHRAÏM (les MANASSÉ (les ET BENJAMIN (les EN EXIL (les OU MASSACRÉS (les FILS — les TRIBUS !). BETHLÉEM (les DES SIÈCLES (les PLUS TARD (les HÉRODE (les ORDONNE (les DE TUER (les TOUS LES GARÇONS (les DE MOINS (les DE DEUX ANS (les À BETHLÉEM (les AU SUD (les DE JÉRUSALEM (les LES CRIS (les DES MÈRES (les SI FORTS (les QU'ON LES ENTEND (les JUSQU'À (les RAMA (les AU NORD (les COMME SI (les RACHEL (les ENTERRÉE (les PRÈS DE (les BETHLÉEM (les PLEURAIT (les ELLE-MÊME (les MATTHIEU (les CITE (les JÉRÉMIE (les LA PROPHÉTIE (les S'ACCOMPLIT (les BETHLÉEM — les RAMA !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">31:15a</td><td>RAMA (AMERTUME !)</td></tr>
+<tr><td class="d">31:15b</td><td>RACHEL (PLUS !)</td></tr>
+<tr><td class="d">31:16</td><td>SALAIRE (ENNEMI !)</td></tr>
+<tr><td class="d">31:17</td><td>ESPOIR (TERRITOIRE !)</td></tr>
+<tr><td class="d">Jr 40:1</td><td>CAPTIFS (RAMA !)</td></tr>
+<tr><td class="d">Mt 2:16-18</td><td>BETHLÉEM (JÉRÉMIE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>1er accomplissement (~587) : les captifs rassemblés à Rama (Jr 40:1), massacres en Benjamin ; 2e accomplissement (~2 av. n. è.) : Hérode fait tuer les garçons de Bethléem, Matthieu cite Jr 31:15 (Mt 2:17-18) ; le « pays de l'ennemi » (v. 16) = la mort elle-même — d'où l'espoir final de la résurrection.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Rama (er-Ram, 8 km au nord de Jérusalem) en Benjamin, près du tombeau de Rachel (1S 10:2) ; Bethléem au sud : les cris traversent Jérusalem du sud au nord — la géographie unit les deux massacres dans un même cri.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Double accomplissement prophétique : un oracle (~597) peut viser deux événements (587 et ~2) unis par une structure commune (mères en deuil, enfants tués) ; Matthieu applique le principe inspiré « alors fut accomplie la parole » (Mt 2:17).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : VOIX À RAMA → RACHEL PLEURE (587 : CAPTIFS TUÉS) → SALAIRE PROMIS → ~2 : BETHLÉEM PLEURE (HÉRODE) → MATTHIEU CITE → RETOUR DU PAYS DE L'ENNEMI</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Rachel avait deux fils (Joseph, Benjamin) : ses « fils » = les tribus ; le salaire du travail maternel (v. 16) culmine dans la résurrection — les morts reviendront du pays de l'ennemi.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Rachel pleure à Rama</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">1er accomplissement : captifs rassemblés à Rama</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">2e accomplissement : massacre de Bethléem (Mt 2)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~2 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/402014927">wol — Questions des lecteurs : Rachel<br>https://wol.jw.org/fr/wol/d/r30/lp-f/402014927</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200003621">wol — Rachel (étude)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200003621</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/40/2">Bible — Matthieu 2 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/40/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR239 — « Rachel pleure ses fils » : ton travail sera récompensé</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR240">
+<div class="visuel"><img src="images/prophe_JR240_ephraim.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR240 · CATÉGORIE JR</div>
+<h3>Éphraïm gémit comme un veau indompté : « Fais-moi revenir »</h3>
+<div class="ref">Jérémie 31:18-22</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / À venir</span>
+<span class="badge">Éphraïm revient (entendu → entends → Éphraïm → gémit → châtié → châtié → veau → indompté → fais → revenir → reviendrai → Jéhovah)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR240</div><audio controls preload="none" src="audio/fiche_JR240_ephraim.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR240_ephraim.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:18-22</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>Éphraïm revient (entendu → entends → Éphraïm → gémit → châtié → châtié → veau → indompté → fais → revenir → reviendrai → Jéhovah)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P240 (31:18-22 : Éphraïm gémit et revient) ; accomplissement Jr 31:20-21 ; retour dispersés</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ENTENDU… ENTENDS… ÉPHRAÏM… GÉMIT… CHÂTIÉ… CHÂTIÉ… VEAU… INDOMPTÉ… FAIS… REVENIR… REVIENDRAI… JÉHOVAH… DIEU… DÉTOURNÉ… REPENTI… COMPRIS… FRAPPÉ… CUISSE… HONTEUX… CONFUS… OPPROBRE… JEUNESSE. » (31:18-19 — jeunesse !)</li>
+<li>« ÉPHRAÏM… FILS… CHER… ENFANT… FAVORI… PARLE… CONTRE… SOUVIENS… ENCORE… ENTRAILLES… ÉMUES… SORT… PITIÉ… DIT… JÉHOVAH… DRESSE… SIGNAUX… POSE… JALONS… ATTENTION… ROUTE… CHEMIN… MARCHÉ. » (31:20-21a — marché !)</li>
+<li>« REVIENS… VIERGE… ISRAËL… REVIENS… VILLES… ERRANTE… FILLE… REBELLE… CRÉÉ… CHOSE… NOUVELLE… TERRE… FEMME… ENTOURERA… HOMME… REPENTIR… PARDON… ROUTE… BALISÉE. » (31:21b-22 — balisée !)</li>
+<li>« VEAU… INDOMPTÉ… IMAGE… AGRICOLE… JEUNE… TAUREAU… REFUSE… JOUG… CORRIGÉ… DRESSÉ… DOULEUR… ÉDUCATIVE… REPENTIR… FRUIT. » (veau — fruit !)</li>
+<li>« CUISSE… FRAPPÉE… GESTE… ORIENTAL… DEUIL… REGRET… HONTE… OPPROBRE… JEUNESSE… CONFESSION… COMPLÈTE… PUBLIQUE. » (cuisse — publique !)</li>
+<li>« ENTRAILLES… DIVINES… ÉMUES… PATERNELLES… MATERNELLES… SOUVENIR… PERSISTANT… PITIÉ… PROMISE… AMOUR… VAINQUEUR… COLÈRE. » (entrailles — colère !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Éphraïm gémit, ~597 — SHAMOA (les ENTENDU (les SHAMATI (les ENTENDS (les EPHRAYIM (les ÉPHRAÏM (les MITNODÉD (les GÉMIT (les YISHSARTANI (les CHÂTIÉ (les VAYIVVASÉR (les CHÂTIÉ (les KEÉGEL (les VEAU (les LO (les NON (les LUMMAD (les INDOMPTÉ (les HASHIBÉNI (les FAIS-MOI (les REVENIR (les VEASHUBAH (les REVIENDRAI (les KI (les CAR (les ATTAH (les TOI (les YEHOVAH (les ÉLOHAY (les DIEU (les L'INSISTANCE (les ENTENDU (les ENTENDS (les DIEU (les ÉCOUTE (les GÉMIT — les ÉPHRAÏM !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le VEAU (les LE JEUNE (les TAUREAU (les NON DRESSÉ (les REFUSE (les LE JOUG (les RUE (les SE CABRE (les LA CORRECTION (les LE DOMPTE (les ÉPHRAÏM (les LE NORD (les INDOMPTÉ (les DEPUIS (les 931 (les CORRIGÉ (les PAR L'EXIL (les VEAU — les INDOMPTÉ !). Le REPENTIR (les KI (les CAR (les AHARÉ (les APRÈS (les SHUBI (les DÉTOURNÉ (les NIHAMTI (les REPENTI (les VEAHARÉ (les APRÈS (les HIVVADAI (les COMPRIS (les SAPHAQTI (les FRAPPÉ (les AL (les YARÉKH (les CUISSE (les BOSHTI (les HONTEUX (les VEGAM (les NIKHLAMTI (les CONFUS (les KI (les CAR (les NASÁTI (les PORTÉ (les HERPAT (les OPPROBRE (les NEURAY (les JEUNESSE (les FRAPPER (les SA CUISSE (les GESTE (les DE REGRET (les REPENTIR — les COMPRIS !)</p>
+<h4>5 · Interprétation</h4>
+<p>Les ENTRAILLES (les HABÉN (les FILS (les YAQQIR (les CHER (les LI (les MOI (les EPHRAYIM (les ÉPHRAÏM (les IM (les SI (les YÉLED (les ENFANT (les SHAASHUIM (les FAVORI (les KI (les CAR (les MIDDÉ (les CHAQUE FOIS (les DABBRI (les PARLE (les BO (les CONTRE (les ZAKHOR (les SOUVIENS (les EZKERENNU (les ENCORE (les OD (les AL (les KÉN (les HAMU (les ÉMUES (les MÉAY (les ENTRAILLES (les LO (les SORT (les RAHEM (les PITIÉ (les ARAHAMENNU (les LUI (les NEUM (les DIT (les YEHOVAH (les LES ENTRAILLES (les = LE SIÈGE (les DE LA TENDRESSE (les ENTRAILLES — les ÉMUES !). Les JALONS (les HATSTSIBI (les DRESSE (les LAKH (les TOI (les TSIYYUNIM (les SIGNAUX (les SIMI (les POSE (les LAKH (les TOI (les TAMRURIM (les JALONS (les SHITI (les METS (les LIBBÉKH (les CŒUR (les LAMMSILLAH (les ROUTE (les DÉREKH (les CHEMIN (les HALAKHT (les MARCHÉ (les SHUBI (les REVIENS (les BETULAT (les VIERGE (les YISRAÉL (les ISRAËL (les SHUBI (les REVIENS (les EL (les ARAYIKH (les VILLES (les AD (les JUSQUES (les MATAY (les QUAND (les TITHMAQQIN (les ERRANTE (les HABAT (les FILLE (les HASHOBÉBAH (les REBELLE (les KI (les CAR (les BARA (les CRÉÉ (les YEHOVAH (les HADASHAH (les NOUVELLE (les BAARETS (les TERRE (les NEQÉBAH (les FEMME (les TESOBÉB (les ENTOURERA (les GABÉR (les HOMME (les BALISER (les LA ROUTE (les DU RETOUR (les JALONS — les DRESSÉS !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">31:18</td><td>VEAU (DIEU !)</td></tr>
+<tr><td class="d">31:19</td><td>CUISSE (JEUNESSE !)</td></tr>
+<tr><td class="d">31:20</td><td>ENTRAILLES (JÉHOVAH !)</td></tr>
+<tr><td class="d">31:21</td><td>JALONS (VILLES !)</td></tr>
+<tr><td class="d">31:22</td><td>REBELLE (HOMME !)</td></tr>
+<tr><td class="d">Os 11/14</td><td>ÉPHRAÏM (REVIENT !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Éphraïm = le royaume du nord, exilé depuis ~740/722 ; son repentir (v. 18-19) préfigure le retour des dispersés d'Israël au sens large ; « dresse des jalons » (v. 21) : ordre de baliser la route du retour — comme un second exode préparé.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La route de l'exil à rebours : de Babylone/Assyrie vers les villes d'Israël ; les tsiounim (signaux, jalons) : bornes routières antiques — la prophétie ordonne de préparer l'itinéraire du retour.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Éthologie du veau indompté (éguel lo loummad) : le jeune bovin refuse le joug, se cabre, doit être dressé progressivement ; la métaphore agricole décrit exactement le processus du repentir — résistance, correction, soumission volontaire.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : ÉPHRAÏM GÉMIT → VEAU INDOMPTÉ CHÂTIÉ → REPENTIR + CUISSE FRAPPÉE → ENTRAILLES DIVINES ÉMUES → JALONS DRESSÉS → REVIENS DANS TES VILLES</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>La « chose nouvelle » (v. 22, femme entourant l'homme) : image débattue — protection inversée, sécurité totale au retour ; Éphraïm restauré annonce le rassemblement final de tout Israël.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Éphraïm exilé, veau indompté dispersé</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~740/722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : repentir entendu, jalons à dresser</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour des dispersés, Israël rassemblé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 → final</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/28/11">Bible — Osée 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/28/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/28/11">Bible — Osée 11 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/28/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/28/14">Bible — Osée 14 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/28/14</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR240 — Éphraïm gémit comme un veau indompté : « Fais-moi revenir »</span><span>Catégorie JR</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR235 — « Je te rendrai la santé » : la plaie inguérissable sera guérie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : plaie incurable, puis santé rendue</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babylone pillée à son tour (talion)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour : Sion guérie, reconstruite</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<h4>JR236 — « La ville sera rebâtie sur son tell » : Jacob rétabli</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : ville rebâtie sur son tell</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour, Temple rebâti (Zorobabel)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537/515</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Murailles et cité relevées (Néhémie)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+</svg>
+<h4>JR237 — « Tu planteras des vignes sur les montagnes de Samarie »</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Samarie dévastée par l'Assyrie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~740/722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : vignes replantées, veilleurs à Sion</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réoccupation du nord, fin du schisme</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537+</text>
+</svg>
+<h4>JR238 — « Je changerai leur deuil en joie » : rassemblés du pays du nord</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : rassemblement du nord, deuil changé en joie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décret de Cyrus : la grande assemblée revient</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Temple dédié : fête, joie, prêtres rassasiés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">515</text>
+</svg>
+<h4>JR239 — « Rachel pleure ses fils » : ton travail sera récompensé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Rachel pleure à Rama</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">1er accomplissement : captifs rassemblés à Rama</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">2e accomplissement : massacre de Bethléem (Mt 2)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~2 av. n. è.</text>
+</svg>
+<h4>JR240 — Éphraïm gémit comme un veau indompté : « Fais-moi revenir »</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Éphraïm exilé, veau indompté dispersé</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~740/722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : repentir entendu, jalons à dresser</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour des dispersés, Israël rassemblé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 → final</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR — Jérémie (3) — Absinthe, voisins jugés et cruches brisées</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR</h1>
+<h2>Jérémie (3) — Absinthe, voisins jugés et cruches brisées</h2>
+<p class="intro">Je vais nourrir ce peuple d'absinthe et l'abreuver d'eaux empoisonnées, puis le disperser parmi des nations inconnues ; voici que je punirai tous les circoncis incirconcis — l'Égypte, Juda, Édom, Ammon et Moab — car toute la maison d'Israël est incirconcise de cœur. Les dieux qui n'ont pas fait le ciel périront de dessous ce ciel. À Anathoth, qui veut tuer son prophète, il ne restera aucun survivant ; les mauvais voisins seront arrachés, puis rétablis s'ils apprennent les voies de mon peuple ; et l'orgueil de Juda pourrira comme la ceinture de lin, les cruches brisées les unes contre les autres.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR193">JR193</a>
+<a href="#JR194">JR194</a>
+<a href="#JR195">JR195</a>
+<a href="#JR196">JR196</a>
+<a href="#JR197">JR197</a>
+<a href="#JR198">JR198</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR193"><img src="images/prophe_JR193_absinthe.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR193</div>
+<h3><a href="#JR193">« Je les nourrirai d'absinthe » : dispersés parmi des nations inconnues</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR194"><img src="images/prophe_JR194_voisins.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR194</div>
+<h3><a href="#JR194">« Je punirai tous les circoncis » : Juda mêlé à ses voisins</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR195"><img src="images/prophe_JR195_periront.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR195</div>
+<h3><a href="#JR195">« Les dieux qui n'ont pas fait le ciel » : ils périront (en araméen)</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR196"><img src="images/prophe_JR196_anathoth.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR196</div>
+<h3><a href="#JR196">« Les hommes d'Anathoth » : aucun reste ne subsistera</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR197"><img src="images/prophe_JR197_arraches.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR197</div>
+<h3><a href="#JR197">« J'arracherai mes mauvais voisins » : puis je les rétablirai</a></h3>
+<div class="meta">Accomplie / À venir</div></div></div>
+<div class="carte">
+<a class="img" href="#JR198"><img src="images/prophe_JR198_cruches.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR198</div>
+<h3><a href="#JR198">« Comme cette ceinture pourrie » : les cruches brisées l'une contre l'autre</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR193">
+<div class="visuel"><img src="images/prophe_JR193_absinthe.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR193 · CATÉGORIE JR</div>
+<h3>« Je les nourrirai d'absinthe » : dispersés parmi des nations inconnues</h3>
+<div class="ref">Jérémie 9:15-16</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Absinthe dispersion (nourrirai → absinthe → empoisonnée → disperserai → inconnues → épée → anéantis)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR193</div><audio controls preload="none" src="audio/fiche_JR193_absinthe.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR193_absinthe.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 9:15-16</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Absinthe dispersion (nourrirai → absinthe → empoisonnée → disperserai → inconnues → épée → anéantis)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P193 (9:15-16 : absinthe, dispersion) ; accomplissement Lv 26:33, Éz 36:19</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DIT… ARMÉES… ISRAËL… NOURRIRAI… PEUPLE… ABSINTHE… ABREUVERAI… EAUX… EMPOISONNÉES. » (9:15 — empoisonnées !)</li>
+<li>« DISPERSERAI… NATIONS… CONNUES… NON… PÈRES… NON… ENVERRAI… ÉPÉE… ANÉANTIS… EXTERMINÉS. » (9:16 — exterminés !)</li>
+<li>« DISPERSERAI… NATIONS… DÉGAINERAI… ÉPÉE… DERRIÈRE… PAYS… DÉSOLATION… VILLES… RUINES. » (Lv 26:33 — ruines !)</li>
+<li>« DISPERSAI… NATIONS… DISSÉMINÉS… PAYS… JUGEAI… VOIES… ACTIONS… PROFANÈRENT… NOM… SAINT. » (Éz 36:19 — saint !)</li>
+<li>« MANGEA… PAROLES… ABSINTHE… RASSASIA… AMERTUME… BRISA… GRAVIER… DENTS… AFFAISA… CENDRE. » (Lm 3:15-16 — cendre !)</li>
+<li>« ÉTOILE… ABSINTHE… TOMBÉE… FLEUVES… SOURCES… EAUX… AMÈRES… HOMMES… MOURURENT… AMERTUME. » (Ré 8:10-11 — amertume !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~608 — ABSINTHE (les LAANAH (les HAABKHIL (les NOURRIRAI (les ET (les HAAM (les HAZÉH (les VEHISHQITIM (les ABREUVERAI (les MÉ (les ROSH (les EMPOISONNÉES (les FIEL (les AMER (les IMMANGEABLE (les ARMOISE (les TOXIQUE (les REPAS (les JUGEMENT (les ABSINTHE — les SERVIE !). La DISPERSION (les HAPHITSOTIM (les BAGOYIM (les LO (les YADOU (les CONNUES (les HEMMAH (les ABOTÉHEM (les SHILLAHTI (les ENVERRAI (les HAHÉREB (les ÉPÉE (les AHAREHEM (les AD (les KALLOTI (les ANÉANTIS (les EXIL (les INCONNU (les ÉPÉE (les POURSUIT (les DISPERSION — les TOTALE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>LÉVITIQUE (les VAYIQRA (les 26 (les EZREH (les DISPERSERAI (les BAGOYIM (les HARIQOTI (les DÉGAINERAI (les HÉREB (les AHAREKHEM (les ARTSEKEM (les SHEMAMAH (les DÉSOLATION (les ARÉKHEM (les HORBAH (les RUINES (les MALÉDICTIONS (les ALLIANCE (les SINAÏ (les 900 ANS (les AVANT (les LÉVITIQUE — les RAPPELÉ !). ÉZÉCHIEL (les BABYLONE (les 587 (les VAAPHITS (les DISPERSAI (les BAGOYIM (les VAYIZZARU (les DISSÉMINÉS (les BAARATSOT (les SHEPHATETIM (les JUGEAI (les DARKAM (les VOIES (les ALILOTAM (les ACTIONS (les HILLELU (les PROFANÈRENT (les NOM (les ÉZÉCHIEL — les CONSTATE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application EXIL : BABYLONE (les FLEUVES (les PLEURAIENT (les SION (les SOUVENAIENT (les HARPE (les SAULES (les ACCROCHÉES (les APOLOGÉTIQUE — les DISPERSÉS !) + ÉPÉE (les POURSUIT (les ÉGYPTE (les JOHANAN (les FUIT (les ATTEINT (les NÉKO (les TUÉ (les TÉMOIN — les POURSUIVIS !) + ÉTOILE (les RÉVÉLATION (les ABSINTHE (les RETOMBE (les EAUX (les AMÈRES (les HISTOIRE — les RÉPÉTÉE !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">9:15</td><td>ABSINTHE (EMPOISONNÉES !)</td></tr>
+<tr><td class="d">9:16</td><td>DISPERSÉS (EXTERMINÉS !)</td></tr>
+<tr><td class="d">Lv 26:33</td><td>DÉGAINÉE (RUINES !)</td></tr>
+<tr><td class="d">Éz 36:19</td><td>JUGEAI (SAINT !)</td></tr>
+<tr><td class="d">Lm 3:15</td><td>RASSASIA (CENDRE !)</td></tr>
+<tr><td class="d">Ré 8:11</td><td>ÉTOILE (AMERTUME !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Les FLEUVES : KEBAR (les EUPHRATE (les CANAUX (les EXILÉS (les INSTALLÉS (les TEL-ABIB (les ÉZÉCHIEL (les PRÊCHE (les PSAUME (les 137 (les GÉOGRAPHIE — les PLEURÉS !). Le SIÈGE : 588 (les FAIM (les AMERTUME (les LAMENTATIONS (les GRAVIER (les DENTS (les CENDRE (les AFFAISSÉS (les GUERRE — les AFFAMÉS !). Les NATIONS : INCONNUES (les MÈDES (les PERSES (les ÉLAM (les LANGUES (les ÉTRANGÈRES (les DÉPORTÉS (les PERDUS (les EXIL — les INCONNU !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le DÉSERT : MIDBAR (les MARCHE (les DÉPORTÉS (les 1 500 KM (les SOIF (les EAUX (les AMÈRES (les MARA (les SOUVENIR (les EXODE (les INVERSÉ (les TOPOGRAPHIE — les MARCHE !). Les FLEUVES : BABYLONE (les IRRIGATION (les CANAUX (les EXILÉS (les RIVAUX (les INDIGÈNES (les NOSTALGIE (les GÉOGRAPHIE — les RIVES !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'ABSINTHE : ARTEMISIA (les THUYONE (les AMER (les TOXIQUE (les VERMIFUGE (les DOSE (les MORTELLE (les APÉRITIF (les INTERDIT (les BOTANIQUE — les AMÈRE !). Le FIEL : ROSH (les PAVOT (les OPIUM (les VENIN (les SERPENT (les EAU (les EMPOISONNÉE (les MORT (les LENTE (les TOXICOLOGIE — les MORTELLE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>DIT prononcé (armées) → ABSINTHE servie (nourrirai) → EAUX versées (empoisonnées) → DISPERSÉS chassés (nations) → INCONNUES subies (pères) → ÉPÉE envoyée (derrière) → ANÉANTIS promis (exterminés).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS que TOUS SERONT ANÉANTIS SANS RESTE (un reste reviendra : l'épée s'arrêtera). Ne DIT PAS que L'ABSINTHE EST LITTÉRALE AU MENU (l'amertume du siège, de la prise, de l'exil). Ne DIT PAS que LES NATIONS RESTERONT INCONNUES (les exilés apprendront ; Daniel conseillera). Ne DIT PAS que LÉVITIQUE 26 FUT OUBLIÉ (900 ans plus tard : la malédiction s'exécute au mot près).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ÉCRIT (LÉVITIQUE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SERVIE (ABSINTHE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DISPERSÉS (NATIONS !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CONSTATÉ (ÉZÉCHIEL !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">RETOMBÉE (ÉTOILE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~96</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/9">Jérémie 9 — Traduction du monde nouveau (absinthe, dispersés, épée)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/3/26">Lévitique 26 — Traduction du monde nouveau (dispersion, épée, désolation, 26:33)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/3/26</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/36">Ézéchiel 36 — Bible d'étude (disséminés, jugés, nom, 36:19)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/36</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR193 — « Je les nourrirai d'absinthe » : dispersés parmi des nations inconnues</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR194">
+<div class="visuel"><img src="images/prophe_JR194_voisins.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR194 · CATÉGORIE JR</div>
+<h3>« Je punirai tous les circoncis » : Juda mêlé à ses voisins</h3>
+<div class="ref">Jérémie 9:25-26</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Voisins punis (jours → punirai → circoncis → Égypte → Juda → Édom → Ammon → cœur)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR194</div><audio controls preload="none" src="audio/fiche_JR194_voisins.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR194_voisins.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 9:25-26</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Voisins punis (jours → punirai → circoncis → Égypte → Juda → Édom → Ammon → cœur)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P194 (9:25-26 : Juda et voisins) ; accomplissement Jr 25:15-26, 46-51</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« JOURS… VIENNENT… PUNIRAI… CIRCONCIS… INCIRCONCIS… ÉGYPTE… JUDA… ÉDOM… AMMON… MOAB. » (9:25-26 — Moab !)</li>
+<li>« RASENT… TEMPES… DÉSERT… NATIONS… INCIRCONCISES… MAISON… ISRAËL… CŒUR… INCIRCONCIS. » (9:26b — incirconcis !)</li>
+<li>« PRENDS… MAIN… COUPE… VIN… FUREUR… BOIRE… NATIONS… ENVOIE… BOIRONT… TITUBERONT… FOLLES. » (Jr 25:15-16 — folles !)</li>
+<li>« PRIS… COUPE… FIT… BOIRE… JÉRUSALEM… VILLES… JUDA… PHARAON… ÉGYPTE… SERVITEURS… PEUPLE. » (Jr 25:17-19 — peuple !)</li>
+<li>« ÉDOM… MOAB… AMMON… TYR… SIDON… ÎLES… DÉDAN… TÉMA… BOUZ… ARABES… ZIMRI… ÉLAM… MÈDES. » (Jr 25:21-25 — Mèdes !)</li>
+<li>« ROIS… NORD… PROCHES… LOINTAINS… ROYAUMES… SURFACE… SOL… ROI… SHÉSHAK… BOIRA… EUX. » (Jr 25:26 — eux !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~608 — JOURS (les YAMIM (les BAIM (les VIENNENT (les UPHAQADTI (les PUNIRAI (les KOL (les MUL (les CIRCONCIS (les BEORLAH (les INCIRCONCIS (les OXYMORE (les CIRCONCIS (les PRÉPUCE (les CHAIR (les MARQUÉE (les CŒUR (les FERMÉ (les JOURS — les VIENNENT !). Les VOISINS (les MITSRAYIM (les ÉGYPTE (les YEHUDAH (les ÉDOM (les BENÉ (les AMMON (les MOAB (les QETSUTSEH (les RASENT (les PÉAH (les TEMPES (les MIDBAR (les DÉSERT (les JUDA (les MÊLÉ (les PAÏENS (les HONTE (les VOISINS — les LISTÉS !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le CŒUR (les KOL (les HAGOYIM (les NATIONS (les ARELIM (les INCIRCONCISES (les KOL (les BÉT (les YISRAËL (les ARLÉ (les LEB (les CŒUR (les CIRCONCISION (les SIGNE (les ALLIANCE (les ABRAHAM (les EXTÉRIEUR (les INTÉRIEUR (les PAUL (les ROMAINS (les CITERA (les CŒUR — les INCIRCONCIS !). La COUPE (les KOS (les YAYIN (les VIN (les HAHEMAH (les FUREUR (les QAH (les PRENDS (les MIYADI (les MAIN (les VEHISHQITA (les BOIRE (les ET (les KOL (les HAGOYIM (les TITUBERONT (les FOLLES (les ÉPÉE (les COUPE — les CIRCULE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application COUPE : JÉRUSALEM (les PREMIÈRE (les BUE (les 607 (les PHARAON (les KARKEMISH (les ÉDOM (les MOAB (les AMMON (les BUES (les APOLOGÉTIQUE — les VIDÉE !) + SHÉSHAK (les BABYLONE (les DERNIÈRE (les BOIRA (les 539 (les ATBASH (les CODE (les CYRUS (les LIE (les TÉMOIN — les ENIVRÉE !) + CHAPITRES (les 46 (les 51 (les ORACLES (les DÉTAIL (les NATION (les HISTOIRE — les JUGÉES !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">9:25</td><td>PUNIRAI (CIRCONCIS !)</td></tr>
+<tr><td class="d">9:26</td><td>VOISINS (CŒUR !)</td></tr>
+<tr><td class="d">Jr 25:15-16</td><td>COUPE (FOLLES !)</td></tr>
+<tr><td class="d">Jr 25:17-19</td><td>BUE (JÉRUSALEM !)</td></tr>
+<tr><td class="d">Jr 25:21-25</td><td>TOUR (MÈDES !)</td></tr>
+<tr><td class="d">Jr 25:26</td><td>SHÉSHAK (LIE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>KARKEMISH : 605 (les PHARAON (les NÉKO (les BATTU (les ÉGYPTE (les BUE (les PUIS (les 568 (les NÉBUCADNETSAR (les INVADE (les ARCHÉOLOGIE — les PUNIE !). Les ORACLES : ÉGYPTE (les 46 (les PHILISTINS (les 47 (les MOAB (les 48 (les AMMON (les 49 (les ÉDOM (les 49 (les BABYLONE (les 50 (les PROPHÉTIE — les DÉTAILLÉE !). HÉRODOTE : ARABES (les TEMPES (les RASÉES (les BACCHUS (les HONNEUR (les III (les 8 (les CONFIRME (les COUTUME (les HISTORIEN — les TÉMOIN !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le TOUR : JÉRUSALEM (les ÉGYPTE (les SUD (les PHILISTINS (les OUEST (les MOAB (les EST (les TYR (les NORD (les MÈDES (les LOINTAIN (les TOPOGRAPHIE — les CERCLE !). Le DÉSERT : ARABES (les DÉDAN (les TÉMA (les CARAVANES (les ENCENS (les COUPE (les PASSE (les GÉOGRAPHIE — les OASIS !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La CIRCONCISION : MILAH (les 8e JOUR (les SIGNE (les HYGIÈNE (les ALLIANCE (les EXTÉRIEURE (les CŒUR (les INTÉRIEUR (les MÉDECINE — les SIGNE !). Le VIN : YAYIN (les FERMENTATION (les IVRESSE (les TITUBENT (les JUGEMENT (les TROUBLE (les NATIONS (les CHANCELANTES (les CHIMIE — les FUREUR !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>JOURS promis (viennent) → PUNIRAI juré (rendront) → CIRCONCIS visés (chair) → VOISINS listés (cinq) → TEMPES rasées (désert) → CŒUR dénoncé (incirconcis) → COUPE circulant (buvez).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS que LA CIRCONCISION NE SERT À RIEN (signe précieux ; le cœur doit suivre). Ne DIT PAS que JUDA BOIRA LA DERNIÈRE (la première : le jugement commence par sa maison). Ne NOMME PAS TOUTES LES NATIONS ICI (le chapitre 25 déploie la liste entière). Ne DIT PAS que SHÉSHAK ÉCHAPPERA (Babylone boira la lie : 539 la videra).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LISTÉS (VOISINS !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BUE (ÉGYPTE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">VIDÉE (JÉRUSALEM !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PUNIS (VOISINS !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">582</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ENIVRÉE (SHÉSHAK !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1001070128">Jérémie — Publication (circoncis, voisins, coupe, 9:25-26)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1001070128</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/46">Jérémie 46 — Traduction du monde nouveau (Égypte, Amon, Pharaon puni)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/46</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/46">Jérémie 46 — Référence (Karkemish, No, dieux, rois)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/46</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR194 — « Je punirai tous les circoncis » : Juda mêlé à ses voisins</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR195">
+<div class="visuel"><img src="images/prophe_JR195_periront.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR195 · CATÉGORIE JR</div>
+<h3>« Les dieux qui n'ont pas fait le ciel » : ils périront (en araméen)</h3>
+<div class="ref">Jérémie 10:11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dieux périssent (dites → dieux → pas fait → ciel → terre → périront → dessous)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR195</div><audio controls preload="none" src="audio/fiche_JR195_periront.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR195_periront.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 10:11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dieux périssent (dites → dieux → pas fait → ciel → terre → périront → dessous)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P195 (10:11 : dieux périront) ; accomplissement Jr 51:17-18, Dn 5:23,30</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ÉCOUTEZ… PAROLE… ISRAËL… IMITEZ… NATIONS… NON… CRAIGNEZ… SIGNES… CIEL… NON. » (10:1-2 — non !)</li>
+<li>« COUTUMES… VANITÉ… BOIS… FORÊT… OUVRIER… HACHE… ARGENT… OR… CLOUS… MARTEAUX… BRANLE… NON. » (10:3-4 — non !)</li>
+<li>« COLONNE… PARLENT… NON… PORTENT… MARCHENT… NON… CRAIGNEZ… NON… MAL… BIEN… NON. » (10:5 — non !)</li>
+<li>« DIEU… VÉRITÉ… VIVANT… ROI… ÉTERNEL… TREMBLE… COLÈRE… NATIONS… SUPPORTENT… NON. » (10:10 — non !)</li>
+<li>« DIREZ… DIEUX… FAIT… NON… CIEL… TERRE… NON… PÉRIRONT… TERRE… DESSOUS… CIEL. » (10:11 — ciel !)</li>
+<li>« LOUAS… DIEUX… ARGENT… OR… VOIENT… NON… NUIT… TUÉ… BELSHATSAR… ROI… CHALDÉEN. » (Dn 5:23,30 — Chaldéen !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~608 — ÉCOUTEZ (les SHIMOU (les DABAR (les PAROLE (les BÉT (les YISRAËL (les AL (les TILMEDU (les IMITEZ (les DEREK (les VOIE (les HAGOYIM (les AL (les TEHATTU (les CRAIGNEZ (les OTOT (les SIGNES (les HASHAMAYIM (les ASTROLOGIE (les CHALDÉENNE (les ÉCLIPSES (les COMÈTES (les ÉCOUTEZ — les PAROLE !). Le BOIS (les ETS (les MIYAAR (les FORÊT (les MAASÉH (les ŒUVRE (les HATAV (les HACHE (les KÉSEPH (les ARGENT (les ZAHAB (les OR (les YEYAPPEHU (les EMBELLIT (les BEMASMEROT (les CLOUS (les BEMAQABOT (les MARTEAUX (les YEHAZZEQU (les FIXE (les LO (les YAPHIQ (les BOIS — les FIXÉ !)</p>
+<h4>4 · Explication du texte</h4>
+<p>L'ARAMÉEN (les KIDNAH (les AINSI (les TEMARUN (les DIREZ (les ELAHAYA (les DIEUX (les DI (les ASHER (les LA (les ABADU (les FAIT (les SHEMAYA (les CIEL (les VEARQA (les TERRE (les YÉBADU (les PÉRIRONT (les MIN (les ARAA (les MEN (les TEHOT (les DESSOUS (les SHEMAYA (les PHRASE (les DICTÉE (les CAPTIFS (les FUTURS (les ARAMÉEN — les DICTÉ !). Le VIVANT (les ELOHIM (les EMET (les VÉRITÉ (les HAYIM (les MÉLEK (les ROI (les OLAM (les ÉTERNEL (les TIRASH (les TREMBLE (les HAARETS (les QETSEPHO (les COLÈRE (les GOYIM (les LO (les YAKHILU (les SUPPORTENT (les ZAAMO (les VIVANT — les ROI !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application FESTIN : BELSHATSAR (les 539 (les 1 000 GRANDS (les VASES (les TEMPLE (les PROFANÉS (les DOIGTS (les MUR (les MENÉ (les APOLOGÉTIQUE — les PESÉ !) + DIEUX (les OR (les ARGENT (les LOUÉS (les VOIENT (les NON (les ENTENDENT (les NON (les NUIT (les TUÉ (les DARIUS (les PRIT (les TÉMOIN — les TOMBÉ !) + BEL (les PROSTERNÉ (les NEBO (les COURBÉ (les BÊTES (les PORTÉS (les HISTOIRE — les FARDEAU !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">10:1-2</td><td>ÉCOUTEZ (SIGNES !)</td></tr>
+<tr><td class="d">10:3-5</td><td>BOIS (PORTENT !)</td></tr>
+<tr><td class="d">10:10</td><td>VIVANT (TREMBLE !)</td></tr>
+<tr><td class="d">10:11</td><td>PÉRIRONT (CIEL !)</td></tr>
+<tr><td class="d">Dn 5:23</td><td>LOUAS (VOIENT !)</td></tr>
+<tr><td class="d">Dn 5:30</td><td>TUÉ (NUIT !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le FESTIN : OCTOBRE (les 539 (les PALAIS (les BABYLONE (les CYRUS (les ASSIÈGE (les EUPHRATE (les DÉTOURNÉ (les GOBRYAS (les ENTRE (les NUIT (les 16 TISHRI (les CHRONIQUE — les DATÉE !). Les VASES : TEMPLE (les NÉBUCADNETSAR (les PILLÉS (les PROFANÉS (les VIN (les CONCUBINES (les SACRILÈGE (les JUGÉ (les VAISSELLE — les SAINTE !). NABONIDE : PÈRE (les TÉMA (les 10 ANS (les FILS (les RÉGENT (les ARCHÉOLOGIE (les CONFIRME (les DYNASTIE — les FINIE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>BABYLONE : EUPHRATE (les TRAVERSE (les MURS (les DOUBLES (les PORTES (les BRONZE (les FLEUVE (les LIT (les DÉTOURNÉ (les GUÉABLE (les TOPOGRAPHIE — les PRISE !). Le MUR : PLÂTRE (les PALAIS (les DOIGTS (les ÉCRIVENT (les LUMIÈRE (les LAMPADAIRE (les VISION (les GÉOGRAPHIE — les MUR !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'OR : MÉTAL (les INERTE (les IDOLE (les MUETTE (les AVEUGLE (les SOURDE (les IMMOBILE (les PORTÉE (les BÊTES (les CHIMIE — les INERTE !). L'ARAMÉEN : LINGUA (les FRANCA (les EMPIRE (les CAPTIFS (les PARLENT (les PHRASE (les PRÊTE (les TRADUCTION (les LINGUISTIQUE — les DICTÉE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>ÉCOUTEZ ordonné (parole) → IMITEZ interdit (nations) → BOIS coupé (forêt) → OR cloué (ne branle) → VIVANT proclamé (roi) → ARAMÉEN dicté (direz) → PÉRIRONT promis (dessous).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS que LES IDOLES TOMBERONT TOUTES SEULES (Cyrus les portera ; les bêtes les chargeront). Ne DIT PAS POURQUOI L'ARAMÉEN ICI (la phrase prête pour les captifs mêlés aux Chaldéens). Ne DIT PAS que BELSHATSAR EST LE DERNIER ROI (son père Nabonide survit ; le royaume meurt). Ne DATE PAS LA NUIT DU FESTIN ICI (Daniel la date : le 16 Tishri 539, Gobryas entre).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DICTÉ (ARAMÉEN !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉS (CAPTIFS !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROFANÉS (VASES !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PESÉ (MENÉ !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PRISE (BABYLONE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/10">Jérémie 10 — Bible d'étude (araméen, dieux, périront, 10:11)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/10">Jérémie 10 — Référence (bois, vivant, ciel, terre)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/5">Daniel 5 — Traduction du monde nouveau (festin, vases, tué, 5:23,30)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/5</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR195 — « Les dieux qui n'ont pas fait le ciel » : ils périront (en araméen)</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR196">
+<div class="visuel"><img src="images/prophe_JR196_anathoth.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR196 · CATÉGORIE JR</div>
+<h3>« Les hommes d'Anathoth » : aucun reste ne subsistera</h3>
+<div class="ref">Jérémie 11:21-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Anathoth jugée (cherchent → prophétise → mourras → occupe → épée → famine → reste)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR196</div><audio controls preload="none" src="audio/fiche_JR196_anathoth.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR196_anathoth.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 11:21-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Anathoth jugée (cherchent → prophétise → mourras → occupe → épée → famine → reste)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P196 (11:21-23 : Anathoth aucun reste) ; accomplissement Jr 41:1-3, retour 537</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DIT… ANATHOTH… CHERCHENT… ÂME… PROPHÉTISE… NON… NOM… MOURRAS… MAIN… OCCUPE… EUX. » (11:21-22 — eux !)</li>
+<li>« JEUNES… MOURRONT… ÉPÉE… FILS… FILLES… FAMINE… RESTE… NON… MALHEUR… ANNÉE… OCCUPERA. » (11:22b-23 — occupera !)</li>
+<li>« AGNEAU… APPRIVOISÉ… MENÉ… ÉGORGER… SAVAIS… NON… COMPLOTAIENT… DÉTRUISONS… ARBRE… SÈVE… NOM… RAPPELÉ… NON. » (11:19 — non !)</li>
+<li>« JUGE… JUSTE… SONDE… REINS… CŒURS… VERRAI… VENGEANCE… CONFIE… CAUSE… VOIS… COMPLOTS… MONTRE… FAITS. » (11:20 — faits !)</li>
+<li>« VINT… ISMAËL… FRAPPA… GUEDALIA… MOURUT… JUIFS… CHALDÉENS… MITSPA… ÉPÉE… MASSACRE… FUITE… ÉGYPTE. » (Jr 41:1-3 — Égypte !)</li>
+<li>« MONTÈRENT… EXIL… RETOUR… ZOROBABEL… JOSUÉ… ANATHOTH… CENT… VINGT-HUIT… SANS… PRÉÉMINENCE… RESTE… EFFACÉ. » (Esd 2:23 — effacé !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Anathoth, ~608 — ANATHOTH (les ANATOT (les VILLAGE (les NATAL (les PRÊTRES (les ABIATHAR (les EXILÉ (les 5 KM (les JÉRUSALEM (les BENJAMIN (les VOISINS (les ENNEMIS (les NUL (les PROPHÈTE (les PAYS (les ANATHOTH — les NATALE !). La MENACE (les MEBAQSHIM (les CHERCHENT (les NAPHSHEKHA (les ÂME (les LO (les TINNABÉ (les PROPHÉTISE (les BESHEM (les NOM (les VELO (les TAMUT (les MOURRAS (les BEYADÉNOU (les MAIN (les INTERDIT (les PRÊCHER (les MORT (les MENACE (les MENACE — les MORTELLE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le JUGEMENT (les POQÉD (les OCCUPE (les HABBAHURIM (les JEUNES (les YAMUTU (les MOURRONT (les BAHÉREB (les ÉPÉE (les BENÉHEM (les FILS (les BENOTÉHEM (les FILLES (les YAMUTU (les BARAAB (les FAMINE (les ÉLITE (les JEUNE (les MASSACRÉE (les ENFANTS (les AFFAMÉS (les JUGEMENT — les DOUBLE !). Le RESTE (les SHEÉRIT (les LO (les YIHYÉH (les SUBSISTERA (les LAHEM (les KI (les ABI (les FERAI (les VENIR (les RAAH (les MALHEUR (les AL (les ANSHÉ (les ANATOT (les SHENAT (les ANNÉE (les PEQUDDATAM (les OCCUPERA (les EXTINCTION (les TOTALE (les NOM (les EFFACÉ (les RESTE — les AUCUN !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application MITSPA : GUEDALIA (les GOUVERNEUR (les ISMAËL (les ROYAL (les ASSASSINE (les FESTIN (les JUIFS (les CHALDÉENS (les TUÉS (les RESTE (les APOLOGÉTIQUE — les MASSACRÉ !) + FUITE (les JOHANAN (les ÉGYPTE (les JÉRÉMIE (les FORCÉ (les ÉPÉE (les POURSUIT (les TÉMOIN — les DISPERSÉ !) + RETOUR (les 537 (les 128 (les ANATHOTH (les NOMS (les LISTE (les PRÉÉMINENCE (les AUCUNE (les HISTOIRE — les EFFACÉE !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">11:19</td><td>AGNEAU (COMPLOT !)</td></tr>
+<tr><td class="d">11:20</td><td>JUGE (CAUSE !)</td></tr>
+<tr><td class="d">11:21</td><td>MENACE (MOURRAS !)</td></tr>
+<tr><td class="d">11:22-23</td><td>RESTE (AUCUN !)</td></tr>
+<tr><td class="d">Jr 41:1-3</td><td>MITSPA (MASSACRE !)</td></tr>
+<tr><td class="d">Esd 2:23</td><td>128 (EFFACÉE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>GUEDALIA : AHIQAM (les FILS (les MITSPA (les GOUVERNEUR (les BABYLONE (les CONFIANCE (les ISMAËL (les NETHANIA (les AMMON (les COMPLOT (les ASSASSINAT (les POLITIQUE — les TUÉ !). ISMAËL : SEMENCE (les ROYALE (les JALOUSIE (les 10 HOMMES (les FESTIN (les TRAHISON (les FUITE (les AMMON (les MEURTRIER — les ENFUI !). Les 128 : ESDRAS (les 2 (les LISTE (les RETOUR (les ANATHOTH (les PRÊTRES (les ABSENTS (les GLOIRE (les PASSÉE (les RECENSEMENT — les MINIME !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>MITSPA : GUÉBA (les 12 KM (les NORD (les CAPITALE (les PROVISOIRE (les RÉSIDENCE (les GOUVERNEUR (les MASSACRE (les FESTIN (les TOPOGRAPHIE — les SANG !). ANATHOTH : RAS (les EL-KHARRUBEH (les RUINES (les CITERNES (les TOMBES (les FOUILLES (les VILLAGE (les GÉOGRAPHIE — les EFFACÉ !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'AGNEAU : KÉBES (les APPRIVOISÉ (les CONFIANT (les ÉGORGÉ (les INNOCENT (les IGNORANT (les COMPLOT (les NAÏVETÉ (les ZOOLOGIE — les MENÉ !). Les REINS : KELAYOT (les SONDE (les ÉMOTIONS (les SIÈGE (les CŒUR (les PENSÉES (les JUGE (les JUSTE (les ANATOMIE — les SONDÉS !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>AGNEAU mené (sans savoir) → COMPLOT tramé (détruisons) → CAUSE confiée (juste juge) → MENACE proférée (mourras) → ÉPÉE promise (jeunes) → FAMINE jurée (enfants) → RESTE nié (aucun).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS que TOUS LES ANATHOTHITES MOURRONT LE MÊME JOUR (l'année de leur châtiment : progressivement). Ne DIT PAS que LES 128 DU RETOUR SONT DES IMPOSTEURS (des fils d'Anathoth ; la prééminence perdue). Ne DIT PAS que JÉRÉMIE FUT ÉPARGNÉ PAR SES VOISINS (protégé par Dieu, haï par son village). Ne DIT PAS que MITSPA REMPLACE JÉRUSALEM (capitale éphémère ; le sang l'inaugure et l'achève).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NÉ (ANATHOTH !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">MENACÉ (MOURRAS !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TUÉ (GUEDALIA !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">586</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FUI (ÉGYPTE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">585</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LISTÉE (128 !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/11">Jérémie 11 — Référence (Anathoth, menace, reste, 11:21-23)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/11">Jérémie 11 — Bible d'étude (agneau, juge, épée, famine)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/41">Jérémie 41 — Traduction du monde nouveau (Guedalia, Ismaël, Mitspa, 41:1-3)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/41</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR196 — « Les hommes d'Anathoth » : aucun reste ne subsistera</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR197">
+<div class="visuel"><img src="images/prophe_JR197_arraches.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR197 · CATÉGORIE JR</div>
+<h3>« J'arracherai mes mauvais voisins » : puis je les rétablirai</h3>
+<div class="ref">Jérémie 12:14-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / À venir</span>
+<span class="badge">Voisins arrachés (mauvais → touchent → arracherai → Juda → compassion → apprennent → établis → périr)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR197</div><audio controls preload="none" src="audio/fiche_JR197_arraches.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR197_arraches.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 12:14-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>Voisins arrachés (mauvais → touchent → arracherai → Juda → compassion → apprennent → établis → périr)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P197 (12:14-17 : voisins arrachés, rétablis) ; accomplissement Esd 1-2, Jr 48-49</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DIT… MAUVAIS… VOISINS… TOUCHENT… HÉRITAGE… DONNÉ… ISRAËL… ARRACHERAI… SOL… JUDA… MILIEU. » (12:14 — milieu !)</li>
+<li>« APRÈS… ARRACHÉS… COMPASSION… RAMÈNERAI… HÉRITAGE… PAYS… APPRENNENT… VOIES… PEUPLE… JURENT… NOM. » (12:15-16 — nom !)</li>
+<li>« VIVANT… APPRIS… PEUPLE… JURER… BAAL… ÉTABLIS… MILIEU… ÉCOUTENT… NON… ARRACHERAI… EXTERMINERAI. » (12:16b-17 — exterminerai !)</li>
+<li>« RAMÈNERAI… CAPTIFS… MOAB… SUITE… TEMPS… JUGEMENT… MOAB… AMMON… CAPTIFS… RAMÈNERAI… ÉLAM… DERNIERS… JOURS. » (Jr 48:47 ; 49:6,39 — jours !)</li>
+<li>« MONTÈRENT… JUDA… JÉRUSALEM… CHACUN… VILLE… PEUPLE… PAYS… AIDÈRENT… ARGENT… OR… BIENS… BÉTAIL. » (Esd 1:4-5 — bétail !)</li>
+<li>« ÉTRANGERS… JOINDRE… MAISON… JACOB… S'ATTACHERONT… PEUPLES… PRENDRONT… AMÈNERONT… LIEU… HÉRITERONT. » (Is 14:1 — hériteront !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~608 — VOISINS (les SHEKHENIM (les HARAIM (les MAUVAIS (les NOGAIM (les TOUCHENT (les BANAHALAH (les HÉRITAGE (les HINHALTI (les DONNÉ (les ET (les AMMI (les YISRAËL (les HINNENI (les NOTESH (les ARRACHERAI (les MÉAL (les ADMATAM (les SOL (les VILLES (les PROPRIÉTAIRE (les TERRE (les VOISINS — les MAUVAIS !). JUDA (les BÉT (les YEHUDAH (les ETOSH (les ARRACHERAI (les MITOKHAM (les MILIEU (les MÊME (les SORT (les PEUPLE (les VOISINS (les ÉGALITÉ (les JUGEMENT (les EXIL (les COMMUN (les JUDA — les ARRACHÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La COMPASSION (les AHARÉ (les APRÈS (les NOTESHI (les ARRACHÉS (les ASHUB (les RAHAMTIM (les VESHABTIM (les RAMÈNERAI (les ISH (les LENAHALATO (les HÉRITAGE (les ISH (les LEARTSO (les PAYS (les RETOUR (les UNIVERSEL (les VOISINS (les COMPRIS (les COMPASSION — les RETOUR !). L'APPRENTISSAGE (les LAMOD (les APPRENNENT (les YILMEDU (les ET (les DARKÉ (les VOIES (les AMMI (les LEHISHABÉA (les JURER (les BISHMI (les NOM (les HAY (les VIVANT (les KAASHER (les LIMMEDU (les APPRIS (les ET (les AMMI (les LEHISHABÉA (les BABAAL (les VENIBNU (les ÉTABLIS (les BETOK (les MILIEU (les AMMI (les ÉCHANGE (les SERMENTS (les BAAL (les JÉHOVAH (les APPRENTISSAGE — les ÉTABLIS !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application TRIPLE : MOAB (les 48 (les CAPTIFS (les RAMENÉS (les SUITE (les TEMPS (les AMMON (les 49 (les ÉLAM (les DERNIERS (les JOURS (les APOLOGÉTIQUE — les PROMIS !) + RETOUR (les 537 (les VOISINS (les AIDENT (les ARGENT (les OR (les BÉTAIL (les PROSÉLYTES (les MONTENT (les TÉMOIN — les AIDÉS !) + ÉTABLIS (les APPRENNENT (les JURENT (les VIVANT (les MILIEU (les PEUPLE (les CORNEILLE (les RUTH (les HISTOIRE — les GREFFÉS !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">12:14</td><td>VOISINS (ARRACHÉS !)</td></tr>
+<tr><td class="d">12:15</td><td>COMPASSION (RAMENÉS !)</td></tr>
+<tr><td class="d">12:16</td><td>APPRENNENT (ÉTABLIS !)</td></tr>
+<tr><td class="d">12:17</td><td>PÉRIR (NATION !)</td></tr>
+<tr><td class="d">Jr 48:47</td><td>MOAB (TEMPS !)</td></tr>
+<tr><td class="d">Esd 1:4</td><td>AIDÈRENT (BÉTAIL !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>MOAB : MESHA (les STÈLE (les KIR (les DÉPORTÉS (les NÉBUCADNETSAR (les 582 (les RETOUR (les PERSÉ (les ARCHÉOLOGIE — les ARRACHÉ !). AMMON (les RABBA (les BAALIS (les COMPLOT (les GUEDALIA (les PUNI (les EXIL (les RETOUR (les HISTOIRE — les JUGÉE !). RUTH : MOABITE (les APPRIT (les JURA (les TON DIEU (les ÉTABLIE (les DAVID (les AÏEULE (les TYPE — les MODÈLE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Les VOISINS : AMMON (les EST (les MOAB (les SUD-EST (les ÉDOM (les SUD (les PHILISTINS (les OUEST (les SYRIENS (les NORD (les ENCERCLEMENT (les TOPOGRAPHIE — les ENTOUR !). L'HÉRITAGE : NAHALAH (les LOT (les TRIBU (les FRONTIÈRES (les VIOLÉES (les RESTAURÉES (les CADASTRE (les DIVIN (les GÉOGRAPHIE — les BORNÉ !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'ARRACHEMENT : NATASH (les PLANTE (les RACINES (les SOL (les REPIQUÉE (les GREFFE (les HORTICULTURE (les DÉPORTATION (les BOTANIQUE — les REPIQUÉE !). Le SERMENT : SHEBUAH (les JURE (les VIVANT (les ENGAGEMENT (les ALLIANCE (les PAROLE (les DONNÉE (les DROIT — les SERMENT !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>VOISINS dénoncés (mauvais) → HÉRITAGE touché (donné) → ARRACHERAI promis (sol) → JUDA jointe (milieu) → COMPASSION annoncée (ramènerai) → APPRENNENT conditionnés (voies) → ÉTABLIS ou PÉRIS (écoutent).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS que TOUS LES VOISINS APPRENDRONT (certains périront : Édom s'obstinera). Ne DIT PAS que LE RETOUR DES VOISINS ÉGALE CELUI DE JUDA (compassion mesurée ; Israël premier). Ne DATE PAS LA SUITE DES TEMPS (Moab, Ammon, Élam : les jours derniers les verront). Ne DIT PAS que RUTH ÉPUISE LA PROMESSE (modèle individuelle ; les nations suivront).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROMIS (ARRACHÉS !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉS (VOISINS !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">582</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">AIDÉS (RETOUR !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">RAMENÉS (MOAB !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Suite</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">REVENUS (ÉLAM !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Derniers</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/12">Jérémie 12 — Référence (voisins, arrachés, compassion, 12:14-17)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/12">Jérémie 12 — Bible d'étude (apprennent, établis, périr)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/48">Jérémie 48 — Traduction du monde nouveau (Moab, captifs, suite des temps)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/48</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR197 — « J'arracherai mes mauvais voisins » : puis je les rétablirai</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR198">
+<div class="visuel"><img src="images/prophe_JR198_cruches.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR198 · CATÉGORIE JR</div>
+<h3>« Comme cette ceinture pourrie » : les cruches brisées l'une contre l'autre</h3>
+<div class="ref">Jérémie 13:9-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Orgueil pourri (ceinture → lin → Perath → cachée → jours → pourrie → orgueil → cruches)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR198</div><audio controls preload="none" src="audio/fiche_JR198_cruches.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR198_cruches.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 13:9-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Orgueil pourri (ceinture → lin → Perath → cachée → jours → pourrie → orgueil → cruches)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P198 (13:9-14 : orgueil, cruches) ; accomplissement 2R 24:12-16, 25:1-11</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DIT… ACHÈTE… CEINTURE… LIN… METS… REINS… TREMPE… EAU… NON… ACHETAI… MIS… PAROLE. » (13:1-2 — parole !)</li>
+<li>« PRENDS… CEINTURE… VA… PERATH… CACHE… FENTE… ROCHER… PARTIS… CACHAI… EUPHRATE… ORDONNÉ. » (13:4-5 — ordonné !)</li>
+<li>« JOURS… NOMBREUX… VA… PERATH… PRENDS… CREUSAI… PRIS… POURRIE… BONNE… RIEN… INUTILISABLE. » (13:6-7 — inutilisable !)</li>
+<li>« DÉTRUIRAI… ORGUEIL… JUDA… IMMENSE… JÉRUSALEM… MÉCHANT… ÉCOUTE… NON… DIEUX… DEVIENNE… CEINTURE. » (13:9-10 — ceinture !)</li>
+<li>« DIRAS… CRUCHES… REMPLIES… VIN… RÉPONDRONT… SAVONS… NON… REMPLIRAI… IVRESSE… ROIS… PRÊTRES… PROPHÈTES. » (13:12-13 — prophètes !)</li>
+<li>« BRISERAI… UNS… AUTRES… PÈRES… FILS… ÉPARGNERAI… NON… PITIÉ… NON… MISÉRICORDE… NON… DÉTRUIRE. » (13:14 — détruire !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~608 — CEINTURE (les EZOR (les PISHTIM (les LIN (les QENÉH (les ACHÈTE (les VESAMTA (les METS (les AL (les MOTNÉKHA (les REINS (les BAMAYIM (les EAU (les LO (les TEBIÉHA (les TREMPE (les SACERDOTALE (les BLANCHE (les PROPRE (les INTIMITÉ (les DIEU (les PEUPLE (les CEINTURE — les LIN !). Le PERATH (les PERAT (les EUPHRATE (les 500 KM (les LEK (les VA (les UTEMANTA (les CACHE (les BINIQTSE (les FENTE (les HASSÉLA (les ROCHER (les VOYAGE (les LONG (les EXIL (les ANNONCÉ (les HUMIDITÉ (les POURRITURE (les PERATH — les CACHE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La POURRITURE (les YAMIM (les JOURS (les RABBIM (les NOMBREUX (les QUM (les LEK (les PERATAH (les VEHETBAH (les HAEZOR (les HEHPEZ (les CREUSAI (les VAÉQQAH (les PRIS (les NISHHAH (les POURRIE (les LO (les YITSLAH (les BONNE (les LEKHOL (les RIEN (les LIN (les MOISI (les INUTILISABLE (les POURRITURE — les TOTALE !). L'ORGUEIL (les GUEON (les YEHUDAH (les ASHHIT (les DÉTRUIRAI (les GUEON (les YERUSHALAYIM (les HARAB (les IMMENSE (les HAAM (les HARA (les MÉCHANT (les LO (les YISHMOU (les AKHARÉ (les DIEUX (les YIHYÉH (les DEVIENNE (les KAAEZOR (les CEINTURE (les ORGUEIL — les POURRI !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application EXIL : VOYAGE (les 500 KM (les ALLER (les RETOUR (les EUPHRATE (les EXIL (les FIGURÉ (les LONG (les PÉNIBLE (les APOLOGÉTIQUE — les MIMÉ !) + YEKONIA (les SORTIT (les 597 (les 10 000 (les DÉPORTÉS (les SÉDÉCIAS (les REBELLE (les 607 (les BRÛLÉE (les TÉMOIN — les BRISÉE !) + CRUCHES (les IVRESSE (les ROIS (les PRÊTRES (les PROPHÈTES (les UNS (les AUTRES (les HISTOIRE — les FRACASSÉES !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">13:1-2</td><td>LIN (REINS !)</td></tr>
+<tr><td class="d">13:4-5</td><td>PERATH (CACHÉE !)</td></tr>
+<tr><td class="d">13:6-7</td><td>POURRIE (RIEN !)</td></tr>
+<tr><td class="d">13:9-10</td><td>ORGUEIL (CEINTURE !)</td></tr>
+<tr><td class="d">13:12-13</td><td>CRUCHES (IVRESSE !)</td></tr>
+<tr><td class="d">13:14</td><td>BRISERAI (ENSEMBLE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La CEINTURE : LIN (les SACERDOTAL (les BLANC (les EXODE (les 28 (les INTIMITÉ (les TAILLE (les DIEU (les SERRÉ (les EXIL (les ÉLOIGNÉ (les VESTIMENTAIRE — les SYMBOLE !). Le VOYAGE : 500 KM (les ALLER (les ANATHOTH (les EUPHRATE (les SEMAINES (les MARCHE (les DANGER (les BANDITS (les PÈLERINAGE — les PROPHÉTIQUE !). YEKONIA (les 18 ANS (les SORTIT (les MÈRE (les SERVITEURS (les PRINCES (les EUNUQUES (les CAPITULATION — les EXILÉ !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le PERATH : EUPHRATE (les KARKEMISH (les GUÉ (les ROCHERS (les FENTES (les HUMIDES (les CRUES (les MOISISSURE (les POURRITURE (les TOPOGRAPHIE — les FLEUVE !). Les CRUCHES : NÉBEL (les OUTRE (les VIN (les RÉSERVE (les FRACASSÉES (les TESSONS (les ÉPARS (les GÉOGRAPHIE — les BRISÉES !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le LIN : PISHTAH (les FIBRE (les VÉGÉTALE (les HUMIDITÉ (les MOISISSURE (les POURRITURE (les CELLULOSE (les DÉCOMPOSÉE (les TEXTILE — les POURRI !). L'IVRESSE : SHEKAR (les VIN (les FERMENTÉ (les JUGEMENT (les TROUBLÉ (les FRÈRES (les ENNEMIS (les GUERRE (les CIVILE (les TOXICOLOGIE — les MEURTRIÈRE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>ACHÈTE ordonné (lin) → REINS serrés (mets) → PERATH visé (cache) → JOURS passés (nombreux) → POURRIE trouvée (rien) → ORGUEIL détruit (Juda) → CRUCHES brisées ( ensemble).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS si JÉRÉMIE FIT VRAIMENT 1 000 KM (vision ou voyage : l'acte parla). Ne DIT PAS que LA CEINTURE FUT RACCOMMODÉE (pourrie, bonne à rien : le jugement sans appel). Ne DIT PAS que LES CRUCHES S'ÉPARGNERONT ENTRE ELLES (pères contre fils : la guerre civile). Ne DIT PAS que L'IVRESSE EXCUSE (le vin du jugement : ils boiront jusqu'à la lie).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ACHETÉE (LIN !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CACHÉE (PERATH !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">POURRIE (EXIL !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRISÉE (YEKONIA !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FRACASSÉE (FEU !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/13">Jérémie 13 — Référence (ceinture, orgueil, cruches, 13:9-14)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/13">Jérémie 13 — Bible d'étude (Perath, pourrie, ivresse)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/25">2 Rois 25 — Traduction du monde nouveau (siège, brèche, exil, 25:1-11)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/25</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR198 — « Comme cette ceinture pourrie » : les cruches brisées l'une contre l'autre</span><span>Catégorie JR</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR193 — « Je les nourrirai d'absinthe » : dispersés parmi des nations inconnues</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ÉCRIT (LÉVITIQUE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SERVIE (ABSINTHE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DISPERSÉS (NATIONS !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CONSTATÉ (ÉZÉCHIEL !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">RETOMBÉE (ÉTOILE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~96</text>
+</svg>
+<h4>JR194 — « Je punirai tous les circoncis » : Juda mêlé à ses voisins</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LISTÉS (VOISINS !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BUE (ÉGYPTE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">VIDÉE (JÉRUSALEM !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PUNIS (VOISINS !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">582</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ENIVRÉE (SHÉSHAK !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+</svg>
+<h4>JR195 — « Les dieux qui n'ont pas fait le ciel » : ils périront (en araméen)</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DICTÉ (ARAMÉEN !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉS (CAPTIFS !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROFANÉS (VASES !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PESÉ (MENÉ !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PRISE (BABYLONE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+</svg>
+<h4>JR196 — « Les hommes d'Anathoth » : aucun reste ne subsistera</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NÉ (ANATHOTH !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">MENACÉ (MOURRAS !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TUÉ (GUEDALIA !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">586</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FUI (ÉGYPTE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">585</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LISTÉE (128 !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<h4>JR197 — « J'arracherai mes mauvais voisins » : puis je les rétablirai</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROMIS (ARRACHÉS !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉS (VOISINS !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">582</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">AIDÉS (RETOUR !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">RAMENÉS (MOAB !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Suite</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">REVENUS (ÉLAM !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Derniers</text>
+</svg>
+<h4>JR198 — « Comme cette ceinture pourrie » : les cruches brisées l'une contre l'autre</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ACHETÉE (LIN !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CACHÉE (PERATH !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">POURRIE (EXIL !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRISÉE (YEKONIA !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FRACASSÉE (FEU !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-33 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR — Jérémie (11) — L'alliance nouvelle et la ville rebâtie</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR</h1>
+<h2>Jérémie (11) — L'alliance nouvelle et la ville rebâtie</h2>
+<p class="intro">Le livre de la consolation culmine : Juda et ses villes seront de nouveau habités (JR241), la semence d'hommes repeuplera le pays et chacun mourra pour sa propre faute (JR242), une alliance nouvelle écrira la loi dans les cœurs (JR243), garantie par les ordonnances immuables du ciel (JR244) ; Jérusalem sera rebâtie tour par tour (JR245) — mais d'abord Sédécias, qui refuse d'écouter, verra de ses yeux le roi de Babylone (JR246).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR241">JR241</a>
+<a href="#JR242">JR242</a>
+<a href="#JR243">JR243</a>
+<a href="#JR244">JR244</a>
+<a href="#JR245">JR245</a>
+<a href="#JR246">JR246</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR241"><img src="images/prophe_JR241_habite.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR241</div>
+<h3><a href="#JR241">« Que Jéhovah te bénisse, demeure de justice » : Juda réhabité</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR242"><img src="images/prophe_JR242_semence.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR242</div>
+<h3><a href="#JR242">« Chacun mourra pour sa faute » : semence nouvelle, fin des raisins verts</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR243"><img src="images/prophe_JR243_alliance.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR243</div>
+<h3><a href="#JR243">« Alliance nouvelle » : ma loi dans leur cœur, péchés oubliés</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR244"><img src="images/prophe_JR244_ordonnances.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR244</div>
+<h3><a href="#JR244">« Si ces lois cessent » : Israël nation à jamais comme le soleil</a></h3>
+<div class="meta">Accomplie (continu)</div></div></div>
+<div class="carte">
+<a class="img" href="#JR245"><img src="images/prophe_JR245_tours.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR245</div>
+<h3><a href="#JR245">« Depuis la tour de Hananéel » : Jérusalem mesurée et sanctifiée</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR246"><img src="images/prophe_JR246_sedecias.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR246</div>
+<h3><a href="#JR246">Sédécias « verra de ses yeux » le roi de Babylone — puis Babylone</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR241">
+<div class="visuel"><img src="images/prophe_JR241_habite.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR241 · CATÉGORIE JR</div>
+<h3>« Que Jéhovah te bénisse, demeure de justice » : Juda réhabité</h3>
+<div class="ref">Jérémie 31:23-26</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Juda réhabité (ainsi → dit → Jéhovah → armées → Dieu → Israël → dira → encore → parole → pays → Juda → villes)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR241</div><audio controls preload="none" src="audio/fiche_JR241_habite.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR241_habite.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:23-26</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Juda réhabité (ainsi → dit → Jéhovah → armées → Dieu → Israël → dira → encore → parole → pays → Juda → villes)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P241 (31:23-26 : Juda et ses villes habités) ; accomplissement Esd 2 ; Né 7</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AINSI… JÉHOVAH… ARMÉES… DIEU… ISRAËL… DIRA… ENCORE… PAROLE… PAYS… JUDA… VILLES… RAMÈNERAI… CAPTIFS… BÉNISSE… DEMEURE… JUSTICE… MONTAGNE… SAINTE. » (31:23 — sainte !)</li>
+<li>« HABITERONT… JUDA… VILLES… ENSEMBLE… LABOUREURS… CONDUISENT… TROUPEAUX… RASSASIERAI… ÂME… FATIGUÉE… REMPLIRAI… LANGUISSANTE… ÉVEILLÉ… OUVERT… YEUX… SOMMEIL… AGRÉABLE. » (31:24-26 — agréable !)</li>
+<li>« BÉNÉDICTION… MUTUELLE… VILLES… SALUENT… SION… JUSTICE… RÉTABLIE… SAINTETÉ… MONTAGNE… RETROUVÉE… PAIX… RÉGNANTE. » (bénédiction — régnante !)</li>
+<li>« LABOUREURS… NOMADES… SÉDENTAIRES… ENSEMBLE… AGRICULTURE… ÉLEVAGE… ÉCONOMIE… COMPLÈTE… RESTAURÉE… PROSPÉRITÉ… RURALE. » (laboureurs — rurale !)</li>
+<li>« ÂMES… FATIGUÉES… DÉSALTÉRÉES… EXIL… ÉPUISANT… RETOUR… RESTAURANT… DIEU… RESTAURE… CORPS… ESPRITS… LAS. » (âmes — las !)</li>
+<li>« SOMMEIL… PROPHÈTE… AGRÉABLE… VISION… CONSOLATION… RÉVEIL… HEUREUX… JÉRÉMIE… GOÛTE… AVANCE… JOIE… PROMISE. » (sommeil — promise !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Parole à redire, ~597 — KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les ÉLOHÉ (les DIEU (les YISRAÉL (les ISRAËL (les OD (les ENCORE (les YOMRU (les DIRA (les ET (les HADDABAR (les PAROLE (les HAZÉH (les CE (les BEÉRETS (les PAYS (les YEHUDAH (les JUDA (les UBARAYV (les VILLES (les BESHUBI (les RAMÈNERAI (les ET (les SHEBUTAM (les CAPTIFS (les YEVAREKHEKHA (les BÉNISSE (les YEHOVAH (les NEVÉH (les DEMEURE (les TSÉDEQ (les JUSTICE (les HAR (les MONTAGNE (les HAQQODESH (les SAINTE (les ON DIRA (les ENCORE (les BÉNÉDICTION — les RETROUVÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les HABITANTS (les VEYASHEBU (les HABITERONT (les BO (les LÀ (les YEHUDAH (les JUDA (les VEKHOL (les TOUTES (les ARAYV (les VILLES (les YAHDAV (les ENSEMBLE (les IKKARIM (les LABOUREURS (les VENASEU (les CONDUISENT (les BÉDÉD (les TROUPEAUX (les SÉDENTAIRES (les ET NOMADES (les ENSEMBLE (les HABITANTS — les ENSEMBLE !). Les ÂMES (les KI (les CAR (les HIRVÉTI (les RASSASIERAI (les NÉPHESH (les ÂME (les AYÉPHAH (les FATIGUÉE (les VEKHOL (les TOUTE (les NÉPHESH (les ÂME (les DAABAH (les LANGUISSANTE (les MILLÉTI (les REMPLIRAI (les AL (les ZOT (les CELA (les HÉQITSOTI (les ÉVEILLÉ (les VAÉRÉH (les OUVERT (les USHNATI (les SOMMEIL (les AREBAH (les AGRÉABLE (les LI (les MOI (les LE PROPHÈTE (les S'ÉVEILLE (les HEUREUX (les ÂMES — les RASSASIÉES !)</p>
+<h4>5 · Interprétation</h4>
+<p>La BÉNÉDICTION (les LES VILLES (les DE JUDA (les SALUERONT (les SION (les DEMEURE (les DE JUSTICE (les MONTAGNE (les SAINTE (les LÀ OÙ (les RÉGNAIT (les LINJUSTICE (les RÉGNERA (les LA JUSTICE (les LÀ OÙ (les LE TEMPLE (les FUT (les PROFANÉ (les LA SAINTETÉ (les REVIENDRA (les BÉNÉDICTION — les MUTUELLE !). Le SOMMEIL (les LE PROPHÈTE (les REÇOIT (les CES VISIONS (les EN SONGE (les ET S'ÉVEILLE (les EN TROUVANT (les SON SOMMEIL (les AGRÉABLE (les SEULE FOIS (les OÙ JÉRÉMIE (les GOÛTE (les D'AVANCE (les LA DOUCEUR (les DE LA CONSOLATION (les SOMMEIL — les AGRÉABLE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">31:23</td><td>JUDA (SAINTE !)</td></tr>
+<tr><td class="d">31:24</td><td>VILLES (TROUPEAUX !)</td></tr>
+<tr><td class="d">31:25</td><td>FATIGUÉE (REMPLIRAI !)</td></tr>
+<tr><td class="d">31:26</td><td>ÉVEILLÉ (AGRÉABLE !)</td></tr>
+<tr><td class="d">Esd 2</td><td>LISTES (RETOUR !)</td></tr>
+<tr><td class="d">Né 7</td><td>VILLES (HABITÉES !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Esdras 2 et Néhémie 7 : longues listes de rapatriés par villes — Bethléem, Netopha, Anatoth, Béthel… ; laboureurs et éleveurs (v. 24) : l'économie rurale redémarre ; le « sommeil agréable » (v. 26) : unique notation intime de Jérémie recevant la consolation en songe.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Juda et toutes ses villes : le territoire tribal réoccupé ville par ville ; la montagne sainte (Sion) bénie par les campagnes — centre et périphérie réconciliés.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Démographie du retour : les listes d'Esd 2/Né 7 (42 360 personnes + serviteurs) documentent une réinstallation méthodique par localités d'origine — l'archéologie perse confirme la réoccupation des tells judéens.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : ON DIRA ENCORE → BÉNIE SOIT SION → JUDA + VILLES HABITÉS → LABOUREURS + TROUPEAUX → ÂMES RASSASIÉES → SOMMEIL AGRÉABLE (537+)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le verset 26 révèle le mode de révélation : songe nocturne ; la bénédiction des villes sur Sion inverse la malédiction des nations sur Sion (Jr 30:17).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Juda et ses villes de nouveau habités</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rapatriés recensés ville par ville (Esd 2)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537+</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Néhémie : recensement et réinstallation (Né 7)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/15/2">Bible — Esdras 2 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/15/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/7">Bible — Néhémie 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/7</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/15/2">Bible — Esdras 2 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/15/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR241 — « Que Jéhovah te bénisse, demeure de justice » : Juda réhabité</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR242">
+<div class="visuel"><img src="images/prophe_JR242_semence.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR242 · CATÉGORIE JR</div>
+<h3>« Chacun mourra pour sa faute » : semence nouvelle, fin des raisins verts</h3>
+<div class="ref">Jérémie 31:27-30</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Semence et raisins (voici → jours → viennent → déclare → Jéhovah → ensemencerai → maison → Israël → maison → Juda → semence)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR242</div><audio controls preload="none" src="audio/fiche_JR242_semence.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR242_semence.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:27-30</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Semence et raisins (voici → jours → viennent → déclare → Jéhovah → ensemencerai → maison → Israël → maison → Juda → semence)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P242 (31:27-30 : semence ; raisins acides) ; accomplissement Jr 31:28 ; Éz 18:2-3</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« VOICI… JOURS… VIENNENT… DÉCLARE… JÉHOVAH… ENSEMENCERAI… MAISON… ISRAËL… MAISON… JUDA… SEMENCE… HOMMES… SEMENCE… BÊTES… VEILLÉ… ARRACHER… ABATTRE… DÉTRUIRE… RUINER… MAL… VEILLERAI… BÂTIR… PLANTER. » (31:27-28 — planter !)</li>
+<li>« JOURS… DIRA… PLUS… PÈRES… MANGÉ… RAISINS… VERTS… DENTS… ENFANTS… AGACÉES… CHACUN… MOURRA… FAUTE… HOMME… MANGERA… RAISINS… VERTS… PROPRES… DENTS… AGACÉES. » (31:29-30 — agacées !)</li>
+<li>« SEMENCE… HOMMES… BÊTES… REPEUPLEMENT… TOTAL… DÉMOGRAPHIE… BÉTAIL… RICHESSE… RURALE… FÉCONDITÉ… BÉNIE… CROISSANCE. » (semence — croissance !)</li>
+<li>« CINQ… VERBES… DESTRUCTION… DEUX… CONSTRUCTION… VEILLE… DIVINE… RETOURNÉE… ARRACHER… PLANTER… ÉQUILIBRE… JUSTICE. » (cinq — justice !)</li>
+<li>« PROVERBE… FATALISTE… EXILÉS… PLAIGNENT… PAIENT… PÈRES… COUPABLES… ENFANTS… PUNIS… DIEU… RÉPOND… RESPONSABILITÉ… PERSONNELLE. » (proverbe — personnelle !)</li>
+<li>« DENTS… AGACÉES… VERJUS… ACIDE… GOÛT… DÉSAGRÉABLE… IMAGE… CONCRÈTE… CHACUN… ASSUME… PROPRES… ACTES… JUSTICE… INDIVIDUELLE. » (dents — individuelle !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jours qui viennent, ~597 — HINNÉH (les VOICI (les YAMIM (les JOURS (les BAIM (les VIENNENT (les NEUM (les DÉCLARE (les YEHOVAH (les VEZARATI (les ENSEMENCERAI (les ET (les BÉT (les MAISON (les YISRAÉL (les ISRAËL (les VEÉT (les BÉT (les MAISON (les YEHUDAH (les JUDA (les ZÉRA (les SEMENCE (les ADAM (les HOMMES (les VEZÉRA (les SEMENCE (les BEHÉMAH (les BÊTES (les LES HOMMES (les SEMÉS (les COMME (les LE BLÉ (les SEMENCE — les HOMMES !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La VEILLE (les VEHAYAH (les SERA (les KAASHER (les COMME (les SHAQADTI (les VEILLÉ (les ALÉHEM (les EUX (les LINTOSH (les ARRACHER (les VELINNOTS (les ABATTRE (les ULEHAROS (les DÉTRUIRE (les ULEHAABID (les RUINER (les ULEHARÉA (les MAL (les KÉN (les AINSI (les ESHQOD (les VEILLERAI (les ALÉHEM (les EUX (les LIBNOT (les BÂTIR (les VELINTOA (les PLANTER (les NEUM (les DÉCLARE (les YEHOVAH (les CINQ VERBES (les CONTRE (les DEUX (les LA VEILLE (les NE DORT (les JAMAIS (les VEILLE — les RETOURNÉE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le PROVERBE (les BAYYAMIM (les JOURS (les HAHEM (les CE (les LO (les NON (les YOMRU (les DIRA (les OD (les PLUS (les ABOT (les PÈRES (les AKHLU (les MANGÉ (les BOSSER (les RAISINS (les VEZINNÉ (les VERTS (les VESHINNÉ (les DENTS (les HABBANIM (les ENFANTS (les TIQHÉNAH (les AGACÉES (les LES EXILÉS (les SE PLAIGNAIENT (les NOUS PAYONS (les LES FAUTES (les DE NOS PÈRES (les PROVERBE — les ABOLI !). La RÉPONSE (les KI (les MAIS (les IM (les SI (les ISH (les CHACUN (les BAAVONO (les FAUTE (les YAMUT (les MOURRA (les KOL (les TOUT (les HAADAM (les HOMME (les HAOKHÉL (les MANGERA (les HABBOSSER (les RAISINS (les VERTS (les TIQHÉNAH (les AGACÉES (les SHINNAV (les DENTS (les RESPONSABILITÉ (les PERSONNELLE (les CHACUN (les POUR SA FAUTE (les RÉPONSE — les JUSTE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">31:27</td><td>SEMENCE (BÊTES !)</td></tr>
+<tr><td class="d">31:28</td><td>PLANTER (JÉHOVAH !)</td></tr>
+<tr><td class="d">31:29</td><td>PÈRES (AGACÉES !)</td></tr>
+<tr><td class="d">31:30</td><td>MOURRA (DENTS !)</td></tr>
+<tr><td class="d">Éz 18:2-3</td><td>PROVERBE (ISRAËL !)</td></tr>
+<tr><td class="d">Dt 24:16</td><td>FAUTE (MOURRA !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le proverbe fataliste circulait chez les exilés (Lm 5:7 ; Éz 18:2) ; Ézéchiel, contemporain en exil, développe la même doctrine au chapitre 18 : l'âme qui pèche mourra ; Moïse l'avait posée (Dt 24:16) — Jérémie l'inscrit dans la consolation.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Vignobles de Juda : le verjus (raisin vert acide) agace réellement les dents — l'image vient des pressoirs judéens ; semence d'hommes et de bêtes : repeuplement des campagnes et des pâturages.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Physiologie : l'acidité du verjus (acide tartrique, malique) provoque l'agacement dentaire — sensation que chacun éprouve pour son propre compte, jamais pour autrui ; la métaphore est biologiquement exacte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : SEMENCE D'HOMMES + BÊTES → VEILLE RETOURNÉE (5→2 VERBES) → PROVERBE ABOLI → CHACUN POUR SA FAUTE (ÉZ 18)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>La responsabilité individuelle n'annule pas la solidarité nationale : le peuple revient ensemble, mais chacun est jugé pour ses actes ; principe repris par Ézéchiel pour l'immédiat.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : semence nouvelle, fin du proverbe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ézéchiel 18 développe la doctrine en exil</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~592</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Repeuplement : semence d'hommes et de bêtes</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537+</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/18">Bible — Ézéchiel 18 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/18</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/18">Bible — Ézéchiel 18 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/18</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/24">Bible — Deutéronome 24 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/24</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR242 — « Chacun mourra pour sa faute » : semence nouvelle, fin des raisins verts</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR243">
+<div class="visuel"><img src="images/prophe_JR243_alliance.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR243 · CATÉGORIE JR</div>
+<h3>« Alliance nouvelle » : ma loi dans leur cœur, péchés oubliés</h3>
+<div class="ref">Jérémie 31:31-34</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Alliance nouvelle (voici → jours → viennent → déclare → Jéhovah → conclurai → maison → Israël → maison → Juda → alliance → nouvelle)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR243</div><audio controls preload="none" src="audio/fiche_JR243_alliance.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR243_alliance.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:31-34</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Alliance nouvelle (voici → jours → viennent → déclare → Jéhovah → conclurai → maison → Israël → maison → Juda → alliance → nouvelle)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P243 (31:31-34 : alliance nouvelle, péchés oubliés) ; accomplissement Lc 22:20 ; Hé 8:8-13</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« VOICI… JOURS… VIENNENT… DÉCLARE… JÉHOVAH… CONCLURAI… MAISON… ISRAËL… MAISON… JUDA… ALLIANCE… NOUVELLE… NON… ALLIANCE… PÈRES… PRIS… MAIN… SORTIR… ÉGYPTE… ROMPUE… ÉPOUX… DÉCLARE… JÉHOVAH. » (31:31-32 — Jéhovah !)</li>
+<li>« ALLIANCE… CONCLURAI… MAISON… ISRAËL… JOURS… PASSÉS… DÉCLARE… JÉHOVAH… METTRAI… LOI… PROFOND… ÉCRIRAI… CŒUR… DEVIENDRAI… DIEU… DEVIENDRONT… PEUPLE… ENSEIGNERONT… PLUS… COMPAGNON… FRÈRE… CONNAISSEZ… JÉHOVAH… TOUS… CONNAÎTRONT… PETIT… GRAND. » (31:33-34a — grand !)</li>
+<li>« PARDONNERAI… FAUTE… SOUVIENDRAI… PLUS… PÉCHÉ… CŒUR… PIERRE… CHAIR… LOI… INTÉRIEURE… OBÉISSANCE… AMOUR… PARDON… TOTAL… OUBLI… DIVIN. » (31:34b — divin !)</li>
+<li>« MOÏSE… MÉDIATEUR… ANCIENNE… JÉSUS… MÉDIATEUR… NOUVELLE… SANG… TAUREAUX… SANG… CHRIST… PENTECÔTE… 33… CENT-VINGT… ESPRIT… ENTRÉE. » (Moïse — entrée !)</li>
+<li>« REPAS… SEIGNEUR… COUPE… SANG… ALLIANCE… LUC… VINGT-DEUX… VINGT… PAUL… HÉBREUX… HUIT… DIX… CITENT… JÉRÉMIE… ACCOMPLIE. » (repas — accomplie !)</li>
+<li>« ISRAËL… SPIRITUEL… NATION… SAINTE… PRÊTRISE… ROYALE… OINTS… PARTICIPANTS… AUTRES… BREBIS… BÉNÉFICIAIRES… GRANDE… FOULE… CONNAÎTRONT. » (Israël — connaîtront !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jours qui viennent, ~597 — HINNÉH (les VOICI (les YAMIM (les JOURS (les BAIM (les VIENNENT (les NEUM (les DÉCLARE (les YEHOVAH (les VEKHARATTI (les CONCLURAI (les ET (les BÉT (les MAISON (les YISRAÉL (les ISRAËL (les VEÉT (les BÉT (les MAISON (les YEHUDAH (les JUDA (les BERIT (les ALLIANCE (les HADASHAH (les NOUVELLE (les L'EXPRESSION (les ALLIANCE NOUVELLE (les UNIQUE (les DANS (les L'ANCIEN TESTAMENT (les ALLIANCE — les NOUVELLE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La RUPTURE (les LO (les NON (les KHABBERIT (les ALLIANCE (les ASHER (les QUE (les KARATTI (les CONCLUS (les ET (les ABOTAM (les PÈRES (les BEYOM (les JOUR (les HEHÉZIQI (les PRIS (les BEYADAM (les MAIN (les LEHOTSIAM (les SORTIR (les MÉÉRETS (les PAYS (les MITSRAYIM (les ÉGYPTE (les ASHER (les QUE (les HEMMAH (les EUX (les HEPHÉRU (les ROMPUE (les ET (les BERITI (les ALLIANCE (les VAANI (les MOI (les BAALTI (les ÉPOUX (les BAM (les EUX (les NEUM (les DÉCLARE (les YEHOVAH (les L'ANCIENNE (les BRISÉE (les PAR L'ÉPOUSE (les INFIDÈLE (les RUPTURE — les CONSTATÉE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le CŒUR (les KI (les MAIS (les ZOT (les VOICI (les HABBERIT (les ALLIANCE (les ASHER (les QUE (les EKHRAT (les CONCLURAI (les ET (les BÉT (les MAISON (les YISRAÉL (les ISRAËL (les AHARÉ (les APRÈS (les HAYYAMIM (les JOURS (les HAHEM (les CE (les NEUM (les DÉCLARE (les YEHOVAH (les NATATTI (les METTRAI (les ET (les TORATI (les LOI (les BEQIRBAM (les PROFOND (les VEAL (les LIBBAM (les CŒUR (les EKHTABENNAH (les ÉCRIRAI (les VEHAYITI (les DEVIENDRAI (les LAHEM (les EUX (les LÉLOHIM (les DIEU (les VEHEMMAH (les EUX (les YIHYU (les DEVIENDRONT (les LI (les MOI (les LEAM (les PEUPLE (les VELO (les NON (les YELAMMEDU (les ENSEIGNERONT (les OD (les PLUS (les ISH (les CHACUN (les ET (les RÉÉHU (les COMPAGNON (les VEISH (les CHACUN (les ET (les AHIV (les FRÈRE (les LÉMOR (les DEU (les YEHOVAH (les KI (les CAR (les KHULLAM (les TOUS (les YÉDEU (les CONNAÎTRONT (les OTI (les MOI (les LEMIQQTANNAM (les PETIT (les VEAD (les GUEDOLAM (les GRAND (les NEUM (les DÉCLARE (les YEHOVAH (les CŒUR — les ÉCRIT !). Le PARDON (les KI (les CAR (les ESLAH (les PARDONNERAI (les LAAVONAM (les FAUTE (les ULHATTATAM (les PÉCHÉ (les LO (les NON (les EZKAR (les SOUVIENDRAI (les OD (les PLUS (les L'OUBLI (les DIVIN (les LE PARDON (les TOTAL (les PARDON — les OUBLIÉ !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">31:31</td><td>NOUVELLE (JUDA !)</td></tr>
+<tr><td class="d">31:32</td><td>ÉGYPTE (ÉPOUX !)</td></tr>
+<tr><td class="d">31:33</td><td>CŒUR (PEUPLE !)</td></tr>
+<tr><td class="d">31:34a</td><td>GRAND (JÉHOVAH !)</td></tr>
+<tr><td class="d">31:34b</td><td>PÉCHÉ (PLUS !)</td></tr>
+<tr><td class="d">Lc 22/Hé 8</td><td>SANG (33 !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>33 de n. è. : Jésus institue le Repas du Seigneur — « la coupe, c'est la nouvelle alliance grâce à mon sang » (Lc 22:20) ; Pentecôte 33 : les 120 reçoivent l'esprit et entrent dans l'alliance (Ac 2) ; Paul cite Jr 31:31-34 en Hébreux 8:8-13 et 10:16-17 comme accomplie.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>De Sinaï à Jérusalem : l'ancienne alliance conclue au désert, la nouvelle inaugurée dans la chambre haute de Jérusalem puis à la Pentecôte — même ville qui rejeta l'ancienne reçoit la nouvelle.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Psychologie de l'intériorisation : la loi externe (tables de pierre) devient interne (cœur) — la prophétie décrit le passage de l'hétéronomie à l'autonomie morale, sommet de la psychologie du développement, six siècles avant l'ère chrétienne.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : ALLIANCE ROMPUE → JOURS VIENNENT → LOI DANS LE CŒUR → TOUS CONNAÎTRONT → PÉCHÉS OUBLIÉS → 33 : SANG DE JÉSUS → PENTECÔTE : ENTRÉE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Participants (les oints, Israël spirituel) et bénéficiaires (les autres brebis, la grande foule) : tous ont la loi au cœur et connaissent Jéhovah du plus petit au plus grand.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : alliance nouvelle promise</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus : « la nouvelle alliance grâce à mon sang »</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 (14 Nisan)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les 120 entrent dans l'alliance</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 (Pentecôte)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1998085">wol — Les autres brebis et la nouvelle alliance<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1998085</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101986084">wol — Après la nouvelle alliance, le Royaume<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101986084</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/8">Bible — Hébreux 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/8</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR243 — « Alliance nouvelle » : ma loi dans leur cœur, péchés oubliés</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR244">
+<div class="visuel"><img src="images/prophe_JR244_ordonnances.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR244 · CATÉGORIE JR</div>
+<h3>« Si ces lois cessent » : Israël nation à jamais comme le soleil</h3>
+<div class="ref">Jérémie 31:35-37</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (continu)</span>
+<span class="badge">Ordonnances éternelles (ainsi → dit → Jéhovah → donne → soleil → lumière → jour → ordonnances → lune → étoiles → lumière → nuit)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR244</div><audio controls preload="none" src="audio/fiche_JR244_ordonnances.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR244_ordonnances.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:35-37</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (continu)</td></tr>
+<tr><td class="d">Chronologie</td><td>Ordonnances éternelles (ainsi → dit → Jéhovah → donne → soleil → lumière → jour → ordonnances → lune → étoiles → lumière → nuit)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P244 (31:35-37 : ordonnances ; Israël nation) ; accomplissement préservation ; Jr 33:25-26</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AINSI… JÉHOVAH… DONNE… SOLEIL… LUMIÈRE… JOUR… ORDONNANCES… LUNE… ÉTOILES… LUMIÈRE… NUIT… SOULÈVE… MER… FLOTS… MUGISSENT… NOM… ARMÉES… CESSENT… DEVANT… DESCENDANCE… ISRAËL… CESSERA… NATION… TOUJOURS. » (31:35-36 — toujours !)</li>
+<li>« AINSI… JÉHOVAH… MESURE… CIEUX… HAUT… SONDE… FONDEMENTS… TERRE… BAS… REJETTERAI… DESCENDANCE… ISRAËL… TOUT… FAIT… DÉCLARE… JÉHOVAH… IMPOSSIBLE… MESURER… IMPOSSIBLE… REJETER. » (31:37 — rejeter !)</li>
+<li>« GARANTIE… COSMIQUE… SOLEIL… TANT… BRILLE… ISRAËL… DEMEURE… MARÉES… TANT… MUGISSENT… NATION… SUBSISTE… SERMENT… CRÉATION. » (garantie — création !)</li>
+<li>« ASTRONOMIE… ORDONNANCES… LOIS… FIXES… ORBITES… STABLES… PRÉVISIBLES… FIDÉLITÉ… DIVINE… CALQUÉE… MÉCANIQUE… CÉLESTE. » (astronomie — céleste !)</li>
+<li>« PRÉSERVATION… MILLÉNAIRES… EXILS… POGROMS… HOLOCAUSTE… PEUPLE… SUBSISTE… IDENTITÉ… GARDÉE… PROPHÉTIE… VIVANTE… CONTINUE. » (préservation — continue !)</li>
+<li>« ALLIANCE… JOUR… NUIT… JÉRÉMIE… TRENTE-TROIS… MÊME… GARANTIE… DAVID… LÉVIS… ININTERROMPUS… PAROLE… INÉBRANLABLE. » (alliance — inébranlable !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le Garant cosmique, ~597 — KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les NOTÉN (les DONNE (les SHÉMESH (les SOLEIL (les LEOR (les LUMIÈRE (les YOMAM (les JOUR (les HUQQOT (les ORDONNANCES (les YARÉAH (les LUNE (les VEKHOKHABIM (les ÉTOILES (les LEOR (les LUMIÈRE (les LAYLAH (les NUIT (les ROGA (les SOULÈVE (les HAYYAM (les MER (les VEYEHEMU (les MUGISSENT (les GUÉLL (les FLOTS (les YEHOVAH (les TSEBAOT (les ARMÉES (les SHEMO (les NOM (les DIEU (les SIGNE (les PAR LA CRÉATION (les GARANT — les COSMIQUE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La CONDITION (les IM (les SI (les YAMUSHU (les CESSENT (les HAHUQQIM (les LOIS (les HAÉLÉH (les CES (les MILLÉPHANAY (les DEVANT (les NEUM (les DÉCLARE (les YEHOVAH (les GAM (les AUSSI (les ZÉRA (les DESCENDANCE (les YISRAÉL (les ISRAËL (les YISHBETU (les CESSERA (les MIHYOT (les ÊTRE (les GOY (les NATION (les LEPHANAY (les DEVANT (les KOL (les TOUS (les HAYYAMIM (les JOURS (les CONDITION (les IMPOSSIBLE (les PROMESSE (les INCONDITIONNELLE (les CONDITION — les IMPOSSIBLE !)</p>
+<h4>5 · Interprétation</h4>
+<p>L'INCOMMENSURABLE (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les IM (les SI (les YIMMADDÉDU (les MESURE (les SHAMAYIM (les CIEUX (les MILMA (les VE-YEVER (les BAS (les MOSDÉ (les FONDEMENTS (les ÉRETS (les TERRE (les LEMATTAH (les BAS (les GAM (les AUSSI (les ANI (les MOI (les EMAS (les REJETTERAI (les BEKHOL (les TOUTE (les ZÉRA (les DESCENDANCE (les YISRAÉL (les ISRAËL (les AL (les KOL (les TOUT (les ASHER (les QUE (les ASU (les FAIT (les NEUM (les DÉCLARE (les YEHOVAH (les MESURER (les LE CIEL (les SONDER (les LA TERRE (les IMPOSSIBLE (les DONC (les INCOMMENSURABLE — les GARANTI !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">31:35</td><td>SOLEIL (ARMÉES !)</td></tr>
+<tr><td class="d">31:36</td><td>CESSENT (JOURS !)</td></tr>
+<tr><td class="d">31:37</td><td>CIEUX (JÉHOVAH !)</td></tr>
+<tr><td class="d">Jr 33:25-26</td><td>NUIT (DAVID !)</td></tr>
+<tr><td class="d">Histoire</td><td>EXILS (SUBSISTE !)</td></tr>
+<tr><td class="d">Aujourd'hui</td><td>SOLEIL (NATION !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>2600 ans de préservation : exils babylonien, romain, diasporas, persécutions — le peuple juif subsiste avec son identité, sa langue ressuscitée, ses Écritures ; Jr 33:25-26 répète la garantie (alliance du jour et de la nuit) pour David et Lévi.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Ciel et terre comme témoins : le soleil sur Sion, les marées sur les rivages — chaque lever de soleil renouvelle le serment ; les fondements insondables de la terre sous les pieds d'Israël.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Astronomie : les « ordonnances » (houqqot) — lois fixes des orbites lunaires et stellaires, prévisibles au millénaire ; cosmologie : l'immensité incommensurable du ciel (v. 37) — l'univers observable (~93 milliards d'années-lumière) rend la condition littéralement impossible.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : SOLEIL + LUNE + MER GARANTS → SI CESSENT (IMPOSSIBLE) → ISRAËL CESSERAIT → SI CIEL MESURÉ (IMPOSSIBLE) → REJET → DONC : NATION À JAMAIS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Statut « continu » : chaque jour qui se lève accomplit la prophétie ; elle vise la descendance d'Israël comme peuple — garantie de préservation, pas dispense de fidélité.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : ordonnances garantes de la nation</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Exils et retours : le peuple subsiste</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587 → 1948+</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le soleil se lève : la garantie tient</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">chaque jour</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/33">Bible — Jérémie 33 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/33</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/1">Bible — Genèse 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/89">Bible — Psaume 89 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/89</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR244 — « Si ces lois cessent » : Israël nation à jamais comme le soleil</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR245">
+<div class="visuel"><img src="images/prophe_JR245_tours.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR245 · CATÉGORIE JR</div>
+<h3>« Depuis la tour de Hananéel » : Jérusalem mesurée et sanctifiée</h3>
+<div class="ref">Jérémie 31:38-40</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Ville mesurée (voici → jours → viennent → déclare → Jéhovah → ville → rebâtie → Jéhovah → depuis → tour → Hananéel → porte)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR245</div><audio controls preload="none" src="audio/fiche_JR245_tours.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR245_tours.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:38-40</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Ville mesurée (voici → jours → viennent → déclare → Jéhovah → ville → rebâtie → Jéhovah → depuis → tour → Hananéel → porte)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P245 (31:38-40 : ville rebâtie, tours) ; accomplissement Né 3:1 ; 12:31-40</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« VOICI… JOURS… VIENNENT… DÉCLARE… JÉHOVAH… VILLE… REBÂTIE… JÉHOVAH… DEPUIS… TOUR… HANANÉEL… PORTE… ANGLE… CORDEAU… MESURER… TENDU… DROIT… COLLINE… GAREB… TOUR… GOA. » (31:38-39 — Goa !)</li>
+<li>« VALLÉE… CADAVRES… CENDRE… CHAMPS… TORRENT… CÉDRON… ANGLE… PORTE… CHEVAUX… ORIENT… LIEUX… SAINTS… JÉHOVAH… JAMAIS… ARRACHÉS… DÉTRUITS… TOPOGRAPHIE… PRÉCISE… VÉRIFIABLE… PIERRE… PIERRE. » (31:40 — pierre !)</li>
+<li>« HANANÉEL… NORD-EST… MURAILLE… ANGLE… NORD-OUEST… ENCEINTE… NORD… DÉLIMITÉE… DEUX… POINTS… REPERES… CONNUS… VÉRIFIABLES. » (Hananéel — vérifiables !)</li>
+<li>« GAREB… GOA… COLLINES… OUEST… EXTENSION… VILLE… ÉLARGIE… CORDEAU… TENDU… GÉOMÈTRES… DIVINS… PLAN… CÉLESTE. » (Gareb — céleste !)</li>
+<li>« VALLÉE… IMMONDE… GÉHENNE… CADAVRES… CENDRES… DEVIENT… SAINTE… CÉDRON… EST… CHEVAUX… LIEUX… SOUILLÉS… SANCTIFIÉS. » (vallée — sanctifiés !)</li>
+<li>« NÉHÉMIE… TROIS… UN… HANANÉEL… REBÂTIE… DOUZE… DÉDICACE… CORTÈGES… MURS… ACCOMPLISSEMENT… NOMMÉ… DATÉ… DOCUMENTÉ. » (Néhémie — documenté !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jours qui viennent, ~597 — HINNÉH (les VOICI (les YAMIM (les JOURS (les BAIM (les VIENNENT (les NEUM (les DÉCLARE (les YEHOVAH (les VENIBNETAH (les REBÂTIE (les HAIR (les VILLE (les LA-YEHOVAH (les JÉHOVAH (les MIMMIGDAL (les DEPUIS (les HANANÉL (les HANANÉEL (les AD (les JUSQU (les SHAAR (les PORTE (les HAPPINNAH (les ANGLE (les POUR JÉHOVAH (les PAS POUR (les UN ROI (les VILLE — les REBÂTIE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le CORDEAU (les VEYATSA (les SORTIRA (les OD (les ENCORE (les QAV (les CORDEAU (les HAMMIDDADH (les MESURER (les NÉGHDO (les DEVANT (les AL (les GIBAT (les COLLINE (les GARÉB (les GAREB (les VENASAB (les TOUR (les GOATAH (les GOA (les LES GÉOMÈTRES (les TENDRONT (les LE CORDEAU (les PLAN — les TENDU !). Les POINTS (les TOUR (les DE HANANÉEL (les NORD-EST (les DE L'ENCEINTE (les PORTE (les DE L'ANGLE (les NORD-OUEST (les LE MUR (les NORD (les DÉLIMITÉ (les PUIS (les GAREB (les ET GOA (les À L'OUEST (les EXTENSION (les POINTS — les NOMMÉS !)</p>
+<h4>5 · Interprétation</h4>
+<p>La VALLÉE (les VEKHOL (les TOUTE (les ÉMEQ (les VALLÉE (les HAPPEGARIM (les CADAVRES (les VEHADESHÉN (les CENDRE (les VEKHOL (les TOUS (les HASHSHADÉMOT (les CHAMPS (les AD (les JUSQU (les NAHAL (les TORRENT (les QIDRON (les CÉDRON (les AD (les JUSQU (les PINNAT (les ANGLE (les SHAAR (les PORTE (les HASSUSIM (les CHEVAUX (les MIZRAHAH (les ORIENT (les QODESH (les SAINTS (les LA-YEHOVAH (les JÉHOVAH (les LO (les NON (les YINNATÉSH (les ARRACHÉS (les VELO (les NON (les YÉHARÉS (les DÉTRUITS (les OD (les JAMAIS (les LEOLAM (les TOUJOURS (les LA GÉHENNE (les IMMONDE (les DEVIENT (les SAINTETÉ (les VALLÉE — les SANCTIFIÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">31:38</td><td>HANANÉEL (ANGLE !)</td></tr>
+<tr><td class="d">31:39</td><td>GAREB (GOA !)</td></tr>
+<tr><td class="d">31:40a</td><td>CÉDRON (CHEVAUX !)</td></tr>
+<tr><td class="d">31:40b</td><td>JAMAIS (TOUJOURS !)</td></tr>
+<tr><td class="d">Né 3:1</td><td>HANANÉEL (REBÂTIE !)</td></tr>
+<tr><td class="d">Né 12</td><td>DÉDICACE (MURS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Néhémie 3:1 : Éliashib rebâtit jusqu'à la tour de Hananéel — le repère nommé par Jérémie, un siècle et demi plus tôt ; Néhémie 12:31-40 : deux cortèges dédient les murs, de Hananéel à la porte de l'Angle ; Zacharie 14:10 reprend les mêmes repères.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Topographie vérifiable : tour de Hananéel (nord-est, Né 3:1), porte de l'Angle (nord-ouest, 2R 14:13), colline de Gareb et Goa (ouest), vallée des Cadavres/Cendre (Géhenne, sud-ouest), Cédron et porte des Chevaux (est) — le tour complet de l'enceinte.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Géométrie urbaine : le texte décrit un périmètre fermé (nord → ouest → sud → est) avec cordeau de mesure ; l'archéologie des murs perses/hellénistiques de Jérusalem suit ce tracé — la prophétie est un plan d'urbanisme vérifiable pierre par pierre.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~597 : VILLE POUR JÉHOVAH → HANANÉEL → PORTE DE L'ANGLE → GAREB → GOA → VALLÉE SANCTIFIÉE → CÉDRON → JAMAIS DÉTRUITE (445 : NÉHÉMIE)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Jamais plus arrachée ni détruite » (v. 40) : garantie d'appartenance à Jéhovah — la ville sanctifiée demeure sa propriété ; les lieux souillés (Géhenne) deviennent saints : inversion totale.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : périmètre nommé de la ville rebâtie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Néhémie 3 : Hananéel rebâtie</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Néhémie 12 : dédicace des murs, deux cortèges</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/16/3">Bible — Néhémie 3 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/16/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/12">Bible — Néhémie 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/14">Bible — Zacharie 14 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/14</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR245 — « Depuis la tour de Hananéel » : Jérusalem mesurée et sanctifiée</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR246">
+<div class="visuel"><img src="images/prophe_JR246_sedecias.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR246 · CATÉGORIE JR</div>
+<h3>Sédécias « verra de ses yeux » le roi de Babylone — puis Babylone</h3>
+<div class="ref">Jérémie 32:1-5</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Sédécias à Babylone (parole → fut → Jérémie → part → Jéhovah → dixième → année → Sédécias → Juda → dix-huitième → Nabuchodonosor)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR246</div><audio controls preload="none" src="audio/fiche_JR246_sedecias.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR246_sedecias.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 32:1-5</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Sédécias à Babylone (parole → fut → Jérémie → part → Jéhovah → dixième → année → Sédécias → Juda → dix-huitième → Nabuchodonosor)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P246 (32:1-5 : Sédécias emmené à Babylone) ; accomplissement 2R 25:4-7 ; Jr 52:7-11</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PAROLE… JÉRÉMIE… PART… JÉHOVAH… DIXIÈME… ANNÉE… SÉDÉCIAS… JUDA… DIX-HUITIÈME… NABUCHODONOSOR… ARMÉE… BABYLONE… ASSIÉGEAIT… JÉRUSALEM… JÉRÉMIE… DÉTENU… COUR… GARDE… PALAIS… ROI… JUDA. » (32:1-2 — Juda !)</li>
+<li>« SÉDÉCIAS… FAIT… DÉTENTION… POURQUOI… PROPHÉTISES… DIS… LIVRERAI… VILLE… POUVOIR… BABYLONE… EMPARE… SÉDÉCIAS… ÉCHAPPERA… CHALDÉENS… REMIS… PARLERA… FACE… VERRA… YEUX… EMMÈNERA… RESTERA… OCCUPE… COMBATTREZ… VAINCREZ. » (32:3-5 — vaincrez !)</li>
+<li>« DIX-HUITIÈME… ANNÉE… DATATION… CROISÉE… JUDA… BABYLONE… CHRONOLOGIE… ABSOLUE… CINQ… CENT… QUATRE-VINGT-HUIT… SIÈGE… DIX-HUIT… MOIS. » (dix-huitième — mois !)</li>
+<li>« COUR… GARDE… PRISON… PALAIS… PROPHÈTE… ENFERMÉ… PAROLE… LIBRE… ROI… FAIT… TAIRE… MESSAGER… MESSAGE… RÉSONNE. » (cour — résonne !)</li>
+<li>« YEUX… VERRONT… YEUX… FACE… FACE… RIBLA… JUGEMENT… FILS… ÉGORGÉS… DEVANT… PUIS… AVEUGLÉ… DERNIÈRE… IMAGE… ROI. » (yeux — roi !)</li>
+<li>« BABYLONE… RESTERA… JUSQUÀ… OCCUPE… MORT… EXIL… PAIX… FUNÉRAILLES… ROYALES… PROMISES… TRENTE-QUATRE… PARADOXE… JUGÉ… HONORÉ. » (Babylone — honoré !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>10e année, siège, ~588 — HADDABAR (les PAROLE (les ASHER (les HAYAH (les FUT (les EL (les YIRMEYAHU (les JÉRÉMIE (les MÉÉT (les PART (les YEHOVAH (les BISHNAT (les ANNÉE (les HAASIRIT (les DIXIÈME (les LETSIDQIYAHU (les SÉDÉCIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les HI (les CEST (les HASHANAH (les ANNÉE (les SHEMONÉ (les DIX- (les ESREH (les HUITIÈME (les LINBUKHADRETSSAR (les NABUCHODONOSOR (les DOUBLE (les DATATION (les JUDA (les ET BABYLONE (les ANNÉE — les DIXIÈME !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le SIÈGE (les VÉAZ (les ALORS (les HÉL (les ARMÉE (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les TSARIM (les ASSIÉGEAIT (les AL (les YERUSHALAYIM (les JÉRUSALEM (les VEYIRMEYAHU (les JÉRÉMIE (les HANNABI (les PROPHÈTE (les HAYAH (les ÉTAIT (les KHALU (les DÉTENU (les BAHATSAR (les COUR (les HAMMATARA (les GARDE (les ASHER (les QUI (les BÉBÉT (les PALAIS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les LE PROPHÈTE (les EN PRISON (les LA VILLE (les ASSIÉGÉE (les SIÈGE — les DÉTE—NU !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le POURQUOI (les ASHER (les QUE (les KELAO (les FAIT (les TSIDQIYAHU (les SÉDÉCIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les LÉMOR (les DISANT (les MADDUA (les POURQUOI (les ATTAH (les TOI (les NIBBA (les PROPHÉTISES (les LÉMOR (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les HINENI (les VOICI (les NOTÉN (les LIVRERAI (les ET (les HAIR (les VILLE (les HAZZOT (les CE (les BEYAD (les POUVOIR (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les ULEKHADAH (les EMPARE (les UTS (les SÉDÉCIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les LO (les NON (les YIMMALÉT (les ÉCHAPPERA (les MIYYAD (les MAIN (les HAKKASDIM (les CHALDÉENS (les KI (les CAR (les NATON (les REMIS (les YINNATÉN (les SERA (les BEYAD (les MAIN (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les VEDIBBÉR (les PARLERA (les PIV (les BOUCHE (les ET (les PIV (les BOUCHE (les VEÉYNAV (les YEUX (les ET (les ÉYNAV (les YEUX (les TIRÉNAH (les VERRA (les VUBABÉL (les BABYLONE (les YOLIKH (les EMMÈNERA (les ET (les TSIDQIYAHU (les SÉDÉCIAS (les VESHAM (les LÀ (les YIHYÉH (les RESTERA (les AD (les JUSQU (les POQDI (les OCCUPE (les OTO (les LUI (les NEUM (les DÉCLARE (les YEHOVAH (les KI (les CAR (les TILLAHAMU (les COMBATTREZ (les ET (les HAKKASDIM (les CHALDÉENS (les LO (les NON (les TATSLEHU (les VAINCREZ (les FACE (les À FACE (les PUIS (les BABYLONE (les YEUX — les YEUX !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">32:1</td><td>DIXIÈME (NABUCHODONOSOR !)</td></tr>
+<tr><td class="d">32:2</td><td>GARDE (JUDA !)</td></tr>
+<tr><td class="d">32:3</td><td>POURQUOI (EMPARE !)</td></tr>
+<tr><td class="d">32:4</td><td>YEUX (YEUX !)</td></tr>
+<tr><td class="d">32:5</td><td>BABYLONE (VAINCREZ !)</td></tr>
+<tr><td class="d">2R 25/Jr 52</td><td>RIBLA (AVEUGLÉ !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>587 : Sédécias fuit, est capturé à Jéricho, jugé à Ribla — ses fils égorgés devant lui, puis on lui crève les yeux (2R 25:4-7 ; Jr 52:7-11) ; il « voit de ses yeux » le roi de Babylone à Ribla, puis part aveugle pour Babylone où il meurt — chaque mot accompli.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Jérusalem → Jéricho (capture) → Ribla en Syrie (jugement face à face) → Babylone (captivité) : l'itinéraire du jugement suit la route royale babylonienne ; Ribla, QG de Nabuchodonosor sur l'Oronte.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Chronologie absolue : 10e année de Sédécias = 18e de Nabuchodonosor = 588 — double datation croisée Juda/Babylone, ancrage vérifiable par les chroniques babyloniennes ; le paradoxe « verra / aveuglé » exclut toute rédaction après coup simpliste.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>588 : SIÈGE + PROPHÈTE DÉTENU → POURQUOI PROPHÉTISES-TU ? → VILLE LIVRÉE → FACE À FACE À RIBLA → FILS TUÉS DEVANT LUI → AVEUGLÉ → BABYLONE (587)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le « jusqu'à ce que je m'occupe de lui » (v. 5) annonce une mort en exil — Jr 34:4-5 promet des funérailles royales : jugé mais honoré ; paradoxe de la justice divine.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Sédécias verra le roi, ira à Babylone</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588 (10e année)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ribla : jugement face à face, fils tués, aveuglé</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Captivité à Babylone jusqu'à sa mort</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587 → mort</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/32">Bible — Jérémie 32 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/32</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/32">Bible — Jérémie 32 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/32</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/32">Bible — Jérémie 32 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/32</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR246 — Sédécias « verra de ses yeux » le roi de Babylone — puis Babylone</span><span>Catégorie JR</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR241 — « Que Jéhovah te bénisse, demeure de justice » : Juda réhabité</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Juda et ses villes de nouveau habités</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rapatriés recensés ville par ville (Esd 2)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537+</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Néhémie : recensement et réinstallation (Né 7)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+</svg>
+<h4>JR242 — « Chacun mourra pour sa faute » : semence nouvelle, fin des raisins verts</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : semence nouvelle, fin du proverbe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ézéchiel 18 développe la doctrine en exil</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~592</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Repeuplement : semence d'hommes et de bêtes</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537+</text>
+</svg>
+<h4>JR243 — « Alliance nouvelle » : ma loi dans leur cœur, péchés oubliés</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : alliance nouvelle promise</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus : « la nouvelle alliance grâce à mon sang »</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 (14 Nisan)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les 120 entrent dans l'alliance</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 (Pentecôte)</text>
+</svg>
+<h4>JR244 — « Si ces lois cessent » : Israël nation à jamais comme le soleil</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : ordonnances garantes de la nation</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Exils et retours : le peuple subsiste</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587 → 1948+</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le soleil se lève : la garantie tient</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">chaque jour</text>
+</svg>
+<h4>JR245 — « Depuis la tour de Hananéel » : Jérusalem mesurée et sanctifiée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : périmètre nommé de la ville rebâtie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~597</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Néhémie 3 : Hananéel rebâtie</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Néhémie 12 : dédicace des murs, deux cortèges</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+</svg>
+<h4>JR246 — Sédécias « verra de ses yeux » le roi de Babylone — puis Babylone</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Sédécias verra le roi, ira à Babylone</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588 (10e année)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ribla : jugement face à face, fils tués, aveuglé</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Captivité à Babylone jusqu'à sa mort</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587 → mort</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

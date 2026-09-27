@@ -1,0 +1,984 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+CATEGORIE T — JEREMIE, 2e PARTIE : RESTAURATION (vague 19)
+Donnees source de verite. Le generateur ne fait que les mettre en forme.
+
+Regles :
+ - dix blocs par fiche, bloc 'limites' jamais vide ;
+ - >= 2 sources wol.jw.org / www.jw.org par fiche ;
+ - un seul systeme chronologique par fiche + dates neutres signalees ;
+ - aucune date pour l'avenir.
+"""
+
+CAT = dict(
+    code="T",
+    nom="Jérémie, 2e partie — restauration",
+    vague="19",
+    intro=(
+        "Dix-neuvième vague : Jérémie, deuxième partie — restauration, Égypte, "
+        "Babylone. T007 : l'abandon et ses fruits amers — esclave, absinthe, dieux "
+        "périssables, Anathoth, quatre sorts. T008 : la lettre aux exilés — "
+        "soixante-dix ans, pêcheurs et chasseurs, ustensiles comptés. T009 : "
+        "consolation — détresse de Jacob, plaie guérie, ville sur son tell, Éphraïm "
+        "qui revient. T010 : nouvelle alliance et germe juste — la loi dans le "
+        "cœur, Jéhovah est notre justice. T011 : le reste en Égypte — Mitspa, "
+        "Karkemish, Nô, Tahpanhès. T012 : Babylone jugée — Bel honteux, Euphrate "
+        "détourné, rouleau englouti. Mêmes dix blocs, mêmes règles."
+    ),
+)
+
+FICHES = []
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+ n="T007", titre="L'abandon et ses fruits amers — esclave, absinthe, quatre sorts",
+ ref="Jérémie 2:14-19 ; 9:15, 16 ; 9:25, 26 ; 10:11 ; 11:21-23 ; 15:1-9 ; 15:11-14 ; 17:3, 4",
+ statut="Accomplie (P183, P193, P194, P195, P196, P202, P203, P206)",
+ cat="T", syst="Système abandon (Samarie → Anathoth)",
+ reg="Registre : Jérémie — P183 (2:14-19 : esclave, mal), P193 (9:15-16 : absinthe), P194 (9:25-26 : voisins), P195 (10:11 : dieux périront), P196 (11:21-23 : Anathoth), P202 (15:1-9 : Moïse, Samuel), P203 (15:11-14 : pays inconnu), P206 (17:3-4 : pillage) ; rappels P048 (R002 : Lv 26:33), P223 (c1 : coupe), P374/P375 (E/J/L : Dn 5) ; cross T008 (16:13), T012 (51:17-18)",
+ texte=[
+  "« ISRAËL est-il un ESCLAVE ? Pourquoi est-il devenu BUTIN ? » (2:14 — P183 : l'esclave !)",
+  "« NOPH et TAHPANHÈS te BROUTENT le crâne. » (2:16 — P183 : les tondeuses !)",
+  "« Ton MAL te châtie, tes infidélités te PUNISSENT. » (2:19 — P183 : le retour !)",
+  "« ABSINTHE à manger, EAU EMPOISONNÉE à boire. » (9:15 — P193 : le menu !)",
+  "« Je PUNIRAI tous les CIRCONCIS-INCIRCONCIS. » (9:25 — P194 : les voisins !)",
+  "« Les DIEUX qui n'ont pas fait les cieux PÉRIRONT. » (10:11 — P195 : en araméen !)",
+  "« AUCUN RESTE ne subsistera d'Anathoth. » (11:23 — P196 : aucun reste !)",
+  "« Même MOÏSE et SAMUEL… mon âme ne serait pas avec eux. » (15:1 — P202 : même eux !)",
+  "« Pour la MORT, pour l'ÉPÉE, pour la FAMINE, pour la CAPTIVITÉ. » (15:2 — P202 : quatre sorts !)",
+ ],
+ contexte=(
+  "Le réquisitoire (2:14-19 — P183) : Israël, fils devenu esclave — « pourquoi "
+  "butin ? » — parce que Noph (Memphis) et Tahpanhès « broutent le crâne » (2:16 — "
+  "P183 ; voir it-1 Memphis, 1200002976 : l'Égypte tond Israël, humiliation et "
+  "deuil) : l'alliance égyptienne comme tonte. Le menu (9:15-16 — P193) : absinthe "
+  "et eau empoisonnée, puis dispersion — « je les disperserai parmi des nations "
+  "qu'ils n'ont pas connues » (9:16 — P193 ; Lv 26:33 — rappel P048, voir R002 ; "
+  "Éz 36:19 — non versé, voir les limites). Les voisins (9:25-26 — P194) : Juda ET "
+  "« l'Égypte, Édom, Moab, Ammon » — la coupe (Jr 25:15-26 — voir c1 : P223) puis "
+  "Jr 46-51 (voir T011, T012 et les rappels). L'araméen (10:11 — P195) : le SEUL "
+  "verset araméen de Jérémie — la sentence contre les dieux, dans la langue "
+  "diplomatique : périront « de dessous les cieux » (Dn 5:23, 30 — voir E/J/L : "
+  "P374/P375 ; Jr 51:17-18 — C8, voir T012). Anathoth (11:21-23 — P196) : le village "
+  "de Jérémie veut le tuer (« ne prophétise pas, sinon tu mourras », 11:21) — "
+  "sentence : jeunes à l'épée, fils à la famine, « aucun reste » (11:22-23) — "
+  "accompli à Mitspa (Jr 41:1-3 — P196) et en 537 (Anathoth sans prééminence — "
+  "P196 ; voir B : retour). Les quatre sorts (15:1-9 — P202) : « même Moïse et "
+  "Samuel » (15:1) — les deux grands intercesseurs disqualifiés : mort, épée, "
+  "famine, captivité (15:2) ; « je vous jetterai » au pays inconnu (16:13 — P205, "
+  "voir T008). Le feu (15:11-14 — P203 ; 17:3-4 — P206) : « mon feu s'allumera » "
+  "(15:14), biens au pillage (17:3 — 2R 24:13 — P203, P206)."
+ ),
+ explication=(
+  "Esclave ou fils (2:14 — P183) : « est-il né à la maison ? » — non : fils libre "
+  "devenu butin — la déchéance volontaire. Tonte (2:16 — P183) : « brouter le "
+  "crâne » — l'Égypte rase : chauve = humilié, en deuil (voir 1200002976 : 2R "
+  "2:23 ; Is 22:12 — cités par l'article). Le mal châtie (2:19 — P183) : pas de "
+  "bourreau externe — « TON mal » : l'abandon s'auto-punit. Absinthe (9:15 — "
+  "P193) : voir T005 (23:15) — le menu des menteurs, servi au peuple. Circoncis-"
+  "incirconcis (9:25-26 — P194) : le prépuce coupé, le cœur fermé — Juda rejoint "
+  "les nations : le signe sans la chose. Araméen (10:11 — P195) : un verset dans "
+  "la langue de l'empire — pour que les dieux de Babylone comprennent leur arrêt "
+  "de mort. Anathoth (11:21-23 — P196) : « prophète méprisé dans sa patrie » — le "
+  "village contre le fils (voir T001 : Anathoth). Moïse et Samuel (15:1 — P202) : "
+  "l'intercession de Moïse (Ex 32) et de Samuel (1S 7) avait fléchi Dieu — cette "
+  "fois, même eux : la porte fermée. Quatre sorts (15:2 — P202) : mort (peste), "
+  "épée, famine, captivité — le partage total, personne sans lot. Feu (15:14 — "
+  "P203 ; 17:4 — P206) : « allumé pour toujours » (registre P206) — 2Ch 36:20-21 "
+  "(P206) : servitude + sabbats (voir K008 et B)."
+ ),
+ interpretation=(
+  "Samarie (2R 17:6 — P183) : le Nord déporté — « devenu serviteur » accompli au "
+  "Nord, puis au Sud (2R 25:8-11 — P183 ; voir T002/T006). Memphis tond (voir "
+  "1200002976) : l'Égypte, « espoir vain » — elle exploite au lieu de sauver : "
+  "voir T011 (Karkemish, Nô). Dispersés (Lv 26:33 — rappel P048, voir R002 : « je "
+  "vous disperserai ») : la malédiction de l'alliance exécutée. La coupe (Jr "
+  "25:15-26 — voir c1 : P223) : toutes les nations nommées boivent — dont, aux "
+  "chapitres 46-51, l'Égypte (voir T011), Philistins-Moab-Ammon (voir L/C), "
+  "Babylone (voir T012 et J). Belshatsar (Dn 5:23, 30 — voir E/J/L : P374/P375) : "
+  "les dieux « qui n'ont pas fait les cieux » loués avec les vases du Temple — "
+  "puis le roi tué la nuit même : 10:11 accompli en une nuit (voir T012). Mitspa "
+  "(Jr 41:1-3 — P196) : les hommes d'Anathoth ? — le reste massacré avec Guédalia "
+  "(voir T011) ; 537 sans prééminence (P196) : Anathoth repeuplée (Né 11 — P247, "
+  "voir T006), jamais capitale. Les sorts distribués (2R 25:21 — P202 : exécutions "
+  "à Ribla ; 2R 24:13-16 — P203 : pillage et déportation ; 2R 24:13 — P206) : "
+  "mort, épée, famine, captivité — les quatre lots servis."
+ ),
+ hist=(
+  "Noph-Memphis (voir 1200002976) : capitale de l'Ancien au Moyen Empire, 480 km "
+  "au nord de Thèbes (No-Amôn) — deux pôles, un espoir vain. Tahpanhès (2:16 — "
+  "P183) : ville du Delta — les Juifs y fuiront (voir T011 : Jr 43-44). Samarie "
+  "(2R 17:6 — P183) : 722 ? — date non versée ici (voir les fiches du Nord) : le "
+  "précédent du Sud. L'araméen impérial (10:11 — P195) : langue diplomatique du "
+  "Croissant — la sentence rédigée pour être lue à Babylone. Anathoth (voir T001, "
+  "T006) : village sacerdotal de Benjamin — les prêtres contre le prêtre-prophète. "
+  "Mitspa (Jr 41 — P196 ; voir T011) : Yishmaël frappe — le reste du reste. "
+  "Moïse et Samuel : les intercessions réussies d'autrefois (Ex 32, 1S 7 — récits, "
+  "sans versets versés : voir les limites) — le contraste fait la sentence."
+ ),
+ geo=(
+  "Noph et Tahpanhès (2:16 — P183) : le Delta — tondeuses du Nord et du Sud : "
+  "l'Égypte des deux bouts. Les nations dispersées (9:16 — P193) : « inconnues » — "
+  "l'exil comme dépaysement total. Les voisins (9:26 — P194) : Égypte, Édom, Moab, "
+  "Ammon — l'encerclement jugé avec Juda. Dessous les cieux (10:11 — P195) : les "
+  "dieux périssent SOUS ce qu'ils n'ont pas fait — la cosmographie du jugement. "
+  "Anathoth (11:21 — P196) : 5 km au nord-est — le village ingrat. Le pays inconnu "
+  "(16:13 — P205, voir T008) : Babylone — « que vous n'avez pas connu, ni vous ni "
+  "vos pères »."
+ ),
+ sci=(
+  "Capillologie punitive (2:16 — P183) : le crâne tondu — humiliation et deuil au "
+  "Proche-Orient (voir 1200002976) : l'alliance qui rase. Toxicologie (9:15 — "
+  "P193) : absinthe + eau empoisonnée — amertume et mort : le menu comme sentence "
+  "(voir T005). Linguistique (10:11 — P195) : UN verset araméen dans un livre "
+  "hébreu — le code-switching prophétique : la langue de l'ennemi pour juger ses "
+  "dieux. Démographie (11:23 — P196) : « aucun reste » — l'effacement local : "
+  "Anathoth survit comme lieu, pas comme lignée. Quadripartition (15:2 — P202) : "
+  "quatre sorts exhaustifs — la statistique du jugement : 100 % couverts. "
+  "Pyrotechnique (15:14 ; 17:4) : feu « allumé pour toujours » — jusqu'à "
+  "consommation (2Ch 36 — P206)."
+ ),
+ limites=(
+  "Éz 36:19 (P193) et Éz 18 (P242) : registre d'Ézéchiel — NON versés (aucun P "
+  "nommé). Moïse et Samuel : récits d'intercession sans versets versés (Ex 32, 1S "
+  "7 — non vérifiés). Samarie : date non versée. Jr 25:15-26 : voir c1 (P223) — "
+  "non re-traité. Jr 46-51 : voir T011/T012 + rappels (L/C/J) — cartographie seule "
+  "ici. Jr 51:17-18 : C8 (P288 = 51:1-14, verset disjoint) — développé en T012. "
+  "Jr 9:23-24 (« qu'il se glorifie » — cité par Paul, voir si) : C8 — aucun P "
+  "(vérifié). C8 : Jr 9:23-24 — aucun P (P193-P194 seuls sur Jr 9)."
+ ),
+ accomplissement=[("Esclave", "Butin, tondu (2:14-19 — P183 ; 2R 17 ; 25)"),
+     ("Absinthe", "Bue, dispersés (9:15-16 — P193 ; Lv 26:33)"),
+     ("Voisins", "Juda + nations (9:25-26 — P194 ; coupe, 46-51)"),
+     ("Dieux péris", "Araméen accompli (10:11 — P195 ; Dn 5)"),
+     ("Anathoth", "Aucun reste (11:21-23 — P196 ; Jr 41 ; 537)"),
+     ("Quatre sorts", "Même Moïse non (15:1-9 — P202)"),
+     ("Feu", "Pays inconnu, pillage (15:11-14 — P203 ; 17:3-4 — P206)")],
+ tl=[("Samarie (repère)", "Nord déporté (2R 17:6 — P183)"),
+     ("Tonte (règnes)", "Noph et Tahpanhès (2:16 — P183)"),
+     ("Anathoth (menaces)", "« Ne prophétise pas » (11:21 — P196)"),
+     ("Quatre sorts (siège)", "Distribués (15:1-9 — P202)"),
+     ("Nuit de Dn 5", "Dieux péris (10:11 — P195 ; voir T012)"),
+     ("Mitspa → 537", "Aucun reste, sans prééminence (P196)")],
+ src=[("Jérémie — si n° 24 (plan, Paul cite 9:24)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1101990085"),
+      ("Memphis — it-1 (Jr 2:16, tonte, espoir vain)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200002976"),
+      ("Jérémie 2 — Bible d'étude, notes", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/2"),
+      ("Jérémie 9 — Bible d'étude, notes", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/9")],
+ img="images/prophe_T007_abandon.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+ n="T008", titre="La lettre aux exilés — soixante-dix ans, pêcheurs, ustensiles",
+ ref="Jérémie 3:14-18 ; 12:14-17 ; 16:10-18 ; 27:16-22 ; 29:1-14 ; 29:15-19",
+ statut="Accomplie (P184, P197, P205, P228, P230, P231)",
+ cat="T", syst="Système 70 ans (607 → 537)",
+ reg="Registre : Jérémie — P184 (3:14-18 : arche oubliée), P197 (12:14-17 : voisins rétablis), P205 (16:10-18 : pêcheurs), P228 (27:16-22 : ustensiles), P230 (29:1-14 : 70 ans), P231 (29:15-19 : restés jugés) ; rappels P221/P222 (B), P384 (E/F) ; cross T009 (30:3), T012 (50:19-20), T005 (Hanania)",
+ texte=[
+  "« Je vous prendrai, UN d'une ville, DEUX d'une famille. » (3:14 — P184 : un, deux !)",
+  "« Des BERGERS selon mon CŒUR. » (3:15 — P184 : les bergers !)",
+  "« On ne dira PLUS : arche de l'alliance… on ne s'en SOUVIENDRA plus. » (3:16 — P184 : oubliée !)",
+  "« Je convoquerai de nombreux PÊCHEURS… puis des CHASSEURS. » (16:16 — P205 : les filets !)",
+  "« On ne dira plus : VIVANT Jéhovah qui a fait monter D'ÉGYPTE. » (16:14 — P205 : le serment neuf !)",
+  "« BÂTISSEZ des maisons… cherchez la PAIX de la ville. » (29:5, 7 — P230 : la lettre !)",
+  "« SOIXANTE-DIX ans pour Babylone, puis je vous VISITERAI. » (29:10 — P230 : 70 ans !)",
+  "« Pensées de PAIX… AVENIR et ESPÉRANCE. » (29:11 — P230 : l'espérance !)",
+  "« Les USTENSILES… à Babylone, JUSQU'AU jour où je les visiterai. » (27:22 — P228 : comptés !)",
+ ],
+ contexte=(
+  "La lettre (29:1-14 — P230) : envoyée de Jérusalem aux exilés de 617 — anciens, "
+  "prêtres, prophètes, « tout le peuple » (29:1) : contre-programme — ne rentrez "
+  "pas, installez-vous : maisons, jardins, mariages (29:5-6), « cherchez la paix "
+  "de la ville où je vous ai déportés » (29:7 — P230). Soixante-dix ans (29:10 — "
+  "P230 ; rappels P221/P222, voir B ; rappel P384, voir E/F : Daniel lit) : la "
+  "durée close — « puis je vous ramènerai » (29:14 — P230 ; Esd 1:1-4 — P230 ; "
+  "537, voir B). Les restés (29:15-19 — P231) : ceux qui se croient épargnés — "
+  "« comme des figues affreuses » (29:17 — écho 24:8, voir T003) : épée, famine, "
+  "peste (2R 25:1-11 — P231 ; Jr 52:4-11 — P231 : 52:4-6 C8, 52:7-11 voir T004). "
+  "Les ustensiles (27:16-22 — P228) : contre Hanania (voir T005 : « deux ans ») — "
+  "non : « à Babylone ils iront, et LÀ ils resteront jusqu'au jour » (27:22 — "
+  "P228 ; 2R 24:13 — P228 ; Esd 1:7-11 — P228 : 5 400 rendus !). L'arche oubliée "
+  "(3:14-18 — P184) : « un d'une ville, deux d'une famille » (3:14) — reste "
+  "compté ; bergers selon le cœur (3:15 — P184 ; voir 1200273097) ; l'arche « plus "
+  "rappelée » (3:16 — P184 : le second temple SANS arche — P184) ; Jérusalem-"
+  "trône (3:17 — P184) ; Juda + Israël ensemble (3:18 — P184 ; Esd 1:1-4 — P184). "
+  "Les voisins (12:14-17 — P197) : arrachés AVEC Juda, puis « rétablis chacun dans "
+  "son héritage » (12:15) — « s'ils apprennent les voies de mon peuple » (12:16 — "
+  "P197 : Accomplie / À venir ; Esd 1-2 — P197 ; Jr 48-49 — voir L). Les pêcheurs "
+  "(16:10-18 — P205) : double punition (16:18 — « le double »), puis serment neuf "
+  "(16:14-15 : plus « d'Égypte », mais « du nord »), puis pêcheurs et chasseurs "
+  "(16:16 — P205 ; voir it-1 Chasse et pêche, 1200002104 : double lecture — "
+  "rassemblement du reste OU traque des infidèles ; TM nwtsty 24/16 versée)."
+ ),
+ explication=(
+  "Un, deux (3:14 — P184) : le reste en échantillon — Dieu compte à l'unité. "
+  "Bergers-cœur (3:15 — P184) : « avec connaissance et perspicacité » (voir "
+  "1200273097) — contre les bergers-dispersants (voir T009 : 23:1). Arche oubliée "
+  "(3:16 — P184) : « on n'y pensera plus » — le trône-symbole remplacé par le "
+  "Trône : Jérusalem elle-même « trône de Jéhovah » (3:17). Voisins rétablis "
+  "(12:15-16 — P197) : l'universalisme conditionnel — « s'ils apprennent » : les "
+  "nations à l'école d'Israël (partiellement À venir — P197). Double (16:18 — "
+  "P205) : « le double de leur faute » — la peine mesurée deux fois : justesse, "
+  "pas vengeance. Serment neuf (16:14-15 — P205) : l'Exode détrôné comme référence "
+  "— le retour d'exil devient LE salut-type (repris 23:7-8 — P218, voir T009). "
+  "Pêcheurs, chasseurs (16:16 — P205) : filets puis traque — montagnes, collines, "
+  "fentes : aucun recoin ; favorable (reste cherché) ou défavorable (fugitifs "
+  "traqués) — les deux lectures versées (voir 1200002104). Paix de la ville "
+  "(29:7 — P230) : « priez pour elle » — les exilés bénissent Babylone : "
+  "l'intérêt bien compris (« car votre paix en dépend »). Pensées de paix (29:11 "
+  "— P230) : « pas de malheur » — l'avenir comme intention divine. Ustensiles "
+  "(27:19-22 — P228) : colonnes, mer, socles, « le reste » — TOUT part, TOUT "
+  "revient : « jusqu'au jour où » — la consigne datée."
+ ),
+ interpretation=(
+  "Cyrus (Esd 1:1-4 — P184, P197, P230) : « afin que s'accomplisse la parole par "
+  "Jérémie » (Esd 1:1) — l'esprit réveillé, le décret, le retour : 537 (voir B). "
+  "Le second temple sans arche (Jr 3:16 — P184) : reconstruit (Esd 1-6 — P250), "
+  "jamais doté du coffre perdu — l'oubli accompli. Les 5 400 (Esd 1:7-11 — P228) : "
+  "Cyrus « fit sortir » — Mithredath compte, Sheshbatsar reçoit : 30 corbeilles "
+  "d'or, 1 000 d'argent, 29 de rechange, 30 bols d'or, 410 d'argent, 1 000 autres "
+  "— total 5 400 (TM Esd 1:11 — P228) : l'inventaire du retour. Les restés jugés "
+  "(2R 25:1-11 — P231 ; Jr 52:4-11 — P231) : épée, famine, peste — les figues "
+  "affreuses (29:17 — voir T003 : 24:8). Les 70 ans (voir B : P221/P222 ; voir E/F "
+  ": P384) : 607 → 537 — littéraux (voir 101972329 : Daniel compte « le nombre des "
+  "années »). Pêcheurs accomplis (Jr 30:3 — P205, voir T009 ; Jr 50:19-20 — P205, "
+  "voir T012) : ramenés, pardonnés."
+ ),
+ hist=(
+  "La lettre (29:1 — P230) : Éleasa et Guemaria porteurs ? (29:3 — P230 : « par la "
+  "main d'Éleasa… et de Guemaria ») — ambassade de Tsidqiya détournée en poste "
+  "prophétique : le courrier diplomatique. Guemaria (29:3 — P230 ; 36:10 — C8, voir "
+  "T006 ; Lakish — voir T004) : l'homme des trois dossiers. Mithredath et "
+  "Sheshbatsar (Esd 1:8 — P228) : le trésorier perse compte, le prince judéen "
+  "reçoit — la passation inventoriée. 5 400 pièces (Esd 1:11 — P228) : or et argent "
+  "— le trésor du Temple rendu au gramme près : la comptabilité de Cyrus. "
+  "L'arche perdue (3:16 — P184) : emportée ? cachée ? — le registre ne tranche pas "
+  "(le second temple SANS — P184) : voir les limites. Les voisins (12:14-17 — "
+  "P197 ; Jr 48-49 — voir L) : Moab, Ammon jugés puis promis — l'À venir de P197."
+ ),
+ geo=(
+  "Babylone (29:1-14 — P230) : la ville à bénir — « sa paix, votre paix » : "
+  "l'exil comme adresse provisoire. Le nord (16:15 — P205) : « le pays du nord et "
+  "tous les pays » — la dispersion totale, le retour total. Jérusalem-trône "
+  "(3:17 — P184) : « toutes les nations s'y rassembleront » — la capitale "
+  "universelle annoncée. Montagnes, collines, fentes (16:16 — P205) : le relief "
+  "passé au peigne — pêcheurs (vallées, eaux) puis chasseurs (hauts, trous). Les "
+  "voisinages (12:14 — P197) : Édom, Moab, Ammon — arrachés avec Juda, replantés "
+  "peut-être. Le retour (Esd 1-2 — P184, P197, P230) : Babylone → Juda — 537, voir B."
+ ),
+ sci=(
+  "Halieutique (16:16 — P205 ; voir 1200002104) : filets, dards, harpons, hameçons "
+  "— pêche de nuit, efforts, séchage : le métier comme métaphore (conquête en Am "
+  "4:2, disciples en Mt 4:19 — cités par l'article). Cynégétique (16:16) : traque "
+  "— monts et fentes : la battue exhaustive. Sémiotique du serment (16:14-15) : le "
+  "changement de référence (« d'Égypte » → « du nord ») — l'événement-type "
+  "remplacé : la mémoire réétalonnée. Inventaire (Esd 1:9-11 — P228) : 30, 1000, "
+  "29, 30, 410, 1000 = 5 400 — l'arithmétique du retour (le total inclut les "
+  "menus — TM). Démographie (3:14 — P184) : « un, deux » — l'échantillonnage du "
+  "reste. Chronologie (29:10 — P230) : 70 ans — 607 → 537 (voir B et 101972329)."
+ ),
+ limites=(
+  "Pêcheurs (16:16) : les DEUX lectures versées (rassemblement OU traque — voir "
+  "1200002104) — non tranché ici. Arche : perdue comment ? — non tranché (seul "
+  "« sans arche » est versé — P184). Voisins (12:16) : « s'ils apprennent » — "
+  "partiellement À venir (P197) : aucune date. Jr 48-49 : voir L — non re-traités. "
+  "70 ans : voir B (P221/P222) et E/F (P384) — la durée seule est versée ici "
+  "(29:10). Jr 30:3 : voir T009 (P234). Jr 50:19-20 : voir T012 (P285). Figues "
+  "affreuses (29:17) : voir T003 (24:8). Hanania : voir T005. C8 : Jr 52:4-6 — "
+  "aucun P (vérifié ; 52:7-11 voir T004)."
+ ),
+ accomplissement=[("Arche oubliée", "Plus rappelée (3:14-18 — P184 ; 2e temple)"),
+     ("Voisins", "Arrachés, peut-être replantés (12:14-17 — P197)"),
+     ("Pêcheurs", "Filets et traque (16:10-18 — P205)"),
+     ("Ustensiles", "5 400 rendus (27:16-22 — P228 ; Esd 1)"),
+     ("Lettre", "Installez-vous, 70 ans (29:1-14 — P230 ; 537)"),
+     ("Restés", "Figues affreuses (29:15-19 — P231 ; 2R 25)")],
+ tl=[("617 (exilés)", "Lettre envoyée (29:1 — P230)"),
+     ("Contre Hanania", "« Jusqu'au jour » (27:16-22 — P228)"),
+     ("70 ans (607 → 537)", "Durée close (29:10 — P230 ; voir B)"),
+     ("Cyrus (décret)", "Esprit réveillé (Esd 1 — P184, P230)"),
+     ("5 400 (inventaire)", "Comptés, rendus (Esd 1:7-11 — P228)"),
+     ("537 (retour)", "Montée (voir B)")],
+ src=[("Jérémie — si n° 24 (lettre 29:1, serviteur, 70 ans)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1101990085"),
+      ("Chasse et pêche — it-1 (Jr 16:16, double lecture)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200002104"),
+      ("Jérémie 29 — Bible d'étude, notes", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/29"),
+      ("Esdras 1 — Bible d'étude (inventaire 5 400)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/15/1")],
+ img="images/prophe_T008_retour.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+ n="T009", titre="Consolation — détresse de Jacob, plaie guérie, tell rebâti",
+ ref="Jérémie 23:1-8 ; 30:1-11 ; 30:12-17 ; 30:18-22 ; 31:18-22 ; 31:23-26 ; 31:27-30",
+ statut="Accomplie (P235, P236, P241, P242) / Accomplie et À venir (P218, P234, P240)",
+ cat="T", syst="Système consolation (détresse → rebâtie)",
+ reg="Registre : Jérémie — P218 (23:1-8 : reste rassemblé), P234 (30:1-11 : détresse), P235 (30:12-17 : guérison), P236 (30:18-22 : tell), P240 (31:18-22 : Éphraïm), P241 (31:23-26 : villes habitées), P242 (31:27-30 : semailles) ; rappels P239 (c1 : Rachel), P580 (T010 : 23:5-6) ; cross T008 (16:14-15), T001 (1:10), T006 (joug)",
+ texte=[
+  "« Malheur aux BERGERS qui dispersent ! » (23:1 — P218 : les bergers !)",
+  "« Je RASSEMBLERAI le RESTE de mes brebis. » (23:3 — P218 : le reste !)",
+  "« ÉCRIS dans un livre toutes les paroles. » (30:2 — P234 : le livre !)",
+  "« Jour GRAND… DÉTRESSE pour Jacob, mais il en sera SAUVÉ. » (30:7 — P234 : la détresse !)",
+  "« Je BRISERAI son JOUG de dessus ton cou. » (30:8 — P234 : le joug brisé !)",
+  "« Ils serviront… DAVID leur ROI. » (30:9 — P234 : David roi !)",
+  "« Plaie INGUÉRISSABLE… je te rendrai la SANTÉ. » (30:12, 17 — P235 : inguérissable !)",
+  "« La ville REBÂTIE sur son TELL. » (30:18 — P236 : le tell !)",
+  "« Tu m'as châtié comme un VEAU INDOMPTÉ. » (31:18 — P240 : le veau !)",
+  "« Mes ENTRAILLES frémissent pour lui. » (31:20 — P240 : les entrailles !)",
+  "« J'ABREUVERAI l'âme fatiguée. » (31:25 — P241 : l'eau !)",
+  "« Mon SOMMEIL m'a été DOUX. » (31:26 — P241 : le rêve !)",
+  "« Je SÈMERAI… je VEILLERAI pour BÂTIR et PLANTER. » (31:27-28 — P242 : les semailles !)",
+  "« Les pères ont mangé des RAISINS VERTS… » (31:29 — P242 : les raisins !)",
+ ],
+ contexte=(
+  "Le livre de consolation (30:2 — P234) : « écris dans un livre » — les chapitres "
+  "30-33, dictés en pleine catastrophe : l'avenir relié avant la chute. Les bergers "
+  "(23:1-4 — P218) : « vous avez dispersé » (23:2) — Dieu reprend le troupeau : "
+  "« je rassemblerai le reste » (23:3), « des bergers qui les feront paître » "
+  "(23:4 — écho 3:15, voir T008) ; 23:5-6 = P580 (voir T010 — non versé ici) ; "
+  "23:7-8 (P218) : le serment neuf — comme 16:14-15 (voir T008). La détresse (30:1-11 "
+  "— P234) : « jour grand, aucun comme lui » (30:7) — « temps de détresse pour "
+  "Jacob » — « MAIS il en sera sauvé » : la nuit percée. Le joug brisé (30:8 — "
+  "P234) : l'inverse du joug porté (voir T006 : ch. 27) — « je romprai, je briserai "
+  "» : le harnais en morceaux. David roi (30:9 — P234 : Accomplie / À venir) : "
+  "« ils serviront Jéhovah et David leur roi, que je susciterai » — Esd 1:1-4 "
+  "(P234) + avenir. La plaie (30:12-17 — P235) : « inguérissable » (30:12), « pas "
+  "de guérison » (30:13), « amants t'oublient » (30:14) — puis « je te rendrai la "
+  "santé » (30:17 — P235 ; 537). Le tell (30:18-22 — P236) : « la ville rebâtie "
+  "sur son tell » (30:18 — P236 ; Né 3-12 — P236 : les murailles), « son chef sera "
+  "l'un des siens » (30:21). Éphraïm (31:18-22 — P240 : Accomplie / À venir) : le "
+  "Nord gémit — « veau indompté » (31:18), « je me suis repenti » (31:19), « premier-"
+  "né » (31:20 — P240), « dresse des signaux » (31:21 — P240 : baliser le retour !) ; "
+  "Rachel pleure en amont (31:15 — voir c1 : P239) — Éphraïm revient en aval. Les "
+  "villes (31:23-26 — P241) : « Juda et ses villes » habités (Esd 2 — P241 ; Né 7 — "
+  "P241), « j'abreuverai » (31:25), « mon sommeil doux » (31:26 — P241 : le prophète "
+  "s'éveille !). Les semailles (31:27-30 — P242) : « je sèmerai d'hommes et de "
+  "bêtes » (31:27), « je veillerai pour bâtir et planter » (31:28 — P242 : l'inverse "
+  "de 1:10, voir T001 !) ; les raisins verts (31:29 — P242 : chacun pour sa dent — "
+  "Éz 18 non versé, voir les limites)."
+ ),
+ explication=(
+  "Bergers jugés (23:2 — P218) : « je visiterai sur vous le mal » — Dieu inspecte "
+  "les inspecteurs. Reste (23:3 — P218) : « le reste de MES brebis » — possessif : "
+  "égarées, restées siennes. Livre (30:2 — P234) : consolation ÉCRITE — l'avenir "
+  "contre l'angoisse : relire quand tout brûle. Détresse-sauvé (30:7 — P234) : les "
+  "deux mots ensemble — le « mais » le plus grand du livre. Joug brisé (30:8 — "
+  "P234) : ch. 27 (porter) → ch. 30 (rompre) : le même bois, deux temps. David roi "
+  "(30:9 — P234) : « que je SUSCITERAI » — futur : Zorobabel ? Messie ? — "
+  "Accomplie / À venir (P234) : voir les limites. Inguérissable-guérie (30:12, 17 "
+  "— P235) : le diagnostic humain, puis le traitement divin : « car » (30:17). "
+  "Tell (30:18 — P236) : rebâtir SUR — pas à côté : la continuité des décombres — "
+  "l'archéologie comme promesse. Veau (31:18 — P240) : « indompté » — Éphraïm "
+  "avoue : le Nord se reconnaît bête. Entrailles (31:20 — P240) : « frémissent » — "
+  "Dieu ému aux entrailles : la paternité (« premier-né », 31:20). Signaux (31:21 "
+  "— P240) : « fais attention à la route » — baliser l'exil pour le retour : les "
+  "panneaux avant l'autoroute. Femme-homme (31:22 — P240) : « une femme entourera "
+  "un homme » — verset DIFFICILE (voir les limites) : l'inversion des rôles ? — "
+  "non tranché. Sommeil doux (31:26 — P241) : le verset-réveil — 31:23-25 était un "
+  "rêve : la consolation songée, puis vécue. Semailles (31:27-28 — P242) : semer "
+  "des HOMMES — la démographie comme agriculture ; « veiller pour bâtir » : "
+  "l'inverse exact de 1:10 (arracher, démolir — voir T001). Raisins verts (31:29 — "
+  "P242) : le proverbe aboli — « chacun mourra pour sa faute » (31:30 — P242) : "
+  "la responsabilité individuelle."
+ ),
+ interpretation=(
+  "Rassemblés (Esd 2:1 — P218 ; Esd 1:1-4 — P234 ; Esd 2 — P241 ; Né 7 — P241 ; "
+  "Né 11 — P249) : « le reste » remonte — listes, familles, villes : le retour "
+  "compté. Villes habitées (Né 7 — P241) : recensement — Juda réoccupé maison par "
+  "maison. Murailles (Né 3-12 — P236) : le tell rebâti — portes, tours, dédicace "
+  "(Né 12 — P251, voir T010). Guérie (30:17 — P235 ; 537) : « je te rendrai la "
+  "santé » — le retour comme convalescence. Éphraïm en route (31:20-21 — P240 ; "
+  "« retour des dispersés » — P240 : Accomplie / À venir) : le Nord revient — "
+  "partiellement (voir les limites). Serment neuf (23:7-8 — P218 ; comme 16:14-15 — "
+  "P205) : « du pays du nord » — Exode 2 comme référence. David suscité (30:9 — "
+  "P234 ; 33:15-16 — P218 : voir T010) : Zorobabel gouverneur (Mt 1:12 — C8, voir "
+  "T003), puis le Germe (voir T010 : P580/P581) — les deux temps de P234."
+ ),
+ hist=(
+  "Le livre (30:2 — P234) : 30-33 — le « livre de consolation » : dicté avant la "
+  "chute (Tsidqiya), lu après : la littérature d'espérance datée. Rachel (31:15 — "
+  "voir c1 : P239) : Rama pleure — exil (Jr) puis massacre (Mt 2:17-18 — P239) : "
+  "les larmes en deux temps. Éphraïm (31:18-22 — P240) : le Nord déporté depuis "
+  "plus d'un siècle — « premier-né » (31:20) : l'aînesse gardée. Les signaux "
+  "(31:21 — P240) : mâts, tas de pierres ? — le balisage antique : voir les "
+  "limites (sans détail versé). Zorobabel (voir T003 : Mt 1:12 — C8) : petit-fils "
+  "de Konia, gouverneur — « David » partiel (30:9 — P234). Néhémie (Né 3-12 — "
+  "P236 ; Né 7 — P241) : l'échanson bâtisseur — tell, listes, murs."
+ ),
+ geo=(
+  "Le nord (23:8 — P218) : « le pays du nord » — Babylone et au-delà : la source "
+  "du retour. Le tell (30:18 — P236) : Jérusalem sur ses décombres — hauteur "
+  "d'histoire : rebâtir = surélever. Rama (31:15 — voir c1) : les pleurs — à 8 km "
+  "au nord : l'exil passe, Rachel entend. Les villes de Juda (31:23 — P241 ; Esd 2 "
+  "— P241) : réoccupées — la carte repeuplée. La route balisée (31:21 — P240) : "
+  "« la route par laquelle tu es allée » — l'exil à rebours : mêmes chemins, sens "
+  "inverse. Éphraïm (31:18 — P240) : les montagnes du Nord (voir P237 : vignes de "
+  "Samarie — cité en G, non versé ici)."
+ ),
+ sci=(
+  "Tell (30:18 — P236) : monticule stratifié — couches d'occupation : « rebâtie "
+  "SUR » = +1 strate : la prophétie prédit la stratigraphie. Médecine (30:12-17 — "
+  "P235) : « inguérissable » → « santé » : diagnostic, puis thérapeutique divine — "
+  "la plaie comme modèle. Oneirologie (31:26 — P241) : « mon sommeil doux » — le "
+  "marqueur de rêve : 31:23-25 songés — la Bible signale ses rêves. Agronomie "
+  "(31:27-28 — P242) : semer hommes + bêtes — repeuplement total ; « bâtir et "
+  "planter » : l'anti-1:10 mot à mot. Dentaire-proverbiale (31:29-30 — P242) : "
+  "raisins verts → dents agacées — le proverbe de l'hérédité des fautes, aboli : "
+  "chacun sa dent. Pastorale (23:1-4 — P218) : disperser, rassembler, faire paître "
+  "— le métier en trois verbes."
+ ),
+ limites=(
+  "23:5-6 : = P580 — voir T010 (NON versé ici ; P218 cité 23:1-4, 7-8). David "
+  "(30:9) : Zorobabel partiel + Germe à venir (voir T010) — P234 Accomplie / À "
+  "venir : aucune date pour l'avenir. Éphraïm (31:18-22) : retour partiel — "
+  "P240 Accomplie / À venir. 31:22 (femme-homme) : verset DIFFICILE — non tranché. "
+  "Signaux (31:31 ?) non — 31:21 : sans détail technique versé. Éz 18 (P242) : "
+  "registre — non versé (aucun P nommé). Rachel : voir c1 (P239). Vignes de "
+  "Samarie (31:1-6) : cité en G — non versé. Joug : voir T006. 1:10 : voir T001. "
+  "C8 : aucun verset hors P dans cette fiche (tout est P218-P242)."
+ ),
+ accomplissement=[("Bergers repris", "Reste rassemblé (23:1-8 — P218 ; 23:5-6 voir T010)"),
+     ("Livre écrit", "Consolation reliée (30:1-11 — P234)"),
+     ("Détresse sauvée", "« Mais » (30:7 — P234)"),
+     ("Joug rompu", "David suscité (30:8-9 — P234)"),
+     ("Plaie guérie", "Santé rendue (30:12-17 — P235 ; 537)"),
+     ("Tell rebâti", "Murs, chef (30:18-22 — P236 ; Né 3-12)"),
+     ("Éphraïm", "Veau, entrailles, route (31:18-22 — P240)"),
+     ("Villes, semailles", "Habitées, semées (31:23-30 — P241, P242)")],
+ tl=[("Livre (avant chute)", "Écrit (30:2 — P234)"),
+     ("Détresse (607)", "Jour grand (30:7 — P234)"),
+     ("537 (retour)", "Guéris, rassemblés (P235, P218, P241)"),
+     ("Murs (Né)", "Tell rebâti (30:18 — P236)"),
+     ("Éphraïm (en route)", "Partiel (31:18-22 — P240)"),
+     ("David (suscité)", "Zorobabel → Germe (30:9 — P234 ; T010)")],
+ src=[("Jérémie — si n° 24 (consolation 30-33, retour)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1101990085"),
+      ("Jérémie — it-1 (Anathoth, 40 ans, vrai prophète)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200002421"),
+      ("Jérémie 30 — Bible d'étude, notes", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/30"),
+      ("Jérémie 31 — Bible d'étude, notes", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/31")],
+ img="images/prophe_T009_consolation.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+ n="T010", titre="Nouvelle alliance et germe juste — la loi dans le cœur",
+ ref="Jérémie 31:31-34 ; 32:36-44 ; 33:1-9 ; 33:10-13 ; 33:14-16 ; 33:23-26 ; 23:5, 6 ; 33:15-17",
+ statut="Accomplie (P243, P249, P250, P251, P254, P580, P581) / Accomplie et À venir (P252)",
+ cat="T", syst="Système alliance (Sinaï → cœur)",
+ reg="Registre : Jérémie — P243 (31:31-34 : nouvelle alliance), P249 (32:36-44 : un seul cœur), P250 (33:1-9 : nom de joie), P251 (33:10-13 : voix rendues), P252 (33:14-16 : germe, nom), P254 (33:23-26 : compassion), P580 (23:5-6 : germe juste), P581 (33:15-17 : jamais sans homme) ; rappels P768 (g1 : Hé 8), P253 (k1 : 33:17-22) ; cross S005 (Hé 10), S006 (Lc 1), T009 (23:1-4)",
+ texte=[
+  "« Voici, des jours VIENNENT : alliance NOUVELLE. » (31:31 — P243 : nouvelle !)",
+  "« PAS comme l'alliance… qu'ILS ONT ROMPUE. » (31:32 — P243 : rompue !)",
+  "« Je mettrai ma LOI au-dedans d'eux, dans leur CŒUR je l'écrirai. » (31:33 — P243 : le cœur !)",
+  "« Ils me CONNAÎTRONT, du plus PETIT au plus GRAND. » (31:34 — P243 : tous !)",
+  "« Je PARDONNERAI… je ne me SOUVIENDRAI plus. » (31:34 — P243 : oublié !)",
+  "« UN SEUL CŒUR… alliance de durée INDÉFINIE. » (32:39-40 — P249 : un cœur !)",
+  "« APPELLE-moi, je te répondrai : choses GRANDES. » (33:3 — P250 : appelle !)",
+  "« Nom de JOIE… voix de l'ÉPOUX et de l'ÉPOUSE. » (33:9, 11 — P250, P251 : les voix !)",
+  "« Je susciterai à David un GERME JUSTE. » (23:5 — P580 ; 33:15 — P252, P581 : le germe !)",
+  "« JÉHOVAH EST NOTRE JUSTICE. » (23:6 — P580 ; 33:16 — P252 : le nom !)",
+  "« David ne MANQUERA JAMAIS d'homme sur le trône. » (33:17 — P581 : jamais !)",
+ ],
+ contexte=(
+  "L'alliance nouvelle (31:31-34 — P243) : « avec la maison d'Israël ET la maison "
+  "de Juda » (31:31 — les deux !) — « pas comme » celle d'Égypte « qu'ils ont "
+  "rompue » (31:32 — P243 ; voir 1101986084, 1996643, 1200011904 : pierre contre "
+  "cœur, Moïse contre Christ-Médiateur). La loi dedans (31:33 — P243) : « au-dedans "
+  "d'eux, dans leur cœur » — « je deviendrai leur Dieu » (voir si, 1101990085 : "
+  "« de loin plus importante »). Tous connaîtront (31:34 — P243) : « du plus "
+  "petit au plus grand » — « plus besoin d'enseigner : connais Jéhovah ! » (voir "
+  "1101986084). Pardon (31:34 — P243) : « je pardonnerai, je ne me souviendrai "
+  "plus » (voir 1101986084 : sacrifice meilleur, Hé 8:6 ; 9:11-14 ; 10:15-18). "
+  "Accomplie : Cène — « la nouvelle alliance grâce à MON SANG » (Lc 22:20 — P243 ; "
+  "voir si, 1101990085 : nation spirituelle ; alliance pour le Royaume, Lc 22:29 — "
+  "cité par l'article) ; Hé 8:8-13 (P243 ; voir g1 : P768 : « rendue ancienne », "
+  "8:13) ; Hé 10:16-17 (P243 ; voir S005 : offrande unique). Un seul cœur (32:36-44 "
+  "— P249) : « je les rassemblerai » (32:37), « un seul cœur, une seule voie » "
+  "(32:39 — P249), « alliance de durée indéfinie » (32:40 — P249), « champs "
+  "achetés » (32:43-44 — P249 : écho du champ, voir T006 ; Esd 1 — P249 ; Né 11 — "
+  "P249). Nom de joie (33:1-9 — P250) : « appelle-moi » (33:3), « santé et guérison » "
+  "(33:6), « je les purifierai » (33:8), « un nom de joie » (33:9 — P250 ; Esd 1-6 "
+  "— P250). Voix rendues (33:10-13 — P251) : le lieu « désolé » (33:10) réentend "
+  "« voix de joie, voix de l'époux » (33:11 — l'inverse de 7:34, voir T002 ! ; Né "
+  "12:27-43 — P251 : dédicace en musique), troupeaux « sous les mains de celui qui "
+  "compte » (33:13 — P251). Le germe (23:5-6 — P580 ; 33:14-16 — P252 ; 33:15-17 — "
+  "P581) : « je susciterai » — « il régnera, agira avec intelligence » (23:5), nom "
+  "« Jéhovah est notre justice » (23:6 ; 33:16), « David ne manquera jamais » "
+  "(33:17 — P581 ; entre les deux : 33:17-22 — voir k1 : P253, dont 33:22 « comme "
+  "l'armée des cieux »). Accomplis : « trône de David » (Lc 1:32-33 — P252, P580, "
+  "P581 ; voir S006), « tu es le roi d'Israël » (Jn 1:49 — P580 : Nathanaël !)."
+ ),
+ explication=(
+  "Nouvelle (31:31 — P243) : « jours viennent » — futur du VIe siècle : l'alliance "
+  "programmée. Pas comme (31:32 — P243) : « qu'ils ont rompue » — l'ancienne "
+  "brisée PAR EUX (« quoique je fusse leur maître ») : la nouvelle ne dépend plus "
+  "de leur tenue. Dedans (31:33 — P243) : pierre → cœur — tablettes externes → "
+  "inscription interne : l'obéissance implantée (voir "
+  "1996643 : Jésus n'a rien écrit — la loi vécue). Tous (31:34 — P243) : « du plus "
+  "petit au plus grand » — pas de clergé intermédiaire : la connaissance "
+  "directe, universelle. Oubli (31:34 — P243) : « je ne me souviendrai plus » — "
+  "Dieu amnésique volontaire : le pardon comme effacement. Un cœur (32:39 — "
+  "P249) : « un seul cœur, une seule voie » — l'unanimité donnée, pas négociée. "
+  "Appelle (33:3 — P250) : « je te répondrai » — l'invitation en prison (33:1 : "
+  "Cour de la Garde — voir T004 !) : Dieu téléphone en cellule. Voix (33:11 — "
+  "P251) : joie, époux, « rendez grâce » — 7:34 inversé (voir T002) : le silence "
+  "rend le son. Germe (23:5 — P580 ; 33:15 — P252/P581) : tsémah — la pousse — "
+  "David coupé repousse : le rejeton du tronc (voir S006 : alliance davidique). "
+  "Le nom (23:6 ; 33:16) : « Jéhovah est notre justice » — le roi porte le "
+  "programme : justice de Jéhovah, pour nous. Jamais (33:17 — P581) : « ne "
+  "manquera jamais » — malgré Konia (voir T003 : trône terrestre fermé, lignée "
+  "ouverte) : la promesse survit à la malédiction."
+ ),
+ interpretation=(
+  "La Cène (Lc 22:20 — P243) : « la coupe… la nouvelle alliance grâce à mon sang » "
+  "— Jésus signe (voir si : nation spirituelle). Hébreux (8:8-13 — P243 ; voir g1 "
+  ": P768) : citation intégrale — « en disant nouvelle, il a rendu ancienne la "
+  "première » (8:13) ; (10:16-17 — P243 ; voir S005) : « après avoir dit… je ne me "
+  "souviendrai plus » — une offrande, un oubli. Gabriel (Lc 1:32-33 — P252, P580, "
+  "P581 ; voir S006) : « trône de David… règnera pour toujours » — le germe "
+  "annoncé à Marie. Nathanaël (Jn 1:49 — P580) : « Rabbi, tu es le Fils de Dieu, "
+  "tu es le roi d'Israël » — le germe reconnu dès le Jourdain. Rassemblés (Esd 1 "
+  "— P249, P254 ; Né 11 — P249) : « un seul cœur » en marche — listes, maisons, "
+  "champs rachetés (32:43-44 — P249 : le champ de T006 en série !). Purifiés "
+  "(Esd 1-6 — P250) : temple rebâti — « nom de joie » (33:9). Dédicace (Né "
+  "12:27-43 — P251) : cymbales, chœurs, « la joie de Jérusalem s'entendait au "
+  "loin » (Né 12:43) — 33:11 en stéréo. Compassion (Esd 1:1-4 — P254) : « je "
+  "ramènerai, j'aurai compassion » (33:26 — P254)."
+ ),
+ hist=(
+  "Sinaï contre cœur (31:32-33 — P243 ; voir 1996643, 1200011904) : pierre (Ex 31) "
+  "contre chair — Dix Paroles externes contre loi interne : les deux médias. "
+  "Médiateurs (voir 1200011904) : Moïse (sang d'animaux, Hé 9) contre Christ (son "
+  "sang, Hé 9:11-14) — « meilleur », « une seule fois ». La Cène (Lc 22:20 — "
+  "P243) : Pâque 33 — la coupe après le repas : l'alliance signée la nuit même. "
+  "Hébreux (voir 1200011904 : plan 8:1-10:39) : « vraie tente » (8:2), « ombre » "
+  "(8:5), « près de disparaître » (8:13) — l'ancienne condamnée par la prophétie "
+  "même. Sheshbatsar → Zorobabel (Esd 1-6 — P250 ; voir T008 : 5 400) : le germe "
+  "partiel — gouverneur, pas roi (voir T003). Dédicace (Né 12 — P251) : deux "
+  "chœurs sur les murs — la musique comme acte de propriété."
+ ),
+ geo=(
+  "Le cœur (31:33 — P243) : le lieu de l'alliance — pas de montagne, pas de "
+  "temple : l'organe. Sion ? — non nommée : l'alliance sans adresse. Les champs "
+  "(32:43-44 — P249) : « dans ce pays dont vous dites : désolé » — Anathoth et "
+  "ailleurs : l'achat comme occupation (voir T006). Jérusalem-joie (33:9 — P250) : "
+  "« un nom de joie devant toutes les nations » — la ville-vitrine. Les pâturages "
+  "(33:12-13 — P251) : « demeure de bergers » — les troupeaux comptés un à un : "
+  "la campagne repeuplée. Trône de David (Lc 1:32 — P252/P580/P581 ; voir S006) : "
+  "Nazareth → ciel — le germe change d'adresse."
+ ),
+ sci=(
+  "Cardiologie d'alliance (31:33 — P243) : la loi « dans le cœur » — l'organe "
+  "comme tablette : psychologie de l'intériorisation (voir 1996643 : obéir par "
+  "amour). Mnémonique divine (31:34 — P243) : « je ne me souviendrai plus » — "
+  "l'oubli volontaire : le pardon comme suppression de données. Onomastique "
+  "(23:6 ; 33:16) : « Jéhovah-est-notre-justice » — nom-phrase, programme : "
+  "comparer Magor (voir T005). Botanique (23:5 — P580) : tsémah, la pousse — "
+  "rejeton de souche : voir S006 (rejeton davidique). Acoustique (33:11 — P251 ; "
+  "Né 12:43 — P251) : voix rendues, joie « entendue au loin » — 7:34 (voir T002) "
+  "inversé : le son comme signe de vie. Pastorale quantitative (33:13 — P251) : "
+  "troupeaux « sous les mains de celui qui compte » — le recensement ovin : "
+  "l'abondance chiffrée."
+ ),
+ limites=(
+  "33:17-22 : = P253 — voir k1 (NON versé ; seul 33:17 — P581 — est versé : "
+  "chevauchement assumé, voir T009 pour le pattern). 23:5-6 : traité ici (P580), "
+  "pas en T009 (renvoi croisé). P252 (33:14-16) vs P581 (33:15-17) : chevauchement "
+  "33:15-16 DANS la même fiche — assumé (registre). « David » (30:9 ; 33:17) : "
+  "Zorobabel partiel + Christ — P252 Accomplie / À venir : aucune date. Lc 22:29 "
+  "(alliance pour le Royaume) : cité par si — non développé. Église/oint : "
+  "l'article 1101986084 parle du Royaume millénaire — non développé (dogmatique : "
+  "voir les limites — seules les preuves versées). C8 : aucun verset hors P "
+  "(tout est P243-P581)."
+ ),
+ accomplissement=[("Nouvelle", "Jours venus (31:31-34 — P243 ; Cène, Hébreux)"),
+     ("Loi-cœur", "Dedans, écrite (31:33 — P243)"),
+     ("Tous, pardonnés", "Petit-grand, oubli (31:34 — P243)"),
+     ("Un cœur", "Rassemblés, champs (32:36-44 — P249)"),
+     ("Joie", "Santé, nom (33:1-9 — P250 ; Esd 1-6)"),
+     ("Voix", "Rendues, comptées (33:10-13 — P251 ; Né 12)"),
+     ("Germe", "Suscité, nommé (23:5-6 — P580 ; 33:14-17 — P252, P581)"),
+     ("Jamais", "David toujours (33:17 — P581 ; Lc 1)")],
+ tl=[("Prison (33:1)", "« Appelle-moi » (33:3 — P250)"),
+     ("Cène (33)", "Sang signé (Lc 22:20 — P243)"),
+     ("Hébreux (Ier s.)", "Citée, ancienne (Hé 8 ; 10 — P243)"),
+     ("537 (retour)", "Un cœur en marche (Esd 1 — P249, P254)"),
+     ("Temple (Esd 1-6)", "Nom de joie (33:9 — P250)"),
+     ("Dédicace (Né 12)", "Voix au loin (33:11 — P251)")],
+ src=[("Nouvelle alliance (Jr 31:34 ×3, Hé 8, 10)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1101986084"),
+      ("Jérémie — si n° 24 (Hé 8:8-12, Lc 22:20, Royaume)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1101990085"),
+      ("Jérémie 31 — Bible d'étude, notes", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/31"),
+      ("Hébreux 8 — Bible d'étude, notes", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/58/8")],
+ img="images/prophe_T010_alliance.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+ n="T011", titre="Le reste en Égypte — Mitspa, Karkemish, Nô, Tahpanhès",
+ ref="Jérémie 32:28-35 ; 39:15-18 ; 40:1-6 ; 42:1-22 ; 43:1-7 ; 44:1-14 ; 45:1-5 ; 46:2 ; 46:13-26 ; 46:27, 28",
+ statut="Accomplie (P248, P263, P264, P265, P266, P268, P271, P272, P273, P274)",
+ cat="T", syst="Système reste (Mitspa → Tahpanhès)",
+ reg="Registre : Jérémie — P248 (32:28-35 : ville brûlée), P263 (39:15-18 : Ébed-Mélek), P264 (40:1-6 : Guédalia), P265 (42:1-22 : restez !), P266 (43:1-7 : Égypte forcée), P268 (44:1-14 : reste périra), P271 (45:1-5 : Baruch), P272 (46:2 : Karkemish), P273 (46:13-26 : Nô), P274 (46:27-28 : Jacob revient) ; rappels P267 (a : trône), P269 (a : reine du ciel), P270 (l2 : Hophra), P468 (l1 : Na 3) ; cross T004 (chute), T006 (Baruch), T002 (Topheth)",
+ texte=[
+  "« La ville LIVRÉE… BRÛLÉE par le feu. » (32:29 — P248 : livrée !)",
+  "« Ton ÂME te servira de BUTIN. » (39:18 — P263 : butin !)",
+  "« Reste auprès de GUÉDALIA… je t'ôte les CHAÎNES. » (40:4-5 — P264 : les chaînes !)",
+  "« DIX JOURS après, la parole vint. » (42:7 — P265 : dix jours !)",
+  "« Si vous RESTEZ, je vous BÂTIRAI. » (42:10 — P265 : restez !)",
+  "« L'ÉPÉE vous ATTEINDRA en Égypte. » (42:16 — P265 : atteindra !)",
+  "« Tu MENS ! C'est BARUCH qui t'incite ! » (43:2-3 — P266 : tu mens !)",
+  "« AUCUN réchappé du reste en Égypte. » (44:14 — P268 : aucun !)",
+  "« Ne recherche pas de GRANDES CHOSES… ta VIE pour butin. » (45:5 — P271 : butin !)",
+  "« KARKEMISH, quatrième année de Yehoïaqim. » (46:2 — P272 : Karkemish !)",
+  "« Je punis AMON DE NÔ… livrée, puis HABITÉE. » (46:25-26 — P273 : Nô !)",
+  "« Ne CRAINS pas… je te SAUVERAI de loin. » (46:27 — P274 : de loin !)",
+ ],
+ contexte=(
+  "La ville brûlée (32:28-35 — P248) : « livrée aux Chaldéens » (32:28), « les "
+  "maisons sur les toits desquelles on a fait de la fumée à Baal » (32:29 — "
+  "toits-encensoirs !), « choses immondes dans la maison » (32:34 — écho T002), "
+  "« hauts lieux de Baal… faire passer par le feu » (32:35 — P248 : Topheth "
+  "nommé Baal — voir T002 ; 2R 25:8-10 — P248 ; Jr 39:8 — P248 ; voir T004). "
+  "Ébed-Mélek (39:15-18 — P263) : l'Éthiopien de la citerne (voir T004 : 38:7-13) "
+  "— « parce qu'il a mis sa confiance en Jéhovah » (voir si, 1101990085) : « tu "
+  "ne tomberas pas par l'épée, ton âme pour butin » (39:18 — P263). Guédalia "
+  "(40:1-6 — P264 ; voir ad, 1200011595) : fils d'Ahikam (le protecteur de 26:24 — "
+  "voir T005 !) fils de Shaphan — nommé par Neboukadnetsar, installé à Mitspa ; "
+  "Jérémie trouvé « enchaîné à Rama » (40:1), délié par Nebuzaradan lui-même "
+  "(40:4 — le chef des gardes théologien : « Jéhovah avait dit »), don, liberté, "
+  "« reste auprès de Guédalia » (40:5 — P264). Mitspa (voir 1200011595, "
+  "1200013024) : les chefs viennent — Yohanan met en garde (Baalis d'Ammon, "
+  "Yishmaël) — Guédalia refuse de croire — repas, épée : gouverneur, Juifs et "
+  "Chaldéens tués (Jr 41:1-3 — P196, voir T007) ; 70 visiteurs tués ; captifs "
+  "repris par Yohanan (8 fuyards) — puis « emmenés en Égypte » (voir 1200013024). "
+  "Les dix jours (42:1-22 — P265) : « prie pour ce reste » (42:2) — « dix jours "
+  "après » (42:7 — P265 : Dieu fait attendre !) : « restez, je bâtirai » (42:10) — "
+  "« si vous allez en Égypte : épée, famine, peste » (42:15-17 — P265 ; Jr "
+  "44:11-14, 27-28 — P265, P268). « Tu mens ! » (43:1-7 — P266) : Yohanan accuse "
+  "Jérémie — « c'est Baruch qui t'incite » (43:3 — P266) — et emmène TOUT le "
+  "reste, « Jérémie et Baruch » de force (43:5-6 — P266), à Tahpanhès (43:7 — "
+  "P266 ; le trône sur les pierres : 43:8-13 — voir A : P267 — « il étendra sa "
+  "tente royale », « s'enveloppera de l'Égypte comme un berger »). L'Égypte "
+  "jugée (44:1-14 — P268) : Migdol, Noph, Tahpanhès, Pathros (44:1 — P268 : "
+  "quatre colonies !), « encens à d'autres dieux » (44:8), « aucun réchappé… sauf "
+  "quelques rescapés » (44:14, 28 — P268 ; la reine du ciel : 44:15-28 — voir A : "
+  "P269 ; Hophra livré : 44:29-30 — voir L : P270). Baruch (45:1-5 — P271) : 4e "
+  "année de Yehoïaqim (45:1 — P271 : le temps du rouleau, voir T006 !) — « malheur "
+  "à moi » (45:3), « je démolis ce que j'ai bâti » (45:4 — écho 1:10, voir T001), "
+  "« ta vie pour butin » (45:5 — P271 : comme Ébed-Mélek — P263 !). Karkemish "
+  "(46:2 — P272 ; voir it-1, 1200000889) : 4e année de Yehoïaqim, 625 — Néko battu "
+  "— « le roi d'Égypte ne sortit plus de son pays » (2R 24:7 — P272) — BM 21946 "
+  "= Jr 46:2 (voir 1200000889) — « fin de la puissance impériale égyptienne » "
+  "(voir 1200000889). Nô frappée (46:13-26 — P273) : « annoncez en Égypte, à "
+  "Migdol, Noph, Tahpanhès » (46:14 — P273 : les TROIS mêmes villes qu'en 44:1 !), "
+  "« Pharaon n'est que du bruit » (46:17 — P273), « Amon de Nô » puni (46:25 — "
+  "P273 ; Nô = Thèbes, No-Amôn — tombée devant les Assyriens : Na 3:8-10 — voir "
+  "l1 : P468 ! — puis devant Babylone), « livrée… puis habitée comme autrefois » "
+  "(46:26 — P273 ; tablette 37e année, 588 : campagne d'Égypte — voir 1200000530). "
+  "Jacob revient (46:27-28 — P274) : « ne crains pas… je te corrigerai avec "
+  "justice » (écho 30:11 — P234, voir T009 ; Esd 1:1-4 — P274)."
+ ),
+ explication=(
+  "Toits-encensoirs (32:29 — P248) : la fumée à Baal sur les toits en terrasse — "
+  "toute la ville un autel : tout brûle. Butin-âme (39:18 — P263 ; 45:5 — P271) : "
+  "DEUX fois « ta vie pour butin » — l'Éthiopien et le scribe : survivre comme "
+  "prendre. Chaînes ôtées (40:4 — P264) : Nebuzaradan délie — l'ennemi libère : "
+  "l'ironie de Mitspa. Dix jours (42:7 — P265) : le délai — Dieu consulte dix "
+  "jours : la réponse mûrie, la demande impatiente. Restez-bâtirai (42:10 — P265) : "
+  "« je vous planterai » — bâtir/planter (écho 1:10 et 31:28 !) : le reste "
+  "obéissant hérite du programme. Atteindra (42:16 — P265) : fuir l'épée VERS "
+  "l'épée — « l'épée que vous craignez vous atteindra LÀ » : la géographie ne "
+  "sauve pas. Tu mens (43:2-3 — P266) : « c'est Baruch » — le complotisme : "
+  "disqualifier le messager pour garder le plan. Quatre colonies (44:1 — P268) : "
+  "Migdol (frontière), Noph (capitale), Tahpanhès (Delta), Pathros (Haute-Égypte) "
+  "— le reste éparpillé : Dieu les connaît par villes. Grandes choses (45:5 — "
+  "P271) : Baruch voulait grand — « ne les recherche pas » : survivre suffit, en "
+  "temps de démolition. Karkemish (46:2 — P272) : verrou de l'Euphrate — Néko "
+  "remonte aider l'Assyrie (voir 1200000889 : Meguiddo, Yoshiya « insensé »), "
+  "Neboukadnetsar barre : le monde change de maître en une bataille. Bruit "
+  "(46:17 — P273) : « Pharaon… n'est que du bruit, qui a laissé passer le moment » "
+  "— le roi-fanfare : sonore, tardif. Amon de Nô (46:25 — P273) : le dieu-empire "
+  "de Thèbes — puni avec sa ville : les dieux jugés (écho 10:11 — P195, voir "
+  "T007 !). Puis habitée (46:26 — P273) : « comme aux jours d'autrefois » — "
+  "l'Égypte survit à son châtiment : correction, pas effacement. De loin (46:27 — "
+  "P274) : « je te sauverai de loin » — la distance n'empêche pas : contrepoint "
+  "de 42:16 (la distance ne protège pas)."
+ ),
+ interpretation=(
+  "Brûlée (2R 25:8-10 — P248 ; Jr 39:8 — P248 ; voir T004) : toits, maisons, "
+  "hauts lieux : le feu égalise. Butins vivants (39:16-18 — P263 ; 45:5 — P271) : "
+  "Ébed-Mélek survit à 607, Baruch traverse — deux « âmes-butins » : la promesse "
+  "tient. Mitspa (Jr 41:1-3 — P196) : le repas-piège — voir T007 ; les captifs « "
+  "emmenés en Égypte » (voir 1200013024) : la fuite après le crime. L'épée suit "
+  "(Jr 44:11-14, 27-28 — P265, P268) : « aucun réchappé… quelques rescapés » "
+  "(44:14, 28) — 42:16 accompli : atteints LÀ. Le trône à Tahpanhès (43:8-13 — "
+  "voir A : P267) : pierres cachées, tente royale — Neboukadnetsar campe où le "
+  "reste fuit. La reine du ciel (44:15-28 — voir A : P269) : « nous ferons ce que "
+  "nous avons dit » — l'idolâtrie revendiquée, jugée. Hophra (44:29-30 — voir L : "
+  "P270) : Pharaon livré « comme Tsidqiya » — le signe daté. Karkemish (2R 24:7 — "
+  "P272 : « ne sortit plus » ; BM 21946 — voir 1200000889) : 625, 4e Yehoïaqim — "
+  "l'Égypte rentre chez elle pour un siècle. Nô (46:25-26 — P273 ; tablette 588 — "
+  "voir 1200000530 ; Na 3:8-10 — voir l1 : P468) : Thèbes deux fois tombée — "
+  "Assyriens, puis Babyloniens : « comme autrefois » (46:26) — habitée, jamais "
+  "impériale. Jacob (Esd 1:1-4 — P274) : « sauvé de loin » — 537, voir B."
+ ),
+ hist=(
+  "Nebuzaradan (40:1-5 — P264) : chef des gardes — il PRÊCHE (« Jéhovah avait "
+  "parlé ») puis délie : le bourreau catéchiste. Guédalia (voir 1200011595) : "
+  "fils d'Ahikam (voir T005 : 26:24 !) — le fils du protecteur, protégé nul : "
+  "averti, incrédule, tué au repas. Baalis (voir 1200011595) : roi d'Ammon — le "
+  "commanditaire : Ammon tue le gouverneur judéen (voir L : Ammon jugé). Yishmaël "
+  "(Jr 41 — P196) : « de race royale » — dix hommes, 70 visiteurs, citerne : le "
+  "massacre de Mitspa. Yohanan (43:2-3 — P266) : libérateur des captifs, ravisseur "
+  "du reste — héros puis rebelle : « tu mens ! ». Tahpanhès (43:7 — P266 ; 2:16 — "
+  "P183 : tondeuse !) : Daphné du Delta — le reste aux portes : le trône suivra "
+  "(voir A : P267). Néko (46:2 — P272 ; voir 1200000889) : Meguiddo (Yoshiya tué, "
+  "« insensé »), puis Karkemish : l'aller conquérant, le retour battu. BM 21946 "
+  "(voir 1200000889) : « équivalent à Jr 46:2 » — cunéiforme et Bible : deux "
+  "langues, une défaite. 37e année (588 — voir 1200000530) : tablette de campagne "
+  "— Nô punie sous Hophra ? (voir L : P270). Baruch (45:1 — P271 ; voir T006) : "
+  "4e Yehoïaqim — le rouleau (ch. 36) et le découragement (ch. 45) : même année, "
+  "deux épreuves."
+ ),
+ geo=(
+  "Mitspa (40:5-6 — P264 ; voir 1200011595) : au nord de Jérusalem — capitale du "
+  "reste : sept mois de paix (7e mois, Jr 41:1 — P196). Rama (40:1 — P264) : les "
+  "chaînes — Rachel pleure (voir c1), Jérémie y est trié. Tahpanhès (43:7 — P266 ; "
+  "44:1 — P268 ; 46:14 — P273) : TROIS fois nommée — fuite, colonies, sentence : "
+  "le Delta au centre. Migdol, Noph, Pathros (44:1 — P268) : frontière, capitale, "
+  "Haute-Égypte — le reste de la mer à Assouan. Karkemish (46:2 — P272 ; voir "
+  "1200000889) : l'Euphrate, la Syrie — Thoutmosis, Ramsès, Assournasirpal y sont "
+  "passés : le carrefour des empires. Nô-Thèbes (46:25 — P273 ; voir l1 : P468) : "
+  "480 km au sud de Memphis (voir 1200002976) — No-Amôn : Amon jugé chez lui. "
+  "L'Égypte-enveloppe (43:12 — voir A : P267) : « comme un berger son vêtement » — "
+  "le pays mis comme un manteau : l'occupation textile."
+ ),
+ sci=(
+  "Fumigation des toits (32:29 — P248) : terrasses-encensoirs — urbanisme du "
+  "culte : la ville-autel. Traumatologie du reste (42:2 — P265) : « nous restons "
+  "peu de beaucoup » — la démographie du désastre : compter les survivants. "
+  "Délai de réponse (42:7 — P265) : dix jours — la consultation divine : "
+  "l'attente comme épreuve. Toxicologie du retour (44:8 — P268) : « encens » — "
+  "recommencer en exil : l'idolâtrie importée. Poliorcétique fluviale (46:2 — "
+  "P272) : Karkemish, verrou de l'Euphrate — tenir le gué, tenir l'empire : "
+  "l'hydraulique stratégique. Épigraphie croisée (BM 21946 — voir 1200000889) : "
+  "cunéiforme = Jr 46:2 — deux sources, un fait. Théonymie jugée (46:25 — P273) : "
+  "Amon de Nô — le dieu d'empire puni : voir T007 (10:11). Textile d'occupation "
+  "(43:12 — voir A) : s'envelopper d'un pays — la conquête comme vêtement."
+ ),
+ limites=(
+  "43:8-13 (trône) : voir A (P267) — cité en rappel seul (texte TM versé via "
+  "1001060027). 44:15-28 (reine du ciel) : voir A (P269) — non développé. 44:29-30 "
+  "(Hophra) : voir L (P270) — non développé. Éz 29-30 (Égypte) : registre — non "
+  "versé (aucun P nommé). Meguiddo/Yoshiya : voir 1200000889 (dates non versées). "
+  "588 (tablette) : voir 1200000530 — « peut-être » (article prudent). Na 3:8-10 : "
+  "voir l1 (P468). 2R 25:23-25 (Mitspa) : sans versets (non vérifiés) — Jr 41 "
+  "(P196) fait foi. C8 : aucun verset hors P (tout est P248-P274 + rappels cités)."
+ ),
+ accomplissement=[("Ville livrée", "Toits, Baal, feu (32:28-35 — P248)"),
+     ("Butin (Ébed)", "Âme sauvée (39:15-18 — P263)"),
+     ("Mitspa", "Chaînes, Guédalia (40:1-6 — P264 ; Jr 41)"),
+     ("Dix jours", "Restez ! (42:1-22 — P265)"),
+     ("Tu mens", "Égypte forcée (43:1-7 — P266 ; trône voir A)"),
+     ("Quatre colonies", "Aucun réchappé (44:1-14 — P268)"),
+     ("Butin (Baruch)", "Vie sauvée (45:1-5 — P271)"),
+     ("Karkemish", "Néko battu (46:2 — P272 ; 625, BM 21946)"),
+     ("Nô", "Amon puni (46:13-26 — P273 ; 588 ?)"),
+     ("Jacob", "Sauvé de loin (46:27-28 — P274 ; 537)")],
+ tl=[("625 (Karkemish)", "4e Yehoïaqim (46:2 — P272 ; 45:1 — P271)"),
+     ("607 (chute)", "Ville brûlée (32:28-35 — P248)"),
+     ("Mitspa (7 mois)", "Guédalia, repas, épée (40 — P264 ; 41 — P196)"),
+     ("Dix jours", "Réponse, refus (42 — P265 ; 43 — P266)"),
+     ("Tahpanhès (reste)", "Quatre colonies (44:1 — P268)"),
+     ("Nô (588 ?)", "Frappée, habitée (46:13-26 — P273)"),
+     ("537 (Jacob)", "De loin sauvé (46:27-28 — P274)")],
+ src=[("Karkémish — it-1 (BM 21946 = Jr 46:2, fin égyptienne)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200000889"),
+      ("Memphis — it-1 (Jr 44:1, Noph frappée, 480 km)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200002976"),
+      ("Guédalia — ad (Mitspa, Baalis, repas-piège)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200011595"),
+      ("Jérémie 46 — Bible d'étude, notes", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/46")],
+ img="images/prophe_T011_egypte.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+ n="T012", titre="Babylone jugée — Bel honteux, Euphrate détourné, rouleau englouti",
+ ref="Jérémie 50:1-3 ; 50:9-16 ; 50:17-20 ; 50:33-40 ; 50:41-46 ; 51:24-26 ; 51:27-33 ; 51:34-44 ; 51:59-64",
+ statut="Accomplie (P283, P284, P285, P286, P287, P289, P290, P291, P294)",
+ cat="T", syst="Système Babylone (539, 5 octobre)",
+ reg="Registre : Jérémie — P283 (50:1-3 : Bel honteux), P284 (50:9-16 : nord vengeur), P285 (50:17-20 : brebis pardonnée), P286 (50:33-40 : Sodome), P287 (50:41-46 : nord irrésistible), P289 (51:24-26 : jamais rebâtie), P290 (51:27-33 : royaumes, gués), P291 (51:34-44 : desséchée), P294 (51:59-64 : rouleau) ; rappels P288/P292/P293 (j1), P374/P375 (E/J/L), P161 (J/L : Cyrus) ; cross T007 (10:11), T002 (chacals) ; voir L010 (Babylone)",
+ texte=[
+  "« BEL est honteux, MERODAK terrifié. » (50:2 — P283 : honteux !)",
+  "« Une NATION monte contre elle du NORD. » (50:3 — P283 ; 50:41 — P287 : du nord !)",
+  "« ASSEMBLÉE de grandes nations… leurs flèches comme un VAillant. » (50:9 — P284 : l'assemblée !)",
+  "« ISRAËL, brebis DISPERSÉE… Babylone a RONGÉ ses os. » (50:17 — P285 : les os !)",
+  "« On CHERCHERA la faute… il n'y en aura PLUS. » (50:20 — P285 : plus !)",
+  "« Leur RÉDEMPTEUR est FORT. » (50:34 — P286 : le Rédempteur !)",
+  "« ÉPÉE sur… ÉPÉE sur… ÉPÉE sur les EAUX. » (50:35-38 — P286 : huit épées !)",
+  "« Comme SODOME : jamais HABITÉE. » (50:40 — P286 : Sodome !)",
+  "« Les ROIS excités… CRUELS, sans compassion. » (50:41-42 — P287 : sans compassion !)",
+  "« JAMAIS rebâtie… pas de pierre d'ANGLE. » (51:26 — P289 : jamais !)",
+  "« ARARAT, MINNI, ASHKENAZ ! » (51:27 — P290 : les royaumes !)",
+  "« Les rois de MÉDIE préparés. » (51:28 — P290 : les Mèdes !)",
+  "« Les GUÉS saisis, les ROSEAUX brûlés. » (51:32 — P290 : les gués !)",
+  "« Je DESSÉCHERAI sa mer, je tarirai sa source. » (51:36 — P291 : desséchée !)",
+  "« FESTIN… SOMMEIL ÉTERNEL. » (51:39 — P291 : le festin !)",
+  "« JETTE-LE dans l'Euphrate : Babylone S'ENFONCERA. » (51:63-64 — P294 : jeté !)",
+ ],
+ contexte=(
+  "Bel honteux (50:1-3 — P283) : « annoncez parmi les nations » — Bel (Marduk) "
+  "honteux, Merodak (le même, autre nom) terrifié, idoles confondues : les dieux "
+  "jugés (écho 10:11 — P195, voir T007 !) — « une nation du nord » (50:3 — P283 ; "
+  "Dn 5:30-31 — P283 ; 539). L'assemblée (50:9-16 — P284) : « assemblée de grandes "
+  "nations » — flèches « comme un vaillant qui ne revient pas bredouille » "
+  "(50:9), « vengeance de Jéhovah » pour son temple (50:14-15, 28 — P284 ; 50:8 "
+  "« sortez » — non versé : voir J, P292). La brebis (50:17-20 — P285) : « "
+  "Assyrie dévora, Babylone rongea les os » (50:17 — P285 ; TM versée) — « Carmel "
+  "et Bashân, Éphraïm et Galaad » (50:19 — P285 : quatre pâturages ! ; cité par "
+  "P205 — voir T008), « plus de faute » (50:20 — P285 ; Esd 1:1-4 — P285). Huit "
+  "épées (50:33-40 — P286) : « opprimés ensemble » (50:33), « Rédempteur fort » "
+  "(50:34 — P286), litanie : Chaldéens, habitants, princes, sages, vaillants, "
+  "chevaux, trésors, EAUX (50:35-38 — P286), « bêtes sauvages avec chacals, "
+  "autruches » (50:39 — P286 : écho 9:11 — voir T002 !), « comme Sodome » (50:40 — "
+  "P286 ; site jamais relevé — P286 ; voir L010). Le nord (50:41-46 — P287) : "
+  "même langue qu'en 6:23 (voir T001 : P188 !) — « cruels, voix comme la mer » — "
+  "« le roi de Babylone a entendu, ses mains mollissent » (50:43 — P287 ; 539). "
+  "Jamais (51:24-26 — P289) : « montagne destructrice » (51:25), « pas de pierre "
+  "pour l'angle ni le fondement » (51:26 — P289 ; site — P289 ; voir L010 ; coupe "
+  "d'or 51:7 — voir J : P288 ; idoles 51:17-18 — C8). Les royaumes (51:27-33 — "
+  "P290) : « élevez l'étendard, sonnez » — Ararat, Minni, Ashkenaz (51:27 — P290 ; "
+  "voir it-1 Ashkenaz, 1200000423 : lac Van, Mannaï, Ashgouzaï-Scythes, mer Noire-"
+  "Caspienne ; voir it-1 Ararat, 1200000338 : Ourartou, Arménie, Tigre, Caucase) — "
+  "« rois de Médie » (51:28 — P290 : les MÈDES avant les Perses — voir 1959646 : "
+  "Isaïe incite les Mèdes ; Dn 5:28 — P374/P375), « courriers » (51:31), « gués "
+  "saisis, roseaux brûlés, portes » (51:32 — P290 ; Dn 5:30 — P290 ; 539). "
+  "Desséchée (51:34-44 — P291) : « gros serpent » qui « rince » (51:34 — P291 ; "
+  "TM versée), « je dessécherai sa mer » (51:36 — P291 : l'Euphrate détourné — "
+  "voir 1200000530 !), « tas de ruines, chacals » (51:37 — P291), « festin… "
+  "sommeil éternel » (51:39 — P291 : Belschatsar ! — voir 1200000628), « Bel… ce "
+  "qu'il a englouti » (51:44 — P291 ; sortez 51:45 — voir J : P292 ; murailles "
+  "51:58 — voir J : P293). Le rouleau (51:59-64 — P294) : 4e année de Tsidqiya — "
+  "Seraya fils de Néria, FRÈRE de Baruch (voir it-1 Baruch : quartier-maître — "
+  "51:59 — P294), « écrivit dans un livre » (51:60), lire PUIS jeter avec une "
+  "pierre (51:63 — P294) : « ainsi s'enfoncera Babylone » (51:64 — P294 ; 539)."
+ ),
+ explication=(
+  "Bel/Merodak (50:2 — P283) : deux noms, un dieu (Marduk) — honteux ET terrifié : "
+  "le dieu d'empire en deux états. Assemblée (50:9 — P284) : « grandes nations » "
+  "coalisées — Cyrus fédère : Mèdes, Perses, nordiques. Flèches-vaillant (50:9 — "
+  "P284) : chaque flèche comme un héros : l'archerie infaillible. Os rongés "
+  "(50:17 — P285) : Assyrie mange la chair, Babylone ronge les OS : deux empires, "
+  "deux restes — il ne reste qu'à pardonner. Quatre pâturages (50:19 — P285) : "
+  "Carmel, Bashân, Éphraïm, Galaad — les deux côtés du Jourdain : Israël entier "
+  "repaît. Plus (50:20 — P285) : « on cherchera… il n'y en aura plus » — le pardon "
+  "comme absence : introuvable faute. Rédempteur (50:34 — P286) : go'el — « FORT » "
+  "— le vengeur familial d'Israël contre l'empire : le procès gagné. Huit épées "
+  "(50:35-38 — P286) : la litanie — habitants, princes, sages, vaillants, chevaux, "
+  "trésors, eaux : TOUT, jusqu'à l'eau. Sodome (50:40 — P286) : le comparant "
+  "absolu — « comme Dieu a bouleversé » : inhabitable à jamais. Mains molles "
+  "(50:43 — P287) : le roi entend — les mains lâchent : la peur comme "
+  "désarmement. Montagne (51:25 — P289) : « destructrice » — Babylone-montagne "
+  "roulée « comme » ? — « je te roulerai » : la montagne déplacée. Pas de pierre "
+  "(51:26 — P289) : ni angle ni fondement — pas même carrière : inutilisable "
+  "jusqu'aux moellons. Trois royaumes (51:27 — P290) : Ararat (Ourartou), Minni "
+  "(Mannaï), Ashkenaz (Scythes) — le nord fédéré : voir les articles. Mèdes "
+  "(51:28 — P290) : nommés AVANT les Perses — comme en Dn 5:28 : l'ordre protocolaire "
+  "de 539. Gués (51:32 — P290) : « saisis » — couper les passages : Babylone "
+  "encerclée d'eau et de feu (roseaux brûlés). Mer desséchée (51:36 — P291) : « sa "
+  "mer » = l'Euphrate — « je tarirai » : le fleuve à sec, les Perses à pied "
+  "(voir 1200000530). Festin (51:39 — P291) : « je leur servirai… ils dormiront "
+  "d'un sommeil éternel » — Dieu régale pour endormir : Belschatsar (voir "
+  "1200000628). Pierre-rouleau (51:63 — P294) : lire, attacher, jeter : le livre "
+  "coule — la ville suivra : le signe lesté."
+ ),
+ interpretation=(
+  "La nuit (Dn 5:30-31 — P283, P290 ; voir E/J/L : P374/P375) : écriture, festin, "
+  "mort — 5 octobre 539 (voir 1200000530, 1200000628). L'Euphrate (voir 1200000530) "
+  ": ingénieurs de Cyrus — détourné, lit descendu, quais escaladés, portes du "
+  "fleuve : « sans combat » (Chronique de Nabonide — voir 1200000628). Belschatsar "
+  "(voir 1200000628) : fils de Nabonide, vice-roi — festin de 1000, vases du "
+  "Temple, « troisième » à Daniel, tué : 51:39 en une nuit. Cyrus (Is 45 — voir "
+  "J/L : P161 ; voir J : Cyrus) : nommé d'avance — fédère Mèdes (51:28), Nord "
+  "(51:27), Perses. Les dieux (50:2 — P283 ; 51:44 — P291 ; 10:11 — P195) : "
+  "honteux, terrifiés, vomissant — voir T007. Le site (P286, P289) : « solitude "
+  "désolée » (Is 13:19-22 — voir L010 ; Jr 50:13 — cité par 1200002904) — révoltes "
+  "contre Darius, démantelée ; Xerxès pille (voir 1200000530) — jamais capitale "
+  "habitée : voir L010. La brebis (Esd 1:1-4 — P285) : pardonnée, repaissante — "
+  "Carmel à Galaad. Le rouleau (539 — P294) : jeté sous Tsidqiya (4e année), "
+  "coulé avec la ville : Seraya prophète-postier."
+ ),
+ hist=(
+  "Nabopolassar → Belshatsar (voir 1200000530) : 645, dynastie chaldéenne — 632 "
+  "Assyrie, 625 Karkemish (voir T011), 43 ans de Neboukadnetsar, 581 Évil-Merodak "
+  "(voir T003 : 2R 25:27-30 — P217 !), Nabonide à Téma, Belschatsar à Babylone : "
+  "la dynastie en un paragraphe. Le festin (voir 1200000628) : 1000 grands, vases "
+  "sacrés, dieux loués — mépris délibéré : l'orgie blasphème. La reine-mère "
+  "(voir 1200000628 : Nitocris ?) : « Daniel peut » — l'indication avisée. "
+  "Troisième (Dn 5:16 — P374/P375) : Nabonide 1er, Belschatsar 2nd : Daniel 3e — "
+  "d'un royaume d'une nuit. Chronique de Nabonide (voir 1200000628, 1200002904) : "
+  "« sans combat » — tablette et Bible : l'entrée paisible, le palais sanglant. "
+  "Ourartou, Mannaï, Scythes (voir 1200000423, 1200000338) : inscriptions "
+  "assyriennes (Salmanasar → Sargon), alliance anti-assyrienne VIIe s. — les "
+  "nordiques retournés contre Babylone. Seraya (51:59 — P294 ; voir it-1 Baruch) : "
+  "frère du scribe, quartier-maître de Tsidqiya — le livre voyage en mission "
+  "officielle."
+ ),
+ geo=(
+  "Le nord (50:3, 41 — P283, P287) : Mèdes, nordiques — même direction qu'en 6:22 "
+  "(voir T001) : le nord juge Juda, puis Babylone : la route à double sens. "
+  "Ararat-Minni-Ashkenaz (51:27 — P290) : lac Van, Arménie, Caucase, mer Noire-"
+  "Caspienne (voir articles) — l'arc nord contre la plaine. Les gués (51:32 — "
+  "P290) : passages de l'Euphrate — saisis : la ville coupée de ses eaux. Le lit "
+  "(51:36 — P291 ; voir 1200000530) : fleuve détourné — berges escaladées, portes "
+  "du quai : l'entrée par le lit. Le palais (Dn 5 — P374/P375) : festin, "
+  "écriture, mort — quelques rues du fleuve : la nuit express. Quatre pâturages "
+  "(50:19 — P285) : Carmel, Bashân, Éphraïm, Galaad — Israël repaît pendant que "
+  "Babylone coule. L'Euphrate-tombe (51:63-64 — P294) : le rouleau lesté — le "
+  "fleuve comme sépulcre : « ainsi »."
+ ),
+ sci=(
+  "Hydraulique militaire (51:36 — P291 ; voir 1200000530) : détourner l'Euphrate — "
+  "barrages, canaux, baisse : le fleuve asséché à pied : l'ingénierie perse. "
+  "Poliorcétique paradoxale (51:31-32 — P290) : murailles doubles imprenables "
+  "(voir 1200002904) — prises par le lit : le point faible aquatique. Faune des "
+  "ruines (50:39 — P286 ; 51:37 — P291) : chacals, autruches — comme 9:11 (voir "
+  "T002) : l'écologie du jugement, deux villes. Litologie négative (51:26 — "
+  "P289) : pas de pierre réutilisable — ni angle ni fondement : l'interdit "
+  "matériel (voir L010). Onomastique divine (50:2 — P283) : Bel = Marduk = Merodak "
+  "— un dieu, trois noms, zéro secours. Balistique (50:9, 14 — P284) : « n'épargnez "
+  "pas les flèches » — saturation : l'archerie médo-perse. Sédimentologie "
+  "prophétique (51:64 — P294) : pierre + rouleau → fond : la densité comme "
+  "démonstration — Babylone coule « ainsi »."
+ ),
+ limites=(
+  "50:4-8 (« sortez ») : NON versé (versets non vérifiés) — voir J (P292 : 51:45-48) "
+  "pour « sortez du milieu ». 51:7 (coupe d'or) : voir J (P288). 51:15-23 (idoles) : "
+  "C8 (51:17-18 — aucun P : P288 = 51:1-14 disjoint) — non développé (voir T007 : "
+  "10:11). 51:45-58 : voir J (P292/P293). Is 13-14, 21, 45, 47 : voir I/J/L (P126, "
+  "P135, P161, P164 — non re-traités ; P161 nommé : Cyrus). Site (P286/P289) : « "
+  "état du site » (registre) + voir L010 — reconstructions partmodernes non "
+  "discutées (voir les limites : seul « jamais capitale habitée » est versé). "
+  "5 octobre 539 : grégorien (voir 1200000530) — pas de conversion versée. C8 : "
+  "Jr 51:17-18 — aucun P (vérifié)."
+ ),
+ accomplissement=[("Bel honteux", "Dieux jugés (50:1-3 — P283 ; Dn 5)"),
+     ("Assemblée", "Flèches, vengeance (50:9-16 — P284 ; 539)"),
+     ("Brebis", "Os rongés, pardonnée (50:17-20 — P285 ; Esd 1)"),
+     ("Huit épées", "Sodome (50:33-40 — P286 ; site)"),
+     ("Nord", "Mains molles (50:41-46 — P287 ; 539)"),
+     ("Jamais", "Pas de pierre (51:24-26 — P289 ; site)"),
+     ("Royaumes", "Mèdes, gués (51:27-33 — P290 ; Dn 5:30)"),
+     ("Desséchée", "Festin, sommeil (51:34-44 — P291 ; Euphrate)"),
+     ("Rouleau", "Lesté, coulé (51:59-64 — P294 ; 539)")],
+ tl=[("4e Tsidqiya", "Seraya jette (51:59-64 — P294)"),
+     ("Festin (nuit)", "1000 grands, vases (Dn 5 — P374/P375)"),
+     ("Écriture", "Mené, théqel (Dn 5 — voir E/J/L)"),
+     ("Lit (nuit)", "Euphrate détourné (51:36 — P291)"),
+     ("5 oct. 539", "Prise, Belschatsar tué (P283-P294)"),
+     ("Site (après)", "Désolée (P286, P289 ; voir L010)")],
+ src=[("Babylone — it-1 (5 oct 539, Euphrate, quais)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200000530"),
+      ("Belshatsar — it-1 (festin, vases, Nabonide)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200000628"),
+      ("Ashkenaz — it-1 (lac Van, Scythes, Jr 51:27)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200000423"),
+      ("Ararat — it-1 (Ourartou, Arménie, Jr 51:27)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200000338"),
+      ("Jérémie 51 — Bible d'étude, notes", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/51")],
+ img="images/prophe_T012_babylone.jpg",
+))
+

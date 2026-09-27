@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COLLECTIONS AUDIO THÉMATIQUES</title>
+<style>
+:root{--bleu:#0B2545;--or:#E9C46A;--creme:#F7F4EC;--gris:#5b6472;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--creme);color:#1b2430;
+ font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px 70px;}
+header{background:var(--bleu);color:#fff;padding:34px 22px 28px;}
+header .in{max-width:960px;margin:0 auto;}
+header h1{margin:0 0 6px;font-size:27px;letter-spacing:.3px;}
+header p{margin:0;color:#c9d3e4;font-size:14px;}
+.kicker{color:var(--or);text-transform:uppercase;letter-spacing:2.4px;
+ font-size:11px;font-weight:700;margin-bottom:10px;}
+h2{color:var(--bleu);font-size:20px;margin:42px 0 12px;
+ padding-bottom:7px;border-bottom:2px solid var(--or);}
+h3{color:var(--bleu);font-size:16px;margin:22px 0 8px;}
+p{margin:0 0 10px;}
+table{border-collapse:collapse;width:100%;margin:12px 0 20px;font-size:13.5px;background:#fff;}
+th,td{border:1px solid #d8d2c4;padding:6px 9px;text-align:left;vertical-align:top;}
+th{background:var(--bleu);color:#fff;font-weight:600;font-size:12.5px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.c,th.c{text-align:center;}
+tr:nth-child(even) td{background:#fbf9f4;}
+.coll{background:#fff;border:1px solid #dcd6c6;border-left:7px solid var(--bleu);
+ border-radius:5px;padding:0;margin:0 0 26px;overflow:hidden;}
+.coll .hd{background:var(--bleu);color:#fff;padding:14px 18px 12px;}
+.coll .hd .num{color:var(--or);font-weight:800;font-size:12px;letter-spacing:2px;}
+.coll .hd h3{margin:2px 0 3px;color:#fff;font-size:20px;}
+.coll .hd .sous{color:#c9d3e4;font-size:13px;}
+.coll .bd{padding:16px 18px 6px;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;}
+.badge{background:#eef1f6;border:1px solid #d3dae6;border-radius:20px;
+ padding:3px 11px;font-size:11.5px;color:var(--bleu);font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--or);color:#7a5b12;}
+.objet{background:#f4f7fb;border-left:4px solid var(--or);padding:10px 13px;
+ font-size:13.5px;margin:0 0 12px;}
+.piste{display:flex;gap:10px;align-items:baseline;padding:5px 0;
+ border-bottom:1px dotted #d8d2c4;font-size:13.5px;}
+.piste:last-child{border-bottom:none;}
+.piste .n{color:var(--or);font-weight:800;min-width:22px;}
+.piste .t{flex:1;}
+.piste .f{color:var(--gris);font-size:11.5px;font-family:Consolas,monospace;}
+.piste .d{color:var(--bleu);font-weight:700;font-variant-numeric:tabular-nums;}
+.cle{background:#0B2545;color:#fff;border-radius:4px;padding:9px 13px;
+ font-size:13px;margin:10px 0 4px;}
+.cle b{color:var(--or);}
+.liens{font-size:12.5px;color:var(--gris);padding:0 18px 14px;}
+.liens a{color:#1a4a8a;}
+.note{background:#fff8e8;border:1px solid var(--or);border-radius:4px;
+ padding:11px 14px;font-size:13px;margin:14px 0;}
+ul{padding-left:20px;margin:0 0 12px;}
+li{margin-bottom:5px;font-size:13.5px;}
+footer{background:var(--bleu);color:#cfd8e6;padding:20px 22px;font-size:12px;}
+footer .in{max-width:960px;margin:0 auto;}
+footer a{color:var(--or);}
+.pb{page-break-after:always;}
+.grille{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.carte{border:2px solid var(--bleu);border-radius:8px;padding:14px;background:#fff;}
+.carte.pleine{grid-column:1 / -1;}
+.carte h4{margin:0 0 6px;color:var(--bleu);font-size:15px;}
+.carte .q{font-size:12.5px;color:var(--gris);margin-top:8px;}
+.ligne{border-bottom:1px solid #cfd8e6;height:22px;margin:5px 0;}
+.case{display:inline-block;width:13px;height:13px;border:1.5px solid var(--bleu);
+ margin-right:7px;vertical-align:-2px;}
+@media print{
+ body{background:#fff;}
+ header,footer{background:#0B2545 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+ .coll,.carte{break-inside:avoid;}
+}
+</style></head><body>
+<header><div class="in">
+<div class="kicker">Bibliothèque privée — projet PREUVES</div>
+<h1>COLLECTIONS AUDIO THÉMATIQUES</h1>
+<p>15 collections · 116 écoutes · 0 min 00 s au total — construites à partir des 169 pistes déjà enregistrées</p>
+</div></header>
+<div class="wrap">
+
+<div class="note">
+<b>Comment utiliser ce classeur sonore.</b> Chaque collection est un <b>ordre d’écoute</b>, pas un
+résumé : on écoute dans l’ordre indiqué, un fichier à la fois, avec le support indiqué ouvert
+devant soi. Les durées sont réelles, calculées piste par piste. Les capsules d’ouverture
+(« collections_01 » à « collections_10 ») servent à annoncer le sujet en moins de vingt secondes
+avant de lancer la série.
+</div>
+<h2>Vue d’ensemble</h2>
+<table><thead><tr><th class='c'>N°</th><th>Collection</th><th>Objet</th><th class='c'>Pistes</th><th class='c'>Durée</th><th>Support à ouvrir</th></tr></thead><tbody>
+<tr><td class='c'><b>C01</b></td><td><b>Par où commencer</b><br><span style='color:#5b6472;font-size:12px'>Ouvrir le dossier sans rien connaître d’avance</span></td><td style='font-size:12.5px'>Donner en moins de deux minutes l’ordre de lecture et la règle du jeu : on ne débat pas d’une religion, on examine des faits datés.</td><td class='c'>6</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>SITE_LOCAL.html — onglet Accueil</td><td class='c' style='font-size:11.5px'>C01</td></tr>
+<tr><td class='c'><b>C02</b></td><td><b>Les douze preuves</b><br><span style='color:#5b6472;font-size:12px'>Le grand dossier, d’un bout à l’autre</span></td><td style='font-size:12.5px'>Suivre les douze grandes preuves dans l’ordre : chacune tient en une date, un lieu, un document.</td><td class='c'>9</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>22_GRAND_DOSSIER.md</td><td class='c' style='font-size:11.5px'>C02</td></tr>
+<tr><td class='c'><b>C03</b></td><td><b>Les huit objections</b><br><span style='color:#5b6472;font-size:12px'>Répondre sans s’énerver, sans débattre</span></td><td style='font-size:12.5px'>Reprendre les huit objections les plus courantes et la réponse que l’on peut donner, en privé, avec un document.</td><td class='c'>6</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>22_GRAND_DOSSIER.md — annexe</td><td class='c' style='font-size:11.5px'>C03</td></tr>
+<tr><td class='c'><b>C04</b></td><td><b>Babylone et Cyrus</b><br><span style='color:#5b6472;font-size:12px'>Une ville, un fleuve, un nom — cent cinquante ans d’avance</span></td><td style='font-size:12.5px'>Isaïe nomme Cyrus plus d’un siècle avant sa naissance ; Jérémie annonce le dessèchement du fleuve et les portes ouvertes.</td><td class='c'>7</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>LIVRE_1_ENQUETE.html — chapitre Babylone</td><td class='c' style='font-size:11.5px'>C04</td></tr>
+<tr><td class='c'><b>C05</b></td><td><b>Tyr, l’Égypte et les nations</b><br><span style='color:#5b6472;font-size:12px'>Quand la prophétie décrit la méthode avant l’événement</span></td><td style='font-size:12.5px'>Ézéchiel annonce que les pierres de Tyr seront jetées dans la mer et qu’Alexandre raclera sa poussière. Édom disparaît ; Ninive est oubliée.</td><td class='c'>7</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>videos/SCRIPTS_VIDEOS.html — V3 Tyr</td><td class='c' style='font-size:11.5px'>C05</td></tr>
+<tr><td class='c'><b>C06</b></td><td><b>Les dates</b><br><span style='color:#5b6472;font-size:12px'>607 · 537 · 455 · 29 · 36 · 1914</span></td><td style='font-size:12.5px'>Tenir la chaîne des dates sans la casser : la désolation, le retour, l’ordre de rebâtir, le Messie, la fin de la faveur spéciale, les sept temps.</td><td class='c'>8</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>visuels/FRISES_CHRONOLOGIQUES.html</td><td class='c' style='font-size:11.5px'>C06</td></tr>
+<tr><td class='c'><b>C07</b></td><td><b>Le Messie</b><br><span style='color:#5b6472;font-size:12px'>L’origine, la naissance, le ministère, la mort</span></td><td style='font-size:12.5px'>Reprendre les prophéties messianiques une par une et leur accomplissement dans les Évangiles — en laissant les questions dogmatiques de côté.</td><td class='c'>9</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>LIVRE_3_DETAIL.html — parties 7 et 8</td><td class='c' style='font-size:11.5px'>C07</td></tr>
+<tr><td class='c'><b>C08</b></td><td><b>Le signe des derniers jours</b><br><span style='color:#5b6472;font-size:12px'>Guerres, famines, pestes, et le signe composé</span></td><td style='font-size:12.5px'>Le signe donné par Jésus, ses éléments, et la manière de le présenter sans jamais annoncer de date.</td><td class='c'>8</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>SITE_LOCAL.html — onglet Signe</td><td class='c' style='font-size:11.5px'>C08</td></tr>
+<tr><td class='c'><b>C09</b></td><td><b>Le livre de la Révélation</b><br><span style='color:#5b6472;font-size:12px'>Les sceaux, les trompettes, les bêtes, la grande foule</span></td><td style='font-size:12.5px'>Traverser la Révélation dans l’ordre du livre, sans allégorie inventée et sans identification hasardeuse.</td><td class='c'>8</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>LIVRE_3_DETAIL.html — parties 11 et 12</td><td class='c' style='font-size:11.5px'>C09</td></tr>
+<tr><td class='c'><b>C10</b></td><td><b>Le monde nouveau</b><br><span style='color:#5b6472;font-size:12px'>Nouveaux cieux, nouvelle terre, la ville, le fleuve</span></td><td style='font-size:12.5px'>Finir par où la Bible finit : la restauration annoncée, la Nouvelle Jérusalem, le fleuve de vie.</td><td class='c'>7</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>videos/SCRIPTS_VIDEOS.html — L1</td><td class='c' style='font-size:11.5px'>C10</td></tr>
+<tr><td class='c'><b>C11</b></td><td><b>Comment le texte est arrivé jusqu’à nous</b><br><span style='color:#5b6472;font-size:12px'>Les copistes, les manuscrits, les rouleaux</span></td><td style='font-size:12.5px'>Répondre à l’objection la plus fréquente : « le texte a été recopié mille fois, donc il a changé. » Les rouleaux de la mer Morte permettent la comparaison sur plus de mille ans.</td><td class='c'>7</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>preuves/23_REGISTRE_PROPHETIES_7.md</td><td class='c' style='font-size:11.5px'>—</td></tr>
+<tr><td class='c'><b>C12</b></td><td><b>Présenter le dossier à quelqu’un</b><br><span style='color:#5b6472;font-size:12px'>La méthode, les supports, les liens</span></td><td style='font-size:12.5px'>Comment transmettre un fichier à la fois, en privé, sans jamais publier ni héberger quoi que ce soit.</td><td class='c'>8</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>visuels/COFFRET.html</td><td class='c' style='font-size:11.5px'>—</td></tr>
+<tr><td class='c'><b>C13</b></td><td><b>Les huit dates</b><br><span style='color:#5b6472;font-size:12px'>Une fiche, une date, un calcul écrit ligne par ligne</span></td><td style='font-size:12.5px'>Tenir la chaîne 607 · 539 · 537 · 455 · 29 · 33 · 36 · 1914 sans jamais la rompre, avec le détail de chaque opération et la limite de chaque fiche.</td><td class='c'>8</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>FICHES_DATES.html</td><td class='c' style='font-size:11.5px'>—</td></tr>
+<tr><td class='c'><b>C14</b></td><td><b>Les objections en poche</b><br><span style='color:#5b6472;font-size:12px'>Huit cartes, huit réponses, huit liens</span></td><td style='font-size:12.5px'>Répondre aux huit objections les plus courantes en trois lignes, avec le lien officiel écrit en clair au dos de chaque carte.</td><td class='c'>8</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>CAHIER_AUDITEUR.html — partie C</td><td class='c' style='font-size:11.5px'>—</td></tr>
+<tr><td class='c'><b>C15</b></td><td><b>Le cahier de l’auditeur</b><br><span style='color:#5b6472;font-size:12px'>Remplir, vérifier, corriger — la boucle complète</span></td><td style='font-size:12.5px'>Suivre le cahier dans l’ordre : le mode d’emploi, les huit fiches de dates à compléter, puis le corrigé. C’est la seule collection qui se pratique un stylo à la main.</td><td class='c'>10</td><td class='c'><b>0:00</b></td><td style='font-size:12px;font-family:Consolas,monospace'>CAHIER_AUDITEUR.html</td><td class='c' style='font-size:11.5px'>—</td></tr>
+<tr style='background:#0B2545;color:#fff'><td></td><td><b>TOTAL</b></td><td></td><td class='c'><b>116</b></td><td class='c'><b>0 min 00 s</b></td><td></td></tr>
+</tbody></table>
+<div class="note"><b>Trois règles d’usage, valables pour les douze collections.</b>
+<ol style="margin:6px 0 0">
+<li><b>Un système chronologique par document.</b> 607 av. n. è. pour la désolation de Jérusalem,
+539 pour la chute de Babylone, 537 pour le retour, 455 pour l’ordre de rebâtir, 29 de n. è. pour
+l’onction du Messie, 33 pour sa mort, 36 pour la fin de la faveur spéciale accordée aux Juifs,
+1914 pour la fin des sept temps. On ne mélange jamais deux systèmes dans un même document.</li>
+<li><b>Aucune date pour l’avenir.</b> Ce qui n’est pas accompli reste sans date.</li>
+<li><b>Aucun total dogmatique.</b> La Bibliothèque en ligne elle-même écrit qu’il est préférable de
+ne pas se montrer trop affirmatif quant au nombre exact des prophéties messianiques. Ce dossier est
+un inventaire de travail, pas un chiffre à opposer à quelqu’un.</li>
+</ol></div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C01</div>
+<h3>Par où commencer</h3>
+<div class='sous'>Ouvrir le dossier sans rien connaître d’avance</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>6 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>À écouter seul, avant toute autre collection. C’est la porte d’entrée.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Donner en moins de deux minutes l’ordre de lecture et la règle du jeu : on ne débat pas d’une religion, on examine des faits datés.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 1 — Par où commencer</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_01.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Présentation du site local</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>site_01_presentation.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Accueil et règles du site</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>site_02_accueil_regles.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Ouverture — la première promesse (Genèse)</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_01_ouverture_genese.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Introduction au grand dossier</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_59_grand_dossier_intro.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Présentation des trois livres</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>livres_01_presentation_trois_livres.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> La Bible ne s’ouvre pas par une preuve, mais par une promesse.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>SITE_LOCAL.html — onglet Accueil</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_01_porte_entree.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/">jw.org — accueil</a> · <a href="https://www.jw.org/fr/la-bible-et-vous/cours-biblique-particulier/">Cours biblique particulier</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C02</div>
+<h3>Les douze preuves</h3>
+<div class='sous'>Le grand dossier, d’un bout à l’autre</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>9 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>Le cœur du dossier. Une preuve par écoute, jamais deux le même soir.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Suivre les douze grandes preuves dans l’ordre : chacune tient en une date, un lieu, un document.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 2 — Les douze preuves</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_02.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Introduction au grand dossier</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_59_grand_dossier_intro.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Preuve 1 — Cyrus nommé d’avance</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_60_preuve1_cyrus.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Preuves 2 et 3 — Babylone et Tyr</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_61_preuves_2_3_babylone_tyr.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Preuves 4 et 5 — Ninive et les 70 ans</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_62_preuves_4_5_ninive_70ans.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Preuves 6 et 7 — les 70 semaines et Daniel 11</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_63_preuves_6_7_semaines_daniel11.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Preuve 8 — les sept temps et 1914</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_64_preuve8_sept_temps_1914.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>8</b></td><td>Preuves 9 et 10 — le signe et Pella</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_65_preuves_9_10_signe_pella.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>9</b></td><td>Preuves 11 et 12 — Isaïe 53 et l’avenir</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_66_preuves_11_12_esaie53_avenir.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> Une prophétie datée ne se discute pas : elle s’est produite, ou non.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>22_GRAND_DOSSIER.md</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_02_douze_preuves.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l’Histoire</a> · <a href="https://wol.jw.org/fr/wol/h/r30/lp-f">Bibliothèque en ligne (wol)</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C03</div>
+<h3>Les huit objections</h3>
+<div class='sous'>Répondre sans s’énerver, sans débattre</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>6 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>À écouter avant une conversation difficile. On ne convainc pas : on montre.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Reprendre les huit objections les plus courantes et la réponse que l’on peut donner, en privé, avec un document.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 3 — Les objections</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_03.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Les huit objections courantes</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_67_huit_objections.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Récapitulatif du corpus et des règles</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_58_recapitulatif_corpus_regles.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Les règles d’usage</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>site_08_regles_usage.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Livre 1 — mode d’emploi</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>livres_03_enquete_mode_emploi.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Les cartes QR</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>visuels_09_cartes_qr.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> Une objection bien comprise est déjà à moitié une question.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>22_GRAND_DOSSIER.md — annexe</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_03_objections.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/la-bible-et-vous/questions-bibliques/">Questions bibliques</a> · <a href="https://www.jw.org/fr/la-bible-et-vous/cours-biblique-particulier/">Cours biblique particulier</a></div>
+</div>
+<div class="pb"></div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C04</div>
+<h3>Babylone et Cyrus</h3>
+<div class='sous'>Une ville, un fleuve, un nom — cent cinquante ans d’avance</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>7 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>La collection la plus solide pour une première démonstration.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Isaïe nomme Cyrus plus d’un siècle avant sa naissance ; Jérémie annonce le dessèchement du fleuve et les portes ouvertes.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 4 — Babylone et Cyrus</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_04.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Preuve 1 — Cyrus nommé d’avance</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_60_preuve1_cyrus.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Voix off V1 — Cyrus</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>videos_03_voix_off_v1_cyrus.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Livre 1 — Babylone et Tyr</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>livres_04_enquete_babylone_tyr.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Preuves 2 et 3 — Babylone et Tyr</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_61_preuves_2_3_babylone_tyr.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Voix off V2 — Babylone 539</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>videos_04_voix_off_v2_babylone.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Jérémie — Babylone</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_14_jeremie_babylone.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> Le nom de Cyrus est écrit avant qu’il existe ; le gué de l’Euphrate est annoncé avant d’être franchi.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>LIVRE_1_ENQUETE.html — chapitre Babylone</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_04_babylone_cyrus.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l’Histoire</a> · <a href="https://wol.jw.org/fr/wol/h/r30/lp-f">Bibliothèque en ligne (wol)</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C05</div>
+<h3>Tyr, l’Égypte et les nations</h3>
+<div class='sous'>Quand la prophétie décrit la méthode avant l’événement</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>7 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>Pour qui objecte que les prophéties sont vagues. Ici le détail est matériel.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Ézéchiel annonce que les pierres de Tyr seront jetées dans la mer et qu’Alexandre raclera sa poussière. Édom disparaît ; Ninive est oubliée.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 5 — Tyr, l’Égypte, Ninive</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_05.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Ézéchiel — Tyr et l’Égypte</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_16_ezechiel_tyr_egypte.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Voix off V3 — Tyr 332</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>videos_05_voix_off_v3_tyr.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Jérémie — les nations</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_13_jeremie_nations.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Abdias, Jonas, Michée</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_23_abdias_jonas_michee.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Nahum, Habaquq, Sophonie</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_24_nahum_habacuc_sophonie.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Preuves 4 et 5 — Ninive et les 70 ans</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_62_preuves_4_5_ninive_70ans.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> On ne raclait pas la poussière d’une ville : on construisait dessus. Tyr a été raclée.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>videos/SCRIPTS_VIDEOS.html — V3 Tyr</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_05_tyr_egypte_ninive.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l’Histoire</a> · <a href="https://wol.jw.org/fr/wol/h/r30/lp-f">Bibliothèque en ligne (wol)</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C06</div>
+<h3>Les dates</h3>
+<div class='sous'>607 · 537 · 455 · 29 · 36 · 1914</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>8 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>Collection technique. À écouter avec les frises sous les yeux.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Tenir la chaîne des dates sans la casser : la désolation, le retour, l’ordre de rebâtir, le Messie, la fin de la faveur spéciale, les sept temps.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 6 — Les dates</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_06.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Preuves 4 et 5 — Ninive et les 70 ans</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_62_preuves_4_5_ninive_70ans.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Preuves 6 et 7 — les 70 semaines et Daniel 11</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_63_preuves_6_7_semaines_daniel11.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Preuve 8 — les sept temps et 1914</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_64_preuve8_sept_temps_1914.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Voix off V5 — les 70 ans</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>videos_06_voix_off_v5_soixante_dix_ans.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Voix off V8 — 607 à 1914</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>videos_07_voix_off_v8_1914.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Frise 8 — Daniel et Raphia</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>visuels_05_frise_8_daniel_raphia.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>8</b></td><td>Frise 12 — de 1914 à aujourd’hui</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>visuels_06_frise_12_1914_aujourdhui.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> Un système chronologique par document : jamais deux dans le même.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>visuels/FRISES_CHRONOLOGIQUES.html</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_06_les_dates.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://wol.jw.org/fr/wol/h/r30/lp-f">Bibliothèque en ligne (wol)</a> · <a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l’Histoire</a></div>
+</div>
+<div class="pb"></div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C07</div>
+<h3>Le Messie</h3>
+<div class='sous'>L’origine, la naissance, le ministère, la mort</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>9 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>Collection longue : six écoutes. Ne pas chercher de total : la Bibliothèque en ligne déconseille de se montrer trop affirmatif sur le nombre.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Reprendre les prophéties messianiques une par une et leur accomplissement dans les Évangiles — en laissant les questions dogmatiques de côté.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 7 — Le Messie</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_07.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Le Messie — origine</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_31_messianiques_origine.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Le Messie — naissance</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_32_messianiques_naissance.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Le Messie — ministère</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_33_messianiques_ministere.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Le Messie — procès</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_34_messianiques_proces.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Le Messie — mort</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_35_messianiques_mort.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Le Messie — résurrection</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_36_messianiques_resurrection.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>8</b></td><td>Psaumes messianiques (1)</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_28_psaumes_messianiques_1.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>9</b></td><td>Isaïe 1-39</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_09_isaie_1_39.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> On ne compte pas les prophéties : on les vérifie.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>LIVRE_3_DETAIL.html — parties 7 et 8</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_07_le_messie.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/la-bible-et-vous/questions-bibliques/">Questions bibliques</a> · <a href="https://www.jw.org/fr/la-bible-et-vous/cours-biblique-particulier/">Cours biblique particulier</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C08</div>
+<h3>Le signe des derniers jours</h3>
+<div class='sous'>Guerres, famines, pestes, et le signe composé</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>8 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>À écouter avant d’aborder l’actualité. Aucune date, jamais.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Le signe donné par Jésus, ses éléments, et la manière de le présenter sans jamais annoncer de date.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 8 — Le signe des derniers jours</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_08.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Le signe composite (1)</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_37_signe_composite_1.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Le signe composite (2)</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_38_signe_composite_2.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Jérusalem et 70 de n. è.</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_39_jerusalem_70.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Le Royaume et les disciples</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_40_royaume_disciples.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Voix off V9 et V10 — le signe, Pella</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>videos_08_voix_off_v9_signe_et_v10.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Har-Maguédôn (1)</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_51_har_magedon_1.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>8</b></td><td>Har-Maguédôn (2) — l’abîme</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_52_har_magedon_2_abime.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> Le signe se constate ; la date ne se calcule pas.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>SITE_LOCAL.html — onglet Signe</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_08_le_signe.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/">jw.org — accueil</a> · <a href="https://www.jw.org/fr/la-bible-et-vous/questions-bibliques/">Questions bibliques</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C09</div>
+<h3>Le livre de la Révélation</h3>
+<div class='sous'>Les sceaux, les trompettes, les bêtes, la grande foule</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>8 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>Sept écoutes. Seule collection qui suit un livre entier, chapitre après chapitre.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Traverser la Révélation dans l’ordre du livre, sans allégorie inventée et sans identification hasardeuse.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 9 — Le livre de la Révélation</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_09.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Pierre, Jean, Jude, Révélation 1</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_44_partie10_pierre_jean_jude_revelation1.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Les congrégations et le trône</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_45_partie11_congregations_trone.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Les sceaux et la grande foule</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_46_partie11_sceaux_grande_foule.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Les trompettes et les deux témoins</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_47_partie11_trompettes_deux_temoins.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Les bêtes et la marque</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_48_partie12_betes_marque.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Moisson, bols, chute de Babylone la Grande</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_49_partie12_moisson_bols_babylone.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>8</b></td><td>La chute et les noces</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_50_partie12_chute_noces.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> Le livre se lit dans l’ordre ; il ne se découpe pas en morceaux choisis.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>LIVRE_3_DETAIL.html — parties 11 et 12</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_09_revelation.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://wol.jw.org/fr/wol/h/r30/lp-f">Bibliothèque en ligne (wol)</a> · <a href="https://www.jw.org/fr/">jw.org — accueil</a></div>
+</div>
+<div class="pb"></div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C10</div>
+<h3>Le monde nouveau</h3>
+<div class='sous'>Nouveaux cieux, nouvelle terre, la ville, le fleuve</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>7 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>La collection à proposer quand la conversation fatigue. Elle repose.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Finir par où la Bible finit : la restauration annoncée, la Nouvelle Jérusalem, le fleuve de vie.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 10 — Le monde nouveau</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_10.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Le jugement et les nouveaux cieux</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_53_jugement_nouveaux_cieux.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>La Nouvelle Jérusalem</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_54_nouvelle_jerusalem.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Le fleuve de vie — la fin du livre</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_55_fleuve_fin.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Ézéchiel — la restauration</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_17_ezechiel_restauration.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Isaïe 40-66</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_10_isaie_40_66.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Malachie et compléments</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_27_malachie_complements.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> La Bible ne s’arrête pas sur une catastrophe : elle s’arrête sur une eau vive.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>videos/SCRIPTS_VIDEOS.html — L1</span></p>
+<p style='font-size:12.5px;color:#5b6472'><b>Pochette de la collection :</b> <span style='font-family:Consolas,monospace'>images/collection_10_monde_nouveau.jpg</span><br><i>Illustration. Aucune de ces images n’est un document : ni photo d’un site réel, ni reproduction d’un artefact. Elles servent uniquement à identifier visuellement une série.</i></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/">jw.org — accueil</a> · <a href="https://www.jw.org/fr/la-bible-et-vous/cours-biblique-particulier/">Cours biblique particulier</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C11</div>
+<h3>Comment le texte est arrivé jusqu’à nous</h3>
+<div class='sous'>Les copistes, les manuscrits, les rouleaux</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>7 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>Collection courte. À proposer à qui vient des sciences ou de l’histoire.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Répondre à l’objection la plus fréquente : « le texte a été recopié mille fois, donc il a changé. » Les rouleaux de la mer Morte permettent la comparaison sur plus de mille ans.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 11 — Comment le texte est arrivé</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_11.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Livre 1 — Sennachérib et Belshatsar</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>livres_05_enquete_sennacherib_belshatsar.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Livre 3 — Belshatsar, trente-deux entrées</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>livres_09_detail_belshatsar_trente_deux.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Daniel 1-6</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_18_daniel_1_6.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Daniel 7-9</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>registre_19_daniel_7_9.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Le registre et la recherche</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>site_03_registre_recherche.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Frise 1 — des ancêtres à la Loi</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>visuels_03_frise_1_ancetres.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> Les copistes comptaient les lettres. Le rouleau le plus ancien de Daniel précède de plus d’un millénaire les copies médiévales, et le texte concorde.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>preuves/23_REGISTRE_PROPHETIES_7.md</span></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://wol.jw.org/fr/wol/h/r30/lp-f">Bibliothèque en ligne (wol)</a> · <a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l’Histoire</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C12</div>
+<h3>Présenter le dossier à quelqu’un</h3>
+<div class='sous'>La méthode, les supports, les liens</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>8 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>Dernière collection. À réécouter avant chaque remise de document.</span>
+<span class='badge or'>1 capsule d’ouverture</span>
+</div>
+<div class='objet'><b>Objectif.</b> Comment transmettre un fichier à la fois, en privé, sans jamais publier ni héberger quoi que ce soit.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr style='background:#fdf6e3'><td class='c'><b>1</b></td><td>Capsule 12 — Présenter le dossier</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>collections_12.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>La méthode de présentation</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>site_09_methode_presentation.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Les liens officiels</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>site_07_liens_officiels.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>La page médias</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>site_06_medias.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Clôture de la visite du site</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>site_10_cloture.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Clôture et impression des livres</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>livres_10_cloture_impression.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Le coffret et les étiquettes</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>visuels_08_coffret_etiquettes.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>8</b></td><td>Les cartes à trois volets</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>visuels_07_cartes_trois_volets.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> Un fichier à la fois, une personne à la fois, et un lien officiel.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>visuels/COFFRET.html</span></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/temoins-de-jehovah/demandez-une-visite/">Demandez une visite</a> · <a href="https://www.jw.org/fr/la-bible-et-vous/cours-biblique-particulier/">Cours biblique particulier</a></div>
+</div>
+<div class="pb"></div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C13</div>
+<h3>Les huit dates</h3>
+<div class='sous'>Une fiche, une date, un calcul écrit ligne par ligne</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>8 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>Collection de référence. À écouter avec le carnet de fiches ouvert devant soi.</span>
+<span class='badge'>capsule d’ouverture : vague suivante</span>
+</div>
+<div class='objet'><b>Objectif.</b> Tenir la chaîne 607 · 539 · 537 · 455 · 29 · 33 · 36 · 1914 sans jamais la rompre, avec le détail de chaque opération et la limite de chaque fiche.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr><td class='c'><b>1</b></td><td>Fiche 1 — 607 : Jérusalem dévastée</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_01_607.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Fiche 2 — 539 : Babylone tombe</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_02_539.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Fiche 3 — 537 : le retour d’exil</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_03_537.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Fiche 4 — 455 : l’ordre de rebâtir</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_04_455.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Fiche 5 — 29 : le Messie paraît</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_05_29.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Fiche 6 — 33 : le Messie retranché</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_06_33.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Fiche 7 — 36 : la faveur s’ouvre aux nations</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_07_36.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>8</b></td><td>Fiche 8 — 1914 : la fin des sept temps</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_08_1914.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> Huit dates vérifiées valent mieux qu’un chiffre qu’on oppose à quelqu’un.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>FICHES_DATES.html</span></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://wol.jw.org/fr/wol/h/r30/lp-f">Bibliothèque en ligne (wol)</a> · <a href="https://www.jw.org/fr/la-bible-et-vous/histoire/">La Bible et l’Histoire</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C14</div>
+<h3>Les objections en poche</h3>
+<div class='sous'>Huit cartes, huit réponses, huit liens</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>8 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>Collection de poche. Quatre cartes sur soi, jamais huit : une carte jamais sortie ne sert à rien.</span>
+<span class='badge'>capsule d’ouverture : vague suivante</span>
+</div>
+<div class='objet'><b>Objectif.</b> Répondre aux huit objections les plus courantes en trois lignes, avec le lien officiel écrit en clair au dos de chaque carte.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr><td class='c'><b>1</b></td><td>Carte 1 — « Écrites après coup »</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>objection_01_apres_coup.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Carte 2 — « Trop de prophéties ressemblent à de la poésie »</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>objection_02_poesie_vague.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Carte 3 — « On fait dire au texte »</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>objection_03_texte_instrumentalise.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Carte 4 — « Les dates sont invérifiables »</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>objection_04_dates_inverifiables.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Carte 5 — « 1914 fixé après coup »</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>objection_05_1914_apres_coup.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Carte 6 — « Vous interprétez la Révélation »</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>objection_06_revelation_interpretation.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Carte 7 — « Et si vous vous trompez ? »</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>objection_07_et_si_vous_vous_trompez.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>8</b></td><td>Carte 8 — « Ces images sont fausses »</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>objection_08_images_fausses.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> On ne convainc pas : on montre, et on laisse la source ouverte.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>CAHIER_AUDITEUR.html — partie C</span></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://www.jw.org/fr/la-bible-et-vous/questions-bibliques/">Questions bibliques</a> · <a href="https://wol.jw.org/fr/wol/h/r30/lp-f">Bibliothèque en ligne (wol)</a></div>
+</div>
+<div class="coll"><div class="hd">
+<div class='num'>COLLECTION C15</div>
+<h3>Le cahier de l’auditeur</h3>
+<div class='sous'>Remplir, vérifier, corriger — la boucle complète</div></div><div class='bd'>
+<div class='meta'>
+<span class='badge or'>10 pistes</span>
+<span class='badge'>0 min 00 s</span>
+<span class='badge'>À faire seul, sur une semaine. Une fiche par jour, corrigée le lendemain.</span>
+<span class='badge'>capsule d’ouverture : vague suivante</span>
+</div>
+<div class='objet'><b>Objectif.</b> Suivre le cahier dans l’ordre : le mode d’emploi, les huit fiches de dates à compléter, puis le corrigé. C’est la seule collection qui se pratique un stylo à la main.</div>
+<table><thead><tr><th class='c' style='width:30px'>#</th><th>Écoute</th><th style='width:31%'>Fichier (dossier audio/)</th><th class='c' style='width:52px'>Durée</th></tr></thead><tbody>
+<tr><td class='c'><b>1</b></td><td>Le cahier de l’auditeur — mode d’emploi</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>cahier_01_mode_emploi.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>2</b></td><td>Fiche 1 — 607 : Jérusalem dévastée</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_01_607.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>3</b></td><td>Fiche 2 — 539 : Babylone tombe</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_02_539.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>4</b></td><td>Fiche 3 — 537 : le retour d’exil</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_03_537.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>5</b></td><td>Fiche 4 — 455 : l’ordre de rebâtir</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_04_455.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>6</b></td><td>Fiche 5 — 29 : le Messie paraît</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_05_29.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>7</b></td><td>Fiche 6 — 33 : le Messie retranché</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_06_33.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>8</b></td><td>Fiche 7 — 36 : la faveur s’ouvre aux nations</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_07_36.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>9</b></td><td>Fiche 8 — 1914 : la fin des sept temps</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>dates_08_1914.mp3</td><td class='c'>0:00</td></tr>
+<tr><td class='c'><b>10</b></td><td>Corrigé des huit fiches à trous</td><td class='f' style='font-family:Consolas,monospace;font-size:11px'>cahier_02_corrige.mp3</td><td class='c'>0:00</td></tr>
+<tr style='background:#eef1f6'><td></td><td><b>Total</b></td><td></td><td class='c'><b>0 min 00 s</b></td></tr>
+</tbody></table>
+<div class='cle'><b>À retenir.</b> On ne retient que ce qu’on a écrit soi-même.</div>
+<p style='font-size:12.5px;color:#5b6472'><b>Support à ouvrir en même temps :</b> <span style='font-family:Consolas,monospace'>CAHIER_AUDITEUR.html</span></p>
+</div>
+<div class="liens">Liens officiels pour cette collection : <a href="https://wol.jw.org/fr/wol/h/r30/lp-f">Bibliothèque en ligne (wol)</a> · <a href="https://www.jw.org/fr/">jw.org — accueil</a></div>
+</div>
+<h2>Annexe — index complet des pistes par durée décroissante</h2>
+<table><thead><tr><th class='c'>#</th><th>Piste</th><th class='c'>Durée</th><th class='c'>#</th><th>Piste</th><th class='c'>Durée</th></tr></thead><tbody>
+<tr><td class='c'>1</td><td>fiche A12 elam</td><td class='c'>0:48</td><td>fiche I08 moisson</td><td class='c'>0:31</td></tr>
+<tr><td class='c'>2</td><td>fiche F15 tibere</td><td class='c'>0:44</td><td>fiche T06 signes</td><td class='c'>0:31</td></tr>
+<tr><td class='c'>3</td><td>fiche E06 darius</td><td class='c'>0:43</td><td>fiche I09 bols</td><td class='c'>0:31</td></tr>
+<tr><td class='c'>4</td><td>fiche A11 kedar</td><td class='c'>0:42</td><td>fiche J07 balaam</td><td class='c'>0:31</td></tr>
+<tr><td class='c'>5</td><td>fiche C2 00 intro</td><td class='c'>0:42</td><td>fiche K05 elie</td><td class='c'>0:31</td></tr>
+<tr><td class='c'>6</td><td>fiche C05 messager</td><td class='c'>0:42</td><td>fiche S06 hosanna</td><td class='c'>0:31</td></tr>
+<tr><td class='c'>7</td><td>fiche A10 damas</td><td class='c'>0:42</td><td>fiche I03 trompettes</td><td class='c'>0:31</td></tr>
+<tr><td class='c'>8</td><td>fiche F12 430</td><td class='c'>0:42</td><td>fiche S04 passion</td><td class='c'>0:31</td></tr>
+<tr><td class='c'>9</td><td>fiche E02 betes</td><td class='c'>0:41</td><td>fiche G09 roi</td><td class='c'>0:30</td></tr>
+<tr><td class='c'>10</td><td>fiche A13 assyrie</td><td class='c'>0:41</td><td>fiche T02 temple</td><td class='c'>0:30</td></tr>
+<tr><td class='c'>11</td><td>fiche G04 resurrection</td><td class='c'>0:41</td><td>fiche T03 rois</td><td class='c'>0:30</td></tr>
+<tr><td class='c'>12</td><td>fiche C02 emmanuel</td><td class='c'>0:40</td><td>fiche G06 144000</td><td class='c'>0:30</td></tr>
+<tr><td class='c'>13</td><td>fiche E07 nord</td><td class='c'>0:40</td><td>fiche H09 faux</td><td class='c'>0:30</td></tr>
+<tr><td class='c'>14</td><td>fiche G01 ossements</td><td class='c'>0:40</td><td>fiche J03 bethleem</td><td class='c'>0:30</td></tr>
+<tr><td class='c'>15</td><td>fiche D00 intro</td><td class='c'>0:40</td><td>fiche JK intro</td><td class='c'>0:30</td></tr>
+<tr><td class='c'>16</td><td>fiche AC00 intro categorie</td><td class='c'>0:40</td><td>fiche K01 etoiles</td><td class='c'>0:30</td></tr>
+<tr><td class='c'>17</td><td>fiche F16 temoins</td><td class='c'>0:40</td><td>fiche DE00 intro</td><td class='c'>0:30</td></tr>
+<tr><td class='c'>18</td><td>fiche D06 silence</td><td class='c'>0:40</td><td>fiche J02 josias</td><td class='c'>0:29</td></tr>
+<tr><td class='c'>19</td><td>fiche C04 rachel</td><td class='c'>0:40</td><td>fiche A00 intro categorie</td><td class='c'>0:29</td></tr>
+<tr><td class='c'>20</td><td>fiche E04 nordsud</td><td class='c'>0:39</td><td>fiche H06 tribulation</td><td class='c'>0:29</td></tr>
+<tr><td class='c'>21</td><td>fiche C03 egypte</td><td class='c'>0:39</td><td>fiche I05 bete</td><td class='c'>0:29</td></tr>
+<tr><td class='c'>22</td><td>fiche E01 statue</td><td class='c'>0:39</td><td>fiche K03 terre</td><td class='c'>0:29</td></tr>
+<tr><td class='c'>23</td><td>fiche F18 fetes</td><td class='c'>0:39</td><td>fiche K02 jour</td><td class='c'>0:28</td></tr>
+<tr><td class='c'>24</td><td>fiche F13 jouran</td><td class='c'>0:39</td><td>fiche D07 pierre</td><td class='c'>0:28</td></tr>
+<tr><td class='c'>25</td><td>fiche F11 semaines</td><td class='c'>0:39</td><td>fiche J10 samson</td><td class='c'>0:28</td></tr>
+<tr><td class='c'>26</td><td>fiche E03 belier</td><td class='c'>0:38</td><td>fiche H02 guerres</td><td class='c'>0:28</td></tr>
+<tr><td class='c'>27</td><td>fiche C2 11 paraboles</td><td class='c'>0:38</td><td>fiche K06 cadran</td><td class='c'>0:28</td></tr>
+<tr><td class='c'>28</td><td>fiche E09 puissances</td><td class='c'>0:38</td><td>fiche H04 predication</td><td class='c'>0:28</td></tr>
+<tr><td class='c'>29</td><td>fiche I01 methode</td><td class='c'>0:38</td><td>fiche K04 psaume8</td><td class='c'>0:28</td></tr>
+<tr><td class='c'>30</td><td>fiche C2 06 entree</td><td class='c'>0:38</td><td>fiche G07 foule</td><td class='c'>0:27</td></tr>
+<tr><td class='c'>31</td><td>fiche D12 serpent</td><td class='c'>0:38</td><td>fiche J06 etoile</td><td class='c'>0:27</td></tr>
+<tr><td class='c'>32</td><td>fiche F14 temple</td><td class='c'>0:37</td><td>fiche IJ00 intro</td><td class='c'>0:27</td></tr>
+<tr><td class='c'>33</td><td>fiche E05 belschatsar</td><td class='c'>0:37</td><td>fiche G08 fleuve</td><td class='c'>0:27</td></tr>
+<tr><td class='c'>34</td><td>fiche I07 babylone</td><td class='c'>0:37</td><td>fiche J11 houlda</td><td class='c'>0:27</td></tr>
+<tr><td class='c'>35</td><td>fiche J2 intro</td><td class='c'>0:37</td><td>fiche HI00 intro</td><td class='c'>0:27</td></tr>
+<tr><td class='c'>36</td><td>fiche G02 alliance</td><td class='c'>0:37</td><td>fiche A02 sidon</td><td class='c'>0:26</td></tr>
+<tr><td class='c'>37</td><td>fiche F19 jonas</td><td class='c'>0:37</td><td>fiche R03 promesses</td><td class='c'>0:26</td></tr>
+<tr><td class='c'>38</td><td>fiche T intro</td><td class='c'>0:36</td><td>fiche R04 eglises</td><td class='c'>0:26</td></tr>
+<tr><td class='c'>39</td><td>fiche D05 trahison</td><td class='c'>0:36</td><td>fiche T2 intro</td><td class='c'>0:26</td></tr>
+<tr><td class='c'>40</td><td>fiche C2 09 moise</td><td class='c'>0:36</td><td>fiche B06 jerusalem rebatie</td><td class='c'>0:26</td></tr>
+<tr><td class='c'>41</td><td>fiche C01 bethlehem</td><td class='c'>0:36</td><td>fiche T2 12 babylone</td><td class='c'>0:26</td></tr>
+<tr><td class='c'>42</td><td>fiche D10 vinaigre</td><td class='c'>0:36</td><td>fiche K07 pierre</td><td class='c'>0:26</td></tr>
+<tr><td class='c'>43</td><td>fiche E08 daniel12</td><td class='c'>0:36</td><td>fiche B05 temple</td><td class='c'>0:25</td></tr>
+<tr><td class='c'>44</td><td>fiche F10 arbre</td><td class='c'>0:35</td><td>fiche GH00 intro</td><td class='c'>0:25</td></tr>
+<tr><td class='c'>45</td><td>fiche D08 resurrection</td><td class='c'>0:35</td><td>fiche A04 egypte</td><td class='c'>0:25</td></tr>
+<tr><td class='c'>46</td><td>fiche G03 paradis</td><td class='c'>0:35</td><td>fiche B00 intro categorie</td><td class='c'>0:25</td></tr>
+<tr><td class='c'>47</td><td>fiche H10 endurance</td><td class='c'>0:35</td><td>fiche L08 syrie</td><td class='c'>0:25</td></tr>
+<tr><td class='c'>48</td><td>fiche C2 08 galilee</td><td class='c'>0:35</td><td>fiche B09 foulee</td><td class='c'>0:25</td></tr>
+<tr><td class='c'>49</td><td>fiche C2 14 nazareen</td><td class='c'>0:34</td><td>fiche A06 moab</td><td class='c'>0:25</td></tr>
+<tr><td class='c'>50</td><td>fiche S intro</td><td class='c'>0:34</td><td>fiche T2 09 consolation</td><td class='c'>0:25</td></tr>
+<tr><td class='c'>51</td><td>fiche D02 psaume22</td><td class='c'>0:34</td><td>fiche K08 sabbats</td><td class='c'>0:25</td></tr>
+<tr><td class='c'>52</td><td>fiche G05 nouveauciel</td><td class='c'>0:34</td><td>fiche L09 egypte</td><td class='c'>0:24</td></tr>
+<tr><td class='c'>53</td><td>fiche S01 psaume2</td><td class='c'>0:34</td><td>fiche FG00 intro</td><td class='c'>0:24</td></tr>
+<tr><td class='c'>54</td><td>fiche J08 david</td><td class='c'>0:34</td><td>fiche T2 07 abandon</td><td class='c'>0:24</td></tr>
+<tr><td class='c'>55</td><td>fiche S05 delivre</td><td class='c'>0:34</td><td>fiche A08 philistie</td><td class='c'>0:24</td></tr>
+<tr><td class='c'>56</td><td>fiche D03 serviteur</td><td class='c'>0:34</td><td>fiche L04 moab</td><td class='c'>0:24</td></tr>
+<tr><td class='c'>57</td><td>fiche EF00 intro</td><td class='c'>0:34</td><td>fiche L06 philistie</td><td class='c'>0:24</td></tr>
+<tr><td class='c'>58</td><td>fiche C2 10 miracles</td><td class='c'>0:34</td><td>fiche T2 08 retour</td><td class='c'>0:24</td></tr>
+<tr><td class='c'>59</td><td>fiche D09 droite</td><td class='c'>0:34</td><td>fiche T2 10 alliance</td><td class='c'>0:24</td></tr>
+<tr><td class='c'>60</td><td>fiche D04 agneau</td><td class='c'>0:34</td><td>fiche L07 ammon</td><td class='c'>0:24</td></tr>
+<tr><td class='c'>61</td><td>fiche D11 berger</td><td class='c'>0:34</td><td>fiche B08 pas pierre</td><td class='c'>0:23</td></tr>
+<tr><td class='c'>62</td><td>fiche J05 shilo</td><td class='c'>0:34</td><td>fiche T2 11 egypte</td><td class='c'>0:23</td></tr>
+<tr><td class='c'>63</td><td>fiche C2 07 nazareth</td><td class='c'>0:34</td><td>fiche L02 ninive</td><td class='c'>0:23</td></tr>
+<tr><td class='c'>64</td><td>fiche S03 melchisedek</td><td class='c'>0:33</td><td>fiche B03 fuite egypte</td><td class='c'>0:23</td></tr>
+<tr><td class='c'>65</td><td>fiche H01 oliviers</td><td class='c'>0:33</td><td>fiche A07 ammon</td><td class='c'>0:23</td></tr>
+<tr><td class='c'>66</td><td>fiche D01 pieces</td><td class='c'>0:33</td><td>fiche B02 70 ans</td><td class='c'>0:23</td></tr>
+<tr><td class='c'>67</td><td>fiche I10 guerrier</td><td class='c'>0:33</td><td>fiche R01 joseph</td><td class='c'>0:23</td></tr>
+<tr><td class='c'>68</td><td>fiche F17 millenium</td><td class='c'>0:33</td><td>fiche B01 silo</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>69</td><td>fiche H07 paix</td><td class='c'>0:33</td><td>fiche A09 ninive</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>70</td><td>fiche I06 666</td><td class='c'>0:33</td><td>fiche L10 babylone</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>71</td><td>fiche C2 12 serviteur</td><td class='c'>0:32</td><td>fiche R05 trone</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>72</td><td>fiche J04 isaac</td><td class='c'>0:32</td><td>fiche B07 siege 70</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>73</td><td>fiche I02 sceaux</td><td class='c'>0:32</td><td>fiche A01 tyr</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>74</td><td>fiche J12 gog</td><td class='c'>0:32</td><td>fiche A05 edom</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>75</td><td>fiche C2 13 maladies</td><td class='c'>0:32</td><td>fiche L03 edom</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>76</td><td>fiche T04 chute</td><td class='c'>0:32</td><td>fiche R02 alliance</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>77</td><td>fiche H03 famines</td><td class='c'>0:32</td><td>fiche R06 allerretour</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>78</td><td>fiche H08 signes</td><td class='c'>0:32</td><td>fiche L05 tyr</td><td class='c'>0:22</td></tr>
+<tr><td class='c'>79</td><td>fiche S02 portes</td><td class='c'>0:32</td><td>fiche L01 samarie</td><td class='c'>0:21</td></tr>
+<tr><td class='c'>80</td><td>fiche J01 cyrus</td><td class='c'>0:32</td><td>fiche A03 babylone</td><td class='c'>0:21</td></tr>
+<tr><td class='c'>81</td><td>fiche T05 faux</td><td class='c'>0:32</td><td>fiche KL intro</td><td class='c'>0:21</td></tr>
+<tr><td class='c'>82</td><td>fiche T01 nord</td><td class='c'>0:32</td><td>fiche R intro</td><td class='c'>0:21</td></tr>
+<tr><td class='c'>83</td><td>fiche H05 traits</td><td class='c'>0:32</td><td>fiche L2 intro</td><td class='c'>0:20</td></tr>
+<tr><td class='c'>84</td><td>fiche J09 eli</td><td class='c'>0:32</td><td>fiche B04 cyrus</td><td class='c'>0:20</td></tr>
+<tr><td class='c'>85</td><td>fiche I04 femme</td><td class='c'>0:31</td><td></td><td></td></tr>
+</tbody></table>
+<p style='font-size:12.5px;color:#5b6472'>169 pistes · 1 h 27 d’écoute cumulée.</p>
+</div><footer><div class='in'><b>Bibliothèque privée locale.</b> Aucun contenu protégé n’est reproduit : les références sont citées. Aucune publication, aucun extrait, aucune image de l’organisation n’est hébergé ici. Les liens renvoient exclusivement vers <a href='https://www.jw.org/fr/'>www.jw.org</a> et <a href='https://wol.jw.org/fr/wol/h/r30/lp-f'>wol.jw.org</a>. Transmission uniquement de personne à personne, fichier par fichier.<br>Généré le 2026-09-24 — vague 6.</div></footer></body></html>

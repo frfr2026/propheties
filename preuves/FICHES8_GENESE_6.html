@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES GE — Genèse (6) — les six derniers fils</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_GE_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES GE</h1>
+<h2>Genèse (6) — les six derniers fils</h2>
+<p class="intro">Le lit de mort continue : Issacar l'âne robuste voué à la corvée féconde, Dan le serpent qui jugera, Gad le talonneur de bandes, Aser aux délices royales, Nephtali la biche aux belles paroles, et Joseph le rejeton fertile béni des cieux et de l'abîme — six oracles, six destins tribaux.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:25</div><audio controls preload="none" src="audio/fiche_GE_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_GE_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#GE031">GE031</a>
+<a href="#GE032">GE032</a>
+<a href="#GE033">GE033</a>
+<a href="#GE034">GE034</a>
+<a href="#GE035">GE035</a>
+<a href="#GE036">GE036</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#GE031"><img src="images/prophe_GE031_issacar.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE031</div>
+<h3><a href="#GE031">Issacar : l'âne robuste et le travail forcé</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE032"><img src="images/prophe_GE032_dan.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE032</div>
+<h3><a href="#GE032">Dan : le serpent qui jugera son peuple</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE033"><img src="images/prophe_GE033_gad.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE033</div>
+<h3><a href="#GE033">Gad : talonné par des bandes, talonnant à son tour</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE034"><img src="images/prophe_GE034_aser.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE034</div>
+<h3><a href="#GE034">Aser : le pain gras et les délices royales</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE035"><img src="images/prophe_GE035_nephtali.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE035</div>
+<h3><a href="#GE035">Nephtali : la biche gracieuse aux belles paroles</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE036"><img src="images/prophe_GE036_joseph.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE036</div>
+<h3><a href="#GE036">Joseph : le rejeton fertile, béni des cieux et de l'abîme</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="GE031">
+<div class="visuel"><img src="images/prophe_GE031_issacar.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE031 · CATÉGORIE GE</div>
+<h3>Issacar : l'âne robuste et le travail forcé</h3>
+<div class="ref">Genèse 49:14, 15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Bénédictions de Jacob (territoires et labeurs)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE031</div><audio controls preload="none" src="audio/fiche_GE31_issacar.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE31_issacar.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 49:14, 15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Bénédictions de Jacob (territoires et labeurs)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P031 (49:14, 15 : Issacar, le travail forcé) ; accomplissement Jos 19:17-23</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Issacar est un âne aux os solides. » (49:14 — aux os solides !)</li>
+<li>« Couché entre les deux sacs qu'il porte. » (49:14 — entre les sacs !)</li>
+<li>« Il verra que le lieu de repos est bon. » (49:15 — le repos bon !)</li>
+<li>« Que le pays est agréable. » (49:15 — agréable !)</li>
+<li>« Il penchera son épaule pour porter la charge. » (49:15 — l'épaule !)</li>
+<li>« Et il se soumettra au TRAVAIL FORCÉ. » (49:15 — la corvée !)</li>
+<li>« Le quatrième lot échut à Issacar. » (Jos 19:17 — le 4e lot !)</li>
+<li>« Jizréel, Kesulloth, Sunem… seize villes. » (Jos 19:18-22 — seize villes !)</li>
+<li>« Les fils d'Issacar connaissaient les temps. » (1Ch 12:33 — les temps !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le lit de mort, 1711. Neuvième fils de Jacob, cinquième de Léa — « Dieu m'a donné mon SALAIRE (sakhar) » (30:18 : Issacar = « homme de salaire / récompense », acheté par les mandragores de Ruben). Sixième à se présenter devant le père mourant. L'image choque : un ÂNE — mais « aux os solides » (garem : ossature massive, bête de somme de premier choix, pas le baudet ridicule). « Couché entre les deux sacoches » (mishpetayim : les sacs de bât qui pendent des deux flancs — ou les parcs à bétail, selon les versions) : l'âne au repos ENTRE deux charges, qui accepte le bât parce que le pré vaut la peine. « Jacob voulait sans doute souligner une qualité qui caractériserait la tribu » (it, Issacar) : la force tranquille qui préfère le labour à la guerre.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Il VERRA que le repos est bon » (49:15) : le verbe « voir » — Issacar ÉVALUE, calcule, choisit : le repos (menuhah : le repos du pays, le même mot qu'en Dt 12:9 pour la Terre promise !) vaut le prix du labeur. « Le pays est AGRÉABLE (na'em) » (49:15) : agréable, délicieux — la vallée de Jizréel, grenier à blé. « Il PENCHERA son épaule » (49:15) : geste volontaire — on penche l'épaule SOI-MÊME sous le joug ; Issacar n'est pas enchaîné, il s'attelle. « Travail forcé (mas) » (49:15) : la corvée, le tribut-travail — le MÊME mot que les corvées d'Égypte (Ex 1:11) et de Salomon (1R 4:6 ; 5:27) : Issacar fournira des bras aux grands chantiers royaux. Marché explicite : fertilité contre labeur — « Issacar semble avoir bien accepté le dur labeur qui l'attendait pour la mettre en valeur » (it).</p>
+<h4>5 · Interprétation</h4>
+<p>LE TERRITOIRE (Jos 19:17-23 — P031) : 4e lot — Jizréel et sa vallée, Kesulloth, Sunem, Hapharaïm… « seize villes et leurs villages » : le grenier du pays, plaine alluviale profonde, blé et orge à perte de vue. LA CORVÉE : sous Salomon, les districts de corvée (1R 4:7-19 — dont un en Issacar, 4:17) fournissent les bras du Temple et des villes d'entrepôt ; la tribu des champs devient la tribu des chantiers. LES HOMMES : Thola d'Issacar juge Israël 23 ans (Jg 10:1-2) ; Baesha d'Issacar devient ROI d'Israël (1R 15:27 — le seul roi issacarite) ; « des fils d'Issacar qui avaient l'intelligence des temps, pour savoir ce qu'Israël devait faire » (1Ch 12:33 — 200 chefs + leurs frères : la tribu des stratèges). L'âne porte, l'âne réfléchit, l'âne règne une fois.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1711 (oracle)</td><td>Âne robuste ; épaule penchée ; corvée (49:14-15)</td></tr>
+<tr><td class="d">Nb 1-26</td><td>54 400 → 64 300 hommes : la croissance</td></tr>
+<tr><td class="d">~1467 (4e lot)</td><td>Jizréel et 16 villes (Jos 19:17-23)</td></tr>
+<tr><td class="d">Jg 5:15</td><td>« Issacar avec Débora » au Qishon</td></tr>
+<tr><td class="d">Jg 10 (juge)</td><td>Thola d'Issacar, 23 ans</td></tr>
+<tr><td class="d">1R 15 (roi)</td><td>Baesha d'Issacar, 24 ans</td></tr>
+<tr><td class="d">1Ch 12:33</td><td>« Ils connaissaient les temps »</td></tr>
+<tr><td class="d">Salomon</td><td>District de corvée en Issacar (1R 4:17)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>EFFECTIFS : 54 400 hommes au 1er recensement (Nb 1:29), 64 300 au 2e (Nb 26:25 — +18 %, parmi les plus fortes croissances : le pays « agréable » nourrit). DÉBORA : « Issacar avec Débora » (Jg 5:15 — la tribu descend dans la vallée pour la bataille du Qishon, chez elle). GUILBOA : Saül meurt sur les monts du territoire d'Issacar (1S 31:1) ; Sunem l'Issacarite accueille Élisée (2R 4:8 — la Sunamite !) et voit les Philistins camper (1S 28:4). BAESHA (1R 15:27-34) : le roi d'Issacar — 24 ans de règne, dynastie éphémère (Éla assassiné, 1R 16:8-10) : Issacar goûte au sceptre sans le garder — le sceptre reste à Juda (P029). MEGUIDDO aux portes : la vallée d'Issacar est le champ de bataille de l'histoire (Harmaguédon, Ré 16:16).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>VALLÉE DE JIZRÉEL : triangle fertile de ~380 km² entre Galilée, Guilboa et Carmel — sols alluviaux profonds, 400-600 mm de pluie : le « pays agréable » par excellence, grenier à blé depuis le Bronze. Frontières (Jos 19:17-23 ; it) : Zabulon et Nephtali au nord, Jourdain à l'est, Manassé au sud, Aser à l'ouest — Issacar au CENTRE du nord, carrefour des routes (Via Maris par Meguiddo, route du Jourdain par Beth-Shéân). JIZRÉEL la ville : résidence d'Achab (1R 18:45-46 ; 21:1, la vigne de Naboth !) — les rois du nord s'installent chez Issacar, confirmant la valeur du terroir. SUNEM : au pied du Moré, face au camp philistin — la tribu du labour vit sur la ligne de front.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Agronomie : les vertisols de Jizréel (terres noires à blé) exigent des bœufs puissants et un labour profond — « l'âne aux os solides » est l'outil adapté : la métaphore est agronomique avant d'être morale. « Mas » (corvée) : institution documentée dans tout le Proche-Orient (tupshikku mésopotamien, corvées pharaoniques) — le tribut-travail des monarchies : Issacar le subit comme les paysans d'Assyrie et d'Égypte. « Mishpetayim » (49:14) : hapax débattu — sacs de bât (TM), parcs à bétail (Semeur « enclos »), foyers (Jg 5:16, même mot pour les « parcs » de Ruben !) : la fiche suit la TM en notant les variantes. Chronologie : « connaître les temps » (1Ch 12:33) — astronomie calendaire ? sagesse politique ? Les deux lectures existent.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>9e fils (salaire/mandragores) → Âne aux os solides (force utile) → Entre les sacs (au repos, pas en fuite) → VOIT : repos bon + pays agréable → PENCHE l'épaule (volontaire) → Corvée acceptée → 4e lot : Jizréel (Jos 19:17-23) → Corvées royales (bâtisseurs du Temple) → Thola (juge) + Baesha (roi) + « ceux qui connaissent les temps » → Grenier et champ de bataille.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Mishpetayim » (49:14) : sens incertain (sacs, parcs, foyers) — la fiche suit la TM (« sacs ») en citant Jg 5:16 (parcs). La corvée (mas) : acceptée et féconde selon l'oracle — mais le mot a aussi un parfum d'oppression (Ex 1:11 !) : la fiche ne tranche pas le ton (bénédiction réaliste ou résignation ?), elle expose le marché. Baesha : roi d'Issacar MAIS « il fit ce qui est mal » (1R 15:34) — la fiche cite le fait royal, pas un mérite. « Connaître les temps » (1Ch 12:33) : sagesse calendaire ou politique — débattu, signalé comme tel.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'âne et la corvée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">64 300 hommes</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Nb 26</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jizréel, 16 villes</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 19</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Thola, 23 ans</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 10</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baesha roi</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1R 15</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Connaissent les temps</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1Ch 12</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49">Genèse 49 — Bible d'étude (14-15, Issacar)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012180">Issacar — Étude perspicace (âne robuste, Jizréel, labeur)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012180</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1962442">Une prophétie sur Celui à qui appartiendra l'obéissance (bénédictions)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1962442</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE031 — Issacar : l'âne robuste et le travail forcé</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE032">
+<div class="visuel"><img src="images/prophe_GE032_dan.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE032 · CATÉGORIE GE</div>
+<h3>Dan : le serpent qui jugera son peuple</h3>
+<div class="ref">Genèse 49:16-18</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Bénédictions de Jacob (juges et ruses)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE032</div><audio controls preload="none" src="audio/fiche_GE32_dan.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE32_dan.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 49:16-18</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Bénédictions de Jacob (juges et ruses)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P032 (49:16-18 : Dan jugera son peuple) ; accomplissement Jg 13-16 ; 18:1-31</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Dieu m'a fait JUSTICE (dananni)… c'est pourquoi elle l'appela DAN. » (30:6 — justice !)</li>
+<li>« Dan jugera (yadin) son peuple, comme l'une des tribus d'Israël. » (49:16 — JUGERA !)</li>
+<li>« Que Dan soit un serpent au bord de la route. » (49:17 — serpent !)</li>
+<li>« Une vipère cornue (shephiphon) au bord du sentier. » (49:17 — céraste !)</li>
+<li>« Qui mord les TALONS du cheval. » (49:17 — les talons !)</li>
+<li>« Pour que son cavalier tombe à la renverse. » (49:17 — à la renverse !)</li>
+<li>« J'ATTENDRAI ton salut, ô Jéhovah ! » (49:18 — le salut !)</li>
+<li>« Samson fut juge d'Israël pendant vingt ans. » (Jg 15:20 — VINGT ANS !)</li>
+<li>« Ils appelèrent la ville Dan, du nom de leur père. » (Jg 18:29 — DAN !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le lit de mort, 1711. Cinquième fils de Jacob, PREMIER de Bilha la servante — « Dieu m'a fait justice (dananni) et a entendu ma voix » (30:6 : Rachel, stérile, nomme l'enfant de sa servante « Justice »). L'oracle joue sur le nom : DAN « jugera » (yadin) — le fils de la servante exercera la fonction royale par excellence (juger = gouverner, cf. les Juges), « COMME l'une des tribus d'Israël » : clause d'égalité — pas de tribu de seconde zone malgré la mère servante. Puis l'image : le serpent des bords de route — petite bête qui fait tomber le grand cavalier. Et soudain, au milieu des oracles, une PRIÈRE : « j'attendrai ton salut » (49:18) — Jacob lève les yeux du lit de mort vers le ciel avant de continuer.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Yadin » (49:16, jugera) : le verbe de la gouvernance (shaphat/din : juger, défendre, libérer — les Juges « jugent » en délivrant militairement). « Shephiphon » (49:17) : le céraste, vipère à cornes — seul emploi biblique : petit serpent du désert qui chasse à l'affût, enterré dans le sable, et frappe par surprise ; « il ne le dit pas dans un sens péjoratif » (1962482) : le serpent rend « de grands services à sa nation » — ruse de guerre, pas perfidie morale. « Les TALONS (aqev) du cheval » (49:17) : frapper le bas (les jarrets) pour abattre le haut (le cavalier) — tactique du faible contre le fort, guérilla avant la lettre. « J'attendrai (qivviti) ton salut (yeshu'ah) » (49:18) : « la délivrance complète ne viendrait pas de Dan… Jacob détourna momentanément ses regards et déclara à Dieu » (1962482) — l'oracle s'interrompt pour l'essentiel : tout salut tribal pointe vers Dieu.</p>
+<h4>5 · Interprétation</h4>
+<p>LE JUGE : Samson le Danite (Tsoréa, Jg 13:2) « servit fidèlement Jéhovah en étant juge d'Israël pendant 20 ans » (it, Dan ; Jg 15:20 — P032) : à lui seul, le « serpent » mord les talons philistins (mâchoire d'âne : 1 000 hommes, Jg 15:15 ; portes de Gaza, 16:3 ; temple de Dagôn, 16:30 — « ceux qu'il fit mourir à sa mort furent plus nombreux »). « Samson prouva la véracité de la prophétie » (it, Dan). LA MIGRATION (Jg 18 — P032) : à l'étroit (territoire « peu étendu », 1962482 ; Jg 1:34, repoussés dans la montagne), 600 Danites montent au nord, prennent Léshem-Laïsh la paisible et la rebaptisent DAN (Jg 18:27-29) : « de DAN à Beér-Shéba » (Jg 20:1) — la tribu donne son nom à la frontière nord du pays. Moïse confirme : « Dan est un lionceau » (Dt 33:22).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">30:6 (nom)</td><td>Dan = « Dieu m'a fait justice »</td></tr>
+<tr><td class="d">1711 (oracle)</td><td>JUGJERA + serpent + salut attendu (49:16-18)</td></tr>
+<tr><td class="d">~1467 (7e lot)</td><td>Territoire peu étendu, coincé (Jos 19:40-48)</td></tr>
+<tr><td class="d">Jg 1:34</td><td>Repoussés dans la montagne par les Amorites</td></tr>
+<tr><td class="d">Jg 13-16</td><td>Samson juge 20 ans ; morsures philistines</td></tr>
+<tr><td class="d">Jg 18</td><td>600 hommes : Léshem → DAN du nord</td></tr>
+<tr><td class="d">Jg 20:1</td><td>« De Dan à Beér-Shéba » : borne nationale</td></tr>
+<tr><td class="d">Dt 33:22</td><td>Moïse : « Dan est un lionceau »</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>EFFECTIFS : 62 700 hommes au 1er recensement (Nb 1:39 — 2e tribu !), 64 400 au 2e (Nb 26:43 — 1re tribu, « tous les Shuhamites » : Dan la nombreuse). 7e LOT (Jos 19:40-48) : Tsoréa, Eshtaol, Yarkon… face à la mer, coincé entre Juda, Éphraïm et les Philistins — les Amorites « repoussèrent les Danites dans la montagne » (Jg 1:34). SAMSON (~12e s.) : 20 ans de judicature, Naziréen, terreur des Philistins — le juge le plus célèbre après Gédéon. L'OMBRE : l'idole de Mika emportée à Dan (Jg 18:30-31, « jusqu'au jour de la captivité »), puis le VEAU D'OR de Jéroboam à Dan (1R 12:28-29 — sanctuaire schismatique pendant 200 ans). ABSENT de Ré 7 (les 144 000 : Manassé remplace Dan) — fait textuel, motif non donné (voir limites).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>DEUX DAN : le Dan du sud (Tsoréa-Eshtaol, Shéphéla — pays de Samson, vignes et pressoirs, Jg 14-15) et le Dan du nord (Léshem-Laïsh au pied de l'Hermon, source du Jourdain — Tel Dan fouillé : porte cananéenne à arches, autel à cornes, et la STÈLE ARAMÉENNE mentionnant la « maison de David » !). « De DAN à Beér-Shéba » : la formule de tout le pays (Jg 20:1 ; 1S 3:20 ; 2S 3:10) — Dan la migrante devient borne nationale. La « route » du serpent (49:17) : les Danites du nord contrôlent la route Syrie-Tyr ; ceux du sud, la route de la Shéphéla — aux deux bouts, des « bords de chemin » stratégiques. Léshem « tranquille et en sécurité » (Jg 18:7) : ville phénicienne isolée, proie facile — la ruse du serpent choisit ses proies.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Herpétologie : le céraste (Cerastes cerastes / vipera) — vipère à « cornes » (écailles supraoculaires), 30-60 cm, du Néguev et du Sinaï : chasse à l'affût enterrée, ne laissant dépasser que les yeux ; venin hémotoxique — une morsure au paturon affole un cheval et désarçonne le cavalier : la tactique de 49:17 est zoologiquement exacte. Poliorcétique : frapper la monture pour abattre le cavalier — doctrine anti-char antique (cf. les Israélites coupe-jarrets, Jos 11:6). Archéologie : Tel Dan — remparts du Bronze moyen (les « arches » les mieux conservées du Levant), sanctuaire israélite (autel à cornes, bamah), stèle de Hazaël (« maison de David », IXe s. : attestation extra-biblique de la dynastie davidique sur le sol même de Dan !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Fils de servante nommé « Justice » (30:6) → « JUGERA comme les autres » (égalité, 49:16) → Serpent/céraste (ruse utile, pas perfidie) → Talons du cheval → cavalier à terre (le faible abat le fort) → PAUSE : « j'attendrai ton salut » (tout salut vient de Dieu) → Samson : 20 ans de morsures philistines (Jg 13-16) → 600 hommes : Léshem → DAN (Jg 18) → « De Dan à Beér-Shéba » → Ombre : veau d'or (1R 12) → Absent de Ré 7.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Absence de Ré 7 : fait (Dan n'y figure pas, Manassé le remplace) — le texte ne donne AUCUN motif ; la fiche refuse de dogmatiser (idolâtrie de Jg 18 et 1R 12 : corrélation suggérée par beaucoup, jamais écrite par Jean). « J'attendrai ton salut » (49:18) : prière de Jacob au milieu de l'oracle — la fiche suit 1962482 (délivrance ultime = Dieu), sans exclure la lecture messianique (yeshu'ah → Yeshoua : rapprochement proposé par certains, signalé comme tel). Samson « servit fidèlement » (it) malgré ses fautes (Gaza, Dalila) : le récit juge l'œuvre (délivrance), pas l'homme seul — tension assumée par Hé 11:32 (Samson dans la foi !).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JUGJERA + serpent</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Territoire étroit</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7e lot</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Samson, 20 ans</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 13-16</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Léshem → Dan</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 18</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Borne nationale</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 20:1</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lionceau</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 33:22</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49">Genèse 49 — Bible d'étude (16-18, Dan)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001115">Dan — Étude perspicace (jugera, Samson, Léshem)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001115</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1962482">Ils régneront avec le lion de Juda (serpent utile, salut)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1962482</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE032 — Dan : le serpent qui jugera son peuple</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE033">
+<div class="visuel"><img src="images/prophe_GE033_gad.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE033 · CATÉGORIE GE</div>
+<h3>Gad : talonné par des bandes, talonnant à son tour</h3>
+<div class="ref">Genèse 49:19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Bénédictions de Jacob (guerriers frontaliers)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE033</div><audio controls preload="none" src="audio/fiche_GE33_gad.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE33_gad.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 49:19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Bénédictions de Jacob (guerriers frontaliers)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P033 (49:19 : Gad, des bandes le harcèleront) ; accomplissement 1Ch 5:18-22</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« QUEL BONHEUR (gad) ! … elle l'appela GAD. » (30:11 — bonheur !)</li>
+<li>« Quant à GAD, une BANDE (guedoud) fera un raid contre lui. » (49:19 — assailli !)</li>
+<li>« Mais lui fera un raid contre l'ARRIÈRE-GARDE (aqev). » (49:19 — il talonne !)</li>
+<li>« Béni soit celui qui met Gad au large ! » (Dt 33:20 — au large !)</li>
+<li>« Gad repose comme une LIONNE. » (Dt 33:20 — lionne !)</li>
+<li>« Il déchire le bras et même la tête. » (Dt 33:20 — déchire !)</li>
+<li>« Les fils de Ruben, les Gadites… 44 760 guerriers. » (1Ch 5:18 — 44 760 !)</li>
+<li>« Ils firent la guerre aux Hagrites. » (1Ch 5:19 — les Hagrites !)</li>
+<li>« Ils appelèrent Dieu à l'aide… il se laissa implorer. » (1Ch 5:20 — imploré !)</li>
+<li>« Car la guerre était DE DIEU. » (1Ch 5:22 — DE DIEU !)</li>
+<li>« Des Gadites se joignirent à David… faces de lions. » (1Ch 12:8 — FACES DE LIONS !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le lit de mort, 1711. Septième fils de Jacob, PREMIER de Zilpa la servante — « quel bonheur (gad) ! » (30:11 : Léa nomme l'enfant « Troupe/Bonheur » — gad = troupe armée ET bonne fortune : le dieu sémitique Gad est la Fortune, cf. Is 65:11 !). L'oracle tient en UN verset — le plus bref avec Aser — mais c'est un chef-d'œuvre d'allitération : « Gad guedoud yegoudennou, vehu yagud aqev » — GAD assailli par un GUEDOUD (bande de maraudeurs) qui lui-même TALONNE (aqev, le talon !) l'arrière-garde ennemie. Le nom résonne trois fois dans son destin : la tribu-troupe vivra de guerre frontalière — attaquée la première (frontière du désert), ripostant la plus dure (« un ordre qui les invitait à riposter sans crainte », it, Gad).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Guedoud » (49:19, bande) : troupe de razzia, maraudeurs nomades — les raids du désert (cf. les « bandes » araméennes, 2R 5:2 ; les Amalécites, 1S 30:8) : Gad, en Transjordanie ouverte sur le désert, est la tribu exposée. « Aqev » (49:19, talon/arrière-garde) : le MÊME mot que les « talons » du cheval de Dan (49:17 !) — les deux oracles voisins partagent le vocabulaire de la guerre par-derrière : Dan mord les talons, Gad frappe l'arrière-garde (AELF : « il porte l'attaque au talon »). Structure en miroir : ASSAILLI (passif) → ASSAILLANT (actif) : la défense se retourne en contre-raid — « mais LUI » (vehu, emphatique) : la riposte est le vrai sujet de l'oracle. Moïse AMPLIFIE : « lionne » qui « déchire le bras et la tête » (Dt 33:20) — le talonneur devient fauve.</p>
+<h4>5 · Interprétation</h4>
+<p>LA GUERRE DES HAGRITES (1Ch 5:18-22 — P033) : 44 760 guerriers transjordaniens (Ruben, Gad, demi-Manassé) contre les Hagrites et alliés — « ils appelèrent Dieu à l'aide dans la guerre, et il se laissa implorer, car ils avaient mis en lui leur confiance » (v. 20) : butin immense (50 000 chameaux, 250 000 brebis !), « beaucoup de morts, car la guerre était de Dieu » (v. 22). LES VAILLANTS DE DAVID (1Ch 12:8-15) : onze Gadites passent à David à Tsiqlag — « le plus petit valait cent hommes, le plus grand mille », « faces de lions, rapides comme gazelles », ils traversent le Jourdain EN CRUE (v. 15) : l'élite de l'armée davidique est gadite. RIPOSTE CONFIRMÉE : attaqués par Moab, Ammon, Aram tour à tour (Jg 10-11, Jephté ; 2S 10-11), les Gadites « talonnent » jusqu'à la déportation assyrienne (1Ch 5:26 — alors « les Ammonites prirent possession de son territoire », it, Gad ; Jr 49:1 proteste).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">30:11 (nom)</td><td>« Quel bonheur/troupe ! » : Gad</td></tr>
+<tr><td class="d">1711 (oracle)</td><td>Assailli PUIS talonnant (aqev, 49:19)</td></tr>
+<tr><td class="d">Nb 32 (choix)</td><td>Transjordanie contre avant-garde</td></tr>
+<tr><td class="d">1Ch 5:18-22</td><td>Hagrites : « la guerre était de Dieu »</td></tr>
+<tr><td class="d">1Ch 12:8-15</td><td>11 faces-de-lions ; Jourdain en crue</td></tr>
+<tr><td class="d">Dt 33:20-21</td><td>Moïse : lionne, bras et tête déchirés</td></tr>
+<tr><td class="d">~740 (fin)</td><td>Déportés ; Ammonites occupent (Jr 49:1)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>TRANSJORDANIE (Nb 32) : Gad et Ruben demandent le pays conquis (Hesbon, Jazer) pour leurs troupeaux — Moïse accepte à condition qu'ils combattent en tête pour Canaan (32:16-27) : les frontaliers paient leur pré en avant-garde. RAMOTH-GALAD la gadite : ville de refuge (Dt 4:43), enjeu des guerres araméennes (Achab y meurt, 1R 22:29-37 ; Jéhu y est oint, 2R 9:1-6). ÉLIE le Thishbite : de Thisbé en Galaad (1R 17:1 — pays de Gad !) : le plus grand prophète sort du pays des talonneurs. JEPHTÉ le Galaadite (Jg 11) : chef de « bandes » (guedoudim ?) devenu libérateur — le vocabulaire de 49:19 en action. FIN : déportation par Tiglath-Piléser ~740 (1Ch 5:26) avec Ruben et la demi-tribu — les frontaliers tombent les premiers, comme annoncé (assaillis d'abord).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>GALAAD ET BASHÂN SUD : de l'Arnon au Yarmouk (Hesbon, Ramoth, Mahanaïm, Pénuel, Jazer — villes gadites, Jos 13:24-28), plateaux d'altitude (700-1 000 m) ouverts à l'est sur le désert — « la tribu ne craignait pas d'avoir une de ses frontières (à l'est) exposée aux bandes de maraudeurs » (it, Gad) : l'exposition EST le destin. Le JOURDAIN EN CRUE (1Ch 12:15, traversé par les vaillants) : fonte des neiges de l'Hermon + pluies — le fleuve infranchissable franchi : exploit des « faces de lions ». RAMOTH-GALAD (« hauteurs ») : verrou stratégique face à Damas — qui tient Ramoth tient le Galaad : d'où les guerres. « Met Gad AU LARGE » (Dt 33:20) : élargir (rahab) — l'espace transjordanien, pâturages immenses pour les troupeaux (Nb 32:1, « le pays est bon pour le bétail »).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Poliorcétique du raid : guedoud = razzia nomade (vitesse, surprise, butin) — mode de guerre du Croissant Fertile documenté de Mari (XVIIIe s.) aux Bédouins modernes : Gad subit ET pratique la guerre du désert ; « talonner l'arrière-garde » (aqev) = couper la retraite, tactique classique des troupes légères contre les lourdes. Hydrologie : le Jourdain en crue de printemps (neiges + pluies, débit ×10) — 1Ch 12:15 suppose ce régime : détail saisonnier exact. Archéologie : Jazer (Khirbet Yassir ?), Hesbon (Tell Hesbân fouillé — ville de l'âge du fer, ostraca), Ramoth (Tell Rumeith ?) : les villes gadites sortent de terre. Onomastique : Gad = Fortune (théonyme sémitique, Is 65:11 « Gad… Meni ») — Léa païenne nomme, Jéhovah réoriente.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« Quel bonheur/troupe ! » (nom-programme) → 1 verset, 3 allitérations (Gad-guedoud-yagud) → ASSAILLI (frontière exposée, passif) → MAIS LUI talonne l'arrière-garde (actif, aqev comme Dan !) → Transjordanie : l'avant-garde paie le pré (Nb 32) → Hagrites : « la guerre était de Dieu » (1Ch 5:22) → 11 faces-de-lions chez David (Jourdain en crue) → Moïse : lionne qui déchire (Dt 33:20) → Déportés premiers (~740) → Ammonites occupent (Jr 49:1).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Élie « Thisbite » : Thisbé en Galaad (pays de Gad) — tradition solide, mais le texte ne donne pas sa tribu : la fiche dit « pays de Gad », pas « Gadite ». Jephté : Galaadite (Mizpa) — tribu non précisée (Gad ou Manassé ?) : la fiche le cite comme voisin, pas comme preuve. Le butin des Hagrites (50 000 chameaux, 1Ch 5:21) : chiffres du texte, débattus — cités, pas exploités. « Gad » théonyme (Fortune, Is 65:11) : le nom du fils coïncide avec un dieu païen — coïncidence onomastique courante (cf. Gad, ville ?), la fiche la signale sans en tirer de thèse.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assailli puis talonne</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Transjordanie</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Nb 32</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Guerre de Dieu</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1Ch 5</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Faces de lions</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1Ch 12</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lionne</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Déportés premiers</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~740</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49">Genèse 49 — Bible d'étude (19, Gad)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011545">Gad — Étude perspicace (maraudeurs, Hagrites, riposte)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011545</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1962442">Une prophétie sur Celui à qui appartiendra l'obéissance (bénédictions)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1962442</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE033 — Gad : talonné par des bandes, talonnant à son tour</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE034">
+<div class="visuel"><img src="images/prophe_GE034_aser.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE034 · CATÉGORIE GE</div>
+<h3>Aser : le pain gras et les délices royales</h3>
+<div class="ref">Genèse 49:20</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Bénédictions de Jacob (terroirs d'abondance)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE034</div><audio controls preload="none" src="audio/fiche_GE34_aser.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE34_aser.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 49:20</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Bénédictions de Jacob (terroirs d'abondance)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P034 (49:20 : Asher, nourriture riche) ; accomplissement Jos 19:24-31</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Pour mon BONHEUR (osheri) ! … elle l'appela ASER. » (30:13 — bonheur !)</li>
+<li>« D'Aser viendra le PAIN GRAS (shamen). » (49:20 — GRAS !)</li>
+<li>« Et il fournira les DÉLICES ROYALES. » (49:20 — royales !)</li>
+<li>« Qu'Aser trempe son pied dans L'HUILE ! » (Dt 33:24 — dans l'huile !)</li>
+<li>« Que le fer et le bronze soient tes verrous. » (Dt 33:25 — verrous !)</li>
+<li>« Le cinquième lot échut à Aser. » (Jos 19:24 — le 5e lot !)</li>
+<li>« Jusqu'à Sidon la grande… Tyr la fortifiée. » (Jos 19:28-29 — Tyr et Sidon !)</li>
+<li>« Anne, prophétesse, de la tribu d'ASER. » (Lc 2:36 — ANNE !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le lit de mort, 1711. Huitième fils de Jacob, SECOND de Zilpa — « pour mon bonheur ! car les filles me diront heureuse (ishsheruni) » (30:13 : Aser = « Heureux/Bienheureux » — asher, le mot des Béatitudes, « heureux l'homme… », Ps 1:1 !). UN verset — tout en gras et en délices. « Shamen » (49:20, TM : litt. « GRAS ») : le pain à l'huile, la cuisine riche — « Aser aura du pain en abondance » (TM). « Maanot » (délices, 49:20, litt. « friandises ») : les mets fins — « dignes d'un roi » : la table d'Aser nourrit les palais. Moïse RENCHÉRIT : « béni entre les fils… qu'il trempe son pied dans l'huile » (Dt 33:24 — marcher dans l'huile : l'abondance sous les pieds) et « que tes jours durent autant que ta force » (Dt 33:25 — longévité du bien-nourri ?).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Pain » (lehem, 49:20 — TM : « ou nourriture ») : le pain = la nourriture en général (synecdoque sémitique) — « gras » qualifie donc TOUTE la production : huile, blé, fruits. « Il FOURNIRA (yitten, donnera) » (49:20) : Aser est fournisseur — sa richesse s'exporte vers les tables royales (Tyr ? Jérusalem ? Samarie ? — les palais achètent asérite). « Délices royales » (maanot-melekh) : le mot maanot ne revient qu'en Lm 4:5 (« ceux qui mangeaient des mets délicats ») — cuisine de cour, pas de ferme. « Tremper le pied dans l'huile » (Dt 33:24) : image de foulage — presser l'huile au pressoir en marchant sur les olives (cf. Mi 6:15) : le pied d'Aser baigne dans la production. Nom-programme accompli : l'« Heureux » vit dans l'abondance — « la promesse qu'il jouirait d'une nourriture riche et abondante » (it, Asher).</p>
+<h4>5 · Interprétation</h4>
+<p>LE TERRITOIRE (Jos 19:24-31 — P034) : 5e lot — « Helqath, Hali, Béten, Aksaph… jusqu'à Sidon la grande » (19:25-28), « Tyr la fortifiée… vingt-deux villes » : la plaine côtière de Dor (sous le Carmel) à Sidon — « certaines des terres les plus fertiles d'Israël » (it, Asher) : oliviers (« huile en quantité »), blé, fruits — « des mets délicats dignes d'une table royale ». « L'histoire de ses descendants démontre que cette prédiction s'est réalisée » (it). LES HOMMES : discrets — pas de juge, pas de roi asérite ; mais ANNE LA PROPHÉTESSE, « de la tribu d'Aser » (Lc 2:36-38), 84 ans, jeûnes et prières au Temple, reconnaît l'enfant Jésus : la tribu des délices donne une sainte du jeûne — ironie évangélique. 41 500 → 53 400 hommes (Nb 1:41 ; 26:47) : la tribu grasse croît.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">30:13 (nom)</td><td>Aser = « Heureux » (mot des Béatitudes)</td></tr>
+<tr><td class="d">1711 (oracle)</td><td>Pain GRAS + délices royales (49:20)</td></tr>
+<tr><td class="d">1473 (Moïse)</td><td>Pied dans l'huile ; verrous de fer (Dt 33:24-25)</td></tr>
+<tr><td class="d">~1467 (5e lot)</td><td>Dor → Sidon ; 22 villes (Jos 19:24-31)</td></tr>
+<tr><td class="d">Vérifié</td><td>« Terres les plus fertiles » ; huile (it)</td></tr>
+<tr><td class="d">Nb 1-26</td><td>41 500 → 53 400 hommes</td></tr>
+<tr><td class="d">Salomon</td><td>Cabul paie l'or du Temple (1R 9:11-13)</td></tr>
+<tr><td class="d">Lc 2:36</td><td>Anne d'Aser reconnaît Jésus</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>CABUL (1R 9:11-13) : Salomon donne à Hiram de Tyr 20 villes « dans le pays de Galilée » (zone d'Aser) en paiement du bois et de l'or du Temple — Hiram les méprise (« Cabul », comme rien) : même les « rebuts » d'Aser paient l'or du Temple ! HIRAM L'ARTISAN : mère « de la tribu de Nephtali » (1R 7:14) mais père Tyrien — l'artisanat royal à la frontière d'Aser. NON-EXPULSION : « Aser n'expulsa pas les habitants d'Acco, de Sidon… » (Jg 1:31-32 — les Asérites « habitèrent au milieu des Cananéens ») : la tribu riche cohabite, commerce, s'accommode — ni guerre ni gloire, mais l'huile coule. ÉLIE chez la veuve de Sarepta (1R 17:9 — pays de Sidon, zone d'Aser !) : la farine et l'huile inépuisables — miracle domestique en pays de l'huile.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PLAINE CÔTIÈRE NORD : de Dor au sud du Carmel jusqu'à Sidon (it, Asher) — ~100 km de littoral : plaines alluviales (blé), collines calcaires (oliviers), ports (Acco, Aksaph, Tyr, Sidon : débouchés). Voisins : Zabulon et Nephtali à l'est, Manassé et Issacar au sud-est (it) — Aser est la façade maritime du nord. OLIVIERS : les terrasses de Haute-Galilée portent des oliviers millénaires (Deir Hanna, Sajur — certains datés de 3 000 ans !) : « tremper le pied dans l'huile » se visite encore. TYR ET SIDON (Jos 19:28-29) nommées comme LIMITES, jamais conquises (Jg 1:31) : le cadastre promet, l'histoire marchande — Aser vit AVEC les Phéniciens, leur vendant le pain gras, leur achetant la pourpre.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Oléiculture : l'olivier (Olea europaea) — arbre du calcaire galiléen, production alternante, pressoirs à vis et à levier (installations taillées par centaines en Galilée) ; l'huile = aliment, éclairage, onction, monnaie d'échange (cf. la veuve d'Élisée, 2R 4:1-7 : l'huile paie les dettes). « Shamen » (gras) : la graisse comme valeur (cf. « le gras du pays », Gn 45:18 — Pharaon promet le meilleur) — diététique antique : le gras = l'énergie, la fête (Ps 63:6, « comme de moelle et de graisse »). Sols : rendzines et terra rossa côtières — parmi les plus fertiles du Levant (blé dur, orge, olives, figues, grenades : le « pain gras » a cinq ingrédients). Dendrochronologie : oliviers plurimillénaires attestés — la continuité culturale vérifie la vocation.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« Heureux ! » (nom des Béatitudes) → 1 verset : PAIN GRAS + DÉLICES ROYALES → Moïse : pied DANS L'HUILE + verrous de fer (Dt 33:24-25) → 5e lot : Dor → Sidon, 22 villes (Jos 19:24-31) → Terres les plus fertiles + huile en quantité → Fournisseur des palais (Cabul paie l'or du Temple !) → Cohabitation phénicienne (Jg 1:31, sans gloire ni guerre) → 41 500 → 53 400 → Anne d'Aser reconnaît Jésus (Lc 2:36).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Tyr et Sidon (Jos 19:28-29) : LIMITES du lot, jamais conquises (Jg 1:31) — la fiche distingue le cadastre (promesse) de l'occupation (histoire) : l'abondance est accomplie, la conquête ne l'est pas. Cabul (1R 9:13) : localisation exacte débattue (zone d'Aser/Galilée — consensus large, pas unanime). Aucun juge ni roi asérite : constat — la tribu des délices est politiquement effacée ; la fiche ne spécule pas sur les causes (richesse amollissante ? position excentrée ?). Anne (Lc 2:36) : « de la tribu d'Aser » — fait lucanien ; le contraste jeûne/délices est une lecture de la fiche, signalée comme telle.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pain gras, délices</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pied dans l'huile</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 33</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dor → Sidon</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 19</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Terres fertiles</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vérifié</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cabul paie l'or</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Anne d'Aser</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Lc 2</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49">Genèse 49 — Bible d'étude (20, Aser)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200000414">Asher — Étude perspicace (nourriture riche, huile, Dor-Sidon)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200000414</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1962442">Une prophétie sur Celui à qui appartiendra l'obéissance (bénédictions)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1962442</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE034 — Aser : le pain gras et les délices royales</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE035">
+<div class="visuel"><img src="images/prophe_GE035_nephtali.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE035 · CATÉGORIE GE</div>
+<h3>Nephtali : la biche gracieuse aux belles paroles</h3>
+<div class="ref">Genèse 49:21</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Bénédictions de Jacob (rapidité et poésie)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE035</div><audio controls preload="none" src="audio/fiche_GE35_nephtali.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE35_nephtali.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 49:21</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Bénédictions de Jacob (rapidité et poésie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P035 (49:21 : Nephtali, paroles belles) ; accomplissement Jg 4:6-16 ; 5:18</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« J'ai lutté (naphtuli) divinement… elle l'appela NEPHTALI. » (30:8 — luttes !)</li>
+<li>« Nephtali est une BICHE GRACIEUSE. » (49:21 — biche !)</li>
+<li>« Il parle avec ÉLÉGANCE (belles paroles). » (49:21 — élégance !)</li>
+<li>« Débora envoya appeler BARAQ, fils d'Abinoam, de QÉDESH-NEPHTALI. » (Jg 4:6 — Qédesh !)</li>
+<li>« Baraq appela Zabulon et Nephtali à Qédesh. » (Jg 4:10 — appelés !)</li>
+<li>« Jéhovah mit en déroute Sisera… devant Baraq. » (Jg 4:15 — déroute !)</li>
+<li>« Zabulon… et NEPHTALI exposa sa vie à la mort. » (Jg 5:18 — exposa !)</li>
+<li>« En ce jour-là, Débora CHANTA, avec Baraq. » (Jg 5:1 — CHANTA !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le lit de mort, 1711. Sixième fils de Jacob, SECOND de Bilha — « j'ai lutté les luttes de Dieu contre ma sœur » (30:8 : Rachel nomme l'enfant de sa servante « Mes luttes » — naphtulim). UN verset, deux images : la BICHE (ayalah : la femelle du bouquetin/cerf — vitesse, grâce, liberté montagnarde) et les PAROLES (imre-shapher : « paroles de beauté/élégance » — shapher = beau, gracieux, le même mot que les « belles » paroles). « Biche LÂCHÉE » (sheluhah : lâchée, envoyée, libre — versions : lâchée, en liberté) : l'animal libéré court — vitesse ET liberté. TM : « biche gracieuse… parle avec élégance ». Quel rapport entre la biche et les paroles ? L'histoire répond : BARAQ le Nephtalite court au combat (biche) puis CHANTE la victoire (belles paroles, Jg 5).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Ayalah sheluhah » (49:21) : la biche « envoyée » — participes de liberté : l'animal qu'on lâche (cf. le bouc « lâché » au désert, Lv 16:10, même racine shalah !) : Nephtali est fait pour la course libre, pas le joug (contrast avec Issacar l'âne attelé, 49:14 ! — les deux voisins galiléens reçoivent deux animaux opposés : l'un porte, l'autre court). « Imre-shapher » (49:21) : « dires de beauté » — shapher (beau) + imrah (parole poétique, mot des Psaumes !) : des paroles OUVRAGÉES, poétiques — pas du bavardage, de la littérature. Le verset unit VITESSE et POÉSIE : le guerrier véloce qui chante — portrait-robot de Baraq (éclair ! baraq = foudre) chantant avec Débora (Jg 5). Moïse AJOUTE : « rassasié de faveur, rempli de bénédiction… possède l'ouest et le midi » (Dt 33:23 — le territoire des lacs et des monts).</p>
+<h4>5 · Interprétation</h4>
+<p>LA BICHE COURT (Jg 4:6-16 — P035) : Baraq de QÉDESH-NEPHTALI, appelé par Débora, rassemble 10 000 hommes de Nephtali et Zabulon, fond du Thabor sur les 900 chars de Sisera — « Jéhovah mit en déroute » (4:15), le Qishon emporte l'armée (5:21) : victoire-éclair du montagnard véloce. « NEPHTALI EXPOSA SA VIE » (Jg 5:18 — P035) : bravoure chantée. LES BELLES PAROLES (Jg 5) : « en ce jour-là, Débora CHANTA, avec Baraq fils d'Abinoam » (5:1) — le CANTIQUE DE DÉBORA, sommet poétique de la Bible hébraïque (« que mes paroles soient… », style archaïque, triomphe lyrique) : les « dires de beauté » de 49:21 retentissent 150 ans plus tard — chantés PAR un Nephtalite, SUR des Nephtalites. Le verset le plus poétique du ch. 49 s'accomplit dans le chapitre le plus poétique des Juges.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">30:8 (nom)</td><td>Nephtali = « mes luttes »</td></tr>
+<tr><td class="d">1711 (oracle)</td><td>Biche + paroles de beauté (49:21)</td></tr>
+<tr><td class="d">~1467 (6e lot)</td><td>Haute-Galilée : Hatsor, Qédesh (Jos 19:32-39)</td></tr>
+<tr><td class="d">Jg 4 (biche)</td><td>Baraq fond du Thabor ; Sisera en déroute</td></tr>
+<tr><td class="d">Jg 5 (paroles)</td><td>Cantique de Débora et Baraq</td></tr>
+<tr><td class="d">Jg 5:18</td><td>« Nephtali exposa sa vie »</td></tr>
+<tr><td class="d">1R 7:14 (bronze)</td><td>Hiram, fils d'une Nephtalite</td></tr>
+<tr><td class="d">Mt 4:13-15</td><td>Lumière en pays de Nephtali</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>EFFECTIFS : 53 400 (Nb 1:43) → 45 400 (Nb 26:50) — tribu moyenne, stable. QÉDESH-NEPHTALI : ville de refuge (Jos 20:7) ET ville lévitique (Jos 21:32) — patrie de Baraq (Jg 4:6), prise par Tiglath-Piléser (2R 15:29). HATSOR la cananéenne (en Nephtali, Jos 19:36) : Yabîn le roi ennemi de Débora (Jg 4:2) puis ville salomonienne (1R 9:15 — Hazor, Meguiddo, Guézer : le trio des chantiers) — Josué l'avait brûlée (Jos 11:11, 13 : « seule Hatsor »). HIRAM l'artisan du Temple : mère « de la tribu de Nephtali » (1R 7:14 — veuve ; 2Ch 2:13 dit Dan : père Tyrien, mère israélite — double rattachement) : le bronze du Temple est coulé par un fils de Nephtali. JÉSUS : Capernaüm « pays de Zabulon et de NEPHTALI » (Mt 4:13-15) — la « Galilée des nations » voit la lumière.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>HAUTE-GALILÉE : le 6e lot (Jos 19:32-39) — de Hatsor au Jourdain supérieur, montagnes boisées (jusqu'à 1 200 m au Meron), forêts de chênes, sources du Jourdain (Dan, Banias aux portes) : le pays de la BICHE — reliefs, couverts, vitesse. « Possède l'ouest et le midi » (Dt 33:23) : vers la mer (ouest) et le lac (sud) — Nephtali tient les hauteurs dominant les eaux. QÉDESH sur les monts (« sanctuaire ») : forteresse-refuge d'où Baraq descend au Qishon — la biche quitte les hauteurs pour la plaine, puis y remonte chanter. HATSOR (Tell el-Qedah, ~80 ha — LA plus grande cité cananéenne : « tête de tous ces royaumes », Jos 11:10) : fouilles Yadin — palais cananéen brûlé (XIIIe s. : Josué ?), porte salomonienne à 6 chambres (même plan que Meguiddo et Guézer !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Zoologie : la biche des monts (daim de Perse, Dama mesopotamica — réintroduit en Galilée !) : vitesse 50 km/h en terrain accidenté, bonds, agilité — l'animal des hauteurs boisées, exact portrait écologique de Nephtali. Poétique : imrah (parole poétique) — mot des Psaumes (Ps 12:7, « paroles pures ») ; le cantique de Débora (Jg 5) est daté par sa langue de ~XIIe s. (archaïsmes : « les rois vinrent… », v. 19) : la plus ancienne poésie biblique datable — les « belles paroles » ont un âge. Critique textuelle : la LXX de 49:21 DIFFÈRE (« rejeton déployé donnant beauté à son fruit » — stelekhos, pas élan !) : la fiche suit le TM (biche), majoritaire (Vulgate, Samaritain, Targums), en notant la variante grecque.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« Mes luttes » (nom de servante) → BICHE lâchée (vitesse, liberté — vs Issacar l'âne attelé !) + PAROLES de beauté (poésie, pas bavardage) → 150 ans → Baraq de Qédesh (la foudre nephtalite) → 10 000 hommes fondent du Thabor (Jg 4) → Qishon emporte Sisera → « Nephtali exposa sa vie » (Jg 5:18) → CANTIQUE (Jg 5 : les dires de beauté) → Hiram coule le bronze → Capernaüm : la lumière en pays de Nephtali (Mt 4).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>LXX vs TM (49:21) : « rejeton » (grec) vs « biche » (hébreu) — divergence réelle ; la fiche suit le TM (+ Vulgate, Samaritain, Targums) en la notant. Le cantique de Débora comme « belles paroles » : interprétation proposée (Baraq nephtalite chanteur + poème somptueux) — forte mais non versée comme telle ; la fiche la présente comme lecture, pas comme citation. Hiram : mère Nephtalite (1R 7:14) ou Danite (2Ch 2:13) ? Les deux versets coexistent (remariage ? double tradition ?) — la fiche cite 1R 7:14 avec la variante. « Possède l'ouest et le midi » (Dt 33:23) : orientations débattues — citées, pas exploitées.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Biche + beauté</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Haute-Galilée</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 19</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baraq fond</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 4</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le cantique</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 5</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Exposa sa vie</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 5:18</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La lumière</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Mt 4</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49">Genèse 49 — Bible d'étude (21, Nephtali)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2025441">Dernières paroles de Jacob, partie 2 (bénédictions, réalisations)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2025441</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1962442">Une prophétie sur Celui à qui appartiendra l'obéissance (bénédictions)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1962442</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE035 — Nephtali : la biche gracieuse aux belles paroles</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE036">
+<div class="visuel"><img src="images/prophe_GE036_joseph.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE036 · CATÉGORIE GE</div>
+<h3>Joseph : le rejeton fertile, béni des cieux et de l'abîme</h3>
+<div class="ref">Genèse 49:22-26</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Bénédictions de Jacob (double portion et plénitude)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE036</div><audio controls preload="none" src="audio/fiche_GE36_joseph.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE36_joseph.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 49:22-26</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Bénédictions de Jacob (double portion et plénitude)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P036 (49:22-26 : Joseph béni, bénédictions des cieux et de l'abîme) ; accomplissement Jos 17:14-18 ; Dt 33:13-17</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Joseph est le REJETON d'un arbre fertile (porat). » (49:22 — porat !)</li>
+<li>« Le rejeton d'un arbre fertile PRÈS D'UNE SOURCE. » (49:22 — la source !)</li>
+<li>« Ses BRANCHES (filles !) s'élèvent AU-DESSUS DE LA MURAILLE. » (49:22 — au-dessus !)</li>
+<li>« Les archers l'ont provoqué, poursuivi de leur haine. » (49:23 — les archers !)</li>
+<li>« MAIS son arc est demeuré FERME. » (49:24 — FERME !)</li>
+<li>« Ses mains ont été fortifiées par les mains du PUISSANT de Jacob. » (49:24 — fortifiées !)</li>
+<li>« Il est ainsi devenu le BERGER, le ROCHER d'Israël. » (49:24 — BERGER ! ROCHER !)</li>
+<li>« Les bénédictions des CIEUX en haut. » (49:25 — les cieux !)</li>
+<li>« Les bénédictions de l'ABÎME en bas. » (49:25 — l'abîme !)</li>
+<li>« Les bénédictions des SEINS et de la MATRICE. » (49:25 — fécondité !)</li>
+<li>« Au-dessus des bénédictions des collines ÉTERNELLES. » (49:26 — éternelles !)</li>
+<li>« Sur la tête du PRINCE (nazir) de ses frères. » (49:26 — le prince !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le lit de mort, 1711 — l'avant-dernier oracle (reste Benjamin), et le PLUS LONG (5 versets, comme Juda) : Joseph, « fils de sa vieillesse » (37:3), reçoit la bénédiction-fleuve. Structure en trois vagues : le PORTRAIT (49:22, l'arbre-source), l'ÉPREUVE surmontée (49:23-24, les archers et l'arc ferme), la PLUIE de bénédictions (49:25-26, cieux + abîme + fécondité + éternité). « Porat » (49:22, rejeton fertile) : jeu de mots avec ÉPHRAÏM (« Dieu m'a rendu FÉCOND », 41:52 — même racine parah !) : le père fécond engendre le fils fécond. « Cet arbre portant du fruit était le patriarche Jacob lui-même, dont Joseph devint une des branches en vue » (it, Joseph) : l'arbre, c'est Jacob ; le rejeton, c'est Joseph ; les branches-filles, ce sont Éphraïm et Manassé qui « s'élèvent au-dessus de la muraille ».</p>
+<h4>4 · Explication du texte</h4>
+<p>« PRÈS D'UNE SOURCE (ayin) » (49:22) : l'arbre irrigué — image du juste (Ps 1:3, « planté près des cours d'eau ») ; Joseph, abreuvé de Dieu, ne sèche jamais (ni la citerne, ni la prison, ni la famine ne l'ont tari). « Ses FILLES (banot, 49:22) » : l'hébreu dit « filles » pour « branches » — les rameaux sont des filles : poésie botanique (cf. « fils » pour flèches, « filles » pour villes) ; elles FRANCHISSENT la muraille : la fécondité déborde les limites (l'Égypte ! les nations !). « Les ARCHERS » (49:23, ba'ale-hitsim, « maîtres de flèches ») : frères vendeurs, femme de Potiphar, prison, oubli — « ils l'ont provoqué (marar, rendu amer), haï » : toutes les flèches de la vie de Joseph en un verset. « MAIS (49:24, vat-teshev : verbe de fermeté) » : l'arc TIENT — « fortifié par les mains du Puissant (abir) de Jacob » : mains humaines dans les Mains divines.</p>
+<h4>5 · Interprétation</h4>
+<p>« BERGER et ROCHER d'Israël » (49:24) : DOUBLE titre — berger (ra'ah : il a NOURRI, 47:12 — le berger fait paître !) et rocher (even : stabilité, fondation) : Joseph a porté Israël comme on porte un troupeau et comme on porte un temple. LA PLUIE (49:25) : « cieux en haut » (pluie, rosée — l'eau d'en haut) + « abîme (tehom) en bas » (nappes, sources — l'eau d'en bas) = le CYCLE DE L'EAU COMPLET béni ; « seins et matrice » = fécondité humaine et animale : TOUTE vie bénie, du ciel au ventre. « AU-DESSUS… des collines éternelles » (49:26) : les bénédictions sont un « ornement supérieur aux forêts et sources qui parent les montagnes » (it, Joseph), « permanentes… aussi longtemps que subsistaient les montagnes ». « NAZIR (consacré/séparé, 49:26) de ses frères » : « séparé parce que Dieu le choisit pour un rôle particulier » (it) — à part, au-dessus, pour tous.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">41:52 (nom)</td><td>Éphraïm = « Dieu m'a rendu fécond » (parah !)</td></tr>
+<tr><td class="d">1711 (portrait)</td><td>Porat près d'une source ; branches sur la muraille (49:22)</td></tr>
+<tr><td class="d">Vécu (archers)</td><td>Frères, Potiphar, prison — arc FERME (49:23-24)</td></tr>
+<tr><td class="d">1711 (titres)</td><td>BERGER (nourrit) + ROCHER (fonde) (49:24)</td></tr>
+<tr><td class="d">1711 (pluie)</td><td>Cieux + abîme + seins + matrice (49:25)</td></tr>
+<tr><td class="d">1711 (couronne)</td><td>Au-dessus des collines éternelles ; nazir (49:26)</td></tr>
+<tr><td class="d">Nb 1-26</td><td>72 700 → 85 200 : le plus gros bloc</td></tr>
+<tr><td class="d">Jos 17 / Dt 33</td><td>Forêt + cornes : double confirmation (P036)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>DOUBLE PORTION : deux tribus (Éphraïm + Manassé, ch. 48) — « Joseph… 44 760 » ? non : Éphraïm 40 500 + Manassé 32 200 = 72 700 au 1er recensement (le plus gros bloc !), 85 200 au 2e (32 500 + 52 700) : la « multitude » promise (48:19) en chiffres. Jos 17:14-18 (P036) : les fils de Joseph, « peuple nombreux », obtiennent forêt à défricher + vallées à chars de fer — et Josué (leur frère éphraïmite) les envoie conquérir. Dt 33:13-17 (P036) : Moïse REPREND mot à mot (rosée des cieux, abîme, premiers-nés, cornes de buffle, myriades) : la bénédiction de Jacob est confirmée par la bouche de Moïse — deux témoins (Dt 19:15). ROYAUME DU NORD : « Éphraïm » = les dix tribus ; Samarie capitale en Manassé : Joseph règne sur le nord pendant 200 ans.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>TERRITOIRE DOUBLE : Éphraïm (montagne centrale : Sichem, Silo, Béthel — le cœur) + Manassé (nord + Transjordanie : Galaad, Bashân — l'immensité) : du Jourdain à la mer, du Carmel au Yarmouk — le plus vaste ensemble tribal. « Cieux + abîme » : la montagne d'Éphraïm capte la pluie (600-700 mm, sources karstiques : Silo, Sichem aux eaux abondantes) ; les vallées (Jizréel au nord, Shéphéla à l'ouest) portent le blé : le territoire de Joseph EST la bénédiction 49:25 en carte — pluie d'en haut, sources d'en bas. SICHEM entre Ébal et Garizim : la « parcelle » de Jacob (33:19) en plein pays de Joseph — les os de Joseph y reposent (Jos 24:32) : le rejeton revient à la source. La MURAILLE franchie (49:22) : les « filles » (branches-tribus) débordent — jusqu'en Égypte (histoire) et aux nations (royaume du nord dispersé ? — voir limites).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Hydrologie biblique : « cieux en haut + abîme (tehom) en bas » = les DEUX réservoirs du monde hébreu (cf. Gn 7:11, « sources du grand abîme + écluses des cieux » : le déluge ouvre les deux ; la bénédiction les ouvre en douceur) — cosmologie de l'eau bénie aux deux bouts. Botanique : porat près d'une source — l'arbre ripicole (peuplier ? tamaris ? olivier irrigué ?) : en zone semi-aride, la proximité de l'eau fait le rendement (Ps 1:3, Jr 17:8 : même doctrine). « Nazir » (49:26) : consacré/séparé (cf. Nb 6, le naziréat : mise à part) — pas « prince » au sens royal : la TM dit « séparé », les versions oscillent ; la fiche suit l'it (« choisi pour un rôle particulier »). Géologie : « collines éternelles » (give'ot olam) — l'olam (durée indéfinie) adossé au relief : la permanence du paysage garantit la permanence du don.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Porat (fécond comme Éphraïm !) → Arbre = Jacob, rejeton = Joseph, filles = branches-tribus → PRÈS D'UNE SOURCE (jamais tari) → Branches AU-DESSUS de la muraille (débordement) → Archers : frères, Potiphar, prison (les flèches) → MAIS arc FERME + mains dans les Mains → BERGER (nourrit) + ROCHER (fonde) → PLUIE : cieux + abîme + seins + matrice (toute vie) → AU-DESSUS des collines éternelles (permanent comme les monts) → NAZIR : à part pour tous.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>La MURAILLE (49:22) : quoi ? (l'Égypte ? les obstacles ? la clôture du verger ?) — le texte ne précise pas ; la fiche propose « limites débordées » comme lecture, pas comme verset. « Mes pères / montagnes antiques » (49:26) : le TM porte « collines éternelles » (give'ot olam) — certaines versions lisent « mes progéniteurs » (horay vs haray : un point-voyelle change tout) : variante signalée, TM suivie. « Nazir » : consacré/séparé (TM, it) vs « prince » (anciennes versions) — la fiche suit le sens cultuel. Dispersion du nord (« branches au-delà » ?) : suggestion entre parenthèses — l'exil assyrien (740-720) disperse Éphraïm-Manassé aux nations : fait, mais lien avec 49:22 non versé.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fécond, près d'eau</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (porat)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arc ferme</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Les archers</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Berger + rocher</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Titres</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cieux + abîme</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">La pluie</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Collines éternelles</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">La couronne</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Double confirmation</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 17/Dt 33</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49">Genèse 49 — Bible d'étude (22-26, Joseph)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200002515">Joseph — Étude perspicace (rejeton, bénédictions, nazir)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200002515</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1961168">Joseph, un fidèle témoin de Jéhovah (arc ferme, berger)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1961168</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE036 — Joseph : le rejeton fertile, béni des cieux et de l'abîme</span><span>Catégorie GE</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie GE</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>GE031 — Issacar : l'âne robuste et le travail forcé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'âne et la corvée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">64 300 hommes</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Nb 26</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jizréel, 16 villes</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 19</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Thola, 23 ans</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 10</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baesha roi</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1R 15</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Connaissent les temps</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1Ch 12</text>
+</svg>
+<h4>GE032 — Dan : le serpent qui jugera son peuple</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JUGJERA + serpent</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Territoire étroit</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7e lot</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Samson, 20 ans</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 13-16</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Léshem → Dan</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 18</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Borne nationale</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 20:1</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lionceau</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 33:22</text>
+</svg>
+<h4>GE033 — Gad : talonné par des bandes, talonnant à son tour</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assailli puis talonne</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Transjordanie</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Nb 32</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Guerre de Dieu</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1Ch 5</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Faces de lions</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1Ch 12</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lionne</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Déportés premiers</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~740</text>
+</svg>
+<h4>GE034 — Aser : le pain gras et les délices royales</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pain gras, délices</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pied dans l'huile</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 33</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dor → Sidon</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 19</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Terres fertiles</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vérifié</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cabul paie l'or</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Anne d'Aser</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Lc 2</text>
+</svg>
+<h4>GE035 — Nephtali : la biche gracieuse aux belles paroles</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Biche + beauté</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Haute-Galilée</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 19</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baraq fond</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 4</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le cantique</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 5</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Exposa sa vie</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 5:18</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La lumière</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Mt 4</text>
+</svg>
+<h4>GE036 — Joseph : le rejeton fertile, béni des cieux et de l'abîme</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fécond, près d'eau</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (porat)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arc ferme</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Les archers</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Berger + rocher</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Titres</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cieux + abîme</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">La pluie</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Collines éternelles</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">La couronne</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Double confirmation</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 17/Dt 33</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-6 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

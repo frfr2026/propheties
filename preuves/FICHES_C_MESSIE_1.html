@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES A–C — Fin des nations · Le Messie : origine et naissance (1re partie)</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_AC_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 7</div>
+<h1>FICHES A–C</h1>
+<h2>Fin des nations · Le Messie : origine et naissance (1re partie)</h2>
+<p class="intro">Cette vague de transition ferme la catégorie A et ouvre la catégorie C. Côté nations, quatre oracles restaient à traiter : Damas, frappée deux fois, par l'Assyrie puis par Babylone ; Kédar et les campements de Hatsor, la gloire des archers du désert ; Élam, dont l'arc est brisé ; et l'Assyrie elle-même, la verge jugée en une nuit sous les murs de Jérusalem. Côté Messie, cinq premières fiches suivent l'enfant annoncé : le lieu de sa naissance, sa mère, sa fuite puis son retour d'Égypte, le deuil qui accompagne sa venue, et le messager qui marche devant lui. Mêmes dix blocs, mêmes règles : un seul système chronologique par fiche, aucune date pour l'avenir, et des limites écrites noir sur blanc.</p>
+<div class="chiffres">
+<div><b>9</b><span>fiches</span></div>
+<div><b>10</b><span>blocs par fiche</span></div>
+<div><b>36</b><span>sources</span></div>
+<div><b>9</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:29</div><audio controls preload="none" src="audio/fiche_A00_intro_categorie.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_A00_intro_categorie.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:40</div><audio controls preload="none" src="audio/fiche_AC00_intro_categorie.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_AC00_intro_categorie.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:42</div><audio controls preload="none" src="audio/fiche_C2_00_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_C2_00_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#A010">A010</a>
+<a href="#A011">A011</a>
+<a href="#A012">A012</a>
+<a href="#A013">A013</a>
+<a href="#C001">C001</a>
+<a href="#C002">C002</a>
+<a href="#C003">C003</a>
+<a href="#C004">C004</a>
+<a href="#C005">C005</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#A010"><img src="images/prophe_A010_damas.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE A010</div>
+<h3><a href="#A010">Damas — ôtée du nombre des villes</a></h3>
+<div class="meta">Accomplie · 🎧 0:42</div></div></div>
+<div class="carte">
+<a class="img" href="#A011"><img src="images/prophe_A011_kedar.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE A011</div>
+<h3><a href="#A011">Kédar et Hatsor — la gloire des archers du désert</a></h3>
+<div class="meta">Accomplie · 🎧 0:42</div></div></div>
+<div class="carte">
+<a class="img" href="#A012"><img src="images/prophe_A012_elam.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE A012</div>
+<h3><a href="#A012">Élam — l'arc brisé</a></h3>
+<div class="meta">Accomplie · 🎧 0:48</div></div></div>
+<div class="carte">
+<a class="img" href="#A013"><img src="images/prophe_A013_assyrie.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE A013</div>
+<h3><a href="#A013">L'Assyrie — la verge brisée en une nuit</a></h3>
+<div class="meta">Accomplie · 🎧 0:41</div></div></div>
+<div class="carte">
+<a class="img" href="#C001"><img src="images/prophe_C001_bethlehem.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C001</div>
+<h3><a href="#C001">Bethléhem Éphratha — le lieu de naissance</a></h3>
+<div class="meta">Accomplie · 🎧 0:36</div></div></div>
+<div class="carte">
+<a class="img" href="#C002"><img src="images/prophe_C002_emmanuel.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C002</div>
+<h3><a href="#C002">La vierge — Emmanuel, Dieu avec nous</a></h3>
+<div class="meta">Accomplie · 🎧 0:40</div></div></div>
+<div class="carte">
+<a class="img" href="#C003"><img src="images/prophe_C003_egypte.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C003</div>
+<h3><a href="#C003">D'Égypte j'ai appelé mon fils</a></h3>
+<div class="meta">Accomplie · 🎧 0:39</div></div></div>
+<div class="carte">
+<a class="img" href="#C004"><img src="images/prophe_C004_rachel.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C004</div>
+<h3><a href="#C004">Rachel pleure ses fils — le deuil de Rama</a></h3>
+<div class="meta">Accomplie · 🎧 0:40</div></div></div>
+<div class="carte">
+<a class="img" href="#C005"><img src="images/prophe_C005_messager.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C005</div>
+<h3><a href="#C005">Le messager devant lui — Jean le Baptiseur</a></h3>
+<div class="meta">Accomplie · 🎧 0:42</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Dix blocs par fiche, toujours dans le même ordre. Le dixième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="A010">
+<div class="visuel"><img src="images/prophe_A010_damas.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE A010 · CATÉGORIE A–C</div>
+<h3>Damas — ôtée du nombre des villes</h3>
+<div class="ref">Ésaïe 17:1-3 ; Amos 1:3-5 ; Jérémie 49:23-27 ; 2 Rois 16:9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dates neutres (765, 734, 732)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche A010 · 0:42</div><audio controls preload="none" src="audio/fiche_A10_damas.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A10_damas.mp3 · 0:42 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 17:1-3 ; Amos 1:3-5 ; Jérémie 49:23-27 ; 2 Rois 16:9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dates neutres (765, 734, 732)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P115, P131 ; Jérémie — P280 ; Amos — P430</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Voici Damas ôtée du nombre des villes ; elle deviendra un tas de ruines. » (Is 17:1)</li>
+<li>« J'enverrai un feu dans la maison de Hazaël ; il dévorera les palais de Ben-Hadad. Je briserai les verrous de Damas, et le peuple sera exilé à Qir. » (Am 1:4-5)</li>
+<li>« Je mettrai le feu à la muraille de Damas ; il dévorera les palais de Ben-Hadad. » (Jr 49:27)</li>
+<li>« Le roi d'Assyrie monta contre Damas, s'en empara, en déporta les habitants à Qir, et fit mourir Retsîn. » (2R 16:9)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Deux oracles à cinquante ans d'intervalle visent la même capitale. Amos prophétise vers 765, sous Jéroboam II, quand Damas domine encore la Syrie. Ésaïe reprend l'oracle vers 734, en pleine guerre syro-éphraïmite : Retsîn de Damas et Péqah d'Israël assiègent Achaz de Juda pour le forcer à entrer dans leur coalition anti-assyrienne. Achaz refuse le signe de Dieu, paie tribut à Tiglath-Piléser III et l'appelle au secours. Jérémie, deux siècles plus tard, annonce un second châtiment de Damas, à l'époque babylonienne.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Ôtée du nombre des villes » ne veut pas dire rasée sans retour : l'expression vise le statut de la cité — capitale d'un royaume araméen indépendant, avec « royauté à Damas » (Is 17:3). Amos nomme la dynastie : la maison de Hazaël, les palais des Ben-Hadad, et le lieu de l'exil, Qir. Le texte d'Ésaïe enveloppe dans le même jugement Éphraïm, l'allié d'occasion devenu païen par son alliance. L'oracle de Jérémie 49:23-27, lui, suppose une Damas relevée : c'est un second jugement, exécuté par d'autres mains.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que le premier oracle s'est accompli par Tiglath-Piléser III : répondant à l'appel d'Achaz, l'Assyrien envahit la Syrie, prit Damas en 732, mit à mort Retsîn et déporta la population à Qir, exactement comme 2 Rois 16:9 le rapporte. Les publications retiennent que les documents assyriens nomment Rezôn de Damas parmi les tributaires du roi avant la rupture. Le second oracle, celui de Jérémie, est rattaché aux campagnes de Nebucadnetsar : Damas, devenue province disputée, subit le sort commun des cités syriennes au VIe siècle.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">765 av. n. è. env.</td><td>Amos annonce le feu sur la maison de Hazaël et l'exil à Qir</td></tr>
+<tr><td class="d">735-734 av. n. è.</td><td>Guerre syro-éphraïmite contre Achaz ; Ésaïe 17 reprend l'oracle contre Damas</td></tr>
+<tr><td class="d">733-732 av. n. è.</td><td>Campagne de Tiglath-Piléser III en Syrie ; prise de Damas</td></tr>
+<tr><td class="d">732 av. n. è.</td><td>Retsîn mis à mort ; habitants déportés à Qir ; fin du royaume araméen de Damas</td></tr>
+<tr><td class="d">VIe s. av. n. è.</td><td>Second châtiment à l'époque babylonienne (Jérémie 49:23-27) ; Damas province disputée</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>L'article Tiglath-Piléser III de l'Étude perspicace relève que les documents assyriens citent Minihimmé (Menahem), Rezôn (Retsîn) de Damas et Hiram de Tyr comme tributaires du roi : la pression fiscale précède la rupture. 2 Rois 16:9 fournit le procès-verbal biblique : prise de la ville, déportation à Qir, mort de Retsîn. Les annales assyriennes de Nimrud (Calach) décrivent la campagne de 733-732, la chute de la ville et le tribut des rois syriens. La stèle araméenne de Tel Dan (IXe siècle), qui nomme un roi d'Aram vainqueur de rois israélites, atteste par ailleurs la puissance de la Damas que les prophètes ont vue tomber.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Damas occupe l'oasis du Barada, au pied de l'Anti-Liban : la Ghouta, jardin irrigué au bord du désert, explique trois mille ans d'occupation. Carrefour des routes de Mésopotamie, de Phénicie et du Hauran, la ville commande le passage entre l'Euphrate et la côte. Les « fleuves de Damas », Abana et Parpar (2R 5:12), sont les cours d'eau de cette oasis. Qir, lieu de la déportation, est nommé aussi en Amos 9:7 comme pays d'origine des Syriens : un retour forcé aux marges, dont la localisation exacte reste débattue.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Damas compte parmi les villes habitées en continu depuis le plus longtemps, ce qui limite paradoxalement la fouille : les niveaux du VIIIe siècle dorment sous la ville moderne et la citadelle médiévale. L'épigraphie compense : outre les annales de Tiglath-Piléser III, les inscriptions de Salmanasar III nomment déjà Hazaël de Damas comme adversaire, confirmant la dynastie visée par Amos 1:4. La toponymie de la Ghouta et le tracé des canaux du Barada, étudiés par les hydrologues, confirment l'assise agricole qui faisait la richesse convoitée de la cité.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Damas est aujourd'hui une capitale peuplée de plusieurs millions d'habitants : cette fiche ne prétend pas que le site est vide. L'oracle, comme le verset 3 le précise, vise la royauté araméenne de Damas, qui a cessé en 732 et ne s'est jamais relevée comme puissance indépendante. La localisation de Qir n'est pas établie avec certitude. Les dates 765, 734 et 732 sont des dates neutres, communes à toutes les chronologies.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amos</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">765</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 17</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">734</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Damas</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Retsîn</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Second châtiment</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe s.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200004402">Tiglath-Piléser (III) — Étude perspicace<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200004402</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200003721">Retsîn — Étude perspicace<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200003721</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/17">Ésaïe 17 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/17</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche A010 — Damas — ôtée du nombre des villes</span><span>Catégorie A–C</span></div></div>
+</article>
+<article class="fiche" id="A011">
+<div class="visuel"><img src="images/prophe_A011_kedar.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE A011 · CATÉGORIE A–C</div>
+<h3>Kédar et Hatsor — la gloire des archers du désert</h3>
+<div class="ref">Ésaïe 21:13-17 ; Jérémie 49:28-33 ; Ézéchiel 27:21</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dates neutres (VIIe-Ve s.)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche A011 · 0:42</div><audio controls preload="none" src="audio/fiche_A11_kedar.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A11_kedar.mp3 · 0:42 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 21:13-17 ; Jérémie 49:28-33 ; Ézéchiel 27:21</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dates neutres (VIIe-Ve s.)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P137 ; Jérémie — P281</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Dans un an, toute la gloire de Kédar s'achèvera ; il ne restera que peu d'archers, les guerriers des fils de Kédar. » (Is 21:16-17)</li>
+<li>« Levez-vous, montez contre Kédar, détruisez les fils de l'Orient ! On prendra leurs tentes et leurs troupeaux, leurs tentures et tous leurs effets. » (Jr 49:28-29)</li>
+<li>« Hatsor deviendra un repaire de chacals, une désolation pour toujours ; personne n'y habitera. » (Jr 49:33)</li>
+<li>« Nebucadnetsar, roi de Babylone, a pris une résolution contre vous. » (Jr 49:30)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Kédar, deuxième fils d'Ismaël (Gn 25:13), a donné son nom à une confédération de tribus arabes nomades du désert syro-arabe : éleveurs de moutons, de chèvres et de chameaux, caravaniers de l'encens, archers redoutés. Ésaïe les vise au temps de la domination assyrienne ; Jérémie, un siècle plus tard, nomme l'exécutant : Nebucadnetsar. Ézéchiel les montre fournisseurs de Tyr en agneaux et en boucs (Éz 27:21) : leur gloire est pastorale et militaire, pas urbaine.</p>
+<h4>4 · Explication du texte</h4>
+<p>« La gloire de Kédar », ce sont ses puissants archers et ses troupeaux : un peuple sans ville a une gloire mobile, et c'est elle qui sera fauchée « dans un an ». Les « royaumes de Hatsor » ne sont pas la Hatsor cananéenne du nord (Tel Hatsor en Galilée), mais des campements retranchés du désert d'Arabie, à l'est du Jourdain — l'Étude perspicace distingue soigneusement les deux Hatsor. « Fils de l'Orient » est le nom générique des tribus du désert, et le butin listé — tentes, tentures, chameaux — est celui d'un peuple de la tente.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est double : l'oracle d'Ésaïe 21 s'est accompli à l'époque assyrienne — les Kédarites sont les Qidri des inscriptions d'Assurbanipal, qui se vante du butin pris sur eux — puis celui de Jérémie 49 par Nebucadnetsar, nommé au verset 30. Les publications retiennent le témoignage de l'historien babylonien Bérose, cité par Josèphe, sur la conquête de l'Arabie du nord par Nebucadnetsar. Hatsor du désert, sans pierres à relever, est devenue ce que le texte disait : un lieu inhabité.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe-VIIe s. av. n. è.</td><td>Ésaïe 21 annonce la fin de la gloire de Kédar dans l'année</td></tr>
+<tr><td class="d">VIIe s. av. n. è.</td><td>Campagnes assyriennes : Assurbanipal frappe les Qidri (Kédar) et prend butin</td></tr>
+<tr><td class="d">VIe s. av. n. è.</td><td>Nebucadnetsar frappe Kédar et les campements de Hatsor (Jr 49:28-33)</td></tr>
+<tr><td class="d">Ve s. av. n. è.</td><td>Un « roi de Kédar » est encore attesté en Égypte (coupe de Tell el-Maskhuta) : le nom survit, la gloire est passée</td></tr>
+<tr><td class="d">Ve-IVe s. av. n. è.</td><td>Les Nabatéens remplacent les Kédarites sur les routes caravanières</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le dossier profane est solide. Les annales d'Assurbanipal nomment les Qidri et les Aribi parmi les Arabes combattus, avec le décompte du butin : ânes, chameaux, moutons. Bérose, historien babylonien repris par Josèphe (Contre Apion, I), mentionne la conquête de l'Arabie du nord par Nebucadnetsar. Une coupe d'argent du Ve siècle trouvée à Tell el-Maskhuta, en Égypte, porte en araméen : « Qaynou fils de Geshem, roi de Kédar » — et ce Geshem est le « Geshem l'Arabe » qui s'oppose à Néhémie (Né 2:19 ; 6:1). La Bible et l'épigraphie se rejoignent sur un nom propre.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le pays de Kédar, c'est le désert syro-arabe à l'est de la Palestine, au nord-ouest de la péninsule Arabique : hamadas pierreuses, pâturages d'hiver, oasis-étapes. Ésaïe 21:14 nomme Théma et Dédan, oasis caravanières où les fuyards mendieront l'eau et le pain : la géographie de la soif. Les routes de l'encens et des troupeaux relient ces tribus à Damas, à Tyr et à Gaza. Hatsor du désert, campement et non ville, ne laisse ni rempart ni tell : son « repaire de chacals » est le désert rendu à lui-même.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'épigraphie nord-arabique et les inscriptions assyriennes fournissent le cadre : le nom Qidri/Qadri des textes d'Assurbanipal correspond au Qédar biblique, et la coupe de Tell el-Maskhuta donne un roi de Kédar daté du Ve siècle. L'ethnographie éclaire le texte : les « tentes de Kédar » du Cantique (Ct 1:5), tissées de poil de chèvre noir, sont encore celles des Bédouins. À Tayma, oasis du pays des fils de l'Orient, les inscriptions de Harran attestent le long séjour du roi babylonien Nabonide : l'Arabie du nord était bien dans l'orbite des empires mésopotamiens au VIe siècle.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Un peuple nomade laisse peu de ruines identifiables : cette fiche ne montre donc aucun « site de Kédar » fouillé, et elle distingue la Hatsor du désert (Jr 49) de Tel Hatsor en Galilée, ville cananéenne puis israélite. L'année exacte de la campagne de Nebucadnetsar en Arabie n'est pas fixée par les sources conservées ; la fiche la place au VIe siècle sans plus de précision. L'oracle vise la gloire militaire et pastorale des Kédarites, pas l'existence des Arabes : les Bédouins dressent toujours leurs tentes noires.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 21</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe-VIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assurbanipal</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nebucadnetsar</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe s.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Roi de Kédar</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tentes bédouines</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012523">Kédar — Étude perspicace<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012523</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001937">Hatsor — Étude perspicace (§ 5 : Hatsor du désert)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001937</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49">Jérémie 49 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche A011 — Kédar et Hatsor — la gloire des archers du désert</span><span>Catégorie A–C</span></div></div>
+</article>
+<article class="fiche" id="A012">
+<div class="visuel"><img src="images/prophe_A012_elam.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE A012 · CATÉGORIE A–C</div>
+<h3>Élam — l'arc brisé</h3>
+<div class="ref">Jérémie 49:34-39 ; Jérémie 25:25 ; Daniel 8:2 ; Genèse 14:1</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dates neutres (597, 550)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche A012 · 0:48</div><audio controls preload="none" src="audio/fiche_A12_elam.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A12_elam.mp3 · 0:48 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 49:34-39 ; Jérémie 25:25 ; Daniel 8:2 ; Genèse 14:1</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dates neutres (597, 550)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P223 (coupe des nations), P282</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Voici ce que dit Jéhovah au sujet d'Élam, au commencement du règne de Sédécias : je brise l'arc d'Élam, le meilleur de sa force. » (Jr 49:34-35)</li>
+<li>« J'amènerai sur Élam les quatre vents ; je les disperserai de tous côtés. » (Jr 49:36)</li>
+<li>« Je placerai mon trône en Élam ; j'en ferai disparaître roi et princes. » (Jr 49:38)</li>
+<li>« Mais dans la suite des jours, je ramènerai les captifs d'Élam. » (Jr 49:39)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>L'oracle est daté avec une précision rare : le commencement du règne de Sédécias, vers 597. Élam est alors une vieille puissance du sud-ouest iranien, capitale Suse : dès Abraham, un roi d'Élam, Kedorlaomer, menait des coalitions jusqu'à la mer Morte (Gn 14). Allié intermittent de Babylone contre l'Assyrie, Élam a survécu au sac de Suse par Assurbanipal mais n'est plus que l'ombre de lui-même. Sa spécialité militaire, célèbre dans tout l'Orient, c'est l'arc : les archers élamites.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Briser l'arc », c'est briser l'armée elle-même : l'arme nationale vaut pour toute la force, comme « l'épée » vaut pour la guerre. « Placer mon trône en Élam » ne veut pas dire y régner durablement, mais y exercer le jugement sur place — le trône du juge, pas celui du résident. Les « quatre vents » annoncent la dispersion, et le verset 39, comme pour Moab (Jr 48:47) et Ammon (Jr 49:6), ajoute une promesse de retour : le jugement n'est pas le dernier mot. Élam figure aussi parmi les buveurs de la coupe de fureur (Jr 25:25).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah inscrit cet oracle dans la série des jugements exécutés à l'époque de la domination babylonienne (Jr 25:9 : Nebucadnetsar, « mon serviteur ») : comme toutes les nations d'alentour, Élam boit la coupe. Le pays cesse d'exister comme puissance indépendante et passe dans l'orbite mède puis perse ; Suse, son ancienne capitale, devient l'une des capitales achéménides — le lieu de la vision de Daniel 8:2, du palais d'Esther et du service de Néhémie. La promesse du verset 39 annonce un rétablissement dont cette fiche ne tranche pas la portée exacte (voir Limites).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">597 av. n. è. env.</td><td>Oracle de Jérémie 49:34-39, au commencement de Sédécias</td></tr>
+<tr><td class="d">VIe s. av. n. è.</td><td>Élam boit la coupe des nations (Jr 25:25) ; fin de l'indépendance élamite</td></tr>
+<tr><td class="d">550 av. n. è. env.</td><td>Cyrus absorbe le pays élamite dans l'empire perse naissant</td></tr>
+<tr><td class="d">539-522 av. n. è.</td><td>Suse devient capitale achéménide : palais, administration, trésor</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Des Élamites sont présents à Jérusalem à la Pentecôte (Ac 2:9)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le contexte est documenté des deux côtés. Les annales d'Assurbanipal racontent le sac de Suse (vers 647-640), antérieur à l'oracle, qui avait déjà brisé la grandeur élamite. Le cylindre de Cyrus (découvert en 1879, British Museum) illustre la politique perse d'absorption des anciens royaumes. Les livres d'Esther, de Néhémie et de Daniel, écrits ou situés à Suse, confirment le transfert de la capitale élamite à l'empire perse : le trône placé en Élam est désormais celui des rois de Perse. Les tablettes de Persépolis, rédigées en élamite, montrent la langue d'Élam devenue langue d'administration perse.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Élam, c'est le Khuzistan actuel : la plaine alluviale de Suse, arrosée par la Karkheh et le Karun, adossée aux hauts plateaux de l'Anshan. Cette position — entre la Mésopotamie et le plateau iranien — a fait sa fortune et son malheur : grenier à blé convoité, couloir des invasions. Suse commande la route royale qui mènera, sous les Perses, jusqu'à Sardes. L'Oulaï, le cours d'eau de la vision de Daniel 8, coule à Suse ou à ses abords : la prophétie a une adresse fluviale.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Les fouilles françaises de Suse (de Morgan, dès 1897) ont livré un témoignage spectaculaire des rapports Élam-Mésopotamie : le Code de Hammurabi, emporté comme butin par un roi élamite et retrouvé à Suse en 1901. La frise des archers du palais de Darius (briques émaillées, musée du Louvre) montre l'arme qui fit la gloire d'Élam devenue garde du roi perse : l'arc a changé de maître, comme l'oracle le disait. La ziggurat de Tchogha Zanbil (XIIIe siècle, patrimoine mondial) atteste la civilisation élamite antérieure à sa chute.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Honnêteté oblige, comme pour l'Égypte (F004) : aucune campagne de Nebucadnetsar contre Élam nommément attestée n'est conservée dans les sources profanes ; la fiche retient la disparition d'Élam comme puissance indépendante au VIe siècle, qui, elle, est établie. Le sac de Suse par Assurbanipal est antérieur à l'oracle (vers 597) et ne peut donc pas en être l'accomplissement direct. Le sens exact du « retour » du verset 39 — rapatriés du VIe siècle, Élamites du Ier siècle, ou portée plus large — n'est pas tranché ici. Les dates 597 et 550 sont neutres.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin de l'indépendance</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Absorption perse</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">550</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Suse capitale</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539+</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pentecôte : Élamites</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200004502">Oulaï — le cours d'eau de Suse en Élam<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200004502</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1977007">L'Empire médo-perse et les prophéties<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1977007</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49">Jérémie 49 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche A012 — Élam — l'arc brisé</span><span>Catégorie A–C</span></div></div>
+</article>
+<article class="fiche" id="A013">
+<div class="visuel"><img src="images/prophe_A013_assyrie.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE A013 · CATÉGORIE A–C</div>
+<h3>L'Assyrie — la verge brisée en une nuit</h3>
+<div class="ref">2 Rois 19:1-37 ; Ésaïe 10:5-19 ; 14:24-27 ; 30:31 ; 37:36 ; 2 Chroniques 32</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dates neutres (701, 681)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche A013 · 0:41</div><audio controls preload="none" src="audio/fiche_A13_assyrie.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_A13_assyrie.mp3 · 0:41 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>2 Rois 19:1-37 ; Ésaïe 10:5-19 ; 14:24-27 ; 30:31 ; 37:36 ; 2 Chroniques 32</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dates neutres (701, 681)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Rois — P094 ; Ésaïe — P121, P129, P153</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Assyrie, verge de ma colère ! Le bâton qu'elle tient, c'est mon indignation. » (Is 10:5)</li>
+<li>« Je briserai l'Assyrien dans mon pays ; je le foulerai sur mes montagnes. » (Is 14:25)</li>
+<li>« Cette nuit-là, l'ange de Jéhovah sortit et frappa dans le camp des Assyriens 185 000 hommes. » (2R 19:35)</li>
+<li>« Sanchérib retourna à Ninive. Et il arriva, comme il adorait dans la maison de Nisrok son dieu, que ses fils Adrammélek et Sharétser le frappèrent de l'épée. » (2R 19:36-37)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La quatorzième année d'Ézéchias, en 701, Sanchérib mène sa troisième campagne : les villes fortes de Juda tombent l'une après l'autre, Lakis est assiégée, et le Rabshaqé porte l'ultimatum sous les murs de Jérusalem — en hébreu, devant le peuple, pour démoraliser. Ézéchias, qui vient d'être guéri et a reçu quinze ans de vie, étale la lettre devant Jéhovah dans le temple. Ésaïe répond : la ville ne sera ni prise, ni assiégée, ni même visée par une flèche (2R 19:32).</p>
+<h4>4 · Explication du texte</h4>
+<p>Le paradoxe du chapitre 10 fait toute la théologie de l'oracle : l'Assyrie est à la fois l'instrument du jugement (« verge ») et son prochain objet (« je punirai le fruit du cœur orgueilleux du roi d'Assyrie », Is 10:12). Le lieu est précisé : « dans mon pays, sur mes montagnes » — le désastre frappera l'armée d'invasion en Juda même, pas l'empire au loin. La « rumeur » qui fera repartir Sanchérib (2R 19:7), c'est l'approche de Tirhaqa le Koushite. Et la garde de la ville est motivée : « à cause de moi et à cause de David mon serviteur » (2R 19:34) — l'alliance davidique est l'enjeu caché du siège.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que l'oracle s'est accompli à la lettre en une nuit : 185 000 Assyriens frappés par l'ange, Sanchérib levant le camp sans avoir tiré une flèche contre la ville, retour à Ninive, puis assassinat par ses deux fils. Les publications soulignent que les textes assyriens eux-mêmes font mention de la mort de Sanchérib sous les coups d'assassins, confirmant 2 Rois 19:37. La délivrance de 701 devient dès lors le type de toutes les délivrances : Jérusalem sauvée quand tout était perdu.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">701 av. n. è.</td><td>3e campagne de Sanchérib ; chute des villes fortes de Juda ; siège de Lakis</td></tr>
+<tr><td class="d">701 av. n. è.</td><td>L'ultimatum du Rabshaqé sous les murs ; prière d'Ézéchias ; réponse d'Ésaïe</td></tr>
+<tr><td class="d">701 av. n. è.</td><td>En une nuit, 185 000 Assyriens frappés ; Sanchérib lève le camp</td></tr>
+<tr><td class="d">701-681 av. n. è.</td><td>Retour et règne à Ninive ; aucune nouvelle tentative contre Jérusalem</td></tr>
+<tr><td class="d">681 av. n. è.</td><td>Assassinat de Sanchérib par Adrammélek et Sharétser ; Assarhaddon lui succède</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le prisme de Sanchérib (prisme de Taylor, British Museum) fournit le silence le plus éloquent de l'historiographie assyrienne : le roi se vante d'avoir enfermé Ézéchias « comme un oiseau dans une cage », énumère le tribut reçu — et ne prétend nulle part avoir pris Jérusalem, lui qui détaille chaque ville conquise. Les bas-reliefs du siège de Lakis, découverts à Ninive par Layard (British Museum), montrent l'acharnement mis à réduire la seconde ville du royaume. Hérodote (II, 141) garde un écho déformé du désastre : une invasion de rongeurs rendant l'armée assyrienne sans défense en une nuit.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La campagne suit la géographie de la peur : la plaine côtière, puis les vallées du piémont — Lakis (Tell ed-Duweir), à une cinquantaine de kilomètres au sud-ouest de Jérusalem, verrouille la route. Jérusalem, elle, est une ville-montagne alimentée par la source de Gihon, dont Ézéchias vient de protéger l'eau par son tunnel de 533 mètres (voir B006). Le camp assyrien s'étend « contre toutes les villes fortes » pendant que la capitale, sur ses hauteurs, attend : le relief fait partie de la prophétie.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Les fouilles de Lakis ont mis au jour un dispositif unique au monde : la rampe de siège assyrienne et la contre-rampe judéenne édifiée en hâte face à elle, deux ouvrages adverses fossilisés face à face. Les pointes de flèches, les pierres de fronde et les restes du massacre confirment la violence décrite par les bas-reliefs. La chronologie est ancrée : la campagne de 701 est datée par les éponymes assyriens et admise par toutes les chronologies — date neutre, sans débat.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Le chiffre de 185 000 n'a aucun parallèle profane : selon le récit lui-même, l'événement s'est produit en une nuit, sans témoin ennemi survivant pour le raconter — la fiche ne peut donc offrir que le silence du prisme, compatible avec le récit mais pas démonstratif à lui seul. Le récit d'Hérodote (les rongeurs) est une légende, citée ici comme écho lointain et non comme confirmation. Les ostraca de Lakis, souvent cités, datent du siège babylonien (vers 589) et non de 701 : ils n'entrent pas dans ce dossier.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lakis assiégée</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La nuit des 185 000</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retraite</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assassinat à Ninive</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">681</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — 2 Rois 18-19, les 185 000<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1960763">La ville qui se confiait en ses fortifications (Lakis)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1960763</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1981648">L'oppression cessera — la délivrance d'Ézéchias<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1981648</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200013302">Ninive — Étude perspicace<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200013302</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche A013 — L'Assyrie — la verge brisée en une nuit</span><span>Catégorie A–C</span></div></div>
+</article>
+<article class="fiche" id="C001">
+<div class="visuel"><img src="images/prophe_C001_bethlehem.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C001 · CATÉGORIE A–C</div>
+<h3>Bethléhem Éphratha — le lieu de naissance</h3>
+<div class="ref">Michée 5:2 ; Matthieu 2:1-6 ; Luc 2:1-7 ; Jean 7:42</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33 (naissance : 2 av. n. è.)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C001 · 0:36</div><audio controls preload="none" src="audio/fiche_C01_bethlehem.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C01_bethlehem.mp3 · 0:36 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Michée 5:2 ; Matthieu 2:1-6 ; Luc 2:1-7 ; Jean 7:42</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33 (naissance : 2 av. n. è.)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Michée — P457 ; partie messianique — P589 (et P458, P585)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Et toi, Bethléhem Éphratha, trop petite pour être parmi les clans de Juda, de toi sortira pour moi celui qui dominera en Israël, et ses origines remontent aux temps anciens, aux jours des temps indéfinis. » (Mi 5:2)</li>
+<li>« Et toi, Bethléhem, terre de Juda, tu n'es nullement la moindre parmi les gouverneurs de Juda ; car de toi sortira un chef qui fera paître mon peuple Israël. » (Mt 2:6, cité par les prêtres devant Hérode)</li>
+<li>« Joseph monta de Nazareth en Galilée à Bethléhem en Judée, la ville de David, pour se faire enregistrer avec Marie. » (Lc 2:4-5)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Michée prophétise au VIIIe siècle, contemporain d'Ésaïe sous Yotham, Achaz et Ézéchias. L'oracle suit immédiatement l'annonce du siège et de l'humiliation du « juge d'Israël » (Mi 5:1) : au creux du jugement, le lieu du relèvement est nommé. La précision « Éphratha » n'est pas ornementale : à l'époque de Jésus, deux villes portent le nom de Bethléhem — l'une près de Nazareth, au nord (Jos 19:15), l'autre près de Jérusalem, en Juda, l'ancienne Éphratha (Gn 35:19). C'est la seconde que l'oracle désigne, et c'est là que Jésus naît.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Trop petite pour être parmi les clans » : l'insignifiance du lieu fait partie du signe — Dieu choisit un bourg, pas une capitale. « Ses origines remontent aux temps anciens » : le dominateur attendu préexiste à sa naissance terrestre. La citation de Matthieu 2:6 semble inverser le texte (« tu n'es nullement la moindre ») : paradoxe seulement apparent — après l'événement, le statut du lieu a changé, et Matthieu combine librement Michée 5:2 avec 2 Samuel 5:2 (« tu feras paître mon peuple »). Le verset de Jean 7:42 montre que l'attente était connue du peuple : « Le Christ ne vient-il pas de Bethléhem ? »</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que la prophétie, donnée plus de 700 ans d'avance, s'est accomplie au détail près : Jésus est né à Bethléhem de Juda, l'ancienne Éphratha, ville de David (Lc 2:4, 11). Les publications soulignent le mécanisme de l'accomplissement : un décret impérial de César Auguste ordonnant l'enregistrement amène Joseph et Marie, domiciliés à Nazareth, jusqu'au bourg de leurs ancêtres au moment précis de la naissance — Rome au service de Michée. Quant aux « origines anciennes », elles désignent l'existence céleste de Jésus avant sa venue sur terre.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe s. av. n. è.</td><td>Michée 5:2 nomme Bethléhem Éphratha plus de 700 ans d'avance</td></tr>
+<tr><td class="d">2 av. n. è. env.</td><td>Décret d'Auguste : Joseph et Marie montent de Nazareth à Bethléhem</td></tr>
+<tr><td class="d">2 av. n. è., automne</td><td>Naissance de Jésus à Bethléhem de Juda, la ville de David</td></tr>
+<tr><td class="d">2-1 av. n. è.</td><td>Les prêtres d'Hérode désignent eux-mêmes Bethléhem (Mt 2:4-6) : l'aveu adverse</td></tr>
+<tr><td class="d">29 de n. è.</td><td>Le baptême au Jourdain : le nouveau-né de Bethléhem devient le Messie</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le dossier romain encadre le récit. L'article Quirinius de l'Auxiliaire biblique suit la carrière du gouverneur de Syrie — consul en 12 avant notre ère (liste du Chronographus), campagnes en Cilicie relatées par Tacite — sous lequel Luc place l'enregistrement. Auguste se vante dans ses Res Gestae de trois cens, et les papyrus d'Égypte attestent des enregistrements périodiques sous son règne : la pratique est établie. Le sommet du dossier reste Matthieu 2:4-6 : ce sont les grands prêtres et les scribes, convoqués par Hérode, qui citent Michée contre leur visiteur — un témoignage hostile, donc sans prix.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Bethléhem occupe une crête à environ 8 kilomètres au sud de Jérusalem, sur la route d'Hébron : position de passage, champs de céréales (Beth-Léhem, « maison du pain ») et pâturages où, selon Luc 2:8, des bergers gardaient leurs troupeaux la nuit de la naissance. Le tombeau de Rachel (Gn 35:19-20) borde la même route (voir C004). La distinction des deux Bethléhem est géographique : celle de Zabulon, au nord, n'a jamais porté le nom d'Éphratha ; seule celle de Juda satisfait à l'oracle complet.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'archéologie atteste un bourg juif d'époque hérodienne sur le site : habitations, citernes, pressoirs, sépultures du Ier siècle. Elle ne peut en revanche, par nature, ni confirmer ni infirmer une naissance individuelle : cette fiche n'offre donc aucune « preuve matérielle » de la naissance, et l'église de la Nativité (IVe siècle) relève de la tradition constantinienne, pas du dossier. La papyrologie, elle, confirme le cadre administratif : les recensements romains périodiques d'Égypte montrent qu'un « enregistrement » sous Auguste n'a rien d'invraisemblable.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Cette fiche ne donne ni jour ni mois de naissance : le 25 décembre est une date traditionnelle postérieure, sans fondement biblique. Elle ne tranche pas le débat des historiens sur l'année de la mort d'Hérode le Grand (4 ou 1 avant notre ère selon les reconstitutions de l'éclipse lunaire), qui commande la fenêtre chronologique de la naissance. Le recensement de Quirinius de l'an 6 rapporté par Josèphe est un événement distinct et postérieur. La naissance elle-même, comme toute naissance, ne laisse pas de trace archéologique.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Michée 5:2</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit d'Auguste</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">2 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Naissance</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'aveu des prêtres</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">2-1</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baptême</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/pc/r30/lp-f/2012007/1/0">Jésus Christ, le Messie promis — appendice<br>https://wol.jw.org/fr/wol/pc/r30/lp-f/2012007/1/0</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001407">Éphrathite — habitant de Bethléhem, ou Éphratha<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001407</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200013528">Quirinius — le gouverneur de l'enregistrement<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200013528</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C001 — Bethléhem Éphratha — le lieu de naissance</span><span>Catégorie A–C</span></div></div>
+</article>
+<article class="fiche" id="C002">
+<div class="visuel"><img src="images/prophe_C002_emmanuel.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C002 · CATÉGORIE A–C</div>
+<h3>La vierge — Emmanuel, Dieu avec nous</h3>
+<div class="ref">Ésaïe 7:14 ; Matthieu 1:18-23 ; Luc 1:26-35 ; Ésaïe 8:3-4</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33 (naissance : 2 av. n. è.)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C002 · 0:40</div><audio controls preload="none" src="audio/fiche_C02_emmanuel.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C02_emmanuel.mp3 · 0:40 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 7:14 ; Matthieu 1:18-23 ; Luc 1:26-35 ; Ésaïe 8:3-4</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33 (naissance : 2 av. n. è.)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P113 ; partie messianique — P588</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Jéhovah lui-même vous donnera un signe : voici que la jeune fille deviendra enceinte, elle mettra au monde un fils et l'appellera Emmanuel. » (Is 7:14)</li>
+<li>« Voici que la vierge deviendra enceinte et mettra au monde un fils, et on l'appellera Emmanuel, ce qui signifie : avec nous est Dieu. » (Mt 1:23)</li>
+<li>« Comment cela se fera-t-il, puisque je n'ai pas de relations avec un homme ? » (Lc 1:34, question de Marie à l'ange)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Même crise qu'en A010 : la guerre syro-éphraïmite (vers 734). Achaz refuse de demander un signe ; le signe est alors donné à toute la « maison de David ». L'enfant-annonce a un premier rôle daté : « avant que le garçon sache rejeter le mal et choisir le bien, le pays des deux rois qui t'effraient sera abandonné » (Is 7:16) — Damas et Samarie tomberont avant quelques années. Mais le nom de l'enfant, Emmanuel, déborde ce premier horizon : « avec nous est Dieu ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Tout le débat tient en un mot hébreu : alma, la jeune fille nubile — sept emplois dans la Bible (Rébecca en Gn 24:43, la sœur de Moïse en Ex 2:8, et autres), qui ne signifie pas à lui seul « vierge » au sens strict. Mais plus d'un siècle avant Jésus, les traducteurs juifs d'Alexandrie ont rendu ce mot, en Ésaïe 7:14, par le grec parthénos, « vierge » : c'est une traduction juive, pré-chrétienne, que Matthieu reprend. « Emmanuel » est un titre — comme les noms d'Ésaïe 9:6 — non un prénom d'état civil : aucune contradiction avec « tu l'appelleras Jésus » (Mt 1:21 ; Lc 1:31).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est celle du double accomplissement : le terme hébreu convenait à un premier accomplissement du temps d'Ésaïe — peut-être sur une jeune épouse d'Achaz ou d'Ésaïe — et au second, en la personne de Marie, fiancée mais vierge. Seul Jésus s'identifie complètement à Emmanuel, pour ce qui est de sa personne et de sa fonction : par lui, Dieu est véritablement « avec nous ». La conception est attribuée à l'esprit saint (Mt 1:20 ; Lc 1:35), non à Joseph — dont les généalogies marquent soigneusement le rôle : « Joseph, de qui Marie est l'épouse, de laquelle est né Jésus » (Mt 1:16).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">734 av. n. è. env.</td><td>Le signe d'Ésaïe 7:14 donné à la maison de David</td></tr>
+<tr><td class="d">732-722 av. n. è.</td><td>Premier horizon vérifié : Damas puis Samarie abandonnées</td></tr>
+<tr><td class="d">IIe s. av. n. è.</td><td>La Septante juive traduit alma par parthénos (vierge)</td></tr>
+<tr><td class="d">3-2 av. n. è.</td><td>L'annonciation à Marie ; Joseph averti en rêve (Mt 1 ; Lc 1)</td></tr>
+<tr><td class="d">2 av. n. è., automne</td><td>Naissance de Jésus : le second Emmanuel est là</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Deux témoins matériels verrouillent l'antériorité du texte. Le grand rouleau d'Ésaïe de Qumrân (1QIsa-a, IIe siècle avant notre ère) contient le chapitre 7 dans un texte hébreu antérieur au christianisme — voir B004. La Septante d'Alexandrie, traduction juive du même siècle, emploie parthénos : quand Matthieu cite « la vierge », il ne tord pas le texte, il suit la Bible de ses lecteurs. Les généalogies de Matthieu 1 et Luc 3, avec leurs formulations prudentes sur Joseph (« selon l'opinion », Lc 3:23), montrent un souci d'état civil incompatible avec une légende tardive.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le signe naît à Jérusalem, devant Achaz, et s'accomplit à Nazareth de Galilée, où Marie reçoit l'ange, puis à Bethléhem, où l'enfant naît (voir C001). Le premier horizon, lui, est syro-palestinien : Damas au nord-est, Samarie au nord — les deux capitales dont l'abandon doit survenir « avant que l'enfant sache ». La géographie du signe est donc double, comme son accomplissement : deux capitales jugées au VIIIe siècle, une mangeoire au Ier.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La linguistique confirme la chaîne : corpus des sept emplois d'alma, version grecque des Septante, texte massorétique et rouleau de Qumrân concordent sur le verset. La critique textuelle n'a relevé aucune variante qui affaiblisse le « signe » : le texte est stable du IIe siècle avant notre ère à nos jours. Reste une limite de principe, que la fiche énonce : une conception virginale est un événement singulier rapporté, pas un phénomène reproductible — la science établit l'antériorité et la stabilité du texte, non le mécanisme du miracle.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Cette fiche ne prétend pas que le mot alma signifie toujours et partout « vierge » : c'est la traduction des Septante et la reprise de Matthieu qui fixent le sens du second accomplissement. L'identité de la jeune fille du premier accomplissement n'est pas précisée par Ésaïe ; les hypothèses (épouse d'Achaz ou d'Ésaïe) sont signalées comme telles, avec leur source. Aucune preuve biologique d'une conception virginale n'est possible par principe. Ni jour ni mois de la naissance ne sont donnés.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le signe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">734</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier horizon</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">732-722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Septante : parthénos</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe s.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Annonciation</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3-2</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Naissance</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012103">Emmanuel — Étude perspicace (double accomplissement)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012103</a>
+<a href="https://wol.jw.org/fr/wol/pc/r30/lp-f/2012007/1/0">Jésus Christ, le Messie promis — appendice<br>https://wol.jw.org/fr/wol/pc/r30/lp-f/2012007/1/0</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/1">Matthieu 1 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C002 — La vierge — Emmanuel, Dieu avec nous</span><span>Catégorie A–C</span></div></div>
+</article>
+<article class="fiche" id="C003">
+<div class="visuel"><img src="images/prophe_C003_egypte.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C003 · CATÉGORIE A–C</div>
+<h3>D'Égypte j'ai appelé mon fils</h3>
+<div class="ref">Osée 11:1 ; Matthieu 2:13-15 ; Exode 4:22-23 ; Matthieu 2:19-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33 (naissance : 2 av. n. è.)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C003 · 0:39</div><audio controls preload="none" src="audio/fiche_C03_egypte.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C03_egypte.mp3 · 0:39 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Osée 11:1 ; Matthieu 2:13-15 ; Exode 4:22-23 ; Matthieu 2:19-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33 (naissance : 2 av. n. è.)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Osée — P420 ; partie messianique — P591</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Quand Israël était jeune, je l'ai aimé, et d'Égypte j'ai appelé mon fils. » (Os 11:1)</li>
+<li>« Joseph se leva, prit de nuit le petit enfant et sa mère, et se retira en Égypte. Il y resta jusqu'à la mort d'Hérode, afin que s'accomplît ce que Jéhovah avait dit par le prophète : D'Égypte j'ai appelé mon fils. » (Mt 2:14-15)</li>
+<li>« Israël est mon fils, mon premier-né. » (Ex 4:22)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Osée prophétise au VIIIe siècle, dans les dernières décennies du royaume du Nord. Son regard, au chapitre 11, se tourne vers le passé : l'Exode, l'enfance du peuple, « fils » appelé hors d'Égypte. Huit siècles plus tard, Matthieu rapporte la fuite de Joseph : averti en rêve qu'Hérode veut tuer l'enfant, il gagne l'Égypte de nuit et n'en revient qu'après la mort du roi. L'enfant n'est plus un bébé : la famille s'est installée à Bethléhem, et Jésus est un petit enfant, peut-être âgé de plus d'un an.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le « fils » d'Osée 11:1, au sens premier, c'est Israël collectif — Exode 4:22 l'a nommé « premier-né » dès Moïse. Matthieu, sous inspiration, révèle que ce fils collectif préfigurait le Fils individuel : le verbe « accomplir » (plêroô) signifie ici « porter à sa plénitude », non « prédire puis réaliser » au sens d'un oracle daté. C'est le procédé de la relecture inspirée : l'Exode, événement fondateur, devient le moule d'un second exode en miniature — sortie d'Égypte, séjour, retour au pays. Le chapitre 2 de Matthieu est bâti sur ces correspondances : Bethléhem (Mi 5:2), l'Égypte (Os 11:1), Rama (Jr 31:15), Nazareth (Mt 2:23).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Joseph, averti par l'ange, a protégé l'enfant promis en le conduisant en Égypte, réalisant ainsi une prophétie très ancienne. Les publications présentent Joseph comme le modèle du père : il ne discute pas, il part de nuit ; la vie de l'enfant compte plus que tout. Le séjour est bref — « pas très longtemps » — car l'ange annonce bientôt la mort d'Hérode. Au retour, la peur d'Archélaüs, fils d'Hérode, oriente la famille vers Nazareth en Galilée : chaque étape est guidée.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">2 av. n. è.</td><td>Naissance à Bethléhem ; installation de la famille dans la ville</td></tr>
+<tr><td class="d">2-1 av. n. è.</td><td>Visite des astrologues : l'enfant est dans une maison, ce n'est plus un nouveau-né (Mt 2:11)</td></tr>
+<tr><td class="d">2-1 av. n. è.</td><td>Joseph averti en rêve ; fuite de nuit vers l'Égypte</td></tr>
+<tr><td class="d">1 av. n. è. env.</td><td>Mort d'Hérode ; l'ange ordonne le retour : « d'Égypte j'ai appelé mon fils »</td></tr>
+<tr><td class="d">1 av. n. è. env.</td><td>Archélaüs craint en Judée ; installation à Nazareth (Mt 2:22-23)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La fuite suppose une Égypte accueillante aux Juifs : elle l'était. La colonie juive d'Éléphantine, avec son temple (Ve siècle), les papyrus araméens et, à l'époque de Jésus, l'immense communauté d'Alexandrie — celle de la Septante — offraient gîte, travail et synagogues. Le contexte hérodien est documenté par Josèphe : Hérode, qui fit exécuter sa femme Mariamne et trois de ses fils, était capable de tout massacre utile. Qu'aucune source profane ne rapporte celui de Bethléhem ne surprend pas : voir C004 et les Limites.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'itinéraire probable suit la route côtière : Bethléhem, Hébron ou la plaine philistine, Gaza, puis la piste du nord-Sinaï jusqu'à Péluse et au delta — trois à cinq cents kilomètres selon la destination, quelques semaines de marche en famille. Le delta oriental, avec ses colonies juives, est la destination naturelle. Au retour, la famille évite la Judée d'Archélaüs : la Galilée d'Hérode Antipas, au nord, offre Nazareth, le village d'origine — bouclant ainsi la correspondance avec « il sera appelé Nazaréen » (Mt 2:23).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Les papyrus araméens d'Éléphantine (Ve siècle avant notre ère) prouvent l'ancienneté de l'installation juive en Égypte : contrats, mariages, temple — une diaspora organisée quatre siècles avant Jésus. Les inscriptions et les papyri d'époque ptolémaïque puis romaine confirment la densité du peuplement juif du delta et d'Alexandrie au Ier siècle. En revanche, le séjour de Jésus lui-même — bref, d'une famille pauvre et discrète — ne pouvait laisser aucune trace matérielle identifiable : l'archéologie confirme le cadre, pas le séjour.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Cette fiche distingue trois niveaux : le cadre (diaspora juive en Égypte), attesté ; le récit (la fuite), rapporté par Matthieu seul ; les traditions coptes postérieures (Matareya, Vieux-Caire, Haute-Égypte), signalées comme traditions et non comme preuves — l'Évangile ne donne aucun lieu de séjour. La durée du séjour n'est pas précisée (« jusqu'à ce que je te prévienne »). Au sens premier, Osée 11:1 parle de l'Exode d'Israël : la fiche ne le cache pas, c'est Matthieu qui révèle le second sens. Voir C004 pour le massacre.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'Exode</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">XIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Osée 11:1</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite en Égypte</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2-1</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour : le fils appelé</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1 env.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nazareth</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1 env.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1102013265">Joseph — un bon père et un homme de foi (la fuite)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1102013265</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2012250">Joseph — il protège sa famille<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2012250</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1981807">Matthieu proclame : le Messie est venu !<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1981807</a>
+<a href="https://wol.jw.org/fr/wol/pc/r30/lp-f/2012007/1/0">Jésus Christ, le Messie promis — appendice<br>https://wol.jw.org/fr/wol/pc/r30/lp-f/2012007/1/0</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C003 — D'Égypte j'ai appelé mon fils</span><span>Catégorie A–C</span></div></div>
+</article>
+<article class="fiche" id="C004">
+<div class="visuel"><img src="images/prophe_C004_rachel.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C004 · CATÉGORIE A–C</div>
+<h3>Rachel pleure ses fils — le deuil de Rama</h3>
+<div class="ref">Jérémie 31:15-17 ; Matthieu 2:16-18 ; Genèse 35:16-20 ; Jérémie 40:1</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 607/537/29</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C004 · 0:40</div><audio controls preload="none" src="audio/fiche_C04_rachel.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C04_rachel.mp3 · 0:40 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 31:15-17 ; Matthieu 2:16-18 ; Genèse 35:16-20 ; Jérémie 40:1</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 607/537/29</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P239 ; partie messianique — P590</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« À Rama on entend une voix, des gémissements et des pleurs amers : c'est Rachel qui pleure sur ses fils. Elle a refusé d'être consolée, parce qu'ils ne sont plus. » (Jr 31:15)</li>
+<li>« Alors s'accomplit ce qui avait été dit par Jérémie le prophète : On a entendu à Rama une voix, des pleurs et de grands gémissements : c'est Rachel qui pleure ses enfants. » (Mt 2:17-18)</li>
+<li>« Retiens ta voix des pleurs : ton travail sera récompensé, et ils reviendront du pays de l'ennemi. » (Jr 31:16 — la consolation qui suit le deuil)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérémie 31 appartient au « livre de la consolation », écrit pour l'exil. Rachel est morte depuis près de mille ans quand Jérémie la fait pleurer : mère de Joseph et de Benjamin (Gn 30 ; 35), enterrée sur la route d'Éphratha, elle est l'ancêtre du nord (Joseph) et du sud (Benjamin) — toutes les mères d'Israël en une seule. Rama, à huit kilomètres au nord de Jérusalem, est le lieu où, après la chute de la ville, on rassemble les captifs enchaînés vers Babylone (Jr 40:1) : certains y sont tués, sur la terre de Benjamin où Rachel repose.</p>
+<h4>4 · Explication du texte</h4>
+<p>La figure est une prosopopée : la morte pleure les vivants. « Ils ne sont plus » dit la mort et la déportation sans retour apparent. Le paradoxe géographique — Rachel pleure à Rama, au nord, les enfants de Bethléhem, au sud — est voulu : le cri traverse tout le pays, du territoire de Benjamin à celui de Juda. Matthieu cite le deuil (Jr 31:15) sans citer la consolation qui le suit (Jr 31:16-17) : mais le contexte garde l'espoir — « ils reviendront du pays de l'ennemi », la mort elle-même (1Co 15:26). Le deuil d'Hérode est lu dans la lumière du deuil de l'exil : même pleureuse, même promesse.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est celle du double accomplissement. Premier deuil : au temps de Jérémie, les descendants de Benjamin tués ou enchaînés près de Rama, sur la terre de l'ancêtre. Second deuil, des siècles plus tard : Hérode fait tuer tous les garçons de deux ans et au-dessous à Bethléhem et dans tout son territoire, et ce sont les mères de Bethléhem que Rachel personnifie. Dans les deux cas, la même voix dit la peine des mères juives sur leurs enfants morts — et la même consolation répond : le retour, et finalement la résurrection.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">XVIIIe s. av. n. è.</td><td>Mort de Rachel sur la route d'Éphratha ; stèle sur son tombeau (Gn 35:19-20)</td></tr>
+<tr><td class="d">VIIe-VIe s. av. n. è.</td><td>Jérémie 31:15 : Rachel pleure dans le livre de la consolation</td></tr>
+<tr><td class="d">607 av. n. è.</td><td>Chute de Jérusalem ; captifs rassemblés à Rama (Jr 40:1) : premier deuil</td></tr>
+<tr><td class="d">537 av. n. è.</td><td>Retour de l'exil : première consolation, « ils reviennent du pays de l'ennemi »</td></tr>
+<tr><td class="d">1 av. n. è. env.</td><td>Massacre de Bethléhem : second deuil (Mt 2:16-18) ; la résurrection reste sans date</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le premier deuil est ancré dans le récit de Jérémie 40:1 : Rama, ville de Benjamin, sert de camp de rassemblement des captifs après 607. Le second s'inscrit dans le règne d'Hérode le Grand, dont Josèphe documente la cruauté familiale : exécution de Mariamne, de ses fils Alexandre, Aristobule puis Antipater — un roi qui tue ses propres enfants peut ordonner la mort de ceux de Bethléhem. Aucune source profane ne rapporte directement le massacre : Bethléhem est un bourg de quelques centaines d'habitants, et les victimes, selon les estimations démographiques courantes, se comptent par dizaines au plus — sous le seuil des chroniques impériales.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La fiche tient sur huit kilomètres de part et d'autre de Jérusalem : Rama (probablement er-Ram), au nord, en Benjamin ; Bethléhem, au sud, en Juda ; et entre les deux, sur la route, le tombeau de Rachel (Gn 35:19 : « c'est Bethléhem »). « Tout son territoire » (Mt 2:16) désigne les hameaux et fermes dépendant du bourg. Que le cri de Bethléhem soit « entendu à Rama » n'est pas une erreur de carte : c'est la géographie du deuil national, du nord au sud, comme aux jours de l'exil.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La démographie historique éclaire le silence des sources : un bourg judéen d'environ 300 à 1 000 habitants compte, en ordre de grandeur, une à deux dizaines de garçons de deux ans et au-dessous — un crime atroce et local, invisible à l'échelle de l'historiographie romaine. L'identification de Rama à er-Ram repose sur la toponymie et la distance à Jérusalem (8 km, conforme à Juges 19 et 1 Samuel), non sur une inscription : elle est probable, pas prouvée. Le « tombeau de Rachel » actuel est un sanctuaire de tradition, entretenu depuis des siècles, pas un site fouillé.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Comme en C003 et selon la méthode de F004, la fiche l'énonce : le massacre de Bethléhem n'a pas d'attestation profane directe, et elle n'en fabrique pas — elle offre le contexte (la cruauté documentée d'Hérode) et l'échelle (un bourg, des dizaines de victimes au plus). Matthieu cite le deuil sans la consolation : la fiche cite les deux (Jr 31:15-17), pour ne pas faire dire au texte moins qu'il ne dit. L'identification de Rama et le tombeau de Rachel relèvent de la tradition probable, pas de la preuve inscrite.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tombeau de Rachel</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Gn 35</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'oracle</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jr 31</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rama : 1er deuil</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour : consolation</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bethléhem : 2nd deuil</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1 env.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/402014927">Questions des lecteurs : Rachel pleure sur ses fils ?<br>https://wol.jw.org/fr/wol/d/r30/lp-f/402014927</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1981807">Matthieu proclame : le Messie est venu !<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1981807</a>
+<a href="https://wol.jw.org/fr/wol/pc/r30/lp-f/2012007/1/0">Jésus Christ, le Messie promis — appendice<br>https://wol.jw.org/fr/wol/pc/r30/lp-f/2012007/1/0</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C004 — Rachel pleure ses fils — le deuil de Rama</span><span>Catégorie A–C</span></div></div>
+</article>
+<article class="fiche" id="C005">
+<div class="visuel"><img src="images/prophe_C005_messager.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C005 · CATÉGORIE A–C</div>
+<h3>Le messager devant lui — Jean le Baptiseur</h3>
+<div class="ref">Malaki 3:1 ; 4:5-6 ; Ésaïe 40:3 ; Matthieu 11:7-14 ; 17:10-13 ; Luc 1:16-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C005 · 0:42</div><audio controls preload="none" src="audio/fiche_C05_messager.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C05_messager.mp3 · 0:42 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Malaki 3:1 ; 4:5-6 ; Ésaïe 40:3 ; Matthieu 11:7-14 ; 17:10-13 ; Luc 1:16-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Malaki — P516 (3:1-6), P519 (4:1-6)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Voici que j'envoie mon messager, et il préparera le chemin devant moi. Et soudain viendra à son temple le Seigneur que vous cherchez, et le messager de l'alliance en qui vous prenez plaisir. » (Ml 3:1)</li>
+<li>« Je vous envoie Élie le prophète avant que vienne le jour de Jéhovah, grand et redoutable. » (Ml 4:5)</li>
+<li>« C'est lui l'Élie qui devait venir. » (Mt 11:14, Jésus au sujet de Jean)</li>
+<li>« Il marchera devant lui avec l'esprit et la puissance d'Élie. » (Lc 1:17, l'ange au sujet de Jean)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Malaki prophétise au Ve siècle, après le retour d'exil : le temple est rebâti, mais les prêtres méprisent l'alliance de Lévi et le peuple divorce et fraude (Ml 2). L'oracle répond au découragement : Dieu va envoyer son messager, puis venir lui-même à son temple avec le messager de l'alliance — pour purifier les fils de Lévi et juger (Ml 3:2-5). Entre Malaki et Jean, aucun livre prophétique inspiré : l'attente mûrit pendant des siècles, nourrie par Ésaïe 40:3 — « une voix dans le désert » — et par Daniel 9.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le verset distingue deux envoyés : le messager-précurseur, qui prépare le chemin, puis le Seigneur accompagné du messager de l'alliance, qui vient au temple. L'« Élie » de Malaki 4:5 n'est pas le prophète ressuscité : Jean lui-même, interrogé, nie être Élie (Jn 1:21) — et Jésus affirme qu'il est « l'Élie qui devait venir » (Mt 11:14). La contradiction se résout en Luc 1:17 : Jean marche « avec l'esprit et la puissance d'Élie » — même fonction, même vêtement de poil, même désert, même appel à la repentance — sans être la même personne. Aucune réincarnation : une succession de rôles.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que le messager et l'Élie de Malaki, c'est Jean le Baptiseur, le précurseur de Jésus — les Évangiles l'affirment expressément (Mt 11:10-14 ; 17:10-13 ; Mc 9:11-13 ; Lc 1:16-17, 76). Jésus, lui, est le messager de l'alliance : accompagnant Jéhovah, il vient au temple pour l'inspecter et le purifier — les deux purifications du temple (Jn 2 ; Mt 21) en sont les actes visibles. Jean est le portier qui ouvre au berger (Jn 10:3) : « il faut qu'il grandisse, et que moi je diminue » (Jn 3:30).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Ve s. av. n. è.</td><td>Malaki 3:1 et 4:5 : le messager, puis Élie, sont annoncés</td></tr>
+<tr><td class="d">29 de n. è.</td><td>15e année de Tibère : la parole de Dieu vient à Jean au désert (Lc 3:1-2)</td></tr>
+<tr><td class="d">29 de n. è., automne</td><td>Jean baptise Jésus au Jourdain ; Dieu reconnaît son Fils (Mt 3 ; Mc 1 ; Lc 3)</td></tr>
+<tr><td class="d">30-33 de n. è.</td><td>« Il grandit, je diminue » : arrestation puis exécution de Jean à Machéronte</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Le messager de l'alliance purifie le temple à Pâque (Mt 21:12-13)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Jean est l'une des figures évangéliques les mieux attestées hors de la Bible : Josèphe (Antiquités, XVIII) rapporte sa prédication, son baptême, sa popularité et son exécution à Machéronte sur l'ordre d'Hérode Antipas. Le cadre de Luc 3:1-2 est un faisceau de synchronismes vérifiables : Tibère (15e année : 29), Ponce Pilate — dont l'inscription de Césarée (1961) confirme le titre de préfet de Judée — Hérode Antipas, Philippe, Lysanias, Anne et Caïphe, dont un ossuaire inscrit au nom de Qayafa a été découvert à Jérusalem en 1990. Chaque nom propre de Luc a trouvé sa pierre ou sa monnaie.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le ministère du précurseur est un ministère du désert et du fleuve : désert de Judée, Jourdain — Béthanie au-delà du Jourdain (Jn 1:28), Énon près de Salim « parce qu'il y avait là beaucoup d'eau » (Jn 3:23). Machéronte, forteresse d'Hérode à l'est de la mer Morte, sur son piton dominant les eaux, est le lieu de l'emprisonnement et de l'exécution selon Josèphe. Le Jourdain du baptême, enfin, est le fleuve de la traversée : Israël y était entré dans le pays ; le Messie y entre dans son ministère.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'épigraphie a suivi Luc pas à pas. La pierre de Pilate (Césarée, 1961) porte en latin le nom de Ponce Pilate et son titre de préfet de Judée, confirmant la fonction exacte donnée par Luc et Tacite. L'ossuaire de Caïphe (1990) atteste le grand prêtre de la Passion. Les monnaies de Tibère permettent de dater sa 15e année (29 de notre ère), point de départ du ministère de Jean dans le système chronologique de cette fiche. Les fouilles de Machéronte ont dégagé le palais-forteresse hérodien décrit par Josèphe.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>L'année de l'exécution de Jean n'est pas fixée dans cette fiche : les récits la placent avant 33, sans plus. À Machéronte, la forteresse est identifiée et fouillée, mais le lieu précis de l'exécution dans le palais ne l'est pas. La fiche ne fait pas de Jean une réincarnation d'Élie : Jean 1:21 l'interdit, et Luc 1:17 donne le sens — l'esprit et la puissance, c'est-à-dire le rôle. L'application moderne de Malaki 3:1 (l'inspection de 1918-1919 selon les publications) sort du cadre de cette fiche, consacrée au Ier siècle.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Malaki 3-4</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jean au désert</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baptême de Jésus</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Machéronte</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30-33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple purifié</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012800">Malaki (livre de) — le messager et Élie<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012800</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1980527">Jean le Baptiste, le portier du berger<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1980527</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/39/3">Malaki 3 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/39/3</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C005 — Le messager devant lui — Jean le Baptiseur</span><span>Catégorie A–C</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie A–C</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>A010 — Damas — ôtée du nombre des villes</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amos</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">765</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 17</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">734</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Damas</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Retsîn</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Second châtiment</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe s.</text>
+</svg>
+<h4>A011 — Kédar et Hatsor — la gloire des archers du désert</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 21</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe-VIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assurbanipal</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nebucadnetsar</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe s.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Roi de Kédar</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tentes bédouines</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Auj.</text>
+</svg>
+<h4>A012 — Élam — l'arc brisé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin de l'indépendance</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Absorption perse</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">550</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Suse capitale</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539+</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pentecôte : Élamites</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>A013 — L'Assyrie — la verge brisée en une nuit</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lakis assiégée</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La nuit des 185 000</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retraite</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assassinat à Ninive</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">681</text>
+</svg>
+<h4>C001 — Bethléhem Éphratha — le lieu de naissance</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Michée 5:2</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit d'Auguste</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">2 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Naissance</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'aveu des prêtres</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">2-1</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baptême</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+</svg>
+<h4>C002 — La vierge — Emmanuel, Dieu avec nous</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le signe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">734</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier horizon</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">732-722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Septante : parthénos</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe s.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Annonciation</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3-2</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Naissance</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2</text>
+</svg>
+<h4>C003 — D'Égypte j'ai appelé mon fils</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'Exode</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">XIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Osée 11:1</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite en Égypte</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2-1</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour : le fils appelé</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1 env.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nazareth</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1 env.</text>
+</svg>
+<h4>C004 — Rachel pleure ses fils — le deuil de Rama</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tombeau de Rachel</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Gn 35</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'oracle</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jr 31</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rama : 1er deuil</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour : consolation</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bethléhem : 2nd deuil</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1 env.</text>
+</svg>
+<h4>C005 — Le messager devant lui — Jean le Baptiseur</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Malaki 3-4</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jean au désert</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baptême de Jésus</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Machéronte</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30-33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple purifié</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 7.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-24 · phase 7, vague
+3 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

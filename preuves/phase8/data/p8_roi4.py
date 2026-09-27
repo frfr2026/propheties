@@ -1,0 +1,913 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""PHASE 8 · vague P8-16 · RO — Rois (4) : P091-P096."""
+# pylint: disable=invalid-name,line-too-long
+
+CAT = dict(
+    code="RO",
+    nom="Rois (4) — Jéhu à Ézéchias",
+    intro=("Jéhu oint à Ramoth efface la maison d'Achab jusqu'aux chiens de "
+           "Jizreel ; ses fils tiendront le trône quatre générations ; Joas "
+           "frappe trois fois et ne vaincra que trois fois ; Sennachérib "
+           "blasphème, perd cent quatre-vingt-cinq mille hommes en une nuit, "
+           "rentre à Ninive et tombe sous l'épée de ses fils ; Ézéchias "
+           "pleure face au mur et reçoit quinze années de plus."),
+    vague="P8-16",
+)
+
+FICHES = []
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+    n="RO091", titre="« Tu frapperas la maison d'Achab » : l'onction de Jéhu à Ramoth",
+    ref="2 Rois 9:6-10",
+    statut="Accomplie",
+    cat="RO", syst="Onction Jéhu (Ramoth → Jizreel → flèche → chiens → 70 têtes → Samarie)",
+    reg="Registre : 2 Rois — P091 (9:6-10 : Jéhu effacera la maison d'Achab) ; accomplissement 2R 9:24-37 ; 10:11-17",
+    texte=[
+        "« ÉLISÉE… APPELA… le JEUNE PROPHÈTE… PRENDS cette FIOLE… RAMOTH. » (9:1 — Ramoth !)",
+        "« VERSE sur sa TÊTE… Je t'OINS ROI… OUVRE… FUIS. » (9:3 — fuis !)",
+        "« Je t'OINS ROI sur le PEUPLE… sur ISRAËL. » (9:6 — oins !)",
+        "« Tu FRAPPERAS la MAISON d'ACHAB… je VENGERAI… le SANG. » (9:7 — vengerai !)",
+        "« TOUTE la MAISON PÉRIRA… MÂLES… ESCLAVE ou LIBRE. » (9:8 — périra !)",
+        "« Comme JÉROBOAM… comme BAASHA. » (9:9 — comme !)",
+        "« Les CHIENS MANGERONT JÉZABEL… PERSONNE pour l'ENTERRER. » (9:10 — enterrer !)",
+        "« JÉHU… BANDA l'ARC… entre les ÉPAULES… le CŒUR. » (9:24 — cœur !)",
+        "« JETEZ-LA… le SANG… les CHIENS… CRÂNE… PIEDS… PAUMES. » (9:33-35 — paumes !)",
+        "« 70 FILS… ÉCRIVEZ… TÊTES… 2 PANIERS… ENTASSEZ. » (10:1-8 — paniers !)",
+        "« 42 FRÈRES d'ACHAZIA… CITERNES… AUCUN RESTÉ. » (10:14 — resté !)",
+        "« Tout RESTE… à SAMARIE… selon la PAROLE. » (10:17 — parole !)",
+    ],
+    contexte=(
+        "Ramoth-Galaad, ~841 — la GUERRE de SYRIE (9:14 : JORAM + ACHAZIA (contre "
+        "HAZAËL (à RAMOTH (RO090 : HAZAËL (ROI (la SYRIE (ATTAQUE ! : les GUERRES "
+        "(de RAMOTH — RO083 (ACHAB (MEURT (RO091 (JORAM (BLESSÉ : les RAMOTH (les "
+        "PIÈGES (les ROIS (d'ISRAËL (y SAIGNENT !) + JORAM BLESSÉ (9:15 : « les "
+        "SYRIENS l'AVAIENT BLESSÉ » (patsa' — BLESSER (le ROI (à JIZREEL (il SE FAIT "
+        "SOIGNER (le LIT (du ROI (cf. RO084 : ACHAZIA (le LIT (le TREILLIS ! : les "
+        "LITS — les ROIS (BLESSÉS (les ROIS (JUGÉS !) + ACHAZIA VISITEUR (9:16 : le "
+        "ROI de JUDA (DESCEND (VOIR (JORAM (les 2 ROIS (ENSEMBLE (à JIZREEL (les 2 "
+        "(dans la NASSE (JÉHU (VIENT : les VISITES — les MORTELLES (les 2 COURONNES "
+        "(1 SEUL (LIEU !). JÉHU (9:20 : « il CONDUIT avec FURIE » (beshigga'on — "
+        "FURIE (le GÉNÉRAL (FOU (du VOLANT (les GUETTEURS (RECONNAISSENT (la CONDUITE "
+        "(! : les CONDUCTEURS — JÉHU (le FURIEUX (les CHARS (les FOUS !) + FILS de "
+        "JOSAPHAT fils de NIMSHI (9:2, 14 : le NOM (JÉHU (le ZÉLÉ (la FAMILLE (les "
+        "OFFICIERS : les NOMS — les DESTINS (JÉHU (JUGE !). La FIOLE (9:1-3 : ÉLISÉE "
+        "(ENVOIE (un JEUNE (les PROPHÈTES (les FILS (les ÉCOLES (RO085-RO089 ! : les "
+        "JEUNES — les MESSAGERS (les COURSES (les ONCTIONS !) + « PRENDS cette FIOLE "
+        "(pakh) d'HUILE », 9:1 : pakh — FIOLE (petite ! (pas CORNE (pas ONCTION "
+        "PUBLIQUE (SECRÈTE (les COUPS (les SECRETS !) + « OUVRE la PORTE et FUIS », "
+        "9:3 : nus — FUIR (le PROPHÈTE (VERSE (et COURT (les ONCTIONS (les ÉCLAIRS "
+        "(pas de CÉRÉMONIE (MISSION (pas FÊTE !). 1R 19:16 (l'ORDRE (ANCIEN : ÉLIE "
+        "(« OINS JÉHU » (ÉLIE (OINT (ÉLISÉE (ÉLISÉE (OINT (JÉHU (les 3 ONCTIONS — "
+        "RO090 (HAZAËL (NOMMÉ (JÉHU (OINT (ÉLISÉE (OINT : les MISSIONS — les MAÎTRES "
+        "(les DISCIPLES (les ORDRES (les EXÉCUTIONS (20 ANS (PLUS TARD !)."
+    ),
+    explication=(
+        "« Je t'OINS (mashachti) ROI », 9:6 : mashach — OINDRE (le SEUL (ROI du NORD "
+        "(OINT (3 × DIT (9:3, 6, 12 ! : les OINTS — le NORD (les USURPATEURS (JÉHU "
+        "(l'OINT (Dieu CHOISIT (l'EXÉCUTEUR !). « Tu FRAPPERAS (vehikkita) la MAISON "
+        "d'ACHAB », 9:7 : nakah — FRAPPER (l'ORDRE (DIRECT (pas CONSEIL (TU (FRAPPERAS "
+        "(les VERBES — les IMPÉRATIFS (les MISSIONS (les JUGEMENTS !). « Je VENGERAI "
+        "(neqamti)… le SANG de mes SERVITEURS les PROPHÈTES », 9:7 : naqam — VENGER "
+        "(le DOUBLE (SANG (PROPHÈTES (JÉZABEL (a TUÉ (1R 18:4 ! + SERVITEURS (NABOTH "
+        "(RO082 ! : les SANGS — les PROPHÈTES + les JUSTES (les DETTES (les DEUX !) + "
+        "101973250 : « la MAISON d'ACHAB s'était CHARGÉE d'une DETTE de SANG » "
+        "(OFFICIEL ! (les DETTES — les EXPIATIONS (Nb 35:33 : « PAS d'EXPIATION… que "
+        "par le SANG » (les LOIS — les DETTES (les PAIEMENTS !). « TOUTE la MAISON "
+        "PÉRIRA », 9:8 : kol-beyt — TOUTE (pas QUELQUES (TOUTE (les TOUT (les JUGEMENTS "
+        "(les TOTAUX !) + « je RETRANCHERAI (vehikhrati)… MÂLES… ESCLAVE ou LIBRE », "
+        "9:8 : karat — RETRANCHER (la FORMULE (3e EMPLOI (1R 14:10 JÉROBOAM (1R 16:11 "
+        "BAASHA (1R 21:21 ACHAB (RO078 ! RO079 ! : les FORMULES — les 3 MAISONS (les "
+        "MÊMES (MOTS (les MÊMES (SORTS !). « Comme la MAISON de JÉROBOAM… de BAASHA », "
+        "9:9 : les PRÉCÉDENTS (CITÉS (Dieu RAPPELLE (ses JUGEMENTS (les EXEMPLES — les "
+        "AVERTISSEMENTS (les IGNORÉS !). « Les CHIENS MANGERONT JÉZABEL… PERSONNE pour "
+        "l'ENTERRER », 9:10 : kelev — CHIENS (RO082 (ÉLIE (21:23 : « les CHIENS "
+        "MANGERONT » (ÉLISÉE (RÉPÈTE (les PAROLES — les MAÎTRES (les DISCIPLES (les "
+        "MÊMES (CHIENS !) + « PERSONNE pour l'ENTERRER » (lo-qover : PAS d'ENTERREMENT "
+        "(la HONTE (SUPRÊME (les REINES (les FOSSES (les CHIENS (les FOSSOYEURS !)."
+    ),
+    interpretation=(
+        "L'EXÉCUTEUR (pas le VENGEUR : JÉHU (MISSIONNÉ (les VERBES (de Dieu (« JE "
+        "VENGERAI » (Dieu VENGE (JÉHU (FRAPPE : les RÔLES — Dieu (le JUGE (JÉHU (l'HUISSIER "
+        "(les COUPS (les LÉGAUX !) + 101973250 : « elle s'était ACQUITTÉE… de la MISSION "
+        "CONFIÉE par Dieu » (OFFICIEL ! (les MISSIONS — les FÉLICITATIONS (RO092 : « tu "
+        "as BIEN EXÉCUTÉ » (10:30 ! : les EXÉCUTEURS — les FÉLICITÉS !). Le PARADOXE OSÉE "
+        "(Os 1:4 : « Je CHÂTIERAI la MAISON de JÉHU pour le SANG… à JIZREEL » : COMMENT "
+        "(FÉLICITER (puis PUNIR (le MÊME (SANG (les DÉBATS — les EXCÈS ? (ACHAZIA ? "
+        "les 42 ? (les PRÊTRES ? : PROPOSÉ (les ZÈLES (les DÉBORDEMENTS (pas IMPOSÉ "
+        "(le TEXTE (de OSÉE (JUGE (la DYNASTIE (pas la MISSION !) + 101973250 : « Il ne "
+        "s'est PAS… CHARGÉ d'une DETTE de SANG en DÉTRUISANT la MAISON d'ACHAB » "
+        "(OFFICIEL ! (les DETTES — les NON (les MISSIONS (les PROPRES !). JIZREEL (yizr'el "
+        "— Dieu SÈME : le LIEU (du CRIME (NABOTH (RO082 ! (le LIEU (du JUGEMENT (JORAM "
+        "(JETÉ (9:25-26 : « sur le CHAMP de NABOTH » ! : les CHAMPS — les CRIMES (les "
+        "JUGEMENTS (les MÊMES (TERRES !) + « J'ai VU… le SANG de NABOTH… je te le RENDRAI "
+        "sur ce CHAMP », 9:26 : shallem — RENDRE (les MONNAIES — les SANGS (les CHAMPS "
+        "(les REMBOURSEMENTS !). Le SEUL OINT du NORD (les 9 DYNASTIES (JÉHU (SEUL (OINT "
+        "(les USURPATEURS (les AUTRES (les OINTS (1 SEUL : les ONCTIONS — les RARES (les "
+        "Missions (les UNIQUES !)."
+    ),
+    hist=(
+        "L'OBÉLISQUE NOIR (SALMANASAR III (NIMROUD (1846 (les RELIEFS — JÉHU (PROSTERNÉ "
+        "(« YAUA fils de OMRI » (le TRIBUT (~841 (les PREUVES — les ROIS (les PAÏENS "
+        "(les PIERRES (les NOMS (les MÊMES !) + « FILS d'OMRI » (pas FILS (de NIMSHI "
+        "(les ASSYRIENS (NOMMENT (la DYNASTIE (précédente (les ERREURS ? (les USAGES ? "
+        "(les TRIBUTS (les DATÉS (~841 ! : les INSCRIPTIONS — les CONFIRMATIONS (les "
+        "CHRONOLOGIES (les CROISÉES !). La STÈLE de TEL DAN (~800 (les FRAGMENTS — "
+        "HAZAËL ? (l'AUTEUR (probable (« J'AI TUÉ… JORAM… ACHA… » (les REVENDICATIONS "
+        "(SYRIENNES (la BIBLE (DIT (JÉHU (la PIERRE (DIT (HAZAËL : les VERSIONS — les "
+        "RIVALES (les PROPAGANDES (les GUERRES (les RÉCITS (les DEUX (les ROIS (MORTS "
+        "(les TUEURS (les DISPUTÉS !) + « MAISON de DAVID » (beytdwd (la PREMIÈRE (MENTION "
+        "(EXTRA-BIBLIQUE (de DAVID (les PREUVES — les DAVID (les PIERRÉS !). La CHRONOLOGIE "
+        "(~841 : JÉHU (28 ANS (10:36 (les DATES (les THIELE (les ABSOLUES (les CIRCA (les "
+        "RELATIVES (les SÛRES (les SYNCHRONISMES (ASSYRIENS (les ANCRAGES !). Les 70 FILS "
+        "(10:1 : le HAREM (d'ACHAB (les DYNASTIES (les NOMBREUSES (les POLYGAMIES (les "
+        "ROYALES (les 70 (les TÊTES (les PANIERS (les COUPS (les TOTAUX !)."
+    ),
+    geo=(
+        "RAMOTH-GALAAD (le FRONT (SYRIEN (la TRANSJORDANIE (Tell er-RUMEITH ? (les SITES "
+        "(les PROPOSÉS (les DÉBATS (les FRONTS (les GUERRES (les PERMANENTES !) + les "
+        "OFFICIERS (ASSIS (9:5 : le CONSEIL (de GUERRE (le JEUNE (ENTRE (« J'AI un MOT » "
+        "(les MOTS (les ONCTIONS (les COUPS !). JIZREEL (la VALLÉE (la PLAINE (d'ESDRAELON "
+        "(le PALAIS (d'HIVER (les ROIS (du NORD (NABOTH (RO082 (la VIGNE (le CHAMP (9:25 ! "
+        ": les VALLÉES — les CRIMES (les JUGEMENTS (les MÊMES (SOLS !) + la TOUR (9:17 : "
+        "le GUETTEUR (tsopheh — GUETTER (les TROUPES (les POUSSIÈRES (les MESSAGERS (les "
+        "2 (les AVALÉS (les QUESTIONS (« PAIX ? » (SHALOM ? : les GUETTEURS — les VOIX "
+        "(les COUPS (les ANNNONCÉS !). Le CHAMP de NABOTH (9:25 : heleq — CHAMP (JETEZ-l'y "
+        "(BIDQAR (l'OFFICIER (les ORDRES (les PRÉCIS (les VENGEANCES (les GÉOGRAPHIQUES !). "
+        "SAMARIE (la CAPITALE (les 70 (les TÊTES (les PORTES (10:8 : « ENTASSEZ… 2 TAS… à "
+        "l'ENTRÉE » (les TAS (les PORTES (les LEÇONS (les PUBLIQUES !) + BETH-ÉKED (10:12 : "
+        "la TONTE (les BERGERS (les 42 (les CITERNES (bor — CITERNES (les TROUS (les TOMBES "
+        "(les FRÈRES (les ÉGARÉS !)."
+    ),
+    sci=(
+        "La BALISTIQUE (9:24 : « BANDA (malle') l'ARC… FRAPPA… entre les ÉPAULES (zero'ot) "
+        "… SORTIT par le CŒUR » (les FLÈCHES (les CHARS (les FUITES (JORAM (TOURNE (le DOS "
+        "(les DOS (les CIBLES (les FLÈCHES (les TRAVERSANTES : les TIRS — les CHARS (les "
+        "MOUVEMENTS (les PRÉCISIONS (les MORTELLES !). La DÉFENESTRATION (9:33 : « JETEZ-LA » "
+        "(shimtuhu — JETER (les EUNUQUES (OBÉISSENT (les FENÊTRES (les PALAIS (les CHUTES "
+        "(les CHEVAUX (PIÉTINENT (9:33 : ramas — PIÉTINER (cf. RO089 : l'OFFICIER (PIÉTINÉ "
+        "(7:17 ! : les PIÉTINÉS — JÉZABEL + l'OFFICIER : les FOULES (les SABOTS !). Les "
+        "CHIENS (9:35-36 : « CRÂNE… PIEDS… PAUMES » (les RESTES (les DURS (les OS (les "
+        "EXTRÉMITÉS (les CHAROGNARDS (les RAPIDES (les PROPHÉTIES (les PRÉCISES (RO082 : "
+        "« MANGERONT » (21:23 ! : les MANGÉS — les PRÉDITS (les EXACTS !). La LOGISTIQUE "
+        "(10:7 : 70 TÊTES (2 PANIERS (dudim — PANIERS (les TRANSPROTS (SAMARIE → JIZREEL "
+        "(~80 KM ? (les TÊTES (les VOYAGES (les COUPS (les ORGANISÉS !). La PSYCHOLOGIE "
+        "du COUP (9:20 : FURIE (la VITESSE (les COUPS (les RAPIDES (les COMPLOTS (les "
+        "SECRETS (les OFFICIERS (RALLIÉS (9:13 : « JÉHU EST ROI ! » (les MANTEAUX (les "
+        "MARCHES (les TROMPETTES : les PROCLAMATIONS — les ESCALIERS (les TROMPETTES (les "
+        "ROIS (les IMPROVISÉS !)."
+    ),
+    schema=(
+        "JÉHU EN 14 TEMPS : RAMOTH (la GUERRE (SYRIE (les OFFICIERS (ASSIS !) → FIOLE (le JEUNE "
+        "(« PRENDS » : les COURSES !) → « J'AI un MOT » (les MOTS (les SECRETS !) → CHAMBRE (« VERSE "
+        "sur sa TÊTE » : les ONCTIONS (les SECRÈTES !) → « Je t'OINS » + « FRAPPERAS » + « VENGERAI » "
+        "(les 3 VERBES (les MISSIONS !) → « Comme JÉROBOAM… BAASHA » (les PRÉCÉDENTS !) → « CHIENS… "
+        "JÉZABEL » (les RÉPÉTITIONS (RO082 !) → FUIS (« OUVRE… FUIS » : les ÉCLAIRS !) → « JÉHU EST ROI » "
+        "(MANTEAUX + TROMPETTE : les PROCLAMATIONS !) → JIZREEL (« CONDUIT avec FURIE » : les FOUS (du VOLANT !) "
+        "→ « PAIX ?… QUOI, PAIX ? » (les QUESTIONS (les AVALÉES !) → FLÈCHE (« entre les ÉPAULES… CŒUR » : "
+        "les TIRS !) → CHAMP (« JETE-LE sur le CHAMP de NABOTH » : les VENGEANCES (les GÉOGRAPHIQUES !) → "
+        "JÉZABEL (« FARDE… FENÊTRE… JETEZ-LA… CHIENS » : les REINES (les MANGÉES !) → 70 (« TÊTES… PANIERS… "
+        "TAS » : les LEÇONS (les PUBLIQUES !) → SAMARIE (« Tout RESTE… selon la PAROLE » : les PAROLES (les "
+        "ACCOMPLIES !). Le jeune verse, fuit — et Jéhu conduit avec furie vers Jizreel."
+    ),
+    limites=(
+        "OSÉE 1:4 (le DÉBAT (les SIÈCLES (FÉLICITER (10:30 (puis PUNIR (Os 1:4 (les SOLUTIONS "
+        "(les EXCÈS ? (les 42 ? (ACHAZIA ? (les PRÊTRES ? (les INTENTIONS ? (zèle PUR ? (AMBITION ? : "
+        "PROPOSÉ (les NUANCES (pas IMPOSÉ (le TEXTE (d'OSÉE (JUGE (la FIN (de la DYNASTIE (au MÊME "
+        "(LIEU (les MIROIRS — JIZREEL (le DÉBUT (JIZREEL (la FIN !). RAMOTH (le SITE (Tell er-RUMEITH ? "
+        "(Reineh ? (les CANDIDATS (les FOUILLES (les DÉBATS (les FRONTS (les INCERTAINS (les TEXTES (les "
+        "SÛRS : PROPOSÉ (les SITES (pas IMPOSÉ (les NOMS (les MODERNES !). TEL DAN (l'AUTEUR (HAZAËL ? "
+        "(les FRAGMENTS (les BRISÉS (les LECTURES (les RECONSTITUÉES (les « J'AI TUÉ » (les REVENDICATIONS "
+        "(les PROPAGANDES (les CONTREDITES (par la BIBLE : les PIERRES — les VERSIONS (les RIVALES (les "
+        "CRITIQUES (les PRUDENTES !). Les DATES (~841 (les CIRCA (les THIELE (les GALIL (les DÉBATS (les "
+        "ANNÉES (les ABSOLUES (les INCERTAINES (les SYNCHRONISMES (les SÛRS (les ASSYRIENS (les ANCRAGES !). "
+        "ACHAZIA (9:27 : TUÉ (par JÉHU ? (les ARCHERS ? (MEGUIDDO (les BLESSURES (les MORTS (les RÉCITS (les "
+        "PARALLÈLES (2Ch 22:9 : CACHÉ (à SAMARIE ! : les VERSIONS — les COMPLÉMENTAIRES (les HARMONISÉES (pas "
+        "les CONTRADITOIRES !)."
+    ),
+    accomplissement=[(("9:1-3", "FIOLE + « OINS » + « FUIS » (RAMOTH)")),
+        (("9:6-10", "« FRAPPERAS » + « VENGERAI » + « PÉRIRA » + « CHIENS »")),
+        (("9:24-26", "FLÈCHE (CŒUR) + CHAMP (NABOTH !)")),
+        (("9:30-37", "JÉZABEL (FENÊTRE + CHIENS + PAUMES !)")),
+        (("10:1-11", "70 TÊTES (PANIERS + TAS)")),
+        (("10:14-17", "42 FRÈRES + RESTE (SAMARIE) + « selon la PAROLE »"))],
+    tl=[(("9:1", "FIOLE (RAMOTH)")),
+        ((("9:6"), "« OINS » (ROI)")),
+        ((("9:24"), "FLÈCHE (CŒUR)")),
+        ((("9:33"), "« JETEZ-LA »")),
+        ((("10:17"), "« selon la PAROLE »"))],
+    src=[("Suffit-il de faire de bonnes œuvres ? (Jéhu, dette de sang, 2R 9-10)", "https://wol.jw.org/fr/wol/d/r30/lp-f/101973250"),
+        ("2 Rois 9 — Bible d'étude (onction de Jéhu, 9:1-37)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/9"),
+        ("2 Rois 9 — Traduction du monde nouveau (Jéhu, Jizreel)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/9")],
+    img="images/prophe_RO091_jehu.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+    n="RO092", titre="« Jusqu'à la quatrième génération » : la dynastie promise à Jéhu",
+    ref="2 Rois 10:30",
+    statut="Accomplie",
+    cat="RO", syst="Dynastie Jéhu (Jéhu → Joakhaz → Joas → Jéroboam II → Zacharie 6 mois)",
+    reg="Registre : 2 Rois — P092 (10:30 : fils jusqu'à la 4e génération sur le trône) ; accomplissement 2R 13:1-9 ; 14:23 ; 15:8-12",
+    texte=[
+        "« JÉHU EXTERMINA BAAL d'ISRAËL. » (10:28 — extermina !)",
+        "« Il NE SE DÉTOURNA PAS des VEAUX… JÉROBOAM. » (10:29 — détourna !)",
+        "« Tu as BIEN EXÉCUTÉ… 4e GÉNÉRATION sur le TRÔNE. » (10:30 — génération !)",
+        "« Il NE PRIT PAS GARDE… de TOUT son CŒUR. » (10:31 — cœur !)",
+        "« HAZAËL ENTAMA… tout le TERRITOIRE. » (10:32-33 — entama !)",
+        "« JÉHU… 28 ANS… JOAKHAZ RÉGNA. » (10:35-36 — Joakhaz !)",
+        "« JOAKHAZ… 17 ANS… fit le MAL. » (13:1-2 — mal !)",
+        "« JOAS… 16 ANS… reprit les VILLES… 3 FOIS. » (13:10, 25 — fois !)",
+        "« JÉROBOAM… 41 ANS… RÉTABLIT la FRONTIÈRE. » (14:23-25 — frontière !)",
+        "« ZACHARIE… 6 MOIS… FRAPPA… SHALLUM RÉGNA. » (15:8-10 — mois !)",
+        "« AINSI… la PAROLE… 4e GÉNÉRATION… IL EN FUT AINSI. » (15:12 — ainsi !)",
+    ],
+    contexte=(
+        "Samarie, ~841-752 — la RÉCOMPENSE (10:30 : APRÈS (le MASSACRE (de BAAL (10:18-28 : "
+        "la RUSE (« JÉHU… RASSEMBLA… SACRIFICE… GRAND » (les PRÊTRES (les PIÉGÉS (les 80 "
+        "(les ÉPÉES (le TEMPLE (les DÉMOLI (les LATRINES ! (10:27 : « ils en FIRENT des "
+        "LATRINES » (mahara'ot — LATRINES (le TEMPLE (les TOILETTES (les HUMILIATIONS — "
+        "les SUPRÊMES ! : les RUSES — les SAINTES (les PIÈGES (les DIVINS !) + Dieu PARLE "
+        "(10:30 : « JÉHOVAH DIT à JÉHU » (les PAROLES (les RARES (Dieu PARLE (DIRECT (au "
+        "ROI (les RÉCOMPENSES (les ANNONCÉES !). La LIMITE (10:29, 31 : les VEAUX (GARDÉS "
+        "('egel — VEAUX (DAN + BÉTHEL (JÉROBOAM (TOUJOURS (RO076 ! : les VEAUX — les "
+        "INTOUCHABLES (BAAL (MEURT (les VEAUX (VIVENT : les DEMI (les RÉFORMES (les DEMI "
+        "(les ZÈLES !) + « PAS de TOUT son CŒUR » (lo shamar… bekhol-levavo) (10:31 : le "
+        "CŒUR (PARTAGÉ (les CŒURS — les DIVISÉS (les RÉCOMPENSÉS (quand MÊME !). La DYNASTIE "
+        "(la PLUS LONGUE (du NORD : JÉHU (28 (JOAKHAZ (17 (JOAS (16 (JÉROBOAM II (41 "
+        "(ZACHARIE (6 MOIS (~90 ANS ! : les DURÉES — les RECORDS (les 9 DYNASTIES (JÉHU "
+        "(la PLUS (LONGUE (la RÉCOMPENSE (les ANNÉES !) + les AUTRES (les COURTES (JÉROBOAM "
+        "(2 ROIS (BAASHA (2 (ACHAB (4 (les CONTRASTES — les EFFACÉES (les VITE (les "
+        "PROMISES (les LONGTEMPS !)."
+    ),
+    explication=(
+        "« Parce que tu as BIEN (hatibota) EXÉCUTÉ », 10:30 : yatab — BIEN (FAIRE (le BIEN "
+        "(RECONNU (Dieu VOIT (le BIEN (les DEMI (les ZÈLES (les RÉCOMPENSÉS (les BIEN — "
+        "les PARTIELS (les PAYÉS !). « Ce qui est DROIT (hayyashar) à MES YEUX », 10:30 : "
+        "yashar — DROIT (les YEUX (de DIEU (les JUGES (les VRAIS (les HOMMES (les CRITIQUES "
+        "(Dieu (les FÉLICITATIONS !). « Tout ce qui était DANS MON CŒUR », 10:30 : kol-levavi "
+        "— TOUT MON CŒUR (Dieu A un CŒUR (les CŒURS (les DIVINS (JÉHU (a FAIT (le CŒUR (de "
+        "DIEU (mais PAS (de TOUT (SON (CŒUR (10:31 ! : les CŒURS — le CŒUR (de DIEU (FAIT "
+        "(le CŒUR (de JÉHU (PARTAGÉ : les IRONIES — les DIVINES !). « Tes FILS (banekha)… "
+        "jusqu'à la 4e GÉNÉRATION (dor revi'i) », 10:30 : dor — GÉNÉRATION (le COMPTE (1 "
+        "JOAKHAZ (2 JOAS (3 JÉROBOAM (4 ZACHARIE (les CHIFFRES — les EXACTS (les GÉNÉRATIONS "
+        "(les COMPTÉES (les PROMISES (les TENUES !) + « SERONT ASSIS (yeshevu) sur le TRÔNE », "
+        "10:30 : yashav — S'ASSEOIR (les TRÔNES (les OCCUPÉS (les 4 (les ASSIS (les PROMIS !). "
+        "« IL EN FUT AINSI (ken hayah) », 15:12 : ken — AINSI (la FORMULE (de CLÔTURE (le "
+        "RÉCIT (VÉRIFIE (la PROMESSE (les COMPTABLES — les DIVINS (les PAROLES (les SOLDÉES !)."
+    ),
+    interpretation=(
+        "Dieu PAIE le BIEN (même PARTIEL : JÉHU (DEMI (les VEAUX (GARDÉS (les RÉCOMPENSES "
+        "(ENTIÈRES (les LEÇONS — Dieu (les JUSTES (les GÉNÉREUX (les BIEN (les PAYÉS (les "
+        "MAL (les JUGÉS (les DEUX (les VRAIS !). La GRÂCE BORNÉE (4 (pas 5 (pas 10 (les "
+        "LIMITES (les ANNONCÉES (Dieu DONNE (les MESURES (les FINIES (les DYNASTIES — les "
+        "HUMAINES (les MORTELLES (les SEULES (les DAVID (les ÉTERNELLES (RO073 ! : les "
+        "CONTRASTES — NORD (4 (SUD (OLAM : les ALLIANCES — les CONDITIONNELLES (les "
+        "INCONDITIONNELLES !). JÉROBOAM II (l'APOGÉE (14:25 : « il RÉTABLIT la FRONTIÈRE… de "
+        "HAMATH à la MER de l'ARABA » (les CARTES — les SALOMON (les RETROUVÉES (les "
+        "TERRITOIRES (les MAXIMAUX (les PROSPÉRITÉS (les TROMPEUSES (AMOS ! OSÉE ! : les "
+        "APOGÉES — les VEILLES (les CHUTES (les PROSPÈRES (les POURRIES !) + JONAS (14:25 : "
+        "« selon la PAROLE… par JONAS » (les JONAS — les AVANT (les POISSONS (les PROPHÈTES "
+        "(les NATIONAUX (les MISSIONS (les ÉTRANGÈRES !). ZACHARIE (6 MOIS (15:8 : le COMPTE "
+        "(les GÉNÉRATIONS (pas les ANNÉES (6 MOIS (SUFFIT (4e (les MATHS — les DIVINES (les "
+        "PRÉCISES (les IMPLACABLES !) + « devant le PEUPLE » (qaval-'am) (15:10 : PUBLIC "
+        "(les ASSASSINATS (les PUBLICS (les FINS (les HUMILIANTES (les DYNASTIES (les "
+        "EXPOSÉES !)."
+    ),
+    hist=(
+        "Le SCEAU de SHEMA (MEGUIDDO (les FOUILLES — « SHEMA SERVITEUR de JÉROBOAM » "
+        "(les SCEAUX (les LIONS (les JÉROBOAM II (les PREUVES — les NOMS (les PIERRÉS "
+        "(les ROIS (les CONFIRMÉS !). Les OSTRACA de SAMARIE (les TESSIONS — les BORDEREAUX "
+        "(les HUILES (les VINS (les AN 9, 10, 15 (JÉROBOAM II ? (les ADMINISTRATIONS (les "
+        "FISCALES (les PROSPÉRITÉS (les DOCUMENTÉES !). AMOS + OSÉE (les DATATIONS (Am 1:1 : "
+        "« au TEMPS de JÉROBOAM… 2 ANS avant le TREMBLEMENT » (les PROPHÈTES (les CONTEMPORAINS "
+        "(les RÈGNES (les CROISÉS (les ÉCRITS (les DATÉS (les ROIS (les ANCRÉS !). ADAD-NIRARI III "
+        "(les CAMPAGNES (DAMAS (796 (les ASSYRIENS (les AFFAIBLISSENT (la SYRIE (les VIDES (les "
+        "GÉOPOLITIQUES (JÉROBOAM (les REMPLIT (14:25 ! : les CONTEXTES — les EMPIRES (les "
+        "PETITS (les PROFITENT !). SHALLUM (1 MOIS (15:13 : le PLUS COURT (les RÈGNES (les "
+        "ÉCLAIRS (les ASSASSINS (les ASSASSINÉS (MENAHEM (les FINISSENT (15:14 ! : les "
+        "INSTABILITÉS — les FINS (les DYNASTIES (les SPIRALES !)."
+    ),
+    geo=(
+        "SAMARIE (la CAPITALE (les 5 ROIS (les MÊMES (MURS (les PALAIS (les IVOIRES (Am 3:15 : "
+        "« MAISONS d'IVOIRE » (les LUXES (les DÉNONCÉS (les FOUILLES (les IVOIRES (les TROUVÉS ! "
+        ": les CAPITALES — les RICHES (les POURRIES !). DAN + BÉTHEL (les VEAUX (les MAINTENUS "
+        "(10:29 (les SANCTUAIRES (les SCHISMATIQUES (RO076 ! (les LIEUX (les HAUTS (les "
+        "PERSISTANTS (les 4 GÉNÉRATIONS (les MÊMES (les VEAUX !). HAMATH → MER de l'ARABA "
+        "(14:25 : les FRONTIÈRES (les MAXIMALES (le NORD (SYRIE (le SUD (MER MORTE (les "
+        "CARTES — les DAVID (les SALOMON (les RETROUVÉES (les ÉPHÉMÈRES !) + LÔ-DEBAR + "
+        "QARNAÏM (Am 6:13 : « N'AVONS-NOUS PAS PRIS… par NOTRE FORCE ? » (les ORGUEILS (les "
+        "VILLES (les FANFARONNADES (les PROPHÈTES (les MOQUEURS !). JABESH ? (les ORIGINES "
+        "(de SHALLUM (15:10, 13 (les INCONNUS (les USURPATEURS (les OBSCURS (les FINS (les "
+        "MYSTÉRIEUSES !)."
+    ),
+    sci=(
+        "La DÉMOGRAPHIE des DYNASTIES (les DURÉES (JÉHU ~90 ANS (les RECORDS (du NORD (les "
+        "MOYENNES (les COURTES (les COUPS (les FRÉQUENTS (les STATISTIQUES — les TRÔNES (les "
+        "DANGEREUX (les ESPÉRANCES (les VIES (les ROYALES (les BRÈVES !). L'ÉPIGRAPHIE (les "
+        "SCEAUX (SHEMA (les OSTRACA (les ENCRES (les TESSIONS (les ÉCRITURES (les PALÉO (les "
+        "HÉBRAÏQUES (les ADMINISTRATIONS (les LETTRÉES (les ROYAUMES (les BUREAUCRATIQUES !). "
+        "La SISMOLOGIE (Am 1:1 : « le TREMBLEMENT » (ra'ash — TREMBLEMENT (les SÉISMES (les "
+        "DATÉS (~760 ? (les COUCHES (les DESTRUCTIONS (HATSOR ? (les GÉOLOGUES (les ARCHÉOLOGUES "
+        "(les TREMBLEMENTS (les MARQUEURS (les CHRONOLOGIQUES !) + Za 14:5 : « vous FUIREZ… comme "
+        "lors du TREMBLEMENT » (les MÉMOIRES (les SÉISMES (les SIÈCLES (les RÉFÉRENCES !). "
+        "L'ÉCONOMIE (les OSTRACA (les HUILES (les VINS (les QUANTITÉS (les TRIBUTS (les PRESSOIRS "
+        "(les FOUILLES (les PROSPÉRITÉS (les INÉGALES (AMOS (les DÉNONCE (2:6-8 ! : les ÉCONOMIES "
+        "— les RICHES (les PAUVRES (les ÉCARTS (les PROPHÉTIQUES !)."
+    ),
+    schema=(
+        "4 GÉNÉRATIONS EN 10 TEMPS : BAAL (le TEMPLE (les LATRINES : les HUMILIATIONS !) → VEAUX "
+        "(les GARDÉS (DAN + BÉTHEL : les DEMI !) → « BIEN EXÉCUTÉ » (les FÉLICITATIONS !) → « 4e "
+        "GÉNÉRATION » (les PROMESSES (les COMPTÉES !) → « PAS de TOUT CŒUR » (les RÉSERVES !) → "
+        "JOAKHAZ (17 ANS (les DÉBUTS (les MAUVAIS !) → JOAS (16 ANS (les 3 VICTOIRES (RO093 !) → "
+        "JÉROBOAM II (41 ANS (HAMATH → ARABA (les APOGÉES !) → ZACHARIE (6 MOIS (les COMPTES (les "
+        "SUFFISANTS !) → SHALLUM (« FRAPPA… devant le PEUPLE » : les FINS (les PUBLIQUES !) → « IL EN "
+        "FUT AINSI » (les CLÔTURES (les COMPTABLES !). Quatre fois assis — la parole solde ses comptes."
+    ),
+    limites=(
+        "Le COMPTE (les 4 (JÉHU (COMPTÉ ? (les FILS (1 JOAKHAZ (les GÉNÉRATIONS (les FILIALES (les "
+        "4 (les ASSIS (ZACHARIE (4e (les COMPTES — les CLAIRS (les CONSENSUELS (les VÉRIFIÉS (15:12 !). "
+        "Les DATES (les ABSOLUES (THIELE (841-752 ? (les GALIL (les DÉBATS (les CO-RÉGENCES (les "
+        "INCONNUES (les ANNÉES (les ACCESSIONS (les NISAN (les TISHRI : les CHRONOLOGIES — les SAVANTES "
+        "(les INCERTAINES (les RELATIVES (les SÛRES !). Les VEAUX (POURQUOI (GARDÉS (les RAISONS "
+        "(les POLITIQUES ? (les PÈLERINAGES (les JÉRUSALEM (les CRAINTES (RO076 ! (les TEXTES (les "
+        "TAISENT (les MOTIFS (les ANALYSES (les PROPOSÉES !). OSÉE (le LIEN (1:4 (les MAISONS (de JÉHU "
+        "(les PUNIES (les FINIES (les COMMENT (les ARTICULER (les PROMESSES (les TENUES (les JUGEMENTS "
+        "(les ANNONCÉS : les THÉOLOGIES — les TENSIONS (les ASSUMÉES (les PARADOXES (les FÉCONDS !). "
+        "JONAS (14:25 : le MÊME (que NINIVE ? (les TRADITIONS (les OUI (les TEXTES (les TAISENT (les "
+        "IDENTIFICATIONS (les PROPOSÉES (pas les IMPOSÉES !)."
+    ),
+    accomplissement=[(("10:28-31", "BAAL (LATRINES) + VEAUX (GARDÉS) + « BIEN » + « PAS CŒUR »")),
+        ((("10:30"), "« 4e GÉNÉRATION » (PROMESSE)")),
+        ((("10:35-36"), "28 ANS + JOAKHAZ (1re)")),
+        ((("13:1-9"), "JOAKHAZ 17 ANS (MAL)")),
+        ((("13:10"), "JOAS 16 ANS (2e)")),
+        ((("13:25"), "3 VICTOIRES (RO093 !)")),
+        ((("14:23-25"), "JÉROBOAM II 41 ANS (3e) + FRONTIÈRE")),
+        ((("15:8-12"), "ZACHARIE 6 MOIS (4e !) + SHALLUM + « AINSI »"))],
+    tl=[((("10:30"), "« 4e GÉNÉRATION »")),
+        ((("13:1"), "JOAKHAZ (1re)")),
+        ((("13:10"), "JOAS (2e)")),
+        ((("14:23"), "JÉROBOAM II (3e)")),
+        ((("15:8"), "ZACHARIE (4e !)"))],
+    src=[("Suffit-il de faire de bonnes œuvres ? (Jéhu récompensé, 4e génération)", "https://wol.jw.org/fr/wol/d/r30/lp-f/101973250"),
+        ("2 Rois 10 — Bible d'étude (dynastie de Jéhu, 10:28-36)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/10"),
+        ("2 Rois 10 — Traduction du monde nouveau (Jéhu, Samarie)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/10")],
+    img="images/prophe_RO092_generation.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+    n="RO093", titre="« Frappe contre terre » : les trois victoires de Joas sur la Syrie",
+    ref="2 Rois 13:14-19",
+    statut="Accomplie",
+    cat="RO", syst="Dernier ordre d'Élisée (lit → arc → fenêtre → sol 3× → colère → 3 victoires)",
+    reg="Registre : 2 Rois — P093 (13:14-19 : trois victoires sur la Syrie, pas plus) ; accomplissement 2R 13:25",
+    texte=[
+        "« ÉLISÉE… MALADE… MOURIR… JOAS DESCENDIT… PLEURA. » (13:14 — pleura !)",
+        "« MON PÈRE ! CHAR d'ISRAËL et sa CAVALERIE ! » (13:14 — cavalerie !)",
+        "« PRENDS un ARC… METS ta MAIN… MAINS sur les MAINS. » (13:15-16 — mains !)",
+        "« OUVRE la FENÊTRE… ORIENT… TIRE ! » (13:17 — tire !)",
+        "« FLÈCHE de DÉLIVRANCE… contre la SYRIE… à APHEK. » (13:17 — Aphek !)",
+        "« PRENDS les FLÈCHES… FRAPPE contre TERRE. » (13:18 — terre !)",
+        "« Il FRAPPA 3 FOIS… S'ARRÊTA. » (13:18 — arrêta !)",
+        "« Il SE MIT en COLÈRE… 5 ou 6 FOIS… EXTERMINÉS. » (13:19 — exterminés !)",
+        "« MAINTENANT… 3 FOIS tu FRAPPERAS la SYRIE. » (13:19 — maintenant !)",
+        "« JOAS… REPRIT les VILLES… 3 FOIS. » (13:25 — reprit !)",
+    ],
+    contexte=(
+        "Samarie, ~798? — le LIT de MORT (13:14 : ÉLISÉE (MALADE (halah — MALADE (les PROPHÈTES "
+        "(les MORTELS (les MALADIES (les MOURANTS (les PAROLES (les DERNIÈRES (les PUISSANTES ! "
+        ": les LITS — les MORTS (les PROPHÉTIQUES (les COMMANDEMENTS (les POSTHUMES !) + JOAS "
+        "DESCEND (13:14 : le ROI (VIENT (le PETIT-FILS (de JÉHU (RO092 ! (les ROIS (les VISITEURS "
+        "(les MOURANTS (les CONSULTÉS (les LARMES (les ROYALES !). Le CRI (13:14 : « MON PÈRE ! "
+        "CHAR (rekhev) d'ISRAËL et sa CAVALERIE (parashim) ! » (les MOTS (les MÊMES (2:12 : ÉLISÉE "
+        "(pour ÉLIE ! (les INVERSIONS — le DISCIPLE (les AVAIT (les DITS (le ROI (les RÉPÈTE : les "
+        "CRIS — les TRANSMIS (les ÉLIE → ÉLISÉE → JOAS (les HÉRITAGES !). La SYRIE (13:3, 22 : "
+        "HAZAËL (OPPRIME (lahats — OPPRIMER (« TOUS les JOURS de JOAKHAZ », 13:22 (les OPPRESSIONS "
+        "(les LONGUES (les ARMÉES (les RÉDUITES (13:7 : « 50 CAVALIERS… 10 CHARS… 10 000 » (les "
+        "RESTES (les MISÈRES (les ROYAUMES (les ÉCRASÉS !) + Ben-HADAD III (13:24 : le FILS (les "
+        "SUCCESSIONS (les ENNEMIS (les HÉRÉDITAIRES !). APHEK (13:17 : le LIEU (NOMMÉ (les APHEK "
+        "(les PLUSIEURS (1R 20:26 : APHEK (RO081 ! (les MÊMES (les CHAMPS (les VICTOIRES (les "
+        "RÉPÉTÉES !)."
+    ),
+    explication=(
+        "« PRENDS (qach) un ARC (qesheth) », 13:15 : qesheth — ARC (les ARMES (les SYMBOLES (le ROI "
+        "(PREND (les GUERRES (les RITUELLES (les GESTES (les PROPHÉTIQUES !). « ÉLISÉE MIT ses MAINS "
+        "(yadav) sur les MAINS du ROI », 13:16 : yad — MAINS (les SUPERPOSÉES (les TRANSMISSIONS (le "
+        "MOURANT (les MAINS (les TREMBLANTES ? (les PUISSANTES (les GESTES — les CONSÉCRATIONS (les "
+        "GUERRES (les SAINTES !). « OUVRE la FENÊTRE (hallôn) du CÔTÉ de l'ORIENT (qedem) », 13:17 : "
+        "qedem — ORIENT (la SYRIE (à l'EST (les FLÈCHES (les DIRECTIONS (les ENNEMIS (les DÉSIGNÉS (les "
+        "FENÊTRES — les BOUSSOLES (les PROPHÉTIQUES !). « FLÈCHE (hets) de DÉLIVRANCE (teshu'ah)… TU "
+        "FRAPPERAS… jusqu'à l'EXTERMINATION (kalleh) », 13:17 : kalleh — EXTERMINATION (les PROMESSES "
+        "(les TOTALES (les CONDITIONNELLES ? (les EXTERMINATIONS (les POSSIBLES (les RATÉES !). « FRAPPE "
+        "(hakh) contre TERRE ('artsah) », 13:18 : nakah — FRAPPER (les SOLS (les SYRIENS (les GESTES (les "
+        "COMPTÉS (3 (les ARRÊTS (les PRÉMATURÉS (les ZÈLES (les MESURÉS !). « Il SE MIT en COLÈRE "
+        "(yiqtsof) », 13:19 : qatsaph — COLÈRE (le MOURANT (les COLÈRES (les SAINTES (les DERNIÈRES (les "
+        "ÉNERGIES (les INDIGNATIONS (les PROPHÉTIQUES !) + 1200012323 : « s'il avait frappé à terre CINQ "
+        "ou SIX fois… il aurait VAINCU COMPLÈTEMENT » (OFFICIEL ! (les COMPTES — les RATÉS (les 2-3 (les "
+        "MANQUANTS (les EXTERMINATIONS (les PERDUES !)."
+    ),
+    interpretation=(
+        "Le ZÈLE MESURE la VICTOIRE (les GESTES (les COMPTÉS (Dieu COMPTE (les COUPS (les 3 (les 3 "
+        "(les ÉQUATIONS — les FOIS (les FRAPPES (les VICTOIRES (les PROPORTIONNELLES !) + 1200011284 : "
+        "« comme il MANQUE de ZÈLE VÉRITABLE, il ne le fait que TROIS fois » (OFFICIEL ! (les ZÈLES — "
+        "les VÉRITABLES (les TIÈDES (les LIMITÉS !). Les RITUELS ENGAGENT (les PROPHÈTES (les ORDONNENT "
+        "(les ROIS (les EXÉCUTENT (les GESTES (les LIENT (les PAROLES (les SUIVENT (les RITES — les "
+        "PERFORMATIFS (les FLÈCHES (les TIRÉES (les HISTOIRES (les ÉCRITES !). Le MOURANT COMMANDE "
+        "(les LITS (les TRÔNES (ÉLISÉE (MEURT (les ORDRES (VIVENT (les PAROLES (les DÉPASSENT (les SANTÉS "
+        "(les AUTORITÉS — les MORIBONDES (les SOUVERAINES !) + 13:21 : le MORT (JETÉ (les OS (d'ÉLISÉE "
+        "(il REVIT ! (les MORTS (les RESSUSCITENT (les CADAVRES (les PROPHÈTES (les PUISSANTS (les POSTHUMES : "
+        "les OS — les VIVANTS (les PROPHÈTES (les MORTS (les EFFICACES !). APHEK (les RÉPÉTITIONS (1R 20 "
+        "(RO081 (2R 13 (les MÊMES (les LIEUX (les MÊMES (les ENNEMIS (les MÊMES (les DIEUX (les VICTOIRES "
+        "(les HABITUÉES !)."
+    ),
+    hist=(
+        "ADAD-NIRARI III (les ANNALES (les CAMPAGNES (de DAMAS (796 ? (les ASSYRIENS (les ASSIÈGENT (les "
+        "SYRIENS (les AFFAIBLISSENT (les CONTEXTES (les FAVORABLES (JOAS (les PROFITE (13:25 ! : les "
+        "EMPIRES — les MARTEAUX (les PETITS (les ENCLUMES (les ENCLUMES (les REBONDISSENT !). Ben-HADAD III "
+        "(13:24-25 : le FILS (de HAZAËL (les SUCCESSIONS (les DÉCLINS (les PÈRES (les CONQUÉRANTS (les FILS "
+        "(les PERDANTS (les DYNASTIES (les SYRIENNES (les COURBES !) + la STÈLE de ZAKKUR (les CONTEXTES (les "
+        "ARAMÉENS (les COALITIONS (les HAZAËL ? (les MORTS (les SUCCESSIONS (les TROUBLES (les VOISINS (les "
+        "ATTAQUENT !). Les VILLES REPRISES (13:25 : « les VILLES… que HAZAËL avait PRISES » (lesQUELLES ? "
+        "(le TEXTE (les TAIT (les NOMS (les TRANSJORDANIE ? (10:33 ! (les TERRITOIRES (les RENDUS (les CARTES "
+        "(les RECOMPOSÉES !). La MORT d'ÉLISÉE (~798 ? (les DATES (les CIRCA (les MINISTÈRES (~50 ANS ? "
+        "(les DURÉES (les EXCEPTIONNELLES (les PROPHÈTES (les LONGS (les DISCOURS (les DERNIERS !)."
+    ),
+    geo=(
+        "SAMARIE (le LIT (les VISITES (les ROYALES (les CHAMBRES (les MOURANTS (les PALAIS (les PROCHES ? "
+        "(les PROPHÈTES (les URBAINS (les CAPITALES (les CONSULTÉES !). La FENÊTRE d'ORIENT (13:17 : les "
+        "DIRECTIONS (les SYMBOLIQUES (l'EST (la SYRIE (les FLÈCHES (les ENVOYÉES (les ENNEMIS (les VISÉS (les "
+        "GÉOGRAPHIES — les RITUELLES (les ORIENTS (les MENACES !). APHEK (13:17 : LESQUEL ? (AFEQ (ESDRAELON ? "
+        "(AFIQ (GOLAN ? (les CANDIDATS (les DÉBATS (RO081 (1R 20:26 (les MÊMES (les NOMS (les MÊMES (les "
+        "VICTOIRES (les LIEUX (les PROPOSÉS (pas les IMPOSÉS !). Le SOL FRAPPÉ (13:18 : 'adamah ? 'erets ? "
+        "(les TERRES (les SYRIENNES (les FIGURÉES (les GESTES (les MAGIQUES ? (les PROPHÉTIQUES (les AUTORISÉS "
+        "(les INTERDITS (les MAGIES (les DISTINGUÉES !). Les VILLES (13:25 : les REPRISES (les TRANSJORDANIE "
+        "(10:33 : GALAAD… GAD… RUBEN… MANASSÉ (les TRIBUS (les RESTAURÉES (les CARTES (les RÉPARÉES !)."
+    ),
+    sci=(
+        "L'ARCHÈTERIE (13:15-17 : les ARCS (les COMPOSITES (les PORTÉES (les SYMBOLIQUES (les TIRS (les "
+        "FENÊTRES (les FLÈCHES (les PERDUES (les SENS (les GARDÉS (les ARMES — les RITUELLES (les GUERRES "
+        "(les JOUÉES (les GAGNÉES !). La BALISTIQUE SYMBOLIQUE (les GESTES (les EFFICACES ? (les PROPHÉTIQUES "
+        "(les CAUSES (les DIVINES (les INSTRUMENTS (les HUMAINS (les FLÈCHES (les VECTEURS (les VICTOIRES (les "
+        "TRANSMISES !). La PSYCHOLOGIE du RITE (les 3 COUPS (les ARRÊTS (les TIÉDEURS (les MESURÉES (les ZÈLES "
+        "(les COMPTABLES (les MOTIVATIONS (les TESTÉES (les GESTES (les RÉVÉLATEURS (les CŒURS (les LUS !) + "
+        "1200012323 : « ÉLISÉE en fut INDIGNÉ » (OFFICIEL ! (les INDIGNATIONS — les DIAGNOSTIQUES (les "
+        "PROPHÈTES (les PSYCHOLOGUES !). La GÉRONTOLOGIE (les MOURANTS (les LUCIDES (les DERNIÈRES (les "
+        "VOLONTÉS (les TESTAMENTS (les PROPHÉTIQUES (les ÉNERGIES (les FINALES (les COLÈRES (les SANTÉS (les "
+        "MORIBONDES (les AUTORITÉS (les INTACTES !)."
+    ),
+    schema=(
+        "3 FOIS EN 9 TEMPS : MALADE (« ÉLISÉE… MOURIR » : les LITS !) → DESCEND (« JOAS… PLEURA » : les "
+        "LARMES (les ROYALES !) → « MON PÈRE ! CHAR ! » (les CRIS (les HÉRITÉS (2:12 !) → ARC (« PRENDS… "
+        "MAINS sur les MAINS » : les TRANSMISSIONS !) → FENÊTRE (« ORIENT… TIRE ! » : les DIRECTIONS !) → "
+        "« FLÈCHE de DÉLIVRANCE… APHEK » (les PROMESSES (les TOTALES !) → SOL (« FRAPPE contre TERRE » : "
+        "les ORDRES !) → 3 FOIS (« S'ARRÊTA » : les TIÉDEURS !) → COLÈRE (« 5 ou 6… EXTERMINÉS… MAINTENANT "
+        "3 FOIS » : les COMPTES !) → 3 VICTOIRES (« REPRIT les VILLES… 3 FOIS » : les SOLDES !). Trois coups "
+        "frappés — trois victoires comptées."
+    ),
+    limites=(
+        "APHEK (LESQUEL (les CANDIDATS (ESDRAELON (GOLAN (les FOUILLES (les DÉBATS (RO081 (les MÊMES (les "
+        "QUESTIONS (les LIEUX (les PROPOSÉS (pas les IMPOSÉS !). Les VILLES (les NOMS (les ABSENTS (13:25 "
+        "(les TEXTES (les TAIRENT (les TRANSJORDANIE (les PROBABLES (10:33 (les LISTES (les RECONSTITUÉES "
+        "(pas les CERTIFIÉES !). Les 5-6 FOIS (les HYPOTHÉTIQUES (les EXTERMINATIONS (les RATÉES (les "
+        "CONDITIONNELS (les PROPHÉTIQUES (les POSSIBLES (les NON-AVENUS (les THÉOLOGIES — les CONTREFACTUELS "
+        "(les ASSUMÉS !). La MALADIE (les NATURES (les INCONNUES (13:14 (les DIAGNOSTICS (les ABSENTS (les "
+        "MORTS (les NATURELLES (les PROPHÈTES (les MORTELS (les MORTS (les SIMPLES (les OS (les PUISSANTS "
+        "(13:21 !). Les DATES (~798 (les CIRCA (les THIELE (les DÉBATS (les JOAS (les 16 ANS (13:10 (les "
+        "CHRONOLOGIES (les RELATIVES (les SÛRES (les ABSOLUES (les CIRCA !)."
+    ),
+    accomplissement=[(("13:14", "MALADE (MOURIR) + JOAS (PLEURA) + « CHAR ! »")),
+        ((("13:15-17"), "ARC + MAINS + FENÊTRE (ORIENT) + « APHEK »")),
+        ((("13:18-19"), "SOL 3× + COLÈRE + « 5-6… MAINTENANT 3 »")),
+        ((("13:24"), "HAZAËL (MORT) + Ben-HADAD (FILS)")),
+        ((("13:25"), "3 FOIS (VILLES REPRISES !)"))],
+    tl=[((("13:14"), "« CHAR ! » (PLEURA)")),
+        ((("13:17"), "« APHEK » (FLÈCHE)")),
+        ((("13:18"), "SOL (3×)")),
+        ((("13:19"), "« 3 FOIS » (COLÈRE)")),
+        ((("13:25"), "VILLES (REPRISES)"))],
+    src=[("Joas — Étude (trois victoires, flèches, zèle)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200012323"),
+        ("Élisée — Étude (Joas, trois victoires, 13:14-19)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200011284"),
+        ("2 Rois 13 — Bible d'étude (Joas, Élisée, 13:14-25)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/13")],
+    img="images/prophe_RO093_fleches.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+    n="RO094", titre="« Il retournera… je le ferai tomber par l'épée » : la fin de Sennachérib",
+    ref="2 Rois 19:6, 7",
+    statut="Accomplie",
+    cat="RO", syst="Oracle contre Sennachérib (blasphème → sac → ruah → Tirhaqa → nuit → Ninive → Nisrok)",
+    reg="Registre : 2 Rois — P094 (19:6, 7 : Sennachérib rentrera, tombera par l'épée) ; accomplissement 2R 19:35-37",
+    texte=[
+        "« ÉZÉCHIAS… DÉCHIRA… SAC… MAISON de JÉHOVAH. » (19:1 — Jéhovah !)",
+        "« JOUR de DÉTRESSE… les ENFANTS… PAS de FORCE. » (19:3 — force !)",
+        "« NE CRAINS PAS… les PAROLES… BLASPHÉMÉ. » (19:6 — crains !)",
+        "« Je METTRAI en LUI un ESPRIT… NOUVELLE… RETOURNERA. » (19:7 — retournera !)",
+        "« LÀ-BAS… je le FERAI TOMBER par l'ÉPÉE. » (19:7 — épée !)",
+        "« RABSHAQÉ… LIBNA… TIRHAQA… SORTI pour COMBATTRE. » (19:8-9 — combattre !)",
+        "« Cette NUIT-LÀ… 185 000… CADAVRES le MATIN. » (19:35 — matin !)",
+        "« SENNACHÉRIB… PARTIT… RETOURNA… NINIVE. » (19:36 — Ninive !)",
+        "« Dans la MAISON de NISROK… ses FILS… ÉPÉE… ARARAT. » (19:37 — Ararat !)",
+        "« ÉSAR-HADDON… RÉGNA à sa PLACE. » (19:37 — place !)",
+    ],
+    contexte=(
+        "Jérusalem, 701 — la CAMPAGNE (19:8 : SENNACHÉRIB (le GRAND ROI (les ANNALES (les PRISMES "
+        "(les CONQUÊTES (les 46 VILLES ? (les REVENDIQUÉES (les JUDA (les RAVAGÉS (les CAMPAGNES (les "
+        "ASSYRIENNES !) + LAKISH (19:8 : le SIÈGE (RO095 ! (les RELIEFS (de NINIVE (les REMBLAIS (les "
+        "BÉLIERS (les VILLES (les PRISES (les JÉRUSALEM (les ÉPARGNÉES !). Le BLASPHÈME (18:17-35 : "
+        "RABSHAQÉ (le GRAND ÉCHANSON (les DISCOURS (les MURS (les HÉBREUX (les PEUPLES (les ÉCOUTENT "
+        "(« Ne vous TROMPE PAS… AUCUN DIEU… N'A DÉLIVRÉ » (18:32-35 (les DÉFIS (les DIRECTS (les DIEUX "
+        "(les COMPARÉS (JÉHOVAH (les RANGÉ (les IMPUISSANTS : les BLASPHÈMES — les PUBLICS (les "
+        "STRATÉGIQUES (les MORTELS !). ÉZÉCHIAS (19:1 : DÉCHIRE (qara' — DÉCHIRER (SAC (saq — SAC (TEMPLE "
+        "(bet-YHWH — MAISON (les GESTES — les DEUILS (les REPENTANCES (les RECOURS (les IMMÉDIATS !) + « "
+        "JOUR de DÉTRESSE (tsarah)… de CORRECTION… de MÉPRIS », 19:3 : tsarah — DÉTRESSE (les JOURS (les "
+        "NOIRS (les ENFANTS (les BLOQUÉS (les ACCOUCHEMENTS (les IMPOSSIBLES (les IMAGES — les "
+        "OBSTÉTRICALES (les DÉTRESSES (les TOTALES !). ÉSAÏE (19:2, 6 : les ANCIENS (ENVOYÉS (les PRÊTRES "
+        "(les SAC (les PROPHÈTES (les CONSULTÉS (les ORACLES (les ATTENDUS (les DÉLIVRANCES (les ANNONCÉES !)."
+    ),
+    explication=(
+        "« NE CRAINS PAS ('al-tira') », 19:6 : yare' — CRAINDRE (les PEURS (les INTERDITES (Dieu PARLE (les "
+        "ROIS (les RASSURÉS (les BLASPHÈMES (les ENTENDUS (les AFFAIRES (les DIVINES !). « Les PAROLES… par "
+        "lesquelles les SERVITEURS (na'arey)… m'ont BLASPHÉMÉ (giddéfu) », 19:6 : giddaph — BLASPHÉMER "
+        "(les VALETS (na'ar — SERVITEURS (les PETITS (les MÉPRISÉS (les GRANDS ROIS (les ENVOIENT (les PETITS "
+        "(les INSULTENT (les DIEUX (les NOTENT !) + « M'ONT BLASPHÉMÉ » (pas ÉZÉCHIAS (MOI (les CIBLES — les "
+        "DIVINES (les HONNEURS (les ENGAGÉS (les VENGEANCES (les CERTAINES !). « Je METTRAI (notén) en LUI un "
+        "ESPRIT (ruach) », 19:7 : ruach — ESPRIT (les DISPOSITIONS (les PEURS (les PANIQUES (Dieu MET (les "
+        "PSYCHOLOGIES (les DIVINES (les ROIS (les MANIPULÉS (les CŒURS (les TOURNÉS (Pr 21:1 ! : les ESPRITS — "
+        "les MIS (les PEURS (les INJECTÉES !). « Une NOUVELLE (shemu'ah)… il RETOURNERA (veshav) », 19:7 : "
+        "shama' — ENTENDRE (TIRHAQA (19:9 : « il SORT pour te COMBATTRE » (les KOUCHITES (les ÉGYPTES (les "
+        "MENAÇANTES (les NOUVELLES (les VRAIES (les EFFETS (les DIVINS !). « LÀ-BAS (sham)… je le FERAI TOMBER "
+        "(vehippaltiv) par l'ÉPÉE », 19:7 : naphal — TOMBER (les CAUSATIFS (Dieu FAIT (TOMBER (les ÉPÉES (les "
+        "FILIALES (les LIEUX (les PRÉCIS (SON PAYS (les IRONIES — les CHEZ-LUI (les PROSTERNÉS (les FRAPPÉS !)."
+    ),
+    interpretation=(
+        "Le BLASPHÈME = l'AFFAIRE de DIEU (« NE CRAINS PAS » (les INSULTES (les DIVINES (les VENGEANCES (les "
+        "DIVINES (les ROIS (les SPECTATEURS (les DIEUX (les ACTEURS (les HONNEURS — les DÉFENDUS (les JALOUX "
+        "(les VIVANTS !). La PSYCHOLOGIE DIVINE (ruach (les PEURS (les INJECTÉES (les DÉCISIONS (les ORIENTÉES "
+        "(les SOUVERAINETÉS — les INTIMES (les CŒURS (les ROIS (les ARGILES (les LIBERTÉS (les MYSTÈRES (les "
+        "RESPONSABILITÉS (les GARDÉES !). Les 20 ANS (les DÉLAIS (701 → 681 (les ACCOMPLISSEMENTS (les DIFFÉRÉS "
+        "(les RETOURS (les VITE (les MORTS (les TARD (les PATIENCES — les PROPHÉTIQUES (les VÉRIFICATIONS (les "
+        "LONGUES !) + 1200013807 : « la Bible ne dit PAS que Sennachérib a été TUÉ IMMÉDIATEMENT après son "
+        "retour » (OFFICIEL ! (les LECTURES — les ATTENTIVES (les DÉLAIS (les PRÉVUS (les TEXTES (les PRÉCIS !). "
+        "L'IRONIE (les LIEUX (SON PAYS (SON TEMPLE (SON DIEU (les PROTECTIONS (les FAILLIES (NISROK (les "
+        "IMPUISSANTS (les FILS (les TUEURS (les DIEUX (les SPECTATEURS (les JUGEMENTS — les POÉTIQUES (les "
+        "ADORÉS (les ABANDONNÉS !)."
+    ),
+    hist=(
+        "Le PRISME de TAYLOR (les ANNALES (les 6 FACES (les CAMPAGNES (les 46 VILLES (les REVENDIQUÉES (les "
+        "JÉRUSALEM (les ABSENTES (les PRISES (les TUES (les SILENCES — les ÉLOQUENTS (les VANTARDS (les MUETS "
+        "(les DÉFAITES (les CACHÉES !) + « ÉZÉCHIAS… comme un OISEAU en CAGE » (les IMAGES (les ASSYRIENNES "
+        "(les CAGES (les NON-PRISES (les SIÈGES (les LEVÉS (les AVEUX (les DÉGUISÉS !). L'INSCRIPTION "
+        "d'ÉSAR-HADDON (les CONFIRMATIONS (les PARRICIDES (les FILS (les TUEURS (les SUCCESSIONS (les "
+        "TROUBLES (les TEXTES (les PAÏENS (les BIBLES (les CONFIRMÉES !) + 1200013807 : « Cela est CONFIRMÉ "
+        "par une INSCRIPTION d'ÉSAR-HADDON » (OFFICIEL ! (les PREUVES — les CROISÉES (les PIERRES (les "
+        "PAPYRUS (les MÊMES (les MORTS !). LAYARD 1847 (les PALAIS (de NINIVE (les 71 PIÈCES (les RELIEFS (les "
+        "LAKISH (les DÉCOUVERTES (les VICTORIENNES (les BIBLES (les ILLUSTRÉES !) + 1988127 : « Layard RECENSA "
+        "71 PIÈCES » (OFFICIEL ! (les ARCHÉOLOGIES — les SPECTACULAIRES (les PALAIS (les RETROUVÉS !). BABYLONE "
+        "689 (les DESTRUCTIONS (les SACRILÈGES (les CONTEXTES (les HAINES (les FILS (les VENGEURS ? (les MOTIFS "
+        "(les PROPOSÉS (les TEXTES (les TAISENT !)."
+    ),
+    geo=(
+        "LAKISH (Tell ed-DOUWEÏR (les SIÈGES (les RELIEFS (les NINIVE (les MUSÉES (les BRITISH (les VISITEURS "
+        "(les VOIENT (les REMBLAIS (les BÉLIERS (les EMPALÉS (les HORREURS (les ASSYRIENNES !) + 1200002659 : "
+        "« à quelque 24 KM à l'O. de HÉBRON » (OFFICIEL ! (les LOCALISATIONS — les CERTAINES (les TELLS (les "
+        "FOUILLÉS !). LIBNA (19:8 : les DÉPLACEMENTS (les SIÈGES (les SECONDS (les SITES (les INCERTAINS (Tell "
+        "BORNA ? (les CANDIDATS (les DÉBATS (les CAMPAGNES (les MOBILES !). NINIVE (19:36 : les RETOURS (les "
+        "CAPITALES (les MOSSOUL (les TIGRES (les PALAIS (les LAYARD (les RUINES (les MAGNIFIQUES (Na 3 ! : les "
+        "CAPITALES — les MEURTRIÈRES (les TOMBÉES (612 !). NISROK (19:37 : les TEMPLES (les DIEUX (les "
+        "MYSTÉRIEUX (NUSKU ? (les IDENTIFICATIONS (les PROPOSÉES (les PROSTERNATIONS (les MORTELLES (les "
+        "ADORATIONS (les INTERROMPUES !). ARARAT (19:37 : les FUITES (les URARTU (les ARMÉNIES (les MONTAGNES "
+        "(les REFUGES (les PARRICIDES (les EXILÉS (les NEIGES (les LOIN !)."
+    ),
+    sci=(
+        "Les 185 000 (19:35 : les CHIFFRES (les ÉNORMES (les UNE NUIT (les ANGES (laylah — NUIT (les MATINS "
+        "(les CADAVRES (les CAUSES (les TEXTES (les ANGES (les HYPOTHÈSES (les PESTES ? (les HÉRODOTE (les RATS ? "
+        "(les COMMENTAIRES (les PROPOSENT (les TEXTES (les TRANCHENT (les ANGES ! : les MORTS — les MASSIVES "
+        "(les SOUDAINES (les DIVINES !). L'ÉPIDÉMIOLOGIE des SIÈGES (les CAMPS (les ENTASSÉS (les EAUX (les "
+        "SOUILLÉES (les PESTES (les RAPIDES (les ARMÉES (les ANTIQUES (les VULNÉRABLES (les SIÈGES (les "
+        "TOMBEAUX (les ASSIÉGEANTS (les DÉCIMÉS !). La LOGISTIQUE ASSYRIENNE (les ARMÉES (les ÉNORMES (les "
+        "RAVITAILLEMENTS (les PILLAGES (les JUDA (les RAVAGÉS (les MACHINES (les LENTES (les RETRAITES (les "
+        "PRÉCIPITÉES (les DÉSORGANISÉES !). La PSYCHOLOGIE des PANIQUES (ruach (19:7 (les NOUVELLES (les "
+        "ALARMANTES (les TIRHAQA (les MENACES (les DÉCISIONS (les PEUREUSES (les RETRAITES (les SAUVE-QUI-PEUT "
+        "(les COMMANDANTS (les HUMAINS (les DIEUX (les SOUFFLENT !)."
+    ),
+    schema=(
+        "SENNACHÉRIB EN 11 TEMPS : LAKISH (les SIÈGES (les RELIEFS !) → RABSHAQÉ (« AUCUN DIEU… N'A DÉLIVRÉ » "
+        ": les DÉFIS !) → SAC (« DÉCHIRA… SAC… MAISON » : les RECOURS !) → ÉSAÏE (les ANCIENS (les ENVOYÉS !) → "
+        "« NE CRAINS PAS » (les RASSURÉS !) → « ESPRIT… NOUVELLE… RETOURNERA » (les PROGRAMMÉS !) → « LÀ-BAS… "
+        "ÉPÉE » (les CONDAMNÉS !) → TIRHAQA (« SORT pour te COMBATTRE » : les NOUVELLES !) → NUIT (« 185 000… "
+        "CADAVRES » : les MATINS (les SILENCIEUX !) → NINIVE (« PARTIT… RETOURNA » : les RETOURS !) → NISROK "
+        "(« PROSTERNÉ… FILS… ÉPÉE… ARARAT » : les IRONIES !) → ÉSAR-HADDON (« RÉGNA à sa PLACE » : les "
+        "SUCCESSIONS !). Il blasphème à Lakish — il tombe prosterné à Ninive."
+    ),
+    limites=(
+        "Les 185 000 (les CAUSES (les ANGES (les TEXTES (les PESTES (les HYPOTHÈSES (les RATS (les HÉRODOTE "
+        "(les COMMENTAIRES (les PROPOSENT (les TEXTES (les DISENT (les ANGES : les MÉCANISMES — les NON-DITS "
+        "(les AGENTS (les DITS !). Les 20 ANS (701-681 (les CHRONOLOGIES (les ASSYRIENNES (les SUJETTES (les "
+        "CAUTIONS (1200013807 ! (les DATES (les CIRCA (les DÉLAIS (les CERTAINS (les DURÉES (les APPROXIMATIVES "
+        "!). NISROK (les IDENTITÉS (NUSKU ? (les DIEUX (les INCONNUS (les TEMPLES (les NON-RETROUVÉS (les NOMS "
+        "(les RARES (les DÉBATS (les ASSYRIOLOGUES (les OUVERTS !). TIRHAQA (les TITRES (PHARAON ? (PRINCE ? "
+        "(les CHRONOLOGIES (les ÉGYPTIENNES (les DÉBATS (19:9 (les KOUCHITES (les CONFIRMÉS (les COURONNES (les "
+        "DISCUTÉES !). Les 46 VILLES (les PRISMES (les PROPAGANDES (les CHIFFRES (les GONFLÉS ? (les VANTARDISES "
+        "(les ROYALES (les CRITIQUES (les PRUDENTES (les SILENCES (les JÉRUSALEM (les ÉLOQUENTS !)."
+    ),
+    accomplissement=[(("19:1-4", "SAC + TEMPLE + « DÉTRESSE » (ÉZÉCHIAS)")),
+        ((("19:6-7"), "« NE CRAINS PAS » + « ESPRIT » + « RETOURNERA » + « ÉPÉE »")),
+        ((("19:8-9"), "LIBNA + TIRHAQA (NOUVELLE !)")),
+        ((("19:35"), "NUIT : 185 000 (CADAVRES !)")),
+        ((("19:36"), "RETOUR (NINIVE !)")),
+        ((("19:37"), "NISROK + FILS (ÉPÉE !) + ARARAT + ÉSAR-HADDON"))],
+    tl=[((("19:6"), "« NE CRAINS PAS »")),
+        ((("19:7"), "« ÉPÉE » (LÀ-BAS)")),
+        ((("19:9"), "TIRHAQA (NOUVELLE)")),
+        ((("19:35"), "185 000 (NUIT)")),
+        ((("19:37"), "NISROK (FILS)"))],
+    src=[("Sennachérib — Étude (retour, Nisroch, inscription d'Ésar-Haddon)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200013807"),
+        ("2 Rois 19 — Bible d'étude (oracle d'Ésaïe, 19:1-37)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/19"),
+        ("2 Rois 19 — Traduction du monde nouveau (délivrance, Ninive)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/19")],
+    img="images/prophe_RO094_sennacherib.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+    n="RO095", titre="« Elle ne sera pas prise » : ni flèche, ni bouclier, ni remblai contre Jérusalem",
+    ref="2 Rois 19:32-34",
+    statut="Accomplie",
+    cat="RO", syst="Triple verrou divin (pas entrer → pas tirer → pas assiéger → retour → protection)",
+    reg="Registre : 2 Rois — P095 (19:32-34 : ville pas prise, ni flèche, ni remblai, ni brèche) ; accomplissement 2R 19:35, 36",
+    texte=[
+        "« ÉSAÏE… ENVOYA… J'AI ENTENDU ta PRIÈRE. » (19:20 — entendu !)",
+        "« La VIERGE… te MÉPRISE… HOCHE la TÊTE. » (19:21 — tête !)",
+        "« Je CONNAIS… ta RAGE… CROCHET… ANNEAU… RETOUR. » (19:27-28 — retour !)",
+        "« Il N'ENTRERA PAS dans cette VILLE. » (19:32 — entrera !)",
+        "« Il N'Y TIRERA PAS de FLÈCHE. » (19:32 — flèche !)",
+        "« PAS de BOUCLIER… PAS de REMBLAI. » (19:32 — remblai !)",
+        "« Par son CHEMIN… il S'EN RETOURNERA. » (19:33 — chemin !)",
+        "« Il N'ENTRERA PAS… DÉCLARE JÉHOVAH. » (19:33 — déclare !)",
+        "« Je PROTÉGERAI… à CAUSE de MOI… de DAVID. » (19:34 — David !)",
+        "« Cette NUIT-LÀ… 185 000… PARTIT… NINIVE. » (19:35-36 — Ninive !)",
+    ],
+    contexte=(
+        "Jérusalem, 701 — le TRIBUT VAIN (18:14-16 : ÉZÉCHIAS (PAIE (300 TALENTS (d'ARGENT (30 TALENTS "
+        "(d'OR (les SOMMES (les ÉNORMES (les TRÉSORS (les TEMPLES (les PORTES (les DÉPOUILLÉES (18:16 : « il "
+        "DÉTACHA l'OR des PORTES » (les HUMILIATIONS — les DORÉES (les PAIX (les ACHETÉES (les VAINES (les "
+        "ASSYRIENS (les PRENNENT (les EXIGENT (les PLUS ! : les RANÇONS — les INUTILES (les SOUMISSIONS (les "
+        "MÉPRISÉES !). Les VILLES TOMBÉES (les 46 ? (les PRISMES (les LAKISH (les RELIEFS (les JUDA (les "
+        "RAVAGÉS (les JÉRUSALEM (les SEULES (les DEBOUT (les ASSIÉGÉES (les PROCHAINES !). La PRIÈRE (19:14-19 : "
+        "ÉZÉCHIAS (ÉTEND (les LETTRES (devant JÉHOVAH (paras — ÉTENDRE (les MESSAGES (les ÉTALÉS (les DIEUX "
+        "(les LECTEURS (les DÉFIS (les TRANSMIS (les PRIÈRES — les POSTALES (les ENNEMIS (les ÉCRIVENT (Dieu "
+        "(les LIT !) + « TOI SEUL… DIEU… FAIS… que les ROYAUMES SACHENT », 19:15, 19 : les ENJEUX (les "
+        "UNIVERSELS (les MISSIONS (les THÉOLOGIES (les NATIONS (les TÉMOINS !). ÉSAÏE ENVOIE (19:20 : les "
+        "RÉPONSES (les PROPHÉTIQUES (les PRIÈRES (les ENTENDUES (les ORACLES (les DÉTAILLÉS (les DÉLIVRANCES "
+        "(les GARANTIES !)."
+    ),
+    explication=(
+        "« Il N'ENTRERA PAS (lo' yavo') dans cette VILLE », 19:32 : bo' — ENTRER (les NÉGATIONS (les "
+        "ABSOLUES (les VERBES (les ALLER (les INTERDITS (les VILLES (les INVIOLÉES (les PROMESSES — les "
+        "GÉOGRAPHIQUES (les FRONTIÈRES (les DIVINES !). « Il N'Y TIRERA PAS (lo'-yoreh) de FLÈCHE (hets) », "
+        "19:32 : yarah — TIRER (les FLÈCHES (les PREMIÈRES (les ARMES (les INTERDITES (pas MÊME (les TIRS (les "
+        "DÉFENSES (les AVANT-CONTACTS (les PROTECTIONS — les TOTALES (les ZÉRO (les PROJECTILES !). « Il ne "
+        "lui PRÉSENTERA PAS (lo'-yeqaddemennah) de BOUCLIER (magén) », 19:32 : qadam — PRÉSENTER (les "
+        "BOUCLIERS (les FACE-À-FACE (les COMBATS (les RAPPROCHÉS (les INTERDITS (les ENNEMIS (les DISTANTS (les "
+        "VILLES (les INTOUCHÉES !). « Il ne DRESSERA PAS (lo'-yishpokh) contre elle de REMBLAI (solelah) », "
+        "19:32 : shaphakh — VERSER (les REMBLAIS (les SIGNATURES (les ASSYRIENNES (les RELIEFS (de LAKISH (les "
+        "MONTRENT (les BÉLIERS (les MONTENT (les JÉRUSALEM (les ÉPARGNÉES (les TECHNIQUES — les NIÉES (les "
+        "SIÈGES (les IMPOSSIBLES !). « Par le CHEMIN (badderekh) par lequel il est VENU… il S'EN RETOURNERA », "
+        "19:33 : derekh — CHEMIN (les RETOURS (les FORCÉS (les ALLERS (les VANTARDS (les RETOURS (les HONTEUX "
+        "(les CROCHETS (19:28 : chach — CROCHET (les ANNEAUX (les NEZ (les BÊTES (les MENÉES (les ROIS (les "
+        "BESTIAUX !). « Je PROTÉGERAI (vegannoti)… à CAUSE (lema'an) de MOI… de DAVID », 19:34 : ganan — "
+        "PROTÉGER (les DOUBLES (les CAUSES (MOI (les NOMS (les DIVINS (DAVID (les ALLIANCES (les ÉTERNELLES "
+        "(RO073 ! (les MÉRITES (les ÉZÉCHIAS (les ABSENTS (les GRÂCES — les DOUBLES (les SOUVERAINES !)."
+    ),
+    interpretation=(
+        "La DÉFENSE AVANT-CONTACT (les 4 VERBES (les NIÉS (ENTRER (TIRER (PRÉSENTER (DRESSER (les GRADATIONS "
+        "(les INVERSÉES (les SIÈGES (les EMPÊCHÉS (les AVANT (les COMMENCER (les PROTECTIONS — les PRÉVENTIVES "
+        "(les PARFAITES (les ZÉRO (les DÉGÂTS !). LAKISH vs JÉRUSALEM (les CONTRASTES (les VOULUS (LAKISH (les "
+        "REMBLAIS (les RELIEFS (les PRISES (JÉRUSALEM (les INTERDITS (les TEXTES (les ÉPARGNÉES (les LEÇONS — "
+        "les VISUELLES (les MUSÉES (les MONTRENT (les CE-QUI-AURAIT-PU (les BIBLES (les DISENT (les CE-QUI-NE-FUT "
+        "-PAS !). Les DEUX CAUSES (MOI + DAVID (les THÉOLOGIES (les ALLIANCES (Dieu DÉFEND (SON NOM (les "
+        "BLASPHÈMES (RO094 ! (SON OINT (les DAVID (les PROMESSES (les ÉTERNELLES (les ÉZÉCHIAS (les BÉNÉFICIAIRES "
+        "(les GRATUITS (les GRÂCES — les DOUBLEMENT (les FONDÉES !). Le SIGNE 19:29 (les 2 ANS (les MANGER (sans "
+        "SEMER (les TERRES (les RAVAGÉES (les JACHÈRES (les FORCÉES (les 3e ANNÉES (les SEMER (les VIGNES (les "
+        "REPLANTER (les REPRISES — les ANNONCÉES (les AGRICOLES (les ESPOIRS !)."
+    ),
+    hist=(
+        "Les RELIEFS de LAKISH (les NINIVE (les BRITISH MUSEUM (les SALLES (les ENTIÈRES (les SIÈGES (les "
+        "DÉTAILLÉS (les REMBLAIS (les BÉLIERS (les ARCHERS (les EMPALÉS (les ÉCORCHÉS (les HORREURS (les "
+        "SCULPTÉES !) + 1200002659 : « Sennakérib… est ASSIS sur un FAUTEUIL et les PRISONNIERS… PASSENT » "
+        "(OFFICIEL ! (les INSCRIPTIONS — les IDENTIFIÉES (les ROIS (les NOMMÉS (les VILLES (les NOMMÉES !). "
+        "Le PRISME de TAYLOR (RO094 (les 46 VILLES (les JÉRUSALEM (les ABSENTES (les SILENCES (les ÉLOQUENTS "
+        "(les « OISEAU en CAGE » (les AVEUX (les DÉGUISÉS !) + 1988127 : « il ne dit PAS qu'il l'a fait "
+        "PRISONNIER ; il ne dit pas non plus qu'il s'est EMPARÉ de JÉRUSALEM » (OFFICIEL ! (les LECTURES — "
+        "les ATTENTIVES (les VANTARDS (les TRAHIS (les SILENCES !). Le TUNNEL de SILOÉ (les 533 MÈTRES (les 2 "
+        "ÉQUIPES (les RENCONTRES (les INSCRIPTIONS (les SILOÉ (les « la PIQÛRE… l'UNE vers l'AUTRE » (les "
+        "EXPLOITS (les HYDRAULIQUES (les PRÉPARATIONS (les SIÈGES (2Ch 32:30 ! : les TUNNELS — les VISITABLES "
+        "(les EAUX (les COULENT (les ENCORE !). Le MUR LARGE (les FOUILLES (AVIGAD (les 7 MÈTRES (les QUARTIERS "
+        "(les JUIFS (les JÉRUSALEM (les ÉZÉCHIAS (les PRÉPARÉ (les URGENCES (les ARCHÉOLOGIES (les CONFIRMÉES !)."
+    ),
+    geo=(
+        "JÉRUSALEM (les TOPOGRAPHIES (les VALLÉES (KIDRON (les EST (HINNOM (les OUEST (les TYROPŒON (les MILIEU "
+        "(les COLLINES (les DÉFENSIVES (les SIÈGES (les DIFFICILES (les NATURES — les ALLIÉES (les MURS (les "
+        "SECONDAIRES !). GUIHON + SILOÉ (les EAUX (les SOURCES (les UNIQUES (les EXTÉRIEURES (les DANGERS (les "
+        "ENNEMIS (les COUPENT (les TUNNELS (les AMÈNENT (les INTÉRIEURS (les 533 MÈTRES (les ROCHERS (les "
+        "CREUSÉS !) + 2Ch 32:3-4 : « ils BOUCHÈRENT les SOURCES » (les EAUX (les CACHÉES (les ASSYRIENS (les "
+        "SOIFS (les ASSIÉGÉS (les DÉSALTÉRÉS : les HYDRAULIQUES — les STRATÉGIQUES (les GUERRES (les EAUX !). "
+        "LAKISH vs JÉRUSALEM (les 24 KM ? (les HÉBRON (les ROUTES (les ÉGYPTE (1200002659 ! (les STRATÉGIQUES "
+        "(les PRISES (les CAPITALES (les ÉPARGNÉES (les GÉOGRAPHIES — les THÉOLOGIES (les DIEUX (les CHOISISSENT "
+        "(les VILLES !). LIBNA (19:8 (RO094 (les SECONDS (les SIÈGES (les DÉPLACEMENTS (les CAMPAGNES (les "
+        "MOBILES (les JÉRUSALEM (les CONTOURNÉES (les MENACÉES (les JAMAIS (les ATTAQUÉES !)."
+    ),
+    sci=(
+        "La POLIORCÉTIQUE ASSYRIENNE (les SCIENCES (les SIÈGES (les REMBLAIS (solelah — les RAMPES (les TERRES "
+        "(les PIERRES (les BÉLIERS (les MONTENT (les MURS (les FRAPPENT (les RELIEFS (les DÉTAILLENT (les "
+        "LAKISH (les MODÈLES (les JÉRUSALEM (les EXCEPTIONS (19:32 ! : les TECHNIQUES — les NIÉES (les "
+        "PROPHÉTIQUEMENT (les INTERDITES (les DIVINEMENT !). L'HYDRAULIQUE (les TUNNELS (les 533 MÈTRES (les "
+        "PENTES (les 0,06 % (les PRÉCISIONS (les ANTIQUES (les 2 ÉQUIPES (les ACOUSTIQUES (les GUIDÉES (les "
+        "RENCONTRES (les AJUSTÉES (les INGÉNIEURS — les HÉBREUX (les GÉNIAUX (les SIÈGES (les PRÉVUS !). "
+        "L'AGRONOMIE du SIGNE (19:29 : les 2 ANS (les SANS-SEMIS (les REPOUSSES (les NATURELLES (les SOLS (les "
+        "RAVAGÉS (les RÉGÉNÉRÉS (les 3e ANNÉES (les SEMIS (les VIGNES (les RECOLTES (les CYCLES — les "
+        "RESTAURÉS (les FAMINES (les ÉVITÉES !). La BALISTIQUE (hets (19:32 (les FLÈCHES (les PORTÉES (les "
+        "ARCS (les COMPOSITES (les 200-300 MÈTRES ? (les MURS (les DISTANCES (les ZÉRO (les TIRS (les "
+        "INTERDICTIONS (les ABSOLUES (les PROTECTIONS (les TOTALES !)."
+    ),
+    schema=(
+        "VILLE ÉPARGNÉE EN 10 TEMPS : TRIBUT (300 + 30 (les PORTES (les DÉPOUILLÉES : les VAINES !) → VILLES "
+        "(les 46 ? (les TOMBÉES : les PEURS !) → LETTRES (« ÉTENDUES devant JÉHOVAH » : les POSTALES !) → « TOI "
+        "SEUL… SACHENT » (les ENJEUX (les UNIVERSELS !) → « J'AI ENTENDU » (les RÉPONSES !) → « VIERGE… MÉPRISE » "
+        "(les MOQUÉES !) → « CROCHET… ANNEAU » (les BESTIALISÉS !) → « N'ENTRERA… FLÈCHE… BOUCLIER… REMBLAI » "
+        "(les 4 NIÉS !) → « à CAUSE de MOI… de DAVID » (les DOUBLES (les CAUSES !) → NUIT (« 185 000… PARTIT » : "
+        "les SILENCIEUSES !). Ni flèche tirée, ni remblai dressé — la ville n'est pas entrée."
+    ),
+    limites=(
+        "Les 46 VILLES (les PRISMES (les CHIFFRES (les ASSYRIENS (les VANTARDISES (les PROPAGANDES (les "
+        "VÉRIFICATIONS (les IMPOSSIBLES (les ORDRES (les GRANDEURS (les PLAUSIBLES (les PRÉCISIONS (les "
+        "SUSPECTES !). Le TUNNEL (les DATATIONS (ÉZÉCHIAS (les CONSENSUS (les ANTÉRIEURS ? (les DÉBATS "
+        "(les CARBONE ? (les STALACTITES ? (les DATATIONS (les RÉCENTES (les DISCUTÉES (les ATTRIBUTIONS (les "
+        "PROPOSÉES (les MAJORITAIRES !). Le SIGNE 19:29 (les CALENDRIERS (les 2 ANS (lesquels ? (les SABATS ? "
+        "(les JUBILÉS ? (les HYPOTHÈSES (les PROPOSÉES (les TEXTES (les TAIRENT (les DATES (les ABSOLUES !). "
+        "Les CAUSES 185 000 (RO094 (les ANGES (les TEXTES (les PESTES (les HYPOTHÈSES (les MÉCANISMES (les "
+        "NON-DITS (les AGENTS (les DITS !). Les PRISONNIERS (les DÉPORTÉS (les PRISMES (les REVENDIQUENT (les "
+        "200 150 ? (les CHIFFRES (les ÉNORMES (les PROPAGANDES (les CRITIQUES (les PRUDENTES !)."
+    ),
+    accomplissement=[(("19:14-19", "LETTRES (ÉTENDUES) + « TOI SEUL » (PRIÈRE)")),
+        ((("19:20-28"), "« ENTENDU » + « MÉPRISE » + « CROCHET »")),
+        ((("19:29"), "SIGNE (2 ANS + 3e !)")),
+        ((("19:32-34"), "4 NIÉS + « à CAUSE de MOI… DAVID »")),
+        ((("19:35-36"), "NUIT (185 000 !) + PARTIT (NINIVE !)"))],
+    tl=[((("19:20"), "« ENTENDU » (PRIÈRE)")),
+        ((("19:28"), "« CROCHET » (RETOUR)")),
+        ((("19:32"), "4 NIÉS (VILLE !)")),
+        ((("19:34"), "MOI + DAVID (CAUSES)")),
+        ((("19:35"), "185 000 (NUIT)"))],
+    src=[("La cruelle Assyrie : Deuxième Puissance mondiale (Lakish, 185 000, délivrance)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1988127"),
+        ("Lakish — Étude (siège, reliefs, 185 000)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200002659"),
+        ("L'Empire assyrien — Étude (Sennachérib, ange, nuit)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1200001701")],
+    img="images/prophe_RO095_ville.jpg",
+))
+
+# ---------------------------------------------------------------------------
+FICHES.append(dict(
+    n="RO096", titre="« Le troisième jour… quinze années » : Ézéchias guéri face au mur",
+    ref="2 Rois 20:5, 6",
+    statut="Accomplie",
+    cat="RO", syst="Sursis d'Ézéchias (ordonne → mur → larmes → cour → 3e jour → 15 ans → ombre → figues)",
+    reg="Registre : 2 Rois — P096 (20:5, 6 : guérison le 3e jour, 15 années ajoutées) ; accomplissement 2R 20:7-11",
+    texte=[
+        "« METS ORDRE… TU MOURRAS… TU NE VIVRAS PLUS. » (20:1 — plus !)",
+        "« Il TOURNA sa FACE contre le MUR… PRIA. » (20:2 — mur !)",
+        "« SOUVIENS-TOI… MARCHÉ… FIDÉLITÉ… BIEN… LARMES. » (20:3 — larmes !)",
+        "« ÉSAÏE… COUR du MILIEU… PAROLE. » (20:4 — milieu !)",
+        "« J'AI ENTENDU… VU tes LARMES… Je te GUÉRIRAI. » (20:5 — guérirai !)",
+        "« Le 3e JOUR… tu MONTERAS à la MAISON. » (20:5 — monteras !)",
+        "« J'AJOUTERAI… QUINZE ANNÉES… DÉLIVRERAI la VILLE. » (20:6 — années !)",
+        "« Je PROTÉGERAI… à CAUSE de MOI… de DAVID. » (20:6 — David !)",
+        "« GÂTEAU de FIGUES… sur l'ULCÈRE… GUÉRIT. » (20:7 — guérit !)",
+        "« SIGNE ?… OMBRE… AVANCERA… RECULERA… 10 DEGRÉS ? » (20:8-10 — degrés !)",
+        "« ÉSAÏE INVOQUA… l'OMBRE RECULA… 10 DEGRÉS… ACHAZ. » (20:11 — Achaz !)",
+    ],
+    contexte=(
+        "Jérusalem, ~701? — « EN CES JOURS-LÀ (bayyamim hahem) » (20:1 : les FLOUS (les VOULUS (les "
+        "SIÈGES ? (les AVANT ? (les PENDANT ? (les DÉBATS (les CHRONOLOGUES (les 15 ANS (les INDICES (les "
+        "MANASSÉ (né PENDANT (21:1 : 12 ANS (à la SUCCESSION (les CALCULS (les 3 ANS (APRÈS (les MALADIES "
+        "(les NAISSANCES (les PROBABLES ! : les DATES — les DÉDUITES (les APPROXIMATIVES (les RAISONNÉES !). "
+        "39 ANS (les MÉRIDIENS (Es 38:10 : « au DÉCLIN (bidmi) de mes JOURS » (les MILIEUX (les VIES (les "
+        "MORTS (les PRÉMATURÉES (les HÉRITIERS (les ABSENTS (les MANASSÉ (les À-VENIR (les ANGOISSES — les "
+        "DYNASTIQUES (les MOURIR (les SANS-FILS (les ALLIANCES (les DAVID (les MENACÉES !). ÉZÉCHIAS (les "
+        "PIEUX (18:5 : « AUCUN comme LUI… ne se CONFIANT » (les ÉLOGES (les UNIQUES (les RÉFORMES (les TOTALES "
+        "(18:4 : SERPENT (les BRISÉ (les HAUTS-LIEUX (les ÔTÉS (les PIÉTÉS — les RECORDS (les MALADIES (les "
+        "PARADOXALES (les JUSTES (les FRAPPÉS !). L'ULCÈRE (shechin) (20:7 : les ABCÈS (les INFECTÉS (les "
+        "MORTELS (les ANTIQUES (les DIAGNOSTICS (les MODERNES (les PROPOSÉS (les TEXTES (les NOMMENT (les "
+        "NATURES (les NON-DÉTAILLÉES !)."
+    ),
+    explication=(
+        "« METS ORDRE (tsav) à ta MAISON », 20:1 : tsavah — ORDONNER (les TESTAMENTS (les DERNIÈRES (les "
+        "VOLONTÉS (les MAISONS (les ROYALES (les SUCCESSIONS (les PRÉPARÉES (les VERDICTS — les SANS-APPEL "
+        "(les APPARENTS !). « TU MOURRAS (met)… TU NE VIVRAS PLUS (lo' tichyeh) », 20:1 : mut — MOURIR (les "
+        "DOUBLES (les NÉGATIONS (les CERTITUDES (les ANNONCÉES (les DÉCRETS (les PROPHÉTIQUES (les CONDITIONNELS "
+        "(les IMPLICITES (les NINIVE (les PRÉCÉDENTS (Jon 3:4 ! : les DÉCRETS — les RÉVOCABLES (les PRIÈRES (les "
+        "RÉVOQUENT !). « Il TOURNA (vayyasev) sa FACE contre le MUR (haqqir) », 20:2 : savav — TOURNER (les "
+        "MURS (les INTIMITÉS (les DOS (les VISITEURS (les FACES (les DIEUX (les PRIÈRES — les MURALES (les "
+        "SOLITUDES (les CONCENTRÉES !). « SOUVIENS-TOI (zekhor-na')… J'AI MARCHÉ (halakhti)… ABONDANTES LARMES "
+        "(bekhi gadol) », 20:3 : zakhar — SE SOUVENIR (les PLAIDOYERS (les FIDÉLITÉS (les RAPPELÉES (les "
+        "ALLIANCES (les INVOQUÉES (les LARMES (les GRANDES (les PREUVES (les SINCÈRES !). « J'AI ENTENDU "
+        "(shama'ti)… J'AI VU (ra'iti) tes LARMES », 20:5 : shama' + ra'ah — ENTENDRE + VOIR (les DOUBLES (les "
+        "SENS (Dieu ÉCOUTE (les PRIÈRES (Dieu REGARDE (les LARMES (les DIEUX — les ATTENTIFS (les ÉMUS (les "
+        "TOUCHÉS !) + « dans la COUR du MILIEU (hatser hatti khonah) » (20:4 : les RAPIDITÉS (ÉSAÏE (les PAS "
+        "ENCORE (les SORTIS (les RÉPONSES (les IMMÉDIATES (les PRIÈRES (les EXAUCÉES (les VITE !). « Le 3e JOUR "
+        "(bayyom hashelishi)… tu MONTERAS (ta'aleh) », 20:5 : 'alah — MONTER (les TEMPLES (les HAUTS (les "
+        "JÉRUSALEM (les MONTÉES (les CULTES (les RETROUVÉS (les 3 JOURS (les DÉLAIS (les PRÉCIS (les GUÉRISONS "
+        "(les VÉRIFIABLES !). « J'AJOUTERAI (vehosaphti)… QUINZE (chamesh-'esreh) ANNÉES », 20:6 : yasaph — "
+        "AJOUTER (les COMPTES (les EXACTS (les RESTES (les DATÉS (les VIES (les MESURÉES (les SURSIS — les "
+        "CHIFFRÉS (les 15 (les PROMIS (les TENUS !)."
+    ),
+    interpretation=(
+        "La PRIÈRE CHANGE le DÉCRET (les ANNONCÉS (les RÉVOQUÉS (les SOUVERAINS (les RELATIONNELS (les "
+        "DÉCRETS (les CONDITIONNELS (les IMPLICITES (les NINIVE (Jon 3:10 (les PRÉCÉDENTS (les PARADIGMES (les "
+        "THÉOLOGIES — les DYNAMIQUES (les DIEUX (les SOUVERAINS (les À-L'ÉCOUTE !). Les LARMES VUES (les DIEUX "
+        "(les REGARDENT (les PLEURS (les COMPTENT (Ps 56:9 : « METS mes LARMES dans ton OUTRE » (les OUTRES "
+        "(les CÉLESTES (les ÉMOTIONS — les DIVINES (les EMPATHIQUES (les TOUCHÉES !). Les 15 ANS = MANASSÉ (les "
+        "PARADOXES (les PROVIDENCES (les SURSIS (les DEMANDÉS (les PIRES (les ROIS (les ENGENDRÉS (21:1-16 : les "
+        "HORREURS (les MANASSÉ (les 55 ANS (les PLUS LONGS (les PIRES (les LEÇONS — les TROUBLANTES (les PRIÈRES "
+        "(les EXAUCÉES (les CONSÉQUENCES (les LOURDES (les DIEUX (les SAVAIENT (les DONNÈRENT (les QUAND-MÊME !). "
+        "Le SIGNE AU CHOIX (20:9-10 : AVANCER ? RECULER ? (les OPTIONS (les PROPOSÉES (les DIEUX (les LAISSENT "
+        "(les CHOISIR (les ÉZÉCHIAS (les CHOISISSENT (les DIFFICILES (les RECULER (les IMPOSSIBLES (les SIGNES — "
+        "les SUR-MESURE (les FOIS (les RESPECTÉES !)."
+    ),
+    hist=(
+        "MANASSÉ (21:1 : 12 ANS (les SUCCESSIONS (les 55 ANS (les RÈGNES (les PLUS LONGS (les JUDA (les PIRES "
+        "(les MOLOK (les PROSTITUTIONS (les INNOCENTS (les VERSÉS (21:16 (les SANGS (les REMPLISSENT (les "
+        "JÉRUSALEM (les SURSIS (les ENGENDRENT (les MONSTRES (les PARADOXES — les HISTORIQUES (les VÉRIFIÉS !). "
+        "ÉSAÏE 38 (les PARALLÈLES (les CANTIQUES (38:9-20 : « ÉCRIT d'ÉZÉCHIAS… LORSQU'IL FUT MALADE » (les "
+        "PSAUMES (les ROYAUX (les MORTS (les ÉVITÉES (les SOLEILS (les RECULÉS (38:8 (les DOUBLES (les RÉCITS "
+        "(les COMPLÉMENTAIRES (les RICHESSES — les REDONDANTES (les ÉCLAIRANTES !). 2 CHRONIQUES 32 (les "
+        "COMPLÉMENTS (32:24-26 : « son CŒUR S'ÉLEVA » (les ORGUEILS (les APRÈS-GUÉRISONS (les TRÉSORS (les "
+        "MONTRÉS (les BABYLONIENS (20:12-19 (les FAUTES (les SUIVANTES (les GRÂCES (les MAL-GÉRÉES !). "
+        "MÉRODAK-BALADAN (20:12 : les AMBASSADES (les BABYLONES (les ANTI-ASSYRIE (les DIPLOMATIES (les "
+        "COALITIONS (les ÉZÉCHIAS (les FLATTÉS (les TRÉSORS (les EXHIBÉS (les ÉSAÏE (les ANNONCENT (les "
+        "CAPTIVITÉS (les FUTURES (20:17-18 ! : les CONTEXTES — les GÉOPOLITIQUES (les GUÉRISONS (les SUIVIES "
+        "(les FAUTES !)."
+    ),
+    geo=(
+        "JÉRUSALEM (les PALAIS (les CHAMBRES (les MURS (les PRIÈRES (les TEMPLES (les MONTÉES (les 3e JOURS "
+        "(les TOPOGRAPHIES (les MONTANTES (les CULTES (les GÉOGRAPHIQUES (les GUÉRISONS (les PÈLERINES !). Le "
+        "CADRAN d'ACHAZ (20:11 : ma'alot — les MARCHES ? (les DEGRÉS ? (les ESCALIERS (les PALAIS (les OMBRES "
+        "(les MONTANTES (les DESCENDANTES (les GNOMONS (les ANTIQUES (les MURS (les MERVEILLEUX (les SIGNES — "
+        "les ARCHITECTURAUX (les LUMIÈRES (les RECULÉES !). BABYLONE (20:12 : les LOINTAINES (les AMBASSADES "
+        "(les LETTRES (les PRÉSENTS (les MALADIES (les APPRISES (les GUÉRISONS (les FÉLICITÉES (les DIPLOMATIES "
+        "(les INTÉRESSÉES (les ALLIANCES (les CHERCHÉES !). La COUR du MILIEU (20:4 : les PALAIS (les PLANS (les "
+        "COURS (les SUCCESSIVES (les PROPHÈTES (les SORTANTS (les PAROLES (les RATTRAPÉES (les DISTANCES — les "
+        "COURTES (les RAPIDITÉS (les DIVINES !)."
+    ),
+    sci=(
+        "Le SHECHIN (20:7 : les ULCÈRES (les ABCÈS (les DIAGNOSTICS (les MODERNES (les PROPOSÉS (les ANTHRAX ? "
+        "(les FURONCLES ? (les TUMEURS ? (les TEXTES (les NOMMENT (les DÉTAILS (les CLINIQUES (les ABSENTS (les "
+        "MORTELS (les ANNONCÉS (les GUÉRIS (les MIRACULEUSEMENT !). Les FIGUES (develet te'enim) (20:7 : les "
+        "CATAPLASMES (les GÂTEAUX (les PRESSÉS (les INFECTIONS (les EXTRAITES (les MÉDECINES (les ANTIQUES (les "
+        "ÉGYPTES (les MÉSOPOTAMIES (les USAGES (les DOCUMENTÉS (les INSTRUMENTS — les NATURELS (les AGENTS (les "
+        "DIVINS (les COMPLÉMENTAIRES (pas les CONTRADICTOIRES !). La GNOMONIQUE (ma'alot) (20:9-11 : les MARCHES "
+        "(les ESCALIERS (les OMBRES (les SOLAIRES (les MONTÉES (les DESCENDUES (les 10 DEGRÉS (les ~40 MINUTES ? "
+        "(les CALCULS (les PROPOSÉS (les RECULS (les IMPOSSIBLES (les NATURELLEMENT (les MIRACLES (les OPTIQUES "
+        "(les ASTRONOMIQUES ? (les TEXTES (les TAIRENT (les MÉCANISMES (les FAITS (les AFFIRMENT !). Les LARMES "
+        "(20:3, 5 : les PSYCHONEUROLOGIES (les PLEURS (les STRESS (les SOULAGÉS (les PRIÈRES (les ÉMOTIONNELLES "
+        "(les GUÉRISONS (les HOLISTIQUES (les CORPS (les ÂMES (les DIEUX (les SOIGNENT (les ENTIERS !)."
+    ),
+    schema=(
+        "15 ANS EN 11 TEMPS : ORDRE (« METS ORDRE… TU MOURRAS » : les VERDICTS !) → MUR (« FACE contre le MUR » "
+        ": les SOLITUDES !) → « SOUVIENS-TOI » (les PLAIDOYERS !) → LARMES (« ABONDANTES » : les PREUVES !) → "
+        "COUR (« MILIEU… PAROLE » : les RAPIDITÉS !) → « ENTENDU… VU » (les DOUBLES (les SENS !) → « 3e JOUR… "
+        "MONTERAS » (les DÉLAIS (les PRÉCIS !) → « QUINZE ANNÉES » (les COMPTES (les EXACTS !) → « DÉLIVRERAI… "
+        "PROTÉGERAI… DAVID » (les DOUBLES (les GRÂCES (RO095 !) → FIGUES (« sur l'ULCÈRE… GUÉRIT » : les "
+        "INSTRUMENTS !) → OMBRE (« RECULA… 10… ACHAZ » : les SIGNES !). Face au mur, des larmes — quinze ans "
+        "comptés."
+    ),
+    limites=(
+        "MA'ALOT (les SENS (les MARCHES (les PROBABLES (les ESCALIERS (les PALAIS (les DEGRÉS (les TRADITIONS "
+        "(les CADRANS (les SOLAIRES (les MODERNES (les ANACHRONIQUES ? (les LEXIQUES (les DÉBATTENT (les "
+        "ARCHITECTURES (les PROPOSÉES (pas les IMPOSÉES !). Le MÉCANISME (les OMBRES (les RECULÉES (les "
+        "RÉFRACTIONS ? (les MIRACLES (les OPTIQUES (les ASTRONOMIQUES (les TEXTES (les TAIRENT (les FAITS (les "
+        "AFFIRMENT (les COMMENT (les MYSTÈRES (les QUOI (les CERTAINS !). Les DATES (les MALADIES (les AVANT "
+        "(les PENDANT (les SIÈGES (les 20:6 (les DÉLIVRERAI (les FUTURS (les INDICES (les CHRONOLOGUES (les "
+        "DÉBATTENT (les MANASSÉ (les CALCULS (les ~3 ANS (les APRÈS (les PROBABLES !). Les 15 ANS (les "
+        "PARADOXES (les MANASSÉ (les PIRES (les THÉODICÉES (les TENSIONS (les PRIÈRES (les EXAUCÉES (les "
+        "CONSÉQUENCES (les LOURDES (les DIEUX (les SOUVERAINS (les BONS (les MYSTÈRES (les ASSUMÉS !). Les "
+        "FIGUES (les EFFICACITÉS (les NATURELLES (les MIRACULEUSES (les DEUX (les INSTRUMENTS (les AGENTS (les "
+        "DISTINGUÉS (les MÉDECINES (les AUTORISÉES (les FOIS (les COMPLÉTÉES !)."
+    ),
+    accomplissement=[(("20:1-3", "« MOURRAS » + MUR + « SOUVIENS-TOI » + LARMES")),
+        ((("20:4-6"), "COUR (MILIEU !) + « ENTENDU… VU » + 3e JOUR + 15 ANS")),
+        ((("20:7"), "FIGUES (ULCÈRE) + GUÉRIT")),
+        ((("20:8-11"), "SIGNE ? + OMBRE (RECULA 10 !)")),
+        ((("21:1"), "MANASSÉ (NÉ PENDANT !)"))],
+    tl=[((("20:1"), "« MOURRAS » (ORDRE)")),
+        ((("20:3"), "LARMES (MUR)")),
+        ((("20:5"), "3e JOUR (MONTERAS)")),
+        ((("20:6"), "15 ANS (AJOUTÉS)")),
+        ((("20:11"), "OMBRE (RECULA)"))],
+    src=[("2 Rois 20 — Bible d'étude (guérison, 15 ans, cadran, 20:1-11)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/20"),
+        ("2 Rois 20 — Traduction du monde nouveau (Ézéchias, Ésaïe)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/20"),
+        ("La cruelle Assyrie : Deuxième Puissance mondiale (Ézéchias, délivrance)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1988127")],
+    img="images/prophe_RO096_quinze.jpg",
+))

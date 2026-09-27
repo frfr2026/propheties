@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES SO3 — Sophonie 3 — La ville rebelle et ses chefs voraces, puis la langue pure et le reste humble et modeste</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_SO483_rebelle.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES SO3</h1>
+<h2>Sophonie 3 — La ville rebelle et ses chefs voraces, puis la langue pure et le reste humble et modeste</h2>
+<p class="intro">Le dernier chapitre du livre change deux fois de ton. Il commence par un « malheur » adressé à Jérusalem, et le portrait qu'il brosse est d'une sévérité extrême : la ville est « rebelle, souillée et oppressive ». Quatre refus la caractérisent — elle n'a obéi à aucune voix, n'a accepté aucune correction, n'a pas mis sa confiance en Jéhovah, ne s'est pas approchée de son Dieu. Puis vient le bestiaire des responsables : les princes sont « des lions rugissants », les juges « des loups qui chassent dans la nuit », les prophètes « des insolents, des traîtres », les prêtres profanent ce qui est saint et font violence à la loi. Et pourtant, au milieu d'elle, Jéhovah reste juste : « matin après matin, il fait connaître ses jugements, aussi invariablement que le jour se lève ». Les nations déjà détruites auraient dû servir d'avertissement ; la ville n'en a pas tenu compte. La deuxième partie est un renversement total. « Attendez-moi », dit Jéhovah ; puis : « alors je donnerai aux peuples des lèvres pures, afin qu'ils invoquent tous le nom de Jéhovah et le servent d'une seule épaule ». Un reste humble et modeste est laissé au milieu du peuple ; il trouve refuge dans le nom de Jéhovah, ne profère plus de mensonge, et se couche sans que personne le fasse trembler. Le livre se termine par un chant : « Pousse des cris de joie, ô fille de Sion ! » Jéhovah est « au milieu de toi » comme « un héros qui sauve » ; il exultera au sujet de son peuple, et il fera de lui « un nom et une louange parmi tous les peuples de la terre ».</p>
+<div class="chiffres">
+<div><b>2</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>16</b><span>sources</span></div>
+<div><b>2</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#SO483">SO483</a>
+<a href="#SO484">SO484</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#SO483"><img src="images/prophe_SO483_rebelle.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE SO483</div>
+<h3><a href="#SO483">« Malheur à la ville rebelle » : les princes lions rugissants, les juges loups du soir et Jéhovah juste au milieu d'elle, matin après matin</a></h3>
+<div class="meta">Accomplie · 🎧 0:12</div></div></div>
+<div class="carte">
+<a class="img" href="#SO484"><img src="images/prophe_SO484_levres.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE SO484</div>
+<h3><a href="#SO484">« Je donnerai aux peuples des lèvres pures » : le reste humble et modeste, les boiteux rassemblés et Jéhovah qui exulte au sujet de Sion</a></h3>
+<div class="meta">Accomplie (1er accomplissement) / À venir · 🎧 0:11</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="SO483">
+<div class="visuel"><img src="images/prophe_SO483_rebelle.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE SO483 · CATÉGORIE SO3</div>
+<h3>« Malheur à la ville rebelle » : les princes lions rugissants, les juges loups du soir et Jéhovah juste au milieu d'elle, matin après matin</h3>
+<div class="ref">Sophonie 3:1-7</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">malheur à la ville rebelle souillée et oppressive elle n'a obéi à aucune voix elle n'a accepté aucune correction elle n'a pas mis sa confiance en jéhovah elle ne s'est pas approchée de son dieu ses princes au milieu d'elle sont des lions rugissants ses juges sont des loups chassant dans la nuit ils ne laissent même pas un os à ronger pour le matin ses prophètes sont des insolents des traîtres ses prêtres profanent ce qui est saint ils violent la loi jéhovah au milieu d'elle est juste il ne commet aucun mal matin après matin il fait connaître ses jugements aussi invariablement que le jour se lève mais l'injuste ne connaît pas la honte j'ai détruit des nations leurs tours d'angle ont été démolies j'ai dévasté leurs rues si bien que personne n'y passait leurs villes sont en ruine il n'y a plus un homme plus un habitant j'ai dit sûrement tu me craindras et tu accepteras la correction pour que sa demeure ne soit pas détruite mais ils avaient d'autant plus envie d'agir de manière corrompue (sophonie 3:1-7 ; accomplie)</span>
+<span class="badge">8 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche SO483 · 0:12</div><audio controls preload="none" src="audio/fiche_SO483_rebelle.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_SO483_rebelle.mp3 · 0:12 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Sophonie 3:1-7</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>malheur à la ville rebelle souillée et oppressive elle n'a obéi à aucune voix elle n'a accepté aucune correction elle n'a pas mis sa confiance en jéhovah elle ne s'est pas approchée de son dieu ses princes au milieu d'elle sont des lions rugissants ses juges sont des loups chassant dans la nuit ils ne laissent même pas un os à ronger pour le matin ses prophètes sont des insolents des traîtres ses prêtres profanent ce qui est saint ils violent la loi jéhovah au milieu d'elle est juste il ne commet aucun mal matin après matin il fait connaître ses jugements aussi invariablement que le jour se lève mais l'injuste ne connaît pas la honte j'ai détruit des nations leurs tours d'angle ont été démolies j'ai dévasté leurs rues si bien que personne n'y passait leurs villes sont en ruine il n'y a plus un homme plus un habitant j'ai dit sûrement tu me craindras et tu accepteras la correction pour que sa demeure ne soit pas détruite mais ils avaient d'autant plus envie d'agir de manière corrompue (sophonie 3:1-7 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Sophonie — P483 (3:1-7 : la ville rebelle et souillée, les princes lions rugissants, les juges loups du soir, les prophètes présomptueux, les prêtres qui profanent ce qui est saint ; Jéhovah juste au milieu d'elle) ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MALHEUR À LA VILLE REBELLE, SOUILLÉE ET OPPRESSIVE…! »… « ELLE N'A OBÉI À AUCUNE VOIX… ELLE N'A ACCEPTÉ AUCUNE CORRECTION… ELLE N'A PAS MIS SA CONFIANCE EN JÉHOVAH… ELLE NE S'EST PAS APPROCHÉE DE SON DIEU… »… « SES PRINCES AU MILIEU D'ELLE SONT DES LIONS RUGISSANTS… SES JUGES SONT DES LOUPS CHASSANT DANS LA NUIT… ILS NE LAISSENT MÊME PAS UN OS À RONGER POUR LE MATIN… »… « SES PROPHÈTES SONT DES INSOLENTS, DES TRAÎTRES… SES PRÊTRES PROFANENT CE QUI EST SAINT… ILS VIOLENT LA LOI… »… « JÉHOVAH AU MILIEU D'ELLE EST JUSTE… IL NE COMMET AUCUN MAL… MATIN APRÈS MATIN, IL FAIT CONNAÎTRE SES JUGEMENTS… AUSSI INVARIABLEMENT QUE LE JOUR SE LÈVE… MAIS L'INJUSTE NE CONNAÎT PAS LA HONTE… »… « J'AI DÉTRUIT DES NATIONS… LEURS TOURS D'ANGLE ONT ÉTÉ DÉMOLIES… J'AI DÉVASTÉ LEURS RUES… LEURS VILLES SONT EN RUINE… J'AI DIT : “SÛREMENT TU ME CRAINDRAS ET TU ACCEPTERAS LA CORRECTION”… MAIS ILS AVAIENT D'AUTANT PLUS ENVIE D'AGIR DE MANIÈRE CORROMPUE… »… — HOY MORʾAH WE-NIGʾALAH HA-ʿIR HA-YONAH… MALHEUR À LA REBELLE, À LA SOUILLÉE, À LA VILLE QUI OPPRIME… LE MOT HA-YONAH SONNE COMME YONAH, LA COLOMBE, MAIS VIENT DU VERBE YANAH, OPPRIMER, EXPLOITER… LOʾ SHOMʿAH BE-QOL… ELLE N'ÉCOUTE AUCUNE VOIX… LOʾ LAQḤAH MUSAR… ELLE N'ACCEPTE AUCUNE CORRECTION, AUCUNE DISCIPLINE… BE-YHWH LOʾ VAṬAḤAH… ELLE NE SE CONFIE PAS EN JÉHOVAH… ʾEL-ʾELOHEHA LOʾ QAREVAH… ELLE NE S'APPROCHE PAS DE SON DIEU… SARIM… LES PRINCES… ʾARAYOT SHOʾAGIM… DES LIONS QUI RUGISSENT… SHOFṬIM… LES JUGES… ZEʾEVIM ʿEREV… DES LOUPS DU SOIR, DE LA NUIT… LOʾ GARAMU LA-BOQER… ILS N'ONT PAS RONGÉ D'OS POUR LE MATIN, ILS NE LAISSENT RIEN… NEVIʾIM POḤAZIM… DES PROPHÈTES INSOLENTS, ÉTOURDIS, PRÉSOMPTUEUX… ʾANSHE BOGEDOT… DES HOMMES DE TRAÎTRISE… KOHANIM… LES PRÊTRES… ḤILLELU QODESH… ILS ONT PROFANÉ CE QUI EST SAINT… ḤAMSU TORAH… ILS ONT FAIT VIOLENCE À LA LOI… TSADDIQ… JUSTE… BA-BOQER BA-BOQER… CHAQUE MATIN, MATIN APRÈS MATIN… MISHPAT… LE JUGEMENT, LA DÉCISION JUDICIAIRE… LA-ʾOR… À LA LUMIÈRE, EN PLEIN JOUR… ʿAWWAʿ… L'INJUSTE, LE PERVERS… LOʾ YODEAʿ BOSHET… IL NE CONNAÎT PAS LA HONTE… HIKHRATI GOYIM… J'AI EXTERMINÉ DES NATIONS… HISHKIMU HISHḤITU… ILS SE SONT LEVÉS DE BONNE HEURE POUR CORROMPRE… — 659-629… YOSHIYA… 2 CHRONIQUES 34-36… 2 ROIS 22-24… JÉRÉMIE 5:1-5… JÉRÉMIE 22:13-17… ÉZÉCHIEL 22:23-31… MICHÉE 3:1-3, 9-12… HABACUC 1:8… LAMENTATIONS 4:13… »</li>
+<li>LES TROIS JUMEAUX — Jérémie 5:1-5 : « parcourez les rues de Jérusalem… cherchez dans ses places publiques… si vous trouvez un homme, s'il en est un qui pratique la justice, un qui cherche la fidélité, je pardonnerai à la ville… J'ai dit : “Ce ne sont que les petits qui ont agi sottement… je vais aller vers les grands et je leur parlerai, car ils connaissent la voie de Jéhovah.” Mais eux aussi, ils ont tous brisé le joug » — le même constat, fait rue par rue, par un contemporain de Sophonie : ce ne sont pas les humbles qui sont visés, mais les responsables, princes, juges et prophètes. Ézéchiel 22:25-28 : « il y a une conspiration de ses prophètes au milieu d'elle… ses prêtres ont fait violence à ma loi et profané mes choses saintes… ses princes au milieu d'elle sont comme des loups qui déchirent la proie, pour verser le sang, pour faire périr des âmes » — le tableau identique, dans les mêmes termes d'animaux voraces, dressé par un prophète de la même génération. Michée 3:1-3, 9-11 : « écoutez donc, chefs de Jacob… vous qui haïssez ce qui est bon et aimez ce qui est mauvais, qui arrachez la peau de mon peuple… ses chefs rendent la justice pour un pot-de-vin, ses prêtres enseignent pour un salaire, et ses prophètes pratiquent la divination pour de l'argent » — la dénonciation parallèle de trois corps de responsables, la plus proche de la structure de Sophonie 3:3, 4.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 3 revient sur Jérusalem, quittée à la fin du chapitre 1 après le grand tableau du jour de Jéhovah. Le mouvement du livre est significatif : le jugement a été annoncé sur le monde entier (chapitre 1), puis sur les nations voisines (chapitre 2), et au moment où le lecteur s'attend à ce que la ville sainte soit épargnée parce qu'elle porte le nom de Dieu, le prophète place précisément là l'accusation la plus grave. Le mot d'ouverture est un « hoy », un « malheur » d'accusation, comme celui qui introduit une déclaration de jugement. Trois adjectifs définissent la ville : rebelle — elle refuse l'autorité ; souillée — elle est rituellement impure, contaminée par les cultes qu'elle a adoptés ; oppressive — elle exploite ses habitants. La suite détaille le crime en quatre refus qui forment une gradation : n'avoir écouté aucune voix, n'avoir accepté aucune correction, n'avoir pas mis sa confiance en Jéhovah, ne s'être pas approchée de son Dieu. Puis viennent les quatre groupes de responsables, chacun avec son image animale ou son vice : princes et juges présentés comme des prédateurs, prophètes et prêtres comme des traîtres et des profanateurs. Le verset 5 oppose à ce tableau la justice constante de Dieu, qui « matin après matin » publie ses décisions « à la lumière », et l'imperturbable absence de honte des injustes. Les deux derniers versets rappellent que l'avertissement n'est pas nouveau : les nations détruites par le jugement divin devaient servir de leçon ; au lieu de craindre, la ville s'est empressée de « pervertir toutes ses actions ». Le registre du projet rattache cette entrée au passage entier et lui donne le statut « Accomplie », la destruction de Jérusalem par les Babyloniens en étant la vérification historique directe, comme le confirme le livre des Lamentations.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LES TROIS TORTS DE LA VILLE ET SON NOM DÉTOURNÉ : « rebelle, souillée et oppressive » résume une triple rupture — autorité rejetée, pureté perdue, justice sociale bafouée. La Bible Annotée note que ces trois traits sont « les trois caractères des hommes séparés de Dieu par le péché », et que la ville sainte, mise « en rapport direct avec Dieu, puisqu'il habite au milieu d'elle », est jugée plus sévèrement que les autres, car « porter son nom et vivre comme les nations attire sur la profession un jugement sans réserve ». Le mot hébreu rendu par « qui opprime » (ha-yonah) est un jeu de mots cruel : il sonne comme « la colombe », symbole familier de Jérusalem, mais vient d'un verbe qui signifie pressurer, exploiter. (2) LES QUATRE REFUS EN GRADATION : la ville n'a pas écouté, n'a pas accepté la correction, n'a pas fait confiance, ne s'est pas approchée. Les quatre verbes dessinent un éloignement progressif : refuser d'entendre, refuser d'être corrigé, cesser de se confier, cesser de venir. Symétriquement, les auteurs sacrés emploient cette échelle pour décrire l'endurcissement — et c'est cette progression que le verset 7 sanctionne, quand Dieu dit avoir espéré au moins la crainte et l'acceptation de la correction. (3) LE BESTIAIRE DES RESPONSABLES : lions pour les princes, loups nocturnes pour les juges, insolents et traîtres pour les prophètes, profanateurs pour les prêtres. La Bible Annotée relève que les princes « portaient le caractère du diable, non celui de Dieu, et cherchaient qui ils pourraient dévorer », et que les juges agissent « comme des loups du soir pour se repaître la nuit d'une proie dont il ne restera plus aucun vestige au lever du jour », en rapprochant ce trait d'Habacuc 1:8. Les prophètes sont dits « fanfarons, imposteurs » — ils annonçaient la paix quand il n'y avait pas de paix ; les prêtres, chargés de garder la distinction entre sacré et profane, l'ont abolie. (4) LA JUSTICE CONSTANTE DE DIEU ET LA HONTE ABSENTE : « matin après matin, il fait connaître ses jugements, aussi invariablement que le jour se lève ». Cette expression a un fondement institutionnel : en Israël, les causes se jugeaient à la porte de la ville, au petit matin, et les rois justes sont décrits rendant la justice « le matin ». Dieu est donc, au milieu d'une ville de prédateurs nocturnes, le seul juge qui siège à l'aube, chaque jour, sans faute — et l'accusation finale tient en une phrase : « l'injuste ne connaît pas la honte ». Le contraste entre la régularité de Dieu et l'endurcissement des hommes est le ressort moral du passage, préparant le « malheur » du verset 1 et l'espoir du reste à venir.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 36 — Tsephania » (document 1101990097) résume la section sous le titre « Jéhovah s'en prend à Jérusalem, la rebelle ; bénédiction d'un humble reste » : « Malheur aussi à Jérusalem, la ville rebelle qui opprime ! Ses princes, “des lions rugissants”, et ses prophètes, “des hommes de trahison”, n'ont pas eu confiance en son Dieu, Jéhovah. Il va s'en prendre à eux. Ses habitants vont-ils craindre Jéhovah et accepter la discipline ? Non, car ils sont “prompts à pervertir toutes leurs manières d'agir” (3:3, 4, 7). » Le même document montre que le message du livre « revêt un double aspect : il est à la fois menaçant et consolant », et que « seule l'intervention divine permettrait d'être “caché au jour de la colère de Jéhovah” ». Le rappel historique y est explicite : « le roi Yoshiya prêta l'oreille au message d'avertissement de Tsephania, et il en tira grand profit », tandis que « les fils de Yoshiya ne suivirent pas le bel exemple de leur père » — ce qui est exactement le sujet de Sophonie 3:1-7. L'article « Cachés au jour de la colère de Jéhovah » (document 1981608) souligne de son côté qu'« aux jours de Sophonie, Jéhovah procéda à un examen complet de ceux qui disaient l'adorer ». Lecture commune et exégèse : les commentateurs insistent sur la forme de la sentence, un « malheur » unique et non répété, comme « un coup de foudre inattendu » tombant sur une profession religieuse démentie par la conduite ; ils relèvent aussi le parallèle avec Ézéchiel 22 et Michée 3, où les mêmes groupes sociaux sont dénoncés dans les mêmes termes. La Bible Annotée ajoute que les princes corrompus « cherchaient qui ils pourraient dévorer », et que les juges dévorent leur proie « de façon gloutonne », avant de rappeler que « le jugement de Dieu était tombé sur ces impies ».</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Avant 648 av. n. è.</td><td>La ville et ses responsables sont accusés : quatre refus, quatre corps de dirigeants corrompus (Sophonie 3:1-7)</td></tr>
+<tr><td class="d">648-629 av. n. è.</td><td>Réforme de Josias : le message est entendu par le roi, le livre de la Loi retrouvé et lu, le pays purifié (2 Rois 22-23)</td></tr>
+<tr><td class="d">628-609 av. n. è.</td><td>Après la mort de Josias, ses fils et ses successeurs « firent tous ce qui est mauvais aux yeux de Jéhovah » (2 Chroniques 36:1-12)</td></tr>
+<tr><td class="d">609-607 av. n. è.</td><td>Les princes de Juda jugent et tuent : le prophète Ouriya est mis à mort, Jérémie est menacé et emprisonné ; les prêtres et les prophètes de cour soutiennent la politique royale (Jérémie 26 ; 36 ; 38)</td></tr>
+<tr><td class="d">607 av. n. è.</td><td>Jérusalem est détruite ; le livre des Lamentations attribue explicitement le désastre aux chefs, aux prophètes et aux prêtres (Lamentations 4:13)</td></tr>
+<tr><td class="d">607-537 av. n. è.</td><td>La ville reste déserte : « leurs villes sont en ruine ; il n'y a plus un habitant » trouve son application dans l'état du pays</td></tr>
+<tr><td class="d">537 av. n. è. et après</td><td>Le retour du reste : la ville est rebâtie et le culte pur rétabli, ce qui ouvre la seconde partie de la prophétie (fiche suivante)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES QUATRE REFUS DANS LES ANNALES : les livres des Rois et des Chroniques répètent, règne après règne, la formule « il fit ce qui est mauvais aux yeux de Jéhovah », et 2 Chroniques 36:15, 16 résume : « Jéhovah… leur envoyait sans cesse ses messagers, car il avait pitié de son peuple… mais ils se moquaient des messagers de Dieu, ils méprisaient ses paroles et se moquaient de ses prophètes, jusqu'à ce que la fureur de Jéhovah monte contre son peuple ». (2) LES DIRIGEANTS NOMMÉS : le livre de Jérémie donne les noms de plusieurs de ces princes et officiers — les fils du roi, les princes de la cour, les prêtres, les prophètes de cour ; il rapporte l'exécution du prophète Ouriya sous le roi Yoaïkim et la mise à mort par le glaive d'un homme qui parlait au nom de Dieu (Jérémie 26:20-23), ainsi que les menaces contre Jérémie de la part de prêtres et de prophètes (Jérémie 20 ; 26). (3) LA VIOLENCE DES GRANDS : Jérémie 22:13-17 décrit le roi qui « bâtit sa maison par l'injustice » et emploie des hommes « sans les payer », et 2 Rois 24:3, 4 attribue la destruction au « sang innocent » répandu à Jérusalem depuis les jours de Manassé. (4) LA MORT DE JOSIAS ET LA RUPTURE : Josias meurt à Megiddo en 609 ; ses successeurs Yoahaz, Yoaïkim, Yoaïkin et Sédécias sont dépeints comme faisant le mal, et deux d'entre eux au moins sont déportés (2 Rois 23:31-24:20). (5) L'ACCUSATION DES RESPONSABLES PAR UN TÉMOIN OCULAIRE : Lamentations 4:13 dit : « c'est à cause des péchés de ses prophètes, des fautes de ses prêtres, qui ont répandu au milieu d'elle le sang des justes » — un témoignage écrit peu après 607, qui reprend mot pour mot la logique de Sophonie 3:3, 4. (6) LE DÉSERT DE LA VILLE : 2 Rois 25 et le livre des Lamentations décrivent la ville vidée, ses portes désertes, ses chefs emmenés ; les listes de déportés et les sceaux exhumés portent les noms de plusieurs de ces mêmes responsables. (7) PRUDENCE : les sources établissent la corruption des milieux dirigeants et la destruction de 607 ; elles ne permettent pas d'attribuer à chacun des quatre groupes sociaux un acte précis correspondant à chaque verbe du prophète.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA VILLE AU MILIEU DE LAQUELLE DIEU SIÈGE : Jérusalem est bâtie sur un promontoire entre les vallées du Cédron et de la Tyropéon, dominée par le temple ; l'expression « au milieu d'elle » prend un sens topographique précis, comme l'a relevé la Bible Annotée : Jéhovah habite « au milieu d'elle, dans son temple ». (2) LA PORTE COMME LIEU DE JUSTICE : les causes se jugeaient à la porte de la ville, sur la place aménagée à son entrée, et les textes situent cette activité « au matin » — c'est là que le prophète place le contraste entre le Dieu qui juge à l'aube « chaque matin » et les juges humains qui chassent la nuit. (3) LE QUARTIER ROYAL ET SES PRÉDATEURS : le palais, les maisons des officiers et le quartier de l'Ophel concentrent la classe dirigeante dénoncée ; leur proximité avec le temple explique la responsabilité accrue des prêtres, chargés du sanctuaire voisin. (4) LA RUE, LE SEUIL ET LE TOIT : les scènes de violence et de fraude décrites dans les oracles contemporains se déroulent dans des lieux concrets — la rue commerçante, les seuils des maisons, les terrasses accessibles par des escaliers extérieurs, la porte des Poissons près du marché. (5) LES VILLES DÉTRUITES CITÉES COMME LEÇON : la mention des « tours d'angle démolies » et des rues sans passant évoque le paysage de décombres des cités de Juda rasées par les campagnes assyriennes de 701 av. n. è., dont Lakish reste l'exemple fouillé ; ces ruines étaient visibles de la route du littoral. (6) LE PAYS ISOLÉ : les tours d'angle, les murs d'enceinte et les portes de soutènement découverts en plusieurs sites du royaume montrent un pays organisé pour la défense et donc vulnérable quand la défense cède.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES SCEAUX DES RESPONSABLES : la fouille de la Cité de David a livré deux bullae portant les noms de « Guemaria, fils de Shafan » et de « Yehoutal, fils de Shélémya », officiers du roi mentionnés dans Jérémie 36 et 38 ; ces objets, retrouvés dans un contexte de destruction, donnent un visage matériel à la classe dirigeante dénoncée. (2) LES BULLES BRÛLÉES : un lot de sceaux brisés, découvert carbonisé dans une maison incendiée, porte des noms de fonctionnaires ; il témoigne à la fois de l'administration de la ville et de la violence de sa fin. (3) LE SCEAU DE GUEDALIA ET LES BULLES DE MIZPA : retrouvés à Lakish et à Tell en-Nasbeh, ils documentent la continuité des institutions après 607 et l'existence de ceux épargnés. (4) LES NIVEAUX DE DESTRUCTION : sur plusieurs sites de Juda, une couche de cendres, de pierres effondrées et d'objets brisés datée de la période babylonienne marque l'arrêt brutal de l'occupation ; la ville n'a pas seulement été prise, elle a été vidée. (5) LES PESÉES ET LES POIDS : les séries de poids de pierre de tailles normalisées, dont des exemplaires portant l'inscription royale, témoignent du commerce et des fraudes dénoncées par les prophètes. (6) L'ARCHÉOLOGIE DE LA VIOLENCE QUOTIDIENNE : les analyses de restes humains des niveaux de destruction ont montré, dans plusieurs cas, des indications de mort violente et d'exposition, ce qui donne un fondement concret aux accusations de sang répandu. (7) PRUDENCE : l'archéologie identifie des personnes, des lieux et des niveaux de destruction ; elle ne permet pas de répartir les responsabilités entre les quatre groupes décrits par le prophète.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>L'ACCUSATION (3:1) : « MALHEUR À LA VILLE REBELLE, SOUILLÉE ET OPPRESSIVE ! » → LES QUATRE REFUS (3:2) : AUCUNE VOIX ÉCOUTÉE · AUCUNE CORRECTION ACCEPTÉE · AUCUNE CONFIANCE EN JÉHOVAH · AUCUNE APPROCHE DE SON DIEU → LE BESTIAIRE DES RESPONSABLES (3:3, 4) : PRINCES LIONS RUGISSANTS · JUGES LOUPS DU SOIR QUI NE LAISSENT RIEN POUR LE MATIN · PROPHÈTES INSOLENTS ET TRAÎTRES · PRÊTRES PROFANATEURS QUI VIOLENT LA LOI → LE CONTRASTE DIVIN (3:5) : « JÉHOVAH AU MILIEU D'ELLE EST JUSTE » ; CHAQUE MATIN IL PUBLIE SES JUGEMENTS — MAIS « L'INJUSTE NE CONNAÎT PAS LA HONTE » → L'AVERTISSEMENT IGNORÉ (3:6, 7) : DES NATIONS DÉTRUITES, DES VILLES SANS HABITANT ; « TU ME CRAINDRAS » — ET L'EMPRESSEMENT À CORROMPRE → HISTOIRE : RÉFORME DE JOSIAS PUIS RUPTURE (2 CHRONIQUES 36:1-12) · ÉXÉCUTION DU PROPHÈTE OURIYA (JÉRÉMIE 26) · 607 (LAMENTATIONS 4:13) → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec la référence du registre (Sophonie 3:1-7) et le statut « Accomplie ». LES QUATRE GROUPES DÉNONCÉS : la fiche les décrit tels que le texte les nomme — princes, juges, prophètes, prêtres — sans prétendre que chaque membre de ces corps était corrompu, la prophétie visant les responsables en tant que classes dirigeantes déterminantes. LES SOURCES EXTERNES : la fiche cite la Bible Annotée et des commentaires comme éclairages linguistiques et historiques, sans en faire des sources doctrinales. LA DATE : la destruction de Jérusalem est donnée en 607 av. n. è. selon la chronologie retenue par les publications, la chronologie communément admise la situant en 586. LES SCEAUX : la fiche signale les identifications proposées par les archéologues sans garantir que chaque nom retrouvé corresponde à la personne du même nom citée dans la Bible. LE VERSET 6 : l'évocation des nations détruites est présentée comme un avertissement historique adressé à Jérusalem, sans en identifier nommément toutes les cités. LE CHAPITRE 3, SUITE : la fiche s'arrête au verset 7 ; les versets 8 à 20 font l'objet de la fiche suivante. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des chapitres 1 et 2 du livre (fiches précédentes) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie dénonce Jérusalem, ses chefs et ses guides : quatre refus, quatre corps corrompus (Sophonie 3:1-7)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant 648 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Josias écoute l'avertissement, retrouve le livre de la Loi et réforme le pays (2 Rois 22-23 ; 2 Chroniques 34-35)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">648-629 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Josias à Megiddo ; début de la dérive des derniers rois de Juda</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Princes, prophètes et prêtres persécutent les messagers de Dieu ; Ouriya est exécuté (Jérémie 26:20-23)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">609-607 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérusalem tombe ; Lamentations 4:13 attribue la ruine aux péchés des prophètes et des prêtres</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La ville et le pays restent ruinés : « il n'y a plus un habitant »</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607-537 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour du reste et rétablissement du culte : la promesse des versets 9 à 20 entre en jeu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è. et après</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/146">Bible — Psaume 146 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/146</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/5">Bible — 1 Corinthiens 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/51/3">Bible — Colossiens 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/51/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/53/3">Bible — 2 Thessaloniciens 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/53/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/59/3">Bible — Jacques 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/59/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/63/1">Bible — 2 Jean 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/63/1</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990097">Livre de la Bible numéro 36 — Tsephania — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990097</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1981608">Cachés au jour de la colère de Jéhovah — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1981608</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche SO483 — « Malheur à la ville rebelle » : les princes lions rugissants, les juges loups du soir et Jéhovah juste au milieu d'elle, matin après matin</span><span>Catégorie SO3</span></div></div>
+</article>
+<article class="fiche" id="SO484">
+<div class="visuel"><img src="images/prophe_SO484_levres.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE SO484 · CATÉGORIE SO3</div>
+<h3>« Je donnerai aux peuples des lèvres pures » : le reste humble et modeste, les boiteux rassemblés et Jéhovah qui exulte au sujet de Sion</h3>
+<div class="ref">Sophonie 3:8-20</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (1er accomplissement) / À venir</span>
+<span class="badge">c'est pourquoi attendez-moi déclare jéhovah jusqu'au jour où je me lèverai pour le butin car j'ai décidé de rassembler les nations de rassembler les royaumes pour répandre sur eux ma fureur toute l'ardeur de ma colère car par le feu de ma jalousie tout le pays sera consumé alors je donnerai aux peuples des lèvres pures afin qu'ils invoquent tous le nom de jéhovah et le servent d'une seule épaule d'au-delà des fleuves de koush mes suppliants la fille de mes dispersés apporteront mon offrande en ce jour-là tu n'auras pas honte de toutes tes actions car alors j'ôterai du milieu de toi ceux qui exultent dans ta fierté je laisserai au milieu de toi un peuple humble et modeste et vraiment ils se réfugieront dans le nom de jéhovah le reste d'israël ne commettra pas d'iniquité ils ne diront pas de mensonge il ne se trouvera pas dans leur bouche une langue trompeuse ils se nourriront et se coucheront et il n'y aura personne pour les faire trembler pousse des cris de joie ô fille de sion pousse des acclamations ô israël réjouis-toi et exulte de tout ton cœur ô fille de jérusalem jéhovah ton dieu est au milieu de toi comme un héros qui sauve il exultera à ton sujet avec des cris de joie je rassemblerai ceux qui sont dans la tristesse loin des fêtes solennelles je délivrerai les boiteux et je rassemblerai ceux qui ont été chassés et je ferai d'eux un sujet de louange et un nom dans tous les pays où ils ont été couverts de honte en ce temps-là je vous ramènerai et je vous rassemblerai car je ferai de vous un nom et une louange parmi tous les peuples de la terre (sophonie 3:8-20 ; accomplie (1er accomplissement) / à venir)</span>
+<span class="badge">8 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche SO484 · 0:11</div><audio controls preload="none" src="audio/fiche_SO484_levres.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_SO484_levres.mp3 · 0:11 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Sophonie 3:8-20</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (1er accomplissement) / À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>c'est pourquoi attendez-moi déclare jéhovah jusqu'au jour où je me lèverai pour le butin car j'ai décidé de rassembler les nations de rassembler les royaumes pour répandre sur eux ma fureur toute l'ardeur de ma colère car par le feu de ma jalousie tout le pays sera consumé alors je donnerai aux peuples des lèvres pures afin qu'ils invoquent tous le nom de jéhovah et le servent d'une seule épaule d'au-delà des fleuves de koush mes suppliants la fille de mes dispersés apporteront mon offrande en ce jour-là tu n'auras pas honte de toutes tes actions car alors j'ôterai du milieu de toi ceux qui exultent dans ta fierté je laisserai au milieu de toi un peuple humble et modeste et vraiment ils se réfugieront dans le nom de jéhovah le reste d'israël ne commettra pas d'iniquité ils ne diront pas de mensonge il ne se trouvera pas dans leur bouche une langue trompeuse ils se nourriront et se coucheront et il n'y aura personne pour les faire trembler pousse des cris de joie ô fille de sion pousse des acclamations ô israël réjouis-toi et exulte de tout ton cœur ô fille de jérusalem jéhovah ton dieu est au milieu de toi comme un héros qui sauve il exultera à ton sujet avec des cris de joie je rassemblerai ceux qui sont dans la tristesse loin des fêtes solennelles je délivrerai les boiteux et je rassemblerai ceux qui ont été chassés et je ferai d'eux un sujet de louange et un nom dans tous les pays où ils ont été couverts de honte en ce temps-là je vous ramènerai et je vous rassemblerai car je ferai de vous un nom et une louange parmi tous les peuples de la terre (sophonie 3:8-20 ; accomplie (1er accomplissement) / à venir)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Sophonie — P484 (3:8-20 : « je donnerai aux peuples des lèvres pures », le reste humble et modeste, le rassemblement des dispersés et des boiteux, « je ferai de vous un nom et une louange ») ; Accomplie (1er accomplissement) / À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« C'EST POURQUOI, ATTENDEZ-MOI, DÉCLARE JÉHOVAH… JUSQU'AU JOUR OÙ JE ME LÈVERAI POUR LE BUTIN… CAR J'AI DÉCIDÉ DE RASSEMBLER LES NATIONS… POUR RÉPANDRE SUR EUX MA FUREUR… CAR PAR LE FEU DE MA JALOUSIE TOUT LE PAYS SERA CONSUMÉ… »… « ALORS JE DONNERAI AUX PEUPLES DES LÈVRES PURES… AFIN QU'ILS INVOQUENT TOUS LE NOM DE JÉHOVAH… ET LE SERVENT D'UNE SEULE ÉPAULE… »… « D'AU-DELÀ DES FLEUVES DE KOUSH… MES SUPPLIANTS, LA FILLE DE MES DISPERSÉS… APPORTERONT MON OFFRANDE… »… « JE LAISSERAI AU MILIEU DE TOI UN PEUPLE HUMBLE ET MODESTE… ET VRAIMENT ILS SE RÉFUGIERONT DANS LE NOM DE JÉHOVAH… LE RESTE D'ISRAËL NE COMMETTRA PAS D'INIQUITÉ… ILS SE NOURRIRONT ET SE COUCHERONT… ET IL N'Y AURA PERSONNE POUR LES FAIRE TREMBLER… »… « POUSSE DES CRIS DE JOIE, Ô FILLE DE SION… JÉHOVAH TON DIEU EST AU MILIEU DE TOI COMME UN HÉROS QUI SAUVE… IL EXULTERA À TON SUJET AVEC DES CRIS DE JOIE… »… « JE DÉLIVRERAI LES BOITEUX… ET JE RASSEMBLERAI CEUX QUI ONT ÉTÉ CHASSÉS… JE FERAI DE VOUS UN NOM ET UNE LOUANGE PARMI TOUS LES PEUPLES DE LA TERRE… »… — LA-KHEN ḤAKKU-LI… C'EST POURQUOI ATTENDEZ-MOI, ESPÉREZ-MOI… NEʾUM YHWH… DÉCLARATION DE JÉHOVAH… LE-YOM QUMI LE-ʿAD… POUR LE JOUR OÙ JE ME LÈVERAI COMME TÉMOIN, POUR LE BUTIN… LI-QBOTS GOYIM… POUR RASSEMBLER LES NATIONS… ZAʿMI… MON INDIGNATION… ḤARON ʾAPPI… L'ARDEUR DE MA COLÈRE… BE-ʾESH QINʾATI… PAR LE FEU DE MA JALOUSIE, DE MON ZÈLE EXCLUSIF… ʾAZ EHPOKH… ALORS JE CHANGERAI, JE RETOURNERAI… SAFAH BERURAH… UNE LÈVRE PURE, CLAIRE, CHOISIE, ÉPROUVÉE… LI-QROʾ KULLAM BE-SHEM YHWH… POUR QU'ILS INVOQUENT TOUS LE NOM DE JÉHOVAH… LE-ʿOVDO SHEKHEM ʾEḤAD… POUR LE SERVIR D'UNE SEULE ÉPAULE, ÉPAULE CONTRE ÉPAULE, D'UN MÊME EFFORT… ME-ʿEVER LE-NAHARE KHUSH… D'AU-DELÀ DES FLEUVES DE KOUSH, LE NIL, L'ATBARA, LE NIL BLEU… ʿATARAI BAT-PUTSAI… MES SUPPLIANTS, LA FILLE DE MES DISPERSÉS, LITTÉRALEMENT MES ADORATEURS DISPERSÉS… MINḤATI… MON OFFRANDE, LE PRÉSENT DU CULTE… ʿAN I WA-DAL… HUMAIN, HUMBLE, ET FAIBLE, MODESTE, DÉMUNI… ḤASU BE-SHEM YHWH… ILS CHERCHENT REFUGE DANS LE NOM DE JÉHOVAH… LESHON TARMIT… UNE LANGUE DE TROMPERIE, DE FOURBERIE… RAVATSU WE-ʾEN MAḤARID… ILS SE COUCHENT ET PERSONNE NE LES FAIT TREMBLER… YAḤARISH BE-ʾAHAVATO… IL GARDERA LE SILENCE DANS SON AMOUR ; D'AUTRES LISENT : IL SE TAIT DANS SON AMOUR, IL CESSE DE REPROCHER… YAŚIŚ ʿALAYIKH BE-SIMḤAH… IL EXULTERA À TON SUJET AVEC DES CRIS DE JOIE… ʿOSEH ET-KOL-MEʿANNEIKH… JE M'OCCUPERAI DE TOUS CEUX QUI T'OPPRIMENT… HA-TSOLLEʿAH… CELLE QUI BOITE… HA-NIDDAḤAH… CELLE QUI EST CHASSÉE, REPOUSSÉE… LE-SHEM U-LI-TEHILLAH… UN NOM ET UNE LOUANGE… BE-SHUVI ET-SHEVUTKHEM LE-ʿEINEIKHEM… QUAND JE RAMÈNERAI VOS CAPTIFS SOUS VOS YEUX… — 537… 520-515… 458… 445… ÉLÉPHANTINE 410… PENTECÔTE 33 DE N. È.… ACTES 2… ÉPHÉSIENS 4:25… 1 CORINTHIENS 1:10… RÉVÉLATION 7:9… MUR 88… 8HEVXIIGR… »</li>
+<li>LES TROIS JUMEAUX — Joël 2:32 et 3:2 : « tout homme qui invoquera le nom de Jéhovah s'en sortira »… « je rassemblerai toutes les nations et je les ferai descendre dans la vallée de Yehoshaphat, et là j'entrerai en jugement avec elles » — la même séquence que Sophonie 3:8-9 : un rassemblement des nations pour le jugement, puis l'invocation du nom de Jéhovah par ceux qui sont sauvés. Ézéchiel 36:25, 26 : « je ferai sur vous des aspersions d'eau pure, et vous deviendrez purs… je vous donnerai un cœur nouveau et je mettrai en vous un esprit nouveau » — la purification annoncée à la même période, où le mot d'ordre est identique : pureté du peuple et don d'un cœur nouveau, comme Sophonie l'annonce par des « lèvres pures ». Actes 2:1-11 : « lorsqu'arriva le jour de la Pentecôte, ils étaient tous réunis dans le même lieu… et ils commencèrent à parler en d'autres langues, selon ce que l'esprit leur donnait d'exprimer… nous les entendons annoncer dans nos langues les choses magnifiques de Dieu » — la réalisation la plus visible de la promesse d'une même langue spirituelle pour des gens de toutes origines. Révélation 7:9, 10 : « après ces choses j'ai vu, et voici une grande foule que personne ne pouvait compter, de toutes nations, tribus, peuples et langues… ils criaient d'une voix forte : “Le salut, nous le devons à notre Dieu” » — la vision finale de l'assemblée une et innombrable, avec la même formule que Sophonie 2:11 : l'hommage venu de partout.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le verset 8 est une charnière. Jéhovah y interrompt la dénonciation pour dire : « Attendez-moi » — et l'expression marque un sursis actif, le temps où les projets humains mûrissent jusqu'au jour fixé. Ce jour est décrit comme celui où Dieu se lève « pour le butin », rassemble les nations et les royaumes, et répand sur eux son indignation : le jugement universel annoncé au chapitre 1 atteint ici son terme. Puis, au verset 9, vient le « alors » décisif : « alors je donnerai aux peuples des lèvres pures, afin qu'ils invoquent tous le nom de Jéhovah et le servent d'une seule épaule ». Le contraste est complet : les discours confus et mensongers des faux prophètes du verset 4 font place à une parole épurée, commune, et les peuples divisés par leurs cultes se mettent à servir Dieu d'un même mouvement. Le verset 10 mentionne même ceux qui viendront « d'au-delà des fleuves de Koush », c'est-à-dire des confins méridionaux du monde connu : l'offrande et la prière montent de partout. Les versets 11 à 13 décrivent la purification du peuple : les hautains sont ôtés, un « peuple humble et modeste » reste au milieu de la ville, il se réfugie dans le nom de Jéhovah, ne parle plus avec tromperie, et se couche sans personne pour le faire trembler. Les versets 14 à 17 sont un chant de joie : trois fois l'appel à pousser des cris, à acclamer, à exulter de tout son cœur ; Jéhovah est au milieu de Sion « comme un héros qui sauve », et il exulte lui-même au sujet de son peuple, dans une des rares images de Dieu exprimant une joie bruyante. Le livre se referme sur deux promesses pratiques : les affligés et les boiteux et les chassés sont rassemblés — les faibles, précisément, que la ville oppressive avait écrasés —, et « je ferai de vous un nom et une louange parmi tous les peuples de la terre ». Le registre du projet rattache cette entrée au passage entier et lui donne un double statut : « Accomplie (1er accomplissement) / À venir ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) « ATTENDEZ-MOI » ET LE JOUR DU BUTIN : le verbe hébreu rendu par « attendez » est celui de l'espérance patiente, la même racine que l'on traduit ailleurs par « espérer en Jéhovah ». Le verset ne dit donc pas une attente passive : il fixe un délai pendant lequel l'action humaine reste possible, avant que le jugement ne s'exécute. La suite du livre de Sophonie s'inscrit dans ce cadre : la ville sera visitée, mais un reste en sortira vivant. (2) LES « LÈVRES PURES » : l'expression hébraïque, saphah berurah, désigne une lèvre « éclaircie », « épurée » — l'organe de la parole et, par extension, la langue qu'on parle. Les commentateurs y voient la purification du langage religieux : après les faux serments et les prophéties mensongères dénoncées au chapitre 3, verset 4, la parole du peuple devient vraie. La précision « afin qu'ils invoquent tous le nom de Jéhovah » montre que le don n'est pas un simple perfectionnement moral, mais la condition du culte : on ne peut invoquer un nom qu'avec des lèvres qui ne mentent plus. (3) « D'UNE SEULE ÉPAULE » : la traduction littérale de l'hébreu shekhem ʾeḥad est « d'une même épaule » — l'image du porteur de fardeau qui travaille au même joug. Les versions rendent l'idée par « d'un commun accord », « d'une même pensée », « dans un même effort » ; l'article « Servons Jéhovah d'un commun accord » (document 1988364) cite le verset dans la version Crampon 1905 et explique que la langue pure « devait permettre à des gens appartenant à toute nation et à toute race de servir Jéhovah “épaule contre épaule”, littéralement “d'une seule épaule” », et qu'« une autre traduction rend ainsi ce passage : “Alors je ferai que les peuples aient les lèvres pures pour qu'ils invoquent tous le nom du SEIGNEUR, pour qu'ils le servent dans un même effort.” » Le même article identifie cette langue pure à « l'ensemble des vérités bibliques ». (4) LE CHANT FINAL ET LE DIEU QUI EXULTE : les versets 14 à 17 accumulent les impératifs de joie et attribuent à Jéhovah lui-même l'exultation — fait remarquable, car le Dieu de Sophonie a été jusqu'ici le Dieu du jour de fureur. Un détail de traduction y a retenu l'attention : le texte hébreu dit à la fois « il exultera à ton sujet avec des cris de joie » et, selon la vocalisation retenue, « il gardera le silence dans son amour » ; la Bible Annotée et les versions anciennes conservent les deux nuances, celle du Dieu qui se tait pour ne plus réprimander et celle du Dieu qui crie de joie. Les derniers versets nomment enfin les bénéficiaires du rassemblement — « ceux qui sont dans la tristesse », « les boiteux », « ceux qui ont été chassés » —, c'est-à-dire les exclus et les faibles, et promettent que « l'opprobre » deviendra un « nom et une louange ». Le vocabulaire du berger y affleure : on ne fait pas trembler ceux qui paissent et se couchent en sécurité.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 36 — Tsephania » (document 1101990097) présente cette section comme le second volet du message du livre, « à la fois menaçant et consolant », et la résume ainsi : « Toutefois, Jéhovah fait une merveilleuse promesse. Il va “changer la langue des peuples en une langue pure, pour qu'ils invoquent tous le nom de Jéhovah, pour qu'ils le servent épaule contre épaule” (3:9). Les gens qu'anime une joie orgueilleuse seront ôtés et un reste humble qui pratique la justice trouvera refuge dans le nom de Jéhovah. Il y aura des cris de joie, des acclamations, de la réjouissance et de l'exultation en Sion, car Jéhovah, le Roi d'Israël, est au milieu d'elle. Le temps n'est pas à la crainte et aux mains qui retombent, car Jéhovah sauvera Sion et exultera à son sujet dans l'amour et dans la joie. » Le même document situe le sens du verset 12 : le prophète « prédit aussi que Jéhovah rétablira un peuple humble, “et vraiment ils se réfugieront dans le nom de Jéhovah” », et rattache la formule du verset 20 à la vocation du peuple : « seul Jéhovah pouvait le rétablir dans le culte pur et le bénir pour qu'il soit “un nom et une louange parmi tous les peuples de la terre” ». L'article « Servons Jéhovah d'un commun accord » (document 1988364) développe le contenu de la promesse : cette langue « représente l'ensemble des vérités bibliques », ses locuteurs « ne sont pas divisés, mais “parlent en parfait accord” et sont “étroitement unis dans le même esprit et dans la même pensée” (1 Corinthiens 1:10) » ; il rappelle l'ouverture faite aux nations — « Dieu n'est point partial, mais… en toute nation celui qui le craint et pratique la justice est agréé de lui » (Actes 10:34, 35) — et note que la prophétie engage à voir les gens « de tous les groupes ethniques » comme Jéhovah les voit. Lecture commune et exégèse : les commentateurs rattachent « les lèvres pures » à la purification de la parole religieuse et à l'unité du culte, « le reste humble et modeste » à la tradition des pauvres de Jéhovah, et le verset 17 au thème de Dieu présent au milieu de son peuple ; la Bible Annotée décrit le verset 9 comme la promesse que « les lèvres seront purifiées pour qu'ils invoquent tous le nom de l'Éternel pour Le servir d'un même cœur ou d'une même épaule », et la pensée exprimée comme « celle d'un fardeau porté ensemble, mais accompli avec joie ».</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">537 av. n. è.</td><td>Premier accomplissement : le retour des exilés et le rétablissement de l'autel et du culte à Jérusalem (Esdras 1-3)</td></tr>
+<tr><td class="d">520-515 av. n. è.</td><td>Le temple est rebâti ; les prophètes Aggée et Zakharia appellent à la pureté du culte et à la sainteté du peuple</td></tr>
+<tr><td class="d">Ve siècle av. n. è.</td><td>Purification de la communauté : Esdras et Néhémie rétablissent la lecture de la Loi et la langue du culte ; Néhémie corrige la parole mêlée des enfants de mariages étrangers (Néhémie 13:23-27)</td></tr>
+<tr><td class="d">Ve siècle av. n. è.</td><td>L'offrande vient de loin : des Juifs établis en Égypte et jusqu'au pays de Koush sont connus par des documents de la colonie juive d'Éléphantine, attestant la dispersion mentionnée au verset 10</td></tr>
+<tr><td class="d">33 de n. è.</td><td>À la Pentecôte, l'esprit saint fait parler les disciples « dans nos langues les choses magnifiques de Dieu » ; la bonne nouvelle franchit d'un coup les frontières linguistiques (Actes 2:1-11)</td></tr>
+<tr><td class="d">Ier siècle et après</td><td>Des gens de toute nation, tribu, peuple et langue forment une assemblée unie — la « grande foule » dont la vision finale donne le tableau (Révélation 7:9, 10)</td></tr>
+<tr><td class="d">À venir</td><td>L'achèvement est rattaché par le registre à l'accomplissement final annoncé, quand les affligés, les boiteux et les dispersés seront rassemblés et que le peuple de Dieu sera « un nom et une louange parmi tous les peuples de la terre »</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) L'ÉDIT DE CYRUS ET LE RETOUR : les sources bibliques rapportent qu'en 538 av. n. è. Cyrus autorise le retour des exilés et la reconstruction du temple, ce que la tradition perse confirme par son administration tolérante envers les cultes locaux ; le premier retour se traduit en 537 par le rétablissement de l'autel, puis par la pose des fondations du temple. (2) LA RECONSTRUCTION DU TEMPLE : Aggée et Zakharia datent leurs appels de la deuxième année de Darius Ier (520), et le temple est achevé en 515 ; les prophètes insistent alors sur la pureté de ce qui est offert, ce qui correspond au thème des lèvres purifiées. (3) LES RÉFORMES D'ESDRAS ET DE NÉHÉMIE : Esdras 7 rapporte la mission d'Esdras pour enseigner la Loi, et Néhémie 8 la lecture publique qui restaure la langue du culte ; Néhémie 13:23-27 rapporte la correction énergique des mariages mixtes et surtout du mélange de langue — « leurs fils parlaient à moitié la langue d'Ashdod » — un texte qui lie directement la pureté du peuple à la pureté de la parole. (4) LES JUIFS DE LA DISPERSION MÉRIDIONALE : la colonie juive d'Éléphantine, en Haute-Égypte, près de la frontière nubienne, est attestée par des documents araméens du Ve siècle av. n. è. ; elle occupait une île du Nil, disposait d'un temple et entretenait une correspondance avec les autorités de Jérusalem. Cette documentation donne un contenu concret aux « dispersés » d'au-delà des fleuves de Koush qui « apporteront mon offrande ». (5) LES PEUPLES QUI SE JOIGNENT : Zakharia 8:20-23 annonce que « des peuples, et les habitants de beaucoup de villes, viendront » et saisiront « le pan du vêtement d'un Juif, en disant : “Nous voulons aller avec vous, car nous avons entendu que Dieu est avec vous” » — l'annonce du rassemblement de non-Juifs que Sophonie formule par « les peuples » et « les îles des nations ». (6) LA FORMULE DES ACTES : la liste des peuples présents à la Pentecôte — Parthes, Mèdes, Élamites, habitants de Mésopotamie, de Judée, de Cappadoce, du Pont, d'Asie, d'Égypte, de Libye, de Rome, d'Arabie — correspond à l'horizon ethnographique de la dispersion juive et donne sa mesure au « tous » de Sophonie 3:9. (7) PRUDENCE : les sources établissent le retour, la purification du culte et l'existence d'une diaspora méridionale ; elles ne permettent pas de fixer une date unique à l'accomplissement de chacun des versets.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LES FLEUVES DE KOUSH : l'expression désigne le Nil et ses affluents méridionaux, notamment l'Atbara et le Nil Bleu, qui encadrent le pays de Koush, l'actuelle Nubie et le Soudan du Nord ; c'est la limite du monde connu vers le sud pour un habitant de Juda. (2) ÉLÉPHANTINE ET LA FRONTIÈRE MÉRIDIONALE : l'île d'Éléphantine, à hauteur de l'actuelle Assouan, se trouve précisément à la lisière du pays de Koush ; la présence d'une communauté juive y est documentée, ce qui donne à la prophétie un point d'ancrage géographique précis. (3) LA CARTE DE LA DISPERSION : les déportations assyriennes et babyloniennes ont réparti des populations juives entre l'Assyrie, la Babylonie, l'Égypte et la côte ; Sophonie 3:10 cite le sud, tandis que les textes parallèles d'Ésaïe 11:11 énumèrent Égypte, Pathros, Koush, Élam, Shinéar, Hamath et les îles de la mer, ce qui dessine les horizons du rassemblement. (4) JÉRUSALEM REBÂTIE : au retour, la ville est reconstruite sur son promontoire ; les chantiers décrits par Néhémie — la « large muraille », les portes, la place du temple — correspondent aux vestiges mis au jour dans la Cité de David pour la période perse. (5) LA VILLE HAUTE ET LE TEMPLE : la mention « Jéhovah au milieu de toi » prend appui sur la topographie de la ville, dont le sanctuaire occupe le point le plus haut ; le pèlerinage et les fêtes de rassemblement s'organisent autour de lui. (6) LES CHEMINS DU RETOUR : les routes caravanières de Babylonie vers Juda, jalonnées d'étapes attestées par les archives perses, et la route du sud par l'Égypte et le désert du Sinaï expliquent la forme concrète du « rassemblement » annoncé.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES SCEAUX ET MONNAIES DE YEHUD : des centaines d'impressions de sceaux et des monnaies portant l'inscription « Yehud », nom perse de la province de Juda, ont été retrouvées et classées ; elles documentent l'existence d'une communauté organisée à Jérusalem et dans ses environs à l'époque du retour. (2) LA JÉRUSALEM PERSE : les fouilles de la Cité de David ont mis au jour des tronçons de la muraille reconstruite et des niveaux d'occupation attribués à la période perse, ce qui confirme la réalité matérielle de la ville rebâtie après l'exil. (3) LES PAPYRUS D'ÉLÉPHANTINE : un ensemble de documents araméens — contrats, lettres, requêtes — émanant d'une communauté juive établie sur l'île à la frontière nubienne ; ils mentionnent un temple local, les relations avec les autorités de Juda et la destruction de ce sanctuaire en 410 av. n. è. par des éléments locaux. C'est la preuve documentaire la plus directe d'un judaïsme méridional à l'horizon des « fleuves de Koush ». (4) LES OSTRACA D'IDUMÉE ET LES ARCHIVES DE PERSÉPOLIS : d'autres corpus araméens de la période perse mentionnent des Judéens, leurs villages et leurs activités, ce qui permet de reconstituer la carte du peuplement après le retour. (5) LA LINGUISTIQUE DE LA « LANGUE PURE » : les études sur l'hébreu post-exilique montrent une période de contact intense avec l'araméen et les parlers voisins, suivie d'un effort de fixation du texte et du culte ; le tableau de Néhémie 13:24, où des enfants « parlaient à moitié la langue d'Ashdod », illustre concrètement le problème que la prophétie résout sur le plan spirituel. (6) LA TRANSMISSION DU TEXTE : le rouleau des Douze Prophètes découvert dans le désert de Juda et les fragments de la même collection retrouvés dans les grottes du Wadi Murabba'at, complétés par le rouleau grec des Douze de Nahal Hever, attestent la stabilité du texte de Sophonie entre l'époque pré-chrétienne et le IIe siècle de n. è., ce qui permet de travailler la prophétie sur une base textuelle contrôlée. (7) PRUDENCE : l'archéologie documente la communauté du retour et sa culture matérielle ; elle ne mesure pas la dimension spirituelle de la purification annoncée.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>L'ATTENTE (3:8) : « ATTENDEZ-MOI, DÉCLARE JÉHOVAH » — LES NATIONS ET LES ROYAUMES RASSEMBLÉS, LA COLÈRE RÉPANDUE, « PAR LE FEU DE MA JALOUSIE TOUT LE PAYS SERA CONSUMÉ » → LE DON (3:9) : « ALORS JE DONNERAI AUX PEUPLES DES LÈVRES PURES » POUR INVOQUER LE NOM DE JÉHOVAH ET LE SERVIR « D'UNE SEULE ÉPAULE » → L'OFFRANDE LOINTAINE (3:10) : « D'AU-DELÀ DES FLEUVES DE KOUSH… MES DISPERSÉS APPORTERONT MON OFFRANDE » → LA PURIFICATION (3:11-13) : LES ORGUEILLEUX ÔTÉS · UN PEUPLE HUMBLE ET MODESTE QUI SE RÉFUGIE DANS LE NOM DE JÉHOVAH · PLUS DE MENSONGE NI DE LANGUE TROMPEUSE · « PERSONNE POUR LES FAIRE TREMBLER » → LE CHANT (3:14-17) : CRIS DE JOIE, ACCLAMATIONS, EXULTATION · « JÉHOVAH TON DIEU EST AU MILIEU DE TOI COMME UN HÉROS QUI SAUVE » · « IL EXULTERA À TON SUJET AVEC DES CRIS DE JOIE » → LE RASSEMBLEMENT (3:18-20) : LES AFFLIGÉS, LES BOITEUX, LES CHASSÉS · « UN NOM ET UNE LOUANGE PARMI TOUS LES PEUPLES DE LA TERRE » → HISTOIRE : RETOUR DE 537 · TEMPLE 520-515 · ESDRAS ET NÉHÉMIE · ÉLÉPHANTINE (DISPERSAIS DU SUD) · PENTECÔTE 33 DE N. È. → STATUT DU REGISTRE : ACCOMPLIE (1er ACCOMPLISSEMENT) / À VENIR</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre le double statut du registre — « Accomplie (1er accomplissement) / À venir » — et présente séparément ce qui est vérifié dans l'histoire et ce qui reste rattaché à l'achèvement annoncé. « LÈVRES PURES » : la fiche expose les deux axes retenus, la purification de la parole religieuse et l'unité du culte, et signale que les publications identifient cette langue pure à « l'ensemble des vérités bibliques », sans ajouter d'interprétation propre. LE VERSET 10 : la fiche décrit la dispersion méridionale attestée par les documents d'Éléphantine sans affirmer que ces personnes précises sont visées par la prophétie. LE VERSET 17 : les deux lectures du texte hébreu — « il gardera le silence dans son amour » et « il exultera avec des cris de joie » — sont présentées toutes les deux, sans trancher. LES DATES : la chronologie retenue par les publications est employée pour la destruction de Jérusalem et le retour ; les dates perses suivent la chronologie communément admise. LA TRADUCTION : la fiche signale les variantes de rendu du verset 9 (« d'une seule épaule », « d'un commun accord », « dans un même effort ») sans imposer une version. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 1 à 7 (fiche précédente) ni des chapitres 1 et 2 du livre ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie annonce l'attente, le jugement des nations, les lèvres pures et le reste humble (Sophonie 3:8-20)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant 648 av. n. è.</text>
+<circle cx="154.3" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="154.3" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus et premier retour ; l'autel est rétabli à Jérusalem (Esdras 1-3)</text>
+<text x="154.3" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538-537 av. n. è.</text>
+<circle cx="248.6" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="248.6" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reconstruction du temple sous Aggée et Zakharia ; appel à la pureté du culte</text>
+<text x="248.6" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520-515 av. n. è.</text>
+<circle cx="342.9" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="342.9" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Activité d'Esdras et de Néhémie : lecture publique de la Loi, réforme du culte et de la langue ; documents d'Éléphantine attestant la dispersion au sud</text>
+<text x="342.9" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="437.1" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="437.1" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction du temple juif d'Éléphantine, signalée dans la correspondance de la colonie</text>
+<text x="437.1" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">410 av. n. è.</text>
+<circle cx="531.4" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="531.4" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pentecôte : l'esprit saint fait annoncer « dans nos langues les choses magnifiques de Dieu » (Actes 2)</text>
+<text x="531.4" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 de n. è.</text>
+<circle cx="625.7" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="625.7" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Une assemblée de toutes nations et langues se forme, annoncée par la vision de la grande foule (Révélation 7:9, 10)</text>
+<text x="625.7" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle et après</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rassemblement final des affligés, des boiteux et des dispersés, et peuple devenu « un nom et une louange » (statut du registre : À venir)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/99">Bible — Psaume 99 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/99</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/100">Bible — Psaume 100 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/100</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/149">Bible — Psaume 149 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/149</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/150">Bible — Psaume 150 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/150</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/18">Bible — Actes 18 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/18</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/54/2">Bible — 1 Timothée 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/54/2</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1988364">Servons Jéhovah d'un commun accord — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1988364</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990097">Livre de la Bible numéro 36 — Tsephania — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990097</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche SO484 — « Je donnerai aux peuples des lèvres pures » : le reste humble et modeste, les boiteux rassemblés et Jéhovah qui exulte au sujet de Sion</span><span>Catégorie SO3</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie SO3</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>SO483 — « Malheur à la ville rebelle » : les princes lions rugissants, les juges loups du soir et Jéhovah juste au milieu d'elle, matin après matin</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie dénonce Jérusalem, ses chefs et ses guides : quatre refus, quatre corps corrompus (Sophonie 3:1-7)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant 648 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Josias écoute l'avertissement, retrouve le livre de la Loi et réforme le pays (2 Rois 22-23 ; 2 Chroniques 34-35)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">648-629 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Josias à Megiddo ; début de la dérive des derniers rois de Juda</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Princes, prophètes et prêtres persécutent les messagers de Dieu ; Ouriya est exécuté (Jérémie 26:20-23)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">609-607 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérusalem tombe ; Lamentations 4:13 attribue la ruine aux péchés des prophètes et des prêtres</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La ville et le pays restent ruinés : « il n'y a plus un habitant »</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607-537 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour du reste et rétablissement du culte : la promesse des versets 9 à 20 entre en jeu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è. et après</text>
+</svg>
+<h4>SO484 — « Je donnerai aux peuples des lèvres pures » : le reste humble et modeste, les boiteux rassemblés et Jéhovah qui exulte au sujet de Sion</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie annonce l'attente, le jugement des nations, les lèvres pures et le reste humble (Sophonie 3:8-20)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant 648 av. n. è.</text>
+<circle cx="154.3" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="154.3" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus et premier retour ; l'autel est rétabli à Jérusalem (Esdras 1-3)</text>
+<text x="154.3" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538-537 av. n. è.</text>
+<circle cx="248.6" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="248.6" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reconstruction du temple sous Aggée et Zakharia ; appel à la pureté du culte</text>
+<text x="248.6" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520-515 av. n. è.</text>
+<circle cx="342.9" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="342.9" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Activité d'Esdras et de Néhémie : lecture publique de la Loi, réforme du culte et de la langue ; documents d'Éléphantine attestant la dispersion au sud</text>
+<text x="342.9" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="437.1" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="437.1" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction du temple juif d'Éléphantine, signalée dans la correspondance de la colonie</text>
+<text x="437.1" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">410 av. n. è.</text>
+<circle cx="531.4" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="531.4" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pentecôte : l'esprit saint fait annoncer « dans nos langues les choses magnifiques de Dieu » (Actes 2)</text>
+<text x="531.4" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 de n. è.</text>
+<circle cx="625.7" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="625.7" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Une assemblée de toutes nations et langues se forme, annoncée par la vision de la grande foule (Révélation 7:9, 10)</text>
+<text x="625.7" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle et après</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rassemblement final des affligés, des boiteux et des dispersés, et peuple devenu « un nom et une louange » (statut du registre : À venir)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

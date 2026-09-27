@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES AG1 — Aggée — Cinq messages datés au jour près, de la maison en ruine au cachet de Zorobabel</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_AG485_maison.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES AG1</h1>
+<h2>Aggée — Cinq messages datés au jour près, de la maison en ruine au cachet de Zorobabel</h2>
+<p class="intro">Le livre d'Aggée est le plus précisément daté de tous les livres prophétiques : quatre messages, échelonnés sur cent douze jours de l'an 520 av. n. è., chacun introduit par une date impériale complète — jour, mois, année de règne de Darius Ier. Il ne contient ni vision, ni oracle contre les nations, ni complainte : seulement un appel, adressé à un peuple revenu d'exil qui a laissé le chantier du temple s'arrêter pendant seize ans. Le premier message dénonce l'écart entre les maisons lambrissées des habitants et la maison de Dieu en ruine, et il énumère les effets d'une malédiction sur le travail : semer beaucoup et récolter peu, manger sans être rassasié, boire sans être désaltéré, se vêtir sans se réchauffer, et un salaire versé dans une bourse trouée. Le second relève les esprits : les anciens se souviennent de la gloire du temple de Salomon et trouvent le nouveau chantier misérable ; Jéhovah promet alors que la gloire de cette dernière maison sera plus grande que la première, et que dans ce lieu il donnera la paix. Le troisième enseigne aux prêtres eux-mêmes une leçon sur la sainteté qui ne se transmet pas par contact et la souillure qui, elle, se transmet, avant de promettre : « Dès ce jour, je vous bénirai. » Le quatrième, adressé le même jour à Zorobabel, annonce l'ébranlement des cieux et de la terre, le renversement des trônes et des chars, et la faveur accordée au gouverneur, fait « comme un cachet » — c'est-à-dire comme une signature, l'anneau par lequel Dieu authentifie ses desseins. Quatre ans et demi plus tard, le temple est achevé ; l'histoire en conserve la trace dans les archives de l'empire perse.</p>
+<div class="chiffres">
+<div><b>5</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>28</b><span>sources</span></div>
+<div><b>5</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#AG485">AG485</a>
+<a href="#AG486">AG486</a>
+<a href="#AG487">AG487</a>
+<a href="#AG488">AG488</a>
+<a href="#AG489">AG489</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#AG485"><img src="images/prophe_AG485_maison.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AG485</div>
+<h3><a href="#AG485">« Le temps n'est pas venu » : les maisons lambrissées, la maison de Dieu en ruine et la sécheresse appelée sur le pays</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#AG486"><img src="images/prophe_AG486_reveil.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AG486</div>
+<h3><a href="#AG486">« Je suis avec vous » : Zorobabel, Yehoshoua et tout le reste du peuple écoutent, craignent et se mettent à l'ouvrage</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#AG487"><img src="images/prophe_AG487_gloire.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AG487</div>
+<h3><a href="#AG487">« La gloire de cette dernière maison sera plus grande que la première » : soyez forts et travaillez, je donnerai la paix</a></h3>
+<div class="meta">Accomplie (1er accomplissement)</div></div></div>
+<div class="carte">
+<a class="img" href="#AG488"><img src="images/prophe_AG488_benediction.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AG488</div>
+<h3><a href="#AG488">« Dès ce jour, je vous bénirai » : la question posée aux prêtres, la sainteté qui ne se transmet pas et la souillure qui se propage</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#AG489"><img src="images/prophe_AG489_cachet.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AG489</div>
+<h3><a href="#AG489">« Je te ferai comme un cachet » : l'ébranlement des royaumes et Zorobabel, mon serviteur, choisi pour sceller les desseins de Dieu</a></h3>
+<div class="meta">Accomplie (1er accomplissement)</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="AG485">
+<div class="visuel"><img src="images/prophe_AG485_maison.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AG485 · CATÉGORIE AG1</div>
+<h3>« Le temps n'est pas venu » : les maisons lambrissées, la maison de Dieu en ruine et la sécheresse appelée sur le pays</h3>
+<div class="ref">Aggée 1:2-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">le temps n'est pas venu le temps de la maison de jéhovah pour qu'elle soit bâtie est-ce le temps pour vous d'habiter dans vos maisons lambrissées alors que cette maison est déserte fixez votre cœur sur vos voies vous avez semé beaucoup mais peu rentré vous avez mangé et vous n'êtes pas rassasiés vous avez bu et vous n'êtes pas désaltérés vous avez été vêtus et vous n'êtes pas réchauffés et celui qui travaille pour un salaire le met dans une bourse trouée montez à la montagne rapportez du bois et bâtissez la maison pour que j'y prenne plaisir et que je sois glorifié j'ai appelé la sécheresse sur le pays et sur les montagnes sur le blé sur le vin nouveau sur l'huile sur tout ce que le sol produit sur l'homme et sur le bétail et sur tout le travail de vos mains (aggée 1:2-11 ; aggée 1:10, 11 ; esdras 5:1, 2 ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AG485</div><audio controls preload="none" src="audio/fiche_AG485_maison.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AG485_maison.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Aggée 1:2-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>le temps n'est pas venu le temps de la maison de jéhovah pour qu'elle soit bâtie est-ce le temps pour vous d'habiter dans vos maisons lambrissées alors que cette maison est déserte fixez votre cœur sur vos voies vous avez semé beaucoup mais peu rentré vous avez mangé et vous n'êtes pas rassasiés vous avez bu et vous n'êtes pas désaltérés vous avez été vêtus et vous n'êtes pas réchauffés et celui qui travaille pour un salaire le met dans une bourse trouée montez à la montagne rapportez du bois et bâtissez la maison pour que j'y prenne plaisir et que je sois glorifié j'ai appelé la sécheresse sur le pays et sur les montagnes sur le blé sur le vin nouveau sur l'huile sur tout ce que le sol produit sur l'homme et sur le bétail et sur tout le travail de vos mains (aggée 1:2-11 ; aggée 1:10, 11 ; esdras 5:1, 2 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Aggée — P485 (1:2-11 : la maison est en ruines ; les cieux retiennent la rosée, la terre ses produits) ; Aggée 1:10, 11 ; Esdras 5:1, 2 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« LE TEMPS N'EST PAS VENU, LE TEMPS DE LA MAISON DE JÉHOVAH, POUR QU'ELLE SOIT BÂTIE… »… « EST-CE LE TEMPS POUR VOUS D'HABITER DANS VOS MAISONS LAMBRISSÉES… ALORS QUE CETTE MAISON EST DÉSERTE…? »… « FIXEZ VOTRE CŒUR SUR VOS VOIES… VOUS AVEZ SEMÉ BEAUCOUP, MAIS PEU RENTRÉ… VOUS AVEZ MANGÉ, ET VOUS N'ÊTES PAS RASSASIÉS… VOUS AVEZ BU, ET VOUS N'ÊTES PAS DÉSALTÉRÉS… VOUS AVEZ ÉTÉ VÊTUS, ET VOUS N'ÊTES PAS RÉCHAUFFÉS… ET CELUI QUI TRAVAILLE POUR UN SALAIRE LE MET DANS UNE BOURSE TROUÉE… »… « MONTEZ À LA MONTAGNE… RAPPORTEZ DU BOIS… ET BÂTISSEZ LA MAISON… POUR QUE J'Y PRENNE PLAISIR ET QUE JE SOIS GLORIFIÉ… »… « J'AI APPELÉ LA SÉCHERESSE SUR LE PAYS ET SUR LES MONTAGNES… SUR LE BLÉ, SUR LE VIN NOUVEAU… ET SUR TOUT LE TRAVAIL DE VOS MAINS… »… — ḤAGGAY… AGGÉE… ḤAG… LA FÊTE… NÉ UN JOUR DE FÊTE… SHENAT SHEṬAYIM LE-DARYAWESH… LA DEUXIÈME ANNÉE DE DARIUS… ḤODESH HA-SHISHI BE-YOM ʾEḤAD… LE PREMIER JOUR DU SIXIÈME MOIS… 520 AV. N. È.… ZERUBBAVEL BEN-SHEʾALTIʾEL PEḤAT YEHUDAH… ZOROBABEL FILS DE SHEALTIEL, GOUVERNEUR DE JUDA… YEHOSHOUAʿ BEN-YEHOTSADAQ HA-KOHEN HA-GADOL… YEHOSHOUA FILS DE YEHOTSADAQ, LE GRAND PRÊTRE… HA-ʿAM HA-ZEH ʾAMRU… CE PEUPLE A DIT… LOʾ ʿET… CE N'EST PAS LE TEMPS… BE-VEIT SHEPANIM… DANS DES MAISONS GARNIES DE PANNAISONS, DE BOISERIES DE CÈDRE, DU MOT SEPEN, LE LAMBRIS… ḤAREV… EN RUINE, DESSÉCHÉ… SIMU LEVAVKHEM ʿAL DARKHEKHEM… FIXEZ VOTRE CŒUR SUR VOS VOIES, RÉFLÉCHISSEZ À VOTRE CONDUITE… ZERAʿTEM HARBE… VOUS AVEZ SEMÉ BEAUCOUP… WE-HAVEʾ MEʿAT… ET IL Y A EU PEU… ʾAKHOL WE-ʾEN LE-SOVʿAH… MANGER SANS RASSASIEMENT… SHATO WE-ʾEN LE-SHOKHRAH… BOIRE SANS DÉSALTÉRER… LAVOSH WE-ʾEN LE-ḤOM… SE VÊTIR SANS SE RÉCHAUFFER… MISHTAKKER ʾEL TSEROR NAQUV… LE SALAIRE DANS UNE BOURSE TROUÉE… ʿALU HA-HAR WA-HAVEʾTEM ʿETS… MONTEZ À LA MONTAGNE ET RAPPORTEZ DU BOIS… WE-ʾEKKAVED… ET JE SERAI GLORIFIÉ… ʿAL KEN KALʾU… C'EST POURQUOI ILS ONT RETENU… SHAMAYIM MI-TTAL… LES CIEUX ONT RETENU LA ROSÉE… ḤOREV… LA SÉCHERESSE, PROXIMITÉ ASSONANTE AVEC ḤAREV, LA RUINE… — 538… CYRUS… 537… 536… FONDATIONS… 522… INTERDICTION OFFICIELLE… 520… DARIUS HYSTASPE… 516… ACHÈVEMENT… EZRA 4:4, 5… 4:1-24… 5:1, 2… 6:14, 15… DEUTÉRONOME 28… 1 ROIS 17:1… JOËL 1:10-12… MATTHIEU 6:33… »</li>
+<li>LES TROIS JUMEAUX — Deutéronome 28:38-40 : « tu porteras beaucoup de semence aux champs, mais tu récolteras peu, car la sauterelle la dévorera… tu planteras des vignes et tu les cultiveras, mais tu ne boiras pas de vin et tu ne feras pas de vendange, car les vers les dévoreront » — la liste des malédictions de l'alliance, dont Aggée 1:6 reprend un à un les éléments : semer beaucoup, récolter peu, ne pas jouir du fruit du travail. Le prophète ne parle pas d'un malheur inexpliqué, il rappelle un texte que ses auditeurs connaissent. 2 Chroniques 36:23 : « voici ce que dit Cyrus, roi de Perse : “Tous les royaumes de la terre, Jéhovah le Dieu des cieux me les a donnés, et il m'a chargé de lui bâtir une maison à Jérusalem” » — l'ordre impérial qui avait défini le but même du retour : le temple. En négligeant ce but, le peuple négligeait la raison de sa présence dans le pays. Matthieu 6:33 : « cherchez d'abord le Royaume et sa justice, et toutes ces autres choses vous seront ajoutées » — la parole de Jésus qui reprend l'ordre des priorités d'Aggée : non pas mépriser le nécessaire, mais le placer après la maison de Dieu. Luc 12:16-21 : la parabole du riche qui amasse pour lui-même, dont le sort est de perdre ce qu'il a accumulé, ce qui éclaire la bourse trouée du verset 6.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le premier message d'Aggée est daté au jour près : le premier jour du sixième mois de la deuxième année de Darius, soit à la fin de l'été 520 av. n. è. La situation est connue par les archives du retour : Cyrus avait autorisé les Juifs à rentrer en 538 et à rebâtir la maison de Jéhovah ; un premier groupe était revenu en 537 sous Zorobabel ; l'autel avait été rétabli et les fondations posées en 536, dans la joie et les larmes de ceux qui se souvenaient de l'ancien temple. Puis le chantier s'était arrêté. Esdras 4 explique pourquoi : les habitants du pays « affaiblissaient les mains du peuple de Juda » et soudoyaient des conseillers pour faire échouer le projet, jusqu'à obtenir en 522 une interdiction officielle. Pendant ce temps, seize ans s'étaient écoulés, et le prophète constate que chacun s'est installé : les maisons sont garnies de boiseries, le travail personnel a repris, et la maison de Dieu reste une ruine. Le message commence donc par une phrase du peuple, rapportée par Dieu lui-même : « Le temps n'est pas venu, le temps de la maison de Jéhovah, pour qu'elle soit bâtie. » Ce n'est pas un refus, c'est un report : le projet religieux n'est pas nié, il est ajourné indéfiniment au nom des circonstances. La réponse de Dieu prend deux formes : une question qui met en évidence la disproportion — « est-ce le temps pour vous d'habiter dans vos maisons lambrissées, alors que cette maison est déserte ? » — et une analyse économique de la vie quotidienne, énoncée en cinq constats que tout le monde pouvait vérifier. Le registre du projet rattache cette entrée aux versets 2 à 11, retient comme accomplissement les versets 10 et 11 et Esdras 5:1, 2, et lui donne le statut « Accomplie ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA FORME DE LA DATE : les quatre messages d'Aggée sont datés selon l'année de règne d'un empereur étranger, Darius Ier. Cette précision a une valeur documentaire évidente pour l'historien, mais elle a aussi une portée spirituelle : elle situe l'action de Jéhovah à l'intérieur de l'histoire politique réelle, dans une province de l'empire perse, sous un gouverneur nommé et un grand prêtre en fonction. Les publications le soulignent : « C'est dans la deuxième année du règne du roi de Perse Darius Hystaspe, soit en 520 av. n. è., que Haggaï commença à prophétiser, ce qui encouragea les Juifs à reprendre la construction du temple. » (2) LES MAISONS LAMBRISSÉES : le mot hébreu employé, sepanim, désigne des plafonds ou lambris de bois — précisément le matériau rare et coûteux que l'on faisait venir de la montagne, et que Salomon avait utilisé pour le temple (1 Rois 6:9, 15). Le reproche n'est pas d'avoir de belles maisons, mais d'avoir réservé le bois précieux à soi-même tandis que « cette maison » reste déserte : le contraste est un déplacement de priorité, non une interdiction du confort. (3) LES CINQ CONSTATS ÉCONOMIQUES : semer beaucoup et récolter peu, manger sans être rassasié, boire sans être désaltéré, se vêtir sans se réchauffer, mettre son salaire dans une bourse trouée. Ces cinq images couvrent la totalité de la vie matérielle d'un village agricole : le champ, la table, la boisson, le vêtement, le salaire. Les publications résument : « Les Juifs ont beaucoup semé au plan matériel, mais ils en ont peu profité, que ce soit dans les domaines du manger, du boire ou du vêtement. “Fixez votre cœur sur vos voies”, ordonne Jéhovah (1:7). » La répétition de l'expression — elle revient encore au verset 7 — fait de ce message un examen de conduite avant d'être une menace. (4) LA SÉCHERESSE NOMMÉE ET LE JEU DE MOTS : au verset 11, Dieu dit : « J'ai appelé la sécheresse sur le pays, sur les montagnes, sur le blé, sur le vin nouveau, sur l'huile, sur tout ce que le sol produit, ainsi que sur l'homme, sur les bêtes et sur tout le travail des mains. » La Bible Annotée relève l'assonance voulue entre hurban — la ruine du sanctuaire au verset 9 — et horev — la sécheresse appelée au verset 11 : « l'état de ruine du sanctuaire attire la ruine sur vous et vos biens », précise-t-elle, en ajoutant qu'« il ne s'agit pas d'une vengeance de la part de l'Éternel, mais en châtiant il a pour but de ramener Israël à la conscience de ce qui lui manque par la séparation d'avec son Dieu ». Et la remarque du prophète se termine par un ordre concret : « Montez à la montagne, rapportez du bois et bâtissez la maison. » Le remède est matériel et immédiat : ce que le pays produit de moins, la colline de Juda le fournit encore, et il suffit d'y aller.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 37 — Haggaï » (document 1101990098) présente l'ensemble du livre et commente ce premier message : « Premier message (1:1-15). Il s'adresse au gouverneur Zorobabel et au grand prêtre Yoshoua, mais en présence du peuple. Le peuple a dit : “Le temps n'est pas venu, le temps de la maison de Jéhovah, pour qu'elle soit bâtie.” Par l'intermédiaire de… “Est-ce le temps pour vous d'habiter dans vos maisons lambrissées, alors que cette maison est déserte ?” (1:2, 4)… Il est grand temps de rapporter du bois et de bâtir la maison pour que Jéhovah soit glorifié. Les Juifs prennent grand soin de leurs propres maisons, mais la maison de Jéhovah est déserte. En conséquence, Jéhovah a retenu la rosée du ciel, la production de la terre ainsi que sa bénédiction sur l'homme et sur le labeur de ses mains. » Le même document définit le message général : « Quiconque souhaite recevoir les bénédictions de Jéhovah doit servir le vrai Dieu et accomplir l'œuvre qu'il lui a ordonné de faire », et il note un détail statistique qui dit la place du nom divin dans un livre si bref : « Dans les 38 versets de son livre, Haggaï cite 35 fois le nom de Jéhovah, et il utilise 14 fois l'expression “Jéhovah des armées”. » L'article « Le soutien de Dieu bannit la crainte » (document 1975561) revient sur le contexte politique : le gouverneur Zorobabel prit position en reprenant le chantier, « prenant apparemment position contre le puissant Empire perse », son attitude étant « dictée par l'obéissance à Jéhovah Dieu ». Lecture commune et exégèse : les commentateurs rapprochent le passage de Deutéronome 28 et de la liste des malédictions de l'alliance, ce qui permet de lire les cinq constats non comme une description d'un hasard climatique, mais comme la reprise d'un texte que tout le monde connaissait ; ils notent également que la sécheresse n'est pas présentée comme une fatalité mais comme un appel adressé — horizon du récit d'Élie, où la sécheresse sert à ramener un peuple à son Dieu.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">537 av. n. è.</td><td>Retour d'un premier groupe d'exilés sous Zorobabel ; l'autel est rétabli à Jérusalem (Esdras 3:1-6)</td></tr>
+<tr><td class="d">536 av. n. è.</td><td>Pose des fondations du temple, dans la joie mêlée des larmes des anciens qui avaient connu le premier temple (Esdras 3:10-13)</td></tr>
+<tr><td class="d">522 av. n. è.</td><td>Interdiction officielle obtenue par les opposants : le chantier est arrêté, et il le reste seize ans (Esdras 4:4, 5, 24)</td></tr>
+<tr><td class="d">1er jour du 6e mois, 520 av. n. è.</td><td>Le message est proclamé : la maison est en ruine et le pays souffre (Aggée 1:2-11)</td></tr>
+<tr><td class="d">24e jour du 6e mois, 520 av. n. è.</td><td>Le travail reprend : vingt-trois jours après le début de l'activité prophétique d'Aggée (Aggée 1:14, 15)</td></tr>
+<tr><td class="d">3e jour du mois d'Adar, 516 av. n. è.</td><td>Le temple est achevé ; quatre ans et demi ont suffi, avec l'appui du décret de Darius confirmant celui de Cyrus (Esdras 6:14, 15)</td></tr>
+<tr><td class="d">Après 516 av. n. è.</td><td>Le culte est rétabli dans une maison rebâtie : la parole annoncée dans la ruine est devenue un bâtiment en service</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE DÉCRET DE CYRUS ET SON CADRE : la politique perse consistait à autoriser les peuples déportés à rentrer et à rétablir leurs sanctuaires, tout en gardant le contrôle administratif ; les sources grecques et la tradition orientale mentionnent cette pratique, et le livre d'Esdras en cite les termes. (2) LA LETTRE À DARIUS : Esdras 5 et 6 rapportent la procédure exacte : les autorités de la province au-delà du fleuve envoient un rapport, demandent la vérification des archives, et réclament l'avis du roi ; Darius fait rechercher le décret dans les archives royales et confirme les droits des Juifs, allant jusqu'à ordonner que les frais soient payés sur le trésor royal. C'est une chaîne documentaire administrative, telle qu'on peut en attendre d'un empire bureaucratique. (3) LES ANNÉES DE DARIUS Ier : le règne de Darius Ier est daté avec précision par les sources babyloniennes, égyptiennes et grecques (522-486 av. n. è.) ; sa deuxième année correspond donc bien à 520, ce qui donne aux dates d'Aggée une validation externe. (4) L'ARRÊT DE SEIZE ANS : Esdras 4:24 situe l'interruption « jusqu'à la deuxième année du règne de Darius », ce qui correspond exactement au point de départ du livre d'Aggée — deux documents indépendants décrivent le même calendrier. (5) LA DURÉE DES TRAVAUX : Aggée 1:15 date la reprise au vingt-quatrième jour du sixième mois de la deuxième année de Darius ; Esdras 6:15 date l'achèvement au troisième jour du mois d'Adar de la sixième année — soit environ quatre ans et demi, intervalle que les commentateurs ont vérifié. (6) LES NOMS OFFICIELS : Zorobabel figure comme gouverneur, Yehoshoua comme grand prêtre ; l'apparition de ces deux titres dans un même contexte correspond au modèle perse des provinces dirigées par un gouverneur local, le temple et son clergé étant encadrés par l'administration impériale. (7) PRUDENCE : les sources établissent les dates, les titres, les procédures et la reprise du chantier ; elles ne permettent pas de mesurer quantitativement la sécheresse ni de la dater année par année.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA MONTAGNE DU BOIS : le mot « montagne » au singulier désigne la chaîne de Juda, le plateau calcaire à l'ouest de Jérusalem ; ses pentes boisées et ses garrigues fournissaient le bois d'œuvre des constructions locales, et c'est de là que venait le matériau du revêtement intérieur. (2) LA JÉRUSALEM DU RETOUR : la ville tenue par les exilés revenus était réduite à un périmètre modeste autour du temple ; les fouilles de la Cité de David montrent une occupation limitée pour cette période, ce qui éclaire l'image de la « maison déserte » au milieu de maisons habitées. (3) LE PAYS EN AGRICULTURE DE SUBSISTANCE : blé, vin nouveau, huile — les trois produits cités au verset 11 — forment le trio classique des cultures méditerranéennes de saison sèche ; le blé se récolte au printemps, la vigne et l'olivier à la fin de l'été et à l'automne, ce qui rend l'année agricole entièrement dépendante des premières pluies et de la rosée. (4) LA ROSÉE COMME DONNÉE CLIMATIQUE : dans les collines de Juda, la rosée nocturne joue un rôle décisif pendant la saison sèche, et son absence est un phénomène observé et redouté ; « les cieux ont retenu leur rosée » est donc une description météorologique comprise de tous ceux qui cultivaient la terre. (5) L'APPROVISIONNEMENT EN EAU : les citernes et les réservoirs, indispensables pour une ville sans source à proximité, expliquent l'image de la sécheresse appliquée aussi bien aux montagnes qu'à la production. (6) LE CADRE PROVINCIAL : la province perse appelée Yehoud correspond à un territoire réduit autour de Jérusalem, encadré par les provinces voisines de Samarie au nord et d'Idumée-Arabie au sud, ce qui explique l'importance des autorités locales mentionnées par Esdras 5.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES SCEAUX ET MONNAIES DE YEHUD : les impressions de sceaux et les petites monnaies d'argent portant l'inscription « Yehud » en écriture paléo-hébraïque documentent l'existence de la province perse de Juda, son administration et son atelier monétaire ; leur datation couvre les Ve-IVe siècles et leur nombre dépasse la centaine d'exemplaires catalogués. (2) LA JÉRUSALEM PERSE : les fouilles de la Cité de David ont mis au jour des tronçons de muraille et des niveaux d'occupation de la période perse, ce qui confirme matériellement la ville du retour, réduite mais fonctionnelle. (3) LES BULLES ET JARRES À ESTAMPILLE : des anses de jarres marquées de sceaux administratifs, retrouvées en plusieurs sites de Juda, témoignent de la collecte et du stockage de denrées pour le compte de la province — un système dont la production agricole était la base, et dont la fragilité rend les années de sécheresse plus sensibles. (4) LA PALÉOCLIMATOLOGIE : l'étude des sédiments de la mer Morte, des spéléothèmes des grottes du désert de Juda et des carottes de la Méditerranée orientale a permis de reconstituer des phases de sécheresse régionales au Ier millénaire av. n. è. Ces travaux documentent la variabilité climatique du Levant sud, cadre naturel dans lequel s'inscrivent les mentions prophétiques de sécheresse, de rosée et de récoltes perdues. (5) L'ARCHÉOLOGIE DU SECOND TEMPLE : les vestiges de la plateforme du temple et des murs de soutènement, dont le mur occidental et les escaliers monumentaux, permettent de se représenter le chantier entrepris en 520 et achevé en 516, puis agrandi et embelli par la suite. (6) LES INSCRIPTIONS DU RETOUR : les tablettes administratives de Babylonie et les archives perses de Persépolis mentionnent des rations distribuées à des artisans et à des déportés de provenances diverses ; elles documentent le contexte économique dans lequel les rapatriés de 537 ont reconstruit leur vie. (7) PRUDENCE : l'archéologie atteste la province, la ville, le chantier et le cadre climatique ; elle ne permet pas de prouver la cause spirituelle que le prophète assigne à la sécheresse.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA DATE (1:1) : PREMIER JOUR DU SIXIÈME MOIS, DEUXIÈME ANNÉE DE DARIUS — 520 AV. N. È. → LE PRÉTEXTE DU PEUPLE (1:2) : « LE TEMPS N'EST PAS VENU, LE TEMPS DE LA MAISON DE JÉHOVAH » → LA QUESTION DE DIEU (1:4) : « EST-CE LE TEMPS POUR VOUS D'HABITER DANS VOS MAISONS LAMBRISSÉES, ALORS QUE CETTE MAISON EST DÉSERTE ? » → L'EXAMEN (1:5-6) : FIXEZ VOTRE CŒUR SUR VOS VOIES — SEMER BEAUCOUP, RÉCOLTER PEU · MANGER SANS ÊTRE RASSASIÉ · BOIRE SANS ÊTRE DÉSALTÉRÉ · SE VÊTIR SANS ÊTRE RÉCHAUFFÉ · LE SALAIRE DANS UNE BOURSE TROUÉE → LE REMÈDE (1:8) : « MONTEZ À LA MONTAGNE, RAPPORTEZ DU BOIS ET BÂTISSEZ LA MAISON » → LA CAUSE (1:9-11) : « À CAUSE DE MA MAISON QUI EST EN RUINE, TANDIS QUE VOUS COUREZ CHACUN À SA MAISON » · LES CIEUX RETIENNENT LA ROSÉE · LA TERRE RETIENT SES PRODUITS · LA SÉCHERESSE APPELÉE SUR BLÉ, VIN, HUILE, HOMMES, BÉTAIL ET TRAVAIL DES MAINS → HISTOIRE : FONDATIONS 536 · INTERDICTION 522 · REPRISE 520 · ACHÈVEMENT 516 (ESDRAS 4-6) → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Aggée 1:10, 11 ; Esdras 5:1, 2) et le statut « Accomplie ». LES CINQ CONSTATS : la fiche les présente comme les effets décrits par le prophète, sans prétendre en donner une mesure économique ni statistique. LA SÉCHERESSE : elle est exposée comme un fait annoncé et constaté dans le récit, sans que la fiche affirme que chaque mauvaise récolte de cette période lui soit attribuable ; les travaux de paléoclimatologie cités décrivent un cadre général de variabilité, non la chronologie fine de ces années. LES MAISONS LAMBRISSÉES : la fiche explique le terme hébreu et son arrière-plan, sans en déduire un niveau de richesse précis de la population. LES DATES : la chronologie retenue est celle des publications et des sources perses pour Darius Ier ; aucune date biblique n'est recalculée. LES SOURCES EXTERNES : les commentaires cités le sont comme éclairages linguistiques et historiques. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 12 à 15 (fiche suivante) ni des messages du chapitre 2 ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décret de Cyrus autorisant le retour et la reconstruction de la maison de Jéhovah (Esdras 1:1-4)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">538 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier retour des exilés ; rétablissement de l'autel à Jérusalem (Esdras 3:1-6)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pose des fondations du temple (Esdras 3:10-13)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">536 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Interdiction officielle : le chantier s'arrête pour seize ans (Esdras 4:4, 5, 24)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">522 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Aggée proclame le premier message : la maison est en ruine, le pays souffre (Aggée 1:2-11)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1er jour du 6e mois, 520 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise du chantier, vingt-trois jours après le début de la prophétie (Aggée 1:14, 15)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 6e mois, 520 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement du temple sous le règne de Darius (Esdras 6:14, 15)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/6">Bible — Esdras 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/13/29">Bible — 1 Chroniques 29 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/13/29</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/24">Bible — Psaume 24 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/24</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/6">Bible — 1 Corinthiens 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/6</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990098">Livre de la Bible numéro 37 — Haggaï — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990098</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AG485 — « Le temps n'est pas venu » : les maisons lambrissées, la maison de Dieu en ruine et la sécheresse appelée sur le pays</span><span>Catégorie AG1</span></div></div>
+</article>
+<article class="fiche" id="AG486">
+<div class="visuel"><img src="images/prophe_AG486_reveil.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AG486 · CATÉGORIE AG1</div>
+<h3>« Je suis avec vous » : Zorobabel, Yehoshoua et tout le reste du peuple écoutent, craignent et se mettent à l'ouvrage</h3>
+<div class="ref">Aggée 1:12-15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">zorobabel fils de shealtiel et yehoshoua fils de yehotsadaq le grand prêtre et tout le reste du peuple écoutèrent la voix de jéhovah leur dieu et les paroles d'aggée le prophète selon la mission que jéhovah leur dieu lui avait donnée et le peuple craignit jéhovah alors aggée le messager de jéhovah dit au peuple selon le mandat de jéhovah je suis avec vous déclare jéhovah et jéhovah réveilla l'esprit de zorobabel le gouverneur de juda de yehoshoua le grand prêtre et de tout le reste du peuple ils vinrent et se mirent à l'ouvrage dans la maison de jéhovah des armées leur dieu le vingt-quatrième jour du sixième mois de la deuxième année du roi darius (aggée 1:14, 15 ; esdras 3:8 ; 5:2 ; accomplie)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AG486</div><audio controls preload="none" src="audio/fiche_AG486_reveil.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AG486_reveil.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Aggée 1:12-15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>zorobabel fils de shealtiel et yehoshoua fils de yehotsadaq le grand prêtre et tout le reste du peuple écoutèrent la voix de jéhovah leur dieu et les paroles d'aggée le prophète selon la mission que jéhovah leur dieu lui avait donnée et le peuple craignit jéhovah alors aggée le messager de jéhovah dit au peuple selon le mandat de jéhovah je suis avec vous déclare jéhovah et jéhovah réveilla l'esprit de zorobabel le gouverneur de juda de yehoshoua le grand prêtre et de tout le reste du peuple ils vinrent et se mirent à l'ouvrage dans la maison de jéhovah des armées leur dieu le vingt-quatrième jour du sixième mois de la deuxième année du roi darius (aggée 1:14, 15 ; esdras 3:8 ; 5:2 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Aggée — P486 (1:12-15 : Je suis avec vous ; le gouverneur, le grand prêtre et le peuple vinrent travailler) ; Aggée 1:14, 15 ; Esdras 3:8 ; 5:2 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ZOROBABEL FILS DE SHEALTIEL… ET YEHOSHOUA FILS DE YEHOTSADAQ, LE GRAND PRÊTRE… ET TOUT LE RESTE DU PEUPLE… ÉCOUTÈRENT LA VOIX DE JÉHOVAH LEUR DIEU… »… « ET LE PEUPLE CRAIGNIT JÉHOVAH… »… « ALORS AGGÉE, LE MESSAGER DE JÉHOVAH, DIT AU PEUPLE SELON LE MANDAT DE JÉHOVAH… JE SUIS AVEC VOUS… DÉCLARE JÉHOVAH… »… « ET JÉHOVAH RÉVEILLA L'ESPRIT DE ZOROBABEL, LE GOUVERNEUR DE JUDA… DE YEHOSHOUA, LE GRAND PRÊTRE… ET DE TOUT LE RESTE DU PEUPLE… »… « ILS VINRENT ET SE MIRENT À L'OUVRAGE DANS LA MAISON DE JÉHOVAH DES ARMÉES, LEUR DIEU… LE VINGT-QUATRIÈME JOUR DU SIXIÈME MOIS, DE LA DEUXIÈME ANNÉE DU ROI DARIUS… »… — SHAMʿU BE-QOL YHWH… ILS ONT ÉCOUTÉ LA VOIX DE JÉHOVAH… HA-ʿAM… LE PEUPLE… WAYYIRʾU MI-PPENE YHWH… ET ILS CRAIGNIRENT DEVANT JÉHOVAH, ILS FURENT SAISIS DE CRAINTE… MALʾAKH YHWH… LE MESSAGER DE JÉHOVAH — TITRE RARE, APPLIQUÉ AUSSI AUX PRÊTRES EN MALAKI 2:7… BE-MISHLEʿAT YHWH… SELON LA MISSION, LE MANDAT REÇU… ʾANI ITTEKHEM… JE SUIS AVEC VOUS — FORMULE D'ALLIANCE, PRONONCÉE À ISAAC, À JACOB, À MOÏSE, À JOSUÉ… WAYYAʿER YHWH ʾET-RUAḤ… ET JÉHOVAH ÉVEILLA L'ESPRIT, LE SOUFFLE, L'ÉLAN… ZERUBBAVEL PEḤAT YEHUDAH… YEHOSHOUAʿ BEN-YEHOTSADAQ HA-KOHEN HA-GADOL… SHEʾERIT HA-ʿAM… LE RESTE DU PEUPLE… WAYYAVOʾU WAYYAʿASU MELAKHAH… ILS VINRENT ET FIRENT L'ŒUVRE… BE-VEIT YHWH TSEVAʾOT ʾELOHEHEM… DANS LA MAISON DE JÉHOVAH DES ARMÉES, LEUR DIEU… ʿESRIM WE-ʾARBAʿAH LA-ḤODESH HA-SHISHI… LE VINGT-QUATRIÈME JOUR DU SIXIÈME MOIS… 520 AV. N. È.… 23 JOURS… — ESDRAS 5:1, 2… 3:8… 4:24… 6:14… 1 CHRONIQUES 3:19… MATTHIEU 1:12, 13… LUC 3:27… AGGÉE 2:4, 5… HÉBREUX 13:5… DEUTÉRONOME 31:6, 8… JOSUÉ 1:9… »</li>
+<li>LES TROIS JUMEAUX — Esdras 5:1, 2 : « les prophètes Aggée et Zakharia, fils d'Iddo, prophétisèrent aux Juifs qui étaient en Juda et à Jérusalem, au nom du Dieu d'Israël. Alors Zorobabel, fils de Shealtiel, et Yeshoua, fils de Yotsadaq, se levèrent et recommencèrent à bâtir la maison de Dieu qui est à Jérusalem ; et les prophètes de Dieu étaient avec eux et les aidaient » — la reprise du chantier racontée par l'historien, avec la même association des deux responsables et des deux prophètes. Deutéronome 31:6, 8 : « soyez courageux et forts… car Jéhovah ton Dieu marche avec toi. Il ne te lâchera pas et ne t'abandonnera pas » — la formule d'encouragement que Jéhovah adresse ici par la bouche d'Aggée prolonge la promesse faite aux générations précédentes : « je suis avec vous » est la même parole que celle donnée à Josué avant l'entrée dans le pays. Josué 1:9 : « n'aie pas peur et ne sois pas terrifié, car Jéhovah ton Dieu est avec toi partout où tu iras » — le texte qui donne tout son poids à l'expression employée par Aggée, prononcée ici devant un chantier arrêté et une interdiction impériale encore en vigueur. Hébreux 13:5, 6 : « je ne te lâcherai jamais et je ne t'abandonnerai jamais », suivi de « Jéhovah est mon aide ; je n'aurai pas peur » — la reprise de la même assurance dans les Écritures grecques, où elle soutient le courage des croyants.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le premier message se termine sur un enchaînement en trois temps, et c'est l'un des récits de réveil les plus courts et les plus complets de la Bible. D'abord l'écoute : Zorobabel, Yehoshoua et « tout le reste du peuple » — l'expression désigne les revenus d'exil, par opposition à la population restée au pays — écoutent la voix de Jéhovah transmise par son prophète. Ensuite la crainte : « le peuple craignit Jéhovah », ce qui signifie qu'il prend la parole au sérieux et reconnaît l'autorité de celui qui parle. Puis vient la parole d'encouragement, adressée par Aggée sous son double titre : il est « le messager de Jéhovah », et il parle « selon le mandat de Jéhovah » — l'ordre est donc formel, ce n'est pas une parole humaine rassurante ajoutée au message : « Je suis avec vous, déclare Jéhovah. » Et le texte ajoute la cause du changement : « Jéhovah réveilla l'esprit de Zorobabel… de Yehoshoua… et de tout le reste du peuple. » Le mot employé n'est pas celui de la réflexion ou de la décision, c'est celui du souffle éveillé. Le résultat est daté : ils vinrent et se mirent à l'ouvrage le vingt-quatrième jour du sixième mois, de la deuxième année du roi Darius — vingt-trois jours après la première parole prophétique. Le registre du projet rattache cette entrée aux versets 14 et 15, retient aussi Esdras 3:8 et 5:2 comme accomplissement, et lui donne le statut « Accomplie ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LES TROIS PARTENAIRES DE L'ÉCOUTE : le texte nomme d'abord le gouverneur, puis le grand prêtre, puis le reste du peuple. Cet ordre n'est pas hiérarchique mais institutionnel : les deux responsables représentent les deux autorités de la province du retour, le pouvoir civil délégué et le sacerdoce restauré ; leur engagement conjoint est la condition pratique du chantier, puisqu'il faut à la fois l'organisation administrative et la légitimité cultuelle. Le fait que « tout le reste du peuple » soit nommé ensuite montre que le réveil n'est pas resté au sommet : il est descendu jusqu'aux ouvriers. (2) LE TITRE « MESSAGER DE JÉHOVAH » : l'expression hébraïque malʾakh, employée pour le prophète au verset 13, est rare pour un prophète ; elle évoque une fonction d'envoyé porteur d'un mandat précis, comme l'ange qui guide. Les publications la relèvent : « Haggaï le messager de Jéhovah dit encore au peuple selon le mandat que le messager avait reçu de Jéhovah, disant : “Je suis avec vous”, c'est là ce que déclare Jéhovah. » (3) « JE SUIS AVEC VOUS » : cette phrase appartient au langage de l'alliance ; on la trouve adressée à Isaac, à Jacob, à Moïse, puis à Josué. En la prononçant devant un chantier arrêté par un décret impérial, le prophète ne promet pas la disparition des obstacles — il promet la présence. Et la suite du livre le confirmera : les opposants reviendront, une enquête officielle sera ouverte, et c'est la vérification des archives royales qui tranchera en faveur des bâtisseurs. (4) LE RÉVEIL ET LE DÉLAI DE VINGT-TROIS JOURS : le texte attribue explicitement à Jéhovah l'éveil de l'esprit des responsables et du peuple, ce qui ne laisse aucune place à une simple dynamique humaine ni à un calcul politique. Le délai donne sa mesure à l'épisode : entre le premier message et le premier coup de pioche, il n'y a pas eu un mois ; Esdras 5 rapporte ensuite que, dès la reprise, les autorités de la province se présentèrent pour demander « qui vous a donné l'autorisation », et que la question fut portée jusqu'au roi. Les rebâtisseurs ont donc travaillé d'abord, et expliqué ensuite — c'est exactement ce que la promesse « je suis avec vous » autorisait.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 37 — Haggaï » (document 1101990098) commente cette section sous deux titres : « Comment Jéhovah incite-t-il les Juifs à se mettre à l'ouvrage ? » — « Les Juifs comprennent le message. Haggaï n'a pas prophétisé en vain. Les chefs et le peuple se mettent à “écouter la voix de Jéhovah leur Dieu”. La crainte de l'homme fait place à la crainte de Jéhovah, qui les rassure par la voix de Haggaï, son messager, disant : “Je suis avec vous.” (1:12, 13) C'est Jéhovah lui-même qui réveille l'esprit du gouverneur, l'esprit du grand prêtre et l'esprit de ceux qui restent de son peuple. Ils se mettent à l'ouvrage 23 jours seulement après le début de l'activité prophétique de Haggaï, et en dépit de l'interdiction prononcée par le gouvernement perse. » Et plus loin, sur les effets : « Les quatre messages transmis par Haggaï furent utiles aux Juifs de l'époque. Ils les encouragèrent à se mettre immédiatement à l'ouvrage, et en quatre ans et demi le temple était achevé, ce qui allait favoriser le vrai culte en Israël (Ezra 6:14, 15). » L'article « Le soutien de Dieu bannit la crainte » (document 1975561) exploite précisément le point de tension : « Le gouverneur Zorobabel répondit favorablement à l'appel, prenant apparemment position contre le puissant Empire perse. Mais son attitude était dictée par l'obéissance à Jéhovah Dieu. » Lecture commune et exégèse : les commentateurs soulignent trois traits du passage — le renversement du motif de la peur (la crainte de l'homme paralysait le chantier, la crainte de Jéhovah le relance), la dimension collective du réveil, qui touche les trois niveaux de la population, et le fait que l'ordre divin précède la régularisation administrative, ce qui donne à l'épisode sa couleur de confiance. Ils rapprochent également la formule « je suis avec vous » de la promesse faite à Josué, la reprise de l'histoire d'Israël étant un procédé caractéristique de cette littérature du retour.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1er jour du 6e mois, 520 av. n. è.</td><td>Le message est proclamé devant le gouverneur, le grand prêtre et le peuple (Aggée 1:1-11)</td></tr>
+<tr><td class="d">Entre le 1er et le 24 du 6e mois, 520 av. n. è.</td><td>Le peuple écoute, craint Jéhovah et reçoit l'assurance « je suis avec vous » (Aggée 1:12, 13)</td></tr>
+<tr><td class="d">24e jour du 6e mois, 520 av. n. è.</td><td>Zorobabel, Yehoshoua et le reste du peuple se mettent à l'ouvrage (Aggée 1:14, 15)</td></tr>
+<tr><td class="d">Même période, 520 av. n. è.</td><td>Zakharia commence son ministère et soutient le chantier : « les prophètes de Dieu étaient avec eux et les aidaient » (Esdras 5:1, 2)</td></tr>
+<tr><td class="d">520 av. n. è.</td><td>Les autorités perses de la province demandent le fondement légal des travaux ; la procédure est portée devant Darius (Esdras 5:3-17)</td></tr>
+<tr><td class="d">520-516 av. n. è.</td><td>Le chantier ne s'arrête plus ; le temple est achevé le 3e jour du mois d'Adar de la 6e année de Darius (Esdras 6:14, 15)</td></tr>
+<tr><td class="d">516 av. n. è. et après</td><td>Le culte pur est rétabli dans une maison achevée : l'objet même du retour d'exil est atteint</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES DEUX PROPHÈTES CONTEMPORAINS : Esdras 5:1 et 6:14 nomment Aggée et Zakharia comme les deux prophètes qui ont poussé et soutenu le chantier ; leurs livres respectifs, datés par des repères impériaux, se recoupent — Zakharia commence deux mois après Aggée. Ce double témoignage, dans des livres distincts et dans le récit historique d'Esdras, est une donnée rare et solide. (2) LA PROCÉDURE ADMINISTRATIVE PERSE : Esdras 5 décrit une enquête formelle — les autorités demandent les noms des responsables, adressent un rapport au roi, celui-ci fait rechercher le décret de Cyrus dans les archives et confirme les droits des bâtisseurs, en ordonnant même que les frais soient couverts par le trésor provincial. Cette façon de procéder correspond aux pratiques administratives connues de l'empire achéménide. (3) LES NOMS ET LES FONCTIONS : Zorobabel est appelé « gouverneur de Juda » — un titre provincial, non royal ; Yehoshoua est « grand prêtre ». La coexistence de ces deux titres est attestée pour la province de Yehoud, ce qui confirme la vraisemblance institutionnelle du récit. (4) LA GÉNÉALOGIE : 1 Chroniques 3:17-19 présente Zorobabel comme descendant de Yehoyakîn, roi déporté, ce que confirment les deux généalogies de Jésus en Matthieu 1:12, 13 et Luc 3:27. Le personnage historique est donc relié à la lignée davidique par une chaîne documentaire ancienne. (5) LA DURÉE DES TRAVAUX : en croisant Aggée 1:15 (reprise au 24e jour du 6e mois de la 2e année de Darius) et Esdras 6:15 (achèvement le 3e jour d'Adar de la 6e année), on obtient environ quatre ans et demi — durée que les commentateurs anciens et modernes relèvent comme cohérente pour un chantier de cette nature. (6) LA PRISE DE POSITION FACE À L'INTERDICTION : Aggée 1:14 et Esdras 5 décrivent un chantier lancé alors que l'interdiction antérieure n'était pas encore levée. Les publications notent que Zorobabel risquait alors de se heurter à l'empire. (7) PRUDENCE : les sources établissent l'identité des acteurs, la légalité rétablie et le calendrier ; elles ne permettent pas de reconstituer les débats internes du palais ni le détail des négociations avec la province.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE CHANTIER ET LA VILLE : le temple est bâti sur le mont Moria, la plateforme du premier sanctuaire ; les revenus d'exil travaillaient donc sur un site déjà aménagé, à partir de fondations posées en 536, ce qui explique la durée modérée du chantier. (2) LA « MONTAGNE » DU BOIS : Aggée 1:8 envoie les ouvriers « à la montagne » chercher le bois ; la chaîne de Juda, à l'ouest et au nord de la ville, fournissait ce matériau, ce qui lie les deux premiers messages du livre à une géographie concrète. (3) LA PROVINCE DE YEHoud : le territoire administré depuis Jérusalem, réduit à une portion de l'ancien royaume, est encadré au nord par la Samarie et au sud par l'Idumée perse ; Zorobabel gouvernait ce district au nom du roi, ce qui explique l'enquête des autorités voisines. (4) LE « FLEUVE » COMME LIMITE ADMINISTRATIVE : Esdras nomme la satrapie « au-delà du fleuve », l'Euphrate ; les correspondances citées dans le livre passent par cette circonscription, dont les archives royales sont consultées à Babylone ou à Ecbatane. (5) LES AXES DE COMMUNICATION : la route royale perse, qui va de Suse à Sardes en passant par l'Anatolie, et les routes caravanières de Babylonie vers le Levant, expliquent la rapidité relative des échanges entre la province et la cour. (6) LA RECONSTRUCTION URBAINE LIMITÉE : au retour, l'occupation de Jérusalem reste concentrée autour du temple ; les murs de la ville ne seront relevés que bien plus tard, à l'époque de Néhémie, ce qui montre que l'effort de cette génération s'est porté sur le sanctuaire avant tout.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES TITRES D'ADMINISTRATION SUR SCEAUX : les impressions de sceaux de la période perse portant le nom de la province « Yehud » et des noms de fonctionnaires judéens documentent l'existence d'une administration locale dotée de scribes, de cachets et de comptabilité, cadre institutionnel de l'action de Zorobabel. (2) LES MONNAIES DE YEHUD : les plus anciennes monnaies frappées dans la province, en petites dénominations d'argent, portent l'inscription « Yehud », parfois accompagnée d'un nom, ce qui atteste une entité politique reconnue. (3) LES BULLES À NOMS : plusieurs dizaines de bulles de la période perse découvertes en Juda portent des noms hébreux de personnages, dont certains apparaissent aussi dans les listes de rapatriés d'Esdras et de Néhémie ; ces trouvailles éclairent la composition de la population revenue. (4) LES VESTIGES DU SECOND TEMPLE : les recherches sur le mont du Temple et ses abords, bien que contraintes, ont identifié des éléments de la plateforme et de l'enceinte de périodes successives ; le mur occidental, l'escalier monumental au sud et les bains rituels témoignent de l'ampleur de l'aménagement du sanctuaire. (5) LA CÉRAMIQUE PERSO : les répertoires céramiques de la période perse, désormais bien établis, permettent de dater les niveaux d'occupation de la Jérusalem du retour et de mesurer son extension modeste, ce qui correspond au tableau des textes. (6) LES ARCHIVES DE BABYLONE ET DE PERSÉPOLIS : des tablettes administratives mentionnent des distributions de rations à des ouvriers et à des déportés de diverses origines ; elles documentent le milieu où vécurent les exilés qui allaient rentrer et bâtir. (7) PRUDENCE : l'archéologie confirme les institutions, les noms et les lieux ; elle ne permet pas de retrouver la trace matérielle de chaque parole prophétique ni de dater l'acte de foi décrit en Aggée 1:12-15.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>L'ÉCOUTE (1:12) : ZOROBABEL · YEHOSHOUA · TOUT LE RESTE DU PEUPLE « ÉCOUTÈRENT LA VOIX DE JÉHOVAH LEUR DIEU » → LA CRAINTE (1:12) : « ET LE PEUPLE CRAIGNIT JÉHOVAH » — LA CRAINTE DE L'HOMME FAIT PLACE À LA CRAINTE DE DIEU → LA PAROLE DU MESSAGER (1:13) : AGGÉE, « MESSAGER DE JÉHOVAH », PARLE « SELON LE MANDAT DE JÉHOVAH » : « JE SUIS AVEC VOUS, DÉCLARE JÉHOVAH » → LE RÉVEIL (1:14) : « JÉHOVAH RÉVEILLA L'ESPRIT » DU GOUVERNEUR, DU GRAND PRÊTRE ET DU PEUPLE → L'ACTION (1:14) : « ILS VINRENT ET SE MIRENT À L'OUVRAGE DANS LA MAISON DE JÉHOVAH DES ARMÉES » → LA DATE (1:15) : 24e JOUR DU 6e MOIS, 2e ANNÉE DE DARIUS — 23 JOURS APRÈS LE PREMIER MESSAGE → HISTOIRE : ESDRAS 5:1, 2 (LES PROPHÈTES LES AIDAIENT) · ENQUÊTE OFFICIELLE · DÉCRET DE DARIUS CONFIRMÉ · ACHÈVEMENT EN 516 → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Aggée 1:14, 15 ; Esdras 3:8 ; 5:2) et le statut « Accomplie ». LE TITRE DE MESSAGER : la fiche signale la rareté de l'expression « messager de Jéhovah » appliquée à un prophète, sans étendre la comparaison à d'autres figures au-delà de ce que permettent les textes. LA CRAINTE : la fiche distingue la crainte de l'homme et la crainte de Jéhovah telles que le récit les présente, sans les quantifier. LES 23 JOURS : le délai est calculé à partir des deux dates données par le livre lui-même ; la fiche ne lui attribue pas d'autre signification. ESDRAS 3:8 : ce verset concerne une première phase de travaux liés au temple ; la fiche le mentionne comme repère du registre sans confondre les deux moments du chantier. LES SOURCES EXTERNES : les commentaires cités servent d'éclairage historique et linguistique. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 2 à 11 (fiche précédente) ni des messages du chapitre 2 (fiches suivantes) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier message d'Aggée : la maison est en ruine, le pays souffre (Aggée 1:2-11)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1er jour du 6e mois, 520 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Écoute, crainte, puis parole d'encouragement : « je suis avec vous » (Aggée 1:12, 13)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Entre le 1er et le 24 du 6e mois, 520 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise du chantier par Zorobabel, Yehoshoua et le reste du peuple (Aggée 1:14, 15)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 6e mois, 520 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zakharia commence à prophétiser et soutient la reconstruction (Zakharia 1:1 ; Esdras 5:1, 2)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">8e mois, 520 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Enquête des autorités de la province ; rapport envoyé à Darius (Esdras 5:3-17)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Darius retrouve le décret de Cyrus et l'applique, ôtant l'obstacle légal (Esdras 6:1-13)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è. environ</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement et inauguration du temple (Esdras 6:14-16)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/122">Bible — Psaume 122 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/122</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/7">Bible — 1 Corinthiens 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/7</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/4">Bible — 2 Corinthiens 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/50/4">Bible — Philippiens 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/50/4</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990098">Livre de la Bible numéro 37 — Haggaï — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990098</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1975561">Le soutien de Dieu bannit la crainte — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1975561</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AG486 — « Je suis avec vous » : Zorobabel, Yehoshoua et tout le reste du peuple écoutent, craignent et se mettent à l'ouvrage</span><span>Catégorie AG1</span></div></div>
+</article>
+<article class="fiche" id="AG487">
+<div class="visuel"><img src="images/prophe_AG487_gloire.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AG487 · CATÉGORIE AG1</div>
+<h3>« La gloire de cette dernière maison sera plus grande que la première » : soyez forts et travaillez, je donnerai la paix</h3>
+<div class="ref">Aggée 2:1-9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (1er accomplissement)</span>
+<span class="badge">le vingt et unième jour du septième mois la parole de jéhovah vint par aggée disant qui est de reste parmi vous qui ait vu cette maison dans sa première gloire et comment la voyez-vous maintenant n'est-elle pas comme rien à vos yeux mais maintenant sois fort zorobabel sois fort yehoshoua et soyez forts vous tous le peuple du pays déclare jéhovah et travaillez car je suis avec vous déclare jéhovah des armées selon l'engagement que j'ai pris envers vous quand vous êtes sortis d'égypte et mon esprit demeure au milieu de vous ne craignez pas car voici ce que dit jéhovah des armées encore un peu de temps et j'ébranlerai les cieux et la terre la mer et la terre ferme j'ébranlerai toutes les nations et les choses désirables de toutes les nations entreront et je remplirai cette maison de gloire l'argent est à moi et l'or est à moi la gloire de cette dernière maison sera plus grande que la première et dans ce lieu je donnerai la paix (aggée 2:9 ; esdras 6:14-16 ; accomplie (1er accomplissement))</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AG487</div><audio controls preload="none" src="audio/fiche_AG487_gloire.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AG487_gloire.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Aggée 2:1-9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (1er accomplissement)</td></tr>
+<tr><td class="d">Chronologie</td><td>le vingt et unième jour du septième mois la parole de jéhovah vint par aggée disant qui est de reste parmi vous qui ait vu cette maison dans sa première gloire et comment la voyez-vous maintenant n'est-elle pas comme rien à vos yeux mais maintenant sois fort zorobabel sois fort yehoshoua et soyez forts vous tous le peuple du pays déclare jéhovah et travaillez car je suis avec vous déclare jéhovah des armées selon l'engagement que j'ai pris envers vous quand vous êtes sortis d'égypte et mon esprit demeure au milieu de vous ne craignez pas car voici ce que dit jéhovah des armées encore un peu de temps et j'ébranlerai les cieux et la terre la mer et la terre ferme j'ébranlerai toutes les nations et les choses désirables de toutes les nations entreront et je remplirai cette maison de gloire l'argent est à moi et l'or est à moi la gloire de cette dernière maison sera plus grande que la première et dans ce lieu je donnerai la paix (aggée 2:9 ; esdras 6:14-16 ; accomplie (1er accomplissement))</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Aggée — P487 (2:1-9 : la gloire de cette dernière maison sera plus grande que la première ; je donnerai la paix) ; Aggée 2:9 ; Esdras 6:14-16 ; Accomplie (1er accomplissement)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« QUI EST DE RESTE PARMI VOUS QUI AIT VU CETTE MAISON DANS SA PREMIÈRE GLOIRE…? ET COMMENT LA VOYEZ-VOUS MAINTENANT…? N'EST-ELLE PAS COMME RIEN À VOS YEUX…? »… « MAIS MAINTENANT, SOIS FORT, ZOROBABEL… SOIS FORT, YEHOSHOUA… ET SOYEZ FORTS, VOUS TOUS, LE PEUPLE DU PAYS… ET TRAVAILLEZ, CAR JE SUIS AVEC VOUS… »… « MON ESPRIT DEMEURE AU MILIEU DE VOUS… NE CRAIGNEZ PAS… »… « ENCORE UN PEU DE TEMPS… ET J'ÉBRANLERAI LES CIEUX ET LA TERRE… LA MER ET LA TERRE FERME… J'ÉBRANLERAI TOUTES LES NATIONS… ET LES CHOSES DÉSIRABLES DE TOUTES LES NATIONS ENTRERONT… ET JE REMPLIRAI CETTE MAISON DE GLOIRE… »… « L'ARGENT EST À MOI, ET L'OR EST À MOI… LA GLOIRE DE CETTE DERNIÈRE MAISON SERA PLUS GRANDE QUE LA PREMIÈRE… ET DANS CE LIEU JE DONNERAI LA PAIX… »… — BE-YOM ʿESRIM WE-ʾEḤAD LA-ḤODESH HA-SHEVIʿI… LE VINGT ET UNIÈME JOUR DU SEPTIÈME MOIS — FIN DE LA FÊTE DES HUTTES… MI-YYETKHEM HA-NISHʾAR… QUI EST RESTÉ PARMI VOUS… ʾASHER RAʾAH ʾET-HA-BAYIT HA-ZEH BI-KHVODO HA-RIʾSHON… QUI A VU CETTE MAISON DANS SA PREMIÈRE GLOIRE… HA-LOʾ KIMʾAYIN BE-ʿEINEIKHEM… N'EST-ELLE PAS COMME RIEN À VOS YEUX… ḤAZAQ… SOIS FORT, PRENDS COURAGE… ʿASEH… TRAVAILLE, AGIS… KI-ʾANI ITTEKHEM… CAR JE SUIS AVEC VOUS… ʾET-HA-DAVAR ʾASHER KARATTI ITTEKHEM BE-TSETKHEM MI-MITSRAYIM… L'ENGAGEMENT PRIS ENVERS VOUS À VOTRE SORTIE D'ÉGYPTE — RÉFÉRENCE À L'ALLIANCE… WE-RUḤI ʿOMEDET BE-TOKHEKHEM… ET MON ESPRIT SE TIENT AU MILIEU DE VOUS… ʿOD ʾAḤAT MEʿAT HI… ENCORE UNE FOIS, DANS PEU DE TEMPS… MARʿISH… J'ÉBRANLERAI, JE FERAI TREMBLER… ḤEMDAT KOL-HA-GOYIM… LES CHOSES DÉSIRABLES, LES TRÉSORS, LES PRÉCIEUX DE TOUTES LES NATIONS… U-MILLEʾTI ʾET-HA-BAYIT HA-ZEH KAVOD… JE REMPLIRAI CETTE MAISON DE GLOIRE… LI HA-KESEF WE-LI HA-ZAHAV… À MOI L'ARGENT ET À MOI L'OR… GADOL YIHYEH KEVOD HA-BAYIT HA-ZEH HA-ʾAḤARON MIN-HA-RIʾSHON… GRANDE SERA LA GLOIRE DE CETTE DERNIÈRE MAISON PLUS QUE LA PREMIÈRE — ʿAḤARON, LE DERNIER, ET RIʾSHON, LE PREMIER… BE-MAQOM HA-ZEH ʾETTEN SHALOM… DANS CE LIEU JE DONNERAI LA PAIX — SHALOM, LA PAIX, LA PLÉNITUDE… — 536… FONDATIONS… 520… FÊTE DES HUTTES… HÉBREUX 12:26-28… AGGÉE 2:6 CITÉ… MALACHIE 3:1… ISAÏE 60… 1 ROIS 8:10, 11… EZRA 6:14-16… HÉRODE… 46 AV. N. È.… POIDS ET MESURES… »</li>
+<li>LES TROIS JUMEAUX — Hébreux 12:26-28 : « maintenant il a promis, en disant : “Encore une fois, je secouerai non seulement la terre, mais aussi le ciel.” Or cette expression “encore une fois” indique la suppression des choses qui sont ébranlées… afin que demeurent les choses qui ne sont pas ébranlées. C'est pourquoi, puisque nous recevons un royaume qui ne peut pas être ébranlé, continuons à recevoir la faveur imméritée » — la citation directe d'Aggée 2:6 par l'apôtre Paul, qui fait de la prophétie sur l'ébranlement le fondement d'une espérance stable ; c'est la preuve que le passage était lu comme une annonce de grande portée et pas seulement comme un encouragement de chantier. Malachie 3:1 : « soudain viendra dans son temple le Seigneur que vous cherchez ; et le messager de l'alliance que vous désirez, voici qu'il vient » — la promesse qui éclaire le sens de la « gloire » de la dernière maison : ce qui la distingue de la première n'est pas sa décoration, c'est la venue de celui que le peuple attendait. 1 Rois 8:10, 11 : « lorsque les prêtres sortirent du lieu saint, la nuée remplit la maison de Jéhovah… car la gloire de Jéhovah remplissait la maison » — la gloire visible du premier temple, celle dont les anciens se souvenaient et dont la comparaison faisait paraître le nouveau chantier « comme rien ». Isaïe 60:4-7, 13 : « les nations viendront à ta lumière… elles apporteront de l'or et de l'encens… je glorifierai la maison de ma splendeur » — le tableau du rassemblement des richesses des nations vers Sion, que le livre d'Aggée reprend par l'expression « les choses désirables de toutes les nations ».</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le deuxième message est prononcé le vingt et unième jour du septième mois — le dernier jour de la fête des Huttes — soit un peu moins d'un mois après la reprise du chantier. L'occasion est claire : les travaux ont commencé, mais le résultat visible ne ressemble pas au temple de Salomon. Le texte pose alors une question aux anciens : « Qui est de reste parmi vous qui ait vu cette maison dans sa première gloire ? » Il y avait parmi les revenus des hommes âgés qui avaient connu le premier sanctuaire avant sa destruction, soixante-six ou soixante-sept ans plus tôt, et qui trouvaient la nouvelle construction misérable en comparaison. Le mouvement du message suit trois étapes. D'abord l'ordre répété trois fois : « Sois fort, Zorobabel… sois fort, Yehoshoua… et soyez forts, vous tous, le peuple du pays. » Ensuite la raison, qui est encore la présence : « car je suis avec vous… mon esprit demeure au milieu de vous. Ne craignez pas. » Enfin la promesse, en deux volets : un ébranlement des cieux, de la terre, de la mer et des nations — avec l'entrée des « choses désirables de toutes les nations » qui rempliront la maison de gloire — et une déclaration de comparaison : « la gloire de cette dernière maison sera plus grande que la première », suivie de l'engagement propre à ce lieu : « dans ce lieu je donnerai la paix ». Le registre du projet rattache cette entrée au verset 9, retient Esdras 6:14-16 comme accomplissement, et lui donne le statut « Accomplie (1er accomplissement) » — la formule reconnaissant que la prophétie a un premier niveau vérifié dans l'histoire et une portée qui va au-delà.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA QUESTION DES ANCIENS ET LE PIÈGE DU REGRET : la question n'est pas posée pour humilier, mais pour nommer un état d'esprit. Les anciens comparent, et la comparaison les décourage : « n'est-elle pas comme rien à vos yeux ? » Les publications relèvent ce point dans les conseils tirés du livre : il montre « que les serviteurs de Dieu ne doivent pas être pessimistes, en regardant en arrière vers “le bon vieux temps”, mais qu'il leur faut plutôt regarder vers l'avenir, “fixer leur cœur sur leurs voies” et chercher à glorifier Jéhovah ». La réponse de Jéhovah n'est pas de nier l'écart — le texte admet que la maison paraît « comme rien » — mais de déplacer l'attention vers ce qui va s'y accomplir. (2) LE TRIPLE « SOIS FORT » ET LE TRAVAIL : l'ordre de courage est adressé trois fois, aux deux responsables et au peuple, et il est immédiatement suivi d'un impératif d'action : « et travaillez ». La force promise n'est donc pas un sentiment mais une capacité d'agir ; elle s'accompagne du rappel de l'alliance : « selon l'engagement que j'ai pris envers vous quand vous êtes sortis d'Égypte ». Le prophète relie le chantier modeste du retour à l'événement fondateur de la nation, comme si les deux moments étaient une seule histoire. (3) L'ÉBRANLEMENT ET LES « CHOSES DÉSIRABLES » : l'expression hébraïque ḥemdat kol-ha-goyim peut se rendre de deux façons, « les choses désirables » ou « le désiré, le précieux de toutes les nations » ; les versions françaises conservent généralement le pluriel, et les commentateurs signalent l'autre lecture possible, qui rapporte le mot au Messie attendu. Hébreux 12:26-28 tranche sur la portée de l'ébranlement : il cite explicitement Aggée 2:6 pour parler de la suppression de ce qui est ébranlé et de la permanence d'un royaume qui ne peut pas l'être. (4) LA GLOIRE ET LA PAIX : « la gloire de cette dernière maison sera plus grande que la première » ne peut pas s'entendre d'un bâtiment plus beau, puisque le texte vient justement de constater l'inverse. Le sens est donc ailleurs : dans ce qui s'y produira. Les publications l'expliquent en notant que Jéhovah « les affermit avec la promesse d'ébranler toutes les nations, de faire arriver leurs choses désirables et de remplir sa maison de gloire », et le rapprochement avec Malachie 3:1 — « soudain viendra dans son temple le Seigneur que vous cherchez » — donne la clé : la gloire supérieure est celle de la présence annoncée. Quant à la paix, elle est mentionnée comme un don lié au lieu : shalom, dans le vocabulaire hébreu, ne désigne pas seulement l'absence de guerre mais la plénitude et le bien-être, ce que le livre place au terme du chantier.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 37 — Haggaï » (document 1101990098) commente : « Deuxième message (2:1-9). Moins d'un mois après la reprise des travaux de construction, Haggaï prononce son deuxième message divinement inspiré… Sans doute certains parmi les Juifs revenus de l'Exil qui avaient connu le temple de Salomon pensent que ce temple-ci ne sera rien en comparaison de l'ancien. Mais quelle est la déclaration de Jéhovah des armées ? “Soyez forts et travaillez, car je suis avec vous.” (2:4) Jéhovah leur rappelle l'alliance qu'il a conclue avec eux et leur dit de ne pas craindre. Il les affermit avec la promesse d'ébranler toutes les nations, de faire arriver leurs choses désirables et de remplir sa maison de gloire. La gloire de cette dernière maison deviendra plus grande que celle de l'ancienne, et dans ce lieu il donnera la paix. » Le document rappelle aussi que la prophétie a été rangée dans les Écritures inspirées parce qu'elle est citée dans les Écritures grecques : « Que la prophétie de Haggaï appartienne à “toute Écriture inspirée de Dieu”, c'est ce qu'atteste Paul qui la cite en Hébreux 12:26 » — et il applique la persévérance au temps présent : « cette expression “encore une fois” indique la suppression des choses qui sont ébranlées », ce qui invite à bâtir sur ce qui demeure. Lecture commune et exégèse : les commentateurs notent que « la première gloire » désigne la manifestation de la présence divine dans le sanctuaire de Salomon, et que la promesse d'une gloire supérieure est comprise, dans les écrits postérieurs, comme l'annonce de la venue du Messie dans le second temple — d'où le statut du registre, « Accomplie (1er accomplissement) ». Ils relèvent aussi que la date du message, le dernier jour de la fête des Huttes, n'est pas indifférente : cette fête de la récolte et du séjour sous les tentes rassemblait la nation autour du temple, et c'est dans ce cadre de fête que résonne l'annonce de la gloire future.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">21e jour du 7e mois, 520 av. n. è.</td><td>Le message est prononcé, en plein contexte de fête, pour relever le courage des bâtisseurs (Aggée 2:1-9)</td></tr>
+<tr><td class="d">520-516 av. n. è.</td><td>Le chantier se poursuit sans interruption ; les prophètes Aggée et Zakharia soutiennent les ouvriers (Esdras 5:1, 2)</td></tr>
+<tr><td class="d">3e jour d'Adar, 516 av. n. è.</td><td>Le temple est achevé et inauguré, avec la célébration des exilés revenus (Esdras 6:14-16)</td></tr>
+<tr><td class="d">Ve siècle av. n. è. et après</td><td>Le sanctuaire reste le centre du culte ; les prophètes postérieurs y situent la venue du Seigneur (Malachie 3:1)</td></tr>
+<tr><td class="d">Ier siècle av. n. è.</td><td>Le temple est agrandi et embelli : le chantier d'Hérode commence vers 20 av. n. è. et fait du sanctuaire l'un des plus vastes ensembles religieux du monde antique</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Le temple du second sanctuaire reçoit la présence annoncée : c'est là que l'enfant est présenté, que l'enseignement est donné et que la purification est accomplie (Luc 2:22-32 ; Matthieu 21:12, 13)</td></tr>
+<tr><td class="d">Ensuite</td><td>L'ébranlement des nations cité par Paul reste présenté comme une promesse dont l'achèvement est à venir (Hébreux 12:26-28)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE CALENDRIER DE LA REPRISE ET DE LA FIN : Aggée 1:15 et Esdras 6:15 encadrent le chantier entre la fin de 520 et le début de 516 ; le deuxième message se situe environ un mois après la reprise, ce qui rend son contenu psychologiquement plausible : c'est le moment où les bâtisseurs voient ce qu'ils construisent et comparent. (2) LA FÊTE DU SEPTIÈME MOIS : le vingt et unième jour du septième mois correspond au dernier jour de la fête des Huttes, l'une des trois fêtes de pèlerinage ; la mention de cette date dans un livre de datations précises s'accorde avec le calendrier cultuel connu par la Loi et par les textes postérieurs. (3) LA COMPARAISON DES DEUX TEMPLES : les descriptions du temple de Salomon (1 Rois 6-7) et les vestiges du sanctuaire postérieur montrent, pour le second, une construction plus modeste à l'origine, avant les agrandissements successifs ; le texte biblique le dit lui-même : la maison paraît « comme rien » aux yeux des survivants. (4) LE SOUTIEN IMPÉRIAL : Esdras 6 rapporte que l'enquête demandée par les autorités de la province aboutit à un décret de Darius confirmant celui de Cyrus et ordonnant que le trésor provincial fournisse ce qui est nécessaire, ce qui explique que le chantier modeste ait finalement bénéficié de ressources. (5) LE SECOND TEMPLE DANS L'HISTOIRE : le sanctuaire reconstruit est mentionné par des auteurs anciens, notamment par les auteurs grecs et par les documents de la période hellénistique et romaine ; il est au centre des récits des livres d'Esdras, de Néhémie et des Maccabées. (6) LES GRANDS TRAVAUX D'HÉRODE : les sources anciennes, dont les écrits de Josèphe, décrivent l'ampleur des travaux d'agrandissement entrepris à partir de la fin du Ier siècle av. n. è. ; les vestiges conservés, dont l'esplanade, les escaliers et les murs de soutènement, en donnent la mesure. (7) PRUDENCE : les sources établissent la réalité du chantier, son calendrier et son agrandissement ultérieur ; elles ne permettent pas de dater dans le détail chaque étape de l'aménagement du sanctuaire.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE SITE DU TEMPLE : la plateforme du sanctuaire domine la ville sur le mont Moria, au nord-est de la colline de la Cité de David ; cette position, entre les vallées du Cédron et du Tyropéon, explique à la fois la visibilité de la maison et la difficulté de son aménagement. (2) LA « TERRE FERME » DANS L'ÉBRANLEMENT : l'expression « la mer et la terre ferme », yabbashah, reprend le vocabulaire de la sortie de l'Égypte et de la traversée des eaux ; elle présente l'ébranlement comme une reprise, à l'échelle mondiale, de ce que Dieu a fait au début de l'histoire d'Israël. (3) L'OR ET L'ARGENT : la mention des métaux précieux renvoie aux circuits commerciaux de l'empire perse, dont les routes reliaient les montagnes de l'Est et l'Asie Mineure aux ports de la Méditerranée ; les trésors des nations qui affluent vers Sion sont un thème géographique, celui des marchandises du monde antique portées par des caravanes et des navires. (4) LES BOIS DE CONSTRUCTION : les cèdres du Liban, mentionnés pour le premier temple, continuaient d'être la référence du bois de luxe ; le second sanctuaire, plus modeste, a été bâti avec les ressources locales et les subsides autorisés par le pouvoir perse. (5) LES VOIES D'ACCÈS ET LE PÈLERINAGE : la montée vers le temple, à travers les marches et les portes de la ville, structure la vie religieuse du peuple du retour ; les psaumes des montées, chantés dans ce contexte, reflètent ces déplacements. (6) LA PLATE-FORME AGRANDIE : l'extension de l'esplanade, à l'époque hérodienne, a nécessité des travaux considérables de maçonnerie et de soutènement, dont le mur occidental et l'escalier sud sont les témoins les plus connus, ce qui situe matériellement la maison dont Aggée annonce la gloire.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES VESTIGES DU MUR DE SOUTÈNEMENT : les blocs monumentaux de l'enceinte du mont du Temple, étudiés par les archéologues, datent pour l'essentiel de l'agrandissement hérodien, mais reposent sur des aménagements antérieurs ; ils donnent la mesure du sanctuaire dont le livre d'Aggée annonce l'achèvement en 516. (2) LES BAINS RITUELS : des dizaines de bains rituels taillés dans la roche, découverts dans les quartiers proches du temple, documentent la vie cultuelle intense concentrée autour de la maison. (3) LES ESCALIERS MONUMENTAUX : l'escalier à degrés alternés des marches sud, conçu pour ralentir la montée et réguler la foule, témoigne de la dimension de pèlerinage du site. (4) LES POIDS ET LES MESURES : les séries de poids de pierre et les instruments de mesure retrouvés dans les quartiers de la ville renvoient au commerce qui alimentait le sanctuaire et aux offrandes reçues — cadre matériel de « l'argent et l'or » mentionnés dans le message. (5) LA CÉRAMIQUE CULTUELLE : les lampes, les vases et les petits autels découverts dans les niveaux de la période perse et postérieure permettent de suivre la continuité du culte sur le site entre le retour de l'exil et la période hellénistique. (6) LES SOURCES ANCIENNES SUR LES TRAVAUX : les textes de Josèphe décrivent les travaux d'agrandissement et l'ampleur du sanctuaire du Ier siècle, et des observations techniques ont été faites sur les matériaux — les pierres calcaires taillées à joints fins, le bois de cèdre et les revêtements dorés rapportés par les récits — qui corroborent l'existence d'une construction de grande valeur. (7) PRUDENCE : l'archéologie documente le site, ses aménagements et sa continuité d'usage ; elle ne permet pas de vérifier la dimension spirituelle de la promesse, ni de retrouver les structures du temple de 516 elles-mêmes sous les aménagements postérieurs.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA DATE ET L'ASSEMBLÉE (2:1) : VINGT ET UNIÈME JOUR DU SEPTIÈME MOIS — DERNIER JOUR DE LA FÊTE DES HUTTES → LA QUESTION AUX ANCIENS (2:3) : « QUI EST DE RESTE PARMI VOUS QUI AIT VU CETTE MAISON DANS SA PREMIÈRE GLOIRE…? N'EST-ELLE PAS COMME RIEN À VOS YEUX ? » → LE TRIPLE APPEL AU COURAGE (2:4) : SOIS FORT, ZOROBABEL · SOIS FORT, YEHOSHOUA · SOYEZ FORTS, TOUT LE PEUPLE — « ET TRAVAILLEZ, CAR JE SUIS AVEC VOUS » → LE RAPPEL DE L'ALLIANCE (2:5) : « SELON L'ENGAGEMENT QUE J'AI PRIS ENVERS VOUS QUAND VOUS ÊTES SORTIS D'ÉGYPTE » · « MON ESPRIT DEMEURE AU MILIEU DE VOUS » · NE CRAIGNEZ PAS → LA PROMESSE (2:6-8) : « ENCORE UN PEU DE TEMPS ET J'ÉBRANLERAI LES CIEUX, LA TERRE, LA MER ET LA TERRE FERME, TOUTES LES NATIONS » · LES CHOSES DÉSIRABLES ENTRENT · « L'ARGENT EST À MOI, ET L'OR EST À MOI » → LE VERDICT (2:9) : « LA GLOIRE DE CETTE DERNIÈRE MAISON SERA PLUS GRANDE QUE LA PREMIÈRE » ET « DANS CE LIEU JE DONNERAI LA PAIX » → HISTOIRE : ACHÈVEMENT EN 516 (ESDRAS 6:14-16) · CITATION EN HÉBREUX 12:26-28 · VENUE ANNONCÉE (MALACHIE 3:1) → STATUT DU REGISTRE : ACCOMPLIE (1er ACCOMPLISSEMENT)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre le statut du registre — « Accomplie (1er accomplissement) » — et présente séparément ce qui est vérifié dans l'histoire et ce qui reste ouvert. LES « CHOSES DÉSIRABLES » : la fiche signale les deux lectures possibles de l'expression hébraïque, le pluriel des versions françaises et la lecture rapportée au Messie, sans trancher entre elles. L'ÉBRANLEMENT : la fiche expose la citation d'Aggée 2:6 par Paul en Hébreux 12:26-28 et se garde de fixer un calendrier d'achèvement. LA GLOIRE DU SECOND TEMPLE : la fiche explique que la comparaison ne peut pas porter sur l'architecture, le texte constatant l'infériorité visible, et renvoie à ce qui s'accomplit dans ce lieu. LES TRAVAUX D'HÉRODE : leur mention sert à situer le sanctuaire dans l'histoire ; la fiche ne les confond pas avec la construction d'Aggée. LES SOURCES EXTERNES : elles sont employées comme éclairages historique, linguistique et archéologique. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas du chapitre 1 (fiches précédentes) ni des versets 10 à 23 du chapitre 2 (fiches suivantes) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier message : la maison est en ruine ; reprise du chantier le 24 du même mois (Aggée 1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1er jour du 6e mois, 520 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deuxième message : courage, travail, ébranlement des nations et gloire de la dernière maison (Aggée 2:1-9)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">21e jour du 7e mois, 520 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zakharia entre en activité ; les deux prophètes soutiennent les bâtisseurs (Zakharia 1:1 ; Esdras 5:1, 2)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">8e mois, 520 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le décret de Cyrus est retrouvé et confirmé par Darius (Esdras 6:1-13)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è. environ</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement et inauguration du temple ; le culte est rétabli (Esdras 6:14-16)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Agrandissement et embellissement du sanctuaire : travaux d'Hérode à partir de 20 av. n. è. environ</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple reçoit la présence annoncée ; l'ébranlement final reste promis (Hébreux 12:26-28)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/8">Bible — 1 Corinthiens 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/8</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/5">Bible — 2 Corinthiens 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/52/3">Bible — 1 Thessaloniciens 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/52/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/56/3">Bible — Tite 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/56/3</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990098">Livre de la Bible numéro 37 — Haggaï — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990098</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AG487 — « La gloire de cette dernière maison sera plus grande que la première » : soyez forts et travaillez, je donnerai la paix</span><span>Catégorie AG1</span></div></div>
+</article>
+<article class="fiche" id="AG488">
+<div class="visuel"><img src="images/prophe_AG488_benediction.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AG488 · CATÉGORIE AG1</div>
+<h3>« Dès ce jour, je vous bénirai » : la question posée aux prêtres, la sainteté qui ne se transmet pas et la souillure qui se propage</h3>
+<div class="ref">Aggée 2:10-19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">le vingt-quatrième jour du neuvième mois la parole de jéhovah vint par aggée demandez donc aux prêtres une décision en ces termes si un homme porte dans le pan de son vêtement de la viande sainte et qu'il touche de ce pan du pain du vin de l'huile ou toute autre nourriture cela deviendra-t-il saint les prêtres répondirent non alors aggée dit si quelqu'un qui est impur à cause d'un mort touche toutes ces choses seront-elles impures et les prêtres répondirent elles seront impures alors aggée dit tel est ce peuple telle est cette nation devant moi déclare jéhovah telles sont toutes les œuvres de leurs mains et ce qu'ils offrent là est impur mais maintenant considérez bien ce qui va arriver depuis ce jour je vous bénirai (aggée 2:19 ; esdras 6:14, 15 ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AG488</div><audio controls preload="none" src="audio/fiche_AG488_benediction.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AG488_benediction.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Aggée 2:10-19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>le vingt-quatrième jour du neuvième mois la parole de jéhovah vint par aggée demandez donc aux prêtres une décision en ces termes si un homme porte dans le pan de son vêtement de la viande sainte et qu'il touche de ce pan du pain du vin de l'huile ou toute autre nourriture cela deviendra-t-il saint les prêtres répondirent non alors aggée dit si quelqu'un qui est impur à cause d'un mort touche toutes ces choses seront-elles impures et les prêtres répondirent elles seront impures alors aggée dit tel est ce peuple telle est cette nation devant moi déclare jéhovah telles sont toutes les œuvres de leurs mains et ce qu'ils offrent là est impur mais maintenant considérez bien ce qui va arriver depuis ce jour je vous bénirai (aggée 2:19 ; esdras 6:14, 15 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Aggée — P488 (2:10-19 : je vous bénirai à partir de ce jour) ; Aggée 2:19 ; Esdras 6:14, 15 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DEMANDEZ DONC AUX PRÊTRES UNE DÉCISION EN CES TERMES… »… « SI UN HOMME PORTE DANS LE PAN DE SON VÊTEMENT DE LA VIANDE SAINTE… ET QU'IL TOUCHE DE CE PAN DU PAIN, DU VIN, DE L'HUILE OU TOUTE AUTRE NOURRITURE… CELA DEVIENDRA-T-IL SAINT…? »… « LES PRÊTRES RÉPONDIRENT : NON… »… « SI QUELQU'UN QUI EST IMPUR À CAUSE D'UN MORT TOUCHE TOUTES CES CHOSES… SERONT-ELLES IMPURES…? »… « ET LES PRÊTRES RÉPONDIRENT : ELLES SERONT IMPURES… »… « ALORS AGGÉE DIT… TEL EST CE PEUPLE, TELLE EST CETTE NATION DEVANT MOI… TELLES SONT TOUTES LES ŒUVRES DE LEURS MAINS… ET CE QU'ILS OFFRENT LÀ EST IMPUR… »… « MAIS MAINTENANT, CONSIDÉREZ BIEN CE QUI VA ARRIVER… DEPUIS CE JOUR… JE VOUS BÉNIRAI… »… — SHEʾALU-NAʾ ʾET-HA-KOHANIM TORAH… INTERROGEZ DONC LES PRÊTRES SUR UN POINT DE LOI — LA TORAH CONFIÉE AUX PRÊTRES… BE-KHENAF BIGDO… DANS LE PAN DE SON VÊTEMENT, LE REPLI DU MANTEAU QUI SERT DE POCHE… ʾESH QODESH… DE LA CHAIR SAINTE, DE LA VIANDE DE SACRIFICE DE PAIX OU DE FAUTE… WE-NAGAʿ… ET QU'IL TOUCHE TOUTE NOURRITURE… HA-YIQDASH… CELA DEVIENDRA-T-IL SAINT…? LOʾ… NON… ṬEMEʾ NEFESH… IMPUR À CAUSE D'UN MORT, LE CONTACT AVEC UN CADAVRE, SOURCE MAJEURE D'IMPUreté EN NOMBRE 19… ṬAMME… SOUILLÉS, IMPURS… KEN HA-ʿAM HA-ZEH WE-KHEN HA-GOY HA-ZEH… AINSI EST CE PEUPLE, AINSI EST CETTE NATION… MAʿASEH YEDEHEM… L'ŒUVRE DE LEURS MAINS… ṬAMEʾ HU… C'EST IMPUR… SIMU-NAʾ LEVAVKHEM MIN-HA-YOM HA-ZEH WA-MAʿLAH… FIXEZ-LE DONC SUR VOTRE CŒUR, DEPUIS CE JOUR ET AU-DELÀ… ME-YOM ʿESRIM WE-ʾARBAʿAH LA-TESHIʿI… DEPUIS LE VINGT-QUATRIÈME JOUR DU NEUVIÈME MOIS… LE JOUR OÙ LE TEMPLE DE JÉHOVAH FUT FONDÉ… HA-ʿOD HA-ZERAʿ BA-MEGURAH… LA SEMENCE EST-ELLE ENCORE DANS LE GRENIER, DANS LE SILO…? HA-TEʾENAH WE-HA-RIMMON WE-HA-ZAYIT LOʾ NASU… LE FIGUIER, LE GRENADIER ET L'OLIVIER N'ONT RIEN PORTÉ… MIN-HA-YOM HA-ZEH ʾAVAREKH… DEPUIS CE JOUR JE BÉNIRAI… — LÉVITIQUE 6:20, 27… NOMBRES 19… DEUTÉRONOME 33:10… MALACHIE 2:7… COLOSSIENS 3:23… ROMAINS 6:19… 1 CORINTHIENS 15:33… 2 CORINTHIENS 6:17… MARC 12:41-44… 520 AV. N. È.… 9e MOIS… DÉCEMBRE 520… »</li>
+<li>LES TROIS JUMEAUX — Lévitique 6:27 et Nombres 19:11-13 : « tout ce qui touchera sa chair deviendra saint » pour la viande du sacrifice de faute, mais « celui qui touchera un mort, quel qu'il soit, sera impur sept jours » — les deux règles que le prophète met en balance devant les prêtres, et qui montrent la dissymétrie voulue par la Loi : la sainteté ne se propage pas au hasard du contact, tandis que l'impureté, elle, se transmet. Deutéronome 33:10 : « ils enseigneront tes décisions à Jacob et ta loi à Israël » — la bénédiction de Lévi, qui fonde le rôle des prêtres comme dépositaires et enseignants de la loi ; c'est ce rôle qu'Aggée met ici à l'épreuve, en demandant aux prêtres de statuer sur un cas concret. Malachie 2:7 : « les lèvres du prêtre doivent garder la connaissance, car il est le messager de Jéhovah des armées » — la fonction normative du sacerdoce, reprise par un prophète de la même époque, et qui explique que la question leur soit adressée plutôt qu'à d'autres. Colossiens 3:23 : « quoi que vous fassiez, travaillez-y de toute votre âme, comme pour Jéhovah et non pour les hommes » — principe repris directement dans les conseils tirés du livre d'Aggée, selon lesquels le service de Dieu n'a de valeur que s'il est accompli « dans la pureté et de toute son âme ».</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Cinquante et un jours après le deuxième message, le vingt-quatrième jour du neuvième mois — soit en décembre 520 av. n. è. — le prophète reçoit un nouveau message, et il commence par une démarche inhabituelle : il invite à poser une question aux prêtres. Ces derniers étaient, selon la Loi, les dépositaires des règles de pureté ; leur avis avait force de décision en matière rituelle. Aggée leur fait donc trancher deux cas. Premier cas : un homme qui porte dans le pan de son vêtement de la viande sainte — c'est-à-dire de la chair d'un sacrifice — touche du pain, du vin, de l'huile ou tout autre aliment ; ces aliments deviennent-ils saints par contact ? Le collège répond non. Second cas : quelqu'un devenu impur à cause d'un cadavre touche les mêmes choses ; deviennent-elles impures ? Le collège répond oui. Les deux réponses établies, le prophète les applique : « tel est ce peuple, telle est cette nation devant moi… telles sont toutes les œuvres de leurs mains, et ce qu'ils offrent là est impur. » Le raisonnement est implacable : la présence d'un sanctuaire en ruine au milieu d'eux ne rend pas leur travail pur — c'est l'inverse qui s'est produit, la négligence a contaminé ce qui était offert. Puis le message opère un retournement aux versets 15 à 19 : le prophète invite à examiner la situation avant et après, évoque ce qui manquait — le grenier sans semence, le figuier, le grenadier et l'olivier qui n'ont rien porté, les récoltes décevantes — et conclut : « depuis ce jour je bénirai ». Le registre du projet rattache cette entrée au verset 19, retient Esdras 6:14, 15 comme accomplissement, et lui donne le statut « Accomplie ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA PROCÉDURE JURIDIQUE : le recours aux prêtres pour une décision de loi n'est pas un procédé littéraire gratuit ; tout le système cultuel israélite reposait sur une casuistique rituelle, dont le livre du Lévitique et celui des Nombres donnent de nombreux exemples. Aggée emploie cette méthode pour amener ses auditeurs à formuler eux-mêmes le verdict, ce qui rend la conclusion inévitable : ce sont les prêtres qui la prononcent avant que le prophète l'applique. Les publications décrivent ainsi la scène : « Haggaï s'adresse aux prêtres. Il se fait comprendre d'eux au moyen d'une allégorie. Si un prêtre porte de la chair sainte et qu'il touche n'importe quelle sorte de nourriture, celle-ci deviendra-t-elle sainte ? La réponse est non. Le fait de toucher une chose impure, comme un cadavre, rendra-t-il impur ? La réponse est oui. Alors Haggaï fait l'application pratique de l'allégorie. Le peuple du pays est impur parce qu'il a négligé le culte pur. Quelle que soit la nature de son offrande, elle apparaît impure aux yeux de Jéhovah Dieu. » (2) LA DISSYMÉTRIE DE LA SAINTETÉ ET DE L'IMPURETÉ : l'enseignement repose sur un principe constant de la Loi, que les commentateurs formulent en disant que la sainteté est exigeante et ne se communique pas au contact, alors que l'impureté se communique facilement. On le retrouve sous forme de sentence chez Paul : « les mauvaises compagnies gâtent les bonnes habitudes ». L'application est ici sociale et religieuse, non individuelle : ce n'est pas un rite qui purifiera l'ouvrage, c'est un changement de conduite. (3) LE REGARD EN ARRIÈRE ET LA DATE DE RÉFÉRENCE : le message invite à examiner « ce qui va arriver » et remet en mémoire les mois écoulés — avant que la pierre du temple ne soit reposée, la récolte manquait, la grange restait vide, les arbres ne portaient rien. Les commentateurs relèvent d'ailleurs une difficulté de datation dans ces versets, les uns lisant le vingt-quatrième jour du neuvième mois comme une date de reprise, d'autres y voyant la mention d'une pose de fondations antérieure ; le texte tel qu'il est transmis place la bénédiction au jour même où le travail a repris de façon résolue. (4) « DEPUIS CE JOUR JE BÉNIRAI » : la promesse est liée à une date, ce qui lui donne une valeur d'exercice : à partir du moment où le peuple a remis la maison de Dieu à sa place, la bénédiction est accordée. Les publications en tirent un principe : « Que le peuple change de voie, et Jéhovah le bénira » ; et l'application morale qu'elles dégagent est que « le service de Dieu en lui-même ne rend pas un homme pur, à moins qu'il ne soit accompli dans la pureté et de toute son âme, et qu'il ne soit pas entaché par une conduite impure ».</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 37 — Haggaï » (document 1101990098) commente ce troisième message, daté selon lui « deux mois et trois jours » après le précédent, et en dégage les conséquences : « Le peuple du pays est impur parce qu'il a négligé le culte pur… c'est pourquoi Jéhovah n'a pas béni l'œuvre de ses mains ; en outre, il lui a envoyé le dessèchement des céréales, la rouille et la grêle. Que le peuple change de voie, et Jéhovah le bénira. » Le document insiste également sur la valeur durable de ces versets : « Elle insiste sur le fait que le service de Dieu en lui-même ne rend pas un homme pur, à moins qu'il ne soit accompli dans la pureté et de toute son âme, et qu'il ne soit pas entaché par une conduite impure (Hag. 2:10-14 ; Col. 3:23 ; Rom. 6:19) », et sur le lien entre obéissance et bénédiction : « Dès qu'ils s'activèrent à la reconstruction du temple, les Juifs bénéficièrent de la faveur de Jéhovah qui les fit prospérer. Les obstacles s'évanouirent. Les travaux furent achevés en leur temps. » Lecture commune et exégèse : les commentateurs rapprochent le passage de la loi de pureté et soulignent que le prophète ne demande pas un rite supplémentaire mais un changement de direction ; ils relèvent aussi le rôle de la mention du figuier, du grenadier et de l'olivier, arbres dont l'absence de fruit est un indicateur agricole précis, ce qui ancre la promesse dans l'économie réelle du pays. La Bible Annotée, pour sa part, soulignait déjà, à propos du premier message, que le but du châtiment n'était pas la vengeance mais le retour à Dieu et la destruction de « la soif du bien-être matériel », ce qui éclaire la logique des promesses de bénédiction agricole du passage.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">24e jour du 9e mois, 520 av. n. è.</td><td>Le message est prononcé devant les prêtres et le peuple : la sainteté ne se transmet pas, l'impureté se transmet, et la bénédiction est accordée dès ce jour (Aggée 2:10-19)</td></tr>
+<tr><td class="d">520-516 av. n. è.</td><td>Le chantier se poursuit jusqu'à l'achèvement, sous le règne de Darius, avec l'appui officiel confirmé par le décret royal (Esdras 6:1-14)</td></tr>
+<tr><td class="d">3e jour d'Adar, 516 av. n. è.</td><td>Le temple est terminé et inauguré : la bénédiction annoncée se traduit par la réalisation de l'ouvrage (Esdras 6:14, 15)</td></tr>
+<tr><td class="d">516 av. n. è. et après</td><td>Le culte est rétabli, la Pâque célébrée dans le sanctuaire rebâti : le service de Dieu redevient effectif au milieu du peuple</td></tr>
+<tr><td class="d">Période perse</td><td>La province de Yehoud se développe : sceaux, monnaies et jarres estampillées attestent une activité administrative et économique durable</td></tr>
+<tr><td class="d">Ve siècle av. n. è.</td><td>La communauté sort de l'état de survie où elle était ; Esdras et Néhémie poursuivent la purification du culte annoncée par le prophète</td></tr>
+<tr><td class="d">Ensuite</td><td>Le principe enseigne que la bénédiction suit l'obéissance et que la priorité donnée au culte de Dieu précède la prospérité de ceux qui travaillent</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE RÔLE JURIDIQUE DES PRÊTRES : dans l'organisation d'Israël, le sacerdoce tranchait les cas de pureté et enseignait la loi ; les textes législatifs en donnent la procédure, et la littérature postérieure atteste la persistance de ce rôle. La démarche d'Aggée s'inscrit donc dans une institution réelle. (2) LES RÈGLES DE PURETÉ : le contact avec un cadavre constituait la principale source d'impureté rituelle ; les règles de purification, d'une durée de sept jours, sont décrites dans le livre des Nombres. Le cas posé par le prophète correspond exactement à cette catégorie. (3) LA LOI SUR LA VIANDE SACRIFIÉE : la chair des offrandes était réservée, en partie consommée par les prêtres avec des conditions précises ; le cas du pan du vêtement — la poche d'un manteau servant à transporter des objets — relève d'un usage quotidien décrit dans plusieurs textes. (4) LE CALENDRIER AGRICOLE DU MESSAGE : le neuvième mois correspond à la fin de l'automne ; la vigne, le figuier, le grenadier et l'olivier portent leur fruit en fin d'été et en automne, et la mention de récoltes manquées prend tout son sens au moment où les arbres auraient dû être dépouillés. (5) LA SUITE HISTORIQUE DE LA BÉNÉDICTION : les livres d'Esdras et de Néhémie décrivent, sur ce même siècle, la reprise des travaux, la restauration du culte et l'organisation de la communauté : c'est dans ce cadre que se vérifie la promesse du verset 19. (6) L'ÉVOLUTION ÉCONOMIQUE DE LA PROVINCE : la multiplication des sceaux de Yehoud, des bulles à noms et des monnaies au cours des siècles suivants indique une vie administrative et commerciale stabilisée après la période du retour. (7) PRUDENCE : les sources attestent les institutions, les règles rituelles et la poursuite du chantier ; elles ne permettent pas de mesurer quantitativement la bénédiction annoncée ni de la fixer sur une année précise.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE NEUVIÈME MOIS À JÉRUSALEM : cette période correspond à la saison des pluies naissantes dans les collines de Juda ; les labours y commencent avec les premières averses, et la promesse liée à ce mois prend appui sur le cycle agricole local. (2) LE GRENIER, SILO ET MAGASINS : les collines de Juda sont criblées de citernes et de silos taillés dans la roche, où l'on conservait le grain ; la question du prophète — « la semence est-elle encore dans le grenier ? » — renvoie à ces cavités, dont des centaines ont été recensées par l'archéologie. (3) LES QUATRE CULTURES CITÉES : la vigne, le figuier, le grenadier et l'olivier sont les cultures emblématiques du terroir de montagne ; leur association dans un même énuméré apparaît dans plusieurs textes bibliques décrivant la prospérité du pays, notamment dans la description de la terre promise. (4) LE PAN DU VÊTEMENT : le manteau de dessus, largement coupé, comportait un repli ou une poche où l'on transportait des biens, dont le grain ; le détail du prophète correspond à une réalité quotidienne des gens de cette région et de ce temps. (5) LA BÉNÉDICTION ET LE COMMERCE : la position de Jérusalem sur les routes qui relient la plaine côtière au plateau transjordanien en fait un carrefour où le surplus agricole peut s'écouler ; la reprise économique de la province dépend de la sécurité des chemins et de la stabilité administrative, deux conditions réunies à partir du règne de Darius. (6) L'EAU ET LA PERTE DES RÉCOLTES : la sécheresse et la brûlure des céréales restent, dans cette région, les deux causes principales de pertes agricoles, ce que le message nomme explicitement en évoquant « le dessèchement des céréales, la rouille et la grêle ».</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES SILOS ET LES CIRCONFÉRENCES DE STOCKAGE : les prospections dans les hautes terres de Juda ont recensé de nombreux silos et citernes de stockage taillés dans le calcaire, parfois regroupés en batteries de plusieurs cavités ; ils documentent la place centrale du grain dans l'économie et l'importance de la conservation. (2) LES ANSE ESTAMPILLÉES DE YEHUD : ces jarres de stockage, portant un sceau administratif, sont les témoins directs de l'organisation de la collecte et de la conservation des denrées dans la province perse ; leur nombre et leur répartition éclairent la reprise économique. (3) L'ARCHÉOBOTANIQUE : l'étude des restes végétaux carbonisés — grains de blé et d'orge, noyaux d'olive, pépins de raisin et de grenade — sur les sites de l'époque perse et perse confirme la présence des cultures citées par le prophète et permet de suivre leurs variations. (4) LES GRENADES DE LA PÉRIODE PERSE : des grenades en ivoire portant une inscription sacerdotale, attribuées à cette époque ou à la suivante, illustrent l'association symbolique de ce fruit avec le culte et confirment la place du grenadier dans la culture matérielle. (5) LA PALÉOÉCONOMIE ET LES FAMINES : les études sur les rendements agricoles du Levant sud montrent la sensibilité extrême des récoltes aux variations de pluie ; la rouille et la brûlure des céréales, dues à des champignons pathogènes, sont bien documentées pour la région et pour les périodes anciennes. (6) LES NIVEAUX D'OCCUPATION CONTINUS : les fouilles des villages de Juda montrent une occupation qui se poursuit et se densifie au cours de la période perse, ce qui concorde avec l'idée d'une stabilisation après la reprise du chantier. (7) PRUDENCE : l'archéologie établit les cultures, les pratiques de stockage et la physionomie de la province ; elle ne démontre pas la causalité spirituelle que le prophète énonce.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA DATE (2:10) : VINGT-QUATRIÈME JOUR DU NEUVIÈME MOIS, DEUXIÈME ANNÉE DE DARIUS → LA QUESTION AUX PRÊTRES (2:11-13) : VIANDE SAINTE TOUCHANT DE LA NOURRITURE → « NON, ELLE NE DEVIENT PAS SAINTE » · CONTACT D'UN IMPUR À CAUSE D'UN MORT → « OUI, ELLE DEVIENT IMPURE » → L'APPLICATION (2:14) : « TEL EST CE PEUPLE… TELLES SONT TOUTES LES ŒUVRES DE LEURS MAINS… ET CE QU'ILS OFFRENT LÀ EST IMPUR » → L'EXAMEN (2:15-19) : AVANT CE JOUR — SEMENCE ABSENTE DU GRENIER, FIGUIER, GRENADIER ET OLIVIER SANS FRUIT, RÉCOLTES DÉCEVANTES → LA BÉNÉDICTION (2:19) : « DEPUIS CE JOUR JE VOUS BÉNIRAI » → HISTOIRE : POURSUITE DU CHANTIER · DÉCRET DE DARIUS · ACHÈVEMENT EN 516 (ESDRAS 6:14, 15) · REPRISE ÉCONOMIQUE ATTESTÉE PAR LES SCEAUX DE YEHUD → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Aggée 2:19 ; Esdras 6:14, 15) et le statut « Accomplie ». LA DATE ET SA DIFFICULTÉ : la fiche signale que les versets 15 à 19 ont donné lieu à des lectures divergentes quant à la date de référence, sans trancher entre elles. LES RÈGLES DE PURETÉ : elles sont exposées comme institution d'Israël, avec leurs sources législatives, sans être transposées à d'autres contextes. LA BÉNÉDICTION : elle est présentée comme liée à une date et à un changement de conduite, sans être quantifiée ni transformée en loi générale sur la prospérité. LES SOURCES EXTERNES : les commentaires et ouvrages de référence cités servent d'éclairage historique et linguistique. LES CULTURES CITÉES : la fiche les décrit dans leur cadre agronomique local, sans étendre l'analyse à d'autres régions. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 1 à 9 (fiche précédente) ni du dernier message, adressé à Zorobabel (fiche suivante) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier message ; reprise du chantier le 24 du même mois (Aggée 1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1er jour du 6e mois, 520 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deuxième message : courage, ébranlement des nations, gloire de la dernière maison (Aggée 2:1-9)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">21e jour du 7e mois, 520 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Troisième message : la question aux prêtres, la souillure, et « dès ce jour je vous bénirai » (Aggée 2:10-19)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 9e mois, 520 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatrième message, adressé à Zorobabel : l'ébranlement des royaumes et la promesse du cachet (Aggée 2:20-23)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Même jour, 520 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le décret de Cyrus est retrouvé dans les archives et confirmé par Darius (Esdras 6:1-13)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è. environ</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement et inauguration du temple (Esdras 6:14, 15)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Stabilisation administrative et économique de la province de Yehoud : sceaux, jarres estampillées et monnaies</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Période perse</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/9">Bible — 1 Corinthiens 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/6">Bible — 2 Corinthiens 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/11">Bible — 1 Corinthiens 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/25">Bible — Actes 25 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/25</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990098">Livre de la Bible numéro 37 — Haggaï — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990098</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AG488 — « Dès ce jour, je vous bénirai » : la question posée aux prêtres, la sainteté qui ne se transmet pas et la souillure qui se propage</span><span>Catégorie AG1</span></div></div>
+</article>
+<article class="fiche" id="AG489">
+<div class="visuel"><img src="images/prophe_AG489_cachet.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AG489 · CATÉGORIE AG1</div>
+<h3>« Je te ferai comme un cachet » : l'ébranlement des royaumes et Zorobabel, mon serviteur, choisi pour sceller les desseins de Dieu</h3>
+<div class="ref">Aggée 2:20-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (1er accomplissement)</span>
+<span class="badge">la parole de jéhovah vint une seconde fois à aggée le vingt-quatrième jour du mois disant parle à zorobabel le gouverneur de juda je vais ébranler les cieux et la terre je renverserai le trône des royaumes je détruirai la puissance des rois des nations je renverserai les chars et ceux qui les montent les chevaux et leurs cavaliers tomberont et chacun tombera par l'épée de son frère en ce jour-là déclare jéhovah des armées je te prendrai zorobabel fils de shealtiel mon serviteur et je te ferai comme un cachet car je t'ai choisi déclare jéhovah des armées (aggée 2:23 ; lignée messianique (matthieu 1:12, 13 ; luc 3:27) ; accomplie (1er accomplissement))</span>
+<span class="badge">7 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AG489</div><audio controls preload="none" src="audio/fiche_AG489_cachet.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AG489_cachet.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Aggée 2:20-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (1er accomplissement)</td></tr>
+<tr><td class="d">Chronologie</td><td>la parole de jéhovah vint une seconde fois à aggée le vingt-quatrième jour du mois disant parle à zorobabel le gouverneur de juda je vais ébranler les cieux et la terre je renverserai le trône des royaumes je détruirai la puissance des rois des nations je renverserai les chars et ceux qui les montent les chevaux et leurs cavaliers tomberont et chacun tombera par l'épée de son frère en ce jour-là déclare jéhovah des armées je te prendrai zorobabel fils de shealtiel mon serviteur et je te ferai comme un cachet car je t'ai choisi déclare jéhovah des armées (aggée 2:23 ; lignée messianique (matthieu 1:12, 13 ; luc 3:27) ; accomplie (1er accomplissement))</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Aggée — P489 (2:20-23 : je te prendrai, Zorobabel, mon serviteur, et je te ferai comme un cachet) ; Aggée 2:23 ; lignée messianique (Matthieu 1:12, 13 ; Luc 3:27) ; Accomplie (1er accomplissement)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« LA PAROLE DE JÉHOVAH VINT UNE SECONDE FOIS À AGGÉE… LE VINGT-QUATRIÈME JOUR DU MOIS… »… « PARLE À ZOROBABEL, LE GOUVERNEUR DE JUDA… »… « JE VAIS ÉBRANLER LES CIEUX ET LA TERRE… JE RENVERSERAI LE TRÔNE DES ROYAUMES… JE DÉTRUIRAI LA PUISSANCE DES ROIS DES NATIONS… JE RENVERSERAI LES CHARS ET CEUX QUI LES MONTENT… LES CHEVAUX ET LEURS CAVALIERS TOMBERONT… ET CHACUN TOMBERA PAR L'ÉPÉE DE SON FRÈRE… »… « EN CE JOUR-LÀ, DÉCLARE JÉHOVAH DES ARMÉES, JE TE PRENDRAI, ZOROBABEL, FILS DE SHEALTIEL, MON SERVITEUR… ET JE TE FERAI COMME UN CACHET… CAR JE T'AI CHOISI… DÉCLARE JÉHOVAH DES ARMÉES… »… — MARʿISH ʾET-HA-SHAMAYIM WE-ʾET-HA-ʾARETS… J'ÉBRANLERAI LES CIEUX ET LA TERRE… WE-HAFAKHTI KISSEʾ MAMLAKHOT… JE RENVERSERAI LE TRÔNE DES ROYAUMES… WE-HISHRATTI ḤOZEQ MAMLEKHOT HA-GOYIM… ET JE DÉTRUIRAI LA FORCE DES ROYAUMES DES NATIONS… WE-HAFAKHTI REKHEV WE-ROKHEVAV… JE RENVERSERAI LE CHAR ET CELUI QUI LE MÈNE… WE-YARDU SUSIM WE-ROKHVEIHEM… ET LES CHEVAUX ET LEURS CAVALIERS TOMBERONT… ʾISH BE-ḤEREV ʾAḤIV… CHACUN PAR L'ÉPÉE DE SON FRÈRE — GUERRE CIVILE, EFFONDREMENT INTÉRIEUR DES EMPIRES… LAQḤTI ʾOTEKHA ZERUBBAVEL BEN-SHEʾALTIʾEL ʿAVDI… JE TE PRENDRAI, ZOROBABEL FILS DE SHEALTIEL, MON SERVITEUR — ʿAVDI, TITRE DU SERVITEUR DE JÉHOVAH, EMPLOYÉ POUR DAVID, POUR LE SERVITEUR D'ÉSAÏE… WE-SAMTIKHA KA-ḤOTAM… ET JE TE METTRAI COMME UN SCEAU, UN ANNEAU À CACHET… KI-VEKHA VAḤARTI… CAR C'EST TOI QUE J'AI CHOISI… — ZERUBBAVEL… ZERU BA-BEL, LA SEMENCE DE BABYLONE… 1 CHRONIQUES 3:17-19… MATTHIEU 1:12, 13… LUC 3:27… JÉRÉMIE 22:24… YEHOYAKÎN L'ANNEAU ARRACHÉ… GENÈSE 41:42… ESTHER 3:10… DANIEL 2… 7… HÉBREUX 12:26-28… »</li>
+<li>LES TROIS JUMEAUX — Jérémie 22:24, 25 : « aussi vrai que je suis vivant, déclare Jéhovah, même si Koniahou, fils de Yehoyaqim, roi de Juda, était comme l'anneau à cachet de ma main droite, je l'arracherais de là » — la malédiction prononcée sur le roi déporté, dont Aggée 2:23 est le renversement exact : Jéhovah annonce qu'il fera de Zorobabel, petit-fils de ce même Yehoyakîn, un cachet à sa main. Ce qui avait été arraché est rendu. 2 Samuel 7:12-16 : « quand tes jours seront accomplis et que tu te coucheras avec tes ancêtres, je susciterai après toi ta descendance… et j'établirai solidement son trône royal pour toujours » — la promesse davidique, à laquelle le titre « mon serviteur » et la mention de la lignée relient directement Zorobabel, descendant de David par la ligne royale. Matthieu 1:12, 13 : « après la déportation à Babylone, Yeconia engendra Shealtiel ; Shealtiel engendra Zorobabel ; Zorobabel engendra Abioud… » — la généalogie qui fait de Zorobabel une charnière entre la royauté déchue et la naissance du Messie. Luc 3:27 : « …fils de Zorobabel, fils de Shealtiel, fils de Néri… » — la seconde généalogie, qui confirme la place du même personnage dans la descendance de David, avec la même fidélité aux noms du retour d'exil.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le dernier message du livre est prononcé le même jour que le précédent, le vingt-quatrième jour du neuvième mois de la deuxième année de Darius, mais il est adressé à une seule personne : Zorobabel, désigné ici comme « gouverneur de Juda ». Le message commence par le thème de l'ébranlement, déjà annoncé au verset 6, mais il le développe en termes politiques précis : les cieux et la terre, puis le trône des royaumes, la puissance des rois des nations, les chars et ceux qui les montent, les chevaux et leurs cavaliers — et cette précision terrible : « chacun tombera par l'épée de son frère », image de l'effondrement intérieur d'une puissance. Ce langage est celui des empires : chars, cavalerie, trônes renversés, rois abattus. Puis vient le retournement personnel : « en ce jour-là, je te prendrai, Zorobabel, fils de Shealtiel, mon serviteur… et je te ferai comme un cachet, car je t'ai choisi. » L'image est celle de l'anneau à cachet, l'objet le plus personnel du monde antique, porté au doigt ou attaché au cou, qui servait à signer et à authentifier ; posséder le sceau du roi, c'était exercer son autorité. Le contraste avec la situation réelle du personnage est total : Zorobabel n'était pas roi, la royauté avait disparu, Juda était une province de l'empire perse, et son nom même signifie « semence de Babylone », comme un rappel de l'exil dont il était né. Le message lui dit pourtant qu'il est choisi. Le registre du projet rattache cette entrée au verset 23, retient comme accomplissement la lignée messianique citée en Matthieu 1:12, 13 et Luc 3:27, et lui donne le statut « Accomplie (1er accomplissement) ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) L'ÉBRANLEMENT ET LA GUERRE INTESTINE : l'annonce du verset 22 ne décrit pas une défaite militaire ordinaire ; elle décrit un effondrement de l'intérieur — « chacun tombera par l'épée de son frère ». Ce trait apparaît également dans les récits des grandes chutes impériales : les querelles dynastiques, les rivalités de généraux et les guerres civiles ont précédé et accompagné la fin des empires. Les publications lisent le passage comme « l'anéantissement complet des royaumes des nations » : « De nouveau Jéhovah parle d'“ébranler les cieux et la terre”, mais cette fois il étend ce thème à l'anéantissement complet des royaumes des nations. Nombreux sont ceux qui tomberont, “chacun par l'épée de son frère”. (2:21, 22) » (2) LE RENVERSEMENT DE JÉRÉMIE 22:24 : c'est le point le plus frappant du passage. Jérémie avait employé l'image de l'anneau à cachet pour dire que Yehoyakîn, roi de Juda, serait arraché de la main de Dieu et livré à Babylone ; ce roi était le grand-père de Zorobabel. Aggée reprend la même image pour dire que le descendant est rétabli dans la faveur. Le sceau rendu, c'est la promesse davidique rendue : la lignée n'est pas éteinte, elle est simplement passée par l'humiliation. (3) LE SCEAU COMME SIGNATURE ET AUTORITÉ : dans le monde antique, l'anneau à cachet servait à marquer de cire ou d'argile les documents officiels ; il attestait l'authenticité et transmettait la volonté de son possesseur. Les publications l'expliquent ainsi : « Dans l'Antiquité, celui qui possédait un anneau à cachet l'utilisait pour apposer son nom sur un document ; c'était la preuve que le document en question était authentique et exprimait la volonté, les desseins ou les instructions du propriétaire de l'anneau. » Elles ajoutent que Zorobabel « devint très précieux aux yeux de Jéhovah, aussi précieux qu'un anneau à cachet dans la main droite de Jéhovah des armées », et que le sceau de Dieu évoque finalement celui qui porte le nom divin. (4) « MON SERVITEUR » ET LE STATUT DU REGISTRE : l'expression « mon serviteur » est un titre qui, dans les Écritures, accompagne les hommes choisis pour une mission — David notamment — et le serviteur d'Ésaïe ; les commentateurs y voient l'indication que la promesse dépasse le seul gouverneur. Le registre retient d'ailleurs le statut « Accomplie (1er accomplissement) » et rattache l'accomplissement à la lignée messianique : Zorobabel n'a jamais régné, mais il figure dans les deux généalogies de Jésus, en Matthieu et en Luc, ce qui fait de lui le maillon par lequel la promesse davidique traverse la période de l'exil.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 37 — Haggaï » (document 1101990098) résume : « Quatrième message (2:20-23). Haggaï transmet ce message à la suite du troisième, le même jour, mais il l'adresse à Zorobabel. De nouveau Jéhovah parle d'“ébranler les cieux et la terre”, mais cette fois il étend ce thème à l'anéantissement complet des royaumes des nations. Nombreux sont ceux qui tomberont, “chacun par l'épée de son frère”. (2:21, 22) Haggaï conclut sa prophétie en assurant Zorobabel de la faveur de Jéhovah. » L'article « Le soutien de Dieu bannit la crainte » (document 1975561) développe le commentaire de la promesse du cachet : « Par l'intermédiaire d'Aggée, Jéhovah rassura Zorobabel en ces termes : Jéhovah dit encore à Zorobabel : “Je te prendrai, ô Zorobabel, fils de Schéaltiel, mon serviteur”, (…) “et assurément je te mettrai comme un anneau à cachet, car c'est toi que j'ai choisi.” — Aggée 2:23. Zorobabel devint très précieux aux yeux de Jéhovah, aussi précieux qu'un anneau à cachet dans la main droite de Jéhovah des armées… Tout comme Zorobabel, ce Gouverneur céleste est des plus précieux aux yeux de Jéhovah Dieu, aussi précieux qu'un anneau à cachet dans sa main droite, anneau qui porte le nom divin. » Lecture commune et exégèse : les commentateurs relèvent le contraste historique — Zorobabel n'a jamais été roi et sa fonction était celle d'un administrateur provincial nommé par un empire étranger — et ils lisent la promesse comme une confirmation de la permanence du pacte davidique, dont l'accomplissement est rattaché à la descendance. Le rapprochement avec Jérémie 22:24 et l'image du sceau arraché puis rendu est un lieu classique de l'exégèse du passage ; il est également noté que les généalogies évangéliques font de Zorobabel un ancêtre direct de Joseph, ce qui donne à la prophétie son prolongement vérifiable dans les Écritures elles-mêmes.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">24e jour du 9e mois, 520 av. n. è.</td><td>Le message est adressé à Zorobabel : ébranlement des royaumes et « je te ferai comme un cachet » (Aggée 2:20-23)</td></tr>
+<tr><td class="d">520-516 av. n. è.</td><td>Zorobabel gouverne et poursuit le chantier du temple jusqu'à son achèvement, avec Yehoshoua et le peuple (Esdras 5-6)</td></tr>
+<tr><td class="d">516 av. n. è.</td><td>Le temple est terminé : l'œuvre du gouverneur est menée à terme (Esdras 6:14, 15)</td></tr>
+<tr><td class="d">Succession impériale</td><td>L'ébranlement annoncé se vérifie dans la succession des empires : la Perse est renversée par la Grèce, dont le royaume se divise après la mort d'Alexandre, avant que Rome ne domine la région</td></tr>
+<tr><td class="d">Époque perse et après</td><td>La province de Yehoud se maintient ; la lignée davidique représentée par Zorobabel se poursuit dans les listes généalogiques conservées</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Les généalogies de Matthieu 1:12, 13 et Luc 3:27 placent Zorobabel dans la descendance de David menant à Jésus, rattachant la prophétie à la lignée messianique</td></tr>
+<tr><td class="d">Ensuite</td><td>L'ébranlement des cieux et de la terre est présenté dans les Écritures grecques comme une promesse dont l'achèvement demeure (Hébreux 12:26-28)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE PERSONNAGE : Zorobabel est mentionné dans les livres d'Esdras, de Néhémie, des Chroniques et chez les prophètes Aggée et Zakharia ; cette multiplicité de mentions, dans des écrits de natures différentes, atteste son importance comme gouverneur de la province de Yehoud. (2) LA LIGNÉE ROYALE : 1 Chroniques 3:17-19 donne sa filiation depuis Yehoyakîn, roi déporté en 597 ; les généalogies évangéliques le reprennent, ce qui relie le personnage à la maison de David de manière documentée dans les Écritures. (3) LE TITRE ET LA FONCTION : il est appelé « gouverneur » (peḥah), un titre administratif provincial, et non « roi » ; cette précision concorde avec l'organisation de l'empire achéménide, dont les provinces étaient dirigées par des gouverneurs nommés. (4) LE NOM : Zorobabel, apparenté à une formule signifiant « semence de Babylone », rappelle que lui-même, comme ses contemporains, appartenait à la génération née en exil ; cette donnée onomastique éclaire la portée de la promesse faite à un homme que sa naissance semblait disqualifier. (5) LE RENVERSEMENT DE JÉRÉMIE 22:24 : la prophétie de Jérémie sur Yehoyakîn, à la fois attestée dans le livre et documentée par les listes de déportés trouvées dans les archives babyloniennes — où le roi de Juda figure avec sa famille et son entourage — rend le contraste entre les deux textes historiquement fondé. (6) L'HISTOIRE DES EMPIRES : la succession Perse, Macédoine, Séleucides et Lagides, Rome, est établie par les sources grecques et orientales ; l'annonce du renversement des trônes s'inscrit dans cette chronologie, tandis que les guerres civiles et les querelles de succession des royaumes hellénistiques illustrent l'image de « chacun par l'épée de son frère ». (7) PRUDENCE : l'histoire établit la fonction, la lignée et la durée des empires ; elle ne permet pas d'identifier un événement unique comme la réalisation complète de l'ébranlement annoncé.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA PROVINCE DE JUDA : Zorobabel gouvernait le district de Yehoud autour de Jérusalem, l'un des petits territoires de la satrapie « au-delà du fleuve » ; sa position réelle était donc très éloignée de celle d'un roi, ce qui donne sa force à une promesse de choix et de faveur. (2) LES CHARS ET LES CHEVAUX : l'évocation de la cavalerie et des chars correspond à l'équipement militaire de l'époque dans tout le Proche-Orient ; les bas-reliefs perses et assyriens, ainsi que les textes administratifs, documentent ces corps de troupes et leur coût. (3) LES ROUTES IMPÉRIALES : l'empire perse entretenait un réseau routier, dont la route royale de Suse à Sardes ; les provinces traversées, dont celle de Juda, servaient au passage des troupes et des messagers, ce qui place la petite province dans le jeu des grandes puissances. (4) LES POINTS D'APPUI STRATÉGIQUES : la bande côtière et les plaines du nord constituaient les axes de circulation des armées, tandis que les hautes terres de Juda restaient à l'écart des grands mouvements ; c'est dans cet espace secondaire que se déroule l'histoire du retour. (5) LES SCEAUX COMME OBJETS : les cachets de pierre et les anneaux à cachet, retrouvés en grand nombre dans les fouilles du Levant, montrent la circulation des pratiques de scellement, du palais jusqu'aux particuliers ; l'image employée par le prophète appartient donc à une expérience quotidienne. (6) LES SCEAUX DE LA PROVINCE DE YEHUD : les impressions portant le nom de la province et des noms de personnages judéens illustrent concrètement le rôle administratif du sceau dans cette région et à cette période.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES BULLES ET SCEAUX D'ARGILE : des milliers d'empreintes de sceaux ont été retrouvées dans les fouilles du Proche-Orient ; leur étude permet de reconstituer les pratiques administratives, l'usage du sceau comme signature et les chaînes de responsabilité dans les documents officiels. (2) LES SCEAUX DE YEHud : les impressions provinciales de la période perse, portant l'inscription « Yehud », relient directement l'imagerie du cachet employée par Aggée à l'administration réelle de la province gouvernée par Zorobabel. (3) LES ANNEAUX À CACHET ANCIENS : les exemplaires de chatons gravés conservés dans les collections archéologiques — scarabées, pierres semi-précieuses, métaux — montrent la variété des formes et la personnalisation des sceaux, et expliquent pourquoi l'objet était considéré comme le prolongement de son propriétaire. (4) LES INSCRIPTIONS ROYALES BABYLONIENNES : les listes de déportés et les tablettes de rations de Babylonie mentionnent le roi de Juda et sa maison, ce qui documente la déportation de Yehoyakîn et, par conséquent, la situation de la lignée davidique en exil dont Zorobabel descend. (5) LES ARCHIVES DE LA CONSTRUCTION IMPÉRIALE : les documents administratifs de l'empire perse, dont les tablettes de Persépolis, décrivent les circuits de redistribution des denrées et des matières premières ; ils montrent ce que pouvait signifier, matériellement, la confirmation d'un décret et l'affectation de ressources à un chantier provincial. (6) LES TÉMOINS DE LA DISPARITION IMPÉRIALE : la documentation archéologique et textuelle montre la fin de l'empire achéménide, puis la fragmentation du monde hellénistique en royaumes rivaux unis par des liens familiaux, ce qui donne un contenu concret à l'image « chacun par l'épée de son frère ». (7) PRUDENCE : l'archéologie atteste les sceaux, les personnages et la succession des empires ; elle ne permet pas d'attribuer à un événement précis la totalité de l'ébranlement annoncé.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA DATE (2:20) : VINGT-QUATRIÈME JOUR DU NEUVIÈME MOIS — DEUXIÈME MESSAGE DU MÊME JOUR → LE DESTINATAIRE (2:21) : « PARLE À ZOROBABEL, LE GOUVERNEUR DE JUDA » → L'ÉBRANLEMENT (2:21, 22) : LES CIEUX ET LA TERRE · LE TRÔNE DES ROYAUMES RENVERSÉ · LA PUISSANCE DES ROIS DES NATIONS DÉTRUITE · CHARS ET CAVALIERS ABATTUS · « CHACUN TOMBERA PAR L'ÉPÉE DE SON FRÈRE » → LA PROMESSE (2:23) : « JE TE PRENDRAI, ZOROBABEL, FILS DE SHEALTIEL, MON SERVITEUR » · « JE TE FERAI COMME UN CACHET » · « CAR JE T'AI CHOISI » → LE RENVERSEMENT DE JÉRÉMIE 22:24 : L'ANNEAU ARRACHÉ DE YEHOYAKÎN EST RENDU À SA DESCENDANCE → LA LIGNÉE : MATTHIEU 1:12, 13 · LUC 3:27 — ZOROBABEL DANS LA CHAÎNE QUI MÈNE AU MESSIE → HISTOIRE : L'ADMINISTRATION DE LA PROVINCE DE YEHUD · LA SUCCESSION DES EMPIRES · L'ÉBRANLEMENT ACHEVÉ EN PERSPECTIVE (HÉBREUX 12:26-28) → STATUT DU REGISTRE : ACCOMPLIE (1er ACCOMPLISSEMENT)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre le statut du registre — « Accomplie (1er accomplissement) » — et présente séparément les faits vérifiés et la portée qui reste ouverte. L'IDENTITÉ DE ZOROBABEL : la fiche suit les textes bibliques et les listes généalogiques ; la question des liens exacts de parenté entre Shealtiel, Pedaya et Zorobabel, posée par certains textes, n'est pas tranchée. LE SCEAU : l'image est expliquée par l'usage antique de l'anneau à cachet, sans qu'en soit déduit un statut royal pour Zorobabel, qui n'a pas régné. L'ÉBRANLEMENT : la fiche rapproche l'annonce de la succession des empires et de la citation d'Hébreux 12, sans établir une correspondance terme à terme avec des événements datés. LES GÉNÉALOGIES : leur mention suit les évangiles ; la fiche ne traite pas des questions d'harmonisation entre les deux listes. LES SOURCES EXTERNES : elles servent d'éclairage historique et archéologique. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des messages précédents du livre (fiches antérieures) ni d'autres prophéties sur la maison de David ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Troisième et quatrième messages : « dès ce jour je vous bénirai », puis la promesse faite à Zorobabel (Aggée 2:10-23)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 9e mois, 520 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zorobabel gouverne et conduit le chantier jusqu'à l'achèvement du temple (Esdras 5-6)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">520-516 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple est achevé et inauguré (Esdras 6:14, 15)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La province de Yehoud se maintient ; la lignée davidique se poursuit après la génération du retour</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve-IVe siècle av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de l'empire perse devant la Macédoine ; les royaumes hellénistiques se divisent et s'affrontent</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">331 av. n. è. et après</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rome étend sa domination sur la région ; les trônes continuent de changer de mains</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe-Ier siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les généalogies de Matthieu et de Luc font de Zorobabel un ancêtre du Messie (Matthieu 1:12, 13 ; Luc 3:27)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/12">Bible — 1 Corinthiens 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/11">Bible — 2 Corinthiens 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/12">Bible — 2 Corinthiens 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/27">Bible — Actes 27 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/27</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/49/4">Bible — Éphésiens 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/49/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/52/1">Bible — 1 Thessaloniciens 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/52/1</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1975561">Le soutien de Dieu bannit la crainte — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1975561</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AG489 — « Je te ferai comme un cachet » : l'ébranlement des royaumes et Zorobabel, mon serviteur, choisi pour sceller les desseins de Dieu</span><span>Catégorie AG1</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie AG1</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>AG485 — « Le temps n'est pas venu » : les maisons lambrissées, la maison de Dieu en ruine et la sécheresse appelée sur le pays</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décret de Cyrus autorisant le retour et la reconstruction de la maison de Jéhovah (Esdras 1:1-4)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">538 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier retour des exilés ; rétablissement de l'autel à Jérusalem (Esdras 3:1-6)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pose des fondations du temple (Esdras 3:10-13)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">536 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Interdiction officielle : le chantier s'arrête pour seize ans (Esdras 4:4, 5, 24)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">522 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Aggée proclame le premier message : la maison est en ruine, le pays souffre (Aggée 1:2-11)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1er jour du 6e mois, 520 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise du chantier, vingt-trois jours après le début de la prophétie (Aggée 1:14, 15)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 6e mois, 520 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement du temple sous le règne de Darius (Esdras 6:14, 15)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+</svg>
+<h4>AG486 — « Je suis avec vous » : Zorobabel, Yehoshoua et tout le reste du peuple écoutent, craignent et se mettent à l'ouvrage</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier message d'Aggée : la maison est en ruine, le pays souffre (Aggée 1:2-11)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1er jour du 6e mois, 520 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Écoute, crainte, puis parole d'encouragement : « je suis avec vous » (Aggée 1:12, 13)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Entre le 1er et le 24 du 6e mois, 520 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise du chantier par Zorobabel, Yehoshoua et le reste du peuple (Aggée 1:14, 15)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 6e mois, 520 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zakharia commence à prophétiser et soutient la reconstruction (Zakharia 1:1 ; Esdras 5:1, 2)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">8e mois, 520 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Enquête des autorités de la province ; rapport envoyé à Darius (Esdras 5:3-17)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Darius retrouve le décret de Cyrus et l'applique, ôtant l'obstacle légal (Esdras 6:1-13)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è. environ</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement et inauguration du temple (Esdras 6:14-16)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+</svg>
+<h4>AG487 — « La gloire de cette dernière maison sera plus grande que la première » : soyez forts et travaillez, je donnerai la paix</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier message : la maison est en ruine ; reprise du chantier le 24 du même mois (Aggée 1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1er jour du 6e mois, 520 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deuxième message : courage, travail, ébranlement des nations et gloire de la dernière maison (Aggée 2:1-9)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">21e jour du 7e mois, 520 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zakharia entre en activité ; les deux prophètes soutiennent les bâtisseurs (Zakharia 1:1 ; Esdras 5:1, 2)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">8e mois, 520 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le décret de Cyrus est retrouvé et confirmé par Darius (Esdras 6:1-13)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è. environ</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement et inauguration du temple ; le culte est rétabli (Esdras 6:14-16)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Agrandissement et embellissement du sanctuaire : travaux d'Hérode à partir de 20 av. n. è. environ</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple reçoit la présence annoncée ; l'ébranlement final reste promis (Hébreux 12:26-28)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>AG488 — « Dès ce jour, je vous bénirai » : la question posée aux prêtres, la sainteté qui ne se transmet pas et la souillure qui se propage</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier message ; reprise du chantier le 24 du même mois (Aggée 1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1er jour du 6e mois, 520 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deuxième message : courage, ébranlement des nations, gloire de la dernière maison (Aggée 2:1-9)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">21e jour du 7e mois, 520 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Troisième message : la question aux prêtres, la souillure, et « dès ce jour je vous bénirai » (Aggée 2:10-19)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 9e mois, 520 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatrième message, adressé à Zorobabel : l'ébranlement des royaumes et la promesse du cachet (Aggée 2:20-23)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Même jour, 520 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le décret de Cyrus est retrouvé dans les archives et confirmé par Darius (Esdras 6:1-13)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è. environ</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement et inauguration du temple (Esdras 6:14, 15)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Stabilisation administrative et économique de la province de Yehoud : sceaux, jarres estampillées et monnaies</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Période perse</text>
+</svg>
+<h4>AG489 — « Je te ferai comme un cachet » : l'ébranlement des royaumes et Zorobabel, mon serviteur, choisi pour sceller les desseins de Dieu</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Troisième et quatrième messages : « dès ce jour je vous bénirai », puis la promesse faite à Zorobabel (Aggée 2:10-23)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 9e mois, 520 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zorobabel gouverne et conduit le chantier jusqu'à l'achèvement du temple (Esdras 5-6)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">520-516 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple est achevé et inauguré (Esdras 6:14, 15)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La province de Yehoud se maintient ; la lignée davidique se poursuit après la génération du retour</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve-IVe siècle av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de l'empire perse devant la Macédoine ; les royaumes hellénistiques se divisent et s'affrontent</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">331 av. n. è. et après</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rome étend sa domination sur la région ; les trônes continuent de changer de mains</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe-Ier siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les généalogies de Matthieu et de Luc font de Zorobabel un ancêtre du Messie (Matthieu 1:12, 13 ; Luc 3:27)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES AM2 — Amos 6-9 — le malheur des gens à l'aise, les visions du prophète et la hutte de David relevée</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_AM436_ivoire.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES AM2</h1>
+<h2>Amos 6-9 — le malheur des gens à l'aise, les visions du prophète et la hutte de David relevée</h2>
+<p class="intro">Fin du livre du berger de Tekoah : le malheur prononcé sur ceux qui sont à l'aise en Sion et en sécurité sur la montagne de Samarie, les lits d'ivoire et les coupes de vin, puis les quatre visions du prophète — les sauterelles, le feu, le fil à plomb et la corbeille de fruits d'été —, l'affrontement avec Amatsia devant le sanctuaire royal de Béthel, la famine d'entendre les paroles de Jéhovah, et pour finir, après l'annonce de la dispersion parmi les nations, la promesse de la hutte de David relevée et de la vigne replantée : « ils ne seront plus jamais arrachés de leur sol ».</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>30</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#AM436">AM436</a>
+<a href="#AM437">AM437</a>
+<a href="#AM438">AM438</a>
+<a href="#AM439">AM439</a>
+<a href="#AM440">AM440</a>
+<a href="#AM441">AM441</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#AM436"><img src="images/prophe_AM436_ivoire.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AM436</div>
+<h3><a href="#AM436">« Malheur à ceux qui sont à l'aise en Sion » : les lits d'ivoire, la coupe de vin et la grande maison réduite en ruines</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#AM437"><img src="images/prophe_AM437_plomb.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AM437</div>
+<h3><a href="#AM437">Les trois visions du prophète : les sauterelles dévorantes, le feu de l'abîme et le fil à plomb posé au milieu d'Israël</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#AM438"><img src="images/prophe_AM438_amatsia.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AM438</div>
+<h3><a href="#AM438">Amos devant Amatsia : « je n'étais pas prophète… Jéhovah m'a pris de derrière le petit bétail »</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#AM439"><img src="images/prophe_AM439_corbeille.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AM439</div>
+<h3><a href="#AM439">La corbeille de fruits d'été : « la fin est venue » ; le soleil se couchera en plein midi et les chants du palais deviendront des gémissements</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#AM440"><img src="images/prophe_AM440_famine.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AM440</div>
+<h3><a href="#AM440">« Non pas la disette du pain, mais la faim d'entendre les paroles de Jéhovah » : les errants d'une mer à l'autre</a></h3>
+<div class="meta">Accomplie / À venir</div></div></div>
+<div class="carte">
+<a class="img" href="#AM441"><img src="images/prophe_AM441_hutte.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AM441</div>
+<h3><a href="#AM441">« Je relèverai la hutte de David tombée » : le crible qui ne perd aucun grain et la vigne replantée pour toujours</a></h3>
+<div class="meta">Accomplie (1er accomplissement)</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="AM436">
+<div class="visuel"><img src="images/prophe_AM436_ivoire.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AM436 · CATÉGORIE AM2</div>
+<h3>« Malheur à ceux qui sont à l'aise en Sion » : les lits d'ivoire, la coupe de vin et la grande maison réduite en ruines</h3>
+<div class="ref">Amos 6:1-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">malheur à ceux qui sont à l'aise en sion et qui vivent en sécurité sur la montagne de samarie les grands de la première des nations passez à kalné et voyez allez à hamath la grande et descendez à gath des philistins vous qui éloignez le jour du malheur vous qui vous couchez sur des lits d'ivoire et vous étendez mollement sur vos divans vous qui mangez les agneaux du troupeau et les veaux engraissés qui chantez au son de la harpe et inventez comme david des instruments pour le chant qui buvez le vin dans de larges coupes et vous oignez avec la meilleure huile et qui ne s'attristent pas sur la ruine de joseph c'est pourquoi ils iront à la tête des captifs le souverain seigneur jéhovah a juré par lui-même j'ai en horreur l'orgueil de jacob je livrerai la ville et tout ce qu'elle contient je frapperai la grande maison et la petite maison s'il reste dix hommes dans une maison ils mourront est-ce que les chevaux courent sur le rocher est-ce qu'on y laboure avec des bœufs pour que vous ayez changé la droiture en poison et le fruit de la justice en absinthe voici que je suscite contre vous une nation maison d'israël et ils vous opprimeront depuis l'entrée de hamath jusqu'au ouadi de la araba (2 rois 17:6 ; 2 rois 25:1-11 ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AM436</div><audio controls preload="none" src="audio/fiche_AM436_ivoire.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AM436_ivoire.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Amos 6:1-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>malheur à ceux qui sont à l'aise en sion et qui vivent en sécurité sur la montagne de samarie les grands de la première des nations passez à kalné et voyez allez à hamath la grande et descendez à gath des philistins vous qui éloignez le jour du malheur vous qui vous couchez sur des lits d'ivoire et vous étendez mollement sur vos divans vous qui mangez les agneaux du troupeau et les veaux engraissés qui chantez au son de la harpe et inventez comme david des instruments pour le chant qui buvez le vin dans de larges coupes et vous oignez avec la meilleure huile et qui ne s'attristent pas sur la ruine de joseph c'est pourquoi ils iront à la tête des captifs le souverain seigneur jéhovah a juré par lui-même j'ai en horreur l'orgueil de jacob je livrerai la ville et tout ce qu'elle contient je frapperai la grande maison et la petite maison s'il reste dix hommes dans une maison ils mourront est-ce que les chevaux courent sur le rocher est-ce qu'on y laboure avec des bœufs pour que vous ayez changé la droiture en poison et le fruit de la justice en absinthe voici que je suscite contre vous une nation maison d'israël et ils vous opprimeront depuis l'entrée de hamath jusqu'au ouadi de la araba (2 rois 17:6 ; 2 rois 25:1-11 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Amos — P436 (6:1-14 : malheur à ceux qui sont à l'aise en Sion ; je livrerai la ville et tout ce qu'elle contient) ; 2 Rois 17:6 ; 2 Rois 25:1-11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MALHEUR… À CEUX QUI SONT À L'AISE EN SION… ET À CEUX QUI VIVENT EN SÉCURITÉ… SUR LA MONTAGNE DE SAMARIE… LES GRANDS DE LA PREMIÈRE DES NATIONS… »… « PASSEZ À KALNÉ… ET VOYEZ… DE LÀ… ALLEZ À HAMATH LA GRANDE… ET DESCENDEZ À GATH DES PHILISTINS… CES ROYAUMES SONT-ILS MEILLEURS QUE LES VÔTRES…? »… « VOUS QUI ÉLOIGNEZ… LE JOUR DU MALHEUR… ET QUI FAITES APPROCHER… LE SIÈGE DE LA VIOLENCE… »… « VOUS QUI VOUS COUCHEZ… SUR DES LITS D'IVOIRE… QUI VOUS ÉTENDEZ MOLLEMENT… SUR VOS DIVANS… QUI MANGEZ… LES AGNEAUX DU TROUPEAU… ET LES VEAUX ENGRAISSÉS… QUI CHANTEZ… AU SON DE LA HARPE… ET INVENTEZ… COMME DAVID… DES INSTRUMENTS POUR LE CHANT… QUI BUVEZ LE VIN… DANS DE LARGES COUPES… ET VOUS OIGNEZ… AVEC LA MEILLEURE HUILE… ET QUI NE S'ATTRISTENT PAS… SUR LA RUINE DE JOSEPH… »… « C'EST POURQUOI… ILS IRONT… À LA TÊTE DES CAPTIFS… ET LES CRIS DE JOIE… DE CEUX QUI S'ÉTENDENT MOLLEMENT… CESSERONT… »… « LE SOUVERAIN SEIGNEUR JÉHOVAH… A JURÉ… PAR LUI-MÊME… J'AI EN HORREUR… L'ORGUEIL DE JACOB… ET JE HAIS… SES PALAIS SOMPTUEUX… JE LIVRERAI LA VILLE… ET TOUT CE QU'ELLE CONTIENT… »… « SI DIX HOMMES… RESTENT DANS UNE MAISON… ILS MOURRONT… ET CELUI QUI EMPORTERA LES OS… NE DIRA PAS LE NOM DE JÉHOVAH… »… « EST-CE QUE LES CHEVAUX… COURRENT SUR LE ROCHER… EST-CE QU'ON Y LABOURE… AVEC DES BŒUFS… POUR QUE VOUS AYEZ CHANGÉ LA DROITURE… EN POISON… ET LE FRUIT DE LA JUSTICE… EN ABSINTHE…? »… « VOUS QUI VOUS RÉJOUISSEZ… À PROPOS DE LO-DEBAR… ET QUI DITES… N'EST-CE PAS PAR NOTRE FORCE… QUE NOUS AVONS PRIS QARNAÏM…? »… « JE SUSCITE CONTRE VOUS… UNE NATION… MAISON D'ISRAËL… ELLE VOUS OPPRIMERA… DEPUIS L'ENTRÉE DE HAMATH… JUSQU'AU OUADI DE LA ARABA… »… — HOY… MALHEUR… SHAʾANAN… ÊTRE À L'AISE… BET… CONFiance… ʾARESET HAGGOYIM… LA PREMIÈRE DES NATIONS… KALNEH… KUNULUA… ḤAMATH… GATH… ʿERES… LIT… SHEN… IVOIRE… ʿARSOT… DIVANS… KINNOR… HARPE… MIZREQ… COUPE… SHEMEN… HUILE… NEFESH… GOULE… MATTEH… VERGE… LO-DEBAR… QARNAÏM… LEBANON… ḤAMATH… OUADI DE LA ARABA… — 738… TIGLATH-PILESER III… 722… SAMARIE… 701… SENNACHÉRIB… 607… JÉRUSALEM… »</li>
+<li>LES TROIS JUMEAUX — 1 Rois 10:18-22 : le trône d'ivoire de Salomon et la flotte qui rapportait or, argent, ivoire — l'ivoire est le matériau du luxe royal depuis l'époque de la monarchie unie, ce qui éclaire l'accusation des « lits d'ivoire ». 1 Rois 22:39 : « le reste des actes d'Achab, tout ce qu'il fit, la maison d'ivoire qu'il bâtit » — la maison d'ivoire de Samarie est un fait historique attesté par le texte avant d'être dénoncée par Amos. 2 Chroniques 32:1-22 : Sennachérib envahit Juda, les villes fortes sont prises et Jérusalem assiégée, puis délivrée — l'accomplissement du volet « Sion » du malheur, à la génération suivante.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 6 ouvre le troisième mouvement du livre, après les oracles contre les nations et le procès d'Israël. Le prophète lance un « malheur » (hoy), formule de deuil et d'annonce de mort, visant cette fois deux cibles que l'on n'attendait pas ensemble : « ceux qui sont à l'aise en Sion » et « ceux qui vivent en sécurité sur la montagne de Samarie ». Les grands du Nord sont appelés « les grands de la première des nations », titre que l'auditoire revendiquait peut-être. La démonstration passe par trois villes : Kalné, Hamath la grande et Gath des Philistins — trois cités puissantes qui sont tombées ou qui vont tomber ; le raisonnement est simple : si des villes plus anciennes n'ont pas résisté, comment Samarie et Jérusalem le feraient-elles ? Suit le tableau du luxe, un des plus célèbres descriptions sociales de l'Ancien Testament : lits d'ivoire, divans moelleux, agneaux et veaux gras, harpes et instruments inventés « comme David », vin bu dans de larges coupes, huile la meilleure — et, en contraste brutal, l'absence de tristesse « sur la ruine de Joseph ». La sentence est énoncée en deux temps : les notables marcheront « à la tête des captifs », et le Souverain Seigneur, qui a juré par lui-même, livre la ville et tout ce qu'elle contient. Le reste du chapitre décrit une désolation domestique — dix hommes dans une maison mourront, un parent brûlera les os dans un silence où le nom divin n'est même plus prononcé — avant deux images paysannes impossibles : des chevaux courant sur le rocher, des bœufs labourant la pierre, destinées à souligner l'absurdité d'un peuple qui a changé « la droiture en poison » et « le fruit de la justice en absinthe ». Le chapitre se clôt sur la mention ironique de Lo-Debar et de Qarnaïm, deux villes transjordaniennes rattachées par les armes, et sur l'annonce de la nation qui opprimera le pays « depuis l'entrée de Hamath jusqu'au ouadi de la Araba » — c'est-à-dire du nord au sud, sur toute son étendue.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA STRUCTURE DU MALHEUR : le hoy de 6:1 est un cri de lamentation: il ne se contente pas de condamner un comportement, il déclare la personne visée déjà morte ; le texte enchaîne ensuite une série de participes décrivant des habitudes — « couchés », « étendus », « mangeant », « chantant », « buvant », « s'oignant » — qui donne l'impression d'une vie immobile et satisfaite de soi. (2) LA LISTE DU LUXE EST UNE GRILLE DU COMMERCE : l'ivoire vient de Phénicie par le commerce, les vins de qualité viennent des domaines royaux, l'huile aussi ; ce mode de vie repose donc sur une économie d'exportation et d'importation, que dénoncent ailleurs les versets sur les balances faussées. La comparaison avec David vise l'ironie : le roi poète est invoqué pour justifier la recherche d'instruments nouveaux, alors que la justice du royaume de David est ce qui a disparu. (3) « LA RUINE DE JOSEPH » : l'expression désigne le royaume du Nord, où l'histoire d'Osée puis d'Amos montrent déjà des déportations partielles et des pertes de territoires ; ne pas s'attrister de cette ruine signifie que les intérêts de classe ont pris la place du lien de peuple. (4) LA FIN DU CHAPITRE : « les chevaux courent-ils sur le rocher ? » — deux impossibilités agronomiques pour dire la perversion du droit ; Lo-Debar (« rien », en jeu de mots sur lo davar) et Qarnaïm (les « deux cornes », ville de Bashân) sont deux conquêtes revendiquées comme preuve de force, alors qu'elles préparent la venue de l'envahisseur. L'expression « depuis l'entrée de Hamath jusqu'au ouadi de la Araba » trace en une ligne la frontière de l'empire que les Assyriens vont précisément découper.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Amos (Livre d') » de la Bibliothèque en ligne résume la situation dénoncée par le livre en termes de contraste social — le prophète condamne Israël « pour son genre de vie luxueux », les riches dépouillant les pauvres pour bâtir leurs « maisons d'ivoire », où ils mangent et boivent somptueusement (Amos 3:15 ; 5:11, 12 ; 6:4-7) — et il ajoute que « les archéologues ont mis au jour la preuve de cette prospérité » : de nombreux objets d'ivoire ont été retrouvés lors de la fouille de Samarie. Lecture commune et exégèse : les commentateurs relèvent que le chapitre 6 rompt avec l'idée que Sion serait épargnée : le prophète du Sud associe Jérusalem à Samarie dans un même verdict, ce qui prépare les développements de 2 Rois 25. Ils soulignent aussi que les trois villes citées en 6:2 — Kalné, Hamath, Gath — sont choisies pour leur ancienneté et leur puissance passée, procédé classique de la rhétorique prophétique : l'argument des précédents. Beaucoup voient dans le v. 10 le sommet de l'ironie du livre : la peur est telle que l'on n'ose plus prononcer le nom de Jéhovah à voix haute dans une maison remplie de morts.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 804 av. n. è.</td><td>Le malheur est prononcé contre les notables de Samarie et de Sion (Amos 6:1-14)</td></tr>
+<tr><td class="d">786-746 av. n. è.</td><td>Jéroboam II étend son royaume « depuis l'entrée de Hamath » ; les conquêtes de Lo-Debar et Qarnaïm se situent dans cette période (2 Rois 14:25-28)</td></tr>
+<tr><td class="d">745-738 av. n. è.</td><td>L'Assyrie reprend l'offensive : Kalné (Kunulua) tombe en 738 devant Tiglath-Pileser III, la ville même citée en avertissement par Amos 6:2</td></tr>
+<tr><td class="d">732 av. n. è.</td><td>Conquête de Damas et déportation de la Galilée : les notables du Nord commencent à partir en captivité (2 Rois 15:29)</td></tr>
+<tr><td class="d">722 av. n. è.</td><td>Prise de Samarie et déportation du royaume du Nord : « ils iront à la tête des captifs » (2 Rois 17:6)</td></tr>
+<tr><td class="d">701 av. n. è.</td><td>Sennachérib ravage Juda et assiège Jérusalem, qui est délivrée ; le volet « Sion » du malheur est montré du doigt (2 Chroniques 32:1-22)</td></tr>
+<tr><td class="d">607 av. n. è.</td><td>Jérusalem est prise et brûlée : « je livrerai la ville et tout ce qu'elle contient » s'accomplit (2 Rois 25:1-11)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE LUXE D'IVOIRE : 1 Rois 22:39 mentionne « la maison d'ivoire » construite par Achab à Samarie ; les fouilles de 1908-1910 puis de 1931-1935 y ont retrouvé plus de cinq cents fragments d'ivoire incrustés, destinés à des panneaux muraux et à des meubles — la description d'Amos correspond donc à un mobilier réellement attesté. (2) LES OSTRACA DE SAMARIE : environ soixante-dix tessons inscrits, datés des environs de 778 à 770 av. n. è., enregistrent des livraisons d'huile et de vin au trésor royal sous Jéroboam II ; ce sont des bordereaux de denrées précieuses, exactement le type de commerce décrit en Amos 6:6. (3) KALNÉ : l'identification la plus courante est Kunulua, capitale du royaume de Patina, dans la plaine d'Antioche ; les fouilles de Tell Tayinat ont livré une destruction datée du VIIIe siècle, en accord avec les campagnes assyriennes de 738. (4) HAMATH : la ville de Hama sur l'Oronte était la limite nord traditionnelle du pays d'Israël ; 2 Rois 14:25 indique que Jéroboam II rétablit « la frontière d'Israël depuis l'entrée de Hamath jusqu'à la mer de la Araba ». (5) GATH : les fouilles de Tell es-Safi ont mis au jour une destruction violente de la fin du IXe siècle, attribuée à Hazaël de Damas, ce qui expliquerait qu'Amos cite la ville comme exemple de cité déjà brisée. (6) LA CONQUÊTE : les annales assyriennes de Tiglath-Pileser III et de Sargon II décrivent la prise de Samarie, la déportation de ses habitants et l'installation de populations étrangères, rapportées en 2 Rois 17:6, 24. (7) LA FIN DE JÉRUSALEM : les inscriptions babyloniennes de Nabuchodonosor et la Chronique de Babylone mentionnent le siège et la prise de la ville en 597 puis 587 av. n. è., que 2 Rois 25:1-11 raconte en détail.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) SAMARIE : la colline fortifiée fondée par Omri vers 885, à environ dix kilomètres au nord-ouest de l'actuelle Naplouse, avec son acropole royale, ses murs concentriques et le grand bassin découvert au pied du palais ; la ville domine la route nord-sud et les vallées cultivées. (2) SION : Jérusalem, à une cinquantaine de kilomètres au sud, dans la même bande montagneuse, mais avec une position défensive renforcée par les ravins du Cédron et de la Tyropœon. (3) KALNÉ, HAMATH, GATH : trois sites choisis sur trois axes différents — le nord syrien, l'Oronte, la plaine côtière du sud —, ce qui dessine un cercle autour d'Israël et de Juda et montre que le prophète pense à l'échelle régionale. (4) LO-DEBAR : localité de Transjordanie du nord, associée à Makhir et à Mephibosheth en 2 Samuel 9:4, 5 ; Qarnaïm (« les deux cornes ») est identifiée à Tell el-Ashtarah ou aux environs, dans la région de Bashân, sur le plateau basaltique. (5) LES DEUX LIMITES : « l'entrée de Hamath » au nord et l'« ouadi de la Araba » au sud correspondent au couloir syro-palestinien tout entier, de la montagne libanaise au fossé du Jourdain ; l'oppression annoncée couvre donc exactement l'espace d'un royaume, pas seulement une capitale. (6) LES ROUTES DE DÉPORTATION : la voie de la vallée de Yizréel puis de la plaine de Damas commande tous les mouvements de troupes assyriennes, comme le montre l'archéologie des sites de Galilée abandonnés vers 732.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES IVOIRES DE SAMARIE : plus de cinq cents fragments, surtout en ivoire d'hippopotame, quelques-uns en ivoire d'éléphant, travaillés selon une technique phénicienne avec incrustations de pierres, de verre coloré et de feuilles d'or ; ils proviennent d'un atelier ou d'un stockage royal, et les archéologues les interprètent comme des éléments de mobilier ou de boiseries, ce qui correspond aux « lits d'ivoire » du texte. (2) LA SALLE DITE « MAISON DES IVOIRES » : la fouille de 1931-1935 a identifié un bâtiment où de très nombreux fragments étaient dispersés, ce qui atteste l'ampleur du décor et confirme la description prophétique. (3) LES OSTRACA : les soixante-dix tessons inscrits donnent des dates précises dans les dernières années de Jéroboam II, ce qui fixe le contexte économique du passage. (4) LES MURS DE SAMARIE : la ville a résisté à plusieurs sièges, comme le montre la puissance de ses défenses en pierre de taille à bossage ; sa chute en 722 a néanmoins laissé des traces de destruction et d'incendie, puis une réoccupation assyrienne. (5) LA VIE RURALE : les prospections dans les monts de Samarie montrent une expansion des terrasses cultivées et des pressoirs à huile au VIIIe siècle, en cohérence avec le tableau de prospérité du chapitre. (6) L'ÉPIGRAPHIE : les archives administratives et les sceaux portant des noms hébreux attestent l'existence de l'appareil fiscal royal dont les prophètes dénoncent les abus. (7) PRUDENCE : l'archéologie établit la richesse, le mobilier et la destruction ; elle ne peut évidemment pas fournir de preuve directe d'un discours prophétique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« MALHEUR À CEUX QUI SONT À L'AISE EN SION ET EN SÉCURITÉ SUR LA MONTAGNE DE SAMARIE » (6:1) → TROIS PRÉCÉDENTS : KALNÉ, HAMATH LA GRANDE, GATH DES PHILISTINS (6:2) → « VOUS QUI ÉLOIGNEZ LE JOUR DU MALHEUR » (6:3) → LE LUXE DÉCRIT : LITS D'IVOIRE, VEAUX ENGRAISSÉS, HARPES, VIN DANS DE LARGES COUPES, MEILLEURE HUILE (6:4-6) → ABSENCE DE TRISTESSE SUR LA RUINE DE JOSEPH (6:6) → « ILS IRONT À LA TÊTE DES CAPTIFS » (6:7) → SERMENT DU SOUVERAIN SEIGNEUR : « JE LIVRERAI LA VILLE » (6:8) → DIX HOMMES PAR MAISON ; LES OS BRÛLÉS ; LE SILENCE SUR LE NOM (6:9, 10) → DEUX IMPOSSIBILITÉS : CHEVAUX SUR LE ROCHER, BŒUFS SUR LA PIERRE (6:12) → LO-DEBAR ET QARNAÏM : LA FORCE MAL PLACÉE (6:13) → LA NATION SUSCITÉE, DE HAMATH À L'ARABA (6:14) → 701 : SENNACHÉRIB (2 CHRONIQUES 32) → 722 ET 607 : SAMARIE PUIS JÉRUSALEM (2 ROIS 17:6 ; 25:1-11)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (2 Rois 17:6 ; 2 Rois 25:1-11) et le statut « Accomplie ». LES TROIS VILLES : la fiche donne l'identification la plus courante de Kalné (Kunulua), de Hamath et de Gath sans traiter les discussions érudites sur l'emplacement exact de Kalné. LO-DEBAR ET QARNAÏM : la fiche expose le jeu de mots sur Lo-Debar et le sens de Qarnaïm ; elle ne fixe pas l'emplacement précis des deux sites, encore débattu. « LA GRANDE MAISON » ET « LA PETITE MAISON » : la fiche signale les deux lectures possibles — les maisons des riches et celles des simples, ou Samarie et Jérusalem — sans trancher. LE VERSET 10 : la fiche présente le sens général du silence sur le nom divin, sans entrer dans les hypothèses sur les rites de deuil évoqués. DATATION : la chronologie suit celle des publications. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas du chapitre 7 ni de l'affrontement avec Amatsia (fiche suivante) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le malheur est prononcé sur les notables de Sion et de Samarie (6:1-14)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="154.3" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="154.3" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jéroboam II règne : extension jusqu'à l'entrée de Hamath ; Lo-Debar et Qarnaïm conquises (2 Rois 14:25-28)</text>
+<text x="154.3" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">786-746 av. n. è.</text>
+<circle cx="248.6" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="248.6" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les ostraca de Samarie enregistrent les livraisons d'huile et de vin au palais royal</text>
+<text x="248.6" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">778-770 av. n. è.</text>
+<circle cx="342.9" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="342.9" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Offensive assyrienne de Tiglath-Pileser III ; Kalné tombe en 738</text>
+<text x="342.9" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">745-738 av. n. è.</text>
+<circle cx="437.1" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="437.1" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Damas est prise, la Galilée déportée (2 Rois 15:29)</text>
+<text x="437.1" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732 av. n. è.</text>
+<circle cx="531.4" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="531.4" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : les notables partent à la tête des captifs (2 Rois 17:6)</text>
+<text x="531.4" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="625.7" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="625.7" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sennachérib assiège Jérusalem (2 Chroniques 32:1-22)</text>
+<text x="625.7" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise et incendie de Jérusalem (2 Rois 25:1-11)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/32">Bible — 2 Chroniques 32 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/32</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/10">Bible — 1 Rois 10 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/8">Bible — Actes 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/8</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/3">Bible — Révélation 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/3</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251">Amos (Livre d') — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AM436 — « Malheur à ceux qui sont à l'aise en Sion » : les lits d'ivoire, la coupe de vin et la grande maison réduite en ruines</span><span>Catégorie AM2</span></div></div>
+</article>
+<article class="fiche" id="AM437">
+<div class="visuel"><img src="images/prophe_AM437_plomb.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AM437 · CATÉGORIE AM2</div>
+<h3>Les trois visions du prophète : les sauterelles dévorantes, le feu de l'abîme et le fil à plomb posé au milieu d'Israël</h3>
+<div class="ref">Amos 7:1-9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">voici ce que le souverain seigneur jéhovah m'a fait voir il formait un essaim de sauterelles au début de la montée des semailles tardives et elles achevaient de dévorer la végétation du pays alors je dis souverain seigneur jéhovah pardonne s'il te plaît comment jacob pourra-t-il tenir car il est petit jéhovah renonça à cela et dit cela ne se produira pas voici ce qu'il m'a fait voir le souverain seigneur jéhovah appelait le feu pour juger et le feu dévora le grand abîme et il allait dévorer le pays alors je dis souverain seigneur jéhovah arrête s'il te plaît comment jacob pourra-t-il tenir car il est petit jéhovah renonça à cela et dit cela ne se produira pas non plus voici ce qu'il m'a fait voir jéhovah se tenait sur un mur construit au fil à plomb et dans sa main il y avait un fil à plomb puis jéhovah me dit que vois-tu amos et je dis un fil à plomb et jéhovah dit voici que je place un fil à plomb au milieu de mon peuple israël je ne passerai plus sur eux les hauts lieux d'isaac seront dévastés et les sanctuaires d'israël seront détruits et je me lèverai contre la maison de jéroboam avec l'épée (amos 7:8, 9 ; 2 rois 17:6 ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AM437</div><audio controls preload="none" src="audio/fiche_AM437_plomb.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AM437_plomb.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Amos 7:1-9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>voici ce que le souverain seigneur jéhovah m'a fait voir il formait un essaim de sauterelles au début de la montée des semailles tardives et elles achevaient de dévorer la végétation du pays alors je dis souverain seigneur jéhovah pardonne s'il te plaît comment jacob pourra-t-il tenir car il est petit jéhovah renonça à cela et dit cela ne se produira pas voici ce qu'il m'a fait voir le souverain seigneur jéhovah appelait le feu pour juger et le feu dévora le grand abîme et il allait dévorer le pays alors je dis souverain seigneur jéhovah arrête s'il te plaît comment jacob pourra-t-il tenir car il est petit jéhovah renonça à cela et dit cela ne se produira pas non plus voici ce qu'il m'a fait voir jéhovah se tenait sur un mur construit au fil à plomb et dans sa main il y avait un fil à plomb puis jéhovah me dit que vois-tu amos et je dis un fil à plomb et jéhovah dit voici que je place un fil à plomb au milieu de mon peuple israël je ne passerai plus sur eux les hauts lieux d'isaac seront dévastés et les sanctuaires d'israël seront détruits et je me lèverai contre la maison de jéroboam avec l'épée (amos 7:8, 9 ; 2 rois 17:6 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Amos — P437 (7:1-9 : visions des sauterelles, du feu et du fil à plomb ; je ne passerai plus sur eux) ; Amos 7:8, 9 ; 2 Rois 17:6 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« VOICI CE QUE LE SOUVERAIN SEIGNEUR JÉHOVAH… M'A FAIT VOIR… IL FORMAIT UN ESSAIM… DE SAUTERELLES… AU DÉBUT DE LA MONTÉE… DES SEMAILLES TARDIVES… C'ÉTAIENT LES SEMAILLES TARDIVES… APRÈS LA FAUCHE DU ROI… »… « ET LORSQUE L'ESSAIM EUT ACHÉVÉ… DE DÉVORER LA VÉGÉTATION DU PAYS… JE DIS… SOUVERAIN SEIGNEUR JÉHOVAH… PARDONNE… S'IL TE PLAÎT… COMMENT JACOB POURRA-T-IL TENIR… CAR IL EST PETIT…? »… « JÉHOVAH RENONÇA À CELA… CELA NE SE PRODUIRA PAS… DIT JÉHOVAH… »… « VOICI CE QU'IL M'A FAIT VOIR… LE SOUVERAIN SEIGNEUR JÉHOVAH… APPELAIT LE FEU POUR JUGER… ET LE FEU DÉVORA… LE GRAND ABÎME… ET IL ALLAIT DÉVORER… LE PAYS… JE DIS… ARRÊTE… S'IL TE PLAÎT… COMMENT JACOB POURRA-T-IL TENIR… CAR IL EST PETIT…? »… « JÉHOVAH RENONÇA À CELA… CELA AUSSI… NE SE PRODUIRA PAS… DIT LE SOUVERAIN SEIGNEUR JÉHOVAH… »… « VOICI CE QU'IL M'A FAIT VOIR… JÉHOVAH… SE TENAIT SUR UN MUR… CONSTRUIT AU FIL À PLOMB… ET DANS SA MAIN… IL Y AVAIT UN FIL À PLOMB… »… « JÉHOVAH ME DIT… QUE VOIS-TU… AMOS…? ET JE DIS… UN FIL À PLOMB… PUIS JÉHOVAH DIT… VOICI QUE JE PLACE… UN FIL À PLOMB… AU MILIEU DE MON PEUPLE ISRAËL… JE NE PASSERAI PLUS SUR EUX… »… « LES HAUTS LIEUX D'ISAAC… SERONT DÉVASTÉS… ET LES SANCTUAIRES D'ISRAËL… SERONT DÉTRUITS… ET JE ME LÈVERAI… CONTRE LA MAISON DE JÉROBOAM… AVEC L'ÉPÉE… »… — ḤAZON… VISION… GOY… ESSAIM… ʾARBEH… SAUTERELLE… LEQESH… SEMAILLES TARDIVES… ḤATSIR… VÉGÉTATION… ʿAZ… LE ROI… MALKOSH… PLUIE DU PRINTEMPS… SALAḤTI… JE PARDONNERAI… RIV… CONTESTATION… TEHOM RABBAH… LE GRAND ABÎME… ḤELEQ… LE LOT DE TERRE… ʾANAKH… FIL À PLOMB… MAQOM… LIEU… BAMOT ISAḤAQ… LES HAUTS LIEUX D'ISAAC… MIQDASH… SANCTUAIRE… ḤEREV… ÉPÉE… BET YAROVAM… LA MAISON DE JÉROBOAM… — 803… MORT DE JÉROBOAM II… 2 ROIS 15:8-10… ZEKARIA ASSASSINÉ… 732… 722… »</li>
+<li>LES TROIS JUMEAUX — Ézéchiel 3:17-19 : « je t'ai établi sentinelle pour la maison d'Israël… quand je dirai au méchant : tu mourras, si tu ne l'avertis pas, son sang sera sur ta main » — l'annonce du jugement est une œuvre de vigilance, et Amos en donne ici l'illustration la plus ancienne avec ses deux intercessions avant le verdict. Révélation 1:1, 19 : les visions du voyant sont données « pour montrer à ses esclaves les choses qui doivent arriver bientôt » — même forme de révélation par scènes successives que chez Amos. Romains 1:18 : « la colère de Dieu est révélée du ciel contre toute impiété » — le Nouveau Testament reprend l'idée que la patience divine a un terme, ce que le fil à plomb adressé à Israël exprime de la façon la plus nette.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Amos 7:1-9 ouvre la seconde moitié du livre, faite de visions. Le prophète voit d'abord une nuée de sauterelles se former au moment des « semailles tardives », c'est-à-dire à la fin de l'hiver, après la fauche du roi : les criquets dévorent alors ce qui repousse, ce qui ne laisse au pays ni fourrage ni récolte. Il intercède une première fois : « pardonne, s'il te plaît ; comment Jacob pourra-t-il tenir, car il est petit ? » Le texte dit que Jéhovah renonça. La deuxième scène est un feu appelé pour juger : il dévore le grand abîme — les réserves souterraines d'eau, la mer — et il allait dévorer le pays ; l'intercession revient, et la réponse également. La troisième vision change de registre : plus d'intercession possible, plus de renoncement. Jéhovah se tient sur un mur construit au fil à plomb, instrument en main, et pose la question : « Que vois-tu, Amos ? » La réponse — « un fil à plomb » — sert de base au verdict : le fil est placé « au milieu de mon peuple Israël », ce qui signifie que la nation est désormais mesurée à la verticale du droit ; « je ne passerai plus sur eux ». Suit l'énumération des cibles : les hauts lieux d'Isaac, les sanctuaires d'Israël, la maison de Jéroboam, frappée par l'épée. Ces visions constituent le pivot du livre : la première partie énonçait les griefs, la seconde décrit le basculement du pardon vers l'exécution.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE CALENDRIER AGRICOLE : les « semailles tardives » (leqesh) désignent la pluie de printemps qui fait pousser l'arrière-saison ; la fauche du roi fournissait le premier fourrage, livré ou prélevé pour les écuries royales. Une invasion de criquets à ce moment précis supprime non pas la récolte déjà engrangée mais l'espoir suivant : c'est une famine annoncée, non un simple accident. Le texte souligne que le prophète voit l'essaim « formé », c'est-à-dire en cours de constitution, ce qui laisse un intervalle pour l'intervention. (2) LES DEUX INTERCESSIONS : elles rappellent les négociations d'Abraham pour Sodome (Genèse 18) et l'intervention de Moïse après le veau d'or (Exode 32). Le prophète ne se contente pas d'annoncer : il se tient entre la menace et le peuple, et le texte ose dire que Jéhovah « renonça ». Le changement de formule à la troisième vision — plus d'intercession, plus de réponse — est la clé de lecture de tout le chapitre. (3) LE FEU ET LE GRAND ABÎME : la « grande masse d'eau » évoquée est l'ensemble des réserves du monde souterrain et de la mer ; la destruction du pays entier après celle des eaux revient à une stérilisation totale : plus de pluie utile, plus de végétation. Ce type de fléau — sécheresse suivie d'incendies de chaumes — est bien connu dans les régions méditerranéennes. (4) LE FIL À PLOMB : l'instrument sert au maçon à vérifier qu'un mur est vertical ; l'image a donc une portée morale directe : Israël avait été bâti selon une norme donnée, et la mesure prise au milieu du peuple révèle l'écart. « Je ne passerai plus sur eux » reprend la formule des jugements divins qui épargnaient provisoirement un lieu ; ici le passage est terminé. La suite immédiate — « les hauts lieux d'Isaac seront dévastés » — fait des sanctuaires du Nord la première cible, avant la dynastie.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Amos (Livre d') » de la Bibliothèque en ligne présente la section 7:1-9 dans la suite des révélations en visions et souligne que le livre rapporte comment Jéhovah « fit voir » au prophète ce qui allait venir ; il rattache également ces scènes à l'annonce du jugement contre le royaume septentrional, dont la chute de Samarie en 722 fournit la confirmation. L'article « Points marquants des livres de Yoël et d'Amos » relève pour sa part que le prophète intercéda pour le peuple avant d'annoncer l'irrévocable. Lecture commune et exégèse : les commentateurs voient dans le trio de visions un schéma de plus en plus précis — fléau naturel, fléau cosmique, puis mesure morale —, et dans le passage de l'intercession au silence un changement de phase du livre ; beaucoup rapprochent la première vision du fléau de Joël 1, et la troisième de la sentinelle d'Ézéchiel 3. La mention des « hauts lieux d'Isaac », plutôt que de Jacob, est généralement lue comme un rappel des sanctuaires où la religion du Nord s'était corrompue, et la « maison de Jéroboam » comme la dynastie régnante, dont la fin par l'épée est rapportée en 2 Rois 15:8-10.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 804 av. n. è.</td><td>Les trois visions sont reçues et consignées (Amos 7:1-9)</td></tr>
+<tr><td class="d">Vers 803 av. n. è.</td><td>Mort de Jéroboam II : la dynastie qu'il a fondée ne survit que quelques mois en la personne de Zekaria</td></tr>
+<tr><td class="d">Vers 802 av. n. è.</td><td>Zekaria est assassiné par Shallum après six mois de règne : « je me lèverai contre la maison de Jéroboam avec l'épée » (2 Rois 15:8-10)</td></tr>
+<tr><td class="d">VIIIe siècle av. n. è.</td><td>Le pouvoir royal du Nord est déstabilisé par une succession de meurtres (Shallum, Menahem, Peqahya, Pékah), jusqu'à la déposition de Pékah par Osée (2 Rois 15:10-30)</td></tr>
+<tr><td class="d">732-722 av. n. è.</td><td>Les sanctuaires d'Israël sont détruits par les campagnes assyriennes : la ville et le sanctuaire de Béthel cessent de fonctionner, Dan est ruinée</td></tr>
+<tr><td class="d">722 av. n. è.</td><td>Chute de Samarie : le « fil à plomb » s'applique à la nation tout entière (2 Rois 17:6)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA FIN DE LA MAISON DE JÉROBOAM : 2 Rois 15:8-10 rapporte que Zekaria, fils de Jéroboam II, règne six mois puis est assassiné par Shallum, qui accomplit ainsi la parole de l'épée d'Amos 7:9 ; le texte note comme un fait rare que cela s'était produit « comme Jéhovah l'avait dit ». (2) L'INSTABILITÉ DU NORD : en une trentaine d'années, quatre rois périssent ou sont déposés — Shallum après un mois, Peqahya assassiné, Pékah assassiné, Osée déposé par l'Assyrie —, ce qui donne son sens à l'annonce contre la dynastie. (3) LES SANCTUAIRES : 1 Rois 12:28-33 situe à Béthel et à Dan les deux veaux d'or érigés sous Jéroboam Ier ; les fouilles de Béthel ont mis au jour un sanctuaire d'époque du fer avec les traces d'une destruction du VIIIe siècle, et celles de Dan une plateforme cultuelle monumentale abandonnée après la conquête assyrienne. (4) LE FEU ET LA SÉCHERESSE : les textes contemporains et la documentation assyrienne mentionnent des années de mauvaise récolte, et l'historien de l'époque connaît la vulnérabilité des pays méditerranéens aux invasions de criquets, attestées jusqu'à l'époque moderne. (5) LA FAUCHE DU ROI : les ostraca de Samarie, qui enregistrent des livraisons d'huile et de vin au palais, montrent l'existence d'un système de prélèvements royaux sur les produits du pays — ce qui donne un cadre concret aux « semailles tardives après la fauche du roi ». (6) LES PUBLICATIONS : « Amos (Livre d') » rappelle que les événements visés par les visions se sont vérifiés dans l'histoire du royaume du Nord, dont la fin est décrite en 2 Rois 17.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LES MONTAGNES D'ISRAËL : les hauts plateaux de Samarie et de Galilée sont le domaine des cultures céréalières, des vignes et des oliviers, soumises au cycle des pluies d'automne et de printemps ; la « montée des semailles tardives » correspond à la seconde période pluvieuse, de mars à avril. (2) LES CRIQUETS ET LE VENT : les invasions de criquets dans la région arrivent généralement portées par les vents du sud et du sud-ouest, depuis l'Arabie et le Sinaï vers la vallée du Jourdain, puis les plateaux ; leur passage coïncide avec la période de croissance, ce que décrit exactement le texte. (3) L'ABÎME : l'expression « le grand abîme » renvoie aux eaux souterraines et à la mer qui borde le pays à l'ouest ; la Méditerranée est visible depuis les crêtes de Samarie, ce qui rend l'image immédiatement perceptible à l'auditoire. (4) LE MUR AU FIL À PLOMB : les murs de pierre de taille des villes du fer, dont les vestiges sont visibles à Samarie, à Megiddo, à Hazor ou à Dan, étaient dressés selon une verticale vérifiée à l'aide d'un fil lesté, parfois retrouvé dans les niveaux archéologiques ; l'image est donc tirée d'un chantier réel. (5) BÉTHEL : située sur l'axe qui monte de Jéricho vers les hautes terres, la ville est le sanctuaire royal du Nord où Amos sera ensuite sommé de se taire (7:10-17) ; elle est sur la route qu'emprunte le prophète depuis Tekoah. (6) DAN : le site le plus septentrional du royaume, au pied du mont Hermon, dont la plateforme cultuelle et la porte monumentale témoignent de l'importance du sanctuaire.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE CRIQUET PÈLERIN : les études acridiennes modernes décrivent le passage de la phase solitaire à la phase grégaire et la capacité d'un essaim à consommer en quelques jours l'équivalent de la nourriture de millions de personnes ; les données de terrain de la FAO documentent ce mécanisme dans les mêmes régions. (2) LES CRISES CLIMATIQUES DE L'ÂGE DU FER : les études paléoclimatologiques de la Méditerranée orientale indiquent des séquences de sécheresses et de précipitations irrégulières au Ier millénaire avant notre ère, contexte qui rend plausibles des épisodes comme celui du feu de 7:4. (3) LA STRATIGRAPHIE DE BÉTHEL : les fouilles conduites en 1934 puis après 1954 y ont identifié une occupation du fer II, avec un sanctuaire et une destruction attribuée à l'époque assyrienne, couche qui correspond à l'annonce de la dévastation des « sanctuaires d'Israël ». (4) LES OBJETS CULTUELS : des autels, brûle-encens et vestiges de mobilier cultuel ont été découverts dans plusieurs sanctuaires du Nord, notamment à Dan et à Béthel ; leur abandon brutal fournit un arrière-plan matériel aux paroles de 7:9. (5) LA PIERRE À BOSSAGE : l'appareil de pierre à bossage typique des constructions royales israélites a été retrouvé à Samarie, Megiddo, Hazor et Guézer, ce qui illustre la technique mentionnée par l'image du mur et du fil à plomb. (6) PRUDENCE : l'archéologie donne le cadre matériel des fléaux décrits — cultures, silos, murs de villes — sans permettre d'identifier l'essaim de sauterelles ou l'incendie d'une vision donnée.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>VISION 1 : L'ESSAIM DE SAUTERELLES APRÈS LA FAUCHE DU ROI (7:1, 2) → INTERCESSION : « PARDONNE… CAR JACOB EST PETIT » → « CELA NE SE PRODUIRA PAS » (7:3) → VISION 2 : LE FEU QUI DÉVORE LE GRAND ABÎME (7:4) → NOUVELLE INTERCESSION « ARRÊTE » → « CELA AUSSI NE SE PRODUIRA PAS » (7:6) → VISION 3 : JÉHOVAH SUR LE MUR, LE FIL À PLOMB EN MAIN (7:7) → « QUE VOIS-TU, AMOS ? » — « UN FIL À PLOMB » (7:8) → PLUS D'INTERCESSION : « JE NE PASSERAI PLUS SUR EUX » → CIBLES : LES HAUTS LIEUX D'ISAAC, LES SANCTUAIRES D'ISRAËL, LA MAISON DE JÉROBOAM (7:9) → 2 ROIS 15:8-10 : ZEKARIA ASSASSINÉ → 722 : CHUTE DE SAMARIE (2 ROIS 17:6)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Amos 7:8, 9 ; 2 Rois 17:6) et le statut « Accomplie ». LES DEUX INTERCESSIONS : la fiche expose leur sens et le fait que le texte dit que Jéhovah « renonça », sans entrer dans les discussions théologiques sur ce langage. LE FEU ET L'ABÎME : la fiche décrit l'image telle qu'elle se présente — un fléau qui atteint les réserves d'eau puis le pays — sans proposer d'identification à un événement particulier. LE FIL À PLOMB : la fiche retient l'usage technique de l'instrument et sa portée de mesure morale ; elle ne fixe pas de signification symbolique au détail de la hauteur du mur. BÉTHEL ET DAN : la fiche mentionne les vestiges cultuels retrouvés ; elle ne prétend pas identifier l'emplacement exact de l'autel officiel dans chaque site. DATATION : la chronologie des règnes suit celle des publications. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas de l'entretien avec Amatsia (fiche suivante) ni des deux dernières visions des chapitres 8 et 9 ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les visions des sauterelles et du feu ; deux intercessions, deux renoncements (7:1-6)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La vision du fil à plomb : « je ne passerai plus sur eux » (7:7-9)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Jéroboam II après un long règne (2 Rois 14:23-29)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 803 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assassinat de Zekaria par Shallum : la maison de Jéroboam tombe par l'épée (2 Rois 15:8-10)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 802 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les sanctuaires du Nord cessent leur activité sous les coups des campagnes assyriennes</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">752-732 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie ; la mesure achevée (2 Rois 17:6)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/3">Bible — Ézéchiel 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/1">Bible — Révélation 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/4">Bible — Révélation 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/1">Bible — Romains 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/1</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251">Amos (Livre d') — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AM437 — Les trois visions du prophète : les sauterelles dévorantes, le feu de l'abîme et le fil à plomb posé au milieu d'Israël</span><span>Catégorie AM2</span></div></div>
+</article>
+<article class="fiche" id="AM438">
+<div class="visuel"><img src="images/prophe_AM438_amatsia.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AM438 · CATÉGORIE AM2</div>
+<h3>Amos devant Amatsia : « je n'étais pas prophète… Jéhovah m'a pris de derrière le petit bétail »</h3>
+<div class="ref">Amos 7:10-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">amatsia le prêtre de béthel envoya dire à jéroboam roi d'israël amos conspire contre toi au milieu de la maison d'israël le pays ne peut supporter toutes ses paroles car voici ce que dit amos jéroboam mourra par l'épée et israël sera exilé loin de son sol amatsia dit à amos visionnaire va-t'en fuis au pays de juda et là mange le pain et là tu prophétiseras mais à béthel tu ne dois plus prophétiser car c'est un sanctuaire de roi et une maison de royaume amos répondit je n'étais pas prophète je n'étais pas non plus fils de prophète mais j'étais gardien de troupeaux et pinceur des figues du sycomore jéhovah m'a pris de derrière le petit bétail et jéhovah m'a dit va prophétise à mon peuple israël et maintenant écoute la parole de jéhovah toi qui dis tu ne prophétiseras pas contre israël ta femme deviendra prostituée dans la ville tes fils et tes filles tomberont par l'épée ton pays sera partagé au cordeau et toi tu mourras en pays impur et israël sera exilé loin de son sol (amos 7:17 ; exil assyrien ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AM438</div><audio controls preload="none" src="audio/fiche_AM438_amatsia.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AM438_amatsia.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Amos 7:10-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>amatsia le prêtre de béthel envoya dire à jéroboam roi d'israël amos conspire contre toi au milieu de la maison d'israël le pays ne peut supporter toutes ses paroles car voici ce que dit amos jéroboam mourra par l'épée et israël sera exilé loin de son sol amatsia dit à amos visionnaire va-t'en fuis au pays de juda et là mange le pain et là tu prophétiseras mais à béthel tu ne dois plus prophétiser car c'est un sanctuaire de roi et une maison de royaume amos répondit je n'étais pas prophète je n'étais pas non plus fils de prophète mais j'étais gardien de troupeaux et pinceur des figues du sycomore jéhovah m'a pris de derrière le petit bétail et jéhovah m'a dit va prophétise à mon peuple israël et maintenant écoute la parole de jéhovah toi qui dis tu ne prophétiseras pas contre israël ta femme deviendra prostituée dans la ville tes fils et tes filles tomberont par l'épée ton pays sera partagé au cordeau et toi tu mourras en pays impur et israël sera exilé loin de son sol (amos 7:17 ; exil assyrien ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Amos — P438 (7:10-17 : Amatsia ; ta femme deviendra prostituée, ton pays partagé, tu mourras en pays impur) ; Amos 7:17 ; exil assyrien ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AMATSIA… LE PRÊTRE DE BÉTHEL… ENVOYA DIRE À JÉROBOAM… ROI D'ISRAËL… AMOS CONSPIRE CONTRE TOI… AU MILIEU DE LA MAISON D'ISRAËL… LE PAYS NE PEUT SUPPORTER… TOUTES SES PAROLES… »… « CAR VOICI CE QUE DIT AMOS… JÉROBOAM MOURRA PAR L'ÉPÉE… ET ISRAËL SERA EXILÉ… LOIN DE SON SOL… »… « AMATSIA DIT ALORS À AMOS… VISIONNAIRE… VA-T'EN… FUIS AU PAYS DE JUDA… ET LÀ… MANGE LE PAIN… ET LÀ… TU PEUX PROPHÉTISER… MAIS À BÉTHEL… TU NE DOIS PLUS CONTINUER DE PROPHÉTISER… CAR C'EST UN SANCTUAIRE DE ROI… ET C'EST UNE MAISON DE ROYAUME… »… « ALORS AMOS RÉPONDIT… ET DIT À AMATSIA… JE N'ÉTAIS PAS PROPHÈTE… JE N'ÉTAIS PAS NON PLUS FILS DE PROPHÈTE… MAIS J'ÉTAIS GARDIEN DE TROUPEAUX… ET PINCEUR DES FIGUES DU SYCOMORE… JÉHOVAH M'A ALORS PRIS… DE DERRIÈRE LE PETIT BÉTAIL… ET JÉHOVAH M'A DIT… VA… PROPHÉTISE À MON PEUPLE ISRAËL… »… « ET MAINTENANT… ÉCOUTE LA PAROLE DE JÉHOVAH… TOI QUI DIS… TU NE PROPHÉTISERAS PAS CONTRE ISRAËL… »… « TA FEMME… DEVIENDRA PROSTITUÉE… DANS LA VILLE… TES FILS ET TES FILLES… TOMBERONT PAR L'ÉPÉE… TON PAYS… SERA PARTAGÉ AU CORDEAU… ET TOI… TU MOURRAS EN PAYS IMPUR… ET ISRAËL… SERA EXILÉ… LOIN DE SON SOL… »… — ʾAMATSYAH… AMATSIA… KOHEN… PRÊTRE… BET-EL… QESHER… CONSPIRATION… ROʿEH… BERGER… BOLES SHIQMIM… PINCEUR DE FIGUES DU SYCOMORE… SHEQI… SYCOMORE… NAḤALAH… HÉRITAGE… ḤEVE… CORDEAU… TAME… IMPUR… GALAH… EXILÉ… — 803… 802… 732… 722… »</li>
+<li>LES TROIS JUMEAUX — Actes 6:8-15 : Étienne, dont les adversaires ne peuvent résister à la sagesse de son discours, est traduit devant le sanhédrin par de faux témoins — même schéma d'opposition à un porte-parole de Dieu que celui d'Amatsia contre Amos. Galates 1:1, 11, 12 : Paul insiste sur le fait que son apostolat ne vient « ni d'un homme, ni par un homme », mais par révélation — formule qui rejoint l'argument d'Amos : sa mission ne procède d'aucune école prophétique. 2 Pierre 2:1-3 : « il y eut aussi de faux prophètes parmi le peuple » ; ceux qui suivent leurs désirs exploitent la vérité — le contraste entre le prêtre fonctionnaire et le prophète appelé reste un thème constant des Écritures.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Amos 7:10-17 est le seul passage narratif du livre et l'un des textes les plus humains de la prophétie hébraïque. Amatsia, prêtre de Béthel, envoie un message à Jéroboam II : Amos conspire contre le roi au milieu de la maison d'Israël, et le pays ne peut supporter ses paroles ; il cite l'annonce de la mort du roi par l'épée et de l'exil du peuple. Le prêtre ne traite pas directement avec le prophète : il s'adresse au pouvoir. Ensuite, il convoque Amos et lui intime l'ordre de partir exercer son métier au pays de Juda ; la formule est méprisante dans sa forme économique : « là, mange ton pain, et là tu prophétiseras ». Le motif invoqué est institutionnel : « car c'est un sanctuaire de roi et une maison de royaume ». La réponse d'Amos est restée célèbre : il ne se réclame d'aucun titre — il n'était ni prophète ni fils de prophète, c'est-à-dire membre d'une corporation ; il était gardien de troupeaux et pinceur des figues du sycomore, deux métiers de la vie rurale, l'un pastoral, l'autre agricole et pénible. C'est Jéhovah qui l'a pris « de derrière le petit bétail » et qui l'a envoyé prophétiser. Puis vient la sentence, énoncée dans l'ordre inverse des demandes du prêtre : sa femme sera déshonorée dans la ville conquise, ses enfants tomberont par l'épée, son domaine sera mesuré et partagé, lui-même mourra en pays impur, et Israël sera déporté.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) L'ACCUSATION POLITIQUE : le mot employé pour « conspirer » (qesher) est un terme juridique de complot contre le roi, punissable de mort ; en le portant devant Jéroboam, Amatsia transforme un message religieux en affaire d'État. Le motif de la sécurité du sanctuaire — « sanctuaire de roi et maison de royaume » — montre que le sanctuaire de Béthel est un établissement lié au pouvoir ; le prêtre en est un fonctionnaire, non un simple desservant. (2) LA PROPOSITION DE DÉPART : « mange ton pain » place le prophète du côté d'un professionnel rémunéré par ses prestations ; l'idée est que chacun doit prophétiser chez lui, pour ses propres commanditaires. Amos refuse cette logique : son appel n'est pas une carrière, il n'appartient à aucune lignée prophétique et ne vit pas de dons. (3) LES DEUX MÉTIERS : gardien de troupeaux (ro‘eh) renvoie à l'élevage du petit bétail dans le désert de Juda autour de Tekoah ; « pinceur des figues du sycomore » désigne un travail de saison consistant à inciser les figues du sycomore pour qu'elles mûrissent, ce qui produit un fruit comestible par les pauvres ; ces deux occupations situent socialement Amos parmi les gens du commun, et non parmi les notables. (4) LA SENTENCE EN ÉCHO : à un prêtre qui veut un pays sans paroles dérangeantes, il est répondu par un pays mesuré au cordeau et partagé ; à son souhait de tranquillité dans la ville, par le déshonneur dans la ville ; à son nationalisme religieux, par la déportation. Le dernier mot du chapitre est celui que le prêtre avait voulu faire taire : « Israël sera exilé loin de son sol ».</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Amos (Livre d') » de la Bibliothèque en ligne situe l'épisode dans le cadre du ministère du prophète et rappelle que le livre fut mis par écrit en Juda, « probablement après son retour » — ce que l'entretien de Béthel explique en partie, puisque Amos est renvoyé vers le Sud. Lecture commune et exégèse : les commentateurs voient dans ce récit la charte de la prophétie authentique : l'appel direct de Dieu, l'absence de statut institutionnel, le refus de la rétribution. Le contraste entre le prêtre et le prophète est souvent mis en parallèle avec 1 Rois 13 (l'homme de Dieu venu de Juda à Béthel), avec le récit de Jérémie 20 et 26, et avec les oppositions subies par Étienne et Paul dans le Nouveau Testament. Le mot « visionnaire » (ḥozeh), employé d'abord par Amatsia en 7:12, sert de titre à Amos dans le livre, alors que le prophète lui-même se définit par sa besogne de berger. Plusieurs exégètes soulignent aussi que l'ordre « ne prophétise plus » et la menace de mort montrent que la parole d'Amos avait effectivement porté jusqu'au palais : c'est le premier indice de l'impact politique de la prédication.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 804 av. n. è.</td><td>L'entretien a lieu à Béthel, devant le sanctuaire royal (Amos 7:10-17)</td></tr>
+<tr><td class="d">Vers 802 av. n. è.</td><td>Zekaria, fils de Jéroboam II, est assassiné après six mois : la dynastie tombe par l'épée (2 Rois 15:8-10)</td></tr>
+<tr><td class="d">732 av. n. è.</td><td>Déportation de la Galilée et des villes du nord ; Béthel passe sous domination assyrienne (2 Rois 15:29)</td></tr>
+<tr><td class="d">722 av. n. è.</td><td>Prise de Samarie ; les familles sacerdotales et les notables sont déportés, la parole d'Amos sur l'exil s'accomplit (2 Rois 17:6)</td></tr>
+<tr><td class="d">Vers 628 av. n. è.</td><td>Sous Josias, l'autel de Béthel est profané et les prêtres des hauts lieux sont immolés sur leurs autels (2 Rois 23:15-20)</td></tr>
+<tr><td class="d">VIe siècle av. n. è.</td><td>Après la chute de Babylone, la région de Béthel est réorganisée en province impériale, avec une administration et des colons venus d'ailleurs</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) BÉTHEL, SANCTUAIRE ROYAL : 1 Rois 12:28-33 rapporte que Jéroboam Ier y établit un des deux veaux d'or et y institua des prêtres et des fêtes ; le sanctuaire était donc lié au trône depuis l'origine, ce qui explique qu'Amatsia parle de « sanctuaire de roi ». (2) LES PRÊTRES ROYAUX : 2 Rois 23:15-20 décrit, sous Josias, la destruction de l'autel de Béthel et l'exécution des prêtres des hauts lieux ; ce texte postérieur montre que le clergé du sanctuaire était devenu une institution durable et identifiable. (3) LA CONSÉQUENCE SUR LA FAMILLE DU PRÊTRE : le sort annoncé — maison déshonorée, héritage morcelé, exil hors du pays — correspond aux pratiques attestées par les sources assyriennes, qui déportaient d'abord les élites administratives et religieuses et redistribuaient les terres. (4) LES SOURCES ASSYRIENNES : les annales de Tiglath-Pileser III et de Sargon II mentionnent la déportation de populations et la division en provinces, ce qui éclaire la parole sur le pays partagé au cordeau. (5) LA NARRATION BIBLIQUE : 2 Rois 17:7-23 fournit la lecture théologique de la chute du Nord, en insistant sur le culte pratiqué dans les hauts lieux et les sanctuaires institués par les rois — le cadre dont Amatsia est ici un représentant. (6) LES PUBLICATIONS : l'article « Amos (Livre d') » mentionne l'opposition rencontrée par le prophète et le fait que le livre fut achevé en Juda, ce qui concorde avec la menace reçue à Béthel.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) TEKOAH, LE PAYS D'ORIGINE : située à une douzaine de kilomètres au sud de Jérusalem, à la lisière du désert de Juda, sur un éperon bordé de vallées sèches ; l'élevage du petit bétail y est la ressource principale et le figuier sycomore poussait plus bas, dans la plaine côtière et la Sheféla. (2) BÉTHEL : à une vingtaine de kilomètres au nord de Jérusalem, sur la crête de partage des eaux, à la porte du royaume du Nord ; lieu d'un sanctuaire ancien, à proximité de l'axe de communication majeur qu'est la route de Sichem. (3) LA FRONTIÈRE ENTRE LES DEUX ROYAUMES : quelques kilomètres séparent Béthel de la zone de contact avec Juda, ce qui explique la formule d'Amatsia « fuis au pays de Juda » et le va-et-vient possible du prophète. (4) L'AIRE DU SYCOMORE : le Ficus sycomorus exige un climat chaud et ne pousse guère au-dessus de 300 mètres d'altitude ; Amos travaillait donc dans les basses terres, ce qui le rend familier d'un milieu agricole différent de celui des hautes terres. (5) LA VALLÉE DU JOURDAIN : le poste de gardien au désert suppose des déplacements saisonniers de troupeaux entre le désert de Juda et les pâturages de la Araba, ce qui explique la mobilité du personnage. (6) LES ROUTES DE DÉPORTATION : de Béthel, la route du nord par la vallée de Yizréel puis la plaine de Damas conduit aux provinces assyriennes, en suivant le chemin qu'emprunteront les captifs.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES FOUILLES DE BÉTHEL : les campagnes menées à Beitin dans les années 1930 puis 1950 ont identifié une occupation du fer, un sanctuaire et une destruction du VIIIe siècle ; les archéologues y ont relevé des vestiges cultuels qui documentent l'existence du sanctuaire dénoncé par les prophètes. (2) LES OBJETS DE CULTE : la découverte d'autels, de coupelles et de mobilier rituel dans des sanctuaires du Nord, à Dan et à Béthel, fournit un arrière-plan matériel au clergé de Béthel évoqué dans le texte. (3) LE SYCOMORE : la biologie du Ficus sycomorus indique que le fruit mûrit mal sans incision ; la pratique consistant à piquer la figue avec un outil — décrite aussi dans des sources antiques — permet une récolte comestible pour les populations modestes, ce qui confirme la réalité du métier attribué à Amos. (4) L'ÉLEVAGE OVIN DANS LE DÉSERT DE JUDA : les études zooarchéologiques des sites de la région montrent la prédominance du mouton et de la chèvre, ce qui correspond au « gardien de troupeaux » du texte. (5) LES TEXTES ASSYRIENS ET LES PRACTIQUES DE DÉPORTATION : les inscriptions royales décrivent la répartition des populations conquises par familles et par provinces, contexte historique de la menace adressée à la maison du prêtre. (6) PRUDENCE : aucune inscription ne mentionne Amatsia ni Amos ; l'archéologie éclaire le cadre institutionnel de Béthel, la Bible rapporte la scène elle-même.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>AMOS PROPHÉTISE À BÉTHEL (7:10) → AMATSIA ENVOIE UN MESSAGE AU ROI JÉROBOAM : « AMOS CONSPIRE CONTRE TOI » (7:10) → CITATION DE L'ORACLE : JÉROBOAM PAR L'ÉPÉE, ISRAËL EXILÉ (7:11) → ORDRE À AMOS : « VISIONNAIRE, VA-T'EN, FUIS EN JUDA » (7:12) → MOTIF INVOQUÉ : « SANCTUAIRE DE ROI, MAISON DE ROYAUME » (7:13) → RÉPONSE D'AMOS : PAS DE TITRE PROPHÉTIQUE, UNE BESOGNE DE BERGER ET DE PINCEUR DE FIGUES, UN APPEL DIRECTION DIVIN (7:14, 15) → SENTENCE SUR AMATSIA : FEMME DÉSHONORÉE, ENFANTS PAR L'ÉPÉE, TERRE PARTAGÉE AU CORDEAU, MORT EN PAYS IMPUR (7:17) → CONCLUSION REPRISE DU MESSAGE : ISRAËL EXILÉ LOIN DE SON SOL (7:17) → 2 ROIS 15:8-10 : LA MAISON DE JÉROBOAM TOMBE PAR L'ÉPÉE → 2 ROIS 17:6 : L'EXIL DE 722</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Amos 7:17 ; exil assyrien) et le statut « Accomplie ». LE RÔLE D'AMATSIA : la fiche le présente comme prêtre du sanctuaire royal ; elle ne tranche pas la question de savoir s'il était le prêtre principal ou un desservant parmi d'autres. LE DÉTAIL DES SANCTIONS : la fiche expose les sentences telles que le texte les énumère, en les rapportant aux pratiques de déportation de l'époque ; elle ne cherche pas à dater précisément la mort d'Amatsia. LE SORT ULTÉRIEUR DE BÉTHEL : la fiche indique la profanation du sanctuaire sous Josias et la destruction assyrienne, sans prétendre reconstituer l'histoire du site année par année. LES MÉTIERS D'AMOS : la fiche décrit les deux activités mentionnées et l'aire du sycomore ; l'identification précise des troupeaux et des saisons de travail reste une reconstitution. DATATION : la chronologie des règnes suit celle des publications. CE QUE CETTE FICHE NE DIT PAS : elle ne traite ni de la vision du fil à plomb qui précède (fiche précédente) ni du chapitre 8 ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amos prophétise à Béthel ; Amatsia le dénonce au roi et lui ordonne de partir (7:10-13)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réponse d'Amos : berger et pinceur de figues, appelé par Jéhovah ; sentence sur la maison du prêtre (7:14-17)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assassinat de Zekaria : la maison de Jéroboam tombe par l'épée (2 Rois 15:8-10)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 802 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La Galilée et le nord du pays passent sous contrôle assyrien (2 Rois 15:29)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">732 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie et déportation : l'exil annoncé à Béthel (2 Rois 17:6)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Josias profane l'autel de Béthel et fait périr les prêtres des hauts lieux (2 Rois 23:15-20)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 628 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/6">Bible — Actes 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/9">Bible — Actes 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/1">Bible — Galates 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/61/2">Bible — 2 Pierre 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/61/2</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251">Amos (Livre d') — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AM438 — Amos devant Amatsia : « je n'étais pas prophète… Jéhovah m'a pris de derrière le petit bétail »</span><span>Catégorie AM2</span></div></div>
+</article>
+<article class="fiche" id="AM439">
+<div class="visuel"><img src="images/prophe_AM439_corbeille.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AM439 · CATÉGORIE AM2</div>
+<h3>La corbeille de fruits d'été : « la fin est venue » ; le soleil se couchera en plein midi et les chants du palais deviendront des gémissements</h3>
+<div class="ref">Amos 8:1-10</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">voici ce que le souverain seigneur jéhovah m'a fait voir une corbeille de fruits d'été il dit que vois-tu amos je répondis une corbeille de fruits d'été et jéhovah me dit la fin est venue pour mon peuple israël je ne passerai plus à côté de lui en ce jour-là les chants du palais seront des gémissements on jettera partout en silence une multitude de cadavres écoutez ceci vous qui écrasez le pauvre et qui faites disparaître les humbles du pays vous qui dites quand la nouvelle lune sera-t-elle passée pour que nous puissions vendre du grain et quand le sabbat sera-t-il fini pour que nous ouvrions les magasins de blé en faisant l'épha petit et en augmentant le sicle et en trompant avec des balances fausses pour acheter les faibles avec de l'argent et le pauvre pour une paire de sandales et pour vendre le déchet du blé jéhovah a juré par l'orgueil de jacob je n'oublierai jamais aucune de leurs actions à cause de cela le pays ne tremblera-t-il pas il montera tout entier comme le nil et sera agité et s'affaissera comme le fleuve d'égypte en ce jour-là dit le souverain seigneur jéhovah je ferai coucher le soleil en plein midi et je couvrirai la terre de ténèbres en plein jour je changerai vos fêtes en deuil et tous vos chants en lamentations je mettrai le sac sur tous les reins et je rendrai chauve toute tête je mettrai le pays dans le deuil comme pour un fils unique et sa fin sera comme un jour d'amertume (amos 8:2, 9, 10 ; 2 rois 17:6 ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AM439</div><audio controls preload="none" src="audio/fiche_AM439_corbeille.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AM439_corbeille.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Amos 8:1-10</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>voici ce que le souverain seigneur jéhovah m'a fait voir une corbeille de fruits d'été il dit que vois-tu amos je répondis une corbeille de fruits d'été et jéhovah me dit la fin est venue pour mon peuple israël je ne passerai plus à côté de lui en ce jour-là les chants du palais seront des gémissements on jettera partout en silence une multitude de cadavres écoutez ceci vous qui écrasez le pauvre et qui faites disparaître les humbles du pays vous qui dites quand la nouvelle lune sera-t-elle passée pour que nous puissions vendre du grain et quand le sabbat sera-t-il fini pour que nous ouvrions les magasins de blé en faisant l'épha petit et en augmentant le sicle et en trompant avec des balances fausses pour acheter les faibles avec de l'argent et le pauvre pour une paire de sandales et pour vendre le déchet du blé jéhovah a juré par l'orgueil de jacob je n'oublierai jamais aucune de leurs actions à cause de cela le pays ne tremblera-t-il pas il montera tout entier comme le nil et sera agité et s'affaissera comme le fleuve d'égypte en ce jour-là dit le souverain seigneur jéhovah je ferai coucher le soleil en plein midi et je couvrirai la terre de ténèbres en plein jour je changerai vos fêtes en deuil et tous vos chants en lamentations je mettrai le sac sur tous les reins et je rendrai chauve toute tête je mettrai le pays dans le deuil comme pour un fils unique et sa fin sera comme un jour d'amertume (amos 8:2, 9, 10 ; 2 rois 17:6 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Amos — P439 (8:1-10 : la corbeille de fruits d'été ; la fin est venue ; le soleil se couchera en plein midi) ; Amos 8:2, 9, 10 ; 2 Rois 17:6 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« VOICI CE QUE LE SOUVERAIN SEIGNEUR JÉHOVAH… M'A FAIT VOIR… UNE CORBEILLE… DE FRUITS D'ÉTÉ… IL DIT… QUE VOIS-TU… AMOS…? ET JE RÉPONDIS… UNE CORBEILLE… DE FRUITS D'ÉTÉ… »… « PUIS JÉHOVAH ME DIT… LA FIN EST VENUE… POUR MON PEUPLE ISRAËL… JE NE PASSERAI PLUS À CÔTÉ DE LUI… »… « EN CE JOUR-LÀ… LES CHANTS DU PALAIS… DEVIENDRONT DES GÉMISSEMENTS… ON JETTERA PARTOUT… EN SILENCE… UNE MULTITUDE DE CADAVRES… »… « ÉCOUTEZ CECI… VOUS QUI ÉCRASEZ LE PAUVRE… ET QUI FAITES DISPARAÎTRE… LES HUMBLES DU PAYS… »… « VOUS QUI DITES… QUAND LA NOUVELLE LUNE SERA-T-ELLE PASSÉE… POUR QUE NOUS PUISSIONS VENDRE DU GRAIN… ET QUAND LE SABBAT SERA-T-IL FINI… POUR QUE NOUS OUVRIONS… LES MAGASINS DE BLÉ…? »… « EN FAISANT L'ÉPHA PETIT… EN AUGMENTANT LE SICLE… EN TROMPANT… AVEC DES BALANCES FAUSSES… POUR ACHETER LES FAIBLES… AVEC DE L'ARGENT… ET LE PAUVRE… POUR UNE PAIRE DE SANDALES… ET POUR VENDRE… LE DÉCHET DU BLÉ… »… « JÉHOVAH… A JURÉ… PAR L'ORGUEIL DE JACOB… JE N'OUBLIERAI JAMAIS… AUCUNE DE LEURS ACTIONS… »… « À CAUSE DE CELA… LE PAYS NE TREMBLERA-T-IL PAS…? IL MONTERA TOUT ENTIER… COMME LE NIL… ET S'AFFAISSERA… COMME LE FLEUVE D'ÉGYPTE… »… « EN CE JOUR-LÀ… JE FERAI COUCHER LE SOLEIL… EN PLEIN MIDI… ET JE COUVRIRAI LA TERRE DE TÉNÈBRES… EN PLEIN JOUR… »… « JE CHANGERAI VOS FÊTES… EN DEUIL… ET TOUS VOS CHANTS… EN LAMENTATIONS… JE METTRAI LE SAC… SUR TOUS LES REINS… JE RENDRAI CHAUVE… TOUTE TÊTE… JE METTRAI LE PAYS DANS LE DEUIL… COMME POUR UN FILS UNIQUE… ET SA FIN SERA… COMME UN JOUR D'AMERTUME… »… — KELUV QAYITS… CORBEILLE DE FRUITS D'ÉTÉ… QETS… LA FIN… PÉRIPHRASE SUR QAYITS/QETS… HÊKAL… PALAIS OU TEMPLE… SHIRAH… CHANT… ZIMRAH… MÉLODIE… ʾEVAH… CORDEAU… SHABBAT… SABBAT… ḤODESH… NOUVELLE LUNE… ḤATIR… DIVISER… ʾARES… BALANCE… MOZNE… DOUBLE MESURE… MATSREPH… TRANCHANT… SHABBATON… REPOS… ʾADONAI YEHWH… SERMENT… ḤEREV… ÉPÉE… ʿINUI… AFFLICTION… SAQ… SAC… — 763 AV. N. È. … ÉCLIPSE… 722… SAMARIE… 607… JÉRUSALEM… »</li>
+<li>LES TROIS JUMEAUX — Révélation 6:5-8 : le troisième cavalier porte une balance et annonce le prix du blé mesuré — la même association entre commerce des vivres et jugement que chez Amos, et la même mention de l'huile et du vin. Deutéronome 25:13-16 : « tu n'auras pas dans ton sac deux poids, un grand et un petit… car celui qui agit ainsi est en horreur à Jéhovah » — la loi que violait le commerce dénoncé en Amos 8:5. Lévitique 19:35, 36 : « vous n'aurez pas de fausse balance, ni faux poids » — la base juridique précise de l'accusation du prophète.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Amos 8:1-10 rapporte la quatrième vision, la plus proche du lecteur par ses images et la plus dure par sa conclusion. Le prophète voit une corbeille de fruits d'été, en hébreu keluv qayits : l'été est fini, la récolte est rentrée, ce qui reste n'est plus qu'un produit de saison tardive. Le jeu sur le mot qets — « fin » — et qayits — « fruits d'été » — structure tout l'oracle : la question « que vois-tu, Amos ? » appelle une réponse de paysan, et la conclusion divine est : « la fin est venue pour mon peuple Israël ; je ne passerai plus à côté de lui ». Vient ensuite la description du négoce frauduleux, d'une précision documentaire saisissante : marchands qui trouvent les jours de nouvelle lune et les sabbats trop longs parce qu'ils empêchent les affaires, épha réduit, sicle augmenté, balances fausses, vente du déchet du blé. L'accusation se cristallise dans une phrase : « pour acheter les faibles avec de l'argent et le pauvre pour une paire de sandales ». Un serment divin par « l'orgueil de Jacob » suit, puis l'annonce d'un bouleversement du paysage — le pays se soulève comme le Nil — et d'un deuil universel : le soleil couché à midi, les fêtes changées en deuil, le sac sur les reins, les têtes rasées, « comme pour un fils unique ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA CORBEILLE ET LE CALENDRIER : la vision ne montre pas un fléau mais un produit fini ; dans le cycle agricole palestinien, les figues et les premiers raisins de fin d'été marquent la fin de l'année de travail. Israël est comparé à ce qui a mûri et doit être consommé. Le v. 3 poursuit dans la même logique : les chants du palais (hêkal, mot employé aussi pour le temple) deviennent des gémissements, et les cadavres sont jetés en silence — inversion complète du banquet décrit au chapitre 6. (2) LA FRAUDE COMMERCIALE EST DÉCRITE DANS LE DÉTAIL : retarder la vente pendant les jours d'arrêt religieux pour profiter de la hausse des prix ; réduire la mesure de capacité (épha) ; augmenter le poids d'argent exigé (sicle) ; user de balances faussées ; vendre jusqu'aux criblures. La Loi interdisait explicitement les poids inégaux (Lévitique 19:35, 36 ; Deutéronome 25:13-16), ce qui rend l'accusation d'autant plus précise : ce ne sont pas des infractions obscures, mais la violation d'une règle connue, par-dessus laquelle on continuait d'observer scrupuleusement les sabbats. (3) LE TREMBLEMENT DU PAYS : « il montera tout entier comme le Nil » décrit un raz-de-marée terrestre, image d'Égypte retournée contre son modèle hydraulique — le pays est submergé, non par l'eau, mais par le jugement. Une grande part des exégètes rapproche cette image du souvenir du tremblement de terre cité en Amos 1:1, deux ans avant la prédication. (4) LE DEUIL COSMIQUE : le soleil couché à midi, les fêtes changées en deuil, le sac et les crânes rasés sont les signes du deuil national le plus lourd, réservé au « fils unique ». La suite du livre, en 9:5, reprend d'ailleurs exactement le même tableau du bouleversement.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Amos (Livre d') » de la Bibliothèque en ligne rappelle que le livre est structuré par une série de révélations en visions — dont celle-ci — et insiste sur le fait que les jugements annoncés se sont réalisés sur le royaume du Nord comme sur Juda ; il note aussi que le livre met en avant la grandeur de Jéhovah, maître du jour et de la nuit, ce qui éclaire le tableau du soleil couché à midi. Lecture commune et exégèse : les commentateurs relèvent l'originalité de la vision du fruit, parfois rapprochée de la corbeille de Jérémie 24, où les figues servent aussi d'image ; ils soulignent le caractère technique du catalogue du verset 5, qui décrit des pratiques commerciales attestées par les documents mésopotamiens et par les ostraca, et l'ironie du verset 5 : tandis que les pauvres souffrent, les riches trouvent le sabbat trop long. Le tableau du soleil obscurci en plein jour est fréquemment cité dans les concordances comme précédent des descriptions prophétiques du « jour de Jéhovah » (Joël 2:10 ; Sophonie 1:15 ; Matthieu 24:29).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 804 av. n. è.</td><td>La vision et l'oracle sont transcrits ; la fin du royaume du Nord est annoncée (Amos 8:1-10)</td></tr>
+<tr><td class="d">Vers 760 av. n. è.</td><td>Un séisme majeur frappe la région, événement dont les traces archéologiques sont relevées à Hazor et sur plusieurs autres sites</td></tr>
+<tr><td class="d">732 av. n. è.</td><td>Les villes du nord et la Galilée sont prises, leurs habitants déportés (2 Rois 15:29)</td></tr>
+<tr><td class="d">722 av. n. è.</td><td>Chute de Samarie : la mort, le deuil et la déportation annoncés par la vision du fruit mûr s'accomplissent (2 Rois 17:6)</td></tr>
+<tr><td class="d">701 av. n. è.</td><td>Campagne de Sennachérib en Juda : les villes fortes sont prises, la campagne ravagée (2 Chroniques 32:1)</td></tr>
+<tr><td class="d">607 av. n. è.</td><td>Jérusalem tombe et son temple est incendié : le deuil « comme pour un fils unique » atteint le royaume du Sud (2 Rois 25:8-11)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE COMMERCE FRAUDULEUX : les textes légaux de la Bible (Lévitique 19:35, 36 ; Deutéronome 25:13-16) interdisent les poids et balances inégaux ; la documentation mésopotamienne et syrienne de la même période montre l'importance de la normalisation des poids de pierre, dont des exemplaires marqués ont été retrouvés en Israël — ce qui rend crédible une fraude organisée sur les mesures. (2) LES OSTRACA DE SAMARIE : ces tessons datés des années 778-770 av. n. è. enregistrent des entrées d'huile et de vin au palais : la comptabilité royale, dont le prophète dénonce l'envers, était déjà une administration établie. (3) L'ÉPHA ET LE SICLE : l'épha est l'unité de capacité pour les grains, le sicle une unité de poids monétaire ; la plainte « épha petit, sicle grand » correspond donc à une double manipulation — moins de marchandise, plus d'argent — exactement le type d'abus dénoncé par les codes et les prophètes. (4) LE BOYCOTT DES JOURS DE FÊTE : le texte suppose que la vie économique s'arrêtait à la nouvelle lune et au sabbat, ce qui est confirmé par les calendriers et les inscriptions du Proche-Orient ancien, où ces jours interrompaient les transactions ; l'impatience exprimée ici est celle de marchands qui voudraient vendre tous les jours. (5) LA GRANDE CATASTROPHE D'ISRAËL : 2 Rois 17:6 et 18:9-12 rapportent la chute de Samarie après trois ans de siège et la déportation, que les annales assyriennes de Sargon II confirment. (6) LES PUBLICATIONS : l'article « Amos (Livre d') » souligne que les descriptions d'injustice du livre correspondent à une société réellement prospère et inégalitaire, dont l'archéologie a retrouvé les témoins matériels.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LES MARCHÉS ET LES PORTES : les transactions décrites se tenaient aux portes des villes, où des bancs de pierre et des chambres ont été retrouvés sur plusieurs sites du fer, notamment à Dan, Megiddo, Hazor et Guézer ; les balances et poids y accompagnaient l'activité administrative. (2) LE CYCLE DES SAISONS : dans les montagnes d'Israël, les figues et les raisins d'été arrivent en août-septembre, après la moisson des céréales ; la vision de fruits d'été se situe donc en fin d'année agricole, juste avant la reprise du travail des vignes. (3) LE NIL COMME MODÈLE : la crue annuelle du Nil commence en juin et s'étale sur plusieurs mois ; son image, employée ici pour un soulèvement terrestre, était parlante pour des auditeurs qui connaissaient l'Égypte, voisine avec laquelle Israël entretenait des rapports constants. (4) L'ÉCLIPSE ET LE CIEL : le soleil obscurci en plein jour peut évoquer, dans la mémoire de l'époque, l'éclipse solaire attestée par les annales assyriennes en 763 av. n. è., soit une quarantaine d'années avant la prédication d'Amos ; cette observation astronomique ancienne est utilisée par les historiens pour caler la chronologie. (5) LA CAMPAGNE DE JUDAS : les hautes terres autour de Jérusalem, avec leurs villages et leurs citernes, sont décrites dans les listes administratives du royaume et correspondent au pays que Sennachérib ravage en 701. (6) LES LIEUX DE DÉPORTATION : les provinces assyriennes de Halah, Habor, Gozan et des villes des Mèdes, citées en 2 Rois 17:6, sont identifiées dans le nord de la Mésopotamie et l'ouest de l'Iran actuels.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE TREMBLEMENT DE TERRE DU VIIIe SIÈCLE : les campagnes de fouilles à Hazor ont mis au jour un niveau de destruction du milieu du VIIIe siècle avec des murs décalés et des blocs effondrés, interprété par les archéologues comme l'effet d'un séisme ; les travaux de géologues israéliens sur les failles régionales confirment la forte sismicité de la vallée du Jourdain et de la région de Hazor, ce qui donne une réalité géologique aux images de tremblement du livre d'Amos (1:1 ; 8:8 ; 9:5). (2) LES POIDS ET LES BALANCES : des poids de pierre portant des inscriptions (noms d'unités et symboles) ont été retrouvés dans des contextes du fer, en Juda et en Israël ; la découverte de poids de masses incohérentes pour une même unité nominale alimente la discussion sur les pratiques frauduleuses dénoncées par Amos. (3) LA FRAUDE SUR LES GRAINS : les analyses de la documentation administrative et des restes archéobotaniques montrent que la commercialisation des céréales passait par des circuits de stockage, de mesure et de redistribution ; la vente du « déchet du blé » signalée en 8:6 est donc un abus identifiable, non une simple figure de style. (4) L'ÉCLIPSE DE 763 AV. N. È. : l'éclipse solaire totale attestée par les listes éponymales assyriennes sous le nom de Bur-Sagale constitue un point d'ancrage astronomique pour la chronologie du Proche-Orient ancien, souvent cité pour situer les débuts du ministère d'Amos. (5) LES NIVEAUX DE DESTRUCTION : les tells de Galilée et de Samarie présentent des couches d'incendie et d'abandon datées de la fin du VIIIe siècle, en accord avec les campagnes assyriennes. (6) PRUDENCE : l'archéologie documente le séisme, la prospérité, la fiscalité et la destruction ; elle ne peut naturellement pas fournir de preuve directe du discours prophétique, qui est transmis par le texte biblique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>VISION 4 : LA CORBEILLE DE FRUITS D'ÉTÉ (8:1, 2) → JEU DE MOTS : QAYITS / QETS — « LA FIN EST VENUE » → « JE NE PASSERAI PLUS À CÔTÉ DE LUI » (8:2) → INVERSION DU BANQUET : CHANTS DU PALAIS EN GÉMISSEMENTS, CADAVRES JETÉS EN SILENCE (8:3) → LES MARCHANDS : LA NOUVELLE LUNE ET LE SABBAT TROP LONGS (8:5) → LES TROIS FRAUDES : ÉPHA PETIT, SICLE GRAND, BALANCES FAUSSES (8:5) → « ACHETER LES FAIBLES AVEC DE L'ARGENT ET LE PAUVRE POUR UNE PAIRE DE SANDALES » (8:6) → SERMENT PAR L'ORGUEIL DE JACOB (8:7) → LE PAYS SE SOULÈVE COMME LE NIL (8:8) → LE SOLEIL COUCHÉ À MIDI ; LES FÊTES EN DEUIL ; LE DEUIL DU FILS UNIQUE (8:9, 10) → 722 : SAMARIE (2 ROIS 17:6) → 607 : JÉRUSALEM (2 ROIS 25:8-11)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Amos 8:2, 9, 10 ; 2 Rois 17:6) et le statut « Accomplie ». LA VISION : la fiche expose le jeu de mots entre « fruits d'été » et « fin » et n'attribue pas d'autre signification à la corbeille. LE COMMERCE : la fiche décrit les pratiques énumérées par le texte en les rapportant aux lois sur les poids et mesures ; elle ne prétend pas chiffrer l'ampleur de la fraude. LE TREMBLEMENT ET L'ÉCLIPSE : la fiche mentionne l'hypothèse du séisme du VIIIe siècle relevée par l'archéologie et la date astronomique de l'éclipse de 763 av. n. è., sans faire de l'éclipse la cause du tableau de 8:9. LE DEUIL : la fiche décrit les rites mentionnés (sac, tête rasée) sans entrer dans le détail des coutumes funéraires régionales. L'APPLICATION AU ROYAUME DU SUD : la fiche mentionne 607 av. n. è. comme prolongement historique du jugement, la référence du registre restant 2 Rois 17:6. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des deux dernières sections du livre (8:11-14 et 9:1-15, fiches suivantes) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatrième vision : la corbeille de fruits d'été ; la fin annoncée (8:1-3)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réquisitoire contre les marchands fraudeurs ; serment et deuil cosmique (8:4-10)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Éclipse solaire consignée dans les listes assyriennes : repère astronomique de la période</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">763 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séisme majeur dans la région, dont l'archéologie relève les traces (Amos 1:1)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 760 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : la fin annoncée pour le royaume du Nord (2 Rois 17:6)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Jérusalem : le deuil national atteint le royaume du Sud (2 Rois 25:8-11)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/6">Bible — Révélation 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/2">Bible — Romains 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/60/4">Bible — 1 Pierre 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/60/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/8/2">Bible — Ruth 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/8/2</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251">Amos (Livre d') — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AM439 — La corbeille de fruits d'été : « la fin est venue » ; le soleil se couchera en plein midi et les chants du palais deviendront des gémissements</span><span>Catégorie AM2</span></div></div>
+</article>
+<article class="fiche" id="AM440">
+<div class="visuel"><img src="images/prophe_AM440_famine.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AM440 · CATÉGORIE AM2</div>
+<h3>« Non pas la disette du pain, mais la faim d'entendre les paroles de Jéhovah » : les errants d'une mer à l'autre</h3>
+<div class="ref">Amos 8:11-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / À venir</span>
+<span class="badge">des jours viennent où j'enverrai une famine dans le pays non pas une famine de pain ni une soif d'eau mais une faim d'entendre les paroles de jéhovah ils erreront d'une mer à l'autre et du nord à l'est ils iront çà et là pour chercher la parole de jéhovah mais ils ne la trouveront pas en ce jour-là les belles jeunes filles et les jeunes hommes défailliront de soif eux qui jurent par le péché de samarie et qui disent aussi vrai que ton dieu vive ô dan et aussi vrai que la route de béer-shéva soit vivante ils tomberont et ne se relèveront plus (amos 8:11, 12 ; périodes d'apostasie ; accomplie / à venir)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AM440</div><audio controls preload="none" src="audio/fiche_AM440_famine.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AM440_famine.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Amos 8:11-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>des jours viennent où j'enverrai une famine dans le pays non pas une famine de pain ni une soif d'eau mais une faim d'entendre les paroles de jéhovah ils erreront d'une mer à l'autre et du nord à l'est ils iront çà et là pour chercher la parole de jéhovah mais ils ne la trouveront pas en ce jour-là les belles jeunes filles et les jeunes hommes défailliront de soif eux qui jurent par le péché de samarie et qui disent aussi vrai que ton dieu vive ô dan et aussi vrai que la route de béer-shéva soit vivante ils tomberont et ne se relèveront plus (amos 8:11, 12 ; périodes d'apostasie ; accomplie / à venir)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Amos — P440 (8:11-14 : la famine, non de pain, mais d'entendre les paroles de Jéhovah) ; Amos 8:11, 12 ; périodes d'apostasie ; Accomplie / À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« VOICI QUE DES JOURS VIENNENT… DIT LE SOUVERAIN SEIGNEUR JÉHOVAH… OÙ J'ENVERRAI UNE FAMINE… DANS LE PAYS… NON PAS UNE FAMINE DE PAIN… NI UNE SOIF D'EAU… MAIS UNE FAIM D'ENTENDRE… LES PAROLES DE JÉHOVAH… »… « ILS ERRERONT… D'UNE MER À L'AUTRE… ET DU NORD À L'EST… ILS COURRONT ÇÀ ET LÀ… POUR CHERCHER LA PAROLE DE JÉHOVAH… MAIS ILS NE LA TROUVERONT PAS… »… « EN CE JOUR-LÀ… LES BELLES JEUNES FILLES… ET LES JEUNES HOMMES… DÉFAILLIRONT DE SOIF… »… « CEUX QUI JURENT… PAR LE PÉCHÉ DE SAMARIE… ET QUI DISENT… AUSSI VRAI QUE TON DIEU VIVE… Ô DAN… ET… AUSSI VRAI QUE LE CHEMIN DE BÉER-SHÉVA SOIT VIVANT… ILS TOMBERONT… ET NE SE RELÈVERONT PLUS… »… — RAʿAV… FAMINE… SHAMAʿ… ENTENDRE… DAVAR YEHWH… LA PAROLE DE JÉHOVAH… SHUT… ERRER… YAM… MER… QADIM… EST OU ORIENT… SHUV… ALLER ET VENIR… BETULOT… JEUNES FILLES… BAḤURIM… JEUNES HOMMES… TSHAMAʾ… SOIF… ʾASHMAT SHOMERON… LE PÉCHÉ DE SAMARIE… DEREK BEʾER-SHEVA… LE CHEMIN DE BÉER-SHÉVA… — 722… 607… 537… 70 DE N. È.… 500 ANS DE SILENCE… »</li>
+<li>LES TROIS JUMEAUX — 2 Chroniques 15:3 : « pendant longtemps Israël a été sans vrai Dieu, sans prêtre enseignant et sans loi » — formule qui résume les périodes où la parole divine n'était plus accessible, et qui éclaire le sens de la famine annoncée par Amos. Malaki 2:7 : « les lèvres du prêtre garderont la connaissance, et de sa bouche on recherchera la loi » — le lien entre enseignement sacerdotal et accès à la parole, lien rompu précisément dans les temps d'apostasie. Actes 11:27-30 : la grande famine annoncée par Agabus sous Claude est un exemple biblique de crise alimentaire réelle, dont la communauté de Jérusalem eut à souffrir et que les disciples d'Antioche entreprirent de soulager — contraste frappant avec la famine spirituelle décrite par Amos.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les quatre derniers versets du chapitre 8 ferment la série des avertissements avant la vision finale du chapitre 9. Après la vision du fruit mûr et le réquisitoire contre les marchands, le texte annonce une famine d'un genre nouveau : non pas le manque de pain ou d'eau, mais « la faim d'entendre les paroles de Jéhovah ». Le tableau qui suit est celui d'une quête sans issue : on errera d'une mer à l'autre, du nord à l'est, on courra çà et là, et la parole ne sera pas trouvée. Les jeunes filles et les jeunes hommes — la force vive de la nation — défailliront de soif. La conclusion désigne la racine du mal : ceux qui jurent par « le péché de Samarie », par « ton dieu, ô Dan », par « le chemin de Béer-Shéva » tomberont et ne se relèveront plus ; trois serments qui renvoient aux trois sanctuaires du Nord et du Sud, c'est-à-dire à une religion organisée autour de lieux et de symboles plutôt que de la parole du Dieu vivant. Le registre du projet enregistre le statut de cette prophétie comme « Accomplie / À venir », avec la mention « périodes d'apostasie » : elle a connu des réalisations historiques dans l'histoire d'Israël et de Juda, et le texte lui-même porte une portée qui la dépasse.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) L'EXPRESSION « FAMINE DE PAROLES » : le texte emploie le vocabulaire de la famine et de la soif pour décrire une privation d'ordre spirituel ; les mots employés ne sont pas purement métaphoriques, car dans les Écritures la parole divine est présentée comme une nourriture (Deutéronome 8:3 ; Matthieu 4:4). L'annonce vise donc un temps où les communications divines cesseront — silence prophétique après la déportation, puis longue période sans prophètes reconnus. (2) LES DIRECTIONS DE LA QUÊTE : « d'une mer à l'autre » désigne l'orientation ouest-est, de la Méditerranée aux confins orientaux ; « du nord à l'est » complète le cercle. La quête est décrite comme une errance sans repères, et son résultat est explicite : « ils ne la trouveront pas ». La cause n'est pas l'absence de Dieu, mais le fait que le peuple l'ait cherché trop tard, après avoir rejeté les prophètes envoyés vers lui — thème développé par Jérémie 7 et 44. (3) LES JEUNES GENS : la mention des betulot et des baḥurim défaillant de soif souligne que la crise frappe la génération qui aurait dû reconstruire ; ce détail donne au tableau une dimension sociale concrète, celle d'une société dont l'avenir s'éteint. (4) LES TROIS SERMENTS : « le péché de Samarie » est très probablement le veau de Béthel ; « ton dieu, ô Dan » désigne le second veau, le plus septentrional ; « le chemin de Béer-Shéva » évoque le pèlerinage vers le sanctuaire du sud. Les trois formules sont des serments religieux populaires, exactement ce qu'un peuple privé de la vraie parole finit par employer. Le chapitre se ferme ainsi sur le motif du livre tout entier : la substitution de lieux et de rites à la parole vivante.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Amos (Livre d') » de la Bibliothèque en ligne range la section 8:4-14 parmi les passages où le livre décrit la faim « d'entendre les paroles de Jéhovah » et rappelle que le message d'Amos s'adressait à un royaume qui disposait de sanctuaires et de prêtres, mais qui manquait de la parole ; l'article note également que le livre magnifie la Parole et le Nom de Jéhovah. Lecture commune et exégèse : cette prophétie est l'une des plus reprises du livre. Les commentateurs la rapprochent de 1 Samuel 3:1 (« la parole de Jéhovah était rare en ces jours-là »), de 1 Samuel 28 (Saül consulta une médium parce que Jéhovah ne lui répondait plus), de Jérémie 42 et de Michée 3:6, 7 (prophètes sans réponse). La période des Maccabées puis les siècles qui précèdent l'ère chrétienne sont souvent cités comme époque d'une production prophétique interrompue, la tradition juive situant dans cette longue intervalle la clôture de la prophétie. Le statut retenu par le registre — accompli puis encore à venir — correspond à cette lecture en deux temps, que la littérature du projet applique aux périodes d'apostasie.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 722 av. n. è.</td><td>Chute de Samarie : les sanctuaires du Nord sont détruits et le clergé déporté ; la parole prophétique se retire du royaume du Nord (2 Rois 17:6-18)</td></tr>
+<tr><td class="d">VIe siècle av. n. è.</td><td>Après la destruction de Jérusalem, le pays reste sans temple ni prophète en activité pendant l'exil ; les exilés interrogent les prophètes restants, comme Ézéchiel (Ézéchiel 14:1-5 ; 20:1-3)</td></tr>
+<tr><td class="d">Période perse</td><td>La restauration religieuse s'appuie sur la Loi lue et expliquée (Néhémie 8:1-8) ; la transmission cesse d'être prophétique et devient scripturaire</td></tr>
+<tr><td class="d">IVe-IIe siècle av. n. è.</td><td>L'époque du second temple connaît une longue interruption de la prophétie reconnue ; la littérature apocalyptique prend le relais</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>La parole reparaît en Jean le Baptiseur puis en Jésus, dont les contemporains constatent la venue après un long silence (Matthieu 11:9-13)</td></tr>
+<tr><td class="d">Après le Ier siècle de n. è.</td><td>Les périodes marquées par l'abandon des Écritures illustrent de nouveau le tableau : chercher la parole sans la trouver, faute de l'avoir gardée</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES SANCTUAIRES VISÉS : 1 Rois 12:28-33 (Béthel et Dan), Amos 5:5 (Béer-Shéva) et 8:14 attestent l'existence de ces centres de culte et de pèlerinage ; les fouilles de Dan et de Béthel ont livré des installations cultuelles abandonnées vers l'époque assyrienne. (2) LE SILENCE PROPHÉTIQUE APRÈS L'EXIL : la liste des prophètes postérieurs à l'exil (Aggée, Zekaria, Malaki) est brève, et la tradition juive considère que la prophétie cesse ensuite ; les textes de la période du second temple, comme ceux de Qumrân, parlent d'une attente du retour de l'esprit prophétique, ce qui correspond à l'expérience décrite par Amos. (3) LA CRISE ALIMENTAIRE SOUS CLAUDE : Actes 11:27-30 rapporte une famine annoncée par Agabus et vérifiée sous l'empereur Claude ; les historiens anciens, dont Flavius Josèphe, mentionnent des crises alimentaires en Judée dans ces années, ce qui donne un ancrage historique à une famine réelle — à distinguer de la famine spirituelle d'Amos. (4) LA LECTURE PUBLIQUE DE LA LOI : Néhémie 8 et 2 Chroniques 17:7-9 décrivent des campagnes d'enseignement de la Loi ; leur insistance montre à quel point l'accès à la parole était devenu la question centrale après l'exil. (5) LES SERMENTS POPULAIRES : les formules « aussi vrai que ton dieu vive, ô Dan » reproduisent le modèle du serment par la vie d'un dieu, attesté dans les textes sémitiques ; leur présence montre la fusion entre Yahwisme et vénération des lieux. (6) LES PUBLICATIONS : l'article « Amos (Livre d') » et l'article « Points marquants des livres de Yoël et d'Amos » relèvent tous deux l'importance du thème de la parole dans le livre.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) DAN : à l'extrémité nord du pays, au pied du mont Hermon, près des sources du Jourdain ; le site a livré une plateforme cultuelle monumentale, une porte de ville à quatre chambres et des vestiges du sanctuaire du royaume du Nord. (2) BÉTHEL : sur la crête centrale, à environ vingt kilomètres au nord de Jérusalem ; le « péché de Samarie » désigne le veau établi dans ces sanctuaires royaux selon 1 Rois 12. (3) BÉER-SHÉVA : ville du Néguev, à la limite sud du pays, étape des patriarches et lieu de sanctuaire ; « le chemin de Béer-Shéva » suggère un pèlerinage organisé, attesté par Amos 5:5. (4) LES DEUX MERS : de la Méditerranée à l'est du pays s'étend un espace d'environ cent cinquante kilomètres de large ; « d'une mer à l'autre » et « du nord à l'est » décrivent donc le territoire national dans ses deux axes. (5) LES GRANDS AXES DE CIRCULATION : la route du nord, la route du désert et les pistes du Néguev sont les principaux itinéraires de la région ; l'image de l'errance les parcourt tous. (6) LES ROUTES D'ENSEIGNEMENT : après le retour de l'exil, l'enseignement de la Loi se concentre à Jérusalem et dans les villes de Juda, ce qui déplace géographiquement la question de l'accès à la parole.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) L'ARCHEOLOGIE DE DAN : les fouilles ont mis au jour un ensemble cultuel du IXe siècle au nord du tell, avec autels, bassins et objets rituels, abandonné puis scellé après la conquête assyrienne ; l'identification de ce secteur au sanctuaire du veau est largement acceptée. (2) BÉTHEL : les niveaux du fer II mis au jour à Beitin comportent un secteur cultuel et une destruction du VIIIe siècle ; les recherches modernes discutent l'emplacement de l'autel exact mais confirment l'occupation et l'activité du lieu. (3) LES SCEAUX ET INSCRIPTIONS : plusieurs sceaux et tessons portent des noms théophores liés au culte de Jéhovah, mais aussi des motifs et formules associés à d'autres divinités, ce qui documente la coexistence religieuse dénoncée par les prophètes. (4) LA FIN DU SANCTUAIRE DE DAN : l'abandon des installations cultuelles du nord du tell est daté de la seconde moitié du VIIIe siècle, cohérent avec la disparition des centres religieux du royaume après 732-722. (5) LES CRISES ALIMENTAIRES ANCIENNES : les études archéobotaniques et les relevés paléoclimatiques montrent que le Levant a connu des séquences de sécheresse et de mauvaise récolte, mais la famine d'Amos 8:11 est définie par le texte comme non alimentaire, ce qui interdit de la confondre avec ces crises. (6) L'HISTOIRE DU TEXTE : la coexistence des manuscrits de la mer Morte contenant les prophètes, dont Qumrân, atteste la transmission continue du message après les destructions mentionnées. (7) PRUDENCE : rien dans l'archéologie ne peut mesurer une privation spirituelle ; la fiche s'appuie ici sur les textes bibliques et historiques.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>AMOS 8:11 — « DES JOURS VIENNENT OÙ J'ENVERRAI UNE FAMINE DANS LE PAYS » → PRÉCISION : « NON PAS UNE FAMINE DE PAIN NI UNE SOIF D'EAU » → OBJET RÉEL : « MAIS UNE FAIM D'ENTENDRE LES PAROLES DE JÉHOVAH » (8:11) → QUÊTE SANS ISSUE : D'UNE MER À L'AUTRE, DU NORD À L'EST, « ILS NE LA TROUVERONT PAS » (8:12) → LES JEUNES DÉFAILLENT DE SOIF (8:13) → LES TROIS SERMENTS DÉNONCÉS : LE PÉCHÉ DE SAMARIE, LE DIEU DE DAN, LE CHEMIN DE BÉER-SHÉVA (8:14) → « ILS TOMBERONT ET NE SE RELÈVERONT PLUS » → RÉALISATIONS HISTORIQUES : 722, L'EXIL, LE SILENCE PROPHÉTIQUE DE LA PÉRIODE PERSE (2 CHRONIQUES 15:3) → REPRISE DE LA PAROLE : JEAN LE BAPTISEUR ET JÉSUS (MATTHIEU 11:9-13)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Amos 8:11, 12 ; périodes d'apostasie) et le statut « Accomplie / À venir ». LA NATURE DE LA FAMINE : la fiche retient la définition donnée par le texte lui-même — une privation d'ordre spirituel — et n'en fait pas une pénurie alimentaire. LE SILENCE DE LA PROPHÉTIE : la fiche signale que la tradition situe après l'exil la fin de la prophétie reconnue, sans avancer de date précise pour cette cessation. LES TROIS SERMENTS : la fiche propose les identifications les plus courantes — le veau de Béthel pour « le péché de Samarie », le veau de Dan pour « ton dieu, ô Dan » — sans exclure d'autres lectures. LE VOLET « À VENIR » : la fiche mentionne l'existence d'une portée non encore réalisée, sans en décrire le détail ni la dater. LA FAMINE DE CLAUDE : la fiche la cite comme exemple de famine réelle pour distinguer les deux registres. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas de la cinquième vision du chapitre 9 (fiche suivante) ni des applications du passage dans les écrits postérieurs ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Annonce de la famine de la parole ; les trois serments dénoncés (8:11-14)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction des sanctuaires du Nord et déportation : la parole se retire du royaume (2 Rois 17:6)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Exil et privation de temple ; recherche de la parole auprès des prophètes (Ézéchiel 20:1-3)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe siècle av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lecture publique et enseignement de la Loi après le retour (Néhémie 8)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Longue interruption de la prophétie reconnue ; attente de sa reprise</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IVe-Ier siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise de la parole avec Jean le Baptiseur et Jésus (Matthieu 11:9-13)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/11">Bible — Actes 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/61/1">Bible — 2 Pierre 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/61/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/60/1">Bible — 1 Pierre 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/60/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/31">Bible — 2 Chroniques 31 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/31</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251">Amos (Livre d') — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AM440 — « Non pas la disette du pain, mais la faim d'entendre les paroles de Jéhovah » : les errants d'une mer à l'autre</span><span>Catégorie AM2</span></div></div>
+</article>
+<article class="fiche" id="AM441">
+<div class="visuel"><img src="images/prophe_AM441_hutte.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AM441 · CATÉGORIE AM2</div>
+<h3>« Je relèverai la hutte de David tombée » : le crible qui ne perd aucun grain et la vigne replantée pour toujours</h3>
+<div class="ref">Amos 9:1-15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (1er accomplissement)</span>
+<span class="badge">je vis le seigneur se tenant près de l'autel et il dit frappe le chapiteau que les seuils tremblent brise-les sur la tête de tous et je tuerai par l'épée le reste d'entre eux aucun ne s'enfuira aucun ne s'échappera même s'ils creusent jusqu au schéol ma main les prendra même s'ils montent au ciel je les ferai descendre et si je les disperse parmi les nations là j'ordonnerai à l'épée de les tuer je les secouerai parmi toutes les nations comme on secoue dans un crible mais pas un grain ne tombera à terre en ce jour-là je relèverai la hutte de david qui est tombée je réparerai ses brèches je relèverai ses ruines je la rebâtirai comme aux jours d'autrefois afin qu'ils prennent possession du reste d'édom et de toutes les nations qui sont appelées de mon nom oui des jours viennent où le laboureur rattrapera le moissonneur et les montagnes dégoutteront de vin doux je ramènerai les captifs de mon peuple israël ils rebâtiront les villes dévastées et les habiteront ils planteront des vignes et en boiront le vin je les planterai sur leur sol et ils ne seront plus jamais arrachés du sol que je leur ai donné dit jéhovah ton dieu (amos 9:9, 10 ; actes 15:16, 17 application ; accomplie — 1er accomplissement)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AM441</div><audio controls preload="none" src="audio/fiche_AM441_hutte.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AM441_hutte.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Amos 9:1-15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (1er accomplissement)</td></tr>
+<tr><td class="d">Chronologie</td><td>je vis le seigneur se tenant près de l'autel et il dit frappe le chapiteau que les seuils tremblent brise-les sur la tête de tous et je tuerai par l'épée le reste d'entre eux aucun ne s'enfuira aucun ne s'échappera même s'ils creusent jusqu au schéol ma main les prendra même s'ils montent au ciel je les ferai descendre et si je les disperse parmi les nations là j'ordonnerai à l'épée de les tuer je les secouerai parmi toutes les nations comme on secoue dans un crible mais pas un grain ne tombera à terre en ce jour-là je relèverai la hutte de david qui est tombée je réparerai ses brèches je relèverai ses ruines je la rebâtirai comme aux jours d'autrefois afin qu'ils prennent possession du reste d'édom et de toutes les nations qui sont appelées de mon nom oui des jours viennent où le laboureur rattrapera le moissonneur et les montagnes dégoutteront de vin doux je ramènerai les captifs de mon peuple israël ils rebâtiront les villes dévastées et les habiteront ils planteront des vignes et en boiront le vin je les planterai sur leur sol et ils ne seront plus jamais arrachés du sol que je leur ai donné dit jéhovah ton dieu (amos 9:9, 10 ; actes 15:16, 17 application ; accomplie — 1er accomplissement)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Amos — P441 (9:1-15 : je les disperserai parmi les nations ; je relèverai la hutte de David tombée et je bâtirai ses ruines) ; Amos 9:9, 10 ; Actes 15:16, 17 (application) ; Accomplie (1er accomplissement)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« JE VIS LE SEIGNEUR… SE TENANT PRÈS DE L'AUTEL… ET IL DIT… FRAPPE LE CHAPITEAU… QUE LES SEUILS TREMBLENT… BRISE-LES SUR LA TÊTE DE TOUS… ET JE TUERAI PAR L'ÉPÉE… LE RESTE D'ENTRE EUX… AUCUN NE S'ENFUIRA… AUCUN N'ÉCHAPPERA… »… « MÊME S'ILS CREUSENT… JUSQU'AU SCHÉOL… MA MAIN LES PRENDRA… MÊME S'ILS MONTENT AU CIEL… JE LES FERAI DESCENDRE… »… « S'ILS SE CACHENT… AU SOMMET DU CARMEL… JE LES Y CHERCHERAI… ET JE LES PRENDRAI… S'ILS SE DÉROBENT À MES YEUX… AU FOND DE LA MER… LÀ J'ORDONNERAI AU SERPENT… ET IL LES MORDRA… »… « MOI… JÉHOVAH… DIEU DES ARMÉES… JE TOUCHE LA TERRE… ET ELLE SE DISSOUT… ET TOUS SES HABITANTS SONT EN DEUIL… JE FAIS MONTER LA MER… COMME LE NIL… JE BÂTIS DANS LES CIEUX… MES DEGRÉS… ET JE FONDE MA VOUTE… SUR LA TERRE… »… « VOUS… N'ÊTES-VOUS PAS POUR MOI… COMME LES FILS DE KOUSCH… FILS D'ISRAËL…? N'AI-JE PAS FAIT MONTER ISRAËL DU PAYS D'ÉGYPTE… LES PHILISTINS DE CRÈTE… ET LES SYRIENS DE KIR…? »… « VOICI QUE LES YEUX DU SOUVERAIN SEIGNEUR JÉHOVAH… SONT SUR LE ROYAUME PÉCHEUR… ET JE LE FERAI DISPARAÎTRE… DE LA SURFACE DU SOL… TOUTEFOIS… JE NE FERAI PAS DISPARAÎTRE ENTIÈREMENT… LA MAISON DE JACOB… »… « JE LES SECOUERAI PARMI TOUTES LES NATIONS… COMME ON SECOUE DU GRAIN DANS UN CRIBLE… ET PAS UN GRAIN… NE TOMBERA À TERRE… TOUS LES PÉCHEURS DE MON PEUPLE… MOURRONT PAR L'ÉPÉE… EUX QUI DISENT… LE MALHEUR NE NOUS ATTEINDRA PAS… ET NE VIENDRA PAS JUSQU'À NOUS… »… « EN CE JOUR-LÀ… JE RELÈVERAI… LA HUTTE DE DAVID… QUI EST TOMBÉE… JE RÉPARERAI… SES BRÈCHES… JE RELÈVERAI SES RUINES… ET JE LA REBÂTIRAI… COMME AUX JOURS D'AUTREFOIS… »… « AFIN QU'ILS PRENNENT POSSESSION… DU RESTE D'ÉDOM… ET DE TOUTES LES NATIONS… QUI SONT APPELÉES DE MON NOM… OUI… DÉCLARE JÉHOVAH… QUI FAIT CELA… »… « VOICI QUE DES JOURS VIENNENT… OÙ LE LABOUREUR… RATTRAPERA LE MOISSONNEUR… ET LE FOULAGE DU RAISIN… CELUI QUI SÈME LA SEMENCE… LES MONTAGNES… DÉGOUTTERONT DE VIN DOUX… ET TOUTES LES COLLINES… SE LIQUÉFIERONT… »… « JE RAMÈNERAI… LES CAPTIFS DE MON PEUPLE ISRAËL… ILS REBÂTIRONT… LES VILLES DÉVASTÉES… ET LES HABITERONT… ILS PLANTERONT DES VIGNES… ET EN BOIRONT LE VIN… ILS FERONT DES JARDINS… ET EN MANGERONT LES FRUITS… »… « JE LES PLANTERAI… SUR LEUR SOL… ET ILS NE SERONT PLUS JAMAIS ARRACHÉS… DU SOL QUE JE LEUR AI DONNÉ… DIT JÉHOVAH… TON DIEU… »… — MISBAḤ… AUTEL… KAPTOR… CHAPITEAU… ʾEVEN… PIERRE… SHEʾOL… SCHÉOL… KARMEL… LE CARMEL… YAM… MER… NAḤASH… SERPENT… SUKKAT DAVID… LA HUTTE DE DAVID… HA-NOFELET… TOMBÉE… PIRTSAH… BRÈCHE… ḤARISOT… RUINES… KEVAL YAM… COMME LE NIL… KEKHOVRA… COMME UN CRIBLE… TSEROR… CAILLOU OU GRAIN… ADAMAH… SOL… — 537 AV. N. È.… DÉCRET DE CYRUS… 516… TEMPLE REBÂTI… ACTES 15:16, 17… LA QUESTION DES NATIONS… »</li>
+<li>LES TROIS JUMEAUX — Actes 15:13-18 : Jacques, à l'assemblée de Jérusalem, cite Amos 9:11, 12 selon la version grecque : « après cela je reviendrai et je relèverai la tente de David qui est tombée… afin que le reste des hommes cherchent réellement Jéhovah, ainsi que toutes les nations qui sont appelées de mon nom » — la prophétie est appliquée à l'ouverture de la bonne nouvelle aux non-Juifs, sans obligation de circoncision. Jérémie 30:18 : « je ramènerai les captifs des tentes de Jacob… la ville sera reconstruite sur sa colline » — la même promesse de restauration après la dévastation. Ézéchiel 48:1-35 : la description du pays restauré et de la ville aux douze portes, dont le nom final est « Jéhovah est là » — le pendant de la vigne replantée d'Amos 9:13-15.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 9 ferme le livre par une cinquième vision et par l'annonce d'une restauration. Le prophète voit le Seigneur debout près de l'autel, donnant l'ordre de frapper les chapiteaux — les têtes de colonnes — afin que les seuils tremblent et que les fragments retombent sur les occupants ; la destruction commence par le lieu même du culte. Suit une série de tentatives de fuite impossibles, construite comme un psaume inversé : ni le schéol, ni le ciel, ni le sommet du Carmel, ni le fond de la mer ne soustraient au jugement ; la description du Dieu qui touche la terre et la fait fondre, qui fait monter la mer comme le Nil et bâtit ses degrés dans les cieux, précède une déclaration surprenante : Israël n'est pas plus privilégié que les Philistins de Crete ou les Syriens de Kir, dont les migrations sont elles aussi attribuées à Dieu. Le verdict est clair : le royaume pécheur disparaîtra, mais la maison de Jacob ne sera pas entièrement détruite. Vient alors l'image du crible : le peuple sera secoué parmi les nations comme du grain dans un tamis, sans qu'un seul grain tombe à terre. La dernière partie du chapitre ouvre un horizon de restauration : la hutte de David tombée sera relevée, ses brèches réparées, ses ruines rebâties ; le reste d'Édom et les nations appelées du nom de Jéhovah y seront associés ; le laboureur rattrapera le moissonneur, les montagnes dégoutteront de vin doux, les villes dévastées seront rebâties, les vignes plantées et les jardins cultivés, et le peuple ne sera plus arraché de son sol.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA CINQUIÈME VISION COMMENCE AU SANCTUAIRE : l'autel près duquel se tient le Seigneur est celui de Béthel ou celui du temple, mais le sens est net : la ruine part de l'institution religieuse elle-même. Le geste de frapper le chapiteau, qui fait trembler les seuils, est l'anti-création du sanctuaire : le lieu qui devait protéger devient le lieu qui engloutit. (2) L'ÉCHELLE DES REFUGES : schéol, ciel, Carmel, fond de la mer sont quatre limites de l'univers connu, disposées du plus bas au plus haut ; la formule rappelle le Psaume 139, mais à rebours — ce qui y est chanté comme la présence qui accompagne le fidèle devient ici la présence qui poursuit le coupable. (3) LE CRIBLE : le tamis utilisé pour le grain laisse passer les impuretés mais retient les grains utiles ; l'image signifie que la dispersion ne détruira pas le peuple, mais le triera. Ce verset est la clé de l'interprétation du reste du chapitre, et il prépare la promesse finale : ce qui subsiste est le « reste » qui sera replanté. (4) LA HUTTE DE DAVID : le mot sukkah désigne une cabane, un abri précaire — non un palais. La dynastie davidique est décrite comme une cabane effondrée dont on redresse les brèches. Le texte hébreu dit que ce qui sera relevé servira « afin qu'ils prennent possession du reste d'Édom et de toutes les nations appelées de mon nom » ; la version grecque, citée en Actes 15:16, 17, dit que « le reste des hommes » et « toutes les nations » chercheront Jéhovah. Dans les deux cas, la restauration de la maison de David est liée à l'ouverture vers les nations. La fin du chapitre, avec ses vignes plantées et sa promesse de ne plus être arraché du sol, répond point par point à la malédiction de Lévitique 26 et de Deutéronome 28.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Amos (Livre d') » de la Bibliothèque en ligne classe 9:1-15 en deux parties — « pas de cachette possible pour le pécheur » (9:1-10) et « prospérité et sécurité durables pour les captifs de nouveau rassemblés » (9:11-15) — et désigne l'ensemble comme « destruction du royaume pécheur et reconstruction de la hutte (maison royale) de David ». Il note aussi que, « conformément à la parole de Jéhovah transmise par Amos, des descendants d'Israël et de Juda, captifs à Babylone, retournèrent dans leur pays en 537, afin de le reconstruire ». Lecture commune et exégèse : ce chapitre est l'un des plus cités du livre. Actes 15:16, 17 en fait la base scripturaire de la décision de l'assemblée de Jérusalem d'accueillir les croyants d'origine non juive ; les commentateurs soulignent que Jacques lit le passage dans la version grecque, où « le reste des hommes » remplace « le reste d'Édom ». La promesse de la hutte relevée est rapprochée de 2 Samuel 7:12-16 et d'Isaïe 11:1-10, et sa réalisation est située par le Nouveau Testament dans la royauté du Christ. Le tableau de l'abondance de 9:13 est rapproché de Lévitique 26:5 et de Joël 3:18, où les collines ruissellent de vin doux.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 804 av. n. è.</td><td>La cinquième vision et la promesse finale sont reçues et consignées (Amos 9:1-15)</td></tr>
+<tr><td class="d">722 av. n. è.</td><td>Chute de Samarie : le royaume pécheur disparaît de la surface du sol, la dynastie du Nord est supprimée (2 Rois 17:6, 18)</td></tr>
+<tr><td class="d">607 av. n. è.</td><td>Chute de Jérusalem et fin du trône davidique à Jérusalem ; la « hutte de David » est renversée (2 Rois 25:1-11)</td></tr>
+<tr><td class="d">537 av. n. è.</td><td>Édit de Cyrus : retour des captifs juifs, première étape de la restauration annoncée (Esdras 1:1-4)</td></tr>
+<tr><td class="d">516 av. n. è.</td><td>Achèvement du second temple ; la vie nationale et religieuse est rétablie sous Zorobabel, de la maison de David (Esdras 6:14-16)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Jacques applique Amos 9:11, 12 à l'ouverture de la bonne nouvelle aux nations (Actes 15:13-18)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE RETOUR DE 537 : Esdras 1:1-4 rapporte l'édit de Cyrus autorisant les Juifs à regagner leur pays et à rebâtir le temple ; le cylindre de Cyrus, découvert en 1879 et conservé au British Museum, témoigne de la politique de restauration des sanctuaires des peuples déportés sous ce roi, ce qui donne un cadre historique précis au décret. (2) LA RECONSTRUCTION DU TEMPLE : Aggée 1 et Zekaria 1-8 documentent les travaux entrepris à partir de 520 et leur achèvement en 516 ; Esdras 6:14-16 rapporte l'inauguration. (3) LA RESTAURATION DES VILLES : Néhémie 3 donne la liste des portes et des sections de muraille reconstruites à Jérusalem, avec les familles et les corps de métiers affectés aux travaux, ce qui correspond au thème des « villes dévastées rebâties ». (4) L'ANNEXION DU RÉGIME PROVINCIAL : les papyrus d'Éléphantine, les ostraca de Wadi Dalyeh et les monnaies de Yehoud attestent l'existence d'une province de Juda au sein de l'empire perse, avec une administration locale et une vie religieuse organisée — la situation décrite par les prophètes de la restauration. (5) LA « HUTTE DE DAVID » ET LA ROYAUTÉ : Zorobabel, gouverneur de Juda, est présenté par Aggée 2:20-23 comme le « sceau » choisi par Jéhovah ; la tradition le rattache à la maison de David, ce qui éclaire le vocabulaire de la hutte relevée. (6) LA CITATION DU NOUVEAU TESTAMENT : Actes 15:13-18 est un document du Ier siècle montrant explicitement comment ce passage était interprété — non comme un programme politique, mais comme l'annonce de la faveur divine étendue aux nations. (7) LES PUBLICATIONS : l'article « Amos (Livre d') » rattache la promesse finale au retour de 537 et à la reconstruction, tandis que l'article « Points marquants des livres de Yoël et d'Amos » en relève la portée.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE CARMEL : la chaîne côtière qui domine la baie de Haïfa, longue d'une quarantaine de kilomètres ; ses cavités et ses forêts en faisaient un refuge naturel, d'où son choix dans la liste des cachettes impossibles. (2) LE SCHÉOL ET LE CIEL : les deux extrêmes du monde des morts et du monde céleste, selon la conception hébraïque de l'univers ; leur mention encadre la totalité de l'espace. (3) LA MER : la Méditerranée à l'ouest, fréquentée par les navires phéniciens ; le serpent y est cité comme créature redoutable, ce qui correspond à la faune marine telle qu'elle est décrite dans les Écritures. (4) LA CRÈTE DES PHILISTINS : le texte situe l'origine des Philistins à Crete (Caphtor dans le texte hébreu), ce qui rejoint ce que les sources égyptiennes et l'archéologie de la céramique mycénienne suggèrent de l'installation des « Peuples de la mer » sur la côte levantine vers 1200 av. n. è. (5) KIR DES SYRIENS : Amos avait annoncé en 1:5 l'exil de Damas à Kir et en 9:7 il rappelle que les Syriens eux-mêmes en viennent ; la localisation est débattue mais l'usage constant du nom en montre la cohérence géographique. (6) LE PAYS RESTAURÉ : les hautes terres, le Néguev, la Sheféla et la vallée du Jourdain, soit l'ensemble des régions dont les noms parsèment Esdras, Néhémie et Aggée ; la promesse de replanter s'inscrit donc dans l'espace réel du pays d'Israël. (7) LES VILLES RECONSTRUITES : les fouilles de sites comme Guézer, Lakish, Jéricho ou Hazor montrent des réoccupations partielles à la période perse, documentant la restauration décrite par les prophètes.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE CRIBLE ET LE TRI DU GRAIN : les tamis de vannerie ou de roseau sont attestés par les sources iconographiques égyptiennes et par les vestiges archéologiques ; l'image employée par Amos est celle d'un instrument quotidien destiné à séparer le bon grain des cailloux et des déchets, opération décrite en détail par les traités agraires anciens. (2) LES CACHETS ET LES GRENIERS : les silos et caves à grains découverts sur les sites du fer, ainsi que les installations de pressurage d'huile et de vin, confirment la réalité du monde agricole dont le prophète tire ses comparaisons — crible, vignes, jardins, vin nouveau. (3) L'ORIGINE DES PHILISTINS : les études céramiques et les analyses des sites philistins de la plaine côtière montrent une culture matérielle distincte, avec des affinités égéennes vers 1200-1100 av. n. è., ce qui est cohérent avec la mention du pays de Crete comme point de départ de leur installation. (4) LE CYLINDRE DE CYRUS : ce document cunéiforme décrit la restitution des statues divines et la restauration des sanctuaires des villes de Mésopotamie et d'au-delà du fleuve, politique dans le cadre de laquelle le retour des Juifs de 537 prend tout son sens. (5) LES MONNAIES DE YÉHOUD : les pièces portant le nom de la province perse de Yehoud et les sceaux administratifs découverts en Juda attestent la reconstruction d'un appareil local après l'exil. (6) LA SISMICITÉ ET LES DESTRUCTIONS : la région du Jourdain est un rift actif, ce qui explique le vocabulaire du tremblement utilisé dans le chapitre ; les niveaux de destruction de plusieurs sites du VIIIe siècle au VIIe siècle sont associés par les archéologues à des séismes et à des guerres. (7) PRUDENCE : l'archéologie documente le retour, la reconstruction et la vie matérielle du pays restauré ; l'identification de la « hutte de David » à une réalité spirituelle appartient à la lecture du texte, développée dans les Écritures grecques chrétiennes.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>VISION 5 : LE SEIGNEUR PRÈS DE L'AUTEL — « FRAPPE LE CHAPITEAU » (9:1) → IMPOSSIBLE DE FUIR : SCHÉOL, CIEL, CARMEL, FOND DE LA MER (9:2, 3) → LE DIEU QUI TOUCHE LA TERRE ET BÂTIT LES DEGRÉS DU CIEL (9:5, 6) → ISRAËL N'EST PAS PRIVILÉGIÉ : PHILISTINS DE CRÈTE, SYRIENS DE KIR (9:7) → LE ROYAUME PÉCHEUR DISPARAÎT, LA MAISON DE JACOB N'EST PAS ENTIÈREMENT DÉTRUITE (9:8) → LE CRIBLE : LE PEUPLE SECOUÉ PARMI LES NATIONS, AUCUN GRAIN À TERRE (9:9) → LES PÉCHEURS QUI DISAIENT « LE MALHEUR NE NOUS ATTEINDRA PAS » (9:10) → « JE RELÈVERAI LA HUTTE DE DAVID TOMBÉE » ; LE RESTE D'ÉDOM ET LES NATIONS (9:11, 12) → ABONDANCE RENOUVELÉE : LABOUREUR ET MOISSONNEUR, MONTAGNES DE VIN DOUX (9:13) → VILLES REBÂTIES, VIGNES PLANTÉES, JAMAIS PLUS ARRACHÉS (9:14, 15) → 537 : ÉDIT DE CYRUS → 516 : SECOND TEMPLE (ESDRAS 6) → ACTES 15:16, 17 : L'APPLICATION AUX NATIONS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Amos 9:9, 10 ; Actes 15:16, 17 pour l'application) et le statut « Accomplie (1er accomplissement) ». LA CINQUIÈME VISION : la fiche décrit l'autel et l'ordre donné sans chercher à identifier lequel des autels connus est visé. LES CACHETTES : la fiche présente les quatre refuges mentionnés comme les limites de l'univers de l'époque, sans proposer d'interprétation allégorique de chacun. LE CRIBLE ET LE RESTE : la fiche expose l'image du tri et son lien avec la promesse finale ; elle ne chiffre pas le « reste ». LA HUTTE DE DAVID : la fiche donne le sens du mot sukkah et signale les deux formulations, hébraïque et grecque ; elle ne tranche pas entre les différentes manières de comprendre l'expression. LE VOLET À VENIR : le statut retenu est « Accomplie (1er accomplissement) », la fiche ne détaille donc pas d'accomplissement ultérieur, sinon l'application citée par Actes 15. DATATION : la chronologie suit celle des publications. CE QUE CETTE FICHE NE DIT PAS : elle clôt le livre d'Amos et ne traite pas des autres prophètes du registre ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cinquième vision et promesse finale : le crible et la hutte de David relevée (9:1-15)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : le royaume pécheur cesse d'exister (2 Rois 17:6, 18)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Jérusalem : fin du trône davidique à Jérusalem (2 Rois 25:1-11)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus ; le cylindre de Cyrus documente la politique de restauration des sanctuaires</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour des premiers captifs juifs et début de la reconstruction (Esdras 1:1-4)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Travaux puis inauguration du second temple sous Zorobabel (Aggée 1 ; Esdras 6:14-16)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">520-516 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'assemblée de Jérusalem cite Amos 9:11, 12 (Actes 15:13-18)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/15">Bible — Actes 15 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/15">Bible — Romains 15 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/48">Bible — Ézéchiel 48 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/48</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/8/3">Bible — Ruth 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/8/3</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251">Amos (Livre d') — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AM441 — « Je relèverai la hutte de David tombée » : le crible qui ne perd aucun grain et la vigne replantée pour toujours</span><span>Catégorie AM2</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie AM2</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>AM436 — « Malheur à ceux qui sont à l'aise en Sion » : les lits d'ivoire, la coupe de vin et la grande maison réduite en ruines</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le malheur est prononcé sur les notables de Sion et de Samarie (6:1-14)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="154.3" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="154.3" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jéroboam II règne : extension jusqu'à l'entrée de Hamath ; Lo-Debar et Qarnaïm conquises (2 Rois 14:25-28)</text>
+<text x="154.3" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">786-746 av. n. è.</text>
+<circle cx="248.6" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="248.6" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les ostraca de Samarie enregistrent les livraisons d'huile et de vin au palais royal</text>
+<text x="248.6" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">778-770 av. n. è.</text>
+<circle cx="342.9" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="342.9" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Offensive assyrienne de Tiglath-Pileser III ; Kalné tombe en 738</text>
+<text x="342.9" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">745-738 av. n. è.</text>
+<circle cx="437.1" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="437.1" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Damas est prise, la Galilée déportée (2 Rois 15:29)</text>
+<text x="437.1" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732 av. n. è.</text>
+<circle cx="531.4" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="531.4" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : les notables partent à la tête des captifs (2 Rois 17:6)</text>
+<text x="531.4" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="625.7" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="625.7" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sennachérib assiège Jérusalem (2 Chroniques 32:1-22)</text>
+<text x="625.7" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise et incendie de Jérusalem (2 Rois 25:1-11)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+</svg>
+<h4>AM437 — Les trois visions du prophète : les sauterelles dévorantes, le feu de l'abîme et le fil à plomb posé au milieu d'Israël</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les visions des sauterelles et du feu ; deux intercessions, deux renoncements (7:1-6)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La vision du fil à plomb : « je ne passerai plus sur eux » (7:7-9)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Jéroboam II après un long règne (2 Rois 14:23-29)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 803 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assassinat de Zekaria par Shallum : la maison de Jéroboam tombe par l'épée (2 Rois 15:8-10)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 802 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les sanctuaires du Nord cessent leur activité sous les coups des campagnes assyriennes</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">752-732 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie ; la mesure achevée (2 Rois 17:6)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+</svg>
+<h4>AM438 — Amos devant Amatsia : « je n'étais pas prophète… Jéhovah m'a pris de derrière le petit bétail »</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amos prophétise à Béthel ; Amatsia le dénonce au roi et lui ordonne de partir (7:10-13)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réponse d'Amos : berger et pinceur de figues, appelé par Jéhovah ; sentence sur la maison du prêtre (7:14-17)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assassinat de Zekaria : la maison de Jéroboam tombe par l'épée (2 Rois 15:8-10)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 802 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La Galilée et le nord du pays passent sous contrôle assyrien (2 Rois 15:29)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">732 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie et déportation : l'exil annoncé à Béthel (2 Rois 17:6)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Josias profane l'autel de Béthel et fait périr les prêtres des hauts lieux (2 Rois 23:15-20)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 628 av. n. è.</text>
+</svg>
+<h4>AM439 — La corbeille de fruits d'été : « la fin est venue » ; le soleil se couchera en plein midi et les chants du palais deviendront des gémissements</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatrième vision : la corbeille de fruits d'été ; la fin annoncée (8:1-3)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réquisitoire contre les marchands fraudeurs ; serment et deuil cosmique (8:4-10)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Éclipse solaire consignée dans les listes assyriennes : repère astronomique de la période</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">763 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séisme majeur dans la région, dont l'archéologie relève les traces (Amos 1:1)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 760 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : la fin annoncée pour le royaume du Nord (2 Rois 17:6)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Jérusalem : le deuil national atteint le royaume du Sud (2 Rois 25:8-11)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+</svg>
+<h4>AM440 — « Non pas la disette du pain, mais la faim d'entendre les paroles de Jéhovah » : les errants d'une mer à l'autre</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Annonce de la famine de la parole ; les trois serments dénoncés (8:11-14)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction des sanctuaires du Nord et déportation : la parole se retire du royaume (2 Rois 17:6)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Exil et privation de temple ; recherche de la parole auprès des prophètes (Ézéchiel 20:1-3)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe siècle av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lecture publique et enseignement de la Loi après le retour (Néhémie 8)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Longue interruption de la prophétie reconnue ; attente de sa reprise</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IVe-Ier siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise de la parole avec Jean le Baptiseur et Jésus (Matthieu 11:9-13)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>AM441 — « Je relèverai la hutte de David tombée » : le crible qui ne perd aucun grain et la vigne replantée pour toujours</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cinquième vision et promesse finale : le crible et la hutte de David relevée (9:1-15)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 804 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : le royaume pécheur cesse d'exister (2 Rois 17:6, 18)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Jérusalem : fin du trône davidique à Jérusalem (2 Rois 25:1-11)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus ; le cylindre de Cyrus documente la politique de restauration des sanctuaires</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour des premiers captifs juifs et début de la reconstruction (Esdras 1:1-4)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Travaux puis inauguration du second temple sous Zorobabel (Aggée 1 ; Esdras 6:14-16)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">520-516 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'assemblée de Jérusalem cite Amos 9:11, 12 (Actes 15:13-18)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

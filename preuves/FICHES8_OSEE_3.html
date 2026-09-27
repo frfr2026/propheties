@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES OS3 — Osée 11 et 14, puis Joël 1 — « d'Égypte j'ai appelé mon fils », le retour de l'ouest, la rosée, et l'invasion des sauterelles</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_OS420_appele.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES OS3</h1>
+<h2>Osée 11 et 14, puis Joël 1 — « d'Égypte j'ai appelé mon fils », le retour de l'ouest, la rosée, et l'invasion des sauterelles</h2>
+<p class="intro">Troisième vague du cycle Osée, prolongée par l'ouverture du livre de Joël : l'amour du père qui rappelle l'enfance d'Éphraïm — « d'Égypte j'ai appelé mon fils », texte que Matthieu applique à l'enfant Jésus —, le verdict de l'Assyrie suivi de l'aveu déchirant « comment pourrais-je t'abandonner ? » et de la promesse « ils arriveront en tremblant, d'Égypte comme un oiseau, d'Assyrie comme une colombe » ; puis la dernière page d'Osée, « je guérirai leur infidélité », la rosée, le lis et le cyprès toujours vert ; et enfin la plaie de sauterelles de Joël 1, qui dépouille le pays jusqu'à retrancher l'offrande de grain de la maison de Jéhovah.</p>
+<div class="chiffres">
+<div><b>4</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>22</b><span>sources</span></div>
+<div><b>4</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#OS420">OS420</a>
+<a href="#OS421">OS421</a>
+<a href="#OS422">OS422</a>
+<a href="#JL423">JL423</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#OS420"><img src="images/prophe_OS420_appele.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE OS420</div>
+<h3><a href="#OS420">« D'Égypte j'ai appelé mon fils » : l'enfant rappelé hors d'Égypte, d'Osée 11:1 à Matthieu 2:14, 15</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#OS421"><img src="images/prophe_OS421_retour.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE OS421</div>
+<h3><a href="#OS421">« L'Assyrien sera son roi » et « je ferai revenir mes fils de l'ouest » : la captivité et le retour annoncés</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#OS422"><img src="images/prophe_OS422_rosee.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE OS422</div>
+<h3><a href="#OS422">« Je guérirai leur infidélité » : la rosée, le lis et le cyprès toujours vert — la dernière page d'Osée</a></h3>
+<div class="meta">Accomplie / À venir</div></div></div>
+<div class="carte">
+<a class="img" href="#JL423"><img src="images/prophe_JL423_sauterelles.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JL423</div>
+<h3><a href="#JL423">L'invasion des sauterelles et les offrandes retranchées : « le jour de Jéhovah est proche » (Joël 1)</a></h3>
+<div class="meta">Accomplie (1er accomplissement)</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="OS420">
+<div class="visuel"><img src="images/prophe_OS420_appele.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE OS420 · CATÉGORIE OS3</div>
+<h3>« D'Égypte j'ai appelé mon fils » : l'enfant rappelé hors d'Égypte, d'Osée 11:1 à Matthieu 2:14, 15</h3>
+<div class="ref">Osée 11:1</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">quand israël était un enfant alors je l'ai aimé et d'Égypte j'ai appelé mon fils c'est moi qui ai appris à éphraïm à marcher je les ai pris dans mes bras j'étais pour eux comme celui qui soulève un nourrisson contre sa joue ils ont sacrifié aux baals il ne retournera pas au pays d'Égypte l'assyrien sera son roi comment pourrais-je t'abandonner éphraïm mon cœur s'est retourné en moi ses fils arriveront en tremblant de l'ouest d'Égypte comme un oiseau et d'Assyrie comme une colombe (matthieu 2:14, 15 ; exode 4:22, 23)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche OS420</div><audio controls preload="none" src="audio/fiche_OS420_appele.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_OS420_appele.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Osée 11:1</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>quand israël était un enfant alors je l'ai aimé et d'Égypte j'ai appelé mon fils c'est moi qui ai appris à éphraïm à marcher je les ai pris dans mes bras j'étais pour eux comme celui qui soulève un nourrisson contre sa joue ils ont sacrifié aux baals il ne retournera pas au pays d'Égypte l'assyrien sera son roi comment pourrais-je t'abandonner éphraïm mon cœur s'est retourné en moi ses fils arriveront en tremblant de l'ouest d'Égypte comme un oiseau et d'Assyrie comme une colombe (matthieu 2:14, 15 ; exode 4:22, 23)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Osée — P420 (11:1 : d'Égypte j'ai appelé mon fils) ; Matthieu 2:14, 15 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>QUAND ISRAËL… ÉTAIT UN ENFANT… ALORS JE L'AI AIMÉ… ET D'ÉGYPTE… J'AI APPELÉ… MON FILS… PLUS JE LES APPELLAIS… PLUS ILS S'ÉLOIGNAIENT… DE MOI… ILS ONT SACRIFIÉ… AUX BAALS… C'EST MOI QUI AI APPRIS À MARCHER… À ÉPHRAÏM… JE LES AI PRIS DANS MES BRAS… J'ÉTAIS POUR EUX… COMME CELUI QUI SOULÈVE… UN NOURRISSON CONTRE SA JOUE… JE ME PENCHAIS VERS LUI… POUR LUI DONNER À MANGER… MON PEUPLE EST PENDU… À SON INFIDÉLITÉ… COMMENT POURRAIS-JE T'ABANDONNER… ÉPHRAÏM… MON CŒUR S'EST RETOURNÉ… EN MOI… JE N'EXÉCUTERAI PAS… L'ARDEUR DE MA COLÈRE… CAR JE SUIS DIEU… ET NON PAS UN HOMME… — MATTHIEU 2… « LÈVE-TOI… PRENDS L'ENFANT ET SA MÈRE… FUIS EN ÉGYPTE… »… JOSEPH SE LEVA… PRIT L'ENFANT ET SA MÈRE DE NUIT… ET SE RETIRA EN ÉGYPTE… IL RESTA LÀ JUSQU'À LA MORT D'HÉRODE… POUR QUE S'ACCOMPLISSE… CE QUI A ÉTÉ DIT PAR JÉHOVAH… PAR L'INTERMÉDIAIRE DU PROPHÈTE… « D'ÉGYPTE J'AI APPELÉ MON FILS »… « LÈVE-TOI… PRENDS L'ENFANT ET SA MÈRE… ET VA AU PAYS D'ISRAËL »… — KI… CAR… NAʿAR… ENFANT… JEUNE GARÇON… YISRAʾEL… ISRAËL… WA-ʾOHAVEHU… ET JE L'AI AIMÉ… MI-MITSRAYIM… DEPUIS L'ÉGYPTE… QARATI… J'AI APPELÉ… LI-VNI… MON FILS… BEN… FILS… BEKHOR… PREMIER-NÉ… YATOM… L'ORPHELIN… — TEXTE MASSORÉTIQUE… SEPTANTE… CITATION… HÉRODE… BETHLÉEM… ÉGYPTE… NAZARETH… »</li>
+<li>LES TROIS JUMEAUX — Exode 4:22, 23 : « Israël est mon fils, mon premier-né », dit Jéhovah à Pharaon, et « laisse partir mon fils » — le mot d'Osée 11:1 est l'écho exact de cette déclaration fondatrice, faite au pays même où l'enfant Jésus trouvera refuge. Deutéronome 8:5 : « comme un homme discipline son fils, Jéhovah ton Dieu te discipline » — le rapport père-fils est le cadre de toute la relation d'alliance, que le prophète reprend en le retournant. Jérémie 31:9 : « Éphraïm est mon premier-né » — un siècle plus tard, le même vocabulaire sert à annoncer le retour des exilés du Nord : « ils viendront avec des larmes ».</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 11 d'Osée ouvre la dernière section du livre et change de registre : le procureur des chapitres 4 à 10 cède la place à un père qui parle de son enfant. Le verset 1 résume toute l'histoire nationale en une ligne — « quand Israël était un enfant, alors je l'ai aimé, et d'Égypte j'ai appelé mon fils » —, et les versets suivants déploient la mémoire de cette affection : c'est moi qui ai appris à marcher à Éphraïm, qui les ai portés dans mes bras, qui me penchais vers lui pour le nourrir. Cette déclaration n'est pas isolée : elle reprend les mots adressés à Pharaon au début de l'Exode, « Israël est mon fils, mon premier-né », et le vocabulaire de la filiation adoptée qui traverse le Deutéronome et les prophètes. Osée proclame ces lignes au VIIIe siècle avant notre ère, alors que le royaume du Nord, en pleine prospérité sous Jéroboam II, a oublié le sens de sa propre sortie d'Égypte et cherche appui tantôt auprès de l'Assyrie, tantôt auprès de l'Égypte. Le contraste est d'autant plus violent : la nation appelée « mon fils » et tirée du pays de l'esclavage s'est mise à sacrifier aux Baals. C'est ce verset 1, et lui seul, que l'évangéliste Matthieu reprend pour l'appliquer à l'enfant Jésus, ramené d'Égypte où Joseph l'avait emmené de nuit.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois éléments. (1) LE SENS HÉBREU : le verset dit littéralement « car un enfant (naʿar) était Israël, et je l'ai aimé, et depuis l'Égypte j'ai appelé (qarati) mon fils (li-vni) ». Le verbe qaraʾ signifie « appeler, convoquer, désigner par un nom » : il couvre à la fois l'appel hors d'Égypte et la déclaration d'appartenance. Le « fils » est ici la nation tout entière — Israël collectif —, comme le confirment Exode 4:22 et Jérémie 31:9 ; le singulier (mon fils) pour un sujet collectif est un procédé courant dans les prophètes, qui personnifient le peuple en un seul être. (2) LA CITATION DE MATTHIEU : Matthieu 2:15 cite la seconde moitié du verset, et note un détail de texte remarquable — le texte hébreu porte le singulier « mon fils », tandis que la version grecque des Septante rendait « ses enfants » au pluriel ; la citation de Matthieu suit le singulier, donc la teneur hébraïque, et non la forme grecque courante. (3) LE MOMENT DE L'ACCOMPLISSEMENT : chez Osée, l'appel hors d'Égypte désigne la sortie d'Égypte ; chez Matthieu, la formule accompagne le retour de l'enfant — le même mouvement est reproduit : Dieu fait sortir son fils d'Égypte. L'évangéliste ne cite pas un détail isolé, il lit l'épisode comme la reprise, dans la vie du Messie, de l'histoire du fils collectif : l'Égypte, la sortie, puis la maison.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Osée (Livre d') » de la Bibliothèque en ligne déclare que le livre « contient aussi une prophétie messianique » et que « Matthieu appliqua les paroles d'Osée 11:1 (“d'Égypte j'ai appelé mon fils”) à l'enfant Jésus qui fut emmené en Égypte, puis ramené par la suite en Palestine » ; l'« Étude perspicace » tient le même langage en renvoyant à Matthieu 2:14, 15, et l'article « Égypte, Égyptien » rappelle que c'est « dans cette Égypte romaine que Joseph, Marie et leur petit enfant Jésus s'enfuirent pour échapper au décret criminel d'Hérode », en comparant le texte à Exode 4:22, 23. Lecture commune et exégèse : les commentateurs relèvent d'abord que ces mots visaient la nation ; ils parlent alors d'une prophétie « typologique » — un épisode de l'histoire d'Israël qui se reproduit dans la vie de Jésus — et rapprochent Matthieu 2:15 du reste des citations d'accomplissement du chapitre 2. Le même passage soulève la question, discutée, du degré de prédiction à accorder au texte d'origine : certains commentaires le lisent comme une simple application symbolique, d'autres soulignent que la formule de Matthieu inscrit délibérément l'enfance de Jésus dans le schéma de l'Exode. La divergence entre le texte massorétique et les Septante, notée plus haut, est un point d'appui de cette discussion.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe siècle av. n. è.</td><td>Osée rappelle le fait fondateur : Israël, appelé « mon fils », a été tiré d'Égypte (Osée 11:1 ; Exode 4:22, 23)</td></tr>
+<tr><td class="d">vers 2 av. n. è.</td><td>Naissance de Jésus à Bethléem, sous le règne d'Hérode le Grand (Matthieu 2:1)</td></tr>
+<tr><td class="d">Peu après</td><td>Avertissement de l'ange en songe et départ de nuit de Joseph, de Marie et de l'enfant pour l'Égypte (Matthieu 2:13, 14)</td></tr>
+<tr><td class="d">4 av. n. è. ou 1 av. n. è., selon la datation retenue de la mort d'Hérode</td><td>Mort du roi ; l'ange paraît de nouveau à Joseph et ordonne le retour : « va au pays d'Israël » (Matthieu 2:19, 20)</td></tr>
+<tr><td class="d">Peu après</td><td>Retour d'Égypte et installation à Nazareth — « afin que s'accomplisse ce qui a été dit par Jéhovah par l'intermédiaire du prophète : d'Égypte j'ai appelé mon fils » (Matthieu 2:15, 23)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>L'évangile de Matthieu applique expressément la parole d'Osée 11:1 à Jésus, le Fils appelé hors d'Égypte (Matthieu 2:15)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) EXODE 4:22, 23 : la déclaration faite à Pharaon — « Israël est mon fils, mon premier-né… laisse partir mon fils » —, formule dont Osée 11:1 est la reprise littérale et qui rattache la filiation d'Israël à la sortie d'Égypte. (2) L'EXODE CÉLÉBRÉ : Deutéronome 6:20-23 et Josué 24:2-7 rapportent que chaque génération devait raconter la sortie d'Égypte ; la fête de Pâque en fixait la mémoire annuelle, avec l'agneau et les pains sans levain. (3) HÉRODE LE GRAND : les Antiquités judaïques de Flavius Josèphe décrivent sa cruauté familiale et la vague de violences de la fin de son règne ; un article de la Bibliothèque en ligne (« Hérode le Grand, un meurtrier sans frein ») rappelle ces meurtres et discute la date de sa mort en 4 avant notre ère ou en l'an 1 avant notre ère, selon le comput retenu des trente-sept ans de règne. (4) L'ÉGYPTE ROMAINE : depuis 30 avant notre ère, l'Égypte était une province romaine administrée pour le compte de l'empereur, donc hors de la juridiction d'Hérode — un refuge politiquement logique, ce que le texte suppose sans l'expliquer. (5) LES ROUTES : Isaïe 19:23 parle d'une « grande route » d'Assyrie vers l'Égypte passant par la Palestine ; la bande côtière reliait la Judée au delta du Nil sans quitter le monde romain.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) BETHLÉEM DE JUDA : à environ neuf kilomètres au sud de Jérusalem, sur la crête des monts de Judée, à près de 780 mètres d'altitude ; c'est de là que part la fuite nocturne. (2) LA ROUTE DU SUD : de Bethléem vers Hébron, puis la descente vers Beer-Shéba et la plaine côtière — Gaza, la plaine philistine — jusqu'à l'oued d'Égypte (le torrent de nacres, l'actuel wadi el-Arish), qui marque la frontière historique du pays : environ 350 à 400 kilomètres, soit deux à trois semaines de marche avec un jeune enfant. (3) LA FRONTIÈRE DE L'ÉGYPTE : les sources antiques situent la première place égyptienne à Rhinocorura, sur la route de Gaza vers Péluse, puis Péluse (Tell el-Farama) à la branche orientale du Nil ; la Bible connaît cette limite comme le « torrent d'Égypte » (Nombres 34:5). (4) LE DELTA DU NIL : la région de Gossen, le pays ancien du séjour des Hébreux, zone de pâturages et de villes de réserve ; c'est là, selon toute vraisemblance, que la famille trouva asile. (5) LE VOISINAGE D'UN PAYS HABITÉ : l'Égypte comptait une importante population juive, surtout dans le delta et à Alexandrie, ce qui rendait le séjour possible et le retour prévisible. (6) LA VOIE DU NORD : au retour, l'itinéraire contre les caravanes remontait vers la Galilée, « au pays d'Israël », par la plaine de Yizréel — le texte précise que Joseph craignit d'y passer par la Judée, gouvernée par Archélaüs.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES PAPYRUS D'ÉLÉPHANTINE : des documents araméens du Ve siècle avant notre ère, découverts sur une île du Nil, attestent une communauté juive organisée, avec son propre temple — preuve matérielle de l'implantation juive en Égypte bien avant l'époque romaine. (2) LE TEMPLE D'ONIAS : au IIe siècle avant notre ère, le prêtre Onias IV établit un sanctuaire juif à Léontopolis, dans le delta ; Flavius Josèphe en parle et l'identification du site est proposée avec Tell el-Yahoudieh, « le tertre des Juifs ». (3) LA SEPTANTE : la traduction grecque des Écritures hébraïques fut entreprise à Alexandrie ; c'est ce qui explique que Matthieu cite Osée selon une forme grecque, et que sa citation comporte le singulier « mon fils » là où la Septante d'Osée 11:1 porte le pluriel — un indice que l'évangéliste retraduisait la teneur hébraïque. (4) L'ASTRONOMIE ET LA CHRONOLOGIE : la mort d'Hérode est située en 4 avant notre ère d'après Josèphe, qui mentionne une éclipse de lune et une fête juive ; d'autres calculs, appuyés sur la durée des règnes de ses fils, placent l'événement en l'an 1 avant notre ère — la fiche signale ce débat sans le trancher. (5) L'ABSENCE DE VESTIGE DIRECT : la fuite et le séjour ne sont attestés par aucune trace matérielle ; l'archéologie documente le contexte — voies, frontières, communautés juives — et non l'épisode lui-même. (6) LE TEXTE : les manuscrits d'Osée retrouvés à Qoumrân confirment la teneur du verset 1 telle que la connaît le texte massorétique, singulier compris.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« QUAND ISRAËL ÉTAIT UN ENFANT… JE L'AI AIMÉ » (OSÉE 11:1) → « ISRAËL EST MON FILS, MON PREMIER-NÉ » (EXODE 4:22, 23) → LA SORTIE D'ÉGYPTE : LE FILS APPELÉ HORS D'ÉGYPTE → « J'AI APPRIS À MARCHER À ÉPHRAÏM… JE ME PENCHAIS VERS LUI » (11:3, 4) → LA RUPTURE : « ILS ONT SACRIFIÉ AUX BAALS » (11:2) → L'ORDRE EN SONGE : FUITE NOCTURNE DE BETHLÉEM VERS L'ÉGYPTE (MATTHIEU 2:13, 14) → LA MORT D'HÉRODE : « VA AU PAYS D'ISRAËL » (MATTHIEU 2:19-21) → « D'ÉGYPTE J'AI APPELÉ MON FILS » (MATTHIEU 2:15) — LE FILS VRAI REPREND L'HISTOIRE DU FILS COLLECTIF</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec la référence du registre (Matthieu 2:14, 15), sans ajouter de raisonnement doctrinal. PREMIER SENS : le verset d'Osée 11:1 s'applique d'abord à la nation d'Israël, appelée « mon fils » ; la fiche le dit explicitement, comme le disent les publications et les commentaires. GENRE DE LA CITATION : la fiche présente la lecture de Matthieu comme une application à l'enfant Jésus et signale que les commentateurs discutent le degré de prédiction du texte d'origine ; elle ne tranche pas ce débat exégétique. DATATION : deux dates sont données pour la mort d'Hérode (4 avant notre ère ou 1 avant notre ère) parce que deux computs existent ; la fiche ne fixe pas l'année du retour. ITINÉRAIRE : les étapes proposées suivent les routes connues et non un relevé du texte, qui ne nomme aucune localité du trajet. ARCHÉOLOGIE : aucune découverte ne documente la fuite ; les éléments archéologiques cités éclairent le contexte égyptien et romain. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des autres versets du chapitre 11 d'Osée — objet de la fiche suivante —, ni des apocryphes qui développent l'épisode de l'enfance, ni des applications doctrinales que des Églises tirent de ce passage ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Osée proclame : « d'Égypte j'ai appelé mon fils », en écho à Exode 4:22, 23</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe siècle av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Naissance de Jésus à Bethléem, pendant le règne d'Hérode le Grand</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">vers 2 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Départ de nuit pour l'Égypte ; séjour hors de la juridiction d'Hérode</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Peu après</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort d'Hérode ; l'ange ordonne le retour : « va au pays d'Israël »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">4 ou 1 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour d'Égypte, accomplissement cité par Matthieu 2:15, puis installation à Nazareth</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Peu après</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/2">Bible — Matthieu 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/4">Bible — Exode 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/13">Bible — Exode 13 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/8">Bible — Romains 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/8</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/33/6">Bible — Michée 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/33/6</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1954042">Hérode le Grand, un meurtrier sans frein — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1954042</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche OS420 — « D'Égypte j'ai appelé mon fils » : l'enfant rappelé hors d'Égypte, d'Osée 11:1 à Matthieu 2:14, 15</span><span>Catégorie OS3</span></div></div>
+</article>
+<article class="fiche" id="OS421">
+<div class="visuel"><img src="images/prophe_OS421_retour.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE OS421 · CATÉGORIE OS3</div>
+<h3>« L'Assyrien sera son roi » et « je ferai revenir mes fils de l'ouest » : la captivité et le retour annoncés</h3>
+<div class="ref">Osée 11:5-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">il ne retournera pas au pays d'Égypte mais l'Assyrien sera son roi parce qu'ils ont refusé de revenir vers moi l'épée fondra sur leurs villes et dévorera leurs barres de portes mon peuple est pendu à son infidélité comment pourrais-je t'abandonner éphraïm te livrerais-je israël mon cœur s'est retourné en moi toutes mes compassions se sont embrasées je ne donnerai pas cours à l'ardeur de ma colère je suis Dieu et non pas un homme le Saint au milieu de toi ils marcheront derrière jéhovah il rugira comme un lion ses fils arriveront en tremblant de l'ouest ils viendront d'Égypte comme un oiseau et d'Assyrie comme une colombe je les ferai habiter dans leurs maisons (2 rois 17:6 ; osée 11:10, 11 ; 722 av. n. è.)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche OS421</div><audio controls preload="none" src="audio/fiche_OS421_retour.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_OS421_retour.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Osée 11:5-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>il ne retournera pas au pays d'Égypte mais l'Assyrien sera son roi parce qu'ils ont refusé de revenir vers moi l'épée fondra sur leurs villes et dévorera leurs barres de portes mon peuple est pendu à son infidélité comment pourrais-je t'abandonner éphraïm te livrerais-je israël mon cœur s'est retourné en moi toutes mes compassions se sont embrasées je ne donnerai pas cours à l'ardeur de ma colère je suis Dieu et non pas un homme le Saint au milieu de toi ils marcheront derrière jéhovah il rugira comme un lion ses fils arriveront en tremblant de l'ouest ils viendront d'Égypte comme un oiseau et d'Assyrie comme une colombe je les ferai habiter dans leurs maisons (2 rois 17:6 ; osée 11:10, 11 ; 722 av. n. è.)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Osée — P421 (11:5-11 : ils retourneront au pays d'Assyrie ; je ferai revenir mes fils de l'ouest) ; 2 Rois 17:6 ; Osée 11:10, 11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>IL NE RETOURNERA PAS… AU PAYS D'ÉGYPTE… MAIS L'ASSYRIEN… SERA SON ROI… PARCE QU'ILS ONT REFUSÉ… DE REVENIR VERS MOI… L'ÉPÉE FONDRA… SUR SES VILLES… ELLE DÉVORERA… LES BARRES DE LEURS PORTES… MON PEUPLE… EST PENDU… À SON INFIDÉLITÉ… ON L'APPELLE VERS EN HAUT… MAIS AUCUN… NE SE LÈVE… COMMENT POURRAIS-JE… T'ABANDONNER… ÉPHRAÏM… TE LIVRERAIS-JE… ISRAËL… COMMENT POURRAIS-JE… TE RENDRE SEMBLABLE… À ADMA… TE METTRE… COMME TSEBOÏM… MON CŒUR… S'EST RETOURNÉ… EN MOI… TOUTES MES COMPASSIONS… SE SONT EMBRASÉES… JE NE DONNERAI PAS COURS… À L'ARDEUR DE MA COLÈRE… JE NE DÉTRUIRAI PAS… DE NOUVEAU ÉPHRAÏM… CAR JE SUIS DIEU… ET NON PAS UN HOMME… LE SAINT AU MILIEU DE TOI… ILS MARCHERONT… DERRIÈRE JÉHOVAH… IL RUGIRA COMME UN LION… QUAND IL RUGIRA… SES FILS ARRIVERONT… EN TREMBLANT DE L'OUEST… ILS ARRIVERONT D'ÉGYPTE… COMME UN OISEAU… ET D'ASSYRIE… COMME UNE COLOMBE… JE LES FERAI HABITER… DANS LEURS MAISONS… — ʿAMMI… MON PEUPLE… TALUY… PENDU ATTACHÉ… KEFIR… JEUNE LION… ARYEH… LION… MI-YAM… DEPUIS LA MER… L'OCCIDENT… MITSRAYIM… ÉGYPTE… ASHSHUR… ASSYRIE… ʾEKH… COMMENT… NIKHMERU… SE SONT EMBRASÉES… ḤALAH… ḤAVOR… GOZAN… MÈDES… — 722… SAMARIE… SARGON II… DÉPORTATION… RETOUR… 537… 2 ROIS 17:6… »</li>
+<li>LES TROIS JUMEAUX — 2 Rois 17:6 : « la neuvième année d'Osée, le roi d'Assyrie s'empara de Samarie et il déporta Israël à Halah et à Habor, sur le fleuve Gozan, et dans les villes des Mèdes » — le récit qui donne sa date à la sentence d'Osée 11:5. Ésaïe 11:11 : « Jéhovah étendra de nouveau sa main pour racheter le reste de son peuple… d'Assyrie, d'Égypte… et des îles de la mer » — la promesse du rassemblement des exilés, du Nord comme du Sud, que reprend Osée 11:11. Nahoum 1:12 : « même s'ils sont au complet et nombreux, ils seront fauchés » — l'autre prophète du Nord disparu, dont Ninive, la capitale de ceux qui ont déporté Éphraïm, connaîtra le même sort.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les versets 5 à 11 forment le cœur du chapitre : après la mémoire de l'enfance (11:1-4), la parole passe au verdict, puis bascule dans une détresse divine qui étonne. Le verset 5 énonce la sentence : « il ne retournera pas au pays d'Égypte, mais l'Assyrien sera son roi » — le peuple que Dieu avait tiré d'Égypte ne remontera pas vers son ancien sauveur, il servira l'empire du nord. Le verset 6 annonce l'épée dans les villes, le 7 décrit un peuple « pendu à son infidélité ». Puis viennent deux versets sans équivalent dans la littérature prophétique : « comment pourrais-je t'abandonner, Éphraïm ?… mon cœur s'est retourné en moi, toutes mes compassions se sont embrasées » ; Dieu refuse d'exécuter la destruction complète et donne sa raison : « je suis Dieu et non pas un homme ». La conclusion ouvre l'avenir : un rugissement, et des fils qui accourent, « de l'ouest », d'Égypte, d'Assyrie, comme des oiseaux, pour habiter de nouveau leurs maisons. Historiquement, le texte se situe dans les dernières décennies du royaume du Nord : Menahem avait payé tribut à Tiglath-Pileser III, puis Osée, dernier roi, avait cherché l'appui de l'Égypte avant d'être pris.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) « IL NE RETOURNERA PAS EN ÉGYPTE » : la phrase veut dire que le peuple ne reviendra pas à son ancienne servitude ni n'échappera par l'Égypte, comme il le voudrait ; le chapitre suivant le dit en clair, « l'Assyrie… ne nous sauvera pas » (14:3). L'Égypte fonctionne ici comme un symbole de refuge décevant ; plusieurs prophètes l'emploient ainsi (Osée 7:11, 16 ; 8:13 ; 9:3, 6). (2) LE NOM : « l'Assyrien sera son roi » — cette formulation prépare la fin du livre : privé de roi légitime, le Nord aura pour souverain un monarque étranger. Les listes de déportation de 2 Rois 17:6 (Halah, Habor, Gozan, villes des Mèdes) donnent le cadre géographique de cette royauté subie. (3) LE CŒUR RETOURNÉ : l'expression « mon cœur s'est retourné en moi » (nehefakh libbi ʿalay) appartient au vocabulaire de l'émotion violente ; elle est suivie d'un argument théologique décisif — « je suis Dieu et non pas un homme » — : ce n'est pas la faiblesse qui arrête la colère, mais la sainteté et la fidélité. Le nom d'Adma et de Tseboïm évoque les cités détruites avec Sodome et Gomorrhe (Deutéronome 29:23). (4) LE RETOUR : « ses fils arriveront en tremblant de l'ouest » — l'image de l'oiseau et de la colombe reprend celle d'Osée 7:11, où Éphraïm était une « colombe naïve » qui battait des ailes vers l'Égypte et vers l'Assyrie ; la même image est retournée en promesse : ceux qui appelaient l'étranger reviennent vers leur Dieu. Le but de tout le mouvement est donné au dernier mot : « je les ferai habiter dans leurs maisons ».</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Égypte, Égyptien » de la Bibliothèque en ligne, dans sa partie consacrée à la domination perse, indique que « bien que de nombreux Juifs aient sans doute quitté l'Égypte pour regagner leur pays », en renvoyant entre autres à Osée 11:11 — la parole est donc rapportée à un retour réel des exilés vers le pays, dans le prolongement d'Ésaïe 11:11-16. Le registre, de son côté, rattache l'accomplissement de la sentence à 2 Rois 17:6 — la chute de Samarie et la déportation de 722 — et la promesse à Osée 11:10, 11. Lecture commune et exégèse : les commentateurs lisent la paire 11:5-7 comme l'annonce de la domination assyrienne et les versets 8-11 comme le sommet du livre, souvent appelé « l'accès de compassion » ; ils relèvent que le rugissement de Jéhovah rassemblant son peuple reprend le motif du lion du chapitre 5, mais retourné : le lion qui déchirait rappelle ses petits. La question du retour des exilés du Nord est discutée : le récit de 2 Rois 17 et l'invitation d'Ézéchias en 2 Chroniques 30 montrent qu'une partie de la population était demeurée dans le pays et qu'un rassemblement, au moins partiel, eut lieu ; la pleine application de la promesse est rapportée par la lecture croyante au rassemblement final des enfants de Dieu.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">734-732 av. n. è.</td><td>Campagnes de Tiglath-Pileser III : Menahem de Samarie paie tribut, la Galilée et la Transjordanie sont annexées — la poussée assyrienne annoncée se réalise</td></tr>
+<tr><td class="d">vers 725-722 av. n. è.</td><td>Osée, dernier roi du Nord, cherche l'appui de l'Égypte : la prophétie l'excluait, c'est l'Assyrie qui domine</td></tr>
+<tr><td class="d">722 av. n. è.</td><td>Chute de Samarie ; déportation à Halah, Habor, Gozan et dans les villes des Mèdes — « l'Assyrien sera son roi » (2 Rois 17:6)</td></tr>
+<tr><td class="d">après 722 av. n. è.</td><td>Le pays demeure occupé par des populations mêlées ; un prêtre est renvoyé à Béthel pour enseigner l'usage du pays (2 Rois 17:27, 28)</td></tr>
+<tr><td class="d">Époque perse et après</td><td>Des exilés et leurs descendants reviennent — d'Assyrie, de Babylonie, mais aussi d'Égypte — répondant à la promesse « je les ferai habiter dans leurs maisons » (Osée 11:11 ; Ésaïe 11:11-16)</td></tr>
+<tr><td class="d">Lecture croyante</td><td>Le rassemblement des « fils » de tous les horizons est rapporté à l'œuvre messianique de rassemblement des enfants de Dieu (cf. Jean 11:52)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) 2 ROIS 17:1-6 : le règne d'Osée, sa soumission à l'Assyrie, sa démarche vers le « roi d'Égypte » et le siège de trois ans qui aboutit à la chute de Samarie — le texte biblique le plus complet sur la fin du royaume du Nord. (2) LES INSCRIPTIONS ROYALES ASSYRIENNES : les annales de Tiglath-Pileser III mentionnent un tribut reçu de Menahem de Samarie ; les inscriptions de Sargon II relatives à la prise de Samarie donnent le chiffre de 27 290 déportés — données extrabibliques qui datent et confirment le cadre. (3) LA POLITIQUE DES ALLIANCES : 2 Rois 15:19, 20 et 16:7-9 montrent les rois de la région achetant tour à tour la protection assyrienne ; la dénonciation d'Osée 11:5 et 14:3 correspond à cette pratique. (4) LE PEUPLEMENT MÊLÉ : 2 Rois 17:24-41 décrit l'installation de populations venues de Babylonie, de Koutha, d'Avva, de Hamath et de Sepharvaïm, et le culte mêlé qui en résulta — ancêtre du milieu samaritain. (5) LA CONTINUITÉ DU PEUPLE : 2 Chroniques 30:6-13 rapporte l'invitation d'Ézéchias adressée aux survivants d'Éphraïm, dont certains vinrent à Jérusalem ; les listes de rapatriés d'Esdras et de Néhémie mentionnent des familles revenues d'exil, sans permettre d'identifier les dix tribus comme un ensemble. (6) LES PUBLICATIONS : l'article « Égypte, Égyptien » rapporte le retour de nombreux Juifs d'Égypte vers leur pays, en citant Osée 11:11.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA ROUTE DE LA DÉPORTATION : de Samarie vers le nord, par la vallée de l'Oronte ou l'axe de Damas, puis vers la Mésopotamie du nord — Halah, Habor (le fleuve Habour, affluent de l'Euphrate), Gozan (région de Tell Halaf) et les villes des Mèdes, dans les contreforts du Zagros : un millier de kilomètres, par la courbe fertile qui contourne le désert. (2) L'AXE DE L'EST : le fleuve Habour et le canal Kebar (Ézéhiel 1:1) restèrent des régions de peuplement juif, où vécurent des descendants de déportés. (3) « DE L'OUEST » : l'hébreu dit « de la mer » (mi-yam), la Méditerranée servant de point cardinal ; les exilés annoncés viennent donc des quatre horizons que connaît le livre : la mer, l'Égypte et l'Assyrie. (4) L'ÉGYPTE, REFUGE DÉÇU : les prophètes décrivent les démarches d'Israël vers le delta (Osée 7:11 ; 12:1) ; l'Égypte était alors un royaume affaibli du delta, ce que la politique des derniers rois du Nord a éprouvé. (5) LA FERTILITÉ CONTRASTÉE : la bande côtière, la plaine de Yizréel et les monts de Samarie formaient le meilleur terroir du double royaume ; les villes prises par l'épée (11:6) sont ces cités fortifiées dont les portes à barres sont mentionnées. (6) LE RETOUR : les itinéraires de retour empruntent les mêmes axes inversés, du nord-est vers la Palestine, ou du sud-ouest depuis l'Égypte par la côte, comme l'indique le symbolisme des oiseaux venant d'Égypte et d'Assyrie.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES OSTRACA DE SAMARIE : des tessons inscrits découverts dans le palais royal de Samarie enregistrent des livraisons d'huile et de vin — témoins directs de l'administration du royaume du Nord au VIIIe siècle, dont la prospérité est dénoncée par les prophètes. (2) LA FORTERESSE DE SAMARIE : les fouilles du tell ont mis au jour les murs, la porte et le palais d'Omri et d'Achab ; les niveaux de destruction sont mis en rapport avec la campagne de 722. (3) L'ARCHITECTURE DE DÉFENSE : les portes à barres mentionnées au verset 6 correspondent aux systèmes de fermeture à poutres de bois attestés à Hazor, Megiddo, Guézer et Lakish — l'épée qui « dévore les barres » décrit la fin de ces ouvrages. (4) LA LINGUISTIQUE : les inscriptions hébraïques du Nord (ostraca, sceaux, poids) montrent un dialecte proche de celui du Sud, ce qui explique la circulation des oracles d'Osée vers Jérusalem, où ils furent conservés. (5) LA DÉMOGRAPHIE : les prospections archéologiques en Galilée et en Samarie montrent un recul marqué de l'habitat après 722, suivi d'un repeuplement partiel — indice matériel d'un déplacement de populations que l'archéologie ne permet pas de chiffrer précisément. (6) PRUDENCE : la fiche ne présente pas de trace archéologique de la déportation elle-même, ni d'inscription nommant Osée ; les renseignements extérieurs concernent la politique assyrienne et le sort de la capitale.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« IL NE RETOURNERA PAS AU PAYS D'ÉGYPTE… L'ASSYRIEN SERA SON ROI » (11:5) → 2 ROIS 17:3-6 : OSÉE CHERCHE L'ÉGYPTE, TIGLATH-PILESER PUIS SALMANASAR FRAPPENT, SAMARIE TOMBE (722) → DÉPORTATION : HALAH, HABOR, GOZAN, VILLES DES MÈDES → « MON CŒUR S'EST RETOURNÉ EN MOI… JE SUIS DIEU ET NON PAS UN HOMME » (11:8, 9) → « IL RUGIRA COMME UN LION » (11:10) → « SES FILS ARRIVERONT EN TREMBLANT DE L'OUEST » → « D'ÉGYPTE COMME UN OISEAU, D'ASSYRIE COMME UNE COLOMBE » (11:11) → « JE LES FERAI HABITER DANS LEURS MAISONS »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement de la sentence avec la référence du registre (2 Rois 17:6) et de la promesse avec ses références internes (Osée 11:10, 11). LE SENS DE L'ÉGYPTE : la fiche explique l'expression « il ne retournera pas en Égypte » comme l'annonce d'une servitude assyrienne et non égyptienne, en s'appuyant sur le contexte du livre ; d'autres traductions rendent la phrase différemment, et la fiche le signale sans trancher. LES RÈGNES ET LES DATES : la chronologie du VIIIe siècle est donnée selon le comput courant, avec ses marges. LE RETOUR DES DIX TRIBUS : la fiche ne prétend pas identifier les descendants des tribus du Nord ; elle rapporte ce que disent les textes — déportation, population demeurée, retours partiels — et signale que la pleine application de la promesse est lue dans un cadre messianique. LE « ROI D'ÉGYPTE » DE 2 ROIS 17:4 : son identification reste discutée et n'est pas tranchée ici. ARCHÉOLOGIE : les fouilles documentent la capitale et la région, non l'événement tel que le verset le raconte. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des chapitres 12 et 13 d'Osée, ni des développements sur le sort des tribus du Nord dans la littérature postérieure ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ministère d'Osée : le Nord prospère, cherche appui en Assyrie et en Égypte</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">vers 790-750 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tiglath-Pileser III soumet la région ; tribut de Menahem ; annexions au nord</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">734-732 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Osée cesse le tribut et cherche l'Égypte ; siège de Samarie</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">vers 725-722 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : déportation à Halah, Habor, Gozan et chez les Mèdes (2 Rois 17:6)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retours d'exilés depuis l'Assyrie, la Babylonie et l'Égypte : « je les ferai habiter dans leurs maisons »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque perse et après</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/27">Bible — Isaïe 27 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/27</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/66">Bible — Isaïe 66 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/66</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/147">Bible — Psaume 147 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/147</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/1">Bible — Zekaria 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/1</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1001070132">Osée — BIBLIOTHÈQUE EN LIGNE Watchtower (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1001070132</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche OS421 — « L'Assyrien sera son roi » et « je ferai revenir mes fils de l'ouest » : la captivité et le retour annoncés</span><span>Catégorie OS3</span></div></div>
+</article>
+<article class="fiche" id="OS422">
+<div class="visuel"><img src="images/prophe_OS422_rosee.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE OS422 · CATÉGORIE OS3</div>
+<h3>« Je guérirai leur infidélité » : la rosée, le lis et le cyprès toujours vert — la dernière page d'Osée</h3>
+<div class="ref">Osée 14:1-9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / À venir</span>
+<span class="badge">reviens israël à jéhovah ton dieu car tu as trébuché à cause de ta faute prenez avec vous des paroles et revenez à jéhovah dites-lui pardonne toute faute accepte ce qui est bon et nous t'offrirons les jeunes taureaux de nos lèvres l'assyrie ne nous sauvera pas nous ne monterons pas sur des chevaux nous ne dirons plus notre dieu à l'ouvrage de nos mains car en toi l'orphelin trouve compassion je guérirai leur infidélité je les aimerai de mon plein gré ma colère s'est détournée d'eux je deviendrai comme la rosée pour israël il fleurira comme le lis il enfoncera ses racines comme le liban ses jeunes pousses sortiront sa dignité sera comme celle de l'olivier sa senteur comme celle du liban ils habiteront de nouveau à son ombre ils feront revivre le blé ils fleuriront comme la vigne qu'ai-je encore à faire avec les idoles je serai comme un cyprès toujours vert de moi vient ton fruit (osée 14:4-7 ; 537 av. n. è.)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche OS422</div><audio controls preload="none" src="audio/fiche_OS422_rosee.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_OS422_rosee.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Osée 14:1-9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>reviens israël à jéhovah ton dieu car tu as trébuché à cause de ta faute prenez avec vous des paroles et revenez à jéhovah dites-lui pardonne toute faute accepte ce qui est bon et nous t'offrirons les jeunes taureaux de nos lèvres l'assyrie ne nous sauvera pas nous ne monterons pas sur des chevaux nous ne dirons plus notre dieu à l'ouvrage de nos mains car en toi l'orphelin trouve compassion je guérirai leur infidélité je les aimerai de mon plein gré ma colère s'est détournée d'eux je deviendrai comme la rosée pour israël il fleurira comme le lis il enfoncera ses racines comme le liban ses jeunes pousses sortiront sa dignité sera comme celle de l'olivier sa senteur comme celle du liban ils habiteront de nouveau à son ombre ils feront revivre le blé ils fleuriront comme la vigne qu'ai-je encore à faire avec les idoles je serai comme un cyprès toujours vert de moi vient ton fruit (osée 14:4-7 ; 537 av. n. è.)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Osée — P422 (14:1-9 : je les guérirai ; ils fleuriront comme le lis et reviendront) ; Osée 14:4-7 ; Accomplie / À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>REVIENS… ISRAËL… À JÉHOVAH TON DIEU… CAR TU AS TRÉBUCHÉ… À CAUSE DE TA FAUTE… PRENEZ AVEC VOUS… DES PAROLES… ET REVENEZ… À JÉHOVAH… DITES-LUI… « PUISSES-TU PARDONNER… TOUTE FAUTE… ACCEPTE CE QUI EST BON… ET NOUS T'OFFRIRONS… LES JEUNES TAUREAUX… DE NOS LÈVRES… »… « L'ASSYRIE… NE NOUS SAUVERA PAS… NOUS NE MONTERONS PAS… SUR DES CHEVAUX… NOUS NE DIRONS PLUS… “NOTRE DIEU”… À L'OUVRAGE… DE NOS MAINS… CAR EN TOI… L'ORPHELIN… TROUVE COMPASSION… »… « JE GUÉRIRAI… LEUR INFIDÉLITÉ… JE LES AIMERAI… DE MON PLEIN GRÉ… CAR MA COLÈRE… S'EST DÉTOURNÉE D'EUX… JE DEVIENDRAI… COMME LA ROSÉE… POUR ISRAËL… IL FLEURIRA… COMME LE LIS… IL ENFONCERA SES RACINES… COMME LE LIBAN… SES JEUNES POUSSES… SORTIRONT… SA DIGNITÉ… COMME CELLE DE L'OLIVIER… SA SENTEUR… COMME CELLE DU LIBAN… ILS HABITERONT DE NOUVEAU… À SON OMBRE… ILS FERONT REVIVRE… LE BLÉ… ILS FLEURIRONT… COMME LA VIGNE… »… « ÉPHRAÏM… QU'AI-JE ENCORE… À FAIRE… AVEC LES IDOLES… MOI… JE L'EXAUCERAI… ET JE LE REGARDERAI… JE SUIS COMME UN CYPRÈS… TOUJOURS VERT… DE MOI… VIENT TON FRUIT… »… « QUI EST SAGE… QU'IL COMPRENNE… CES CHOSES… »… — SHUV… REVIENS… MESHUVAH… INFIDÉLITÉ… RETOURNEMENT… ʾEHYEH KHA-TAL… JE SERAI COMME LA ROSÉE… SHOSHANNAH… LIS… SHORASHIM… RACINES… YONEQOT… JEUNES POUSSES… ZAYIT… OLIVIER… BESAMIM… SENTEUR… TAL… ROSÉE… ʿETS… ARBRE… TEʾENAH… FIGUIER… GEFEN… VIGNE… DAGAN… BLÉ… YAYIN… VIN… BEROSH RAʿANAN… CYPRÈS TOUJOURS VERT… PERI… FRUIT… YATOM… ORPHELIN… — 722… 537… RESTAURATION… TEMPLE… »</li>
+<li>LES TROIS JUMEAUX — Psaume 133:3 : « comme la rosée de l'Hermon qui descend sur les monts de Sion » — l'image de la rosée revigorante sert dans les Écritures à décrire la bénédiction qui unit un peuple rassemblé. Proverbes 19:12 : « la faveur du roi est comme la rosée sur l'herbe » — la rosée représente ce qui vient d'en haut et rafraîchit sans violence, exactement le sens que lui donne Osée 14:5. Malaki 4:2 : « le soleil de la justice se lèvera et il apportera la guérison dans ses ailes » — la dernière page des prophètes reprend le vocabulaire de la guérison d'Osée 14:4 pour le jour du rétablissement.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Osée 14 est la dernière page du livre, et elle change de ton : après le procès des chapitres 4 à 10 et la menace des chapitres 11 à 13, le prophète s'adresse une dernière fois au royaume du Nord pour l'inviter à revenir. Le mouvement est celui d'une liturgie de conversion : « reviens, Israël, à Jéhovah ton Dieu, car tu as trébuché à cause de ta faute » ; puis le peuple est appelé à venir non pas les mains vides, mais avec des paroles — et ces paroles sont une confession écrite d'avance : « pardonne toute faute, accepte ce qui est bon, et nous t'offrirons les jeunes taureaux de nos lèvres ». Viennent ensuite trois renoncements qui résument toute la politique d'Israël au VIIIe siècle : l'Assyrie, protecteur acheté à prix fort ; les chevaux, c'est-à-dire la cavalerie dont on cherchait le modèle en Égypte ; et les œuvres des mains, c'est-à-dire les veaux d'or des sanctuaires. La réponse divine suit immédiatement, en six versets de restauration : guérison, amour gratuit, rosée, lis, racines, olivier, parfum, ombre, blé, vigne, fruit. La fiche s'appuie sur un texte sévèrement menacé dans son contexte : le royaume du Nord vit ses dernières années avant 722, et le livre s'achève avant que la menace ne se réalise — la Bibliothèque en ligne situe même l'achèvement du livre entre 746 et 740 avant notre ère.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) UN JEU DE MOTS SUR LE VERBE « REVENIR » : le peuple est invité à shuv, « revenir » ; Dieu répond qu'il guérira leur meshuvah, mot de la même racine qui désigne le fait de se détourner, l'infidélité — « je guérirai ce qui les détourne, leur retournement ». La guérison promise est donc exactement l'inverse du mal : là où ils « se sont retournés » loin de Dieu, il soignera la déchirure. (2) LES TAUREAUX DES LÈVRES : le texte substitue à l'offrande animale une offrande de reconnaissance exprimée par la parole ; cette lecture est reprise dans les Écritures grecques, qui invitent à offrir sans cesse à Dieu « un sacrifice de louange, c'est-à-dire le fruit de lèvres » (Hébreux 13:15). (3) TROIS RENONCEMENTS : l'Assyrie (le recours politique condamné en Osée 11:5 et 12:1), les chevaux (l'appui militaire de l'Égypte, que la loi interdisait comme motif de confiance — Deutéronome 17:16 ; Isaïe 31:1) et les idoles, que le texte appelle « l'ouvrage de nos mains ». La justification donnée au verset 3 est remarquable : c'est auprès de Dieu que « l'orphelin trouve compassion ». (4) LA SÉQUENCE BOTANIQUE : rosée, lis, racines, jeunes pousses, olivier, senteur, ombre, blé, vigne — la restauration est décrite avec le vocabulaire de l'agriculture du pays. Le livre se termine par un dialogue d'une ligne : « qu'ai-je encore à faire avec les idoles ?… je suis comme un cyprès toujours vert ; de moi vient ton fruit » — la dernière parole du dialogue indique la source de toute fécondité, et le dernier verset du livre en tire une conclusion de sagesse.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le registre retient pour Osée 14:1-9 le statut « Accomplie / À venir », avec la référence interne Osée 14:4-7 — autrement dit la promesse reçoit un premier accomplissement dans le rétablissement annoncé, sa pleine réalisation étant rapportée à l'avenir. L'image de la rosée est employée telle quelle par la Bibliothèque en ligne : un article de La Tour de Garde intitulé « Des jeunes comme une rosée revigorante » rapproche le texte du Psaume où les jeunes serviteurs de Dieu sont comparés à des gouttes de rosée, et explique que « à la rosée sont associées les notions d'abondance et de bénédiction » (Genèse 27:28). Lecture commune et exégèse : les commentateurs voient dans ce chapitre un modèle liturgique de la conversion et relèvent la parenté de vocabulaire avec Osée 6:1-3 (« il nous guérira ») ; ils notent la densité des images végétales, empruntées aux trois productions nobles du pays — le grain, l'huile et le vin — auxquelles s'ajoutent le lis et le cyprès. Le verset 9, adressé au lecteur sage, est souvent rapproché des épilogues de sagesse qui terminent certains livres de la Bible hébraïque.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Avant 740 av. n. è.</td><td>Appel final au royaume du Nord : revenir avec des paroles avant que le malheur ne vienne (Osée 14:1-3)</td></tr>
+<tr><td class="d">722 av. n. è.</td><td>La chute de Samarie confirme l'avertissement : les appuis politiques et religieux s'effondrent (2 Rois 17:6)</td></tr>
+<tr><td class="d">537 av. n. è. et après</td><td>Premier accomplissement : un reste revient, le temple est rebâti, le culte reprend — la communauté est « guérie » de son infidélité (Osée 14:4, 5)</td></tr>
+<tr><td class="d">Après l'exil</td><td>Le vocabulaire de la rosée, du lis et de l'olivier décrit une communauté rétablie et féconde, ailleurs comparée à la rosée de Jéhovah (Michée 5:7)</td></tr>
+<tr><td class="d">Ier siècle et après</td><td>Application spirituelle : la guérison de ceux qui reviennent à Dieu, dans la ligne d'Osée 6:1 et d'Isaïe 57:18</td></tr>
+<tr><td class="d">À venir</td><td>Pleine réalisation : la guérison complète et définitive, au terme des promesses de rétablissement (cf. Révélation 22:2)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE CONTEXTE POLITIQUE : 2 Rois 15:19, 20 et 17:3-6 documentent le paiement de tributs à l'Assyrie et les démarches vers l'Égypte — exactement les deux appuis que le chapitre appelle à abandonner. (2) LES CHEVAUX : 1 Rois 10:28, 29 mentionne le commerce de chevaux et de chars avec l'Égypte ; Deutéronome 17:16 en faisait un interdit royal, et Isaïe 31:1 dénonce la confiance mise dans les chars égyptiens : le renoncement d'Osée 14:3 est un acte politique précis, pas une image vague. (3) LA SÉQUELLE DU RETOUR : l'édit de Cyrus rapporté par Esdras 1 et 6, la reconstruction du temple achevée vers 515 avant notre ère et la reprise du culte sont les faits auxquels la lecture rattache le premier accomplissement. (4) LE LANGAGE DE LA GUÉRISON : 2 Chroniques 7:14 promet de « guérir le pays » ; Jérémie 30:17 et Isaïe 57:18 emploient la même image pour la restauration — la guérison est le terme biblique courant du rétablissement après une épreuve nationale. (5) LA MÉMOIRE LITURGIQUE : le vocabulaire de l'offrande des lèvres a été repris dans la prière et l'instruction religieuse (Hébreux 13:15) ; la confession proposée en Osée 14:2-3 a servi de formule de retour. (6) LES PUBLICATIONS : le Guide de recherche et l'Étude perspicace renvoient, à propos d'Osée 14, à des articles sur le jour de Jéhovah et sur le culte rendu de plein gré.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE MILIEU DE LA ROSÉE : le pays d'Israël connaît une saison sèche de mai à octobre, sans pluie ; pendant ces mois, l'humidité nocturne est la principale ressource en eau des plantes — l'image de la rosée dit donc une fertilité qui vient sans pluie, par un apport discret et quotidien. (2) LE LIS : le mot hébreu shoshannah désigne une fleur de la flore locale, célèbre dans le Cantique des cantiques et figurant dans le décor du temple de Salomon, où les chapiteaux sont décrits comme un « ouvrage en forme de lis » (1 Rois 7:19, 22). (3) L'OLIVIER : l'arbre emblématique des collines de Judée et de Galilée, dont les pressoirs taillés dans la pierre sont encore visibles sur des centaines de sites ; son huile est l'un des trois produits de base avec le grain et le vin. (4) LE LIBAN : la chaîne au nord, couverte de cèdres et de genévriers, fournit les deux comparaisons du chapitre — les racines qui « enfoncent comme le Liban » et la senteur ; ses neiges alimentent les sources du Jourdain. (5) LA VIGNE ET LE BLÉ : cultures de terrasses, sur des pentes aménagées, avec les aires de battage sur les hauteurs exposées au vent ; le blé et la vigne figurent au verset 7 parmi les signes du rétablissement. (6) LA PETITE RÉGION RÉTABLIE : Juda après l'exil est une province modeste, autour de Jérusalem, dont la fertilité retrouvée restera un thème des prophètes du retour (Aggée 2:19 ; Zekaria 8:12).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA PHYSIQUE DE LA ROSÉE : la rosée se forme la nuit quand le sol se refroidit par rayonnement et que l'air, au contact d'une surface froide, atteint son point de rosée ; les mesures faites dans les régions arides du Néguev donnent des quantités faibles mais régulières, de l'ordre de quelques dixièmes de millimètre par nuit, suffisantes pour de nombreuses plantes et petits animaux. (2) LA BOTANIQUE : l'olivier (Olea europaea) est un arbre à grande longévité, capable de rejeter de souche après une coupe sévère ; le lis des champs de la tradition locale appartient à la flore des terrains humides, et le cyprès (Cupressus sempervirens) est un conifère sempervirent, résistant à la sécheresse et à la coupe, dont le feuillage ne tombe pas — d'où l'image du verset 8. (3) LES RACINES ET LE SOL : les racines profondes qui « enfoncent comme le Liban » correspondent à la karstification des massifs calcaires de la région, où l'eau circule en profondeur et alimente des sources pérennes. (4) L'ARCHÉOLOGIE AGRICOLE : pressoirs à huile et à vin, citernes, terrasses et aires de battage datant de l'époque perse et hellénistique attestent le rétablissement de l'économie agricole après l'exil — le cadre matériel des images du chapitre. (5) LES RESTES VÉGÉTAUX : l'analyse des graines et pollens prélevés dans les couches archéologiques montre la place dominante du blé, de la vigne et de l'olivier dans l'alimentation du pays, en accord avec la liste d'Osée 14:7. (6) PRUDENCE : l'identification exacte du lis hébreu reste discutée ; la fiche en présente les sens possibles — fleur des champs, image de beauté — sans la trancher.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« REVIENS, ISRAËL, À JÉHOVAH TON DIEU » (14:1) → « PRENEZ AVEC VOUS DES PAROLES » ET TROIS RENONCEMENTS : L'ASSYRIE, LES CHEVAUX, L'OUVRAGE DE NOS MAINS (14:2, 3) → « JE GUÉRIRAI LEUR INFIDÉLITÉ » (14:4) → « JE LES AIMERAI DE MON PLEIN GRÉ » → « JE DEVIENDRAI COMME LA ROSÉE POUR ISRAËL » (14:5) → LE LIS, LES RACINES, LE LIBAN → L'OLIVIER, LA SENTEUR, L'OMBRE, LE BLÉ, LA VIGNE (14:6-7) → « JE SUIS COMME UN CYPRÈS TOUJOURS VERT ; DE MOI VIENT TON FRUIT » (14:8) → « QUI EST SAGE ? QU'IL COMPRENNE CES CHOSES » (14:9)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre le statut du registre — « Accomplie / À venir » — et rapporte la promesse à son premier accomplissement sans fixer de date à l'accomplissement final. LE SENS DES IMAGES : la fiche explique la rosée, le lis, les racines, l'olivier et le cyprès par le milieu naturel et l'usage littéraire des Écritures ; elle ne prétend pas que ces images désignent chacune un objet précis. LA LITURGIE : la fiche cite la confession du verset 2 telle que le texte la présente, sans affirmer qu'elle fut effectivement prononcée par la nation à cette époque. L'ASSYRIE ET L'ÉGYPTE : les renoncements sont décrits par les textes bibliques et les pratiques connues de la période ; la fiche ne dresse pas l'inventaire complet des traités de l'époque. DATES : la chronologie suit le comput courant des publications et des études. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des chapitres 12 et 13 d'Osée, ne discute pas des interprétations doctrinales de ce passage dans les différentes confessions, et n'indique pas de calendrier pour l'accomplissement futur ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Osée appelle le Nord à revenir avec des paroles, en abandonnant ses appuis (14:1-3)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe siècle av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement du livre, avant la chute de Samarie, selon la datation retenue par les publications</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 746-740 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : l'appel n'a pas été entendu, la menace se réalise</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour d'un reste, reconstruction du temple : premier accomplissement de la guérison promise</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è. et après</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Petite province rétablie : le pays fleurit de nouveau, « comme la rosée » et « comme le lis »</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Après l'exil</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pleine réalisation de la guérison et du rétablissement annoncés</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/133">Bible — Psaume 133 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/133</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/19">Bible — Proverbes 19 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/19</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/39/4">Bible — Malaki 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/39/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/130">Bible — Psaume 130 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/130</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2002682">Des jeunes comme une rosée revigorante — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2002682</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche OS422 — « Je guérirai leur infidélité » : la rosée, le lis et le cyprès toujours vert — la dernière page d'Osée</span><span>Catégorie OS3</span></div></div>
+</article>
+<article class="fiche" id="JL423">
+<div class="visuel"><img src="images/prophe_JL423_sauterelles.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JL423 · CATÉGORIE OS3</div>
+<h3>L'invasion des sauterelles et les offrandes retranchées : « le jour de Jéhovah est proche » (Joël 1)</h3>
+<div class="ref">Joël 1:4-20</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (1er accomplissement)</span>
+<span class="badge">ce qu'a laissé la sauterelle le criquet l'a mangé ce qu'a laissé le criquet la larve l'a mangé ce qu'a laissé la larve l'insecte l'a mangé une nation nombreuse et puissante a envahi mon pays réveillez-vous ivrognes et pleurez lamentez-vous buveurs de vin nouveau une nation a fait de mes vignes une désolation mes figuiers en morceaux ils ont tout dépouillé les prêtres sont en deuil on n'apporte plus d'offrande de grain ni de libation à la maison de jéhovah les champs sont dévastés on ordonne un jeûne une assemblée solennelle les greniers sont vides les troupeaux errent hélas pour ce jour le jour de jéhovah est proche comme une dévastation venant du tout-puissant le feu a dévoré les pâturages (joël 1:4-7, 10-12 ; application spirituelle joël 2:25)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JL423</div><audio controls preload="none" src="audio/fiche_JL423_sauterelles.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JL423_sauterelles.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Joël 1:4-20</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (1er accomplissement)</td></tr>
+<tr><td class="d">Chronologie</td><td>ce qu'a laissé la sauterelle le criquet l'a mangé ce qu'a laissé le criquet la larve l'a mangé ce qu'a laissé la larve l'insecte l'a mangé une nation nombreuse et puissante a envahi mon pays réveillez-vous ivrognes et pleurez lamentez-vous buveurs de vin nouveau une nation a fait de mes vignes une désolation mes figuiers en morceaux ils ont tout dépouillé les prêtres sont en deuil on n'apporte plus d'offrande de grain ni de libation à la maison de jéhovah les champs sont dévastés on ordonne un jeûne une assemblée solennelle les greniers sont vides les troupeaux errent hélas pour ce jour le jour de jéhovah est proche comme une dévastation venant du tout-puissant le feu a dévoré les pâturages (joël 1:4-7, 10-12 ; application spirituelle joël 2:25)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Joël — P423 (1:4-20 : l'invasion des sauterelles ; la privation des offrandes ; le pays dévasté) ; Joël 1:4-7, 10-12 ; application spirituelle Joël 2:25 ; Accomplie (1er accomplissement)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>ÉCOUTEZ CECI… VIEILLARDS… PRÊTEZ L'OREILLE… HABITANTS DU PAYS… EST-CE ARRIVÉ… DE VOTRE TEMPS… OU DU TEMPS DE VOS PÈRES… RACONTEZ-LE… À VOS FILS… CE QU'A LAISSÉ… LA SAUTERELLE… LE CRIQUET… L'A MANGÉ… CE QU'A LAISSÉ… LE CRIQUET… LA LARVE… L'A MANGÉ… CE QU'A LAISSÉ… LA LARVE… L'INSECTE… L'A MANGÉ… RÉVEILLEZ-VOUS… IVROGNES… ET PLEUREZ… LAMENTEZ-VOUS… BUVEURS DE VIN NOUVEAU… CAR IL EST RETRANCHÉ… DE VOS BOUCHES… UNE NATION… A ENVAHI MON PAYS… NOMBREUSE… ET PUISSANTE… SES DENTS… SONT DES DENTS DE LION… ELLE A FAIT… DE MES VIGNES… UNE DÉSOLATION… MES FIGUIERS… EN MORCEAUX… ELLE A TOUT DÉPOUILLÉ… ET JETÉ… LE PAYS EST DANS LE DEUIL… LES CHAMPS SONT DÉVASTÉS… LE BLÉ MANQUE… LE VIN NOUVEAU… A TARI… L'HUILE FRAÎCHE… FAIT DÉFAUT… CULTIVATEURS… SOYEZ CONSTERNÉS… LES VIGNES ÉTAIENT… MA JOIE… PRÊTRES… PRENEZ LE DEUIL… PASSEZ LA NUIT… EN HABITS DE DEUIL… CAR L'OFFRANDE DE GRAIN… ET LA LIBATION… SONT RETRANCHÉES… DE LA MAISON… DE VOTRE DIEU… ORDONNEZ UN JEÛNE… CONVOQUEZ… UNE ASSEMBLÉE SOLENNELLE… HÉLAS POUR CE JOUR… CAR LE JOUR DE JÉHOVAH… EST PROCHE… COMME UNE DÉVASTATION… VENANT DU TOUT-PUISSANT… LES GRAINES… ONT POURRI… SOUS LES MOTTES… LES GRENIERS SONT VIDES… LES MAGASINS SONT EN RUINE… LE BÉTAIL GÉMIT… LES TROUPEAUX DE BŒUFS… ERRENT… MÊME LES ANIMAUX SAUVAGES… SE TOURNENT VERS TOI… CAR LES COURS D'EAU… ONT TARI… LE FEU… A DÉVORÉ… LES PÂTURAGES DU DÉSERT… — GAZAM… ʾARBEH… YELEQ… ḤASIL… LES QUATRE NOMS… SAUTERELLE… CRIQUET… LARVE… INSECTE… DENT DE LION… SHEN… MÉCHOIRES… VIGNE… GEFEN… FIGUIER… TEʾENAH… BLÉ… ḤIṬṬAH… VIN NOUVEAU… TIROSH… HUILE FRAÎCHE… YITSḤAR… ʿOLA… MINḤAH… NESEKH… OFFRANDE… LIBATION… ẒOM… JEÛNE… ʿATSARAH… ASSEMBLÉE… SHOD MI-SHADDAI… DÉVASTATION DU TOUT-PUISSANT… — JUDA… JÉRUSALEM… SION… 820… 1915… SAUTERELLES… »</li>
+<li>LES TROIS JUMEAUX — Exode 10:12-15 : la plaie de sauterelles sur l'Égypte — « elles couvrirent la face de tout le pays, le pays fut obscurci, et elles mangèrent toute la végétation » —, le précédent que la prophétie de Joël reprend et dépasse. Proverbes 30:27 : « les sauterelles n'ont pas de roi, et pourtant elles marchent toutes en ordre » — la Bible observe depuis longtemps l'étrange discipline collective des essaims, que Joël décrit comme une « nation » envahissante. Amos 7:1-3 : le prophète voit une nuée de sauterelles au temps des premières pousses, et intercède — preuve que de telles plaies étaient des événements connus de l'histoire du pays, et non de simples images.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le livre de Joël s'ouvre par un désastre agricole sans précédent de mémoire d'homme. Le prophète — dont le nom signifie « Jéhovah est Dieu », et qui exerce en Juda, autour du temple — interpelle d'abord les anciens : ont-ils jamais rien vu de tel ? Puis, aux générations futures, car la plaie devra être racontée. Le chapitre décrit ensuite l'ordre du désastre : quatre vagues d'insectes se succèdent et ne laissent rien (verset 4) ; les vignes et les figuiers sont réduits à l'état de branches blanches arrachées (versets 6, 7) ; le blé, la vigne et l'olivier sont perdus d'un coup, ce qui supprime les trois produits de base du pays (versets 10, 11) ; les semences pourrissent sous les mottes, les greniers et les magasins sont vides, le bétail meurt de soif, les cours d'eau tarissent (versets 17-20). Le coup le plus lourd est théologique : privée de récoltes, la maison de Jéhovah n'a plus d'offrande de grain ni de libation à recevoir — les prêtres sont en deuil, et le prophète les appelle à passer la nuit en habits de deuil ; un jeûne et une assemblée solennelle sont ordonnés. Enfin, l'horizon s'ouvre : « hélas pour ce jour ! car le jour de Jéhovah est proche ». La Bibliothèque en ligne situe ce livre vers 820 avant notre ère, mais plusieurs commentateurs le placent plus tard, à l'époque perse ou grecque, en s'appuyant sur la mention des Grecs au chapitre 3 et sur l'absence de roi dans le récit — la fiche signale ce débat.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LES QUATRE NOMS D'INSECTES : le texte hébreu énumère gazam, ʾarbeh, yeleq et ḥasil ; les commentateurs y voient soit quatre espèces distinctes, soit — lecture la plus répandue chez ceux qui ont étudié ces insectes — quatre étapes successives du même insecte, dont la vie compte six mues ; dans un cas comme dans l'autre, le verset 4 décrit des vagues qui se relaient et ne laissent à la fin aucun reste. (2) LA NATION ENVAHISSANTE : dès le verset 6, la plaie est décrite comme « une nation » — avant même que Joël ne compare l'envahisseur à un lion, dont il énumère les dents et les mâchoires. Ce vocabulaire militaire, repris en 2:2-11, explique que le passage ait été lu aussi comme la description d'une invasion humaine. (3) LA PRIVATION DES OFFRANDES : l'offrande de grain (minḥah) et la libation (nesekh) provenaient des produits du sol, ainsi que le rappelle la liste des trois produits de base — grain, vin nouveau, huile fraîche — que le chapitre emploie trois fois. Le culte n'est pas d'abord interrompu par un interdit, mais par l'absence de matière première : la catastrophe écologique devient une catastrophe religieuse. (4) LE JEU DE MOTS SUR LE TOUT-PUISSANT : au verset 15, l'hébreu dit que le jour de Jéhovah viendra « comme une dévastation venant du Tout-Puissant », shod mi-Shaddaï : les deux mots sont construits sur les mêmes consonnes. Puis l'appel à un jeûne, à une assemblée solennelle et à la prière des prêtres prépare le retournement du chapitre 2.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Yoël (Livre de) » de la Bibliothèque en ligne résume le chapitre en notant qu'« une invasion de sauterelles doit ravager le pays » et que « la végétation du pays sera à ce point saccagée que l'offrande de grain et la libation cesseront dans la maison de Jéhovah », avec les prêtres appelés à mener deuil. Le même article situe la rédaction au IXe siècle avant notre ère, « neuf ans après l'intronisation d'Ouzziya ». Le commentaire de Révélation publié en ligne indique de son côté que « le livre biblique de Yoël… parle d'une plaie d'insectes, sauterelles y comprises, semblable à celle que Jean observe », et que cette plaie « amènerait aussi des individus… à se repentir et à retrouver la faveur divine », avant que Jéhovah ne répande son esprit — un premier accomplissement au Ier siècle, jusqu'au « grand et redoutable jour de Jéhovah ». Lecture commune et exégèse : les commentateurs discutent surtout deux points — la date du livre, et la question de savoir si les sauterelles sont littérales ou symboliques ; la description détaillée du chapitre 1 (semences, greniers, bétail, cours d'eau) est généralement lue comme celle d'un fléau réel, que le chapitre 2 utilise ensuite comme image. Beaucoup rapprochent le texte des malédictions de l'alliance (Deutéronome 28:38-42), où la sauterelle est l'un des fléaux annoncés pour l'infidélité.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Date du livre : IXe siècle av. n. è. (datation retenue par les publications) ou époque perse (autre datation)</td><td>La plaie dévaste le pays de Juda : quatre vagues d'insectes se succèdent et ne laissent aucun reste (Joël 1:4-7)</td></tr>
+<tr><td class="d">Peu après</td><td>L'offrande de grain et la libation cessent dans la maison de Jéhovah ; les prêtres sont en deuil et un jeûne est ordonné (Joël 1:9, 13, 14)</td></tr>
+<tr><td class="d">Pendant la plaie</td><td>Les champs sont dévastés, les greniers vidés, les cours d'eau tarissent, le bétail souffre — le pays entier est dépouillé (Joël 1:10, 17-20)</td></tr>
+<tr><td class="d">Après la plaie</td><td>Le rétablissement annoncé : « je vous compenserai les années qu'ont mangées les sauterelles » (Joël 2:25)</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Le livre atteint son terme messianique : Pierre cite Joël 2:28-32 le jour de la Pentecôte (Actes 2:16-21)</td></tr>
+<tr><td class="d">70 de n. è.</td><td>Le « grand et redoutable jour de Jéhovah » est rapporté au jugement de Jérusalem, selon la lecture des publications</td></tr>
+<tr><td class="d">Temps de la fin</td><td>Application spirituelle : la plaie de sauterelles comme image d'une œuvre de jugement et d'avertissement (Révélation 9:3-11 ; Joël 2:25)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE TÉMOIGNAGE ISRAÉLIEN : Amos 4:9 rapporte un fléau de chenilles et de sauterelles comme l'un des châtiments envoyés au Nord ; Amos 7:1-3 décrit une nuée de sauterelles au temps des premières pousses ; 1 Rois 8:37 place la sauterelle parmi les fléaux pour lesquels le roi devait prier — trois témoignages bibliques indépendants de la réalité de ces invasions. (2) LE FLÉAU DE 1915 EN PALESTINE : de mars à octobre 1915, une invasion de sauterelles dépouilla la Palestine et ses environs de presque toute végétation ; les photographies de la colonie américaine de Jérusalem, conservées par la Bibliothèque du Congrès, documentent plus de deux cents scènes, dont un figuier photographié avant et après l'attaque ; le compte rendu publié dans National Geographic en décembre 1915 décrit des insectes si nombreux qu'ils pouvaient couvrir un nourrisson laissé sans surveillance. (3) LES MESURES DE LUTTE : les autorités ottomanes ordonnèrent à la population de creuser pour extraire les œufs et de livrer des quantités de sauterelles, et l'on creusait des fosses vers lesquelles on poussait les essaims avec des drapeaux — témoignages directs de l'ampleur du fléau. (4) LA FAMINE DU MONT-LIBAN 1915-1918 : l'invasion de criquets, combinée au blocus, contribua à une famine qui fit périr une part considérable de la population de la région. (5) L'ANTIQUITÉ : les sauterelles sont mentionnées dans les textes de l'Égypte et du Proche-Orient ancien comme fléau agricole ; la Bible autorise leur consommation (Lévitique 11:21, 22), signe qu'elles étaient communes. (6) LES RÉCITS DE VOYAGEURS : la Bible annotée cite le récit de Thomson, auteur de La Terre et le Livre, décrivant de son temps une invasion dont il fut témoin.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LES AIRES DE REPRODUCTION : les essaims du criquet pèlerin se forment dans les zones désertiques qui bordent le pays — la côte de la mer Rouge, le sud du Néguev et l'Arabah, les déserts au sud et à l'est ; les vents du sud et du sud-ouest portent ensuite les essaims vers la Judée, ce que la Bible résume en parlant du « vent d'est » et du « vent du nord ». (2) LE PAYS AGRICOLE : la plaie atteint la plaine côtière et la Chéphéla, grenier à blé et à orge ; les collines de Judée, couvertes de vignes, de figuiers, d'oliviers et d'amandiers, organisées en terrasses ; les vallées intérieures ; la campagne autour de Jérusalem. (3) L'EAU : les sources de la région de Jérusalem (Guihôn, près du temple), les citernes, les travaux hydrauliques, et les cours d'eau saisonniers (les ouadis) qui « tarissent » au verset 20. (4) LE DÉSERT PROCHE : le « désert » dont les pâturages brûlent (verset 19) est la zone steppique de l'est, qui fournit les parcours de troupeaux ; sa proximité avec les zones de reproduction des criquets explique le mécanisme du fléau. (5) LA ROUTE DES ESSAIMS : la même configuration explique que des essaims venus du sud-est atteignent la Palestine, comme le montrent les relevés modernes des invasions qui ont frappé la région au XXe siècle. (6) LA CONTRE-ÉPREUVE : après le passage des insectes, la terre est décrite « comme brûlée » — un effet que les photographies de 1915 rendent visible, les arbres dépouillés prenant la teinte du bois blanchi.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) L'ESPÈCE : le criquet pèlerin (Schistocerca gregaria) est un insecte sauteur de la famille des acrididés ; solitaire et inoffensif à faible densité, il change de comportement, de couleur et de métabolisme quand la densité augmente, devient grégaire et forme alors des bandes et des essaims. (2) LE CYCLE DE VIE : ponte dans le sol, éclosion, six stades larvaires et mue finale donnant l'adulte ailé — cycle qui explique la lecture du verset 4 comme succession de vagues. (3) L'ORDRE DE GRANDEUR DES ESSAIMS : selon les données de l'Organisation des Nations unies pour l'alimentation et l'agriculture, un essaim peut contenir plusieurs dizaines de millions d'individus au kilomètre carré et consommer en un jour une quantité de nourriture équivalente à celle de milliers de personnes ; les essaims peuvent parcourir jusqu'à 150 kilomètres par jour portés par le vent. (4) LES RECHERCHES RÉCENTES : une étude menée par le Cirad et INRAE et publiée en 2024, exploitant quarante ans de relevés de terrain et de données climatiques en Afrique de l'Ouest et du Nord, montre le rôle des conditions de température, d'humidité et de précipitations dans le passage de la phase solitaire à la phase grégaire, et comment la lutte préventive a compensé l'effet du climat ; une étude de l'université de Tel-Aviv a mis en évidence un changement du microbiote intestinal des criquets lors du regroupement. (5) LES CRISES RÉCENTES : les invasions de 2003-2004 en Afrique de l'Ouest et de 2020-2021 au Moyen-Orient et en Afrique de l'Est rappellent l'actualité du phénomène décrit par Joël. (6) L'ARCHÉOLOGIE AGRICOLE : les jarres de stockage à anses estampillées, les silos, les pressoirs et les aires de battage mis au jour dans les sites de Judée documentent la chaîne des récoltes que le texte énumère — grain, vin, huile — et donc la gravité d'une année sans récolte. (7) PRUDENCE : la fiche ne prétend pas identifier avec certitude l'espèce exacte ni chacune des quatre vagues du verset 4.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>QUATRE VAGUES D'INSECTES : « CE QU'A LAISSÉ LA SAUTERELLE, LE CRIQUET L'A MANGÉ… » (1:4) → VIGNES ET FIGUIERS DÉPOUILLÉS, « DENTS DE LION » (1:6, 7) → LES TROIS PRODUITS DE BASE PERDUS : BLÉ, VIN NOUVEAU, HUILE FRAÎCHE (1:10) → LES PRÊTRES EN DEUIL : « LES OFFRANDES SONT RETRANCHÉES DE LA MAISON DE JÉHOVAH » (1:9, 13) → JEÛNE ET ASSEMBLÉE SOLENNELLE (1:14) → « HÉLAS POUR CE JOUR ! LE JOUR DE JÉHOVAH EST PROCHE » (1:15) → SEMENCES POURRIES, GRENIERS VIDES, BÉTAIL QUI GÉMIT, COURS D'EAU TARIS (1:17-20) → « JE VOUS COMPENSERAI LES ANNÉES QU'ONT MANGÉES LES SAUTERELLES » (2:25)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec le statut du registre — « Accomplie (1er accomplissement) » — et ses références (Joël 1:4-7, 10-12 ; application spirituelle Joël 2:25). DATATION : la fiche donne la date retenue par les publications et signale que d'autres études proposent une époque plus tardive ; elle ne tranche pas. NATURE DU FLÉAU : la fiche présente le chapitre comme la description d'un fléau réel, utilisé ensuite comme image ; elle signale que des commentateurs y voient aussi une invasion militaire. LES QUATRE NOMS : les lectures possibles — quatre espèces ou quatre stades du même insecte — sont rapportées, sans conclusion fermée. CHIFFRES MODERNES : les données de l'Organisation des Nations unies pour l'alimentation et l'agriculture et des études citées concernent les invasions contemporaines et servent de comparaison, non de mesure du fléau ancien. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des chapitres 2 et 3 de Joël, ni de la question du rapport entre la plaie de sauterelles et les armées historiques qui ont frappé Juda ; elle n'indique aucune date pour un accomplissement futur et ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rédaction du livre : l'invasion des sauterelles est proclamée aux habitants du pays</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IXe siècle av. n. è. (datation des publications)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les récoltes sont détruites ; l'offrande de grain et la libation cessent dans la maison de Jéhovah</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Pendant le fléau</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jeûne et assemblée solennelle sont ordonnés ; « le jour de Jéhovah est proche » (1:14, 15)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Pendant le fléau</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Promesse de compensation : « je vous compenserai les années qu'ont mangées les sauterelles » (2:25)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Après le fléau</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Invasion de sauterelles en Palestine et au Levant : plus de deux cents photographies en documentent le cours</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1915 de n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les invasions de 2003-2004 et de 2020-2021 rappellent l'ampleur du phénomène décrit par le prophète</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Temps modernes</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/10">Bible — Exode 10 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/11">Bible — Deutéronome 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/105">Bible — Psaume 105 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/105</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/30">Bible — Proverbes 30 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/30</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/9">Bible — Révélation 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/9</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200002482">Yoël (Livre de) — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200002482</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JL423 — L'invasion des sauterelles et les offrandes retranchées : « le jour de Jéhovah est proche » (Joël 1)</span><span>Catégorie OS3</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie OS3</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>OS420 — « D'Égypte j'ai appelé mon fils » : l'enfant rappelé hors d'Égypte, d'Osée 11:1 à Matthieu 2:14, 15</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Osée proclame : « d'Égypte j'ai appelé mon fils », en écho à Exode 4:22, 23</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe siècle av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Naissance de Jésus à Bethléem, pendant le règne d'Hérode le Grand</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">vers 2 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Départ de nuit pour l'Égypte ; séjour hors de la juridiction d'Hérode</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Peu après</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort d'Hérode ; l'ange ordonne le retour : « va au pays d'Israël »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">4 ou 1 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour d'Égypte, accomplissement cité par Matthieu 2:15, puis installation à Nazareth</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Peu après</text>
+</svg>
+<h4>OS421 — « L'Assyrien sera son roi » et « je ferai revenir mes fils de l'ouest » : la captivité et le retour annoncés</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ministère d'Osée : le Nord prospère, cherche appui en Assyrie et en Égypte</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">vers 790-750 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tiglath-Pileser III soumet la région ; tribut de Menahem ; annexions au nord</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">734-732 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Osée cesse le tribut et cherche l'Égypte ; siège de Samarie</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">vers 725-722 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : déportation à Halah, Habor, Gozan et chez les Mèdes (2 Rois 17:6)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retours d'exilés depuis l'Assyrie, la Babylonie et l'Égypte : « je les ferai habiter dans leurs maisons »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque perse et après</text>
+</svg>
+<h4>OS422 — « Je guérirai leur infidélité » : la rosée, le lis et le cyprès toujours vert — la dernière page d'Osée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Osée appelle le Nord à revenir avec des paroles, en abandonnant ses appuis (14:1-3)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe siècle av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement du livre, avant la chute de Samarie, selon la datation retenue par les publications</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 746-740 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie : l'appel n'a pas été entendu, la menace se réalise</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">722 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour d'un reste, reconstruction du temple : premier accomplissement de la guérison promise</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è. et après</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Petite province rétablie : le pays fleurit de nouveau, « comme la rosée » et « comme le lis »</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Après l'exil</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pleine réalisation de la guérison et du rétablissement annoncés</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>JL423 — L'invasion des sauterelles et les offrandes retranchées : « le jour de Jéhovah est proche » (Joël 1)</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rédaction du livre : l'invasion des sauterelles est proclamée aux habitants du pays</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IXe siècle av. n. è. (datation des publications)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les récoltes sont détruites ; l'offrande de grain et la libation cessent dans la maison de Jéhovah</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Pendant le fléau</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jeûne et assemblée solennelle sont ordonnés ; « le jour de Jéhovah est proche » (1:14, 15)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Pendant le fléau</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Promesse de compensation : « je vous compenserai les années qu'ont mangées les sauterelles » (2:25)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Après le fléau</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Invasion de sauterelles en Palestine et au Levant : plus de deux cents photographies en documentent le cours</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1915 de n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les invasions de 2003-2004 et de 2020-2021 rappellent l'ampleur du phénomène décrit par le prophète</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Temps modernes</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

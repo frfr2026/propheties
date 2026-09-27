@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES DN2 — Daniel 7-9 — le Trône de feu, le bélier et le bouc, les soixante-dix ans</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_DN379_trone.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES DN2</h1>
+<h2>Daniel 7-9 — le Trône de feu, le bélier et le bouc, les soixante-dix ans</h2>
+<p class="intro">Troisième vague Daniel : le procès céleste — les trônes placés, l'Ancien des jours, le fleuve de feu, les livres ouverts, et « quelqu'un de semblable à un fils d'homme » qui vient avec les nuages et reçoit domination, dignité et royaume (7:9-14) ; le royaume donné au peuple des saints du Très-Haut (7:27) ; la vision du bélier à deux cornes et du bouc venu de l'occident, Alexandre et la fin de l'empire médo-perse (8:1-8, 20, 21) ; la grande corne brisée et les quatre royaumes (8:8, 22) ; la petite corne qui ôte la constante et profane le sanctuaire, avec les deux mille trois cents soirs et matins (8:9-14, 23-25) ; enfin la prière de Daniel, faite au livre de Jérémie, sur les soixante-dix ans (9:1-19). Aucune date pour l'avenir.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>27</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#DN379">DN379</a>
+<a href="#DN380">DN380</a>
+<a href="#DN381">DN381</a>
+<a href="#DN382">DN382</a>
+<a href="#DN383">DN383</a>
+<a href="#DN384">DN384</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#DN379"><img src="images/prophe_DN379_trone.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN379</div>
+<h3><a href="#DN379">Le Trône de feu et le Fils de l'homme : domination, dignité et royaume</a></h3>
+<div class="meta">À venir · 🎧 0:39</div></div></div>
+<div class="carte">
+<a class="img" href="#DN380"><img src="images/prophe_DN380_saints.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN380</div>
+<h3><a href="#DN380">Le royaume donné au peuple des saints du Très-Haut</a></h3>
+<div class="meta">À venir · 🎧 0:39</div></div></div>
+<div class="carte">
+<a class="img" href="#DN381"><img src="images/prophe_DN381_belier.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN381</div>
+<h3><a href="#DN381">Le bélier à deux cornes et le bouc de l'occident : la Perse devant la Grèce</a></h3>
+<div class="meta">Accomplie · 🎧 0:38</div></div></div>
+<div class="carte">
+<a class="img" href="#DN382"><img src="images/prophe_DN382_quatre.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN382</div>
+<h3><a href="#DN382">La grande corne brisée : quatre royaumes vers les quatre vents du ciel</a></h3>
+<div class="meta">Accomplie · 🎧 0:39</div></div></div>
+<div class="carte">
+<a class="img" href="#DN383"><img src="images/prophe_DN383_sanctuaire.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN383</div>
+<h3><a href="#DN383">La petite corne et les deux mille trois cents soirs et matins</a></h3>
+<div class="meta">Accomplie · 🎧 0:37</div></div></div>
+<div class="carte">
+<a class="img" href="#DN384"><img src="images/prophe_DN384_priere.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN384</div>
+<h3><a href="#DN384">La prière des soixante-dix ans : Daniel lit Jérémie et intercède</a></h3>
+<div class="meta">Accomplie · 🎧 0:37</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="DN379">
+<div class="visuel"><img src="images/prophe_DN379_trone.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN379 · CATÉGORIE DN2</div>
+<h3>Le Trône de feu et le Fils de l'homme : domination, dignité et royaume</h3>
+<div class="ref">Daniel 7:9-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir</span>
+<span class="badge">trônes placés Ancien des jours fleuve de feu livres ouverts fils d'homme nuages domination éternelle (trônes → Ancien des jours → vêtements blancs → laine pure → flammes de feu → roues → fleuve de feu → mille milliers → livres ouverts → bête tuée → nuages → fils d'homme → accès auprès de l'Ancien → domination → dignité → royaume → peuples nations langues → domination éternelle)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN379 · 0:39</div><audio controls preload="none" src="audio/fiche_DN379_trone.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN379_trone.mp3 · 0:39 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 7:9-14</td></tr>
+<tr><td class="d">Statut</td><td>À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>trônes placés Ancien des jours fleuve de feu livres ouverts fils d'homme nuages domination éternelle (trônes → Ancien des jours → vêtements blancs → laine pure → flammes de feu → roues → fleuve de feu → mille milliers → livres ouverts → bête tuée → nuages → fils d'homme → accès auprès de l'Ancien → domination → dignité → royaume → peuples nations langues → domination éternelle)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P379 (7:9-14 : le Trône de feu ; le Fils de l'homme reçoit domination et royaume éternels) ; Matthieu 26:64 ; Révélation 5:9, 10 ; À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« JE CONTINUAI… REGARDER… TRÔNES… PLACÉS… ANCIEN… JOURS… ASSIS… VÊTEMENTS… BLANCS… NEIGE… CHEVEUX… LAINE… PURE… TRÔNE… FLAMMES… FEU… ROUES… FEU… BRÛLANT… FLEUVE… FEU… COULAIT… SORTAIT… DEVANT… MILLE… MILLIERS… SERVAIENT… DIX… MILLE… FOIS… DIX… MILLE… DEBOUT… JUGEMENT… SIÉGEA… LIVRES… OUVERTS… BÊTE… TUÉE… CORPS… DÉTRUIT… LIVRÉ… FEU… BRÛLANT… AUTRES… BÊTES… ÔTÉ… DOMINATION… PROLONGATION… VIE… TEMPS… SAISON… VISION… NUIT… NUAGES… CIEUX… VENAIT… SEMBLABLE… FILS… HOMME… EU… ACCÈS… AUPRÈS… ANCIEN… JOURS… FIT… APPROCHER… DONNA… DOMINATION… DIGNITÉ… ROYAUME… PEUPLES… COMMUNAUTÉS… NATIONALES… LANGUES… SERVENT… DOMINATION… ÉTERNELLE… PASSERA… PAS… ROYAUME… DÉTRUIT… PAS… — ḤAZEH… HAVET… JE VOYAIS… ʿAD… DI… KORSIN… DES TRÔNES… REMIYÛ… FURENT PLACÉS… WE-ʿATTIQ… ET L'ANCIEN… YOMIN… DES JOURS… YETIV… S'ASSIT… LEBUSHEH… SON VÊTEMENT… KETALEG… COMME NEIGE… ḤIVAR… BLANC… USEʿAR… ET LES CHEVEUX… RE-SHEH… DE SA TÊTE… KAʿAMAR… COMME LAINE… NEQI… PURE… KURS YEH… SON TRÔNE… SHALHAVIN… DE FLAMMES… DE-NUR… DE FEU… GALGALLOHI… SES ROUES… NUR… FEU… DOLEQ… BRÛLANT… NEHAR… UN FLEUVE… DI… DE FEU… NAGED… COULAIT… WE-NAFEQ… ET SORTAIT… MIN… DE DEVANT… QODAMOHI… LUI… ALEF… MILLE… ALFIN… MILLIERS… YESHAMESHUNEH… LE SERVAIENT… WE-RIBBO… ET DIX MILLE… RIBEWAN… DE MYRIADES… QADAMOHI… DEVANT LUI… YEQUUMUN… SE TENAIENT… DINNA… LE JUGEMENT… YETIV… SIÉGEA… WE-SIFRIN… ET LES LIVRES… PETHIḤU… FURENT OUVERTS… QEṬILAT… ELLE FUT TUÉE… ḤEVA… LA BÊTE… U-HOVAD… ET DÉTRUIT… GISHMEH… SON CORPS… LI-YEQADAT… POUR LE FEU… ESHA… DE FEU… ARBAʿ… QUATRE… ʿIDDANIN… DES TEMPS… U-ZEMAN… ET UNE SAISON… KA-BAR… COMME… ENASH… UN FILS D'HOMME… ʿANANIN… LES NUAGES… SHEMAYYA… DES CIEUX… ATE… IL VINT… WE-ʿAD… JUSQU'… ʿATTIQ… L'ANCIEN… YOMAYYA… DES JOURS… YEQARREVUNEH… ON L'APPROCHA… YEHIV… FUT DONNÉ… SHOLṬAN… DOMINATION… U-YIQAR… ET DIGNITÉ… U-MALKHU… ET ROYAUME… AMMA… PEUPLES… U-MILLAYYA… ET COMMUNAUTÉS… WE-LISHANAYYA… ET LANGUES… YIPLEḤUN… LE SERVIRONT… SHOLṬANEH… SA DOMINATION… ʿALAM… ÉTERNELLE… LA… NE… YEʿDE… PASSERA… PAS… MALKHUTEH… SON ROYAUME… LA… NE… YITḤABBAL… NE SERA PAS DÉTRUIT… »</li>
+<li>LES TROIS JUMEAUX — Psaume 110 : « DÉCLARATION… JÉHOVAH… SEIGNEUR… ASSIEDS-TOI… DROITE… JUSQU'À… ENNEMIS… MARCHEPIED… SCEPTRE… PUISSANCE… SION… DOMINE… MILIEU… ENNEMIS… PEUPLE… OFFRIRONT… VOLONTAIREMENT… SAINTETÉ… PÉRIODE… CROIX… REJETON… JEUNESSE… ROSÉE… SERMENT… REGRET… PRÊTRE… ÉTERNITÉ… MANIÈRE… MELKISÉDEQ… SEIGNEUR… DROITE… ÉCRASE… ROI… JOUR… COLÈRE… JUGEMENT… NATIONS… JUSQU'À TOI… TÊTES… FLEUVE… ROUTE… ROSÉE… ENFANTÉ… MATIN… TU… PRÊTRE… ÉTERNITÉ… » — Hébreux 1 : « DEPUIS… PARLE… FILS… HÉRITIER… TOUTES CHOSES… MONDE… IMAGE… PURIFIÉ… PÉCHÉS… S'ASSIT… DROITE… MAJESTÉ… HAUTEURS… NOMS… HÉRITÉ… PLUS EXCELLENT… ANGE… GLOIRE… FÉLICITÉ… DURÉE… ARC… JUSTICE… SCEPTRE… ROYAUTÉ… GROS SEC… AIMÉ… JUSTICE… DÉTESTÉ… ILLÉGALITÉ… OINT… JOIE… FONDEMENTS… TERRE… CIEUX… ŒUVRES… PÉRIRONT… DURERONT… VÊTEMENTS… S'USERONT… CHANGERONT… MÊME… ANNÉES… PAS… FIN… ANGES… ESPRITS… FEU… DÉFAILLANT… OINT… DROITE DIEU… TRÔNE ÉTERNEL… » — Ézékiel 1 : « TRENTIÈME ANNÉE… QUATRIÈME MOIS… CINQUIÈME JOUR… EXILÉS… FLEUVE… KEBAR… CIEUX… OUVERT… VISIONS… REGARDAI… VENT… TEMPÊTE… NORD… NUÉE… GRANDE… FEU… FLAMBOYANT… RAYONNEMENT… MILIEU… ÉTINCELANT… MÉTAL EN FEU… QUATRE ÊTRES VIVANTS… QUATRE… FACES… QUATRE… AILES… PIEDS… SEMBLABLE… SABOT… ÉTINCELANT… CUIVRE POLI… MAINS… HOMMES… AILES… QUATRE… VISAGES… ALLAIENT… DROIT… ESPRIT… VONT… FIER… ROUES… HAUTEUR… FRAYEUR… JANTES… GORGES… HAUT… QUATRE… ROUES… ESPRIT… VA… MAGNIFIQUE… FIRMAMENT… CRISTAL… EFFRAYANT… AILES… BRUIT… EAUX… TOUT-PUISSANT… VOIX… PARLAIENT… ABAISSÉES… FIRMAMENT… TRÔNE… PIERRE… SAPHIR… RESSEMBLANCE… APPUI… APPARENCE… HOMME… CUIVRE… FEU… ALENTOUR… RAYONNEMENT… ARC… NUÉE… JOUR… PLUIE… GLOIRE… JÉHOVAH… TOMBAI… FACE… ENTENDIS… PARLANT… »</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Daniel 7 est le chapitre charnière du livre : la première vision donnée non plus à un roi païen mais au prophète lui-même, dans la première année de Belshatsar, et le seul endroit du livre où la scène céleste est décrite en entier. Les versets 9 à 14 commencent par un changement de verbe : « je continuai à regarder jusqu'à ce que des trônes soient placés » — la vision ne s'arrête plus sur la quatrième bête, elle monte. Trois éléments composent le tableau : le SIÈGE (l'Ancien des jours s'assied ; vêtements blancs comme la neige, cheveux comme la laine pure — la blancheur de l'ancien et du pur, opposée aux bêtes), le TRÔNE (flammes de feu, roues de feu brûlant, fleuve de feu qui sort de devant lui) et la COUR (mille milliers qui le servent, dix mille fois dix mille debout devant lui, les livres ouverts). Puis, au verset 11, la bête est tuée et son corps livré au feu ; les autres bêtes perdent leur domination et reçoivent une prolongation de vie. Et au verset 13, une seconde figure : « avec les nuages des cieux venait quelqu'un de semblable à un fils d'homme », qui a ACCÈS auprès de l'Ancien des jours — on le fait approcher — et qui reçoit domination, dignité et royaume, pour que tous les peuples, communautés nationales et langues le servent. Le verset 14 énonce la durée : domination éternelle, royaume qui ne sera pas détruit. Dans le registre de la vague, cette prophétie est classée « À venir » : elle est la contrepartie exacte de la quatrième bête et de la petite corne, et elle est reliée par le registre à Matthieu 26:64 et Révélation 5:9, 10.</p>
+<h4>4 · Explication du texte</h4>
+<p>Cinq mots portent le passage. (1) ʿATTIQ YOMIN, l'« Ancien des jours » : l'expression ne décrit pas un vieillard mais celui qui est « avancé en jours » — le Dieu d'éternité (Deutéronome 33:27), dont la chevelure blanche dit la durée, non la décrépitude ; la Bible Annotée note qu'il s'agit du « Dieu d'éternité ». (2) Les TRÔNES au pluriel : le texte dit que des trônes furent placés — au pluriel — et le verset 22 précisera que « le jugement fut donné en faveur des saints du Très-Haut » ; la lecture qui voit dans ces trônes les sièges des juges associés se fonde sur Matthieu 19:28 et Révélation 20:4, où les fidèles s'assoient sur des trônes. (3) LE FEU : il est triple — flammes du trône, roues brûlantes, fleuve qui sort ; c'est le feu du jugement, et le rapprochement avec Ézéchiel 1 (le char, les roues, le rayonnement) et Ézéchiel 10 est presque mot pour mot, comme le relèvent les notes critiques. (4) LE FLEUVE DE FEU et les LIVRES : image juridique complète — un tribunal, une cour, des registres (Révélation 20:12 reprend l'image). (5) Le NUAGES DES CIEUX : dans l'Ancien Testament, la nuée est le privilège exclusif de Dieu (Psaume 18:10, 11 ; 68:33 ; 97:2 ; Ésaïe 19:1 ; Nahum 1:3) — celui qui vient ainsi se déplace du côté de Dieu, non du côté des bêtes. Et le titre : « quelqu'un de semblable à un fils d'homme », araméen KE-VAR ʾENASH, « comme un fils d'homme », c'est-à-dire une forme humaine — par opposition aux bêtes de la vision et au Dieu invisible. Enfin le verbe don : « on lui donna domination, dignité et royaume ». Le royaume n'est pas conquis, il est REÇU — puis « sa domination est une domination éternelle » : aucun terme, aucune succession.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah, avec ses sources publiées : la Bibliothèque en ligne, à l'entrée « Fils de l'homme », écrit que « la prophétie relative à la venue du Fils de l'homme en la présence de l'Ancien des jours, Jéhovah Dieu, s'applique indiscutablement à un individu, le Messie, Jésus Christ » ; elle ajoute que « le fait est que c'est ainsi que les Juifs la comprenaient — les écrits rabbiniques appliquaient la prophétie au Messie » (Soncino Books of the Bible, commentaire sur Daniel 7:13), et que Jésus s'appliqua le passage devant le grand prêtre (Matthieu 26:64 ; Marc 14:62), ce qui lie la vision à sa présence royale — non à une parousie de hasard. La même source rapproche cette venue de Révélation 12:5-10 (l'enfant mâle emmené vers le trône) et souligne que, puisque « toutes les tribus de la terre verront le Fils de l'homme venir sur les nuages du ciel avec puissance et grande gloire », il s'agit d'une manifestation du pouvoir royal de Jésus qui ne passe pas inaperçue. Enfin Révélation 5:9, 10, appelée par le registre, présente les rachetés de toute tribu, langue, peuple et nation comme faits « rois et prêtres » — le royaume de Daniel 7:14 est ainsi un royaume partagé, ce que Daniel 7:27 énonce en clair : « le royaume… sera donné au peuple des saints du Très-Haut ». Trois appuis dans la tradition : (a) l'application messianique juive, attestée dans les écrits rabbiniques cités ; (b) la réponse de Jésus au sanhédrin, qui combine exactement les deux images du psaume 110 et de Daniel 7:13 ; (c) la réutilisation de la scène entière en Révélation 1:13-16, 5:9-13 et 20:4, 11-15. La fiche enregistre cette lecture et son statut : à venir.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">7:9, 10</td><td>Les trônes placés, l'Ancien des jours, le fleuve de feu, les livres ouverts</td></tr>
+<tr><td class="d">7:11, 12</td><td>La bête tuée, son corps livré au feu ; les autres perdent leur domination</td></tr>
+<tr><td class="d">7:13</td><td>« Un fils d'homme » vient avec les nuages et a accès auprès de l'Ancien des jours</td></tr>
+<tr><td class="d">7:14, 27</td><td>Domination, dignité et royaume reçus ; le royaume partagé avec les saints</td></tr>
+<tr><td class="d">Mt 26:64 ; Ap 5:9, 10</td><td>Application par Jésus devant le sanhédrin ; rachetés faits rois et prêtres : à venir</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES ET DOCUMENTAIRES. (1) L'ANTIQUITÉ DU TITRE : « un trône de feu » n'est pas une invention juive tardive — les textes mésopotamiens décrivent les dieux siégeant dans un éclat de flammes, et les trônes d'apparat trouvés ou figurés en Assyrie et en Perse sont plaqués d'or et de pierres. Le Psaume 104:1, 2 fait de la lumière le vêtement de Dieu ; Daniel reprend ce langage dans une vision datée de la période babylonienne. (2) LE MOTIF DES LIVRES : les registres célestes et les tablettes du destin sont une réalité culturelle de la Mésopotamie — les « tablettes du destin » (ṭupšīmāti) apparaissent dans l'épopée d'Enuma Elish ; Ézéchiel 9:2 et Malachie 3:16 connaissent aussi les livres où l'on écrit devant Dieu. Daniel fait donc de la comptabilité céleste l'instrument d'un tribunal. (3) LA FIGURE DE L'ANCIEN DES JOURS : la tradition juive postérieure a lu le chapitre en clé messianique, ce que les sources citées par la Bibliothèque en ligne relèvent expressément — le Soncino Books of the Bible, commentaire de Daniel 7:13, applique le verset 13 au Messie. (4) LE CONNEXE POLITIQUE : le verset 11 tue la bête dans le même mouvement que la vision ; or, dans la lecture témoins de Jéhovah et dans la plupart des lectures chrétiennes, cette bête est Rome, et la petite corne en sort. La condamnation est donc située AU MILIEU des temps des nations, quand le pouvoir de dominer le monde est encore dans des mains humaines. (5) LE TÉMOIGNAGE DE JÉSUS : Matthieu 26:64, Marc 14:62 et Luc 22:69 rapportent l'application du passage par Jésus devant le grand prêtre, sous serment, ce qui est l'un des rares points où le Nouveau Testament donne l'exégèse d'un texte de Daniel par un locuteur lui-même visé par la prophétie. (6) LE STATUT : la fiche enregistre la prophétie comme « à venir » — le royaume reçu en 7:14 n'est pas encore la domination effective sur la terre, et la fiche ne date rien.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE LIEU DE LA VISION : Daniel est à Babylone (Daniel 7:1) ; la vision est portée dans un espace qui n'est plus géographique mais cosmique — la mer d'où montent les bêtes, les nuages du ciel, le trône et le fleuve de feu. Le livre sait pourtant nommer les lieux réels, et le chapitre 8 nommera Suse et le fleuve Oulaï ; le contraste est voulu. (2) LA CARTE DES EMPIRES SOUS-JACENTE : chaque bête correspond à une aire géographique identifiable — la plaine alluviale de Babylone, le plateau iranien de la Médo-Perse, l'arc gréco-macédonien, le pourtour méditerranéen de Rome. Le chapitre sept est donc une carte de la domination mondiale qui se superpose aux cartes réelles. (3) L'ORIENTATION DE LA PRIÈRE ET DE LA VISION : de Babylone, Jérusalem se trouve à l'ouest-sud-ouest, à quelque neuf cents kilomètres ; les nuages du ciel et les quatre vents marquent les directions du monde, comme pour écarter l'idée d'un royaume localisé dans un pays. (4) LA VILLE DE SUSE : le chapitre 8 situera la vision « au château de Suse, dans la province d'Élam, près du fleuve Oulaï » — site archéologique majeur du sud-ouest iranien, dont le tell historique (Suse, Shush) porte les strates de la capitale d'hiver achéménide ; le nom Oulaï désigne aujourd'hui le Karkheh. Il en résultera, et la fiche le dit, une géographie prophétique qui couvre à la fois l'exil juif et le cœur du pouvoir perse. (5) L'EAU, ENFIN : la mer agitée, le fleuve de feu, le flot de la vision répondent à la géographie hydraulique d'un pays où la vie tient au fleuve et au canal : depuis l'exil, l'eau est le décor quotidien du peuple de Daniel.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES, ARCHÉOLOGIQUES ET TEXTUELLES. (1) LES TRÔNES DU PROCHE-ORIENT : les reliefs assyriens d'Assurbanipal montrent le roi et la reine banquetant sur des sièges d'apparat ; les trônes achéménides sont décrits par les auteurs grecs et les reliefs de Persépolis, où les souverains siègent sous un baldaquin porté par les peuples. Une cour céleste siégeant sur des trônes n'est donc pas un décor abstrait : le chapitre transpose en modèle divin une réalité administrative connue de tous. (2) LES ROUES ET LEURS STRUCTURES : la vision d'Ézéchiel 1 — roues à jantes, hauteur, aspect de cornaline, croisement de quatre roues — a été rapprochée par les exégètes des structures architecturales et mécaniques mésopotamiennes et des trônes à base roulante des processions. Le rapprochement n'explique pas la vision, il montre qu'elle s'appuie sur des objets réels. (3) L'ÉCRITURE ET LA LANGUE : le chapitre 7 est en araméen et marque la fin de la section araméenne (2:4b-7:28) ; le mot ʿATTIQ n'apparaît que dans ce chapitre, ce qui a fait supposer un usage technique, parfois rapproché de la terminologie juridique. (4) LA STRUCTURE DU CHAPITRE : les exégètes modernes ont montré que 7:1-14 est construit en chiasme (bêtes / jugement / bêtes / jugement), procédé qui indique une rédaction réfléchie et non une compilation hasardeuse ; les textes araméens de Qumrân, dont les fragments du livre de Daniel trouvés dans les grottes, témoignent de la présence du livre dans la bibliothèque du désert. (5) LA CHRONOLOGIE DU CHAPITRE : la « première année de Belshatsar » (7:1) correspond à la période d'absence de Nabonide à Tayma, elle-même documentée par la Chronique de Nabonide. Registre : les preuves matérielles éclairent les images (trônes, roues, fleuves, registres) ; le contenu de la vision — jugement, réception du royaume — relève de la prophétie et est enregistré comme tel.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>TRÔNES (PLACÉS) → ANCIEN DES JOURS (BLANCHEUR, L'ANCIEN) → TRÔNE DE FEU + ROUES + FLEUVE (JUGEMENT) → MILLE MILLIERS (LA COUR) → LIVRES OUVERTS → BÊTE TUÉE, CORPS AU FEU → L'AUTRE PERD SA DOMINATION → NUAGES DU CIEL → FILS DE L'HOMME (ACCÈS, APPROCHÉ) → DOMINATION, DIGNITÉ, ROYAUME → PEUPLES, NATIONS, LANGUES → DOMINATION ÉTERNELLE → 7:27 LES SAINTS (À VENIR)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre 7:9-14 comme À VENIR, sur le registre ; la fiche ne date rien et ne convertit aucun des chiffres du chapitre en années. LES TRÔNES AU PLURIEL : leur interprétation est discutée — sièges du jugement, trônes des saints associés, ou pluriel de majesté (la note de la Traduction du monde nouveau signale l'alternative « un trône grandiose » si le mot araméen est un pluriel de majesté) ; la fiche signale les deux lectures. L'IDENTIFICATION DES FIGURES : la fiche retient, comme les sources citées, que l'Ancien des jours est Jéhovah et que le Fils de l'homme est le Messie ; d'autres lectures distinguent une pluralité de juges et lisent le verset 13 comme la venue en présence de Dieu d'un représentant angélique — hypothèse que la fiche ne retient pas, mais qu'elle ne dissimule pas. LE MOMENT : la fiche ne fixe pas le moment de la réception du royaume ; elle rappelle que, pour la lecture témoins de Jéhovah, le royaume est établi dans les cieux et que la domination pleine et visible est encore à venir. LE FLEUVE DE FEU ET LE LANGAGE : la description est symbolique, la fiche ne la traduit pas en physique. LA PRISE DE POSITION N'EST PAS PRÉSENTÉE COMME LA SEULE : la fiche indique que la lecture retenue est celle des Témoins de Jéhovah, sourcée, et que le dossier des preuves matérielles (trônes, registres, cours, processions) ne fait que montrer que le vocabulaire de la vision correspond à des réalités connues.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision nocturne : les bêtes, puis les trônes placés et l'Ancien des jours</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Première année de Belshatsar</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trône de flammes, roues de feu, fleuve de feu, mille milliers, livres ouverts</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:9, 10</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La bête tuée et livrée au feu ; les autres bêtes privées de domination</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">7:11, 12</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le Fils de l'homme vient avec les nuages et reçoit un royaume éternel</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:13, 14</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Application par Jésus (Mt 26:64) ; rachetés rois et prêtres (Ap 5:9, 10) — sans date</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/110">Bible — Psaume 110 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/110</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/1">Bible — Hébreux 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/1">Bible — Ézékiel 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/7">Bible — Daniel 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/7</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200004183">« Fils de l'homme » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200004183</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN379 — Le Trône de feu et le Fils de l'homme : domination, dignité et royaume</span><span>Catégorie DN2</span></div></div>
+</article>
+<article class="fiche" id="DN380">
+<div class="visuel"><img src="images/prophe_DN380_saints.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN380 · CATÉGORIE DN2</div>
+<h3>Le royaume donné au peuple des saints du Très-Haut</h3>
+<div class="ref">Daniel 7:27</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir</span>
+<span class="badge">royaume domination grandeur tous les royaumes sous les cieux donnés au peuple des saints royaume éternel toutes dominations serviront (royaume → domination → grandeur → royaumes sous les cieux → donné → peuple → saints → Très-Haut → royaume éternel → toutes dominations → serviront → obéiront)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN380 · 0:39</div><audio controls preload="none" src="audio/fiche_DN380_saints.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN380_saints.mp3 · 0:39 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 7:27</td></tr>
+<tr><td class="d">Statut</td><td>À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>royaume domination grandeur tous les royaumes sous les cieux donnés au peuple des saints royaume éternel toutes dominations serviront (royaume → domination → grandeur → royaumes sous les cieux → donné → peuple → saints → Très-Haut → royaume éternel → toutes dominations → serviront → obéiront)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P380 (7:27 : le royaume donné aux saints du Très-Haut) ; Révélation 22:3-5 ; À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ROYAUME… DOMINATION… GRANDEUR… ROYAUMES… SOUS… CIEUX… DONNÉS… PEUPLE… SAINTS… TRÈS-HAUT… ROYAUME… ÉTERNEL… TOUTES… DOMINATIONS… SERVIRONT… OBÉIRONT… — U-MALKHUTA… ET LE ROYAUME… WE-SHOLṬANA… ET LA DOMINATION… U-REVUTA… ET LA GRANDEUR… DE-MALKHVAT… DES ROYAUMES… DI… QUI… TEḤOT… SOUS… KOL… TOUS… SHEMAYYA… LES CIEUX… YEHIVET… SERONT DONNÉS… LE-ʿAM… AU PEUPLE… QADDIŠE… DES SAINTS… ʿELYONIN… DU TRÈS-HAUT… MALKHUTEH… SON ROYAUME… MALKHU… UN ROYAUME… ʿALAM… ÉTERNEL… WE-KHOL… ET TOUTES… SHOLṬANAYYA… LES DOMINATIONS… LEH… À LUI… YIPLEḤUN… SERVIRONT… WE-YISHTAMʿUN… ET OBÉIRONT… — ʿAD… JUSQU'À… DI… QUE… ʿATTIQ… L'ANCIEN… YOMAYYA… DES JOURS… ATE… VINT… WE-DINA… ET LE JUGEMENT… YEHIV… FUT DONNÉ… LE-QADDIŠE… AUX SAINTS… ʿELYONIN… DU TRÈS-HAUT… WE-ZIMNA… ET LE TEMPS… METAT… ARRIVA… WE-MALKHUTA… ET LE ROYAUME… HEḤESINU… ILS PRIRENT POSSESSION… QADDIŠIN… LES SAINTS… »</li>
+<li>LES TROIS JUMEAUX — Psaume 145 : « LOUANGE… DAVID… EXALTERAI… ROI… BÉNIRAI… NOM… ÉTERNITÉ… CHAQUE JOUR… LOUERAI… GRAND… JÉHOVAH… LOUANGE… DÉCOUVRIR… GÉNÉRATION… ŒUVRES… PUISSANCE… MAGNIFICENCE… GLOIRE… DIGNITÉ… MERVEILLES… PARLERONT… PUISSANCE… ACTES… REDOUTABLES… GRANDEUR… BONTÉ… ABONDANCE… JUSTICE… GRACIEUX… MISÉRICORDIEUX… PATIENT… GRAND… AMOUR… BON… TOUS… COMPASSION… ŒUVRES… LOUENT… FIDÈLES… BÉNISSENT… GLOIRE… ROYAUME… PUISSANCE… ROYAUME… TOUTES… ÉTERNITÉ… DOMINATION… CHAQUE GÉNÉRATION… SOUTIENT… TOUS… RELÈVE… YEUX… TOUS… ESPOIR… NOURRITURE… TEMPS… OUVRE… MAIN… SATISFAIT… DROIT… FIDÈLE… ŒUVRES… PROCHE… INVOQUENT… VÉRITÉ… FAIT… VOLONTÉ… CRAIGNENT… GARDE… MÉCHANTS… DÉTRUIT… LOUANGE… TOUTE CHAIR… NOM… ÉTERNITÉ… » — Psaume 96 : « CHANTEZ… JÉHOVAH… CHANT… NOUVEAU… TERRE… CHANTEZ… GLOIRE… NOM… BONNE NOUVELLE… JOUR… DÉCLAREZ… SALUT… NATIONS… GLOIRE… PEUPLES… MERVEILLES… DIEUX… NÉANT… CIEUX… FAITS… JÉHOVAH… SPLENDEUR… MAJESTÉ… SANCTUAIRE… FORCE… BEAUTÉ… FAMILLES… PEUPLES… DONNEZ… GLOIRE… FORCE… NOM… OFFRE… ENTREZ… COURS… PROSTERNEZ… TERRE… TREMBLEZ… DITES… NATIONS… JÉHOVAH… RÈGNE… MONDE… AFFERMI… JUGERA… PEUPLES… ÉQUITÉ… CIEUX… RÉJOUISSENT… TERRE… JOIE… MER… GROMMELLE… CAMPAGNES… ARBRES… CHANTENT… VENIR… JUGER… TERRE… MONDE… VÉRITÉ… » — Apocalypse 5 : « TRÔNE… VINGT-QUATRE… ANCIENS… SEPT… ESPRITS… QUATRE… ÊTRES VIVANTS… LIVRE… SCEAUX… ANGE… FORT… QUI… OUVRIR… PLEURAIS… ANCIEN… LION… JUDA… RACINE… DAVID… VAINCU… AGNEAU… IMMOLÉ… CORNES… YEUX… ENVOYÉS… PRIT… LIVRE… QUATRE… VINGT-QUATRE… TOMBÈRENT… CHACUN… HARPE… COUPES… PARFUM… CHANTENT… NOUVEAU CANTIQUE… DIGNITÉ… PRIS… RACHETÉ… TRIBU… LANGUE… PEUPLE… NATION… FAITS… ROYAUME… PRÊTRES… RÉGNERONT… TERRE… MYRIADES… VOIX… FORCE… RICHESSE… SAGESSE… DIGNITÉ… GLOIRE… BÉNÉDICTION… TRÔNE… AGNEAU… ÉTERNITÉ… »</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le verset 27 est la dernière parole de l'ange dans le chapitre sept, et il vient clore une explication commencée au verset 23. La séquence est stricte : la quatrième bête et ses dix cornes (7:23, 24), l'activité de la petite corne — paroles contre le Très-Haut, usure des saints, changement des temps et de la loi (7:25) —, puis le tribunal qui siège et ôte la domination (7:26), et enfin le verdict positif : « le royaume, la domination et la grandeur de tous les royaumes sous tous les cieux seront donnés au peuple des saints du Très-Haut ». Le verset est donc l'exact pendant du verset 14 : là, la domination est donnée à « quelqu'un de semblable à un fils d'homme » ; ici, elle est donnée « au peuple des saints du Très-Haut ». Le même mot revient — le royaume est donné, il n'est pas pris. Le verset 22 a préparé la scène : le jugement fut donné en faveur des saints, et le temps arriva où les saints prirent possession du royaume. Le registre de la vague classe la prophétie « À venir » et la relie à Révélation 22:3-5, où le trône de Dieu et de l'Agneau est au milieu de la ville, où ses serviteurs « régneront à jamais ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre mots gouvernent le verset. (1) ʿAM QADDIŠE ʿELYONIN, « le peuple des saints du Très-Haut » : il ne s'agit pas d'individus isolés mais d'un PEUPLE (ʿam), c'est-à-dire d'une entité collective et organisée, sainte (qaddiš, mis à part) et rattachée par un possessif au Très-Haut. Le royaume n'est donc pas donné à une personne seule mais à une communauté. (2) La TRIPLE ÉNUMÉRATION : « le royaume, la domination et la grandeur » — trois termes qui couvrent le droit de régner (malkhuta), l'exercice du pouvoir (sholṭan) et la dignité qui l'accompagne (revu). C'est la même triade qu'en 7:14 à l'adresse du Fils de l'homme : domination, dignité, royaume. La symétrie est un choix rédactionnel : ce que le Fils de l'homme reçoit, il le partage. (3) L'ÉTENDUE : « de tous les royaumes sous tous les cieux » — l'expression n'est pas locale mais universelle ; le mot « sous les cieux » désigne l'ensemble du monde habité, comme au verset 14 (« peuples, communautés nationales et langues »). (4) LA FIN : « toutes les dominations le serviront et lui obéiront » — deux verbes, servir et obéir, c'est-à-dire l'allégeance effective. Et le royaume est dit « éternel », ce qui exclut la succession même qui fait le sujet des quatre bêtes. Relevons enfin un détail d'exégèse : le texte dit « son royaume est un royaume éternel », et la question de savoir à qui renvoie « son » a occupé les commentateurs — le Très-Haut, le Fils de l'homme ou le peuple des saints. La Bible Annotée note que la formule appliquée à Dieu, puis au Fils de l'homme (7:14), l'est ici au peuple des saints, « de même que Dieu règne par le Fils de l'homme, celui-ci règne par le peuple des saints ». Autrement dit, le règne est un seul, exercé par délégation successive.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah, avec ses sources. La Bibliothèque en ligne, dans la présentation du livre de Daniel (« Livre de la Bible numéro 27 »), écrit que « le Tribunal céleste intervient pour donner “le royaume, la domination et la grandeur des royaumes sous tous les cieux […] au peuple des saints du Suprême” (7:27) », et précise que « ce sont les “saints du Suprême” qui partagent le Royaume avec Christ Jésus, “le Fils de l'homme” ». La même source résume le message du livre : les nations doivent apprendre que « le Très-Haut est Chef dans le royaume des humains » et qu'il le donne « à celui qui est semblable à un fils d'homme », le Messie, Christ Jésus. Quatre conséquences sont tirées dans la fiche. (a) LE ROYAUME EST UN PARTAGE : 7:14 donne la domination au Fils de l'homme, 7:27 la donne au peuple des saints — les deux versets ne se contredisent pas, ils décrivent le même royaume reçu par le Roi et par ceux qui règnent avec lui, ce que Révélation 5:9, 10 énonce en clair : rachetés de toute tribu, langue, peuple et nation, « faits royaume et prêtres… ils régneront sur la terre ». (b) LE SALUT EST UNE ROYAUTÉ : le vocabulaire du verset est administratif — royaume, domination, grandeur, obéissance — et il écarte toute lecture purement spirituelle d'un « règne dans le cœur ». (c) LA FIN DU CYCLE DES BÊTES : le verset 27 suit immédiatement le verset 26, qui ôte la domination à la quatrième bête ; c'est donc le même trône, la même autorité, qui passe d'un système de violence à une assemblée de saints. (d) L'HORIZON FINAL : Révélation 22:3-5 met ce royaume dans la ville où le trône de Dieu et de l'Agneau sont présents, où il n'y a plus de malédiction, où la nuit n'existe plus, et où les serviteurs « régneront à jamais ». La fiche enregistre cette lecture comme celle des Témoins de Jéhovah, cite la source, et rappelle que le statut reste « à venir » : rien ici n'est daté.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">7:22</td><td>Le jugement donné en faveur des saints ; le temps marqué où ils prennent possession</td></tr>
+<tr><td class="d">7:26</td><td>Le tribunal siège : la domination de la corne est ôtée, anéantie, détruite</td></tr>
+<tr><td class="d">7:27a</td><td>Le royaume, la domination et la grandeur donnés au peuple des saints du Très-Haut</td></tr>
+<tr><td class="d">7:27b</td><td>Royaume éternel ; toutes les dominations serviront et obéiront</td></tr>
+<tr><td class="d">Révélation 22:3-5</td><td>Le trône dans la ville ; plus de malédiction ; ils régneront à jamais : à venir</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES ET DOCUMENTAIRES. (1) LA CATÉGORIE DES « SAINTS » : le mot qaddiš (araméen) désigne celui qui est mis à part ; dans le livre de Daniel, il est appliqué au peuple de Dieu collectivement (« les saints du Très-Haut », 7:18, 21, 22, 25, 27). Le vocabulaire a des racines administratives et religieuses : les temples de Mésopotamie et d'Égypte consacrent des personnes et des biens mis à part pour le dieu. Traduire « saints » par « fidèles » ou « consacrés » restitue donc ce que le mot porte : les biens du Très-Haut. (2) LE MOTIF DE LA DOMINATION PARTAGÉE : la littérature du second temple développe l'idée d'un royaume des justes (livre des Jubilés, Psaumes de Salomon 17). Daniel 7:27 est donc une formulation nette, ancienne et intégrée à un livre présent dans les manuscrits de la mer Morte (fragments araméens et hébreux du livre de Daniel, grottes 1 et 4). (3) LA CONTINUITÉ DOCUMENTAIRE : le livre de Daniel est attesté quatre fois à Qumrân, ce qui interdit de le réduire à un écrit tardif. Le chapitre 7, qui contient le verset 27, circule donc dès avant la fin du second temple dans des copies multiples. (4) LES PARALLÈLES ÉGYPTIENS ET MÉSOPOTAMIENS : le titre de « roi éternel » est appliqué en long et en large aux souverains — « roi de l'univers », « roi des rois » — sur les inscriptions royales ; en transférant le titre au peuple des saints, le verset inverse la propagande impériale, comme le fait Daniel 2 et Daniel 4. (5) LE STATUT : la fiche enregistre la prophétie comme « à venir » et ne propose aucune date ; elle n'utilise pas les preuves ci-dessus pour prouver l'avenir, mais pour établir les réalités du vocabulaire et la présence du texte.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) L'ESPACE DU VERSET : « tous les royaumes sous tous les cieux » — l'expression correspond à la cosmographie du monde habité, celle des cartes mentales de Babylone et de Perse : la terre sous le ciel, entourées des eaux. Le verset n'énumère pas de pays, ce qui exclut une interprétation strictement territoriale. (2) LE CONTRASTE AVEC LES BÊTES : chaque bête a un habitat précis — la mer, la plaine, le plateau, le pourtour méditerranéen. Le royaume des saints n'a pas d'habitat ; il est « sous tous les cieux ». C'est ce que Révélation 22:3-5 prolonge avec la ville sainte, dont les dimensions et l'accès sont décrits de façon géométrique et non géographique. (3) LA MONTAGNE : Daniel 2 fait de la pierre une montagne qui remplit toute la terre ; le chapitre 7 ne dit pas « montagne » mais « dominion universel ». Le rapprochement des deux chapitres, retenu par la lecture témoins de Jéhovah, situe donc le royaume dans un espace qui est d'abord une souveraineté, un pouvoir exercé partout, non un point du globe. (4) LE PÈLERINAGE : la géographie biblique de l'accomplissement — nations affluant vers la montagne de la maison de Jéhovah (Ésaïe 2:2, 3 ; Michée 4:1, 2), fleuve sortant du sanctuaire (Ézéchiel 47), eaux de la connaissance couvrant la terre (Ésaïe 11:9) — complète la lecture : le verset 27 décrit la fin du système des empires sur la carte du monde entier.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES, ARCHÉOLOGIQUES ET TEXTUELLES. (1) LES MANUSCRITS : le livre de Daniel figure à Qumrân en plusieurs copies : 1QDan(a), 1QDan(b), 4QDan(a-e), dont certains fragments couvrent le chapitre 7. La critique textuelle de ce chapitre dispose donc d'un état du texte antérieur à la période médiévale des manuscrits massorétiques, et les variantes relevées affectent peu le sens général. (2) LA STRATIGRAPHIE DES EMPIRES : la lecture du chapitre 7 en clé de quatre puissances successives s'appuie sur une séquence archéologiquement et historiquement établie : Babylone (605-539), Perse (539-331), Grèce (331-323 et au-delà), Rome (à partir du IIe siècle av. n. è.). Les datations reposent sur les archives cunéiformes et les sources grecques, et les destructions de villes (Tyr, Carthage, Corinthe) sont datées par les fouilles et les monnaies. (3) L'UNITÉ LITTÉRAIRE DU CHAPITRE : l'analyse rhétorique montre la structure en inclusion — 7:1-8 (vision), 7:9-14 (jugement et fils d'homme), 7:15-28 (explication) ; le verset 27 clôt la partie explicative et reprend mot pour mot le vocabulaire des versets 14 et 18. Ce travail de structuration est un des arguments avancés en faveur de la cohérence littéraire du livre dans les études récentes. (4) L'ICONOGRAPHIE DU BANQUET ET DE LA COUR : les reliefs du palais d'Assurbanipal à Ninive (British Museum) montrent le souverain dans son jardin, sur un siège, les serviteurs debout en éventail — un décor dont le chapitre sept forme l'exact négatif céleste. Registre : la fiche ne prouve pas l'avenir ; elle documente les termes, les manuscrits, la succession historique des empires et la cohérence du texte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>4e BÊTE (DIX CORNES) → PETITE CORNE (GUERRE, USURE) → 7:22 JUGEMENT EN FAVEUR DES SAINTS → 7:26 TRIBUNAL : DOMINATION ÔTÉE → 7:27 ROYAUME, DOMINATION, GRANDEUR DONNÉS → PEUPLE DES SAINTS (ʿAM QADDIŠE) → TOUS LES ROYAUMES SOUS LES CIEUX → ROYAUME ÉTERNEL → TOUTES LES DOMINATIONS SERVENT → RÉV. 22:3-5 (TRÔNE, PLUS DE MALÉDICTION, RÉGNERONT À JAMAIS)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : le verset est classé « à venir » dans le registre ; la fiche ne date pas l'installation du royaume et ne calcule rien. L'IDENTITÉ DU « PEUPLE DES SAINTS » : la fiche retient la lecture témoins de Jéhovah (ceux qui partagent le royaume avec Christ), sans masquer les autres : lecture juive ancienne appliquant le verset aux fidèles d'Israël, lecture ecclésiale appliquant la royauté à l'Église, lecture post-millénariste y voyant la chrétienté triomphante — la fiche ne retient pas cette dernière. LE « SON » AMBIGU (7:27, « sa royauté ») : la fiche signale que le référent du possessif n'est pas fixé dans le texte et que plusieurs commentateurs le rapportent à Dieu plutôt qu'aux saints. LE MOMENT DU REGNE : la fiche ne dit ni quand ni combien de temps ; les millénaristes fixent mille ans (Ap 20:4), la fiche ne fait que renvoyer au texte. ENFIN, LA FICHE NE CONFOND PAS ROYAUME ET POLITIQUE : le royaume du verset 27 est reçu, donné et partagé, non conquis ni administré par des moyens humains — la fiche ne l'annexe à aucun programme terrestre.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La quatrième bête, les dix cornes, la petite corne en guerre contre les saints</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vision de Daniel</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le jugement donné en faveur des saints ; le temps marqué arrivé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:22</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Temps, temps et moitié d'un temps » ; le tribunal siège ; la domination ôtée</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">7:25, 26</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le royaume, la domination et la grandeur donnés au peuple des saints du Très-Haut</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:27</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Royaume éternel reçu ; toutes les dominations serviront — Rév. 22:3-5, sans date</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/145">Bible — Psaume 145 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/145</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/96">Bible — Psaume 96 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/96</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/5">Bible — Apocalypse 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/7">Bible — Daniel 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/7</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990088">« Livre de la Bible numéro 27 — Daniel » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990088</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN380 — Le royaume donné au peuple des saints du Très-Haut</span><span>Catégorie DN2</span></div></div>
+</article>
+<article class="fiche" id="DN381">
+<div class="visuel"><img src="images/prophe_DN381_belier.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN381 · CATÉGORIE DN2</div>
+<h3>Le bélier à deux cornes et le bouc de l'occident : la Perse devant la Grèce</h3>
+<div class="ref">Daniel 8:1-8, 20, 21</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">bélier deux cornes frappe ouest nord sud bouc de l'occident corne entre les yeux brise les deux cornes (vision → Suse → Oulaï → bélier → deux cornes → une plus haute → frappe → ouest → nord → sud → bouc → occident → sans toucher le sol → corne imposante → frappe → brise → piétine → grandit → corne brisée → quatre cornes → Gabriel → Mède et Perse → roi de Grèce → premier roi)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN381 · 0:38</div><audio controls preload="none" src="audio/fiche_DN381_belier.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN381_belier.mp3 · 0:38 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 8:1-8, 20, 21</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>bélier deux cornes frappe ouest nord sud bouc de l'occident corne entre les yeux brise les deux cornes (vision → Suse → Oulaï → bélier → deux cornes → une plus haute → frappe → ouest → nord → sud → bouc → occident → sans toucher le sol → corne imposante → frappe → brise → piétine → grandit → corne brisée → quatre cornes → Gabriel → Mède et Perse → roi de Grèce → premier roi)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P381 (8:1-8, 20, 21 : le bélier à deux cornes (Mède-Perse) abattu par le bouc (Grèce) ; la grande corne brisée) ; Alexandre ; conquêtes grecques ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« TROISIÈME… ANNÉE… RÈGNE… BELSHAṬSAR… VISION… MOI… DANIEL… SUSE… CHÂTEAU… PROVINCE… ÉLAM… FLEUVE… OULAÏ… LEVAI… YEUX… VIS… BÉLIER… DEVANT… FLEUVE… DEUX… CORNES… HAUTES… PLUS HAUTE… MONTÉE… DERNIÈRE… BÉLIER… COUPS… CORNE… OUEST… NORD… SUD… AUCUNE… BÊTE… TENIR… DEBOUT… PERSONNE… ÉCHAPPER… BON… PLAISIR… DEVENAIT… GRAND… BOUC… OCCIDENT… SURFACÉ… TERRE… TOUCHER… SOL… CORNE… IMPOSANTE… YEUX… APPROCHA… BÉLIER… DEUX CORNES… COURUT… ARDEUR… FORCE… ATTEIGNIT… RAGE… FRAPPA… BRISA… DEUX… CORNES… FORCE… FAIRE FACE… JETA… TERRE… PIÉTINA… PERSONNE… DÉLIVRER… BOUC… DEVENAIT… TRÈS GRAND… SOMMET… PUISSANCE… GRANDE… CORNE… BRISÉE… QUATRE… CORNES… MONTÈRENT… QUATRE… VENTS… CIEL… GABRIEL… FAIS… SAVOIR… BÉLIER… DEUX… CORNES… ROIS… MÈDES… PERSES… BOUC… VELU… ROI… GRÈCE… GRANDE… CORNE… ENTRE… YEUX… PREMIER… ROI… — HA-ʾAYIL… LE BÉLIER… BAʿAL… QERANAYIM… AVEC DEUX CORNES… HA-QERENOT… LES DEUX CORNES… VEQEREN… U-CORNE… GEDOLAH… GRANDE… ʾEL-ʿEVER… VERS… YAMMAH… L'OCCIDENT… TSAPHONAH… LE NORD… NEGBAH… LE SUD… ʾATSIL… LE BOUC… ʿIZZIM… DES CHÈVRES… MI-YAM… DE LA MER… ʿAL… SUR… PENE… LA FACE… KOL… DE TOUTE… HA-ʾARETS… LA TERRE… WE-ʾEN… ET AUCUNE… NOGEʿA… NE TOUCHAIT… BA-ʾARETS… À LA TERRE… QEREN… UNE CORNE… ḤAZUT… DE VISION… BEIN… ENTRE… ʿEINAV… SES YEUX… HIGGIA… IL S'APPROCHA… BE-ḤAZOT… DANS LA FUREUR… KOḤO… DE SA FORCE… ḤIMTSAH… IL SE MIT EN RAGE… WA-YAKKEHU… ET IL LE FRAPPA… WA-YESHABBER… ET IL BRISA… SHETAI… LES DEUX… QERANAV… SES CORNES… HIPPILAHU… IL LE JETA… ARTSAH… À TERRE… WA-YIRMESEHU… ET LE PIÉTINA… WE-HA-TSAFIR… ET LE BOUC… HIGDIL… DEVINT GRAND… AD… JUSQU'À… MEʾOD… TRÈS… U-KHE-ʿATSMO… ET DANS SA FORCE… NISHBERAH… SE BRISA… HA-QEREN… LA CORNE… HA-GEDOLAH… LA GRANDE… WE-TAʿALENAH… ET MONTÈRENT… ARBAʿ… QUATRE… ʿAL… VERS… ARBAʿ… LES QUATRE… RUḤOT… VENTS… HA-SHAMAYIM… DU CIEL… ʾATTAH… TOI… HAVEN… FAIS COMPRENDRE… BEN… FILS… ʾADAM… D'HOMME… MELEKH… ROI… PARAS… DE PERSE… WE-HA-TSAFIR… ET LE BOUC… MELEKH… ROI… YAVAN… DE GRÈCE… HA-QEREN… LA CORNE… HA-GEDOLAH… LA GRANDE… ʾASHER… QUI… BEIN… ENTRE… ʿEINAV… LES YEUX… HA-MELEKH… LE ROI… HA-RIʾSHON… LE PREMIER… »</li>
+<li>LES TROIS JUMEAUX — Nombres 24 : « BALAAM… LEVA… YEUX… VIT… ISRAËL… CAMPÉ… TRIBUS… ESPRIT… DIEU… PROVERBE… PAROLE… HOMME… ŒIL… OUVERT… PAROLE… ENTEND… VISION… TOUT-PUISSANT… REGARDE… TOMBE… YEUX… OUVERTS… JACOB… DEMEURES… ISRAËL… VALLÉES… ÉTENDUES… ALOÈS… PLANTÉ… CÈDRES… EAUX… SCEAUX… ROIS… ÉLEVÉ… AGAG… ROYAUTÉ… ÉLEVÉE… DIEU… FAIT… VENIR… ÉGYPTE… FORCE… BUFFLE… DÉVORE… NATIONS… ADVERSAIRES… OS… BRISE… FLÈCHES… COURE… REPOS… COUCHÉ… LION… LIONNE… QUI… LÈVERA… BÉNISSEURS… MAUDISSEURS… PARTIR… ANGES… CONSEIL… BALAC… VENIR… MAUDIRE… JACOB… PAROLE… BÉNISSEMENT… MARCHÉ… CHAMPS… PSAUME… PARABOLE… ÉTOILE… SORTIRA… JACOB… SCEPTRE… S'ÉLÈVERA… ISRAËL… ÉCRASERA… TEMPES… MOAB… DÉTRUIRA… TOUS… FILS… SETH… ÉDOM… POSSESSION… SÉIR… ENNEMIS… POSSÉDERONT… ISRAËL… FORCE… DOMINERA… DÉTRUIRA… ENNEMIS… AMALEQ… PREMIER… NATIONS… FIN… DÉTRUIT… QÉNI… HABITATION… NID… ROCHER… DÉVASTÉ… HOMMES… SORTIRONT… KITTIM… ASSYRIE… ÉBER… DÉTRUIT… LUI AUSSI… » — Esdras 7 : « APRÈS… CHOSES… RÈGNE… ARTAXERXÈS… ROI… PERSE… ESDRAS… FILS… SERAÏA… FILS… LÉVI… SCRIBE… EXPERT… LOI… MOÏSE… JÉHOVAH… ORGANISER… CŒUR… DONNER… LOI… MONTÈRENT… FILS… ISRAËL… PRÊTRES… LÉVITES… CHANTEURS… PORTIERS… NETHINIM… SEPTIÈME… ANNÉE… ARTAXERXÈS… VINT… JÉRUSALEM… PREMIER… CINQUIÈME… MOIS… DÉCRET… ART… DONNA… TOUT… DEMANDE… BEAUCOUP… OR… ARGENT… VASES… POIDS… CENT… TALENTS… ARGENT… CENT… COR… BLÉ… CENT… BATH… VIN… HUILE… SEL… PAS… DÉCRET… TRÉSORIERS… TERRE… VIEUX… PRÊTRES… SCRIBES… GOUVERNEURS… LOI… AU-DELÀ DU FLEUVE… APPLIQUÉS… JUIFS… ENSEIGNER… BÉNI… DIEU… ROI… PRÊTRES… DEBOUT… ANGES… CONSEIL… PEUPLES… NATIONS… CRAINTE… ESDRAS… PAS… SUIVI… » — Psaume 103 : « MON AME… BÉNIS… JÉHOVAH… TOUT… MON ÊTRE… NOM… SAINT… BÉNIS… OUBLIE… PAS… BIENFAITS… PARDONNE… FAUTES… GUÉRIT… MALADIES… RACHÈTE… FOSSE… COURONNE… AMOUR… COMPASSION… SATISFAIT… BIENS… JEUNESSE… RENOUVELÉE… AIGLE… JUSTICE… JUGEMENTS… OPPRIMÉS… FAIT… CONNAÎTRE… VOIES… FILS… ISRAËL… MISÉRICORDIEUX… GRACIEUX… LENT… COLÈRE… GRAND… AMOUR… DIFFICULTÉS… PAS… ÉTERNELLEMENT… LITIGE… PAS… À TOUJOURS… LOIN… TRANSGRESSIONS… CIEUX… TERRE… AMOUR… GÉNÉRATIONS… RÉVÈRENT… LEVE… SOLEIL… CONNAÎT… FAIBLESSE… POUSSIÈRE… HOMME… JOURS… HERBE… FLEUR… PASSE… SOUFFLE… LIEU… CONNU… AMOUR… ÉTERNEL… JUSTICE… ENFANTS… ALLIANCE… COMMANDEMENTS… ÉTABLI… TRÔNE… CIEUX… DOMINATION… TOUT… BÉNISSEZ… ANGES… PUISSANTS… PAROLES… ARMÉES… MINISTRES… VOLONTÉ… ŒUVRES… LIEUX… DOMINATION… BÉNIS… AME… »</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La vision du chapitre 8 est datée : « la troisième année du règne de Belshatsar », donc quelques années avant la chute de Babylone — et deux siècles avant Alexandre. Le lieu est précis : Suse, le château, dans la province d'Élam, sur le fleuve Oulaï. C'est une ville du royaume de Perse, encore vassale de Babylone à l'époque, et qui deviendra une des capitales achéménides : la vision place donc Daniel, par avance, au cœur du pouvoir qui n'est pas encore né. Le tableau est construit en deux mouvements et un choc : le bélier, avec ses deux cornes dont l'une plus haute montée en dernier, qui frappe vers l'ouest, le nord et le sud, sans opposition ; puis le bouc venant de l'occident, couvrant la terre sans la toucher, avec une corne imposante entre les yeux ; et le combat — le bouc atteint le bélier, se met en rage, brise ses deux cornes, le jette à terre et le piétine, personne pour le délivrer. Puis vient le verset 8 : le bouc devient très grand, mais au sommet de sa puissance, sa grande corne se brise et quatre cornes montent à sa place vers les quatre vents du ciel. Les versets 20 et 21 donnent la clé, de la bouche de Gabriel : le bélier à deux cornes, ce sont les rois de Médie et de Perse ; le bouc velu, c'est le roi de Grèce ; la grande corne entre ses yeux, c'est le premier roi. Comme le note la Bible Annotée à propos du vocabulaire des cornes, la corne est l'emblème de la puissance dans toute la Bible, et les bêtes sont les empires.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le chapitre est écrit en hébreu, et il introduit deux nouveautés dans le livre : un ange nommé (Gabriel, v. 16) et une clé d'interprétation donnée immédiatement, sans intermédiaire. Trois détails de vocabulaire méritent l'attention. (1) LES DEUX CORNES INÉGALES : la corne mède était là la première, la corne perse montée en second et plus haute — ce qui traduit exactement l'histoire : Cyrus le Perse a supplanté la dynastie mède, et l'empire est dit « des Mèdes et des Perses » chez Daniel lui-même (5:28 ; 6:8), avec la préséance perse. (2) LE BOUC « SUR LA FACE DE TOUTE LA TERRE, SANS TOUCHER LE SOL » : la rapidité est le trait dominant — elle correspond à une conquête menée en une génération, à une armée qui ne s'arrête pas. (3) LA CORNE BRISÉE : le texte ne dit pas que le bouc meurt ; il dit que la corne SE BRISE à son apogée — c'est-à-dire au sommet, sans décadence préalable. Le mot traduit la brutalité d'un arrêt net : Alexandre meurt à Babylone en 323, dans sa trente-troisième année, au moment où il annonce une expédition vers l'Arabie. (4) LES QUATRE CORNES VERS LES QUATRE VENTS : le chapitre ne les nomme pas, mais Daniel 11:4 et les livres d'histoire les identifient — quatre royaumes issus du partage. Le texte grec du mot YAVAN (Grèce), dans la bouche de Gabriel, donne d'ailleurs à la prophétie son sol linguistique : la Grèce entre dans la Bible sous son nom réel. Enfin la structure : le chapitre est en prose pour la vision et l'explication, mais le portrait du bouc au verset 5 est un sommet de description — « il couvrait la surface de toute la terre sans toucher le sol » — d'où l'image, reprise par l'histoire militaire moderne, d'un empire en marche rapide.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah et lecture commune des Écritures grecques : les deux cornes du bélier correspondent à la puissance mède et à la puissance perse réunies ; le bouc est « le roi de Grèce », c'est-à-dire Alexandre le Grand ; la corne brisée est sa mort prématurée ; les quatre cornes sont les royaumes qui se partagent son empire — la lecture chrétienne en a toujours vu les diadoques, les quatre généraux. Le registre de la vague confirme : « Alexandre ; conquêtes grecques ; Daniel 8:21, 22 — Accomplie ». Trois appuis externes à la fiche : (a) LE TÉMOIGNAGE DES SOURCES GRECQUES : Arrien (Anabase 3.1-16), Quinte-Curce (Histoires d'Alexandre 3-5), Plutarque (Vie d'Alexandre) et Diodore de Sicile (Bibliothèque 17) racontent la conquête, la mort à Babylone et le partage — ce sont ces textes qui permettent d'aligner les dates : bataille du Granique 334, Issos 333, Gaugamèles 331, mort d'Alexandre 323, partage de Triparadis en 321, puis de Babylone 323 et d'Ipsos 301. (b) LES TABLETTES ASTRONOMIQUES BABYLONIENNES : elles enregistrent l'éclipse lunaire du 20 septembre 331 av. n. è. près de Gaugamèles, et des journaux babyloniens mentionnent la mort d'Alexandre en juin 323. (c) LA LECTURE JUIE ANCIENNE : Le livre des Maccabées, première lettre 1:58-62, décrit la domination grecque et sa culture en Palestine, ce qui confirme l'identification du « roi de Grèce » et de ses successeurs. La fiche, comme les fiches de la phase, n'ajoute rien au texte : elle enregistre que le livre donne SON explication, que l'histoire l'atteste, et qu'il n'y a pas là d'interprétation libre.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">559 (naissance du pouvoir perse)</td><td>Cyrus crée l'empire mède-perse : le bélier à deux cornes monte</td></tr>
+<tr><td class="d">529-525 av. n. è.</td><td>Extension vers l'ouest, le nord et le sud : Lydie (546), Babylone (539), Égypte (525)</td></tr>
+<tr><td class="d">334-331 av. n. è.</td><td>Alexandre franchit l'Hellespont, Issos, Gaugamèles : le bouc vient de l'occident</td></tr>
+<tr><td class="d">330-327 av. n. è.</td><td>Fin de l'empire perse ; marche vers l'est jusqu'à l'Indus et l'Oxus</td></tr>
+<tr><td class="d">13 juin 323 av. n. è.</td><td>Mort d'Alexandre à Babylone : la grande corne se brise au sommet de sa puissance</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES DÉFAITES DATÉES : la conquête de l'empire perse par Alexandre est l'un des événements les mieux datés de l'Antiquité. Arrien cite les dates des principales batailles ; l'éclipse lunaire du 20 septembre 331, enregistrée par les Babyloniens et utilisée par les astronomes modernes, fixe la bataille de Gaugamèles au 1er octobre 331. La Babylonie est prise en octobre 331, Suse peu après, Persépolis brûle en 330 — la fin de la dynastie achéménide (Darius III assassiné en 330) achève la prophétie du bélier. (2) LA MORT ET LE PARTAGE : Alexandre meurt à Babylone en juin 323 sans successeur viable : l'enfant à naître, Alexandre IV, et le demi-frère Philippe Arrhidée sont des rois fantômes ; les généraux se partagent l'empire, d'abord par l'accord de Babylone la même année, puis par Triparadis en 321, puis à Ipsos en 301, enfin avec les ajustements de 281. C'est ce que Daniel 8:8 annonce sous l'image des quatre cornes. (3) LA SÉLÉUCIDE ET LA LAGIDE : Antoine et Cléopâtre ne sont que la fin de la dynastie lagide d'Égypte, et la dynastie séleucide de Syrie descend de Séleucos Ier Nikator, un des généraux d'Alexandre : les deux « rois du nord » et « du sud » de Daniel 11 sont issus directement de ce partage, ce que Polybe (Histoires) et Tite-Live documentent pour la période hellénistique. (4) LE CONTEXTE JUI : Flavius Josèphe (Antiquités juives 11.8) rapporte la rencontre d'Alexandre avec le grand prêtre à Jérusalem et l'insertion des juifs dans l'empire grec ; les sources juives anciennes, dont 1 Maccabées 1:1-10, décrivent l'empire d'Alexandre et sa division : « il partagea son royaume entre ses généraux » — formulation qui reprend presque mot pour mot Daniel 8:8, 22. (5) ENFIN, LE DOUBLE DOSSIER PARALLÈLE : les textes cunéiformes tardifs, dont la tablette dite « prophétie dynastique » d'époque séleucide, attestent que les milieux lettrés du pays utilisaient le langage des rois et des cornes — sans que cela fasse du chapitre 8 une copie de documents existants ; la fiche signale la similitude des motifs et laisse la question ouverte.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) MIRE DU COMBAT — LES QUATRE DIRECTIONS : le bélier frappe « vers l'ouest, le nord et le sud » (8:4), c'est-à-dire que la Perse ne frappe pas vers l'est, où elle est déjà maîtresse. Le bouc vient « de l'occident » — la Grèce est effectivement à l'ouest de la Perse. La géographie sert de preuve interne : elle est exacte. (2) SUSE ET L'OULAÏ : le château de Suse est le tell de Suse (Shush, Khouzistan), fouillé depuis le XIXe siècle (Dieulafoy puis les missions françaises) ; le fleuve Oulaï est identifié au Karkheh, à l'ouest du site ; les archéologues ont dégagé les palais achéménides, dont celui de Darius Ier, aux reliefs de lions et de taureaux ailés, et les briques émaillées décoratives. La vision « au château de Suse » situe donc le prophète dans un lieu aujourd'hui fouillé, même s'il ne s'y trouvait pas physiquement. (3) LES PAS DE LA CONQUÊTE : faisant route d'ouest en est — Hellespont, Granique, Sardes, Tarse, Issos, Tyr et Gaza, Égypte, Écbatane, Suse, Persépolis, Bactres et jusqu'à l'Indus — Alexandre suit les axes de l'empire perse, c'est-à-dire les routes royales, ce qui explique la vitesse : la conquête n'improvise pas, elle emprunte l'infrastructure de sa cible. (4) LES COLONIES ET LES VILLES FONDÉES : Diodore et Plutarque créditent Alexandre de la fondation ou du renommage d'un grand nombre de villes, dont Alexandrie d'Égypte (fondée en 331) ; l'hellénisme dissémine les cités grecques sur toute la carte, et les vestiges (Doura-Europos, Aï Khanoum en Afghanistan, la Bactriane) confirment la profondeur de la marque. (5) LE POINT D'ARRIVÉE : le bouc « devint très grand » — de la Grèce à la Bactriane et à l'Inde, son aire dépasse celle de la Perse qu'il a vaincue, ce que le verset 8 traduit en un mot : MEʾOD, « très ».</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA DATATION PAR L'ÉCLIPSE : les journaux astronomiques babyloniens et la liste d'éclipses permettent de fixer la bataille de Gaugamèles au 1er octobre 331 av. n. è. grâce à l'éclipse du 20 septembre. Ce sont donc des observations astronomiques anciennes qui fournissent aujourd'hui l'une des pièces datantes de la prophétie. (2) LA NUMISMATIQUE : les monnaies d'Alexandre et de ses successeurs, frappées en grand nombre — au type d'Héraclès et de Zeus —, permettent de suivre non seulement les rois mais les ateliers, donc la géographie administrative de l'empire divisé. Les trésors monétaires témoignent de la diffusion des types et des ateliers dans tout le monde hellénistique. (3) L'ARCHÉOLOGIE DE SUSE ET DE PERSEPOLIS : les fouilles ont livré des dizaines de milliers de tablettes administratives à Persépolis (tablettes élamites des fortifications et du Trésor, publiées depuis les années 1930) : elles enregistrent les rations, les ouvriers, les routes et les échanges. On peut donc vérifier, à l'échelle du détail, la réalité de l'appareil d'État que le bélier symbolise. (4) LES SCIENCES DES MATÉRIAUX : l'analyse des briques émaillées de Suse et de Babylone permet de décrire les techniques de glaçure et les ateliers royaux ; ces travaux de restauration et d'analyse confirment la continuité des ateliers sous les Perses. (5) LA MESURE DE LA CROISSANCE : aucun texte ne donne la taille de l'empire en unités — mais il est établi, par cartographie, que l'empire d'Alexandre, à sa mort, couvrait environ cinq millions de kilomètres carrés. Ce n'est pas une donnée du texte ; c'est le type d'ordre de grandeur qui donne corps au « très grand » du verset 8. Registre : la fiche utilise ces données comme mesures du CONTEXTE, non comme confirmation du texte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>SUSE, OULAÏ (3e année de Belshatsar) → BÉLIER 2 CORNES (MÈDE, PERSE) → FRAPPE OUEST, NORD, SUD (SANS RÉSISTANCE) → BOUC DE L'OCCIDENT (SANS TOUCHER LE SOL) → CORNE ENTRE LES YEUX → CHOC : DEUX CORNES BRISÉES, PIÉTINÉ → BOUC TRÈS GRAND → CORNE BRISÉE AU SOMMET → QUATRE CORNES VERS QUATRE VENTS → GABRIEL : BÉLIER = MÈDE-PERSE, BOUC = GRÈCE, CORNE = PREMIER ROI</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre la prophétie comme accomplie, sur la base de Daniel 8:20, 21 et des faits datés. L'IDENTIFICATION DU « PREMIER ROI » : le chapitre la donne en clair, et la fiche ne cherche pas ailleurs — mais elle signale que certains commentateurs critiques lisent tout le chapitre comme un récit à clefs de l'époque hellénistique ; la fiche ne retient pas cette lecture, elle ne la passe pas sous silence. LA CORNE BRISÉE « AU SOMMET DE SA PUISSANCE » : la fiche n'ajoute pas de détail physiologique ni de cause (mort, assassinat, maladie, blessure) — le texte ne le dit pas. LES QUATRE CORNES : la fiche identifie les quatre royaumes aux diadoques, comme le registre et Daniel 11:4 ; elle ne distribue pas nommément les quatre noms, puisque le chapitre 8 ne le fait pas. LA DATE DE LA VISION : « la troisième année de Belshatsar » se place vers 551-549 ; la fiche signale cette fourchette sans la fixer. LA VITESSE DU BOUC : l'image « sans toucher le sol » est hyperbolique ; la fiche ne la convertit pas en vitesses réelles. Enfin, la fiche ne relie pas le bélier et le bouc à des événements contemporains : la prophétie est datée par son accomplissement historique, pas par l'actualité.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Troisième année de Belshatsar : vision à Suse, sur l'Oulaï — deux siècles avant Alexandre</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~551-549 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Montée de l'empire mède-perse : deux cornes, l'une plus haute montée en dernier</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">559-525 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bouc de l'occident : Granique, Issos, Gaugamèles, Suse, Persépolis — le bélier piétiné</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">334-330 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort d'Alexandre à Babylone : la grande corne se brise en pleine puissance</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">13 juin 323 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatre cornes vers les quatre vents : partage entre les généraux (diadoques)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">301 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/4/24">Bible — Nombres 24 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/4/24</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/7">Bible — Esdras 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/7</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/103">Bible — Psaume 103 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/103</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/8">Bible — Daniel 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/8</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN381 — Le bélier à deux cornes et le bouc de l'occident : la Perse devant la Grèce</span><span>Catégorie DN2</span></div></div>
+</article>
+<article class="fiche" id="DN382">
+<div class="visuel"><img src="images/prophe_DN382_quatre.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN382 · CATÉGORIE DN2</div>
+<h3>La grande corne brisée : quatre royaumes vers les quatre vents du ciel</h3>
+<div class="ref">Daniel 8:8, 22</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">corne brisée quatre cornes quatre vents quatre royaumes (bouc → très grand → sommet → corne brisée → quatre cornes → quatre vents → quatre royaumes → nations → non pour sa postérité → sans la puissance du premier)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN382 · 0:39</div><audio controls preload="none" src="audio/fiche_DN382_quatre.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN382_quatre.mp3 · 0:39 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 8:8, 22</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>corne brisée quatre cornes quatre vents quatre royaumes (bouc → très grand → sommet → corne brisée → quatre cornes → quatre vents → quatre royaumes → nations → non pour sa postérité → sans la puissance du premier)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P382 (8:8, 22 : le grand royaume divisé en quatre royaumes inférieurs) ; partage entre les généraux d'Alexandre (301 av. n. è.) ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« BOUC… DEVENU… TRÈS GRAND… PUISSANT… GRANDE… CORNE… BRISÉE… QUATRE… CORNES… POUSSÈRENT… PLACE… QUATRE… VENTS… CIEL… — WE-HA-TSAFIR… ET LE BOUC… ʿIZZIM… DES CHÈVRES… HIGDIL… DEVINT GRAND… AD… JUSQU'À… MEʾOD… TRÈS… WA-KHE-ʿATSMO… ET DANS SA FORCE… NISHBERAH… SE BRISA… HA-QEREN… LA CORNE… HA-GEDOLAH… LA GRANDE… WA-TAʿALENAH… ET MONTÈRENT… ʾARBAʿ… QUATRE… TAḤTEHA… À SA PLACE… ḤAZUT… DE VISION… ʾEL… VERS… ʾARBAʿ… LES QUATRE… RUḤOT… VENTS… HA-SHAMAYIM… DES CIEUX… — WE-HA-QEREN… ET LA CORNE… HA-NISHBERAH… QUI FUT BRISÉE… WA-TAʿAMOD… ET SE DRESSÈRENT… ʾARBAʿ… QUATRE… MAMLAKHOT… ROYAUMES… MI-GOY… DU PEUPLE… YIQMUN… SE LÈVERONT… ME-ḤAVROTAH… DE SON EMPIRE… WE-LO… ET NON… BE-KHIṬO… PAS SELON SA FORCE… U-KHE-KOḤO… NI SELON SA PUISSANCE… HA-RIʾSHON… LE PREMIER… &gt;&gt;</li>
+<li>LES TROIS JUMEAUX — 1 Rois 12 : « ROBONAM… ALLA… SHECHEM… ISRAËL… RASSEMBLÉ… COURONNER… PARLA… RENDS… SERVICE… PÈRE… DUR… JOUG… PESANT… ALLÉGER… LAISSEZ-MOI… TROIS JOURS… CONSULTA… ANCIENS… HOMMES… SERVIR… DEMANDE… PARLERONT… JEUNES… GRANDS… TAILLE… MOUCHERONS… JOUG… PÈRE… JAUR… SCORPIONS… RÉPONDIT… RUDE… PÈRE… CHARGÉ… J'AJOUTERAI… DISPERSION… VU… PEUPLE… PAS… ÉCOUTÉ… AHIA… SHILONITE… TUNIQUE… DÉCHIRA… DOUZE… MORCEAUX… DIX… JÉROBOAM… DIX… TRIBUS… JÉROBOAM… REVENU… CONVOQUA… COMMUNAUTÉ… ROI… JÉROBOAM… S'ENFUIT… ÉGYPTE… SHISHAQ… ROI… MORT… ROBONAM… FILS… SALOMON… ROI… SEUL JUDA… ROYAUME DIVISÉ… DEUX ROYAUMES… JÉROBOAM… VEaux… DÂN… BÉTHEL… PRÊTRES… DÉCLARA… ISRAËL… DIEUX… SORTIR… ÉGYPTE… DÉCLARÉ… PEUPLE… FRONTIÈRES… ROYAUME… ISRAËL… SÉPARÉ… MAISON… DAVID… JUSQU'À… AUJOURD'HUI… » — 2 Rois 14 : « DEUXIÈME… ANNÉE… JOAS… FILS… JOAHAS… ROI… ISRAËL… AMATSIA… FILS… JOAS… ROI… JUDA… DEVENAIT ROI… VINGT-CINQ… ANS… VINGT-NEUF… ANS… RÉGNA… JÉRUSALEM… MÈRE… YEHADDIN… BON… YEUX… JÉHOVAH… PAS… HAUTS-LIEUX… PEUPLES… SACRIFIAIENT… TENAIT… EXCELLENT… CHOSE… DEVENU… ROYAUME… SÛR… FRAPPA… ÉDOM… SEL… DIX MILLE… SEL… VAL… DÉFAIT… QUI… PRIS… PIERRE… ENVOYA… JÉHOAS… VIENS… VOIR… PROVERBE… CHARDON… LIBAN… CÈDRE… PIÉTINERAI… BÉTAIL… LUXURIANT… PRÉTEND… VICTOIRE… TAISON… REPREND… DEMEURE… BETH-LASSEMECH… MATH… DÉFAIT… ISRAËL… JUDA… JÉHOAS… FILS… PRIT… AMATSIA… OUVERTURE… PORTE… DÉMOLIE… MUR… JÉRUSALEM… QUATRE CENTS… COUDÉES… OR… ARGENT… TEMPLE… TRÉSORS… PALAIS… OTAGES… SAMARIE… AMATSIA… VÉCUT… QUINZE… ANS… MORT… JÉHOAS… JÉROBOAM… RESTAURA… FRONTIÈRE… ENTRÉE… HAMATH… MER… ARABA… PAROLE… JONAS… DÉLIVRA… PEUPLE… AFFLICTION… PAS… SERVI… NOM… ISRAËL… OUSSE… SOUS… CIEL… » — Psaume 118 : « LOUÉ… JÉHOVAH… QU'IL EST BON… AMOUR… ÉTERNEL… DÉCLARE… ISRAËL… AMOUR… ÉTERNEL… MAISON… AARON… CRAIGNENT… LOUANGE… DÉTRESSE… J'HÉ-HA… RÉPONDU… VASTE… JÉHOVAH… PROPRE… MOI… PAS… CRAINDRAI… HOMME… FERA… JÉHOVAH… PROPRE… AIDES… VOIR… ENNEMIS… REFUGE… JÉHOVAH… MIEUX… CONFIANCE… HOMME… PRINCES… TOUTES… NATIONS… NOM… JÉHOVAH… REPOUSSÉ… CHUTE… RELEVÉ… FORCE… PUISSANCE… DROITE… ÉLÈVE… RÉJOUISSANT… JUSTES… VIVRAI… RACONTERAI… CORRIGÉ… DISCIPLINÉ… PAS… LIVRÉ… MORT… CONFESSEZ… JUSTES… PORTES… JUSTES… ENTRERAI… VOICI… PORTE… JUSTES… CONFESSERAI… PIERRE… REJETÉE… BÂTISSEURS… TÊTE… ANGLE… — JÉHOVAH… JOUR… RÉJOUISSONS… DONNE… SANTÉ… BÉNI… MAISON… JÉHOVAH… DIEU… LUMINAIRE… ATTACHEZ… CORDE… SACRIFICES… AUTEL… TE CONFESSERAI… EXALTE… CONFESSEZ… AMOUR… ÉTERNEL… »</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le verset 8 est le pivot du chapitre : le bouc devient très grand, et c'est précisément au point où il est au sommet que sa grande corne se brise — le texte dit « dans sa force », avant toute faiblesse. Quatre cornes poussent alors à sa place, tournées vers les quatre vents du ciel. Le verset 22 en donne le sens : la corne brisée, le premier roi ; les quatre qui ont monté à sa place, quatre royaumes qui se lèveront de son empire, « mais sans sa force ». La précision a son poids : l'empire divisé ne reproduit pas la puissance de son fondateur, ce que l'histoire confirmera — après Alexandre, aucun des diadoques ne reconquiert l'ensemble, et les luttes des générations suivantes épuisent ceux qui l'essaient. Le registre de la vague date l'accomplissement au partage entre les généraux d'Alexandre, en 301 av. n. è. Le rapprochement canonique se fait naturellement avec 1 Rois 12, où le royaume de Salomon se déchire en deux — modèle biblique de la division d'un grand royaume — et avec 2 Rois 14, où deux rois issus d'un même peuple se mesurent en un conflit de prestige, image à petite échelle des deux dynasties hellénistiques rivales qui se font la guerre pendant un siècle et demi, entre Ptolemaic et Séleucides.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois remarques d'exégèse. (1) LE VERBE : le texte n'emploie pas le verbe « mourir » — la corne « se brise », NISHBERAH. Le mot dit un arrêt mécanique, brutal, au moment même de l'expansion maximale. Il permet aussi de lire la suite : les quatre cornes ne poussent pas sur un autre animal, mais SUR LE MÊME bouc — la division est une fragmentation interne, non une conquête extérieure. (2) LE VERBE DES QUATRE CORNES : le verset 22 dit « quatre royaumes se LÈVERONT de son empire » — la préposition de (min) indique la provenance, non la substitution. (3) LA FORMULE FINALE : « non pour sa descendance, ni selon la puissance du premier » — la même précision se lit en Daniel 11:4, qui dit que le royaume sera « brisé et partagé vers les quatre vents du ciel, non pour sa postérité, ni selon la domination qu'il exerçait ». Les deux passages emploient donc la même formule technique : brisé, quatre vents, non pour la postérité, sans la puissance du premier. Dans le vocabulaire prophétique, cela signifie que la transmission dynastique est rompue : l'empire d'Alexandre ne passe pas à sa famille — comme on l'atteste historiquement pour la roi final, l'enfant Alexandre IV assassiné vers 310, et la dynastie éphémère des Arrhidées. Relevons enfin que Daniel 7:6 comptait les quatre têtes du léopard avant que le chapitre 8 ne les appelle quatre cornes : le même phénomène est décrit dans le livre avec deux emblèmes différents, ce qui invite à regarder les chapitres 7, 8 et 11 comme trois éclairages du même fait.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah et lecture commune : les quatre cornes sont les quatre royaumes issus de l'empire d'Alexandre, c'est-à-dire les quatre généraux devenus rois — habituellement identifiés à Séleucos (Syrie et Orient), Ptolémée (Égypte), Antigone (Asie Mineure et Syrie du Nord, puis éliminé) et Cassandre (Macédoine et Grèce) — avant que les recompositions ne fixent trois grandes puissances autour d'un troisième pôle (Macédoine), puis, à terme, une dualité entre Séleucides et Lagides. Le livre de Daniel lui-même conduit le lecteur vers cette lecture : au chapitre 11, les « roi du sud » et « roi du nord » se font la guerre pour la Palestine, et Flavius Josèphe, puis les historiens modernes, retrouvent dans cette rivalité les campagnes des Ptolémées et des Séleucides. Trois appuis pour la fiche : (a) 1 Maccabées 1:6-9, où le premier livre des Maccabées écrit qu'Alexandre « appela les nobles… et partagea son royaume de son vivant », puis que ses officiers devinrent rois, formulation qui reproduit le schéma de Daniel ; (b) les listes des diadoques et des épigones, établies par les historiens depuis Diodore et Arrien ; (c) la chronologie moderne des batailles décisives d'Ipsos (301 av. n. è.) et de Couropédion (281 av. n. è.), qui délimitent le passage de l'empire d'Alexandre à quatre royaumes. La fiche ajoute, comme les autres fiches du projet, que ce rapprochement est l'interprétation des Témoins de Jéhovah et de la tradition ; elle n'attribue pas au texte biblique un document militaire qu'il ne produit pas.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">13 juin 323 av. n. è.</td><td>Mort d'Alexandre à Babylone : la grande corne se brise en pleine force</td></tr>
+<tr><td class="d">323 av. n. è.</td><td>Accord de Babylone : premier partage des satrapies entre les généraux</td></tr>
+<tr><td class="d">321 av. n. è.</td><td>Triparadis : un second partage, plus dur, entre les diadoques</td></tr>
+<tr><td class="d">301 av. n. è.</td><td>Ipsos : les héritiers se répartissent la Syrie et l'Asie Mineure — quatre cornes consolidées</td></tr>
+<tr><td class="d">281 av. n. è.</td><td>Couroupédion : trois grands ensembles, dont deux se disputeront la Palestine (Séleucides, Lagides)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES SOURCES GRECQUES : Diodore de Sicile (Bibliothèque historique 18-20), Arrien (Anabase, livre 7 et les livres des Diadoques), Plutarque (Vie de Démétrios) et Justin (Abrégé des Histoires philippiques 13-17) racontent la succession d'Alexandre comme une suite de conférences et de batailles — accords de Babylone (323), de Triparadis (321), guerre de quatre ans entre Eumène et Antigone, puis Ipsos, où Antigone est tué. Ces sources sont complétées par l'épigraphie (décrets de cités grecques honorant les rois) et par les sanctuaires où les dynastes font inscrire leurs dédicaces. (2) LA FIN DE LA LIGNÉE : Alexandre IV, fils posthume du conquérant, et Philippe III Arrhidée, demi-frère incapable, sont tous deux éliminés avant 309 ; la prophétie « non pour sa postérité » correspond donc à un fait établi, non à une vue de l'esprit. (3) LES DEUX ROYAUMES PARALLÈLES : la rivalité Séleucos/Ptolémée occupe tout le chapitre 11 de Daniel — les historiens modernes retrouvent, dans les noms et les dates, la sixième guerre de Syrie et les campagnes de la fin du IIIe siècle (Raphia 217, Panion 200). La description de Daniel 8:22 et 11:4 a donc, en face d'elle, une chronologie établie par Polybe (Histoires 5 et 16), Tite-Live (livres 31-45) et Josèphe (Antiquités 12). (4) LES VESTIGES : les fouilles de Séleucie du Tigre (capitale séleucide fondée par Séleucos Ier), d'Antioche (capitale syrienne), de Doura-Europos (forteresse frontalière) et d'Alexandrie (capitale lagide) matérialisent les quatre pôles issus du partage : les monnaies des ateliers, les décrets gravés et les plans de ville. (5) LE STATUT : la fiche enregistre la prophétie comme accomplie en 301 av. n. è. selon le registre, mais elle signale que le mot « quatre » supporte aussi la lecture de quatre grandes divisions géographiques stables (Europe, Asie Mineure, Asie syro-mésopotamienne, Égypte), et que les auteurs anciens, comme les modernes, hésitent eux-mêmes sur le compte exact des principaux États issus du partage — puisqu'il y eut plus de quatre généraux et moins de quatre grands royaumes définitifs.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LES QUATRE VENTS : l'expression désigne les quatre points cardinaux du monde habité, et l'empire d'Alexandre les illustre : la Macédoine et la Grèce à l'ouest, l'Égypte au sud, la Syrie-Mésopotamie au centre-est, la Bactriane et l'Inde à l'est. Chacun des royaumes issus du partage correspond à une aire géographique : les Antigonides en Macédoine, les Lagides en Égypte, les Séleucides en Syrie-Mésopotamie-Iran, les Attalides et les autres en Asie Mineure. (2) LES FRONTIÈRES RÉELLES : la Syrie du Sud et la Palestine, couloir entre deux grandes puissances, deviennent la zone de contact des deux royaumes du nord et du sud — c'est le terrain de toutes les guerres syriennes, et le pays même du temple. Sur le plan archéologique, les fortins et les garnisons militaires hellénistiques (Doura-Europos, Tel Anafa, Marisa) jalonnent cette frontière, ainsi que les archives administratives de Doura et de Samarie. (3) LES ROUTES : la route royale perse, puis la voie hellénistique qui relie Antioche à Suse, transmetten l'axe de l'Euphrate, demeurent l'infrastructure : ce sont elles qui permettent aux Séleucides de contrôler l'Iran et d'y perdre pied. (4) LES FONDATIONS : la politique de fondation de villes (Séleucie du Tigre fondée vers 305 par Séleucos, Antioche vers 300, Apamée, Laodicée) crée un réseau urbain dont le plan en damier est encore visible dans plusieurs sites ; il donne la mesure de la réorganisation du territoire par les royaumes issus du partage. (5) L'USURE DU TEMPS : « non selon la puissance » — la carte du partage ne retrouva jamais son unité ; les expéditions des Séleucides vers l'est et de leurs rivaux vers le sud ne constituèrent pas un nouvel empire, ce que la géographie des déserts iranien et syrien rendait d'ailleurs très difficile.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA CHRONOLOGIE PAR LES MONNAIES : la numismatique hellénistique, établie depuis le XIXe siècle et sans cesse affinée, permet de dater les règnes, les trésors et les ateliers. Les monnaies au portrait d'Alexandre, puis celles des diadoques (type d'Héraclès, puis de Zeus), fournissent un cadre chronologique indépendant des textes littéraires. (2) LA CÉRAMIQUE ET LA STRATIGRAPHIE : les fouilles du Levant (Tel Anafa, Marisa, Acre) montrent, dans les couches du IIIe-IIe siècle av. n. è., la coexistence de céramiques locales et importées, témoins du commerce organisé entre les royaumes hellénistiques — trace matérielle du monde divisé. (3) LE MODÈLE POLITIQUE : la documentation épigraphique du monde hellénistique atteste la transformation du titre royal (basileus) et l'apparition des ères dynastiques (ère séleucide, 312 av. n. è. : points de départ du comput dans les temples et les actes civils), traces très concrètes de la division politique et calendaire. (4) LES TEXTES CUNÉIFORMES TARDIFS : des tablettes astronomiques et des colophons de Babylone continuent sous les Séleucides et nomment les rois grecs ; elles prouvent que le partage de l'empire ne marqua pas la fin des institutions savantes locales, et que plusieurs centres lettrés continuèrent de produire leurs archives. (5) LA GÉOMÉTRIE DU PARTAGE : enfin, un travail cartographique moderne (reconstitution des frontières et des zones d'influence par les historiens après les sources) permet de mesurer l'état de fragmentation : l'empire d'Alexandre, unifié en 323, est fracturé définitivement dès 301, ce que les versets 8 et 22 annoncent en trois mots.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>BOUC TRÈS GRAND → CORNE BRISÉE « DANS SA FORCE » → QUATRE CORNES POUSSENT À SA PLACE → QUATRE VENTS DU CIEL → QUATRE ROYAUMES ISSUS DE L'EMPIRE → NON POUR SA POSTÉRITÉ → SANS LA PUISSANCE DU PREMIER → 301 AV. N. È. : IPSOS (PARTAGE CONSOLIDÉ)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement au partage de 301 av. n. è., en signalant qu'aucune source ne fixe un « moment exact » du passage de quatre cornes : la transition s'étale de 323 à 281, et les quatre entités n'ont jamais été simultanément stables et égales. LE NOMBRE : le texte dit quatre ; la fiche ne force pas la liste des quatre rois nommés, puisque le chapitre 8 les tait ; elle signale que les tentatives d'énumération exacte varient selon les auteurs et qu'elles ne doivent pas être présentées comme des données du texte. LA SUITE DU CHAPITRE : le verset 9 introduit, à partir de ces cornes, la petite corne du chapitre 8, que la fiche suivante traite, et la mention du roi du nord et du roi du sud au chapitre 11 ne répète pas le même schéma, elle s'y insère. LA LECTURE CRITIQUE : certains commentateurs lisent le chapitre 8 comme écrit après les faits (récit à clefs) et estiment que la prophétie décrit l'époque séleucide en la narrant comme future ; la fiche signale cette lecture et ne la retient pas, en restant fidèle au registre. ENFIN, AUCUNE DATE POUR L'AVENIR : la fiche enregistre un accomplissement historique clos (323-301) et ne convertit aucun des nombres du chapitre en dates futures.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort d'Alexandre à Babylone : la corne se brise dans sa force</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Juin 323 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Partages de Babylone et de Triparadis ; les généraux se partagent l'empire</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">323-321 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ipsos : quatre ensembles stabilisés ; le monde hellénistique se dessine</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">301 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin des héritiers directs : le royaume « non pour sa postérité »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 310 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Couroupédion : recomposition définitive en trois grandes puissances</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">281 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/12">Bible — 1 Rois 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/14">Bible — 2 Rois 14 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/14</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/118">Bible — Psaume 118 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/118</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/8">Bible — Daniel 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/8</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN382 — La grande corne brisée : quatre royaumes vers les quatre vents du ciel</span><span>Catégorie DN2</span></div></div>
+</article>
+<article class="fiche" id="DN383">
+<div class="visuel"><img src="images/prophe_DN383_sanctuaire.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN383 · CATÉGORIE DN2</div>
+<h3>La petite corne et les deux mille trois cents soirs et matins</h3>
+<div class="ref">Daniel 8:9-14, 23-25</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">petite corne 2300 soirs et matins sanctuaire purifié (petite corne → grandit → sud → est → pays magnifique → armée du ciel → étoiles → foulées → chef de l'armée → constant → sanctuaire → profané → infidélité → désolation → vérité mise à terre → prospère → 2300 soirs et matins → sanctuaire purifié → violent → perspicace → énigmes → puissance → ruine → hauteur → sainte → constante ôtée → tromperie → prospérera → anéanti)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN383 · 0:37</div><audio controls preload="none" src="audio/fiche_DN383_sanctuaire.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN383_sanctuaire.mp3 · 0:37 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 8:9-14, 23-25</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>petite corne 2300 soirs et matins sanctuaire purifié (petite corne → grandit → sud → est → pays magnifique → armée du ciel → étoiles → foulées → chef de l'armée → constant → sanctuaire → profané → infidélité → désolation → vérité mise à terre → prospère → 2300 soirs et matins → sanctuaire purifié → violent → perspicace → énigmes → puissance → ruine → hauteur → sainte → constante ôtée → tromperie → prospérera → anéanti)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P383 (8:9-14, 23-25 : la petite corne ; elle ôte la constante et profane le sanctuaire ; 2 300 jours du soir et du matin) ; Antiochus IV ; 1 Maccabées 1 ; Josèphe, Antiquités 12 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PETITE… CORNE… GRANDIT… SUD… EST… PAYS… MAGNIFIQUE… ARMÉE… CIEL… ÉTOILES… TOMBER… TERRE… FOULA… CHEF… ARMÉE… CONSTANT… ÔTÉ… SANCTUAIRE… FONDATION… RENVERSÉE… ARMÉE… LIVRÉE… CONSTANT… INFIDÉLITÉ… DÉSOLATION… JETA… VÉRITÉ… TERRE… PROSPÉRA… SAINT… PARLANT… DIT… JUSQU'À QUAND… VISION… CONSTANT… INFIDÉLITÉ… DÉSOLATION… SANCTUAIRE… ARMÉE… FOULÉS… DIT… DEUX MILLE TROIS CENTS… SOIRS… MATINS… SANCTUAIRE… PURIFIÉ… MUR… TRISTE… VIOLENT… PERSPICACE… ÉNIGMES… PUISSANCE… DÉVASTERA… PROSPÉRERA… DÉTRUIRE… PUISSANTS… PEUPLE… SAINTS… INTELLIGENCE… RÉUSSIRA… CŒUR… EXALTÉ… SAISIS… VÉRITÉ… PROSPÉRERAIT… CHEF… PRINCES… BRISÉ… SANS MAIN… — MIN… DE… HA-AḤAT… L'UNE… MEHENNAH… D'ELLES… YATSA… SORTIT… QEREN… UNE CORNE… AḤAT… UNE… MIṬSEʿIRAH… PETITE… WA-TIGDAL… ET ELLE GRANDIT… HA-NEGBAH… VERS LE SUD… WE-ʾEL… ET VERS… HA-MIZRAḤ… L'EST… WE-ʾEL… ET VERS… HA-TSEVI… LE PAYS… HA-TSAVI… MAGNIFIQUE… TSAVA… L'ARMÉE… HA-SHAMAYIM… DU CIEL… HIPPIL… ELLE FIT TOMBER… ARTSAH… À TERRE… MIN… DE… HA-KOKHAVIM… LES ÉTOILES… WA-TIRMESEIM… ET LES FOULA… SAR… LE CHEF… HA-TSAVA… DE L'ARMÉE… HA-TAMID… LA CONSTANTE… HERIM… ELLE ÔTA… WE-HUSHLAKH… ET FUT JETÉ… MEKHON… LE LIEU FIXÉ… MIQDASHO… DE SON SANCTUAIRE… WE-TSAVA… ET UNE ARMÉE… TINNATEN… FUT LIVRÉE… ʿAL… AVEC… HA-TAMID… LA CONSTANTE… BE-PESHAʿ… À CAUSE DE L'INFIDÉLITÉ… WE-TASHL EKH… ET ELLE JETA… EMET… LA VÉRITÉ… ARTSAH… À TERRE… WE-ʿASETAH… ET ELLE AGIT… WE-HITSLIḤAH… ET PROSPÉRA… ʿAD… JUSQU'À QUAND… ḤAZON… LA VISION… HA-TAMID… LA CONSTANTE… WE-HA-PESHAʿ… ET L'INFIDÉLITÉ… SHOMEM… DÉSOLATRICE… TIRMOS… FOULER… QODESH… LE SANCTUAIRE… WE-TSAVA… ET L'ARMÉE… WE-YOʾMER… ET IL DIT… ʿAD… JUSQU'À… ʿEREV… SOIR… BOQER… MATIN… ʾALPAYIM… DEUX MILLE… U-SHELOSH… ET TROIS… MEʾOT… CENTS… WE-NITSDAG… ET SERA PURIFIÉ… QODESH… LE SANCTUAIRE… MELEKH… UN ROI… ʿAZ… VIOLENT… U-FENIM… ET LE VISAGE… ḤIDOT… DES ÉNIGMES… YAVIN… IL COMPRENDRA… WE-ʿATSAM… ET DEVIENDRA PUISSANT… WE-HIPHIL… ET IL FERA TOMBER… NIPHLAOT… DES CHOSES ÉTONNANTES… WE-HITSLIAḤ… ET IL PROSPÉRERA… WE-HISHMID… ET IL DÉTRUIRA… ʿATS UME… PUISSANTS… WE-ʿAM… ET LE PEUPLE… QEDOSHIM… DES SAINTS… WE-ʿAL… ET PAR… SIKHLO… SON INTELLIGENCE… WE-HITSLIAḤ… IL PROSPÉRERA… WE-HIGDIL… ET IL S'EXALTA… WE-HISHMID… ET IL DÉTRUIRA… RABBIM… BEAUCOUP… BE-SHALVAH… DANS LA TRANQUILLITÉ… WE-ʿAL… ET CONTRE… SAR… LE PRINCE… SARIM… DES PRINCES… YISHABER… IL SERA BRISÉ… BE-ʾEPHES… SANS… YAD… MAIN… »</li>
+<li>LES TROIS JUMEAUX — Lévitique 16 : « PARLA… JÉHOVAH… MOÏSE… MORT… FILS… AARON… PARLER… FRÈRE… PAS… ENTRER… TOUT TEMPS… SAINT… LIEU… VOILE… PROPITIATOIRE… NUÉE… PARAÎTRAI… NUÉE… TAUREAU… JEUNE… BÉLIER… SACRIFICE… LIN… CULOTTE… CORPS… BAIN… DEUX… BOUCS… DEVANT… SEIGNEUR… PORTE… TENTE… TIRAGE… SORT… JÉHOVAH… BOUILLONNANT… JÉHOVAH… BOUC… TIRAGE… AZAZEL… POSE… MAINS… CONFESSERA… FAUTES… SUR… BOUC… ENVOYÉ… DÉSERT… AZAZEL… SANG… BOUC… DERRIÈRE… VOILE… SAINT… LIEU… SEPT FOIS… AUTEL… EXPIE… SAINT… DIEU… SORT… AUTEL… EXPIE… SACRIFICATEUR… SEUL… CHAQUE ANNÉE… FOIS… EXPIE… SOUILLURES… TRANSGRESSIONS… FAUTES… TOUT… SABBAT… SOLENNEL… SOUFFRIR… AMES… CE JOUR… PURIFIÉS… QUITTE… TRAVAIL… ÉTRANGER… DÉTRUIT… SANCTUAIRE… NETTOYÉ… MESURES… EXPIATION… LÉVITIQUE SEIZE… » — Hébreux 9 : « PREMIÈRE… ORDONNANCES… LIEU… SAINT… TENTE… PREMIÈRE… LAMPADAIRE… TABLE… PAINS… VOILE… DEUXIÈME… TABERNACLE… AUTEL… ENCENS… ARC… POT… MANNE… BATON… TABLES… ALLIANCE… CHÉRUBINS… VOILE… TOMBEAU… MŒURS… TEMPS… NUÉE… CHÉRUBINS… NE PAS APPORTER… HOMME… PAS… MONTRER… VOIE… SAINTS… PARFAIT DE CONSCIENCE… CORRECTION… CHAIR… MANGER… BOIRE… BAPTÊMES… ORDONNANCES… CHAIR… TEMPS… RÉFORME… CHRIST… VENU… GRAND PRÊTRE… BIENS… PLUS GRAND… TABERNACLE… PAS… FAIT… MAIN… SANG BOUCS… VEaux… SANGS… PAS… SANG PROPRE… ENTRÉ… SAINT… LIEU… RÉDEMPTION… ÉTERNELLE… POURQUOI… SANG CHRIST… ESPRIT… SACRIFICE… SANS FAUTE… PURIFIE… CONSCIENCE… MÉDIATEUR… NOUVELLE ALLIANCE… MORT… RÉDEMPTION… SANG PRESQUE TOUT… PURIFIÉ… PROPRE… DÉFAUT… MOULE… PLUS GRAND… CIEUX… FIGURE… VRAI… MINISTÈRE… PAS ENTRÉ… SANCTUAIRE… FAIT… CHRIST… PAS… OFFRIR… PLUSIEURS FOIS… PAS… SOUFFRIR… RÉPÉTITION… ESCHATON… RÉVÉLÉ… ABOLIR… PÉCHÉ… SACRIFICE… HOMMES… MOURIR… JUGEMENT… CHRIST… OFFRIR… PLUSIEURS PÉCHÉS… VOIE DEUXIÈME… PARAÎTRA… SALUT… » — Daniel 10 : « TROISIÈME… ANNÉE… CYRUS… ROI… Perse… CHOSE… RÉVÉLÉE… DANIEL… NOM… BELTESHAṬSAR… VÉRITÉ… GRANDE… GUERRE… COMPRENDRE… VISION… JOURS… DEUIL… TROIS SEMAINES… PAIN… DÉSIR… VIANDE… VIN… PAS… ONCTION… HUILER… VINGT-QUATRE… JOUR… PREMIER… MOIS… BORD… FLEUVE… HIDDEQEL… TIGRE… YEUX… HOMME… LIN… CEINTURE… OR… UPHAR… BERYL… VISAGE… ÉCLAIRS… EAUX… BRAS… PIEDS… CUIVRE… PAROLES… VOIX… FOULE… TOMBÈREnt… FACE… FUITE… FORCE… RESTA… MOI SEUL… JE VIS… VISION… FORCE… PAS… RESTÉE… SOUFFLE… MAIN… TOUCHA… FIT… LEVER… TREMBLE… PAROLES… HOMME… AIMÉ… PAIX… PRENDS… ROI… FORTIFIÉ… PARLÉ… VU… VISAGE… FORCE… PARLE… MAÎTRE… FORTIFIÉ… PAROLE… DIT… PAS… CRAINS… PREMIER… JOUR… CŒUR… COMPRENDRE… HUMILIER… DEVANT… DIEU… PAROLES… ÉCOUTÉES… VENU… PRINCE… ROYAUME… PERSE… S'EST TENU… VINGT ET UN JOURS… MIKAËL… PREMIER… PRINCE… ARRIVÉ… AIDE… PARLE… RÉVÉLER… VISION… PRINCE… PERSE… PRINCE… GRÈCE… VIENDRA… LIVRE… VÉRITÉ… PAS… SOUTIEN… MIKAËL… »</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les versets 9 à 14 décrivent la seconde moitié de la vision : après les quatre cornes, une corne plus petite sort de l'une d'elles, grandit vers le sud, vers l'est et vers le pays magnifique — expression qui, dans le livre de Daniel, désigne la terre d'Israël —, s'élève jusqu'à l'armée du ciel, fait tomber à terre des étoiles, ôte la constante, renverse la fondation du sanctuaire, jette la vérité à terre et prospère. Puis vient l'échange entre deux saints : « jusqu'à quand durera la vision ? », et la réponse : « jusqu'à deux mille trois cents soirs et matins, puis le sanctuaire sera purifié ». Les versets 23 à 25 donnent le portrait moral du roi que cette corne figure : un roi violent et perspicace en énigmes, qui fera tomber des choses étonnantes, détruira des puissants et le peuple des saints, « par son intelligence il fera prospérer la tromperie », il s'exaltera, et « sans main il sera brisé ». Le registre relie ces versets à Antiochus IV, à 1 Maccabées 1 et à Josèphe (Antiquités 12), dates et textes qui fournissent le dossier historique de la profanation du sanctuaire et de sa purification. La fiche examine comment les deux éclairages — un roi historique et une durée de deux mille trois cents soirs et matins — peuvent se lire sans forcer le texte.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre points d'exégèse. (1) LA CONSTANTE : le mot hébreu TAMID, employé comme substantif, désigne le sacrifice régulier — les deux offrandes quotidiennes, soir et matin (Exode 29:38-42 ; Nombres 28:3-8). Le chapitre 8 en fait le sujet d'un enlèvement : ce qui est ôté n'est pas un autel mais un RITE quotidien, ce qui explique l'expression « soirs et matins ». (2) LES DEUX MILLE TROIS CENTS SOIRS ET MATINS : le texte dit tantôt « soirs et matins » (EREV BOQER), tantôt « soirs et matins » sans la conjonction : la formule est souvent lue comme le compte de 2 300 offrandes — soit 1 150 jours, si l'on considère une paire d'offrandes par jour (voir la note de la Bible Annotée, qui mentionne ce calcul). Certains commentateurs y ont vu une durée de 2 300 jours entiers ; la fiche maintient le chiffre du texte et signale les deux manières de le dater. (3) LA DESCRIPTION DU ROI : « violent et perspicace en énigmes » (ʿaz u-fenim ḥidot), « dans sa tranquillité il détruira beaucoup », « sans main il sera brisé » — quatre traits d'un tyran intelligent et rusé, non d'un barbare : c'est le portrait de l'habileté politique mise au service de la violence religieuse. L'expression « sans main » signifie sans intervention humaine : sa fin ne vient pas d'un complot mais d'une cause non humaine — pour Antiochus, sa mort en 164 en Perse. (4) LA STRUCTURE EN MIROIR : la montée en trois directions — sud, est, pays magnifique — correspond exactement, mais en négatif, aux trois directions frappées par le bélier (ouest, nord, sud) : tout le chapitre est écrit en réseaux d'images retournées, et la petite corne est le dernier retournement du texte.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah et lecture commune : la petite corne du chapitre 8 est habituellement identifiée à Antiochus IV Épiphane, le Séleucide qui profana le temple entre 167 et 164 av. n. è. ; la démonstration s'appuie sur trois dossiers : (a) 1 Maccabées 1:20-64, qui raconte le pillage du temple, l'autel souillé, l'installation de l'« abomination de la désolation », la suppression du sacrifice quotidien et les persécutions ; (b) 2 Maccabées 5 et 6, qui ajoutent les détails de la profanation et des martyrs ; (c) Flavius Josèphe, Antiquités juives 12.5, et le récit de la purification par Judas Maccabée. Le décompte des jours : de la profanation (premier ou quinzième jour de Kislev) à la dédicace du nouveau service (Kislev 164, 1 Maccabées 4:52), la durée est de trois ans environ, soit environ 1 150 jours si l'on compte les jours, et 2 300 offrandes si l'on compte les deux sacrifices quotidiens — ce qui ajuste le chiffre du verset à une durée historique connue. La fiche rappelle ensuite, sans le trancher, l'usage que d'autres traditions font du même texte : le calcul des 2 300 ans (années-jours) appliqué à une période longue depuis un décret, dans la tradition adventiste et dans quelques courants millénaristes ; la lecture catholique et réformée qui retient Antiochus et la purification de 164 ; et la lecture qui voit dans la petite corne un type du dernier adversaire, préfiguré par Antiochus. Enfin la fiche signale le geste unique du texte : le sanctuaire n'est pas seulement vengé, il est PURIFIÉ (WE-NITSDAG QODESH, « et le sanctuaire sera rendu juste ») — le mot hébreu de la justice, employé pour un bâtiment, ce qui fait de la restauration du culte une affaire de droit, non de puissance.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">175 av. n. è.</td><td>Avènement d'Antiochus IV Épiphane : montée de la petite corne après les quatre cornes</td></tr>
+<tr><td class="d">169-168 av. n. è.</td><td>Pillage du temple et intervention à Jérusalem (1 Maccabées 1:20-28 ; 2 Maccabées 5)</td></tr>
+<tr><td class="d">167 av. n. è.</td><td>Décrets religieux : sacrifice quotidien supprimé, sabbat et circoncision interdits, autel profané</td></tr>
+<tr><td class="d">167-164 av. n. è.</td><td>Environ trois ans et demi, soit près de 1 150 jours et 2 300 offrandes du soir et du matin</td></tr>
+<tr><td class="d">Kislev 164 av. n. è.</td><td>Purification du sanctuaire et dédicace (1 Maccabées 4:52) : Hanoukka</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES SOURCES JUIVES ANCIENNES : 1 Maccabées 1:41-64 énumère les mesures d'Antiochus — abandon de la loi, suppression des sacrifices, interdiction du sabbat et des fêtes, installation de l'« abomination » sur l'autel — et donne la date : le quinzième jour de Kislev de l'an 145 de l'ère séleucide, soit 167 av. n. è. ; 1 Maccabées 4:52-59 date la dédicace du nouveau service du sanctuaire trois ans plus tard, en Kislev 148 de l'ère séleucide, soit 164. (2) LES SOURCES GRECQUES : Polybe (Histoires 26 et 30) et Diodore (Bibliothèque 30-31) décrivent la politique d'Antiochus en Égypte et en Syrie ; Tite-Live (40-45) donne le cadre romain ; Porphyre de Tyr, cité par Jérôme, s'occupe aussi de la période. Les sources modernes ont discuté les détails, mais ni la réalité de la crise ni ses dates ne sont contestées. (3) LE TÉMOIGNAGE DE JOSÈPHE : Antiquités juives 12.5-9 raconte toute l'affaire, avec la généalogie séleucide et le nom des acteurs, et son récit recoupe largement 1 Maccabées, avec des différences de détail. (4) L'ICONOGRAPHIE : les monnaies d'Antiochus IV, avec ses portraits diadémés et le type de Zeus Nicéphore, attestent la prétention théologique que son surnom Épiphane — « dieu manifesté » — résume ; des inscriptions de cités grecques le saluent comme roi et bienfaiteur. (5) LE RÉSULTAT DU DOSSIER : la crise n'est pas un épisode légendaire ; c'est la première persécution religieuse de grande ampleur connue en Palestine antique, avec ses décrets, ses martyrs, ses résistances et sa résolution militaire. C'est ce que Daniel 8:23-25 lit comme la montée, l'ivresse et la fin « sans main » d'une corne.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE « PAYS MAGNIFIQUE » : l'expression TSEVI désigne Israël, le pays par excellence ; la corne grandit vers le sud (l'Égypte, que les Ptolémées tenaient), vers l'est (la Transjordanie) et vers le pays magnifique (la Judée). La progression géographique suit exactement les territoires que les campagnes d'Antiochus concernèrent : Égypte, Judée, régions orientales. (2) LE SANCTUAIRE : le temple de Jérusalem, sur le mont Moria, est le lieu « profané », « ôté », « purifié ». Les travaux archéologiques du Mont du Temple, limités, ne permettent pas d'accéder aux niveaux hellénistiques, mais les escaliers et les murs du côté sud et les trous de l'esplanade donnent le cadre. (3) MODIN ET LE DÉCLENCHEMENT : 1 Maccabées 2 situe le début de la révolte à Modin, dans la Shéphélah, village dont l'emplacement est identifié (proche de Modi'in actuelle) ; la géographie de la guérilla (collines, grottes, passages) explique la suite de la guerre. (4) LES LIEUX DE SÉJOUR ET DE MORT : Antiochus meurt en 164, selon 1 Maccabées 6:1-16 et Polybe, en Perse orientale (Tabae) après un échec devant un sanctuaire ; 2 Maccabées 9 décrit sa fin comme un jugement. La fiche signale l'écart des récits sur la forme de la mort et retient seulement le fait et la date. (5) LA CIRCULATION DES DÉCRETS : la persécution suppose une administration capable d'atteindre les villes et les villages — la carte des garnisons séleucides (Acra à Jérusalem, citadelles en Judée), connue par 1 Maccabées et par l'archéologie, donne le moyen de cette application, et explique pourquoi la résistance fut d'abord locale, puis générale.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES, ARCHÉOLOGIQUES ET NUMISMATIQUES. (1) LES MONNAIES : les tétradrachmes d'Antiochus IV, avec le portrait du roi et Zeus Nicéphore, sont datées par les ateliers et les ères locales ; leur abondance permet de suivre les ateliers et les années de règne. Elles montrent aussi la diffusion du culte royal que la persécution tente d'imposer. (2) L'ARCHÉOLOGIE DE LA JUIVE HELLÉNISTIQUE : les fouilles (Marisa, Jérusalem, Acre, Samarie) attestent, dans les couches du IIe siècle, la présence grecque, les garnisons et les destructions ; les trous et les cachettes de la région de Judée suggèrent les refuges des insurgés ; les ossuaires et les tombes de la période, comme ceux du désert de Judée, documentent les pratiques de l'époque. (3) LA LANGUE : le mot grec utilisé dans les sources juives pour décrire la désolation, BDELUGMA (abomination), est celui que les Évangiles reprennent en Marc 13:14 ; les traducteurs de la Septante et les auteurs du Nouveau Testament ont donc lu Daniel 8 avec le souvenir de 167, et cela relie le vocabulaire du chapitre au dossier historique. (4) LE CALENDRIER : les décrets d'Antiochus suppriment les fêtes et le sabbat ; la restauration du culte et la fixation de la fête de Hanoukka, encore célébrée, sont des faits calendaires vérifiables — un effet durable de la crise. (5) LE COMPTE DES JOURS : de la profanation (1 Maccabées 1:54) à la dédicace (1 Maccabées 4:52) environ trois ans ; le chiffre de Daniel 8:14 est ainsi lu mathématiquement comme la somme des sacrifices interrompus — deux par jour — ce qui donne près de 2 300 ; la fiche expose ce calcul, sans masquer qu'il existe plusieurs manières de compter et donc plusieurs dates d'arrivée, et sans transformer une reconstruction en certitude.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>PETITE CORNE (l'une des quatre) → GRANDIT VERS LE SUD, L'EST, LE PAYS MAGNIFIQUE → ARMÉE DU CIEL, ÉTOILES FOULÉES → CONSTANTE (TAMID) ÔTÉE → SANCTUAIRE PROFANÉ, FONDATION RENVERSÉE → VÉRITÉ JETÉE À TERRE → 2 300 SOIRS ET MATINS → SANCTUAIRE PURIFIÉ → PORTRAIT : VIOLENT, ÉNIGMES, TRANQUILLITÉ → DÉTRUIT PUISSANTS ET SAINTS → S'EXALTE → « SANS MAIN IL SERA BRISÉ »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre la prophétie comme accomplie (Antiochus IV, 167-164 av. n. è.) sur la foi du registre et des dossiers de 1 et 2 Maccabées et de Josèphe. LE CHIFFRE DE 2 300 : le texte ne dit pas clairement si ce sont 2 300 jours, 2 300 soirs, 2 300 paires d'offrandes ; les computs (1 150 jours, 2 300 jours, application en années) circulent depuis longtemps — la fiche expose la lecture dominante et les alternatives, sans trancher au-delà de ce que le texte dit. LA MORT D'ANTIOCHUS : les récits diffèrent (Polybe, 1 Maccabées 6, 2 Maccabées 9) ; la fiche retient le fait et la date, pas les circonstances. L'IDENTIFICATION DU « ROI » DES VERSETS 23-25 : dans la lecture historique, il est Antiochus IV ; dans d'autres lectures — et notamment dans la lecture eschatologique — il préfigure un adversaire à venir, et certains commentateurs chrétiens ont rapproché ce portrait de l'homme d'illégalité de 2 Thessaloniciens 2. La fiche signale cette double portée, sans la fusionner avec la première. LE « PAYS MAGNIFIQUE » : la fiche identifie Israël, comme le livre le fait ; elle ne l'étend pas. AUCUNE DATE POUR L'AVENIR : l'application éventuelle à un personnage futur reste sans date, et la fiche ne fait pas de calcul d'années.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Avènement d'Antiochus IV Épiphane : la petite corne grandit</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">175 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pillage du temple ; intervention en Judée (1 Maccabées 1 ; 2 Maccabées 5)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">169-168 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décrets : sacrifice quotidien supprimé, autel profané — la constante ôtée</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">167 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La durée : environ trois ans et demi ; 2 300 offrandes du soir et du matin</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">167-164 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Purification du sanctuaire ; dédicace — la fête de Hanoukka (1 Maccabées 4:52)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Kislev 164 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/3/16">Bible — Lévitique 16 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/3/16</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/9">Bible — Hébreux 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/10">Bible — Daniel 10 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/8">Bible — Daniel 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/8</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN383 — La petite corne et les deux mille trois cents soirs et matins</span><span>Catégorie DN2</span></div></div>
+</article>
+<article class="fiche" id="DN384">
+<div class="visuel"><img src="images/prophe_DN384_priere.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN384 · CATÉGORIE DN2</div>
+<h3>La prière des soixante-dix ans : Daniel lit Jérémie et intercède</h3>
+<div class="ref">Daniel 9:1-19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">soixante-dix ans accomplis prière confession pardon malédiction écriture restauration (Darius → première année → livres → Jérémie → 70 ans → Jérusalem → jeûne → sac et cendre → prière → confession → grands dieux → alliance → loi → malédiction → juges → rois → princes → honte → pardons → écoute → pardonne → agis → 70 semaines)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN384 · 0:37</div><audio controls preload="none" src="audio/fiche_DN384_priere.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN384_priere.mp3 · 0:37 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 9:1-19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>soixante-dix ans accomplis prière confession pardon malédiction écriture restauration (Darius → première année → livres → Jérémie → 70 ans → Jérusalem → jeûne → sac et cendre → prière → confession → grands dieux → alliance → loi → malédiction → juges → rois → princes → honte → pardons → écoute → pardonne → agis → 70 semaines)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P384 (9:1-19 : les soixante-dix ans de Jérémie reconnus et pris en compte dans la prière) ; Daniel 9:2 ; Jérémie 25:11 ; 29:10 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PREMIÈRE… ANNÉE… DARIUS… FILS… ASSUÉRUS… RACE… MÈDES… ROI… CHALDÉENS… MOI… DANIEL… LIVRES… NOMBRE… ANNÉES… PAROLE… JÉHOVAH… JÉRÉMIE… PROPHÈTE… SEPTANTE… ANNS… RUINES… JÉRUSALEM… TOURNAI… FACE… SEIGNEUR… POURSUIVRE… PRIÈRE… SUPPLICATIONS… JEÛNE… SAC… CENDRE… PRIER… JÉHOVAH… CONFESSER… SEIGNEUR… GRAND… REDOUTABLE… GARDE… ALLIANCE… AMOUR… CEUX… AIMENT… GARDE… COMMANDEMENTS… PÉCHÉ… TORDU… MÉCHANT… RÉVOLTÉ… COMMANDEMENTS… JUGEMENTS… PAS… ÉCOUTÉ… HONTE… VU… SALUT… SORTIS… ÉGYPTE… GLOIRE… FAIT… NOM… JUSQU'À… CE JOUR… ONT PAS… ÉCOUTÉ… LOI… RÉSISTÉ… PAROLES… PAROLES… SERVITEURS… PROPHÈTES… PARLÉ… ROIS… PRINCES… PÈRES… TOUT… PEUPLE… PAYS… JUSTICE… NOUS… HONTE… VISAGE… CONFUSION… SEIGNEUR… MISÉRICORDE… PARDONS… RÉVOLTÉ… PAS… ÉCOUTÉ… VOIX… JÉHOVAH… MARCHER… LOIS… MISES… DEVANT… NOUS… PAR… MOÏSE… SERVITEUR… VÉRITÉ… MALÉDICTION… SERMENT… ÉCRITURE… LOI… MOÏSE… DÉTOURNÉ… PAS… ÉCOUTÉ… VOIX… ACCOMPLI… PAROLES… PRONONCÉES… JUGES… JUGÉ… GRAND… MAL… JÉRUSALEM… PAS… FAIT… SOUS… CIEL… ÉCRIT… LOI… MOÏSE… MAL… VENU… PAS… CALMÉ… JÉHOVAH… PAS… DÉTOURNÉS… INIQUITÉ… VEILLÉ… MAL… FAIT VENIR… JÉHOVAH… JUSTE… NOUS… RESTÉS… MÉCHANTS… SORTIS… ÉGYPTE… MAIN… FORTE… FAIT… NOM… JUSQU'À… PÉCHÉ… MÉCHANTS… DÉTOURNÉS… MENACE… GRANDEUR… TERRE… PEUPLE… POUR… TES… ÉCOUTE… DIEU… TOURNE… OREILLE… OUVRE… YEUX… RUINES… VILLE… NOM… INVOQUÉ… PAS… JUSTICE… DONNONS… SUPPLICATIONS… GRANDES… COMPASSIONS… SEIGNEUR… ÉCOUTE… PARDONNE… AGIS… TARDE PAS… AMOUR… NOM… VILLE… PEUPLE… — BI-SHNAT… EN L'ANNÉE… ʾAHAT… UNE… LE-DARYAVESH… DE DARIUS… BEN… FILS… ʾAḤASHPEROSH… D'ASSUÉRUS… MI-ZERAʿ… DE LA RACE… MADAY… DES MÈDES… HOMLAKH… FUT ROI… ʿAL… SUR… MALKHUT… LE ROYAUME… KASDIM… DES CHALDÉENS… BIN… JE COMPRIS… BA-SEFARIM… PAR LES LIVRES… MISPAR… LE NOMBRE… HA-SHANIM… DES ANNÉES… ʾASHER… QUE… HAYAH… FUT… DEVAR… LA PAROLE… YEHOVAH… À JÉRÉMIE… HA-NAVI… LE PROPHÈTE… LE-MALLOT… POUR ACCOMPLIR… LE-ḤORBOT… LES RUINES… YERUSHALAYIM… DE JÉRUSALEM… SHIVʿIM… SOIXANTE-DIX… SHANAH… ANS… WA-ʾETTENAH… ET JE TOURNAI… ET PANAÏ… MA FACE… ʾEL… VERS… HA-ʾADONAY… LE SEIGNEUR… HA-ʾELOHIM… LE DIEU… LE-VAQQUESH… POUR CHERCHER… TEFILLAH… PRIÈRE… TAḤANUNIM… SUPPLICATIONS… BE-TSOM… AVEC JEÛNE… SAQ… SAC… WA-ʾEFER… ET CENDRE… WA-ʾETPALLELAH… ET JE PRI... ʾADONAY… SEIGNEUR… HA-ʾEL… LE DIEU… HA-GADOL… GRAND… WEHA-NORA… ET REDOUTABLE… SHOMER… QUI GARDE… HA-BERIT… L'ALLIANCE… WEHA-ḤESED… ET L'AMOUR… LE-ʾOHAVAV… POUR CEUX QUI L'AIMENT… U-LESHOMER… ET QUI GARDENT… MITSVOTAV… SES COMMANDEMENTS… ḤAṬAʾNU… NOUS AVONS PÉCHÉ… WE-ʿAVINU… ET NOUS AVONS FAIT LE MAL… WE-HIRSHʿANU… ET NOUS AVONS AGI MÉCHAMMENT… U-MARADNU… ET NOUS NOUS SOMMES RÉVOLTÉS… WE-SOR… ET NOUS NOUS SOMMES DÉTOURNÉS… MI-MITSVOTEKHA… DE TES COMMANDEMENTS… U-MISHPAṬEKHA… ET DE TES JUGEMENTS… WE-LO… ET NON… SHAMAʿNU… NOUS N'AVONS PAS ÉCOUTÉ… EL… VERS… ʿAVADEKHA… TES SERVITEURS… HA-NEVIʾIM… LES PROPHÈTES… LA-ʾADONAY… APPARTIENT AU SEIGNEUR… HA-TSEDAQAH… LA JUSTICE… WE-LANU… ET À NOUS… BOSHET… LA HONTE… HA-PANIM… DU VISAGE… LA-ʾADONAY… AU SEIGNEUR… ELOHEINU… NOTRE DIEU… HA-RAḤAMIM… LES COMPASSIONS… WEHA-SELIḤOT… ET LES PARDONS… KI… CAR… MARADNU… NOUS NOUS SOMMES RÉVOLTÉS… SAKKOT… ET NOUS NOUS SOMMES ŒUVRÉS… BA-KOL… EN TOUT… ʾASHER… CE QUE… ʿASAH… A FAIT… YEHOVAH… ʾEL-ʿAM… ENVERS SON PEUPLE… WE-HIRBEH… ET IL A MULTIPLIÉ… ʿALENU… SUR NOUS… HA-RA… LE MAL… ʿAD… JUSQU'À… LO… NE… ʿASETAH… N'EST FAIT… KE-ʾASHER… COMME CE QUI… KATUV… EST ÉCRIT… BE-TORAT… DANS LA LOI… MOSHE… DE MOÏSE… ʾET… KOL… TOUT… HA-RA… LE MAL… HA-ZEH… CE… BA… EST VENU… ʿALENU… SUR NOUS… WE-HISHKEMU… ET NOUS N'AVONS PAS ADOUCI… ʿAD… JUSQU'À… SHUV… REVENIR… ʿAWONAM… DE LEUR FAUTE… ʾEL-HA-ʾEMET… VERS LA VÉRITÉ… ʾADONAY… SEIGNEUR… HA-TSEDAQAH… À TOI LA JUSTICE… ʿOLAM… ÉTERNELLEMENT… WE-ʿATTAH… ET MAINTENANT… SHAMAʿ… ÉCOUTE… U-SHELAḤ… ET PARDONNE… WEHAʾER… ET SOIS ATTENTIF… WA-ʿASEH… ET AGIS… ʾAL… NE… TEʾAḤAR… TARDE PAS… LE-MAʿANKHA… À CAUSE DE TOI… ʾELOHAI… MON DIEU… KI… CAR… SHIMKHA… TON NOM… NIQRA… EST INVOQUÉ… ʿAL… SUR… ʿIREKHA… TA VILLE… WE-ʿAL… ET SUR… ʿAMEKHA… TON PEUPLE… »</li>
+<li>LES TROIS JUMEAUX — Esdras 9 : « APRÈS… CHOSES… APPROCHÈRENT… PRINCES… DISANT… PEUPLE… ISRAËL… PRÊTRES… LÉVITES… PAS… SÉPARÉS… PEUPLES… PAYS… ABOMINATIONS… CANANÉENS… HITTITES… PERIZZITES… JÉBUSÉENS… AMMONITES… MOABITES… ÉGYPTIENS… AMORITES… PRIS… FILLES… FILS… SAINTE POSTÉRITÉ… MÊLÉE… MAIN… PRINCES… PRÉVARICATION… ENTENDU… DÉCHIRAI… VÊTEMENT… MANTEAU… ARRACHAI… CHEVEUX… BARBE… ASSIS… STUPÉFAIT… RASSEMBLÈS… TREMBLANT… PAROLES… DIEU… SACRIFICE… SOIR… LEVAI… JEÛNE… DÉCHIRÉ… TOMBAI… GENOUX… ÉTENDU… MAINS… JÉHOVAH… HONTE… MON DIEU… RELEVER… VISAGE… INIQUITÉS… CROISSANTES… JUSQU'AUX… CIEUX… PÈRES… GRANDE… FAUTE… ROIS… PRÊTRES… LIVRÉS… MAINS… ROIS… PAYS… ÉPÉE… CAPTIVITÉ… PILLAGE… HONTE… JOUR… MISÉRICORDE… RESTE… SURVIVANT… CLOU… LIEU SAINT… ÉCLAIRCIS… YEUX… DIEU… REDRESSES… MURS… JUDA… JÉRUSALEM… SERVITEURS?… PAS… TROUBLE?… SERVITEURS… PAS… TROUBLE?… FAUTE… ALLIANCE… PAYS… PROPHÈTES… POSSÉDÉ… ABOMINATIONS… MARIAGES… COURROUX… RESTE… AUCUN… SURVIVANT… DIEU… JUSTE… RESTE… JOUR… VOICI… DEVANT… FAUTE… GRANDE… IMPOSSIBLE… TENIR… DEBOUT… CRAINTES… COMMANDEMENTS… DONNONS… MAIN… PAS… MARIER… PEUPLES… RETIRER… FILLES… PAS… JUSQU'À… ÉPUISEMENT… COLÈRE… — Néhémie 1 : « PAROLES… NEHEMIE… FILS… HAKALIA… VINGTIÈME… ANNÉE… KISLEV… MOI… SUSE… CHÂTEAU… HANANI… FRÈRES… JUIFS… ÉCHAPPÉS… CAPTIVITÉ… JÉRUSALEM… MURAILLE… MURS… PORTES… FEU… PLEURAI… DEUIL… JOURS… JEÛNE… PRIÈRE… DIEU… CIEUX… AUDITION… OREILLE… ATTENTIVE… YEUX… OUVERT… PRIAIS-TU… PRIAIS… SERVITEURS… ISRAËL… CONFESSE… PÉCHÉS… PÉCHÉ… MAISON… PÈRE… MÉCHAMMENT… GARDE… COMMANDEMENTS… PAROLES… MOÏSE… DISPERSERAI… REVIENDREZ… GARDEREZ… RASSEMBLERAI… CIEUX… RAMÈNERAI… LIEU… NOM… À TOI… RACHETÉS… FORCE… PUISSANCE… OREILLE… ATTENTIVE… PRIÈRE… SERVITEUR… CRAINDRE… NOM… FAIRE… RÉUSSIR… COMPASSION… DEVANT… COUP… ROI… ÉCHANSON… AMERTUME… VIN… PRIÉ… DIEU… CIEUX… » — Psaume 51 : « MISÉRICORDE… DIEU… AMOUR… EFFACE… FAUTES… GRANDE… COMPASSION… LAVE… INIQUITÉ… PURIFIE… PÉCHÉ… RECONNAIS… FAUTE… DEVANT… MAL… YEUX… VRAI… JUGEMENTS… ENGENDRÉ… INIQUITÉ… MÈRE… CONÇU… VÉRITÉ… COEUR… SAGESSE… CACHÉE… PURIFIE… HYSOPE… NET… LAVE… NEIGE… JOIE… ALLÉGRESSE… OS… ÉCrasés… DÉTOURNE… YEUX… FAUTES… EFFACE… INIQUITÉS… CŒUR… PROPRE… ESPRIT… NOUVEAU… NE REJETTE PAS… ESPRIT SAINT… NE RETIRE PAS… REJETTE… SALUT… ALLÉGRESSE… ESPRIT… DISPONIBLE… SOUTIENS… ENSEIGNERAI… TRANSGRESSEURS… MÉCHANTS… REVENIR… LIVRE… DÉLIVRE… LANGUE… CHANTE… JUSTICE… SEIGNEUR… OUVRE… LÈVRES… BOUCHE… ANNONCE… LOUANGE… SACRIFICE… FAUTES… BRÛLÉS… DÉLECTES… DÉLECTE… SACRIFICES… JUSTICE… HOLOCAUSTE… AGRÉER… TAUREAUX… AUTEL… SION… PLAISIR… MURS… JÉRUSALEM… »</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 9 ouvre la dernière grande section du livre, et il se distingue absolument du reste : ce n'est plus une vision mais une prière, et cette prière naît d'une LECTURE. Daniel, « la première année de Darius », se met à chercher dans les livres ; il trouve le nombre des années dont Jérémie a parlé — soixante-dix ans pour les ruines de Jérusalem (Jérémie 25:11, 12 ; 29:10) — et il comprend que le temps est proche. Sa réaction est immédiate : il tourne la face vers le Seigneur, cherche par la prière et les supplications, avec le jeûne, le sac et la cendre. La prière se développe en trois mouvements : (1) l'invocation, où Dieu est reconnu comme celui qui garde l'alliance et l'amour (9:4) ; (2) la CONFESSION, la plus longue, où Daniel s'inclut dans le péché de son peuple — « nous avons péché, nous avons agi méchamment » — et attribue tout le malheur à la fidélité de Dieu dans ses avertissements écrits (9:5-14) ; (3) la SUPPLICATION, où il demande à Dieu d'agir non par mérite mais « à cause de son grand nom », en faveur de la ville et du peuple sur lesquels son nom est invoqué (9:15-19). La conclusion du chapitre, à partir du verset 20, sera la réponse de Gabriel, avec les soixante-dix semaines. Le registre de la vague enregistre cette prophétie comme accomplie : la reconnaissance des soixante-dix ans et la prière forment une prophétie en acte, qui répond aux paroles de Jérémie et dont le retour de l'exil est le dénouement.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois observations de méthode et de vocabulaire. (1) UNE PROPHÉTIE QUI SE LIT : le texte dit explicitement que Daniel « comprit par les livres le nombre des années » — la prophétie n'est pas reçue seulement en vision, elle est reconnue en ÉCRITURE. C'est un des rares exemples bibliques où l'on voit un prophète calculer une échéance à partir d'un autre prophète, ce qui fait de ce passage un document de méthode. Les soixante-dix ans sont énoncés deux fois par Jérémie (25:11, 12 et 29:10), et Daniel les prend comme la mesure d'un temps non encore achevé : il ne demande pas une date, il demande que vienne ce qui est annoncé. (2) LA PRIÈRE À LA PREMIÈRE PERSONNE DU PLURIEL : Daniel ne dit pas « ils ont péché » mais « NOUS avons péché » — alors que le récit le présente comme irréprochable au chapitre 6. C'est la règle de l'intercession biblique : celui qui prie prend la place de son peuple (voir Exode 32:32 ; Néhémie 1:6 ; Esdras 9:6). Le vocabulaire de la confession est construit sur six verbes en accordéon — pécher, agir méchamment, s'être révolté, se détourner, ne pas écouter, ne pas suivre la loi. (3) LA JUSTICE AU SEIGNEUR : la formule « à toi, Seigneur, la justice, et à nous la honte du visage » (9:7) est une clé du chapitre : Dieu est juste dans toutes ses voies, et le malheur n'accuse pas Dieu, il accuse le peuple. La supplication finale emploie quatre impératifs : écoute, pardonne, sois attentif, agis — et un refrain : « à cause de ton nom ». Aucun mérite n'est allégué. Relevons enfin la mention des soixante-dix ans accomplis dans l'ÉCRITURE : la formule « ce qui est écrit dans la loi de Moïse », aux versets 11 et 13, montre que l'argument de Daniel est textuel de bout en bout — loi, prophètes, malédictions, écrits.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah et lecture commune : cette prière est un modèle d'intercession, et elle est aussi le point de départ de la prophétie des soixante-dix semaines. Trois appuis dans la fiche. (a) LE CADRE DES SOIXANTE-DIX ANS : le registre relie Daniel 9:2 à Jérémie 25:11 et 29:10. La période de la désolation de Jérusalem est datée, dans le système de la phase, à partir de 607 av. n. è. ; la chute de Babylone en 539 et le décret de Cyrus marquent la fin des soixante-dix ans et le retour, ce qui correspond, dans la prophétie de Jérémie, à la promesse « je me souviendrai de vous et j'accomplirai ma bonne parole en vous ramenant dans ce lieu ». La fiche enregistre donc l'accomplissement : la reconnaissance des soixante-dix ans, la prière, et le retour de l'exil. (b) LE RÔLE DE LA PRIÈRE DANS L'ACCOMPLISSEMENT : ce chapitre est l'un des textes bibliques qui articulent le plus nettement l'annonce et l'intercession — le décret de Cyrus est daté, l'accomplissement est certain, et pourtant Daniel prie, jeûne et confesse dix-neuf versets. La fiche note ce point sans en faire une doctrine : elle enregistre que la prière accompagne l'accomplissement, elle ne le remplace pas. (c) LA LECTURE CHRÉTIENNE : la confession de Daniel, avec sa reconnaissance de la justice de Dieu et son appel au pardon, a été rapprochée du rôle de l'intercesseur ; le Nouveau Testament en reprend le mouvement dans 1 Jean 1:9 (« si nous confessons nos péchés, il est fidèle et juste ») et dans l'application de Daniel 9:24-27 à l'œuvre messianique. Cette dernière partie — les soixante-dix semaines — n'est pas dans la fiche : elle relève de la vague suivante (registre P385). La fiche s'en tient au verset 19 : la prière de reconnaissance et de supplication.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">539 av. n. è.</td><td>Chute de Babylone : la fin de l'empire qui retenait les Juifs exilés</td></tr>
+<tr><td class="d">538-537 av. n. è.</td><td>Décret de Cyrus (Esdras 1:1-4 ; 2 Chroniques 36:22, 23) : le retour autorisé</td></tr>
+<tr><td class="d">537 av. n. è.</td><td>Premier retour des exilés avec Sheshbatsar ; pose des fondations du temple (Esdras 1-3)</td></tr>
+<tr><td class="d">520-515 av. n. è.</td><td>Aggée et Zacharie relancent la construction ; le temple est achevé en 515</td></tr>
+<tr><td class="d">455 av. n. è.</td><td>Avec Esdras puis Néhémie : la murale rebâtie — les « ruines » de Daniel 9:2 ne sont plus</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES SOIXANTE-DIX ANS ET LEUR DÉCOMPTE : le livre de Jérémie écrit pendant les années 605-580 ; la chute de Jérusalem qu'il annonce est datée par les sources babyloniennes (Chroniques, tablettes de rations mentionnant Yaukin/Joïakin) ; la prise de Babylone par Cyrus en 539 est datée par la Chronique de Nabonide ; le décret de Cyrus est connu à la fois par la Bible (Esdras 1:1-4 ; 6:3-5 ; 2 Chroniques 36:22, 23) et par le cylindre de Cyrus, qui proclame le retour des déportés et la restauration des sanctuaires. C'est ce décret que le livre de Daniel situe implicitement dans la suite de la prière. (2) LA LETTRE D'ARTAXERXÈS À ESDRAS : Esdras 7 conserve un document administratif perse — autorisation, provisions, exemption des taxes pour le personnel du culte, remise de la loi judéenne —, que les historiens discutent dans le détail mais reconnaissent comme conforme aux usages achéménides (voir aussi les documents d'Éléphantine et de Persépolis). (3) LA CULTURE DU ROULEAU : « je compris par les livres » suppose l'existence et la circulation de rouleaux prophétiques à Babylone dès le VIe siècle ; les cachets, les scribes, la conservation des archives royales (Ézéchiel n'aurait pas été lu sinon) et la mention de Daniel 7:10 (« les livres furent ouverts ») montrent que le livre de Daniel baigne dans un monde d'archives. (4) LA DATE DU CHAPITRE : la première année de Darius le Mède est mise en rapport direct avec la fin du règne babylonien — 539-538 av. n. è. ; c'est le moment où la prière sur les soixante-dix ans devient brûlante, parce que le compte est sur le point de s'achever. (5) LES PARALLÈLES DE PRIÈRE : Esdras 9, Néhémie 1 et Néhémie 9 offrent trois autres confessions de la période perse, construites sur le même modèle — reconnaissance de la justice de Dieu, aveu du péché, supplication pour la ville. Ces textes constituent un genre littéraire attesté par plusieurs documents juifs de l'époque, dont les prières d'Éléphantine et les textes de Qumrân.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LES RUINES DE JÉRUSALEM : le chapitre parle des « ruines » de la ville ; l'archéologie de Jérusalem a mis au jour, sur les flancs de la Cité de David, les strates de destruction de 587-586 av. n. è. (maisons effondrées, pointes de flèches, sceaux et objets brûlés) et l'état de faible occupation de la période perse — ce qui correspond à la description de la ville encore en ruine au retour. (2) LA LECTURE DE L'EXIL : Daniel étudie les rouleaux à Babylone, tandis que le sanctuaire est en ruine à Jérusalem et que la vie du peuple se déroule à plus de neuf cents kilomètres. La géographie de la prière est donc celle de l'exil, et l'insistance sur la « ville sur laquelle ton nom est invoqué » (9:18, 19) est le cri d'un homme loin du lieu. (3) SUSE ET BABYLONE : le livre situe Darius à Babylone (9:1) et Daniel successivement dans les deux capitales du monde perse — Suse et Babylone ; les deux sites sont archéologiquement connus, et l'administration achéménide y a laissé ses archives. (4) LES MURS DE JÉRUSALEM : les murs rebâtis sous Néhémie (445-433 av. n. è.) sont partiellement identifiables ; la « brèche » du mur large et les portes de la ville revisitée au Ve siècle font de la fin des soixante-dix ans un chantier repérable. (5) LES TERRES : les listes d'exilés rentrés (Esdras 2 ; Néhémie 7) nomment une trentaine de localités judéennes — géographie concrète d'un retour qui ne fut ni immédiat ni massif, mais réel.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES, ARCHÉOLOGIQUES ET TEXTUELLES. (1) LE CYLINDRE DE CYRUS : la tablette d'argile conservée au British Museum (BM 90920), rédigée en akkadien, résume la politique du conquérant — retour des statues divines, restauration des sanctuaires ruinés, rassemblement des déportés —, ce qui donne un cadre administratif à la restitution des vases et au retour autorisé du peuple juif mentionnés par Esdras. (2) LES TABLETTES DE RATIONS : des tablettes cunéiformes de Babylone enregistrent des rations d'huile pour Yaukin (Joïakin), roi de Juda, et ses cinq fils : document daté, conservé, qui date l'exil et atteste le traitement réservé à la famille royale judéenne. (3) LA CHRONOLOGIE ABSOLUE : les journaux astronomiques babyloniens (dont le VAT 4956 pour la 37e année de Nebucadnetsar, et les tablettes d'éclipses) permettent de fixer les années de règne avec une précision rare dans l'Antiquité, et donc de dater la chute de Jérusalem et le décret de Cyrus. (4) LA LINGUISTIQUE : le chapitre 9 est en hébreu, contrairement à la section araméenne qui vient de s'achever au chapitre 7 ; son style de prière emploie des formules attestées par la littérature juive post-exilique (Esdras 9, Néhémie 9, les prières de Qumrân), ce qui situe son genre littéraire avec précision. (5) L'ARCHÉOLOGIE DE LA PERSE : Persépolis (tablettes administratives) et Suse (palais de Darius), Éléphantine (lettres araméennes en Égypte) donnent un cadre documentaire complet de l'empire dans lequel cette prière fut prononcée et le retour organisé.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>PREMIÈRE ANNÉE DE DARIUS → LECTURE DES LIVRES (JÉRÉMIE) → 70 ANS POUR JÉRUSALEM → JEÛNE, SAC, CENDRE → INVOCATION (ALLIANCE, AMOUR) → CONFESSION EN NOUS (« nous avons péché ») → JUSTICE AU SEIGNEUR, HONTE À NOUS → ÉCRITURE : LOI, MALÉDICTION, JUGEMENTS → SUPPLICATION : ÉCOUTE, PARDONNE, AGIS → À CAUSE DE TON NOM → 9:20-27 LA RÉPONSE (SOIXANTE-DIX SEMAINES, VAGUE SUIVANTE)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre la prophétie comme accomplie — les soixante-dix ans reconnus et le retour opéré — sans dater les semaines du verset 24 et suivants, qui relèvent de la vague suivante (registre P385). LE SYSTÈME CHRONOLOGIQUE : la fiche signale que la date de la désolation de Jérusalem est traitée selon le système retenu dans la phase (607 av. n. è.), et que d'autres systèmes la placent en 587-586 ; l'écart est signalé, jamais escamoté, et ne modifie pas la réalité des soixante-dix ans ni le retour de 537. L'IDENTITÉ DE DARIUS LE MÈDE (9:1) : la fiche reprend la question ouverte du chapitre 6 (Gobryas, Cyaxare, ou titre porté par Cyrus) et n'en tire aucune conclusion chronologique. LE GENRE LITTÉRAIRE DE LA PRIÈRE : certains commentateurs la rapprochent de compositions liturgiques postérieures, d'autres y voient une prière réellement prononcée et mise par écrit ; la fiche ne tranche pas. LE VERSET 19 : la demande « agis et ne tarde pas » n'autorise aucun calcul de date — la fiche n'en fait pas un compte à rebours, conformément à la règle de la phase. ENFIN, LES « SOIXANTE-DIX ANNÉES DE BABYLONE » ET LES « SOIXANTE-DIX SEMAINES » : ce sont deux énoncés distincts, liés dans le livre mais non confondus ; la fiche se garde de les additionner.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Première déportation ; début de la domination babylonienne — Jérémie annonce les soixante-dix ans</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">605 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction de Jérusalem et du temple : les « ruines » de Daniel 9:2</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587-586 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Babylone ; première année de Darius : Daniel comprend le nombre des années</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La prière (9:1-19) ; le décret de Cyrus ; le premier retour et la pose des fondations</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539-537 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Esdras et Néhémie : la ville et ses murs rebâtis — les ruines de Jérusalem relevées</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">455 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/9">Bible — Esdras 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/1">Bible — Néhémie 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/51">Bible — Psaume 51 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/51</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/9">Bible — Daniel 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/9</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990088">« Livre de la Bible numéro 27 — Daniel » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990088</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN384 — La prière des soixante-dix ans : Daniel lit Jérémie et intercède</span><span>Catégorie DN2</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie DN2</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>DN379 — Le Trône de feu et le Fils de l'homme : domination, dignité et royaume</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision nocturne : les bêtes, puis les trônes placés et l'Ancien des jours</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Première année de Belshatsar</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trône de flammes, roues de feu, fleuve de feu, mille milliers, livres ouverts</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:9, 10</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La bête tuée et livrée au feu ; les autres bêtes privées de domination</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">7:11, 12</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le Fils de l'homme vient avec les nuages et reçoit un royaume éternel</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:13, 14</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Application par Jésus (Mt 26:64) ; rachetés rois et prêtres (Ap 5:9, 10) — sans date</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>DN380 — Le royaume donné au peuple des saints du Très-Haut</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La quatrième bête, les dix cornes, la petite corne en guerre contre les saints</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vision de Daniel</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le jugement donné en faveur des saints ; le temps marqué arrivé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:22</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Temps, temps et moitié d'un temps » ; le tribunal siège ; la domination ôtée</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">7:25, 26</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le royaume, la domination et la grandeur donnés au peuple des saints du Très-Haut</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:27</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Royaume éternel reçu ; toutes les dominations serviront — Rév. 22:3-5, sans date</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>DN381 — Le bélier à deux cornes et le bouc de l'occident : la Perse devant la Grèce</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Troisième année de Belshatsar : vision à Suse, sur l'Oulaï — deux siècles avant Alexandre</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~551-549 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Montée de l'empire mède-perse : deux cornes, l'une plus haute montée en dernier</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">559-525 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bouc de l'occident : Granique, Issos, Gaugamèles, Suse, Persépolis — le bélier piétiné</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">334-330 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort d'Alexandre à Babylone : la grande corne se brise en pleine puissance</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">13 juin 323 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatre cornes vers les quatre vents : partage entre les généraux (diadoques)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">301 av. n. è.</text>
+</svg>
+<h4>DN382 — La grande corne brisée : quatre royaumes vers les quatre vents du ciel</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort d'Alexandre à Babylone : la corne se brise dans sa force</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Juin 323 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Partages de Babylone et de Triparadis ; les généraux se partagent l'empire</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">323-321 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ipsos : quatre ensembles stabilisés ; le monde hellénistique se dessine</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">301 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin des héritiers directs : le royaume « non pour sa postérité »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 310 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Couroupédion : recomposition définitive en trois grandes puissances</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">281 av. n. è.</text>
+</svg>
+<h4>DN383 — La petite corne et les deux mille trois cents soirs et matins</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Avènement d'Antiochus IV Épiphane : la petite corne grandit</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">175 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pillage du temple ; intervention en Judée (1 Maccabées 1 ; 2 Maccabées 5)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">169-168 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décrets : sacrifice quotidien supprimé, autel profané — la constante ôtée</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">167 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La durée : environ trois ans et demi ; 2 300 offrandes du soir et du matin</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">167-164 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Purification du sanctuaire ; dédicace — la fête de Hanoukka (1 Maccabées 4:52)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Kislev 164 av. n. è.</text>
+</svg>
+<h4>DN384 — La prière des soixante-dix ans : Daniel lit Jérémie et intercède</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Première déportation ; début de la domination babylonienne — Jérémie annonce les soixante-dix ans</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">605 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction de Jérusalem et du temple : les « ruines » de Daniel 9:2</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587-586 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Babylone ; première année de Darius : Daniel comprend le nombre des années</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La prière (9:1-19) ; le décret de Cyrus ; le premier retour et la pose des fondations</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539-537 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Esdras et Néhémie : la ville et ses murs rebâtis — les ruines de Jérusalem relevées</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">455 av. n. è.</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

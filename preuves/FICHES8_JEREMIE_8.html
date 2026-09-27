@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR — Jérémie (8) — La coupe des nations et le joug</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR</h1>
+<h2>Jérémie (8) — La coupe des nations et le joug</h2>
+<p class="intro">Prends de ma main cette coupe du vin de la fureur et fais-la boire à toutes les nations : Jérusalem d'abord, puis Pharaon, la Philistie, Édom, Tyr, Dedan, Élam, les Mèdes, et en dernier le roi de Shéshak. Hurlez, bergers, car vos jours sont accomplis pour l'abattage ; les demeures paisibles deviendront sans vie. Cette maison deviendra comme Silo, et cette ville une malédiction. Ouriya, qui prophétisait comme Jérémie, sera frappé de l'épée. Mettez vos cous sous le joug de Babylone, ou l'épée, la famine et la peste vous consumeront. Les ustensiles iront à Babylone — puis ils remonteront.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR223">JR223</a>
+<a href="#JR224">JR224</a>
+<a href="#JR225">JR225</a>
+<a href="#JR226">JR226</a>
+<a href="#JR227">JR227</a>
+<a href="#JR228">JR228</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR223"><img src="images/prophe_JR223_coupe.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR223</div>
+<h3><a href="#JR223">La coupe de fureur : toutes les nations boiront, Shéshak en dernier</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR224"><img src="images/prophe_JR224_hurlez.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR224</div>
+<h3><a href="#JR224">« Hurlez, bergers » : le lion rugit, les pâturages se taisent</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR225"><img src="images/prophe_JR225_silo.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR225</div>
+<h3><a href="#JR225">Comme Silo : le Temple condamné et le prophète menacé de mort</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR226"><img src="images/prophe_JR226_ouriya.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR226</div>
+<h3><a href="#JR226">Ouriya de Qiryath-Yearim : la fuite en Égypte et l'épée du roi</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR227"><img src="images/prophe_JR227_joug.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR227</div>
+<h3><a href="#JR227">Le joug sur le cou : servir Babylone ou être consumé</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR228"><img src="images/prophe_JR228_ustensiles.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR228</div>
+<h3><a href="#JR228">Les ustensiles du Temple : emportés à Babylone, puis remontés</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR223">
+<div class="visuel"><img src="images/prophe_JR223_coupe.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR223 · CATÉGORIE JR</div>
+<h3>La coupe de fureur : toutes les nations boiront, Shéshak en dernier</h3>
+<div class="ref">Jérémie 25:15-26</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Coupe des nations (dis → prends → main → coupe → vin → fureur → boire → nations → enverrai → boiront → oscilleront → folie → épée)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR223</div><audio controls preload="none" src="audio/fiche_JR223_coupe.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR223_coupe.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 25:15-26</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Coupe des nations (dis → prends → main → coupe → vin → fureur → boire → nations → enverrai → boiront → oscilleront → folie → épée)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P223 (25:15-26 : coupe des nations) ; accomplissement Jr 46-51</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PRENDS… MAIN… COUPE… VIN… FUREUR… BOIRE… NATIONS… ENVERRAI. » (25:15 — enverrai !)</li>
+<li>« BOIRONT… OSCILLERONT… FOLIE… ÉPÉE… ENVERRAI. » (25:16 — enverrai !)</li>
+<li>« PRIS… COUPE… MAIN… FIS… BOIRE… NATIONS… ENVOYÉ. » (25:17 — envoyé !)</li>
+<li>« JÉRUSALEM… VILLES… JUDA… ROIS… PRINCES… DÉVASTÉ… STUPÉFACTION… SIFFLEMENT… MALÉDICTION. » (25:18 — malédiction !)</li>
+<li>« PHARAON… ÉGYPTE… SERVITEURS… PRINCES… PEUPLE… PHILISTINS… TYR… SIDON… ÎLES… DEDAN… TÉMA… BUZ… ARABES… DÉSERT… ZIMRI… ÉLAM… MÈDES… NORD… PROCHE… LOIN… ROYAUMES… TERRE. » (25:19-26 — terre !)</li>
+<li>« ROI… SHÉSHAK… BOIRA… APRÈS… EUX. » (25:26 — eux !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, 625 — PRENDS (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les ÉLOHÉ (les DIEU (les YISRAÉL (les ÉLAÏ (les MOI (les QAH (les PRENDS (les ET (les KOS (les COUPE (les YAYIN (les VIN (les HAHÉMAH (les FUREUR (les HAZZOT (les CETTE (les MIYYADI (les MAIN (les VEHISHQITA (les BOIRE (les OTO (les LE (les ET (les KOL (les TOUTES (les HAGGOYIM (les NATIONS (les ASHER (les ANI (les MOI (les SHOLÉAH (les ENVERRAI (les OTEKHA (les TOI (les ALÉHEM (les EUX (les ÉCHANSON (les JUGEMENT (les PRENDS — les SERS !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les FOUS (les VESHATU (les BOIRONT (les VEITGAASHU (les OSCILLERONT (les VEHITHOLELU (les FOLIE (les MIPPNÉ (les CAUSE (les HAHÉREV (les ÉPÉE (les ASHER (les ANI (les MOI (les SHOLÉAH (les ENVERRAI (les BÉNOTAM (les EUX (les VAEQQAH (les PRIS (les ET (les HAKKOS (les COUPE (les MIYYAD (les MAIN (les YEHOVAH (les VAASHQÉH (les FIS (les BOIRE (les ET (les KOL (les TOUTES (les HAGGOYIM (les NATIONS (les ASHER (les SHELAHANI (les ENVOYÉ (les YEHOVAH (les ÉLAÏ (les IVRESSE (les PANIQUE (les STRATÉGIE (les FOLLE (les FOUS — les CHANCELLENT !). JÉRUSALEM (les ET (les YERUSHALAYIM (les VEÉT (les ARÉ (les VILLES (les YEHUDAH (les JUDA (les VEÉT (les MELAKHÉHA (les ROIS (les VEÉT (les SARÉHA (les PRINCES (les LATÉT (les FAIRE (les OTAM (les LES (les LEHORBAH (les DÉVASTÉ (les LESHAMMAH (les STUPÉFACTION (les LISHREQAH (les SIFFLEMENT (les VELIQELALAH (les MALÉDICTION (les JUGEMENT (les COMMENCE (les MAISON (les DIEU (les JÉRUSALEM — les PREMIÈRE !)</p>
+<h4>5 · Interprétation</h4>
+<p>La LISTE (les ET (les PAROH (les PHARAON (les MÉLEK (les ROI (les MITRAYIM (les ÉGYPTE (les VAABADAV (les SERVITEURS (les VESARAV (les PRINCES (les VEKHOL (les TOUT (les AMMO (les PEUPLE (les PELISHET (les PHILISTINS (les TSOR (les TYR (les TSIDON (les SIDON (les IYÉ (les ÎLES (les HAYYAM (les MER (les DEDAN (les TÉMA (les BUZ (les ARAB (les ARABES (les MIDBAR (les DÉSERT (les ZIMRI (les ÉLAM (les MADAY (les MÈDES (les TSAPHON (les NORD (les QEROBIM (les PROCHE (les REHOQIM (les LOIN (les KOL (les MAMLEKHOT (les ROYAUMES (les HAARETS (les TERRE (les VINGT (les NATIONS (les CERCLES (les CONCENTRIQUES (les LISTE — les COMPLÈTE !). SHÉSHAK (les UMÉLEKH (les ROI (les SHÉSHAK (les YISHTÉH (les BOIRA (les AHA RÉHEM (les APRÈS (les EUX (les ATHBASH (les CODE (les BABEL (les DEVIENT (les SHÉSHAK (les BABYLONE (les DERNIÈRE (les IRONIE (les SERVEUR (les BOIRA (les LIE (les SHÉSHAK — les DERNIER !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">25:15-16</td><td>COUPE (ENVERRAI !)</td></tr>
+<tr><td class="d">25:17</td><td>SERVIE (ENVOYÉ !)</td></tr>
+<tr><td class="d">25:18</td><td>JÉRUSALEM (MALÉDICTION !)</td></tr>
+<tr><td class="d">25:19-25</td><td>NATIONS (MÈDES !)</td></tr>
+<tr><td class="d">25:26</td><td>SHÉSHAK (EUX !)</td></tr>
+<tr><td class="d">Jr 46-51</td><td>DÉTAIL (JUGÉES !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Jérémie 46–51 détaille chaque jugement : Égypte à Karkemish (605) puis conquise (568), Philistins, Moab, Ammon, Édom, Damas, Arabes, Élam (Jr 49:34-39), Babylone (Jr 50–51, chute 539) ; Nabuchodonosor est l'instrument contre toutes, puis Cyrus contre Babylone.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Cercles concentriques autour de Juda : Égypte au sud-ouest, Philistie à l'ouest, Phénicie au nord-ouest, Arabie au sud-est, Élam et Médie à l'est, « rois du nord » (Babylone, Scythes) — toute la carte du Proche-Orient ancien boit la coupe.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Cryptographie : l'athbash (a↔t, b↔sh) transforme BBL (Babel) en SHSHK (Shéshak) — le plus ancien chiffre de substitution attesté dans la Bible (Jr 25:26 ; 51:41).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>COUPE PRISE → JÉRUSALEM 1re → 20 NATIONS → SHÉSHAK DERNIER → Jr 46-51 : TOUTES JUGÉES → 539</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>La coupe est présentée en vision (v. 17 : « je pris ») ; les accomplissements s'étalent de 605 (Karkemish) à 539 (Babylone) et au-delà.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision de la coupe pour toutes les nations</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">625</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nations jugées une à une (Jr 46-49)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605–568</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Shéshak boit en dernier : Babylone tombe</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/46">Bible — Jérémie 46 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/46</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/48">Bible — Jérémie 48 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/48</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49">Bible — Jérémie 49 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR223 — La coupe de fureur : toutes les nations boiront, Shéshak en dernier</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR224">
+<div class="visuel"><img src="images/prophe_JR224_hurlez.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR224 · CATÉGORIE JR</div>
+<h3>« Hurlez, bergers » : le lion rugit, les pâturages se taisent</h3>
+<div class="ref">Jérémie 25:27-38</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Bergers hurlants (dis → buvez → enivrez → vomissez → tombez → non → relever → épée → enverrai → refusent → prendre → main → coupe)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR224</div><audio controls preload="none" src="audio/fiche_JR224_hurlez.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR224_hurlez.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 25:27-38</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Bergers hurlants (dis → buvez → enivrez → vomissez → tombez → non → relever → épée → enverrai → refusent → prendre → main → coupe)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P224 (25:27-38 : bergers et pâturages) ; accomplissement Jr 49:19-22, 28-33</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« BUVEZ… ENIVREZ… VOMISSEZ… TOMBEZ… NON… RELEVER… ÉPÉE… ENVERRAI. » (25:27 — enverrai !)</li>
+<li>« REFUSENT… PRENDRE… MAIN… COUPE… BOIRE… BOIREZ… COUP… SÛR… VILLE… NOM… INVOQUÉ… COMMENCE… MALHEUR… IMPUNIS… NON… IMPUNIS… ÉPÉE… HABITANTS… TERRE. » (25:28-29 — terre !)</li>
+<li>« RUGIRA… HAUT… DEMEURE… SAINTE… VOIX… RUGIRA… HABITATION… CRI… FOULEURS… PRESSOIR… HABITANTS… TERRE. » (25:30 — terre !)</li>
+<li>« VACARME… LOINTE… TERRE… CONTROVERSE… NATIONS… JUGEMENT… CHAIR… MÉCHANTS… ÉPÉE. » (25:31 — épée !)</li>
+<li>« MALHEUR… NATION… NATION… TEMPÊTE… RÉVEILLERA… RECULÉES… TERRE… TUÉS… BOUT… BOUT… NON… PLEURÉS… NON… RECUEILLIS… NON… ENTERRÉS… FUMIER… SOL. » (25:32-33 — sol !)</li>
+<li>« HURLEZ… BERGERS… CRIEZ… ROULEZ… MAJESTUEUX… TROUPEAU… JOURS… ACCOMPLIS… ABATTAGE… DISPERSIONS… TOMBER… RÉCIPIENT… DÉSIRABLE… FUITE… DISPARU… ÉCHAPPER… CLAMEUR… HURLEMENT… PILLE… PÂTURAGE… DEMEURES… PAISIBLES… SANS… VIE… COLÈRE… QUITTÉ… FOURRÉ… LION… STUPÉFACTION… ÉPÉE… CRUELLE. » (25:34-38 — cruelle !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, 625 — BUVEZ (les SHETU (les BUVEZ (les VESHIKHRU (les ENIVREZ (les UQYU (les VOMISSEZ (les VENIPH LU (les TOMBEZ (les VÉLO (les NON (les TAQUMU (les RELEVER (les MIPPNÉ (les CAUSE (les HAHÉREV (les ÉPÉE (les ASHER (les ANI (les MOI (les SHOLÉAH (les ENVERRAI (les BÉNÉKHEM (les VOUS (les ORDRE (les BOIRE (les CHUTE (les SANS (les RELÈVE (les BUVEZ — les TOMBEZ !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le REFUS (les VEHAYAH (les ARRIVERA (les KI (les SI (les YEMAANU (les REFUSENT (les LAQAHAT (les PRENDRE (les HAKKOS (les COUPE (les MIYYADKHA (les MAIN (les LISHTOT (les BOIRE (les VEAMARTA (les DIRAS (les ALÉHEM (les EUX (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les SHATO (les BOIREZ (les TISHTU (les COUP (les SÛR (les KI (les HINNÉH (les VOICI (les BAIR (les VILLE (les ASHER (les NIQRA (les INVOQUÉ (les SHEMI (les NOM (les ALÉHA (les ELLE (les ANI (les MOI (les MÉHÉL (les COMMENCE (les LEHARA (les MALHEUR (les VEATTEM (les VOUS (les HINNAQÉH (les IMPUNIS (les TINNAQU (les RESTER (les LO (les NON (les TINNAQU (les IMPUNIS (les KI (les HÉREV (les ÉPÉE (les ANI (les MOI (les QORÉ (les APPELLE (les AL (les KOL (les TOUS (les YOSHEBÉ (les HABITANTS (les HAARETS (les TERRE (les REFUS — les IMPOSSIBLE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le LION (les YEHOVAH (les MIMMAROM (les HAUT (les YISHAG (les RUGIRA (les UMIMMÉON (les DEMEURE (les QODSHO (les SAINTE (les YITTÉN (les DONNERA (les QOLO (les VOIX (les SHAOG (les RUGIRA (les YISHAG (les AL (les NAVÉHU (les HABITATION (les HÉDAD (les CRI (les KEDOREKHIM (les FOULEURS (les YAANÉH (les ENTONNERA (les EL (les KOL (les TOUS (les YOSHEBÉ (les HABITANTS (les HAARETS (les TERRE (les PRESSOIR (les JUS (les ROUGE (les SANG (les LION — les RUGIT !). Les BERGERS (les HÉLILU (les HURLEZ (les HAROIM (les BERGERS (les VEZAAQU (les CRIEZ (les VEHITPALASHU (les ROULEZ (les ADDIRÉ (les MAJESTUEUX (les HATSON (les TROUPEAU (les KI (les MALU (les ACCOMPLIS (les YEMÉKHEM (les JOURS (les LITBOAH (les ABATTAGE (les UTEFUTSOTÉKHEM (les DISPERSIONS (les UNEPHALTEM (les TOMBER (les KIKHLI (les RÉCIPIENT (les HEMDAH (les DÉSIRABLE (les VEABAD (les DISPARU (les MANOS (les FUITE (les MIN (les HAROIM (les BERGERS (les UPHLÉTAH (les ÉCHAPPER (les MÉADDIRÉ (les MAJESTUEUX (les HATSON (les TROUPEAU (les QOL (les CLAMEUR (les TSAAQAT (les CRIS (les HAROIM (les BERGERS (les VIYLELAT (les HURLEMENT (les ADDIRÉ (les MAJESTUEUX (les HATSON (les TROUPEAU (les KI (les SHODÉD (les PILLE (les YEHOVAH (les ET (les MARITAM (les PÂTURAGE (les VENADAMMU (les DEVENUES (les NEOT (les DEMEURES (les HASHALOM (les PAISIBLES (les MIPPNÉ (les CAUSE (les HARON (les ARDENTE (les APH (les COLÈRE (les YEHOVAH (les AZAB (les QUITTÉ (les KAKKEPHIR (les LION (les SUKKOH (les FOURRÉ (les KI (les HAYETAH (les DEVENUE (les ARTSAM (les PAYS (les LESHAMMAH (les STUPÉFACTION (les BERGERS — les HURLENT !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">25:27</td><td>TOMBEZ (ENVERRAI !)</td></tr>
+<tr><td class="d">25:28-29</td><td>IMPUNIS (TERRE !)</td></tr>
+<tr><td class="d">25:30-31</td><td>RUGIT (ÉPÉE !)</td></tr>
+<tr><td class="d">25:32-33</td><td>FUMIER (SOL !)</td></tr>
+<tr><td class="d">25:34-36</td><td>HURLEZ (PÂTURAGE !)</td></tr>
+<tr><td class="d">25:37-38</td><td>LION (CRUELLE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Édom jugée (Jr 49:19-22 : lion montant du Jourdain), Arabes de Qédar et Hatsor pillés (Jr 49:28-33 : campagnes de Nabuchodonosor ~599–598) ; bergers = rois et princes (études 1994164 « Controverse » et 1979687 « Coupe ») ; pâturages paisibles ravagés dans tout le Proche-Orient.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Fourré du Jourdain : repaires de lions remontant vers les pâturages — image du jugement montant ; Qédar (Arabie du nord) et Hatsor (villages de tentes) : campements paisibles anéantis ; tempête « des parties reculées » : invasions du nord lointain.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Zoologie : le lion asiatique fréquentait les fourrés du Jourdain jusqu'à l'époque des croisades — le rugissement montant du fleuve vers les troupeaux est une scène vécue des bergers antiques.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>COUPE IMPOSÉE → LION RUGIT → TEMPÊTE DE NATION EN NATION → BERGERS HURLENT → PÂTURAGES MUETS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Les v. 30-38 visent d'abord les nations du Proche-Orient ancien ; les études citées y voient aussi une préfiguration du jugement universel.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : bergers hurlants, pâturages pillés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">625</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Qédar et Hatsor ravagés ; Édom jugée</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">599–598</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">De nation en nation, la tempête passe</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">605–539</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1994164">La controverse avec les nations<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1994164</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1979687">La coupe pour toutes les nations<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1979687</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/27">Bible — Jérémie 27 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/27</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR224 — « Hurlez, bergers » : le lion rugit, les pâturages se taisent</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR225">
+<div class="visuel"><img src="images/prophe_JR225_silo.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR225 · CATÉGORIE JR</div>
+<h3>Comme Silo : le Temple condamné et le prophète menacé de mort</h3>
+<div class="ref">Jérémie 26:1-6</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Comme Silo (dis → début → règne → Yehoïaqim → fils → Josias → roi → Juda → parole → vers → tiens → cour → maison → parle → villes)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR225</div><audio controls preload="none" src="audio/fiche_JR225_silo.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR225_silo.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 26:1-6</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Comme Silo (dis → début → règne → Yehoïaqim → fils → Josias → roi → Juda → parole → vers → tiens → cour → maison → parle → villes)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P225 (26:1-6 : maison comme Silo) ; accomplissement Jr 52:12-14 ; 2R 25:8-10</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DÉBUT… RÈGNE… YEHOÏAQIM… FILS… JOSIAS… ROI… JUDA… PAROLE… VERS. » (26:1 — vers !)</li>
+<li>« TIENS… COUR… MAISON… PARLE… VILLES… VIENNENT… PROSTERNER… MAISON… PAROLES… ORDONNÉ… NON… RETRANCHE… MOT. » (26:2 — mot !)</li>
+<li>« PEUT-ÊTRE… ÉCOUTERONT… REVIENDRONT… CHACUN… VOIE… MAUVAISE… REPENTIRAI… MALHEUR… PENSÉ… FAIRE… MÉCHANCETÉ… AGISSEMENTS. » (26:3 — agissements !)</li>
+<li>« SI… NON… ÉCOUTEZ… MARCHER… LOI… PLACÉE… DEVANT. » (26:4 — devant !)</li>
+<li>« ÉCOUTER… PAROLES… SERVITEURS… PROPHÈTES… ENVOYÉS… LASSER… NON… ÉCOUTÉS. » (26:5 — écoutés !)</li>
+<li>« FERAI… MAISON… SILO… VILLE… MALÉDICTION… NATIONS… TERRE. » (26:6 — terre !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Temple, 628 (début Yehoïaqim) — DÉBUT (les BERÉSHIT (les DÉBUT (les MAMLEKHUT (les RÈGNE (les YEHOYAQIM (les YEHOÏAQIM (les BEN (les FILS (les YOSHIYAHU (les JOSIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les HAYAH (les FUT (les HADDABAR (les PAROLE (les HAZÉH (les CETTE (les MÉÉT (les DE (les YEHOVAH (les LÉMOR (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les AMOD (les TIENS (les BAHATSAR (les COUR (les BÉYT (les MAISON (les YEHOVAH (les VEDIBBARTA (les PARLE (les AL (les KOL (les TOUTES (les ARÉ (les VILLES (les YEHUDAH (les JUDA (les HABBAIM (les VIENNENT (les LEHISH TAHAVOT (les PROSTERNER (les BEBÉYT (les MAISON (les YEHOVAH (les ET (les KOL (les TOUTES (les HADDEBARIM (les PAROLES (les ASHER (les TSIVVITIKHA (les ORDONNÉ (les LEDABBÉR (les DIRE (les ALÉHEM (les EUX (les AL (les NON (les TIGRA (les RETRANCHE (les DABAR (les MOT (les FÊTE (les FOULE (les DÉBUT — les RISQUÉ !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le PEUT-ÊTRE (les ULAÏ (les PEUT-ÊTRE (les YISHMEU (les ÉCOUTERONT (les VEYASHUBU (les REVIENDRONT (les ISH (les CHACUN (les MIDDARKO (les VOIE (les HARAAH (les MAUVAISE (les VENIHAMTI (les REPENTIRAI (les EL (les HARAAH (les MALHEUR (les ASHER (les ANI (les MOI (les HOSHÉB (les PENSÉ (les LAASOT (les FAIRE (les LAHEM (les EUX (les MIPPNÉ (les CAUSE (les ROA (les MÉCHANCETÉ (les MAALELÉHEM (les AGISSEMENTS (les CONDITIONNEL (les OUVERT (les PEUT-ÊTRE — les OFFERT !). SILO (les VENATATTI (les FERAI (les ET (les HABBAYIT (les MAISON (les HAZÉH (les CETTE (les KESHILOH (les SILO (les VEÉT (les HAIR (les VILLE (les HAZZOT (les CETTE (les ETTÉN (les FERAI (les LIQELALAH (les MALÉDICTION (les LEKHOL (les TOUTES (les GOYÉ (les NATIONS (les HAARETS (les TERRE (les ARCHE (les PERDUE (les ÉLI (les MORT (les 1S (les QUATRE (les SILO — les PRÉCÉDENT !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le PROCÈS (les VAYYISHMEU (les ENTENDIRENT (les HAKKOHANIM (les PRÊTRES (les VEHANNÉBIIM (les PROPHÈTES (les VEKHOL (les TOUT (les HAAM (les PEUPLE (les ET (les YIRMEYAHU (les JÉRÉMIE (les MEDABBÉR (les DISANT (les ET (les HADDEBARIM (les PAROLES (les HAÉLÉH (les CES (les BEBÉYT (les MAISON (les YEHOVAH (les VAYYITPESU (les SAISIRENT (les OTO (les LE (les LÉMOR (les MOT (les MOURRAS (les TAMUT (les MADDUA (les POURQUOI (les NIBBÉTA (les PROPHÉTISÉ (les BESHÉM (les NOM (les YEHOVAH (les LÉMOR (les KESHILOH (les SILO (les YIHYÉH (les DEVIENDRA (les HABBAYIT (les MAISON (les HAZÉH (les CETTE (les VEHAIR (les VILLE (les HAZZOT (les CETTE (les TEHERAB (les RUINE (les MÉÉYN (les SANS (les YOSHÉB (les HABITANTS (les PRINCES (les JUGENT (les MICHEE (les PRÉCÉDENT (les AHIQAM (les PROTÈGE (les PROCÈS — les ACQUITTÉ !). La MALÉDICTION (les YAD (les MAIN (les AHIQAM (les BEN (les FILS (les SHAPHAN (les HAYETAH (les FUT (les ET (les YIRMEYAHU (les LEBILTI (les NON (les TÉT (les LIVRER (les OTO (les LE (les BEYAD (les MAIN (les HAAM (les PEUPLE (les LAHAMITO (les MORT (les JÉRÉMIE (les SAUVÉ (les MAISON (les CONDAMNÉE (les 587 (les BRÛLÉE (les MALÉDICTION — les TOMBÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">26:1-2</td><td>COUR (MOT !)</td></tr>
+<tr><td class="d">26:3</td><td>PEUT-ÊTRE (AGISSEMENTS !)</td></tr>
+<tr><td class="d">26:4-5</td><td>LOI (ÉCOUTÉS !)</td></tr>
+<tr><td class="d">26:6</td><td>SILO (TERRE !)</td></tr>
+<tr><td class="d">26:8-11</td><td>PROCÈS (MORT !)</td></tr>
+<tr><td class="d">2R 25:8-10</td><td>BRÛLA (MURAILLES !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>628 : procès de Jérémie au Temple — les princes l'acquittent en citant Michée (Jr 26:16-19), Ahiqam le protège ; la menace s'accomplit en 587 : maison brûlée comme Silo (Jr 52:12-14 ; 2R 25:8-10), ville devenue malédiction ; Silo détruite par les Philistins ~1050 (Ps 78:60 ; Jr 7:12-14).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Cour du Temple, Porte Neuve : lieu du procès ; Silo (Seiloun, Samarie) : sanctuaire abandonné, ruines visibles au temps de Jérémie — le précédent géographique que chacun pouvait aller voir.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Archéologie : Silo (Tell Seiloun) montre une destruction violente au Fer I (cendres, effondrements) — le sort promis au Temple avait un témoin de pierre à 30 km au nord.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>628 : ORACLE À LA COUR → PROCÈS → ACQUITTÉ PAR LES PRINCES → REFUS DU PEUPLE → 587 : COMME SILO</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Oracle conditionnel (v. 3 : peut-être écouteront-ils) ; le « peut-être » est refusé, la sentence devient définitive.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle du Temple : comme Silo</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">628</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Procès : acquitté, protégé par Ahiqam</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">628</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Maison brûlée, ville en malédiction</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/26">Bible — Jérémie 26 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/26</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/26">Bible — Jérémie 26 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/26</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/78">Bible — Psaume 78 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/78</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR225 — Comme Silo : le Temple condamné et le prophète menacé de mort</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR226">
+<div class="visuel"><img src="images/prophe_JR226_ouriya.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR226 · CATÉGORIE JR</div>
+<h3>Ouriya de Qiryath-Yearim : la fuite en Égypte et l'épée du roi</h3>
+<div class="ref">Jérémie 26:20-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Ouriya (dis → homme → prophétisait → nom → Ouriya → fils → Shemaeya → Qiryath → Yearim → prophétisait → ville → pays → paroles → Jérémie)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR226</div><audio controls preload="none" src="audio/fiche_JR226_ouriya.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR226_ouriya.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 26:20-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Ouriya (dis → homme → prophétisait → nom → Ouriya → fils → Shemaeya → Qiryath → Yearim → prophétisait → ville → pays → paroles → Jérémie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P226 (26:20-23 : Ouriya mis à mort) ; accomplissement Jr 26:23-24</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« HOMME… PROPHÉTISAIT… NOM… OURIYA… FILS… SHEMAEYA… QIRYATH… YEARIM… PROPHÉTISAIT… VILLE… PAYS… PAROLES… JÉRÉMIE. » (26:20 — Jérémie !)</li>
+<li>« YEHOÏAQIM… HOMMES… FORTS… PRINCES… ENTENDIRENT… PAROLES… CHERCHAIT… MORT… APPRIT… PEUR… ENFUIT… ÉGYPTE. » (26:21 — Égypte !)</li>
+<li>« ENVOYA… HOMMES… ÉGYPTE… ELNATHAN… FILS… AKBOR… HOMMES… ÉGYPTE. » (26:22 — Égypte !)</li>
+<li>« FIRENT… SORTIR… OURIYA… ÉGYPTE… AMENÈRENT… YEHOÏAQIM… FRAPPA… ÉPÉE… JETA… CADAVRE… CIMETIÈRE… FILS… PEUPLE. » (26:23 — peuple !)</li>
+<li>« MAIN… AHIQAM… FILS… SHAPHAN… JÉRÉMIE… NON… LIVRER… MAIN… PEUPLE… MORT. » (26:24 — mort !)</li>
+<li>« TUA… OURIYA… JETA… CADAVRE… CIMETIÈRE… PEUPLE… NON… CONFIANT… PEUR… ENFUI… ÉGYPTE. » (Habaquq : 2000083 — Égypte !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, ~628 — HOMME (les VEGAM (les AUSSI (les ISH (les HOMME (les HAYAH (les ÉTAIT (les MITNABBÉ (les PROPHÉTISAIT (les BESHÉM (les NOM (les YEHOVAH (les URIYAHU (les OURIYA (les BEN (les FILS (les SHEMAYAHU (les SHEMAEYA (les MIQQIRYAT (les QIRYATH (les HAYYEARIM (les YEARIM (les VAYYINNABÉ (les PROPHÉTISAIT (les AL (les HAIR (les VILLE (les HAZZOT (les CETTE (les VEAL (les PAYS (les HAARETS (les HAZZOT (les CE (les KEKHOL (les TOUTES (les DIBRÉ (les PAROLES (les YIRMEYAHU (les JÉRÉMIE (les COLLÈGUE (les MÊME (les MESSAGE (les HOMME — les FIDÈLE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La PEUR (les VAYYISHMA (les ENTENDIRENT (les HAMMÉLEK (les YEHOÏAQIM (les YEHOYAQIM (les VEKHOL (les TOUS (les GIBBORAV (les FORTS (les VEKHOL (les TOUS (les HASSARIM (les PRINCES (les ET (les DEBARAV (les PAROLES (les VAYEBAQQÉSH (les CHERCHAIT (les HAMMÉLEK (les ROI (les LAHAMITO (les MORT (les VAYYISHMA (les APPRIT (les URIYAHU (les OURIYA (les VAYYIRA (les PEUR (les VAYYIBRAH (les ENFUIT (les VAYYABO (les ARRIVA (les MITRAYIM (les ÉGYPTE (les CONTRASTE (les JÉRÉMIE (les RESTA (les OURIYA (les FUIT (les PEUR — les FUNESTE !). L'EXTRADITION (les VAYYISHLAH (les ENVOYA (les HAMMÉLEK (les ROI (les YEHOYAQIM (les ANASHIM (les HOMMES (les MITRAYIM (les ÉGYPTE (les ET (les ELNATÁN (les ELNATHAN (les BEN (les FILS (les AKBOR (les VAANASHIM (les HOMMES (les ITTO (les AVEC (les LUI (les MITRAYIM (les ÉGYPTE (les PUISSANCE (les ROYALE (les POURSUIT (les EXTRADITION — les OBTENUE !)</p>
+<h4>5 · Interprétation</h4>
+<p>L'ÉPÉE (les VAYYOTSIU (les FIRENT (les SORTIR (les ET (les URIYAHU (les OURIYA (les MIMMITSRAYIM (les ÉGYPTE (les VAYEBIUHU (les AMENÈRENT (les EL (les HAMMÉLEK (les ROI (les YEHOYAQIM (les VAYYAKKÉHU (les FRAPPA (les BEHÉREV (les ÉPÉE (les VAYYASHLÉKH (les JETA (les ET (les NIBLATO (les CADAVRE (les EL (les QIBRÉ (les CIMETIÈRE (les BENÉ (les FILS (les HAAM (les PEUPLE (les FOSSE (les COMMUNE (les SANS (les HONNEUR (les ÉPÉE — les FRAPPÉ !). La MAIN (les AKH (les MAIS (les YAD (les MAIN (les AHIQAM (les BEN (les FILS (les SHAPHAN (les HAYETAH (les FUT (les ET (les YIRMEYAHU (les JÉRÉMIE (les LEBILTI (les NON (les TÉT (les LIVRER (les OTO (les LE (les BEYAD (les MAIN (les HAAM (les PEUPLE (les LAHAMITO (les MORT (les DEUX (les PROPHÈTES (les DEUX (les SORTS (les AHIQAM (les PROTÈGE (les UN (les MAIN — les SAUVE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">26:20</td><td>OURIYA (JÉRÉMIE !)</td></tr>
+<tr><td class="d">26:21</td><td>PEUR (ÉGYPTE !)</td></tr>
+<tr><td class="d">26:22</td><td>ELNATHAN (ÉGYPTE !)</td></tr>
+<tr><td class="d">26:23</td><td>ÉPÉE (PEUPLE !)</td></tr>
+<tr><td class="d">26:24</td><td>AHIQAM (MORT !)</td></tr>
+<tr><td class="d">Hab 1-3</td><td>TUMULTE (HORREUR !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Ouriya de Qiryath-Yearim (ville de l'arche, 1S 7:1) prophétise comme Jérémie ; Yehoïaqim le fait extrader d'Égypte par Elnathan et l'exécute, cadavre à la fosse commune (Jr 26:20-23) ; Habaquq, contemporain, apprend la nouvelle avec horreur (étude 2000083) ; Jérémie, lui, est sauvé par Ahiqam.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Qiryath-Yearim (Deir el-Azar, collines à l'ouest) : patrie d'Ouriya ; Égypte : refuge manqué — Elnathan (beau-père du roi, 2R 24:8) y mène l'extradition ; fosse commune : vallée du Cédron, sépultures infamantes.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Prosopographie : Elnathan fils d'Akbor est attesté par une bulla (« Elnathan, serviteur du roi ») — le chef de l'escorte d'extradition est un personnage historiquement plausible.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>MÊME MESSAGE QUE JÉRÉMIE → PEUR + FUITE → EXTRADITION → ÉPÉE + FOSSE → JÉRÉMIE PROTÉGÉ</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le récit (v. 20-24) est une parenthèse historique du procès de Jérémie ; la fuite d'Ouriya est un manque de confiance, pas une excuse au meurtre royal.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ouriya prophétise contre la ville</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~628</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite en Égypte, extradition, exécution</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~628</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie acquitté : deux sorts opposés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~628</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200002377">Yehoïaqim (étude perspicace)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200002377</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2004322">Soyons courageux comme Jérémie<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2004322</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2000083">Combien de temps reste-t-il ?<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2000083</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR226 — Ouriya de Qiryath-Yearim : la fuite en Égypte et l'épée du roi</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR227">
+<div class="visuel"><img src="images/prophe_JR227_joug.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR227 · CATÉGORIE JR</div>
+<h3>Le joug sur le cou : servir Babylone ou être consumé</h3>
+<div class="ref">Jérémie 27:1-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Joug (dis → début → règne → Sédécias → fils → Josias → roi → Juda → parole → vers → fais → liens → joug → mets → cou)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR227</div><audio controls preload="none" src="audio/fiche_JR227_joug.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR227_joug.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 27:1-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Joug (dis → début → règne → Sédécias → fils → Josias → roi → Juda → parole → vers → fais → liens → joug → mets → cou)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P227 (27:1-11 : servir ou périr) ; accomplissement Jr 27:12-22 ; 2R 24:1 ; 25:1-11</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DÉBUT… RÈGNE… SÉDÉCIAS… FILS… JOSIAS… ROI… JUDA… PAROLE… VERS. » (27:1 — vers !)</li>
+<li>« FAIS… LIENS… JOUG… METS… COU. » (27:2 — cou !)</li>
+<li>« ENVOIE… ROI… ÉDOM… MOAB… AMMON… TYR… SIDON… ENVOYÉS… VENUS… JÉRUSALEM… SÉDÉCIAS. » (27:3 — Sédécias !)</li>
+<li>« FAIT… TERRE… HOMMES… BÊTES… PUISSANCE… BRAS… ÉTENDU… DONNE… BON… SEMBLE. » (27:5 — semble !)</li>
+<li>« REMIS… PAYS… MAINS… NABUCHODONOSOR… BABYLONE… SERVITEUR… SERVICE… BÊTES… CHAMPS. » (27:6 — champs !)</li>
+<li>« SERVIRONT… FILS… PETIT-FILS… TEMPS… PAYS… NATIONS… PUISSANTES… GRANDS… ROIS… ASSERVIRONT… NON… SERVIRA… NON… OFFRIRA… NUQUE… JOUG… VISITERAI… ÉPÉE… FAMINE… PESTE… ACHEVÉE… MAIN… OFFRIRA… NUQUE… SERVICE… REPOS… SOL… CULTIVERA… RESTERA. » (27:7-11 — restera !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, ~594 — DÉBUT (les BERÉSHIT (les DÉBUT (les MAMLEKHET (les RÈGNE (les TSIDQIYAHU (les SÉDÉCIAS (les BEN (les FILS (les YOSHIYAHU (les JOSIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les HAYAH (les FUT (les HADDABAR (les PAROLE (les HAZÉH (les CETTE (les EL (les VERS (les YIRMEYAHU (les JÉRÉMIE (les MÉÉT (les YEHOVAH (les LÉMOR (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les ÉLAÏ (les MOI (les ASÉH (les FAIS (les LEKHA (les TOI (les MOSEROT (les LIENS (les UMOTOT (les JOUG (les UNETATTAM (les METS (les AL (les TSAWWA RÉKHA (les COU (les DRAME (les PUBLIC (les PROPHÈTE (les BÂTÉ (les DÉBUT — les JOUG !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les ENVOYÉS (les VESHILLAHTAM (les ENVOIE (les EL (les MÉLEK (les ROI (les EDOM (les ÉDOM (les VEEL (les MÉLEK (les ROI (les MOAB (les VEEL (les ROI (les MÉLEK (les BENÉ (les FILS (les AMMON (les VEEL (les MÉLEK (les ROI (les TSOR (les TYR (les VEEL (les MÉLEK (les ROI (les TSIDON (les SIDON (les BEYAD (les MAIN (les MALAKHIM (les ENVOYÉS (les HABBAIM (les VENUS (les YERUSHALAYIM (les JÉRUSALEM (les EL (les TSIDQIYAHU (les SÉDÉCIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les COMPLOT (les ANTIBABYLONIEN (les SOMMET (les JÉRUSALEM (les JOUG (les RÉPONSE (les ENVOYÉS — les RENVOYÉS !). Le SERVITEUR (les VEATTAH (les MAINTENANT (les ANI (les MOI (les NATATTI (les REMIS (les ET (les KOL (les TOUS (les HAARATSOT (les PAYS (les HAÉLÉH (les CES (les BEYAD (les MAINS (les NEBUKHADNETSAR (les NABUCHODONOSOR (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les ABDI (les SERVITEUR (les VEGAM (les MÊME (les ET (les HAYYAT (les BÊTES (les HASSADÉH (les CHAMPS (les NATATTI (les DONNÉ (les LO (les LUI (les LEOBDO (les SERVICE (les TROIS (les GÉNÉRATIONS (les PUIS (les JUGE (les SERVITEUR — les ÉTABLI !)</p>
+<h4>5 · Interprétation</h4>
+<p>La NUQUE (les VEHAYAH (les ARRIVERA (les HAGGOY (les NATION (les VEHAMMAMLAKHAH (les ROYAUME (les ASHER (les LO (les NON (les YAA BEDU (les SERVIRA (les OTO (les LUI (les ET (les NEBUKHADNETSAR (les NABUCHODONOSOR (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les VAASHER (les QUI (les LO (les NON (les YITTÉN (les OFFRIRA (les ET (les TSAWWA RO (les NUQUE (les BEOL (les JOUG (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les BAHÉREV (les ÉPÉE (les UBARAAB (les FAMINE (les UBADDÉBER (les PESTE (les EPhQOD (les VISITERAI (les AL (les HAGGOY (les NATION (les HAHU (les CETTE (les NEUM (les YEHOVAH (les AD (les JUSQUÀ (les TUMMI (les ACHEVÉE (les OTO (les ELLE (les BEYADO (les MAIN (les SÉDÉCIAS (les REFUSERA (les 588 (les ASSIÉGÉ (les NUQUE — les RAIDIE !). Le REPOS (les VEHAGGOY (les NATION (les ASHER (les YABI (les OFFRIRA (les ET (les TSAWWA RO (les NUQUE (les BEOL (les JOUG (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les VAA BADO (les SERVICE (les VEHINNAHTIV (les REPOS (les AL (les ADMATOH (les SOL (les NEUM (les YEHOVAH (les VAA BADA H (les CULTIVERA (les VEYASHAB (les RESTERA (les BA H (les RECHABITES (les RESTÉS (les ÉPARGNÉS (les REPOS — les PROMIS !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">27:1-2</td><td>JOUG (COU !)</td></tr>
+<tr><td class="d">27:3-4</td><td>ENVOYÉS (SÉDÉCIAS !)</td></tr>
+<tr><td class="d">27:5-6</td><td>SERVITEUR (CHAMPS !)</td></tr>
+<tr><td class="d">27:7</td><td>FILS (ASSERVIRONT !)</td></tr>
+<tr><td class="d">27:8</td><td>NUQUE (MAIN !)</td></tr>
+<tr><td class="d">27:11</td><td>REPOS (RESTERA !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~594 : sommet antibabylonien à Jérusalem (Édom, Moab, Ammon, Tyr, Sidon) — Jérémie leur envoie des jougs ; Sédécias refuse le joug (2R 24:20) : siège 588–587, destruction ; Édom se soumet d'abord puis pille Juda (étude Édom 1200001258) ; Hanania brise le joug de bois : joug de fer (Jr 28:13-14).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Cinq royaumes voisins convoqués : arc Édom-Moab-Ammon à l'est, Tyr-Sidon au nord — tous devront porter le joug ; « bêtes des champs » : même la faune des steppes passe sous domination babylonienne.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Attelage : le joug (mot) à courroies (moserot) porté sur la nuque — harnais exact des bœufs du Proche-Orient ; Jérémie le porte en public comme « enseigne vivante » (pratique prophétique attestée : Éz 4, Is 20).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>SOMMET ANTIBABYLONIEN 594 → JOUGS ENVOYÉS → SERVIR = REPOS → REFUSER = ÉPÉE → 587 : TRANCHÉ</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le v. 1 porte « Yehoïaqim » dans le texte massorétique (erreur de copiste probable) ; le contexte (Sédécias) est confirmé par les v. 3 et 12 et les versions.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jougs envoyés aux cinq rois coalisés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~594</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hanania brise le joug : joug de fer</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">594</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sédécias insoumis : l'épée tranche</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588–587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001258">Édom (étude perspicace)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001258</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/27">Bible — Jérémie 27 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/27</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/27">Bible — Jérémie 27 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/27</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR227 — Le joug sur le cou : servir Babylone ou être consumé</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR228">
+<div class="visuel"><img src="images/prophe_JR228_ustensiles.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR228 · CATÉGORIE JR</div>
+<h3>Les ustensiles du Temple : emportés à Babylone, puis remontés</h3>
+<div class="ref">Jérémie 27:16-22</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Ustensiles (dis → parlai → prêtres → peuple → ainsi → dit → non → écoutez → paroles → prophètes → prophétisent → voici → ustensiles)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR228</div><audio controls preload="none" src="audio/fiche_JR228_ustensiles.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR228_ustensiles.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 27:16-22</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Ustensiles (dis → parlai → prêtres → peuple → ainsi → dit → non → écoutez → paroles → prophètes → prophétisent → voici → ustensiles)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P228 (27:16-22 : ustensiles rapportés) ; accomplissement 2R 24:13 ; Esd 1:7-11</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PARLAI… PRÊTRES… PEUPLE… AINSI… DIT… NON… ÉCOUTEZ… PAROLES… PROPHÈTES… PROPHÉTISENT… VOICI… USTENSILES… MAISON… RAPPORTÉS… BABYLONE… MAINTENANT… VITE… MENSONGE… PROPHÉTISENT. » (27:16 — prophétisent !)</li>
+<li>« NON… ÉCOUTEZ… SERVEZ… ROI… BABYLONE… VIVEZ… POURQUOI… VILLE… DEVIENDRAIT… RUINE. » (27:17 — ruine !)</li>
+<li>« SILS… PROPHÈTES… PAROLE… EUX… INTERCÈDENT… ARMÉES… USTENSILES… RESTÉS… MAISON… PALAIS… ROI… JUDA… JÉRUSALEM… NON… VIENNENT… BABYLONE. » (27:18 — Babylone !)</li>
+<li>« NON… PRIS… COLONNES… MER… BASES… RESTE… USTENSILES… RESTÉS… VILLE… LORSQUE… EMMENA… YEKONIA… JÉRUSALEM… BABYLONE. » (27:19-20 — Babylone !)</li>
+<li>« USTENSILES… RESTÉS… MAISON… PALAIS… ROI… JUDA… JÉRUSALEM… AMENÉS… BABYLONE… RESTERONT… JOUR… OCCUPERAI… FERAI… REMONTER… REVENIR… LIEU. » (27:21-22 — lieu !)</li>
+<li>« CYRUS… RENDIT… USTENSILES… MAISON… NABUCHODONOSOR… EMPORTÉS… JÉRUSALEM… PLACÉS… MAISON… DIEU… SORTIT… MITHREDATH… TRÉSORIER… COMPTA… SHESHBATSAR… PRINCE… JUDA… CINQ… MILLE… QUATRE… CENTS. » (Esd 1:7-11 — cents !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, ~594 — PARLAI (les VEEL (les VERS (les HAKKOHANIM (les PRÊTRES (les VEEL (les VERS (les KOL (les TOUT (les HAAM (les PEUPLE (les HAZÉH (les CE (les DIBBARTI (les PARLAI (les LÉMOR (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les AL (les NON (les TISHMEU (les ÉCOUTEZ (les EL (les DIBRÉ (les PAROLES (les NÉBIÉKHEM (les PROPHÈTES (les HANNIBBEIM (les PROPHÉTISENT (les LAKHEM (les VOUS (les LÉMOR (les HINNÉH (les VOICI (les KELÉ (les USTENSILES (les BÉYT (les MAISON (les YEHOVAH (les MUSHABIM (les RAPPORTÉS (les MIBBABÉL (les BABYLONE (les ATTAH (les MAINTENANT (les MEHÉRAH (les VITE (les KI (les SHEQER (les MENSONGE (les HÉMMAH (les EUX (les NIBBEIM (les PROPHÉTISENT (les LAKHEM (les HANANIA (les DEUX (les ANS (les CONTESTÉ (les PARLAI — les DÉNONCE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le DÉFI (les VEIM (les SI (les NÉBIIM (les PROPHÈTES (les HÉMMAH (les ILS (les VEYÉSH (les EST (les DEBAR (les PAROLE (les YEHOVAH (les ITTAM (les EUX (les YIPhGEU (les INTERCÈDENT (les NA (les DE (les BEYEHOVAH (les TSEBAOT (les ARMÉES (les LEBILTI (les NON (les YABOU (les VIENNENT (les HAKKÉLIM (les USTENSILES (les HANNOTARIM (les RESTÉS (les BEBÉYT (les MAISON (les YEHOVAH (les UBBÉYT (les PALAIS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les VIRUSHALAYIM (les JÉRUSALEM (les BABÉLAH (les BABYLONE (les QUILS (les RETIENNENT (les RESTE (les PLUTÔT (les DÉFI — les LANCÉ !). Les RESTÉS (les KI (les AINSI (les KOH (les AMAR (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les EL (les HAMMUDIM (les COLONNES (les VEAL (les HAYYAM (les MER (les VEAL (les HAMMEKHONOT (les BASES (les VEYÉTER (les RESTE (les HAKKÉLIM (les USTENSILES (les HANNOTARIM (les RESTÉS (les BAIR (les VILLE (les HAZZOT (les CETTE (les ASHER (les LO (les NON (les LEQAHAM (les PRIS (les NEBUKHADNETSAR (les NABUCHODONOSOR (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les BIGLOTO (les LORSQUE (les EMMENA (les ET (les YEKONYAH (les YEKONIA (les MIRUSHALAYIM (les BABÉLAH (les 617 (les PARTIEL (les 587 (les TOTAL (les RESTÉS — les COMPTÉS !)</p>
+<h4>5 · Interprétation</h4>
+<p>La REMONTÉE (les KI (les AINSI (les KOH (les AMAR (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les ÉLOHÉ (les DIEU (les YISRAÉL (les AL (les HAKKÉLIM (les USTENSILES (les HANNOTARIM (les RESTÉS (les BÉYT (les MAISON (les YEHOVAH (les UBBÉYT (les PALAIS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les VIRUSHALAYIM (les JÉRUSALEM (les BABÉLAH (les BABYLONE (les YUBAU (les AMENÉS (les VESHAMMAH (les LÀ (les YIHYU (les RESTERONT (les AD (les JUSQUÀ (les YOM (les JOUR (les POQDI (les OCCUPERAI (les OTAM (les EUX (les NEUM (les YEHOVAH (les VAHAALITIM (les FERAI (les REMONTER (les VAHASHIBOTIM (les REVENIR (les EL (les HAMMAQOM (les LIEU (les HAZÉH (les CE (les DOUBLE (les MOUVEMENT (les ALLER (les RETOUR (les REMONTÉE — les PROMISE !). Les CINQ MILLE (les VAYYOTSÉ (les SORTIT (les HAMMÉLEK (les CYRUS (les KORESH (les ET (les KELÉ (les USTENSILES (les BÉYT (les MAISON (les YEHOVAH (les ASHER (les HOTSI (les EMPORTÉS (les NEBUKHADNETSAR (les NABUCHODONOSOR (les MIRUSHALAYIM (les JÉRUSALEM (les VAYYITTNÉM (les PLACÉS (les BEBÉYT (les MAISON (les ÉLOHAÏV (les DIEU (les VAYYOTSIÉM (les SORTIT (les KORESH (les MÉLEK (les ROI (les PARAS (les PERSE (les AL (les YAD (les MAIN (les MITHREDAT (les MITHREDATH (les HAGGIZBAR (les TRÉSORIER (les VAYYISPERÉM (les COMPTA (les LESHÉSHBAT SAR (les SHESHBATSAR (les HANNASI (les PRINCE (les LIHUDAH (les JUDA (les HAMISHIM (les CINQ (les ALAPHIM (les MILLE (les ARBA (les QUATRE (les MÉOT (les CENTS (les INVENTAIRE (les PRÉCIS (les CINQ MILLE — les RENDUS !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">27:16</td><td>MENSONGE (PROPHÉTISENT !)</td></tr>
+<tr><td class="d">27:17</td><td>RUINE (VIVEZ !)</td></tr>
+<tr><td class="d">27:18</td><td>DÉFI (BABYLONE !)</td></tr>
+<tr><td class="d">27:19-20</td><td>RESTÉS (BABYLONE !)</td></tr>
+<tr><td class="d">27:21-22</td><td>REMONTÉE (LIEU !)</td></tr>
+<tr><td class="d">Esd 1:7-11</td><td>CENTS (RENDUS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>597/587 : colonnes (Yakîn et Boaz), Mer de bronze, bases et ustensiles emportés à Babylone (2R 24:13 ; 25:13-17) ; 538/537 : Cyrus les rend par Mithredath, inventaire de 5 400 pièces remis à Sheshbatsar (Esd 1:7-11 ; 5:14-15) ; Hanania « deux ans » (Jr 28:3) contre « je m'en occuperai » : 70 ans plus tard, Jérémie a raison.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Jérusalem → temple de Marduk à Babylone (dépôt des trophées) → retour au Temple rebâti : les ustensiles font l'aller-retour complet ; colonnes et Mer : trop lourdes, brisées sur place (2R 25:13).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Métrologie : l'inventaire d'Esdras 1:9-11 (30+1000+29+30+410+1000 = 2 499 + 1 000 autres = 5 400 au total) est un compte administratif typique des archives perses (comparer les tablettes de Persépolis).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>HANANIA : 2 ANS → JÉRÉMIE : BABYLONE PUIS RETOUR → 587 : EMORTÉS → 537 : 5 400 RENDUS → VÉRIFIÉ</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Les grosses pièces (colonnes, Mer) furent brisées et fondues ; ce sont les ustensiles d'or et d'argent qui revinrent — l'oracle (v. 22) parle des kelim, les objets transportables.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : à Babylone, puis remontée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~594</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pillage total du Temple</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus rend 5 400 ustensiles</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">538–537</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/15/1">Bible — Esdras 1 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/15/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/5">Bible — Esdras 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/28">Bible — Jérémie 28 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/28</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR228 — Les ustensiles du Temple : emportés à Babylone, puis remontés</span><span>Catégorie JR</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR223 — La coupe de fureur : toutes les nations boiront, Shéshak en dernier</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision de la coupe pour toutes les nations</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">625</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nations jugées une à une (Jr 46-49)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605–568</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Shéshak boit en dernier : Babylone tombe</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+</svg>
+<h4>JR224 — « Hurlez, bergers » : le lion rugit, les pâturages se taisent</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : bergers hurlants, pâturages pillés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">625</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Qédar et Hatsor ravagés ; Édom jugée</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">599–598</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">De nation en nation, la tempête passe</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">605–539</text>
+</svg>
+<h4>JR225 — Comme Silo : le Temple condamné et le prophète menacé de mort</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle du Temple : comme Silo</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">628</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Procès : acquitté, protégé par Ahiqam</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">628</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Maison brûlée, ville en malédiction</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>JR226 — Ouriya de Qiryath-Yearim : la fuite en Égypte et l'épée du roi</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ouriya prophétise contre la ville</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~628</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite en Égypte, extradition, exécution</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~628</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie acquitté : deux sorts opposés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~628</text>
+</svg>
+<h4>JR227 — Le joug sur le cou : servir Babylone ou être consumé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jougs envoyés aux cinq rois coalisés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~594</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hanania brise le joug : joug de fer</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">594</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sédécias insoumis : l'épée tranche</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588–587</text>
+</svg>
+<h4>JR228 — Les ustensiles du Temple : emportés à Babylone, puis remontés</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : à Babylone, puis remontée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~594</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pillage total du Temple</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus rend 5 400 ustensiles</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">538–537</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-38 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

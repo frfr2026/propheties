@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR+LM — Jérémie (20) + Lamentations (1, nouv.) — la chute, les larmes, l'espoir</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR295_tsidqiya.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR+LM</h1>
+<h2>Jérémie (20) + Lamentations (1, nouv.) — la chute, les larmes, l'espoir</h2>
+<p class="intro">Jérémie s'achève dans les fers : Tsidqiya capturé et aveuglé à Ribla (JR295), le Temple incendié et les murs démolis (JR296). Puis les Lamentations pleurent : la ville populeuse assise solitaire (LM297), les passants qui secouent la tête devant la parole exécutée (LM298). Édom boira la coupe à son tour (LM299), et le livre s'achève sur un cri : « Rétablis-nous, Jéhovah » (LM300).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR295">JR295</a>
+<a href="#JR296">JR296</a>
+<a href="#LM297">LM297</a>
+<a href="#LM298">LM298</a>
+<a href="#LM299">LM299</a>
+<a href="#LM300">LM300</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR295"><img src="images/prophe_JR295_tsidqiya.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR295</div>
+<h3><a href="#JR295">« On lui creva les yeux » : Tsidqiya à Ribla</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR296"><img src="images/prophe_JR296_temple.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR296</div>
+<h3><a href="#JR296">« Il brûla la maison de Jéhovah » : le 10 Ab</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#LM297"><img src="images/prophe_LM297_solitaire.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE LM297</div>
+<h3><a href="#LM297">« Assise solitaire » : la veuve de Sion</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#LM298"><img src="images/prophe_LM298_passants.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE LM298</div>
+<h3><a href="#LM298">« Jéhovah a exécuté » : les passants secouent la tête</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#LM299"><img src="images/prophe_LM299_edom.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE LM299</div>
+<h3><a href="#LM299">« À toi aussi passera la coupe » : Édom mis à nu</a></h3>
+<div class="meta">Accomplie / À venir</div></div></div>
+<div class="carte">
+<a class="img" href="#LM300"><img src="images/prophe_LM300_retablis.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE LM300</div>
+<h3><a href="#LM300">« Rétablis-nous » : le cri qui clôt les larmes</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR295">
+<div class="visuel"><img src="images/prophe_JR295_tsidqiya.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR295 · CATÉGORIE JR+LM</div>
+<h3>« On lui creva les yeux » : Tsidqiya à Ribla</h3>
+<div class="ref">Jérémie 52:7-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Tsidqiya capturé aveuglé (brèche → faite → ville → hommes → guerre → fuient → nuit → porte → deux → murs → jardin → roi → Chaldéens → ville → alentour → vont → Araba → armée → Chaldée → poursuit → roi → rattrape → plaines → Jéricho → dispersés)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR295</div><audio controls preload="none" src="audio/fiche_JR295_tsidqiya.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR295_tsidqiya.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 52:7-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Tsidqiya capturé aveuglé (brèche → faite → ville → hommes → guerre → fuient → nuit → porte → deux → murs → jardin → roi → Chaldéens → ville → alentour → vont → Araba → armée → Chaldée → poursuit → roi → rattrape → plaines → Jéricho → dispersés)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P295 (52:7-11 : Tsidqiya capturé, aveuglé, fils tués) ; 2R 25:4-7 ; Jr 39:4-7 ; Accomplie (récit)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« BRÈCHE… FAITE… VILLE… ONZIÈME… ANNÉE… QUATRIÈME… MOIS… NEUVIÈME… JOUR… DIX-HUIT… MOIS… SIÈGE… FAIM… MUR… NORD… CÈDE… HOMMES… GUERRE… FUIENT… NUIT… PORTE… DEUX… MURS… JARDIN… ROI. » (52:7 — roi !)</li>
+<li>« CHALDÉENS… VILLE… ALENTOUR… VONT… ARABA… VALLÉE… JOURDAIN… DESCENTE… JÉRICHO… SEPT… CENTS… MÈTRES… DÉNIVELÉ… NUIT… PANIQUE… ARMÉE… CHALDÉE… POURSUIT… ROI… RATTRAPE… PLAINES… JÉRICHO… DISPERSÉS. » (52:8 — dispersés !)</li>
+<li>« SAISISSENT… ROI… MONTENT… RIBLA… PAYS… HAMATH… QUARTIER… GÉNÉRAL… NEBOUKADNETSAR… TROIS… CENTS… KILOMÈTRES… NORD… PRONONCE… SENTENCE… TRIBUNAL… MILITAIRE… VASSAL… PARJURE… SERMENT… VIOLÉ… JUGÉ. » (52:9 — jugé !)</li>
+<li>« ÉGORGE… FILS… TSIDQIYA… YEUX… PÈRE… ÉGORGE… PRINCES… JUDA… RIBLA… DERNIÈRES… IMAGES… RÉTINE… ROYALE… MASSACRE… DYNASTIE… EXTERMINÉE… DEVANT… PÈRE… CRUAUTÉ… CALCULÉE… MÉMOIRE… TORTURE. » (52:10 — torture !)</li>
+<li>« CRÈVE… YEUX… TSIDQIYA… LIE… ENTRAVES… CUIVRE… EMMÈNE… BABYLONE… TIENT… PRISON… JOUR… MORT… ÉZÉCHIEL… DOUZE… AMÈNERAI… BABYLONE… VERRA… PROPHÉTIE… PARADOXE… AVEUGLE… EXILÉ… VOIT… JAMAIS. » (52:11 — jamais !)</li>
+<li>« TRENTE-DEUX… ANS… ROI… AVEUGLE… GARÇONS… JEUNES… ÉBÈD-MÉLEC… SAUVÉ… JÉRÉMIE… CITERNE… TSIDQIYA… CONSEIL… MÉPRISÉ… RENDS-TOI… VIVRAS… REFUS… PEUR… REPRÉSAILLES… TRANSFUGES… DÉSOBÉIT… PÉRIT. » (désobéit — périt !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La BRÉCHE, 607/587 — VATTIBBAQA (les BRÈCHE (les HAÏR (les VILLE (les VEKHOL (les TOUS (les ANSHÉ (les HOMMES (les HAMMILHAMAH (les GUERRE (les YIBREHU (les FUIENT (les WAYYETSE U (les SORTENT (les MÉHAÏR (les VILLE (les LAYLAH (les NUIT (les DÉREKH (les PORTE (les SHAAR (les BEN (les ENTRE (les HAHOMOTAYIM (les DEUX-MURS (les ASHER (les QUI (les AL (les GAN (les JARDIN (les HAMMÉLEK (les ROI (les VEKHASDIM (les CHALDÉENS (les AL (les HAÏR (les VILLE (les SABIB (les ALENTOUR (les WAYYÉLEKHU (les VONT (les DÉREKH (les HAARABAH (les ARABA (les NUIT (les PORTE-SECRÈTE (les ARABA — les FUITE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La POURSUITE (les WAYYIRDEPHU (les POURSUIT (les HÉYL (les ARMÉE (les KASDIM (les CHALDÉE (les AHARÉ (les ROI (les HAMMÉLEK (les WAYYASSIGU (les RATTRAPE (les ET (les TSIDQIYYAHU (les TSIDQIYA (les BEARBOT (les PLAINES (les YERÉHO (les JÉRICHO (les VEKHOL (les TOUTE (les HÉYLO (les ARMÉE (les NAPHOTSU (les DISPERSÉS (les MÉALAV (les LUI (les WAYYITPESU (les SAISISSENT (les ET (les HAMMÉLEK (les ROI (les WAYYAALU (les MONTENT (les OTO (les LUI (les EL (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les RIBLATAH (les RIBLA (les BEÉRETS (les PAYS (les HAMAT (les HAMATH (les WAYDABBÉR (les PRONONCE (les ITTO (les LUI (les MISHPATIM (les SENTENCE (les JÉRICHO (les RIBLA (les TRIBUNAL — les SENTENCE !)</p>
+<h4>5 · Interprétation</h4>
+<p>LAVEUGLEMENT (les WAYYISHAT (les ÉGORGE (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les ET (les BENÉ (les FILS (les TSIDQIYYAHU (les TSIDQIYA (les LEÉYNAV (les YEUX (les UBEKHOL (les TOUS (les SARÉ (les PRINCES (les YEHUDAH (les JUDA (les SHAHAT (les ÉGORGE (les BERIBLAH (les RIBLA (les VEÉT (les ÉYNÉ (les YEUX (les TSIDQIYYAHU (les TSIDQIYA (les IVVÉR (les CRÈVE (les WAYYAASERÉHU (les LIE (les BANHUSHTAYIM (les ENTRAVES (les VAYBIÉHU (les EMMÈNE (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les BABÉLAH (les BABYLONE (les WAYYITTENÉHU (les TIENT (les BÉYT (les MAISON (les PEQUDDOT (les GARDE (les AD (les JUSQUÀ (les YOM (les JOUR (les MOTO (les MORT (les ÉZÉCHIEL (les DOUZE (les TREIZE (les AMÈNERAI (les BABYLONE (les VERRA (les PAYS (les NON (les PARADOXE (les RÉSOLU (les AVEUGLE (les PRISONNIER (les FILS (les DERNIÈRE-VUE (les YEUX — les ÉTEINTS !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">52:7</td><td>ROI (BRÈCHE !)</td></tr>
+<tr><td class="d">52:8</td><td>DISPERSÉS (JÉRICHO !)</td></tr>
+<tr><td class="d">52:9</td><td>JUGÉ (RIBLA !)</td></tr>
+<tr><td class="d">52:10</td><td>TORTURE (FILS !)</td></tr>
+<tr><td class="d">52:11</td><td>JAMAIS (AVEUGLÉ !)</td></tr>
+<tr><td class="d">Éz12:13/Jr34</td><td>PÉRIT (PARADOXE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>An 11 de Tsidqiya (9 Tammuz — 607 selon la chronologie biblique, 587 selon la chronologie conventionnelle) : brèche au mur nord après ~18 mois de siège (Jr 52:4-7 ; 2R 25:1-4) ; fuite nocturne par la porte entre les deux murs (Ophel, sud-est) ; capture dans les plaines de Jéricho ; Ribla (Hamath, Syrie — QG de Neboukadnetsar) : fils égorgés sous ses yeux, princes exécutés, aveuglement, entraves de cuivre, prison à Babylone jusqu'à la mort (52:11 ; Jr 39:4-7 ; 2R 25:4-7).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Itinéraire de la fuite (~30 km) : Jérusalem (750 m) → porte sud → descente de l'Araba → plaines de Jéricho (-250 m) — la route du Jourdain, vers l'est ; Ribla (Tell el-Abbas ?, Bekaa syrienne) : ~300 km au nord — le tribunal impérial itinérant ; Babylone : ~900 km — dernier voyage, dans le noir.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 12:12-13 (le prince sort par le mur percé, visage couvert, amené à Babylone « sans la voir ») — le PARADOXE prophétique résolu par l'aveuglement ; Jérémie 34:3-5 (« tes yeux verront le roi de Babylone… tu ne mourras pas par l'épée ») — voir le juge, survivre aveugle ; la Chronique babylonienne (siège, prise) — le confirmatif cunéiforme.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>AN 11 : BRÈCHE → FUITE NOCTURNE → CAPTURE À JÉRICHO → RIBLA : SENTENCE → FILS ÉGORGÉS SOUS SES YEUX → AVEUGLEMENT → ENTRAVES → BABYLONE : PRISON À VIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>607 ou 587 : la fiche suit le registre (607, chronologie des Témoins) en signalant la date conventionnelle (587) — vingt ans d'écart débattus, les FAITS (brèche, Ribla, aveuglement) étant communs aux deux ; « maison de garde » (v. 11) : détention honorable — Tsidqiya survit, contrairement à ses fils.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège ; famine ; brèche</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">An 9-11</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite ; capture ; Ribla</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">9 Tammuz an 11</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prison à Babylone</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">An 11 → mort</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200014580">« Sédécias » (Étude perspicace, it-2)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200014580</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/12">Bible — Ézékiel 12 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/12">Bible — Ézékiel 12 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/12</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR295 — « On lui creva les yeux » : Tsidqiya à Ribla</span><span>Catégorie JR+LM</span></div></div>
+</article>
+<article class="fiche" id="JR296">
+<div class="visuel"><img src="images/prophe_JR296_temple.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR296 · CATÉGORIE JR+LM</div>
+<h3>« Il brûla la maison de Jéhovah » : le 10 Ab</h3>
+<div class="ref">Jérémie 52:12-27</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Temple brûlé murs démolis (cinquième → mois → dixième → mois → dix-neuvième → année → règne → Neboukadnetsar → roi → Babylone → vint → Nebouzaradân → chef → garde → tint → roi → Babylone → Jérusalem → brûla → maison → Jéhovah → maison → roi → toutes → maisons)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR296</div><audio controls preload="none" src="audio/fiche_JR296_temple.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR296_temple.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 52:12-27</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Temple brûlé murs démolis (cinquième → mois → dixième → mois → dix-neuvième → année → règne → Neboukadnetsar → roi → Babylone → vint → Nebouzaradân → chef → garde → tint → roi → Babylone → Jérusalem → brûla → maison → Jéhovah → maison → roi → toutes → maisons)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P296 (52:12-27 : incendies, démolition des murs, déportations, exécutions à Ribla) ; 2R 25:8-21 ; Accomplie (récit)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« CINQUIÈME… MOIS… DIXIÈME… JOUR… DIX-NEUVIÈME… ANNÉE… NEBOUKADNETSAR… VINT… NEBOUZARADÂN… CHEF… GARDE… JÉRUSALEM… UN… MOIS… APRÈS… BRÈCHE… MISSION… MÉTHODIQUE… DESTRUCTION… SYSTÉMATIQUE… CAPITALE… CONDAMNÉE. » (52:12 — condamnée !)</li>
+<li>« BRÛLA… MAISON… JÉHOVAH… MAISON… ROI… TOUTES… MAISONS… JÉRUSALEM… GRANDES… MAISONS… FEU… TEMPLE… QUATRE… CENTS… ANS… SALOMON… CÈDRE… OR… CENDRES… PALAIS… DAVID… ARCHIVES… GÉNÉALOGIES… FUMÉE. » (52:13 — fumée !)</li>
+<li>« DÉMOLIT… ARMÉE… CHALDÉE… MURS… JÉRUSALEM… ENTOUR… EXILA… RESTE… VILLE… TRANSFUGES… PASSÉS… RESTE… MULTITUDE… PAUVRES… LAISSÉS… VIGNERONS… LABOUREURS… TERRE… VIDE… SABBATS… JOUIRA… SOIXANTE-DIX… ANS. » (52:14-16 — ans !)</li>
+<li>« COLONNES… BRONZE… MAISON… JÉHOVAH… BASES… MER… BRONZE… BRISÈRENT… CHALDÉENS… EMPORTÈRENT… BABYLONE… JAKIN… BOAZ… DIX-HUIT… COUDÉES… HUIT… MÈTRES… FONDERIE… SALOMON… DÉMANTELÉE… MÉTAL… BUTIN… PESÉ… IMPESABLE. » (52:17-23 — impesable !)</li>
+<li>« PRIT… CHEF… GARDE… SERAYA… GRAND-PRÊTRE… SOPHONIE… SECOND… TROIS… GARDIENS… SEUIL… EUNUQUE… SEPT… PROCHES… ROI… SCRIBE… SOIXANTE… HOMMES… AMENA… RIBLA… ROI… BABYLONE… FRAPPA… MIT… MORT… JUDA… EXILÉ. » (52:24-27 — exilé !)</li>
+<li>« PSAUME… SOIXANTE-DIX-NEUF… NATIONS… VENUES… HÉRITAGE… SOUILLÉ… TEMPLE… JÉRUSALEM… RUINES… CADAVRES… SERVITEURS… PÂTURE… OISEAUX… MICHÉE… TROIS… SION… LABOURÉE… CHAMP… JÉRUSALEM… MONCEAUX… PAROLE… EXÉCUTÉE. » (exécutée — exécutée !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le 10-AB, an 19 — UBAHODÉSH (les MOIS (les HAHAMISHI (les CINQUIÈME (les BEASOR (les DIXIÈME (les LAHODÉSH (les MOIS (les HI (les ELLE (les SHENAT (les ANNÉE (les TESHA (les DIX-NEUVIÈME (les ÉSREH (les LEMÉLEK (les ROI (les NEBUKHADRETSTSAR (les NEBOUKADNETSAR (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les BA (les VINT (les NEBUZARADAN (les NEBOUZARADÂN (les RAB (les CHEF (les TABBAHIM (les GARDE (les ASHER (les QUI (les AMAD (les TINT (les LIPHNÉ (les DEVANT (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les BIRUSHALAYIM (les JÉRUSALEM (les WAYYISROPH (les BRÛLA (les ET (les BÉYT (les MAISON (les YEHOVAH (les VEÉT (les BÉYT (les MAISON (les HAMMÉLEK (les ROI (les VEÉT (les KOL (les TOUTES (les BATTÉ (les MAISONS (les YERUSHALAYIM (les JÉRUSALEM (les VEÉT (les KOL (les TOUTES (les BÉYT (les MAISONS (les GADOL (les GRANDES (les SARAPH (les BRÛLA (les BAÉSH (les FEU (les FEU (les TEMPLE (les PALAIS — les CENDRES !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La DÉMOLITION (les VEÉT (les KOL (les TOUTES (les HOMOT (les MURS (les YERUSHALAYIM (les JÉRUSALEM (les SABIB (les ENTOUR (les NATTETSU (les DÉMOLIT (les KOL (les TOUTE (les HÉYL (les ARMÉE (les KASDIM (les CHALDÉE (les ASHER (les QUI (les ET (les RAB (les CHEF (les TABBAHIM (les GARDE (les VEÉT (les YÉTÉR (les RESTE (les HAAM (les PEUPLE (les HANNISHTARIM (les RESTÉS (les BAÏR (les VILLE (les VEÉT (les HANNOPHELIM (les TRANSFUGES (les ASHER (les QUI (les NAPHLU (les PASSÉS (les EL (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les VEÉT (les YÉTÉR (les RESTE (les HEHAMON (les MULTITUDE (les HEGLAH (les EXILA (les NEBUZARADAN (les NEBOUZARADÂN (les RAB (les CHEF (les TABBAHIM (les GARDE (les UMIDALAT (les PAUVRES (les HAARÉTS (les PAYS (les HISHIR (les LAISSÉS (les NEBUZARADAN (les RAB (les CHEF (les TABBAHIM (les LEKHOREMIM (les VIGNERONS (les ULEYOGEBIM (les LABOUREURS (les MURS (les EXIL (les PAUVRES — les VIGNERONS !)</p>
+<h4>5 · Interprétation</h4>
+<p>RIBLA-EXÉCUTIONS (les COLONNES (les BRONZE (les JAKIN (les BOAZ (les DIX-HUIT (les COUDÉES (les BASES (les ROUES (les MER (les BRONZE (les DOUZE (les BŒUFS (les BRISÉES (les EMPORTÉES (les BABYLONE (les POTENCES (les PELLES (les MOUCHETTES (les COUPES (les CUILLERS (les OR (les ARGENT (les SERAYA (les GRAND-PRÊTRE (les SOPHONIE (les SECOND (les GARDIENS (les SEUIL (les EUNUQUE (les GUERRE (les SEPT (les PROCHES (les SCRIBE (les RECRUTEUR (les SOIXANTE (les HOMMES (les RIBLA (les FRAPPÉS (les MIS-À-MORT (les JUDA (les EXILÉ (les TERRE (les BRONZE (les SANG (les RIBLA — les EXIL !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">52:12-13</td><td>FUMÉE (BRÛLA !)</td></tr>
+<tr><td class="d">52:14-16</td><td>ANS (VIGNERONS !)</td></tr>
+<tr><td class="d">52:17-23</td><td>IMPESABLE (BRONZE !)</td></tr>
+<tr><td class="d">52:24-27</td><td>EXILÉ (RIBLA !)</td></tr>
+<tr><td class="d">Ps79/Mi3</td><td>EXÉCUTÉE (RUINES !)</td></tr>
+<tr><td class="d">2R25:8-21</td><td>CENDRES (10-AB !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>10 Ab an 19 de Neboukadnetsar (607/587, un mois après la brèche du 9 Tammuz) : Nebouzaradân (rab-tabahim, chef de la garde) incendie le Temple (~400 ans, depuis Salomon ~1034/967), le palais, toutes les grandes maisons (52:13 ; 2R 25:9) ; l'armée démolit les murs ; 3e déportation (52:28-30 : 3 023 + 832 + 745 âmes — les élites, le reste ayant fui ou péri) ; les bronzes (Jakin, Boaz, mer sur 12 bœufs — 1R 7) brisés, emportés ; Seraya (grand-prêtre, grand-père d'Esdras !) et 70+ notables exécutés à Ribla ; Guedalia gouverneur, assassiné — fuite en Égypte (2R 25:22-26).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le Temple (mont Moriah) : cèdre du Liban + or d'Ophir — brasier visible de tout Juda ; les murs (large mur d'Ézéchias, ~7 m — encore visible dans le quartier juif !) démolis pierre par pierre ; Ribla : 2e fournée d'exécutions (après Tsidqiya) ; Mizpa : Guedalia — le reliquat ; Égypte (Tahpanhès) : la fuite finale, contre l'ordre de Jérémie (Jr 42-43).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Psaume 79 (nations dans l'héritage, Temple souillé, Jérusalem en ruines, cadavres en pâture) — la PHOTOGRAPHIE du 10 Ab ; 2 Chroniques 7:19-22 (si vous abandonnez… cette maison si haut élevée : passants stupéfaits, « pourquoi ? ») — l'AVERTISSEMENT de Salomon exécuté ; Michée 3:12 (Sion labourée, Jérusalem en monceaux — cité en Jr 26:18 par les anciens eux-mêmes) — le TÉMOIN cité au procès de Jérémie.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>9 TAMMUZ : BRÈCHE → 10 AB : NEBOUZARADÂN → TEMPLE + PALAIS + MAISONS : FEU → MURS : DÉMOLIS → BRONZES : BRISÉS, EMPORTÉS → ÉLITES : RIBLA, EXÉCUTÉES → PAUVRES : VIGNERONS → TERRE : 70 SABBATS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>10 Ab (Jr 52:12) vs 7 Ab (2R 25:8) : arrivée le 7, incendie le 10 — les deux dates se complètent (le Talmud jeûne le 9, moyenne mémorielle) ; les chiffres déportés (52:28-30, ~4 600) ne comptent que les hommes déportés en 3 vagues — femmes, enfants, morts et fuyards en sus ; 607/587 : même débat qu'en JR295.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Brèche ; fuite ; capture</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9 Tammuz</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Temple brûlé ; murs rasés</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">10 Ab</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ribla ; Mizpa ; Égypte</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ab → Tisri</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/79">Bible — Psaume 79 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/79</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/7">Bible — 2 Chroniques 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/7</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/33/3">Bible — Michée 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/33/3</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR296 — « Il brûla la maison de Jéhovah » : le 10 Ab</span><span>Catégorie JR+LM</span></div></div>
+</article>
+<article class="fiche" id="LM297">
+<div class="visuel"><img src="images/prophe_LM297_solitaire.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE LM297 · CATÉGORIE JR+LM</div>
+<h3>« Assise solitaire » : la veuve de Sion</h3>
+<div class="ref">Lamentations 1:1-5</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">ville solitaire adversaires chefs (ah → assise → solitaire → ville → abondance → population → devenue → veuve → populeuse → nations → corvée → princesse → districts → pleure → nuit → larmes → joues → consolateur → amis → traîtres → ennemis)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche LM297</div><audio controls preload="none" src="audio/fiche_LM297_solitaire.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_LM297_solitaire.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Lamentations 1:1-5</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>ville solitaire adversaires chefs (ah → assise → solitaire → ville → abondance → population → devenue → veuve → populeuse → nations → corvée → princesse → districts → pleure → nuit → larmes → joues → consolateur → amis → traîtres → ennemis)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Lamentations — P297 (1:1-5 : assise solitaire ; adversaires chefs) ; Jr 52:12-16 ; 2R 25:8-11 ; Accomplie (récit)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AH… EYKHAH… ASSISE… SOLITAIRE… VILLE… ABONDANCE… POPULATION… DEVENUE… VEUVE… POPULEUSE… NATIONS… PRINCESSE… DISTRICTS… CORVÉE… TRIPLE… CONTRASTE… ACROSTICHE… ALEPH… ABÉCÉDAIRE… DOULEUR… VINGT-DEUX… LETTRES. » (1:1 — lettres !)</li>
+<li>« PLEURE… NUIT… LARMES… JOUES… CONSOLATEUR… NUL… AMIS… TRAÎTRES… ENNEMIS… ÉGYPTE… ALLIÉE… DÉFAILLANTE… ÉDOM… MOAB… VOISINS… MOQUEURS… SOLITUDE… DIPLOMATIQUE… TOTALE… ABANDON… GÉNÉRAL. » (1:2 — général !)</li>
+<li>« JUDA… EXILÉE… MISÈRE… SERVITUDE… HABITE… NATIONS… REPOS… NUL… PERSÉCUTEURS… ATTEIGNENT… DÉTRESSE… ROUTES… SION… DEUIL… FÊTES… DÉSERTÉES… PORTES… DÉSOLÉES… PRÊTRES… GÉMISSENT… VIERGES… AFFLIGÉES. » (1:3-4 — affligées !)</li>
+<li>« ADVERSAIRES… CHEFS… ENNEMIS… PROSPÈRENT… JÉHOVAH… AFFLIGÉE… MULTITUDE… TRANSGRESSIONS… PETITS… CAPTIVITÉ… ENNEMI… THÉOLOGIE… HISTOIRE… DIEU… SUJET… VERBE… JUGER… BABYLONE… INSTRUMENT… JUSTICE… ASSUMÉE. » (1:5 — assumée !)</li>
+<li>« VEUVE… NON… VEUVE… ÉPOUX… VIVANT… JÉHOVAH… MARI… JALOUX… SÉPARATION… TEMPORAIRE… SOIXANTE-DIX… ANS… REMARIAGE… ANNONCÉ… ÉSAÏE… CINQUANTE-QUATRE… OSÉE… DEUX… VEUVAGE… DISCIPLINE… NON… DIVORCE. » (veuvage — divorce !)</li>
+<li>« JÉRÉMIE… AUTEUR… TRADITION… SEPTANTE… INTRODUCTION… ASSIS… PLEURANT… JÉRUSALEM… DÉSERTÉE… PROPHÈTE… TÉMOIN… OCULAIRE… CINQ… CHANTS… QUATRE… ACROSTICHES… CINQUIÈME… PRIÈRE… VINGT-DEUX… VERSETS… NUMÉRIQUES. » (Jérémie — numériques !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>LEYKHAH, 607/587 — ÉYKHAH (les AH (les YASHEBAH (les ASSISE (les BADAD (les SOLITAIRE (les HAÏR (les VILLE (les RABBATI (les ABONDANCE (les AM (les POPULATION (les HAYETAH (les DEVENUE (les KEALMANAH (les VEUVE (les RABBATI (les POPULEUSE (les BAGGOYIM (les NATIONS (les SARATI (les PRINCESSE (les BAMMEDINOT (les DISTRICTS (les HAYETAH (les DEVENUE (les LAMAS (les CORVÉE (les BAKHO (les PLEURE (les TIBKÉH (les LAYLAH (les NUIT (les VEDIMATAH (les LARMES (les AL (les LÉHÉYAH (les JOUES (les ÉYN (les NUL (les LAH (les MENA-HÉM (les CONSOLATEUR (les MIKKOL (les TOUS (les OHA-BÉHA (les AMIS (les KOL (les TOUS (les RÉÉHA (les TRAÎTRES (les BAGHEDU (les BAH (les HAYU (les DEVENUS (les LAH (les LEOYEBIM (les ENNEMIS (les SOLITAIRE (les VEUVE (les TRAHIE — les PLEURE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>LEXIL (les GALETAH (les EXILÉE (les YEHUDAH (les JUDA (les MÉONI (les MISÈRE (les UMÉROB (les MULTITUDE (les AVODAH (les SERVITUDE (les HI (les ELLE (les YASHEBAH (les HABITE (les BAGGOYIM (les NATIONS (les LO (les NON (les MATSEAH (les TROUVÉ (les MANOAH (les REPOS (les KOL (les TOUS (les RODEPHÉHA (les PERSÉCUTEURS (les HISSIGUHA (les ATTEIGNENT (les BÉYN (les MILIEU (les HAMMETSARIM (les DÉTRESSE (les DARÉKHÉ (les ROUTES (les TSIYYON (les SION (les ABELOT (les DEUIL (les MIBBELI (les NUL (les BAÉ (les VIENT (les MOÉD (les FÊTES (les KOL (les TOUTES (les SHEARÉHA (les PORTES (les SHOMÉMIM (les DÉSOLÉES (les KOHANÉHA (les PRÊTRES (les NÉÉNAHIM (les GÉMISSENT (les BETULOTÉHA (les VIERGES (les NUGGOT (les AFFLIGÉES (les VEHI (les ELLE (les MAR (les AMERTUME (les LAH (les HAYU (les DEVENUS (les TSARÉHA (les ADVERSAIRES (les LEROSH (les CHEFS (les OYEBÉHA (les ENNEMIS (les SHALU (les PROSPÈRENT (les KI (les CAR (les YEHOVAH (les HOGAH (les AFFLIGÉE (les AL (les ROB (les MULTITUDE (les PESHAÉHA (les TRANSGRESSIONS (les OLALÉHA (les PETITS (les HALKHU (les ALLÉS (les SHEBI (les CAPTIVITÉ (les LIPHNÉ (les DEVANT (les TSAR (les ENNEMI (les EXIL (les ROUTES-MORTES (les ADVERSAIRES — les CHEFS !)</p>
+<h4>5 · Interprétation</h4>
+<p>LACROSTICHE (les VINGT-DEUX (les LETTRES (les ALEPH (les BETH (les GUIMEL (les ALPHABET (les COMPLET (les DOULEUR (les A-À-Z (les EXHAUSTIVE (les TOTALITÉ (les CHANTS (les UN (les DEUX (les QUATRE (les ACROSTICHES (les SIMPLES (les CHANT (les TROIS (les TRIPLE (les SOIXANTE-SIX (les VERSETS (les CHANT (les CINQ (les PRIÈRE (les NON-ACROSTICHE (les VINGT-DEUX (les VERSETS (les MÉMOIRE (les MNÉMOTECHNIQUE (les LITURGIE (les 9-AB (les JEÛNE (les LU (les SYNAGOGUES (les DEUX (les DESTRUCTIONS (les PREMIER (les SECOND (les TEMPLE (les MÊME (les DATE (les MÊME (les LIVRE (les ALPHABET — les LARMES !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1:1</td><td>LETTRES (SOLITAIRE !)</td></tr>
+<tr><td class="d">1:2</td><td>GÉNÉRAL (TRAÎTRES !)</td></tr>
+<tr><td class="d">1:3-4</td><td>AFFLIGÉES (DEUIL !)</td></tr>
+<tr><td class="d">1:5</td><td>ASSUMÉE (CHEFS !)</td></tr>
+<tr><td class="d">Jr52/2R25</td><td>DIVORCE (VEUVE !)</td></tr>
+<tr><td class="d">LXX/auteur</td><td>NUMÉRIQUES (JÉRÉMIE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>10 Ab an 19 (607/587) : les faits pleurés sont ceux de JR295-JR296 — ville prise, élites exilées, routes désertées, fêtes impossibles (Temple en cendres) ; « amis devenus ennemis » (v. 2) : l'Égypte (alliée défaillante, Jr 37:7), Édom/Moab/Ammon (voisins prédateurs, Ps 137:7 ; Éz 25) ; « adversaires pour chefs » (v. 5) : Guedalia sous tutelle babylonienne, puis vide ; l'acrostiche : forme savante — le deuil alphabétisé, de Aleph à Taw.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Routes de Sion en deuil » (v. 4) : les montées des pèlerins (Psaumes des montées, Ps 120-134) — désormais vides ; « portes désolées » : portes incendiées/démolies (Jr 52:14) ; « habite parmi les nations » (v. 3) : Tel-Abib, Késar (Éz 1:1 ; 3:15) — colonies d'exilés sur le Kebar ; « atteinte dans la détresse » : les déportations en chaîne (52:28-30).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Lamentations 1 (triple tradition nwt/Rbi8/nwtsty — texte stable, acrostiche massorétique intact) — la CRITIQUE TEXTUELLE confirme l'unité du chant ; la Septante (introduction : Jérémie assis, pleurant) + 2Ch 35:25 (Jérémie compose des lamentations) — la PATERNITÉ traditionnelle ; le jeûne du 9 Ab (Za 7:3, 5 ; Talmud) — la LITURGIE du deuil, encore observée.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>10 AB : VILLE PRISE → POPULEUSE → SOLITAIRE → PRINCESSE → CORVÉABLE → AMIS → TRAÎTRES → ROUTES → DEUIL → ADVERSAIRES → CHEFS → JÉHOVAH : SUJET DU VERBE JUGER</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Veuve » (v. 1) : métaphore — l'Époux vit (Lm 3:22-23, compassions renouvelées), le veuvage est disciplinaire, temporaire ; l'auteur : Jérémie (tradition unanime, style, témoin oculaire) — quelques critiques modernes hésitent, sans candidat alternatif ; « 70 ans » : le veuvage a une fin datée (Jr 25:11-12 ; 29:10).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Faits pleurés : chute</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">10 Ab</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Composition des chants</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ab → ? </text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lecture liturgique perpétuelle</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9 Ab / an</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/1">Bible — Lamentations 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/25/1">Bible — Lamentations 1 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/25/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/25/1">Bible — Lamentations 1 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/25/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche LM297 — « Assise solitaire » : la veuve de Sion</span><span>Catégorie JR+LM</span></div></div>
+</article>
+<article class="fiche" id="LM298">
+<div class="visuel"><img src="images/prophe_LM298_passants.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE LM298 · CATÉGORIE JR+LM</div>
+<h3>« Jéhovah a exécuté » : les passants secouent la tête</h3>
+<div class="ref">Lamentations 2:15-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">passants moquent parole exécutée (tous → passants → battent → mains → sifflent → secouent → tête → fille → Jérusalem → est-ce → ville → parfaite → beauté → joie → terre → ennemis → ouvrent → bouche → grincent → dents → engloutie → jour → attendu)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche LM298</div><audio controls preload="none" src="audio/fiche_LM298_passants.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_LM298_passants.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Lamentations 2:15-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>passants moquent parole exécutée (tous → passants → battent → mains → sifflent → secouent → tête → fille → Jérusalem → est-ce → ville → parfaite → beauté → joie → terre → ennemis → ouvrent → bouche → grincent → dents → engloutie → jour → attendu)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Lamentations — P298 (2:15-17 : passants secouent la tête ; Jéhovah a exécuté) ; Lv 26:14-39 ; Jr 26:6 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PASSANTS… BATTENT… MAINS… SIFFLENT… SECOUENT… TÊTE… FILLE… JÉRUSALEM… EST-CE… VILLE… PARFAITE… BEAUTÉ… JOIE… TERRE… ENTIÈRE… MOQUERIE… UNIVERSELLE… TOURISTES… MALHEUR… SCHADENFREUDE… ANTIQUE… GLOIRE… DÉCHUE. » (2:15 — déchue !)</li>
+<li>« ENNEMIS… OUVRENT… BOUCHE… SIFFLENT… GRINCENT… DENTS… DISENT… ENGLOUTIE… JOUR… ATTENDU… ATTEINT… VOYONS… CANNIBALISME… VERBAL… HAINE… ASSOUVIE… ÉDOM… RASEZ… PSAUME… CENT… TRENTE-SEPT… CRI… EXAUCÉ… ENFER. » (2:16 — enfer !)</li>
+<li>« JÉHOVAH… EXÉCUTÉ… RÉSOLU… ACCOMPLI… PAROLE… PRONONCÉE… JOURS… ANCIENS… DÉTRUIT… PITIÉ… RÉJOUI… ENNEMI… ÉLEVÉ… CORNE… ADVERSAIRES… CENTRE… THÉOLOGIQUE… LIVRE… DIEU… SIGNE… CATASTROPHE… ASSUME… ENTIÈRE. » (2:17 — entière !)</li>
+<li>« LÉVITIQUE… VINGT-SIX… DÉSOBÉISSEZ… ÉPOUVANTE… FIÈVRE… SEMEREZ… VAIN… ENNEMIS… MANGERONT… VILLES… RUINE… SANCTUAIRES… DÉSOLÉS… TERRE… JOUIRA… SABBATS… MALÉDICTIONS… ALLIANCE… EXÉCUTÉES… LIGNE… LIGNE. » (Lv 26 — ligne !)</li>
+<li>« JÉRÉMIE… VINGT-SIX… SIX… RENDRAI… MAISON… SILO… VILLE… MALÉDICTION… NATIONS… SILO… PRÉCÉDENT… ARCHE… CAPTURÉE… SANCTUAIRE… ABANDONNÉ… PRÊTRES… PROPHÈTES… VEULENT… TUER… JÉRÉMIE… PAROLE… EXÉCUTÉE… VINGT… ANS… PLUS… TARD. » (Jr 26:6 — tard !)</li>
+<li>« DEUTÉRONOME… VINGT-HUIT… TOUTES… MALÉDICTIONS… DÉSOBÉISSANCE… SIÈGE… DÉTRESSE… ENNEMI… OPPRESSERA… MANGERAS… FRUIT… ENTRAILLES… HORREUR… LAMENTATIONS… QUATRE… DIX… FEMMES… CUISENT… ENFANTS… LITTÉRAL… ATROCE. » (Dt 28 — atroce !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les PASSANTS, 607/587 — SAPHEQU (les BATTENT (les ALAYIKH (les TOI (les KHAPPAYIM (les MAINS (les KOL (les TOUS (les OBERÉ (les PASSANTS (les DÉREKH (les ROUTE (les SHARQU (les SIFFLENT (les WAYYANI U (les SECOUENT (les ROSHAM (les TÊTE (les AL (les BAT (les FILLE (les YERUSHALAYIM (les JÉRUSALEM (les HAZZOT (les EST-CE (les HAÏR (les VILLE (les SHEYYOMERU (les DIRAIT-ON (les KELILAT (les PARFAITE (les YOPHI (les BEAUTÉ (les MASOS (les JOIE (les LEKHOL (les TOUTE (les HAARETS (les TERRE (les PASSANTS (les MAINS (les TÊTES — les MOQUERIE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les ENNEMIS (les PATSU (les OUVRENT (les ALAYIKH (les TOI (les PIHEM (les BOUCHE (les KOL (les TOUS (les OYEBAYIKH (les ENNEMIS (les SHARQU (les SIFFLENT (les WAYYAHAREQU (les GRINCENT (les SHÉN (les DENTS (les AMERU (les DISENT (les BILLAANU (les ENGLOUTIE (les AKH (les CERTES (les ZÉH (les CE (les HAYYOM (les JOUR (les SIQQIVINUHU (les ATTENDU (les MATSANU (les ATTEINT (les RAÏNU (les VOYONS (les ASAH (les EXÉCUTÉ (les YEHOVAH (les ET (les ASHER (les CE QUIL (les ZAMAM (les RÉSOLU (les BITSTSA (les ACCOMPLI (les ÉMRATO (les PAROLE (les ASHER (les QUIL (les TSIVVAH (les PRONONCÉE (les MIMÉ (les DÈS (les QÉDÉM (les ANCIENS (les HARAS (les DÉTRUIT (les VELO (les NON (les HAMAL (les PITIÉ (les VAYSAMMAH (les RÉJOUI (les ALAYIKH (les TOI (les OYÉB (les ENNEMI (les HÉRIM (les ÉLEVÉ (les QÉRÉN (les CORNE (les TSARAYIKH (les ADVERSAIRES (les ENNEMIS (les EXÉCUTÉ (les PAROLE — les ANCIENNE !)</p>
+<h4>5 · Interprétation</h4>
+<p>La PAROLE-ANCIENNE (les JOURS (les ANCIENS (les MIMÉ-QÉDÉM (les SINAÏ (les LÉVITIQUE (les DEUTÉRONOME (les MOÏSE (les HUIT (les SIÈCLES (les AVANT (les MALÉDICTIONS (les ALLIANCE (les CONDITIONNELLES (les DÉSOBÉISSANCE (les SANCTIONNÉE (les SIÈGE (les FAIM (les CANNIBALISME (les DISPERSION (les TERRE (les SABBATS (les SILENCE (les PROPHÈTES (les HUIT (les SIÈCLES (les RAPPELS (les ÉLIE (les ÉSAÏE (les MICHÉE (les JÉRÉMIE (les QUARANTE (les ANS (les DERNIER (les AVERTISSEMENT (les EXÉCUTION (les SIGNÉE (les DIEU (les PAROLE — les EXÉCUTÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">2:15</td><td>DÉCHUE (PASSANTS !)</td></tr>
+<tr><td class="d">2:16</td><td>ENFER (ENGLOUTIE !)</td></tr>
+<tr><td class="d">2:17a</td><td>ENTIÈRE (EXÉCUTÉ !)</td></tr>
+<tr><td class="d">2:17b</td><td>ADVERSAIRES (CORNE !)</td></tr>
+<tr><td class="d">Lv26/Dt28</td><td>ATROCE (ALLIANCE !)</td></tr>
+<tr><td class="d">Jr26:6/Silo</td><td>TARD (SILO !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>10 Ab et après : les « passants » (v. 15) — caravanes de la route côtière et du King's Highway détournant par les ruines ; les voisins (« rasez, rasez ! » Ps 137:7) festoient (v. 16) ; « Jéhovah a exécuté ce qu'il avait résolu » (v. 17) : les malédictions de Lv 26 (villes en ruine, sanctuaires désolés, terre jouissant de ses sabbats — 26:31-35) et Dt 28 (siège, détresse, cannibalisme — 28:52-57, cf. Lm 4:10) s'accomplissent ligne par ligne ; Silo (Jr 26:6) : le précédent archéologique — sanctuaire abandonné après la prise de l'arche (~1070), ruines visibles (Khirbet Seilun).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Joie de toute la terre » (v. 15 — cf. Ps 48:3) : Jérusalem vue des routes — Hébron au sud, Jéricho à l'est, Joppé à l'ouest — désormais tas de décombres fumants ; Silo (Éphraïm, ~30 km au nord) : le modèle — ville sainte déchue, maisons rasées (fouilles : destruction ~1050) ; les passants des trois routes continentales témoignent.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Lamentations 2 (nwt + Rbi8 — « Jéhovah a exécuté », verbe asah au parfait : FAIT accompli) — le SCEAU théologique du livre ; Deutéronome 28 (Rbi8 — malédictions détaillées, siège, anthropophagie) — le CAHIER DES CHARGES de la catastrophe, coché ; Silo (Khirbet Seilun, destruction ~XIᵉ s., abandon du sanctuaire) — le PRÉCÉDENT matériel que Jérémie brandissait au procès (Jr 26).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>SINAÏ : PAROLE CONDITIONNELLE → VIII SIÈCLES : RAPPELS → 609-607 : DERNIER AVERTISSEMENT (JR 26) → 10 AB : EXÉCUTION → PASSANTS MOQUENT → ENNEMIS JUBILENT → DIEU SIGNE : « C'EST MOI »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Détruit sans pitié » (v. 17) : la pitié existe — le reste (pauvres vignerons, Jr 52:16 ; Ébed-Mélec, Jr 39:18 ; Baruch, Jr 45:5) ; les passants moqueurs : schéma littéraire (cf. 1R 9:8, passants sifflant) — des voyageurs réels, un motif prophétique ; « jours anciens » : Sinaï (~1513) ou les prophètes — les deux, en cascade.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Parole prononcée (Sinaï)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1513</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rappelée (Jr 26, Silo)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Exécutée (10 Ab)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/2">Bible — Lamentations 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/25/2">Bible — Lamentations 2 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/25/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/5/28">Bible — Deutéronome 28 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/5/28</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche LM298 — « Jéhovah a exécuté » : les passants secouent la tête</span><span>Catégorie JR+LM</span></div></div>
+</article>
+<article class="fiche" id="LM299">
+<div class="visuel"><img src="images/prophe_LM299_edom.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE LM299 · CATÉGORIE JR+LM</div>
+<h3>« À toi aussi passera la coupe » : Édom mis à nu</h3>
+<div class="ref">Lamentations 4:21-22</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / À venir</span>
+<span class="badge">Édom boira Sion relevée (exulte → réjouis-toi → fille → Édom → habitantes → pays → Outs → toi → passera → coupe → enivreras → montreras → nue → faute → fille → Sion → parvenue → terme → exilera → plus → occupé → faute → Édom → péchés → découvert)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche LM299</div><audio controls preload="none" src="audio/fiche_LM299_edom.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_LM299_edom.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Lamentations 4:21-22</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>Édom boira Sion relevée (exulte → réjouis-toi → fille → Édom → habitantes → pays → Outs → toi → passera → coupe → enivreras → montreras → nue → faute → fille → Sion → parvenue → terme → exilera → plus → occupé → faute → Édom → péchés → découvert)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Lamentations — P299 (4:21, 22 : Édom, la coupe passera ; erreur achevée, fille de Sion) ; Jr 49:17, 18 ; Ml 1:3, 4 ; Accomplie / À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« EXULTE… RÉJOUIS-TOI… IRONIE… AMÈRE… FILLE… ÉDOM… HABITANTE… OUTS… UTS… JOB… PATRIARCHE… MÊME… TOPONYME… VOISIN… SUD-EST… FRÈRE… ÉSAÜ… JACOB… HAINE… MILLÉNAIRE… GENÈSE… VINGT-SEPT. » (4:21 — vingt-sept !)</li>
+<li>« TOI… PASSERA… COUPE… JÉRÉMIE… VINGT-CINQ… QUINZE… COUPE… VIN… FUREUR… NATIONS… BOIVENT… ÉDOM… TOUR… ATTEND… ENIVRERAS… MONTRERAS… NUE… HONTE… PUBLIQUE… IVRESSE… JUGEMENT… NUDITÉ… EXPOSÉE. » (coupe — exposée !)</li>
+<li>« FAUTE… FILLE… SION… PARVENUE… TERME… EXILERA… PLUS… PEINE… PURGÉE… SOIXANTE-DIX… ANS… COMPTEUR… LANCÉ… FIN… DATÉE… CYRUS… DÉCRET… ANNONCÉ… AVANCE… LIBÉRATION… PROGRAMMÉE… CERTAINE. » (4:22 — certaine !)</li>
+<li>« OCCUPÉ… FAUTE… ÉDOM… PÉCHÉS… DÉCOUVERT… VISITE… PUNITIVE… RASEZ… RASEZ… PSAUME… CENT… TRENTE-SEPT… SEPT… JOUR… JÉRUSALEM… PILLAGE… CAPTIFS… LIVRÉS… ABDIAS… DIX… QUATORZE… VIOLENCE… FRÈRE… JUGÉE. » (Édom — jugée !)</li>
+<li>« MALACHIE… UN… TROIS… QUATRE… HAÏ… ÉSAÜ… MONTAGNES… DÉSOLÉES… HÉRITAGE… CHACALS… REBÂTIRONS… DÉMOLIRAI… TERRITOIRE… MÉCHANCETÉ… PEUPLE… JÉHOVAH… INDIGNÉ… TOUJOURS… VERDICT… POST-EXILIQUE… DÉFINITIF. » (Malachie — définitif !)</li>
+<li>« ACCOMPLIE… À-VENIR… DOUBLE… STATUT… NABONIDE… CYRUS… NABATÉENS… ÉDOM… EFFACÉE… PÉTRA… ARABES… PRENNENT… RELAIS… HÉRODE… IDUMÉEN… DERNIER… SURSAUT… SOIXANTE-DIX… APRÈS… DISPARAÎT… CARTE… DÉFINITIVEMENT. » (double — définitivement !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La COUPE-QUI-PASSE, 607/587 — SISI (les EXULTE (les VESIMHI (les RÉJOUIS-TOI (les BAT (les FILLE (les ÉDOM (les ÉDOM (les YOSHÉBÉT (les HABITANTE (les BEÉRETS (les PAYS (les UTS (les OUTS (les GAM (les AUSSI (les ALAYIKH (les TOI (les TAABOR (les PASSERA (les KOS (les COUPE (les TISHKERI (les ENIVRERAS (les VETITARI (les MONTRERAS-NUE (les TAM (les PARVENUE-TERME (les AVONÉKH (les FAUTE (les BAT (les FILLE (les TSIYYON (les SION (les LO (les NON (les YOSIPH (les PLUS (les LEHAGLOTÉKH (les EXILERA (les PAQAD (les OCCUPÉ (les AVONÉKH (les FAUTE (les BAT (les FILLE (les ÉDOM (les ÉDOM (les GILLAH (les DÉCOUVERT (les AL (les HATTOTAÏKH (les PÉCHÉS (les COUPE (les SION-LEVÉE (les ÉDOM — les NUE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le FRÈRE-ENNEMI (les ÉSAÜ (les JACOB (les JUMEAUX (les LUTTE (les SEIN (les GENÈSE (les VINGT-CINQ (les DROIT-AÎNESSE (les PLAT (les LENTILLES (les BÉNÉDICTION (les VOLÉE (les HAINE (les REFUS (les PASSAGE (les NOMBRES (les VINGT (les DAVID (les ASSUJETTIT (les SALOMON (les TRIBU (les RÉVOLTE (les JORAM (les INDÉPENDANCE (les AMATSIA (les GUERRE (les ACHAZ (les INCURSIONS (les 607 (les PILLAGE (les CAPTIFS (les LIVRÉS (les ABDIAS (les JOUR (les MALHEUR (les FRÈRE (les REGARDÉ (les RÉJOUI (les PILLÉ (les LIVRÉ (les FRÈRE (les MILLÉNAIRE (les HAINE — les JUGÉE !)</p>
+<h4>5 · Interprétation</h4>
+<p>LEFFACEMENT (les NABONIDE (les CAMPAGNES (les ÉDOM (les CYRUS (les VASSALITÉ (les PERSE (les NABATÉENS (les IVE (les SIÈCLE (les PÉTRA (les PRISE (les ÉDOMITES (les REPOUSSÉS (les NÉGUEV (les IDUMÉE (les JEAN-HYRCAN (les CONQUÊTE (les CONVERSION (les FORCÉE (les HÉRODE (les IDUMÉEN (les TRÔNE (les JUDÉE (les ROME (les SOIXANTE-DIX (les GUERRE-JUIVE (les IDUMÉENS (les MASSACRÉS (les JOSÈPHE (les NOM (les DISPARAÎT (les CARTE (les MALACHIE (les REBÂTIRONS (les DÉMOLIRAI (les EFFACEMENT (les TOTAL (les COUPE — les BUE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">4:21a</td><td>VINGT-SEPT (EXULTE !)</td></tr>
+<tr><td class="d">4:21b</td><td>EXPOSÉE (COUPE !)</td></tr>
+<tr><td class="d">4:22a</td><td>CERTAINE (TERME !)</td></tr>
+<tr><td class="d">4:22b</td><td>JUGÉE (DÉCOUVERT !)</td></tr>
+<tr><td class="d">Ml1/Ab10-14</td><td>DÉFINITIF (REBÂTIRONS !)</td></tr>
+<tr><td class="d">VIᵉ→Iᵉʳ s.</td><td>DÉFINITIVEMENT (EFFACÉE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>607/587 : Édom pille Jérusalem, livre les fuyards (« rasez, rasez jusqu'aux fondements ! » Ps 137:7 ; Ab 10-14) ; VIᵉ-Vᵉ s. : campagnes de Nabonide puis domination perse — la coupe passe ; IVᵉ s. : les Nabatéens arabes prennent Petra, les Édomites refluent au Néguev (Idumée) ; ~125 : Jean Hyrcan les conquiert et convertit de force ; 37-4 : Hérode l'Iduméen — dernier sursaut ; 70 apr. : les Iduméens périssent dans la guerre juive (Josèphe) — le nom s'efface ; « ils rebâtiront, je démolirai » (Ml 1:4) — accompli.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Pays d'Uts (v. 21 — cf. Jb 1:1, le pays de Job : nord de l'Arabie/Édom ?) : Édom = Séir, le massif rouge (grès rouge, Wadi Moussa) entre mer Morte et golfe d'Aqaba ; Petra (Sela ?) : capitale rupestre, prise par les Nabatéens ; Bosra : seconde capitale, ruinée (Jr 49:13, 17-18) ; l'Idumée : le réduit du Néguev — Hébron, Marésha (fouilles : villes iduméennes hellénistiques).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Malachie 1:3-4 (« j'ai haï Ésaü… ils rebâtiront, je démolirai… peuple contre qui Jéhovah est indigné toujours ») — le VERDICT post-exilique, définitif ; Psaume 137:7 (« souviens-toi des fils d'Édom… rasez ! ») — le PROCÈS-VERBAL du 10 Ab ; Lamentations 4 (nwtsty — « ta faute est parvenue à son terme ») — le COMPTEUR de Sion remis à zéro ; Abdias 10-14 + Jr 49:17-18 — les TÉMOINS à charge.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>607 : ÉDOM PILLE ET LIVRE → VIE-VE S. : COUPE BUE (NABONIDE, PERSES) → IVE S. : PÉTRA PERDUE (NABATÉENS) → IIE S. : CONQUIS, CONVERTIS → 37-4 : HÉRODE, DERNIER SURSAUT → 70 APR. : EFFACÉS — SION, ELLE, RELEVÉE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Accomplie / À venir » (registre) : l'effacement antique accompli (VIᵉ s. av. → Iᵉʳ s. apr.) ; la portée typologique (Édom = les opposants au peuple de Dieu, cf. Ab 15-21 « le jour de Jéhovah ») reste ouverte — la fiche assume les deux niveaux ; « pays d'Uts » : localisation débattue (Édom ? Hauran ? — Jb 1:1) — le lien Édom-Uts suit la lecture traditionnelle.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom pille ; coupe promise</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Coupe bue ; Petra perdue</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIᵉ-IIᵉ s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nom effacé de la carte</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">70 apr.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/39/1">Bible — Malachie 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/39/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/25/4">Bible — Lamentations 4 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/25/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/137">Bible — Psaume 137 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/137</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche LM299 — « À toi aussi passera la coupe » : Édom mis à nu</span><span>Catégorie JR+LM</span></div></div>
+</article>
+<article class="fiche" id="LM300">
+<div class="visuel"><img src="images/prophe_LM300_retablis.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE LM300 · CATÉGORIE JR+LM</div>
+<h3>« Rétablis-nous » : le cri qui clôt les larmes</h3>
+<div class="ref">Lamentations 5:19-22</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">trône éternel retour demandé (toi → Jéhovah → sièges → toujours → trône → génération → génération → pourquoi → oublierais → toujours → abandonnerais → longs → jours → fais-nous → revenir → reviendrons → renouvelle → jours → autrefois → rejetés → entièrement → irrité → excès)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche LM300</div><audio controls preload="none" src="audio/fiche_LM300_retablis.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_LM300_retablis.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Lamentations 5:19-22</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>trône éternel retour demandé (toi → Jéhovah → sièges → toujours → trône → génération → génération → pourquoi → oublierais → toujours → abandonnerais → longs → jours → fais-nous → revenir → reviendrons → renouvelle → jours → autrefois → rejetés → entièrement → irrité → excès)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Lamentations — P300 (5:19-22 : rétablis-nous, Jéhovah, et nous reviendrons) ; Esd 1:1-4 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« TOI… JÉHOVAH… SIÈGES… TOUJOURS… TRÔNE… GÉNÉRATION… GÉNÉRATION… CONTRASTE… ABSOLU… TRÔNES… TERRESTRES… EFFONDRÉS… TSIDQIYA… AVEUGLE… NEBOUKADNETSAR… MORTEL… TRÔNE… CÉLESTE… INÉBRANLABLE… ANCRE… TEMPÊTE. » (5:19 — tempête !)</li>
+<li>« POURQUOI… OUBLIERAIS… TOUJOURS… ABANDONNERAIS… LONGS… JOURS… QUESTION… CRUE… AUDACE… PRIÈRE… PSAUMES… TREIZE… QUARANTE-QUATRE… JUSQUES… À-QUAND… DIEU… INTERPELLÉ… SILENCE… PESÉ… FOI… CRIÉE. » (5:20 — criée !)</li>
+<li>« FAIS-NOUS… REVENIR… REVIENDRONS… RENOUVELLE… JOURS… AUTREFOIS… HASHIVÉNOU… VERBE… CAUSATIF… DIEU… INITIATIVE… RETOUR… CONVERSION… DON… GRÂCE… PRÉVIENT… JOURS… DAVID… SALOMON… GLOIRE… NOSTALGIE… PROPHÉTIQUE. » (5:21 — prophétique !)</li>
+<li>« REJETÉS… ENTIÈREMENT… IRRITÉ… EXCÈS… FIN… OUVERTE… POINT… INTERROGATION… LIVRE… REFERME… QUESTION… SYNAGOGUES… RÉPÈTENT… VERSET… VINGT-ET-UN… APRÈS… VINGT-DEUX… ESPOIR… DERNIER… MOT… LITURGIE… INVERSE… DÉSESPOIR. » (5:22 — désespoir !)</li>
+<li>« PSAUME… QUATRE-VINGT-CINQ… QUATRE… RÉTABLIS-NOUS… DIEU… SALUT… ROMPS… IRRITATION… MÊME… VERBE… MÊME… CRI… RETOUR… EXIL… CHANTÉ… ACCOMPLI… ESDRAS… UN… CYRUS… DÉCRET… PREMIÈRE… ANNÉE… MAISON… REBÂTIE. » (Ps 85 — rebâtie !)</li>
+<li>« TROIS… CENTS… PREMIÈRE… CENTAINE… FRANCHIE… TIERS… MILLE… PROJET… JALON… SOIXANTE-DIX… ANS… EXIL… SOIXANTE-DIX… FICHES… JÉRÉMIE… LAMENTATIONS… CENT… SEIZE… DEUX… LIVRES… BOUCLÉS… ÉZÉCHIEL… SUIT… KEBAR. » (jalon — Kebar !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le TRÔNE, 607/587 — ATTAH (les TOI (les YEHOVAH (les LEOLAM (les TOUJOURS (les TESHÉB (les SIÈGES (les KISSÉKHA (les TRÔNE (les LEDOR (les GÉNÉRATION (les VADOR (les GÉNÉRATION (les LAMMAH (les POURQUOI (les LANÉTSAH (les TOUJOURS (les TISHKAHÉNU (les OUBLIERAIS (les TAAZBÉNU (les ABANDONNERAIS (les LEORÉKH (les LONGS (les YAMIM (les JOURS (les TRÔNE (les ÉTERNEL (les OUBLI — les POURQUOI !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le RETOUR-DEMANDÉ (les HASHIVÉNU (les FAIS-NOUS-REVENIR (les YEHOVAH (les ÉLÉKHA (les TOI (les VENASHUBAH (les REVIENDRONS (les HADDÉSH (les RENOUVELLE (les YAMÉYNU (les JOURS (les KEQÉDÉM (les AUTREFOIS (les KI (les CAR (les IM (les SI (les MAOS (les REJETÉS (les MEASTANU (les ENTIÈREMENT (les QATSAPHTA (les IRRITÉ (les ALÉYNU (les NOUS (les AD (les JUSQUÀ (les MEOD (les EXCÈS (les CAUSATIF (les DIVIN (les INITIATIVE (les GRÂCE (les QUESTION (les OUVERTE (les FIN — les CRI !)</p>
+<h4>5 · Interprétation</h4>
+<p>LeXAUCEMENT (les SOIXANTE-DIX (les ANS (les COMPTEUR (les JÉRÉMIE (les VINGT-CINQ (les VINGT-NEUF (les PREMIÈRE (les ANNÉE (les CYRUS (les DÉCRET (les ESDRAS (les UN (les MONTE (les QUARANTE-DEUX (les MILLE (les VASES (les RESTITUÉS (les AUTEL (les REBÂTI (les TEMPLE (les FONDÉ (les ACHEVÉ (les DARIUS (les JOURS (les RENOUVELÉS (les NON (les AUTREFOIS (les IDENTIQUE (les SECOND (les TEMPLE (les MOINDRE (les GLOIRE (les AGGÉE (les MAIS (les PRÉSENCE (les REVIENT (les PEUPLE (les REVIENT (les CRI (les EXAUCÉ (les QUESTION (les FERMÉE (les HISTOIRE (les EXAUCEMENT — les DATÉ !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">5:19</td><td>TEMPÊTE (TRÔNE !)</td></tr>
+<tr><td class="d">5:20</td><td>CRIÉE (POURQUOI !)</td></tr>
+<tr><td class="d">5:21</td><td>PROPHÉTIQUE (REVIENDRONS !)</td></tr>
+<tr><td class="d">5:22</td><td>DÉSESPOIR (QUESTION !)</td></tr>
+<tr><td class="d">Ps85/Esd1</td><td>REBÂTIE (DÉCRET !)</td></tr>
+<tr><td class="d">537/515</td><td>KEBAR (RENOUVELÉS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>607/587 (cri) → 539/537 : « fais-nous revenir et nous reviendrons » (v. 21, causatif — Dieu initie) — le décret de Cyrus 1ʳᵉ année (Esd 1:1-4 ; Cylindre de Cyrus : politique de rapatriement) ; 42 360 rapatriés + 7 337 serviteurs (Esd 2:64-65) ; autel rebâti (537), Temple fondé (536), achevé (515, Esd 6:15) ; « renouvelle nos jours » : jours renouvelés — non identiques (Aggée 2:3, second Temple moindre) mais réels ; la liturgie juive répète le v. 21 après le v. 22 — l'espoir a le dernier mot.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le retour (v. 21) : Babylone → ~900 km → Jérusalem — la route inverse de 607 ; « comme autrefois » (keqédem) : les jours de David-Salomon — nostalgie géographique (Sion, Temple, fêtes) ; le trône « de génération en génération » (v. 19) : ni à Babylone ni à Jérusalem en ruines — au ciel, inaccessible aux armées.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Psaume 85:4 (« rétablis-nous, Dieu de notre salut ! » — même verbe shoub, même cri post-exilique) — le JUMEAU liturgique ; Lamentations 5 (nwt + nwtsty — 22 versets non-acrostiches, prière communautaire) — la FORME : le seul chant en « nous » ; Esdras 1:1-4 + Cylindre de Cyrus — l'EXAUCEMENT daté et archivé ; Aggée 2:3-9 (gloire moindre, présence promise) — la NUANCE honnête.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>607 : CRI — « POURQUOI ? » → 607-539 : 70 ANS D'ATTENTE → 539 : CYRUS SUSCITE → 537 : « REVIENDRONS » — RETOUR → 537-515 : JOURS RENOUVELÉS → LITURGIE : V. 21 RÉPÉTÉ — L'ESPOIR DERNIER MOT</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Si tu nous as entièrement rejetés » (v. 22) : le SI — la foi tremble, la réponse vient de l'histoire (537), non d'un verset ; « comme autrefois » : jamais identique — les rapatriés pleurent en comparant (Esd 3:12) ; le JALON 300/1000 : tiers du projet — Jérémie + Lamentations bouclés (116 + 4 = 120 P), Ézéchiel (P301-P367) ouvre le prochain volume.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cri : rétablis-nous</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus ; retour</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539/537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jours renouvelés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537-515</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/5">Bible — Lamentations 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/25/5">Bible — Lamentations 5 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/25/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/85">Bible — Psaume 85 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/85</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche LM300 — « Rétablis-nous » : le cri qui clôt les larmes</span><span>Catégorie JR+LM</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR+LM</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR295 — « On lui creva les yeux » : Tsidqiya à Ribla</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège ; famine ; brèche</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">An 9-11</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite ; capture ; Ribla</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">9 Tammuz an 11</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prison à Babylone</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">An 11 → mort</text>
+</svg>
+<h4>JR296 — « Il brûla la maison de Jéhovah » : le 10 Ab</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Brèche ; fuite ; capture</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9 Tammuz</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Temple brûlé ; murs rasés</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">10 Ab</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ribla ; Mizpa ; Égypte</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ab → Tisri</text>
+</svg>
+<h4>LM297 — « Assise solitaire » : la veuve de Sion</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Faits pleurés : chute</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">10 Ab</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Composition des chants</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ab → ? </text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lecture liturgique perpétuelle</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9 Ab / an</text>
+</svg>
+<h4>LM298 — « Jéhovah a exécuté » : les passants secouent la tête</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Parole prononcée (Sinaï)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1513</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rappelée (Jr 26, Silo)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Exécutée (10 Ab)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>LM299 — « À toi aussi passera la coupe » : Édom mis à nu</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom pille ; coupe promise</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Coupe bue ; Petra perdue</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIᵉ-IIᵉ s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nom effacé de la carte</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">70 apr.</text>
+</svg>
+<h4>LM300 — « Rétablis-nous » : le cri qui clôt les larmes</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cri : rétablis-nous</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus ; retour</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539/537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jours renouvelés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537-515</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-50 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

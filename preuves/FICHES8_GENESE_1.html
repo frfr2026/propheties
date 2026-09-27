@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES GE — Genèse (1) — les commencements de la promesse</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_GE_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES GE</h1>
+<h2>Genèse (1) — les commencements de la promesse</h2>
+<p class="intro">Six oracles fondateurs : en Éden, la postérité qui écrasera le serpent ; après le déluge, les trois destins de Canaan, Sem et Japhet ; puis l'appel d'Abram, le don du pays, la multitude promise et les 400 ans annoncés d'avance. Toute la Bible découle de ces six phrases.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>21</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_GE_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_GE_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#GE001">GE001</a>
+<a href="#GE002">GE002</a>
+<a href="#GE003">GE003</a>
+<a href="#GE004">GE004</a>
+<a href="#GE005">GE005</a>
+<a href="#GE006">GE006</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#GE001"><img src="images/prophe_GE001_eden.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE001</div>
+<h3><a href="#GE001">La postérité écrasera le serpent</a></h3>
+<div class="meta">Accomplie / À venir (phase finale)</div></div></div>
+<div class="carte">
+<a class="img" href="#GE002"><img src="images/prophe_GE002_noe.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE002</div>
+<h3><a href="#GE002">Canaan serviteur, Sem béni, Japhet élargi</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE003"><img src="images/prophe_GE003_abraham.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE003</div>
+<h3><a href="#GE003">En toi seront bénies toutes les familles</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE004"><img src="images/prophe_GE004_terre.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE004</div>
+<h3><a href="#GE004">Tout le pays que tu vois, pour toujours</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE005"><img src="images/prophe_GE005_etoiles.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE005</div>
+<h3><a href="#GE005">Compte les étoiles : ainsi sera ta descendance</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE006"><img src="images/prophe_GE006_egypte.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE006</div>
+<h3><a href="#GE006">400 ans d'oppression, puis la sortie avec de grands biens</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="GE001">
+<div class="visuel"><img src="images/prophe_GE001_eden.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE001 · CATÉGORIE GE</div>
+<h3>La postérité écrasera le serpent</h3>
+<div class="ref">Genèse 3:15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / À venir (phase finale)</span>
+<span class="badge">Système Éden → Royaume (4026 av. n. è. → à venir)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE001</div><audio controls preload="none" src="audio/fiche_GE01_eden.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE01_eden.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 3:15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / À venir (phase finale)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système Éden → Royaume (4026 av. n. è. → à venir)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P001 (3:15 : la postérité de la femme écrasera la tête du serpent) ; accomplissement Rm 16:20 ; Rév 12:9 ; 20:10</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Je mettrai de l'inimitié entre toi et la femme. » (3:15 — l'inimitié !)</li>
+<li>« Entre ta postérité et sa postérité. » (3:15 — deux postérités !)</li>
+<li>« Celle-ci t'écrasera la tête. » (3:15 — la tête !)</li>
+<li>« Et toi, tu lui meurtriras le talon. » (3:15 — le talon !)</li>
+<li>« Le Dieu de paix écrasera bientôt Satan sous vos pieds. » (Rm 16:20)</li>
+<li>« Le grand dragon, le serpent originel, appelé Diable et Satan. » (Rév 12:9)</li>
+<li>« Le Diable sera jeté dans le lac de feu et de soufre. » (Rév 20:10)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le jardin d'Éden, juste après la désobéissance (3:1-13). Jéhovah ne plaide pas : il prononce trois sentences — serpent (3:14-15), femme (3:16), homme (3:17-19). La première est aussi la première prophétie de la Bible : avant même de chasser l'homme du jardin (3:23-24), Dieu annonce l'issue du conflit. Le serpent interrogé n'est pas un simple animal : l'Apocalypse l'identifie au « serpent originel » (Rév 12:9 ; 20:2 — P001). L'enjeu dépasse un fruit : la légitimité de la souveraineté de Dieu, contestée par la calomnie (« vous ne mourrez pas », 3:4).</p>
+<h4>4 · Explication du texte</h4>
+<p>Postérité (zéra', « semence ») : nom singulier à sens collectif — il peut désigner un individu ou un groupe, et la suite de la Bible joue sur les deux (voir GE003 : Ga 3:16). Écraser / meurtrir : le même verbe hébreu (shuph) frappe les deux cibles — mais une tête écrasée, c'est la mort, un talon meurtri, une blessure dont on se relève : même verbe, deux sorts. La femme : pas Ève seule — l'inimitié annoncée dépasse une vie humaine ; c'est une femme collective et céleste (voir interprétation). Le serpent : l'animal réel, dégradé (3:14, « tu marcheras sur ton ventre »), et derrière lui l'esprit qui l'a utilisé — la Bible ne sépare jamais les deux niveaux.</p>
+<h4>5 · Interprétation</h4>
+<p>Selon la compréhension des Témoins de Jéhovah : la femme, c'est l'organisation céleste de Dieu (« la Jérusalem d'en haut », Ga 4:26) ; sa postérité, c'est d'abord le Christ (Ga 3:16), puis ceux qui sont en union avec lui (Ga 3:29 ; Rm 16:20 : écrasé « sous VOS pieds » — l'Église participe à la victoire). La postérité du serpent : Satan, ses démons et le système humain qui s'oppose à Dieu. Le talon meurtri : la mort de Jésus en 33 — blessure réelle, mais temporaire, puisqu'il a été relevé (1Co 15:3-4). La tête écrasée : la destruction définitive de Satan — jeté dans le lac de feu, « la deuxième mort » (Rév 20:10, 14 — P001). Entre les deux : l'inimitié permanente (persécutions), Satan chassé du ciel (Rév 12:7-12 — compris comme accompli en 1914), puis lié pour mille ans (Rév 20:1-3).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Éden (~4026)</td><td>Sentence : inimitié + double issue (3:15)</td></tr>
+<tr><td class="d">33</td><td>Talon meurtri : mort de Jésus, puis résurrection</td></tr>
+<tr><td class="d">33 → 1914</td><td>Inimitié : persécution de la postérité au fil des siècles</td></tr>
+<tr><td class="d">1914</td><td>Satan chassé du ciel (Rév 12 — compréhension)</td></tr>
+<tr><td class="d">Millénium</td><td>Satan lié 1000 ans (Rév 20:1-3)</td></tr>
+<tr><td class="d">Phase finale</td><td>Tête écrasée : lac de feu (Rév 20:10 — À venir)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La plus ancienne prophétie messianique : les chrétiens des premiers siècles l'appelaient déjà le « proto-évangile » (Irénée, vers 180 de n. è. — cité comme repère historique). Le Targum palestinien (Pseudo-Jonathan) paraphrase : il y aura « un remède pour le talon aux jours du Roi Messie » — les paraphrastes juifs eux-mêmes lisaient ici le Messie. Le Nouveau Testament l'applique : « pour détruire les œuvres du Diable » (1Jn 3:8), « réduire à rien celui qui a le moyen de causer la mort, c'est-à-dire le Diable » (Hé 2:14). Traductions : la Septante met un masculin (« LUI t'écrasera »), la Vulgate un féminin (« ELLE » — lecture mariale catholique) : l'hébreu dit hou', masculin — « lui, la postérité ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Prophétie sans géographie : aucun lieu d'accomplissement, aucun site à fouiller. L'Éden lui-même n'est pas localisable avec certitude (voir limites) : le récit nomme le Tigre et l'Euphrate (2:14), mais le Pishôn et le Guihôn restent non identifiés. C'est une prophétie de personnes et d'issue, pas de cartes — le contraire exact des oracles contre Tyr ou Babylone.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Zoologie : l'inimitié homme-serpent est un universel humain (l'ophidiophobie figure parmi les peurs les plus répandues) — le texte l'érige en loi dès la troisième page. Linguistique : shuph n'apparaît que trois fois dans la Bible (ici deux fois, plus Job 9:17 et Ps 139:11 selon les lectures) — mot rare, sens « écraser, broyer » confirmé par les langues sémitiques voisines. Critique textuelle : le texte massorétique, la Septante et le Pentateuque samaritain s'accordent sur l'essentiel du verset — aucune variante ne change le sens.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Serpent (Satan, Rév 12:9) → blesse le TALON (mort de Jésus, 33 — il se relève) ; Femme (organisation céleste) → POSTÉRITÉ (Christ + 144 000) → écrase la TÊTE (destruction finale, Rév 20:10). Entre les deux : inimitié permanente, ciel nettoyé (1914), mille ans de lien, puis le lac de feu.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ève n'est pas « la femme » au sens plein : elle meurt, l'inimitié continue — l'identification à l'organisation céleste est une compréhension, pas une citation. « Bientôt » (Rm 16:20) : bientôt à l'échelle de Dieu, pas à celle des impatients (voir 2P 3:8 — sans P nommé). Le lieu d'Éden : inconnu (fleuves non identifiés). 1914 (ciel nettoyé) : compréhension liée à la chronologie de Daniel 4 — la fiche la signale comme telle. Aucune date pour la phase finale : le statut du registre reste « À venir ».</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sentence du serpent</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~4026 (Éden)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Talon meurtri, puis relevé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 (Golgotha)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dragon chassé</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914 (ciel)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dragon lié</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Millénium</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tête écrasée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/3">Genèse 3 — Bible d'étude, notes et renvois<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/12">Révélation 12 — Bible d'étude (le serpent originel)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/45/16">Romains 16 — Bible d'étude (16:20)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/45/16</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034">Alliance abrahamique — rapport avec la promesse d'Éden<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE001 — La postérité écrasera le serpent</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE002">
+<div class="visuel"><img src="images/prophe_GE002_noe.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE002 · CATÉGORIE GE</div>
+<h3>Canaan serviteur, Sem béni, Japhet élargi</h3>
+<div class="ref">Genèse 9:25-27</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système post-diluvien (2370 → monarchie)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE002</div><audio controls preload="none" src="audio/fiche_GE02_noe.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE02_noe.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 9:25-27</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système post-diluvien (2370 → monarchie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P002 (9:25-27 : Canaan asservi ; Sem béni ; Japhet élargi, résidant dans les tentes de Sem) ; accomplissement Gn 10:1-32 ; Jos 9:23 ; 1R 9:20-21</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Maudit soit Canaan ! » (9:25 — maudit !)</li>
+<li>« Qu'il devienne le serviteur des serviteurs de ses frères ! » (9:25 — le plus bas !)</li>
+<li>« Béni soit Jéhovah, le Dieu de Sem ! » (9:26 — le Dieu DE Sem !)</li>
+<li>« Que Dieu élargisse Japhet ! » (9:27 — yapht : élargir !)</li>
+<li>« Qu'il réside dans les tentes de Sem ! » (9:27 — l'hôte !)</li>
+<li>« Coupeurs de bois et puiseurs d'eau pour la maison de mon Dieu. » (Jos 9:23)</li>
+<li>« Salomon les soumit à la corvée d'esclaves. » (1R 9:21)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Après le déluge (2370 av. n. è., système des publications), Noé plante une vigne, boit, se découvre dans sa tente. Cham « voit » et « rapporte » — et le texte dit que Noé apprit « ce que lui avait FAIT son plus jeune fils » (9:24) : le verbe « faire » suggère plus qu'un regard (voir limites). Sem et Japhet, eux, marchent à reculons et couvrent leur père sans le voir (9:23). Au réveil, Noé prononce non des malédictions d'ivrogne, mais un triple oracle inspiré sur les nations à naître — comme Jacob bénira ses fils (Gn 49) et Moïse les tribus (Dt 33).</p>
+<h4>4 · Explication du texte</h4>
+<p>Pourquoi Canaan, et non Cham ? Canaan est le quatrième fils de Cham (10:6) : soit il était présent et complice, soit — lecture la plus suivie — la sentence vise la descendance qui incarnera l'esprit du père (les mœurs cananéennes condamnées en Lévitique 18 en sont la démonstration). « Serviteur des serviteurs » : superlatif hébreu — le plus bas des esclaves. « Béni soit JÉHOVAH, Dieu de Sem » : Noé bénit Dieu POUR Sem — c'est la formule de l'élection : la lignée de la promesse passera par Sem (11:10-26 : Sem → Arpacschad → … → Abram). « Élargisse » (yapht) : jeu de mots sur Japhet — expansion maximale. « Tentes de Sem » : hospitalité et partage des bénédictions, pas conquête — une cohabitation paisible.</p>
+<h4>5 · Interprétation</h4>
+<p>Triple oracle sur les trois familles de nations (Gn 10) : Canaan → les Cananéens, voués à la servitude et finalement jugés par l'intermédiaire d'Israël ; Sem → les Sémites, et surtout la lignée messianique (la généalogie de Jésus remonte à Sem, Lc 3:36) ; Japhet → l'expansion la plus vaste (Asie Mineure, îles, Europe — 10:2-5) et l'entrée en partage des bénédictions de Sem (les nations jointes au peuple de Dieu : prosélytes, puis chrétiens d'entre les nations). Accomplissement progressif : Gabaon asservie au sanctuaire (Jos 9:23 — « jusqu'à ce jour »), le reste cananéen soumis à la corvée sous Salomon (1R 9:20-21), Tyr la Cananéenne (Phénicie) prise par Alexandre le Japhétique — les Grecs descendent de Yavân (10:2, 4) — en 332.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">2370 (déluge)</td><td>Trois familles repeuplent la terre (9:19)</td></tr>
+<tr><td class="d">Table (Gn 10)</td><td>70 peuples : 14 + 30 + 26</td></tr>
+<tr><td class="d">~1473 (Gabaon)</td><td>Cananéens asservis au sanctuaire (Jos 9:23)</td></tr>
+<tr><td class="d">~1034 (Salomon)</td><td>Reste cananéen à la corvée (1R 9:20-21)</td></tr>
+<tr><td class="d">332 (Tyr)</td><td>Alexandre le Japhétique prend la Cananéenne</td></tr>
+<tr><td class="d">146 (Carthage)</td><td>Rome rase la fille de Tyr ; plus de Cananéens</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La table des nations (Gn 10) : 14 descendants de Japhet, 30 de Cham, 26 de Sem — 70 peuples, chiffre repris par la tradition (« les 70 nations »). Josèphe (Antiquités I, vi) les identifie : Gomer = Galates, Magog = Scythes, Madaï = Mèdes, Yavân = Ioniens (Grecs), Tubal = Tibaréniens, Méshec = Mosques, Tiras = Thraces ; Chus = Éthiopiens, Mitsraïm = Égyptiens, Puth = Libyens ; Élam, Assur, Aram… Gabaon : servitude perpétuelle au sanctuaire (Jos 9:23) — les Nethinim (« donnés ») du Temple (Esd 8:20) en descendent selon toute apparence. Carthage la Cananéenne (phénicienne) rasée par Rome en 146. Aujourd'hui : aucun peuple ne se dit « cananéen » — la sentence s'est consommée dans l'histoire.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Canaan : le corridor côtier syro-palestinien, « depuis Sidon… jusqu'à Gaza », et jusqu'à Sodome (10:19) — une bande fertile et convoitée, jamais un empire. Sem : le Croissant intérieur — Élam, Assyrie, Aram, Haute-Mésopotamie. Japhet : le Nord et l'Ouest — Anatolie, Caucase, « îles des nations » (10:5 : Chypre, Rhodes, l'Égée), steppes. L'expansion japhétique est, et de loin, la plus vaste des trois — exactement ce que promettait le jeu de mots. « Résider dans les tentes » : image nomade — on n'envahit pas une tente, on y est accueilli.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Linguistique : la famille SÉMITIQUE (akkadien, hébreu, araméen, arabe) est un apparentement démontré — la Bible avait regroupé ces langues trois millénaires avant la grammaire comparée. Yavân (Grecs) et Madaï (Mèdes) parlent des langues indo-européennes : l'expansion japhétique recoupe, en partie, l'expansion indo-européenne. Honnêteté : la catégorie « chamitique » a été abandonnée par la linguistique — l'égyptien est afro-asiatique, proche parent du sémitique. La table de Genèse 10 classe les peuples par géographie et histoire, pas par langues — et c'est ainsi qu'il faut la lire. Aucun « gène de Sem » : la Bible classe des nations, pas des ADN.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Cham manque → CANAAN serviteur des serviteurs (Gabaon, corvée de Salomon, Carthage 146) ; SEM → « Jéhovah, Dieu de Sem » (ligne élue → Abraham → David → Jésus) ; JAPHET → élargi au maximum (Anatolie, îles, Europe) + hôte accueilli dans les tentes de Sem (les nations partagent la bénédiction).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>L'acte exact de Cham est inconnu (« faire » en 9:24 dépasse « voir », sans plus). Pourquoi Canaan plutôt que Cham : plusieurs lectures coexistent (complicité, représentation de la descendance). Détournement condamné : la malédiction vise Canaan SEUL — jamais les Africains, jamais une race ; l'esclavage des Noirs « justifié » par ce texte est un contresens doublé d'un crime. Identifications de Gn 10 partiellement débattues (Tiras ? Dodanim/Rodanim : variante textuelle). Déluge 2370 : système des publications. Rome-Kittim : non affirmé par la fiche.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sem, Cham, Japhet</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2370 (déluge)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trois destins</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Oracle (tente)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Servitude</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (Gabaon)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Consommation</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1034 (corvée)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin des Cananéens</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">332–146</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/9">Genèse 9 — Bible d'étude, notes et renvois<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/9">Genèse 9 — Traduction du monde nouveau (lecture)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/10">Genèse 10 — Bible d'étude (la table des nations)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/10</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE002 — Canaan serviteur, Sem béni, Japhet élargi</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE003">
+<div class="visuel"><img src="images/prophe_GE003_abraham.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE003 · CATÉGORIE GE</div>
+<h3>En toi seront bénies toutes les familles</h3>
+<div class="ref">Genèse 12:2, 3</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Alliance abrahamique (1943 → Royaume)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE003</div><audio controls preload="none" src="audio/fiche_GE03_abraham.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE03_abraham.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 12:2, 3</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Alliance abrahamique (1943 → Royaume)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P003 (12:2-3 : grande nation, nom grand, toutes les familles bénies) ; accomplissement Gn 18:18 ; 22:17-18 ; Ac 3:25 ; Ga 3:16, 29</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Va-t'en de ton pays, de ta parenté. » (12:1 — l'ordre !)</li>
+<li>« Je ferai de toi une grande nation. » (12:2 — nation !)</li>
+<li>« Je rendrai ton nom grand. » (12:2 — le nom !)</li>
+<li>« Je bénirai ceux qui te béniront, qui te maudira je le maudirai. » (12:3 — miroir !)</li>
+<li>« En toi se béniront toutes les familles du sol. » (12:3 — TOUTES !)</li>
+<li>« En ta postérité se béniront toutes les nations. » (22:18 — précision !)</li>
+<li>« Il ne dit pas : aux postérités… mais : à ta postérité — c'est-à-dire Christ. » (Ga 3:16)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Harân, Haute-Mésopotamie. Abram a 75 ans (12:4) ; Térah son père vient de mourir (11:32). Au-delà de l'Euphrate, sa famille « servait d'autres dieux » (Jos 24:2) — Our et Harân sont des centres du dieu-lune Sin. L'appel est une rupture totale : pays, parenté, maison paternelle — contre une promesse en cinq volets. Abram part « comme Jéhovah le lui avait dit » (12:4). Entrée en Canaan : 1943 av. n. è. (système des publications : Exode 1513 + 430 ans, Ga 3:17). L'alliance entre en vigueur, « selon toute apparence », dès la traversée de l'Euphrate.</p>
+<h4>4 · Explication du texte</h4>
+<p>Cinq volets : (1) grande nation — d'un couple stérile ; (2) bénédiction personnelle ; (3) nom grand — réputation, mémoire ; (4) miroir — Dieu traite les nations comme elles traitent Abram ; (5) l'universel — « toutes les familles (mishpaḥot, les clans) du sol ». « En TOI » (12:3) devient « en ta POSTÉRITÉ » (22:18) après l'épreuve du Moriya — la promesse se resserre et se précise, scellée par serment (22:16). Paul argumente sur le SINGULIER : pas « aux postérités », mais « à ta postérité » — c'est-à-dire Christ (Ga 3:16) ; et « si vous êtes à Christ, vous êtes la postérité d'Abraham » (Ga 3:29). Pierre, le premier, l'avait prêchée aux Juifs (Ac 3:25-26).</p>
+<h4>5 · Interprétation</h4>
+<p>L'alliance abrahamique : alliance unilatérale et inconditionnelle — Dieu jure par lui-même (Gn 22:16 ; Hé 6:13-18), elle ne dépend pas des performances d'Abraham. La postérité principale : le Christ ; la postérité associée : les 144 000 en union avec lui ; la grande nation : Israël selon la chair (constitué en 1513), puis « l'Israël de Dieu » (Ga 6:16). Le nom grand : Abram devient Abraham, « père de multitude » (17:5) — vénéré aujourd'hui par juifs, chrétiens et musulmans : trois religions, un père. Le miroir : Égypte frappée pour Saraï (12:17), Guérar averti (20:3), les rois ligués battus (ch. 14) — puis, à l'échelle des siècles, les empires qui touchent à Israël s'y brisent.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1943 (Harân)</td><td>Appel + promesse en 5 volets (12:1-3)</td></tr>
+<tr><td class="d">1943 (Sichem)</td><td>« À ta postérité je donnerai ce pays » (12:7)</td></tr>
+<tr><td class="d">1918 (Isaac)</td><td>L'héritier promis naît (21:1-3)</td></tr>
+<tr><td class="d">Moriya</td><td>Serment : « en ta postérité » (22:16-18)</td></tr>
+<tr><td class="d">1513 (Sinaï)</td><td>La grande nation est constituée</td></tr>
+<tr><td class="d">29/33</td><td>Christ : LA postérité (Ga 3:16) ; 144 000 associés</td></tr>
+<tr><td class="d">Ac 3:25</td><td>Pierre prêche l'alliance aux Juifs</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Our des Chaldéens (Tell el-Muqayyar) : fouilles Woolley (1927-1934) — métropole riche, ziggourat d'Ur-Nammu, tombes royales, milliers de tablettes : le monde qu'Abram quitte est un monde réel, daté, exhumé. Harân : autre ville du dieu-lune — la famille reste dans son univers religieux jusqu'à l'appel. Mari (XVIIIe s.) : archives amorites aux noms proches des patriarches (Benjamin ! « fils du sud » comme Benyamin). Nuzi : contrats d'adoption-héritier — l'arrière-plan exact d'Éliézer (15:2-3, voir GE005). « Abram l'Hébreu » (14:13) : première occurrence — de Eber (l'ancêtre) ou du « passage » de l'Euphrate, les deux lectures coexistent.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le Croissant fertile en trois étapes : Our (sud mésopotamien, golfe) → Harân (nord, au pied du Taurus) → Canaan (Sichem, Béthel, Négeb) — près de 2 000 km à pied avec troupeaux, femmes et tentes. L'Euphrate traversé : la rupture géographique scelle la rupture religieuse — « l'Hébreu », le passeur. Canaan « alors habitée par les Cananéens » (12:6) : la promesse du pays est un paradoxe dès le premier jour — Dieu donne ce qui est occupé (voir GE004).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Onomastique amorite : les tablettes de Mari portent des noms à structure identique aux noms patriarcaux — le récit baigne dans le bon siècle linguistique. Archéologie d'Our : comptabilités, écoles, contrats — une société écrite, pas un décor de légende. Chronologie : 1943 = 1513 + 430 (Ga 3:17 ; Ex 12:40-41) — calcul interne verrouillé (voir GE006) ; les datations profanes d'« Abraham » oscillent autour du XVIIIe siècle — convergence partielle, discutée (voir limites). Démographie : d'un couple à une nation en cinq générations — voir GE005.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Appel à Harân (1943) → Alliance (Euphrate) → Isaac (1918) → Nation (1513) → Christ (29/33, LA postérité) → 144 000 (postérité associée) → toutes les familles bénies (Royaume). Cinq volets, une trajectoire, zéro échec.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le 14 Nisan 1943 pour l'entrée en vigueur : « selon toute apparence » (article cité) — déduction, pas verset. Pharaons d'Abram (ch. 12, 20 pour Guérar/Abimélek) : non nommés. Datation profane d'Abraham : non fixée — la fiche suit le système des publications. « Nom grand » : mémoire et paternité, pas un culte rendu à Abraham. Postérité de la promesse ≠ descendance biologique : Ismaël, les fils de Qetura, Ésaü/Édom en sont exclus (Rm 9:7-8 — la promesse passe par Isaac).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cinq volets</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1943 (appel)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'héritier</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1918 (Isaac)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le serment</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Moriya</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La nation</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (Sinaï)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LA postérité</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29/33 (Christ)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Toutes bénies</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Royaume</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034">Alliance abrahamique — postérité, 1943, bénédiction mondiale<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001054">ALLIANCE (it) — entrée en vigueur, 430 ans, semence<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001054</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/12">Genèse 12 — Bible d'étude, notes et renvois<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/48/3">Galates 3 — Bible d'étude (3:16, la postérité)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/48/3</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE003 — En toi seront bénies toutes les familles</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE004">
+<div class="visuel"><img src="images/prophe_GE004_terre.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE004 · CATÉGORIE GE</div>
+<h3>Tout le pays que tu vois, pour toujours</h3>
+<div class="ref">Genèse 13:14-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Don du pays (Béthel → 1473 conquête)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE004</div><audio controls preload="none" src="audio/fiche_GE04_terre.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE04_terre.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 13:14-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Don du pays (Béthel → 1473 conquête)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P004 (13:14-17 : la terre donnée à sa postérité, pour toujours) ; accomplissement Jos 11:23 ; 21:43-45 ; 2Ch 20:7</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Lève les yeux : nord, sud, est, ouest. » (13:14 — quatre vents !)</li>
+<li>« Tout le pays que tu vois, je te le donnerai. » (13:15 — tout !)</li>
+<li>« À toi et à ta postérité, pour toujours. » (13:15 — ôlam !)</li>
+<li>« Je rendrai ta postérité comme la poussière. » (13:16 — poussière !)</li>
+<li>« Lève-toi, parcours le pays en long et en large. » (13:17 — arpente !)</li>
+<li>« Aucune parole ne resta sans effet : toutes s'accomplirent. » (Jos 21:45)</li>
+<li>« À la postérité d'Abraham, ton ami, pour toujours. » (2Ch 20:7)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Retour d'Égypte, entre Béthel et Aï (13:3-4). Les troupeaux ont grandi, la terre est trop petite pour deux campements : querelle des bergers. Abram laisse Lot choisir — Lot prend la plaine du Jourdain, « comme le jardin de Jéhovah » (13:10), et dresse ses tentes « jusqu'à Sodome » (13:12). C'est APRÈS cette séparation que Dieu parle : l'héritier n'est pas le neveu opportuniste. Promesse de Sichem (12:7) renouvelée et élargie ; Abram s'installe ensuite aux chênes de Mamré, à Hébron (13:18) — il y restera.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre directions : la totalité visible — le don ne se marchande pas par parcelles. « Pour toujours » (le-'olam) : durée indéfinie, sans date d'expiration — voir limites pour les exils. « Poussière de la terre » : PREMIÈRE des trois images de multitude — poussière (13), puis étoiles (15), puis sable (22:17) : terre, ciel, mer — une progression, une seule promesse. « Parcours » : arpentage — marcher le pays, c'est juridiquement en prendre possession (le pas du propriétaire). « À TOI » : le paradoxe — Étienne dira qu'Abraham n'y reçut « pas même de quoi poser le pied » (Ac 7:5) : le don s'accomplit en sa postérité, et Abraham lui-même attend la résurrection pour en jouir (Hé 11:8-10 — compréhension).</p>
+<h4>5 · Interprétation</h4>
+<p>Don confirmé à Isaac (« à toi et à ta postérité », 26:3-4) et à Jacob (28:13 ; 35:12) — trois patriarches, un seul titre de propriété. Prise de possession : Josué conquiert (11:23 : « le pays se reposa de la guerre »), distribue (Jos 13-21 par le sort devant Jéhovah), et le bilan tombe : « Jéhovah donna à Israël TOUT le pays… AUCUNE parole ne resta sans effet » (21:43-45 — solennité comptable : tout, aucune). Apogée : Salomon règne « depuis le Fleuve jusqu'au pays des Philistins et à la frontière d'Égypte » (1R 4:21 — voir P008). Josaphat, des siècles plus tard, rappelle le titre : « à la postérité d'Abraham, ton ami, pour toujours » (2Ch 20:7). Type : la terre promise préfigure le paradis mondial (« les humbles posséderont la terre », Ps 37:29 ; Mt 5:5).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Béthel (après Lot)</td><td>Don : 4 directions, pour toujours (13:14-17)</td></tr>
+<tr><td class="d">Macpéla</td><td>Seule possession : un tombeau payé (Gn 23)</td></tr>
+<tr><td class="d">1473 (conquête)</td><td>Josué prend le pays ; repos (11:23)</td></tr>
+<tr><td class="d">Distribution</td><td>Le sort partage ; bilan : TOUT accompli (21:43-45)</td></tr>
+<tr><td class="d">Salomon</td><td>Apogée : Euphrate → Égypte (1R 4:21)</td></tr>
+<tr><td class="d">Josaphat</td><td>Titre rappelé : « pour toujours » (2Ch 20:7)</td></tr>
+<tr><td class="d">1208 (stèle)</td><td>Israël attesté en Canaan (Merneptah)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Hébron : parmi les plus anciennes cités habitées du Levant (Tell Rumeida — occupation dès le Chalcolithique) ; « bâtie sept ans avant Tsoân d'Égypte » (Nb 13:22 — mémoire urbaine précise). Macpéla (Gn 23) : le seul terrain qu'Abraham possédera jamais — un tombeau, payé plein prix devant témoins : le propriétaire du pays n'y possède qu'une sépulture — en attendant. Hazor : strate de destruction violente (fouilles Yadin — débattue, voir limites). Stèle de Merneptah (1208) : « Israël est dévasté, il n'a plus de semence » — PREMIÈRE mention extra-biblique d'Israël, déjà installé en Canaan : compatible avec une conquête au XVe siècle, incompatible avec un Exode vers 1200.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le belvédère de Béthel-Aï (~900 m) : à l'est, la vallée du Jourdain et les monts de Galaad ; au sud, le Négeb ; à l'ouest, les collines jusqu'à la plaine côtière ; au nord, les monts d'Éphraïm — tout le futur Israël d'un seul regard. Mamré : chênes et pâturages des monts de Juda, à 927 m — Abraham y campe, Isaac et Jacob après lui. « En long et en large » : de Dan à Beér-Shéba (~250 km), de la mer au Jourdain (~100 km) — un pays-pont entre empires, jamais un empire lui-même.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Arpentage antique : cordeaux, pas comptés, bornes — le droit foncier du Bronze récent connaît la prise de possession par parcours ; la Genèse en fait un acte prophétique. Épigraphie : Merneptah (1208, Le Caire) — déterminatif de PEUPLE (pas de ville) pour Israël : à cette date, Israël est une entité tribale en Canaan. Sédentarisation du Fer I : centaines de villages non fortifiés dans les collines — le tableau matériel d'une installation progressive. Datation de la conquête : XVe siècle (système des publications : 1473) contre XIIIe (école profane dominante) — la fiche suit le texte et le signale (voir limites).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Promesse à Béthel (regarde, arpente) → 430 ans d'attente (Égypte) → Conquête (1473, Josué) → Repos et distribution (Jos 21:43-45 : TOUT accompli) → Apogée (Salomon, 1R 4:21) → Type du paradis mondial.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Pour toujours » ET les exils : le DON est inconditionnel, la JOUISSANCE est conditionnelle (Dt 28 ; 70 ans à Babylone ; 70 de n. è.) — distinction nécessaire, pas une échappatoire. Ac 7:5 : Abraham n'a rien possédé — accompli en postérité + résurrection à venir (compréhension). Occupation incomplète : Juges 1 liste les enclaves non conquises — Jos 21:45 proclame le don effectif, pas l'occupation totale. Datation profane (XIIIe s.) vs 1473 : divergence signalée, système des publications suivi. Frontières maximales : voir P008 (1R 4:21), pas cette fiche.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Regarde, arpente</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Béthel (promesse)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Un tombeau</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Macpéla</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Conquête</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (Josué)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TOUT accompli</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 21:45</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Apogée</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Attesté</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1208 (stèle)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/13">Genèse 13 — Bible d'étude, notes et renvois<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/13">Genèse 13 — Traduction du monde nouveau (lecture)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/13</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034">Alliance abrahamique — la Terre promise à la postérité<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE004 — Tout le pays que tu vois, pour toujours</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE005">
+<div class="visuel"><img src="images/prophe_GE005_etoiles.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE005 · CATÉGORIE GE</div>
+<h3>Compte les étoiles : ainsi sera ta descendance</h3>
+<div class="ref">Genèse 15:4-6</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Promesse de multitude (→ 1513 nation)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE005</div><audio controls preload="none" src="audio/fiche_GE05_etoiles.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE05_etoiles.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 15:4-6</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Promesse de multitude (→ 1513 nation)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P005 (15:4-6 : descendance aussi nombreuse que les étoiles) ; accomplissement Ex 1:7 ; Dt 1:10 ; Hé 11:12</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Ce n'est pas lui qui deviendra ton héritier. » (15:4 — pas Éliézer !)</li>
+<li>« Celui qui sortira de tes entrailles. » (15:4 — littéral !)</li>
+<li>« Sors, regarde le ciel : compte les étoiles, si tu le peux. » (15:5 — la nuit !)</li>
+<li>« Ainsi deviendra ta descendance. » (15:5 — semence !)</li>
+<li>« Et il eut foi en Jéhovah, qui le lui compta comme justice. » (15:6 — foi !)</li>
+<li>« Les fils d'Israël furent féconds et pullulèrent. » (Ex 1:7)</li>
+<li>« Vous êtes aujourd'hui aussi nombreux que les étoiles. » (Dt 1:10)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Au retour de la victoire sur Kedorlaomer (ch. 14) — Abram a refusé le butin du roi de Sodome. La nuit : angoisse du sans-enfant — son héritier désigné est Éliézer de Damas, « fils de sa maison » (15:2-3 : adoption coutumière, voir hist). Dieu le fait SORTIR — sous le ciel pur de Canaan — et remplace l'héritier de papier par une multitude d'étoiles. Puis l'alliance solennelle des animaux partagés (15:9-21 : fournaise et torche passant entre les morceaux — Dieu s'engage seul).</p>
+<h4>4 · Explication du texte</h4>
+<p>Éliézer écarté : l'héritier sera biologique — « celui qui sortira de tes entrailles » (littéralité voulue : pas d'adoption, un fils). Étoiles : DEUXIÈME image de multitude — poussière (13:16), ÉTOILES (15:5), sable (22:17) : terre, ciel, mer — une seule promesse, trois immensités. « S'il te plaît, compte » : l'injonction est un piège pédagogique — on ne compte pas les étoiles (voir sci). 15:6, la charte : « il eut foi… justice » — justice IMPUTÉE (chasab, compter au crédit), AVANT la Loi (1513) et AVANT la circoncision (ch. 17) : citée trois fois dans le Nouveau Testament (Rm 4:3 ; Ga 3:6 ; Jc 2:23) — la foi justifie avant et sans les œuvres de loi.</p>
+<h4>5 · Interprétation</h4>
+<p>Double postérité : charnelle — Israël pullulant en Égypte (Ex 1:7 reprend les verbes de Gn 1:28 : « féconds, multipliez » — une nouvelle création démographique) ; spirituelle — « ceux qui ont foi sont bénis avec Abraham » (Ga 3:9). Moïse constate : « vous êtes aujourd'hui comme les étoiles du ciel, en multitude » (Dt 1:10 — l'oracle cité comme accompli). L'épître aux Hébreux boucle : « d'un seul homme, et comme mort [100 ans !], sont nés des descendants comme les étoiles… comme le sable » (Hé 11:12 — étoiles ET sable réunis). Jacques complète Paul : la foi d'Abraham, « comptée comme justice », s'est montrée vivante par l'offrande d'Isaac (Jc 2:21-23) — foi et œuvres, pas foi contre œuvres.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Nuit (Gn 15)</td><td>Éliézer écarté ; étoiles promises ; foi = justice</td></tr>
+<tr><td class="d">1918 (Isaac)</td><td>Le fils des entrailles naît</td></tr>
+<tr><td class="d">1728 (Égypte)</td><td>70 âmes entrent à Goshen</td></tr>
+<tr><td class="d">1513 (Exode)</td><td>600 000 hommes de pied sortent (Ex 12:37)</td></tr>
+<tr><td class="d">Ex 1:7</td><td>« Féconds et pullulèrent » — constat</td></tr>
+<tr><td class="d">Dt 1:10</td><td>« Comme les étoiles » — oracle accompli</td></tr>
+<tr><td class="d">Hé 11:12</td><td>Étoiles + sable réunis ; Ga 3:29 : postérité spirituelle</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Nuzi (XVe s., Hourrites) : contrats d'adoption d'un serviteur comme héritier — l'arrière-plan juridique exact d'Éliézer (15:2-3) : Abram suivait le droit de son temps, Dieu le dépasse. Les chiffres du texte : 70 âmes entrées en Égypte (Ex 1:5 ; Gn 46:27) → 600 000 hommes de pied à la sortie (Ex 12:37) → 603 550 recensés (Nb 1:46). Cadre égyptien : papyrus Brooklyn 35.1446 — liste de serviteurs aux noms sémitiques (XVIIIe-XVIIe s.) ; Avaris (Tell el-Dab'a, fouilles Bietak) : quartiers sémitiques dans le Delta — le décor, pas la preuve (voir limites). Merneptah (1208) : Israël existe comme peuple — la multitude promise est devenue une nation attestée.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le ciel de Canaan : sans pollution lumineuse, ~3 000 étoiles visibles à l'œil nu — et l'impossibilité ressentie de les compter, l'expérience même du verset. Goshen : le Delta oriental, pâturages entre Nil et désert — 215 ans de croissance (1728 → 1513) dans une terre à part, sans mélange. De 70 à des centaines de milliers : c'est dans ce delta que la famille devient peuple — la géographie de la promesse.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Astronomie : à l'œil nu, quelques milliers d'étoiles ; au télescope, des milliards de galaxies — « si tu le peux » reste vrai à toutes les échelles : la Bible déclarait l'innombrable avant l'optique. Démographie : de 70 à ~2 millions en 215 ans exige un doublement tous les ~15 ans — rythme élevé mais documenté dans des populations prémodernes sans contraception (familles nombreuses, mariages précoces, faible célibat) — le texte ajoute la bénédiction comme variable (« pullulèrent », Ex 1:7). Débat « éleph » (mille / clan / unité) : signalé aux limites — la fiche suit les chiffres du texte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Pas d'enfant (Éliézer écarté) → Promesse sous les étoiles → Foi comptée comme justice (15:6) → Isaac (1918) → 70 en Égypte (1728) → Nation pullulante (Ex 1:7) → « Comme les étoiles » (Dt 1:10) → Postérité spirituelle (Ga 3:29).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Chiffres du recensement : le débat sur « éleph » (603 550 hommes ?) est réel en exégèse — la fiche cite le texte sans trancher la philologie. Pas d'inscription égyptienne nommant des Hébreux esclaves : Brooklyn et Avaris donnent le CADRE (Sémites asservis au Delta), pas le NOM — Merneptah (1208) est la première mention d'Israël, déjà en Canaan. 15:6 : la foi justifie — elle ne dispense pas d'obéir (Jc 2). Poussière/étoiles/sable : trois images d'UNE promesse, pas trois promesses.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Compte !</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit (promesse)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le fils</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1918 (Isaac)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 âmes</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (Goshen)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">600 000</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (sortie)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Comme les étoiles</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 1:10</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/15">Genèse 15 — Bible d'étude, notes (semence, justice)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/15">Genèse 15 — Traduction du monde nouveau (lecture)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/15</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010959">Chronologie — déluge, Isaac 1918, alliance 1943<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010959</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE005 — Compte les étoiles : ainsi sera ta descendance</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE006">
+<div class="visuel"><img src="images/prophe_GE006_egypte.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE006 · CATÉGORIE GE</div>
+<h3>400 ans d'oppression, puis la sortie avec de grands biens</h3>
+<div class="ref">Genèse 15:13-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 430 ans (1943 → 1513)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE006</div><audio controls preload="none" src="audio/fiche_GE06_egypte.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE06_egypte.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 15:13-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 430 ans (1943 → 1513)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P006 (15:13-14 : servitude de 400 ans, puis sortie avec de grands biens) ; accomplissement Ex 12:35-41</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Sache bien : étrangers dans un pays pas à eux. » (15:13 — sache !)</li>
+<li>« On les opprimera pendant 400 ans. » (15:13 — 400 !)</li>
+<li>« Mais je jugerai la nation qu'ils serviront. » (15:14 — jugerai !)</li>
+<li>« Après cela, ils sortiront avec de grands biens. » (15:14 — biens !)</li>
+<li>« Jéhovah donna faveur au peuple : ils dépouillèrent les Égyptiens. » (Ex 12:36)</li>
+<li>« Au bout de 430 ans, en ce jour même, toutes les armées sortirent. » (Ex 12:41)</li>
+<li>« La Loi, venue 430 ans après, n'annule pas l'alliance. » (Ga 3:17)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La même nuit que GE005 : « une obscurité grande et effrayante » tombe sur Abram (15:12) — et DANS cette obscurité, l'oracle le plus daté de la Genèse. Avant même l'alliance solennelle des v. 17-18, Dieu détaille quatre siècles : statut d'étrangers, oppression, jugement de l'oppresseur, sortie enrichie. Étienne, devant le Sanhédrin, citera ce texte comme le programme accompli de l'Exode (Ac 7:6-7). Paul en fera une borne chronologique (Ga 3:17).</p>
+<h4>4 · Explication du texte</h4>
+<p>400 ou 430 ? Les deux — ce ne sont pas les mêmes périodes. 430 ANS : de l'alliance abrahamique (1943, entrée en vigueur) à l'alliance de la Loi (1513, Sinaï) — Paul l'affirme (Ga 3:17) ; Ex 12:40 (Septante et Pentateuque samaritain) précise : « en Égypte ET en Canaan » — 215 ans en Canaan (1943 → 1728, entrée de Jacob) + 215 ans en Égypte (1728 → 1513). 400 ANS : l'OPPRESSION — depuis ~1913 (Isaac sevré vers 5 ans, Ismaël « se moque » — Ga 4:29 dit « persécutait ») jusqu'en 1513. Pile 400. « Je jugerai » : les dix plaies sont des jugements contre les dieux d'Égypte (Ex 12:12 : « j'exercerai des jugements contre TOUS les dieux »). « Grands biens » : le salaire impayé — or, argent, vêtements (Ex 3:21-22 ; 12:35-36), qui habilleront le tabernacle.</p>
+<h4>5 · Interprétation</h4>
+<p>Chronologie verrouillée : 1943 (alliance, Abram traverse l'Euphrate) → 1918 (Isaac) → ~1913 (persécution : début des 400) → 1728 (Jacob entre en Égypte, fin des 215 cananéens) → 1513, 14 Nisan (Pâque, sortie : fin des 430 ET des 400). Contrôle externe : le Temple fondé « la 480e année après la sortie » (1R 6:1) — 4e année de Salomon (1034) : 1034 + 479 = 1513. Le compte tombe juste. « En ce jour même » (Ex 12:41, répété 51) : la ponctualité divine — quatre siècles annoncés, jour pour jour. La « dépouille » : pas un pillage — les Égyptiens DONNENT (« Jéhovah donna faveur », 12:36) : butin de guerre sans guerre, justice restaurative après deux siècles de travail forcé.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1943 (alliance)</td><td>Début des 430 ans (Ga 3:17)</td></tr>
+<tr><td class="d">1918 (Isaac)</td><td>La postérité promise naît</td></tr>
+<tr><td class="d">~1913 (sevrage)</td><td>Ismaël persécute : début des 400</td></tr>
+<tr><td class="d">1728 (Jacob)</td><td>Entrée en Égypte (+215 ans)</td></tr>
+<tr><td class="d">1513 (plaies)</td><td>Jugement : 10 coups contre les dieux (Ex 12:12)</td></tr>
+<tr><td class="d">14 Nisan 1513</td><td>Pâque + sortie + dépouille (Ex 12:35-36)</td></tr>
+<tr><td class="d">Ex 12:41</td><td>« En ce jour même » : fin des 430 ans</td></tr>
+<tr><td class="d">Sinaï (1513)</td><td>Alliance de la Loi (Ex 19) ; contrôle 1R 6:1</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Josèphe (Antiquités II, xv, 2) compte les 430 ans depuis l'entrée d'Abraham en Canaan — l'historien juif confirme le calcul que Paul reprend (Ga 3:17). Double témoin textuel : Septante ET Pentateuque samaritain ajoutent « et en Canaan » en Ex 12:40 — le texte massorétique, plus bref, se comprend à leur lumière. Cadre égyptien : corvées de briques (Ex 1:14 ; 5:7-8 — la paille retirée), villes-magasins Pithom et Ramsès (1:11 — le Delta oriental, zone des fouilles d'Avaris/Piramesse). Silence des monuments : normal — l'Égypte ne gravait pas ses défaites (voir limites) ; le premier témoin externe reste Merneptah (1208).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Goshen (Delta oriental) → Ramsès (rassemblement) → Sukkoth (premier camp, Ex 12:37) → la mer (yam-suph, « mer des Roseaux » — localisation débattue, voir limites) → Sinaï (la Loi, troisième mois, Ex 19:1 : fin des 430). Itinéraire de quelques semaines pour une foule de centaines de milliers — lenteur voulue (« de peur qu'ils ne regrettent », Ex 13:17-18 : le détour évite les Philistins). Les « grands biens » voyagent : l'or d'Égypte devient le mobilier du tabernacle au Sinaï.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Comptabilité du tabernacle : ~1 000 kg d'or, ~3 400 kg d'argent recensés (Ex 38:24-29) — les « grands biens » sont chiffrables, pas rhétoriques. Critique textuelle : TM (« en Égypte ») vs LXX + Samaritain (« en Égypte et en Canaan ») — ici, la leçon longue est confirmée par Paul (Ga 3:17) : cas d'école où la critique textuelle et la chronologie se valident mutuellement. Plaies et théologie : chaque fléau vise un dieu — Nil (Hâpi), grenouilles (Héqet), ténèbres (Rê), premiers-nés (Pharaon, fils de Rê) : ce n'est pas de la météo, c'est un procès. Démographie : voir GE005.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>1943 Alliance (début des 430) → 1918 Isaac → ~1913 persécution (début des 400) → 1728 Égypte (+215) → 1513 Pâque : jugement (10 plaies) + sortie + grands biens → Sinaï : la Loi (fin des 430). « En ce jour même » — deux calendriers, une sortie.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le pharaon de l'Exode n'est pas nommé — la fiche ne tranche entre aucun candidat (Thoutmosis ? Aménophis ? hypothèses profanes, pas positions). Hyksos, papyrus Ipuwer : parallèles discutés, datations incertaines — ni preuves, ni réfutés ici. Mer des Roseaux vs mer Rouge : les deux lectures existent (yam-suph). « 400 » : pile 1913 → 1513 si l'on part du sevrage-persécution — lecture suivie, signalée comme calculée. L'oppression n'a pas duré 400 ans au même degré : faveur sous Joseph, puis « nouveau roi » (Ex 1:8) — le chiffre couvre étrangers + affligés.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">430 : top</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1943 (alliance)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">400 : top</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1913 (persécution)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">215 + 215</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (Égypte)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugement</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (plaies)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sortie + biens</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan 1513</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">430 : fin</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Sinaï (Loi)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/15">Genèse 15 — Bible d'étude (13-14, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/15</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1953169">430 ans — Canaan + Égypte : réponse détaillée<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1953169</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2004206">Points marquants de l'Exode — 12:40, les biens<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2004206</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010959">Chronologie — 1943 à 1513, les 400 ans<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010959</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE006 — 400 ans d'oppression, puis la sortie avec de grands biens</span><span>Catégorie GE</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie GE</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>GE001 — La postérité écrasera le serpent</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sentence du serpent</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~4026 (Éden)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Talon meurtri, puis relevé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 (Golgotha)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dragon chassé</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914 (ciel)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dragon lié</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Millénium</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tête écrasée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin</text>
+</svg>
+<h4>GE002 — Canaan serviteur, Sem béni, Japhet élargi</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sem, Cham, Japhet</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2370 (déluge)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trois destins</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Oracle (tente)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Servitude</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (Gabaon)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Consommation</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1034 (corvée)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin des Cananéens</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">332–146</text>
+</svg>
+<h4>GE003 — En toi seront bénies toutes les familles</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cinq volets</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1943 (appel)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'héritier</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1918 (Isaac)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le serment</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Moriya</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La nation</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (Sinaï)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LA postérité</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29/33 (Christ)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Toutes bénies</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Royaume</text>
+</svg>
+<h4>GE004 — Tout le pays que tu vois, pour toujours</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Regarde, arpente</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Béthel (promesse)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Un tombeau</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Macpéla</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Conquête</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (Josué)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TOUT accompli</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 21:45</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Apogée</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Attesté</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1208 (stèle)</text>
+</svg>
+<h4>GE005 — Compte les étoiles : ainsi sera ta descendance</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Compte !</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit (promesse)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le fils</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1918 (Isaac)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 âmes</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (Goshen)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">600 000</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (sortie)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Comme les étoiles</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 1:10</text>
+</svg>
+<h4>GE006 — 400 ans d'oppression, puis la sortie avec de grands biens</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">430 : top</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1943 (alliance)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">400 : top</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1913 (persécution)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">215 + 215</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (Égypte)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugement</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (plaies)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sortie + biens</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan 1513</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">430 : fin</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Sinaï (Loi)</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

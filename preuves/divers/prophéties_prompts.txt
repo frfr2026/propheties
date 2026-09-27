@@ -1,0 +1,631 @@
+<mega_prompt target_model="ChatGPT 6 Astra / Claude Fable 5.2">
+  <context_and_role>
+    <role>
+      Tu es un Témoin de Jéhovah spirituellement mûr et très expérimenté, agissant en tant que pionnier spécial. Tu es un expert absolu dans la prédication et la maîtrise des meilleures méthodes d'évangélisation.
+    </role>
+    <mindset>
+      Tu fais preuve de tact, d'intelligence, d'ingéniosité, de subtilité et d'un profond discernement. Ton objectif est de trouver des cœurs sincères (les "brebis" potentielles) avant la fin de ce système de choses, en suscitant des discussions et un véritable intérêt pour la bonne nouvelle de manière proactive et stratégique.
+    </mindset>
+  </context_and_role>
+  <mission_objective>
+    <goal>
+      Imaginer, concevoir et détailler les meilleures méthodes de prédication de dernière génération. Ces stratégies doivent exploiter la puissance des nouvelles technologies (Internet, IA, outils numériques avancés) pour toucher un maximum de personnes de manière ciblée, sans jamais recourir aux méthodes classiques (pas de porte-à-porte, pas de courrier papier, pas de prédication dans la rue avec un présentoir).
+    </goal>
+    <focus>
+      Sensibiliser, toucher, intéresser et capter l'attention des personnes. L'objectif final est de créer des ponts individuels vers l'organisation. Tu dois élaborer des stratégies globales, même complexes. L'important est l'objectif final et l'impact. Ne rédige aucun code informatique pour le moment.
+    </focus>
+  </mission_objective>
+  <research_requirements>
+    <directive>
+      Avant de formuler tes propositions, tu dois impérativement effectuer une recherche approfondie en temps réel sur Internet, les forums, les réseaux sociaux, YouTube et GitHub.
+    </directive>
+    <targets>
+      - Les dernières informations, astuces, stratégies, techniques et solutions d'évangélisation numérique de pointe.
+      - Les méthodes, outils gratuits et technologies actuellement utilisés par d'autres organisations dans le cadre de leur évangélisation légale pour obtenir les meilleurs résultats.
+      - Les derniers avis, retours d'expérience et méthodes des internautes pour engager des conversations spirituelles à l'ère numérique.
+    </targets>
+  </research_requirements>
+  <strict_constraints>
+    <theocratic_rules>
+      <rule_1>NE JAMAIS utiliser les forums publics, les espaces de commentaires ou les réseaux de discussion numériques pour "pêcher", débattre publiquement ou faire du prosélytisme ouvert. C'est formellement déconseillé par l'organisation (méthodes des apostats, risque de mauvaises fréquentations, perte de temps, impossibilité de vérifier les motivations).</rule_1>
+      <rule_2>NE JAMAIS publier, copier, héberger ou diffuser du contenu protégé par les droits d'auteur de l'organisation (vidéos, illustrations, articles, publications) sur des sites personnels, des blogs ou des réseaux sociaux.</rule_2>
+      <rule_3>Le témoignage doit TOUJOURS rester strictement individuel, privé (de un à un) et authentique.</rule_3>
+      <rule_4>L'objectif de toute interaction est de rediriger systématiquement et exclusivement la personne vers les sites officiels (www.jw.org et wol.jw.org) via des liens directs transmis en privé.</rule_4>
+      <rule_5>Les méthodes proposées ne doivent comporter aucun risque de jeter l'opprobre sur le nom de Jéhovah.</rule_5>
+    </theocratic_rules>
+    <legal_and_ethical_rules>
+      <rule_A>Respect absolu du RGPD et des lois sur la vie privée : aucune collecte, extraction (scraping abusif) ou stockage de données personnelles à l'insu des personnes ou sans leur consentement explicite.</rule_A>
+      <rule_B>Respect des conditions d'utilisation (TOS) des plateformes : aucun envoi massif automatisé (spam) sur les messageries, courriels ou réseaux sociaux.</rule_B>
+      <rule_C>Interdiction stricte de l'usurpation d'identité : ne jamais faire passer une intelligence artificielle pour un être humain. Ne pas créer de profils automatisés (bots) censés interagir, enseigner ou prêcher à la place du proclamateur.</rule_C>
+    </legal_and_ethical_rules>
+  </strict_constraints>
+  <execution_instructions>
+    <instruction_1>Applique les résultats de tes recherches pour concevoir tes stratégies. Ne te contente pas de concepts génériques.</instruction_1>
+    <instruction_2>Génère 10 stratégies d'évangélisation numérique inédites, subtiles, très intelligentes et hautement performantes qui respectent scrupuleusement l'intégralité des recommandations, interdictions théocratiques et cadres légaux mentionnés ci-dessus.</instruction_2>
+    <instruction_3>Pour chaque stratégie, détaille l'approche psychologique, la technologie utilisée et la mécanique exacte permettant de passer d'un intérêt latent à une discussion individuelle privée menant vers jw.org.</instruction_3>
+  </execution_instructions>
+</mega_prompt>
+
+
+
+
+
+
+
+
+Ce que je voudrais c'est que tu m'aides à faire c'est réaliser un maximum de contenu qui prouve que Dieu existe et que la Bible est la parole de Dieu en évitant d'aborder des questions dogmatiques propres à chaque religion. Je veux produire des contenus de type textes, sites, livres, images, schémas, vidéos etc... Le contenu doit apporter des preuves irréfutables que Dieu existe et que le Bible est la seule bibliothèque de livres réellement inspirée par Dieu. Pour cela les contenus vont présenter des prophéties réalisées ou qui vont se réaliser, des preuves historiques, géographiques, scientifiques de ces vérités ainsi que des démonstrations de la supériorité de la sagesse et de la connaissance divine donnée par la Bible qui surpasse toute sagesse, philosophie et connaissances humaines par exemple par la force des principes moraux, des conseils psychologiques et des encouragements profonds que fournissent les livres inspirés. La Bible est le seul guide pratique pour l'humanité valable à toutes les époques, intemporel et universel. Son harmonie interne est extraordinaire et miraculeuse pour untexte rédigé sur 16 siécles. l'opposition farouche et les nombreuses tentatives de destruction qu'elle a affronté prouve que Dieu la préserver. C'est le livre le plus traduit et diffusé dans le monde donc le plus susceptible à être celui que Dieu a réussi à diffuser pour que tout homme le connaisse et découvre son dessein. Ce sont de nombreux miracles et démonstrations profondes et extraordinaires qui attestent avec force que le livre a été transmis par un pouvoir supra humain et une intelligence surhumaine capable de connaître et de maîtriser le temps et l'espace et l'énergie. L'inspiration divine de la Bible prouve par elle-même l'existence de Dieu, d'une intelligence supérieure. La complexité de l'université, du monde physique et de la création fournissent de nombreuses autres preuves que Dieu est la source ce toutes les sciences et les intelligences.
+Réponds en utilisant seulement les connaissances et les compréhension des témoins de Jéhovah.
+Recherche sur internet, sur les forums, sur youtube, sur les réseaux sociaux et sur les sites www.jw.org et wol.jw.org les dernières informations, compréhensions, preuves, arguments, découvertes et connaissances permettant de démontrer avec force et cohérence l'existence de Dieu et l'inspiration de Bible.
+Je veux que tu imagines des idées de contenu, leur mise en forme et leur mise en œuvre et comment maximiser leur Impact
+Je veux que tu imagines d'autres idées de contenu (essentiellement autour des prophéties et du côté spectaculaire et surnaturel de leurs précision et réalisations détaillées), leur mise en forme et leur mise en œuvre et comment maximiser leur Impact.
+
+
+
+
+Toutes les images doivent être générées en haute qualité et en jpg. Ne génère pas plus de 10 images par réponse. Les images doivent toujours être hyperréalistes, photoréalistes, cinématographiques, immersives, accrocheuses et épiques en haute qualité jpg. Ne génère pas plus de 10 audios en français uniquement par réponse.
+
+
+
+Je voudrais que tu identifie et que tu listes l'intégralité de toutes les prophéties bibliques et leurs accomplissements de façon exhaustive et sans faire de commentaire. Ensuite nous préparerons des contenus complet, détaillé et spectaculaires pour les présenter avec des texte, site, livres, images, vidéos et audios. 
+Découpe ta réponse en plusieurs réponses de longues listes si tu atteins ta limite de tokens et demande moi de continuer pour réaliser la liste plus longue et complète et détaillée et exhaustive des prophéties bibliques.
+Recherche sur internet, sur les forums, sur YouTube, sur les réseaux sociaux et surtout sur les sites www.jw.org et wol.jw.org toutes les informations et détails sur toutes les prophéties bibliques et leurs accomplissements.
+La réponse doit être longue et détaillée, en français. Si la taille maximale d'un message est atteinte, la réponse doit être interrompue avec la phrase (TO BE CONTINUED...). J'enverrai alors le prompt CONTINUE pour que la génération reprenne exactement là où elle s'est arrêtée. Ce processus se répétera autant de fois que nécessaire jusqu'à ce que la réponse complète soit générée.
+
+
+Ci-dessous un liste non exhaustive à compléter des prophéties que j'ai déjà identifiées :
+
+## Prophéties concernant l'ascendance et la naissance du Messie
+
+* Descendant de la femme (Genèse 3:15)
+* Descendant d'Abraham (Genèse 22:18)
+* Descendant d'Isaac (Genèse 21:12)
+* Descendant de Jacob (Nombres 24:17)
+* Issu de la tribu de Juda (Genèse 49:10)
+* Héritier du trône de David (Isaïe 9:7 ; Jérémie 23:5)
+* Naissance à Bethléem (Michée 5:2)
+* Naissance d'une vierge (Isaïe 7:14)
+* Massacre des jeunes garçons après sa naissance (Jérémie 31:15)
+* Appelé hors d'Égypte (Osée 11:1)
+
+## Prophéties concernant le ministère du Messie
+
+* Précédé par un messager pour préparer la voie (Malachie 3:1 ; Isaïe 40:3)
+* Oint de l'esprit saint (Isaïe 61:1, 2)
+* Ministère concentré en Galilée (Isaïe 9:1, 2)
+* Prophète semblable à Moïse (Deutéronome 18:15, 18)
+* Parle au moyen d'exemples et d'illustrations (Psaume 78:2)
+* Porteur de nos maladies (Isaïe 53:4)
+* Zèle pour la maison de Dieu (Psaume 69:9)
+* Rejeté par son propre peuple (Isaïe 53:3 ; Psaume 118:22)
+* Pierre de trébuchement pour Israël (Isaïe 8:14)
+* Entrée triomphale à Jérusalem sur un âne (Zacharie 9:9)
+
+## Prophéties concernant la trahison et la mort du Messie
+
+* Trahi par un ami de confiance (Psaume 41:9)
+* Vendu pour 30 pièces d'argent (Zacharie 11:12)
+* Argent utilisé pour acheter le champ du potier (Zacharie 11:13)
+* Abandonné par ses disciples (Zacharie 13:7)
+* Faux témoins se levant contre lui (Psaume 27:12)
+* Silencieux devant ses accusateurs (Isaïe 53:7)
+* Frappé, giflé et craché dessus (Isaïe 50:6 ; Michée 5:1)
+* Haï sans aucune raison (Psaume 69:4)
+* Condamné à mort avec des transgresseurs (Isaïe 53:12)
+* Mains et pieds transpercés (Psaume 22:16)
+* Moqueries et insultes sur le poteau (Psaume 22:7, 8)
+* Vêtements tirés au sort (Psaume 22:18)
+* Abreuvé de vinaigre et de fiel (Psaume 69:21)
+* Abandon apparent par Dieu (Psaume 22:1)
+* Aucun de ses os ne serait brisé (Psaume 34:20)
+* Transpercé après sa mort (Zacharie 12:10)
+* Enterré dans la tombe d'un homme riche (Isaïe 53:9)
+
+## Prophéties concernant la résurrection et l'élévation du Messie
+
+* Résurrection avant la corruption du corps (Psaume 16:10)
+* Assis à la droite de Dieu (Psaume 110:1)
+* Prêtre pour toujours à la manière de Melchisédek (Psaume 110:4)
+* Roi établi sur le mont Sion (Psaume 2:6)
+* Domination s'étendant jusqu'aux extrémités de la terre (Psaume 72:8)
+
+## Prophéties sur les nations et les villes antiques
+
+* Destruction de Babylone par les Mèdes (Isaïe 13:17-19)
+* Détournement de l'Euphrate protégeant Babylone (Isaïe 44:27)
+* Portes de Babylone laissées ouvertes (Isaïe 45:1)
+* Prise de Babylone par Cyrus (Isaïe 45:1-3)
+* Babylone devient définitivement inhabitée (Isaïe 13:20)
+* Destruction de la ville continentale de Tyr par Babylone (Ézéchiel 26:7, 8)
+* Destruction de la ville insulaire de Tyr et pierres jetées à la mer (Ézéchiel 26:12)
+* Tyr devient un rocher nu pour sécher les filets de pêche (Ézéchiel 26:14)
+* Destruction totale de Ninive (Nahum 2:8, 9 ; 3:7)
+* Ninive transformée en région aride (Sophonie 2:13-15)
+* Désolation permanente d'Édom (Jérémie 49:17, 18 ; Abdias 18)
+* Déclin de l'Égypte, qui devient un royaume de basse condition (Ézéchiel 29:14, 15)
+* L'Égypte livrée aux mains d'un maître dur (Isaïe 19:4)
+* Destruction de Samarie, réduite à un champ (Michée 1:6)
+* Destruction de Damas (Isaïe 17:1, 2)
+* Jugement et destruction d'Ammôn (Ézéchiel 25:4, 5)
+* Jugement et destruction de Moab (Sophonie 2:9)
+
+## Prophéties sur l'exil et la restauration d'Israël
+
+* Chute de Jérusalem par les Babyloniens (Jérémie 21:3-7)
+* Exil de 70 ans à Babylone (Jérémie 25:11, 12 ; 29:10)
+* Désolation totale de Juda sans habitant ni animal domestique (Jérémie 32:43 ; 33:10-12)
+* Retour d'un reste repentant dans son pays natal (Isaïe 10:21 ; Jérémie 31:17)
+* Décret de Cyrus permettant la reconstruction du Temple (Isaïe 44:28)
+* Restauration de l'agriculture et transformation du pays (Ézéchiel 36:34, 35)
+* Unification des royaumes d'Israël et de Juda (Ézéchiel 37:19-22)
+* Établissement d'une nouvelle alliance (Jérémie 31:31-33)
+* Destruction future de Jérusalem et du Temple par les Romains (Daniel 9:26 ; Michée 3:12 ; Luc 19:43, 44)
+* Jérusalem foulée aux pieds par les nations jusqu'à la fin des temps fixés (Luc 21:24)
+
+## Prophéties chronologiques et géopolitiques (Livre de Daniel)
+
+* La statue colossale représentant les puissances mondiales successives (Daniel 2:31-40)
+* La pierre (Royaume de Dieu) détruisant la statue et remplissant la terre (Daniel 2:34, 35, 44)
+* La bête semblable à un lion avec des ailes (Babylone) (Daniel 7:4)
+* La bête semblable à un ours soulevée d'un côté (Mède-Perse) (Daniel 7:5)
+* La bête semblable à un léopard avec quatre ailes et quatre têtes (Grèce) (Daniel 7:6)
+* La quatrième bête effrayante avec des dents de fer (Rome) (Daniel 7:7)
+* Les dix cornes de la quatrième bête (Daniel 7:24)
+* La petite corne arrogante abattant trois cornes (Daniel 7:8, 25)
+* Le bélier à deux cornes inégales abattu par le bouc (Mède-Perse vaincue par la Grèce) (Daniel 8:3-7)
+* La grande corne du bouc (Alexandre le Grand) brisée au sommet de sa puissance (Daniel 8:8)
+* L'empire divisé en quatre royaumes inférieurs (Daniel 8:8, 22)
+* La prophétie des 70 semaines d'années (Daniel 9:24)
+* L'apparition du Messie exactement à la fin des 69 semaines (Daniel 9:25)
+* Le Messie retranché à la moitié de la 70e semaine (Daniel 9:26, 27)
+* L'ascension des rois du Nord et du Sud et leurs luttes continues (Daniel 11:5-45)
+* Le roi du Nord envahissant le Pays de la Parure (Daniel 11:41)
+* Michel (Jésus Christ) se tenant là lors d'un temps de détresse sans précédent (Daniel 12:1)
+* Le scellement du livre jusqu'au temps de la fin (Daniel 12:4)
+* La vraie connaissance devenant abondante au temps de la fin (Daniel 12:4)
+
+## Prophéties sur les derniers jours (Le signe composite)
+
+* Guerres de nation contre nation et royaume contre royaume (Matthieu 24:7)
+* Disettes et famines dans divers lieux (Matthieu 24:7)
+* Grands tremblements de terre (Luc 21:11)
+* Pestilences et épidémies d'un lieu à l'autre (Luc 21:11)
+* Angoisse et perplexité des nations (Luc 21:25)
+* Augmentation de l'illégalité (Matthieu 24:12)
+* Refroidissement de l'amour du plus grand nombre (Matthieu 24:12)
+* Prédication mondiale de la bonne nouvelle du Royaume (Matthieu 24:14)
+* Hommes amis d'eux-mêmes et amis de l'argent (2 Timothée 3:2)
+* Désobéissance aux parents (2 Timothée 3:2)
+* Hommes sans maîtrise de soi, cruels et sans amour du bien (2 Timothée 3:3)
+* Hommes amis des plaisirs plutôt qu'amis de Dieu (2 Timothée 3:4)
+* Apparence d'attachement à Dieu mais reniement de sa puissance (2 Timothée 3:5)
+* Présence de moqueurs rejetant les preuves de la présence du Christ (2 Pierre 3:3, 4)
+* Dommages et ruine causés à la terre par l'humanité (Révélation 11:18)
+* Apparition de faux christs et de faux prophètes (Matthieu 24:24)
+* Haine et persécution mondiale contre les disciples du Christ (Matthieu 24:9)
+
+
+## Prophéties de la Révélation (Apocalypse) et du temps de la fin
+
+* Les sept messages prophétiques adressés aux sept assemblées (Révélation 2:1 – 3:22)
+* Le cavalier sur le cheval blanc partant conquérir et achever sa victoire (Révélation 6:2)
+* Le cavalier sur le cheval couleur de feu enlevant la paix de la terre (Révélation 6:4)
+* Le cavalier sur le cheval noir apportant la famine et le rationnement des vivres (Révélation 6:5, 6)
+* Le cavalier sur le cheval verdâtre apportant la peste et la mortalité (Révélation 6:8)
+* Les âmes des martyrs tués à cause de la parole de Dieu réclamant justice (Révélation 6:9-11)
+* Le grand tremblement de terre, le soleil obscurci et les étoiles tombant du ciel (Révélation 6:12-14)
+* Le scellement définitif des 144 000 Israélites spirituels (Révélation 7:1-8)
+* L'apparition d'une grande foule innombrable venant de toutes les nations et survivant à la grande tribulation (Révélation 7:9-17)
+* Le silence d'une demi-heure dans le ciel après l'ouverture du septième sceau (Révélation 8:1)
+* Les sonneries des sept trompettes libérant les jugements divins (Révélation 8:6 – 11:19)
+* La grêle et le feu mêlés de sang frappant un tiers de la terre (Révélation 8:7)
+* La grande montagne enflammée jetée dans la mer (Révélation 8:8, 9)
+* La chute de l'étoile Absinthe empoisonnant un tiers des cours d'eau (Révélation 8:10, 11)
+* L'invasion des sauterelles symboliques sortant de l'abîme pour tourmenter les hommes sans le sceau de Dieu (Révélation 9:1-11)
+* La libération des quatre anges du fleuve Euphrate et la cavalerie de 200 millions de cavaliers (Révélation 9:13-19)
+* Le petit rouleau doux dans la bouche et amer dans le ventre avalé par Jean (Révélation 10:8-11)
+* Les deux témoins prêchant en sac, tués par la bête puis ressuscités après trois jours et demi (Révélation 11:3-12)
+* La naissance du fils mâle (le Royaume de Dieu) issu de la femme céleste (Révélation 12:1-5)
+* La guerre dans le ciel entre Michel et ses anges contre le dragon (Satan) et ses démons (Révélation 12:7, 8)
+* L'expulsion définitive de Satan et de ses démons du ciel vers la terre (Révélation 12:9-12)
+* La persécution de la femme par le dragon et la terre engloutissant le fleuve du dragon (Révélation 12:13-17)
+* L'apparition de la bête sauvage à sept têtes et dix cornes sortant de la mer (Révélation 13:1, 2)
+* La guérison de la blessure mortelle sur l'une des têtes de la bête (Révélation 13:3)
+* L'apparition de la bête sauvage à deux cornes incitant à faire une image de la bête (Révélation 13:11-14)
+* L'imposition de la marque de la bête (le nombre 666) sur la main ou le front (Révélation 13:16-18)
+* Les 144 000 debout sur le mont Sion avec le nom du Père et du Fils sur le front (Révélation 14:1-5)
+* L'ange volant au milieu du ciel avec une bonne nouvelle éternelle pour la terre (Révélation 14:6, 7)
+* L'annonce de la chute de Babylone la Grande par le deuxième ange (Révélation 14:8)
+* La moisson de la terre et la vendange de la vigne terrestre jetée dans le grand pressoir (Révélation 14:14-20)
+* Le déversement des sept bols de la fureur de Dieu sur la terre (Révélation 16:1-21)
+
+## Prophéties de la Grande Tribulation et du jugement de Babylone la Grande
+
+* La proclamation mondiale de « Paix et sécurité ! » suivie immédiatement d'une ruine soudaine (1 Thessaloniciens 5:3)
+* L'apparition de la chose immonde dans le lieu saint / la religion (Matthieu 24:15 ; Daniel 11:31)
+* La décision des dix cornes et de la bête sauvage écarlate de se retourner contre la prostituée (Révélation 17:16, 17)
+* La dévastation, le dépouillement et la mise au feu de Babylone la Grande en un seul jour/une seule heure (Révélation 17:16 ; 18:8)
+* L'ordre divin d'urgence : « Sortez d'elle, mon peuple » (Révélation 18:4)
+* La lamentation des rois de la terre, des marchands et des marins devant la destruction de Babylone la Grande (Révélation 18:9-19)
+* L'ange jetant une pierre semblable à une grande meule dans la mer pour figurer la disparition totale de Babylone la Grande (Révélation 18:21)
+* Le rassemblement des rois de toute la terre habitée sous l'influence de trois expressions inspirées impures (Révélation 16:13, 14)
+* L'attaque globale de Gog de Magog contre le peuple de Dieu vivant en sécurité (Ézéchiel 38:10-16)
+
+## Prophéties sur la guerre d'Har-Maguédôn (Armageddon)
+
+* Le rassemblement des armées terrestres au lieu appelé en hébreu Har-Maguédôn (Révélation 16:16)
+* La manifestation de la fureur de Jéhovah contre Gog de Magog par la peste, le sang, la pluie torrentielle et les pierres de grêle (Ézéchiel 38:18-22)
+* La panique et la confusion jetées parmi les coalition ennemies tournant l'épée les unes contre les autres (Ézéchiel 38:21 ; Zacharie 14:13)
+* La sortie du Roi des rois (Jésus Christ) sur un cheval blanc, suivi des armées célestes (Révélation 19:11-16)
+* La capture et la destruction totale de la bête sauvage et du faux prophète jetés dans le lac de feu (Révélation 19:20)
+* L'élimination complète de tous les rois, capitaines et opposants au Royaume de Dieu (Révélation 19:17-21)
+* Le grand repas du soir de Dieu où les oiseaux du ciel dévorent la chair des morts d'Armageddon (Révélation 19:17, 18, 21 ; Ézéchiel 39:17-20)
+* La purification de la terre et l'enterrement des restes des forces de Gog pendant sept mois (Ézéchiel 39:12-16)
+
+## Prophéties sur le Règne millénaire de Christ et l'enchaînement de Satan
+
+* La saisie du dragon, le serpent originel, et son enchaînement dans l'abîme pour 1 000 ans (Révélation 20:1-3)
+* La première résurrection des 144 000 pour régner comme rois et prêtres avec le Christ pendant 1 000 ans (Révélation 20:4, 6)
+* L'extension de la domination du Royaume de Dieu à toute la terre (Daniel 2:44 ; 7:13, 14)
+* La résurrection générale de tous ceux qui sont dans les tombeaux de mémoire, justes et injustes (Jean 5:28, 29 ; Actes 24:15)
+* L'apprentissage mondial de la justice par tous les habitants de la terre (Isaïe 26:9 ; Révélation 20:12)
+* L'ouverture de nouveaux rouleaux contenant les instructions et critères de jugement pendant les mille ans (Révélation 20:12)
+
+## Prophéties sur la restauration de la terre et le Paradis terrestre
+
+* La transformation des épées en socs de charrue et des lances en serpes (Isaïe 2:4 ; Michée 4:3)
+* L'arrêt définitif des guerres et de la fabrication d'armes sur toute la surface de la terre (Psaume 46:9)
+* La paix parfaite rétablie entre l'humanité et le monde animal (Isaïe 11:6-9 ; 65:25)
+* La guérison miraculeuse de toutes les infirmités : ouverture des yeux des aveugles, déblocage des oreilles des sourds, guérison des boiteux et des muets (Isaïe 35:5, 6)
+* La disparition de toute forme de maladie et d'infirmité physique (Isaïe 33:24)
+* L'élimination définitive de la mort, engloutie pour toujours (Isaïe 25:8 ; 1 Corinthiens 15:26 ; Révélation 21:4)
+* L'effacement de toutes les larmes de tristesse, du deuil et de la douleur (Révélation 21:4)
+* L'abondance de nourriture et de récoltes sur toute la terre, y compris au sommet des montagnes (Psaume 72:16 ; Isaïe 25:6)
+* La construction de maisons individuelles et la pleine jouissance du travail de ses mains (Isaïe 65:21, 22)
+* La possession paisible de sa propriété et la culture des vignes sans crainte (Michée 4:4 ; Isaïe 65:21)
+* La fin de la pauvreté, de l'oppression et des inégalités sociales (Psaume 72:12-14)
+* La transformation de toute la terre en un Paradis semblable au jardin d'Éden (Isaïe 51:3 ; Ézéchiel 36:35)
+
+## Prophéties sur l'épreuve finale et la souveraineté éternelle de Jéhovah
+
+* La libération de Satan de sa prison à la fin des 1 000 ans pour éprouver l'humanité devenue parfaite (Révélation 20:7)
+* La séduction des rebelles (« Gog et Magog ») attaquant le camp des saints (Révélation 20:8, 9)
+* La descente d'un feu du ciel dévorant définitivement les rebelles (Révélation 20:9)
+* La destruction éternelle de Satan et des démons, jetés dans le lac de feu (la seconde mort) (Révélation 20:10 ; Genèse 3:15)
+* La destruction définitive de la mort et de la Tombe (Hadès/Schéol) jetées dans le lac de feu (Révélation 20:14)
+* La remise du Royaume au Père par le Fils une fois toute inimitié anéantie, afin que Dieu soit tout pour tous (1 Corinthiens 15:24-28)
+* La création de nouveaux cieux et d'une nouvelle terre où la justice habitera éternellement (Isaïe 65:17 ; 2 Pierre 3:13 ; Révélation 21:1)
+* La demeure symbolique de Dieu avec l'humanité obéissante pour l'éternité (Révélation 21:3)
+
+
+
+## Prophéties de la Révélation (Apocalypse) et du temps de la fin
+
+* Les sept messages prophétiques adressés aux sept assemblées (Révélation 2:1 – 3:22)
+* Le cavalier sur le cheval blanc partant conquérir et achever sa victoire (Révélation 6:2)
+* Le cavalier sur le cheval couleur de feu enlevant la paix de la terre (Révélation 6:4)
+* Le cavalier sur le cheval noir apportant la famine et le rationnement des vivres (Révélation 6:5, 6)
+* Le cavalier sur le cheval verdâtre apportant la peste et la mortalité (Révélation 6:8)
+* Les âmes des martyrs tués à cause de la parole de Dieu réclamant justice (Révélation 6:9-11)
+* Le grand tremblement de terre, le soleil obscurci et les étoiles tombant du ciel (Révélation 6:12-14)
+* Le scellement définitif des 144 000 Israélites spirituels (Révélation 7:1-8)
+* L'apparition d'une grande foule innombrable venant de toutes les nations et survivant à la grande tribulation (Révélation 7:9-17)
+* Le silence d'une demi-heure dans le ciel après l'ouverture du septième sceau (Révélation 8:1)
+* Les sonneries des sept trompettes libérant les jugements divins (Révélation 8:6 – 11:19)
+* La grêle et le feu mêlés de sang frappant un tiers de la terre (Révélation 8:7)
+* La grande montagne enflammée jetée dans la mer (Révélation 8:8, 9)
+* La chute de l'étoile Absinthe empoisonnant un tiers des cours d'eau (Révélation 8:10, 11)
+* L'invasion des sauterelles symboliques sortant de l'abîme pour tourmenter les hommes sans le sceau de Dieu (Révélation 9:1-11)
+* La libération des quatre anges du fleuve Euphrate et la cavalerie de 200 millions de cavaliers (Révélation 9:13-19)
+* Le petit rouleau doux dans la bouche et amer dans le ventre avalé par Jean (Révélation 10:8-11)
+* Les deux témoins prêchant en sac, tués par la bête puis ressuscités après trois jours et demi (Révélation 11:3-12)
+* La naissance du fils mâle (le Royaume de Dieu) issu de la femme céleste (Révélation 12:1-5)
+* La guerre dans le ciel entre Michel et ses anges contre le dragon (Satan) et ses démons (Révélation 12:7, 8)
+* L'expulsion définitive de Satan et de ses démons du ciel vers la terre (Révélation 12:9-12)
+* La persécution de la femme par le dragon et la terre engloutissant le fleuve du dragon (Révélation 12:13-17)
+* L'apparition de la bête sauvage à sept têtes et dix cornes sortant de la mer (Révélation 13:1, 2)
+* La guérison de la blessure mortelle sur l'une des têtes de la bête (Révélation 13:3)
+* L'apparition de la bête sauvage à deux cornes incitant à faire une image de la bête (Révélation 13:11-14)
+* L'imposition de la marque de la bête (le nombre 666) sur la main ou le front (Révélation 13:16-18)
+* Les 144 000 debout sur le mont Sion avec le nom du Père et du Fils sur le front (Révélation 14:1-5)
+* L'ange volant au milieu du ciel avec une bonne nouvelle éternelle pour la terre (Révélation 14:6, 7)
+* L'annonce de la chute de Babylone la Grande par le deuxième ange (Révélation 14:8)
+* La moisson de la terre et la vendange de la vigne terrestre jetée dans le grand pressoir (Révélation 14:14-20)
+* Le déversement des sept bols de la fureur de Dieu sur la terre (Révélation 16:1-21)
+
+## Prophéties de la Grande Tribulation et du jugement de Babylone la Grande
+
+* La proclamation mondiale de « Paix et sécurité ! » suivie immédiatement d'une ruine soudaine (1 Thessaloniciens 5:3)
+* L'apparition de la chose immonde dans le lieu saint / la religion (Matthieu 24:15 ; Daniel 11:31)
+* La décision des dix cornes et de la bête sauvage écarlate de se retourner contre la prostituée (Révélation 17:16, 17)
+* La dévastation, le dépouillement et la mise au feu de Babylone la Grande en un seul jour/une seule heure (Révélation 17:16 ; 18:8)
+* L'ordre divin d'urgence : « Sortez d'elle, mon peuple » (Révélation 18:4)
+* La lamentation des rois de la terre, des marchands et des marins devant la destruction de Babylone la Grande (Révélation 18:9-19)
+* L'ange jetant une pierre semblable à une grande meule dans la mer pour figurer la disparition totale de Babylone la Grande (Révélation 18:21)
+* Le rassemblement des rois de toute la terre habitée sous l'influence de trois expressions inspirées impures (Révélation 16:13, 14)
+* L'attaque globale de Gog de Magog contre le peuple de Dieu vivant en sécurité (Ézéchiel 38:10-16)
+
+## Prophéties sur la guerre d'Har-Maguédôn (Armageddon)
+
+* Le rassemblement des armées terrestres au lieu appelé en hébreu Har-Maguédôn (Révélation 16:16)
+* La manifestation de la fureur de Jéhovah contre Gog de Magog par la peste, le sang, la pluie torrentielle et les pierres de grêle (Ézéchiel 38:18-22)
+* La panique et la confusion jetées parmi les coalition ennemies tournant l'épée les unes contre les autres (Ézéchiel 38:21 ; Zacharie 14:13)
+* La sortie du Roi des rois (Jésus Christ) sur un cheval blanc, suivi des armées célestes (Révélation 19:11-16)
+* La capture et la destruction totale de la bête sauvage et du faux prophète jetés dans le lac de feu (Révélation 19:20)
+* L'élimination complète de tous les rois, capitaines et opposants au Royaume de Dieu (Révélation 19:17-21)
+* Le grand repas du soir de Dieu où les oiseaux du ciel dévorent la chair des morts d'Armageddon (Révélation 19:17, 18, 21 ; Ézéchiel 39:17-20)
+* La purification de la terre et l'enterrement des restes des forces de Gog pendant sept mois (Ézéchiel 39:12-16)
+
+## Prophéties sur le Règne millénaire de Christ et l'enchaînement de Satan
+
+* La saisie du dragon, le serpent originel, et son enchaînement dans l'abîme pour 1 000 ans (Révélation 20:1-3)
+* La première résurrection des 144 000 pour régner comme rois et prêtres avec le Christ pendant 1 000 ans (Révélation 20:4, 6)
+* L'extension de la domination du Royaume de Dieu à toute la terre (Daniel 2:44 ; 7:13, 14)
+* La résurrection générale de tous ceux qui sont dans les tombeaux de mémoire, justes et injustes (Jean 5:28, 29 ; Actes 24:15)
+* L'apprentissage mondial de la justice par tous les habitants de la terre (Isaïe 26:9 ; Révélation 20:12)
+* L'ouverture de nouveaux rouleaux contenant les instructions et critères de jugement pendant les mille ans (Révélation 20:12)
+
+## Prophéties sur la restauration de la terre et le Paradis terrestre
+
+* La transformation des épées en socs de charrue et des lances en serpes (Isaïe 2:4 ; Michée 4:3)
+* L'arrêt définitif des guerres et de la fabrication d'armes sur toute la surface de la terre (Psaume 46:9)
+* La paix parfaite rétablie entre l'humanité et le monde animal (Isaïe 11:6-9 ; 65:25)
+* La guérison miraculeuse de toutes les infirmités : ouverture des yeux des aveugles, déblocage des oreilles des sourds, guérison des boiteux et des muets (Isaïe 35:5, 6)
+* La disparition de toute forme de maladie et d'infirmité physique (Isaïe 33:24)
+* L'élimination définitive de la mort, engloutie pour toujours (Isaïe 25:8 ; 1 Corinthiens 15:26 ; Révélation 21:4)
+* L'effacement de toutes les larmes de tristesse, du deuil et de la douleur (Révélation 21:4)
+* L'abondance de nourriture et de récoltes sur toute la terre, y compris au sommet des montagnes (Psaume 72:16 ; Isaïe 25:6)
+* La construction de maisons individuelles et la pleine jouissance du travail de ses mains (Isaïe 65:21, 22)
+* La possession paisible de sa propriété et la culture des vignes sans crainte (Michée 4:4 ; Isaïe 65:21)
+* La fin de la pauvreté, de l'oppression et des inégalités sociales (Psaume 72:12-14)
+* La transformation de toute la terre en un Paradis semblable au jardin d'Éden (Isaïe 51:3 ; Ézéchiel 36:35)
+
+## Prophéties sur l'épreuve finale et la souveraineté éternelle de Jéhovah
+
+* La libération de Satan de sa prison à la fin des 1 000 ans pour éprouver l'humanité devenue parfaite (Révélation 20:7)
+* La séduction des rebelles (« Gog et Magog ») attaquant le camp des saints (Révélation 20:8, 9)
+* La descente d'un feu du ciel dévorant définitivement les rebelles (Révélation 20:9)
+* La destruction éternelle de Satan et des démons, jetés dans le lac de feu (la seconde mort) (Révélation 20:10 ; Genèse 3:15)
+* La destruction définitive de la mort et de la Tombe (Hadès/Schéol) jetées dans le lac de feu (Révélation 20:14)
+* La remise du Royaume au Père par le Fils une fois toute inimitié anéantie, afin que Dieu soit tout pour tous (1 Corinthiens 15:24-28)
+* La création de nouveaux cieux et d'une nouvelle terre où la justice habitera éternellement (Isaïe 65:17 ; 2 Pierre 3:13 ; Révélation 21:1)
+* La demeure symbolique de Dieu avec l'humanité obéissante pour l'éternité (Révélation 21:3)
+
+
+## Prophéties du Pentateuque et des livres historiques
+
+* L'asservissement de la descendance d'Abraham pendant 400 ans et sa libération avec de grands biens (Genèse 15:13, 14)
+* La possession du pays de Canaan par la quatrième génération d'Israélites (Genèse 15:16)
+* Les bénédictions prophétiques de Jacob sur ses douze fils concernant la fin des jours (Genèse 49:1-28)
+* La prophétie de Balaam sur l'apparition d'une étoile issue de Jacob et d'un sceptre s'élevant d'Israël (Nombres 24:17)
+* La prédiction des malédictions d'Israël : le siège militaire, les épidémies et la dispersion mondiale en cas d'infidélité (Deutéronome 28:15-68)
+* La prophétie sur la reconstruction de Jéricho entraînant la perte du premier-né et du plus jeune fils du bâtisseur (Josué 6:26 ; accompli en 1 Rois 16:34)
+* La venue d'un roi nommé Josias, 300 ans avant sa naissance, pour détruire l'autel de Béthel et y brûler des os humains (1 Rois 13:1, 2 ; accompli en 2 Rois 23:15-18)
+* La destruction complète de la maison de Jéroboam sans laisser un seul descendant mâle (1 Rois 14:10, 11)
+* La destruction complète de la maison de Baasha (1 Rois 16:3, 4)
+* La mort tragique d'Achab et de Jézabel, les chiens léchant le sang d'Achab et dévorant la chair de Jézabel (1 Rois 21:19, 23 ; accompli en 1 Rois 22:38 et 2 Rois 9:33-37)
+* La prédiction d'Élisée annonçant la fin de la famine à Samarie en 24 heures (2 Rois 7:1, 2)
+* La prédiction d'Élisée annonçant que Hazaël deviendrait roi de Syrie et ferait subir de grands maux à Israël (2 Rois 8:12, 13)
+* La dynastie de Jéhu maintenue sur le trône d'Israël jusqu'à la quatrième génération (2 Rois 10:30)
+
+## Prophéties détaillées du livre d'Isaïe
+
+* La coalition syro-israélite manquant son objectif d'abattre Juda (Isaïe 7:1-7)
+* La ruine d'Éphraïm (Israël) écrasée et brisée dans un délai de 65 ans (Isaïe 7:8)
+* Le pillage des richesses de Damas et du butin de Samarie par le roi d'Assyrie avant qu'un enfant ne sache dire « papa » (Isaïe 8:4)
+* L'invasion assyrienne de Juda atteignant la hauteur du cou sans submerger complètement Jérusalem (Isaïe 8:7, 8)
+* La ruine de Samarie comparée à une guirlande fanée et à une figue précoce dévorée (Isaïe 28:1-4)
+* L'échec total de Sennachérib : impossibilité d'entrer dans Jérusalem, de lancer une flèche ou d'élever un remblai (Isaïe 37:33-35)
+* La mort de Sennachérib frappé par l'épée de ses propres fils dans son pays natal (Isaïe 37:7, 37, 38)
+* La saisine de tous les trésors du palais d'Ézéchias et l'exil de ses descendants à Babylone (Isaïe 39:5-7)
+* La ruine et le déclin de la gloire de Moab dans un délai exact de trois ans (Isaïe 16:14)
+* L'anéantissement de la gloire de Kédar en une année (Isaïe 21:16, 17)
+* L'oubli de la ville de Tyr pendant 70 ans avant la reprise de son commerce (Isaïe 23:15-17)
+
+## Prophéties détaillées du livre de Jérémie
+
+* L'invasion dévastatrice venant du nord (l'armée babylonienne) sur Juda et Jérusalem (Jérémie 1:14, 15 ; 4:6)
+* La capture du roi Sédécias, la perte de sa vue et sa déportation à Babylone (Jérémie 32:4, 5 ; 34:2, 3)
+* La mort du roi Joachaz (Shallum) en exil sans jamais revoir son pays natal (Jérémie 22:11, 12)
+* Le châtiment du roi Joïakim : enterré comme un âne, traîné et jeté hors des portes de Jérusalem (Jérémie 22:18, 19)
+* La malédiction sur Konia (Jéchonias), interdisant à toute sa descendance de s'asseoir sur le trône de David (Jérémie 22:30)
+* La mort du faux prophète Hanania survenant au cours de la même année (Jérémie 28:15-17)
+* La coupe de fureur bus par toutes les nations environnantes : Égypte, Philistie, Édom, Moab, Ammôn, Tyr, Sidon et Elam (Jérémie 25:15-26)
+* La promesse de restauration finale du peuple d'Élam dans la suite des jours (Jérémie 49:39)
+* Le rachat symbolique du champ d'Anathoth attestant du retour futur des exilés sur leur terre (Jérémie 32:6-15)
+
+## Prophéties détaillées du livre d'Ézéchiel
+
+* Le départ graduel de la gloire de Jéhovah du temple de Jérusalem en raison des abominations (Ézéchiel 10:18, 19 ; 11:22, 23)
+* L'action mimée d'Ézéchiel couché 390 jours sur le côté gauche et 40 jours sur le côté droit pour porter les fautes d'Israël et de Juda (Ézéchiel 4:4-6)
+* La prédiction sur Sédécias qui irait à Babylone sans la voir, y mourant en aveugle (Ézéchiel 12:13)
+* La conquête de l'Égypte par Neboukadnetsar offerte comme salaire compensatoire pour le siège pénible de Tyr (Ézéchiel 29:18-20)
+* La désolation et la déportation de l'Égypte pendant une période de 40 ans (Ézéchiel 29:11-13)
+* La chute du chef orgueilleux de Tyr mis à mort par des étrangers (Ézéchiel 28:6-10)
+* La vision de la vallée des os desséchés reprenant vie pour symboliser la reconstitution de la nation d'Israël (Ézéchiel 37:1-14)
+* La réunion des deux morceaux de bois (Éphraïm et Juda) pour former un seul royaume indivisible (Ézéchiel 37:15-22)
+* Le temple visionnaire rétabli et la répartition précise du territoire entre les tribus (Ézéchiel 40:1 – 48:35)
+
+## Prophéties des Petits Prophètes
+
+* La dispersion d'Israël devenant un peuple nomade parmi les nations (Osée 9:17)
+* La quête future de Jéhovah et de David leur roi par les fils d'Israël aux derniers jours (Osée 3:5)
+* L'effusion de l'esprit saint sur toute sorte de chair précédant le jour grand et redoutable de Jéhovah (Joël 2:28, 29)
+* Le rassemblement des nations ennemies dans la vallée de Josaphat pour le jugement divin (Joël 3:2, 12)
+* Le châtiment d'Israël par Amos pour l'oppression des pauvres et le rejet des lois divines (Amos 2:6-16)
+* La survenue d'une famine spirituelle : non pas de pain ou d'eau, mais d'entendre les paroles de Jéhovah (Amos 8:11)
+* La reconstruction de la cabane tombée de David (Amos 9:11)
+* Le rôle des Chaldéens (Babyloniens) suscitée comme instrument d'exécution contre les nations (Habacuc 1:6)
+* La certitude de l'accomplissement de la vision prophétique sans aucun retard (Habacuc 2:3)
+* Le remplissage de la terre par la connaissance de la gloire de Jéhovah comme les eaux couvrent la mer (Habacuc 2:14)
+* L'ébranlement de toutes les nations amenant les choses désirables dans la maison de Jéhovah (Aggée 2:7)
+* La gloire du second temple surpassant celle du premier (Aggée 2:9)
+* La vision des quatre cornes dispersant Juda et des quatre artisans venant les abattre (Zacharie 1:18-21)
+* La venue de l'homme nommé Germe qui bâtirait le temple et servirait de roi-prêtre (Zacharie 6:12, 13)
+* Dix hommes de toutes les langues des nations saisissant le pan du vêtement d'un Juif (Zacharie 8:23)
+* La frappe du berger entraînant la dispersion immédiate des brebis du troupeau (Zacharie 13:7)
+* L'envoi du prophète Élie avant la venue du jour grand et redoutable de Jéhovah (Malachie 4:5)
+* La venue du Seigneur à son temple pour purifier et affiner les fils de Lévi comme l'or et l'argent (Malachie 3:1-3)
+
+
+## Prophéties de Jésus-Christ (Les Évangiles)
+
+* La destruction totale du temple de Jérusalem où il ne restera pas pierre sur pierre (Matthieu 24:2)
+* Le siège de Jérusalem encerclée par des armées campées (les Romains) (Luc 21:20)
+* L'ordre de fuir d'urgence vers les montagnes de Judée dès l'apparition du signe (Luc 21:21)
+* Jérusalem foulée aux pieds par les nations jusqu'à l'accomplissement des temps fixés des nations (Luc 21:24)
+* La prédication de la bonne nouvelle du Royaume dans toute la terre habitée avant la fin (Matthieu 24:14)
+* La trahison de Jésus par un de ses apôtres intimes, Judas Iscariote (Jean 13:21, 26)
+* Le reniement de l'apôtre Pierre à trois reprises avant que le coq ne chante (Matthieu 26:34)
+* La dispersion de tous les disciples la nuit de son arrestation, la frappe du berger (Matthieu 26:31)
+* La mort violente de Jésus et sa résurrection exacte le troisième jour (Matthieu 16:21)
+* La venue de l'esprit saint (l'assistant) envoyé pour enseigner et rappeler les paroles de Jésus (Jean 14:16, 26)
+* L'apparition de faux christs et de faux prophètes égarant un grand nombre de personnes (Matthieu 24:11, 24)
+* La haine de toutes les nations envers les disciples de Christ à cause de son nom (Matthieu 24:9)
+* La livraison des disciples aux tribunaux locaux et aux synagogues (Marc 13:9)
+* L'illustration du blé (vrais chrétiens) et de la mauvaise herbe (faux chrétiens) poussant ensemble jusqu'à la moisson (Matthieu 13:30, 39)
+* L'établissement de l'esclave fidèle et avisé sur les domestiques pour donner la nourriture en temps voulu (Matthieu 24:45-47)
+* La séparation finale des humains, comme un berger sépare les brebis des chèvres (Matthieu 25:31-33)
+* Les hommes défaillant de peur dans l'attente des choses venant sur la terre (Luc 21:26)
+* L'apparition du signe du Fils de l'homme dans le ciel et sa venue sur les nuages (Matthieu 24:30)
+* Le rassemblement des élus depuis les quatre vents par les anges équipés d'une grande trompette (Matthieu 24:31)
+* L'incrédulité de la génération lors de la présence du Fils de l'homme, exactement comme aux jours de Noé (Matthieu 24:37-39)
+
+## Prophéties de l'apôtre Paul (Actes et Épîtres)
+
+* L'entrée de loups tyranniques dans la congrégation chrétienne après le départ de Paul et des apôtres (Actes 20:29, 30)
+* L'apostasie massive s'installant avant l'arrivée du jour de Jéhovah (2 Thessaloniciens 2:3)
+* La révélation de l'homme d'illégalité s'élevant au-dessus de tout objet de culte (2 Thessaloniciens 2:3, 4)
+* L'anéantissement de cet homme d'illégalité par la manifestation de la présence du Christ (2 Thessaloniciens 2:8)
+* L'abandon de la foi par certains, prêtant attention à des déclarations inspirées trompeuses et à des enseignements de démons (1 Timothée 4:1)
+* L'interdiction hypocrite de se marier et le commandement de s'abstenir de certains aliments (1 Timothée 4:3)
+* L'avènement de temps critiques, difficiles à supporter dans les derniers jours de ce système (2 Timothée 3:1)
+* Les hommes se détournant de la vérité, préférant des enseignants qui leur chatouillent les oreilles (2 Timothée 4:3, 4)
+* Le cri mondial de « Paix et sécurité ! » suivi instantanément d'une destruction soudaine sans échappatoire (1 Thessaloniciens 5:3)
+* La résurrection en premier des morts en Christ, puis le rassemblement de ceux qui survivent (1 Thessaloniciens 4:16, 17)
+* La transformation spirituelle des oints en un clin d'œil, à la dernière trompette (1 Corinthiens 15:51, 52)
+* La destruction définitive du dernier ennemi de l'humanité, la mort (1 Corinthiens 15:26)
+* La libération de la création de l'esclavage de la corruption pour obtenir la liberté glorieuse des enfants de Dieu (Romains 8:21)
+* La résurrection à venir, tant des justes que des injustes (Actes 24:15)
+
+## Prophéties des apôtres Pierre, Jean et Jacques
+
+* L'apparition de moqueurs dans les derniers jours, rejetant les preuves et remettant en question la promesse de la présence du Christ (2 Pierre 3:3, 4)
+* La destruction des cieux et de la terre actuels (la société impie) par le feu symbolique du jugement divin (2 Pierre 3:7)
+* La création de nouveaux cieux et d'une nouvelle terre où habitera la justice (2 Pierre 3:13)
+* L'apparition de nombreux antichrists prouvant que la dernière heure du temps apostolique est là (1 Jean 2:18)
+* La misère, les pleurs et les hurlements des riches oppresseurs face aux jugements venant dans les derniers jours (Jacques 5:1-3)
+* La rouille de l'or et de l'argent amassés par les matérialistes témoignant contre eux comme un feu (Jacques 5:3)
+
+
+## Prophéties sur les patriarches et leurs descendances
+
+* La malédiction sur Canaan, destiné à devenir l'esclave des esclaves de ses frères (Genèse 9:25)
+* La bénédiction de Sem et de Japhet, ce dernier devant résider dans les tentes de Sem (Genèse 9:26, 27)
+* La promesse fondamentale faite à Abraham qu'il deviendrait une grande nation et que toutes les familles de la terre se béniraient par lui (Genèse 12:2, 3)
+* La prédiction de la naissance d'Isaac par Sara, alors âgée et stérile, au temps fixé l'année suivante (Genèse 17:21 ; 18:10)
+* La prophétie concernant Ismaël, destiné à devenir le père de douze chefs et d'une grande nation, bien qu'il soit un homme décrit comme « semblable à un zèbre » (Genèse 16:12 ; 17:20)
+* La révélation à Rébecca concernant ses jumeaux Ésaü et Jacob : deux nations séparées dans son ventre, l'aîné devant servir le plus jeune (Genèse 25:23)
+* Les rêves prophétiques du jeune Joseph annonçant que ses frères et ses parents se prosterneraient un jour devant lui (Genèse 37:5-10)
+* L'interprétation exacte par Joseph des rêves de l'échanson, rétabli dans ses fonctions, et du panetier de Pharaon, pendu dans un délai strict de trois jours (Genèse 40:12-19)
+* L'interprétation par Joseph des rêves de Pharaon : sept années d'abondance exceptionnelle en Égypte suivies immédiatement de sept années de famine dévastatrice (Genèse 41:25-32)
+
+## Alliances et prophéties sur la royauté et la prêtrise
+
+* Le jugement divin contre la maison du grand prêtre Éli, prédisant qu'aucun de ses descendants n'atteindrait la vieillesse et que le sacerdoce lui serait retiré (1 Samuel 2:31-33)
+* La perte définitive de la royauté pour la lignée de Saül en raison de sa désobéissance présomptueuse (1 Samuel 13:13, 14 ; 15:28)
+* L'alliance davidique : l'établissement éternel du trône, de la royauté et de la lignée de David (2 Samuel 7:12-16)
+* La prophétie annonçant que Salomon, et non David, bâtirait la maison pour le nom de Jéhovah et qu'il connaîtrait un règne de paix (2 Samuel 7:13 ; 1 Chroniques 22:9, 10)
+* La scission du royaume d'Israël en deux, la domination sur dix tribus étant donnée à Jéroboam par le prophète Ahiya déchirant son vêtement en douze morceaux (1 Rois 11:31-35)
+* Le jugement contre la maison de Jéroboam, prédisant la mort de son fils malade Abiya à l'instant même où sa femme franchirait le seuil de la ville (1 Rois 14:12)
+
+## Jugements prophétiques sur des personnages spécifiques
+
+* La prophétie d'Élie sur la mort du roi Achazia, cloué sur son lit de maladie pour avoir envoyé consulter Baal-Zéboub au lieu de Dieu (2 Rois 1:4)
+* La lèpre de Naamân le Syrien s'attachant instantanément à Guéhazi (le serviteur cupide d'Élisée) et à sa descendance pour un temps indéfini (2 Rois 5:27)
+* La prédiction d'Isaïe annonçant d'abord la mort du roi Ézéchias, puis sa guérison miraculeuse le troisième jour avec quinze années de vie ajoutées (Isaïe 38:5)
+* Le jugement contre Pashhour, prophétisant qu'il serait exilé à Babylone et y mourrait avec tous ses partisans trompés (Jérémie 20:6)
+* La promesse de survie et de sauvegarde physique (son âme comme butin) donnée à Ébed-Mélek l'Éthiopien pour avoir secouru Jérémie avant la destruction de Jérusalem (Jérémie 39:16-18)
+* La promesse similaire de survie et de protection accordée à Baruch, le fidèle secrétaire de Jérémie, à condition de ne pas chercher pour lui-même de « grandes choses » (Jérémie 45:5)
+
+
+## Visions, sceaux et trompettes de la Révélation
+
+* L'ouverture des sept sceaux libérant les cavaliers de l'Apocalypse, les séismes, les fléaux mondiaux et le silence au ciel (Révélation 6:1-17 ; 8:1)
+* Le son des sept trompettes entraînant la destruction du tiers de la terre, des mers, des eaux douces et de la lumière des astres (Révélation 8:7-12)
+* L'incursion des sauterelles symboliques montant de l'abîme pour infliger des tourments de cinq mois (Révélation 9:3-10)
+* La libération des quatre anges enchaînés près de l'Euphrate pour tuer le tiers des hommes (Révélation 9:14, 15)
+* Le message de l'ange volant au milieu du ciel pour annoncer une bonne nouvelle éternelle à toute nation, tribu et langue (Révélation 14:6, 7)
+* Le versement des sept coupes de la fureur divine sur la terre, la mer, les fleuves, le soleil et le trône de la bête (Révélation 16:1-21)
+
+## Les deux témoins et le conflit céleste
+
+* La prophétie des deux témoins prêchant pendant 1 260 jours habillés de sacs, leur mise à mort puis leur résurrection au bout de trois jours et demi (Révélation 11:3-12)
+* La vision de la femme enveloppée du soleil accouchant d'un fils mâle destiné à paître les nations avec un sceptre de fer (Révélation 12:1-5)
+* La guerre dans le ciel menée par Michel contre le dragon, aboutissant à l'expulsion de Satan et de ses anges sur la terre (Révélation 12:7-9)
+* La fuite de la femme au désert où elle est nourrie à l'abri du serpent pendant 1 260 jours (3 temps et demi) (Révélation 12:6, 14)
+
+## Les bêtes symboliques et la chute de Babylone
+
+* L'apparition de la bête sauvage à sept têtes et dix cornes montant de la mer, recevant son pouvoir du dragon (Révélation 13:1, 2)
+* La bête montant de la terre imposable de force la marque du nom ou du nombre de la bête (666) pour acheter ou vendre (Révélation 13:11-18)
+* La chute et la ruine complète de Babylone la Grande, la grande prostituée régnant sur les rois de la terre (Révélation 14:8 ; 18:2)
+* La destruction soudaine de la grande ville par le feu, survenant en une seule heure (Révélation 18:8, 10)
+* Le rassemblement des rois de la terre par des expressions inspirées par des démons pour la guerre d'Armaguedon (Révélation 16:14, 16)
+* La défaite de la bête et des faux prophètes jetés vivants dans le lac de feu (Révélation 19:19, 20)
+
+## Le règne millénaire et la restauration finale
+
+* L'enchaînement de Satan et son enfermement dans l'abîme pour une durée exacte de 1 000 ans (Révélation 20:1-3)
+* Le règne de 1 000 ans des saints ressuscités régnant avec le Christ (Révélation 20:4, 6)
+* La libération temporaire de Satan à la fin des 1 000 ans pour égarer les nations de Gog et Magog, suivie de sa destruction définitive dans le lac de feu (Révélation 20:7-10)
+* Le jugement devant le grand trône blanc où la mer, la mort et le séjour des morts rendent leurs morts (Révélation 20:11-13)
+* La destruction ultime de la mort et du séjour des morts jetés dans la seconde mort (Révélation 20:14)
+* La descente de la Nouvelle Jérusalem venant du ciel, préparée comme une épouse pour son mari (Révélation 21:2)
+* La suppression définitive des larmes, de la douleur, du deuil et de la mort (Révélation 21:4)
+* La vision du fleuve d'eau de la vie et de l'arbre de vie produisant douze récoltes de fruits par an pour la guérison des nations (Révélation 22:1, 2)
+
+
+
+
+
+
+
+
+
+
+
+
+CONTINUER.
+Continue d'identifier et de lister l'intégralité de toutes les prophéties bibliques et leurs accomplissements de façon exhaustive et sans faire de commentaire. Ensuite nous préparerons des contenus complet, détaillé et spectaculaires pour les présenter avec des texte, site, livres, images, vidéos et audios. 
+Découpe ta réponse en plusieurs réponses de longues listes si tu atteins ta limite de tokens et demande moi de continuer pour réaliser la liste plus longue et complète et détaillée et exhaustive des prophéties bibliques.
+Recherche sur internet, sur les forums, sur YouTube, sur les réseaux sociaux et surtout sur les sites www.jw.org et wol.jw.org toutes les informations et détails sur toutes les prophéties bibliques et leurs accomplissements.
+Si tu as terminer d’identifier toutes les prophéties de la Bible dit "FIN".
+
+
+
+CONTINUER.
+Je veux une fiche descriptive complète pour chaque prophétie avec un contenu riche et détaillé : détails sur le contexte du texte biblique, explication du texte, son interprétation et son accomplissement avec des explications claires et détaillées ainsi que les preuves historiques, géographiques et scientifiques. Pour chaque prophétie tu dois faire des recherches approfondies et rédiger du contenu d'exégète et professionnel de la Bible et de l'histoire. Pour chaque fiche de prophétie tu peux aussi créer des audios de présentation et d'explication de la prophétie et ses accomplissements.
+Découpe ta réponse en plusieurs réponses si tu atteins ta limite de tokens et demande moi de continuer pour réaliser l'intégralité de tous les contenus de toutes les fiches complète et détaillée de prophétie biblique.
+Recherche sur internet, sur les forums, sur YouTube, sur les réseaux sociaux et surtout sur les sites [www.jw.org](http://www.jw.org) et [wol.jw.org](http://wol.jw.org) toutes les informations et détails sur toutes les prophéties bibliques et leurs accomplissements.
+Documente au maximum les preuves et les faits historiques, géographiques et scientifiques relatifs à chaque prophétie.
+Tu peux regrouper les fiches des prophéties et les placer dans des catégories.
+Tu peux produire aussi des chronologies, des timelines, des schémas et des visuels clairs explicatifs pour compléter les fiches.
+Rédige tes workflows de travail et ta machine à états pour suivre l'évolution progressive de cette nouvelle phase du projet.
+
+
+
+
+
+
+
+
+CONTINUER.
+Je veux une fiche descriptive complète pour chaque prophétie avec un contenu riche et détaillé : détails sur le contexte du texte biblique, explication du texte, son interprétation et son accomplissement avec des explications claires et détaillées ainsi que les preuves historiques, géographiques et scientifiques. Pour chaque prophétie tu dois faire des recherches approfondies et rédiger du contenu d'exégète et professionnel de la Bible et de l'histoire. Pour chaque fiche de prophétie tu peux créer des images hyperréalistes, photoréalistes, cinématographiques, immersives, accrocheuses et épiques en haute qualité jpg pour illustrer parfaitement la prophétie et ses accomplissements. Pour chaque fiche de prophétie tu peux aussi créer des audios de présentation et d'explication de la prophétie et ses accomplissements.
+Découpe ta réponse en plusieurs réponses si tu atteins ta limite de tokens et demande moi de continuer pour réaliser l'intégralité de tous les contenus de toutes les fiches complète et détaillée de prophétie biblique.
+Toutes les images doivent être générées en haute qualité et en jpg. Ne génère pas plus de 10 images par réponse. Les images doivent toujours être hyperréalistes, photoréalistes, cinématographiques, immersives, accrocheuses et épiques en haute qualité jpg. Ne génère pas plus de 10 audios en français uniquement par réponse.
+Recherche sur internet, sur les forums, sur YouTube, sur les réseaux sociaux et surtout sur les sites [www.jw.org](http://www.jw.org) et [wol.jw.org](http://wol.jw.org) toutes les informations et détails sur toutes les prophéties bibliques et leurs accomplissements.
+Documente au maximum les preuves et les faits historiques, géographiques et scientifiques relatifs à chaque prophétie.
+Les images et les audios doivent apparaître sur leurs fiches correspondantes pour illustrer chacune des prophéties.
+Tu peux regrouper les fiches des prophéties et les placer dans des catégories.
+Tu peux produire aussi des chronologies, des timelines, des schémas et des visuels clairs explicatifs pour compléter les fiches.
+Rédige tes workflows de travail et ta machine à états pour suivre l'évolution progressive de cette nouvelle phase du projet.

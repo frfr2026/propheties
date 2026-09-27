@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES SO2 — Sophonie 2 — Cherchez la justice, les villes de la côte, Moab et Ammon, et Ninive dévastée</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_SO479_caches.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES SO2</h1>
+<h2>Sophonie 2 — Cherchez la justice, les villes de la côte, Moab et Ammon, et Ninive dévastée</h2>
+<p class="intro">Après les jugements annoncés sur Juda, le livre de Sophonie change de portée : il adresse d'abord un appel pressant aux humbles, puis il passe en revue les nations qui entourent le pays. « Rassemblez-vous, oui, rassemblez-vous, ô gens d'une nation qui n'a pas honte ! » Tel est le dernier avertissement, donné avant que le décret ne prenne effet, avant que le jour ne passe comme la bale emportée par le vent. Puis vient la triple recherche qui donne au chapitre sa couleur : « Recherchez Jéhovah, vous tous, humbles de la terre, qui avez exécuté ses décisions judiciaires. Recherchez la justice, recherchez l'humilité. Probablement serez-vous cachés au jour de la colère de Jéhovah. » Le prophète se tourne ensuite vers la côte : Gaza abandonnée, Ascalon dévastée, Asdod chassée en plein jour, Ékrôn déracinée ; la nation des Keréthiens est jugée, et la région maritime deviendra des pâturages avec des puits pour les bergers — elle appartiendra à ceux qui resteront du peuple de Juda. Viennent ensuite Moab et Ammon, coupables d'avoir outragé le peuple de Dieu et d'avoir empiété sur son territoire : ils deviendront comme Sodome et Gomorrhe, « un lieu envahi par les orties, une mine de sel et un désert permanent », tandis que Jéhovah « anéantira tous les dieux de la terre » et que « toutes les îles des nations se prosterneront devant lui, chacune depuis sa place ». Le chapitre se termine par le nord : l'Assyrie est réduite, Ninive devient un désert sec, ses colonnes servent de gîte aux oiseaux, et de la ville joyeuse qui disait dans son cœur « Moi, et rien que moi ! », il ne reste qu'une ruine devant laquelle les passants sifflent.</p>
+<div class="chiffres">
+<div><b>4</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>22</b><span>sources</span></div>
+<div><b>4</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#SO479">SO479</a>
+<a href="#SO480">SO480</a>
+<a href="#SO481">SO481</a>
+<a href="#SO482">SO482</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#SO479"><img src="images/prophe_SO479_caches.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE SO479</div>
+<h3><a href="#SO479">« Cherchez la justice, cherchez l'humilité » : rassemblez-vous avant le décret, peut-être serez-vous cachés au jour de la colère</a></h3>
+<div class="meta">Accomplie (invitation) · 🎧 0:11</div></div></div>
+<div class="carte">
+<a class="img" href="#SO480"><img src="images/prophe_SO480_philistins.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE SO480</div>
+<h3><a href="#SO480">« Gaza sera une ville abandonnée » : les quatre villes philistines, la nation des Keréthiens et la côte qui devient un pâturage</a></h3>
+<div class="meta">Accomplie · 🎧 0:12</div></div></div>
+<div class="carte">
+<a class="img" href="#SO481"><img src="images/prophe_SO481_moab.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE SO481</div>
+<h3><a href="#SO481">« J'ai entendu les injures de Moab » : Sodome et Gomorrhe, la mine de sel, et les dieux de la terre anéantis devant Jéhovah</a></h3>
+<div class="meta">Accomplie · 🎧 0:10</div></div></div>
+<div class="carte">
+<a class="img" href="#SO482"><img src="images/prophe_SO482_ninive.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE SO482</div>
+<h3><a href="#SO482">« Ninive deviendra un désert » : la ville joyeuse qui disait « moi, et rien que moi », le pélican sur les chapiteaux et le troupeau couché</a></h3>
+<div class="meta">Accomplie · 🎧 0:10</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="SO479">
+<div class="visuel"><img src="images/prophe_SO479_caches.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE SO479 · CATÉGORIE SO2</div>
+<h3>« Cherchez la justice, cherchez l'humilité » : rassemblez-vous avant le décret, peut-être serez-vous cachés au jour de la colère</h3>
+<div class="ref">Sophonie 2:1-3</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (invitation)</span>
+<span class="badge">rassemblez-vous oui rassemblez-vous ô gens d'une nation qui n'a pas honte avant que le décret ne prenne effet avant que le jour ne passe comme la bale avant que la colère ardente de jéhovah ne vienne sur vous avant que le jour de la colère de jéhovah ne vienne sur vous recherchez jéhovah vous tous humbles de la terre qui avez exécuté ses décisions judiciaires recherchez la justice recherchez l'humilité probablement serez-vous cachés au jour de la colère de jéhovah (sophonie 2:3 ; accomplie (invitation))</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche SO479 · 0:11</div><audio controls preload="none" src="audio/fiche_SO479_caches.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_SO479_caches.mp3 · 0:11 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Sophonie 2:1-3</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (invitation)</td></tr>
+<tr><td class="d">Chronologie</td><td>rassemblez-vous oui rassemblez-vous ô gens d'une nation qui n'a pas honte avant que le décret ne prenne effet avant que le jour ne passe comme la bale avant que la colère ardente de jéhovah ne vienne sur vous avant que le jour de la colère de jéhovah ne vienne sur vous recherchez jéhovah vous tous humbles de la terre qui avez exécuté ses décisions judiciaires recherchez la justice recherchez l'humilité probablement serez-vous cachés au jour de la colère de jéhovah (sophonie 2:3 ; accomplie (invitation))</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Sophonie — P479 (2:1-3 : cherchez la justice ; peut-être serez-vous cachés au jour de la colère) ; Sophonie 2:3 ; Accomplie (invitation)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« RASSEMBLEZ-VOUS, OUI, RASSEMBLEZ-VOUS… Ô GENS D'UNE NATION QUI N'A PAS HONTE…! »… « AVANT QUE LE DÉCRET NE PRENNE EFFET… AVANT QUE LE JOUR NE PASSE COMME LA BALE… AVANT QUE LA COLÈRE ARDENTE DE JÉHOVAH NE VIENNE SUR VOUS… »… « RECHERCHEZ JÉHOVAH, VOUS TOUS, HUMBLES DE LA TERRE… QUI AVEZ EXÉCUTÉ SES DÉCISIONS JUDICIAIRES… »… « RECHERCHEZ LA JUSTICE… RECHERCHEZ L'HUMILITÉ… PROBABLEMENT SEREZ-VOUS CACHÉS… AU JOUR DE LA COLÈRE DE JÉHOVAH… »… — HITQOSHASHU… RASSEMBLEZ-VOUS, OPÉREZ LE RASSEMBLEMENT… WA-QOSHU… ET RAMASSEZ-VOUS… GOY LOʾ NIKHSAF… NATION QUI NE PÂLIT PAS DE HONTE, SANS PUDEUR… BE-TEREM… AVANT QUE… ḤOQ… LE DÉCRET, LA LOI FIXÉE… YOM… LE JOUR… MOTS KA-MOTS… COMME LA BALE, LA PAILLE MENUE EMPORTÉE PAR LE VENT… ḤARON ʾAF… L'ARDEUR DE LA COLÈRE… YOM ʿEVRAT YHWH… LE JOUR DE LA FUREUR DE JÉHOVAH… BAQSHU… CHERCHEZ… ʿANWE HA-ʾARETS… LES HUMBLES DE LA TERRE… ʿASU MISHPAT… QUI AVEZ EXÉCUTÉ LE JUGEMENT, LA DÉCISION JUDICIAIRE… TSEDEQ… LA JUSTICE… ʿANAWAH… L'HUMILITÉ, LA DOUCEUR… ʾULAI… PEUT-ÊTRE, PROBABLEMENT… TISSATERU… VOUS SEREZ CACHÉS, DÉROBÉS AU REGARD… — 2 PIERRE 1:19… JÉRÉMIE 35… LES RÉCABITES… 2 ROIS 25:12… GUEDALIA… MIZPA… JÉRÉMIE 39:16-18… ÉBED-MÉLEK… MATTHIEU 5:5… PSAUME 37:11… ÉSAÏE 26:20… SINGULIER… »</li>
+<li>LES TROIS JUMEAUX — Matthieu 5:5 : « heureux ceux qui sont doux de caractère, puisqu'ils hériteront de la terre » — la béatitude qui reprend la promesse faite aux humbles et que l'article « Cherchez Jéhovah, vous tous, humbles de la terre » cite à la suite de Sophonie 2:3 ; le même rapprochement est fait par le Psalmiste. Psaume 37:11 : « mais les humbles posséderont la terre, et vraiment ils se délecteront de l'abondance de la paix » — la formule que l'article applique à ceux qui cherchent l'humilité et qui se retrouve dans les deux Testaments. Ésaïe 26:20 : « va, mon peuple, entre dans tes chambres intérieures, et ferme tes portes derrière toi. Cache-toi un instant jusqu'à ce que l'indignation soit passée » — l'image du refuge offert au peuple avant que le jugement se déchaîne, exactement la promesse du verset 3. Jérémie 35:18, 19 : les Récabites sont bénis parce qu'ils ont obéi à l'ordre de leur ancêtre et n'ont pas bu de vin — un exemple concret de personnes qui, ayant écouté un simple commandement humain, ont été épargnées lorsque le jugement est venu sur Juda. Ézéchiel 9:4, 6 : la marque sur le front de ceux qui soupirent et gémissent sur les abominations de Jérusalem, et l'ordre donné d'épargner ceux qui la portent — la même idée d'un reste distingué avant la destruction.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 2 s'ouvre par un appel, et non par une sentence. Le prophète s'adresse à « une nation qui n'a pas honte » — Juda — et l'invite à se rassembler avant que trois choses ne se produisent : que le décret prenne effet, que le jour passe comme la bale emportée par le vent, et que la colère ardente de Jéhovah vienne sur le pays. Ces trois expressions décrivent le même moment sous trois angles : la décision divine arrêtée, la fragilité du sursis, et l'arrivée du jugement. Puis vient l'appel proprement religieux, en trois recherches successives : rechercher Jéhovah, rechercher la justice, rechercher l'humilité. Les destinataires sont nommés avec précision : « vous tous, humbles de la terre, qui avez exécuté ses décisions judiciaires » — c'est-à-dire ceux qui, déjà, vivent conformément au droit divin, et à qui il est demandé d'aller plus loin. Le verset se termine par un mot qui a beaucoup retenu l'attention des commentateurs : « probablement serez-vous cachés au jour de la colère de Jéhovah ». Le registre du projet rattache cette entrée au verset 3 et lui donne un statut particulier, « Accomplie (invitation) » : ce qui s'est vérifié, c'est que l'invitation a bien été lancée avant le jugement et qu'elle est restée valable. Le nom du prophète porte le cœur du message, et l'article consacré au verset le souligne : Sophonie signifie « Jéhovah a caché ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE DOUBLE IMPÉRATIF DE RASSEMBLEMENT : le premier mot est répété deux fois — rassemblez-vous, rassemblez-vous — puis renforcé par un second verbe de même sens. Cette insistance a une raison pratique : le jour viendra où il sera trop tard pour se réunir, comme la bale, cette paille légère, est enlevée par un souffle sans qu'on puisse la rattraper. Les commentateurs rapprochent cette image de celle du jugement qui vient « comme un filet » ou « comme un voleur » dans d'autres textes. (2) LES TROIS RECHERCHES : chercher Jéhovah, chercher la justice, chercher l'humilité. L'article « Cachés au jour de la colère de Jéhovah » développe chacune d'elles séparément, en montrant qu'il ne suffit pas de se tenir séparé du monde et de sa fausse religion : les humbles « doivent prendre d'autres mesures positives ». La justice à rechercher est celle qui règle la conduite, et l'humilité est présentée comme la condition même de l'écoute : celui qui s'estime suffisant n'a rien à chercher. (3) LE « PROBABLEMENT » : c'est le point le plus commenté du passage. L'article « Cachés au jour de la colère de Jéhovah » pose la question — « pourquoi “probablement” ? » — et répond : « c'est parce que le salut final dépend de la conduite de l'individu. C'est ce qu'a voulu indiquer Jésus lorsqu'il a dit : “Celui qui aura enduré jusqu'à la fin, celui-là sera sauvé” (Mat. 24:13). » L'article « Cherchez Jéhovah, vous tous, humbles de la terre » insiste dans le même sens : « à l'évidence, l'humilité est indispensable pour échapper à la destruction ». Le mot hébreu ʾulai n'exprime donc pas un doute de Dieu sur sa promesse, mais la liberté de l'homme : la protection est offerte, elle se reçoit en persévérant. (4) LES DESTINATAIRES DÉJÀ FIDÈLES : le texte dit « qui avez exécuté ses décisions judiciaires ». Il ne parle pas de convertis de dernière minute, mais de gens déjà droits à qui il est demandé de continuer et d'approfondir. Les parallèles bibliques éclairent ce point : les Récabites, récompensés pour leur obéissance constante, et la marque sur le front de ceux qui gémissent sur les abominations de Jérusalem.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : deux articles portent directement sur ce verset. « Cachés au jour de la colère de Jéhovah » (document 1981608, w81 15/11) commence par citer Sophonie 2:3 en exergue et explique : « “Être cachés de Jéhovah”; telle est l'idée qu'évoque le nom de Sophonie, prophète de Dieu. Ce nom signifie en effet “Jéhovah a caché”. Désirez-vous être caché par Jéhovah ? Vous le devriez… » Il décrit ensuite l'appel du verset 1 — « comme s'il lançait un dernier appel à son peuple, le prophète de Dieu adresse l'exhortation suivante à ceux qui peuvent espérer survivre : “Rassemblez-vous, oui, opérez le rassemblement” » — puis développe les trois recherches : « En second lieu, Sophonie ajoute : “Cherchez la justice” » ; « Enfin, le prophète de Jéhovah déclare : “Cherchez l'humilité.” Sophonie avait déjà présenté ceux qui écouteraient sa prophétie comme étant les “humbles de la terre”. Il insiste donc doublement sur leur humilité. » L'article « Cherchez Jéhovah, vous tous, humbles de la terre » (document 1993921, w93 15/12) part du même verset et montre que « ces exemples montrent que les paroles de Sophonie demeurent valables quels que soient la situation d'une personne et l'accueil qu'elle réserve aujourd'hui au message biblique », avant d'ajouter que « l'humilité est indispensable si elle veut recevoir l'approbation de Dieu et la direction de sa Parole », et qu'« en agissant ainsi, nous aurons plus de chances d'être “cachés au jour de la colère de Jéhovah” et de figurer parmi les humbles qui “hériteront de la terre” (Sophonie 2:3 ; Matthieu 5:5) ». Lecture commune et exégèse : le commentaire de l'éditeur biblique relève de son côté que « le nom de Sophonie signifie : “celui que l'Éternel cache ou protège” », ce qui fait du message du verset « l'écho de son propre nom ».</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Avant 648 av. n. è.</td><td>L'invitation est lancée publiquement : rassemblement, recherche de Jéhovah, de la justice et de l'humilité, avant que le décret prenne effet (Sophonie 2:1-3)</td></tr>
+<tr><td class="d">648-629 av. n. è.</td><td>La réforme de Josias donne à cet appel un début de réponse nationale : le faux culte est ôté du pays (2 Chroniques 34:3-7)</td></tr>
+<tr><td class="d">618-607 av. n. è.</td><td>Ceux qui écoutent : les Récabites, fidèles à un commandement d'homme, sont épargnés et reçoivent une promesse (Jérémie 35:18, 19)</td></tr>
+<tr><td class="d">607 av. n. è.</td><td>Ébed-Mélek, l'homme qui a fait sortir Jérémie de la citerne, est préservé : « je te ferai échapper, et tu ne tomberas pas par l'épée » (Jérémie 39:16-18)</td></tr>
+<tr><td class="d">607 av. n. è.</td><td>Une partie du petit peuple est laissée dans le pays, avec Guedalia à Mizpa : le « reste » existe concrètement (2 Rois 25:12, 22)</td></tr>
+<tr><td class="d">Ensuite</td><td>L'invitation demeure : elle n'a jamais été annulée, ce qui correspond au statut « Accomplie (invitation) » du registre</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES RÉCABITES : Jérémie 35 rapporte que, dans les derniers jours du royaume, ces gens ont refusé de boire du vin par respect pour l'ordre de leur ancêtre Yonadab, et que Jéhovah a fait d'eux un exemple devant Juda : « parce que vous avez obéi au commandement de Yonadab, votre ancêtre… il ne sera pas retranché de Yonadab, fils de Rékab, un homme se tenant devant moi pour toujours ». Ce récit, daté du règne de Yoaïkim, illustre la distinction entre ceux qui écoutent et ceux qui n'écoutent pas. (2) ÉBED-MÉLEK : Jérémie 39:16-18 rapporte la promesse faite à cet Éthiopien qui avait fait sortir le prophète de la citerne : « je te ferai certainement échapper… parce que tu as eu confiance en moi ». Le texte donne ainsi un cas nominatif de personne préservée lors de la prise de la ville. (3) LE RESTE DANS LE PAYS : 2 Rois 25:12 et 22 rapportent que Nebouzaradan laissa une partie du petit peuple pour les vignes et les travaux, et que Guedalia fut établi sur eux à Mizpa ; le sceau de Guedalia, retrouvé à Lakish, atteste l'existence de ce gouverneur. (4) LA PRATIQUE DU REFUGE : l'idée de se mettre à l'abri avant le jugement appartient à la culture biblique — villes de refuge, marque protectrice d'Ézéchiel 9, chambre fermée d'Ésaïe 26:20 ; elle donne son cadre à l'expression « vous serez cachés ». (5) LES RASSEMBLEMENTS : les réformes de Josias comportent des rassemblements du peuple à Jérusalem pour la Pâque (2 Chroniques 35:1-19), ce qui donne un contenu concret à l'appel du verset 1. (6) LA SURVIE DU RESTE : après 607, la vie reprend autour de Mizpa et sur la côte ; les documents administratifs de la période (sceaux, bulles, ostraca) montrent une population administrée, ce qui éclaire la promesse faite au « reste de la maison de Juda » au verset 7. (7) PRUDENCE : les sources établissent la réalité des personnes et des événements cités ; elles ne permettent pas de mesurer combien de personnes ont individuellement répondu à l'invitation.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE PAYS ET SES HABITANTS HUMBLES : l'expression « humbles de la terre » désigne d'abord les gens du pays de Juda, ce petit royaume de montagne entre la mer et le désert, où la majorité de la population vivait de la terre. (2) LES LIEUX DE RASSEMBLEMENT : la cour du temple à Jérusalem, les portes de la ville et les places publiques servaient de lieux d'annonce et de réunion ; la réforme de Josias y convoque l'assemblée. (3) MIZPA : cette ville de Benjamin, identifiée au site de Tell en-Nasbeh, devient le centre administratif du reste laissé dans le pays ; sa position sur la route nord, à quelques kilomètres de Jérusalem, explique ce choix. (4) LE GENRE DE VIE DU RESTE : les vignes et les travaux agricoles mentionnés dans le récit de la déportation partielle correspondent au terroir des collines de Juda, fait d'oliveraies, de vignes en terrasses et de petits troupeaux. (5) LA BALLE ET LE VENT : l'image de la « bale » prend tout son sens dans un pays de battage en plein air, sur des aires exposées où le vent de l'après-midi emporte la paille menue — un spectacle quotidien pour les auditeurs. (6) LES REFUGES CONCRETS : grottes, citernes, tours de garde dans les champs et remparts offraient des abris réels en temps de guerre ; les fouilles de Juda ont relevé de nombreuses cavités aménagées, ce qui donne un arrière-plan matériel à l'idée d'être « caché ».</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE SCEAU DE GUEDALIA : un sceau portant l'inscription « Guedalia, qui est sur la maison » a été retrouvé à Lakish ; il atteste l'existence du gouverneur établi sur le reste du peuple après 607. (2) LES BULLES DE MIZPA : les fouilles de Tell en-Nasbeh ont livré des cachets et des documents qui concordent avec le rôle administratif attribué à cette ville dans les récits de Jérémie et de 2 Rois. (3) LA CONTINUITÉ D'OCCUPATION : les prospections archéologiques montrent que certaines zones de Juda ont conservé une occupation ténue après la campagne babylonienne, notamment autour de Mizpa et dans le nord de la Shéphéla, ce qui correspond à l'existence d'un « reste » mentionné par le texte. (4) LES RÉSERVES ALIMENTAIRES : les jarres de stockage, silos et caves découverts dans les villages de Juda témoignent d'une économie de subsistance apte à traverser des périodes de troubles, contexte de la survie d'un petit peuple. (5) L'ARCHÉOLOGIE DES GROTTES-REFUGES : les cavités aménagées dans la région de la Shéphéla — escaliers taillés, citernes, tunnels — sont datées pour plusieurs d'entre elles de la période de la monarchie finissante et de l'occupation postérieure ; elles documentent la pratique de se mettre à l'abri. (6) LES MESURES DE PROTECTION DES PERSONNES : les bulles portant des noms de hauts fonctionnaires, dont plusieurs ont été découvertes brûlées dans les niveaux de destruction, illustrent à la fois l'existence de ces personnes et la brutalité de la fin du royaume. (7) PRUDENCE : l'archéologie atteste les lieux, les personnes et les pratiques de refuge ; elle ne permet pas d'établir la liste de ceux qui ont répondu à l'appel du prophète.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>L'APPEL (2:1) : « RASSEMBLEZ-VOUS, OUI, RASSEMBLEZ-VOUS, Ô GENS D'UNE NATION QUI N'A PAS HONTE ! » → L'URGENCE (2:2) : AVANT QUE LE DÉCRET PRENNE EFFET / AVANT QUE LE JOUR NE PASSE COMME LA BALE / AVANT QUE LA COLÈRE ARDENTE VIENNE → LES TROIS RECHERCHES (2:3) : « RECHERCHEZ JÉHOVAH » · « RECHERCHEZ LA JUSTICE » · « RECHERCHEZ L'HUMILITÉ » → LES DESTINATAIRES : LES HUMBLES DE LA TERRE QUI EXÉCUTENT DÉJÀ LES DÉCISIONS JUDICIAIRES → LA PROMESSE CONDITIONNELLE : « PROBABLEMENT SEREZ-VOUS CACHÉS AU JOUR DE LA COLÈRE DE JÉHOVAH » → L'ÉCHO DU NOM : SOPHONIE = « JÉHOVAH A CACHÉ » → HISTOIRE : LES RÉCABITES (JÉRÉMIE 35), ÉBED-MÉLEK (JÉRÉMIE 39:16-18), LE RESTE LAISSÉ DANS LE PAYS (2 ROIS 25:12, 22), LE SCEAU DE GUEDALIA → STATUT DU REGISTRE : ACCOMPLIE (INVITATION)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec la référence du registre (Sophonie 2:3) et le statut « Accomplie (invitation) ». LE MOT « PROBABLEMENT » : la fiche l'explique comme la marque de la responsabilité individuelle, en suivant les publications, sans en faire une incertitude sur la promesse divine. LES DESTINATAIRES : la fiche décrit les « humbles de la terre » comme les gens du pays déjà fidèles, sans identifier des personnes précises autres que celles nommées dans les récits bibliques. LES RÉCABITES ET ÉBED-MÉLEK : la fiche les cite comme exemples bibliques de personnes préservées, sans affirmer qu'ils constituent à eux seuls l'accomplissement de la prophétie. LES DATES : la chute de Jérusalem est donnée en 607 av. n. è. selon la chronologie retenue par les publications, la chronologie communément admise la situant en 586. LE REFUGE : la fiche présente l'expression « vous serez cachés » comme une promesse de protection conditionnelle, sans en tirer de description du mécanisme. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 4 à 15 du même chapitre (fiches suivantes) ni du chapitre 1 ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie lance l'appel : rassemblement, recherche de Jéhovah, de la justice et de l'humilité (Sophonie 2:1-3)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 648 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les Récabites refusent le vin par fidélité à leur ancêtre et reçoivent une bénédiction (Jérémie 35)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 640-630 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Règne de Josias et réforme religieuse : un début de réponse nationale à l'appel (2 Chroniques 34-35)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">648-629 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Jérusalem ; Ébed-Mélek est préservé selon la promesse (Jérémie 39:16-18)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le petit peuple est laissé dans le pays ; Guedalia gouverne depuis Mizpa (2 Rois 25:12, 22)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'invitation reste valable : « probablement serez-vous cachés au jour de la colère de Jéhovah » (statut du registre : Accomplie (invitation))</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/2">Bible — Hébreux 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/16">Bible — Actes 16 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/16</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/121">Bible — Psaume 121 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/121</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/123">Bible — Psaume 123 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/123</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1981608">Cachés au jour de la colère de Jéhovah — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1981608</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1993921">« Cherchez Jéhovah, vous tous, humbles de la terre » — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1993921</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche SO479 — « Cherchez la justice, cherchez l'humilité » : rassemblez-vous avant le décret, peut-être serez-vous cachés au jour de la colère</span><span>Catégorie SO2</span></div></div>
+</article>
+<article class="fiche" id="SO480">
+<div class="visuel"><img src="images/prophe_SO480_philistins.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE SO480 · CATÉGORIE SO2</div>
+<h3>« Gaza sera une ville abandonnée » : les quatre villes philistines, la nation des Keréthiens et la côte qui devient un pâturage</h3>
+<div class="ref">Sophonie 2:4-7</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">car gaza sera une ville abandonnée et ascalon sera dévastée asdod sera chassée en plein jour et ékrôn sera déracinée malheur à ceux qui habitent au bord de la mer à la nation des keréthiens la parole de jéhovah est contre vous ô canaan pays des philistins je vais te détruire tu n'auras plus d'habitants le bord de la mer deviendra des pâturages avec des puits pour les bergers et des enclos pour les moutons il deviendra une région pour ceux qui resteront du peuple de juda là ils brouteront le soir ils se coucheront dans les maisons d'ascalon car jéhovah leur dieu s'occupera d'eux et ramènera leurs captifs (sophonie 2:4-7 ; prise d'ashkelon et destruction d'ékron en 604 av. n. è. (date neutre) ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche SO480 · 0:12</div><audio controls preload="none" src="audio/fiche_SO480_philistins.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_SO480_philistins.mp3 · 0:12 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Sophonie 2:4-7</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>car gaza sera une ville abandonnée et ascalon sera dévastée asdod sera chassée en plein jour et ékrôn sera déracinée malheur à ceux qui habitent au bord de la mer à la nation des keréthiens la parole de jéhovah est contre vous ô canaan pays des philistins je vais te détruire tu n'auras plus d'habitants le bord de la mer deviendra des pâturages avec des puits pour les bergers et des enclos pour les moutons il deviendra une région pour ceux qui resteront du peuple de juda là ils brouteront le soir ils se coucheront dans les maisons d'ascalon car jéhovah leur dieu s'occupera d'eux et ramènera leurs captifs (sophonie 2:4-7 ; prise d'ashkelon et destruction d'ékron en 604 av. n. è. (date neutre) ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Sophonie — P480 (2:4-7 : Gaza abandonnée, Ashkelon dévastée, Ashdod chassée, Ékron déracinée) ; prise d'Ashkelon et destruction d'Ékron en 604 av. n. è. (date neutre) ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« CAR GAZA SERA UNE VILLE ABANDONNÉE… ET ASCALON SERA DÉVASTÉE… ASDOD SERA CHASSÉE EN PLEIN JOUR… ET ÉKRÔN SERA DÉRACINÉE… »… « MALHEUR À CEUX QUI HABITENT AU BORD DE LA MER… À LA NATION DES KERÉTHIENS…! LA PAROLE DE JÉHOVAH EST CONTRE VOUS… Ô CANAAN, PAYS DES PHILISTINS… JE VAIS TE DÉTRUIRE… TU N'AURAS PLUS D'HABITANTS… »… « LE BORD DE LA MER DEVIENDRA DES PÂTURAGES… AVEC DES PUITS POUR LES BERGERS… ET DES ENCLOS POUR LES MOUTONS… »… « IL DEVIENDRA UNE RÉGION POUR CEUX QUI RESTERONT DU PEUPLE DE JUDA… LÀ, ILS BROUTERONT… LE SOIR, ILS SE COUCHERONT DANS LES MAISONS D'ASCALON… CAR JÉHOVAH LEUR DIEU S'OCCUPERA D'EUX… ET RAMÈNERA LEURS CAPTIFS… »… — ʿAZZAH… GAZA, LA FORTE… ʿEQRON… ÉKRÔN… ʾASHDOD… ASHDOD… ʾASHQELON… ASCALON… ʿAZUVAH… ABANDONNÉE, DÉLAISSÉE… SHEMAMAH… DÉVASTÉE, UNE DÉSOLATION… GERASHAH BA-TSOHORAYIM… CHASSÉE EN PLEIN MIDI, AU MILIEU DU JOUR… TEʿAQER… DÉRACINÉE… HOY… MALHEUR… YOSHEVE ḤEVEL HA-YAM… LES HABITANTS DE LA CORDELIÈRE DE LA MER, DE LA CÔTE… GOY KERETIM… LA NATION DES KERÉTHIENS, LES CRÉTOIS… KENAʿAN ʾERETS PELISHTIM… CANAAN, PAYS DES PHILISTINS… HA-ʾAVADTI… JE VAIS TE FAIRE PÉRIR… ME-ʾAYIN YOSHEV… SANS HABITANT… NEVOT… LES PÂTURAGES, LES DEMEURES DE BERGERS… KEROT ROʿIM… LES PUITS, LES CITERNES DES BERGERS… GEDEROT TSON… LES ENCLOS À MOUTONS… ḤEVEL… LA RÉGION, LE LOT, LA CORDE DE MESURE… SHEʾERIT BEIT YEHUDAH… LE RESTE DE LA MAISON DE JUDA… PAQAD… S'OCCUPER DE, VISITER… SHUV SHEVUT… RAMENER LES CAPTIFS, RÉTABLIR… — 701… 634… 604… 604 AV. N. È.… CHRONIQUE BABYLONIENNE… NEBOUKADNETSAR… PSAMTIK… NÉKO… 599… ASSURBANIPAL… MYTHE D'OUR… CULTURES MATÉRIELLES… »</li>
+<li>LES TROIS JUMEAUX — Amos 1:6-8 : « voici ce que dit Jéhovah : “À cause de trois transgressions de Gaza, et à cause de quatre, je ne reviendrai pas en arrière : parce qu'ils ont emmené en exil une population entière pour la livrer à Édom. J'enverrai un feu contre la muraille de Gaza… je retrancherai de la région maritime les habitants d'Ashdod et celui qui tient le sceptre d'Ascalon” » — la prophétie jumelle sur les mêmes villes, déjà citée en Amos, ce qui montre que le jugement de la côte avait été annoncé par deux prophètes à près de deux siècles d'intervalle et que Sophonie reprend un dossier déjà instruit. Ézéchiel 25:15-17 : « parce que les Philistins ont agi avec vengeance et se sont vengés avec mépris… voici que j'étends ma main contre les Philistins, je retrancherai les Keréthiens et je ferai périr le reste des habitants de la côte » — le même nom de Keréthiens employé par un contemporain, avec la même sentence. Ésaïe 14:29-31 : « ne te réjouis pas, Philistie tout entière, de ce que la verge qui te frappait a été brisée… hurle, porte ! crie, ville ! » — l'oracle qui décrit la même ruine venue du nord, celle de l'Assyrie puis de Babylone. Jérémie 47:1-7 : « voici que des eaux montent du nord… les hommes crieront, tous les habitants du pays hurleront… comment te reposerais-tu, épée de Jéhovah ? » — la quatrième voix prophétique sur Gaza, Ascalon et le reste de la côte.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Après l'appel aux humbles, le prophète passe aux nations, en commençant par la plus proche : la Philistie, sur la côte méditerranéenne. La notice est construite comme un jeu de mots sur les quatre grandes villes : Gaza, la « forte », sera « abandonnée » ; Ascalon, dont le nom évoque un poids, sera « dévastée » ; Asdod sera « chassée en plein jour », donnant une fois encore la mesure de sa domination au grand jour ; Ékrôn sera « déracinée », comme on arrache un pieu. Le prophète s'adresse ensuite à ses habitants comme à une « nation des Keréthiens » — nom qui désigne les populations venues de l'horizon égéen, Crète comprise, dont l'installation sur la côte est confirmée par les textes égyptiens et par la Bible elle-même. La sentence est sans appel : la parole de Jéhovah est contre Canaan, le pays des Philistins, qui n'aura plus d'habitants. Et pourtant la suite du passage est un retournement : le bord de la mer deviendra des pâturages, avec des puits pour les bergers et des enclos pour les moutons ; ce territoire appartiendra à ceux qui resteront du peuple de Juda, qui y brouteront et se coucheront le soir dans les maisons d'Ascalon, « car Jéhovah leur Dieu s'occupera d'eux et ramènera leurs captifs ». Le registre du projet rattache cette entrée à la prise d'Ascalon et à la destruction d'Ékrôn en 604 av. n. è., en conservant l'expression « date neutre », et lui donne le statut « Accomplie ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LES QUATRE VILLES ET LEURS NOMS : Gaza, Ascalon, Asdod et Ékrôn forment avec Gath la pentapole philistine ; le texte omet Gath, déjà détruite ou affaiblie depuis les campagnes assyriennes de la fin du VIIIe siècle. Les quatre villes nommées correspondent aux quatre centres encore vivants de la plaine côtière au VIIe siècle : Gaza au sud, au carrefour de la route d'Égypte, Ascalon sur la côte, Asdod juste au nord, et Ékrôn à l'intérieur des terres, à la lisière de la Shéphéla. (2) LE JEU DES VERBES : le texte associe à chaque ville un verbe qui décrit un sort concret — abandonnée, dévastée, chassée, déracinée. Ces quatre nuances ne sont pas de simples variations littéraires : elles recouvrent les différents sorts qu'ont connus ces villes, entre blocus, déportation, destruction et abandon. Les commentateurs notent aussi le parallèle avec Amos 1:6-8, où le même groupe de villes est visé, ce qui souligne la continuité de la dénonciation prophétique de la traite des populations. (3) LES KERÉTHIENS : ce nom, apparenté aux Crétois, désigne la population d'origine égéenne installée sur la côte méridionale du pays, mentionnée dans les textes égyptiens et dans les récits de David ; Ézéchiel 25:16 emploie le même terme dans un oracle contemporain. L'usage du mot inscrit la Philistie dans un réseau méditerranéen, ce que l'archéologie confirme par la céramique mycénienne et les affinités culturelles de la région. (4) LE RETOURNEMENT DU VERSET 7 : la promesse faite au reste de Juda de recevoir cette région en lot est un trait fréquent des prophètes : la terre des ennemis devient le patrimoine des humbles. La Bible Annotée relève que la région maritime « sera pour le reste de la maison de Juda » et que les Juifs revenus de captivité l'occuperont effectivement, ce qui s'est vérifié dans l'histoire : la côte et la Shéphéla font partie du territoire de la province perse de Yehoud, puis de la Judée hellénistique et romaine.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 36 — Tsephania » (document 1101990097) présente le livre de Sophonie et le situe dans la série des prophéties sur les nations, dont la Philistie fait partie. L'article « Cachés au jour de la colère de Jéhovah » (1981608) montre comment les oracles contre les nations voisines s'inscrivent dans le message général du livre : le jugement commence par le peuple de Dieu, puis atteint les peuples qui l'ont opprimé, et le dessein final reste la protection des humbles, ce qui est exactement la logique du passage, où la promesse au reste de Juda est enchâssée dans l'oracle contre la côte. Lecture commune et exégèse : les commentateurs soulignent que la Philistie est un cas unique dans la Bible — un peuple dont la disparition est annoncée de façon répétée par Amos, Ésaïe, Sophonie, Jérémie et Ézéchiel, et dont l'histoire a suivi la ligne annoncée : la destruction successive des villes a mis fin à l'entité philistine comme peuple distinct, absorbée dans les populations voisines. La Bible Annotée note de son côté la correspondance entre le sort des villes et les campagnes historiques : les Assyriens ont frappé Asdod et Ékrôn au VIIIe siècle, les Égyptiens ont tenu Gaza et Ascalon, puis Babylone a brisé ce qui restait, ce qui donne à la prophétie sa trame vérifiable.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe siècle av. n. è.</td><td>Campagnes assyriennes en Philistie : prise d'Asdod par Sargon II, atteinte à Ékrôn, affaiblissement général de la côte (Ésaïe 20:1)</td></tr>
+<tr><td class="d">Vers 634-630 av. n. è.</td><td>L'Égypte étend son contrôle vers le nord : Gaza devient un point d'appui égyptien sur la route de Syrie</td></tr>
+<tr><td class="d">Vers 629-628 av. n. è.</td><td>Entre Égypte et Babylone, la région maritime change de mains ; le relais local de la domination égyptienne est établi à Gaza (2 Rois 23:30-34)</td></tr>
+<tr><td class="d">604 av. n. è.</td><td>Prise d'Ashkelon et destruction d'Ékrôn : l'accomplissement retenu par le registre, avec la mention « date neutre »</td></tr>
+<tr><td class="d">607-586 av. n. è.</td><td>Les campagnes babyloniennes balaient les dernières places de la côte ; les villes philistines déclinent définitivement</td></tr>
+<tr><td class="d">537 av. n. è. et après</td><td>Le territoire est occupé par les Judéens revenus et leurs descendants : la côte et la Shéphéla font partie de la province de Yehoud, puis de la Judée</td></tr>
+<tr><td class="d">Époques suivantes</td><td>Les Philistins disparaissent comme peuple distinct, absorbés dans les populations hellénisées de la région</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA CHRONIQUE BABYLONIENNE : pour l'an 604 av. n. è., le texte cunéiforme rapporte que Neboukadnetsar marcha vers la Philistie et « détruisit la ville d'Ashkelon » ; il rapporte ensuite le transfert du roi de Juda à Babylone, ce qui encadre chronologiquement l'événement retenu par le registre. (2) LA FIN D'ÉKRÔN : les fouilles de Tel Miqne ont mis au jour une ville qui fut détruite et réoccupée, puis abandonnée au VIe siècle, avec des traces d'incendie et un quartier artisanal ; les archéologues datent sa destruction finale de la période des campagnes babyloniennes. (3) LES SOURCES ÉGYPTIENNES : les textes et les reliefs du règne de Psamtik Ier et de Nékô mentionnent les campagnes vers le nord et le contrôle des places côtières, ce qui correspond à l'arrière-plan politique du temps de Sophonie. (4) GAZA DANS L'HISTOIRE : la ville passe des Assyriens aux Égyptiens, puis aux Babyloniens et aux Perses, comme le montrent les archives administratives et les notices des auteurs anciens ; elle est citée par Hérodote dans son catalogue des peuples soumis à l'empire perse. (5) LES QUATRE-VINGTS ANS DE DÉCLIN : des campagnes assyriennes de la fin du VIIIe siècle aux campagnes babyloniennes du début du VIe siècle, la Philistie n'est jamais relevée entre deux coups ; l'archéologie voit cet affaissement dans la taille des sites et la raréfaction des inscriptions locales. (6) LE PEUPLE DISPARU : après la période perse, il n'existe plus de Philistins comme entité culturelle distincte ; leur nom reste attaché à la géographie, ce qui correspond à l'éclipse annoncée. (7) PRUDENCE : les sources documentent les destructions et les changements de domination ; elles ne rattachent pas chaque verbe du verset 4 à une ville ni à une date précise.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) GAZA : la ville tient la position la plus méridionale de la côte, à l'entrée de la route qui relie l'Égypte à la Syrie ; les caravanes et les armées y passent nécessairement, ce qui en fait à la fois une place forte et un objectif. (2) ASCALON : port actif, entouré de dunes et d'une plaine fertile ; les fouilles ont dégagé ses remparts, son port et de grandes installations commerciales, avec des dépôts de céramique phénicienne et grecque. (3) ASDOD : ancienne citadelle à Tel Ashdod, le site est placé sur un tell intérieur, à quelques kilomètres de la mer ; la mention d'une ville « chassée en plein jour » correspond à une place dominée en plein jour, donc sans surprise ni secours. (4) ÉKRÔN : Tel Miqne, à la lisière de la Shéphéla, protégeait la route qui montait vers la montagne de Juda ; sa position explique qu'elle soit la dernière visée dans la liste. (5) LA RÉGION MARITIME : les ʿevot ʿever ha-yam — les dunes, le cordon littoral et les plaines alluviales — sont précisément le lieu propice aux pâturages et aux puits qui racontent le devenir du pays : un espace vide où paissent des troupeaux. (6) LES PUITS DE BERGERS : l'eau de la plaine côtière vient de la nappe phréatique peu profonde, accessible par des puits peu profonds ; cette donnée hydrologique explique la formule « des puits pour les bergers », car la côte est un pays de puits et non de sources. (7) LES ROUTES ET LES PORTES : la côte est un corridor militaire d'où viennent les armées du nord, ce qui rend compte de la répétition des oracles sur cette région au fil des siècles.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES FOUILLES D'ASCALON : plusieurs campagnes ont dégagé les remparts, les portes et un quartier de maisons ; les niveaux de destruction et les dépôts de cendres permettent d'attribuer une phase violente de la fin du VIIe au début du VIe siècle, ce qui est cohérent avec la chronique babylonienne. (2) TEL MIQNE (ÉKRÔN) : le site a livré des installations industrielles — huileries, fours, ateliers — et des inscriptions ; son abandon progressif à la période perse est bien documenté par la céramique. (3) TEL ASHDOD : les fouilles ont mis au jour des niveaux assyriens puis babyloniens, avec des objets de commerce, dont des poids et des sceaux, qui montrent une économie urbaine développée avant l'effondrement. (4) LA CÉRAMIQUE : les répertoires de poterie de la région côtière témoignent d'échanges constants avec le monde égéen, la Phénicie et l'Égypte ; les importations diminuent fortement après la chute de la région, marque matérielle du déclin. (5) L'ARCHÉOZOOLOGIE : l'analyse des restes fauniques des sites de la plaine montre, sur les niveaux postérieurs à la grande destruction, un glissement vers l'élevage extensif, cohérent avec la transformation du pays en zone de pâturage et d'enclos. (6) LES INSCRIPTIONS PHILISTINES : les textes découverts à Ékrôn et les graffiti de la région attestent l'usage d'une langue ouest-sémitique propre, écriture comprise, dont le corpus s'éteint avec la culture qui l'utilisait — un indicateur direct de la disparition du peuple. (7) PRUDENCE : l'archéologie établit la succession des destructions et le déclin des sites ; elle ne détermine pas le détail du calendrier prophétique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LES QUATRE VILLES (2:4) : GAZA ABANDONNÉE · ASCALON DÉVASTÉE · ASDOD CHASSÉE EN PLEIN JOUR · ÉKRÔN DÉRACINÉE → L'ACCUSATION (2:5) : « MALHEUR À CEUX QUI HABITENT AU BORD DE LA MER, À LA NATION DES KERÉTHIENS ! » — LA PAROLE DE JÉHOVAH EST CONTRE CANAAN, PAYS DES PHILISTINS, QUI N'AURA PLUS D'HABITANTS → LE DEVENIR DU PAYS (2:6) : LE BORD DE LA MER DEVIENT PÂTURAGES, PUITS POUR LES BERGERS, ENCLOS POUR LES MOUTONS → LE RETOURNEMENT (2:7) : LE RESTE DE LA MAISON DE JUDA HÉRITERA DE LA RÉGION, BROUTERA ET SE COUCHERA DANS LES MAISONS D'ASCALON ; « JÉHOVAH LEUR DIEU S'OCCUPERA D'EUX ET RAMÈNERA LEURS CAPTIFS » → PARALLÈLE : AMOS 1:6-8 (MÊMES VILLES, MÊME FEU) · ÉZÉCHIEL 25:15-17 (LES KERÉTHIENS) · ÉSAÏE 14:29-31 · JÉRÉMIE 47 → HISTOIRE : CAMPAGNES ASSYRIENNES (VIIIe S.), TENUE ÉGYPTIENNE DE GAZA, 604 AV. N. È. (ASCALON DÉTRUITE, ÉKRÔN BALAYÉE), DÉCLIN DÉFINITIF À LA PÉRIODE PERSE → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec la référence du registre (prise d'Ashkelon et destruction d'Ékron en 604 av. n. è. (date neutre)) et le statut « Accomplie ». LA MENTION « DATE NEUTRE » : la fiche reprend littéralement cette expression du registre, sans ajouter de qualification religieuse. LES NOMS DE VILLES : la fiche emploie les formes françaises usuelles (Gaza, Ascalon, Asdod, Ékrôn) et signale leurs identifications archéologiques sans entrer dans le détail des campagnes de fouilles. LES KERÉTHIENS : la fiche les présente comme une population d'origine égéenne, en renvoyant aux textes bibliques et aux sources égyptiennes, sans trancher définitivement la question de leur origine exacte. GATH : la fiche indique que cette ville n'est pas citée dans la liste et propose des explications historiques, sans affirmer laquelle est certaine. LE VERSET 7 : la fiche expose la promesse au reste de Juda comme une prophétie réalisée dans le retour et l'installation en Yehoud, sans dater précisément chaque phase de cette installation. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 1 à 3 (fiche précédente) ni des versets 8 à 15 (fiches suivantes) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagnes assyriennes : Asdod prise par Sargon II, Ékrôn atteinte, la côte affaiblie (Ésaïe 20:1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe siècle av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'Égypte contrôle Gaza et la route du nord ; la côte passe sous influence égyptienne</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 630 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Neboukadnetsar marche contre la Philistie et détruit Ashkelon ; Ékrôn est balayée (chronique babylonienne) — accomplissement retenu par le registre (« date neutre »)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">604 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les dernières places de la côte sont épuisées par les campagnes babyloniennes</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">589-586 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le territoire revient à la province de Yehoud : la côte et la Shéphéla sont occupées par les Judéens revenus</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è. et après</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les Philistins disparaissent comme peuple : les villes se maintiennent comme sites, mais la nation comme entité s'éteint</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Époques suivantes</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/43">Bible — Ézéchiel 43 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/43</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/60/3">Bible — 1 Pierre 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/60/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/129">Bible — Psaume 129 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/129</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/16">Bible — Romains 16 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/16</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990097">Livre de la Bible numéro 36 — Tsephania — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990097</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche SO480 — « Gaza sera une ville abandonnée » : les quatre villes philistines, la nation des Keréthiens et la côte qui devient un pâturage</span><span>Catégorie SO2</span></div></div>
+</article>
+<article class="fiche" id="SO481">
+<div class="visuel"><img src="images/prophe_SO481_moab.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE SO481 · CATÉGORIE SO2</div>
+<h3>« J'ai entendu les injures de Moab » : Sodome et Gomorrhe, la mine de sel, et les dieux de la terre anéantis devant Jéhovah</h3>
+<div class="ref">Sophonie 2:8-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">j'ai entendu les injures de moab et les insultes des ammonites qui se sont moqués de mon peuple et ont menacé avec arrogance de s'emparer de son territoire c'est pourquoi aussi vrai que je suis vivant déclare jéhovah des armées le dieu d'israël moab deviendra comme sodome et les ammonites comme gomorrhe un lieu envahi par les orties une mine de sel et un désert permanent ceux qui resteront de mon peuple les pilleront et le reste de ma nation les dépossédera voilà ce qu'ils auront au lieu de leur orgueil parce qu'ils se sont moqués du peuple de jéhovah des armées et qu'ils l'ont traité avec arrogance jéhovah sera redoutable avec eux car il anéantira tous les dieux de la terre et toutes les îles des nations se prosterneront devant lui chacune depuis sa place (sophonie 2:9, 10 ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche SO481 · 0:10</div><audio controls preload="none" src="audio/fiche_SO481_moab.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_SO481_moab.mp3 · 0:10 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Sophonie 2:8-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>j'ai entendu les injures de moab et les insultes des ammonites qui se sont moqués de mon peuple et ont menacé avec arrogance de s'emparer de son territoire c'est pourquoi aussi vrai que je suis vivant déclare jéhovah des armées le dieu d'israël moab deviendra comme sodome et les ammonites comme gomorrhe un lieu envahi par les orties une mine de sel et un désert permanent ceux qui resteront de mon peuple les pilleront et le reste de ma nation les dépossédera voilà ce qu'ils auront au lieu de leur orgueil parce qu'ils se sont moqués du peuple de jéhovah des armées et qu'ils l'ont traité avec arrogance jéhovah sera redoutable avec eux car il anéantira tous les dieux de la terre et toutes les îles des nations se prosterneront devant lui chacune depuis sa place (sophonie 2:9, 10 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Sophonie — P481 (2:8-11 : j'ai entendu l'outrage de Moab et les injures d'Ammon ; le reste de mon peuple les pillera) ; Sophonie 2:9, 10 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« J'AI ENTENDU LES INJURES DE MOAB… ET LES INSULTES DES AMMONITES… QUI SE SONT MOQUÉS DE MON PEUPLE… ET ONT MENACÉ AVEC ARROGANCE DE S'EMPARER DE SON TERRITOIRE… »… « C'EST POURQUOI, AUSSI VRAI QUE JE SUIS VIVANT… DÉCLARE JÉHOVAH DES ARMÉES, LE DIEU D'ISRAËL… MOAB DEVIENDRA COMME SODOME… ET LES AMMONITES COMME GOMORRHE… UN LIEU ENVAHI PAR LES ORTIES… UNE MINE DE SEL… ET UN DÉSERT PERMANENT… »… « CEUX QUI RESTERONT DE MON PEUPLE LES PILLERONT… ET LE RESTE DE MA NATION LES DÉPOSSÉDERA… »… « VOILÀ CE QU'ILS AURONT AU LIEU DE LEUR ORGUEIL… PARCE QU'ILS SE SONT MOQUÉS DU PEUPLE DE JÉHOVAH DES ARMÉES… ET QU'ILS L'ONT TRAITÉ AVEC ARROGANCE… »… « JÉHOVAH SERA REDOUTABLE AVEC EUX… CAR IL ANÉANTIRA TOUS LES DIEUX DE LA TERRE… ET TOUTES LES ÎLES DES NATIONS SE PROSTERNERONT DEVANT LUI… CHACUNE DEPUIS SA PLACE… »… — SHAMAʿTI ḤERPAṬ MOʾAV… J'AI ENTENDU L'OUTRAGE DE MOAB… GIDDUF… L'INSULTE, LE BLASPHÈME… BENE ʿAMMON… LES FILS D'AMMON… ḤEREFU ʾET ʿAMMI… ILS ONT OUTRAGÉ MON PEUPLE… YAGDILU ʿAL GEVULAM… ILS SE SONT AGRANDIS CONTRE LEUR FRONTIÈRE… ḤAY ʾANI… AUSSI VRAI QUE JE SUIS VIVANT — FORMULE DU SERMENT DIVIN… ʾADONAI TSEVAʾOT… JÉHOVAH DES ARMÉES… KE-SEDOM… COMME SODOME… ʿAMON… AMMON… KA-ʿAMORAH… COMME GOMORRHE… MAMSHAT ḤARUL… UN DOMAINE DE CHARDONS, D'ORTIES… MIKREH MELAH… UNE EXPLOITATION DE SEL, DES CARRIÈRES DE SEL… SHEMAMAH ʿAD ʿOLAM… UNE DÉSOLATION PERPÉTUELLE… SHALAL… LE PILLAGE, LE BUTIN… YARASHU… LES DÉPOSSÉDERONT, LES HÉRITERONT… GAʾON… L'ORGUEIL… NORE… REDOUTABLE… RAZEH… AMAIGRIR, ANÉANTIR, RENDRE MAIGRE… YAḤIDU… ILS LUI RENDRONT CULTE, SE PROSTERNERONT… ʾIYIM… LES ÎLES, LES CÔTES DES NATIONS… — 582… 25:21… JÉRÉMIE 48… ÉZÉCHIEL 25… AMOS 1:13-2:3… 2 ROIS 24:2… JOSÈPHE, ANTIQUITÉS JUIVES X… BABYLONIAN CHRONICLE… MESHA… NABATAEENS… »</li>
+<li>LES TROIS JUMEAUX — Jérémie 48:1-47 : tout un chapitre sur Moab, avec le même tableau de ruine (« car Nebo est dévastée, Qiryataïm est couverte de honte… ») et la même formule de désolation ; le texte se termine pourtant par une note d'espérance — « je ramènerai les captifs de Moab dans la suite des jours » — ce qui montre que la sévérité n'exclut pas les retours. Ézéchiel 25:1-11 : « à cause des Ammonites qui ont dit : “Ah ! ah !” au sujet de mon sanctuaire… je te livre aux gens de l'Orient pour qu'ils couchent leurs campements dans tes murs » — l'oracle contemporain sur ces deux peuples, où Ézéchiel annonce exactement que Moab et Ammon passeront sous la domination des tribus de l'Est, « les gens de l'Orient ». Amos 1:13-2:3 : « voici ce que dit Jéhovah : “À cause de trois transgressions des fils d'Ammon…” » et l'oracle sur Moab qui suit, « à cause de trois transgressions de Moab… j'enverrai un feu contre les murailles de Qeriyoth » — la preuve que la sentence était instruite depuis longtemps, et que Sophonie s'y insère. Deutéronome 29:23 : « tout le pays n'est que soufre, sel brûlé et embrasement, il n'est pas ensemencé, il ne fait rien germer… comme la ruine de Sodome et de Gomorrhe, d'Adma et de Tseboyim » — la formule littéraire employée pour décrire la dévastation du pays, reprise ici avec l'image du sel.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 2 poursuit sa tournée des nations en piquant au sud-est du pays, chez les voisins les plus proches de Juda après les Philistins : Moab et Ammon, les deux peuples issus de Lot selon la Genèse, installés respectivement à l'est de la mer Morte et au nord-est, entre l'Amon et le Yabboq. Le prophète ne leur reproche pas une faute lointaine : il dit avoir entendu leurs injures, leurs moqueries, et surtout leur arrogance territoriale, ce qui renvoie aux empiétements réels surprenants des voisins à l'occasion de l'affaiblissement du royaume de Juda — terres occupées, frontières poussées, grief qu'Ézéchiel reproche dans les mêmes termes de son côté. Ce rappel donne son sens au proverbe devenue sentence : ce que ces peuples avaient cherché à saisir reviendrait à d'autres. Et surtout, parce qu'ils ont outragé le peuple qui porte le nom de Dieu, leur châtiment dépasse la perte des cités : ils deviendront comme Sodome et Gomorrhe, « un lieu envahi par les orties, une mine de sel et un désert permanent ». La fin du passage élargit brusquement l'horizon : Jéhovah sera redoutable contre eux « car il anéantira tous les dieux de la terre », et « toutes les îles des nations se prosterneront devant lui, chacune depuis sa place » — le jugement des orgueilleux s'achève en universalité de reconnaissance du vrai Dieu. Le registre du projet rattache cette entrée aux versets 9 et 10 et lui donne le statut « Accomplie ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA CAUSE : LES OUTRAGES ET LES FRONTIÈRES : le texte ne dénonce pas seulement des paroles, mais des actes — ces peuples « se sont moqués de mon peuple et ont menacé avec arrogance de s'emparer de son territoire ». Les commentateurs relèvent que ce grief est récurrent dans les prophètes de cette période, où Moab et Ammon profitèrent de la pression assyrienne puis babylonienne pour pousser leurs avantages et occuper des zones du pays. Les raids de la fin du VIIe siècle, pendant lesquels des bandes de Moabites et d'Ammonites figurent parmi les troupes qui montèrent contre Juda, donnent à ces menaces un contenu concret. (2) LA COMPARAISON AVEC SODOME ET GOMORRHE : elle n'est pas anodine — c'est la ruine la plus complète que la Bible connaisse, celle de la terre devenue stérile sous le sel. La suite ajoute « un lieu envahi par les orties, une mine de sel et un désert permanent », énumération technique empruntée au registre du pays décrit en Deutéronome 29:23. (3) L'IMAGE DU SEL : dans le Proche-Orient ancien, le sel répandu signifie à la fois la stérilisation du champ et la rupture de contrat ; les mines de sel de la mer Morte étaient, et sont encore, une réalité du paysage régional. Le mot hébreu employé est un terme d'exploitation — une carrière, une aire de sel — comme si la région du sel trop exploité représentait l'issue naturelle des peuples du sel. (4) LE RAVERSEMENT FINAL : le peuple outragé n'est pas celui qui châtie, et pour cause, il est lui-même vaincu ; le texte dit que c'est Jéhovah qui « anéantit tous les dieux de la terre », et que l'hommage final vient de partout, « depuis chaque place ». Les commentateurs y voient l'une des plus anciennes affirmations de portée universelle, associée à une formule — « aussi vrai que je suis vivant » — qui apparaît ici sous forme de serment divin, décrite comme la manière de jurer de Dieu par lui-même. Les deux volets du passage, la défaite des orgueilleux et l'hommage des nations, structurent la pensée du prophète jusque dans le chapitre 3, où les peuples recevront « des lèvres pures ».</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Cachés au jour de la colère de Jéhovah » (document 1981608) développe la place de ces oracles dans l'économie du livre : le jugement annoncé atteint d'abord Juda, puis les nations qui l'ont outragé, et le refuge reste ouvert aux humbles. Le portail « Livre de la Bible numéro 36 — Tsephania » (document 1101990097) situe cette section sur les nations comme l'une des trois parties du livre, après le jour de Jéhovah et avant l'oracle sur Jérusalem. Lecture commune et exégèse : les commentateurs rapprochent le passage de Jérémie 48 et d'Ézéchiel 25, écrits dans la même période, et soulignent que les trois prophètes décrivent la même évolution — les deux royaumes de l'est passent sous la coupe de l'orient, c'est-à-dire des populations arabes puis de Babylone. Ils notent aussi que la suite immédiate de Sophonie, au chapitre 3, reprend la même vision universaliste, ce qui fait de ces versets l'un des pivots théologiques du livre. La Bible Annotée relève enfin l'élément grammatical essentiel : la formule du serment « je suis vivant » et l'expression « voilà ce qu'ils auront au lieu de leur orgueil » — le prix répondu à l'arrogance, dont le motif est moins la guerre que l'outrage fait au nom divin.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Fin du VIIe siècle av. n. è.</td><td>Moab et Ammon profitent de l'affaiblissement de Juda ; leurs bandes figurent parmi celles qui montent contre le pays (2 Rois 24:2)</td></tr>
+<tr><td class="d">604-582 av. n. è.</td><td>Neboukadnetsar soumet les royaumes de Transjordanie : Moab et Ammon passent sous contrôle babylonien, dans la même suite de campagnes que la Philistie et Juda</td></tr>
+<tr><td class="d">582 av. n. è.</td><td>Une campagne babylonienne contre Moab est mentionnée par les sources babyloniennes ; la région entre dans l'orbite impériale</td></tr>
+<tr><td class="d">VIe-IVe siècle av. n. è.</td><td>Les royaumes de l'est s'éteignent comme entités politiques ; leurs territoires passent aux tribus arabes — Qédar, Nabatéens — et aux empires successifs</td></tr>
+<tr><td class="d">Époques suivantes</td><td>Le pays cesse d'être un domaine de nations et devient un pays de parcours : les sites urbains sont abandonnés, l'occupation devient pastorale, ce qui correspond au « désert permanent » annoncé</td></tr>
+<tr><td class="d">Realisation continue</td><td>L'annonce du verset 11 dépasse le sort des deux peuples : les dieux de la terre sont mis à néant et l'hommage se répand, ce que le registre retient en rattachant cette entrée aux versets 9 et 10</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES CAMPAGNES BABYLONIENNES : la chronique babylonienne et les listes de la cour mentionnent, après 604, des opérations vers l'ouest et la Transjordanie ; pour l'année 582, une campagne contre Moab est rapportée, ce qui traduit le passage de ce royaume sous domination directe. (2) LE TÉMOIGNAGE DE JOSÈPHE : les Antiquités juives rapportent que les rois de Moab et d'Ammon furent subjugués par Babylone à cette époque ; l'affirmation doit être lue avec les précautions dues à son époque de rédaction, mais elle rejoint les données cunéiformes sur la mise au pas de la région. (3) LES SOURCES CONTEMPORAINES DE JUDA : 2 Rois 24:2 mentionne explicitement les bandes de Moabites et d'Ammonites parmi celles qui ravagèrent Juda, ce qui documente le grief du verset 8 sur les empiétements frontaliers. (4) LES DOCUMENTS MOABITES : la stèle de Mésha et les inscriptions moabites montrent un royaume organisé, avec ses villes et son écriture, avant son extinction ; après le VIe siècle, la région n'a plus produit de textes royaux. (5) LES FOUILLES EN AMMONITE : les sites de l'ancien royaume ammonite — la citadelle de Rabbat-Ammon (Amman) et d'autres tells — ont livré des niveaux de destruction du VIe siècle ; l'activité urbaine s'affaisse ensuite durablement. (6) LE RELAIS DES PEUPLES DU DÉSERT : les inscriptions mentionnent, dans ces régions, la présence de Qédarites puis des Nabatéens dans la période suivante, ce qui correspond à la mainmise des « gens de l'Orient » annoncée par Ézéchiel 25. (7) PRUDENCE : les sources établissent l'effacement politique des deux royaumes et le changement de peuplement ; elles ne permettent pas de dater chaque étape ni de suivre le détail du sort de chaque ville.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE PAYS DE MOAB : le haut plateau à l'est de la mer Morte, coupé de canyons profonds comme l'Arnon, fertile en céréales et en pâturages, avec des villes fortifiées dominant la route du Roi ; cette configuration explique à la fois sa richesse et sa vulnérabilité. (2) LE PAYS D'AMMON : la région autour de la source permanente de l'Amman moderne, sur le rebord du désert ; l'eau y fait la valeur du site, et la route nord-sud y passe, ce qui a valu à la région d'être convoitée par tous les empires. (3) LA MER MORTE ET LE SEL : la mer intérieure la plus salée du monde borde ces deux pays ; ses dépôts de sel et de bitume sont attestés comme produits d'exploitation depuis l'Antiquité, ce qui donne un fondement concret à l'image de la « mine de sel ». (4) LES ZONES DE STÉRILITÉ : les recherches pédologiques montrent la présence de sols salins et de sols gypseux dans la basse vallée et autour de la mer ; le sel, dans ce contexte, n'est pas seulement une métaphore, c'est une réalité agricole du pays. (5) LA POSITION DE CARREFOUR : les deux royaumes contrôlaient le grand axe commercial qui reliait Damas à l'Arabie et à la mer Rouge ; leur chute a laissé la place aux caravanes des peuples du désert, ce que l'archéologie enregistre par le changement des produits et des circuits. (6) LES SITES ABANDONNÉS : de nombreux tells de Transjordanie montrent une occupation dense à l'âge du fer suivie d'un vide relatif à la période perse, ce qui correspond à l'image d'un pays passé des villes au parcours pastoral.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA STÈLE DE MÉSHA : ce texte moabite du IXe siècle av. n. è., découvert à Dibon, relate les travaux du roi Mésha et ses guerres ; il atteste l'existence d'un royaume moabite lettré et ambitieux, dont l'histoire se poursuit jusqu'au VIe siècle avant de s'éteindre. (2) LA CITADELLE D'AMMAN ET LES TELLS AMMONITES : les fouilles ont livré des murailles, des sanctuaires et des quartiers d'habitat datés de l'âge du fer, puis des traces de destruction et d'abandon progressif ; la céramique postérieure montre une occupation réduite. (3) L'ARCHÉOZOOLOGIE DE LA TRANSJORDANIE : l'étude des ossements animaux indique, sur les sites de la période postérieure, une simplification de l'élevage — davantage de petit bétail, moins d'activités urbaines associées — cohérente avec un pays devenu zone de parcours. (4) LES INSCRIPTIONS NÉO-BABYLONIENNES : les tablettes administratives de Babylone mentionnent des déportés et des tributaires de provenances diverses, dont les régions de l'ouest ; elles documentent la mise en place du contrôle impérial sur les royaumes voisins. (5) LA MÉTALLURGIE ET LE COMMERCE : les vestiges de cuivre et de produits de luxe retrouvés à Babylone et dans ses provinces montrent la circulation des richesses prélevées sur les régions soumises, ce qui éclaire la formule du pillage du reste du peuple. (6) LA GÉOCHIMIE DU SEL : les études sur les dépôts de la mer Morte documentent la puissance du sel et la réalité de son exploitation antique ; l'image prophétique repose donc sur un phénomène naturel mesurable de la région. (7) PRUDENCE : l'archéologie confirme la disparition des royaumes et le changement de peuplement ; elle n'établit pas la dimension d'outrage au nom divin qui motive la sentence.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE GRIEF (2:8) : « J'AI ENTENDU LES INJURES DE MOAB ET LES INSULTES DES AMMONITES » — MOQUERIE DU PEUPLE ET EMPIÉTEMENT SUR SES FRONTIÈRES → LE SERMENT DIVIN (2:9) : « AUSSI VRAI QUE JE SUIS VIVANT, DÉCLARE JÉHOVAH DES ARMÉES » → LA SENTENCE : « MOAB DEVIENDRA COMME SODOME ET LES AMMONITES COMME GOMORRHE » : ORTIES, MINE DE SEL, DÉSERT PERMANENT → LE RETOURNEMENT DU BUTIN : « CEUX QUI RESTERONT DE MON PEUPLE LES PILLERONT » → LA RAISON (2:10) : L'ORGUEIL ET L'OUTRAGE FAIT AU PEUPLE DE JÉHOVAH DES ARMÉES → L'OUVERTURE UNIVERSELLE (2:11) : « IL ANÉANTIRA TOUS LES DIEUX DE LA TERRE » ET « TOUTES LES ÎLES DES NATIONS SE PROSTERNERONT DEVANT LUI, CHACUNE DEPUIS SA PLACE » → HISTOIRE : BANDES DE MOABITES ET D'AMMONITES (2 ROIS 24:2), CAMPAGNES BABYLONIENNES JUSQU'EN 582, RELAIS DES PEUPLES DU DÉSERT → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Sophonie 2:9, 10) et le statut « Accomplie ». LES SOURCES ANTÉRIEURES : la fiche signale que le témoignage de Josèphe doit être lu avec précaution en raison de son époque de rédaction, et ne l'utilise qu'en complément des données cunéiformes. LA COMPARAISON BIBLIQUE : Sodome et Gomorrhe sont évoquées ici comme formule littéraire de désolation totale, conformément à l'usage du Deutéronome, sans que la fiche examine le dossier géologique de ces sites. LE MOT « ORTIES » : la traduction varie selon les versions (orties, chardons, mauvaises herbes) et la fiche le signale sans trancher. LE VERSET 11 : la fiche expose la portée universelle de l'annonce sans proposer de calendrier ni désigner les « îles des nations » autrement que comme les contrées maritimes. LES DATES : la campagne contre Moab est signalée pour 582 av. n. è. selon les sources babyloniennes ; la fiche n'en fait pas une date unique d'accomplissement. LES PEUPLES ACTUELS : la fiche ne rattache aucune population contemporaine à Moab ou Ammon, la règle du projet étant de ne présenter que les preuves historiques et de ne pas entrer dans les questions actuelles. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 1 à 7 ni de 12 à 15 (fiches voisines) ni du chapitre 3 ; elle ne formule aucune application aux communautés religieuses actuelles.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie proclame la sentence sur Moab et Ammon et l'annonce universaliste du verset 11 (Sophonie 2:8-11)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 648 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les bandes de Moabites et d'Ammonites figurent parmi les troupes qui montent contre Juda (2 Rois 24:2)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 620-617 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La campagne babylonienne vers la Philistie et l'ouest installe le contrôle impérial sur la région</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">604 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Une campagne de Neboukadnetsar contre Moab est attestée par les sources babyloniennes</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">582 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les royaumes de l'est cessent d'exister ; Qédarites puis Nabatéens occupent la région</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe-IVe siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le pays passe des villes au parcours pastoral ; les sanctuaires de la région s'éteignent et les dieux « de la terre » perdent leurs temples</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/104">Bible — Psaume 104 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/104</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/113">Bible — Psaume 113 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/113</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/4">Bible — 1 Corinthiens 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/5">Bible — Galates 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/5</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990097">Livre de la Bible numéro 36 — Tsephania — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990097</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche SO481 — « J'ai entendu les injures de Moab » : Sodome et Gomorrhe, la mine de sel, et les dieux de la terre anéantis devant Jéhovah</span><span>Catégorie SO2</span></div></div>
+</article>
+<article class="fiche" id="SO482">
+<div class="visuel"><img src="images/prophe_SO482_ninive.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE SO482 · CATÉGORIE SO2</div>
+<h3>« Ninive deviendra un désert » : la ville joyeuse qui disait « moi, et rien que moi », le pélican sur les chapiteaux et le troupeau couché</h3>
+<div class="ref">Sophonie 2:12-15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">vous aussi koushites vous serez tués par mon épée il étendra sa main vers le nord il anéantira l'assyrie il fera de ninive un désert une terre aride comme le désert des troupeaux se coucheront au milieu d'elle des animaux de toute espèce le pélican et le porc-épic passeront la nuit parmi ses chapiteaux on entendra des cris aux fenêtres la dévastation sera sur le seuil car il a mis à nu les lambris de cèdre c'est là cette ville joyeuse qui habitait en sécurité et qui disait dans son cœur moi et rien que moi comment est-elle devenue une désolation un gîte pour les bêtes tous ceux qui passeront devant elle siffleront et agiteront la main (sophonie 2:12-15 ; chute de ninive ; ruines pâturées ; accomplie)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche SO482 · 0:10</div><audio controls preload="none" src="audio/fiche_SO482_ninive.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_SO482_ninive.mp3 · 0:10 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Sophonie 2:12-15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>vous aussi koushites vous serez tués par mon épée il étendra sa main vers le nord il anéantira l'assyrie il fera de ninive un désert une terre aride comme le désert des troupeaux se coucheront au milieu d'elle des animaux de toute espèce le pélican et le porc-épic passeront la nuit parmi ses chapiteaux on entendra des cris aux fenêtres la dévastation sera sur le seuil car il a mis à nu les lambris de cèdre c'est là cette ville joyeuse qui habitait en sécurité et qui disait dans son cœur moi et rien que moi comment est-elle devenue une désolation un gîte pour les bêtes tous ceux qui passeront devant elle siffleront et agiteront la main (sophonie 2:12-15 ; chute de ninive ; ruines pâturées ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Sophonie — P482 (2:12-15 : Ninive deviendra une solitude, une terre aride comme le désert ; les troupeaux s'y coucheront) ; Chute de Ninive ; ruines pâturées ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« VOUS AUSSI, KOUSHITES… VOUS SEREZ TUÉS PAR MON ÉPÉE… »… « IL ÉTENDRA SA MAIN VERS LE NORD… IL ANÉANTIRA L'ASSYRIE… IL FERA DE NINIVE UN DÉSERT… UNE TERRE ARIDE COMME LE DÉSERT… »… « DES TROUPEAUX SE COUCHERONT AU MILIEU D'ELLE… DES ANIMAUX DE TOUTE ESPÈCE… LE PÉLICAN ET LE PORC-ÉPIC PASSERONT LA NUIT PARMI SES CHAPITEAUX… ON ENTENDRA DES CRIS AUX FENÊTRES… LA DÉVASTATION SERA SUR LE SEUIL… CAR IL A MIS À NU LES LAMBRIS DE CÈDRE… »… « C'EST LÀ CETTE VILLE JOYEUSE… QUI HABITAIT EN SÉCURITÉ… ET QUI DISAIT DANS SON CŒUR… MOI, ET RIEN QUE MOI…! COMMENT EST-ELLE DEVENUE UNE DÉSOLATION… UN GÎTE POUR LES BÊTES…? »… « TOUS CEUX QUI PASSERONT DEVANT ELLE… SIFFLERONT ET AGITERONT LA MAIN… »… — TSAFON… LE NORD… ʾASSHUR… L'ASSYRIE, NINIVE… SHAMEMAH… LA DÉSOLATION, LA STUPEUR… TSIVYAH… LA TERRE ARIDE, LA SÉCHERESSE… TSON… LE TROUPEAU, LE PETIT BÉTAIL… ḤAYYAT GOY… LES BÊTES DES NATIONS, TOUTES SORTES D'ANIMAUX… QAʾAT… LE PÉLICAN… QIPPOD… LE PORC-ÉPIC, LE HÉRISSON… KAPTURIM… LES CHAPITEAUX DES COLONNES… ḤALON… LA FENÊTRE… ḤOREV BE-SAFAF… LA DÉVASTATION SUR LE SEUIL, LA SOLITUDE SUR LE SEUIL… ʾARZAH… LE CÈDRE, LE LAMBRIS DE CÈDRE… ʿALIZZAH… LA VILLE EXULTANTE, JOYEUSE… BOṬEḤAH… QUI HABITE EN SÉCURITÉ… ʾANI WE-ʾAFSI… MOI ET RIEN QUE MOI… SHARATS… LES BÊTES QUI FOURMILLENT, LE REPAIRE… SHAROQ WA-HENIF YAD… SIFFLER ET AGITER LA MAIN… — 632… 612… 609… 539… XÉNOPHON… ANABASE III 4… LUCIEN… 401 AV. N. È.… KUYUNJIK… NÉBI YOUNOUS… ASSHURBANIPAL… 1976207… 1960165… 1101990095… »</li>
+<li>LES TROIS JUMEAUX — Nahum 1:1-14 : « déclaration contre Ninive : le livre de la vision de Nahoum… Jéhovah est un Dieu qui exige un attachement exclusif et qui se venge… le bouclier de ses hommes forts est rougi, les soldats sont vêtus d'écarlate… où est maintenant le repaire des lions ? » — le livre jumeau sur la même ville : Nahum annonce la chute, Sophonie constate l'état final, et les deux textes se complètent comme la sentence et le constat. Ésaïe 47:8 : « écoute donc, toi qui es livrée aux plaisirs, qui habites en sécurité, qui dis dans ton cœur : “Moi, et rien que moi !” » — la formule identique appliquée à Babylone, ce qui montre que dans le langage prophétique, « moi et rien que moi » est l'expression type de l'orgueil des puissances qui se croient intouchables. Ésaïe 13:19-22 : « Babylone, la parure des royaumes… sera comme quand Dieu a renversé Sodome et Gomorrhe. Elle ne sera jamais habitée… les bêtes du désert s'y coucheront… » — l'oracle qui décrit en termes identiques l'avenir de l'autre grande capitale, avec les mêmes animaux et la même solitude finale. Révélation 18:2 : « elle est tombée, Babylone la Grande ! Elle est devenue une habitation de démons, une prison de tout esprit impur, une prison de tout oiseau impur et haï » — la reprise du motif dans les Écritures grecques, où la ville mondaine devient elle aussi un gîte d'oiseaux, ce qui atteste la permanence de l'image à travers les siècles.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 2 se termine par le nord. Après une brève mention des Koushites — l'Éthiopie, l'un des pôles de la géographie du temps — le prophète tourne son regard vers l'Assyrie et sa capitale. La description qu'il donne de Ninive est l'une des plus saisissantes de la littérature prophétique : la ville est abolie, son sol devient une terre aride, les troupeaux s'y couchent, les oiseaux nocturnes s'installent sur les chapiteaux des colonnes renversées, des cris sortent des fenêtres désertes, la dévastation est présente jusque sur le seuil, parce que « les lambris de cèdre ont été mis à nu ». Puis vient le verset qui condense le thème : « C'est là cette ville joyeuse, qui habitait en sécurité et qui disait dans son cœur : “Moi, et rien que moi !” Comment est-elle devenue une désolation, un gîte pour les bêtes ? Tous ceux qui passeront devant elle siffleront et agiteront la main. » Le registre du projet rattache cette entrée à la chute de Ninive et à son devenir de « ruines pâturées », et lui donne le statut « Accomplie ». Le chapitre 1 avait nommé les ennemis de Juda encore en place ; le chapitre concluant la tournée des nations par l'Assyrie, il embrasse les deux pôles de la puissance oppressante du siècle précédent — un choix significatif, la grande cité du Tigre étant pour l'auteur sacré l'archétype de la ville orgueilleuse.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA FIN DU GRAND OPPRESSEUR : Ninive avait été le siège de l'empire qui avait emporté le royaume d'Israël en 740 et menacé Jérusalem sous Ézéchias ; sa chute a été pour les peuples du Levant un basculement historique. Le prophète décrit cet effondrement à l'avance comme un fait établi, en disant que le pays devient sec et aride, ce qui est un écho des prophéties plus anciennes sur cette cité. Le registre retient d'ailleurs la spécificité du sort de Ninive : couchée dans ses ruines, elle n'a jamais été relevée. (2) LA NATURE DANS LES RUINES : la liste des animaux est un trait classique des oracles de désolation, mais elle est ici très détaillée. La Bible Annotée note que « la présence du pélican, oiseau aquatique, dans un désert pareil, s'explique par le fait que Ninive était située au bord d'une rivière », que « pour comprendre comment un hérisson peut gîter sur ou entre les chapiteaux des colonnes, il faut se représenter celles-ci renversées », et que le tableau doit être rapproché d'Ésaïe 34, la description de la ruine de Babylone. (3) LES LAMBRIS DE CÈDRE : les palais assyriens étaient ornés de poutres et de panneaux de cèdre, importés du Liban ; les fouilles ont dégagé des restes de ces décors. Quand le prophète dit que les cèdres sont mis à nu, il évoque exactement ce que les archéologues retrouvent : une structuration intérieure exposée après le départ des revêtements et l'écroulement des toits. (4) « MOI, ET RIEN QUE MOI » : cette devise, la Bible Annotée la commente ainsi : « cette parole exprime la hautaine satisfaction de se voir sans rivale ; c'est en même temps comme un défi jeté à Dieu ; ces mêmes mots sont aussi placés dans la bouche de Babylone (Ésaïe 47:8) ». Le verset dit la ville « joyeuse », « habitant en sécurité » — un contraste calculé avec le sort des humbles invités à chercher l'humilité au verset 3. Le livre s'en prend moins à la puissance qu'à l'illusion de la sécurité, motif qui relie les deux extrémités du chapitre.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Cachés au jour de la colère de Jéhovah » (document 1981608) cite le message de Sophonie à propos de la sécurité — « quand viendra ce jour décisif, “toute la terre” subira l'exécution ultime du jugement divin. Mais il y a un moyen d'échapper. Lequel ? » — et présente l'orgueil de Ninive comme le repoussoir des humbles appelés à chercher l'humilité. Pour ce qui est de la chute de Ninive, les publications la traitent en détail dans « Livre de la Bible numéro 34 — Nahoum » (document 1101990095) et dans l'article « Ninive, la ville sanguinaire » (document 1960165), qui rappellent l'état de ruine définitif de la capitale assyrienne. Lecture commune et exégèse : les commentateurs relèvent que le chapitre s'achève ainsi sur une note de bascule : la grande ville orgueilleuse est tombée ; la suite du livre montrera ce qu'il advient de la ville de Dieu, Jérusalem, qui n'est pas mieux traitée. La Bible Annotée renvoie elle aussi à Nahum pour l'accomplissement de la prophétie sur Ninive et souligne que « Ninive ne deviendra pas seulement une steppe où paîtront les bestiaux, mais un désert sec et aride, où ne séjournent que des animaux sauvages ». Les voyageurs anciens confirment cette description ; les fouilles modernes y ont retrouvé, sous des restes de murs et de décors effondrés, les conditions mêmes que le texte décrit.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 648 av. n. è.</td><td>Sophonie annonce la destruction de Ninive et l'état final de ses ruines (Sophonie 2:12-15)</td></tr>
+<tr><td class="d">632 av. n. è.</td><td>Chute de Ninive : la capitale assyrienne tombe aux mains des Médo-Babyloniens (chronologie retenue par les publications ; la chronologie communément admise la situe en 612)</td></tr>
+<tr><td class="d">609 av. n. è.</td><td>Le dernier point d'appui assyrien à Harran disparaît ; l'empire s'éteint</td></tr>
+<tr><td class="d">VIe siècle av. n. è. et après</td><td>Le site n'est jamais relevé comme capitale : il reste une succession de tells où paissent les troupeaux</td></tr>
+<tr><td class="d">401 av. n. è.</td><td>Xénophon traverse la région dans l'Anabase et trouve des ruines considérables sans savoir qu'il s'agit de Ninive</td></tr>
+<tr><td class="d">IIe siècle de n. è.</td><td>Lucien de Samosate écrit que Ninive est détruite et qu'il n'en reste plus de trace visible — la formule du « siffleront et agiteront la main » vérifiée par l'histoire</td></tr>
+<tr><td class="d">Époque moderne</td><td>Les fouilles de Kuyunjik et de Nébi Younous dégagent les palais et la bibliothèque d'Assurbanipal, confirmant la richesse de ce qui fut détruit</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA CHUTE DE NINIVE : les sources babyloniennes — la chronique relative à la fin de l'empire assyrien et les textes de Nabopolassar — rapportent la prise de la ville et la fin de sa dynastie ; la date, 632 selon la chronologie retenue par les publications et 612 selon la chronologie communément admise, marque dans les deux cas un basculement du monde antique. (2) LA FIN DE L'EMPIRE : après la chute de la capitale, les restes assyriens se replient sur Harran, qui tombe en 609 ; l'empire disparaît alors du concert des puissances. (3) XÉNOPHON : dans l'Anabase, le commandant grec traversant la région vers 401 av. n. è. passe auprès de vastes ruines et n'y voit qu'une ville devenue sans importance ; le nom même de Ninive ne lui est plus identifié aux lieux. (4) LUCIEN DE SAMOSATE : cet auteur du IIe siècle de n. è. mentionne Ninive comme une ville détruite dont il ne reste rien, en servait-il d'exemple pour dire au lecteur combien les plus grandes cités ont passé. (5) DURÉE DE L'ABANDON : plus de deux mille ans d'occupation pastorale sur les tells de la région sont attestés par les relations des voyageurs du XIXe siècle et par les prospections modernes. (6) LES FOUILLES : la découverte de la bibliothèque d'Assurbanipal à Kuyunjik a livré plus de vingt mille tablettes —, textes de lois, poèmes, comptes — qui témoignent de l'ampleur de la capitale et donnent la mesure de ce qui a été perdu. (7) PRUDENCE : les sources établissent la destruction et l'abandon définitif de la ville ; elles ne datent pas la rédaction du texte prophétique avec une précision supérieure à celle des publications citées.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) NINIVE ET LE TIGRE : la ville occupait la rive orientale du Tigre, là où la rivière encaisse son lit ; la mention du pélican, oiseau d'eau, s'explique par ce milieu fluvial, comme l'a relevé la Bible Annotée. (2) LES TELLS DU SITE : Ninive correspond aujourd'hui aux deux tells de Kuyunjik et de Nébi Younous, près de Mossoul ; la topographie des ruines montre un site étendu sur plusieurs kilomètres, jadis protégé par une muraille longue. (3) LE NORD ET L'ASSYRIE : « il étendra sa main vers le nord » correspond à l'orientation géographique réelle des empires : Ninive est au nord-est de Juda, et venir à elle supposait remonter par la Mésopotamie du nord. (4) L'ARIDITÉ DU SITE : après l'abandon, la ville n'a pas été relevée ; les eaux d'irrigation détournées, les canaux de Ninive ayant cessé d'être entretenus, la région est devenue un pays de parcours et de cultures ponctuelles, ce qui rend compte de l'image de la « terre aride ». (5) LES COLONNES ET LES CHAPITEAUX : les palais assyriens étaient construits autour de grandes salles sur piliers et de portiques ; les voyageurs et les fouilleurs décrivent des restes de bases, de chapiteaux et de poutres effondrées, exactement ce que le texte évoque. (6) LES CÈDRES DU LIBAN : le bois de cèdre nécessaire aux palais venait de la montagne libanaise, transporté par flottage et par chars sur des centaines de kilomètres ; la mention des « lambris de cèdre » rappelle la logistique impériale et sa fragilité.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA BIBLIOTHÈQUE D'ASSURBANIPAL : retrouvée à Kuyunjik, elle comptait des dizaines de milliers de tablettes — récits, rituels, traités, observations astronomiques — et sa découverte a ouvert la connaissance de la Mésopotamie antique ; elle atteste la richesse et l'organisation d'une capitale que le texte déclare rasée. (2) LES RELIEFS ET LES PALAIS : les bas-reliefs de Ninive, dont les scènes de chasse et de siège, ornaient des salles dont le nom des souverains était inscrit sur les dalles ; ils documentent le décor raffiné que le prophète décrit dans sa ruine. (3) LES TECHNIQUES DE CONSTRUCTION : l'étude des briques crues, des briques émaillées et des poutres de cèdre employées à Ninive explique la fragilité des vestiges : sans entretien, un édifice de brique crue se délite et retourne au sol en quelques décennies, ce qui donne à la prophétie une vraisemblance matérielle immédiate. (4) LES CANAUX : le système d'adduction et de détournement des eaux de Ninive, étudié sur place, montre la dépendance de la ville à l'irrigation ; son arrêt suffit à expliquer la désertification du site. (5) LA ZOOLOGIE DES RUINES : les observations naturalistes de la région signalent la présence permanente d'oiseaux et de mammifères fouisseurs dans les tells ; le tableau du pélican et du porc-épic correspond donc à un état observable de ce type de site. (6) L'ARCHÉOLOGIE DE L'ABANDON : les campagnes de fouilles n'ont livré que peu de traces d'occupation dense postérieure à la chute ; la ville n'a pas été reconstruite comme capitale, ce qui confirme le caractère définitif de sa disparition. (7) PRUDENCE : l'archéologie établit l'abandon du site et la nature de ses ruines ; elle ne mesure pas la portée morale que le texte assigne à cet effondrement.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE SUD (2:12) : « VOUS AUSSI, KOUSHITES, VOUS SEREZ TUÉS PAR MON ÉPÉE » → LE NORD (2:13) : « IL ÉTENDRA SA MAIN VERS LE NORD… IL FERA DE NINIVE UN DÉSERT, UNE TERRE ARIDE » → LES RUINES (2:14) : TROUPEAUX COUCHÉS · ANIMAUX DE TOUTE ESPÈCE · PÉLICAN ET PORC-ÉPIC SUR LES CHAPITEAUX · CRIS AUX FENÊTRES · DÉVASTATION SUR LE SEUIL · « LES LAMBRIS DE CÈDRE MIS À NU » → LE VERDICT (2:15) : « CETTE VILLE JOYEUSE… QUI DISAIT DANS SON CŒUR : MOI, ET RIEN QUE MOI ! » DEVENUE « UNE DÉSOLATION, UN GÎTE POUR LES BÊTES » → LE GESTE DES PASSANTS : SIFFLEMENTS ET MAINS AGITÉES → HISTOIRE : CHUTE DE NINIVE (632 SELON LA CHRONOLOGIE RETENUE, 612 SELON LA CHRONOLOGIE COMMUNE), FIN DE L'EMPIRE EN 609, RUINES EN 401 (XÉNOPHON), DISPARITION TOTALE AU IIe SIÈCLE DE N. È. (LUCIEN) → STATUT DU REGISTRE : ACCOMPLIE (CHUTE DE NINIVE ; RUINES PÂTURÉES)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec la référence du registre (chute de Ninive ; ruines pâturées) et le statut « Accomplie ». LA DATE DE LA CHUTE : la fiche donne 632 av. n. è. selon la chronologie retenue par les publications et signale que la chronologie communément admise situe cet événement en 612. LES KOUSHITES : la fiche mentionne le verset 12 sans développer l'oracle sur l'Éthiopie, qui n'est pas l'objet de cette entrée du registre. LES ANIMAUX : la liste est présentée telle que la rendent les traductions, avec les variantes du pélican et du porc-épic ou hérisson, sans chercher à déterminer l'espèce exacte. LES LAMBRIS DE CÈDRE : la fiche renvoie aux décors attestés par l'archéologie sans dresser l'inventaire des palais détruits. LA FORMULE « MOI, ET RIEN QUE MOI » : la fiche la présente comme l'expression de l'orgueil des puissances et la rapproche d'Ésaïe 47:8, sans étendre la comparaison à d'autres textes au-delà de ce que citent les commentaires. L'APPLICATION : la fiche se limite au fait historique de la chute et de l'abandon du site. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 1 à 11 (fiches précédentes) ni du chapitre 3 (vague suivante) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie annonce la ruine de Ninive, la ville de l'orgueil, et son état définitif (Sophonie 2:12-15)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 648 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Ninive (chronologie retenue par les publications ; 612 selon la chronologie communément admise)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">632 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin de l'empire assyrien avec la chute de son dernier point d'appui</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le site reste en ruine ; les populations pastorales y passent avec leurs troupeaux</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe-IVe siècle av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Xénophon traverse la région et n'attribue plus les ruines à Ninive (Anabase)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">401 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lucien de Samosate cite Ninive comme un exemple de ville totalement disparue</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe siècle de n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fouilles de Kuyunjik et de Nébi Younous : palais, reliefs et bibliothèque d'Assurbanipal mis au jour, confirmant l'ampleur de ce qui fut détruit</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque moderne</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/134">Bible — Psaume 134 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/134</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/136">Bible — Psaume 136 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/136</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/46">Bible — Ézéchiel 46 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/46</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/3">Bible — Hébreux 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/3</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990095">Livre de la Bible numéro 34 — Nahoum — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990095</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1960165">Ninive, « la ville sanguinaire » — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1960165</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche SO482 — « Ninive deviendra un désert » : la ville joyeuse qui disait « moi, et rien que moi », le pélican sur les chapiteaux et le troupeau couché</span><span>Catégorie SO2</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie SO2</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>SO479 — « Cherchez la justice, cherchez l'humilité » : rassemblez-vous avant le décret, peut-être serez-vous cachés au jour de la colère</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie lance l'appel : rassemblement, recherche de Jéhovah, de la justice et de l'humilité (Sophonie 2:1-3)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 648 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les Récabites refusent le vin par fidélité à leur ancêtre et reçoivent une bénédiction (Jérémie 35)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 640-630 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Règne de Josias et réforme religieuse : un début de réponse nationale à l'appel (2 Chroniques 34-35)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">648-629 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Jérusalem ; Ébed-Mélek est préservé selon la promesse (Jérémie 39:16-18)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le petit peuple est laissé dans le pays ; Guedalia gouverne depuis Mizpa (2 Rois 25:12, 22)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'invitation reste valable : « probablement serez-vous cachés au jour de la colère de Jéhovah » (statut du registre : Accomplie (invitation))</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<h4>SO480 — « Gaza sera une ville abandonnée » : les quatre villes philistines, la nation des Keréthiens et la côte qui devient un pâturage</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagnes assyriennes : Asdod prise par Sargon II, Ékrôn atteinte, la côte affaiblie (Ésaïe 20:1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe siècle av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'Égypte contrôle Gaza et la route du nord ; la côte passe sous influence égyptienne</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 630 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Neboukadnetsar marche contre la Philistie et détruit Ashkelon ; Ékrôn est balayée (chronique babylonienne) — accomplissement retenu par le registre (« date neutre »)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">604 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les dernières places de la côte sont épuisées par les campagnes babyloniennes</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">589-586 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le territoire revient à la province de Yehoud : la côte et la Shéphéla sont occupées par les Judéens revenus</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è. et après</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les Philistins disparaissent comme peuple : les villes se maintiennent comme sites, mais la nation comme entité s'éteint</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Époques suivantes</text>
+</svg>
+<h4>SO481 — « J'ai entendu les injures de Moab » : Sodome et Gomorrhe, la mine de sel, et les dieux de la terre anéantis devant Jéhovah</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie proclame la sentence sur Moab et Ammon et l'annonce universaliste du verset 11 (Sophonie 2:8-11)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 648 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les bandes de Moabites et d'Ammonites figurent parmi les troupes qui montent contre Juda (2 Rois 24:2)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 620-617 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La campagne babylonienne vers la Philistie et l'ouest installe le contrôle impérial sur la région</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">604 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Une campagne de Neboukadnetsar contre Moab est attestée par les sources babyloniennes</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">582 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les royaumes de l'est cessent d'exister ; Qédarites puis Nabatéens occupent la région</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe-IVe siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le pays passe des villes au parcours pastoral ; les sanctuaires de la région s'éteignent et les dieux « de la terre » perdent leurs temples</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<h4>SO482 — « Ninive deviendra un désert » : la ville joyeuse qui disait « moi, et rien que moi », le pélican sur les chapiteaux et le troupeau couché</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sophonie annonce la ruine de Ninive, la ville de l'orgueil, et son état définitif (Sophonie 2:12-15)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 648 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Ninive (chronologie retenue par les publications ; 612 selon la chronologie communément admise)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">632 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin de l'empire assyrien avec la chute de son dernier point d'appui</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le site reste en ruine ; les populations pastorales y passent avec leurs troupeaux</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe-IVe siècle av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Xénophon traverse la région et n'attribue plus les ruines à Ninive (Anabase)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">401 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lucien de Samosate cite Ninive comme un exemple de ville totalement disparue</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe siècle de n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fouilles de Kuyunjik et de Nébi Younous : palais, reliefs et bibliothèque d'Assurbanipal mis au jour, confirmant l'ampleur de ce qui fut détruit</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque moderne</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES GE — Genèse (3) — le serment et les jumeaux</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_GE_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES GE</h1>
+<h2>Genèse (3) — le serment et les jumeaux</h2>
+<p class="intro">Sur le Moriya, le serment solennel : postérité innombrable, porte des ennemis conquise. Rébecca reçoit la même promesse en partant. Puis les jumeaux : l'aîné servira le cadet — Isaac béni à Guérar, Jacob béni par ruse, Ésaü vivant par l'épée avant de secouer le joug.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:25</div><audio controls preload="none" src="audio/fiche_GE_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_GE_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#GE013">GE013</a>
+<a href="#GE014">GE014</a>
+<a href="#GE015">GE015</a>
+<a href="#GE016">GE016</a>
+<a href="#GE017">GE017</a>
+<a href="#GE018">GE018</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#GE013"><img src="images/prophe_GE013_serment.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE013</div>
+<h3><a href="#GE013">Le serment de Moriya : la porte de tes ennemis</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE014"><img src="images/prophe_GE014_rebecca.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE014</div>
+<h3><a href="#GE014">Rébecca : des milliers de myriades, et la porte des ennemis</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE015"><img src="images/prophe_GE015_jumeaux.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE015</div>
+<h3><a href="#GE015">Deux nations : l'aîné servira le cadet</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE016"><img src="images/prophe_GE016_guerar.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE016</div>
+<h3><a href="#GE016">Isaac à Guérar : ne descends pas — le centuple</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE017"><img src="images/prophe_GE017_benediction.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE017</div>
+<h3><a href="#GE017">La bénédiction volée : peuples te serviront</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE018"><img src="images/prophe_GE018_esau.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE018</div>
+<h3><a href="#GE018">Ésaü : par l'épée — et tu briseras son joug</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="GE013">
+<div class="visuel"><img src="images/prophe_GE013_serment.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE013 · CATÉGORIE GE</div>
+<h3>Le serment de Moriya : la porte de tes ennemis</h3>
+<div class="ref">Genèse 22:15-18</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Serment abrahamique (Moriya → Salomon → Christ)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE013</div><audio controls preload="none" src="audio/fiche_GE13_serment.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE13_serment.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 22:15-18</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Serment abrahamique (Moriya → Salomon → Christ)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P013 (22:15-18 : postérité comme les étoiles et le sable ; elle possédera la porte de ses ennemis) ; accomplissement Jos 21:43-45 ; 1R 4:20-21 ; Ga 3:16</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« L'ange appela Abraham une seconde fois. » (22:15 — seconde fois !)</li>
+<li>« Je le jure par moi-même — oracle de Jéhovah. » (22:16 — par moi-même !)</li>
+<li>« Parce que tu as fait cela, pas refusé ton fils, ton unique. » (22:16 — parce que !)</li>
+<li>« Je multiplierai ta postérité : étoiles du ciel, sable de la mer. » (22:17 — les deux !)</li>
+<li>« Ta postérité possédera la porte de ses ennemis. » (22:17 — LA PORTE !)</li>
+<li>« En ta postérité se béniront toutes les nations. » (22:18 — toutes !)</li>
+<li>« Juda et Israël, nombreux comme le sable au bord de la mer. » (1R 4:20 — comme le sable !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le mont Moriya, trois jours de marche depuis Beér-Shéba (22:4). Abraham a lié Isaac sur l'autel, levé le couteau — « couteau à égorger » (TM 22:6, 10) — et l'ange l'arrête : « n'étends pas la main » (22:12). Un bélier, pris par les cornes dans un buisson, remplace le fils (22:13). Abraham nomme le lieu Jéhovah-Yiré — « Jéhovah pourvoira / sera vu » (22:14, au FUTUR : la provision continue). ALORS, seconde voix du ciel : le serment. Ce n'est plus une promesse, c'est un serment — le premier que Dieu prête dans la Bible — et il a un MOTIF : « parce que tu as obéi » (22:18). L'épreuve transforme la promesse en serment.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Par moi-même » : Dieu jure — et ne pouvant jurer par plus grand, jure par lui (Hé 6:13 : « Dieu, ne pouvant jurer par un plus grand, jura par lui-même »). ÉTOILES + SABLE RÉUNIS : pour la première fois les deux images ensemble (poussière 13:16, étoiles 15:5, sable ici avec les étoiles — le triptyque se boucle et se soude). « Possédera la porte » (sha'ar) : la porte, c'est la ville — lieu du pouvoir, du tribunal, du marché, de la garnison : prendre la porte, c'est prendre la cité (cf. « les portes de l'enfer ne prévaudront pas », Mt 16:18 — même image). « Parce que tu as obéi » (22:18, répété du v. 16) : le serment a une CAUSE — l'obéissance d'Abraham. Promesse inconditionnelle (ch. 12-15) + serment motivé (ch. 22) : les deux ensemble, jamais l'un sans l'autre.</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement en cercles concentriques : MULTITUDE — « Juda et Israël étaient nombreux, comme le sable qui est au bord de la mer » (1R 4:20 — le récit des Rois CITE la promesse comme accomplie, mot pour mot) ; PORTE — Josué prend les villes (« aucune parole ne resta sans effet », Jos 21:43-45 — P013), David prend les capitales (Jérusalem, Rabba, Damas), Salomon domine « du Fleuve à la frontière d'Égypte » (1R 4:21) ; POSTÉRITÉ — « à ta postérité, c'est-à-dire Christ » (Ga 3:16 — P013) : le singulier vise le Messie, qui « possédera la porte » définitivement (1Co 15:24-25 — règne jusqu'à la soumission). La bénédiction des nations (22:18) reprend 12:3 — scellée, cette fois, par serment.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Moriya (épreuve)</td><td>Couteau levé, arrêté ; bélier (22:9-13)</td></tr>
+<tr><td class="d">Moriya (serment)</td><td>Par moi-même : sable+étoiles+porte (22:15-18)</td></tr>
+<tr><td class="d">1473 (Josué)</td><td>Portes prises ; tout accompli (21:43-45)</td></tr>
+<tr><td class="d">David</td><td>Capitales prises : Jérusalem, Rabba, Damas</td></tr>
+<tr><td class="d">Salomon (1R 4:20)</td><td>« Comme le sable » — citation accomplie</td></tr>
+<tr><td class="d">Salomon (1R 4:21)</td><td>Domination Fleuve → Égypte</td></tr>
+<tr><td class="d">Ga 3:16 (Paul)</td><td>La postérité = Christ</td></tr>
+<tr><td class="d">2Ch 3:1</td><td>Moriya = mont du Temple</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>MORIYA = le mont du Temple : « Salomon commença à bâtir la maison de Jéhovah à Jérusalem, sur la montagne de MORIYA » (2Ch 3:1) — le lieu du bélier devient le lieu des sacrifices, puis du Christ offert « hors la porte » (Hé 13:12) : trois offrandes, une montagne. Isaac, quel âge ? Sara meurt à 127 ans (ch. 23, juste après) — Isaac a alors 37 ans ; Moriya le montre portant le bois (22:6) et raisonnant (22:7 : « où est l'agneau ? ») : adolescent ou jeune homme — Josèphe dit 25 ans (Antiquités I, xiii, 2 — cité comme Josèphe). Trois jours de marche : Beér-Shéba → Jérusalem, ~80 km — distance exacte.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Moriya : l'éperon rocheux au nord de la cité de David — esplanade actuelle, 2Ch 3:1 tranche. « Le pays de Moriya » (22:2) : la région montagneuse de Jérusalem. Contraires : les Samaritains placent le sacrifice sur le GARIZIM (leur montagne sainte) — tradition rivale, réfutée par 2Ch 3:1 (voir limites). « Porte » : portes de villes à chambres (Guézer, Hazor, Meguiddo salomoniennes — même plan ! Yadin) : prendre « la porte », c'est prendre ce système fortifié — Josué s'en charge.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Urbanisme des portes : complexes à 4-6 chambres, tours, seuils de pierre — centres administratifs (bancs de justice, 2S 15:2 ; marchés, 2R 7:1) : « posséder la porte » est un terme TECHNIQUE de domination, pas une métaphore vague. Démographie : « comme le sable » — 1R 4:20 l'applique à Juda+Israël unis (~Xe s.) : des centaines de milliers d'hommes (recensement de David : 1,3 million d'hommes de guerre, 2S 24:9 — chiffres du texte, débattus, cités comme tels). Critique textuelle : TM, LXX et Samaritain unanimes sur 22:17-18 — le serment est stable.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Épreuve (couteau levé) → Arrêt (bélier) → Jéhovah-Yiré → SERMENT par soi-même (motif : obéissance) → Étoiles + sable réunis → Porte possédée (Josué, David, Salomon : 1R 4:20-21 cite l'oracle) → Postérité-Christ (Ga 3:16). Promesse (12) → Foi (15) → Serment (22) : trois étages, un édifice.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Garizim (tradition samaritaine) vs Moriya-Jérusalem (2Ch 3:1) : la fiche suit le texte reçu. Âge d'Isaac : non donné (Josèphe : 25 ans — historien, pas verset). « Ton unique » (22:16 — yahid) : unique de Sara/promesse, pas fils unique biologique (Ismaël vit !) — le mot vise l'unicité d'alliance. Chiffres davidiques (2S 24:9) : débattus en exégèse — cités, pas exploités. Le serment motive par l'obéissance SANS rendre l'alliance conditionnelle : tension assumée par Hé 6 (immuabilité) — la fiche expose, ne résout pas.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arrêté</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Moriya (couteau)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Par moi-même</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Moriya (serment)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prises</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (portes)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Comme le sable</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Christ</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ga 3:16</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Même montagne</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Temple (2Ch 3)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/22">Genèse 22 — Bible d'étude (15-18, serment)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/22</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/58/6">Hébreux 6 — Bible d'étude (13-18, serment)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/58/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/14/3">2 Chroniques 3 — lecture (Moriya = Temple)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/14/3</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE013 — Le serment de Moriya : la porte de tes ennemis</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE014">
+<div class="visuel"><img src="images/prophe_GE014_rebecca.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE014 · CATÉGORIE GE</div>
+<h3>Rébecca : des milliers de myriades, et la porte des ennemis</h3>
+<div class="ref">Genèse 24:60</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Mariage d'Isaac (~1878)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE014</div><audio controls preload="none" src="audio/fiche_GE14_rebecca.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE14_rebecca.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 24:60</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Mariage d'Isaac (~1878)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P014 (24:60 : la descendance de Rébecca possédera la porte de ses ennemis) ; accomplissement Gn 25:21-26 ; 27:27-29</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« C'est de Jéhovah que la chose vient. » (24:50 — Laban avoue !)</li>
+<li>« Veux-tu aller avec cet homme ? — J'irai. » (24:58 — elle choisit !)</li>
+<li>« Notre sœur, deviens des milliers de myriades ! » (24:60 — myriades !)</li>
+<li>« Que ta postérité possède la porte de ses ennemis ! » (24:60 — LA PORTE !)</li>
+<li>« Isaac fut consolé après sa mère. » (24:67 — consolé !)</li>
+<li>« Isaac supplia pour sa femme : elle était stérile. » (25:21 — stérile !)</li>
+<li>« Des jumeaux dans son ventre. » (25:24 — jumeaux !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Sara est morte (ch. 23), Abraham est vieux (24:1 — ~140 ans). Serment du serviteur (l'intendant, « le plus ancien de sa maison » — probablement Éliézer de 15:2, la main sous la cuisse, 24:2-9) : pas de Cananéenne — une femme de la parenté, à Nahor/Haran. Le chapitre 24 (67 versets, le plus long de la Genèse) raconte la mission : prière au puits, Rébecca puise POUR LES CHAMEAUX (24:19 — le signe accompli avant la fin de la prière, 24:15 !), négociation, accord (« c'est de Jéhovah », 24:50 — même Laban le dit), consentement de Rébecca (24:58 — ON LA CONSULTE : fait remarquable), départ avec sa nourrice Débora (24:59). La bénédiction de 24:60 est l'adieu de sa famille — et le registre y voit une prophétie (P014).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Milliers de myriades » (alphe rebo — 1 000 × 10 000) : l'hyperbole numérique maximale — des dizaines de millions : la famille souhaite l'infini, Dieu le fera. « Possède la porte de ses ennemis » : LA FORMULE DE MORIYA (22:17 — GE013) reprise mot pour mot par la bouche de Laban et Bethuel — des Araméens païens PROPHÉTISENT sans le savoir (comme Caïphe en Jn 11:51, sans P nommé). Le registre donne pour accomplissement : les JUMEAUX (25:21-26 — après 20 ans de stérilité : la multitude commence par deux !) et la BÉNÉDICTION DE JACOB (27:27-29 — la « porte » passe à Jacob, voir GE017). Commencement + transfert : l'oracle familial entre dans la grande trajectoire.</p>
+<h4>5 · Interprétation</h4>
+<p>Ironie divine : la famille souhaite des myriades — Rébecca est STÉRILE (25:21, comme Sara !) : 20 ans d'attente (mariage ~1878, Isaac 40 ans — 25:20 ; naissance des jumeaux, Isaac 60 ans — 25:26), puis supplication exaucée. Les jumeaux : Ésaü + Jacob — « deux nations » (25:23, voir GE015) : les « milliers » commencent. La « porte » : transférée à Jacob dans la bénédiction (27:29 : « peuples te serviront » — P014 → P017), puis conquise par ses fils (Josué, David, Salomon — voir GE013). La nourrice Débora : le récit la suit jusqu'à sa tombe (35:8, « chêne des pleurs ») — Dieu compte même les servantes de l'alliance. Isaac « consolé » (24:67) : le mariage guérit le deuil — Rébecca remplit la tente de Sara.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Serment (24:2-9)</td><td>Pas de Cananéenne ; main sous la cuisse</td></tr>
+<tr><td class="d">Puits (24:15-19)</td><td>Signe accompli : elle puise pour les chameaux</td></tr>
+<tr><td class="d">Accord (24:50)</td><td>« C'est de Jéhovah »</td></tr>
+<tr><td class="d">24:58 (consentement)</td><td>« J'irai » — elle choisit</td></tr>
+<tr><td class="d">24:60 (bénédiction)</td><td>Myriades + porte des ennemis</td></tr>
+<tr><td class="d">25:21-26</td><td>20 ans stérile → jumeaux (commencement)</td></tr>
+<tr><td class="d">27:27-29</td><td>La porte transférée à Jacob (transfert)</td></tr>
+<tr><td class="d">24:67</td><td>Tente de Sara : consolation</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Mariage arrangé hourrite : négociation familiale, présents (24:53 : argent, or, vêtements — mohar), départ avec nourrice et servantes — le chapitre 24 est un documentaire sur le mariage du Bronze moyen. Dix chameaux (24:10) : caravane d'apparat — les chameaux domestiqués au IIe millénaire (voir GE009, limites inchangées). Puits de Nahor (24:10-11 : « ville de Nahor » = Haran et ses alentours) : le puits hors la ville, le soir, les jeunes filles — scène-type (Jacob-Rachel 29, Moïse-Séphora Ex 2). Consentement (24:58) : droit de la fiancée consultée — rare et souligné.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Haran → Canaan : ~800 km de caravane, un mois de piste — Rébecca refait à l'envers le voyage d'Abraham (elle monte, lui était descendu). Lachaï-Roï (24:62 — Isaac « revenait » du puits d'Agar !) : le fils de la promesse fréquente le puits de l'exclue — géographie de la réconciliation. Le Négeb (24:62) : Isaac « habitait au pays du midi » — Rébecca entre dans la tente de Sara (24:67) : succession matriarcale, lieu pour lieu.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Myriade (rebo, 10 000) : le plus grand nombre nommé usuel — « milliers de myriades » = 10⁷, l'infini comptable de l'époque (cf. « myriades » de Dn 7:10). Gémellité : jumeaux DIZYGOTES (Ésaü roux-velu / Jacob lisse — 25:25 : phénotypes incompatibles avec des monozygotes) — le récit décrit une dizygotie sans le savoir. Stérilité de 20 ans puis jumeaux : la Bible ignore la cause, constate le fait — Rébecca rejoint le chœur des stériles exaucées (Sara, Rachel, Anne, Élisabeth — chaîne de miracles, pas protocole médical).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Serment (pas de Cananéenne) → Puits (le signe avant la fin de la prière) → « C'est de Jéhovah » (Laban avoue) → « J'irai » (elle choisit) → Bénédiction : MYRIADES + PORTE (formule de Moriya !) → 20 ans stérile → Jumeaux (25) → Porte à Jacob (27). L'adieu familial devient oracle.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le serviteur = Éliézer ? Probable (intendant de 15:2), pas nommé au ch. 24 — hypothèse signalée. Accomplissement « 25:21-26 + 27:27-29 » : COMMENCEMENT (jumeaux) et TRANSFERT (Jacob), pas consommation — les myriades et la porte s'accomplissent à l'échelle des siècles (voir GE013). Bethuel : père effacé (Laban mène tout — 24:50, 55, 60) — le récit ne s'en explique pas. Chameaux : voir GE009 (débats inchangés, non tranchés ici).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mission</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Serment (Haran)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Avant la fin !</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Puits (signe)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Myriades + porte</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24:60 (adieu)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux !</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">25:26 (jumeaux)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Porte transférée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">27:29 (Jacob)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/24">Genèse 24 — Bible d'étude (60, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/24</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/24">Genèse 24 — lecture (le chapitre du mariage)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/24</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/25">Genèse 25 — Bible d'étude (21-26, jumeaux)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/25</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE014 — Rébecca : des milliers de myriades, et la porte des ennemis</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE015">
+<div class="visuel"><img src="images/prophe_GE015_jumeaux.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE015 · CATÉGORIE GE</div>
+<h3>Deux nations : l'aîné servira le cadet</h3>
+<div class="ref">Genèse 25:23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Oracle des jumeaux (~1858 → Édom/Israël)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE015</div><audio controls preload="none" src="audio/fiche_GE15_jumeaux.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE15_jumeaux.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 25:23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Oracle des jumeaux (~1858 → Édom/Israël)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P015 (25:23 : deux nations ; l'aîné servira le plus jeune) ; accomplissement Gn 25:25-26 ; Mal 1:2-3 ; Rm 9:10-13</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Les fils se heurtaient en elle. » (25:22 — ils se heurtent !)</li>
+<li>« Elle alla consulter Jéhovah. » (25:22 — elle consulte !)</li>
+<li>« Deux nations sont dans ton ventre. » (25:23 — DEUX !)</li>
+<li>« Deux peuples se sépareront dès tes entrailles. » (25:23 — séparés !)</li>
+<li>« Un peuple sera plus fort que l'autre. » (25:23 — plus fort !)</li>
+<li>« Et l'aîné servira le cadet. » (25:23 — l'aîné servira !)</li>
+<li>« J'ai aimé Jacob, et j'ai haï Ésaü. » (Mal 1:2-3 — aimé / haï !)</li>
+<li>« Avant qu'ils naissent, avant bien ni mal : l'aîné servira. » (Rm 9:11-12)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Vingt ans de mariage stérile (25:20, 26 : Isaac 40 → 60 ans), supplication exaucée (25:21), grossesse DOULOUREUSE — les jumeaux « se heurtent » (wayyitrotsetsu — s'écrasent !). Rébecca « va consulter Jéhovah » (25:22) : SEUL cas d'une femme consultant Dieu dans la Genèse — par quel moyen ? Prophète ? Songe ? Urim ? Le texte ne dit pas (voir limites) — mais la réponse est un oracle en quatre lignes, le plus dense de la Genèse sur deux vies. Naissance : Ésaü sort premier (roux, velu — 25:25), Jacob agrippe son talon (25:26 — 'aqeb : talon → Ya'aqob).</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre lignes, quatre arrêts : (1) DEUX NATIONS — pas deux fils, deux PEUPLES (goyim) : l'oracle saute les individus pour viser l'histoire ; (2) SÉPARATION dès les entrailles — la division est congénitale (elle durera : Nb 20, Abdias) ; (3) INÉGALITÉ — « l'un plus fort » (le'om mile'om ye'emats : un peuple triomphera de l'autre — force ALTERNÉE ? voir GE018 : le joug secoué !) ; (4) INVERSION — « l'aîné (rab — le grand) servira le cadet (tsa'ir — le petit) » : le droit d'aînesse contredit AVANT la naissance. « J'ai haï Ésaü » (Mal 1:3) : « haïr » comparatif hébreu = aimer moins / écarter du choix (cf. Léa « haïe » — 29:31, moins aimée ; Lc 14:26 — même figure). Paul (Rm 9:11) : choix « avant bien ni mal » — l'élection ne récompense pas, elle APPELLE.</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement immédiat : naissance conforme (premier/second — 25:25-26), droit d'aînesse VENDU par Ésaü lui-même (25:29-34 : « ce rouge » → ÉDOM = rouge ! le surnom naît d'un plat de lentilles ; serment prêté ; « il méprisa » — wayyivez : Hé 12:16 dira « profane »). Accomplissement national : David soumet Édom (2S 8:14 : « tout Édom devint serviteurs de David » — l'aîné sert !), ruptures et reprises (voir GE018) jusqu'à l'incorporation (Hyrcan ~125 : Iduméens intégrés — Josèphe). Accomplissement théologique : Malachie (1:2-3, ~Ve s.) relit cinq siècles — « aimé/haï » vérifié par l'histoire (Édom dévasté, Israël restauré) ; Paul (Rm 9:10-13) en fait la charte de l'élection souveraine — comme en 21:12 (GE012), le choix précède le mérite.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1858 (oracle)</td><td>4 lignes à Rébecca (25:23)</td></tr>
+<tr><td class="d">Naissance</td><td>Ésaü 1er + Jacob-talon (25:25-26)</td></tr>
+<tr><td class="d">Lentilles</td><td>Droit vendu, serment, mépris (25:29-34)</td></tr>
+<tr><td class="d">David (2S 8:14)</td><td>Tout Édom serviteurs — l'aîné sert</td></tr>
+<tr><td class="d">Mal 1:2-3 (~Ve s.)</td><td>Aimé/haï vérifié par l'histoire</td></tr>
+<tr><td class="d">Rm 9:10-13 (~56)</td><td>Élection avant bien ni mal</td></tr>
+<tr><td class="d">~125 (Hyrcan)</td><td>Iduméens incorporés (Josèphe)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>ÉDOM = rouge : triple rouge — roux de naissance (25:25), lentilles (25:30), montagne de grès rouge (Séir) : le nom colle à l'homme, au plat, au pays. Rois d'Édom « avant qu'un roi régnât sur les fils d'Israël » (36:31 — huit rois listés : Béla à Hadar) : les critiques y voient une rédaction tardive — réponse : Moïse connaissait la PROMESSE de rois (17:6, 16 ; 35:11) — débattu, signalé aux limites. Édom refuse le passage (Nb 20:14-21 : « avec une troupe nombreuse et une main forte » — l'épée de 27:40 déjà). Hadad l'Édomite, adversaire de Salomon (1R 11:14-22 — élevé à la cour d'Égypte !). Qaus : dieu national — « Qaus-Malak » et « Qaus-Gabri » tributaires d'Assyrie (Tiglath-Piléser III, Assarhaddon — tablettes !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Séir : la montagne d'Ésaü (32:3 : « campagne d'Édom » ; 36:8 : « Ésaü habita la montagne de Séir ») — grès rouge du Négueb à Aqaba, forteresses naturelles. Route du Roi (Nb 20:17, 21:22 : derek hammelekh — la caravanière nord-sud) : la refuser à Israël, c'est la guerre froide permanente. Deux territoires, deux destins : Canaan l'ouvert (carrefour, invasions, promesses) vs Séir le fermé (montagne, refuge, déclin) — la géographie épouse l'oracle.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Dizygotie : phénotypes incompatibles (roux-velu vs lisse) = faux jumeaux — le récit décrit une grossesse gémellaire dizygote avec complications (heurts violents) sans vocabulaire médical. Roux + pilosité : variants MC1R (rousseur) et hypertrichose — rapprochements modernes POSSIBLES, non démontrables sur un texte (limites : amusant, pas prouvant). « Vêtement de poil » ('adderet se'ar, 25:25 — TM Rbi8) : Élie portera le même (« maître au vêtement de poil », 2R 1:8) — le récit habille Ésaü en prophète sauvage. Critique : l'oracle-avant-naissance est le cas d'école du « vaticinium » — la fiche le traite comme les autres : texte daté, accomplissement tracé.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Grossesse douloureuse → Consultation (unique !) → Oracle 4 lignes (nations, séparation, inégalité, inversion) → Naissance conforme + talon → Droit vendu (lentilles !) → David : Édom sert (2S 8:14) → Malachie : aimé/haï vérifié → Paul : élection avant les œuvres.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Mode de consultation (25:22) : inconnu — le texte tait le canal (songe ? prophète ?). « Haï » (Mal 1:3) : comparatif (aimer moins/écarter), pas haine affective — débats théologiques postérieurs (prédestination) hors sujet. Gn 36:31 (rois d'Édom) : argument antimosiaque classique — réponse par les promesses de rois (17:6 ; 35:11), débats signalés, non tranchés ici. Génétique (MC1R) : rapprochement, pas diagnostic. Hyrcan/Iduméens : Josèphe, historien — cité comme tel.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux nations</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oracle (ventre)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Roux + talon</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Naissance</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Droit vendu</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Lentilles</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom sert</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">David</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vérifié</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Malachie</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Élection</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rm 9</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/25">Genèse 25 — Traduction du monde nouveau (22-26, TM)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/25</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/39/1">Malachie 1 — Bible d'étude (2-3, aimé/haï)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/39/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/45/9">Romains 9 — Bible d'étude (10-13, élection)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/45/9</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE015 — Deux nations : l'aîné servira le cadet</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE016">
+<div class="visuel"><img src="images/prophe_GE016_guerar.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE016 · CATÉGORIE GE</div>
+<h3>Isaac à Guérar : ne descends pas — le centuple</h3>
+<div class="ref">Genèse 26:2-5</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Confirmation isaacienne (Guérar → Beér-Shéba)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE016</div><audio controls preload="none" src="audio/fiche_GE16_guerar.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE16_guerar.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 26:2-5</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Confirmation isaacienne (Guérar → Beér-Shéba)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P016 (26:2-5 : Isaac béni ; postérité multipliée comme les étoiles) ; accomplissement Gn 26:12-14</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Famine — outre la première, du temps d'Abraham. » (26:1 — famine !)</li>
+<li>« Ne descends pas en Égypte ! » (26:2 — NE DESCENDS PAS !)</li>
+<li>« Séjourne : je serai avec toi, je te bénirai. » (26:3 — avec toi !)</li>
+<li>« Je tiendrai le serment fait à Abraham. » (26:3 — le serment !)</li>
+<li>« Postérité comme les étoiles ; en elle, toutes bénies. » (26:4 — étoiles !)</li>
+<li>« Parce qu'Abraham a obéi à ma voix. » (26:5 — parce qu'Abraham !)</li>
+<li>« Il sema — et récolta le centuple, cette année-là. » (26:12 — CENTUPLE !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Famine en Canaan — Isaac prend la route de l'Égypte (le grenier réflexe : Abraham l'avait fait, 12:10) et s'arrête à Guérar, chez Abimélek « roi des Philistins » (26:1). LÀ, théophanie : INTERDICTION (« ne descends pas ») + PROMESSE (le quintuple : présence, bénédiction, pays, multitude, bénédiction mondiale — 26:3-4) + MOTIF (« parce qu'Abraham… » — 26:5). Isaac est le SEUL patriarche à qui Dieu interdit l'Égypte — et le seul qui n'y descendra jamais : Abraham y est allé, Jacob y mourra, Joseph y régnera. Isaac, non. L'homme du milieu reste au milieu.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Ne descends pas » : l'Égypte, c'est la sécurité SANS promesse — Guérar, le risque AVEC promesse : Dieu retient Isaac sur la terre du serment. La promesse à Isaac COPIE le serment à Abraham (26:3-4 = 22:16-18 condensé : serment, étoiles, bénédiction mondiale) : rien de nouveau — et c'est la nouveauté : l'alliance se TRANSMET sans s'user. « Parce qu'Abraham a obéi » (26:5 — voix, garde, commandements, prescriptions, lois : CINQ mots pour l'obéissance totale, AVANT la Loi !) : le fils hérite du crédit du père — mérite imputé, ancêtre de la justification (voir GE005). Le centuple (26:12 — mea shearim : cent mesures) : en année de FAMINE — le miracle est daté (« cette année-là ») et chiffré.</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement immédiat et visible : semailles → centuple (26:12), « il alla grandissant, de plus en plus grand » (26:13 — progression à trois temps), troupeaux + serviteurs nombreux (26:14) — au point que les Philistins le JALOUSENT et BOUCHENT les puits d'Abraham (26:15 : la jalousie criminelle — boucher un puits au Négeb, c'est tuer). Puis les puits disputés (Éseq = dispute, Sitna = hostilité, 26:20-21), Rehoboth (« largeurs » — 26:22 : « Jéhovah nous a mis au large »), Beér-Shéba (serment, 26:33 : Shiba). Abimélek VIENT à Isaac (26:26-31) : « nous avons VU que Jéhovah est avec toi » (26:28 — confession païenne : la bénédiction se voit) — festin, serment, paix. Le miroir de 12:3 fonctionne : qui touche Isaac finit par traiter avec lui.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Famine (26:1)</td><td>Route d'Égypte ; arrêt à Guérar</td></tr>
+<tr><td class="d">Théophanie (26:2-5)</td><td>Interdiction + promesse + motif</td></tr>
+<tr><td class="d">26:12 (semailles)</td><td>Centuple « cette année-là »</td></tr>
+<tr><td class="d">26:13-14</td><td>Grandissant ; troupeaux ; jalousie</td></tr>
+<tr><td class="d">26:15-22</td><td>Puits bouchés → Éseq → Sitna → Rehoboth</td></tr>
+<tr><td class="d">26:26-31</td><td>Abimélek : « Jéhovah est avec toi » ; alliance</td></tr>
+<tr><td class="d">26:33 (Shiba)</td><td>Beér-Shéba : le serment</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>ABIMÉLEK (26:1) vs ABIMÉLEK (ch. 20) : ~80 ans d'écart — même homme ? Fils ? TITRE dynastique (comme Pharaon) ? Débattu — la fiche signale (voir limites). « Roi des PHILISTINS » : anachronisme allégué — les Philistins-peuples-de-la-mer datent du XIIe s. ; réponses : avant-garde égéenne précoce au sud (Caphtor : Am 9:7, Jr 47:4, Dt 2:23 — les Caphtorim chassent les Avvites AVANT l'époque des Juges), ou titre proleptique du rédacteur — non tranché ici. GUÉRAR : Tell Jemmeh ou Tell Haror (Négueb occidental) — débattu ; les deux ont des strates du Bronze. Puits bouchés (26:15) : guerre de l'eau — pratique attestée (2R 3:19, 25 : Moab !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le Négeb occidental : steppe à 200-300 mm de pluie — semailles RISQUÉES, pâturages riches : Isaac fait les deux (cultures 26:12 + troupeaux 26:14). Vallée de Guérar (ouadi Sheria ?) : nappe phréatique — les puits d'Abraham (26:15, 18 : Isaac les DÉBOUCHE et leur rend leurs NOMS — restauration du patrimoine paternel, nom par nom). Éseq → Sitna → Rehoboth → Beér-Shéba : quatre stations, une remontée vers le sud-est — chaque puits nommé commémore un conflit résolu. Beér-Shéba (« puits du serment ») : Isaac y bâtit un autel (26:25) — troisième autel patriarcal après Sichem et Béthel.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Rendements antiques : semence/récolte de 1:4 à 1:10 en bonnes années (Columelle, Varron ; Égypte 1:7-10) — le CENTUPLE (1:100) pulvérise tous les plafonds, EN FAMINE qui plus est : miracle agricole chiffré (Mt 13:8 reprendra « cent » comme maximum absolu). Hydrologie : puits du piémont — nappes à 10-30 m, margelles de pierre, abreuvoirs (archéologie du Négeb : puits du Bronze moyen aux mêmes profondeurs). Jalousie des pasteurs sédentaires contre l'agro-pasteur enrichi : conflit d'usage des sols documenté dans toutes les steppes — le récit est socio-économiquement exact.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Famine → Route d'Égypte INTERDITE → Promesse copiée d'Abraham (motif : son obéissance) → Semailles → CENTUPLE en famine → Jalousie → Puits bouchés → Éseq, Sitna, Rehoboth (« au large ! ») → Abimélek vient : « Jéhovah est avec toi » → Serment de Beér-Shéba. Rester coûte — et rapporte.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Abimélek ch. 20 = ch. 26 ? Écart de ~80 ans — homonymie dynastique probable, non démontrée. « Philistins » au temps des patriarches : anachronisme APPARENT (Caphtor/présence égéenne précoce possibles ; titre proleptique possible) — débats signalés. Guérar : deux tells candidats (Jemmeh, Haror). « Rébecca ma sœur » (26:7 — reprise du motif d'Abraham 12 et 20) : le texte ne s'en excuse pas — répétition familiale ou doublet rédactionnel selon les écoles ; la fiche suit le récit reçu. Centuple : miracle revendiqué, pas moyenne climatique.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Stop : Guérar</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Famine (route)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ne descends pas</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">26:2 (ordre)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Centuple !</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">26:12 (moisson)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Au large</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Puits (conflits)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dieu avec toi</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">26:28 (aveu)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/26">Genèse 26 — Bible d'étude (2-5, 12, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/26</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/26">Genèse 26 — lecture (Guérar, puits)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/26</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034">Alliance abrahamique — transmise par Isaac<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE016 — Isaac à Guérar : ne descends pas — le centuple</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE017">
+<div class="visuel"><img src="images/prophe_GE017_benediction.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE017 · CATÉGORIE GE</div>
+<h3>La bénédiction volée : peuples te serviront</h3>
+<div class="ref">Genèse 27:27-29</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Bénédiction patriarcale (Beér-Shéba → Haran)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE017</div><audio controls preload="none" src="audio/fiche_GE17_benediction.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE17_benediction.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 27:27-29</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Bénédiction patriarcale (Beér-Shéba → Haran)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P017 (27:27-29 : Jacob — nations le serviront ; ceux qui le maudissent seront maudits) ; accomplissement Gn 27:41-45 ; 33:1-4</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Les yeux d'Isaac s'étaient éteints. » (27:1 — éteints !)</li>
+<li>« Fais-moi un mets comme j'aime, que je te bénisse. » (27:4 — comme j'aime !)</li>
+<li>« Rébecca écoutait pendant qu'Isaac parlait. » (27:5 — elle écoutait !)</li>
+<li>« La voix est celle de Jacob, les mains, celles d'Ésaü. » (27:22 — voix / mains !)</li>
+<li>« L'odeur de mon fils : un champ béni de Jéhovah. » (27:27 — l'odeur !)</li>
+<li>« Peuples te serviront, nations se prosterneront. » (27:29 — serviront !)</li>
+<li>« Maudits qui te maudissent, bénis qui te bénissent ! » (27:29 — miroir !)</li>
+<li>« Isaac trembla d'un très grand tremblement. » (27:33 — il trembla !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Isaac vieux (137 ans ? — il mourra à 180, 35:28 ; Joseph a 17 ans au ch. 37… chronologie : Isaac ~137, les jumeaux ~77 — célibataires tardifs !), aveugle (27:1). Il veut bénir Ésaü, l'aîné, le chasseur, « le gibier dans sa bouche » (25:28 — Isaac AIME Ésaü pour son palais). Rébecca, qui GARDE l'oracle (« l'aîné servira », 25:23 — les QUATRE le connaissent !), monte la substitution : deux chevreaux (27:9), peaux sur mains et cou (27:16 — Ésaü est velu !), habits « précieux » d'Ésaü (27:15 — gardés par elle !). Jacob ment (« je suis Ésaü, ton premier-né », 27:19), Isaac doute (voix/mains, 27:22), mange, boit le vin (27:25), embrasse — et bénit. Ésaü arrive « à peine Jacob sorti » (27:30).</p>
+<h4>4 · Explication du texte</h4>
+<p>La bénédiction, cinq dons : (1) ROSÉE + GRAISSE (27:28 — ciel ET terre : pluie et terres grasses ; blé et vin : l'abondance complète) ; (2) PEUPLES SERVIRONT, NATIONS SE PROSTERNERONT (27:29 — 'ummim/yirg... : domination politique : David sur Édom, Moab, Syrie, Ammon) ; (3) MAÎTRE de tes frères (gebir — titre : les fils de ta mère se prosternent — Joseph s'y inscrira ! 37:7-10) ; (4) MIROIR (27:29 = 12:3 transféré : maudire/bénir — l'alliance abrahamique passe à Jacob MOT POUR MOT) ; (5) le tout IRRÉVOCABLE : Isaac tremble (27:33 — il COMPREND que Dieu a tranché par sa bouche) et RATIFIE : « je l'ai béni : BÉNI IL RESTERA » (gam barukh yihyeh). Le mensonge n'annule pas l'oracle — il le fait passer par la ruse, au prix fort (voir accomplissement).</p>
+<h4>5 · Interprétation</h4>
+<p>Dieu accomplit MALGRÉ la ruse, pas PAR elle : l'oracle (25:23) précédait et suffisait — la machination ajoute 20 ans d'exil, pas un iota de bénédiction. Accomplissement selon le registre : HAINE (27:41 — Ésaü « hait » Jacob et projette le meurtre après le deuil : la malédiction en ACTE — « maudits qui te maudissent » vise ce moment) → FUITE (27:43-45 : Haran, « quelques jours » qui durent 20 ans !) → RÉCONCILIATION (33:1-4 : Ésaü COURT, embrasse, tombe au cou, PLEURENT — la malédiction N'ABOUTIT PAS : l'embrassade la désamorce). Note massorétique : les scribes ont POINTÉ chaque lettre de « il l'embrassa » (wayyishaqehu, 33:4) — soupçon de sincérité ? Sens débattu, points réels (voir limites). Nations servantes : accompli en David et Salomon (voir GE013).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Veillée (25:23)</td><td>Oracle connu des quatre</td></tr>
+<tr><td class="d">Machination (27:5-17)</td><td>Rébecca + chevreaux + peaux + habits</td></tr>
+<tr><td class="d">Bénédiction (27:27-29)</td><td>5 dons ; miroir 12:3 transféré</td></tr>
+<tr><td class="d">27:33 (tremblement)</td><td>« Béni il restera » — ratifié</td></tr>
+<tr><td class="d">27:41 (haine)</td><td>Meurtre projeté : malédiction en acte</td></tr>
+<tr><td class="d">27:43 (fuite)</td><td>Haran : 20 ans d'exil</td></tr>
+<tr><td class="d">33:1-4 (retour)</td><td>Ésaü court, embrasse : malédiction désamorcée</td></tr>
+<tr><td class="d">David/Salomon</td><td>Nations servantes (échelle nationale)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Bénédiction orale = ACTE JURIDIQUE : au Bronze moyen, la parole du père mourant dispose (Nuzi : tablettes d'adoption + bénédiction-testament — le père parle, le droit s'exécute ; on ne « reprend » pas une bénédiction, comme on ne reprend pas un serment). Droit d'aînesse déjà vendu (25:33 — serment + repas : Ésaü a SIGNÉ) : la scène du ch. 27 exécute le contrat du ch. 25 — Ésaü « supplanté deux fois » (27:36) oublie qu'il a vendu la première. Chevreaux vs gibier : la cuisine de Rébecca imite le goût d'Ésaü — détail domestique, pas miracle. Vin servi (27:25) : seule mention de vin bu par Isaac — le repas scelle l'acte.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La tente de Beér-Shéba : toute la scène tient en un campement — chambre de l'aveugle (toucher, goût, odorat : trois sens trompés, l'ouïe hésite !), troupeau (chevreaux), champ (Ésaü chasse PENDANT — le timing fait le crime). Haran : la fuite inverse le voyage de Rébecca (ch. 24) — Jacob refait la route maternelle, 800 km, « quelques jours » (27:44) devenus 20 ans (31:41). Peniel/Mahanaïm au retour (ch. 32) : Jacob revient au gué du Yabboq — l'embrassade (33:4) a lieu en Galaad.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Cécité sénile (27:1 — kehot, ternissement : cataracte ? DMLA ?) : à ~137 ans, l'acuité s'effondre — le récit médicalise la vulnérabilité. Tromperie sensorielle : toucher (peaux de chevreau ≈ peau velue), goût (cuisine imitée), odorat (habits de chasse imprégnés — mémoire olfactive : « odeur d'un champ » 27:27) — seule l'OUÏE résiste (« la voix est celle de Jacob ») : hiérarchie des sens exacte en neuropsychologie (l'audition, dernier rempart). Points massorétiques (33:4) : 6 points sur 6 lettres — les scribes signalaient ainsi les leçons suspectes : témoignage de rigueur textuelle, sens discuté.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Oracle connu des quatre (25:23) → Isaac veut bénir Ésaü (goût !) → Machination (peaux, habits, mensonge) → Voix/mains : doute, puis ratification → Bénédiction 5 dons (rosée, peuples, maîtrise, miroir, irrévocable) → Tremblement + « béni il restera » → Haine d'Ésaü → Fuite 20 ans → Embrassade (la malédiction échoue).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Morale : le mensonge de Jacob (27:19, 24) n'est ni excusé ni condamné par le récit — Dieu accomplit son oracle MALGRÉ la ruse (conséquences : exil, Laban le trompeur trompé — 29:25 : « pourquoi m'as-tu trompé ? » — retour exact !). « Il l'embrassa » pointé (33:4) : sincérité débattue (midrash : pas de tout cœur ; texte : pleurs des deux). Chronologie (~137/77 ans) : reconstituée, pas donnée. Nations servantes : accompli en David/Salomon (échelle nationale), pas du vivant de Jacob — paliers distingués.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatre au courant</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oracle (connu)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Je suis Ésaü</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">27:19 (mensonge)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Peuples serviront</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">27:29 (bénédiction)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Béni restera</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">27:33 (tremblement)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le prix</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fuite (20 ans)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Désamorcée</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33:4 (embrassade)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/27">Genèse 27 — Bible d'étude (27-29, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/27</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/27">Genèse 27 — lecture (bénédiction volée)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/27</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/33">Genèse 33 — Bible d'étude (1-4, réconciliation)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/33</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE017 — La bénédiction volée : peuples te serviront</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE018">
+<div class="visuel"><img src="images/prophe_GE018_esau.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE018 · CATÉGORIE GE</div>
+<h3>Ésaü : par l'épée — et tu briseras son joug</h3>
+<div class="ref">Genèse 27:39-40</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Destin d'Édom (Séir → 70)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE018</div><audio controls preload="none" src="audio/fiche_GE18_esau.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE18_esau.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 27:39-40</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Destin d'Édom (Séir → 70)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P018 (27:39-40 : Ésaü — il vivra par l'épée, servira son frère, puis secouera le joug) ; accomplissement 2R 8:20-22 ; Abd 10-14</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« N'as-tu qu'une bénédiction, père ? Bénis-moi, moi aussi ! » (27:38 — moi aussi !)</li>
+<li>« Ésaü éleva la voix et pleura. » (27:38 — il pleura !)</li>
+<li>« Loin de la graisse de la terre sera ta demeure. » (27:39 — LOIN !)</li>
+<li>« Loin de la rosée du ciel. » (27:39 — loin !)</li>
+<li>« Tu vivras par ton épée. » (27:40 — PAR TON ÉPÉE !)</li>
+<li>« Tu serviras ton frère. » (27:40 — serviras !)</li>
+<li>« Quand tu t'agiteras, tu briseras son joug de ton cou. » (27:40 — BRISERAS !)</li>
+<li>« Sous Yoram, Édom se révolta… jusqu'à ce jour. » (2R 8:20-22 — révolta !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Ésaü arrive trop tard (27:30 — « à peine sorti »), hurle (27:34 : « cri grand et amer »), accuse (« supplanté deux fois », 27:36 — oubliant la vente, 25:33 !), pleure (27:38). Isaac, qui vient de ratifier Jacob (« béni il restera », 27:33), prononce une SECONDE parole — bénédiction ? Oracles de consolation ? Le texte dit « il lui dit » (wayyo'mer, 27:39 — pas wayebarek : pas de bénédiction au sens plein — un DESTIN en quatre lignes, miroir INVERSE de celui de Jacob : LOIN DE la graisse (Jacob : DE la graisse), LOIN DE la rosée (Jacob : DE la rosée) — même préposition min, sens opposés : donné à l'un, retiré à l'autre.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre lignes, quatre arrêts : (1) DEMEURE — « loin de » (min = éloignement : Séir, terres maigres — voir géo/sci pour la nuance climatique) ; (2) MOYEN — « par ton épée » (guerrier : Édom ne cultivera guère, il combattra — Nb 20:20 : « troupe nombreuse, main forte ») ; (3) SERVITUDE — « tu serviras » (répète 25:23 : confirmation, pas nouveauté) ; (4) RUPTURE — « quand tu rud (t'agiteras, te cabreras), tu briseras » : rud = s'agiter comme un animal entravé — le joug sera secoué PAR L'AGITATION, pas par le droit : révolte, pas émancipation. Larmes d'Ésaü (27:38) : Hé 12:17 — « il ne trouva pas de lieu de repentance, bien qu'il l'eût cherchée avec larmes » : pleurer la perte ≠ se repentir (voir limites).</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement en trois actes : SERVITUDE — David met des garnisons : « tout Édom devint serviteurs » (2S 8:14) ; Joab y reste 6 mois (1R 11:15-16 : « tout mâle en Édom » — guerre totale) ; Salomon : Hadad l'Édomite, « adversaire suscité » (1R 11:14 — élevé en Égypte, marié à la belle-sœur de Pharaon !) ; Josaphat : pas de roi en Édom, un « député » (1R 22:48 — vassalité pure). RUPTURE — Yoram (~853) : « Édom se révolta contre Juda et se donna un roi » (2R 8:20) ; Yoram frappe de nuit à Tsaïr (8:21) mais « Édom s'affranchit… JUSQU'À CE JOUR » (8:22 — formule d'accomplissement définitif ; Libna suit). JUGEMENT — au jour de Jérusalem (607), Édom pille, se réjouit, LIVRE les rescapés (Abd 10-14 — P018 : « à cause de la violence envers ton frère Jacob ») ; Ps 137:7 (« rasez ! ») ; Éz 25:12-14.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">27:38 (pleurs)</td><td>Trop tard : « bénis-moi, moi aussi »</td></tr>
+<tr><td class="d">27:39-40 (destin)</td><td>Loin + épée + service + rupture</td></tr>
+<tr><td class="d">David (2S 8:14)</td><td>Tout Édom serviteurs — garnisons</td></tr>
+<tr><td class="d">Salomon/Josaphat</td><td>Hadad adversaire ; député, pas roi (1R 22:48)</td></tr>
+<tr><td class="d">~853 (Yoram)</td><td>Révolte + roi ; joug brisé « jusqu'à ce jour »</td></tr>
+<tr><td class="d">Amatsia/Ozias</td><td>Vallée du Sel ; Séla ; Élath rebâtie</td></tr>
+<tr><td class="d">Achaz (~732)</td><td>Élath rendue à Édom (2R 16:6)</td></tr>
+<tr><td class="d">607 (Abdias)</td><td>Pillage + rescapés livrés (Abd 10-14) ; Ps 137:7</td></tr>
+<tr><td class="d">37-4 (Hérode)</td><td>Iduméen roi des Juifs ; puis disparition</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Yoram (853-841) : la révolte date du règne — synchronisme absolu (chronologie des Rois). Amatsia reprend l'avantage (2R 14:7 : 10 000 dans la vallée du Sel + SÉLA prise, renommée Yoktheel — Pétra conquise !). Ozias rebâtit Élath (2R 14:22 — le port du sud). Achaz perd tout (2R 16:6 : Rétsîn de Syrie « rend » Élath à Édom — fin de la présence judéenne). QAUS, dieu d'Édom : « Qaus-Malak » tributaire de Tiglath-Piléser III, « Qaus-Gabri » sous Assarhaddon (annales cunéiformes — l'onomastique théophore prouve le culte). Ostraca araméens d'Idumée (IVe s.) : l'administration perse en pays édomite. Hyrcan (~125) : Iduméens incorporés (Josèphe). HÉRODE (37-4), Iduméen roi des Juifs : l'aîné règne sur le cadet — dernière ironie avant la disparition (après 70, plus d'Iduméens).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>SÉIR : chaîne de grès rouge (Nubie) du Négueb à Aqaba — « loin de la graisse » : terres maigres, MAIS pluies d'hiver correctes et forteresses inexpugnables (nuance, voir sci). SÉLA (2R 14:7 — ha-sséla', « le Rocher » = Pétra ?) : prise par Amatsia, renommée — Abdias 3 : « toi qui habites les fentes du rocher » — les Nabatéens y sculpteront Pétra (Ier s. — POSTÉRIEURS : limites !). ROUTE DU ROI (Nb 20:17) : la caravanière — Édom la taxe et la bloque. ÉLATH (Aqaba) : le port sur la mer Rouge — enjeu économique des guerres judéo-édomites. Vallée du Sel (Arabah) : 10 000 Édomites (2R 14:7) — charnier daté.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Métallurgie : Faynan (Khirbet en-Nahas, « ruines du cuivre ») — scories datées Xe-IXe s. (Levy, Higham) : Édom produisait du cuivre à l'échelle industrielle DÈS L'ÉPOQUE DE SALOMON — « par ton épée » suppose du métal, le métal est trouvé (attribution édomite discutée : voir limites — Qeiyafa ? Négueb ?). Grès de Séir : falaises de 300 m, défilés (Siq), citernes — « qui me fera descendre à terre ? » (Abd 4 : « quand tu placerais ton nid parmi les étoiles, je t'en ferai descendre » — Dieu répond à la géographie). Climat : Séir reçoit 150-350 mm — « loin de la rosée » est RELATIF (vs plaines grasses) : terres maigres, pas désert absolu — l'oracle dit la QUALITÉ des sols, pas l'aridité.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Pleurs (trop tard) → Destin 4 lignes (loin, épée, service, rupture) → David : Édom sert (2S 8:14) → Salomon-Josaphat : vassalité → Yoram ~853 : JOUG BRISÉ (2R 8:20-22, « jusqu'à ce jour ») → Amatsia/Ozias : reprises → Achaz : Élath perdue → 607 : Édom pille Jérusalem (Abd 10-14) → Jugé → Hérode → Disparu.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Hé 12:17 (larmes sans repentance) : lecture apostolique — le récit (Gn 27:38) montre des pleurs humains, sans commentaire. Pétra la merveille = NABATÉENNE (Ier s.) — les Édomites occupaient la RÉGION avant, sans sculpter les façades : ne pas confondre. Faynan « édomite » : datation solide (Xe-IXe s.), attribution ethnique débattue (Édom ? tribus du Négueb ?). « Loin de la rosée » : relatif (Séir arrosé mais maigre) — pas désert absolu. « Jusqu'à ce jour » (2R 8:22) : jour du rédacteur des Rois (exil) — formule historiographique assumée.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Moi aussi !</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">27:38 (larmes)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Serviras, briseras</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">27:40 (joug)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom sert</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">David</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Joug brisé</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">853 (Yoram)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pilleur pillé</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 (Abdias)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin d'Édom</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Hérode → 70</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/27">Genèse 27 — Bible d'étude (39-40, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/27</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/8">2 Rois 8 — Bible d'étude (20-22, révolte)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/8</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/31/1">Abdias — Bible d'étude (10-14, jugement)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/31/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE018 — Ésaü : par l'épée — et tu briseras son joug</span><span>Catégorie GE</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie GE</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>GE013 — Le serment de Moriya : la porte de tes ennemis</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arrêté</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Moriya (couteau)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Par moi-même</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Moriya (serment)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prises</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (portes)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Comme le sable</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Christ</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ga 3:16</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Même montagne</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Temple (2Ch 3)</text>
+</svg>
+<h4>GE014 — Rébecca : des milliers de myriades, et la porte des ennemis</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mission</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Serment (Haran)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Avant la fin !</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Puits (signe)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Myriades + porte</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24:60 (adieu)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux !</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">25:26 (jumeaux)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Porte transférée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">27:29 (Jacob)</text>
+</svg>
+<h4>GE015 — Deux nations : l'aîné servira le cadet</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux nations</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oracle (ventre)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Roux + talon</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Naissance</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Droit vendu</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Lentilles</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom sert</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">David</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vérifié</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Malachie</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Élection</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rm 9</text>
+</svg>
+<h4>GE016 — Isaac à Guérar : ne descends pas — le centuple</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Stop : Guérar</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Famine (route)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ne descends pas</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">26:2 (ordre)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Centuple !</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">26:12 (moisson)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Au large</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Puits (conflits)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dieu avec toi</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">26:28 (aveu)</text>
+</svg>
+<h4>GE017 — La bénédiction volée : peuples te serviront</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatre au courant</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oracle (connu)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Je suis Ésaü</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">27:19 (mensonge)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Peuples serviront</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">27:29 (bénédiction)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Béni restera</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">27:33 (tremblement)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le prix</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fuite (20 ans)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Désamorcée</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33:4 (embrassade)</text>
+</svg>
+<h4>GE018 — Ésaü : par l'épée — et tu briseras son joug</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Moi aussi !</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">27:38 (larmes)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Serviras, briseras</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">27:40 (joug)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom sert</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">David</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Joug brisé</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">853 (Yoram)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pilleur pillé</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 (Abdias)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin d'Édom</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Hérode → 70</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-3 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

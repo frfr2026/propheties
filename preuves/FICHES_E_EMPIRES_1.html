@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES D–E — Fin du Messie souffrant · Les empires (1re partie)</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_DE_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 7</div>
+<h1>FICHES D–E</h1>
+<h2>Fin du Messie souffrant · Les empires (1re partie)</h2>
+<p class="intro">Cette vague de transition ferme la catégorie D et ouvre la catégorie E. Côté Messie souffrant, trois dernières fiches : le vinaigre de Golgotha (avec l'énigme roseau-hysope), le berger frappé et les brebis dispersées dans la nuit du 14 Nisan, et le serpent d'airain — le regard qui sauve, de Moïse à Nicodème. La catégorie D compte ainsi 12 fiches et est terminée. Côté empires, six premières fiches suivent Daniel : la statue du songe (chapitre 2), les quatre bêtes (chapitre 7), le bélier et le bouc (chapitre 8), les rois du nord et du sud jusqu'en 164 (chapitre 11 antique), la nuit de Belschatsar (chapitre 5), et l'énigme de Darius le Mède — traitée avec toutes ses hypothèses, y compris non conclusives. Deux renvois de périmètre : Daniel 4 (les sept temps) et Daniel 9 (les soixante-dix semaines) appartiennent à la catégorie F (chronologies) ; Daniel 12 et la synthèse des sept puissances viendront dans la 2e partie des empires (vague 7).</p>
+<div class="chiffres">
+<div><b>9</b><span>fiches</span></div>
+<div><b>10</b><span>blocs par fiche</span></div>
+<div><b>36</b><span>sources</span></div>
+<div><b>9</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:40</div><audio controls preload="none" src="audio/fiche_D00_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_D00_intro.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:30</div><audio controls preload="none" src="audio/fiche_DE00_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_DE00_intro.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:34</div><audio controls preload="none" src="audio/fiche_EF00_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_EF00_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#D010">D010</a>
+<a href="#D011">D011</a>
+<a href="#D012">D012</a>
+<a href="#E001">E001</a>
+<a href="#E002">E002</a>
+<a href="#E003">E003</a>
+<a href="#E004">E004</a>
+<a href="#E005">E005</a>
+<a href="#E006">E006</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#D010"><img src="images/prophe_D010_vinaigre.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE D010</div>
+<h3><a href="#D010">Le vinaigre — j'ai soif, tout est accompli</a></h3>
+<div class="meta">Accomplie · 🎧 0:36</div></div></div>
+<div class="carte">
+<a class="img" href="#D011"><img src="images/prophe_D011_berger.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE D011</div>
+<h3><a href="#D011">Le berger frappé — tous s'enfuirent, cette nuit</a></h3>
+<div class="meta">Accomplie · 🎧 0:34</div></div></div>
+<div class="carte">
+<a class="img" href="#D012"><img src="images/prophe_D012_serpent.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE D012</div>
+<h3><a href="#D012">Le serpent d'airain — élevé, regardé, vivant</a></h3>
+<div class="meta">Accomplie · 🎧 0:38</div></div></div>
+<div class="carte">
+<a class="img" href="#E001"><img src="images/prophe_E001_statue.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE E001</div>
+<h3><a href="#E001">La statue du songe — de l'or à la pierre</a></h3>
+<div class="meta">Accomplie (frappe à venir, sans date) · 🎧 0:39</div></div></div>
+<div class="carte">
+<a class="img" href="#E002"><img src="images/prophe_E002_betes.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE E002</div>
+<h3><a href="#E002">Les quatre bêtes — et le Fils d'homme</a></h3>
+<div class="meta">Accomplie (tribunal à venir, sans date) · 🎧 0:41</div></div></div>
+<div class="carte">
+<a class="img" href="#E003"><img src="images/prophe_E003_belier.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE E003</div>
+<h3><a href="#E003">Le bélier et le bouc — Alexandre nommé par fonction</a></h3>
+<div class="meta">Accomplie (« sans main » à venir, sans date) · 🎧 0:38</div></div></div>
+<div class="carte">
+<a class="img" href="#E004"><img src="images/prophe_E004_raphia.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE E004</div>
+<h3><a href="#E004">Les rois du nord et du sud — Raphia, Panium, l'abomination</a></h3>
+<div class="meta">Accomplie (11:36-45 : renvoi aux publications récentes) · 🎧 0:39</div></div></div>
+<div class="carte">
+<a class="img" href="#E005"><img src="images/prophe_E005_babylone.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE E005</div>
+<h3><a href="#E005">La nuit de Belschatsar — compté, pesé, divisé</a></h3>
+<div class="meta">Accomplie · 🎧 0:37</div></div></div>
+<div class="carte">
+<a class="img" href="#E006"><img src="images/prophe_E006_darius.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE E006</div>
+<h3><a href="#E006">Darius le Mède — l'énigme en quatre hypothèses</a></h3>
+<div class="meta">Accomplie (identité débattue — voir Limites) · 🎧 0:43</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Dix blocs par fiche, toujours dans le même ordre. Le dixième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="D010">
+<div class="visuel"><img src="images/prophe_D010_vinaigre.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE D010 · CATÉGORIE D–E</div>
+<h3>Le vinaigre — j'ai soif, tout est accompli</h3>
+<div class="ref">Psaume 69:21 ; Psaume 22:15 ; Matthieu 27:34, 47-50 ; Marc 15:23, 36 ; Jean 19:28-30</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche D010 · 0:36</div><audio controls preload="none" src="audio/fiche_D10_vinaigre.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_D10_vinaigre.mp3 · 0:36 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Psaume 69:21 ; Psaume 22:15 ; Matthieu 27:34, 47-50 ; Marc 15:23, 36 ; Jean 19:28-30</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Psaumes — P545, P635 (69:21) ; P632 (22:15)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Pour nourriture ils m'ont donné du poison ; pour ma soif, ils m'ont abreuvé de vinaigre. » (Ps 69:21)</li>
+<li>« Jésus, sachant que tout était déjà accompli, dit, afin que l'Écriture fût accomplie : J'ai soif. » (Jn 19:28 — il a soif ET il accomplit)</li>
+<li>« Il y avait là un vase plein de vinaigre. On remplit de vinaigre une éponge, on la fixa à une branche d'hysope et on l'approcha de sa bouche. Quand Jésus eut pris le vinaigre, il dit : Tout est accompli. » (Jn 19:29-30)</li>
+<li>« On lui donna à boire du vin mêlé de fiel ; mais quand il l'eut goûté, il ne voulut pas boire. » (Mt 27:34 — le premier breuvage, refusé)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le Psaume 69 (David : la noyade, puis « le zèle de ta maison me dévore », v. 9, cité pour la purification du Temple en Jn 2:17 — même psaume aux deux bouts du ministère !) promet le fiel et le vinaigre. À Golgotha, deux breuvages se succèdent : d'abord le vin drogué offert avant la mise au poteau — stupéfiant des condamnés (Pr 31:6-7 : « donnez des liqueurs fortes à celui qui va périr »), refusé après un goût : Jésus veut sa pleine conscience. Puis, à la 9e heure, le vinaigre des soldats, accepté — aussitôt suivi de tetelestai.</p>
+<h4>4 · Explication du texte</h4>
+<p>Deux offrandes, deux sens : le narcotique refusé (lucidité du sacrifice) et le vinaigre accepté (l'Écriture jusqu'au bout). Le vinaigre (oxos), c'est la posca, la piquette du légionnaire : le vase est aux soldats romains, pas aux Juifs. L'hysope est l'herbe de la Pâque : avec elle, en 1513, on a mis le sang sur les linteaux (Ex 12:22) — la même plante présente le vinaigre à l'Agneau (voir D004). « J'ai soif » est la seule parole de souffrance physique : Psaume 22:15 (« ma langue colle ») et Psaume 69:21 — deux psaumes, une soif. Et « tout est accompli » vient juste après la gorgée : le vinaigre est le dernier accomplissement avant la mort.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Jésus, maître de l'heure jusqu'au bout, provoque lui-même le dernier accomplissement : sachant que « tout était déjà accompli », il dit « j'ai soif » afin que le reste — le Psaume 69:21 — s'accomplisse aussi. Les soldats, « sans le savoir », exécutent l'ordonnance : éponge, hysope, bouche. Les bystanders, entendant « Eli », comprennent « Élie » (Mt 27:47-49) : le malentendu araméen fait partie de la scène — on attend Élie qui ne viendra pas, pendant que l'Écriture s'achève.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Xe s. av. n. è.</td><td>Psaumes 69:21 et 22:15 : le vinaigre et la langue collée</td></tr>
+<tr><td class="d">33 de n. è., 14 Nisan, matin</td><td>Le vin mêlé de fiel proposé puis refusé (Mt 27:34 ; Mc 15:23)</td></tr>
+<tr><td class="d">33 de n. è., 9e heure</td><td>« Eli » confondu avec « Élie » par les assistants (Mt 27:47-49)</td></tr>
+<tr><td class="d">33 de n. è., 9e heure</td><td>« J'ai soif » ; éponge de vinaigre sur l'hysope (Jn 19:28-29)</td></tr>
+<tr><td class="d">33 de n. è., 9e heure</td><td>« Tout est accompli » — et il rend l'esprit (Jn 19:30)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La posca (eau vinaigrée) est la boisson réglementaire du soldat romain : le vase plein au pied du poteau est l'équipement de l'escouade. Proverbes 31:6-7 fonde l'usage du vin stupéfiant aux condamnés, et la tradition juive postérieure (Talmud) l'attribue aux femmes de Jérusalem — citée comme tradition, pas comme preuve. L'hysope pascale (Ex 12:22) boucle les quinze siècles : la plante des linteaux sert l'Agneau. Marc 15:23 précise le premier breuvage : « vin parfumé de myrrhe » — la myrrhe, analgésique antique.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le vase est là, au poste de garde : Golgotha est un lieu d'exécution romain tenu par une escouade avec son équipement. L'hysope pousse sur les vieux murs (1R 4:33, « depuis le cèdre jusqu'à l'hysope qui sort du mur ») : plante des pierres de Jérusalem. Reste l'énigme de la hauteur : une tige d'hysope (quelques dizaines de centimètres) ne hisse pas une éponge à une bouche d'homme — les synoptiques disent « roseau » (Mt 27:48, kalamos). Voir Limites.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La médecine de la suspension explique la soif : hémorragies (flagellation, clous), sueur, asphyxie progressive — la déshydratation est le symptôme cardinal, et « langue collée » (Ps 22:15) le signe clinique. La botanique identifie généralement l'hysope biblique à l'origan de Syrie (Origanum syriacum, le za'atar) — identification débattue (voir Limites). La pharmacologie antique confirme vin + myrrhe/fiel comme sédatif : le premier breuvage est une anesthésie, refusée.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Roseau (synoptiques) ou hysope (Jean) ? La fiche rapporte les deux sans les confondre ; la conjecture de critiques lisant « javelot » (hyssos) au lieu d'« hysope » (hyssopos) est une hypothèse, non tranchée ici. L'espèce exacte de l'hysope est débattue. « Élie » est le malentendu des assistants (Eli araméen), pas une attente de Jésus. Le vase de posca est un équipement romain, pas un vase rituel.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ps 69:21 + 22:15</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Xe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le vin des condamnés</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Pr 31</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vin refusé</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan, matin</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« J'ai soif »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">9e heure</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vinaigre, tetelestai</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9e heure</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/19/69">Psaume 69 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/19/69</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/27">Matthieu 27 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/27</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/43/19">Jean 19 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/43/19</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche D010 — Le vinaigre — j'ai soif, tout est accompli</span><span>Catégorie D–E</span></div></div>
+</article>
+<article class="fiche" id="D011">
+<div class="visuel"><img src="images/prophe_D011_berger.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE D011 · CATÉGORIE D–E</div>
+<h3>Le berger frappé — tous s'enfuirent, cette nuit</h3>
+<div class="ref">Zacharie 13:7 ; Matthieu 26:31-32, 56 ; Marc 14:27, 50-52 ; Jean 16:32 ; Luc 22:31-32</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche D011 · 0:34</div><audio controls preload="none" src="audio/fiche_D11_berger.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_D11_berger.mp3 · 0:34 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Zacharie 13:7 ; Matthieu 26:31-32, 56 ; Marc 14:27, 50-52 ; Jean 16:32 ; Luc 22:31-32</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Zacharie — P622 (13:7) ; contexte nuit : P705 (reniement, cité)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Épée, réveille-toi contre mon berger, contre l'homme qui est mon compagnon, dit Jéhovah des armées. Frappe le berger, et les brebis seront dispersées ; et je ramènerai ma main sur les petits. » (Za 13:7)</li>
+<li>« Vous trébucherez tous à cause de moi, cette nuit ; car il est écrit : Je frapperai le berger, et les brebis du troupeau seront dispersées. » (Mt 26:31)</li>
+<li>« Mais après ma résurrection, je vous précéderai en Galilée. » (Mt 26:32 — la restauration promise AVANT la chute)</li>
+<li>« Alors tous les disciples l'abandonnèrent et s'enfuirent. » (Mt 26:56)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Zacharie 13 (après les idoles retranchées et les faux prophètes confus, 13:2-6) ordonne à l'épée de frapper — vers 520-518. La nuit du 14 Nisan 33 : la Cène (l'annonce, Mt 26:31-32 ; le discours d'adieu : « vous me laisserez seul », Jn 16:32), Gethsémani (les trois dorment pendant l'agonie), l'arrestation (cohorte et gardes, Jn 18:3, 12), la fuite de tous — puis Pierre suit de loin jusqu'à la cour, et renie (Mt 26:33-35, 69-75 : l'autre face de la nuit, citée ici, P705).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Mon berger… l'homme qui est mon compagnon » (amit : prochain, égal) : le Berger est dans une proximité unique avec Dieu — et c'est Dieu qui commande l'épée (« réveille-toi ») : le Père frappe le Fils (cf. Is 53:10). « Tous » est universel : même les trois de Gethsémani, même Jean — qui reviendra le premier au pied du poteau (Jn 19:26). La fin du verset 7 est la restauration : « je ramènerai ma main sur les petits » — la main qui frappe revient protéger ; Matthieu 26:32 la traduit : « je vous précéderai en Galilée ». Le Berger précède toujours (cf. Mc 10:32). Marc 14:51-52 ajoute le jeune homme en drap qui s'enfuit nu : détail d'autopsie honteux — la tradition y voit Marc lui-même (non prouvé, voir Limites).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Jésus cite l'oracle PAR AVANCE, comme avertissement : la prophétie précède la chute de quelques heures, et la restauration (Galilée) est promise dans la même phrase. La fuite de tous accomplit la dispersion ; le rassemblement en Galilée (Mt 28:16 ; Jn 21 — dont Pierre rétabli par trois « m'aimes-tu ? ») accomplit la main revenue. À Pierre, la restauration est promise nominativement : « quand tu seras revenu, fortifie tes frères » (Lc 22:32) — avant même le coq.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">520-518 av. n. è.</td><td>Zacharie 13:7 : l'épée, la dispersion, la main revenue</td></tr>
+<tr><td class="d">33 de n. è., 14 Nisan au soir</td><td>La Cène : l'annonce (Mt 26:31-32) et l'avertissement à Pierre (Lc 22:31-32)</td></tr>
+<tr><td class="d">33 de n. è., nuit</td><td>Gethsémani : sommeil des trois ; arrestation ; fuite de tous (Mt 26:56)</td></tr>
+<tr><td class="d">33 de n. è., nuit</td><td>Le jeune homme du drap (Mc 14:51-52) ; Pierre suit, puis renie</td></tr>
+<tr><td class="d">33 de n. è., après le 16</td><td>Galilée : le Berger précède, les brebis reviennent (Mt 28:16 ; Jn 21)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>L'arrestation mobilise une force disproportionnée (cohorte romaine + gardes du Temple, Jn 18:3, 12) : la peur d'une émeute pascale. Pierre est trahi par son accent : « ton langage te fait reconnaître » (Mt 26:73) — le dialecte galiléen dans une cour judéenne. Le « chant du coq » désigne aussi la 3e veille romaine (le gallicinium, vers 3 heures ; cf. Mc 13:35 qui liste les veilles) : l'heure du reniement est militaire. Le critère de l'embarras plaide pour l'authenticité : aucune communauté n'invente la fuite de tous ses chefs et un témoin en fuite nue.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Cénacle (Jérusalem) → Cédron franchi de nuit (Jn 18:1) → Gethsémani (pied des Oliviers) → palais d'Anne et Caïphe (Pierre dans la cour, au feu de braise, Jn 18:18) : la nuit descend et disperse. Puis la remontée : Jérusalem (chambre haute, Jn 20) → Galilée (montagne, Mt 28:16 ; lac, Jn 21) — la restauration a une région, celle de l'appel (voir C008). « Je vous précéderai » : le Berger rouvre la marche.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La chronologie de la nuit est resserrée : Cène le soir, arrestation dans la nuit, procès à l'aube, Golgotha à 9 heures — une douzaine d'heures, dont le coq vers 3 heures. La physiologie éclaire Gethsémani : nuit pascale, repas, tristesse — « leurs yeux étaient appesantis » (Mt 26:43) ; la fiche ne diagnostique pas au-delà. La critique textuelle note la stabilité de Marc 14:51-52 dans tous les manuscrits : l'Église a gardé sa honte sans retouche.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Le jeune homme du drap (Marc lui-même ?) : tradition non prouvée. « Mon compagnon » (amit) dit une proximité unique : la fiche reste lexicale, sans débat trinitaire (règle 7). Le reniement de Pierre (P705) est cité en contexte, non développé. Le coq : animal et nom de veille — les deux sens coexistent, non tranchés. Zacharie 13:8-9 (deux tiers retranchés, le tiers éprouvé) : portée débattue, signalée et non développée.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Za 13:7</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520-518</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'annonce</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan au soir</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite de tous</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Galilée : main revenue</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Après le 16</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/38/13">Zacharie 13 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/38/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/26">Matthieu 26 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/26</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/41/14">Marc 14 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/41/14</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche D011 — Le berger frappé — tous s'enfuirent, cette nuit</span><span>Catégorie D–E</span></div></div>
+</article>
+<article class="fiche" id="D012">
+<div class="visuel"><img src="images/prophe_D012_serpent.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE D012 · CATÉGORIE D–E</div>
+<h3>Le serpent d'airain — élevé, regardé, vivant</h3>
+<div class="ref">Nombres 21:4-9 ; Jean 3:14-16 ; Jean 8:28 ; 12:32-34 ; 2 Rois 18:4</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 1513/33/36</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche D012 · 0:38</div><audio controls preload="none" src="audio/fiche_D12_serpent.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_D12_serpent.mp3 · 0:38 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Nombres 21:4-9 ; Jean 3:14-16 ; Jean 8:28 ; 12:32-34 ; 2 Rois 18:4</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 1513/33/36</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Nb 21:4-9 sans entrée dédiée (lacune signalée, C8 — comme Mt 2:23 en C014)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Fais-toi un serpent brûlant et mets-le sur une perche : quiconque aura été mordu et le regardera vivra. » (Nb 21:8)</li>
+<li>« Et comme Moïse éleva le serpent dans le désert, il faut de même que le Fils de l'homme soit élevé, afin que quiconque croit ait la vie éternelle. » (Jn 3:14-15 — suivi de Jean 3:16)</li>
+<li>« Quand vous aurez élevé le Fils de l'homme, alors vous connaîtrez qui je suis. » (Jn 8:28)</li>
+<li>« Et moi, quand j'aurai été élevé de la terre, j'attirerai tous les hommes à moi. » (Jn 12:32 — « il indiquait de quelle mort il allait mourir », 12:33)</li>
+<li>« Il mit en pièces le serpent d'airain que Moïse avait fait, car les Israélites lui brûlaient du parfum : on l'appelait Nehoushtan. » (2R 18:4)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Quarantième année du désert : Édom refuse le passage (Nb 20:14-21), il faut contourner par la mer Rouge ; le peuple murmure contre la manne (« ce pain misérable », Nb 21:5) ; les serpents « brûlants » frappent ; Moïse intercède. Sept siècles plus tard, Ézéchias brise l'objet conservé, devenu idole encensée (2R 18:4). Et Jésus, par trois fois (Jn 3, 8, 12 — à Nicodème de nuit, aux Juifs, aux Grecs venus voir), fait du serpent élevé l'image de sa propre élévation.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Brûlants » (seraphim — le mot même des séraphins d'Ésaïe 6 !) : le venin brûle. Le remède est le paradoxe : l'image du fléau guérit du fléau — le mal cloué sauve (cf. Rm 8:3). « Regarder et vivre » : pas de rite, pas de prix — le salut le plus simple, la foi comme regard. « Élevé » (hypsoô) a chez Jean un double sens : élevé sur le poteau ET exalté — la honte est la gloire (Jn 3:14 ; 8:28 ; 12:32). Nehoushtan, c'est « un bout de bronze » (nahash, serpent + nehoshet, bronze) : Ézéchias désacralise sept siècles de superstition d'un mot méprisant.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Jésus s'applique à lui-même le type : élevé sur le poteau à Golgotha (Jean 12:33 le précise), il attire « tous » — Juifs et nations (Corneille, 36 ; voir C012). Le verset le plus célèbre (Jn 3:16) suit immédiatement le serpent : « Dieu a tant aimé le monde » est le commentaire de l'airain. Et Nehoushtan donne la leçon inverse : l'objet du salut, conservé sept cents ans puis encensé, est brisé par le roi fidèle — le moyen n'est jamais l'objet du culte, comme les premiers chrétiens n'ont pas vénéré le poteau (voir D002).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1473 av. n. è. env.</td><td>Le désert : les serpents, la perche, le regard qui sauve (Nb 21:4-9)</td></tr>
+<tr><td class="d">715 av. n. è. env.</td><td>Ézéchias brise Nehoushtan : le salut n'est pas une idole (2R 18:4)</td></tr>
+<tr><td class="d">30-33 de n. è.</td><td>« Élevé » trois fois : Nicodème (Jn 3), les Juifs (Jn 8), les Grecs (Jn 12)</td></tr>
+<tr><td class="d">33 de n. è., 14 Nisan</td><td>Golgotha : l'élévation — honte et gloire ensemble</td></tr>
+<tr><td class="d">36 de n. è.</td><td>Corneille : « tous » commence (Ac 10 ; voir C012)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Les vipères du Néguev et de l'Araba (cérastes, échides) ont des venins « brûlants » et mortels sans traitement : le fléau a une faune. Le bronze (cuivre + étain) est le métal du sanctuaire (autel, Ex 27) : le serpent est coulé dans le métal sacré. Ézéchias (2R 18:4) met Nehoushtan au rang des hauts lieux, stèles et Achera : le serpent rejoint les idoles au rebut. Nicodème, pharisien du Sanhédrin instruit de nuit (Jn 3), ensevelira Jésus au grand jour (Jn 19:39) : l'élève du serpent porte l'Agneau.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le contour d'Édom : refusé au passage direct (Nb 20), Israël redescend vers la mer Rouge par l'Araba — la géographie du murmure. Punon (Féinan), étape voisine (Nb 33:42-43), est une zone de mines de cuivre exploitées depuis l'Antiquité : le bronze du serpent vient de ce désert. Le Néguev et l'Araba, rocailleux et chauds, sont le pays des serpents — le décor mord.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'ophiologie confirme le fléau : vipères à cornes et échides de l'Araba, venins hémotoxiques cytolysants — « brûlants » au sens clinique. La métallurgie du cuivre à Féinan et Timna (mines, scories, fours datés du IIe-Ier millénaire) atteste le bronze du désert. Aucun antidote antique n'existait contre ces venins : le regard qui guérit est un miracle rapporté, pas une médecine — la fiche le dit.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Nombres 21:4-9 n'a pas d'entrée au registre : lacune signalée (C8), comme Matthieu 2:23 en C014 — la fiche se cale sur le texte. L'espèce des serpents n'est pas précisée (« brûlants ») : pas de détermination. Le mécanisme (regarder = croire) est rapporté, non expliqué. Les sept cents ans de conservation sont déduits (« jusqu'alors », 2R 18:4). « Tous » (Jn 12:32) : portée universelle de l'offre, citée comme compréhension, sans débat.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le désert : Nb 21</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 env.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nehoushtan brisé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">715 env.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Élevé » ×3</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30-33</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Golgotha</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan 33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Corneille : « tous »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">36</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/4/21">Nombres 21 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/4/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/43/3">Jean 3 — Bible d'étude, notes (Nicodème)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/43/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/18">2 Rois 18 — Bible d'étude, notes (Nehoushtan)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/18</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche D012 — Le serpent d'airain — élevé, regardé, vivant</span><span>Catégorie D–E</span></div></div>
+</article>
+<article class="fiche" id="E001">
+<div class="visuel"><img src="images/prophe_E001_statue.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE E001 · CATÉGORIE D–E</div>
+<h3>La statue du songe — de l'or à la pierre</h3>
+<div class="ref">Daniel 2 ; Daniel 1:1-21 (contexte) ; Daniel 7 (parallèle, voir E002)</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (frappe à venir, sans date)</span>
+<span class="badge">Système 607/539/1914</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche E001 · 0:39</div><audio controls preload="none" src="audio/fiche_E01_statue.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_E01_statue.mp3 · 0:39 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 2 ; Daniel 1:1-21 (contexte) ; Daniel 7 (parallèle, voir E002)</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (frappe à venir, sans date)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 607/539/1914</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P370 (2:1-43), P371 (2:34-35, 44-45)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Ô roi, tu regardais, et voici une grande statue : sa tête d'or fin, sa poitrine et ses bras d'argent, son ventre et ses cuisses de bronze, ses jambes de fer, ses pieds en partie de fer et en partie d'argile. » (Dn 2:31-33)</li>
+<li>« Une pierre se détacha sans le secours d'aucune main, frappa les pieds de la statue et les mit en pièces. » (Dn 2:34)</li>
+<li>« C'est toi qui es la tête d'or. » (Dn 2:38 — à Nebucadnetsar)</li>
+<li>« Dans les jours de ces rois, le Dieu des cieux établira un royaume qui ne sera jamais détruit ; il broiera tous ces royaumes et subsistera toujours. » (Dn 2:44)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La 2e année de Nebucadnetsar (Dn 2:1), après les trois ans de formation de Daniel et ses compagnons (Dn 1:5, 18-21) : le roi, troublé par un songe, exige des sages non seulement l'interprétation mais le songe lui-même — « la chose est résolue » (Dn 2:5) — sous peine de mort. Ariok exécute ; Daniel demande du temps, prie avec Hanania, Mishaël et Azaria ; la révélation vient de nuit ; action de grâces (Dn 2:19-23) ; puis l'audience : « il y a dans les cieux un Dieu qui révèle les secrets » (Dn 2:28). Daniel a environ vingt ans.</p>
+<h4>4 · Explication du texte</h4>
+<p>Les métaux décroissent en valeur (or → argile) et croissent en dureté : la statue dit la dévaluation morale et le durcissement des empires. « Inférieur » (2:39) : chaque royaume moindre en gloire que le précédent. Les pieds mêlés — fer et argile, « ils se mêleront par des alliances humaines » (2:43) — figurent la phase finale : forte et fragile à la fois. « Sans mains » : le Royaume ne vient d'aucune révolution — il est détaché par Dieu. « Dans les jours de ces rois » : le Royaume coexiste d'abord avec les derniers pouvoirs humains. « Comme la balle d'été » (2:35) : disparition totale, « nulle trace ».</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah nomme les quatre premiers métaux : l'or, c'est Babylone — Daniel le dit au roi (2:37-38) ; l'argent, la Médo-Perse ; le bronze, la Grèce ; le fer, Rome. La dynastie babylonienne « commençant par Nebucadnetsar et se terminant soixante-huit ans plus tard, à la mort de Belschatsar » (607 → 539). Les pieds de fer et d'argile sont la phase finale, mêlée et fragile, contemporaine de l'établissement du Royaume — le détail est renvoyé au livre « Prêtons attention à la prophétie de Daniel » (voir Limites). La pierre, c'est le Royaume de Dieu : établi en 1914 (voir B009), il frappera à venir — sans date.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">An 2 de Nebucadnetsar</td><td>Le songe oublié, la révélation, Daniel promu (Dn 2:48-49)</td></tr>
+<tr><td class="d">539 av. n. è.</td><td>L'argent : la Médo-Perse prend Babylone (voir E005)</td></tr>
+<tr><td class="d">331 av. n. è.</td><td>Le bronze : Alexandre à Gaugamèles (voir E003)</td></tr>
+<tr><td class="d">63 av. n. è.</td><td>Le fer à Jérusalem : Pompée prend la ville (voir E003-E004)</td></tr>
+<tr><td class="d">1914 de n. è.</td><td>La pierre détachée : le Royaume établi (voir B009) ; la frappe à venir</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La succession est celle des manuels : Babylone (jusqu'en 539), la Perse (539-331), la Grèce (331 et les diadoques), Rome (dès le IIe siècle, Pompée en Judée en 63). L'arithmétique interne est du système 607/539 : soixante-huit ans de tête d'or. Cyrus (E005), Alexandre (E003), Pompée (E003-E004) ont chacun leur fiche : la statue est le sommaire, les chapitres 5, 7, 8, 11 le développement. Daniel, promu avec ses trois compagnons (Dn 2:48-49), traverse ensuite toute la tête d'or jusqu'à Cyrus (Dn 1:21).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le songe a un lieu : la cour de Babylone — et les capitales glissent vers l'ouest à chaque métal : Babylone, Suse et Persépolis, Pella puis Alexandrie, Antioche et Pergame, Rome. La pierre « devient une grande montagne et remplit toute la terre » (2:35) : la montagne, c'est Sion — « la montagne de la maison de Jéhovah » (Is 2:2). De la cour babylonienne à la montagne universelle : la géographie du songe est une expansion.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La linguistique plaide pour l'authenticité : en plein verset 4, le livre bascule de l'hébreu à l'araméen — « les Chaldéens parlèrent au roi en araméen » — et y reste jusqu'à la fin du chapitre 7 : la langue de la cour est l'araméen impérial. Huit copies de Daniel à Qumrân (IIe-Ier siècle avant notre ère) placent le livre avant l'ère chrétienne. La statue colossale elle-même a son contexte : l'Orient élevait des statues composites monumentales.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>L'an 2 de Nebucadnetsar n'est pas converti en année avant notre ère : les comptages babylonien et judéen divergent (Dn 1:1 // Jr 25:1) — signalé, non tranché. Le détail des pieds (identification exhaustive) est renvoyé au livre « Prêtons attention à la prophétie de Daniel ». La frappe de la pierre est à venir : sans date. 1914 est l'établissement céleste (voir B009), pas la frappe. « Soixante-huit ans » est l'arithmétique du système 607/539.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le songe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">An 2 Neb.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Argent : Perses</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bronze : Grecs</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">331</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fer : Rome</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">63</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre : Royaume</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1961441">La marche des puissances mondiales d'après les prophéties (Dn 2)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1961441</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1986721">Daniel, un authentique livre de prophéties<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1986721</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/2">Daniel 2 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche E001 — La statue du songe — de l'or à la pierre</span><span>Catégorie D–E</span></div></div>
+</article>
+<article class="fiche" id="E002">
+<div class="visuel"><img src="images/prophe_E002_betes.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE E002 · CATÉGORIE D–E</div>
+<h3>Les quatre bêtes — et le Fils d'homme</h3>
+<div class="ref">Daniel 7 ; Daniel 2 (parallèle, voir E001) ; Psaume 90:2 ; 1 Corinthiens 15:25</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (tribunal à venir, sans date)</span>
+<span class="badge">Système 539/1914</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche E002 · 0:41</div><audio controls preload="none" src="audio/fiche_E02_betes.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_E02_betes.mp3 · 0:41 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 7 ; Daniel 2 (parallèle, voir E001) ; Psaume 90:2 ; 1 Corinthiens 15:25</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (tribunal à venir, sans date)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 539/1914</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P377 (7:1-7), P378 (7:8, 24-26), P379 (7:9-14), P380 (7:27), P584 (7:13-14)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Quatre bêtes énormes montaient de la mer : la première comme un lion avec des ailes d'aigle ; la deuxième comme un ours ; la troisième comme un léopard à quatre ailes et quatre têtes ; la quatrième, effrayante, avec des dents de fer et dix cornes. » (Dn 7:3-7)</li>
+<li>« Une petite corne monta parmi elles, avec des yeux d'homme et une bouche qui proférait de grandes choses ; trois cornes furent arrachées devant elle. » (Dn 7:8)</li>
+<li>« Je regardais pendant que des trônes furent placés, et l'Ancien des jours s'assit ; mille milliers le servaient ; des livres furent ouverts. » (Dn 7:9-10)</li>
+<li>« Quelqu'un de semblable à un fils d'homme vint avec les nuées ; on lui donna domination, dignité et royaume — domination éternelle. » (Dn 7:13-14)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La 1re année de Belschatsar (Dn 7:1) : Daniel, vieillard ayant traversé tout l'empire de Nebucadnetsar, reçoit en songe le même défilé que la statue — sous l'angle bestial : le pouvoir vu par Dieu, non par les rois. L'ange interprète (7:15-27) : quatre royaumes, dix rois, « un autre », les saints à la fin. La mer, c'est l'humanité agitée (Is 17:12 : « le tumulte des peuples comme les eaux »). Les bêtes « montent » vers le prophète : l'histoire vient à Daniel.</p>
+<h4>4 · Explication du texte</h4>
+<p>Lion ailé : Babylone — les lions de la voie processionnelle en briques émaillées ; « ailes arrachées, cœur d'homme » (7:4) : Nebucadnetsar humilié puis restauré (Dn 4 dans Dn 7 !). Ours penché d'un côté, trois côtes aux dents : la Médo-Perse, la Perse dominant — comme la grande corne de Dn 8:3 (voir E003). Léopard à quatre ailes et quatre têtes : la vitesse d'Alexandre et ses quatre successeurs (voir E003-E004). Quatrième bête, sans nom animal — Rome, inédite : dents de fer (le fer de Dn 2 !), dix cornes — dix rois, la totalité (pas de liste nominative, voir Limites). Petite corne : yeux d'homme (intelligence), bouche (arrogance) — la Bretagne romaine devenue Empire britannique, « un quart de la surface terrestre et de la population mondiale » au XIXe siècle. Ancien des jours : Jéhovah (Ps 90:2), Juge aux livres ouverts. Fils d'homme : Jésus recevant la domination — 1914 (voir B009).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah lit les quatre bêtes comme la statue : Babylone, Médo-Perse, Grèce, Rome — « effrayante, terrible, extraordinairement forte » (7:7), née « sous la forme du pouvoir politique et militaire de Rome ». La petite corne, c'est la Grande-Bretagne : province romaine devenue « la plus grande puissance coloniale et commerciale du monde », elle « dévora toute la terre » (7:23). Puis le regard quitte les bêtes pour le ciel : tribunal, livres, et remise de la domination éternelle au Fils d'homme (1914) — les saints recevant le royaume à la fin (7:27, voir la catégorie G).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1re année de Belschatsar</td><td>Le songe des bêtes ; l'ange interprète (Dn 7:1, 15-27)</td></tr>
+<tr><td class="d">539 av. n. è.</td><td>L'ours : la Médo-Perse (voir E005)</td></tr>
+<tr><td class="d">331 av. n. è.</td><td>Le léopard : Alexandre (voir E003) ; 301 : les quatre têtes</td></tr>
+<tr><td class="d">Rome, puis XIXe s.</td><td>La 4e bête ; la petite corne : l'Empire britannique, quart du globe</td></tr>
+<tr><td class="d">1914 de n. è.</td><td>Le Fils d'homme reçoit (voir B009) ; le tribunal à venir</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Les lions ailés de Babylone (voie processionnelle, ~120 lions émaillés dégagés par Koldewey dès 1899, reconstitués à Berlin et in situ) sont le portrait archéologique de la première bête. L'Empire britannique du XIXe siècle (Pax Britannica, quart du globe) accomplit la petite corne « dévorant toute la terre ». Rome (légions, droit, routes) est la bête « différente de toutes » : république devenue empire mondial. Chaque bête a son musée.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La « grande mer » (la Méditerranée, à l'ouest) : les bêtes montent vers Daniel. La Bretagne, à l'extrémité nord-ouest de l'Empire romain : la petite corne pousse aux marges — l'empire naît aux confins. Les capitales glissent toujours vers l'ouest (voir E001) : Babylone, Suse, Pella, Rome, Londres. Le tribunal, lui, n'a pas de lieu terrestre : trônes, fleuve de feu, nuées — la cour est céleste.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La zoologie symbolique est exacte en psychologie des empires : lion-aigle (majesté), ours (force lourde), léopard ailé (vitesse — Alexandre : Granique 334, Issos 333, Gaugamèles 331, Indus 326, mort 323 : un monde en onze ans !), bête innommée (terreur inédite). Huit copies de Daniel à Qumrân (IIe-Ier siècle) placent la vision avant Rome impériale. La numismatique suit le défilé : dariques perses, tétradrachmes d'Alexandre, deniers romains, sovereigns britanniques.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Les dix cornes : pas de liste nominative dans les publications — dix, c'est la totalité. Les trois côtes de l'ours (proies : le livre Daniel détaille) : renvoyées à cet ouvrage. La 1re année de Belschatsar n'est pas convertie (corégence, voir E005-E006). Le tribunal (livres ouverts, 4e bête détruite) est à venir : sans date. 1914 est la remise céleste (voir B009), pas la destruction.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le songe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1re Belschatsar</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ours : Perses</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Léopard : Grecs</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">331</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">4e bête, petite corne</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rome → XIXe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fils d'homme</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999028">Qui dominera le monde ? (Dn 7, petite corne, Ancien des jours)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999028</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1986721">Daniel, un authentique livre de prophéties<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1986721</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/7">Daniel 7 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/7</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche E002 — Les quatre bêtes — et le Fils d'homme</span><span>Catégorie D–E</span></div></div>
+</article>
+<article class="fiche" id="E003">
+<div class="visuel"><img src="images/prophe_E003_belier.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE E003 · CATÉGORIE D–E</div>
+<h3>Le bélier et le bouc — Alexandre nommé par fonction</h3>
+<div class="ref">Daniel 8 ; Daniel 7 (parallèle) ; Daniel 11:2-4 (suite, voir E004)</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (« sans main » à venir, sans date)</span>
+<span class="badge">Dates neutres (539, 331, 323, 301, 63, 70)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche E003 · 0:38</div><audio controls preload="none" src="audio/fiche_E03_belier.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_E03_belier.mp3 · 0:38 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 8 ; Daniel 7 (parallèle) ; Daniel 11:2-4 (suite, voir E004)</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (« sans main » à venir, sans date)</td></tr>
+<tr><td class="d">Chronologie</td><td>Dates neutres (539, 331, 323, 301, 63, 70)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P381 (8:1-8, 20-21), P382 (8:8, 22), P383 (8:9-14, 23-25)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Un bélier à deux cornes, la plus grande montant après ; il frappait vers l'ouest, le nord et le sud, et nul ne lui résistait. » (Dn 8:3-4)</li>
+<li>« Un bouc venait de l'ouest, sans toucher la terre, avec une grande corne entre les yeux ; il brisa le bélier. » (Dn 8:5-7)</li>
+<li>« La grande corne fut brisée, et quatre cornes montèrent vers les quatre vents. » (Dn 8:8)</li>
+<li>« Le bélier, ce sont les rois de Médie et de Perse. Le bouc, c'est le roi de Javan ; la grande corne, c'est le premier roi. » (Dn 8:20-21 — l'ange Gabriel)</li>
+<li>« Jusqu'à deux mille trois cents soirs et matins ; puis le lieu saint sera rétabli. » (Dn 8:14)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La 3e année de Belschatsar (Dn 8:1), à Suse en Élam, près de l'Oulaï (Dn 8:2 — voir A012 : Daniel voit depuis la future capitale perse, lieu du deuxième empire !). Gabriel — premier ange nommé de la Bible (Dn 8:16) — explique : c'est la seule vision aussi auto-interprétée. « Vision pour le temps de la fin » (8:17, 19, 26) : le viseur est lointain. Daniel s'évanouit et reste malade (8:27) : la vision coûte.</p>
+<h4>4 · Explication du texte</h4>
+<p>Bélier aux cornes inégales : Mèdes puis Perses dominant — comme l'ours penché (E002) ; trois directions de conquête, comme trois côtes. Bouc « sans toucher terre » : la vitesse d'Alexandre — comme le léopard ailé (E002). « Javan » (la Grèce) et « le premier roi » : Alexandre, nommé par fonction deux cents ans d'avance. « Brisée en pleine force » : mort à 32 ans, à Babylone (323) — dans la capitale du premier empire ! Quatre cornes : les quatre diadoques (voir E004). Petite corne : sortie d'un des quatre, grandissant « vers le pays de la parure » (la Judée — Éz 20:6) : Rome, de Pompée (63) à Titus (70). 2 300 soirs et matins : durée limitée de l'agression contre le sanctuaire, puis rétablissement — le sens ; le calendrier est renvoyé aux publications (voir Limites). « Brisé sans main » (8:25) : comme la pierre (E001) — fin divine.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah suit l'ange : bélier = Médo-Perse (8:20), bouc = Grèce, premier roi = Alexandre (8:21), quatre = les successeurs (8:22). La petite corne, c'est Rome : née du monde grec divisé, elle foule le sanctuaire — Pompée dans le Saint des saints (63), Titus rasant le Temple (70, voir B007-B008). Les versets 9-14 forment un tout : l'agresseur (v. 9), l'agression du sanctuaire (v. 10-12), la question « jusqu'à quand ? » (v. 13), la réponse et le rétablissement (v. 14) — le contexte interdit d'isoler le verset 14.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">3e année de Belschatsar</td><td>La vision à Suse ; Gabriel explique (Dn 8:1-2, 16)</td></tr>
+<tr><td class="d">539 av. n. è.</td><td>Le bélier maître du monde (voir E005)</td></tr>
+<tr><td class="d">334-331 av. n. è.</td><td>Le bouc : Granique, Issos, Gaugamèles — trois batailles, trois ans</td></tr>
+<tr><td class="d">323 av. n. è.</td><td>La grande corne brisée à Babylone ; 301 (Ipsos) : les quatre</td></tr>
+<tr><td class="d">63 av. n. è. - 70</td><td>La petite corne en Judée : Pompée, puis Titus (voir B007)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Gaugamèles (1er octobre 331) est la date la plus sûre de l'Antiquité grecque : une éclipse de lune (20 septembre 331) la précède de onze jours — l'astronomie date Alexandre. Ipsos (301) fixe les quatre : Cassandre, Lysimaque, Séleucus, Ptolémée (voir E004). Pompée (63) prend Jérusalem et pénètre dans le Saint des saints (Josèphe, Tacite) : la petite corne touche le sanctuaire. Josèphe raconte Alexandre épargnant Jérusalem devant le grand prêtre Jaddus (Antiquités XI) : tradition non confirmée ailleurs (voir Limites).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Suse (le lieu de la vision — voir A012) ; l'ouest (le bouc vient de Macédoine) ; Gaugamèles (plaine d'Arbèles, nord mésopotamien) ; « le pays de la parure » (la Judée, Éz 20:6) ; les quatre vents (les quatre royaumes aux quatre points). Alexandre meurt à Babylone : le bouc expire dans la capitale du lion (E002) — la boucle géographique se ferme.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'astronomie (éclipse du 20 septembre 331) ancre Gaugamèles au 1er octobre 331. La numismatique montre le conquérant cornu : les tétradrachmes posthumes de Lysimaque coiffent Alexandre des cornes de bélier d'Ammon — le « bouc » de Daniel a son portrait monnayé en bélier. Huit copies de Daniel à Qumrân placent la vision avant les diadoques accomplis. La céramique hellénistique date les strates des quatre royaumes.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Le calendrier des 2 300 soirs et matins (8:14) est renvoyé aux publications citées (l'article en contexte) : la fiche en donne le sens (agression limitée, rétablissement), pas le comput. Alexandre à Jérusalem (Josèphe seul) : tradition, pas preuve. « Brisé sans main » (8:25) : sans date. La 3e année de Belschatsar n'est pas convertie. Le développement Rome (Pompée, Hérode, 70) appartient pour l'exhaustivité au livre Daniel.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Suse : Gabriel</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e Belschatsar</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bélier maître</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bouc : 3 batailles</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">334-331</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Corne brisée / les 4</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">323 / 301</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Petite corne</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">63 - 70</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1997527">Daniel 8:14 dans son contexte (petite corne, 2 300)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1997527</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1977007">L'Empire médo-perse et les prophéties (le bélier)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1977007</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/8">Daniel 8 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/8</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche E003 — Le bélier et le bouc — Alexandre nommé par fonction</span><span>Catégorie D–E</span></div></div>
+</article>
+<article class="fiche" id="E004">
+<div class="visuel"><img src="images/prophe_E004_raphia.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE E004 · CATÉGORIE D–E</div>
+<h3>Les rois du nord et du sud — Raphia, Panium, l'abomination</h3>
+<div class="ref">Daniel 10-11:1-35 ; Daniel 11:36-45 (renvoi, voir Limites) ; Jean 10:22 (la Dédicace)</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (11:36-45 : renvoi aux publications récentes)</span>
+<span class="badge">Système 537 · dates neutres (480-164)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche E004 · 0:39</div><audio controls preload="none" src="audio/fiche_E04_nordsud.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_E04_nordsud.mp3 · 0:39 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 10-11:1-35 ; Daniel 11:36-45 (renvoi, voir Limites) ; Jean 10:22 (la Dédicace)</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (11:36-45 : renvoi aux publications récentes)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 537 · dates neutres (480-164)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P387-P402 (11:2-35) ; P403 (11:36-45, modernes, renvoi)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Je vais t'annoncer ce qui est inscrit dans l'Écriture de vérité. » (Dn 10:21 — le sceau : écrit avant !)</li>
+<li>« Trois rois se lèveront en Perse, puis un quatrième, très riche, soulèvera tout contre le royaume de Javan. » (Dn 11:2 — Xerxès contre la Grèce)</li>
+<li>« Un roi puissant se lèvera ; son royaume sera brisé et partagé vers les quatre vents, mais pas à sa postérité. » (Dn 11:3-4 — Alexandre)</li>
+<li>« Le roi du sud s'emportera ; mais il n'exploitera pas sa position. » (Dn 11:11-12 — Raphia, 217)</li>
+<li>« Des forces profaneront le sanctuaire, la forteresse ; ils feront cesser le sacrifice continuel et placeront l'abomination qui désole. » (Dn 11:31 — 167)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La 3e année de Cyrus (Dn 10:1), sur le Tigre (10:4), après vingt et un jours de jeûne : un homme vêtu de lin — et Mikaël, « l'un des premiers princes » (10:13, 21), nommé ici pour la première fois. Suit la prophétie la plus détaillée de la Bible : deux siècles de guerres syro-égyptiennes, au nord et au sud de la Judée (« le pays de la parure », 11:16) — quinze versets pour quinze rois, mariages, batailles et trahisons nommés d'avance.</p>
+<h4>4 · Explication du texte</h4>
+<p>Nord et Sud se mesurent depuis la Judée : Séleucides (Syrie) contre Ptolémées (Égypte). « Pas à sa postérité » (11:4) : ni Alexandre IV ni Héraclès ne règnent — assassinés (le fils posthume vers 310). Les mariages : Bérénice (252, fille du Sud au Nord — répudiée, assassinée avec son fils, 11:6) et Cléopâtre Ire (193, fille du Nord au Sud — elle prend le parti de son mari, 11:17 : « elle ne tiendra pas »). Raphia (217) : Ptolémée IV gagne — « des dizaines de milliers » tombent — mais « n'exploite pas » (11:12 : retour aux plaisirs, paix rapide — Polybe confirme). Panium (198) : Antiochos III prend la Cœlé-Syrie — « il s'établira dans le pays de la parure » (11:16) : la Judée change de maître. Magnésie (190) : Rome (Scipion) — « le prince » qui arrête le Nord (11:18) ; Apamée (188) : 15 000 talents d'indemnité. L'exacteur (Séleucus IV, rançonné par Rome — Héliodore au Temple !) « brisé, ni par colère ni par guerre » (11:20 : assassiné). L'homme méprisé (Antiochos IV, « Épiphane », par flatteries, 11:21). Les Kittim (11:30 : Chypre = les Romains de l'ouest — Popilius et son cercle dans le sable, Éleusis, 168, l'été même de Pydna !). L'abomination (11:31 : autel à Zeus, 25 Kislev 167 — les Maccabées, histoire juive). « Ceux qui ont de l'intelligence » (11:33, 35) résistent « jusqu'au temps de la fin » — la charnière.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah suit le tableau : 11:5 Séleucus Ier / Ptolémée Ier (les fondateurs) ; 11:6 Antiochos II / Ptolémée II ; Évergète vengeur ; Raphia — Ptolémée IV « emportant » 10 000 fantassins, 300 cavaliers et 4 000 prisonniers ; Antiochos III, Panium, Magnésie ; Séleucus IV ; Antiochos IV, les Kittim, 167. L'ange ne nomme personne (11:5-35) « car leur identité et leur nationalité changeraient au cours des siècles » : les titres (nord/sud) survivent aux dynasties. Les versets 36-45 (identités modernes) sont renvoyés aux publications récentes (voir Limites).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">3e année de Cyrus</td><td>La vision sur le Tigre ; Mikaël ; « l'Écriture de vérité » (Dn 10)</td></tr>
+<tr><td class="d">480 av. n. è.</td><td>Le 4e riche : Xerxès soulève tout contre Javan (Salamine)</td></tr>
+<tr><td class="d">323-301 av. n. è.</td><td>Alexandre ; « pas à sa postérité » ; Ipsos : les quatre (voir E003)</td></tr>
+<tr><td class="d">252-241 av. n. è.</td><td>Bérénice assassinée ; Évergète venge (11:6-9)</td></tr>
+<tr><td class="d">217 av. n. è.</td><td>Raphia : le Sud gagne et n'exploite pas (11:11-12 ; Polybe)</td></tr>
+<tr><td class="d">198 av. n. è.</td><td>Panium : le Nord prend la Cœlé-Syrie ; la Judée change de maître (11:15-16)</td></tr>
+<tr><td class="d">193-187 av. n. è.</td><td>Cléopâtre Ire ; Magnésie (190, Rome) ; mort d'Antiochos III (187)</td></tr>
+<tr><td class="d">175-168 av. n. è.</td><td>Séleucus IV ; Épiphane ; Kittim-Popilius (168, été de Pydna)</td></tr>
+<tr><td class="d">167-164 av. n. è.</td><td>L'abomination (25 Kislev 167) ; purification (164, Hanoukka — Jn 10:22)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Polybe (Histoires, V et XXIX) est le procès-verbaliste : Raphia (effectifs, éléphants indiens contre africains — « la bataille des éléphants »), le cercle de Popilius (« réponds avant d'en sortir »). Le décret de Raphia (stèle trilingue de 217) célèbre officiellement la victoire. Tite-Live (XLV) confirme 168. Les livres des Maccabées (histoires juives non canoniques : Apollonius, l'autel, les porcs, les livres brûlés, Judas, 164) documentent 11:31-35 — cités comme sources, pas comme Écriture. Héliodore au Temple (2 Maccabées 3) illustre l'exacteur. Jésus fréquente la fête née de 164 (la Dédicace, Jn 10:22).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Raphia (frontière Gaza-Sinaï : la porte de l'Égypte) ; Panium (sources du Jourdain — Jésus y mènera les disciples : « Tu es Pierre », Mt 16:13, sur le champ de bataille de Daniel 11 !) ; la Cœlé-Syrie (pomme de discorde) ; Magnésie (Asie Mineure) ; Éleusis (faubourg d'Alexandrie : le cercle) ; le « pays de la parure » au milieu, tiraillé cent cinquante ans. Pydna (Macédoine, 22 juin 168) : la petite corne romaine écrase le monde grec l'été même où elle humilie le Nord.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'épigraphie trilingue (décret de Raphia, 217 : hiéroglyphique, démotique, grec) atteste officiellement la bataille. La numismatique monnaye l'orgueil : Antiochos IV « Théos Épiphane » (« Dieu manifesté ») sur ses tétradrachmes — surnommé « Épimane » (le Fou) par ses sujets (Polybe). Les fouilles de Jérusalem (parking Givati, 2015 : forteresse séleucide, frondes, monnaies d'Antiochos IV) sont proposées comme l'Acra — identification débattue (voir Limites).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Daniel 11:36-45 (identités modernes) est renvoyé aux publications récentes : cette fiche s'arrête à 164. L'article de 1981 identifiait le Nord à l'URSS : actualisé par les publications postérieures à 1991 — signalé, pas caché. 1-2 Maccabées : histoires juives non canoniques, citées comme sources. L'Acra (Givati) : identification débattue. Les effectifs antiques sont des ordres de grandeur. « Jusqu'au temps de la fin » (11:35) : charnière non datée.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tigre : vision</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e Cyrus</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Xerxès</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">480</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Raphia</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">217</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Panium</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">198</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Magnésie</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">190</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Kittim + Pydna</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">168</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Abomination, purification</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">167-164</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032">Deux rois en conflit (Dn 11:5-19, tableau, Raphia)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1981522">L'issue du conflit (les deux rois rivaux)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1981522</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/11">Daniel 11 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/11</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche E004 — Les rois du nord et du sud — Raphia, Panium, l'abomination</span><span>Catégorie D–E</span></div></div>
+</article>
+<article class="fiche" id="E005">
+<div class="visuel"><img src="images/prophe_E005_babylone.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE E005 · CATÉGORIE D–E</div>
+<h3>La nuit de Belschatsar — compté, pesé, divisé</h3>
+<div class="ref">Daniel 5 ; Ésaïe 13 ; 21:5 ; 44:27-45:2 ; Jérémie 50-51 ; Esdras 1:7-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 539</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche E005 · 0:37</div><audio controls preload="none" src="audio/fiche_E05_belschatsar.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_E05_belschatsar.mp3 · 0:37 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 5 ; Ésaïe 13 ; 21:5 ; 44:27-45:2 ; Jérémie 50-51 ; Esdras 1:7-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 539</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P374 (5:5-28), P375 (5:23-24) ; Babylone : voir F003 (désolation)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Belschatsar donna un grand festin à ses dignitaires, au nombre de mille ; on apporta les vases d'or et d'argent pris dans le temple de Jérusalem, et le roi et ses dignitaires y burent. » (Dn 5:1-3)</li>
+<li>« À ce moment apparurent les doigts d'une main d'homme, qui écrivirent, face au chandelier, sur la chaux de la muraille du palais royal. » (Dn 5:5)</li>
+<li>« Quiconque lira cette écriture sera revêtu de pourpre, avec une chaîne d'or, et sera le troisième dans le royaume. » (Dn 5:7, 29)</li>
+<li>« MENE, MENE, TEQEL, PARSIN : compté, compté, pesé, divisé. » (Dn 5:25-28)</li>
+<li>« Cette nuit-là, Belschatsar, le roi chaldéen, fut tué. » (Dn 5:30)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La nuit du 11 au 12 octobre 539 : Opis tombée, Sippar prise (14 Tashritu), les Perses marchent sur Babylone — et le palais festoie. Nabonide, le roi en titre, est effacé (retour de Tayma, défaite) ; Belschatsar, son fils et corégent, tient la ville. Les prophètes avaient annoncé le festin-surprise : « Dressez la table, posez la garde, mangez, buvez — debout, chefs ! » (Is 21:5) ; « Quand ils seront échauffés, je leur préparerai un festin » (Jr 51:39) ; « Je les enivrerai d'un sommeil éternel » (Jr 51:57). Voir F003 pour la désolation durable : ici, la nuit.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le sacrilège : boire aux dieux d'or et d'argent dans les vases de Jéhovah (5:3-4) — le festin est un blasphème avant d'être une fête. « Troisième » : Nabonide 1er, Belschatsar 2nd — la corégence explique le rang offert. La reine qui entre (5:10-12), c'est probablement la reine-mère — non identifiée sûrement (voir Limites). Daniel refuse les dons AVANT de lire (5:17) : le prophète ne se paie pas. MENE (compter — la mine, poids-monnaie : les jours sont comptés), TEQEL (peser — le sicle : « trop léger » à la balance), PERES (diviser… et « Perse » ! le jeu de mots : divisé, donné aux Mèdes et aux Perses). « Cette nuit-là » : prophétie et chute la même nuit. Face au chandelier, sur la chaux : le détail visuel du témoin — les palais mésopotamiens sont enduits de plâtre.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que l'écriture est l'arrêt : compté (le règne), pesé et trop léger (le roi), divisé (le royaume). Belschatsar tient parole et revêt Daniel de pourpre (5:29) — « non pour se glorifier, mais pour honorer Jéhovah ». Pendant ce temps, dans le lit du fleuve, les Mèdes et Perses avancent des deux côtés vers le centre — les portes des quais, en cette nuit de fête, « auront été laissées ouvertes » : entrée sans coup férir. Ésaïe 44:27 (« à l'abîme : dessèche-toi ») et 45:1-2 (« les portes ne seront pas fermées », verrous de fer brisés) s'accomplissent dans l'hydraulique.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe-VIe s. av. n. è.</td><td>Ésaïe 13, 21, 44-45 ; Jérémie 50-51 : le festin, le fleuve, les portes</td></tr>
+<tr><td class="d">556-539 av. n. è.</td><td>Nabonide (Tayma) ; Belschatsar corégent à Babylone</td></tr>
+<tr><td class="d">Octobre 539</td><td>Opis, puis Sippar (14 Tashritu) : les verrous sautent</td></tr>
+<tr><td class="d">Nuit du 11/12 octobre 539</td><td>Festin, vases, écriture, Daniel 3e — et le fleuve détourné</td></tr>
+<tr><td class="d">12 octobre 539 (16 Tashritu)</td><td>Entrée de Gobryas ; Belschatsar tué (Dn 5:30) ; Darius reçoit (voir E006)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La Chronique de Nabonide (tablette cunéiforme BM 35382) date : Sippar le 14, Babylone le 16 Tashritu — Gobryas entre, qu'on nomme gouverneur. Le cylindre de Cyrus clame une entrée « sans bataille » : la ville festoie, la propagande triomphe. Hérodote (I, 190-191) : Euphrate détourné vers les marais, fête, les quartiers extrêmes ignorant la prise. Xénophon (Cyropédie VII, 5) : le fleuve abaissé, les portes du fleuve ouvertes un soir de fête — Gobryas et Gadatas. Un cylindre de Nabonide (Ur) prie pour « Belschatsar, mon fils premier-né » : le corégent a son inscription. Et les vases profanés regagnent Jérusalem sous Cyrus (Esd 1:7-11 : 5 400 pièces) : la boucle.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'Euphrate traverse Babylone : quais, portes fluviales, pont — le fleuve est la faille de l'imprenable. Les doubles murailles (Imgur-Enlil, Nemed-Enlil) et le fossé défient les armées, pas l'assèchement. La salle du trône fouillée (52 × 17 mètres, murs enduits) est le décor de la chaux éclairée. Opis et Sippar, au nord, sont les verrous : tombés, la route de Babylone est ouverte. Octobre, c'est les basses eaux : la date fait partie du plan.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'hydraulique rend le récit faisable : en basses eaux (octobre), barrer l'Euphrate et le dériver vers les marais abaisse le lit intra-muros jusqu'au gué — Xénophon dit l'eau aux genoux. L'archéologie (Koldewey, 1899-1917 : palais sud, salle du trône, voie processionnelle, porte d'Ishtar) confirme le décor palatial. Les briques estampillées et les cylindres de Nabonide nommant Belschatsar établissent la corégence — expliquant le « troisième » que les critiques du XIXe siècle jugeaient absurde.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>F003 traite la désolation durable : pas de doublon — ici, la nuit. La reine (reine-mère ? Nitocris d'Hérodote ?) : non identifiée sûrement. Hérodote et Xénophon écrivent un à deux siècles après : cadre, pas procès-verbal. La Chronique est lacunaire à l'endroit crucial. « Troisième » par la corégence : reconstitution (solide). Belschatsar tué (Dn 5:30) : la Chronique mutilée ne confirme ni n'infirme au complet.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Festin, fleuve, portes</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Is 13-45, Jr 50-51</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nabonide / Belschatsar</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">556-539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Opis, Sippar</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oct. 539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Écriture</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit 11/12 oct.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gobryas entre</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">12 oct. 539</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101963013">La chute de Babylone (Dn 5 : festin, écriture, fleuve)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101963013</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/101972329">Babylone — Étude et histoire (voir F003)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/101972329</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/5">Daniel 5 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/5</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche E005 — La nuit de Belschatsar — compté, pesé, divisé</span><span>Catégorie D–E</span></div></div>
+</article>
+<article class="fiche" id="E006">
+<div class="visuel"><img src="images/prophe_E006_darius.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE E006 · CATÉGORIE D–E</div>
+<h3>Darius le Mède — l'énigme en quatre hypothèses</h3>
+<div class="ref">Daniel 5:31 ; Daniel 6 ; Daniel 9:1 ; Daniel 11:1 ; Esdras 1:1-4 ; 2 Chroniques 36:22-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (identité débattue — voir Limites)</span>
+<span class="badge">Système 539/537</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche E006 · 0:43</div><audio controls preload="none" src="audio/fiche_E06_darius.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_E06_darius.mp3 · 0:43 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 5:31 ; Daniel 6 ; Daniel 9:1 ; Daniel 11:1 ; Esdras 1:1-4 ; 2 Chroniques 36:22-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (identité débattue — voir Limites)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 539/537</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P374 (ch. 5, contexte), P376 (6:24), P384 (9:1-19)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Et Darius le Mède reçut le royaume, étant âgé d'environ soixante-deux ans. » (Dn 5:31 — « reçut » : il ne prend pas, on lui donne)</li>
+<li>« La première année de Darius, fils d'Assuérus, de la race des Mèdes, lequel était devenu roi du royaume des Chaldéens. » (Dn 9:1 — « devenu » : on l'a fait)</li>
+<li>« Darius établit sur le royaume cent vingt satrapes. » (Dn 6:1-2)</li>
+<li>« Daniel prospéra sous le règne de Darius et sous le règne de Cyrus le Perse. » (Dn 6:28 — deux règnes, pas un)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La nuit de 539 : Belschatsar tué, un Mède de 62 ans « reçoit » le royaume des Chaldéens — fils d'un Assuérus, pas « roi de Perse » (le titre de Cyrus), mais roi « du royaume des Chaldéens » : juridiction chaldéenne, sous un monarque supérieur. Il nomme 120 satrapes et trois ministres (Daniel premier), signe l'édit irrévocable de trente jours (6:6-9, « loi des Mèdes et des Perses » — la même formule qu'en Esther 1:19 ; 8:8), jette Daniel aux lions, puis proclame « devant le Dieu de Daniel » (6:26-27). Puis Cyrus (6:28 ; Esd 1). Aucun document profane ne nomme un « Darius » en 539 : l'énigme est réelle.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le vocabulaire est celui du vice-roi : « reçut » (qabbel, araméen : recevoir) et « devenu roi » (causatif : « fut fait roi ») — Darius est installé, pas conquérant. « Du royaume des Chaldéens », jamais « de Perse » : sa juridiction est l'ex-empire babylonien. Soixante-deux ans et « fils d'Assuérus, race des Mèdes » : signalement qui exclut (voir les hypothèses). Les 120 satrapes trouvent un parallèle : la Chronique de Nabonide dit que Gobryas, le preneur de Babylone, « installa des gouverneurs à Babylone » — gouverneur de gouverneurs, « probablement salué comme roi par ses subordonnés » (Whitcomb, cité par les publications). Daniel 6:28 distingue deux règnes successifs : Darius PUIS Cyrus.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah passe en revue quatre hypothèses. (1) Cyrus lui-même ? Écartée : Perse par son père Cambyse Ier (le cylindre), pas « Mède, fils d'Assuérus » — et 6:28 distingue les règnes. (2) Cambyse II ? Écartée : trop jeune en 539 pour les 62 ans. (3) Cyaxare II, l'oncle de Cyrus chez Xénophon ? Fragile : Hérodote dit Astyage mort sans fils ; la Cyropédie est un roman pédagogique. (4) Gobryas (Gubaru), preneur puis gouverneur de Babylone ? Le meilleur candidat — MAIS non conclusif, les publications le disent noir sur blanc. Pour : juridiction identique (tout l'ex-empire, « au-delà du Fleuve » jusqu'à l'Égypte), gouverneurs installés (// 120 satrapes), vice-royauté (« reçut », « fut fait ») — et Belschatsar non plus n'est pas « roi » dans les tablettes ! Contre : 14 ans de charge contre un règne apparemment bref ; nationalité et parenté inconnues (pas de « Mède, fils d'Assuérus ») ; aucun édit attesté ; la place de Cambyse à Babylone en 538 complique le tableau. Darius régna au moins un an — la 1re année de Cyrus ne commence qu'en 538 (vers 537).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Nuit du 11/12 octobre 539</td><td>Belschatsar tué ; Darius, 62 ans, reçoit le royaume (5:30-31)</td></tr>
+<tr><td class="d">539-538 av. n. è.</td><td>1re année : 120 satrapes, édit de 30 jours, fosse aux lions (ch. 6)</td></tr>
+<tr><td class="d">539-538 av. n. è.</td><td>Proclamation « devant le Dieu de Daniel » (6:26-27) ; Daniel prie (9:1)</td></tr>
+<tr><td class="d">538 av. n. è.</td><td>1re année de Cyrus à Babylone (voir la fiche sur la date pivot)</td></tr>
+<tr><td class="d">537 av. n. è.</td><td>Le décret : retour (voir B002) — Darius s'efface, Cyrus accomplit</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La Chronique de Nabonide (BM 35382) : Gobryas entre à Babylone le 16 Tashritu, « installe des gouverneurs » — le parallèle des 120 satrapes (Whitcomb, Olmstead, cités par les publications). Le cylindre de Cyrus (généalogie : Cambyse Ier, Perse) exclut l'identité Cyrus-Darius. Hérodote (Astyage sans fils) fragilise Cyaxare. Xénophon (Cyropédie : Cyaxare, Gobryas, Gadatas) fournit un cadre romancé. « Loi des Mèdes et des Perses » (Dn 6 ; Est 1:19 ; 8:8) : le droit irrévocable du même empire. La proclamation de Darius (6:26-27) préfigure le décret de Cyrus (Esd 1) : deux Mèdes-Perses confessant Jéhovah.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Babylone : le royaume reçu. La juridiction : tout l'ex-empire babylonien — des tablettes montrent Gobryas régnant sur Babylone ET « au-delà du Fleuve » (Syrie, Phénicie, Palestine jusqu'à l'Égypte) : tout le Croissant fertile, exactement « le royaume des Chaldéens » élargi. La fosse aux lions : ménagerie royale — les rois mésopotamiens entretenaient des lions (reliefs de chasse d'Assurbanipal à Ninive, VIIe siècle, British Museum : les lions du roi, attestés).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le cunéiforme (Chronique, tablettes économiques datées, cylindre) fournit le cadre : noms, dates, juridictions. L'onomastique propose « Darius » comme nom de trône (Darayavahush, « qui tient le bien ») de Gobryas — hypothèse signalée (les rois antiques portent plusieurs noms : Pulu/Tiglath-Piléser, Xerxès/Assuérus). La zoologie (lion asiatique, Panthera leo persica, alors présent en Mésopotamie — reliefs de Ninive) rend la fosse vraisemblable. L'extinction locale postérieure n'efface pas les reliefs.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>L'identification (Gobryas) est NON conclusive : les publications le disent, cette fiche le répète — une fiche qui tranche serait malhonnête. Un ou deux Gobryas dans la Chronique (preneur ? gouverneur 14 ans ? mort ?) : débattu. Assuérus : titre ou nom ? (homonymes en Esther et Esdras 4:6) — non tranché. Cambyse associé à Babylone en 538 (tablettes) : coexistence à expliquer. La fosse (ménagerie ?) : reconstitution. Le règne bref (539-538) appartient au système 539/537.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reçoit, 62 ans</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit oct. 539</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">120 satrapes, fosse</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539-538</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Proclamation</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539-538</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus 1re année</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décret, retour</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1972407">Qui était Darius le Mède ? (4 hypothèses, non conclusif)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1972407</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011096">Darius — Étude perspicace (le Mède, Gubaru)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011096</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1965684">Une date pivot de l'Histoire (Darius 1 an, Cyrus 538)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1965684</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/6">Daniel 6 — Bible d'étude, notes (satrapes, fosse)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/6</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche E006 — Darius le Mède — l'énigme en quatre hypothèses</span><span>Catégorie D–E</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie D–E</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>D010 — Le vinaigre — j'ai soif, tout est accompli</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ps 69:21 + 22:15</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Xe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le vin des condamnés</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Pr 31</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vin refusé</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan, matin</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« J'ai soif »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">9e heure</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vinaigre, tetelestai</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9e heure</text>
+</svg>
+<h4>D011 — Le berger frappé — tous s'enfuirent, cette nuit</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Za 13:7</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520-518</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'annonce</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan au soir</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite de tous</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Galilée : main revenue</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Après le 16</text>
+</svg>
+<h4>D012 — Le serpent d'airain — élevé, regardé, vivant</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le désert : Nb 21</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 env.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nehoushtan brisé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">715 env.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Élevé » ×3</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30-33</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Golgotha</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan 33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Corneille : « tous »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">36</text>
+</svg>
+<h4>E001 — La statue du songe — de l'or à la pierre</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le songe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">An 2 Neb.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Argent : Perses</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bronze : Grecs</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">331</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fer : Rome</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">63</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre : Royaume</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+</svg>
+<h4>E002 — Les quatre bêtes — et le Fils d'homme</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le songe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1re Belschatsar</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ours : Perses</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Léopard : Grecs</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">331</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">4e bête, petite corne</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rome → XIXe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fils d'homme</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+</svg>
+<h4>E003 — Le bélier et le bouc — Alexandre nommé par fonction</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Suse : Gabriel</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e Belschatsar</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bélier maître</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bouc : 3 batailles</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">334-331</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Corne brisée / les 4</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">323 / 301</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Petite corne</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">63 - 70</text>
+</svg>
+<h4>E004 — Les rois du nord et du sud — Raphia, Panium, l'abomination</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tigre : vision</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e Cyrus</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Xerxès</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">480</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Raphia</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">217</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Panium</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">198</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Magnésie</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">190</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Kittim + Pydna</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">168</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Abomination, purification</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">167-164</text>
+</svg>
+<h4>E005 — La nuit de Belschatsar — compté, pesé, divisé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Festin, fleuve, portes</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Is 13-45, Jr 50-51</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nabonide / Belschatsar</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">556-539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Opis, Sippar</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oct. 539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Écriture</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit 11/12 oct.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gobryas entre</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">12 oct. 539</text>
+</svg>
+<h4>E006 — Darius le Mède — l'énigme en quatre hypothèses</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reçoit, 62 ans</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Nuit oct. 539</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">120 satrapes, fosse</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539-538</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Proclamation</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539-538</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus 1re année</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décret, retour</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 7.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-24 · phase 7, vague
+6 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

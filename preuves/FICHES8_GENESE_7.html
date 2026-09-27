@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES GE — Genèse (7) — Benjamin, les ossements et la sortie</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_GE_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES GE</h1>
+<h2>Genèse (7) — Benjamin, les ossements et la sortie</h2>
+<p class="intro">Dernier oracle du lit de mort : Benjamin le loup. Dernière volonté de la Genèse : les ossements de Joseph à faire remonter. Puis l'Exode s'ouvre : le signe de la montagne donné à Moïse, les promesses du bras étendu, le nom proclamé par toute la terre, et la nuit de la Pâque où les dieux d'Égypte sont jugés.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:25</div><audio controls preload="none" src="audio/fiche_GE_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_GE_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#GE037">GE037</a>
+<a href="#GE038">GE038</a>
+<a href="#GE039">GE039</a>
+<a href="#GE040">GE040</a>
+<a href="#GE041">GE041</a>
+<a href="#GE042">GE042</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#GE037"><img src="images/prophe_GE037_benjamin.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE037</div>
+<h3><a href="#GE037">Benjamin : le loup du matin et du soir</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE038"><img src="images/prophe_GE038_ossements.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE038</div>
+<h3><a href="#GE038">Remontez mes ossements : le serment de Joseph</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE039"><img src="images/prophe_GE039_montagne.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE039</div>
+<h3><a href="#GE039">Vous servirez Dieu sur cette montagne</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE040"><img src="images/prophe_GE040_delivrance.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE040</div>
+<h3><a href="#GE040">Le bras étendu : délivrés, rachetés, héritiers</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE041"><img src="images/prophe_GE041_nom.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE041</div>
+<h3><a href="#GE041">Mon nom sera proclamé par toute la terre</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE042"><img src="images/prophe_GE042_paque.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE042</div>
+<h3><a href="#GE042">La nuit du jugement : les dieux frappés, le sang signe</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="GE037">
+<div class="visuel"><img src="images/prophe_GE037_benjamin.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE037 · CATÉGORIE GE</div>
+<h3>Benjamin : le loup du matin et du soir</h3>
+<div class="ref">Genèse 49:27</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Bénédictions de Jacob (le cadet guerrier)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE037</div><audio controls preload="none" src="audio/fiche_GE37_benjamin.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE37_benjamin.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 49:27</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Bénédictions de Jacob (le cadet guerrier)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P037 (49:27 : Benjamin, un rapace qui dévore) ; accomplissement Jg 20:15-16 ; 1Ch 8:40</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Benjamin déchirera des proies sans arrêt, comme un LOUP. » (49:27 — loup !)</li>
+<li>« LE MATIN, il dévorera sa proie. » (49:27 — le matin !)</li>
+<li>« Et, LE SOIR, il partagera le butin. » (49:27 — le soir !)</li>
+<li>« 26 000 hommes tirant l'épée, sans compter Guilbéa. » (Jg 20:15 — 26 000 !)</li>
+<li>« 700 hommes d'élite, gauchers : pas un cheveu de manqué. » (Jg 20:16 — pas un cheveu !)</li>
+<li>« Les fils d'Ulam furent de vaillants ARCHERS. » (1Ch 8:40 — archers !)</li>
+<li>« Éhud, Benjamite, gaucher. » (Jg 3:15 — gaucher !)</li>
+<li>« Saül, fils de Qish, de Benjamin, choisi pour roi. » (1S 9:16-17 — ROI !)</li>
+<li>« Mardochée… fils de Yaïr, Benjamite. » (Est 2:5 — Mardochée !)</li>
+<li>« Moi aussi, Israélite, de la tribu de BENJAMIN. » (Rm 11:1 — PAUL !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le lit de mort, 1711 — DERNIER oracle (49:27), un seul verset pour le cadet : Benjamin, « fils de ma droite » (35:18 — yamin : droite, force, honneur ; Rachel mourante l'avait nommé Ben-Oni, « fils de ma douleur »). Le père qui refusait de le laisser partir en Égypte (42:38 : « mon fils ne descendra pas avec vous ») le voit en LOUP : « l'habileté au combat des Benjaminites fut préfigurée dans la prophétie » (it, Benjamin). « Ze'ev » (loup) : le prédateur des troupeaux — Benjamin, berger comme ses frères, est comparé à l'ennemi des bergers : le cadet choyé sera le plus redouté. Structure temporelle : MATIN (dévore seul) → SOIR (partage le butin) : la journée du guerrier, de la chasse solitaire au festin collectif — et, en grand, la journée de la tribu, de l'époque des juges à l'époque apostolique.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Yitroph » (49:27, déchirera) : le verbe de la bête qui lacère (cf. « Joseph a été DÉCHIRÉ », 37:33, même verbe ! — le loup déchire comme Joseph fut déchiré : le vocabulaire de la tunique ensanglantée revient en oracle). « Sans arrêt » (TM : « sans relâche », ad) : voracité continue — le loup chasse le matin ET le soir (les loups chassent à l'aube et au crépuscule : éthologie exacte). « Le MATIN il dévorera (yokal) » : manger seul sa proie — victoires de la jeunesse tribale (Éhud, Guibéa, Saül). « Le SOIR il PARTAGERA (yehalleq) le butin » : distribuer — les butins du soir (David partage avec Benjamin ? Mardochée fait pendre Haman et « partage » le salut aux Juifs, Est 8 ; Paul « partage » l'Évangile aux nations). « Bénédiction appropriée » (49:28) : à chacun selon sa mesure — au cadet, la mesure du loup.</p>
+<h4>5 · Interprétation</h4>
+<p>LE MATIN — L'ÉPOQUE DES ÉPÉES : Éhud le gaucher assassine Églon et libère Israël 80 ans (Jg 3:15-30) ; Guibéa : 26 000 épées benjaminites + 700 frondeurs d'élite « ne manquant pas à un cheveu près » (Jg 20:15-16 — P037), ambidextres (« aussi bien de la main droite que de la gauche », it) ; Saül de Benjamin, premier ROI d'Israël (1S 9:16 — renvoi TM !), guerrier féroce (Jabès, Mikmash). LE SOIR — L'ÉPOQUE DES BUTINS : Mardochée le Benjamite (Est 2:5 — renvoi TM !) fait tomber Haman et « partage » la délivrance (Est 8:7 — renvoi TM !) ; Paul le Benjamite (Rm 11:1 ; Ph 3:5, « de la tribu de Benjamin ») — le loup persécuteur (Ac 8:3, il « ravageait » !) devenu distributeur de l'Évangile. ARCHERS (1Ch 8:40 — P037) : les fils d'Ulam, « vaillants archers » aux 150 descendants guerriers : l'arc benjaminite bande encore après l'exil.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1711 (oracle)</td><td>Loup : matin dévore, soir partage (49:27)</td></tr>
+<tr><td class="d">Jg 3 (matin)</td><td>Éhud le gaucher : 80 ans de paix</td></tr>
+<tr><td class="d">Jg 20 (matin)</td><td>26 000 épées + 700 à-un-cheveu (v. 15-16)</td></tr>
+<tr><td class="d">1S 9 (matin)</td><td>Saül de Benjamin : premier roi</td></tr>
+<tr><td class="d">997 (fidélité)</td><td>Benjamin avec Juda au schisme</td></tr>
+<tr><td class="d">Est 2-8 (soir)</td><td>Mardochée : le butin partagé</td></tr>
+<tr><td class="d">1Ch 8:40 (arc)</td><td>Fils d'Ulam, vaillants archers</td></tr>
+<tr><td class="d">Rm 11:1 (soir)</td><td>Paul : Benjamite, ravageur converti</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>GUILBÉA (Jg 19-20) : le crime de Guibéa (le Lévite et sa concubine) provoque la guerre civile — 26 000 Benjaminites contre 400 000 Israélites : le loup, même acculé (600 survivants au rocher de Rimmon, Jg 20:47), mord jusqu'au bout — puis la tribu est relevée (Jg 21, épouses de Jabès et de Silo). ÉHUD (~14e s.) : gaucher (it-trai, « lié de la main droite ») — il cache l'épée à droite, là où on ne fouille pas les droitiers : la ruse du loup. SAÜL (~1117-1077) : premier roi, Benjamite de Guibéa — « il n'y avait personne de plus beau » (1S 9:2), guerrier victorieux puis rejeté : le matin dévore, même ses rois. SCHISME (997) : Benjamin « soutint fidèlement Juda » (it) — le loup garde le lion (P029) : alliance jusqu'à l'exil et au-delà (1R 12:21 ; Esd 1:5, les rapatriés « Juda et Benjamin »).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>TERRITOIRE (Jos 18:11-28) : coincé entre Juda (sud) et Éphraïm (nord) — Jéricho, Béthel, Guibéa, Guibéon, Rama, Jérusalem (Jébus !) : le verrou central du pays, ~1 400 km² de montagnes et de plateaux. GUILBÉA (Tell el-Ful, fouillé par Albright : forteresse-saülienne !) : capitale de Saül, à 5 km au nord de Jérusalem. MIKMASH (1S 13-14) : le défilé où Jonathan (Benjamite !) et son écuyer mettent en déroute les Philistins — avec le miel du bois et le tremblement de terre : le loup chasse en montagne. JÉRUSALEM : ville « benjaminite » (Jg 1:21, les Benjaminites n'expulsent pas les Jébusiens) devenue capitale de Juda (David) : le loup prête sa tanière au lion — géographie de l'alliance.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Éthologie : le loup gris (Canis lupus) chasse à l'aube et au crépuscule, en meute coordonnée, puis PARTAGE la carcasse selon la hiérarchie — 49:27 décrit le cycle journalier réel : chasse matinale (dévore) + distribution crépusculaire (partage). Balistique : la fronde (qela) — projectile de 60-100 g à 100+ km/h, portée 200 m ; « à un cheveu près » (Jg 20:16, litt. « ne pas manquer d'un cheveu ») : précision proverbiale, attestée chez les frondeurs baléares et assyriens (bas-reliefs de Lakish : frondeurs au siège !). Latéralité : les gauchers guerriers (Éhud ; les 700 ; 1Ch 12:2, archers et frondeurs « de la droite et de la gauche ») — avantage tactique documenté (angles inattendus) : Benjamin systématise l'ambidextrie.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Cadet choyé (« fils de ma droite ») → LOUP (prédateur, pas agneau) → MATIN : dévore seul (Éhud 80 ans ; Guibéa 26 000 + 700 à-un-cheveu ; Saül roi) → SOIR : partage le butin (Mardochée : salut des Juifs ; Paul : Évangile aux nations) → Archers d'Ulam (1Ch 8:40, après l'exil) → Territoire-verrou (Guibéa, Mikmash, Jérusalem) → Fidélité au lion (schisme, retour) : le loup garde.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Matin/soir = époques ? La lecture chronologique (juges-rois / exil-apôtres) est une PROPOSITION de la fiche (le texte dit « matin… soir », cycle journalier) : le registre ne cite que Jg 20:15-16 et 1Ch 8:40 — la fiche suit le registre pour les preuves, propose le reste comme lecture. Paul « loup » : Ac 8:3 (« ravageait ») + Rm 11:1 (Benjamite) — rapprochement suggéré, pas versé comme accomplissement. Guibéa : le loup y est CRIMINEL (Jg 19-20) — la fiche ne blanchit pas : la voracité promise inclut le pire (guerre civile). Mardochée/Esther : renvois TM (Est 2:5 ; 8:7) — la Bible d'étude elle-même fait le lien, la fiche suit.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le loup</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Éhud, 80 ans</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 3</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">26 000 + 700</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 20</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Saül roi</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1S 9</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Butin partagé</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Est 8</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paul Benjamin</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rm 11</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49">Genèse 49 — Bible d'étude (27, Benjamin le loup)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/49</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010639">Benjamin — Étude perspicace (frondeurs, Éhud, fidélité)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010639</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1962442">Une prophétie sur Celui à qui appartiendra l'obéissance (bénédictions)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1962442</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE037 — Benjamin : le loup du matin et du soir</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE038">
+<div class="visuel"><img src="images/prophe_GE038_ossements.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE038 · CATÉGORIE GE</div>
+<h3>Remontez mes ossements : le serment de Joseph</h3>
+<div class="ref">Genèse 50:24, 25</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Foi de Joseph (serment → Exode → Sichem)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE038</div><audio controls preload="none" src="audio/fiche_GE38_ossements.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE38_ossements.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 50:24, 25</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Foi de Joseph (serment → Exode → Sichem)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P038 (50:24, 25 : Dieu vous fera monter ; emportez mes ossements) ; accomplissement Ex 13:19 ; Jos 24:32 ; Hé 11:22</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Je vais mourir ! » (50:24 — je vais mourir !)</li>
+<li>« MAIS Dieu vous VISITERA (paqod). » (50:24 — visitera !)</li>
+<li>« Et il vous fera REMONTER de ce pays-ci. » (50:24 — remonter !)</li>
+<li>« Dans le pays qu'il a JURÉ à Abraham, Isaac et Jacob. » (50:24 — juré !)</li>
+<li>« Joseph fit JURER les fils d'Israël. » (50:25 — jurer !)</li>
+<li>« Dieu vous visitera, ET vous ferez remonter mes os. » (50:25 — mes os !)</li>
+<li>« On l'embauma, et on le mit dans un CERCUEIL en Égypte. » (50:26 — cercueil !)</li>
+<li>« Moïse PRIT avec lui les ossements de Joseph. » (Ex 13:19 — Moïse prit !)</li>
+<li>« Les os de Joseph, remontés d'Égypte, on les enterra à SICHEM. » (Jos 24:32 — SICHEM !)</li>
+<li>« C'est PAR LA FOI que Joseph donna des ordres au sujet de ses os. » (Hé 11:22 — PAR LA FOI !)</li>
+<li>« Le champ que Jacob avait DONNÉ à son fils Joseph. » (Jn 4:5 — donné à Joseph !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Goshen, ~1657 av. n. è. Joseph a 110 ans (50:22 — l'âge idéal égyptien, la « belle vieillesse » des sages du Nil !), il a vu les petits-fils d'Éphraïm « jusques à la troisième génération » (50:23). Dernier discours : pas de testament politique (il ne lègue ni charge ni fortune), pas de tombeau pyramidal (lui, le vizir, refuse l'éternité égyptienne !) — un SERMENT arraché à ses frères : « vous ferez remonter mes os » (50:25). « Paqod » (visiter) : le verbe de l'intervention divine — Dieu « visitera » (cf. Sara visitée, 21:1 ; et Ex 3:16, Dieu « visite » les esclaves : le mot de Joseph devient le mot de l'Exode). Le livre de la Genèse se referme sur un CERCUEIL en Égypte (50:26 — dernier mot : « en Égypte » !) : cercueil en attente, promesse en partance.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Je vais mourir ! MAIS (ve, adversatif) » (50:24) : la mort annoncée ET dépassée dans la même phrase — Joseph meurt en prophète, pas en retraité. « Dans le pays qu'il a JURÉ » (50:24) : Joseph cite le serment abrahamique (22:16 ; 26:3 ; 28:13 ; 35:12 — toute la Genèse en une ligne) : sa demande n'est pas un caprice funéraire, c'est une EXÉCUTION TESTAMENTAIRE de l'alliance. « Il fit JURER » (50:25, hishbia : serment solennel, même verbe qu'Abraham exigeant une épouse pour Isaac, 24:3) : les frères s'engagent, et l'engagement traversera 144 ans (1657 → 1513), l'esclavage, les plaies, la mer, le désert. « Mes OS (atsmot) » (50:25) : pas « mon corps » — les os, ce qui reste, ce qui dure, ce qui se transporte : Joseph pense en logistique de l'Exode (« Moïse les prit », Ex 13:19 — un homme porte le cercueil du vizir !).</p>
+<h4>5 · Interprétation</h4>
+<p>L'EXODE (Ex 13:19 — P038) : « Moïse prit avec lui les ossements de Joseph, car Joseph avait fait jurer » — le libérateur se charge du cercueil : l'Exode transporte son prophète. 40 ANS DE DÉSERT : les os voyagent avec l'arche, la manne, le serpent d'airain — reliques de la foi, pas objets de culte (jamais vénérés, jamais mentionnés comme thaumaturges : le cercueil est silencieux). SICHEM (Jos 24:32 — P038) : « on les enterra à Sichem, dans la parcelle que Jacob avait achetée » (100 qesita, 33:19 — le champ payé comptant 200 ans plus tôt reçoit son destinataire !). LA FOI (Hé 11:22 — P038) : « c'est par la foi que Joseph, proche de sa fin, fit mention de la SORTIE » — Paul retient UN acte de foi de Joseph : pas les rêves, pas l'Égypte, pas le pardon — les OS : croire, c'est programmer sa sépulture sur la promesse. JEAN (Jn 4:5-6) : « le champ donné à Joseph », le puits de Jacob — Jésus s'assoit sur l'héritage de Joseph : la géographie de la foi dure.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1657 (serment)</td><td>« Dieu visitera ; remontez mes os » (50:24-25)</td></tr>
+<tr><td class="d">~1657 (cercueil)</td><td>Embaumé ; « en Égypte » (50:26)</td></tr>
+<tr><td class="d">1513 (Exode)</td><td>Moïse prend les ossements (Ex 13:19)</td></tr>
+<tr><td class="d">1513-1473</td><td>40 ans de désert avec le coffre</td></tr>
+<tr><td class="d">~1473 (Sichem)</td><td>Enterrés dans la parcelle (Jos 24:32)</td></tr>
+<tr><td class="d">33:19 (achat)</td><td>100 qesita : le terrain payé d'avance</td></tr>
+<tr><td class="d">Hé 11:22</td><td>« C'est par la foi… au sujet de ses os »</td></tr>
+<tr><td class="d">Jn 4:5-6</td><td>Le champ et le puits : Jésus s'assoit</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>CHRONOLOGIE : ~1657 (serment, mort à 110 ans) → 144 ans de cercueil en Égypte (dont ~80 ans d'esclavage : le cercueil du sauveur contemple la servitude !) → 1513 (Moïse prend les os, Ex 13:19) → 40 ans de désert → ~1473 (Sichem, Jos 24:32) : 184 ans entre le serment et la tombe. EMBAUMEMENT (50:26) : momification égyptienne du vizir — « mis dans un cercueil (aron) » : le MÊME mot que l'arche (aron) d'alliance ! Le cercueil de Joseph et l'arche de Dieu portent le même nom : deux coffres saints traversent le désert. QESITA (33:19 ; Jos 24:32) : monnaie/poids archaïque — l'achat est daté par sa monnaie même (terme obscur aux rédacteurs tardifs : marque d'ancienneté). TOMBEAU DE JOSEPH (Sichem/Naplouse) : tradition continue jusqu'à aujourd'hui (site vénéré, contesté — voir limites).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>SICHEM (Tell Balata, Naplouse) : au cœur du pays, entre Ébal et Garizim — premier autel d'Abraham (12:6-7), puits de Jacob (Jn 4:6), chêne de Josué (Jos 24:26), couronnement d'Abimélek (Jg 9), schisme de Jéroboam (1R 12:1) : Sichem est la capitale de la mémoire — les os de Joseph y reposent au centre de l'histoire. LA PARCELLE (33:19) : achetée aux fils de Hamor, 100 qesita — premier terrain possédé en titre en Canaan (après Macpéla la sépulcrale) ; Jacob la LÈGUE à Joseph (48:22, « une part de plus » — shekhem, jeu de mots : « une épaule/Sichem de plus » !). Le PUITS (Jn 4:6, « la source de Jacob ») : profond (~30 m), toujours visible — Jésus y demande à boire : l'eau du champ de Joseph désaltère le Messie. De Goshen à Sichem : ~400 km + 40 ans — le plus long convoi funèbre de l'histoire.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Momification : embaumement 40 jours (cf. Jacob, 50:3) — corps préservé 144 ans en Égypte puis 40 ans de désert : la technique égyptienne (natron, résines, bandelettes) rend le transport plausible sur deux siècles (momies royales conservées 3 000 ans : le cercueil de Joseph est un cas modeste). « Aron » (coffre) : même terme pour cercueil (50:26) et arche (Ex 25:10) — menuiserie sacrée : bois + revêtement, porteurs aux barres ; Moïse « prit » (yiqqah : prendre avec soi, porter) — logistique du convoi. « Paqod » (visiter) : verbe technique de l'inspection divine (recensements, interventions) — de 50:24 à Ex 3:16 (« j'ai visité ») à Ex 4:31 (« ils crurent que Jéhovah avait visité ») : le serment fournit le vocabulaire de la délivrance. Critique textuelle : 50:24-25 + Ex 13:19 + Jos 24:32 — chaîne stable (TM, LXX, Samaritain).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>110 ans (l'âge idéal) → « Je vais mourir ! MAIS… » → Dieu VISITERA (paqod) → Pays JURÉ (toute la Genèse citée) → SERMENT exigé (hishbia) → Cercueil en Égypte (dernier mot : « en Égypte » !) → 144 ans d'attente (dont l'esclavage) → Moïse PREND les os (Ex 13:19) → 40 ans de désert (coffre silencieux) → Sichem : la parcelle achetée reçoit son maître (Jos 24:32) → « PAR LA FOI » (Hé 11:22) → Le puits : Jésus s'assoit (Jn 4).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Tombeau actuel de Sichem : tradition (juive, samaritaine, musulmane), site contesté et troublé — la fiche cite la tradition sans authentifier la pierre (le texte dit « la parcelle », pas un mausolée). « Aron » (coffre = arche) : même mot, rapprochement suggestif — la fiche le note comme fait lexical, pas comme doctrine. Les os pendant 40 ans : le texte ne détaille ni porteurs ni rites — silence respecté (pas de culte des reliques : jamais vénérés). 144 ans : calculés (1657 → 1513) — dates reconstruites, pas versées. Hé 11:22 retient les os comme acte de foi : lecture paulinienne — la fiche la cite comme telle (registre : P038).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Remontez mes os</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1657 (serment)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cercueil en Égypte</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">50:26</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Moïse prend</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">40 ans de route</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Désert</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La parcelle</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Sichem</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Par la foi</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Hé 11:22</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/50">Genèse 50 — Bible d'étude (24-25, serment de Joseph)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/50</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/13">Exode 13 — lecture (19, Moïse prend les ossements)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/58/11">Hébreux 11 — Bible d'étude (22, par la foi, les os)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/58/11</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE038 — Remontez mes ossements : le serment de Joseph</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE039">
+<div class="visuel"><img src="images/prophe_GE039_montagne.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE039 · CATÉGORIE GE</div>
+<h3>Vous servirez Dieu sur cette montagne</h3>
+<div class="ref">Exode 3:12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Vocation de Moïse (buisson → signe → Sinaï)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE039</div><audio controls preload="none" src="audio/fiche_GE39_montagne.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE39_montagne.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Exode 3:12</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Vocation de Moïse (buisson → signe → Sinaï)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Exode — P039 (3:12 : vous servirez Dieu sur cette montagne, signe donné à Moïse) ; accomplissement Ex 19:1-3, 16-19</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Le buisson était en feu et ne se consumait pas. » (3:2 — sans se consumer !)</li>
+<li>« Ôte tes sandales : le lieu est SAINT. » (3:5 — saint !)</li>
+<li>« Qui suis-je pour faire sortir Israël d'Égypte ? » (3:11 — qui suis-je ?)</li>
+<li>« JE SERAI AVEC TOI. » (3:12 — avec toi !)</li>
+<li>« Et voici le SIGNE que c'est moi qui t'envoie. » (3:12 — le signe !)</li>
+<li>« Quand tu auras fait sortir le peuple, VOUS SERVIREZ Dieu SUR CETTE MONTAGNE. » (3:12 — SUR CETTE MONTAGNE !)</li>
+<li>« Le troisième mois après la sortie, ils arrivèrent au désert de Sinaï. » (19:1 — le 3e mois !)</li>
+<li>« Israël campa là, devant la MONTAGNE. » (19:2 — devant !)</li>
+<li>« Tonnerres, éclairs, nuée épaisse, trompe très forte. » (19:16 — la théophanie !)</li>
+<li>« Tout le peuple tremblait. » (19:16 — tremblait !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Horeb, ~1514 av. n. è. Moïse a 80 ans (7:7) : 40 ans prince d'Égypte, 40 ans berger de Madian — fugitif pour meurtre (2:12-15), berger du troupeau de Jéthro. « Il mena le troupeau derrière le désert, à la montagne du vrai Dieu, à HOREB » (3:1). Le buisson (senèh, épineux) brûle sans se consumer — « Moïse vit » (3:2), s'approche, entend son nom deux fois (« Moïse ! Moïse ! », 3:4 — double appel des tournants, cf. Abraham, Jacob). Mission : « fais sortir mon peuple » (3:10). Objection : « QUI SUIS-JE ? » (3:11 — le fugitif de 80 ans face à Pharaon). Réponse double : une PRÉSENCE (« je serai avec toi ») et un SIGNE — paradoxal : le signe se vérifiera APRÈS la mission (« quand tu auras fait sortir… ») : croire d'abord, constater ensuite.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Je SERAI (ehyeh) avec toi » (3:12) : le verbe ÊTRE au futur — même racine que le Nom révélé au v. 14 (« JE SUIS CE QUE JE SUIS », ehyeh asher ehyeh) : la présence promise EST le Nom en action. « Voici le SIGNE (ot) » (3:12) : ot = marque, preuve, gage — mais signe FUTUR : pas de bâton-serpent ici (ce sera ch. 4), pas de prodige immédiat — le gage, c'est le RENDEZ-VOUS : « vous SERVIREZ (ta'avdun, abad) Dieu sur CETTE montagne » : abad = servir, travailler, adorer (TM : « ou adorez ») — le MÊME verbe que « servir les Égyptiens » (14:12, « laisse-nous servir ») ! L'Exode est un CHANGEMENT DE SERVICE : fini abad-Pharaon (briques), voici abad-Jéhovah (culte). « CETTE montagne » (démonstratif) : le buisson et le Sinaï sont le même lieu — Horeb = Sinaï (3:1 ; 19:11 : deux noms, une montagne).</p>
+<h4>5 · Interprétation</h4>
+<p>LE RENDEZ-VOUS TENU (Ex 19:1-3 — P039) : « le troisième mois après leur sortie d'Égypte, CE JOUR-LÀ, ils arrivèrent au désert de Sinaï… Israël campa devant la montagne » — ~7 semaines après la mer Rouge, 600 000 hommes au pied du rendez-vous : le signe promis au berger seul s'accomplit devant tout un peuple. LE SERVICE INAUGURÉ (Ex 19:16-19 — P039) : tonnerres, éclairs, trompe, montagne fumante — « Jéhovah descendit » (19:20), le Décalogue (ch. 20), l'alliance (ch. 24 : « nous ferons tout », 24:7), le tabernacle (ch. 25-40 : le SERVICE organisé — abad devient liturgie). Le berger doutait (« qui suis-je ? ») : un an plus tard, il redescend de CETTE montagne le visage rayonnant (34:29-35) — le signe a dépassé la promesse : non seulement servir, mais RESPLENDIR.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1514 (buisson)</td><td>Feu sans consommation ; « Moïse ! Moïse ! » (3:2-4)</td></tr>
+<tr><td class="d">~1514 (signe)</td><td>« Vous servirez sur CETTE montagne » (3:12)</td></tr>
+<tr><td class="d">1513 (plaies+mer)</td><td>Sortie : le peuple existe à conduire</td></tr>
+<tr><td class="d">1513, 3e mois</td><td>Campés DEVANT la montagne (19:1-3)</td></tr>
+<tr><td class="d">1513 (théoph.)</td><td>Tonnerres, trompe, descente (19:16-20)</td></tr>
+<tr><td class="d">1513 (alliance)</td><td>Décalogue + « nous ferons tout » (20 ; 24)</td></tr>
+<tr><td class="d">1513-12 (culte)</td><td>Tabernacle : le SERVICE organisé (25-40)</td></tr>
+<tr><td class="d">34:29 (visage)</td><td>Rayonnant : au-delà du signe</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>CHRONOLOGIE : ~1514 (buisson, Moïse 80 ans) → 1513 (10 plaies, Pâque 14 Nisan, mer Rouge) → 1513, 3e mois (Sinaï, Ex 19:1) → 1513-1512 (un an au Sinaï : Loi, tabernacle, recensement Nb 1) : le signe se vérifie ~1 an après la promesse. MOÏSE : 40 + 40 + 40 ans (Ac 7:23, 30, 36 — trois quarantaines : prince, berger, libérateur) — le buisson ouvre la troisième. HOREB/SINAÏ : « montagne du vrai Dieu » (3:1) avant même l'alliance — le lieu est saint avant d'être législateur. JÉTHRO (18:1-12) : le beau-père madianite vient « à la montagne du vrai Dieu » (18:5) et sacrifie : les nations assistent au service promis (prémices de P041 : le nom proclamé !). ÉLIE à Horeb (1R 19:8) : 40 jours pour revenir « à la montagne de Dieu » — le rendez-vous dure.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>HOREB = SINAÏ : deux noms (3:1 ; 19:11 ; Dt 4:10, « Horeb » ; Ex 19, « Sinaï ») — une montagne, deux titres (Horeb = « désert/sec » ? Sinaï = « aux épines/à Sin » ? — étymologies débattues). LOCALISATION : tradition du Djebel Moussa (sud du Sinaï, monastère Sainte-Catherine, depuis le IVe s.) — vénérable mais discutée (autres candidats : Djebel al-Lawz en Arabie, Har Karkom au Néguev — voir limites). « DERRIÈRE le désert » (3:1, ahar : au-delà, à l'arrière) : les pâturages madianites s'étendent jusqu'aux massifs — Moïse mène loin, Dieu mène plus loin. « CETTE montagne » : le démonstratif suppose qu'on la VOIT — le buisson brûle sur ses pentes : signe et lieu coïncident géographiquement avant de coïncider historiquement.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Botanique : « senèh » (buisson épineux — ronce ? acacia ?) : arbrisseau sec du désert, combustible instantané — qui brûle et s'éteint en minutes : « sans se consumer » (ukkal, 3:2-3 : mangé, consumé) viole le comportement attendu — le miracle est calibré sur la nature du buisson (un chêne vert qui brûle sans fin étonnerait moins qu'une ronce sèche intacte). « Ot » (signe) : gage vérifiable — la structure logique est celle d'une PRÉDICTION TESTABLE (lieu + peuple + service), pas d'une émotion : falsifiable en un an. Onomastique : Horeb/Sinaï — doublet toponymique (cf. Hermon/Sirion, Dt 3:9) : deux noms, usage alterné selon les sources du récit — fait littéraire, pas contradiction. Sandales ôtées (3:5) : geste d'Orient (respect, cf. Jos 5:15, même ordre au Chef de l'armée !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>80 ans : prince déchu + berger fugitif → Derrière le désert : Horeb → Buisson qui brûle sans se consumer → « Moïse ! Moïse ! » → Sandales ôtées (lieu saint) → Mission : fais sortir → « QUI SUIS-JE ? » → « JE SERAI avec toi » (le Nom en promesse) + SIGNE futur : servir sur CETTE montagne → 10 plaies + mer → 3e mois : 600 000 devant la montagne (19:1-3) → Théophanie (19:16-19) → Alliance + tabernacle : le SERVICE → Visage rayonnant (34) : au-delà du signe.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Localisation du Sinaï : Djebel Moussa (tradition), al-Lawz (Arabie), Har Karkom (Néguev) — DÉBAT OUVERT, la fiche ne tranche pas (le texte dit « cette montagne », pas ses coordonnées). « Senèh » : espèce exacte inconnue (ronce, acacia, aubépine ?) — « buisson épineux » (TM), sans plus. Date du buisson (~1514) : inférée (Moïse 80 ans en 1513, 7:7 ; séjour madianite 40 ans, Ac 7:30) — pas versée. Le signe « après » : structure assumée (gage futur, comme 2R 19:29, « voici le signe » à échéance) — pas une bizarrerie, une catégorie prophétique.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Brûle sans finir</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1514 (buisson)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sur cette montagne</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3:12 (signe)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Peuple libéré</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (mer)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Devant la montagne</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3e mois</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Théophanie</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">19:16</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nous ferons tout</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Alliance</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/2/3">Exode 3 — Bible d'étude (12, signe de la montagne)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/2/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/F/2018/2/3">Exode 3 — Traduction du monde nouveau (buisson, Horeb)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/F/2018/2/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/3">Exode 3 — lecture (appel de Moïse)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/3</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE039 — Vous servirez Dieu sur cette montagne</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE040">
+<div class="visuel"><img src="images/prophe_GE040_delivrance.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE040 · CATÉGORIE GE</div>
+<h3>Le bras étendu : délivrés, rachetés, héritiers</h3>
+<div class="ref">Exode 6:2-8</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Alliance au nom de Jéhovah (promesse → sortie → terre)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE040</div><audio controls preload="none" src="audio/fiche_GE40_delivrance.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE40_delivrance.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Exode 6:2-8</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Alliance au nom de Jéhovah (promesse → sortie → terre)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Exode — P040 (6:2-8 : sortie d'Égypte et don de la terre) ; accomplissement Ex 12:51 ; 14:30, 31 ; Jos 21:43</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« JE SUIS JÉHOVAH. » (6:2 — JE SUIS !)</li>
+<li>« Aux patriarches : Dieu Tout-Puissant. » (6:3 — Shaddaï !)</li>
+<li>« Mais mon nom, JÉHOVAH, pas encore manifesté. » (6:3 — pas encore !)</li>
+<li>« JE vous délivrerai des travaux pénibles. » (6:6 — JE délivrerai !)</li>
+<li>« JE vous libérerai de leur esclavage. » (6:6 — JE libérerai !)</li>
+<li>« JE vous RACHÈTERAI par mon bras puissant. » (6:6 — RACHÈTERAI !)</li>
+<li>« Et par de GRANDES PUNITIONS. » (6:6 — grandes !)</li>
+<li>« JE vous accueillerai comme MON PEUPLE. » (6:7 — mon peuple !)</li>
+<li>« JE serai votre Dieu. » (6:7 — votre Dieu !)</li>
+<li>« Et vous SAUREZ que je suis Jéhovah. » (6:7 — vous saurez !)</li>
+<li>« JE vous ferai entrer dans le pays JURÉ. » (6:8 — juré !)</li>
+<li>« CE JOUR-LÀ, Jéhovah fit sortir Israël. » (12:51 — CE JOUR-LÀ !)</li>
+<li>« Jéhovah donna TOUT le pays promis. » (Jos 21:43 — TOUT !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Égypte, ~1514-1513. Moïse a échoué : première audience, Pharaon DURCIT la corvée (5:6-9, la paille supprimée !) — « pourquoi as-tu fait du mal à ce peuple ? » (5:22, Moïse accuse Dieu !). Le peuple « n'écouta pas Moïse, par angoisse et dure servitude » (6:9 — découragement total : prophète discrédité, auditoire sourd). C'est DANS l'échec que Dieu parle : « JE SUIS JÉHOVAH » (6:2) — quatre « JE » + deux « JE SERAI » + le Nom en ouverture ET en clôture (6:2, 6:8 : « je suis Jéhovah » — inclusion solennelle). « Ces promesses restèrent pendantes durant 430 ans et le moment était venu » (1953688) : l'alliance abrahamique (1943) arrive à échéance (1513) — Dieu « s'apprêtait à montrer comment il applique ce nom : il fait être ».</p>
+<h4>4 · Explication du texte</h4>
+<p>« Shaddaï → JÉHOVAH » (6:3) : les patriarches ont connu le NOM (la Genèse l'emploie 160+ fois !) mais pas sa MANIFESTATION comme Libérateur — « il ne s'agit pas du nom lui-même, mais de ce qu'il signifie en action » (doctrine : connaître = éprouver, cf. « vous SAUREZ que je suis Jéhovah », 6:7 — savoir par délivrance). « Ga'al » (6:6, RACHETER) : le rachat du proche-parent (go'el : celui qui rachète l'esclave parent, Lv 25:47-49 ; qui venge, Nb 35:19 ; qui épouse la veuve, Rt 4) — Dieu se fait GO'EL d'Israël : parent rédempteur, pas seulement libérateur politique. « BRAS PUISSANT (zéroa netuya, bras étendu) » (6:6) : l'anthropomorphisme de la puissance en acte (cf. Jr 32:17, « rien ne te sera impossible ») — le bras frappera dix fois. « MON PEUPLE / votre DIEU » (6:7) : formule d'alliance (cf. Jr 31:33) — l'Exode est un MARIAGE national.</p>
+<h4>5 · Interprétation</h4>
+<p>DÉLIVRÉS (Ex 12:51 — P040) : « CE JOUR-LÀ (betsem hayyom, 14 Nisan 1513), Jéhovah fit sortir d'Égypte les fils d'Israël, selon leurs armées » — date coulée dans le bronze calendaire (cf. Ex 12:40-41, « au bout de 430 ans, CE JOUR-LÀ » : l'échéance abrahamique au jour près !). SAUVÉS (Ex 14:30-31 — P040) : « Jéhovah sauva Israël de la main des Égyptiens… le peuple craignit et CRUT en Jéhovah et en Moïse » — « vous SAUREZ » (6:7) accompli : le savoir naît devant la mer refermée. HÉRITIERS (Jos 21:43 — P040) : « Jéhovah donna à Israël TOUT le pays qu'il avait JURÉ… ils en prirent possession et s'y établirent » + 21:45 (« aucune parole ne resta sans effet ») : le « pays juré » (6:8) livré avec certificat de conformité. Les quatre « JE » (6:6-7) font l'objet des QUATRE COUPES de la Pâque juive (sanctification, plaies, rédemption, louange — tradition du séder adossée à Ex 6:6-7 !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1943 (alliance)</td><td>Promesses pendantes 430 ans (Ga 3:17)</td></tr>
+<tr><td class="d">~1514 (échec)</td><td>Paille supprimée ; « pourquoi ? » (5:6-22)</td></tr>
+<tr><td class="d">~1514 (Nom)</td><td>« JE SUIS JÉHOVAH » + 4 JE (6:2-8)</td></tr>
+<tr><td class="d">1513 (plaies)</td><td>Bras étendu : 10 punitions</td></tr>
+<tr><td class="d">14 Nisan 1513</td><td>« CE JOUR-LÀ » : sortie en armées (12:51)</td></tr>
+<tr><td class="d">1513 (mer)</td><td>Sauvés ; « ils crurent » (14:30-31)</td></tr>
+<tr><td class="d">~1473 (terre)</td><td>TOUT le pays ; aucune parole sans effet (Jos 21:43-45)</td></tr>
+<tr><td class="d">Séder (mémoire)</td><td>4 coupes = les 4 JE de 6:6-7</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>430 ANS (Ex 12:40-41 ; Ga 3:17 — Paul compte de l'alliance, 1943, à la Loi, 1513) : « promesses pendantes durant 430 ans » (1953688) — l'échéance la plus longue de la Bible, honorée « ce jour-là ». PAILLE SUPPRIMÉE (5:7-9) : briques de Goshen SANS paille attestées (fouilles : briques à faible teneur végétale dans les niveaux du Nouvel Empire — cohérence technique). « ILS N'ÉCOUTÈRENT PAS » (6:9, miqqotser-ruah, « à cause de l'angoisse/brièveté d'esprit ») : le découragement comme surdité — Dieu parle quand même, et répète par des ACTES (les plaies sont des sermons frappés). 600 000 HOMMES (12:37) : « selon leurs armées » (12:51, tsivot : armées, corps organisés) — des esclaves sortent en formation militaire : le peuple-naît-armée.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>GOSHEN → MER → SINAÏ → CANAAN : l'itinéraire de 6:6-8 en carte — délivrance (sortie de Goshen), rachat (mer Rouge : le prix payé par l'armée de Pharaon), peuple (Sinaï : l'alliance), terre (Canaan : l'héritage). « Pays de CANAAN, où ils vivaient en étrangers » (6:4) : le pays des tentes patriarcales devient le pays des villes israélites — même sol, nouveau statut. RAMSÈS (12:37, point de départ) : Pi-Ramsès, capitale du delta (Qantir fouillée : palais, écuries, ateliers de briques !) — l'Exode part du centre du pouvoir. « Le pays que j'ai JURÉ » (6:8, nashbati : serment, main levée — cf. Gn 22:16, Moriya !) : la géographie promise à Abraham (Gn 15:18) est exécutée à Josué (21:43) — 430 ans de titre foncier divin.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Chronologie : alliance 1943 (Gn 12, Abraham 75 ans) + 430 ans (Ex 12:40 ; Ga 3:17) = 1513 (Exode) — puis 479 ans (1R 6:1) = 1034 (Temple) : la chaîne interne est arithmétiquement cohérente (1943 → 1513 → 1034). Philologie : « ehyeh » (3:12, 3:14) / « YHWH » (6:2) — même racine hayah (être/devenir) : « il fait être » (1953688) — le Nom comme programme (Dieu devient tout ce qu'il faut : libérateur, guerrier, pourvoyeur). Droit du go'el : rachat familial documenté (Lv 25 ; Jr 32:7-8, Jérémie rachète le champ d'Anathoth : procédure réelle appliquée) — « je vous rachèterai » est un acte juridique, pas une image. Papyrologie : briques et corvées du delta (Papyrus Anastasi, Leiden : quotas de briques, travailleurs sémitiques ?) — cadre plausible, pas preuve directe (voir limites).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Échec (paille supprimée, 5:6-9) → « Pourquoi ? » (5:22) → Surdité (6:9, angoisse) → « JE SUIS JÉHOVAH » (le Nom en action) → Shaddaï connu, Jéhovah à éprouver → 4 JE (délivrer, libérer, RACHETER/go'el, prendre pour peuple) → Bras étendu + grandes punitions → « Vous SAUREZ » → Pays JURÉ → CE JOUR-LÀ (12:51, 430 ans au jour près !) → Mer : ils CRURENT (14:31) → TOUT le pays (Jos 21:43-45) → 4 coupes du séder.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Je ne me suis pas fait connaître » (6:3) : les patriarches EMPLOIENT le nom (Gn 22:14, Jéhovah-Yiré !) — la fiche suit la lecture classique (connaître = éprouver la libération), pas la lecture critique (introduction tardive du nom). 430 ans : de l'alliance (Ga 3:17) ou du séjour (Ex 12:40 LXX : « en Égypte ET en Canaan » !) — la LXX précise les deux pays : la fiche suit 1943 → 1513 (lignée paulinienne). Papyrus et briques : cadre cohérent, jamais « preuve de l'Exode » — la fiche dit « plausible », pas « prouvé ». 600 000 hommes : chiffre du texte (débattu en critique) — cité comme tel, exploité comme « armées organisées » (12:51).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Promesses pendantes</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1943 (alliance)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paille supprimée</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Échec</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JE SUIS + 4 JE</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">6:2-8</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CE JOUR-LÀ</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">12:51</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ils crurent</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14:31</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TOUT le pays</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 21</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/2/6">Exode 6 — Bible d'étude (2-8, je suis Jéhovah)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/2/6</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1953688">Questions de lecteurs (Ex 6:1-8, le nom « il fait être »)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1953688</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965081">Jéhovah — nom du vrai Dieu (Ex 6:2-3, le nom à connaître)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965081</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE040 — Le bras étendu : délivrés, rachetés, héritiers</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE041">
+<div class="visuel"><img src="images/prophe_GE041_nom.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE041 · CATÉGORIE GE</div>
+<h3>Mon nom sera proclamé par toute la terre</h3>
+<div class="ref">Exode 9:16</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dessein des plaies (puissance → nom → nations)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE041</div><audio controls preload="none" src="audio/fiche_GE41_nom.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE41_nom.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Exode 9:16</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dessein des plaies (puissance → nom → nations)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Exode — P041 (9:16 : mon nom sera proclamé par toute la terre) ; accomplissement Ex 9:16 ; Rm 9:17</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Cette fois, j'envoie TOUS mes fléaux contre ton cœur. » (9:14 — tous !)</li>
+<li>« Pour que tu SACHES que nul n'est comme moi. » (9:14 — que tu saches !)</li>
+<li>« Je t'ai laissé SUBSISTER (suscité) À DESSEIN. » (9:16 — à dessein !)</li>
+<li>« Pour te montrer MA PUISSANCE. » (9:16 — ma puissance !)</li>
+<li>« Et pour que MON NOM soit proclamé PAR TOUTE LA TERRE. » (9:16 — TOUTE LA TERRE !)</li>
+<li>« L'Écriture dit à Pharaon : je t'ai suscité À DESSEIN. » (Rm 9:17 — Paul cite !)</li>
+<li>« Afin que mon nom soit proclamé par toute la terre. » (Rm 9:17 — Paul confirme !)</li>
+<li>« Nous avons APPRIS… notre cœur a fondu. » (Jos 2:9-11, Rahab — appris !)</li>
+<li>« Malheur à nous ! Ces dieux qui ont frappé l'Égypte ! » (1S 4:8, Philistins — malheur !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le palais, 1513 — AVANT la 7e plaie (la grêle). Six fléaux ont frappé ; Pharaon a promis, mentis, endurci SON cœur (7:22 ; 8:15, 19, 32 ; 9:7 — cinq fois, C'EST LUI qui s'endurcit). Moïse annonce la grêle — et, en préambule, le DESSIN révélé : Dieu aurait pu effacer Pharaon d'un seul coup (9:15, « je t'aurais exterminé ») — il l'a MAINTENU DEBOUT (he'emadtikha : fait tenir debout, laissé subsister, suscité — les versions oscillent, le sens demeure : Pharaon vit encore PAR DÉCISION divine). POURQUOI ? Double finalité : MONTRER (la puissance, en démonstration graduée — dix plaies, pas une !) et PROCLAMER (le nom, en diffusion mondiale — « par toute la terre »). La 7e plaie n'est pas une punition de plus : c'est un COMMUNIQUÉ.</p>
+<h4>4 · Explication du texte</h4>
+<p>« He'emadtikha » (9:16) : hiphil de amad (tenir debout) — « je t'ai fait tenir debout / subsister » : Pharaon est un ACTEUR maintenu sur scène — « je t'ai SUSCITÉ » (Rm 9:17, exègeira : éveillé, dressé, fait paraître — Paul traduit l'idée : Dieu a DRESSÉ Pharaon comme on dresse un témoin… à charge). « À DESSEIN (ba'avur zot, pour cela même) » : finalité explicite — l'Exode est une DÉMONSTRATION THÉOLOGIQUE, pas seulement une libération nationale. « MA PUISSANCE (kohi) » : la force en actes gradués (eau-sang → grenouilles → … → grêle → … → premiers-nés : crescendo calculé). « MON NOM (shemi) » : YHWH — proclamé (sapher : raconter, réciter, publier — même verbe que « les cieux RACONTENT », Ps 19:2 !) « PAR TOUTE LA TERRE (bekhol-ha'arets) » : l'audience est mondiale — l'Égypte, superpuissance du Bronze récent, est la tribune.</p>
+<h4>5 · Interprétation</h4>
+<p>PAUL AUTHENTIFIE : « L'ÉCRITURE dit à Pharaon » (Rm 9:17 — P041 : Paul cite Ex 9:16 comme parole TOUJOURS VIVANTE — « dit », présent ! — et l'applique à l'élection : Dieu use des puissants pour ses desseins). LES NATIONS CONFIRMENT : Rahab (Jos 2:9-11 : « NOUS AVONS APPRIS comment Jéhovah a mis à sec la mer Rouge… notre cœur a FONDU » — Canaan a entendu, 40 ans après !) ; les Philistins (1S 4:8 : « malheur ! ces dieux puissants qui ont FRAPPÉ l'Égypte » — 300 ans après, Gaza tremble encore !) ; Jéthro le Madianite (Ex 18:1, « il APPRIT tout »). LA PROCLAMATION CONTINUE : la Pâque annuelle (Ex 12:24-27, « quand vos fils vous diront… »), les Psaumes (78, 105, 106, 135, 136 — l'Exode chanté), les prophètes, les Évangiles (Jn 6, la manne ; 1Co 10, « nos pères sous la nuée »), 3 500 ans de séder : « toute la terre » n'a pas fini d'entendre.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Plaies 1-5</td><td>Pharaon S'endurcit (kaved, 5 fois)</td></tr>
+<tr><td class="d">9:12 (tournant)</td><td>Jéhovah AFFERMIT (hazaq)</td></tr>
+<tr><td class="d">9:16 (dessein)</td><td>Maintenu pour MONTRER + PROCLAMER</td></tr>
+<tr><td class="d">Plaies 7-10+mer</td><td>Démonstration achevée</td></tr>
+<tr><td class="d">Ex 18:1 (Madian)</td><td>Jéthro APPRIT tout</td></tr>
+<tr><td class="d">Jos 2:10 (Canaan)</td><td>Rahab : cœur fondu, 40 ans après</td></tr>
+<tr><td class="d">1S 4:8 (Gaza)</td><td>Philistins : « malheur ! », 300 ans après</td></tr>
+<tr><td class="d">Rm 9:17 (Paul)</td><td>« L'Écriture DIT à Pharaon »</td></tr>
+<tr><td class="d">~1208 (pierre)</td><td>Merneptah nomme Israël</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>SÉQUENCE DE L'ENDURCISSEMENT : plaies 1-5 : Pharaon S'endurcit (7:22 ; 8:15, 19, 32 ; 9:7 — son cœur « s'appesantit », kaved : c'est LUI) ; À PARTIR de 9:12 (« Jéhovah endurcit/fortifia le cœur de Pharaon », hazaq : rendre fort, affermir) : Dieu CONFIRME le choix — il affermit le rebelle DANS sa rébellion pour achever la démonstration (9:16 suit 9:12 : l'endurcissement sert la proclamation !). STÈLE DE MERNEPTAH (~1208) : « Israël est ravagé, sa semence n'est plus » — Pharaon se vante d'avoir écrasé… un peuple NOMMÉ Israël en Canaan : 300 ans après l'Exode, l'Égypte ELLE-MÊME atteste l'existence du peuple proclamé (ironie lapidaire : en niant Israël, Merneptah le date). PAPYRUS IPOUWER (« Admonitions ») : chaos du Nil en sang (?), ténèbres, cris — parallèle ÉGYPTIEN débattu (voir limites).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'ÉGYPTE, TRIBUNE DU MONDE : superpuissance du Bronze récent (XVIIIe dynastie, empire du Nil à l'Euphrate) — frapper Pharaon, c'est frapper DEVANT toutes les ambassades (vassaux cananéens, Hittites, Mitanni, Kassites : les archives d'Amarna montrent le réseau diplomatique — TOUT le Levant regarde l'Égypte). « PAR TOUTE LA TERRE » : Jéricho (Rahab), Gaza (Philistins), Madian (Jéthro), Moab (Nb 22:5, Balak « voit tout ce qu'Israël a fait »), Édom (Nb 20:15, « les Égyptiens nous ont maltraités » — mémoire partagée !) : le proche monde entier reçoit le communiqué. LA MER ROUGE : théâtre central — « mis à sec » (Jos 2:10) : le lieu de la démonstration devient toponyme de la proclamation (« la mer des Joncs » chantée aux Ps 106:9, 136:13).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Lexicographie : kaved (lourd — Pharaon s'alourdit, plaies 1-5) vs hazaq (fort — Dieu affermit, dès 9:12) vs qashah (dur — 7:3 annonce) : TROIS verbes pour l'endurcissement — la nuance dit la séquence (auto-alourdissement PUIS affermissement divin). Rhétorique paulinienne : Rm 9:17 (« l'Écriture DIT », présent de citation vivante) — Paul fait d'Ex 9:16 un PRINCIPE (v. 18, « il fait miséricorde à qui il veut ») : l'exégèse apostolique élève le cas en loi. Diffusion : « sapher » (raconter/publier) — mécanisme oral (récits de caravanes, espions de Jéricho, Philistins de l'arche) + mécanisme rituel (Pâque annuelle, Deutéronome lu tous les 7 ans, Dt 31:10-13) : la proclamation a ses médias — bouche et calendrier.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>6 plaies : Pharaon S'endurcit (kaved, c'est lui !) → 9:12 : Dieu AFFERMIT (hazaq : le choix confirmé) → 9:14-16 : le DESSIN révélé (j'aurais pu t'exterminer — je t'ai MAINTENU pour montrer + proclamer) → 4 plaies restantes (démonstration achevée) → Mer (point d'orgue) → Jéthro apprend → Balak voit → Rahab fond (40 ans) → Philistins tremblent (300 ans) → Paul cite (« l'Écriture DIT », présent !) → Pâque annuelle : « toute la terre », tous les ans.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Endurcissement : la fiche suit la SÉQUENCE (auto PUIS affermi) — mystère de la liberté assumé, pas résolu ; Rm 9:18 (« il endurcit qui il veut ») cité comme Paul, pas comme système (pas de « double prédestination » augustinienne dans cette fiche : hors registre). Papyrus Ipouwer : parallèles troublants (Nil de sang, ténèbres) MAIS datation et genre débattus (lamentation littéraire, Moyen Empire ?) — cité en « parallèle débattu », jamais en preuve. Merneptah (1208) : atteste ISRAËL, pas l'Exode — la fiche dit exactement cela. « Toute la terre » : le monde connu du récit (Proche-Orient) + postérité du récit (le monde lecteur) — deux cercles distingués.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Il s'endurcit</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Plaies 1-5</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dieu affermit</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">9:12</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Montrer + proclamer</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9:16</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ils apprennent</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jéthro/Rahab</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gaza tremble</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1S 4:8</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paul cite</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rm 9:17</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/2/9">Exode 9 — Bible d'étude (14-16, dessein révélé)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/2/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/45/9">Romains 9 — Bible d'étude (17, Paul cite Pharaon)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/45/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/9">Exode 9 — lecture (grêle, endurcissement)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/9</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE041 — Mon nom sera proclamé par toute la terre</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE042">
+<div class="visuel"><img src="images/prophe_GE042_paque.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE042 · CATÉGORIE GE</div>
+<h3>La nuit du jugement : les dieux frappés, le sang signe</h3>
+<div class="ref">Exode 12:12, 13</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Pâque (jugement → signe → sortie)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE042</div><audio controls preload="none" src="audio/fiche_GE42_paque.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE42_paque.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Exode 12:12, 13</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Pâque (jugement → signe → sortie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Exode — P042 (12:12, 13 : jugement sur les dieux de l'Égypte ; le sang comme signe) ; accomplissement Ex 12:29-30, 51</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Cette nuit-là, je parcourrai l'Égypte. » (12:12 — cette nuit-là !)</li>
+<li>« Je frapperai TOUS les premiers-nés, hommes et bêtes. » (12:12 — tous !)</li>
+<li>« Et j'exécuterai mon JUGEMENT sur TOUS LES DIEUX d'Égypte. » (12:12 — TOUS LES DIEUX !)</li>
+<li>« JE SUIS JÉHOVAH. » (12:12 — JE SUIS !)</li>
+<li>« Le SANG sera pour vous un SIGNE sur les maisons. » (12:13 — un signe !)</li>
+<li>« Quand je verrai le sang, je PASSERAI PAR-DESSUS vous. » (12:13 — par-dessus !)</li>
+<li>« Aucun fléau destructeur ne vous touchera. » (12:13 — aucun !)</li>
+<li>« À MINUIT, Jéhovah frappa tous les premiers-nés. » (12:29 — MINUIT !)</li>
+<li>« Il y eut un GRAND CRI en Égypte. » (12:29 — grand cri !)</li>
+<li>« Pas une maison sans un mort. » (12:30 — pas une !)</li>
+<li>« Christ, notre PÂQUE, a été immolé. » (1Co 5:7 — NOTRE PÂQUE !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Goshen, 14 Nisan 1513 — veille de la sortie. Neuf plaies ont frappé ; Pharaon a dit : « ne reparais plus » (10:28). Dernières instructions (12:1-28) : agneau sans défaut, mâle d'un an (12:5), immolé « entre les deux soirs » (12:6, au crépuscule), rôti (pas bouilli ! 12:9), mangé hâtivement (reins ceints, sandales, bâton, 12:11 — tenue de départ !), sang à l'hysope sur linteau + deux montants (12:22). Puis l'annonce : CETTE nuit (hal-laylah, démonstratif d'imminence !), double action — FRAPPE (premiers-nés) et JUGEMENT (dieux). « Les dix plaies exprimèrent toutes un jugement contre les dieux d'Égypte, en particulier la dixième » (it, Pâque) : chaque fléau visait un dieu (Nil-Hapi, grenouilles-Héqet, soleil-Râ, Pharaon-fils-de-Râ…) ; la dixième les juge TOUS ensemble — tribunal nocturne, verdict unique.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Shephatim » (12:12, jugements) : actes de TRIBUNAL — Jéhovah siège, les dieux comparaissent (cf. Ps 82, « Dieu se tient dans l'assemblée divine » ; 1R 18, le Carmel : même tribunal, en plein jour). « Sur TOUS (bekhol) les dieux » : exhaustivité — aucun panthéon n'est épargné (Amôn-Râ, Osiris, Râ, Pharaon-dieu…). « Le SANG (haddam) sera un SIGNE (ot) » (12:13) : MÊME mot qu'en 3:12 (« voici le signe ») ! Le signe de la montagne (promesse) et le signe du sang (protection) partagent le vocabulaire : Dieu signe ses rendez-vous en rouge. « Je PASSERAI PAR-DESSUS (pasah) » (12:13) : le verbe qui nomme la FÊTE (Pâque = pesah, passage) — Dieu « saute » les maisons marquées : le jugement a des yeux, il LIT le sang. « Pour VOUS (lakhem) » (12:13) : le signe est POUR les habitants (assurance visible), pas pour Dieu qui sait — l'obéissance affichée rassure l'obéissant.</p>
+<h4>5 · Interprétation</h4>
+<p>MINUIT (12:29 — P042) : « à minuit (bahatsi hal-laylah), Jéhovah frappa tous les premiers-nés d'Égypte, du premier-né de Pharaon au premier-né du prisonnier » — l'échelle sociale entière (trône → cachot : personne n'échappe au tribunal). « GRAND CRI… pas une maison sans un mort » (12:30 — P042) : le cri répond au cri des esclaves (3:7, « j'ai entendu leur cri » !) — symétrie judiciaire. LE JUGEMENT DES DIEUX : bélier d'Amôn-Râ immolé (le sang sur les portes = « blasphème aux yeux des Égyptiens », it) ; taureaux premiers-nés d'Osiris abattus ; premier-né de Pharaon-fils-de-Râ mort (« l'impuissance de Râ et celle de Pharaon », it) : chaque dieu est frappé EN SON SYMBOLE. LA SORTIE (12:51 — P042) : « ce jour-là » — le jugement ouvre la porte. CHRIST (1Co 5:7) : « notre Pâque immolée » — os non brisé (12:46 → Jn 19:36 !), sang qui protège (Éph 1:7) : Paul lit la nuit de 1513 comme l'affiche de Golgotha.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">14 Nisan (jour)</td><td>Agneau entre les deux soirs ; sang à l'hysope (12:6-22)</td></tr>
+<tr><td class="d">CETTE NUIT</td><td>Parcours + frappe + jugement annoncés (12:12-13)</td></tr>
+<tr><td class="d">MINUIT</td><td>Tous les premiers-nés frappés (12:29)</td></tr>
+<tr><td class="d">Cri</td><td>« Pas une maison sans un mort » (12:30)</td></tr>
+<tr><td class="d">Dieux jugés</td><td>Bélier, taureau, Râ, Pharaon (it, Pâque)</td></tr>
+<tr><td class="d">Matin (sortie)</td><td>Ramsès → Souccoth ; multitude mélangée (12:37-38)</td></tr>
+<tr><td class="d">CE JOUR-LÀ</td><td>Sortie en armées (12:51)</td></tr>
+<tr><td class="d">Golgotha</td><td>Os intacts (Jn 19:36) ; notre Pâque (1Co 5:7)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>14 NISAN 1513 : date calendaire (12:6, 18 — pleine lune de printemps : la nuit du jugement est une nuit de pleine lune — on VOIT le sang sur les portes !). « ENTRE LES DEUX SOIRS » (12:6, ben-ha'arbayim : crépuscule, coucher du soleil) : l'agneau meurt quand le jour meurt — chronologie liturgique au quart d'heure. L'HYSOPE (12:22, ezov : origan de Syrie, touffe absorbante) : goupillon végétal — même plante en Lv 14 (lèpre) et Ps 51:9 (« purifie-moi avec l'hysope ») : l'herbe des purifications. LE DESTRUCTEUR (12:23, hammashhit : ange ? fléau personnifié ?) — « Jéhovah… ne permettra pas au destructeur d'entrer » : le jugement est CANALISÉ (2S 24:16, même « destructeur » arrêté à Jérusalem !). PREMIERS-NÉS (bekhor) : droit d'aînesse égyptien décapité — de la couronne (Pharaon) au cachot.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>GOSHEN ÉPARGNÉ : comme pour les plaies 4-10 (8:22, « je distinguerai Goshen » ; 9:26, « seul Goshen sans grêle » ; 10:23, « lumière chez les Israélites »), la distinction est GÉOGRAPHIQUE avant d'être domestique : le pays + le sang, double marquage. « De Pharaon (palais, delta) au prisonnier (cachot) » (12:29) : TOUTE l'Égypte, du nord au sud — aucune nomes épargnée. RAMSÈS → SOUCCOTH (12:37) : la sortie commence le matin même — 600 000 hommes + « multitude mélangée » (erev-rav, 12:38 : Égyptiens convertis par la nuit ! — le jugement fait des prosélytes). Les TOMBES : « les Égyptiens enterraient ceux que Jéhovah avait frappés » (Nb 33:4) — deuil national pendant qu'Israël marche : deux cortèges, sens inverses.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Astronomie : 14 Nisan = pleine lune (mois lunaire, 14e jour) — la nuit du jugement est la nuit la plus CLAIRE du mois : visibilité maximale (sang, cortèges, deuil) — le calendrier EST la mise en scène. Zootechnie : agneau « sans défaut, mâle, d'un an » (12:5, tamim : intact — même mot que Noé « intègre », 6:9 !) ; « pas un os brisé » (12:46 → Jn 19:36 : côteaux intacts du Crucifié — la prophétie diététique devient prophétie christologique). Botanique : hysope (Origanum syriacum ?) — touffe capillaire, aspersion efficace : le goupillon naturel. Sémiologie : sang sur BOIS (linteau + montants = cadre de porte : le sang encadre la sortie — ceux qui sortent passent SOUS le sang : préfiguration spatiale ? — lecture proposée, signalée comme telle).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>9 plaies (avertissements gradués) → Instructions (agneau, hysope, tenue de départ) → CETTE NUIT (démonstratif !) : double action → FRAPPE (premiers-nés, trône → cachot) + JUGEMENT (tous les dieux, chacun en son symbole) → SANG = SIGNE (ot, comme 3:12 !) → PASSAGE par-dessus (pasah → Pâque) → MINUIT : grand cri, pas une maison (12:29-30) → Matin : sortie, multitude mélangée (12:37-38, 51) → Os non brisé (12:46 → Jn 19:36) → « Christ notre Pâque » (1Co 5:7).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le DESTRUCTEUR (12:23) : ange ? force ? — le texte ne précise pas (cf. 2S 24:16, ange à l'épée) : la fiche cite sans identifier. « Tous les dieux » (12:12) : correspondances plaies-dieux (Nil-Hapi, soleil-Râ…) — classiques et plausibles, mais le SEUL verset explicite est 12:12 (jugement global) : la fiche distingue le verset (jugement) des correspondances (lecture). Sang-encadrement (lecture spatiale) : proposition de la fiche, signalée. Typologie christique (1Co 5:7 ; Jn 19:36) : paulinienne et johannique — citée comme telle, registre à l'appui. Pleine lune : astronomie du calendrier lunaire — fait, pas spéculation.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'agneau, le sang</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugement annoncé</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Cette nuit</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tous frappés</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Minuit</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas une maison</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Cri</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sortie !</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Matin</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Notre Pâque</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Golgotha</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/2/12">Exode 12 — Bible d'étude (12-13, jugement et signe)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/2/12</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200003397">Pâque — Étude perspicace (jugement des dieux, sang)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200003397</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1001061106">Exode — Aperçu et texte (12:12, je suis Jéhovah)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1001061106</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE042 — La nuit du jugement : les dieux frappés, le sang signe</span><span>Catégorie GE</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie GE</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>GE037 — Benjamin : le loup du matin et du soir</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le loup</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1711 (oracle)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Éhud, 80 ans</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 3</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">26 000 + 700</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 20</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Saül roi</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1S 9</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Butin partagé</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Est 8</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paul Benjamin</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rm 11</text>
+</svg>
+<h4>GE038 — Remontez mes ossements : le serment de Joseph</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Remontez mes os</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1657 (serment)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cercueil en Égypte</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">50:26</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Moïse prend</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">40 ans de route</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Désert</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La parcelle</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Sichem</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Par la foi</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Hé 11:22</text>
+</svg>
+<h4>GE039 — Vous servirez Dieu sur cette montagne</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Brûle sans finir</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1514 (buisson)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sur cette montagne</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3:12 (signe)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Peuple libéré</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (mer)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Devant la montagne</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3e mois</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Théophanie</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">19:16</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nous ferons tout</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Alliance</text>
+</svg>
+<h4>GE040 — Le bras étendu : délivrés, rachetés, héritiers</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Promesses pendantes</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1943 (alliance)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paille supprimée</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Échec</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JE SUIS + 4 JE</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">6:2-8</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CE JOUR-LÀ</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">12:51</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ils crurent</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14:31</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TOUT le pays</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 21</text>
+</svg>
+<h4>GE041 — Mon nom sera proclamé par toute la terre</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Il s'endurcit</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Plaies 1-5</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dieu affermit</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">9:12</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Montrer + proclamer</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9:16</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ils apprennent</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jéthro/Rahab</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gaza tremble</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1S 4:8</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paul cite</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rm 9:17</text>
+</svg>
+<h4>GE042 — La nuit du jugement : les dieux frappés, le sang signe</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'agneau, le sang</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugement annoncé</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Cette nuit</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tous frappés</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Minuit</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas une maison</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Cri</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sortie !</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Matin</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Notre Pâque</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Golgotha</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-7 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

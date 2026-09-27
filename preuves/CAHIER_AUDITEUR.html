@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CAHIER DE L'AUDITEUR — projet PREUVES</title>
+<style>
+:root{--bleu:#0B2545;--or:#E9C46A;--creme:#F7F4EC;--gris:#5b6472;}
+*{box-sizing:border-box;}
+body{margin:0;background:#cfcabd;color:#1b2430;
+ font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.45;}
+.pg{width:210mm;min-height:297mm;margin:0 auto 12mm;background:var(--creme);
+ padding:14mm 15mm;page-break-after:always;}
+.garde{background:var(--bleu);color:#fff;padding:58px 46px;min-height:297mm;}
+.kicker{color:var(--or);text-transform:uppercase;letter-spacing:3px;font-size:12px;
+ font-weight:700;margin-bottom:14px;}
+.garde h1{font-size:40px;margin:0 0 12px;letter-spacing:.5px;line-height:1.1;}
+.garde .sous{font-size:16px;color:#c9d3e4;max-width:600px;}
+.garde .bloc{margin-top:36px;border-left:3px solid var(--or);padding-left:16px;}
+.garde .bloc h3{color:#fff;font-size:15px;margin:0 0 6px;border:none;padding:0;
+ text-transform:none;letter-spacing:0;}
+.garde .bloc p{color:#c9d3e4;font-size:13px;margin:0;}
+.garde .blocs{display:flex;flex-direction:column;gap:22px;margin-top:30px;}
+.garde .chiffres{display:flex;gap:30px;margin-top:38px;flex-wrap:wrap;}
+.garde .chiffres div{border-left:3px solid var(--or);padding-left:13px;}
+.garde .chiffres b{display:block;font-size:27px;color:#fff;}
+.garde .chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;letter-spacing:1px;}
+h1.t{font-size:27px;color:var(--bleu);margin:0 0 4px;}
+.st{color:var(--gris);font-size:13px;margin-bottom:16px;}
+h3{font-size:12px;text-transform:uppercase;letter-spacing:1.6px;color:var(--bleu);
+ margin:16px 0 8px;border-left:4px solid var(--or);padding-left:8px;}
+p{font-size:12.5px;margin:0 0 9px;}
+.trou{border:1px solid #d8d2c4;border-radius:5px;background:#fff;padding:11px 13px;
+ margin-bottom:9px;break-inside:avoid;}
+.trou .hd{display:flex;justify-content:space-between;align-items:baseline;
+ border-bottom:2px solid var(--or);padding-bottom:5px;margin-bottom:8px;}
+.trou .hd b{font-size:15px;color:var(--bleu);}
+.trou .hd .dt{font-size:19px;font-weight:800;color:var(--bleu);}
+.trou .ref{font-family:Consolas,monospace;font-size:10.5px;color:var(--gris);
+ margin-bottom:8px;}
+.q{display:flex;gap:8px;font-size:12.5px;margin-bottom:7px;align-items:flex-start;}
+.q .n{color:var(--or);font-weight:800;min-width:16px;}
+.q .t{flex:1;}
+.q .b{display:inline-block;min-width:120px;border-bottom:1.5px solid #0B2545;
+ margin-left:5px;}
+.ec{border:1px solid #d8d2c4;border-left:5px solid var(--bleu);background:#fff;
+ padding:10px 12px;margin-bottom:10px;break-inside:avoid;}
+.ec .hd{display:flex;justify-content:space-between;align-items:baseline;}
+.ec .hd b{font-size:13.5px;color:var(--bleu);}
+.ec .hd .m{font-size:11px;color:var(--gris);}
+.ec .sup{font-family:Consolas,monospace;font-size:10.5px;color:var(--gris);margin:3px 0 6px;}
+.ec .list{columns:2;column-gap:14px;font-size:11.5px;}
+.ec .qv{font-size:11.5px;font-style:italic;color:#5b6472;margin-top:6px;}
+.case{display:inline-block;width:12px;height:12px;border:1.5px solid var(--bleu);
+ margin-right:6px;vertical-align:-2px;}
+.lig{border-bottom:1px solid #cfc7b6;height:20px;margin-top:4px;}
+.cartes{display:grid;grid-template-columns:1fr 1fr;gap:8mm;}
+.carte{width:85mm;height:55mm;border:2px solid var(--bleu);border-radius:6px;background:#fff;
+ padding:6mm 7mm;display:flex;flex-direction:column;justify-content:space-between;
+ break-inside:avoid;overflow:hidden;}
+.carte.verso{background:var(--bleu);border-color:var(--or);color:#fff;}
+.carte .num{font-size:9px;letter-spacing:2px;font-weight:700;text-transform:uppercase;}
+.carte.r .num{color:var(--or);}
+.carte.v .num{color:var(--or);}
+.carte .obj{font-size:14px;font-weight:700;color:var(--bleu);line-height:1.25;}
+.carte .titreC{font-size:10px;color:var(--gris);text-transform:uppercase;letter-spacing:1px;}
+.carte.v .rep{font-size:10.5px;color:#e8edf6;line-height:1.32;}
+.carte.v .src{font-size:8px;color:#aab6cc;font-family:Consolas,monospace;line-height:1.25;
+ word-break:break-all;}
+table{border-collapse:collapse;width:100%;font-size:11.5px;}
+th,td{border:1px solid #d8d2c4;padding:4px 7px;text-align:left;vertical-align:top;}
+th{background:var(--bleu);color:#fff;font-size:10px;text-transform:uppercase;letter-spacing:.4px;}
+td.r{text-align:center;font-weight:800;color:var(--bleu);white-space:nowrap;}
+tr:nth-child(even) td{background:#fbf9f4;}
+.cadre{background:#fff8e8;border:1px solid var(--or);border-left:5px solid var(--or);
+ padding:10px 12px;font-size:12px;margin:10px 0;}
+.cadre.b{background:#fff;border-color:#dcd6c6;border-left-color:var(--bleu);}
+.src2{font-size:11px;}
+.src2 a{color:#1a4a8a;display:block;margin-bottom:4px;word-break:break-all;}
+ol,ul{margin:0 0 10px;padding-left:20px;}
+li{font-size:12.5px;margin-bottom:5px;}
+.pied{margin-top:auto;padding-top:8px;border-top:1px solid #d8d2c4;font-size:9.5px;
+ color:var(--gris);display:flex;justify-content:space-between;}
+.flexcol{display:flex;flex-direction:column;min-height:100%;}
+@media print{
+ body{background:#fff;}
+ .pg,.garde{page-break-after:always;margin:0;}
+ .carte{page-break-inside:avoid;}
+ @page{size:A4;margin:0;}
+}
+</style></head><body>
+
+<div class="garde">
+<div class="kicker">Bibliothèque privée · projet PREUVES · vague 8</div>
+<h1>CAHIER<br>DE L'AUDITEUR</h1>
+<div class="sous">Ce cahier ne contient aucune démonstration. Il contient des cases vides.
+On ne retient que ce qu'on a écrit soi-même : c'est la seule règle de ce carnet, et elle vaut
+pour tout le dossier.</div>
+<div class="chiffres">
+<div><b>3</b><span>parties</span></div>
+<div><b>8</b><span>fiches à trous</span></div>
+<div><b>13</b><span>fiches d'écoute</span></div>
+<div><b>8</b><span>cartes d'objection</span></div>
+</div>
+<div class="blocs">
+<div class="bloc"><h3>Partie A — Les huit fiches à trous</h3>
+<p>Huit dates, des blancs à remplir, un corrigé détachable à la fin. On remplit sans regarder,
+puis on vérifie. Ce qui reste blanc est ce qu'il reste à apprendre.</p></div>
+<div class="bloc"><h3>Partie B — Les treize fiches d'écoute</h3>
+<p>Une fiche par collection : on coche au fur et à mesure, on répond à une seule question,
+on note une seule phrase. Treize demi-pages reliées en un carnet.</p></div>
+<div class="bloc"><h3>Partie C — Les huit cartes d'objection</h3>
+<p>Format poche, 85 × 55 mm. Recto : l'objection, telle qu'elle est formulée. Verso : la réponse
+en trois lignes et le lien. On imprime recto-verso, on découpe, on garde quatre cartes sur soi.</p></div>
+</div>
+<p style="margin-top:34px;font-size:11px;color:#8f9cb5">
+Usage strictement privé. Aucun contenu protégé n'est reproduit. Liens exclusivement vers
+www.jw.org et wol.jw.org. Aucune date pour l'avenir.</p>
+</div>
+
+<div class="pg"><div class="flexcol">
+<h1 class="t">Mode d'emploi</h1>
+<div class="st">Trois parties, trois usages. On peut n'en utiliser qu'une.</div>
+
+<h3>La règle des vingt-quatre heures</h3>
+<p>La courbe de l'oubli est impitoyable : sans réactivation, la moitié de ce qui vient d'être
+entendu disparaît avant le lendemain. Ce cahier est construit autour de cette contrainte —
+chaque partie demande une réactivation <b>dans les vingt-quatre heures</b>, jamais après.</p>
+
+<h3>Partie A — comment remplir les fiches à trous</h3>
+<ol>
+<li>Lire la référence biblique dans la Bible, avant toute chose. Le cahier ne remplace pas le texte.</li>
+<li>Remplir les blancs <b>sans consulter</b> les fiches de dates. Se tromper est utile : un blanc
+faux se corrige, un blanc lu s'oublie.</li>
+<li>Ne passer à la fiche suivante qu'après avoir vérifié la précédente sur le corrigé (dernière page).</li>
+<li>Écrire la correction <b>en entier</b> à côté du blanc faux. Une correction lue ne corrige rien.</li>
+</ol>
+
+<h3>Partie B — comment tenir les fiches d'écoute</h3>
+<ol>
+<li>Cocher la piste aussitôt après l'écoute, pas à la fin de la collection.</li>
+<li>Répondre à la question posée en bas de fiche. Une phrase. Pas plus.</li>
+<li>Noter le support ouvert en même temps, si ce n'était pas celui indiqué.</li>
+<li>Relire sa phrase le lendemain. C'est la réactivation des vingt-quatre heures.</li>
+</ol>
+
+<h3>Partie C — comment porter les cartes</h3>
+<ol>
+<li>Imprimer la page recto, retourner la feuille, imprimer la page verso. Vérifier sur une
+feuille brouillon avant d'imprimer le beau papier.</li>
+<li>Découper au massicot ou aux ciseaux, en suivant le cadre.</li>
+<li>Ne garder sur soi que <b>quatre cartes</b> : celles des objections que l'on rencontre
+réellement. Une carte jamais sortie de la poche ne sert à rien.</li>
+<li>Au verso, le lien est écrit en clair : on le recopie, on ne le récite pas de mémoire.</li>
+</ol>
+
+<div class="cadre"><b>Ce que ce cahier ne fait pas.</b> Il ne prouve rien, il ne convainc
+personne, il ne remplace aucune lecture de la Bible. Il sert à une seule chose : transformer une
+écoute en souvenir. Tout le reste appartient à la conversation, qui est toujours une affaire
+de personne à personne.</div>
+
+<div class="pied"><span>Cahier de l'auditeur · projet PREUVES</span>
+<span>2026-09-24 · vague 8</span></div>
+</div></div>
+
+<div class="pg"><div class="flexcol">
+<h1 class="t">Partie A — Les huit fiches à trous</h1>
+<div class="st">Remplir sans consulter. Vérifier ensuite sur le corrigé, à la fin du cahier.</div>
+
+<div class="trou">
+<div class="hd"><div><b>Fiche 1 / 8</b> — Jérusalem dévastée — le début des 70 ans</div><div class="dt">607 av. n. è.</div></div>
+<div class="ref">Jérémie 25:11, 12 · Jérémie 29:10 · 2 Chroniques 36:21 · Daniel 9:2</div>
+<div class="q"><span class="n">1.</span><span class="t">Les exilés sont de retour à Jérusalem à l’automne <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">2.</span><span class="t">Jérémie annonce une désolation de <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">3.</span><span class="t">Opération : automne 537 − 70 ans = automne <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">4.</span><span class="t">Jérusalem tombe le 9 Tammouz ; le 10 Ab, Nébuzaradan détruit la ville — 2 Rois <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">5.</span><span class="t">La majorité des historiens profanes retient <span class="b">&nbsp;</span></span></div>
+<div class="q" style="margin-top:9px"><span class="n">▸</span><span class="t"><b>Accomplissement, en une phrase :</b></span></div>
+<div class="lig"></div><div class="lig"></div>
+</div>
+<div class="trou">
+<div class="hd"><div><b>Fiche 2 / 8</b> — Babylone tombe — le fleuve et les portes</div><div class="dt">539 av. n. è.</div></div>
+<div class="ref">Isaïe 44:27, 28 · Isaïe 45:1, 2 · Jérémie 50:38 · Daniel 5</div>
+<div class="q"><span class="n">1.</span><span class="t">La Chronique de Nabonide situe la chute de Babylone le 16 <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">2.</span><span class="t">Soit, dans notre calendrier <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">3.</span><span class="t">Le roi perse nommé par son nom plus d’un siècle à l’avance <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">4.</span><span class="t">Cette date est la seule que <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">5.</span><span class="t">Le document profane : la Chronique de Nabonide et le <span class="b">&nbsp;</span></span></div>
+<div class="q" style="margin-top:9px"><span class="n">▸</span><span class="t"><b>Accomplissement, en une phrase :</b></span></div>
+<div class="lig"></div><div class="lig"></div>
+</div>
+<div class="trou">
+<div class="hd"><div><b>Fiche 3 / 8</b> — Le retour d’exil — la fin des 70 ans</div><div class="dt">537 av. n. è.</div></div>
+<div class="ref">Jérémie 29:10 · 2 Chroniques 36:22, 23 · Esdras 1:1-4 · Esdras 3:1</div>
+<div class="q"><span class="n">1.</span><span class="t">D’après la tablette « Strassmaier, Cyrus n° 11 », la 1ʳᵉ année de Cyrus va du 17/18 mars 538 au 4/5 mars <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">2.</span><span class="t">Le décret est donc publié à la fin de l’hiver ou au début du printemps <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">3.</span><span class="t">Les exilés arrivent à Jérusalem juste avant le <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">4.</span><span class="t">L’autel est relevé ; les fondations du temple sont posées l’année suivante <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">5.</span><span class="t">La désolation prend fin parce que le pays est de nouveau <span class="b">&nbsp;</span></span></div>
+<div class="q" style="margin-top:9px"><span class="n">▸</span><span class="t"><b>Accomplissement, en une phrase :</b></span></div>
+<div class="lig"></div><div class="lig"></div>
+</div>
+<div class="trou">
+<div class="hd"><div><b>Fiche 4 / 8</b> — L’ordre de rebâtir — le départ des 70 semaines</div><div class="dt">455 av. n. è.</div></div>
+<div class="ref">Daniel 9:24, 25 · Néhémie 2:1-8 · Néhémie 6:15</div>
+<div class="q"><span class="n">1.</span><span class="t">Néhémie obtient l’ordre de rebâtir la <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">2.</span><span class="t">Néhémie exerce la charge de <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">3.</span><span class="t">Le règne d’Artaxerxès commence en <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">4.</span><span class="t">7 semaines + 62 semaines = 69 semaines = <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">5.</span><span class="t">455 + 483 = <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">6.</span><span class="t">La muraille est achevée après <span class="b">&nbsp;</span></span></div>
+<div class="q" style="margin-top:9px"><span class="n">▸</span><span class="t"><b>Accomplissement, en une phrase :</b></span></div>
+<div class="lig"></div><div class="lig"></div>
+</div>
+<div class="trou">
+<div class="hd"><div><b>Fiche 5 / 8</b> — Le Messie paraît — au bout des 69 semaines</div><div class="dt">29 de n. è.</div></div>
+<div class="ref">Daniel 9:25 · Luc 3:1, 21-23 · Actes 10:38</div>
+<div class="q"><span class="n">1.</span><span class="t">69 semaines d’années = <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">2.</span><span class="t">Luc date le début du ministère de Jean de la <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">3.</span><span class="t">Tibère règne à partir du 17 août <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">4.</span><span class="t">Référence du repère profane : Luc <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">5.</span><span class="t">Jésus est alors âgé d’environ <span class="b">&nbsp;</span></span></div>
+<div class="q" style="margin-top:9px"><span class="n">▸</span><span class="t"><b>Accomplissement, en une phrase :</b></span></div>
+<div class="lig"></div><div class="lig"></div>
+</div>
+<div class="trou">
+<div class="hd"><div><b>Fiche 6 / 8</b> — Le Messie retranché — à la moitié de la semaine</div><div class="dt">33 de n. è.</div></div>
+<div class="ref">Daniel 9:24-27 · Matthieu 26:2 · Jean 19:14</div>
+<div class="q"><span class="n">1.</span><span class="t">La 70ᵉ semaine commence à l’automne <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">2.</span><span class="t">« La moitié de la semaine » = <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">3.</span><span class="t">automne 29 + 3 ans ½ = printemps <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">4.</span><span class="t">Jésus meurt le <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">5.</span><span class="t">D’autres années parfois proposées <span class="b">&nbsp;</span></span></div>
+<div class="q" style="margin-top:9px"><span class="n">▸</span><span class="t"><b>Accomplissement, en une phrase :</b></span></div>
+<div class="lig"></div><div class="lig"></div>
+</div>
+<div class="trou">
+<div class="hd"><div><b>Fiche 7 / 8</b> — La 70ᵉ semaine s’achève — la faveur s’ouvre aux nations</div><div class="dt">36 de n. è.</div></div>
+<div class="ref">Daniel 9:24, 27 · Actes 10:1-48 · Actes 11:1-18</div>
+<div class="q"><span class="n">1.</span><span class="t">70 semaines d’années = <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">2.</span><span class="t">455 + 490 = <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">3.</span><span class="t">Le premier non-Juif incirconcis reçoit l’esprit saint <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">4.</span><span class="t">Référence <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">5.</span><span class="t">Pierre rend compte à Jérusalem, et les opposants « se turent » — Actes <span class="b">&nbsp;</span></span></div>
+<div class="q" style="margin-top:9px"><span class="n">▸</span><span class="t"><b>Accomplissement, en une phrase :</b></span></div>
+<div class="lig"></div><div class="lig"></div>
+</div>
+<div class="trou">
+<div class="hd"><div><b>Fiche 8 / 8</b> — Les sept temps s’achèvent</div><div class="dt">1914 de n. è.</div></div>
+<div class="ref">Daniel 4:16, 23-25 · Luc 21:24 · Ézéchiel 21:26, 27 · Révélation 12:6, 14</div>
+<div class="q"><span class="n">1.</span><span class="t">7 temps = 7 × 360 = <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">2.</span><span class="t">Règle d’interprétation : « Un jour pour une ______ » — Ézéchiel 4:6 <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">3.</span><span class="t">Contrôle interne : 3 temps et demi = <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">4.</span><span class="t">Point de départ : octobre <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">5.</span><span class="t">606 + 1 + <span class="b">&nbsp;</span></span></div>
+<div class="q"><span class="n">6.</span><span class="t">1914 marque un ______, jamais une fin <span class="b">&nbsp;</span></span></div>
+<div class="q" style="margin-top:9px"><span class="n">▸</span><span class="t"><b>Accomplissement, en une phrase :</b></span></div>
+<div class="lig"></div><div class="lig"></div>
+</div>
+<div class="pied"><span>Partie A — fiches à trous</span><span>1 page</span></div>
+</div></div>
+<div class="pg"><div class="flexcol">
+<h1 class="t">Partie B — Les treize fiches d'écoute</h1>
+<div class="st">Une fiche par collection. Cocher la piste aussitôt après l'écoute, puis répondre
+à la question du bas. Une phrase suffit.</div>
+
+<div class="ec">
+<div class="hd"><b>C01 — Par où commencer</b><span class="m">6 pistes · 6 min 10</span></div>
+<div class="sup">SITE_LOCAL.html — onglet Accueil</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Quelle est la seule règle du jeu que je dois énoncer avant d’ouvrir le dossier ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C02 — Les douze preuves</b><span class="m">9 pistes · 11 min 57</span></div>
+<div class="sup">22_GRAND_DOSSIER.md</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+<span class="case"></span> 8&nbsp;&nbsp;
+<span class="case"></span> 9&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Laquelle des douze preuves se résume le mieux en une phrase ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C03 — Les huit objections</b><span class="m">6 pistes · 6 min 05</span></div>
+<div class="sup">22_GRAND_DOSSIER.md — annexe</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Quelle objection m’a le plus résisté, et pourquoi ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C04 — Babylone et Cyrus</b><span class="m">7 pistes · 6 min 53</span></div>
+<div class="sup">LIVRE_1_ENQUETE.html</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Quel détail matériel (le fleuve, les portes) me paraît le plus difficile à expliquer autrement que par la prophétie ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C05 — Tyr, l’Égypte et les nations</b><span class="m">7 pistes · 8 min 11</span></div>
+<div class="sup">videos/SCRIPTS_VIDEOS.html — V3</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Pourquoi « racler la poussière » est-il un détail décisif ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C06 — Les dates</b><span class="m">8 pistes · 8 min 12</span></div>
+<div class="sup">visuels/FRISES_CHRONOLOGIQUES.html</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+<span class="case"></span> 8&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Saurais-je refaire la chaîne sans regarder ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C07 — Le Messie</b><span class="m">9 pistes · 15 min 14</span></div>
+<div class="sup">LIVRE_3_DETAIL.html — parties 7 et 8</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+<span class="case"></span> 8&nbsp;&nbsp;
+<span class="case"></span> 9&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Pourquoi ne faut-il pas donner de total ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C08 — Le signe des derniers jours</b><span class="m">8 pistes · 12 min 18</span></div>
+<div class="sup">SITE_LOCAL.html — onglet Signe</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+<span class="case"></span> 8&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Quelle phrase dois-je dire pour ne laisser croire à aucune date ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C09 — Le livre de la Révélation</b><span class="m">8 pistes · 16 min 19</span></div>
+<div class="sup">LIVRE_3_DETAIL.html — parties 11 et 12</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+<span class="case"></span> 8&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Quel chapitre ai-je le plus envie de relire dans la Bible elle-même ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C10 — Le monde nouveau</b><span class="m">7 pistes · 9 min 05</span></div>
+<div class="sup">videos/SCRIPTS_VIDEOS.html — L1</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Par quoi la Bible finit-elle, au juste ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C11 — Comment le texte est arrivé jusqu’à nous</b><span class="m">7 pistes · 7 min 30</span></div>
+<div class="sup">23_REGISTRE_PROPHETIES_7.md</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Comment répondre en une phrase à « le texte a été recopié mille fois » ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C12 — Présenter le dossier à quelqu’un</b><span class="m">8 pistes · 6 min 35</span></div>
+<div class="sup">visuels/COFFRET.html</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+<span class="case"></span> 8&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Ai-je un fichier prêt à remettre cette semaine ?</div>
+<div class="lig"></div>
+</div>
+<div class="ec">
+<div class="hd"><b>C13 — Les huit dates</b><span class="m">8 pistes · 2 min 52</span></div>
+<div class="sup">FICHES_DATES.html</div>
+<div class="list">
+<span class="case"></span> 1&nbsp;&nbsp;
+<span class="case"></span> 2&nbsp;&nbsp;
+<span class="case"></span> 3&nbsp;&nbsp;
+<span class="case"></span> 4&nbsp;&nbsp;
+<span class="case"></span> 5&nbsp;&nbsp;
+<span class="case"></span> 6&nbsp;&nbsp;
+<span class="case"></span> 7&nbsp;&nbsp;
+<span class="case"></span> 8&nbsp;&nbsp;
+</div>
+<div class="qv"><b>Question.</b> Quelle ligne de calcul est la plus fragile ?</div>
+<div class="lig"></div>
+</div>
+<div class="pied"><span>Partie B — fiches d'écoute</span><span>1 page</span></div>
+</div></div>
+<div class="pg"><div class="flexcol">
+<h1 class="t">Partie C — Les huit cartes d'objection (recto)</h1>
+<div class="st">Imprimer cette page, retourner la feuille, imprimer la page suivante.
+Découper au cadre. Format poche : 85 × 55 mm.</div>
+<div class="cartes">
+<div class="carte r"><div><div class="num">Objection 1/8 · recto</div><div class="obj">« Les prophéties ont été écrites après coup. »</div></div><div class="titreC">Écrites après coup</div></div>
+<div class="carte r"><div><div class="num">Objection 2/8 · recto</div><div class="obj">« Trop de prophéties ressemblent à de la poésie. »</div></div><div class="titreC">Poésie vague</div></div>
+<div class="carte r"><div><div class="num">Objection 3/8 · recto</div><div class="obj">« N’importe qui peut faire dire n’importe quoi à un texte. »</div></div><div class="titreC">On fait dire au texte</div></div>
+<div class="carte r"><div><div class="num">Objection 4/8 · recto</div><div class="obj">« Les dates de la Bible sont invérifiables. »</div></div><div class="titreC">Dates invérifiables</div></div>
+<div class="carte r"><div><div class="num">Objection 5/8 · recto</div><div class="obj">« Vous avez fixé 1914 après coup. »</div></div><div class="titreC">1914 fixé après coup</div></div>
+<div class="carte r"><div><div class="num">Objection 6/8 · recto</div><div class="obj">« Vous interprétez la Révélation à votre façon. »</div></div><div class="titreC">Interprétation de la Révélation</div></div>
+<div class="carte r"><div><div class="num">Objection 7/8 · recto</div><div class="obj">« Et si vous vous trompez ? »</div></div><div class="titreC">Et si vous vous trompez ?</div></div>
+<div class="carte r"><div><div class="num">Objection 8/8 · recto</div><div class="obj">« Ces images sont fausses. »</div></div><div class="titreC">Ces images sont fausses</div></div>
+</div>
+<div class="cadre" style="margin-top:12px"><b>Conseil d'impression.</b> Faire un essai sur papier
+brouillon pour vérifier le sens du recto-verso avant d'imprimer le beau papier. Les cartes se
+découpent ensuite au massicot. On n'en garde que quatre sur soi.</div>
+<div class="pied"><span>Partie C — recto</span><span>1 page</span></div>
+</div></div>
+<div class="pg"><div class="flexcol">
+<h1 class="t">Partie C — Les huit cartes d'objection (verso)</h1>
+<div class="st">La réponse en trois lignes, puis le lien officiel écrit en clair.</div>
+<div class="cartes">
+<div class="carte v"><div><div class="num">Objection 1/8 · verso</div><div class="rep">C’est précisément l’argument des critiques contre Daniel 11. La question se tranche sur les dates, pas sur les faits : les manuscrits de la mer Morte, dont 4Q114 pour Daniel, attestent l’ancienneté des copies.</div></div><div class="src">https://wol.jw.org/fr/wol/d/r30/lp-f/1200001118<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2016247</div></div>
+<div class="carte v"><div><div class="num">Objection 2/8 · verso</div><div class="rep">On ne retient que les énoncés datables et vérifiables : un nom, une durée, un lieu, une méthode. Ce qui n’est pas datable ne sert pas d’argument.</div></div><div class="src">https://www.jw.org/fr/la-bible-et-vous/histoire/<br>https://wol.jw.org/fr/wol/h/r30/lp-f</div></div>
+<div class="carte v"><div><div class="num">Objection 3/8 · verso</div><div class="rep">Chaque fiche donne la référence, la teneur, l’accomplissement, la source extérieure et sa limite. Le lecteur vérifie ; il ne croit pas sur parole.</div></div><div class="src">https://www.jw.org/fr/la-bible-et-vous/histoire/<br>https://www.jw.org/fr/la-bible-et-vous/questions-bibliques/</div></div>
+<div class="carte v"><div><div class="num">Objection 4/8 · verso</div><div class="rep">Un seul système chronologique par document. Quand la chronologie profane diffère, elle est signalée — par exemple Ninive : 632 ou 612 selon le système retenu.</div></div><div class="src">https://wol.jw.org/fr/wol/d/r30/lp-f/1200010959<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2011810</div></div>
+<div class="carte v"><div><div class="num">Objection 5/8 · verso</div><div class="rep">Le calcul est montré pas à pas : Daniel 4 ; Révélation 12:6, 14 ; Ézéchiel 4:6 ; Nombres 14:34. Libre à chacun d’examiner la méthode et de la contester.</div></div><div class="src">https://wol.jw.org/fr/wol/d/r30/lp-f/2004084<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999025</div></div>
+<div class="carte v"><div><div class="num">Objection 6/8 · verso</div><div class="rep">On donne la lecture de l’organisation et sa source, sans polémique : les prophéties accomplies sont vérifiables, les autres sont annoncées comme telles.</div></div><div class="src">https://wol.jw.org/fr/wol/h/r30/lp-f<br>https://www.jw.org/fr/la-bible-et-vous/questions-bibliques/</div></div>
+<div class="carte v"><div><div class="num">Objection 7/8 · verso</div><div class="rep">C’est pourquoi le dossier ne date pas la fin et ne donne aucun total dogmatique. Une démonstration qui ne peut pas être réfutée n’est pas une démonstration.</div></div><div class="src">https://www.jw.org/fr/la-bible-et-vous/histoire/<br>https://www.jw.org/fr/la-bible-et-vous/cours-biblique-particulier/</div></div>
+<div class="carte v"><div><div class="num">Objection 8/8 · verso</div><div class="rep">Toutes les images générées sont légendées « Illustration. » et ne sont jamais présentées comme des documents : ni photographie d’un site réel, ni reproduction d’un artefact.</div></div><div class="src">https://www.jw.org/fr/<br>https://wol.jw.org/fr/wol/h/r30/lp-f</div></div>
+</div>
+<div class="pied"><span>Partie C — verso</span><span>1 page</span></div>
+</div></div>
+<div class="pg"><div class="flexcol">
+<h1 class="t">Corrigé des huit fiches à trous</h1>
+<div class="st">À détacher et à ranger séparément, ou à photocopier pour un tiers.
+Page volontairement placée à la fin : on ne la consulte qu'après avoir rempli.</div>
+<div class="cadre b"><b>Comment utiliser ce corrigé.</b> Ne pas surligner la bonne réponse sans
+avoir réécrit la phrase entière à côté du blanc faux. Une correction recopiée de la main reste ;
+une correction lue ne laisse aucune trace.</div>
+<h3>Fiche 1 — 607 av. n. è. · Jérusalem dévastée — le début des 70 ans</h3>
+<table><thead><tr><th style="width:34px">#</th><th>Blanc</th><th style="width:34%">Réponse</th></tr></thead><tbody>
+<tr><td class="r">1</td><td>Les exilés sont de retour à Jérusalem à l’automne…</td><td><b>537</b></td></tr>
+<tr><td class="r">2</td><td>Jérémie annonce une désolation de…</td><td><b>70 ans</b></td></tr>
+<tr><td class="r">3</td><td>Opération : automne 537 − 70 ans = automne…</td><td><b>607</b></td></tr>
+<tr><td class="r">4</td><td>Jérusalem tombe le 9 Tammouz ; le 10 Ab, Nébuzaradan détruit la ville — 2 Rois…</td><td><b>25:8, 9</b></td></tr>
+<tr><td class="r">5</td><td>La majorité des historiens profanes retient…</td><td><b>587</b></td></tr>
+</tbody></table>
+<p style="font-size:11.5px;color:#5b6472"><b>Pour aller plus loin.</b> Jérusalem est prise, le temple brûlé, les murailles abattues. Le pays reste désolé soixante-dix ans parce que, contrairement aux Assyriens, le roi de Babylone n’installe personne pour remplacer les Juifs.</p>
+<h3>Fiche 2 — 539 av. n. è. · Babylone tombe — le fleuve et les portes</h3>
+<table><thead><tr><th style="width:34px">#</th><th>Blanc</th><th style="width:34%">Réponse</th></tr></thead><tbody>
+<tr><td class="r">1</td><td>La Chronique de Nabonide situe la chute de Babylone le 16…</td><td><b>Tashritu</b></td></tr>
+<tr><td class="r">2</td><td>Soit, dans notre calendrier…</td><td><b>11/12 octobre</b></td></tr>
+<tr><td class="r">3</td><td>Le roi perse nommé par son nom plus d’un siècle à l’avance…</td><td><b>Cyrus</b></td></tr>
+<tr><td class="r">4</td><td>Cette date est la seule que…</td><td><b>toutes les chronologies admettent</b></td></tr>
+<tr><td class="r">5</td><td>Le document profane : la Chronique de Nabonide et le…</td><td><b>cylindre de Cyrus</b></td></tr>
+</tbody></table>
+<p style="font-size:11.5px;color:#5b6472"><b>Pour aller plus loin.</b> La ville est prise la nuit où Belshatsar fait servir le vin dans les coupes du temple. Le détournement de l’Euphrate correspond au texte d’Isaïe et de Jérémie sur le fleuve mis à sec.</p>
+<h3>Fiche 3 — 537 av. n. è. · Le retour d’exil — la fin des 70 ans</h3>
+<table><thead><tr><th style="width:34px">#</th><th>Blanc</th><th style="width:34%">Réponse</th></tr></thead><tbody>
+<tr><td class="r">1</td><td>D’après la tablette « Strassmaier, Cyrus n° 11 », la 1ʳᵉ année de Cyrus va du 17/18 mars 538 au 4/5 mars…</td><td><b>537</b></td></tr>
+<tr><td class="r">2</td><td>Le décret est donc publié à la fin de l’hiver ou au début du printemps…</td><td><b>537</b></td></tr>
+<tr><td class="r">3</td><td>Les exilés arrivent à Jérusalem juste avant le…</td><td><b>7ᵉ mois (Tishri)</b></td></tr>
+<tr><td class="r">4</td><td>L’autel est relevé ; les fondations du temple sont posées l’année suivante…</td><td><b>536</b></td></tr>
+<tr><td class="r">5</td><td>La désolation prend fin parce que le pays est de nouveau…</td><td><b>occupé</b></td></tr>
+</tbody></table>
+<p style="font-size:11.5px;color:#5b6472"><b>Pour aller plus loin.</b> Ce n’est pas la signature du décret qui met fin aux soixante-dix ans, mais le retour effectif : le pays doit être de nouveau habité.</p>
+<h3>Fiche 4 — 455 av. n. è. · L’ordre de rebâtir — le départ des 70 semaines</h3>
+<table><thead><tr><th style="width:34px">#</th><th>Blanc</th><th style="width:34%">Réponse</th></tr></thead><tbody>
+<tr><td class="r">1</td><td>Néhémie obtient l’ordre de rebâtir la…</td><td><b>20ᵉ année d’Artaxerxès Iᵉʳ</b></td></tr>
+<tr><td class="r">2</td><td>Néhémie exerce la charge de…</td><td><b>échanson du roi</b></td></tr>
+<tr><td class="r">3</td><td>Le règne d’Artaxerxès commence en…</td><td><b>474</b></td></tr>
+<tr><td class="r">4</td><td>7 semaines + 62 semaines = 69 semaines =…</td><td><b>483 ans</b></td></tr>
+<tr><td class="r">5</td><td>455 + 483 =…</td><td><b>29 de notre ère</b></td></tr>
+<tr><td class="r">6</td><td>La muraille est achevée après…</td><td><b>52 jours de travail</b></td></tr>
+</tbody></table>
+<p style="font-size:11.5px;color:#5b6472"><b>Pour aller plus loin.</b> La parole sort de Suse, mais elle ne prend effet qu’à Jérusalem : le même principe avait déjà valu pour le décret de Cyrus.</p>
+<h3>Fiche 5 — 29 de n. è. · Le Messie paraît — au bout des 69 semaines</h3>
+<table><thead><tr><th style="width:34px">#</th><th>Blanc</th><th style="width:34%">Réponse</th></tr></thead><tbody>
+<tr><td class="r">1</td><td>69 semaines d’années =…</td><td><b>483 ans</b></td></tr>
+<tr><td class="r">2</td><td>Luc date le début du ministère de Jean de la…</td><td><b>15ᵉ année de Tibère César</b></td></tr>
+<tr><td class="r">3</td><td>Tibère règne à partir du 17 août…</td><td><b>14 de notre ère</b></td></tr>
+<tr><td class="r">4</td><td>Référence du repère profane : Luc…</td><td><b>3:1</b></td></tr>
+<tr><td class="r">5</td><td>Jésus est alors âgé d’environ…</td><td><b>30 ans</b></td></tr>
+</tbody></table>
+<p style="font-size:11.5px;color:#5b6472"><b>Pour aller plus loin.</b> Jésus vient se faire baptiser dans le Jourdain et reçoit l’onction : il devient le Christ, Messie le Conducteur. Le grand temple spirituel commence à fonctionner.</p>
+<h3>Fiche 6 — 33 de n. è. · Le Messie retranché — à la moitié de la semaine</h3>
+<table><thead><tr><th style="width:34px">#</th><th>Blanc</th><th style="width:34%">Réponse</th></tr></thead><tbody>
+<tr><td class="r">1</td><td>La 70ᵉ semaine commence à l’automne…</td><td><b>29</b></td></tr>
+<tr><td class="r">2</td><td>« La moitié de la semaine » =…</td><td><b>3 ans et demi</b></td></tr>
+<tr><td class="r">3</td><td>automne 29 + 3 ans ½ = printemps…</td><td><b>33</b></td></tr>
+<tr><td class="r">4</td><td>Jésus meurt le…</td><td><b>14 Nisan</b></td></tr>
+<tr><td class="r">5</td><td>D’autres années parfois proposées…</td><td><b>30 et 31</b></td></tr>
+</tbody></table>
+<p style="font-size:11.5px;color:#5b6472"><b>Pour aller plus loin.</b> Jésus meurt un vendredi, le 14 Nisan, jour de la Pâque. Le chiffre de trois ans et demi pour le ministère correspond aux quatre Pâques de l’Évangile de Jean.</p>
+<h3>Fiche 7 — 36 de n. è. · La 70ᵉ semaine s’achève — la faveur s’ouvre aux nations</h3>
+<table><thead><tr><th style="width:34px">#</th><th>Blanc</th><th style="width:34%">Réponse</th></tr></thead><tbody>
+<tr><td class="r">1</td><td>70 semaines d’années =…</td><td><b>490 ans</b></td></tr>
+<tr><td class="r">2</td><td>455 + 490 =…</td><td><b>36 de notre ère</b></td></tr>
+<tr><td class="r">3</td><td>Le premier non-Juif incirconcis reçoit l’esprit saint…</td><td><b>Corneille</b></td></tr>
+<tr><td class="r">4</td><td>Référence…</td><td><b>Actes 10</b></td></tr>
+<tr><td class="r">5</td><td>Pierre rend compte à Jérusalem, et les opposants « se turent » — Actes…</td><td><b>11:18</b></td></tr>
+</tbody></table>
+<p style="font-size:11.5px;color:#5b6472"><b>Pour aller plus loin.</b> Un officier romain craignant Dieu reçoit l’esprit saint avant même d’être baptisé. La Bibliothèque en ligne écrit : « il semble bien que Corneille n’a été introduit qu’en automne de l’an 36 » — la date est déduite, non révélée.</p>
+<h3>Fiche 8 — 1914 de n. è. · Les sept temps s’achèvent</h3>
+<table><thead><tr><th style="width:34px">#</th><th>Blanc</th><th style="width:34%">Réponse</th></tr></thead><tbody>
+<tr><td class="r">1</td><td>7 temps = 7 × 360 =…</td><td><b>2 520 jours</b></td></tr>
+<tr><td class="r">2</td><td>Règle d’interprétation : « Un jour pour une ______ » — Ézéchiel 4:6…</td><td><b>année</b></td></tr>
+<tr><td class="r">3</td><td>Contrôle interne : 3 temps et demi =…</td><td><b>1 260 jours</b></td></tr>
+<tr><td class="r">4</td><td>Point de départ : octobre…</td><td><b>607</b></td></tr>
+<tr><td class="r">5</td><td>606 + 1 +…</td><td><b>1 913</b></td></tr>
+<tr><td class="r">6</td><td>1914 marque un ______, jamais une fin…</td><td><b>début</b></td></tr>
+</tbody></table>
+<p style="font-size:11.5px;color:#5b6472"><b>Pour aller plus loin.</b> Les temps fixés des nations s’achèvent. C’est le commencement de la conclusion du système de choses. Aucune date n’est fixée pour l’avenir : « Quant à ce jour-là et à cette heure-là, personne ne les connaît » (Matthieu 24:36).</p>
+<div class="pied"><span>Corrigé — à détacher</span><span>1 page</span></div>
+</div></div>
+<div class="pg"><div class="flexcol">
+<h1 class="t">Sources et rappels</h1>
+<div class="st">Ce qui a servi à construire ce cahier, et ce qui reste à vérifier par soi-même.</div>
+
+<h3>Pour aller plus loin — objections voisines</h3>
+<div class="src2">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101989037">La Bible se contredit-elle ? — divergences apparentes, rédacteurs indépendants, l’exemple de Matthieu 8:5 et Luc 7:3<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101989037</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1981722">La Bible se contredit-elle vraiment ? — l’affaire Galilée : « on a fait dire à la Bible »<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1981722</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/502014148">Que révèle la chronologie de la Bible sur l’année 1914 ?<br>https://wol.jw.org/fr/wol/d/r30/lp-f/502014148</a>
+</div>
+
+<h3>Les trois précautions, une dernière fois</h3>
+<div class="cadre"><b>1. Un seul système chronologique par document.</b> 607 pour la désolation,
+539 pour la chute de Babylone (date neutre), 537 pour le retour, 455 pour l'ordre de rebâtir,
+29 pour l'onction, 33 pour la mort, 36 pour la fin de la faveur spéciale, 1914 pour la fin des
+sept temps. On ne mélange pas les systèmes.</div>
+<div class="cadre"><b>2. Aucune date pour l'avenir.</b> Ce qui n'est pas accompli reste sans
+date. 1914 marque le début de la conclusion du système de choses, jamais une échéance.</div>
+<div class="cadre"><b>3. Aucun total dogmatique.</b> La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des prophéties
+messianiques. On vérifie, on ne compte pas.</div>
+
+<h3>Règles de transmission</h3>
+<table><thead><tr><th style="width:24%">Règle</th><th>Application</th></tr></thead><tbody>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion publique, jamais
+d'envoi groupé.</td></tr>
+<tr><td><b>Un fichier à la fois</b></td><td>On remet ce qui est demandé. Le dossier entier cesse
+d'être lu dès qu'il est complet.</td></tr>
+<tr><td><b>Liens officiels seulement</b></td><td>www.jw.org et wol.jw.org. Aucun extrait de
+publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée ni stockée.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli n'est jamais daté.</td></tr>
+</tbody></table>
+
+<p style="margin-top:16px;font-size:11.5px;color:#5b6472">Généré le 2026-09-24 · vague 8 · projet PREUVES. Sources : Bibliothèque en ligne Watchtower
+(wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit : les références bibliques
+sont citées, les publications ne sont pas recopiées.</p>
+<div class="pied"><span>Sources et rappels</span><span>1 page</span></div>
+</div></div>
+</body></html>

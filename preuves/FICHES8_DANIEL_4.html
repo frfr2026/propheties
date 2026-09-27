@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES DN4 — Daniel 11 — alliances et mariages, Raphia, le pays de la Parure</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_DN391_mariage.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES DN4</h1>
+<h2>Daniel 11 — alliances et mariages, Raphia, le pays de la Parure</h2>
+<p class="intro">Cinquième vague Daniel : la suite du livre de vérité — l'alliance par mariage qui échoue, la vengeance de Ptolémée III et le butin ramené d'Orient, les grandes armées d'Antiochus III, la bataille de Raphia en 217, le pays de la Parure conquis en 198 et le mariage de Cléopâtre Ire en 193. Deux rois rivaux, deux dynasties, un pays au milieu : le peuple de Daniel.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>32</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#DN391">DN391</a>
+<a href="#DN392">DN392</a>
+<a href="#DN393">DN393</a>
+<a href="#DN394">DN394</a>
+<a href="#DN395">DN395</a>
+<a href="#DN396">DN396</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#DN391"><img src="images/prophe_DN391_mariage.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN391</div>
+<h3><a href="#DN391">L'alliance par mariage : la fille du roi du sud livrée</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#DN392"><img src="images/prophe_DN392_evergete.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN392</div>
+<h3><a href="#DN392">Un rejeton de ses racines : la vengeance, le butin et les dieux ramenés</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#DN393"><img src="images/prophe_DN393_armee.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN393</div>
+<h3><a href="#DN393">Les fils du roi du nord : grandes armées, forteresse et le retour des années</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#DN394"><img src="images/prophe_DN394_raphia.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN394</div>
+<h3><a href="#DN394">Le roi du sud s'enflamme : Raphia, les dizaines de milliers et le cœur enflé</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#DN395"><img src="images/prophe_DN395_panias.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN395</div>
+<h3><a href="#DN395">Le rempart de siège et le pays de la Parure : Scopas à Sidon, 198</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#DN396"><img src="images/prophe_DN396_cleopatre.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DN396</div>
+<h3><a href="#DN396">La fille des femmes : Cléopâtre, la dot et le plan qui échoue</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="DN391">
+<div class="visuel"><img src="images/prophe_DN391_mariage.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN391 · CATÉGORIE DN4</div>
+<h3>L'alliance par mariage : la fille du roi du sud livrée</h3>
+<div class="ref">Daniel 11:6</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">alliance accord équitable fille du roi du sud bras livrée (s'allier → accord → fille → venir → roi du nord → ne pas conserver → force du bras → ne pas tenir → livrée → ceux qui l'ont amenée → celui qui l'a engendrée → celui qui la rendait forte)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN391</div><audio controls preload="none" src="audio/fiche_DN391_mariage.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN391_mariage.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 11:6</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>alliance accord équitable fille du roi du sud bras livrée (s'allier → accord → fille → venir → roi du nord → ne pas conserver → force du bras → ne pas tenir → livrée → ceux qui l'ont amenée → celui qui l'a engendrée → celui qui la rendait forte)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P391 (11:6 : alliance par mariage entre les deux rois, puis la fille livrée) ; Ptolémée II et Bérénice ; Antiochus II ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>ALLIANCE… AU BOUT DE QUELQUES ANNÉES… S'ALLIER… ACCORD ÉQUITABLE… FILLE… ROI DU SUD… VENIR… ROI DU NORD… NE PAS CONSERVER… FORCE… BRAS… NE PAS TENIR… NI LUI… NI SON BRAS… LIVRÉE… CEUX QUI L'ONT AMENÉE… CELUI QUI L'A ENGENDRÉE… CELUI QUI LA RENDAIT FORTE… — WE-YITHḤABBARU… ILS S'UNIRONT… BEṬ… BAT-YISHAR… AVEC DES CONDITIONS ÉQUITABLES… BAT-MELEKH… LA FILLE DU ROI… HA-NEGEV… DU SUD… TAVOʾ… ELLE VIENDRA… EL-MELEKH… VERS LE ROI… HA-TSAFON… DU NORD… LA-ʿASOT… POUR FAIRE… MEYSHARIM… CE QUI EST DROIT… WE-LO… ET ELLE NE… TAʿAMOD… TIENDRA PAS… KOḤ… LA FORCE… HA-ZEROʿA… DU BRAS… ZEROʿO… SON BRAS… TINNATEN… ELLE SERA LIVRÉE… MEVIʾEYHA… CEUX QUI L'ONT AMENÉE… WE-HA-MAʿAMID… ET CELUI QUI LA RENDAIT FORTE… — PTOLÉMÉE II… 285-247… BÉRÉNICE… PHERNOPHOROS… CELLES DE SA RACE… LAODICE… ANTIOCHE… SÉLEUCUS II… 246… DOT… PALESTINE… PÉLUSE… SÉLEUCIE… ASSASSINAT… POISON… »</li>
+<li>LES TROIS JUMEAUX — Genèse 2 : le mariage est institué comme une union de l'homme et de la femme, « une seule chair », et le texte biblique en fait l'unité de base de la société humaine : Daniel 11:6 raconte précisément ce qu'il advient quand le mariage n'est plus qu'un instrument de paix entre deux États. 2 Chroniques 18 : Josaphat, roi de Juda, « s'allia par mariage » à Achab, roi d'Israël, et cette alliance le conduisit sur le champ de bataille de Ramoth-Guiléad, où il faillit périr entre deux armées : l'Écriture garde la trace d'un mariage politique qui entraîne un royaume fidèle dans une guerre qui n'était pas la sienne. Esther 2 : dans un autre Empire, une jeune Juive est conduite à la cour du roi de Perse et devient reine ; le récit souligne par contraste que, là où les hommes calculent des alliances, le dessein de Dieu passe par ce que personne n'avait prévu.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le verset 6 forme le deuxième temps du « livre de vérité » : après les deux fondateurs des dynasties du nord et du sud (verset 5), l'ange décrit la première tentative sérieuse de réunir les deux royaumes par une alliance matrimoniale. Le cadre est la deuxième moitié du troisième siècle avant notre ère. Ptolémée II Philadelphe, fils du fondateur de la dynastie lagide, règne sur l'Égypte de 285 à 247 ; Antiochus II Théos, fils d'Antiochus Ier, règne sur la Syrie séleucide de 261 à 246. Les deux maisons se sont combattues pendant des années pour la Coelé-Syrie et la Phénicie, et le pays de Juda, alors sous domination égyptienne, est au milieu de la carte. Pour mettre fin à la guerre, Ptolémée II propose de donner sa fille Bérénice à Antiochus II, à une condition : que celui-ci répudie Laodice, son épouse, et écarte ses fils de la succession. La Bibliothèque en ligne, dans « Deux rois en conflit », date l'accord de 250 avant notre ère et résume la suite : ce qui devait être une paix devint une tragédie de palais, avec un enjeu juif évident — savoir qui régnait à Antioche décidait du sort de Jérusalem.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois expressions méritent d'être suivies. (1) « UN ACCORD ÉQUITABLE » (yishar, littéralement « ce qui est droit ») : le texte emploie le vocabulaire de la justice pour décrire un marché diplomatique — et c'est justement « ce qui était droit » devant les hommes qui ne tiendra pas, comme le souligne la suite. (2) « LA FORCE DE SON BRAS » : l'expression désigne la puissance qui soutient une personne — ici le père de la princesse, Ptolémée II. Le « bras » de Bérénice, c'est la protection paternelle ; quand le père meurt, la branche sur laquelle elle est assise disparaît ; et « son bras » à lui — le pouvoir d'Antiochus II — ne tiendra pas non plus. Le verset annonce donc DEUX effondrements, celui de l'épouse et celui de l'époux, ce qui est exactement ce que l'histoire raconte. (3) LA LISTE DES VICTIMES : « elle sera livrée, elle, et ceux qui l'ont amenée, et celui qui l'a engendrée, et celui qui la rendait forte » — quatre personnes ou groupes : la princesse, son escorte égyptienne, son père, et son mari. Le livre de Daniel prend soin de nommer les victimes, alors que le reste du chapitre ne parle que de rois.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah, avec les publications citées : l'article « Deux rois en conflit » commente précisément ce verset et l'applique à Antiochus II et à Ptolémée II, puis décrit la fin de l'affaire : en 246, à la mort de Ptolémée II, Bérénice « ne conserva pas la force de son bras » auprès de son mari ; Antiochus II la rejeta, reprit Laodice et désigna leur fils comme successeur ; conformément au plan de Laodice, Bérénice et son fils furent assassinés ; les serviteurs qui l'avaient accompagnée subirent sans doute le même sort ; Laodice empoisonna même Antiochus II, « si bien que son bras aussi ne tint pas » ; et Séleucus II, fils de Laodice, se retrouva roi de Syrie. Lecture commune : les commentaires (Barnes, Clarke, Peake, Dummelow, Ellicott, Kretzmann, Wesley, Haydock, Scofield, l'ESV Global Study Bible) identifient unanimement le couple et l'issue, et plusieurs relèvent le détail de la dot : selon une note conservée dans les éditions annotées, une portion de la Palestine aurait été accordée comme dot au roi de Syrie, ce qui explique le lien direct entre ce mariage et le pays de Daniel. Deux points de méthode : le texte hébreu est difficile au verset 6 — certaines traductions françaises rendent « elle ne conservera pas sa force » et « sa postérité ne subsistera pas » (Semeur), d'autres « son mari ne restera pas en vie, et leur fils non plus » (Parole de Vie) — mais toutes ces variantes décrivent le même événement ; et l'identification d'Antiochus II et de Bérénice ne fait pas débat, même chez les auteurs qui proposent pour le verset une lecture prophétique plus large.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 261 av. n. è.</td><td>Antiochus II succède à son père et reprend la guerre contre Ptolémée II</td></tr>
+<tr><td class="d">Vers 250 av. n. è.</td><td>« Accord équitable » : Antiochus II répudie Laodice et épouse Bérénice, fille de Ptolémée II ; un fils naît de cette union</td></tr>
+<tr><td class="d">246 av. n. è.</td><td>Mort de Ptolémée II : le « bras » de Bérénice disparaît ; Antiochus II la rejette et reprend Laodice</td></tr>
+<tr><td class="d">246 av. n. è.</td><td>Bérénice et son fils assassinés ; l'escorte égyptienne subit le même sort ; Antiochus II meurt empoisonné par Laodice</td></tr>
+<tr><td class="d">246-241 av. n. è.</td><td>Séleucus II, fils de Laodice, règne en Syrie ; la « troisième guerre de Syrie » éclate, Ptolémée III venge sa sœur</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES SOURCES ANCIENNES : Justin, dans l'Épitomé des Histoires philippiques de Trogue Pompée (livre 27), raconte la répudiation de Laodice, le mariage avec Bérénice, le retour de Laodice, l'empoisonnement d'Antiochus II et le meurtre de Bérénice ; Appien (Syriaque) donne la suite dynastique ; Polybe, dans les fragments du livre sur la troisième guerre de Syrie, décrit la campagne qui suivit ; Porphyre, cité par Jérôme dans son commentaire de Daniel, rapporte la même séquence — chez un auteur hostile au livre de Daniel, ce qui rend son témoignage d'autant plus utile. (2) LA CHRONOLOGIE : les règnes sont datés par les sources gréco-romaines et par les documents égyptiens : Ptolémée II 285-247, Antiochus II 261-246, Ptolémée III 246-221, Séleucus II 246-226. (3) LE CONTEXTE JUIF : sous Ptolémée II, la communauté juive d'Alexandrie s'installe et, selon la tradition conservée par les sources juives et chrétiennes, la traduction grecque des Écritures (la Septante) est entreprise en Égypte ; le pays de Juda reste sous administration lagide, ce qui signifie que le « roi du sud » du verset 6 est, pour le lecteur juif, son propre souverain. (4) LA SUITE : l'assassinat de Bérénice fournit à Ptolémée III le motif de la troisième guerre de Syrie (246-241), dont le papyrus de Gurob conserve un fragment de récit officiel, et que commémore l'inscription d'Adoulis copiée plus tard par Cosmas Indicopleustès. (5) LA LECTURE COMPARÉE : les dictionnaires de la Bible et les histoires de l'époque hellénistique (Cambridge Ancient History ; travaux sur les Séleucides et les Lagides) enregistrent l'épisode comme un cas d'école de guerre de succession déclenchée par un mariage politique manqué.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LES DEUX CAPITALES : Alexandrie pour l'Égypte lagide, Antioche sur l'Oronte pour la Syrie séleucide ; entre les deux, la route côtière de Gaza à la Phénicie contrôle la Coelé-Syrie, l'enjeu de toutes ces guerres. (2) PÉLUSE ET LE DELTA : c'est par Péluse, la porte orientale de l'Égypte, que la princesse et sa suite quittent le pays pour rejoindre la Syrie — les sources et les commentateurs mentionnent Péluse comme point de départ du cortège. (3) SÉLEUCIE PIERIA : le port d'Antioche, fondé par Séleucus Ier, où la flotte lagide opère pendant la guerre suivante, et qu'Antiochus III ne perdra qu'en partie après Raphia. (4) LAODICÉE ET LES CITÉS SÉLEUCIDES : plusieurs villes du littoral et de la Syrie intérieure portent le nom de Laodice en l'honneur de la mère de Séleucus Ier ; la géographie des fondations dynastiques permet de suivre l'implantation des deux maisons à l'époque du drame. (5) LA PALESTINE EN DOT : la mention d'une part de la Palestine dans l'arrangement matrimonial s'explique par la géographie : c'est la bande de terre qui relie l'Égypte à la Syrie, et donc le seul corridor utilisable par une armée comme par une dot.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA NUMISMATIQUE : les monnaies de Ptolémée II Philadelphe, frappées à Alexandrie, Tyr, Sidon et dans les ateliers syriens occupés, portent son portrait et l'aigle ptolémaïque ; les émissions d'Antiochus II et de Séleucus II, avec l'Apollon sur l'omphalos puis les types royaux, permettent de suivre l'autorité de fait sur les villes disputées, atelier par atelier. (2) L'ÉPIGRAPHIE : les dédicaces de cités et les inscriptions de temples grecs mentionnent les souverains et leurs épouses ; le rôle de reine Bérénice y apparaît dans des contextes municipaux, ce qui montre la réalité institutionnelle de la dynastie lagide. (3) LA PAPYROLOGIE : les papyrus grecs d'Égypte (archives administratives, contrats, correspondances) documentent la fiscalité et la vie quotidienne du royaume lagide au temps de Ptolémée II — le célèbre dossier de Zénon, intendant d'Apollonios, est postérieur de peu. (4) L'ARCHÉOLOGIE : les fouilles d'Antioche et de Séleucie de Piérie (missions américaines des années 1930 puis travaux ultérieurs) ont identifié le plan de la ville hellénistique et son port ; à Alexandrie, les fouilles terrestres et sous-marines ont retrouvé des éléments du quartier royal lagide. (5) LA CHRONOLOGIE ABSOLUE : les listes royales, les ères dynastiques et les tablettes cunéiformes tardives (journaux astronomiques, textes de Babylonie séleucide) donnent des repères datés, et les synchronismes avec Rome et Athènes (listes d'archontes, décrets de cités) permettent de fixer les années 250, 246 et 241 avec une marge réduite. Registre : ces données sont documentaires et indépendantes du texte de Daniel ; la fiche les utilise pour vérifier les faits, non pour prouver la prophétie.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>PTOLÉMÉE II (SUD) + ANTIOCHE II (NORD) → ~250 : ACCORD ÉQUITABLE → RÉPUDIATION DE LAODICE, MARIAGE AVEC BÉRÉNICE → 246 : MORT DU PÈRE — LE « BRAS » TOMBE → BÉRÉNICE REJETÉE, LAODICE REPRISE → ASSASSINATS : BÉRÉNICE, SON FILS, L'ESCORTE ; ANTIOCHE II EMPOISONNÉ → SÉLEUCUS II ROI DU NORD → 246-241 : TROISIÈME GUERRE DE SYRIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement vers 250-246 av. n. è., comme le registre (Ptolémée II et sa fille Bérénice ; Antiochus II). LE TEXTE NE NOMME PERSONNE : l'identification est partagée par les publications citées et par la quasi-totalité des commentaires, mais elle reste une lecture. LES DÉTAILS DU DRAME : les sources anciennes racontent l'empoisonnement et les meurtres ; la fiche les rapporte comme des témoignages, en signalant que leurs récits varient sur les détails et la chronologie de quelques mois. LA DOT : la mention d'une portion de la Palestine comme dot figure dans les notes et commentaires anciens ; la fiche la signale sans en faire un fait établi, faute de document contemporain du contrat. LA « FORCE DU BRAS » : la fiche ne cherche pas à déterminer si le « bras » désigne un soutien politique, militaire ou familial ; elle expose la lecture la plus courante (le père, puis le mari), qui correspond à la suite du récit. CE QUE LA FICHE NE FAIT PAS : elle ne traite pas du verset 7 (la vengeance de Ptolémée III), qui a sa propre fiche, et elle ne donne aucune date pour l'avenir.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Antiochus II Théos succède à Antiochus Ier en Syrie : la guerre contre l'Égypte reprend</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">261 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Accord équitable : répudiation de Laodice, mariage d'Antiochus II avec Bérénice</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~250 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Ptolémée II Philadelphe : le soutien de Bérénice disparaît</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">246 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bérénice et son fils assassinés ; Antiochus II empoisonné à l'instigation de Laodice</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">246 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Troisième guerre de Syrie : Ptolémée III marche contre Séleucus II</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">246-241 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/2">Bible — Genèse 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/18">Bible — 2 Chroniques 18 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/18</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/17/2">Bible — Esther 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/17/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11">Bible — Daniel 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032">« Deux rois en conflit » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN391 — L'alliance par mariage : la fille du roi du sud livrée</span><span>Catégorie DN4</span></div></div>
+</article>
+<article class="fiche" id="DN392">
+<div class="visuel"><img src="images/prophe_DN392_evergete.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN392 · CATÉGORIE DN4</div>
+<h3>Un rejeton de ses racines : la vengeance, le butin et les dieux ramenés</h3>
+<div class="ref">Daniel 11:7-9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">rejeton racines s'élever forteresse du roi du nord agir contre eux l'emporter dieux images objets désirables captifs Égypte rester à distance (rejeton → racines → forteresse → s'emparer → butin → dieux → retour → défaite du nord → Antioche)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN392</div><audio controls preload="none" src="audio/fiche_DN392_evergete.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN392_evergete.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 11:7-9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>rejeton racines s'élever forteresse du roi du nord agir contre eux l'emporter dieux images objets désirables captifs Égypte rester à distance (rejeton → racines → forteresse → s'emparer → butin → dieux → retour → défaite du nord → Antioche)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P392 (11:7-9 : une branche de la fille du roi s'élèvera contre le nord et l'emportera) ; Ptolémée III Évergète ; 245 av. n. è. ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>REJETON… RACINES… SE LEVER… À SA PLACE… VENIR… FORCES MILITAIRES… FORTERESSE… ROI DU NORD… AGIR CONTRE EUX… L'EMPORTER… DIEUX… IMAGES EN MÉTAL FONDU… OBJETS DÉSIRABLES… ARGENT… OR… CAPTIFS… DESCENDRE EN ÉGYPTE… QUELQUES ANNÉES… SE TENIR À DISTANCE… NE PLUS REVENIR CONTRE LUI… — WE-ʿAMAD… ET SE LÈVERA… MI-NETSER… DE SA RACINE… SHORSHAV… SES RACINES… ʿAL-KANNO… À SA PLACE… WE-YAVO… ET IL VIENDRA… EL-HA-ḤAYIL… VERS LA FORCE… WE-YAVO… ET IL ENTRERA… BE-MAʿOZ… DANS LA FORTERESSE… MELEKH… DU ROI… HA-TSAFON… DU NORD… WE-ʿASAH… ET IL AGIRA… BAHEM… CONTRE EUX… WE-HEḤEZIQ… ET L'EMPORTERA… WE-GAM… ET MÊME… ELOHEYHEM… LEURS DIEUX… NESIKHEYHEM… LEURS IMAGES… ḤAMUDOT… OBJETS DÉSIRABLES… KESEF… ARGENT… ZAHAV… OR… SHEVI… CAPTIFS… YAVO… IL VIENDRA… MITSRAYIM… EN ÉGYPTE… WE-SHANIM… ET DES ANNÉES… YAʿAMOD… IL SE TIENDRA… ME-RAḤOQ… À DISTANCE… — PTOLÉMÉE III… ÉVERGÈTE… 246-221… LAODICE… MISE À MORT… ANTIOCHE… SÉLEUCIE… BABYLONIE… SUSE… 40 000 TALENTS… 2 500 IMAGES… CAMBYSE… IDOLES… SÉDITION… 242… SÉLEUCUS II… DÉFAITE… »</li>
+<li>LES TROIS JUMEAUX — 1 Samuel 5 : lorsque les Philistins capturent l'arche de Dieu et la placent dans le temple de Dagon, la statue de leur dieu tombe et se brise devant l'arche : le livre de Daniel, en écrivant que le roi du sud emporte « leurs dieux » d'Orient en Égypte, emploie le même langage concret des divinités transportées, signe d'une victoire totale dans les mentalités du Proche-Orient ancien. 1 Rois 2 : à la mort de David, Salomon exécute les règlements de comptes de succession — Joab, Shimei — et le récit montre à quel point une cour royale peut devenir un lieu de vengeance familiale : le verset 7 de Daniel s'ouvre précisément sur un frère qui vient venger sa sœur. 1 Chroniques 18 : les campagnes de David rapportent à Jérusalem du bronze, de l'argent et de l'or qui serviront au sanctuaire ; le butin du vainqueur, dans la Bible, n'est jamais neutre — il devient le matériau de ce que le vainqueur veut construire, et Daniel 11:8 décrit exactement ce mécanisme à l'échelle d'un empire.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le verset 7 répond au verset 6 : à la mort de Ptolémée II, son fils Ptolémée III succède à la tête du royaume du sud, et le premier acte de son règne est la vengeance de sa sœur. Le cadre est celui de la troisième guerre de Syrie, que les sources appellent aussi la « guerre de Laodicée » ou la « guerre syrienne » de 246-241 avant notre ère. Séleucus II Callinicus, fils d'Antiochus II et de Laodice, occupe le trône du nord, mais sa légitimité est contestée : c'est le parti de sa mère qui a éliminé Bérénice et son fils. Ptolémée III, frère de la victime, entre donc en Syrie non pas seulement en conquérant mais en vengeur, et la campagne prend l'allure d'un raid foudroyant qui pousse jusqu'à Antioche, puis bien plus à l'est. Les publications de la Bibliothèque en ligne présentent ce roi comme le « quelqu'un du rejeton » des racines de Bérénice, et signalent un détail qui compte pour l'histoire du peuple de Dieu : c'est sous son règne, ou peu après, que la Judée reste solidement tenue par l'Égypte, jusqu'à ce que la situation s'inverse en 198.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois éléments. (1) LE VOCABULAIRE DE LA RACINE ET DU REJETON : la métaphore est celle de l'arbre — Bérénice avait des « racines », sa famille ; un rejeton qui sort de ces racines se lève « à sa place ». Le texte dit donc que la continuité du royaume du sud passe par la famille de la victime, et que la vengeance fait partie de la mission du successeur. (2) LA FORTERESSE DU ROI DU NORD : dans le vocabulaire militaire de l'Ancien Testament, la « forteresse » est la ville forte où le roi réside et se protège ; l'entrée du roi du sud dans cette forteresse signifie la prise de la capitale ennemie, et « agir contre eux et l'emporter » mesure la victoire. (3) LE BUTIN SPÉCIFIQUE : le texte ne se contente pas de dire « il prit du butin » ; il énumère trois catégories — les dieux et leurs images de métal fondu, les objets précieux d'argent et d'or, les captifs. Enlever les dieux d'un peuple conquis, dans l'Antiquité, n'est pas un simple pillage : c'est le signe que la victoire est totale, que les divinités elles-mêmes ont été faites prisonnières. Le verset 9 clôt l'unité en annonçant que le roi du nord ripostera, mais qu'il reviendra chez lui : la prophétie donne donc deux mouvements, la marche victorieuse du sud vers le nord et l'est, puis la contre-attaque manquée du nord.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : l'article « Deux rois en conflit » identifie le « quelqu'un du rejeton » à Ptolémée III, montre qu'il « se leva » comme roi du sud à la mort de son père, qu'il vengea le meurtre de sa sœur, prit la partie fortifiée d'Antioche et blessa mortellement Laodice, puis traversa le domaine du roi du nord vers l'est, pilla la Babylonie et poursuivit sa marche jusqu'en Inde. Il rapporte aussi que Ptolémée III ramena en Égypte les dieux égyptiens que Cambyse II avait emportés en Perse deux siècles plus tôt, ainsi qu'un butin considérable d'argent et d'or, et que, devant mater une révolte dans son pays, il « se tint à distance du roi du nord ». Lecture commune : la Bible annotée française donne les mêmes faits avec des chiffres traditionnels — 40 000 talents d'argent, des vases précieux, 2 500 images de fonte dont les idoles égyptiennes enlevées par Cambyse — et rapporte qu'une sédition en Égypte rappela Ptolémée, qui rentra chargé de butin ; le surnom d'Évergète (« bienfaiteur ») lui aurait été donné par un peuple heureux de retrouver ses dieux. Justin affirme que, sans cette révolte, il aurait pris tout le royaume de Séleucus. Les notes des éditions Segond, NBS et BDS ajoutent deux précisions utiles : Ptolémée III s'empara d'abord de « la première de ses forteresses », Séleucie ou Antioche, en 246 — et le verset 9 décrit une campagne de Séleucus II contre l'Égypte qui n'a laissé aucune autre trace dans l'histoire. La fiche retient de ces lectures trois faits convergents : une expédition de représailles, un butin nommé avec précision, et une occasion manquée faute de moyens.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">246 av. n. è.</td><td>Ptolémée III succède à son père ; il entre en Syrie et prend la partie fortifiée d'Antioche</td></tr>
+<tr><td class="d">246 av. n. è.</td><td>Laodice est mise à mort ; la branche d'Antiochus II s'éteint en Syrie et Séleucus II s'impose</td></tr>
+<tr><td class="d">246-245 av. n. è.</td><td>Marche vers l'est : pillage de la Babylonie, de Suse ; les dieux égyptiens emportés par Cambyse reviennent en Égypte</td></tr>
+<tr><td class="d">245 av. n. è.</td><td>Retour en Égypte avec un butin considérable (40 000 talents d'argent selon la tradition) pour mater une sédition</td></tr>
+<tr><td class="d">Vers 242 av. n. è.</td><td>Riposte de Séleucus II en Égypte : défaite ; le roi du nord rentre à Antioche avec les restes de son armée</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE PAPIER DE GUROB : un papyrus grec d'Égypte, dit papyrus de Gurob, conserve un fragment de récit de la campagne syrienne de Ptolémée III, avec la mention de la mort de Laodice et de la prise de villes ; c'est le document contemporain le plus direct sur cette guerre. (2) L'INSCRIPTION D'ADOULIS : le texte grec gravé à Adoulis, sur la mer Rouge, et copié plus tard par Cosmas Indicopleustès, énumère les conquêtes de Ptolémée III en Asie — une proclamation officielle de victoire qui correspond au mouvement décrit par Daniel. (3) POLYBE ET JUSTIN : Polybe (fragments du livre 5 et des livres perdus sur l'histoire de Séleucus II) et Justin (27.1-2) donnent la trame des opérations ; Appien résume la succession. (4) LA CHRONOLOGIE ÉGYPTIENNE : les documents démotiques et grecs datés des années 246-241, dont des reçus et contrats de la chancellerie lagide, encadrent l'absence du roi pendant la campagne, ce qui confirme le retour précipité pour cause de troubles intérieurs. (5) LE FACTEUR JUIF : sous Ptolémée III, la colonie juive d'Égypte se développe (inscriptions funéraires juives d'Alexandrie, sanctuaires de la communauté) ; le pays de Juda demeure sous l'autorité lagide, et les sources juives postérieures (Flavius Josèphe, Antiquités 12) rapportent les relations entre la dynastie et le peuple de Dieu — un contexte qui éclaire le « roi du sud » du verset.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) L'AXE DE L'EXPÉDITION : d'Égypte vers la Syrie du Nord par la côte (Péluse, Gaza, Tyr, Sidon, Béryte, puis Antioche sur l'Oronte), ensuite vers l'est par la trouée de l'Euphrate jusqu'à la Babylonie et Suse : c'est le grand axe caravanier et militaire du Proche-Orient, celui que Xerxès avait suivi vers la Grèce deux siècles plus tôt. (2) SÉLEUCIE DE PIÉRIE ET ANTIOCHE : le port et la capitale ; leur prise partielle par l'Égypte explique pourquoi Roger II du texte biblique dit que le roi du nord « se tiendra à distance » — la puissance lagide contrôlait les accès maritimes. (3) LA BABYLONIE ET SUSE : le pillage de la Babylonie et de l'ancienne capitale perse correspond à la géographie des dépôts royaux — Suse était le magasin où Darius avait entassé les trésors impériaux, et où, selon la tradition rapportée par les sources, Cambyse avait déposé les dieux égyptiens. (4) LE RETOUR : le chemin inverse, suivi par les renforts rappelés en Égypte à cause d'une révolte dans le Delta et la Haute-Égypte, explique la carte intérieure du pays lagide : les troubles se concentrent dans les nomes du sud, loin de la Méditerranée. (5) LA FRONTIÈRE DE LA JUDÉE : entre les deux empires, la Judée reste égyptienne ; les routes du Sud (Ascalon, Gaza, Péluse) et du Nord (Bet-Shean/Scythopolis, la vallée du Jourdain) montrent comment le pays changeait de maître selon le sort des armes.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA NUMISMATIQUE : les monnaies de Ptolémée III, avec l'aigle sur le foudre et les portraits royaux, sont frappées dans les ateliers d'Égypte, de Chypre et des villes phéniciennes occupées ; les monnaies de Séleucus II, avec Apollon assis sur l'omphalos, permettent de dater les périodes de contrôle par les ateliers monétaires actifs. (2) L'ÉPIGRAPHIE GRECQUE : les dédicaces de cités et de sanctuaires qui honorent Ptolémée III et son épouse Bérénice II (à Délos, à Cos, en Égypte) témoignent de la puissance de la dynastie au sortir de la guerre. (3) LA PAPYROLOGIE ADMINISTRATIVE : les archives de l'Égypte ptolémaïque — comptes, lettres, ordres de réquisition — documentent l'effort logistique d'une campagne lointaine : transport de grain, fourrage, réquisition de bateaux sur le Nil. (4) L'ARCHÉOLOGIE DES SITES : les fouilles de Suse (mission de Jacques de Morgan, puis travaux ultérieurs) ont mis au jour les dépôts achéménides ; celles de Séleucie du Tigre et de Babylone montrent l'occupation hellénistique et les traces de destructions militaires ; les niveaux de destruction de certaines villes syriennes sont datés de la période des guerres syriennes. (5) LA CHRONOLOGIE ABSOLUE : la tablette cunéiforme dite « chronique des diadoques » et les journaux astronomiques babyloniens fournissent une trame datée pour la Babylonie séleucide, tandis que les décrets de cités grecques et les listes égyptiennes synchronisent les règnes — c'est de ces croisements que vient la datation des années 246-241. Registre : la fiche signale que ces sources ne dépendent pas du livre de Daniel ; elles permettent de contrôler, non de démontrer.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>246 : MORT DE PTOLÉMÉE II → PTOLÉMÉE III « REJETON DES RACINES » → CAMPAGNE DE VENGEANCE → PRISE DE LA FORTERESSE (ANTIOCHE/SÉLEUCIE) → LAODICE MISE À MORT → PILLAGE DE LA BABYLONIE, SUSE, JUSQU'EN ORIENT → RETOUR DES DIEUX ÉGYPTIENS, 40 000 TALENTS → SÉDITION EN ÉGYPTE : RETOUR ET DISTANCE → VERS 242 : RIPOSTE DE SÉLEUCUS II, DÉFAITE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement en 246-242 av. n. è. (Ptolémée III Évergète), comme le registre et les publications citées. LE TEXTE NE NOMME PAS LE ROI : l'identification repose sur la suite dynastique, qui est admise par les publications et par les commentaires anciens comme par les histoires modernes. L'AMPLEUR DE L'EXPÉDITION : la marche « jusqu'en Inde » est rapportée par les sources anciennes et reprise par la Bibliothèque en ligne ; les historiens modernes considèrent plutôt des opérations dans l'est de l'empire séleucide, jusqu'aux confins de la Bactriane — la fiche rapporte le témoignage sans trancher. LES CHIFFRES : les 40 000 talents et les 2 500 images viennent de la tradition des commentateurs, non d'un document comptable contemporain ; la fiche les présente comme tradition. LE MOT « DIEUX » : le texte parle des dieux du roi du nord comme d'un butin ; la fiche évite toute interprétation sur la nature de ces divinités et s'en tient au fait rapporté. CE QUE LA FICHE NE DIT PAS : elle ne traite pas du verset 10 (les fils du roi du nord), qui relève de la fiche suivante, et ne donne aucune date pour l'avenir.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ptolémée III devient roi du sud ; il entre en Syrie pour venger sa sœur</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">246 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de la partie fortifiée d'Antioche ; mort de Laodice ; Séleucus II confirmé au nord</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">246 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Marche vers l'est : Babylonie et Suse pillées ; les dieux emportés par Cambyse reviennent en Égypte</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">246-245 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour précipité en Égypte pour mater une sédition ; trésor considérable ramené</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">245 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séleucus II attaque l'Égypte et subit une défaite ; il rentre à Antioche</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 242 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/5">Bible — 1 Samuel 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/2">Bible — 1 Rois 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/13/18">Bible — 1 Chroniques 18 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/13/18</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11">Bible — Daniel 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032">« Deux rois en conflit » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN392 — Un rejeton de ses racines : la vengeance, le butin et les dieux ramenés</span><span>Catégorie DN4</span></div></div>
+</article>
+<article class="fiche" id="DN393">
+<div class="visuel"><img src="images/prophe_DN393_armee.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN393 · CATÉGORIE DN4</div>
+<h3>Les fils du roi du nord : grandes armées, forteresse et le retour des années</h3>
+<div class="ref">Daniel 11:10-13</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">fils s'exciter foule forces nombreuses inonder passer retour forteresse roi du sud s'exaspérer foule livrée en sa main cœur s'élever ne pas exploiter position de force roi du nord revenir au bout des temps grandes richesses</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN393</div><audio controls preload="none" src="audio/fiche_DN393_armee.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN393_armee.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 11:10-13</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>fils s'exciter foule forces nombreuses inonder passer retour forteresse roi du sud s'exaspérer foule livrée en sa main cœur s'élever ne pas exploiter position de force roi du nord revenir au bout des temps grandes richesses</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P393 (11:10-13 : les fils du roi du nord lèvent une grande armée ; de nouveau la bataille) ; Séleucus III et Antiochus III ; quatrième guerre de Syrie ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>SES FILS… S'EXCITERONT… RÉUNIRONT… FOULE… FORCES MILITAIRES… NOMBREUSES… VENIR… INONDER… PASSER… RETOURNER… S'EXCITER… JUSQU'À SA FORTERESSE… ROI DU SUD… S'EXASPÉRER… SORTIR… COMBATTRE… FOULE… LIVRÉE… EN SA MAIN… ELLE SERA EMPORTÉE… SON CŒUR S'ÉLÈVERA… FAIRE TOMBER… DIZAINES DE MILLIERS… NE PAS EXPLOITER… POSITION DE FORCE… ROI DU NORD… REVENIR… METTRE SUR PIED… FOULE PLUS NOMBREUSE QUE LA PREMIÈRE… AU BOUT DES TEMPS… QUELQUES ANNÉES… GRANDES FORCES… BEAUCOUP DE BIENS… — WE-YITGARU… ET ILS S'EXCITERONT… BENAV… LES FILS… WE-YEʾESFU… ET ILS RASSEMBLERONT… HAMON… UNE MULTITUDE… ḤAYIL… DE FORCES… RABBIM… NOMBREUSES… U-VA… ET IL VIENDRA… WE-YAṬEF… ET IL INONDERA… WE-YAʿAVOR… ET IL PASSERA… WE-YASHOV… ET IL REVIENDRA… WE-YITGAREH… ET IL S'EXCITERA… ʿAD-MAʿUZO… JUSQU'À SA FORTERESSE… WE-YITMAR… ET IL S'IRRITERA… MELEKH… LE ROI… HA-NEGEV… DU SUD… WE-YATSI… ET IL SORTIRA… WE-NILḤAM… ET COMBATTRA… HE-HAMON… LA MULTITUDE… TINNATEN… SERA LIVRÉE… BE-YADO… EN SA MAIN… WE-YARIM… ET IL ÉLÈVERA… LEVAVO… SON CŒUR… WE-HISH… ET IL FERA TOMBER… RIBBOT… DES MYRIADES… WE-LO… ET IL NE… YAʿAZ… PRÉVAUDRA PAS… — SÉLEUCUS III… 226-223… ASSASSINAT… ANTIOCHUS III… 223-187… LE GRAND… SÉLEUCIE… COELÉ-SYRIE… TYR… PTOLÉMAÏS… PRINTEMPS 217… SEIZE ANS… PHILIPPE V… MACÉDOINE… AGATHOCLE… PTOLÉMÉE V… ROME… »</li>
+<li>LES TROIS JUMEAUX — Deutéronome 20 : la loi de la guerre d'Israël encadre la mobilisation, l'offre de paix avant l'attaque et le sort du butin ; lire Daniel 11:10-13 avec ce texte permet de mesurer ce que le prophète décrit en langage neutre : des masses levées, des villes investies, des populations livrées. 2 Rois 16 : le roi Ahaz de Juda, menacé par ses voisins, cherche secours auprès de l'Assyrie et se déclare serviteur d'un grand roi — le récit montre comment un petit royaume coincé entre deux empires choisit son protecteur, exactement la position de Juda entre le sud lagide et le nord séleucide. Psaume 21 : le psaume royal chante la force que Dieu donne au roi, son courage et sa couronne ; Daniel 11:12 dit l'inverse exact de ce chant : le roi du sud « élève son cœur » et n'exploite pas sa victoire — la Bible oppose la force reçue et l'orgueil qui la stérilise.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les versets 10 à 13 couvrent une génération entière : le règne très bref de Séleucus III, l'arrivée d'Antiochus III, la quatrième guerre de Syrie, puis le retour du nord dans les années qui suivent. Le cadre intérieur est celui du basculement d'un empire à l'autre : l'Égypte lagide de Ptolémée IV Philopator (221-203) cède du terrain en Asie, tandis que le nouveau roi de Syrie, Antiochus III (223-187), reconstruit la puissance séleucide perdue par son père. Deux enfants sont au centre de la seconde partie du passage : Ptolémée V Épiphane, qui monte sur le trône d'Égypte à cinq ans, et un royaume sous tutelle, gouverné par des ministres et des tuteurs. Les publications de la Bibliothèque en ligne présentent cette séquence comme la préparation de Raphia : le verset 10 décrit la ruée du nord, le verset 11 la réaction du sud, le verset 12 le résultat — une victoire sans lendemain — et le verset 13 le retour du nord, seize ans plus tard, avec des forces plus grandes encore.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre mouvements dans le texte. (1) L'IMAGE DE L'EAU : « il inondera et passera » — la métaphore du torrent qui déborde décrit une invasion qui submerge les défenses ; le même registre revient dans les prophètes pour décrire les empires qui débordent sur les petits pays. (2) LA FORTERESSE ET LE RETOUR : le nord va jusqu'à la forteresse, puis revient ; le texte garde la trace d'un mouvement de va-et-vient, ce qui correspond à la campagne de 219-217 : Antiochus III reprend Séleucie et les villes de Phénicie, puis se retire vers le nord au printemps 217. (3) LE CŒUR QUI S'ÉLÈVE : la formule est une condamnation morale. Dans le livre de Daniel, l'orgueil est le signe du roi qui va tomber — Nabuchodonosor (4:30), Belshazzar (5:20), puis les rois du chapitre 11. Dire que « le cœur du roi s'élèvera » juste avant d'ajouter « mais il n'exploitera pas sa position de force », c'est dire que la victoire de Raphia n'a rien réglé. (4) LA DOUBLE NOTATION DU TEMPS : « au bout des temps, de quelques années » — le texte prend soin de marquer un intervalle long avant le retour du nord, ce qui laisse au lecteur le temps de comprendre que la guerre ne se termine pas avec une bataille. Les seize années qui suivent Raphia, jusqu'à la mort de Ptolémée IV en 203, entrent dans cet intervalle.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : l'article « Deux rois en conflit » explique que Séleucus III fut assassiné — son règne n'avait même pas duré trois ans —, que son frère Antiochus III lui succéda, que celui-ci rassembla une armée nombreuse contre Ptolémée IV, reprit le port de Séleucie, la province de Coelé-Syrie, Tyr, Ptolémaïs et les villes voisines, mit en déroute l'armée du roi du sud et s'empara de nombreuses villes de Juda, puis regagna au printemps 217 sa forteresse en Syrie. Pour le verset 13, le même article précise que ces « temps » furent les seize années ou davantage qui suivirent la défaite syrienne à Raphia, que Ptolémée V devint alors roi du sud, qu'Antiochus III partit avec une foule plus nombreuse que la première, alliée à l'armée de Philippe V de Macédoine, et que le jeune roi du sud connaissait en outre des troubles intérieurs : son tuteur Agathocle gouvernait en son nom et traitait les Égyptiens avec arrogance, ce qui provoqua des révoltes. Lecture commune : les commentaires et les notes de versions (bibliquest, Bible annotée, notes des éditions BDS, NBS, FRC97, realclearbible, forum d'étude) donnent les mêmes identifications : les « fils » sont Séleucus III Céraunus (226-223) et Antiochus III le Grand (223-187) ; la « forteresse » est Raphia, à la frontière de l'Égypte ; le verset 13 décrit le retour « quatorze ans après Raphia » ; le « roi qui fera passer l'exacteur » (v. 20) annonce Séleucus IV et son collecteur Héliodore. La fiche retient de ces lectures un point de méthode : la prophétie n'est pas un résumé d'événements isolés, c'est un enchaînement — l'échec du père, la tentative des fils, l'échec du nord, le retour plus fort — dont la logique se vérifie dans les sources.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">226 av. n. è.</td><td>Séleucus III Céraunus succède à Séleucus II ; son règne est interrompu par un assassinat au bout de moins de trois ans</td></tr>
+<tr><td class="d">223 av. n. è.</td><td>Antiochus III, son frère, devient roi du nord ; il reconstruit l'armée séleucide</td></tr>
+<tr><td class="d">219-218 av. n. è.</td><td>Reprise de Séleucie, de la Coelé-Syrie, de Tyr et de Ptolémaïs ; de nombreuses villes de Juda passent au nord</td></tr>
+<tr><td class="d">Printemps 217 av. n. è.</td><td>Antiochus III quitte Ptolémaïs et regagne sa forteresse en Syrie ; la guerre se décide plus au sud</td></tr>
+<tr><td class="d">Après 217 av. n. è.</td><td>Seize années et plus : troubles en Égypte sous la tutelle d'Agathocle ; Ptolémée V enfant ; retour du nord avec des forces plus grandes et l'alliance macédonienne</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) POLYBE : c'est la source principale des années 220-217 ; il raconte la jeunesse d'Antiochus III, ses campagnes en Orient, la reprise de Séleucie et de la Coelé-Syrie, et prépare le récit de Raphia. (2) LES SOURCES SUR SÉLEUCUS III : sa mort par assassinat après un règne de moins de trois ans est rapportée par Polybe et par les résumés d'histoire hellénistique ; les listes royales séleucides donnent 226-223. (3) LES SOURCES ÉGYPTIENNES : le règne de Ptolémée IV et la tutelle autour de Ptolémée V sont documentés par les papyrus administratifs et par des décrets de prêtres (les décrets de Memphis et de Raphia, gravés sur pierre) qui datent les événements de la cour lagide et témoignent des crises intérieures. (4) LES SOURCES JUIVES : Flavius Josèphe (Antiquités 12) rapporte les rapports d'Antiochus III avec les Juifs et le statut accordé à Jérusalem après 198 ; les livres des Maccabées, plus tardifs, décrivent la même bascule comme l'origine des crises du siècle suivant. (5) LA CHRONOLOGIE : les ères séleucide et lagide, les décrets datés et les synchronismes avec Rome et la Macédoine (Philippe V, première guerre de Macédoine) permettent d'ancrer les années 226, 223, 219, 217 et 203 dans un cadre vérifiable.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE COULOIR SYRO-PALESTINIEN : de Séleucie de Piérie à Gaza, la bande côtière est la seule voie de passage entre les deux empires ; Tyr et Ptolémaïs (l'ancienne Acco) y sont les ports et les verrous, ce qui explique leur place dans la campagne d'Antiochus III. (2) RAPHIA : ville de la frontière égyptienne, au sud de Gaza, sur la route d'Égypte ; sa position de porte explique qu'on s'y soit battu en 217 et que le texte parle de la « forteresse du roi du sud ». (3) LA FORTERESSE DU NORD : en regagnant la Syrie au printemps 217, Antiochus III revient vers ses bases d'Antioche et de Séleucie — la logistique hellénistique impose de s'appuyer sur les ports et les magasins royaux. (4) PANÉAS (CÉSARÉE DE PHILIPPE) : à l'extrême nord du pays, au pied du mont Hermon, à la source du Jourdain — le lieu où Scopas et ses hommes seront refoulés en 198, point de passage obligé vers Damas et le nord. (5) LA JUDÉE ET SES ROUTES : les villes de Juda mentionnées dans la campagne sont sur les axes qui relient la plaine côtière aux hautes terres ; la carte des garnisons (Scythopolis, Gaza, Jéricho, l'Acra à Jérusalem) reflète la domination alternée des deux rois.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES DÉCRETS DE PRÊTRES : le décret dit de Raphia (217 av. n. è.), promulgué après la victoire, est gravé sur une stèle et accorde des honneurs au roi et à la reine ; il est daté et localisé, et constitue une pièce archéologique majeure pour la chronologie ptolémaïque. (2) LA NUMISMATIQUE : les monnaies d'Antiochus III (type d'Apollon, puis de Zeus) frappées dans les ateliers de Séleucie, Antioche et des villes reprises montrent le rétablissement du pouvoir séleucide ; les tétradrachmes ptolémaïques de Ptolémée IV attestent la stabilité monétaire de l'Égypte. (3) L'ÉPIGRAPHIE : les décrets de cités grecques et les inscriptions de sanctuaires évoquent les souverains, leurs victoires et leurs alliances — dont l'alliance d'Antiochus III avec Philippe V de Macédoine, connue par les sources littéraires et par les décrets contemporains. (4) LA PAPYROLOGIE : les papyrus de l'Égypte ptolémaïque (comptes de greniers, ordres de réquisition, contrats) montrent la mobilisation des ressources du pays sous Ptolémée IV, et la documentation postérieure permet de suivre les difficultés financières et les troubles du règne de Ptolémée V. (5) L'ARCHÉOLOGIE DE JÉRUSALEM ET DE JUDÉE : les fouilles de la ville de David et des sites judéens ont livré des céramiques et des monnaies hellénistiques, ainsi que des traces de fortifications réutilisées ; la stratigraphie de sites comme Maresha ou Tel Anafa documente la culture matérielle de cette période de domination lagide puis séleucide. Registre : la fiche distingue les faits documentés (batailles, rois, décrets) des détails narratifs (motifs, coulisses), qui restent des témoignages littéraires.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>SÉLEUCUS II MEURT → SÉLEUCUS III (226-223), ASSASSINÉ → ANTIOCHUS III (223-187) → 219-218 : REPRISE DE SÉLEUCIE, COELÉ-SYRIE, TYR, PTOLÉMAÏS, VILLES DE JUDA → PRINTEMPS 217 : RETRAITE VERS LA FORTERESSE → « LE ROI DU SUD S'EXASPÉRERA » (11:11) → RAPHIA → 203 : MORT DE PTOLÉMÉE IV → PTOLÉMÉE V (5 ANS) ; TUTELLE, TROUBLES, ALLIANCE AVEC PHILIPPE V → 16 ANS PLUS TARD : « FOULE PLUS NOMBREUSE QUE LA PREMIÈRE »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement pour Séleucus III et Antiochus III (226-217 et au-delà), comme le registre et les publications citées. LE TEXTE NE NOMME PAS LES FILS : l'identification repose sur la suite dynastique, unanimement retenue par les commentaires. LA « FORTERESSE » : la fiche rappelle que le mot peut désigner Raphia (frontière), Séleucie (port) ou Antioche selon la phase de la campagne ; elle ne tranche pas, le texte employant l'expression de façon générique. LES CHIFFRES D'ARMÉES : ils viennent de Polybe et sont discutés par les historiens modernes ; la fiche les présente comme les données de la tradition historique, à la fiche de Raphia pour le détail. LES « VIOLENTS DE TON PEUPLE » : le verset 14 n'est traité ici qu'en renvoi ; son développement complet appartient à la fiche du pays de la Parure. CE QUE LA FICHE NE FAIT PAS : elle ne traite pas du détail de la bataille de Raphia (fiche suivante), ni des versets 15-16 (prise de Sidon, 198), et ne donne aucune date pour l'avenir.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séleucus III Céraunus roi du nord ; règne bref terminé par un assassinat</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">226 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Antiochus III succède à son frère ; réorganisation et agrandissement de l'armée séleucide</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">223 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise de Séleucie, de la Coelé-Syrie, de Tyr et de Ptolémaïs ; incursion en Juda</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">219-218 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Antiochus III regagne sa forteresse en Syrie : le nord semble maître du terrain</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Printemps 217 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Ptolémée IV ; Ptolémée V âgé de cinq ans ; troubles sous le tuteur Agathocle — le retour du nord se prépare</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">203 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/20">Bible — Deutéronome 20 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/20</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/16">Bible — 2 Rois 16 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/16</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/21">Bible — Psaume 21 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11">Bible — Daniel 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032">« Deux rois en conflit » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN393 — Les fils du roi du nord : grandes armées, forteresse et le retour des années</span><span>Catégorie DN4</span></div></div>
+</article>
+<article class="fiche" id="DN394">
+<div class="visuel"><img src="images/prophe_DN394_raphia.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN394 · CATÉGORIE DN4</div>
+<h3>Le roi du sud s'enflamme : Raphia, les dizaines de milliers et le cœur enflé</h3>
+<div class="ref">Daniel 11:11, 12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">roi du sud s'exaspérer sortir combattre grande foule livrée en sa main emportée cœur s'élever faire tomber dizaines de milliers ne pas exploiter position de force (Raphia 217 → 75 000 → 68 000 → traité → Juda reste égyptien)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN394</div><audio controls preload="none" src="audio/fiche_DN394_raphia.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN394_raphia.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 11:11, 12</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>roi du sud s'exaspérer sortir combattre grande foule livrée en sa main emportée cœur s'élever faire tomber dizaines de milliers ne pas exploiter position de force (Raphia 217 → 75 000 → 68 000 → traité → Juda reste égyptien)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P394 (11:11, 12 : le roi du sud s'irrite ; il abat des dizaines de milliers, mais ne l'emporte pas) ; bataille de Raphia, 217 av. n. è. ; Polybe, Histoires 5.82-86 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>ROI… SUD… S'EXASPÉRER… SORTIR… COMBATTRE… ROI… NORD… METTRE SUR PIED… GRANDE… MULTITUDE… MULTITUDE… LIVRÉE… SA MAIN… EMPORTÉE… SON CŒUR… S'ÉLÈVERA… FERA TOMBER… DIZAINES DE MILLIERS… NE PAS EXPLOITER… POSITION DE FORCE… — WE-YITMAR… ET IL S'IRRITERA… MELEKH… LE ROI… HA-NEGEV… DU SUD… WE-YATS… ET IL SORTIRA… WE-NILḤAM… ET IL COMBATTRA… ʿIMO… AVEC LUI… ʿIM-MELEKH… AVEC LE ROI… HA-TSAFON… DU NORD… WE-YAʿAMED… ET IL METTRA SUR PIED… HAMON… UNE MULTITUDE… RAV… GRANDE… WE-NITAN… ET SERA LIVRÉE… HE-HAMON… LA MULTITUDE… BE-YADO… EN SA MAIN… WE-NISSA… ELLE SERA EMPORTÉE… WE-YAROM… ET S'ÉLÈVERA… LEVAVO… SON CŒUR… WE-YAPPEL… ET IL FERA TOMBER… RIBBOT… DES MYRIADES… WE-LO… ET IL NE… YAʿAZ… PRÉVAUDRA PAS… — 217… 22 JUIN… RAPHIA… GAZA… 75 000… 68 000… 73 ÉLÉPHANTS… 102 ÉLÉPHANTS… 10 000 FANTASSINS… 300 CAVALIERS… 4 000 PRISONNIERS… 5 ÉLÉPHANTS… 1 500 FANTASSINS… 700 CAVALIERS… 16 ÉLÉPHANTS… SCOPAS… SOSIBIUS… POLYCRATE… SÉLEUCIE… PHÉNICIE… COELÉ-SYRIE… PTOLÉMÉE V… CINQ ANS… »</li>
+<li>LES TROIS JUMEAUX — 1 Samuel 15 : Saül remporte des victoires puis désobéit, et Samuel lui déclare que l'obéissance vaut mieux que le sacrifice ; le récit montre un roi qui perd son royaume au moment où il croit tenir sa force — Daniel 11:12 dit la même chose de Ptolémée IV : la victoire de Raphia lui monte à la tête et ne lui sert à rien. 1 Chroniques 21 : David ordonne un dénombrement militaire par orgueil, et le pays en paie le prix ; le thème du recensement et de la confiance dans le nombre traverse toute l'Écriture, et la bataille de Raphia est justement une bataille de nombres — 75 000 contre 68 000, 73 éléphants contre 102. Proverbes 16 : « L'orgueil précède l'écroulement, et la hauteur d'esprit précède la chute » — le verset que la prophétie met en pratique à l'échelle d'un roi et d'un empire, en écrivant que son cœur s'élèvera avant qu'il ne tire aucun profit de sa victoire.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les versets 11 et 12 sont le cœur militaire du chapitre : la seule bataille de la prophétie décrite de façon autonome. Elle a lieu en 217 avant notre ère près de Raphia, ville de la frontière égyptienne au sud de Gaza, et oppose les deux rois arrivés au terme du mouvement annoncé au verset 10 : Antiochus III, qui vient de reprendre la Coelé-Syrie et de mettre en déroute les troupes lagides, et Ptolémée IV Philopator, qui doit défendre l'Égypte même. Le contexte immédiat explique l'ampleur de l'affrontement : les deux rois jouent la maîtrise du pays de Juda. Polybe donne les effectifs les plus détaillés de l'Antiquité pour cette bataille, et les publications de la Bibliothèque en ligne, dans « Deux rois en conflit », retiennent les chiffres ronds : 75 000 soldats pour le sud, 68 000 pour le nord, avec les pertes et le traité qui suivit. La fiche suit cette narration et rappelle que le peuple de Daniel, lui, ne choisit rien : après Raphia, il demeure égyptien.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre traits. (1) LA COLÈRE DU SUD : le verbe « s'exaspérer/s'irriter » (yitmar) décrit une réaction, non un plan ; le texte présente le roi du sud comme obligé de réagir aux succès du nord — ce qui correspond au portrait des sources, où Ptolémée IV, peu porté sur la guerre, est poussé par ses ministres à sortir de son apathie. (2) LA « GRANDE MULTITUDE » LIVRÉE EN SA MAIN : le texte dit que la multitude du nord est remise au sud, et la suite des traductions françaises rend ce verset comme une défaite complète de l'armée attaquante. (3) LE CŒUR QUI S'ÉLÈVE, LES DIZAINES DE MILLIERS QUI TOMBENT, ET LA CONCESSION QUI SUIT : trois notations qui disent à la fois l'ampleur du massacre et l'inutilité de la victoire. Le chiffre « des dizaines de milliers » correspond aux 10 000 fantassins et 300 cavaliers de Polybe, auxquels s'ajoutent 4 000 prisonniers. (4) LA CONDAMNATION MORALE : « il ne profitera pas de sa position de force » — cette phrase est la clé de la lecture : le roi du sud gagne la bataille et perd la suite, parce qu'il ne poursuit pas politiquement sa victoire. Le verset suivant montrera que cette occasion manquée coûtera le pays de Juda.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : l'article « Deux rois en conflit » écrit qu'avec 75 000 soldats le roi du sud monta au nord contre l'ennemi, que le nord avait réuni 68 000 hommes, et que « la foule » fut livrée en la main du roi du sud « dans la bataille qui eut lieu près de la ville côtière de Raphia, non loin de la frontière égyptienne ». Il précise ensuite que Ptolémée IV emporta dans la mort 10 000 fantassins et 300 cavaliers syriens, fit 4 000 prisonniers, que les rois conclurent un traité aux termes duquel Antiochus III gardait son port syrien de Séleucie mais perdait la Phénicie et la Coelé-Syrie, que le cœur du roi du sud « s'éleva » après cette victoire, que Juda resta assujetti à Ptolémée IV, mais que celui-ci « n'exploita pas sa position de force » : au lieu de pousser son avantage, il préféra une vie débauchée, et son fils de cinq ans, Ptolémée V, devint le roi du sud suivant. Lecture commune : Polybe (Histoires 5.82-86) est la source directe ; les analyses historiques modernes détaillent les effectifs (70 000 fantassins, 5 000 cavaliers, 73 éléphants côté lagide ; 62 000, 6 000 et 102 côté séleucide), la date du 22 juin 217, le rôle des éléphants indiens face aux éléphants africains, la percée d'Antiochus sur l'aile droite et la victoire ptolémaïque au centre, avec comme pertes 10 000 fantassins et 300 cavaliers séleucides tués, 4 000 prisonniers, contre environ 1 500 fantassins et 700 cavaliers lagides. Les commentaires bibliques (Bible annotée, bibliquest, notes BDS et FRC97, forum d'étude) donnent les mêmes identifications et relient explicitement le verset 12 à l'« exploitation manquée » de la victoire.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Printemps 217 av. n. è.</td><td>Antiochus III occupe la Phénicie, Tyr, Ptolémaïs et de nombreuses villes de Juda ; les Égyptiens recrutent 20 000 soldats indigènes</td></tr>
+<tr><td class="d">22 juin 217 av. n. è.</td><td>Bataille de Raphia : 75 000 hommes environ contre 68 000, avec plus de 170 éléphants engagés</td></tr>
+<tr><td class="d">Été 217 av. n. è.</td><td>Défaite séleucide : 10 000 fantassins et 300 cavaliers tués, 4 000 prisonniers, cinq éléphants perdus</td></tr>
+<tr><td class="d">Fin 217 av. n. è.</td><td>Traité de paix : Antiochus III garde Séleucie mais perd la Phénicie et la Coelé-Syrie ; Juda reste égyptien</td></tr>
+<tr><td class="d">203 av. n. è.</td><td>Mort de Ptolémée IV ; Ptolémée V, âgé de cinq ans, lui succède — la « position de force » n'a pas été exploitée</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) POLYBE : le livre 5 des Histoires contient le récit détaillé de la quatrième guerre de Syrie et de la bataille de Raphia, avec la composition des armées, les ordres, le déroulement et les pertes ; c'est la source la plus complète pour une bataille hellénistique. (2) LES SOURCES JUIVES ET GRECQUES : Flavius Josèphe (Antiquités 12) et les auteurs postérieurs mentionnent la domination alternée de la Judée ; Porphyre, cité par Jérôme, commente le même verset dans une perspective hostile au livre de Daniel et fournit un témoignage extérieur sur les événements. (3) LE DÉCRET DE RAPHIA : promulgué après la bataille par le clergé égyptien, il est gravé sur stèle et accorde des honneurs au roi et à la reine pour la victoire — la preuve documentaire que l'événement a été officiellement célébré. (4) LES CONTRATS ET PAPYRUS DATÉS : les archives officielles égyptiennes permettent de suivre la mobilisation de 217 (ordres de recensement, réquisitions) et la démobilisation des mercenaires après la paix. (5) LE PARALLÈLE DE LA POLITIQUE INTÉRIEURE : l'historien grec note le lien entre le recrutement massif de soldats égyptiens pour Raphia et la révolte qui éclata ensuite dans le sud du pays, un symptôme de la fragilité lagide que la prophétie résume par « il ne profitera pas de sa position de force ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE SITE : Raphia se trouve sur la route côtière de Gaza à Péluse, à la lisière du désert du Sinaï ; la ville contrôlait le seul passage carrossable entre l'Égypte et la Palestine, d'où son rôle de verrou militaire depuis les pharaons. (2) LE TERRAIN : Polybe décrit une plaine bordée de dunes où Ptolémée appuya ses ailes sur le relief pour compenser son infériorité en cavalerie ; la géomorphologie locale (dunes côtières, sables, zone humide de l'oued) permet de comprendre les dispositions. (3) LA FRONTIÈRE DE L'ÉGYPTE : après Raphia, la ligne de front revient à la frontière naturelle du désert, entre Gaza et Péluse — les Ptolémées y entretiennent garnisons et postes de douane, ce que les papyrus administratifs confirment. (4) LA COELÉ-SYRIE : la province perdue par Antiochus III lors du traité couvre le Liban actuel, la Galilée et la haute vallée du Jourdain ; ce sont les terres qui feront la guerre suivante. (5) LES PORTS : Tyr, Sidon, Ptolémaïs, Séleucie : la carte des ports et des rades explique pourquoi les traités partagent toujours les mêmes villes — celui qui tient les ports tient le ravitaillement des armées.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA ZOOLOGIE DE GUERRE : la bataille est le meilleur document antique sur l'emploi des éléphants de combat ; Polybe précise l'origine des animaux — indiens côté séleucide, africains (et peut-être l'espèce nord-africaine éteinte, Loxodonta africana pharaoensis) côté lagide — et leur disposition, 40 devant l'aile gauche et 33 devant la droite. Les études modernes discutent la taille et le comportement des deux espèces, ce qui éclaire la débandade décrite. (2) LA DÉMOGRAPHIE MILITAIRE : les analyses modernes vérifient la plausibilité logistique des effectifs de Polybe (plus de 130 000 combattants, des centaines de navires de transport, des milliers de tonnes de grain) et les comparent à la capacité fiscale des royaumes hellénistiques. (3) LA CHRONOLOGIE ASTRONOMIQUE : les tablettes babyloniennes et les décrets égyptiens datés permettent de fixer la bataille au 22 juin 217, en tenant compte des calendriers macédonien, égyptien et babylonien. (4) L'ARCHÉOLOGIE DU SITE : les prospections dans la région de Tell el-Fara (Sinaï du Nord) et de Gaza cherchent à identifier Raphia ; les tessons hellénistiques, les monnaies et les traces de camps sont les indices recherchés, mais la localisation exacte du champ de bataille reste discutée. (5) L'ARMEMENT : les fouilles de sites hellénistiques de Méditerranée orientale ont livré des pointes de sarisse, des casques et des boucliers du type utilisé à Raphia ; la restauration expérimentale de la phalange permet de tester les mouvements décrits par Polybe. Registre : la fiche note que ces travaux sont indépendants du texte biblique ; ils servent de contrôle factuel.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>217 AV. N. È. → ANTIOCHUS III EN PHÉNICIE, TYR, PTOLÉMAÏS, VILLES DE JUDA → PTOLÉMÉE IV LÈVE 75 000 HOMMES (DONT 20 000 ÉGYPTIENS) → 22 JUIN : RAPHIA, PRÈS DE GAZA → DÉFAITE SÉLEUCIDE (10 000 + 300, 4 000 PRISONNIERS) → TRAITÉ : SÉLEUCIE GARDÉE, PHÉNICIE ET COELÉ-SYRIE PERDUES → « SON CŒUR S'ÉLÈVERA » — POSITION DE FORCE NON EXPLOITÉE → 203 : PTOLÉMÉE V, CINQ ANS — LA SUITE SE PRÉPARE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement à la bataille de Raphia (217 av. n. è.), comme le registre et les publications citées. LES CHIFFRES : la fiche donne à la fois les chiffres retenus par la Bibliothèque en ligne (75 000 et 68 000) et ceux de Polybe (70 000 et 62 000) parce que les deux circulent ; elle signale que les historiens modernes discutent l'interprétation des totaux et que la fourchette 120 000-150 000 est la plus souvent retenue. LA PERTE EN ÉLÉPHANTS : Polybe dit cinq éléphants tués côté séleucide dans un passage, mais les études modernes additionnent parfois tués et blessés ; la fiche n'entre pas dans ce débat. LE MOT « DIZAINES DE MILLIERS » : le texte hébreu dit « des myriades » — un superlatif ; la fiche ne le convertit pas en chiffre exact. LE « ROI QUI S'ENORGUEILLIT » : la fiche reprend la notation morale du texte et la rapproche des sources historiques, sans porter de jugement au-delà. CE QUE LA FICHE NE DIT PAS : elle ne raconte pas la campagne de Scopas et la chute de Sidon en 198 (fiche suivante), ni les troubles intérieurs égyptiens dans leur détail, et ne donne aucune date pour l'avenir.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Antiochus III lance l'offensive : Phénicie, Tyr, Ptolémaïs, villes de Juda</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Printemps 217 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Raphia : bataille rangée, plus de 170 éléphants engagés</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">22 juin 217 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Victoire ptolémaïque : 10 000 fantassins et 300 cavaliers séleucides tués, 4 000 prisonniers</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Été 217 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Traité : Séleucie reste au nord ; Phénicie et Coelé-Syrie retournent au sud ; Juda reste égyptien</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Automne 217 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Ptolémée IV ; Ptolémée V (cinq ans) roi du sud : la fortune change de camp</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">203 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/15">Bible — 1 Samuel 15 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/13/21">Bible — 1 Chroniques 21 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/13/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/16">Bible — Proverbes 16 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/16</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11">Bible — Daniel 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032">« Deux rois en conflit » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN394 — Le roi du sud s'enflamme : Raphia, les dizaines de milliers et le cœur enflé</span><span>Catégorie DN4</span></div></div>
+</article>
+<article class="fiche" id="DN395">
+<div class="visuel"><img src="images/prophe_DN395_panias.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN395 · CATÉGORIE DN4</div>
+<h3>Le rempart de siège et le pays de la Parure : Scopas à Sidon, 198</h3>
+<div class="ref">Daniel 11:14-16</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">beaucoup se lever contre le roi du sud fils de bandits trébucher roi du nord rempart de siège ville fortifiée bras du sud ne pas tenir agir selon sa volonté pays de la Parure extermination dans sa main (Panéas → Sidon 198 → Jérusalem 198)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN395</div><audio controls preload="none" src="audio/fiche_DN395_panias.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN395_panias.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 11:14-16</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>beaucoup se lever contre le roi du sud fils de bandits trébucher roi du nord rempart de siège ville fortifiée bras du sud ne pas tenir agir selon sa volonté pays de la Parure extermination dans sa main (Panéas → Sidon 198 → Jérusalem 198)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P395 (11:14-16 : beaucoup se dressent ; des hommes de ton peuple s'exaltent ; le roi du nord prend le pays de la Parure) ; Antiochus III et la Palestine ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>BEAUCOUP… SE LEVER… CONTRE… ROI DU SUD… FILS… BANDITS… TON PEUPLE… S'EXALTER… ACCOMPLIR… VISION… TRÉBUCHER… ROI DU NORD… VENIR… REMPART DE SIÈGE… S'EMPARER… VILLE… FORTIFICATIONS… BRAS… DU SUD… NE PAS TENIR… GENS D'ÉLITE… PAS DE FORCE… POUR TENIR… AGIR… SELON SA VOLONTÉ… PERSONNE… DEVANT LUI… SE TENIR… PAYS… PARURE… EXTERMINATION… SA MAIN… — WE-YITNAKKELU… ET ILS S'ÉLÈVERONT… RABBIM… BEAUCOUP… ʿAL-MELEKH… CONTRE LE ROI… HA-NEGEV… DU SUD… U-VNEY… ET LES FILS… PARITSIM… DES VIOLENTS… ʿAMMEKHA… DE TON PEUPLE… YINNASʾU… S'ÉLÈVERONT… LEHAʿAMID… POUR FAIRE TENIR… ḤAZON… UNE VISION… WE-KHASHALU… ET ILS TRÉBUCHERONT… WE-YAVO… ET IL VIENDRA… MELEKH… LE ROI… HA-TSAFON… DU NORD… WE-YISHFOKH… ET IL ÉLÈVERA… SOLALAH… UN REMPART… WE-LAKHAD… ET IL PRENDRA… ʿIR… UNE VILLE… METSUROT… DE FORTERESSES… WE-LO… ET NE… YAʿAMDU… TIENDRONT PAS… ZEROʿOT… LES BRAS… HA-NEGEV… DU SUD… WE-ʿASAH… ET IL FERA… KI-RTSONO… SELON SON BON PLAISIR… WE-ʿAMAD… ET IL SE TIENDRA… BE-ERETS… DANS LE PAYS… HA-TSEVI… LA PARURE… WE-KHALAH… ET L'EXTERMINATION… BE-YADO… DANS SA MAIN… — PANÉAS… CÉSARÉE DE PHILIPPE… SCOPAS… 10 000… SIDON… 198… JÉRUSALEM… JUDA… DÉCRET… TRIBUT… GUERRE… »</li>
+<li>LES TROIS JUMEAUX — Josué 23 : avant sa mort, Josué avertit Israël que les nations restées au milieu du pays deviendront des pièges s'il ne s'attache pas à son Dieu ; Daniel 11:14-16 décrit exactement l'inverse : un roi étranger s'installe durablement dans le pays, et le texte biblique le dit sans détour, car la sécurité du peuple de Dieu ne dépend pas des frontières mais de sa fidélité. Lamentations 3 : au cœur du désastre, le poète écrit que les bontés de Jéhovah ne sont pas épuisées et que sa miséricorde se renouvelle chaque matin ; la séquence de 198 — Jérusalem change de maître sans bataille — trouve dans ce texte la perspective biblique exacte : la ville peut tomber, le dessein de Dieu ne tombe pas. Ézékiel 15 : la vigne inutile est comparée à la ville qui ne produit rien et ne vaut que pour le feu — les prophètes rappellent que la valeur de Jérusalem n'est pas dans sa muraille, mais dans la fidélité de ceux qui l'habitent, ce qui donne son sens au « pays de la Parure » : c'est un pays de beauté, pas de forteresse.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les versets 14 à 16 racontent comment le royaume du sud perd la Palestine au profit du nord. Le cadre est celui des années qui suivent la mort de Ptolémée IV (203 av. n. è.) : Ptolémée V est un enfant, la cour lagide est divisée, les tutelles se succèdent et les révoltes éclatent en Égypte. Antiochus III, appuyé par Philippe V de Macédoine, reprend l'offensive, d'abord en Asie Mineure et en Phénicie, puis en direction de l'Égypte. Sa campagne décisive se joue à Panéas (l'actuelle Banyas, que les Hérodiens appelleront Césarée de Philippe) : le général égyptien Scopas y est battu et se réfugie avec 10 000 hommes d'élite dans Sidon, la ville portuaire fortifiée. Antiochus III monte le siège, prend la ville en 198, puis marche sur Jérusalem. La Bibliothèque en ligne résume l'événement en deux phrases qui serviront de trame à la fiche : « il se tiendra dans le pays de la Parure, et il y aura l'extermination dans sa main ». Le « pays de la Parure », dans le vocabulaire du livre de Daniel, désigne le pays du peuple de Dieu : Juda.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois motifs. (1) LES « FILS DE BANDITS DE TON PEUPLE » : le texte ne dit pas seulement que des ennemis étrangers s'attaquent au roi du sud ; il dit que des violents « de ton peuple » — du peuple de Daniel — se lèveront pour « faire tenir une vision », et qu'ils trébucheront. C'est un avertissement précis : la libération ne viendra pas d'une révolte qui prétendrait forcer l'accomplissement des promesses. Les publications de la Bibliothèque en ligne commentent ce point en expliquant que certains Juifs devinrent des révolutionnaires, que leur « vision » était fausse et qu'ils échouèrent. (2) LE SIÈGE ET LA PRISE : le texte décrit exactement une technique militaire : « il élèvera un rempart de siège et s'emparera d'une ville avec des fortifications » — la pratique hellénistique du terrassement d'approche et de la rampe d'assaut, attestée par les sièges de Tyr, de Gaza et par les traités militaires anciens. (3) LA FORMULE « AGIR SELON SA VOLONTÉ » : elle est déjà apparue pour Alexandre (11:3) et pour le roi du nord en 11:16 ; dans le livre de Daniel, c'est la marque des dominateurs qui ne rencontrent d'obstacle que du ciel. Et la dernière notation — « l'extermination dans sa main » — est celle qui donne son poids au verset : le passage du pays sous nouvelle domination n'est pas présenté comme une simple transaction diplomatique, mais comme un moment où la vie de ses habitants est à la merci d'un roi.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : l'article « Deux rois en conflit » consacre trois paragraphes à ces versets. Il explique que les « bras du Sud » — les forces de Ptolémée V — succombèrent à l'attaque lancée du nord ; qu'à Panéas (Césarée de Philippe), Antiochus III refoula le général égyptien Scopas et 10 000 hommes choisis, les « gens d'élite », jusque dans Sidon ; qu'il y éleva un rempart de siège et prit ce port phénicien en 198 avant notre ère ; qu'il agit alors « selon sa volonté », car l'armée du roi du Sud égyptien était incapable de tenir devant lui ; qu'il marcha ensuite contre Jérusalem, capitale du « pays de la Parure », et qu'en 198 Jérusalem et Juda passèrent de la domination du roi du Sud égyptien à celle du roi du Nord syrien. Le même article précise encore que, sur le plan intérieur, « beaucoup se levèrent contre le roi du Sud » : le jeune Ptolémée V avait des troubles dans son pays, où son tuteur Agathocle gouvernait en son nom et traitait les Égyptiens avec arrogance, ce qui provoqua des révoltes. Lecture commune : les notes des traductions françaises (BFC, BDS, NBS, FRC97) identifient le verset 14 aux partisans de la violence au sein du peuple, et les commentaires historiques (realclearbible, bibliquest, Bible annotée) relient les versets 15-16 au siège de Sidon et à la prise de la Palestine en 198. Les sources juives et les récits postérieurs — Flavius Josèphe, les Maccabées — donnent le cadre administratif et fiscal de ce changement de maître : privilèges, exemptions, garnisons, et plus tard les premières tensions qui mèneront à l'hellénisation forcée.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">203 av. n. è.</td><td>Mort de Ptolémée IV : Ptolémée V âgé de cinq ans ; régence et troubles en Égypte</td></tr>
+<tr><td class="d">201-200 av. n. è.</td><td>Antiochus III et Philippe V s'entendent pour partager les possessions lagides ; offensive conjointe</td></tr>
+<tr><td class="d">200 av. n. è.</td><td>Bataille de Panéas (Césarée de Philippe) : Scopas battu ; repli égyptien sur Sidon</td></tr>
+<tr><td class="d">198 av. n. è.</td><td>Siège et prise de Sidon ; Antiochus III s'installe dans le pays de la Parure</td></tr>
+<tr><td class="d">198 av. n. è.</td><td>Jérusalem et la Judée passent de la domination égyptienne à la domination séleucide</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) POLYBE : les livres 16 à 18 rendent compte de la campagne d'Antiochus III en Coelé-Syrie et en Asie Mineure, dont la victoire de Panéas et le siège de Sidon ; Polybe est ici un contemporain documenté des faits. (2) TITE-LIVE : ses livres sur l'Orient romain décrivent les mêmes années du point de vue de Rome, notamment l'alliance entre Antiochus III et Philippe V et ses conséquences. (3) LES SOURCES JUIVES : Flavius Josèphe (Antiquités 12.3) rapporte que les Juifs accueillirent Antiochus III et lui ouvrirent Jérusalem, et qu'en reconnaissance il leur accorda des privilèges fiscaux et religieux — un document précieux sur le changement de domination, même s'il est transmis par un auteur tardif. (4) LES DÉCRETS ET INSCRIPTIONS : les inscriptions de cités grecques et les décrets royaux attestent la pratique administrative des deux dynasties ; les papyrus égyptiens mentionnent la mobilisation et les difficultés de la régence lagide, tandis que les documents de Babylonie et de Syrie suivent l'extension du pouvoir séleucide. (5) LA CHRONOLOGIE : les ères séleucide et lagide et la liste des batailles donnée par Polybe et Tite-Live permettent de fixer 200-198 pour la campagne et la prise de Sidon, et 198 pour la bascule administrative de la Judée.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) PANÉAS / CÉSARÉE DE PHILIPPE : au pied du mont Hermon, à la source du Jourdain ; c'est le carrefour naturel entre la Galilée, la Damascène et la Békaa, d'où l'importance du combat qui y fut livré. (2) SIDON : port phénicien fortifié, sur la côte, avec une rade et des môles antiques aujourd'hui en partie submergés ; la ville est un point d'appui logistique, et son siège s'explique par sa position entre Antioche et l'Égypte. (3) LE COULOIR : la plaine côtière (Akko, Saint-Jean-d'Acre antique — Ptolémaïs), la Galilée et la vallée du Jourdain forment le seul axe terrestre entre le nord séleucide et le sud lagide ; la carte explique la séquence Panéas-Sidon-Jérusalem. (4) JÉRUSALEM : la ville haute, le mont du Temple et la ville basse, avec l'Acra comme point de contrôle militaire ; à l'époque lagide, la cité est administrée depuis Alexandrie, et le passage au nord séleucide se traduit par de nouveaux gouverneurs. (5) LES FRONTIÈRES FISCALES : les sources administratives distinguent les provinces de Coelé-Syrie et de Phénicie ; la carte de ces circonscriptions explique pourquoi le pays de la Parure appartient au lot disputé, et non à un royaume stable.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES FORTIFICATIONS : les fouilles de Sidon (avec les travaux sous-marins du Centre d'études archéologiques de la défense et les recherches menées depuis les années 1990) documentent le port antique, les môles et les installations hellénistiques ; pour Panéas/Banyas, les fouilles israéliennes ont mis au jour les installations cultuelles et les niveaux hellénistiques. (2) LES RAMES DE SIÈGE : la technique du terrassement, décrite par les auteurs militaires anciens (Énée le Tacticien, Philon de Byzance, Polybe lui-même), correspond aux traces archéologiques de rampes d'assaut retrouvées sur plusieurs sites du Proche-Orient. (3) LA STRATIGRAPHIE JUDÉENNE : les fouilles de Jérusalem, de Maresha, de Keilah et d'autres sites de Judée ont livré des céramiques et des monnaies hellénistiques attribuées aux administrations lagide puis séleucide, ce qui matérialise le passage de domination. (4) LA NUMISMATIQUE : les monnaies trouvées dans des niveaux de cette période — aigle ptolémaïque, types séleucides d'Apollon et de Zeus — permettent de dater les transitions dans chaque ville. (5) LA PALÉOCLIMATOLOGIE ET L'ALIMENTATION : les études sur les sédiments et les vestiges fauniques de la région montrent un paysage d'oliveraies, de terrasses et de vignes ; les stocks alimentaires, les jarres de conservation et les installations de pressage découvertes sur les sites sont le support économique de toute campagne militaire dans ce couloir. Registre : la fiche souligne que ces données archéologiques ne dépendent pas des textes bibliques.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>203 MORT DE PTOLÉMÉE IV → PTOLÉMÉE V (5 ANS), TUTELLE, RÉVOLTES → 201-200 : OFFENSIVE D'ANTIOCHUS III ET DE PHILIPPE V → PANÉAS : DÉFAITE DE SCOPAS → SIDON : REMPART DE SIÈGE, PRISE EN 198 → « LES BRAS DU SUD NE TIENDRONT PAS » → JÉRUSALEM : PASSAGE À LA DOMINATION SÉLEUCIDE EN 198 → « IL SE TIENDRA DANS LE PAYS DE LA PARURE, ET IL Y AURA L'EXTERMINATION DANS SA MAIN »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement en 200-198 av. n. è. (Antiochus III et la Palestine), comme le registre et les publications citées. LE « PAYS DE LA PARURE » : l'expression hébraïque (Erets ha-Tsevi) est expliquée ici comme le pays de Juda et de Jérusalem ; la fiche rappelle que les publications du projet appliquent parfois la même expression à un accomplissement plus large dans le temps, et que cette extension ne fait pas l'objet de la présente fiche, qui s'en tient au sens historique et au contexte du chapitre. LES « FILS DE BANDITS » : la fiche ne les identifie pas nommément ; les sources ne nomment pas ces révolutionnaires juifs, et les commentateurs proposent plusieurs lectures. LES CHIFFRES DE SCOPAS : les 10 000 hommes d'élite viennent de la tradition historique et du commentaire cité, non d'un document administratif retrouvé. LA DATE DE JÉRUSALEM : 198 est retenue par la Bibliothèque en ligne et par plusieurs commentaires ; d'autres travaux proposent 200 ou 199 selon la lecture des sources, et la fiche le signale. CE QUE LA FICHE NE DIT PAS : elle n'aborde pas les conflits avec Rome (versets 17-19), ni les événements des Maccabées, qui appartiennent à un autre verset, et ne donne aucune date pour l'avenir.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Ptolémée IV ; Ptolémée V enfant ; régence agitée et révoltes</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">203 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Accord entre Antiochus III et Philippe V pour le partage des possessions lagides</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">201 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Panéas : Scopas vaincu, replié dans Sidon avec ses 10 000 hommes</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">200 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Sidon après un rempart de siège ; Antiochus III s'installe dans le pays de la Parure</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">198 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérusalem et Juda passent du roi du sud au roi du nord — fin de la domination lagide</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">198 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/6/23">Bible — Josué 23 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/6/23</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/3">Bible — Lamentations 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/15">Bible — Ézékiel 15 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11">Bible — Daniel 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032">« Deux rois en conflit » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1977603">« L'Histoire écrite à l'avance avec précision » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1977603</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN395 — Le rempart de siège et le pays de la Parure : Scopas à Sidon, 198</span><span>Catégorie DN4</span></div></div>
+</article>
+<article class="fiche" id="DN396">
+<div class="visuel"><img src="images/prophe_DN396_cleopatre.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DN396 · CATÉGORIE DN4</div>
+<h3>La fille des femmes : Cléopâtre, la dot et le plan qui échoue</h3>
+<div class="ref">Daniel 11:17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">tourner sa face force de tout son royaume conditions équitables agir efficacement fille des femmes causer sa ruine ne pas tenir ne pas rester sienne (Rome → Cléopâtre Ire → 193 → dot → échec)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DN396</div><audio controls preload="none" src="audio/fiche_DN396_cleopatre.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DN396_cleopatre.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Daniel 11:17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>tourner sa face force de tout son royaume conditions équitables agir efficacement fille des femmes causer sa ruine ne pas tenir ne pas rester sienne (Rome → Cléopâtre Ire → 193 → dot → échec)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Daniel — P396 (11:17 : il donne la fille de sa femme pour la détruire) ; mariage de Cléopâtre Ire avec Ptolémée V (193 av. n. è.) ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>TOURNER… SA FACE… VENIR… FORCE… DE TOUT SON ROYAUME… CONDITIONS ÉQUITABLES… AGIR… EFFICACEMENT… FILLE… DES FEMMES… ACCORDÉ… CAUSER… SA RUINE… ELLE NE TIENDRA PAS… ELLE NE RESTERA PAS… SIENNE… — WE-YASEM… ET IL METTRA… PANAV… SA FACE… LA-VO… POUR VENIR… BE-ʿOZ… AVEC LA FORCE… KOL-MALKHUTO… DE TOUT SON ROYAUME… WI-SHARIM… ET DES CHOSES DROITES… ʿIMO… AVEC LUI… WE-ʿASAH… ET IL AGIRA… BAT… LA FILLE… HA-NASHIM… DES FEMMES… YITTEN… IL DONNERA… LE-MASḤITAH… POUR LA CORROMPRE… WE-LO… ET ELLE NE… TAʿAMOD… TIENDRA PAS… WE-LO… ET ELLE NE… TIHYEH… SERA PAS… LO… À LUI… — ROME… PHILIPPE V… PTOLÉMÉE V… CLÉOPATRE Ire… SYRA… 193… DOT… JUDÉE… PAYS DE LA PARURE… PROVINCES… NON REMISES… ASSUJETTIR… L'ÉGYPTE… MAGNÉSIE… 190… APAMÉE… 188… TRIBUT… 187… ÉLYMAÏS… SÉLEUCUS IV… »</li>
+<li>LES TROIS JUMEAUX — 1 Rois 11 : Salomon multiplie les mariages avec les filles de rois étrangers, et le récit conclut que ses femmes détournèrent son cœur ; la Bible ne condamne pas le mariage en soi, mais l'alliance qui fait passer l'intérêt politique avant la fidélité — exactement le sujet de Daniel 11:17. Chant de Salomon 6 : le poème décrit la bien-aimée comme unique et parfaite, l'inverse du calcul où une princesse devient monnaie d'échange ; le contraste éclaire le vocabulaire dur du verset, où la « fille des femmes » est donnée « pour causer sa ruine ». Ézékiel 16 : le prophète raconte Jérusalem comme une épouse comblée puis infidèle, et lui reproche d'avoir mis sa confiance dans sa beauté et ses alliances étrangères ; Jérusalem est ici l'enjeu d'une dot — et le pays de la Parure est précisément la beauté dont parle le prophète, beauté qui devient l'objet du marchandage.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le verset 17 est le dernier de la vague : il raconte comment Antiochus III, désormais maître du pays de la Parure, tente de régler définitivement la question égyptienne. Le cadre est celui des années 197-193 avant notre ère. Rome est intervenue dans les affaires de la Méditerranée orientale : depuis la fin de la guerre contre Philippe V de Macédoine, elle exige d'Antiochus III qu'il rende les territoires conquis sur les Lagides. Pour ne pas perdre la face tout en gardant le contrôle, le roi séleucide imagine une solution diplomatique : donner sa fille Cléopâtre — la première Cléopâtre de l'histoire lagide, appelée Cléopâtre Ire ou Cléopâtre Syra — en mariage à Ptolémée V, avec en dot les provinces disputées, dont Juda. C'est ce que la Bibliothèque en ligne appelle « un transfert fictif », et c'est aussi ce que le texte hébreu résume par une phrase abrupte : il donnera la fille des femmes, et elle ne tiendra pas, et elle ne restera pas sienne. Comme toujours dans le chapitre, l'enjeu du verset est le pays de Daniel : la dot comprend précisément la terre que le roi du nord vient de conquérir.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois points de lecture. (1) « LA FILLE DES FEMMES » : l'expression hébraïque (bat-ha-nashim) est un superlatif féminin — la fille par excellence, celle qui représente les femmes de sa maison. Elle désigne ici Cléopâtre Ire, et non la Cléopâtre de l'époque d'Auguste : la distinction est explicitement faite par la Bibliothèque en ligne, ce qui évite un contresens fréquent. (2) « POUR CAUSER SA RUINE » (le-mashḥitah) : le verbe est celui de la destruction ; le texte dit que la princesse est donnée pour une opération destructrice — dans l'intention politique du donneur, ce mariage doit ruiner la cour d'Égypte, l'assujettir de l'intérieur. Les commentaires anciens précisent la lecture : Antiochus III voulait s'emparer du roi du sud par la trahison de sa propre fille. (3) LA DOUBLE NÉGATION : « elle ne tiendra pas, et elle ne restera pas sienne » — le texte annonce à la fois l'échec de l'exécution (la dot ne sera pas remise) et l'échec de la loyauté (la fille prendra le parti de son mari). Une phrase, deux ratés : c'est le résumé d'un plan parfaitement conçu et parfaitement inutile.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture témoins de Jéhovah : l'article « Deux rois en conflit » explique que, mis en demeure par Rome, Antiochus III proposa des conditions de paix au roi du Sud ; qu'au lieu de rendre les territoires conquis, comme Rome l'exigeait, il voulut en faire un transfert fictif en donnant sa fille Cléopâtre Ire, « la fille des femmes », en mariage à Ptolémée V ; qu'elle devait recevoir en dot des provinces, notamment Juda, « le pays de la Parure » ; que, lors du mariage célébré en 193 avant notre ère, le roi de Syrie ne remit pas ces provinces à Ptolémée V ; que le mariage était politique et visait à assujettir l'Égypte à la Syrie ; et que le projet avorta parce que Cléopâtre Ire « ne resta pas sienne » : elle prit par la suite le parti de son mari, et l'Égypte se rangea aux côtés de Rome quand la guerre éclata entre Antiochus III et les Romains. Le tableau annexé à l'article situe le verset 17 dans la série : Daniel 11:7-9 Séleucus II et Ptolémée III ; 11:10-12 Antiochus III et Ptolémée IV ; 11:13-19 Antiochus III et Ptolémée V, avec pour « fille » Cléopâtre Ire. Lecture commune : les commentaires français (bibliquest, Bible annotée) donnent les mêmes faits avec la précision que Cléopâtre fut plus tard régente d'Égypte et resta fidèle aux intérêts égyptiens ; les historiens modernes de Rome et de l'Orient hellénistique décrivent le mariage de 193 comme un élément de la partie d'échecs qui aboutit à la guerre antiochique (192-188) et à la paix d'Apamée. La fiche retient de ces lectures la convergence : une intention calculée, une exécution incomplète, une loyauté inversée.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 197 av. n. è.</td><td>Rome exige d'Antiochus III la restitution des territoires enlevés aux Lagides</td></tr>
+<tr><td class="d">196-194 av. n. è.</td><td>Négociations : projet de mariage entre Cléopâtre Ire, fille d'Antiochus III, et Ptolémée V</td></tr>
+<tr><td class="d">193 av. n. è.</td><td>Mariage célébré ; les provinces promises en dot — dont Juda — ne sont pas remises</td></tr>
+<tr><td class="d">192-188 av. n. è.</td><td>Guerre entre Antiochus III et Rome ; l'Égypte prend le parti de Rome ; défaites des Thermopyles et de Magnésie</td></tr>
+<tr><td class="d">188 av. n. è.</td><td>Paix d'Apamée : lourd tribut, abandon des territoires d'Asie Mineure ; la dot n'a jamais été payée</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES SOURCES GRECQUES ET ROMAINES : Polybe, Tite-Live (livres 33-37), Appien (Syriaque) et Diodore décrivent la politique d'Antiochus III après sa conquête de la Coelé-Syrie, l'ultimatum romain, les négociations et le mariage de Cléopâtre Ire avec Ptolémée V ; Tite-Live rapporte aussi la déception égyptienne devant l'absence de remise des provinces. (2) LES SOURCES ÉGYPTIENNES : les décrets de prêtres et les papyrus de la minorité de Ptolémée V documentent la régence, les querelles de tutelle et la lourde pression fiscale qui suivirent. (3) LE CADRE ROMAIN : l'épisode s'inscrit dans la politique romaine d'arbitrage en Méditerranée orientale — la même année 193, Rome envoie des émissaires pour surveiller Antiochus III ; l'alliance finale de l'Égypte avec Rome lors de la guerre antiochique est rapportée par les sources grecques et latines. (4) LA DOCUMENTATION JUIVE : Flavius Josèphe (Antiquités 12) rapporte que le statut de Jérusalem et les privilèges accordés par Antiochus III sont alors en jeu, ce qui confirme que la dot comprenait bien la Judée, comme l'indique la Bibliothèque en ligne. (5) LA CHRONOLOGIE : la date de 193 pour le mariage, celle de 190 pour Magnésie et celle de 188 pour la paix d'Apamée sont établies par les sources littéraires et confirmées par les inscriptions et les dédicaces datées des cités grecques.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE THÉÂTRE DES OPÉRATIONS : à l'ouest, la Grèce et les Thermopyles (191) puis la Lydie et Magnésie du Sipyle (190) où Antiochus III est battu ; au sud, l'Égypte d'Alexandrie à laquelle les provinces sont promises ; au centre, la Coelé-Syrie et la Judée, l'objet même de la dot. (2) LES PROVINCES DE LA DOT : la liste donnée par les sources comprend la Coelé-Syrie, la Phénicie et la Judée — la bande côtière et son arrière-pays montagneux, dont les revenus fiscaux justifiaient la convoitise. (3) ALEXANDRIE : la capitale lagide, où le mariage est célébré et où Cléopâtre Ire exercera plus tard la régence ; son double port et son palais royal sont le centre du dispositif lagide, largement documenté par l'archéologie sous-marine. (4) APAMÉE ET LA SYRIE : la paix de 188 est conclue à Apamée sur l'Oronte ; à partir de là, la frontière entre les deux royaumes se stabilise plus à l'est, et la Judée change de statut administratif. (5) LA ROUTE DE L'ÉLYMAÏS : c'est en tentant de piller un temple de cette région de Perse qu'Antiochus III mourut en 187 — la fin d'un roi dont l'ambition financière avait déjà été punie par Rome.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES INSCRIPTIONS À DÉDICACES : les cités grecques honorent Ptolémée V et Cléopâtre Ire par des décrets gravés, en Égypte, à Chypre et dans le monde égéen ; ces textes datés sont la preuve matérielle de l'union dynastique et du poids de la reine. (2) LA NUMISMATIQUE : les tétradrachmes lagides portent le portrait de Ptolémée V et de Cléopâtre Ire associés ; les monnaies d'Antiochus III circulent dans les provinces disputées, et la fermeture de certains ateliers après Apamée permet de mesurer le repli séleucide. (3) LES PAPYRUS : les archives de la minorité de Ptolémée V (ordonnances, requêtes, comptes de domaines) révèlent l'état de l'administration lagide après la guerre et le poids des réquisitions. (4) L'ARCHÉOLOGIE DES GUERRES : à Magnésie du Sipyle, les recherches archéologiques et topographiques ont permis de proposer des localisations du champ de bataille ; les traces de campagnes romaines en Grèce (Thermopyles, Delphes) complètent le dossier. (5) LA CHRONOLOGIE SCIENTIFIQUE : la combinaison des listes d'éponymes, des décrets datés et des observations astronomiques conservées dans les textes babyloniens et grecs permet de fixer les dates de 193, 191, 190, 188 et 187, qui encadrent l'accomplissement du verset. Registre : la fiche rappelle que ces preuves sont indépendantes du texte de Daniel et servent de contrôle historique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>198 : LE NORD POSSÈDE LE PAYS DE LA PARURE → ROME EXIGE LA RESTITUTION → 193 : MARIAGE DE CLÉOPÂTRE Ire ET DE PTOLÉMÉE V — DOT : PROVINCES DONT JUDA → LES PROVINCES NE SONT PAS REMISES → « ELLE NE TIENDRA PAS, ET ELLE NE RESTERA PAS SIENNE » → 192-188 : GUERRE CONTRE ROME ; L'ÉGYPTE AUX CÔTÉS DE ROME → 188 : APAMÉE, TRIBUT → 187 : MORT D'ANTIOCHUS III ; SÉLEUCUS IV ROI DU NORD</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement au mariage de Cléopâtre Ire et de Ptolémée V (193 av. n. è.), comme le registre. LE TEXTE NE NOMME PAS CLÉOPÂTRE : l'identification repose sur la Bibliothèque en ligne et sur la convergence des commentaires ; la fiche précise qu'il ne s'agit pas de la Cléopâtre du temps d'Auguste, pour éviter un contresens fréquent. LES TERMES EXACTS : « il donnera la fille des femmes pour la corrompre / causer sa ruine » — la fiche donne la lecture la plus courante (intention de ruiner la cour lagide), mais rappelle que d'autres traductions rendent l'expression de manière plus neutre (« il lui sera accordé de causer sa ruine »). LA DOT : la fiche indique que la non-remise des provinces est rapportée par les sources et reprise par la Bibliothèque en ligne ; les détails administratifs de cette promesse ne sont connus qu'indirectement. LA SUITE : le verset 18-19 (les pays côtiers, Magnésie, la mort d'Antiochus III) n'est évoqué ici qu'en contexte et relève d'une fiche ultérieure. CE QUE LA FICHE NE DIT PAS : elle ne traite pas des règnes de Ptolémée VI ni des affaires des Maccabées, et ne donne aucune date pour l'avenir.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rome exige la restitution des territoires conquis par Antiochus III sur l'Égypte</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">197-196 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Projet de mariage entre Cléopâtre Ire et Ptolémée V, avec les provinces en dot, dont Juda</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">195-194 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mariage célébré ; les provinces ne sont pas remises — le transfert reste fictif</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">193 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Guerre antiochique : l'Égypte prend le parti de Rome ; défaites aux Thermopyles et à Magnésie</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">192-188 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paix d'Apamée : tribut et pertes ; mort d'Antiochus III en Élymaïs ; la dot jamais versée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">188-187 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/11">Bible — 1 Rois 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/22/6">Bible — Chant de Salomon 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/22/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/16">Bible — Ézékiel 16 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/16</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11">Bible — Daniel 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/11</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032">« Deux rois en conflit » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101999032</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1977603">« L'Histoire écrite à l'avance avec précision » (wol)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1977603</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DN396 — La fille des femmes : Cléopâtre, la dot et le plan qui échoue</span><span>Catégorie DN4</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie DN4</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>DN391 — L'alliance par mariage : la fille du roi du sud livrée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Antiochus II Théos succède à Antiochus Ier en Syrie : la guerre contre l'Égypte reprend</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">261 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Accord équitable : répudiation de Laodice, mariage d'Antiochus II avec Bérénice</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~250 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Ptolémée II Philadelphe : le soutien de Bérénice disparaît</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">246 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bérénice et son fils assassinés ; Antiochus II empoisonné à l'instigation de Laodice</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">246 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Troisième guerre de Syrie : Ptolémée III marche contre Séleucus II</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">246-241 av. n. è.</text>
+</svg>
+<h4>DN392 — Un rejeton de ses racines : la vengeance, le butin et les dieux ramenés</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ptolémée III devient roi du sud ; il entre en Syrie pour venger sa sœur</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">246 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de la partie fortifiée d'Antioche ; mort de Laodice ; Séleucus II confirmé au nord</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">246 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Marche vers l'est : Babylonie et Suse pillées ; les dieux emportés par Cambyse reviennent en Égypte</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">246-245 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour précipité en Égypte pour mater une sédition ; trésor considérable ramené</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">245 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séleucus II attaque l'Égypte et subit une défaite ; il rentre à Antioche</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 242 av. n. è.</text>
+</svg>
+<h4>DN393 — Les fils du roi du nord : grandes armées, forteresse et le retour des années</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séleucus III Céraunus roi du nord ; règne bref terminé par un assassinat</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">226 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Antiochus III succède à son frère ; réorganisation et agrandissement de l'armée séleucide</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">223 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise de Séleucie, de la Coelé-Syrie, de Tyr et de Ptolémaïs ; incursion en Juda</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">219-218 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Antiochus III regagne sa forteresse en Syrie : le nord semble maître du terrain</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Printemps 217 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Ptolémée IV ; Ptolémée V âgé de cinq ans ; troubles sous le tuteur Agathocle — le retour du nord se prépare</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">203 av. n. è.</text>
+</svg>
+<h4>DN394 — Le roi du sud s'enflamme : Raphia, les dizaines de milliers et le cœur enflé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Antiochus III lance l'offensive : Phénicie, Tyr, Ptolémaïs, villes de Juda</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Printemps 217 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Raphia : bataille rangée, plus de 170 éléphants engagés</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">22 juin 217 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Victoire ptolémaïque : 10 000 fantassins et 300 cavaliers séleucides tués, 4 000 prisonniers</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Été 217 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Traité : Séleucie reste au nord ; Phénicie et Coelé-Syrie retournent au sud ; Juda reste égyptien</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Automne 217 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Ptolémée IV ; Ptolémée V (cinq ans) roi du sud : la fortune change de camp</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">203 av. n. è.</text>
+</svg>
+<h4>DN395 — Le rempart de siège et le pays de la Parure : Scopas à Sidon, 198</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort de Ptolémée IV ; Ptolémée V enfant ; régence agitée et révoltes</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">203 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Accord entre Antiochus III et Philippe V pour le partage des possessions lagides</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">201 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Panéas : Scopas vaincu, replié dans Sidon avec ses 10 000 hommes</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">200 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Sidon après un rempart de siège ; Antiochus III s'installe dans le pays de la Parure</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">198 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérusalem et Juda passent du roi du sud au roi du nord — fin de la domination lagide</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">198 av. n. è.</text>
+</svg>
+<h4>DN396 — La fille des femmes : Cléopâtre, la dot et le plan qui échoue</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rome exige la restitution des territoires conquis par Antiochus III sur l'Égypte</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">197-196 av. n. è.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Projet de mariage entre Cléopâtre Ire et Ptolémée V, avec les provinces en dot, dont Juda</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">195-194 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mariage célébré ; les provinces ne sont pas remises — le transfert reste fictif</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">193 av. n. è.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Guerre antiochique : l'Égypte prend le parti de Rome ; défaites aux Thermopyles et à Magnésie</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">192-188 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paix d'Apamée : tribut et pertes ; mort d'Antiochus III en Élymaïs ; la dot jamais versée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">188-187 av. n. è.</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

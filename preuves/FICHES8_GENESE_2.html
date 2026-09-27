@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES GE — Genèse (2) — l'héritier et les nations</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_GE_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES GE</h1>
+<h2>Genèse (2) — l'héritier et les nations</h2>
+<p class="intro">La quatrième génération reviendra ; les frontières sont tracées du torrent d'Égypte à l'Euphrate ; Ismaël devient multitude ; mais l'alliance passe par Isaac — le fils du rire, né au temps fixé d'une mère de 90 ans — car « en Isaac sera appelée ta postérité ».</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:25</div><audio controls preload="none" src="audio/fiche_GE_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_GE_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#GE007">GE007</a>
+<a href="#GE008">GE008</a>
+<a href="#GE009">GE009</a>
+<a href="#GE010">GE010</a>
+<a href="#GE011">GE011</a>
+<a href="#GE012">GE012</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#GE007"><img src="images/prophe_GE007_generation.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE007</div>
+<h3><a href="#GE007">Ils reviendront ici à la quatrième génération</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE008"><img src="images/prophe_GE008_frontieres.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE008</div>
+<h3><a href="#GE008">Du fleuve d'Égypte à l'Euphrate : le pays des dix peuples</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE009"><img src="images/prophe_GE009_ismael.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE009</div>
+<h3><a href="#GE009">Ismaël : multitude, âne sauvage, face à ses frères</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE010"><img src="images/prophe_GE010_heritier.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE010</div>
+<h3><a href="#GE010">Mon alliance avec Isaac — et Ismaël béni, douze princes</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE011"><img src="images/prophe_GE011_sara.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE011</div>
+<h3><a href="#GE011">Sara, 90 ans, enfantera au temps fixé</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE012"><img src="images/prophe_GE012_posterite.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE012</div>
+<h3><a href="#GE012">En Isaac sera appelée ta postérité</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="GE007">
+<div class="visuel"><img src="images/prophe_GE007_generation.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE007 · CATÉGORIE GE</div>
+<h3>Ils reviendront ici à la quatrième génération</h3>
+<div class="ref">Genèse 15:16</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 430 ans (1943 → 1513 → 1473)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE007</div><audio controls preload="none" src="audio/fiche_GE07_generation.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE07_generation.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 15:16</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 430 ans (1943 → 1513 → 1473)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P007 (15:16 : retour à la quatrième génération) ; accomplissement Ex 6:16-20 ; 12:40-41</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« À la quatrième génération, ils reviendront ici. » (15:16 — la quatrième !)</li>
+<li>« Car la faute des Amorites n'est pas encore à son comble. » (15:16 — pas encore !)</li>
+<li>« Fils de Lévi : Guershôn, Qehath, Merari. » (Ex 6:16 — génération 1)</li>
+<li>« Amram prit Yokébed… elle lui enfanta Aaron et Moïse. » (Ex 6:20 — génération 4 !)</li>
+<li>« Au bout de 430 ans, en ce jour même. » (Ex 12:41 — ce jour même !)</li>
+<li>« Ce n'est pas pour ta justice que tu prends leur pays. » (Dt 9:5 — pas ta justice !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Même nuit obscure que GE006 (Gn 15:12-13) : après les 400 ans d'oppression, Dieu donne le double verrou du retour — un DÉLAI (la quatrième génération) et une CONDITION MORALE (la faute des Amorites à son comble). « Ici » : Canaan, où Abram se tient. Le verset explique le scandale apparent : pourquoi Dieu, qui donne le pays, fait-il attendre quatre siècles ? Réponse : parce qu'on ne dépossède pas un peuple avant que sa faute soit complète — la conquête sera un JUGEMENT, pas un cambriolage (Dt 9:4-5 ; Lév 18:24-25).</p>
+<h4>4 · Explication du texte</h4>
+<p>Génération (dôr) : mot souple — 40 ans au désert (Nb 32:13), ~100 ans ici (400 ÷ 4) : la durée d'une vie d'homme à l'époque des patriarches. Deux lectures convergentes : (1) CHRONOLOGIQUE — quatre générations de cent ans = les 400 ans de 15:13 ; (2) GÉNÉALOGIQUE — Moïse est la quatrième depuis Lévi : Lévi (entré en Égypte) → Qehath → Amram → Moïse (sorti d'Égypte) — Ex 6:16-20, le texte cité par le registre. Longévités de la chaîne : Lévi 137 ans, Qehath 133, Amram 137 (Ex 6:16-20) — 215 ans de séjour (1728 → 1513) couverts en quatre maillons. « Faute à son comble » : image de la mesure qui se remplit — Dieu attend que l'iniquité soit totale avant de frapper (voir aussi Mt 23:32, sans P nommé).</p>
+<h4>5 · Interprétation</h4>
+<p>Le retour s'accomplit jour pour jour : « au bout de 430 ans, en ce jour même » (Ex 12:41 — P006/P007), et c'est bien la quatrième génération du séjour qui sort — Moïse, fils d'Amram. La condition morale s'accomplit aussi : à l'arrivée d'Israël, les mœurs cananéennes ont atteint l'innommable catalogué en Lévitique 18 (sacrifices d'enfants, bestialité, cultes féconds) — « c'est à cause de ces abominations que je les chasse devant vous » (Lév 18:24). Dt 9:4-5 verrouille la théologie : Israël ne prend le pays NI par sa justice NI par sa force, mais par jugement des Amorites ET par fidélité au serment fait aux pères — les deux causes ensemble, jamais une seule.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Nuit (Gn 15:16)</td><td>Double verrou : 4e génération + comble</td></tr>
+<tr><td class="d">1728 (Égypte)</td><td>Lévi entre — génération 1</td></tr>
+<tr><td class="d">Qehath → Amram</td><td>Générations 2-3 (Ex 6:16-20)</td></tr>
+<tr><td class="d">1513 (sortie)</td><td>Moïse sort — génération 4, « en ce jour même »</td></tr>
+<tr><td class="d">1473 (conquête)</td><td>Jugement des Amorites au comble (Jos 10-11)</td></tr>
+<tr><td class="d">Dt 9:4-5</td><td>Théologie : jugement + serment, pas mérite</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Amorites : peuple ouest-sémitique bien attesté — Mari (XVIIIe s., rois amorites : Yahdun-Lim, Zimri-Lim), Babylon (Hammurabi l'Amorite !), Ébla déjà avant. Le terme devient générique pour les Cananéens de l'intérieur (« l'Amorite dans la montagne », Nb 13:29). Rites cananéens : tophets (sacrifices d'enfants — Carthage, et probablement Guézer/Meggido), prostitution sacrée, culte de Baal-Mot — l'archéologie et les textes d'Ougarit confirment un tableau religieux violent, sans enjoliver ni noircir. Ex 6:16-20 : généalogie sacerdotale — Lévi, Qehath, Amram, Moïse — la chaîne des quatre est un document, pas une reconstitution.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Ici » : Canaan central, Mamré/Hébron — le retour est un retour AU POINT DE DÉPART, quatre siècles plus tard. Les Amorites occupent les montagnes (Nb 13:29), les Cananéens les plaines et les côtes : le jugement frappera les deux zones (campagne du sud puis du nord, Jos 10-11). Og de Bashân, « reste des Rephaïm » (Dt 3:11), et Sihôn de Heshbôn l'Amorite (Nb 21) : les deux rois de Transjordanie tombent AVANT le Jourdain — le comble est atteint aussi à l'est du fleuve.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Démographie des longévités : 137 + 133 + 137 ans en chevauchement — Lévi entre en Égypte vers 1728 et la chaîne couvre les 215 ans sans rupture ni rallonge : le récit est arithmétiquement cohérent dans son propre système (longévités patriarcales décroissantes : 175 Abraham → 180 Isaac → 147 Jacob → 137 Lévi → 120 Moïse — courbe régulière). Sémantique de dôr : le mot ne vaut pas un nombre fixe — 40 ans (Nb 32), ~100 ans (ici) : la fiche suit le texte, pas un dictionnaire rigide. Critique : certains exégètes voient une tension entre « 4e génération » et « 400 ans » — la fiche montre les deux lectures et leur convergence.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Oracle (4e génération + faute au comble) → 1728 Égypte (Lévi, gén. 1) → Qehath → Amram → 1513 Moïse sort (gén. 4, « en ce jour même ») → 1473 conquête (le comble était atteint — jugement, pas vol). Délai + condition morale : les deux verrous s'ouvrent ensemble.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Génération » n'a pas de valeur fixe (40 ou ~100 ans selon les textes) — la fiche donne les deux lectures sans les confondre. Seule la chaîne lévitique est documentée (Ex 6) : les autres tribus n'ont pas de généalogie complète du séjour. Le contenu exact de la « faute à son comble » : décrit en Lév 18 (mœurs), pas daté année par année. Les récits amorites (Mari) sont profanes : ils attestent le PEUPLE, pas sa faute — le jugement moral reste une affirmation biblique.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux verrous</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oracle (nuit)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gén. 1 entre</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (Lévi)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gén. 4 sort</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (Moïse)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Comble jugé</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (Josué)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas ta justice</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 9:5</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/15">Genèse 15 — Bible d'étude (v. 16, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/15</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001458">EXODE (it) — 400 ans d'affliction, 1913-1513<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001458</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/6">Exode 6 — lecture (Lévi → Moïse, 6:16-20)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/6</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE007 — Ils reviendront ici à la quatrième génération</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE008">
+<div class="visuel"><img src="images/prophe_GE008_frontieres.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE008 · CATÉGORIE GE</div>
+<h3>Du fleuve d'Égypte à l'Euphrate : le pays des dix peuples</h3>
+<div class="ref">Genèse 15:18-21</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Don du pays (frontières → Salomon)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE008</div><audio controls preload="none" src="audio/fiche_GE08_frontieres.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE08_frontieres.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 15:18-21</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Don du pays (frontières → Salomon)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P008 (15:18-21 : frontières du pays, dix peuples) ; accomplissement Jos 1:3-4 ; 11:23 ; 1R 4:21</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« En ce jour-là, Jéhovah conclut une alliance. » (15:18 — ce jour-là !)</li>
+<li>« À ta descendance je donnerai ce pays. » (15:18 — je DONNERAI !)</li>
+<li>« Du fleuve d'Égypte au grand fleuve, l'Euphrate. » (15:18 — deux fleuves !)</li>
+<li>« Kénites, Kenizites, Kadmonites… » (15:19 — les trois premiers !)</li>
+<li>« …Hittites, Perizites, Rephaïm… » (15:20 — les oubliés !)</li>
+<li>« …Amorites, Cananéens, Guirgashites, Jébusiens. » (15:21 — dix !)</li>
+<li>« Salomon dominait du Fleuve au pays des Philistins. » (1R 4:21 — dominait !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le soir même de l'alliance solennelle (v. 17 : fournaise et torche entre les morceaux) : Dieu trace le CADASTRE de la promesse — deux bornes fluviales et dix occupants nommés. C'est le titre de propriété détaillé, après le don global de 13:15 (GE004). Trois listes coexistent dans la Bible : DIX peuples ici, SEPT nations à déposséder (Dt 7:1 — Hittites, Guirgashites, Amorites, Cananéens, Perizites, Hivvites, Jébusiens), et les rappels de Josué (1:3-4). Les différences s'expliquent : des peuples disparaissent ou s'allient entre-temps (voir hist).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Fleuve d'Égypte » : pas le Nil — le TORRENT frontalier, l'ouadi el-Arish (frontière naturelle du Sinaï). « Grand fleuve » : l'Euphrate — la borne orientale maximale. Les dix : KÉNITES (sud, forgerons nomades ?), KENIZITES (sud — Caleb est « Kenizite », Nb 32:12 !), KADMONITES (« orientaux »), HITTITES (le grand peuple oublié, voir hist), PERIZITES (ruraux dispersés ?), REPHAÏM (géants de Transjordanie), AMORITES (montagnards), CANANÉENS (plaines/côtes), GUIRGASHITES (mal connus), JÉBUSIENS (Jérusalem). Les trois premiers manquent à Dt 7:1 : les Kénites se sont ALLIÉS (Hobab, beau-frère de Moïse, Jg 1:16), les Kenizites absorbés (Caleb), les Kadmonites effacés.</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement en trois temps : PROMESSE RAPPELÉE — Dieu redit les bornes à Josué (« du désert au Liban, de l'Euphrate à la mer », Jos 1:3-4) ; PRISE — Josué conquiert et le pays se repose (11:23) ; APOGÉE — David porte la frontière à l'Euphrate (Hadadézer de Tsoba, 2S 8:3) et Salomon « domine sur tous les royaumes depuis le Fleuve jusqu'au pays des Philistins et à la frontière d'Égypte » (1R 4:21 = 2Ch 9:26 — tribut, vassaux, présents « tous les jours de sa vie »). Jamais Israël n'occupera chaque arpent (Jg 1 : enclaves), mais sous Salomon les DEUX BORNES sont atteintes — le titre intégralement honoré, en occupation au centre, en suzeraineté aux marges.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Alliance (Gn 15:18-21)</td><td>Titre : 2 fleuves, 10 peuples</td></tr>
+<tr><td class="d">Jos 1:3-4</td><td>Bornes rappelées à Josué</td></tr>
+<tr><td class="d">1473 (conquête)</td><td>Prise ; le pays se repose (11:23)</td></tr>
+<tr><td class="d">David (2S 8:3)</td><td>Frontière portée à l'Euphrate</td></tr>
+<tr><td class="d">Salomon (1R 4:21)</td><td>Apogée : Fleuve → Philistie → Égypte</td></tr>
+<tr><td class="d">2Ch 9:26</td><td>Confirmation : tous les rois tributaires</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>HITTITES : au XIXe siècle, on les croyait inventés — en 1906, Winckler exhume Hattusa (Boghazköy) et ses milliers de tablettes : un EMPIRE (XVIIe-XIIe s.), rival de l'Égypte (Qadesh, ~1274). La Bible avait raison contre les professeurs. Jébusiens : Jérusalem imprenable jusqu'à David (~1070, 2S 5:6-9 — le « canal »). Guirgashites : tradition (rabbinique et chrétienne ancienne) d'une émigration vers l'Afrique — citée comme tradition, pas comme fait. 1R 4:21 : liste administrative des districts de Salomon — un document d'empire, pas un poème. Amarna (XIVe s.) : les petits rois cananéens écrivent à Pharaon — le morcellement exact qu'exploitera Josué.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le rectangle maximal : ouadi el-Arish (Méditerranée) → Euphrate à Tiphsah (Thapsaque, le grand gué — 1R 4:24 le nomme dans l'orbite salomonienne) : ~900 km d'ouest en est ; désert au sud, Liban au nord (Jos 1:4). Les dix territoires : sud aride (Kénites, Kenizites), nord forestier (Hittites), Transjordanie des géants (Rephaïm, Bashân), montagnes (Amorites), plaines (Cananéens), Jérusalem (Jébusiens). Centre occupé, marges vassales : l'empire salomonien est un empire de TRIBUT — Tiphsah paie, Gaza paie, Damas paie.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Épigraphie hittite : déchiffrement du cunéiforme hittite (Hrozný, 1915-1917 — langue indo-européenne !) — le peuple de Gn 15:20 écrit, traite, archive. Rephaïm : Og, « reste des Rephaïm », lit de fer de 9 coudées (~4 m, Dt 3:11 — objet exposé à Rabba : trophée royal ou lit funéraire ? la fiche cite sans surinterpréter) ; Goliath (2,9 m ?) en serait l'écho tardif. Toponymie : el-Arish = le torrent frontalier de toujours (frontière Égypte-Canaan à toutes les époques). Listes de peuples : la variation 10 → 7 entre Genèse et Deutéronome est un indice d'AUTHENTICITÉ (un faussaire uniformiserait), pas une contradiction.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Titre tracé (2 fleuves + 10 peuples) → Rappel à Josué (1:3-4) → Conquête et repos (11:23) → David à l'Euphrate (2S 8:3) → Salomon : les deux bornes atteintes (1R 4:21, tribut de Tiphsah à Gaza). Occupation au centre, suzeraineté aux marges : le titre honoré intégralement.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Occupation totale ? Non : Juges 1 liste les enclaves (Guézer, Beth-Shéân, vallées aux chars de fer) — Jos 11:23 proclame la prise du pays, pas chaque village. Guirgashites : mal connus (une tradition d'émigration, pas un dossier). Perizites, Kadmonites : identifications fragiles (sens des noms plus que peuples attestés). « Lit d'Og » : dimensions citées, interprétation ouverte. Hivvites (Dt 7:1) absents de Gn 15 : les listes varient selon l'époque décrite — normal, pas contradictoire.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">10 peuples</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Titre (Gn 15)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rappel</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 1:4</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (repos)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Euphrate</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">David</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux bornes</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/15">Genèse 15 — Bible d'étude (18-21, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/4">1 Rois 4 — Bible d'étude (4:21, apogée)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/6/1">Josué 1 — lecture (1:3-4, les bornes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/6/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE008 — Du fleuve d'Égypte à l'Euphrate : le pays des dix peuples</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE009">
+<div class="visuel"><img src="images/prophe_GE009_ismael.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE009 · CATÉGORIE GE</div>
+<h3>Ismaël : multitude, âne sauvage, face à ses frères</h3>
+<div class="ref">Genèse 16:10-12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Lignée d'Agar (1932 → tribus arabes)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE009</div><audio controls preload="none" src="audio/fiche_GE09_ismael.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE09_ismael.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 16:10-12</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Lignée d'Agar (1932 → tribus arabes)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P009 (16:10-12 : Ismaël — grande nation, douze chefs, vie nomade hostile) ; accomplissement Gn 25:12-18</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Je multiplierai ta descendance, on ne pourra la compter. » (16:10 — innombrable !)</li>
+<li>« Tu enfanteras un fils : Ismaël — Dieu entend. » (16:11 — il entend !)</li>
+<li>« Car Jéhovah t'a entendue dans ton affliction. » (16:11 — entendue !)</li>
+<li>« Il sera comme un âne sauvage. » (16:12 — péré' !)</li>
+<li>« Sa main contre tous, la main de tous contre lui. » (16:12 — contre !)</li>
+<li>« Il demeurera face à tous ses frères. » (16:12 — face !)</li>
+<li>« Douze chefs selon leurs tribus. » (25:16 — douze !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Saraï stérile a donné Agar, sa servante ÉGYPTIENNE, à Abram (16:1-3 — coutume hourrite : l'enfant de la servante compte à la maîtresse). Enceinte, Agar méprise Saraï ; maltraitée, elle FUIT vers l'Égypte par le chemin de Shur (16:6-7). C'est dans le désert, près d'une source, que l'ange de Jéhovah la trouve — PREMIÈRE apparition angélique à une femme dans la Bible, et à une esclave en fuite : Dieu voit les invisibles. Ordre double : retourne et humilie-toi (16:9) — PUIS l'oracle sur l'enfant. Agar enfante en 1932 (Abram a 86 ans, 16:16).</p>
+<h4>4 · Explication du texte</h4>
+<p>Ismaël (yishma-'él) : « Dieu entend » — le nom est un mémorial d'exaucement, donné AVANT la naissance (comme Jésus, comme Isaac : les noms-programmes). « Âne sauvage » (péré') : l'ONAGRE du désert — insoumis, increvable, libre (Job 39:5-8 en fait l'éloge : « qui a lâché l'onagre ?… il rit du tumulte des villes ») : pas une injure, un PORTRAIT — indépendance farouche. « Main contre tous » : conflits permanents de nomades (pâturages, puits, caravanes). « Face à ses frères » ('al-penê : en face de / à l'est de) : voisinage frontal permanent avec Israël — proches et opposés, côte à côte pour des millénaires. Multitude « qu'on ne pourra compter » : même verbe qu'en 15:5 (étoiles) — Ismaël reçoit l'image d'Abraham, pas l'alliance (voir GE010).</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement nominatif : Genèse 25:12-18 liste les DOUZE fils — Nebayoth (premier-né), Kédar, Adbéel, Mibsam, Mishma, Duma, Massa, Hadad, Téma, Yetur, Naphish, Qedma — « douze chefs selon leurs tribus, leurs villages et leurs campements » (25:16). Territoire : « depuis Havila jusqu'à Shur, en face de l'Égypte » (25:18) — le nord de l'Arabie, face à Israël ET face à l'Égypte : l'oracle géographique au mot près. Ismaël vit 137 ans (25:17). La suite : caravanes ismaélites Galaad → Égypte (Gn 37:25-28 — ce sont eux qui emmènent Joseph !), Kédar comme nom des Arabes du nord (Ps 120:5 ; Is 21:13-17 ; Jr 49:28), Madianites mêlés (Jg 8 — « Ismaélites », 8:24 : les boucles d'or).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Fuite (ch. 16)</td><td>L'ange trouve Agar ; oracle sur l'enfant</td></tr>
+<tr><td class="d">1932 (naissance)</td><td>Ismaël — Abram a 86 ans (16:16)</td></tr>
+<tr><td class="d">Parân (21:21)</td><td>Archer du désert ; femme égyptienne</td></tr>
+<tr><td class="d">Gn 25:12-18</td><td>12 chefs nommés ; Havila → Shur ; 137 ans</td></tr>
+<tr><td class="d">Joseph (~1729)</td><td>Caravane ismaélite vers l'Égypte (37:25-28)</td></tr>
+<tr><td class="d">VIIIe-VIIe s.</td><td>Qédar tributaire d'Assyrie (annales)</td></tr>
+<tr><td class="d">Néhémie (Xe s.)</td><td>Guéshem l'Arabe — chef qédarite</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>KÉDAR dans l'histoire profane : les annales néo-assyriennes (Tiglath-Piléser III, Sargon II, Sennachérib, Assurbanipal — VIIIe-VIIe s.) nomment les QIDRI/Qedar — rois et reines arabes, tribut de chameaux — exactement au nord de l'Arabie annoncé. TÉMA : oasis d'Arabie (Tayma) — Nabonide de Babylone s'y installera dix ans (inscriptions + Chronique de Nabonide) : une ville ismaélite capitale d'empire ! DUMA : Dumat al-Jandal, oasis attestée. Guéshem l'Arabe (Néh 2:19 ; 6:1), adversaire de Néhémie — un chef qédarite à l'époque perse. Nebayoth → Nabatéens ? Hypothèse célèbre (Pétra !) — discutée, classée aux limites.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Triangle ismaélite : PARÂN (21:21 — Ismaël y grandit, « archer »), Shur (désert à l'est de l'Égypte, route de l'exode), Havila (nord-arabe, débattu) — la carte de 25:18 dessine le croissant nomade face à Canaan. Beer-Lahaï-Roï (« puits du Vivant qui me voit », 16:14) : entre Kadès et Béred, au Négeb — Agar nomme le lieu, fait unique pour une femme dans la Genèse. Puits et pâturages : l'économie du verset 12 — « main contre tous » naît autour des points d'eau. Les douze campements : villages (sedentaires) ET campements (nomades) — 25:16 distingue les deux modes.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Onagre (Equus hemionus) : la plus rapide des équidés sauvages (~70 km/h), jamais vraiment domestiqué — les Anciens distinguaient parfaitement l'âne (domestique) du péré' (indomptable) : la comparaison dit l'INSOUMISSION, pas la sottise. Nomadisme chamelier : les caravanes d'aromates Galaad-Égypte (Gn 37) supposent le chameau porteur — attesté au Proche-Orient dès le IIIe millénaire (figurines, textes de Mari et d'Alalakh), domestication complète débattue (voir limites). Anthroponymie : les douze noms de Gn 25 ont des parallèles nord-arabiques (Duma, Téma, Massa attestés en épigraphie) — une liste enracinée, pas inventée.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Esclave en fuite entendue (Beer-Lahaï-Roï) → Ismaël 1932 (« Dieu entend ») → Onagre : insoumis, main contre tous → 12 chefs (25:12-16) → Havila-Shur face à Israël et à l'Égypte → Kédar dans les annales d'Assyrie → caravanes, Néhémie, Nabatéens (?). Multitude sans alliance : béni, pas élu.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Nebayoth = Nabatéens (Pétra) : hypothèse séduisante (consonances), NON démontrée — les Nabatéens parlent araméen, leurs origines restent débattues. Havila : localisation incertaine (plusieurs Havila dans la Bible). Chameaux patriarcaux : usage ancien attesté, domestication massive plus tardive — la fiche ne tranche pas la polémique des « anachronismes ». « Main contre tous » : portrait collectif d'un mode de vie frontalier, PAS un verdict sur des individus — Agar la mère est l'une des figures les plus tendrement traitées de la Genèse.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dieu entend</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fuite (oracle)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'onagre</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1932 (naissance)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Douze chefs</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Gn 25 (liste)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Caravanes</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Joseph</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Qédar attesté</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Assyrie</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/16">Genèse 16 — Bible d'étude (10-12, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/16</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/25">Genèse 25 — Bible d'étude (12-18, les douze)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/25</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001458">EXODE (it) — Ismaël 1932, Abraham 86 ans<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001458</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE009 — Ismaël : multitude, âne sauvage, face à ses frères</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE010">
+<div class="visuel"><img src="images/prophe_GE010_heritier.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE010 · CATÉGORIE GE</div>
+<h3>Mon alliance avec Isaac — et Ismaël béni, douze princes</h3>
+<div class="ref">Genèse 17:19-21</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Alliance et circoncision (1919 → Isaac)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE010</div><audio controls preload="none" src="audio/fiche_GE10_heritier.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE10_heritier.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 17:19-21</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Alliance et circoncision (1919 → Isaac)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P010 (17:19-21 : Isaac héritier de l'alliance ; Ismaël béni et multiplié) ; accomplissement Gn 21:1-7 ; 25:12-16</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Oh ! qu'Ismaël vive devant toi ! » (17:18 — le plaidoyer !)</li>
+<li>« Non : Sara t'enfantera un fils : Isaac. » (17:19 — NON !)</li>
+<li>« J'établirai mon alliance avec lui, pour toujours. » (17:19 — alliance !)</li>
+<li>« Pour Ismaël, je t'ai exaucé : je le bénirai. » (17:20 — exaucé !)</li>
+<li>« Douze princes naîtront de lui : grande nation. » (17:20 — douze !)</li>
+<li>« Mais mon alliance, je l'établirai avec Isaac. » (17:21 — MAIS !)</li>
+<li>« Au temps fixé dont Dieu avait parlé. » (21:2 — au temps fixé !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Abram a 99 ans (17:1 — 1919 av. n. è.), Ismaël en a 13 (17:25). Treize ans après la naissance de l'aîné, Dieu apparaît : changement de noms (Abram → Abraham, « père d'une foule » ; Saraï → Sara, « princesse » — notes TM), alliance de la CIRCONCISION (17:9-14 : tout mâle à huit jours), et l'annonce qui fait rire Abraham (17:17 — il rit ET croit : « à cent ans, un fils ? »). Le plaidoyer « qu'Ismaël vive ! » reçoit un NON d'alliance et un OUI de bénédiction : Ismaël vivra — multiplié — mais l'alliance passera ailleurs. Circoncision le jour même : Abraham, Ismaël, toute la maison (17:23-27).</p>
+<h4>4 · Explication du texte</h4>
+<p>Deux verbes, deux destins : Ismaël est BÉNI (bénédiction réelle : fécondité, douze princes, grande nation), Isaac reçoit l'ALLIANCE (berith perpétuelle « pour sa postérité après lui »). « Douze princes » (nesi'im — chefs, émirs) : le mot reviendra pour les princes d'Israël (Nb 1:44) — Ismaël a ses douze comme Israël aura les siens : parallèle voulu. « L'année prochaine, à cette époque-ci » (17:21) : l'oracle est DATÉ à l'année près — vérifiable sous douze mois. Isaac (yitsḥaq, « il rit ») : le nom porte le rire du père (17:17), puis celui de la mère (18:12), puis la joie partagée (21:6) — trois rires, un nom.</p>
+<h4>5 · Interprétation</h4>
+<p>L'élection ne suit ni l'aînesse (Ismaël a 13 ans d'avance) ni la chair (il est fils d'Abraham !) : elle suit la PROMESSE — Sara, la femme libre, au temps fixé. Paul en fera l'allégorie des deux alliances : Agar/Sinaï (esclavage) contre Sara/Jérusalem d'en haut (liberté) — Ga 4:21-31. Accomplissement double : ISAAC — né « au temps fixé » (21:2, voir GE011), circoncis le 8e jour (21:4), héritier de tout (25:5 : « Abraham donna tout ce qu'il avait à Isaac ») ; ISMAËL — douze princes exactement (25:12-16 : la liste nominative — Nebayoth à Qedma), grande nation du nord arabe (voir GE009). Le NON de 17:19 n'annule pas le OUI de 17:20 : refus d'alliance, pas refus d'amour.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1919 (ch. 17)</td><td>Noms changés ; alliance ; circoncision ; annonce datée</td></tr>
+<tr><td class="d">1918 (naissance)</td><td>Isaac « au temps fixé » (21:1-2)</td></tr>
+<tr><td class="d">8e jour</td><td>Isaac circoncis (21:4) ; Ismaël l'avait été à 13 ans</td></tr>
+<tr><td class="d">25:5</td><td>Isaac hérite de TOUT</td></tr>
+<tr><td class="d">25:12-16</td><td>Ismaël : 12 princes nommés, grande nation</td></tr>
+<tr><td class="d">Ga 4 (Paul)</td><td>Deux fils → deux alliances (lecture apostolique)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Circoncision au Proche-Orient : pratiquée en Égypte (bas-reliefs, momies) et chez les Sémites de l'ouest — mais JAMAIS au 8e jour après la naissance : la DATE fait la nouveauté de l'alliance (signe distinctif, pas emprunt). Ismaël circoncis à 13 ans (17:25) — les traditions arabes et musulmanes circoncisent tardivement : mémoire culturelle du verset ? (posé en question, pas en preuve). Noms : Abram (« père élevé ») → Abraham (« père d'une foule ») — TM ; Saraï (« querelleuse » ?) → Sara (« princesse ») — TM. Hébron/Mamré : lieu de l'apparition (ch. 18 enchaîne) — Abraham y mourra à 175 ans (25:7).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Mamré, aux portes d'Hébron (~927 m) : chênes, pâturages, sépulture future (Macpéla) — toute la fin d'Abraham tient dans ce triangle. Ismaël : de Mamré au désert de Parân (21:21) — l'aîné s'éloigne vers le sud, le cadet hérite du centre. Les douze princes : campements de Havila à Shur (25:18) — l'arc nomade face à Canaan (voir GE009). « Pays de Canaan en possession » (17:8) : redit dans le chapitre de l'alliance — terre ET postérité, les deux jambes de la promesse.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le 8e jour (17:12) : la prothrombine (coagulation) du nouveau-né culmine autour du huitième jour — les pédiatres du XXe siècle (vitamine K, Holt) ont mesuré ce que le texte prescrivait : jour optimal contre l'hémorragie. Souvent relevé, rarement contredit sur le fait (voir limites sur l'interprétation). Génétique des noms : « Abraham » — l'ajout du hé (souffle ?) au nom : morphologie discutée, sens « multitude » assuré par le contexte (« père d'une multitude de nations », 17:4). Treize ans d'écart (Ismaël 1932 → Isaac 1918) : chronologie interne sans couture (86 ans + 14 = 100 ans, 16:16 + 21:5).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Plaidoyer pour Ismaël → NON d'alliance + OUI de bénédiction → Isaac annoncé, daté, nommé (« il rit ») → Circoncision (8e jour) → Naissance au temps fixé (1918) → Isaac hérite de TOUT (25:5) + Ismaël père de DOUZE princes (25:12-16). Deux fils, deux destins, un seul héritier d'alliance.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>8e jour et prothrombine : fait physiologique documenté, mais le texte ne donne AUCUNE raison médicale — corrélation relevée, pas preuve alléguée. Circoncision musulmane tardive « en mémoire d'Ismaël » : rapprochement culturel, pas filiation démontrée. Ga 4 (allégorie) : Paul PREND l'histoire comme figure — il ne dit pas que ce n'en est pas une (l'historicité d'Isaac et d'Ismaël n'est pas dissoute par l'allégorie). « Pour toujours » (17:19) : l'alliance abrahamique — pas la circoncision comme pratique (abrogée comme obligation : Ga 5:6, 1Co 7:19).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NON + OUI</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919 (annonce)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Au temps fixé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1918 (Isaac)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le signe</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">8e jour</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tout + douze</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">25:5 / 25:16</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'allégorie</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ga 4</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/17">Genèse 17 — Bible d'étude (19-21, notes TM)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/17</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/21">Genèse 21 — Bible d'étude (1-7, naissance)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/21</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034">Alliance abrahamique — Isaac, la postérité<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011034</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE010 — Mon alliance avec Isaac — et Ismaël béni, douze princes</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE011">
+<div class="visuel"><img src="images/prophe_GE011_sara.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE011 · CATÉGORIE GE</div>
+<h3>Sara, 90 ans, enfantera au temps fixé</h3>
+<div class="ref">Genèse 18:10, 14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Naissance promise (Mamré 1919 → 1918)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE011</div><audio controls preload="none" src="audio/fiche_GE11_sara.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE11_sara.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 18:10, 14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Naissance promise (Mamré 1919 → 1918)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P011 (18:10, 14 : Sara enfantera au temps fixé, l'année suivante) ; accomplissement Gn 21:1-2</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« L'an prochain, à cette époque, je reviendrai : Sara aura un fils. » (18:10 — l'an prochain !)</li>
+<li>« Abraham et Sara étaient vieux, avancés en âge. » (18:11 — vieux !)</li>
+<li>« Sara avait cessé d'avoir ses règles. » (18:11 — cessé !)</li>
+<li>« Sara rit en elle-même : usée, un plaisir ? » (18:12 — elle rit !)</li>
+<li>« Y a-t-il rien d'extraordinaire pour Jéhovah ? » (18:14 — rien ?)</li>
+<li>« Au temps fixé, l'an prochain : un fils. » (18:14 — fixé !)</li>
+<li>« Jéhovah s'occupa de Sara comme il l'avait dit. » (21:1 — comme dit !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Mamré, midi : trois hommes (18:1-2 — Jéhovah et deux anges, la suite l'établit), hospitalité d'Abraham (veau, gâteaux, lait — 18:6-8), puis l'annonce. Sara ÉCOUTE À LA PORTE DE LA TENTE (18:10) — détail de mise en scène : l'oracle est pour l'absente-présente. Elle a 90 ans (17:17), ménopausée (18:11 dit crûment la physiologie), stérile depuis toujours (11:30 ; 16:1). Elle rit — « en elle-même » (18:12) : rire intérieur, entendu par Dieu (18:13 : « pourquoi Sara a-t-elle ri ? »), nié par peur (18:15 : « je n'ai pas ri » — « si, tu as ri »). L'année suivante : Isaac (1918 — Abraham a 100 ans, 21:5).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Au temps fixé » (mo'èd — rendez-vous, terme du calendrier des fêtes !) : Dieu donne RENDEZ-VOUS à un an — l'oracle le plus précisément daté de la Genèse avec 17:21. « Extraordinaire » (pala' — trop merveilleux, hors d'atteinte) : la question de 18:14 (« y a-t-il rien… ? ») devient un principe — Jérémie la reprendra devant la ruine (Jr 32:17, 27, sans P nommé). Le rire : Abraham a ri DEVANT Dieu (17:17 — rire de joie-crédulité ?), Sara rit EN ELLE-MÊME (incrédulité ?), puis rira AVEC tous (21:6 : « Dieu m'a donné de quoi rire ; quiconque l'apprendra rira AVEC moi ») — trois rires, une trajectoire : doute → joie partagée. « S'occupa de » (paqad, 21:1 — visiter, intervenir) : même verbe qu'en Ex 3:16 pour la délivrance — naissance et Exode, même grammaire divine.</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement à la lettre : « Jéhovah s'occupa de Sara COMME IL L'AVAIT DIT… Sara devint enceinte… AU TEMPS FIXÉ dont Dieu avait parlé » (21:1-2 — double soulignement : dit/fait, fixé/accompli). Le Nouveau Testament en fait un type : l'enfant de la PROMESSE contre l'enfant de la chair (Ga 4:23, 28-29 : « nous, comme Isaac, nous sommes enfants de promesse ») ; et Sara elle-même, modèle de foi — « par la foi, Sara reçut la force de fonder une postérité, malgré son âge » (Hé 11:11). Pierre la donne en modèle aux femmes (1P 3:6 : « vous êtes devenues ses filles »). Ismaël se moque au sevrage (~1913) → renvoi (21:8-14) : le rire mauvais chasse le fils de l'esclave ; le rire béni reste avec l'héritier.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Mamré (1919)</td><td>Annonce : l'an prochain, un fils (18:10)</td></tr>
+<tr><td class="d">Porte (rire)</td><td>Rire intérieur, repris, nié (18:12-15)</td></tr>
+<tr><td class="d">Guérar (ch. 20)</td><td>Sara protégée avant la conception</td></tr>
+<tr><td class="d">1918 (naissance)</td><td>Isaac — 100 et 90 ans (21:1-5)</td></tr>
+<tr><td class="d">8e jour</td><td>Circoncision (21:4)</td></tr>
+<tr><td class="d">~1913 (sevrage)</td><td>Moquerie → renvoi d'Ismaël (21:8-14)</td></tr>
+<tr><td class="d">21:6</td><td>« Rira avec moi » — joie partagée</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Stérilité de Sara : triple attestation (11:30 ; 16:1 ; 18:11) — le récit insiste pour exclure le hasard. Âges : 90 et 100 ans (17:17) — chiffres du texte, assumés comme tels. Maternités tardives antiques ? Aucun parallèle documenté à cet âge — le récit se présente comme miracle, pas comme exploit (voir limites). Nourrice ? Non : « Sara allaitera-t-elle des fils ? » (21:7 — ELLE allaite : le miracle couvre conception ET allaitement). Sevrage (~3 ans ? 2 ans ? — ~1913) : fête (21:8), moquerie d'Ismaël (21:9 — metsaḥeq : « riant/moqueur », jeu sur yitsḥaq !), intervention de Sara, renvoi avec pain et outre (21:14).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La tente de Mamré : l'annonce se fait à domicile, à midi, sous les chênes — le miracle le plus domestique de la Bible. Guérar entre-temps (ch. 20 : Abraham chez Abimélek, Sara prise puis rendue — AVANT la conception : la chronologie protège la paternité). Beér-Shéba après (21:31-33 : serment, puits, tamaris — Abraham s'y fixe ; Ismaël renvoyé vers Parân). Naissance « au temps fixé » : le lieu importe moins que la DATE — oracle calendaire, pas géographique.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Biologie : ménopause avérée (18:11) + 90 ans = grossesse naturelle IMPOSSIBLE (réserve ovarienne épuisée depuis des décennies) — le texte le sait et le dit : miracle revendiqué comme tel, pas fait divers truqué. Le récit anticipe l'objection (« usée… et mon seigneur vieux », 18:12) et y répond par le principe (18:14). Andropause ? Abraham « comme mort » (Hé 11:12 — dungeon de 100 ans) : les deux parents sont hors d'âge — double impossibilité, double démonstration. Médecine antique : aucune technique de l'époque ne traitait la stérilité ménopausique — mandragores de Rachel (Gn 30:14-16, sans P nommé) relèvent de la pharmacopée populaire, pas du traitement.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Stérile + 90 ans + ménopause (triple verrou) → Annonce datée (l'an prochain, mo'èd) → Rire intérieur repris (« si, tu as ri ») → « Rien d'extraordinaire pour Jéhovah » → Naissance au temps fixé (1918) → « Dieu m'a donné de quoi rire » — le doute devenu joie partagée.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Miracle : par définition hors protocole — la fiche documente le RÉCIT (triple attestation de stérilité, datation, témoins) sans prétendre le « prouver » en laboratoire. Rire d'Abraham (17:17) vs rire de Sara (18:12) : le premier non repris, le second repris — nuances débattues (joie vs doute ? les deux ?). Ordre des chapitres 18 → 20 → 21 : Guérar AVANT la naissance — la fiche suit l'ordre reçu. « Comme mort » (Hé 11:12) : image paulinienne de la vieillesse, pas un diagnostic.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'an prochain</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Mamré (annonce)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Si, tu as ri</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Porte (rire)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Au temps fixé</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1918 (Isaac)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le tri</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1913 (sevrage)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sara modèle</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Hé 11:11</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/18">Genèse 18 — Bible d'étude (10-15, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/18</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/21">Genèse 21 — Bible d'étude (1-7, naissance)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/21</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1102025903">Sara — 90 ans, Isaac « rire » (livre Femmes)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1102025903</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE011 — Sara, 90 ans, enfantera au temps fixé</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE012">
+<div class="visuel"><img src="images/prophe_GE012_posterite.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE012 · CATÉGORIE GE</div>
+<h3>En Isaac sera appelée ta postérité</h3>
+<div class="ref">Genèse 21:12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Élection de la lignée (→ Christ)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE012</div><audio controls preload="none" src="audio/fiche_GE12_posterite.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE12_posterite.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 21:12</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Élection de la lignée (→ Christ)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P012 (21:12 : la postérité sera appelée par Isaac) ; accomplissement Rm 9:7 ; Hé 11:18</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Chasse cette servante et son fils ! » (21:10 — Sara exige !)</li>
+<li>« Cela déplut beaucoup à Abraham, à cause de son fils. » (21:11 — déplut !)</li>
+<li>« Écoute Sara : en Isaac sera appelée ta postérité. » (21:12 — EN ISAAC !)</li>
+<li>« Du fils de la servante aussi je ferai une nation. » (21:13 — aussi !)</li>
+<li>« Tous les descendants d'Abraham ne sont pas ses enfants. » (Rm 9:7 — pas tous !)</li>
+<li>« Les enfants de la promesse comptent comme postérité. » (Rm 9:8 — promesse !)</li>
+<li>« En Isaac sera appelée ta postérité… Dieu peut ressusciter. » (Hé 11:18-19)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Fête du sevrage (~1913) : Ismaël, ~17 ans, « rit » (metsaḥeq — moquerie, jeu cruel sur le nom d'Isaac ; Paul dira « persécutait », Ga 4:29 — le jour où commence l'affliction des 400 ans, voir GE006). Sara exige le renvoi : « le fils de cette servante n'héritera pas avec mon fils » (21:10). Abraham est déchiré (21:11 — Ismaël est SON fils, qu'il aime : 17:18). Dieu tranche : renvoie — « car c'est en Isaac que sera appelée ta postérité » (21:12). Pain, outre d'eau, désert de Parân (21:14) — et Dieu garde l'exclu (21:17-20 : le puits, l'archer, la nation).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Sera appelée » (yiqqaré — passif : sera NOMMÉE, portera le nom) : la postérité d'Abraham portera le nom d'Isaac — filiation NOMINALE et covenantielle, pas seulement biologique. Ismaël reste fils (21:13 : « ton fils » est répété ; « lui aussi » une nation) mais perd le NOM. « Écoute Sara » : Dieu valide l'exigence d'une mère — fait rare (voir aussi 16:2 inversé : Abraham avait écouté Saraï pour prendre Agar — écoute de la chair alors, écoute de l'esprit maintenant). « Persécutait » (Ga 4:29) : Paul relit la moquerie comme persécution — le rire mauvais inaugure l'inimitié des deux postérités (retour à Gn 3:15, GE001 : l'histoire se répète en spirale).</p>
+<h4>5 · Interprétation</h4>
+<p>Paul (Rm 9:6-8) : « ce ne sont pas tous les descendants d'Israël qui sont Israël… tous les descendants d'Abraham ne sont pas ses enfants » — 21:12 fonde la doctrine de l'ÉLECTION : enfants de la promesse (Isaac, conçu par miracle au temps fixé) vs enfants de la chair (Ismaël, conçu par expédient). Jésus l'avait dit aux Juifs : « si vous étiez enfants d'Abraham, vous feriez les œuvres d'Abraham » (Jn 8:39 — renvoi TM de Rm 9:7). L'épître aux Hébreux (11:17-19) : Abraham offrant Isaac « raisonnait que Dieu pouvait même le ressusciter » — « en Isaac » la postérité était promise, donc Isaac, même égorgé, reviendrait : « aussi le recouvra-t-il, en parabole » — la foi envisage la résurrection DÈS LA GENÈSE. Lignée : Isaac → Jacob (pas Ésaü, Rm 9:10-13, voir P015) → Juda → David → Christ.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1913 (sevrage)</td><td>Moquerie d'Ismaël — début de l'affliction (Ga 4:29)</td></tr>
+<tr><td class="d">21:10-12</td><td>Renvoi ordonné : EN ISAAC sera appelée</td></tr>
+<tr><td class="d">21:17-20</td><td>Ismaël gardé : puits, archer, nation</td></tr>
+<tr><td class="d">Moriya (ch. 22)</td><td>Isaac offert — Dieu peut ressusciter (Hé 11:19)</td></tr>
+<tr><td class="d">Lignée</td><td>Jacob → Juda → David → Christ (pas Ésaü, pas Ismaël)</td></tr>
+<tr><td class="d">~56 (Rm 9:7)</td><td>Paul : pas tous enfants — élection</td></tr>
+<tr><td class="d">~61 (Hé 11:18)</td><td>Isaac, paradigme de la foi</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p> Droit du Proche-Orient : le fils de la servante pouvait hériter avec le fils de l'épouse (Nuzi, Lipit-Ishtar ?) — l'exigence de Sara VA CONTRE le droit coutumier, et Dieu la valide : l'alliance prime la coutume. Paul écrit Rm 9 vers 56 de n. è. aux chrétiens de Rome (Juifs + nations) : 21:12 lui sert à expliquer que la majorité d'Israël a manqué le Messie SANS que la parole ait « échoué » (9:6) — l'élection n'a jamais été ethnique. Hébreux (~61) : Moriya relu comme drame de la résurrection — première théologie explicite du sacrifice d'Isaac. Ismaël : gardé, nourri, père de douze (21:17-20) — l'exclu de l'alliance reste l'enfant de la providence.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Beér-Shéba → Parân : le renvoi déplace Ismaël vers le sud-est désertique — la géographie sépare les deux postérités (sédentaire/centre vs nomade/marges). Le puits de 21:19 (« Dieu lui ouvrit les yeux, elle vit un puits ») : deux puits encadrent Agar — Beer-Lahaï-Roï (fuite, ch. 16) et le puits du renvoi (ch. 21) : Dieu abreuve l'exclue deux fois. Isaac reste : Mamré, Beér-Shéba, Moriya — le triangle de l'héritier.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Onomastique covenantielle : « appelé » (qara') — porter le nom = porter le droit (cf. « appelés fils de Dieu », Mt 5:9 ; « appelés saints », Rm 1:7) : la Bible connaît une filiation JURIDIQUE distincte de la filiation BIOLOGIQUE — concept juridique, pas biologique, que Paul exploite. Démographie : à ~17 ans (Ismaël) contre ~3 ans (Isaac sevré) — l'écart d'âge rend la moquerie crédible (adolescent vs bambin fêté). Critique paulinienne : Rm 9 cite Gn 21:12 selon la Septante (« en Isaac sera appelée ») — Paul suit le grec de ses lecteurs, le sens est identique à l'hébreu.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Moquerie au sevrage (~1913, début des 400 ans) → Sara exige, Abraham déchiré → Dieu tranche : EN ISAAC sera appelée → Ismaël : nation gardée, pas alliance → Paul (Rm 9) : enfants de promesse vs chair → Hébreux (11) : Isaac offert ET promis = résurrection envisagée → Lignée : Jacob → Juda → David → Christ.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>21:12 ne damne pas Ismaël : nation promise (21:13, 18), Dieu avec lui (21:20) — exclusion d'ALLIANCE, pas de providence ni de salut individuel (non traité par le texte). Rm 9 (élection) : Paul parle du DESSEIN (porter la promesse), pas d'un décret de damnation — débats théologiques postérieurs (prédestination) : hors sujet de la fiche, qui suit le texte. « Persécutait » (Ga 4:29) : relecture apostolique de la moquerie — intensity rhétorique de Paul, assumée comme telle. Hé 11:19 : Abraham « raisonnait » (logisamenos) — déduction de foi, pas révélation reçue.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le tri</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1913 (moquerie)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">EN ISAAC</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">21:12 (sentence)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Offert, promis</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Moriya</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Juda → Christ</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Lignée</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Docteurs</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Rm 9 / Hé 11</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/21">Genèse 21 — Bible d'étude (10-13, notes)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/45/9">Romains 9 — Bible d'étude (6-8, élection)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/45/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/58/11">Hébreux 11 — Bible d'étude (17-19, Moriya)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/58/11</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE012 — En Isaac sera appelée ta postérité</span><span>Catégorie GE</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie GE</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>GE007 — Ils reviendront ici à la quatrième génération</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux verrous</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oracle (nuit)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gén. 1 entre</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (Lévi)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gén. 4 sort</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1513 (Moïse)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Comble jugé</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (Josué)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas ta justice</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 9:5</text>
+</svg>
+<h4>GE008 — Du fleuve d'Égypte à l'Euphrate : le pays des dix peuples</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">10 peuples</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Titre (Gn 15)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rappel</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 1:4</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (repos)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Euphrate</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">David</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux bornes</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+</svg>
+<h4>GE009 — Ismaël : multitude, âne sauvage, face à ses frères</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dieu entend</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fuite (oracle)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'onagre</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1932 (naissance)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Douze chefs</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Gn 25 (liste)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Caravanes</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Joseph</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Qédar attesté</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Assyrie</text>
+</svg>
+<h4>GE010 — Mon alliance avec Isaac — et Ismaël béni, douze princes</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NON + OUI</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919 (annonce)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Au temps fixé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1918 (Isaac)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le signe</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">8e jour</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tout + douze</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">25:5 / 25:16</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'allégorie</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ga 4</text>
+</svg>
+<h4>GE011 — Sara, 90 ans, enfantera au temps fixé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'an prochain</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Mamré (annonce)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Si, tu as ri</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Porte (rire)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Au temps fixé</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1918 (Isaac)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le tri</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1913 (sevrage)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sara modèle</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Hé 11:11</text>
+</svg>
+<h4>GE012 — En Isaac sera appelée ta postérité</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le tri</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1913 (moquerie)</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">EN ISAAC</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">21:12 (sentence)</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Offert, promis</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Moriya</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Juda → Christ</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Lignée</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Docteurs</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Rm 9 / Hé 11</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-2 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

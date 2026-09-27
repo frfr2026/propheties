@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR — Jérémie (17) — Le jugement des nations : d'Ammon à Élam</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR</h1>
+<h2>Jérémie (17) — Le jugement des nations : d'Ammon à Élam</h2>
+<p class="intro">Après 46 versets de jugement, une promesse éclaire Moab : ses captifs reviendront (JR277). Puis le tribunal des nations siège : Rabbah d'Ammon deviendra un tell désolé (JR278), Édom sera comme Sodome (JR279), Damas incendiée (JR280), Kédar et Hatsor frappés (JR281), et l'arc d'Élam brisé avant un rétablissement final (JR282).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR277">JR277</a>
+<a href="#JR278">JR278</a>
+<a href="#JR279">JR279</a>
+<a href="#JR280">JR280</a>
+<a href="#JR281">JR281</a>
+<a href="#JR282">JR282</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR277"><img src="images/prophe_JR277_restauration.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR277</div>
+<h3><a href="#JR277">« Je ramènerai les captifs de Moab » : la promesse après le jugement</a></h3>
+<div class="meta">À venir</div></div></div>
+<div class="carte">
+<a class="img" href="#JR278"><img src="images/prophe_JR278_ammon.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR278</div>
+<h3><a href="#JR278">Rabbah en tell désolé : Milkom en exil avec ses prêtres</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR279"><img src="images/prophe_JR279_edom.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR279</div>
+<h3><a href="#JR279">Édom comme Sodome : Botsra en ruines éternelles, Teman sans sagesse</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR280"><img src="images/prophe_JR280_damas.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR280</div>
+<h3><a href="#JR280">Damas défaillante : le feu aux murs, le palais de Ben-Hadad dévoré</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR281"><img src="images/prophe_JR281_kedar.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR281</div>
+<h3><a href="#JR281">Kédar pillée, Hatsor repaire de chacals : la terreur de tous côtés</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR282"><img src="images/prophe_JR282_elam.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR282</div>
+<h3><a href="#JR282">L'arc d'Élam brisé, les fugitifs dans toutes les nations, puis le retour</a></h3>
+<div class="meta">Accomplie / À venir</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR277">
+<div class="visuel"><img src="images/prophe_JR277_restauration.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR277 · CATÉGORIE JR</div>
+<h3>« Je ramènerai les captifs de Moab » : la promesse après le jugement</h3>
+<div class="ref">Jérémie 48:47</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir</span>
+<span class="badge">Moab restaurée avenir promis (ramènerai → captifs → Moab → suite → jours → dit → Jéhovah → jugement → Moab → terminé → promesse → espérance)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR277</div><audio controls preload="none" src="audio/fiche_JR277_restauration.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR277_restauration.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 48:47</td></tr>
+<tr><td class="d">Statut</td><td>À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>Moab restaurée avenir promis (ramènerai → captifs → Moab → suite → jours → dit → Jéhovah → jugement → Moab → terminé → promesse → espérance)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P277 (48:47 : captifs de Moab ramenés) ; accomplissement : À venir (selon le texte)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« RAMÈNERAI… CAPTIFS… MOAB… SUITE… JOURS… DIT… JÉHOVAH… JUGEMENT… MOAB… TERMINÉ… PROMESSE… CLÔT… ORACLE… PLUS… LONG… NATIONS… GRÂCE… DERNIER… MOT… COLÈRE… AVANT-DERNIÈRE… ESPOIR… VAINQUEUR. » (48:47 — vainqueur !)</li>
+<li>« SUITE… JOURS… AHARIT… YAMIM… FIN… TEMPS… AVENIR… LOINTAIN… FORMULE… ESCHATOLOGIQUE… GENÈSE… QUARANTE-NEUF… NOMBRES… VINGT-QUATRE… DANIEL… DIX… HORIZON… MESSIANIQUE… OUVERT. » (suite — ouvert !)</li>
+<li>« CAPTIFS… SHVUT… RETOUR… FORTUNE… RESTAURÉE… EXILÉS… RAMENÉS… PAYS… REBÂTI… PEUPLE… RECONSTITUÉ… NATION… SUPPRIMÉE… PUIS… RELEVÉE… MYSTÈRE… MISÉRICORDE… SOUVERAINE. » (captifs — souveraine !)</li>
+<li>« KÉMOSH… VAINCU… EXILÉ… PEUPLE… PERDU… PUIS… PROMESSE… DIEU… JUGE… IDOLE… SAUVE… ADORATEURS… JUSTICE… FRAPPE… GRÂCE… RELÈVE… DEUX… MAINS… MÊME… DIEU. » (Kémosh — Dieu !)</li>
+<li>« AMMON… ÉLAM… MÊMES… PROMESSES… QUARANTE-NEUF… SIX… TRENTE-NEUF… TROIS… NATIONS… RESTAURÉES… ÉDOM… EXCLU… DAMAS… SILENCE… ÉLECTION… GRÂCE… DISTRIBUÉE… SOUVERAINEMENT. » (Ammon — souverainement !)</li>
+<li>« À VENIR… STATUT… REGISTRE… FIDÈLE… TEXTE… PROPHÉTIE… NON… ACCOMPLIE… HISTOIRE… CONNUE… MOAB… ABSORBÉE… NABATÉENS… ATTENTE… JOURS… DERNIERS… FOI… PATIENTE. » (à venir — patiente !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>L'épilogue, ~605 — VESHABTI (les RAMÈNERAI (les SHEBUT (les CAPTIFS (les MOAB (les MOAB (les BEAHARIT (les SUITE (les HAYYAMIM (les JOURS (les NEUM (les DIT (les YEHOVAH (les AD (les JUSQUICI (les HENAH (les MISHPAT (les JUGEMENT (les MOAB (les MOAB (les UN SEUL (les VERSET (les APRÈS (les QUARANTE-SIX (les DE JUGEMENT (les ÉPILOGUE — les PROMESSE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La FORMULE (les BEAHARIT (les SUITE (les HAYYAMIM (les JOURS (les LA FIN (les DES JOURS (les L'AVENIR (les LOINTAIN (les MÊME FORMULE (les EN GENÈSE 49:1 (les JACOB (les À SES FILS (les NOMBRES 24:14 (les BALAAM (les À BALAQ (les DANIEL 10:14 (les L'ANGE (les À DANIEL (les TOUJOURS (les UN HORIZON (les MESSIANIQUE (les TOUJOURS (les APRÈS (les LE JUGEMENT (les LA RESTAURATION (les FORMULE — les ESCHATOLOGIQUE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le TRIPTYQUE (les TROIS (les NATIONS (les REÇOIVENT (les LA MÊME (les PROMESSE (les MOAB (les JÉRÉMIE 48:47 (les AMMON (les JÉRÉMIE 49:6 (les ÉLAM (les JÉRÉMIE 49:39 (les ÉDOM (les NEN (les REÇOIT (les AUCUNE (les DAMAS (les NON PLUS (les KÉDAR (les NON PLUS (les LA GRÂCE (les EST (les SOUVERAINE (les ELLE (les DISTRIBUE (les SES PROMESSES (les SANS (les SE JUSTIFIER (les TRIPTYQUE — les GRÂCE !). L'ATTENTE (les MOAB (les COMME NATION (les A CESSÉ DEXISTER (les ABSORBÉE (les PAR (les LES NABATÉENS (les PUIS (les LES PERSES (les PUIS (les LHISTOIRE (les AUCUN RETOUR (les NATIONAL (les NEST (les DOCUMENTÉ (les LE REGISTRE (les CLASSE (les LA PROPHÉTIE (les À VENIR (les SELON (les LE TEXTE (les LA FICHE (les SUIT (les LE REGISTRE (les ATTENTE — les FOI !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">48:47a</td><td>MOAB (JOURS !)</td></tr>
+<tr><td class="d">48:47b</td><td>MOAB (JÉHOVAH !)</td></tr>
+<tr><td class="d">Jr 49:6</td><td>AMMON (AVENIR !)</td></tr>
+<tr><td class="d">Jr 49:39</td><td>ÉLAM (JÉHOVAH !)</td></tr>
+<tr><td class="d">Gn 49:1/Dn 10:14</td><td>JOURS (FIN !)</td></tr>
+<tr><td class="d">À venir</td><td>ATTENTE (FOI !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (promesse) → ? : Moab, supprimée comme nation (Jr 48:42, campagne de 582), ne reparaît jamais dans l'histoire — absorbée par les Nabatéens (Pétra) dès le Ve s. ; contrairement à Juda (retour 537), aucun retour moabite n'est documenté ; le registre classe donc P277 « À venir (selon le texte) » — la fiche suit le registre : promesse enregistrée, accomplissement attendu dans « la suite des jours ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le plateau de Moab (Dhiban, Karak) : occupé par Nabatéens, Romains (provincia Arabia), Byzantins, Arabes — jamais repris par des « Moabites » ; la géographie confirme le statut : pas de restauration nationale constatable à ce jour.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Méthode : le statut « À venir » n'est pas un aveu d'échec mais une discipline — le registre distingue Accomplie / À venir / mixte ; Jr 48:47 + 49:6 + 49:39 forment un triptyque de restaurations nationales « dans la suite des jours » (beaharit hayyamim, formule eschatologique de Gn 49:1, Nb 24:14, Dn 10:14) — horizon messianique, non daté.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : 46 VERSETS DE JUGEMENT SUR MOAB → V. 47 : MAIS JE RAMÈNERAI → 582 : NATION SUPPRIMÉE → Ve s. : NABATÉENS → JAMAIS DE RETOUR DOCUMENTÉ → STATUT : À VENIR (BEAHARIT HAYYAMIM)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Édom ne reçoit aucune promesse (Abdias, Ml 1:2-4), ni Damas ni Kédar : la grâce restauratrice est sélective — Moab, Ammon, Élam oui ; pourquoi ces trois ? Le texte ne dit pas — la fiche ne spécule pas, elle enregistre.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Promesse : captifs de Moab ramenés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nation supprimée, absorbée</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">582→</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La suite des jours — attente</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Avenir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/16">Bible — Ésaïe 16 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/16</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/36/2">Bible — Sophonie 2 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/36/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/36/2">Bible — Sophonie 2 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/36/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR277 — « Je ramènerai les captifs de Moab » : la promesse après le jugement</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR278">
+<div class="visuel"><img src="images/prophe_JR278_ammon.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR278 · CATÉGORIE JR</div>
+<h3>Rabbah en tell désolé : Milkom en exil avec ses prêtres</h3>
+<div class="ref">Jérémie 49:1-5</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Ammon jugée Rabbah ruinée (Ammon → Israël → fils → héritier → Milkom → possède → Gad → peuple → habite → villes → jours → viennent)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR278</div><audio controls preload="none" src="audio/fiche_JR278_ammon.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR278_ammon.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 49:1-5</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Ammon jugée Rabbah ruinée (Ammon → Israël → fils → héritier → Milkom → possède → Gad → peuple → habite → villes → jours → viennent)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P278 (49:1-5 : Rabbah dévastée) ; accomplissement Jr 49:2 ; fin des Ammonites</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AMMON… ISRAËL… FILS… HÉRITIER… MILKOM… POSSÈDE… GAD… PEUPLE… HABITE… VILLES… JOURS… VIENNENT… FERAI… ENTENDRE… RABBAH… AMMON… CRI… GUERRE… DEVIENDRA… TELL… DÉSOLÉ… FILLES… BRÛLÉES… FEU… ISRAËL… POSSÉDERA… POSSÉDAIENT… HURLE… HESHBÔN… DÉVASTÉE… AÏ… CRIEZ… FILLES… RABBAH… CEIGNEZ… SACS… LAMENTEZ… COUREZ… MURS… MILKOM… EXIL… PRÊTRES… CHEFS… ENSEMBLE… GLORIFIES… VALLÉES… VALLÉE… FERTILE… FILLE… REBELLE… CONFIES… TRÉSORS… VIENDRA… MOI… FERAI… VENIR… TERREUR… ENTOURS… CHASSÉS… DEVANT… RASSEMBLERA… FUYARDS. » (49:1-5 — fuyards !)</li>
+<li>« GAD… HÉRITAGE… TRIBU… DISPARUE… DÉPORTÉE… TIGLATH-PILÉSER… AMMON… OCCUPE… VIDE… USURPATION… OPPORTUNISTE… TERRE… ALLIANCE… VOLÉE… DIEU… PROCÈS… INTENTÉ… PROPRIÉTAIRE… LÉGITIME. » (Gad — légitime !)</li>
+<li>« MILKOM… DIEU… ROI… AMMON… MOLEK… PARENT… SACRIFICES… ENFANTS… SCEAUX… INSCRIPTIONS… AMMAN… TÉMOIGNENT… CULTE… ROYAL… DYNASTIQUE… IDOLE… NATIONALE… EXILÉE… IMPUISSANTE. » (Milkom — impuissante !)</li>
+<li>« TELL… DÉSERT… TEL… MONTICULE… RUINES… STRATIFIÉES… RABBAH… CAPITALE… DEVIENT… CHAMP… FOUILLES… CITADELLE… AMMAN… COUCHES… DESTRUCTION… BABYLONIENNE… ATTESTÉES… PIERRES… PARLENT. » (tell — parlent !)</li>
+<li>« HESHBÔN… AÏ… FILLES… RABBAH… GÉOGRAPHIE… DÉSASTRE… NORD… SUD… CAPITALES… VOISINES… HURLENT… SOLIDARITÉ… RUINES… RÉSEAU… VILLES… EFFONDRÉ… CASCADE… CHUTE. » (Heshbôn — chute !)</li>
+<li>« VALLÉE… FERTILE… JABBOK… EAUX… VERGERS… RICHESSE… AGRICOLE… ORGUEIL… TERRES… GRASSES… TRÉSORS… ENTASSÉS… CONFIANCE… BIENS… TERREUR… BALAIE… TOUT… FUYARDS… DISPERSÉS. » (vallée — dispersés !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Contre Ammon, ~605 — LIBNÉ (les AMMON (les AMMON (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les HABANIM (les FILS (les ÉYN (les NON (les LEYISRAÉL (les ISRAËL (les IM (les OU (les YORÉSH (les HÉRITIER (les ÉYN (les NON (les LO (les LUI (les MADDUA (les POURQUOI (les YARASH (les POSSÈDE (les MILKOM (les MILKOM (les ET (les GAD (les GAD (les VEAMMO (les PEUPLE (les BEARAYV (les VILLES (les YASHAB (les HABITE (les LE PROCÈS (les SOUVRE (les PAR (les DEUX QUESTIONS (les AMMON — les USURPE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le VERDICT (les LAKHÉN (les CÈST POURQUOI (les HINNÉH (les VOICI (les YAMIM (les JOURS (les BAIM (les VIENNENT (les NEUM (les DIT (les YEHOVAH (les VEHISHMATI (les ENTENDRE (les EL (les RABBAT (les RABBAH (les BENÉ (les FILS (les AMMON (les AMMON (les TERUAT (les CRI (les MILHAMAH (les GUERRE (les VEHAYTAH (les DEVIENDRA (les LETÉL (les TELL (les SHEMAMAH (les DÉSOLÉ (les UBENOTÉHA (les FILLES (les BAÉSH (les FEU (les TITSTSATSNAH (les BRÛLÉES (les VEYARASH (les POSSÉDERA (les YISRAÉL (les ISRAËL (les ET (les YORSHAYV (les POSSÉDAIENT (les NEUM (les DIT (les YEHOVAH (les LA CAPITALE (les DEVIENT (les UN MONTICULE (les VERDICT — les TELL !)</p>
+<h4>5 · Interprétation</h4>
+<p>L'EXIL (les HÉYLILI (les HURLE (les HESHBON (les HESHBÔN (les KI (les CAR (les SHUDDEDAD (les DÉVASTÉE (les AI (les AÏ (les TSEAQNAH (les CRIEZ (les BENOT (les FILLES (les RABBAH (les RABBAH (les HAGORNAH (les CEIGNEZ (les SAQQIM (les SACS (les SEPHODNAH (les LAMENTEZ (les VEHITSHOTATNAH (les COUREZ (les BAGGEDÉROT (les MURS (les KI (les CAR (les MILKOM (les MILKOM (les BAGGOLAH (les EXIL (les YÉLÉKH (les IRA (les KOHANAYV (les PRÊTRES (les VESARAYV (les CHEFS (les YAKHDAYV (les ENSEMBLE (les MAH (les POURQUOI (les TITHALALI (les GLORIFIES (les BAAMAQIM (les VALLÉES (les ZAB (les COULE (les IMQÉKH (les VALLÉE (les HABAT (les FILLE (les HASHSHOBÉBAH (les REBELLE (les HABBOTHÉHAH (les CONFIES (les BEOTSROTÉHA (les TRÉSORS (les MI (les QUI (les YABO (les VIENDRA (les ÉLAY (les MOI (les HINENI (les VOICI (les MÉBI (les VENIR (les ALAYIKH (les TOI (les PAHAD (les TERREUR (les NEUM (les DIT (les ADONAY (les SEIGNEUR (les YEHVIH (les TSEBAOT (les ARMÉES (les MIKKOL (les TOUS (les SEBIBAYIKH (les ENTOURS (les VENIDDAHTEM (les CHASSÉS (les ISH (les CHACUN (les LEPHANAYV (les DEVANT (les VEÉYN (les NON (les MEQABBÉTS (les RASSEMBLERA (les LANNODÉD (les FUYARDS (les LE DIEU (les EN EXIL (les AVEC (les SON CLERGÉ (les EXIL — les MILKOM !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">49:1</td><td>VILLES (HÉRITIER !)</td></tr>
+<tr><td class="d">49:2</td><td>POSSÉDAIENT (GUERRE !)</td></tr>
+<tr><td class="d">49:3</td><td>ENSEMBLE (SACS !)</td></tr>
+<tr><td class="d">49:4</td><td>MOI (REBELLE !)</td></tr>
+<tr><td class="d">49:5</td><td>FUYARDS (TERREUR !)</td></tr>
+<tr><td class="d">582/fin Ammon</td><td>NABATÉENS (AMMAN !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (oracle) → 582 (campagne de Nabuchodonosor contre Ammon et Moab, Josèphe Ant. X, 9, 7) : Rabbah (Rabbath-Ammon, Amman) est dévastée, ses « filles » (villes dépendantes) incendiées, Milkom part en exil ; Ammon avait occupé Gad après la déportation assyrienne (2R 15:29) — l'usurpation jugée ; la nation ammonite disparaît, absorbée par les Nabatéens puis les Arabes — Amman garde le nom, perd le peuple.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Rabbah (Amman, 2 755 pieds d'altitude) : citadelle sur le Jabbok supérieur, carrefour des routes du désert ; Heshbôn (nord), Aï (voisine) : le réseau urbain s'effondre en cascade ; la « vallée fertile » (v. 4) : le Jabbok et ses vergers — la richesse agricole devenue orgueil.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Archéologie : citadelle d'Amman — inscriptions ammonites VIIe s. invoquant « Milkom-él », sceaux (« à Milkom-ur »), couches de destruction babylonienne ; Tell el-Umeiri, Khirbet al-Mudayna : même horizon ; Amos 1:13-15 et Ézéchiel 25:1-7 prononcent le même oracle — triple attestation (Amos/Jérémie/Ézéchiel).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : PROCÈS — POURQUOI MILKOM POSSÈDE-T-IL GAD ? → VERDICT : RABBAH EN TELL, FILLES BRÛLÉES → HURLEMENTS : HESHBÔN, AÏ, FILLES → MILKOM EN EXIL → 582 : CAMPAGNE → AMMON ABSORBÉE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Mais après cela je ramènerai les captifs d'Ammon » (v. 6, hors registre P278 qui s'arrête au v. 5) : même promesse qu'à Moab et Élam — la fiche suit le registre (v. 1-5) et signale le v. 6 ; Israël « possédera ceux qui le possédaient » (v. 2) — réversion de l'usurpation.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gad déportée ; Ammon occupe le vide</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">733</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Rabbah en tell désolé</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne babylonienne ; fin d'Ammon</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">582</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/49">Bible — Jérémie 49 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/49</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/30/1">Bible — Amos 1 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/30/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/25">Bible — Ézéchiel 25 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/25</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR278 — Rabbah en tell désolé : Milkom en exil avec ses prêtres</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR279">
+<div class="visuel"><img src="images/prophe_JR279_edom.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR279 · CATÉGORIE JR</div>
+<h3>Édom comme Sodome : Botsra en ruines éternelles, Teman sans sagesse</h3>
+<div class="ref">Jérémie 49:7-22</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Édom ruinée Botsra désolée (Édom → sagesse → Teman → conseil → disparus → intelligents → sens → perdu → fuyez → retournez → Dedan → profond → habitez)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR279</div><audio controls preload="none" src="audio/fiche_JR279_edom.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR279_edom.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 49:7-22</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Édom ruinée Botsra désolée (Édom → sagesse → Teman → conseil → disparus → intelligents → sens → perdu → fuyez → retournez → Dedan → profond → habitez)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P279 (49:7-22 : Édom comme Sodome) ; accomplissement Jr 49:17-18 ; Édom disparu</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ÉDOM… SAGESSE… TEMAN… CONSEIL… DISPARUS… INTELLIGENTS… SENS… PERDU… FUYEZ… RETOURNEZ… DEDAN… PROFOND… HABITEZ… AMÈNE… ÉSAÜ… MALHEUR… TEMPS… PUNITION… VENDANGEURS… VIENNENT… LAISSENT… GRAPPILLAGE… VOLEURS… NUIT… DÉTRUISENT… SUFFIT… DÉPOUILLÉ… ÉSAÜ… DÉCOUVERT… CACHETTES… CACHER… DÉTRUITE… POSTÉRITÉ… FRÈRES… VOISINS… EXISTE… LAISSE… ORPHELINS… FERAI… VIVRE… VEUVES… CONFIENT… MOI… JUGÉ… BOIRE… COUPE… BOIRONT… IMPUNI… RESTERAS… PUNI… BOIRAS. » (49:7-12 — boiras !)</li>
+<li>« JURÉ… MOI-MÊME… BOTSRA… DÉSOLATION… OPPROBRE… DÉVASTATION… MALÉDICTION… VILLES… RUINES… ÉTERNELLES… RENDRAI… PETIT… NATIONS… MÉPRISÉ… HOMMES… PRÉSOMPTION… ORGUEIL… CŒUR… ÉGARÉ… HABITES… CREUX… ROCHERS… OCCUPES… SOMMET… COLLINES… ÉLÈVES… NID… AIGLE… DESCENDRAI… ÉDOM… DÉSOLATION… PASSENT… ÉTONNEMENT… SIFFLENT… PLAIES… SODOME… GOMORRHE… VOISINES… DÉTRUITES… HABITÉ… SÉJOUR… HOMME… LION… MONTE… JORDAIN… DEMEURE… FORTE… FUIR… ÉDOM… ÉTABLIRAI… CHOISI… SEMBLABLE… ORDRES… CHEF… RÉSISTERA… ÉCOUTEZ… RÉSOLUTION… ÉDOM… DESSEINS… TEMAN… TRAÎNERA… BREBIS… RAVAGERA… DEMEURE… BRUIT… CHUTE… TERRE… TREMBLE… CRI… ENTENDU… MER… ROUGE… AIGLE… AVANCE… VOLE… ÉTEND… AILES… BOTSRA… CŒUR… HÉROS… FEMME… TRAVAIL. » (49:13-22 — travail !)</li>
+<li>« TEMAN… SUD… SAGES… ÉLIPHAZ… TEMANITE… JOB… CONSEIL… RENOMMÉ… ÉVANOUIE… DIPLÔMES… INUTILES… RUINES… INTELLIGENCE… SANS… DIEU… FOLIE… FINALE… ACADÉMIE… DÉSERT… VIDE. » (Teman — vide !)</li>
+<li>« DEDAN… OASIS… CARAVANES… ARABIE… VOISINS… AVERTIS… FUYEZ… CREUX… PROFONDS… GROTTES… REFUGES… TROGLODYTES… COMMERÇANTS… DEVENUS… RÉFUGIÉS… ROUTES… ENCENS… COUPÉES… SILK… MORT. » (Dedan — mort !)</li>
+<li>« BOTSRA… CAPITALE… HAUTS… PLATEAUX… BOZRAH… BERGERIE… FORTIFIÉE… SERMENT… DIVIN… MOI-MÊME… RUINES… ÉTERNELLES… JAMAIS… REBÂTIE… PIERRES… TÉMOINS… SIÈCLES… SILENCE. » (Botsra — silence !)</li>
+<li>« SÉLA… PÉTRA… CREUX… ROCHERS… NID… AIGLE… VALLÉE… ÉTROITE… SIQ… DÉFILÉ… INEXPUGNABLE… ORGUEIL… GÉOLOGIQUE… DIEU… DESCEND… GRAVITÉ… JUGEMENT… CHUTE… ASSURÉE… ROUGE… SANGLANTE. » (Séla — sanglante !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Contre Édom, ~605 — LÉÉDOM (les ÉDOM (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les HAÉYN (les NON (les OD (les PLUS (les HOKHMAH (les SAGESSE (les BETÉMAN (les TEMAN (les ABEDAH (les PERDU (les ÉTSAH (les CONSEIL (les MIBBANIM (les INTELLIGENTS (les NISRAHAH (les GÂTÉE (les HOKHMATAM (les SAGESSE (les NISU (les FUYEZ (les HOPHNU (les RETOURNEZ (les HAAMIQOU (les PROFOND (les LASHÉBET (les HABITEZ (les YOSHEBÉ (les HABITANTS (les DEDAN (les DEDAN (les KI (les CAR (les ÉYD (les MALHEUR (les ÉSAV (les ÉSAÜ (les ABI (les AMÈNE (les ALAYV (les LUI (les ÉT (les TEMPS (les PEQUDTIV (les PUNITION (les LA SAGESSE (les DE TEMAN (les ÉVANOUiE (les ÉDOM — les SANS CONSEIL !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le DÉPOUILLEMENT (les IM (les SI (les BOTSRIM (les VENDANGEURS (les BAU (les VIENNENT (les LEKHA (les TOI (les LO (les NON (les YASHIRU (les LAISSENT (les OLÉLOT (les GRAPPILLAGE (les IM (les SI (les GHANABIM (les VOLEURS (les BALLAYLAH (les NUIT (les HISHKHITU (les DÉTRUISENT (les DAYYAM (les SUFFIT (les KI (les CAR (les ANI (les MOI (les HASAPHTI (les DÉPOUILLÉ (les ET (les ÉSAV (les ÉSAÜ (les GHILLÉYTI (les DÉCOUVERT (les ET (les MISTARAYV (les CACHETTES (les VENEHBAH (les CACHER (les LO (les NON (les YUKHAL (les POURRA (les SHUDDAD (les DÉTRUITE (les ZARO (les POSTÉRITÉ (les VEEKHAYV (les FRÈRES (les USHKHÉNAYV (les VOISINS (les VEÉYNENNU (les EXISTE (les MÊME LES VOLEURS (les LAISSENT (les DES RESTES (les DIEU (les NON (les DÉPOUILLEMENT — les TOTAL !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le SERMENT (les KI (les CAR (les BI (les PAR (les NISHBATTI (les JURÉ (les NEUM (les DIT (les YEHOVAH (les KI (les CAR (les LESHAMMAH (les DÉSOLATION (les LEHERPAH (les OPPROBRE (les LEHOREB (les DÉVASTATION (les VELIQELALAH (les MALÉDICTION (les TIHYÉH (les SERA (les BOTSRAH (les BOTSRA (les VEKHOL (les TOUTES (les ARÉHA (les VILLES (les LEHORBOT (les RUINES (les OLAM (les ÉTERNELLES (les TIHYÉYNAH (les SERONT (les QATON (les PETIT (les NETATTIKHA (les RENDRAI (les BAGGoyIM (les NATIONS (les BAZUI (les MÉPRISÉ (les BAADAM (les HOMMES (les TIPLATSTEKHA (les PRÉSOMPTION (les HISHI (les ÉGARÉ (les OTACH (les TOI (les ZEDON (les ORGUEIL (les LIBBÉKHA (les CŒUR (les SHOKHNI (les HABITES (les BEHAGVÉ (les CREUX (les HASSÉLA (les ROCHERS (les TOPHÉSI (les OCCUPES (les MEROM (les SOMMET (les GHIBAH (les COLLINES (les KI (les SI (les TAGBIAH (les ÉLÈVES (les KHANNÉSHER (les AIGLE (les QINNÉKHA (les NID (les MISHSHAM (les LÀ (les ORIDEKHA (les DESCENDRAI (les NEUM (les DIT (les YEHOVAH (les VEHAYTAH (les SERA (les ÉDOM (les ÉDOM (les LESHAMMAH (les DÉSOLATION (les KOL (les TOUS (les OBÉR (les PASSENT (les ALÉHA (les ELLE (les YISHSHOM (les ÉTONNEMENT (les VEYISHROQ (les SIFFLENT (les AL (les KOL (les TOUTES (les MAKKOTÉHA (les PLAIES (les KHEMAHPEKHAT (les COMME (les SEDOM (les SODOME (les VAAMORAH (les GOMORRHE (les USHKHÉNÉHA (les VOISINES (les AMAR (les DIT (les YEHOVAH (les LO (les NON (les YÉSHÉB (les HABITÉ (les SHAM (les LÀ (les ISH (les HOMME (les VELO (les NON (les YAGUR (les SÉJOUR (les BAH (les ELLE (les BEN (les FILS (les ADAM (les HOMME (les DIEU (les JURE (les PAR LUI-MÊME (les SERMENT — les ÉTERNELLES !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">49:7-8</td><td>DEDAN (TEMAN !)</td></tr>
+<tr><td class="d">49:9-11</td><td>MOI (NUIT !)</td></tr>
+<tr><td class="d">49:12</td><td>BOIRAS (COUPE !)</td></tr>
+<tr><td class="d">49:13-16</td><td>DESCENDRAI (NID !)</td></tr>
+<tr><td class="d">49:17-18</td><td>HOMME (SODOME !)</td></tr>
+<tr><td class="d">49:19-22/Abd/Ml 1</td><td>TRAVAIL (LION !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (oracle) → VIe-Ve s. : Nabuchodonosor puis les Nabatéens chassent Édom de Séïr ; les Édomites (Iduméens) se replient en Néguev, convertis de force par Jean Hyrcan (~125) ; Hérode, Iduméen, dernier sursaut — puis disparition totale comme nation ; Abdias (entier !), Ésaïe 34, Ézéchiel 25:12-14, Malachie 1:2-4 confirment : « ils bâtiront, je démolirai » ; Pétra la nabatéenne occupe les rochers — pas des Édomites.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Teman (sud, patrie d'Éliphaz, Jb 2:11) : capitale de la sagesse ; Botsra (Bouseirah) : capitale du nord, « bergerie fortifiée » ; Séla (Pétra) : le « creux des rochers » (v. 16), nid d'aigle dans le grès rouge — le Siq, défilé de 1,2 km, forteresse naturelle ; Dedan (oasis d'Arabie) : caravaniers avertis.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Géologie défensive : le grès nubien de Séïr/Pétra — falaises de 200 m, un seul accès — rendait Édom « imprenable » ; l'oracle retourne la géologie contre l'orgueil (v. 16, cf. Abd 3-4) ; archéologie : Bouseirah (Botsra) — destruction VIe s., jamais rebâtie en ville édomite ; les sifflements des passants (v. 17) : voyageurs (Burckhardt 1812) stupéfaits devant les ruines.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : ORACLE — TEMAN SANS SAGESSE → DEDAN : FUYEZ ! → ÉSAÜ DÉPOUILLÉ PIRE QUE VOLÉ → ORPHELINS ÉPARGNÉS → SERMENT : BOTSRA EN RUINES ÉTERNELLES → COMME SODOME → LION + AIGLE → VIe-Ier s. : DISPARITION TOTALE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Laisse tes orphelins, je les ferai vivre » (v. 11) : au milieu de l'anéantissement national, les faibles sont recueillis — individus épargnés, nation supprimée ; « petit parmi les nations » (v. 15) avant de disparaître — gradation du jugement.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Édom comme Sodome et Gomorrhe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nabatéens : Édom chassé de Séïr</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe–Ve s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Iduméens convertis puis disparus</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~125→70</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/49">Bible — Jérémie 49 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/49</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/31/1">Bible — Abdias 1 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/31/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/34">Bible — Ésaïe 34 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/34</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR279 — Édom comme Sodome : Botsra en ruines éternelles, Teman sans sagesse</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR280">
+<div class="visuel"><img src="images/prophe_JR280_damas.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR280 · CATÉGORIE JR</div>
+<h3>Damas défaillante : le feu aux murs, le palais de Ben-Hadad dévoré</h3>
+<div class="ref">Jérémie 49:23-27</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Damas jugée palais brûlé (Damas → Hamath → Arpad → confuses → nouvelle → mauvaise → tremblent → mer → tourmente → calmer → Damas → défaillante)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR280</div><audio controls preload="none" src="audio/fiche_JR280_damas.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR280_damas.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 49:23-27</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Damas jugée palais brûlé (Damas → Hamath → Arpad → confuses → nouvelle → mauvaise → tremblent → mer → tourmente → calmer → Damas → défaillante)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P280 (49:23-27 : Damas incendiée) ; accomplissement Jr 49:26-27</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DAMAS… HAMATH… ARPAD… CONFUSES… NOUVELLE… MAUVAISE… TREMBLENT… MER… TOURMENTE… CALMER… DAMAS… DÉFAILLANTE… TOURNE… FUIR… EFFROI… EMPARE… ANGOISSE… DOULEURS… SAISISSENT… FEMME… TRAVAIL… ABANDONNÉE… VILLE… GLORIEUSE… VILLE… JOIE… JEUNES… TOMBERONT… RUES… GUERRIERS… PÉRIRONT… JOUR… METTRAI… FEU… MURS… DAMAS… DÉVORERA… PALAIS… BEN-HADAD. » (49:23-27 — Ben-Hadad !)</li>
+<li>« HAMATH… ARPAD… SŒURS… NORD… ÉMATH… TELL… RIFAAT… ROYAUMES… ARAMÉENS… NOUVELLE… MAUVAISE… RADIO… ANTIQUE… MESSAGERS… ESSOUFFLÉS… CAVALIERS… POUSSIÈRE… FRONT… EFFONDRÉ… CAPITALES… TREMBLENT. » (Hamath — tremblent !)</li>
+<li>« MER… TOURMENTE… MÉTAPHORE… VAGUES… AFFOLEMENT… VILLE… INTÉRIEURE… DEVIENT… OCÉAN… PANIQUE… NE… CALME… TEMPÊTE… HUMAINE… NAUFRAGE… RUES… HABITANTS… NOYÉS… PEUR. » (mer — peur !)</li>
+<li>« GLORIEUSE… JOIE… NOSTALGIE… PROPHÈTE… PLAINT… ENNEMIE… BEAUTÉ… DAMAS… OASIS… VERDOYANTE… ABANA… PARPAR… FLEUVES… NAAMAN… VANTAIT… EAUX… MEILLEURES… ISRAËL… DEUIL… SPLENDEUR. » (glorieuse — splendeur !)</li>
+<li>« JEUNES… RUES… GUERRIERS… JOUR… GÉNÉRATION… FAUCHÉE… PLACE… PUBLIQUE… MASSACRE… URBAIN… ARMÉE… ANÉANTIE… VINGT-QUATRE… HEURES… DÉFENSE… EFFONDRÉE… VILLE… OUVERTE… PILLAGE. » (jeunes — pillage !)</li>
+<li>« BEN-HADAD… DYNASTIE… FILS… HADAD… DIEU… ORAGE… PALAIS… CITADELLE… SYMBOLE… POUVOIR… ARAMÉEN… FEU… DÉVORE… TRÔNE… CENDRES… ORAGE… ÉTEINT… PLUIE… LARMES. » (Ben-Hadad — larmes !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Sur Damas, ~605 — AL (les SUR (les DAMMÉSEQ (les DAMAS (les BOSHAH (les CONFUSES (les HAMAT (les HAMATH (les VEARPAD (les ARPAD (les KI (les CAR (les SHEMUAH (les NOUVELLE (les RAAH (les MAUVAISE (les SHAMEU (les APPRISE (les NAMOGU (les TREMBLENT (les BAYYAM (les MER (les DEAGAH (les TOURMENTE (les HASHQÉT (les CALMER (les LO (les NON (les YUKHAL (les PEUT (les RAPETAH (les DÉFAILLANTE (les DAMMÉSEQ (les DAMAS (les HIPNETAH (les TOURNE (les LANUS (les FUIR (les VERÉTET (les EFFROI (les HEHÉZIQAH (les EMPARE (les TSARAH (les ANGOISSE (les VEHABALIM (les DOULEURS (les HEHÉZIQUHA (les SAISISSENT (les KAYYOLEDAH (les ENFANTE (les LA MER (les EN TOURMENTE (les DAMAS — les TREMBLE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le DEUIL (les ÉYKHAH (les COMMENT (les LO (les NON (les UZZEBAH (les ABANDONNÉE (les IR (les VILLE (les TEHILLAH (les GLORIEUSE (les QIRYAT (les VILLE (les MESOSI (les JOIE (les LAKHÉN (les CÈST POURQUOI (les YIPPELU (les TOMBERONT (les BAHURÉHA (les JEUNES (les BIRHOBOTÉHA (les RUES (les VEKHOL (les TOUS (les ANSHÉ (les HOMMES (les HAMILHAMAH (les GUERRE (les YIDDAMMU (les PÉRIRONT (les BAYYOM (les JOUR (les HAHU (les CE (les NEUM (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les LE PROPHÈTE (les PLEURE (les LA VILLE (les ENNEMIE (les DEUIL — les GLORIEUSE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le FEU (les VEHITSTATTI (les METTRAI (les ÉSH (les FEU (les BEHOMAT (les MURS (les DAMMÉSEQ (les DAMAS (les VEAKHLAH (les DÉVORERA (les ARMENOT (les PALAIS (les BEN (les BEN (les HADAD (les HADAD (les DEUX (les LIGNES (les UN INCENDIE (les FEU — les DAMAS !). Le PARALLÈLE (les AMOS 1:3-5 (les AVAIT DIT (les JENVERRAI (les LE FEU (les DANS (les LA MAISON (les DE HAZAËL (les IL DÉVORERA (les LES PALAIS (les DE BEN-HADAD (les JE BRISERAI (les LE VERROU (les DE DAMAS (les MÊME FEU (les MÊME PALAIS (les DEUX SIÈCLES (les PLUS TÔT (les ÉSAÏE 17 (les DAMAS (les ÔTÉE (les DES VILLES (les UN MONCEAU (les DE RUINES (les ZACHARIE 9:1 (les LE FARDEAU (les CONTRE (les HADRAC (les ET DAMAS (les QUADRUPLE (les ATTESTATION (les PARALLÈLE — les AMOS !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">49:23</td><td>PEUT (ARPAD !)</td></tr>
+<tr><td class="d">49:24</td><td>ENFANTE (FUIR !)</td></tr>
+<tr><td class="d">49:25</td><td>JOIE (GLORIEUSE !)</td></tr>
+<tr><td class="d">49:26</td><td>CE (RUES !)</td></tr>
+<tr><td class="d">49:27</td><td>HADAD (MURS !)</td></tr>
+<tr><td class="d">Am 1/Is 17/Za 9</td><td>RUINES (HADRAC !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (oracle) → 582 (campagne orientale de Nabuchodonosor ; Damas déjà soumise depuis 604, révoltée puis châtiée) : les jeunes tombent dans les rues, les guerriers périssent, le feu prend aux murs et dévore le palais des Ben-Hadad ; Damas survit comme ville (jamais « inhabitée » — l'oracle ne le dit pas, contrairement à Botsra/Hatsor) mais le royaume araméen est rayé — province babylonienne, puis perse.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Damas (oasis du Barada, Abana et Parpar, 2R 5:12) : « ville glorieuse » (v. 25), carrefour Nordsud ; Hamath (Hama, Oronte) et Arpad (Tell Rifaat, nord d'Alep) : sœurs araméennes du nord, confuses les premières — l'invasion descend du nord ; Ben-Hadad : dynastie (« fils de Hadad », dieu de l'orage).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Stratigraphie : Damas, occupée sans interruption (plus vieille capitale habitée), ne livre pas de niveau de destruction unique — normal : l'oracle vise le royaume (armée, palais), non l'effacement urbain ; Amos 1:3-5 (~760), Ésaïe 17 (~734), Jr 49 (~605), Za 9:1 (~520) : quatre oracles convergents sur quatre siècles — Damas jugée à chaque tournant impérial (Assyrie, Babylone, Perse).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : ORACLE — HAMATH + ARPAD CONFUSES → DAMAS EN MER TOURMENTÉE → DEUIL : Ô VILLE GLORIEUSE ! → JEUNES FAUCHÉS, GUERRIERS PÉRIS → FEU AUX MURS, PALAIS DÉVORÉ → ROYAUME RAYÉ, VILLE SOUMISE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Damas habitée jusqu'à aujourd'hui ne contredit pas l'oracle : Jr 49 ne dit jamais « inhabitée » (cf. v. 18, 33 pour Édom/Hatsor) — elle dit : armée détruite, palais brûlé, gloire abattue ; la nuance des verbes fait la précision des accomplissements.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Damas en mer tourmentée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Soumission, révolte, châtiment</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">604→582</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Royaume rayé ; province perse</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">582→539</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/17">Bible — Ésaïe 17 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/17</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/9">Bible — Zacharie 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/30/1">Bible — Amos 1 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/30/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR280 — Damas défaillante : le feu aux murs, le palais de Ben-Hadad dévoré</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR281">
+<div class="visuel"><img src="images/prophe_JR281_kedar.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR281 · CATÉGORIE JR</div>
+<h3>Kédar pillée, Hatsor repaire de chacals : la terreur de tous côtés</h3>
+<div class="ref">Jérémie 49:28-33</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Arabes pillés Hatsor désertée (Kédar → royaumes → Hatsor → frappa → Neboukadnetsar → Babylone → levez → montez → Kédar → détruisez → fils → orient)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR281</div><audio controls preload="none" src="audio/fiche_JR281_kedar.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR281_kedar.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 49:28-33</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Arabes pillés Hatsor désertée (Kédar → royaumes → Hatsor → frappa → Neboukadnetsar → Babylone → levez → montez → Kédar → détruisez → fils → orient)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P281 (49:28-33 : Kédar, Hatsor) ; accomplissement Jr 49:28-33</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« KÉDAR… ROYAUMES… HATSOR… FRAPPA… NEBOUKADNETSAR… BABYLONE… LEVEZ… MONTEZ… KÉDAR… DÉTRUISEZ… FILS… ORIENT… PRENDRA… TENTES… TROUPEAUX… EMÈNERA… TAPIS… BAGAGES… CHAMEAUX… CRIERA… TERREUR… CÔTÉS… FUYEZ… LOIN… HABITEZ… PROFONDS… HABITANTS… HATSOR… FORMÉ… DESSEIN… CONÇU… PLAN… LEVEZ… MONTEZ… NATION… TRANQUILLE… SÉCURITÉ… PORTES… BARRES… HABITE… SOLITAIRE… CHAMEAUX… BUTIN… TROUPEAUX… PROIE… DISPERSERAI… VENTS… COUPENT… COINS… BARBE… RUINE… CÔTÉS… HATSOR… REPAIRE… CHACALS… DÉSERT… TOUJOURS… HABITERA… SÉJOURNERA… HOMME. » (49:28-33 — homme !)</li>
+<li>« KÉDAR… FILS… ISMAËL… GENÈSE… VINGT-CINQ… TRIBUS… ARABES… TENTES… NOIRES… CANTIQUE… BÉDOUINS… NÉGUEV… DÉSERT… SYRIE… CARAVANES… ENCENS… ÉPICES… RICHESSE… NOMADES… CONVOITÉE… EMPIRE… SÉDENTAIRE. » (Kédar — sédentaire !)</li>
+<li>« HATSOR… ROYAUMES… PLURIEL… CONFÉDÉRATION… OASIS… SÉDENTARISÉES… ARABIE… NORD… DISTINCTE… HATSOR… GALILÉE… JOSUÉ… ONZE… HOMONYMES… GÉOGRAPHIE… PRÉCISE… TRIBUS… FIXÉES… VILLAGES… PUITS. » (Hatsor — puits !)</li>
+<li>« TENTES… TAPIS… CHAMEAUX… INVENTAIRE… PILLAGE… MOBILIER… NOMADE… TOUT… EMPORTÉ… TOILES… POILS… CHÈVRES… POTERIES… OUTRES… BÉTAIL… CRI… GUERRE… PSYCHOLOGIQUE… TERREUR… STÉRÉO… CÔTÉS. » (tentes — côtés !)</li>
+<li>« TRANQUILLE… SÉCURITÉ… PORTES… BARRES… PARADOXE… NOMADES… SANS… MURS… PAIX… DÉSERT… IMMENSITÉ… PROTECTION… ILLUSOIRE… ARMÉE… RÉGULIÈRE… TRAVERSE… SABLE… GPS… ANTIQUE… ÉTOILES… PUITS. » (tranquille — puits !)</li>
+<li>« CHACALS… REPAIRE… DÉSERT… TOUJOURS… ÉCOLOGIE… JUGEMENT… PRÉDATEURS… REMPLACENT… HOMMES… RUINES… MURMURES… NUIT… HURLEMENTS… LUNE… PERSONNE… SÉJOURNE… SILENCE… HUMAIN… CONCERT… SAUVAGE. » (chacals — sauvage !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Contre Kédar, ~605 — LEQÉDAR (les KÉDAR (les ULMAMLEKHOT (les ROYAUMES (les HATSOR (les HATSOR (les ASHER (les QUE (les HIKKAH (les FRAPPA (les NEBUKHADRETSTSAR (les NEBOUKADNETSAR (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les QUMU (les LEVEZ (les ALU (les MONTEZ (les EL (les QÉDAR (les KÉDAR (les VESHADEDU (les DÉTRUISEZ (les ET (les BENÉ (les FILS (les QÉDEM (les ORIENT (les LE SEUL (les ORACLE (les NOMMANT (les NABUCHODONOSOR (les PAR SON NOM (les KÉDAR — les FRAPPA !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le BUTIN (les OHOLÉHEM (les TENTES (les VETSONAM (les TROUPEAUX (les YIQQAHU (les PRENDRA (les ET (les YERIOT → YERIOT (les TAPIS (les VEÉT (les KOL (les TOUS (les KÉLÉHEM (les BAGAGES (les UGHMALLÉHEM (les CHAMEAUX (les YISU (les EMÈNERA (les LAHEM (les EUX (les VEQARU (les CRIERA (les ALÉHEM (les EUX (les MAGOR (les TERREUR (les MISSABIB (les CÔTÉS (les NUSU (les FUYEZ (les NUDU (les LOIN (les MEOD (les TRÈS (les HAAMIQOU (les PROFONDS (les LASHÉBET (les HABITEZ (les YOSHEBÉ (les HABITANTS (les HATSOR (les HATSOR (les NEUM (les DIT (les YEHOVAH (les KI (les CAR (les YAATS (les FORMÉ (les ALÉKHEM (les VOUS (les NEBUKHADRETSTSAR (les NEBOUKADNETSAR (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les ÉTSAH (les DESSEIN (les VESHAB (les CONÇU (les ALÉHEM (les EUX (les MAHASHABAH (les PLAN (les LINVENTAIRE (les DU PILLAGE (les BUTIN — les CHAMEAUX !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le DÉSERT (les QUMU (les LEVEZ (les ALU (les MONTEZ (les EL (les GOY (les NATION (les SHELÉV (les TRANQUILLE (les YOSHEB (les HABITE (les LABÉTAH (les SÉCURITÉ (les NEUM (les DIT (les YEHOVAH (les LO (les SANS (les DELATAYIM (les PORTES (les VELO (les SANS (les BERIAH (les BARRES (les LO (les BADAD (les SOLITAIRE (les YISHKONU (les HABITE (les VEHAYU (les SERONT (les GHEMALLÉHEM (les CHAMEAUX (les LABAZ (les BUTIN (les VAHAMON (les MULTITUDE (les MIQNÉHEM (les TROUPEAUX (les LESHALAL (les PROIE (les VAZÉRITIM (les DISPERSERAI (les LEKHOL (les TOUS (les RUAH (les VENTS (les QETSUTSÉ (les COUPENT (les PÉAH (les COINS (les UMKKOL (les TOUS (les SEBIBAYV (les CÔTÉS (les ABI (les VIENDRAI (les ET (les ÉYDAM (les RUINE (les NEUM (les DIT (les YEHOVAH (les VEHAYTAH (les SERA (les HATSOR (les HATSOR (les LIMON (les REPAIRE (les TANNIM (les CHACALS (les SHEMAMAH (les DÉSERT (les AD (les JUSQUÀ (les OLAM (les TOUJOURS (les LO (les NE (les YÉSHÉB (les HABITERA (les SHAM (les LÀ (les ISH (les HOMME (les VELO (les NE (les YAGUR (les SÉJOURNERA (les BAH (les ELLE (les BEN (les FILS (les ADAM (les HOMME (les LES CHACALS (les REMPLACENT (les LES NOMADES (les DÉSERT — les TOUJOURS !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">49:28</td><td>ORIENT (BABYLONE !)</td></tr>
+<tr><td class="d">49:29</td><td>CÔTÉS (TENTES !)</td></tr>
+<tr><td class="d">49:30</td><td>PLAN (PROFONDS !)</td></tr>
+<tr><td class="d">49:31</td><td>SOLITAIRE (BARRES !)</td></tr>
+<tr><td class="d">49:32</td><td>CÔTÉS (BARBE !)</td></tr>
+<tr><td class="d">49:33/Is 21/Éz 27</td><td>HOMME (CHACALS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (oracle) → ~599/598 (campagne d'Arabie de Nabuchodonosor, chronique BM 21946, an 6 : « il marcha contre les Arabes ») : Kédar (Ismaélites, Gn 25:13) pillée — tentes, tapis, chameaux ; les « royaumes de Hatsor » (confédération d'oasis sédentarisées, Arabie du Nord-Ouest) rasés ; Ésaïe 21:13-17 (oracle d'Arabie : « dans un an... c'en sera fini de Kédar ») et Ézéchiel 27:21 (Kédar commerçant avec Tyr) encadrent — les Nabatéens remplacent les Kédarites.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Kédar : désert syro-arabe, du Néguev à la Babylonie — « fils de l'Orient » (v. 28) ; Hatsor : non la Hatsor galiléenne (Jos 11), mais des oasis homonymes d'Arabie (« royaumes » au pluriel, v. 28) ; « coins de la barbe » coupés (v. 32, cf. Jr 9:26 ; 25:23) : coiffure bédouine distinctive.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Anthroponymie : les tablettes néo-babyloniennes citent des « Qidri » (Kédarites) comme auxiliaires puis captifs ; les inscriptions thamoudéennes et lihyanites d'Arabie confirment le réseau caravanier visé ; zoologie : le chacal doré (Canis aureus) colonise les ruines — l'écologie du jugement vérifiable sur tout tell abandonné du Proche-Orient.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : ORACLE — LEVEZ-VOUS CONTRE KÉDAR → INVENTAIRE DU BUTIN : TENTES + TAPIS + CHAMEAUX → TERREUR DE TOUS CÔTÉS → NATION SANS PORTES NI BARRES → ~599 : CAMPAGNE D'ARABIE → HATSOR = REPAIRE DE CHACALS POUR TOUJOURS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Nation tranquille, en sécurité » (v. 31) : la paix sans murs — l'immensité comme rempart — balayée par une armée régulière guidée (puits, étoiles) ; les tambours de la « terreur de tous côtés » (v. 29, magor missabib — devise de Jr 6:25 ; 20:3 !) battent pour les Arabes comme pour Juda.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : levez-vous contre Kédar</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne d'Arabie de Nabuchodonosor</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~599</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Kédarites remplacés par Nabatéens</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe–IVe s.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/21">Bible — Ésaïe 21 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/27">Bible — Ézéchiel 27 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/27</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/120">Bible — Psaume 120 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/120</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR281 — Kédar pillée, Hatsor repaire de chacals : la terreur de tous côtés</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR282">
+<div class="visuel"><img src="images/prophe_JR282_elam.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR282 · CATÉGORIE JR</div>
+<h3>L'arc d'Élam brisé, les fugitifs dans toutes les nations, puis le retour</h3>
+<div class="ref">Jérémie 49:34-39</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / À venir</span>
+<span class="badge">Élam brisé dispersé restauré (parole → fut → Jérémie → prophète → Élam → commencement → règne → Sédécias → Juda → briserai → arc → Élam)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR282</div><audio controls preload="none" src="audio/fiche_JR282_elam.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR282_elam.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 49:34-39</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>Élam brisé dispersé restauré (parole → fut → Jérémie → prophète → Élam → commencement → règne → Sédécias → Juda → briserai → arc → Élam)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P282 (49:34-39 : Élam brisé puis rétabli) ; accomplissement Jr 49:39 : Accomplie / À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PAROLE… FUT… JÉRÉMIE… PROPHÈTE… ÉLAM… COMMENCEMENT… RÈGNE… SÉDÉCIAS… JUDA… BRISERAI… ARC… ÉLAM… PRÉMICES… FORCE… FERAI… VENIR… ÉLAM… QUATRE… VENTS… QUATRE… EXTRÉMITÉS… CIEL… DISPERSERAI… VENTS… NATION… VIENNENT… FUGITIFS… ÉLAM… TREMBLERAI… ÉLAM… ENNEMIS… VEULENT… VIE… AMÈNERAI… MALHEURS… COLÈRE… POURSUIVRAI… ÉPÉE… ANÉANTIS… PLACERAI… TRÔNE… ÉLAM… PÉRIRAI… ROI… PRINCES… ARRIVERA… FIN… JOURS… RÉTABLIRAI… CAPTIFS… ÉLAM. » (49:34-39 — Élam !)</li>
+<li>« COMMENCEMENT… SÉDÉCIAS… 609… DATATION… PRÉCISE… ORACLE… TARDIF… SÉRIE… NATIONS… BABYLONE… PUISSANCE… MONDIALE… MONTANTE… ÉLAM… PROCHAINE… CONQUÊTE… LISTE… CHRONOLOGIE… VÉRIFIABLE… REGISTRE… ROIS. » (commencement — rois !)</li>
+<li>« ARC… PRÉMICES… FORCE… ARCHERS… ÉLAMITES… RÉPUTÉS… ÉSAÏE… VINGT-DEUX… CARQUOIS… CHARS… MURS… ASSIÉGÉS… ARME… NATIONALE… BRISÉE… DÉSARMEMENT… DIVIN… PUISSANCE… MILITAIRE… ANÉANTIE… CORDE… COUPÉE. » (arc — coupée !)</li>
+<li>« QUATRE… VENTS… EXTRÉMITÉS… CIEL… DISPERSION… TOTALE… ROSE… VENTS… ANTIQUE… NORD… SUD… EST… OUEST… FUGITIFS… TOUTES… NATIONS… SANS… EXCEPTION… DIASPORA… UNIVERSELLE… EXIL… MONDIAL. » (quatre — mondial !)</li>
+<li>« TRÔNE… PLACERAI… ÉLAM… DIEU… RÈGNE… TERRITOIRE… ENNEMI… JUGE… SIÈGE… SUZE… CAPITALE… ROI… PRINCES… PÉRISSENT… ADMINISTRATION… DIVINE… DIRECTE… THÉOCRATIE… IMPOSÉE… PROVISOIRE. » (trône — provisoire !)</li>
+<li>« FIN… JOURS… RÉTABLIRAI… CAPTIFS… TROISIÈME… PROMESSE… TRIPTYQUE… MOAB… AMMON… ÉLAM… PENTECÔTE… ÉLAMITES… ÉCOUTENT… PIERRE… ACTES… DEUX… ACOMPTE… RASSEMBLEMENT… ESCHATOLOGIQUE… AMORCÉ. » (fin — amorcé !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Sur Élam, 609 — HADDABAR (les PAROLE (les ASHER (les QUE (les HAYAH (les FUT (les EL (les YIRMEYAHU (les JÉRÉMIE (les HANNABI (les PROPHÈTE (les EL (les ÉYLAM (les ÉLAM (les BERÉSHIT (les COMMENCEMENT (les MALKUT (les RÈGNE (les TSIDQIYAH (les SÉDÉCIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les LÉMOR (les LE SEUL (les ORACLE (les DATÉ (les DU RÈGNE (les DE SÉDÉCIAS (les ÉLAM — les 609 !)</p>
+<h4>4 · Explication du texte</h4>
+<p>L'ARC (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les HINENI (les VOICI (les SHOBÉR (les BRISERAI (les ET (les QÉSHET (les ARC (les ÉYLAM (les ÉLAM (les RÉSHIT (les PRÉMICES (les GHEBURATAM (les FORCE (les VEHÉBÉTI (les VENIR (les EL (les ÉYLAM (les ÉLAM (les ARBA (les QUATRE (les RUHOT (les VENTS (les MÉARBA (les QUATRE (les QETSOT (les EXTRÉMITÉS (les HASHSHAMAYIM (les CIEL (les VAZÉRITIM (les DISPERSERAI (les LEKHOL (les TOUS (les HARUHOT (les VENTS (les HAÉLÉH (les CE (les VELO (les NE (les YIHYÉH (les SERA (les HAGGOY (les NATION (les ASHER (les OÙ (les LO (les NE (les YABOU (les VIENNENT (les SHAM (les LÀ (les NIDHÉ (les FUGITIFS (les ÉYLAM (les ÉLAM (les L'ARME (les NATIONALE (les BRISÉE (les ARC — les PRÉMICES !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le TRÔNE (les VEHAHRADTI (les TREMBLERAI (les ET (les ÉYLAM (les ÉLAM (les LIPHNÉ (les DEVANT (les OYBEHEM (les ENNEMIS (les VELIPHNÉ (les DEVANT (les MEBAQSHE (les VEULENT (les NAPSHAM (les VIE (les VEHÉBÉTI (les AMÈNERAI (les ALÉHEM (les EUX (les RA AH (les MALHEURS (les HARON (les ARDENTE (les APPI (les COLÈRE (les NEUM (les DIT (les YEHOVAH (les VESHILLAKHTI (les POURSUIVRAI (les AHAREHEM (les EUX (les ET (les HAHÉREB (les ÉPÉE (les AD (les JUSQUÀ (les KHALLOTI (les ANÉANTIS (les OTAM (les EUX (les VESAMTI (les PLACERAI (les KHISSI (les TRÔNE (les BEÉYLAM (les ÉLAM (les VEHAABADTI (les PÉRIRAI (les MISHSHAM (les LÀ (les MÉLEK (les ROI (les VESARIM (les PRINCES (les NEUM (les DIT (les YEHOVAH (les VEHAYAH (les ARRIVERA (les BEAHARIT (les FIN (les HAYYAMIM (les JOURS (les VESHABTI (les RÉTABLIRAI (les SHEBUT (les CAPTIFS (les ÉYLAM (les ÉLAM (les NEUM (les DIT (les YEHOVAH (les DIEU (les SIÈGE (les À SUZE (les TRÔNE — les ÉLAM !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">49:34</td><td>JUDA (ÉLAM !)</td></tr>
+<tr><td class="d">49:35</td><td>FORCE (ARC !)</td></tr>
+<tr><td class="d">49:36</td><td>ÉLAM (VENTS !)</td></tr>
+<tr><td class="d">49:37</td><td>ANÉANTIS (VIE !)</td></tr>
+<tr><td class="d">49:38</td><td>PRINCES (TRÔNE !)</td></tr>
+<tr><td class="d">49:39/Ac 2:9</td><td>ÉLAM (JOURS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>609 (oracle, début de Sédécias) → VIIe-VIe s. : Élam (Susiane, capitale Suze), vieille puissance (Kedorlaomer, Gn 14 !), est brisée par les Mèdes puis les Perses — Cyrus, « de Suse » (Dn 8:2), absorbe Élam dans l'empire perse ; les Élamites, dispersés, servent comme archers et scribes ; Ac 2:9 — des « Élamites » écoutent Pierre à la Pentecôte : acompte du rassemblement ; Jr 49:39 (rétablissement « à la fin des jours ») fonde le double statut Accomplie (jugement) / À venir (restauration finale).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Élam (Khuzistan iranien, Suze/Shush) : à l'est de Babylone, au-delà du Tigre — la nation la plus lointaine des oracles de Jr 46-49 ; les « quatre vents » (v. 36) : dispersion aux quatre points cardinaux, jusqu'à Jérusalem à la Pentecôte.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Élamitologie : Suze (fouilles Dieulafoy, Morgan — Code d'Hammourabi exhumé à Suze !) ; l'élamite, langue isolée, langue administrative perse (tablettes de Persépolis) — les dispersés servent l'empire qui les absorbe ; archers élamites : corps d'élite achéménide (Is 22:6, reliefs de Suze) — l'arc « brisé » (v. 35) comme nation, réemployé comme mercenaires.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>609 : ORACLE DATÉ — JE BRISERAI L'ARC D'ÉLAM → 4 VENTS : DISPERSION DANS TOUTES LES NATIONS → ÉPÉE JUSQU'À ANÉANTISSEMENT → TRÔNE PLACÉ EN ÉLAM → ABSORPTION MÉDO-PERSE → 33 : ÉLAMITES À LA PENTECÔTE → FIN DES JOURS : RÉTABLISSEMENT</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Double statut honnête : Accomplie pour le jugement (Élam brisée, dispersée, absorbée — documenté), À venir pour Jr 49:39 (rétablissement final — non documenté comme retour national) ; la fiche distingue ce que l'histoire atteste de ce que la foi attend.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle daté : l'arc d'Élam brisé</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Absorption médo-perse ; dispersion</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIe–VIe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pentecôte ; rétablissement attendu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 → fin</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/8">Bible — Daniel 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/8</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/2">Bible — Actes 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/14">Bible — Genèse 14 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/14</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR282 — L'arc d'Élam brisé, les fugitifs dans toutes les nations, puis le retour</span><span>Catégorie JR</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR277 — « Je ramènerai les captifs de Moab » : la promesse après le jugement</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Promesse : captifs de Moab ramenés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nation supprimée, absorbée</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">582→</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La suite des jours — attente</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Avenir</text>
+</svg>
+<h4>JR278 — Rabbah en tell désolé : Milkom en exil avec ses prêtres</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gad déportée ; Ammon occupe le vide</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">733</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Rabbah en tell désolé</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne babylonienne ; fin d'Ammon</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">582</text>
+</svg>
+<h4>JR279 — Édom comme Sodome : Botsra en ruines éternelles, Teman sans sagesse</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Édom comme Sodome et Gomorrhe</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nabatéens : Édom chassé de Séïr</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe–Ve s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Iduméens convertis puis disparus</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~125→70</text>
+</svg>
+<h4>JR280 — Damas défaillante : le feu aux murs, le palais de Ben-Hadad dévoré</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : Damas en mer tourmentée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Soumission, révolte, châtiment</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">604→582</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Royaume rayé ; province perse</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">582→539</text>
+</svg>
+<h4>JR281 — Kédar pillée, Hatsor repaire de chacals : la terreur de tous côtés</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : levez-vous contre Kédar</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne d'Arabie de Nabuchodonosor</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~599</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Kédarites remplacés par Nabatéens</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe–IVe s.</text>
+</svg>
+<h4>JR282 — L'arc d'Élam brisé, les fugitifs dans toutes les nations, puis le retour</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle daté : l'arc d'Élam brisé</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Absorption médo-perse ; dispersion</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIe–VIe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pentecôte ; rétablissement attendu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 → fin</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

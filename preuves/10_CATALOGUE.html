@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalogue d'idées — 100 contenus pour prouver Dieu existe et la Bible est sa Parole</title>
+<style>
+  :root{
+    --navy:#0B2545; --navy2:#123562; --sand:#E9C46A; --ivory:#F7F4EC; --ink:#16233A;
+    --muted:#5B6B83; --line:#dcd6c8; --card:#fffdf7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ivory);color:var(--ink);
+    font-family:"Inter","Segoe UI","Helvetica Neue",Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--navy2)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+  header.hero{background:var(--navy);color:#fff;padding:44px 0 34px}
+  header.hero h1{margin:0 0 10px;font-size:clamp(22px,3.4vw,34px);line-height:1.15;letter-spacing:-.4px}
+  header.hero p{margin:0;max-width:760px;color:#cfd9e8;font-size:15px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .chip{background:rgba(233,196,106,.14);border:1px solid rgba(233,196,106,.45);color:var(--sand);
+    font-size:12px;font-weight:600;padding:5px 11px;border-radius:99px;letter-spacing:.2px}
+
+  h2.sec{font-size:19px;margin:38px 0 6px;color:var(--navy);letter-spacing:-.2px}
+  p.sub{margin:0 0 16px;color:var(--muted);font-size:14px}
+
+  /* ---------- APERÇUS DE MISE EN FORME ---------- */
+  .mocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .mock{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+  .mock h3{margin:0;font-size:13px;color:var(--navy);letter-spacing:.2px}
+  .mock small{color:var(--muted);font-size:11.5px}
+  .slide{background:var(--navy);color:var(--ivory);border-radius:9px;padding:12px;min-height:74px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+  .slide .kicker{font-size:9px;letter-spacing:1.4px;color:var(--sand);text-transform:uppercase}
+  .slide .big{font-size:15px;font-weight:700;line-height:1.2}
+  .slide .sm{font-size:10.5px;color:#c9d5e6}
+  .slide.light{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .slide.light .sm{color:var(--muted)}
+  .reel{aspect-ratio:9/16;background:linear-gradient(160deg,#0B2545,#123562 60%,#0B2545);
+    border-radius:10px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:10px}
+  .reel .txt{background:rgba(0,0,0,.45);border-radius:6px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700}
+  .reel .src{position:absolute;top:8px;right:8px;font-size:9px;color:var(--sand)}
+  .reel .pill{position:absolute;top:8px;left:8px;font-size:9px;background:var(--sand);color:var(--navy);
+    padding:2px 6px;border-radius:4px;font-weight:700}
+  .fiche{border:1px solid var(--line);border-radius:8px;padding:10px;background:#fff}
+  .fiche .t{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .fiche .row{display:flex;gap:6px;font-size:9.5px;color:var(--muted);border-bottom:1px dotted var(--line);padding:3px 0}
+  .fiche .row b{color:var(--ink);flex:0 0 40%}
+  .cardmock{border:1px dashed #bcb5a4;border-radius:8px;background:#fff;padding:9px;display:flex;gap:8px}
+  .qrmock{width:38px;height:38px;flex:0 0 38px;background:
+    repeating-conic-gradient(#0B2545 0 25%, #fff 0 50%) 0 0/8px 8px;border:2px solid #0B2545;border-radius:3px}
+  .cardmock .ct{font-size:10px}
+  .cardmock .ct b{display:block;font-size:11px;color:var(--navy);margin-bottom:3px}
+
+  /* ---------- MOTEUR ---------- */
+  .engine{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .panel h3{margin:0 0 8px;font-size:14px;color:var(--navy)}
+  .panel ul{margin:0;padding-left:18px;font-size:13px;color:#31405a}
+  .panel li{margin-bottom:5px}
+  .panel .hl{background:rgba(233,196,106,.25);padding:1px 4px;border-radius:3px;font-weight:600}
+
+  /* ---------- CATALOGUE ---------- */
+  .toolbar{position:sticky;top:0;z-index:20;background:rgba(247,244,236,.96);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);padding:12px 0;margin-top:30px}
+  .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  input[type=search]{flex:1 1 220px;min-width:180px;padding:9px 12px;border:1px solid var(--line);
+    border-radius:9px;font-size:13.5px;background:#fff;color:var(--ink)}
+  select{padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:#fff;font-size:13px;color:var(--ink)}
+  .fbtn{border:1px solid var(--line);background:#fff;color:var(--navy);font-size:12px;font-weight:600;
+    padding:6px 10px;border-radius:99px;cursor:pointer}
+  .fbtn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .count{font-size:12.5px;color:var(--muted);margin-top:8px}
+  .famrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(292px,1fr));gap:14px;margin:18px 0 40px}
+  .idea{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sand);
+    border-radius:12px;padding:13px 14px;display:flex;flex-direction:column;gap:8px}
+  .idea .top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+  .idea .num{font-size:11px;font-weight:700;color:var(--muted)}
+  .score{font-size:11px;font-weight:700;color:var(--navy);background:rgba(233,196,106,.35);
+    padding:2px 7px;border-radius:99px;white-space:nowrap}
+  .idea h4{margin:0;font-size:14px;line-height:1.3;color:var(--navy)}
+  .idea .meta{font-size:11.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px}
+  .tag{background:#eef1f6;color:var(--navy2);border-radius:5px;padding:2px 6px;font-size:10.5px;font-weight:600}
+  .idea p{margin:0;font-size:12.5px;color:#3a4964}
+  .idea .sortie{font-size:11.5px;color:var(--muted);border-top:1px dotted var(--line);padding-top:6px}
+  .idea.top{border-left-color:#c98a1a;box-shadow:0 2px 12px rgba(11,37,69,.07)}
+  footer{background:var(--navy);color:#c9d5e6;padding:26px 0;font-size:12.5px}
+  footer b{color:#fff}
+  @media print{ .toolbar{position:static} .grid{grid-template-columns:1fr 1fr} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>100 idées de contenus — et la mécanique pour qu'elles agissent</h1>
+    <p>Chaque idée part d'une preuve vérifiable (création, prophétie accomplie, archéologie, préservation, sagesse pratique, diffusion), se décline dans un format précis, et se termine par une question — jamais par une conclusion imposée. Aucune idée ne contient de contenu reproduit des publications de l'organisation : on cite des sources, on renvoie vers jw.org.</p>
+    <div class="chips">
+      <span class="chip">100 idées · 10 familles</span>
+      <span class="chip">11 formats de sortie · 12 gabarits</span>
+      <span class="chip">Score d'impact /27</span>
+      <span class="chip">4 cercles de diffusion</span>
+      <span class="chip">Règle des 3 passages</span>
+      <span class="chip">Aucun dogme dans les contenus d'entrée</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2 class="sec">La mise en forme en un coup d'œil</h2>
+  <p class="sub">Quatre gabarits suffisent à couvrir 80 % de la production. Une fois créés, on ne les redessine plus : on change seulement le texte.</p>
+
+  <div class="mocks">
+    <div class="mock">
+      <h3>Carrousel — 10 vues</h3>
+      <div class="slide">
+        <span class="kicker">Vue 1 · crochet</span>
+        <span class="big">Un nom écrit 190 ans avant sa naissance.</span>
+        <span class="sm">3 secondes pour arrêter le pouce.</span>
+      </div>
+      <div class="slide light">
+        <span class="kicker" style="color:#c98a1a">Vue 5 · preuve</span>
+        <span class="big" style="color:#0B2545;font-size:19px">190 ans</span>
+        <span class="sm">Ésaïe 44:28 · Hérodote · cylindre de Cyrus (British Museum)</span>
+      </div>
+      <div class="slide">
+        <span class="kicker">Vue 10 · renvoi</span>
+        <span class="big">Comment le savait-il ?</span>
+        <span class="sm">Tout est gratuit : jw.org/fr/la-bible-et-vous</span>
+      </div>
+      <small>1080×1350 · 1 idée par vue · 12 mots max · chiffre clé en sable</small>
+    </div>
+
+    <div class="mock">
+      <h3>Reel / Short — 20 à 45 s</h3>
+      <div class="reel">
+        <span class="pill">190 ans</span>
+        <span class="src">Source affichée 2 s</span>
+        <div class="txt">« Cyrus » — écrit 190 ans avant sa naissance.</div>
+      </div>
+      <small>Sous-titres brûlés (+15 à 25 % de rétention) · rupture visuelle toutes les 3 s · aucune salutation au début · question à l'écran 2 s après la voix</small>
+    </div>
+
+    <div class="mock">
+      <h3>Fiche A4 — remise en main propre</h3>
+      <div class="fiche">
+        <div class="t">12 raisons vérifiables</div>
+        <div class="row"><b>Un roi nommé 190 ans avant</b><span>Ésaïe 44:28</span></div>
+        <div class="row"><b>53 personnages retrouvés</b><span>inscriptions</span></div>
+        <div class="row"><b>795 langues</b><span>rapport 2025</span></div>
+        <div class="row"><b>Trois attaques, un livre intact</b><span>Eusèbe</span></div>
+        <div class="row" style="border:0"><b>QR → jw.org</b><span>sans engagement</span></div>
+      </div>
+      <small>Recto : les preuves · Verso : 7 questions + « ce que je ne vous demande pas »</small>
+    </div>
+
+    <div class="mock">
+      <h3>Carte de contact — 8 par page</h3>
+      <div class="cardmock">
+        <div class="qrmock" title="QR réel : voir 04_CARTES_QR.html"></div>
+        <div class="ct"><b>On a essayé de brûler ce livre.</b>168 av. n. è. Antiochus · 303 Dioclétien · 1947 : des copies intactes.<br><span style="color:#5B6B83">jw.org/fr/la-bible-et-vous/histoire</span></div>
+      </div>
+      <small>Aucune coordonnée personnelle · uniquement des liens officiels · remise de main à main, jamais en dépôt</small>
+    </div>
+  </div>
+
+  <h2 class="sec">Le moteur d'impact en trois règles</h2>
+  <p class="sub">Les chiffres ci-dessous proviennent des données 2025-2026 sur l'attention, la mémoire et les usages de partage en France.</p>
+  <div class="engine">
+    <div class="panel">
+      <h3>1 · Trois secondes</h3>
+      <ul>
+        <li><span class="hl">50 à 65 %</span> des spectateurs partent dans les 3 premières secondes.</li>
+        <li>Supprimer salutations et génériques : <span class="hl">+20 à 40 %</span> de rétention initiale.</li>
+        <li>Sous-titres brûlés : <span class="hl">+15 à 25 %</span>.</li>
+        <li>Durée optimale : <span class="hl">15 à 30 s</span> (éducatif : 35-45 s).</li>
+        <li>Rupture visuelle toutes les 3 à 5 s. Aucune introduction, jamais.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>2 · Trois passages</h3>
+      <ul>
+        <li>Sans renforcement : <span class="hl">-40 % en 20 min</span>, plus de la moitié en une heure.</li>
+        <li>Avec 4 à 5 rappels espacés : <span class="hl">85 à 90 % retenus à 6 mois</span>.</li>
+        <li>Une <b>même preuve</b> : J0 reel → J+3 fiche/article → J+10 conversation ou atelier.</li>
+        <li>Mieux vaut <b>une</b> preuve vue trois fois que <b>trente</b> vues une fois.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>3 · Quatre cercles</h3>
+      <ul>
+        <li>Le partage se fait désormais surtout <b>en privé</b> : 63 % par messagerie contre 54 % en public ; certaines mesures du « dark social » montent à ~84 %.</li>
+        <li><span class="hl">86 %</span> des Français de 12 ans et plus utilisent la messagerie ; WhatsApp = 87 % de ces utilisateurs.</li>
+        <li>Contenus émotionnels : <span class="hl">+30 %</span> de partage — l'émerveillement oui, la peur non.</li>
+        <li>Cercles : soi → 3 proches → cercle élargi → personnes venues d'elles-mêmes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="tools">
+      <input type="search" id="q" placeholder="Rechercher une idée, un mot-clé (Cyrus, sceau, puzzle, crédit…)">
+      <select id="fmt"><option value="">Tous les formats</option></select>
+      <select id="sort">
+        <option value="score">Trier : score d'impact</option>
+        <option value="id">Trier : numéro</option>
+        <option value="fam">Trier : famille</option>
+      </select>
+      <button class="fbtn" id="reset">Réinitialiser</button>
+    </div>
+    <div class="famrow" id="fams"></div>
+    <div class="count" id="count"></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Catalogue de travail — usage personnel.</b> Les idées renvoient à des sources publiques et vérifiables (ouvrages d'histoire, revues scientifiques, études 2025, rapports de sociétés bibliques). Aucun texte, aucune image, aucune vidéo des publications de l'organisation n'est reproduit ni réutilisé : la destination de tout contenu est un lien vers <b>jw.org</b> ou <b>wol.jw.org</b>. Aucun contenu ne collecte de données. À valider avec le surveillant au service avant toute diffusion au-delà d'un cercle personnel.</p>
+  </div>
+</footer>
+
+<script>
+/* [id, famille, idée/accroche, format, levier d'impact, sortie, score /27] */
+const IDEES = [
+[1,1,"« Il y a une ville qui a été jetée à la mer. » — Tyr, la chaussée d'Alexandre","Vidéo","Objet mental : une cité qu'on relie au continent avec ses propres ruines","Privé · Atelier",24],
+[2,1,"« Voici un nom écrit 190 ans avant la naissance de celui qui le porte. » — Cyrus","Vidéo","Curiosité + surprise : un nom propre est irréfutable","Privé · Atelier",26],
+[3,1,"« Un roi a découpé la Bible avec un canif et l'a brûlée. » — Jérémie 36","Carrousel","Tension narrative ; la tentative a échoué","Privé · Fiche",19],
+[4,1,"« Un homme a compté toutes les lettres de la Bible. » — les Massorètes","Reel","Le détail concret rend l'exactitude visible","Privé · Fiche",21],
+[5,1,"« Un berger a trouvé une bibliothèque dans une grotte. » — Qumrân, 1947","Vidéo","Contraste entre le hasard du début et la portée du résultat","Privé · Fiche",22],
+[6,1,"« En 303, un empereur croyait avoir tué ce livre. » — Dioclétien","Carrousel","Ironie historique : l'annonce ratée de sa propre mort","Privé · Profil",20],
+[7,1,"« En 2025, on a retrouvé le sceau d'un homme cité dans la Bible. »","Carrousel","Effet d'actualité : « ce n'est pas vieux, c'est cette année »","Privé · Fiche",23],
+[8,1,"« Il a fait creuser 533 mètres dans la roche pour avoir de l'eau. » — Siloé","Reel","Émerveillement technique : précision d'ingénieur","Privé",20],
+[9,1,"« La nuit où un empire s'est endormi en festoyant. » — Babylone, Daniel 5","Vidéo","Récit de chute + vérification extérieure","Privé · Atelier",21],
+[10,1,"« Une IA a daté un manuscrit, et ça a gêné tout le monde. » — PLOS ONE 2025","Carrousel","Outil moderne + enjeu : la science recule la date","Privé · Profil",23],
+[11,2,"« Voici une montre démontée. Personne n'a jamais dit : c'est le hasard. »","Photo","Analogie classique du concepteur","Privé · Atelier",18],
+[12,2,"« Cette graine contient un plan de construction et une horloge. »","Photo","Information cachée dans l'invisible","Privé",17],
+[13,2,"« Cet oiseau traverse un océan sans carte. »","Vidéo","Surprise ; l'instinct comme signature d'un concepteur","Privé · Profil",19],
+[14,2,"« Un dictionnaire de 1950. La Bible. Un seul des deux est encore exact. »","Photo","Comparaison visuelle immédiate, sans argument","Privé · Fiche",21],
+[15,2,"« 66 pièces, 40 mains, aucun plan d'assemblage. »","Photo","Métaphore de l'unité interne, très mémorable","Privé · Atelier",20],
+[16,2,"« La clé et la serrure : personne n'appelle ça une coïncidence. »","Reel","Précision du réglage, en 20 secondes","Privé · Profil",17],
+[17,2,"« On a demandé à 40 personnes d'écrire un chapitre chacune. Voici le résultat. »","Carrousel","Le lecteur voit l'exploit d'unité","Privé · Atelier",21],
+[18,2,"« Voici un parchemin brûlé. Et une copie qui a survécu. »","Photo","Préservation rendue visible, sans discours","Privé · Fiche",20],
+[19,2,"« J'ai photographié cette pierre gravée dans un musée. Elle parle d'un roi de la Bible. »","Photo","Preuve matérielle + authenticité (ma propre photo)","Fiche · Atelier",19],
+[20,2,"« Si l'on imprimait l'ADN d'une de vos cellules : 1 kilomètre de papier. »","Poster","Chiffre absurde : l'échelle est le message","Privé · Profil",22],
+[21,3,"« Pourquoi 40 auteurs qui ne se connaissaient pas disent-ils la même chose ? »","Carrousel","Boucle ouverte : le lecteur cherche lui-même","Privé · Profil",22],
+[22,3,"« Qui a appris à la cigogne l'heure de son départ ? »","Reel","Question d'enfant, réponse d'adulte","Privé",18],
+[23,3,"« Pourquoi ce livre a-t-il survécu à trois empereurs qui voulaient le brûler ? »","Carrousel","Énumération + énigme","Privé · Fiche",21],
+[24,3,"« Comment Ésaïe savait-il son nom ? »","Vidéo","Curiosité maximale en une phrase","Privé",22],
+[25,3,"« Pourquoi le livre le plus traduit du monde est-il si peu lu ? »","Carrousel","Inversion : ce n'est pas la Bible qui manque, c'est la lecture","Profil",16],
+[26,3,"« Si Dieu n'existe pas, d'où vient le sens moral ? »","Carrousel","Question philosophique accessible, ton respectueux","Privé · Atelier",20],
+[27,3,"« Personne n'a jamais gravé : ce livre va disparaître. »","Vidéo","Contraste entre prétention humaine et longévité","Privé",17],
+[28,3,"« Qu'est-ce qui a 3 000 ans et marche mieux que ce qu'on invente ? »","Reel","Effet « ah bon ? », pousse à essayer","Privé · Atelier",20],
+[29,3,"« Pourquoi les conseils de la Bible n'ont-ils jamais eu besoin d'une version 2 ? »","Carrousel","Intemporalité, sans attaque contre personne","Profil",18],
+[30,3,"« Quelle bibliothèque a traversé 16 siècles sans réunion d'édition ? »","Carrousel","Chiffres + insolence douce de la question","Privé · Profil",17],
+[31,4,"« Faites-le avec 40 personnes de votre entourage. » — le test des 40","Atelier","Le lecteur produit lui-même la preuve","Atelier · Fiche",19],
+[32,4,"« Posez la même question à un assistant IA et à la Bible. Comparez. »","Carrousel","Actualité + comparaison loyale","Profil · Privé",21],
+[33,4,"« Vérifiez 3 de ces faits en 10 minutes. »","Fiche","Engagement minimal, découverte autonome","Fiche · Atelier",21],
+[34,4,"« Ouvrez la Bible au hasard, trois fois. »","Reel","Frisson du hasard maîtrisé, cohérence observée","Atelier",18],
+[35,4,"« Prenez un conseil biblique par jour, essayez-le 7 jours. »","Série","Engagement progressif, bénéfice immédiat","Privé · Atelier",21],
+[36,4,"« Cherchez une erreur de géographie dans la Bible. »","Carrousel","Défi honnête : on invite à chercher la faille","Profil · Atelier",19],
+[37,4,"« Comparez ces deux copies du même livre. 1 000 ans les séparent. »","Photo","La fidélité devient observable, pas affirmée","Privé · Fiche",21],
+[38,4,"« Lisez un chapitre trois fois cette semaine. »","Fiche","Répétition espacée pratiquée volontairement","Atelier",17],
+[39,4,"« Écrivez vos prédictions pour l'année. Gardez la feuille. »","Fiche","Met la personne en position d'auteur de prophétie","Atelier",18],
+[40,4,"« Et si c'était vrai ? Cinq minutes d'honnêteté. »","Vidéo","Le format le plus direct — conversations déjà ouvertes","Atelier · Envoi demandé",19],
+[41,5,"« 7 jours, 7 preuves. »","Série","Répétition espacée sur une semaine","Privé · Profil",23],
+[42,5,"« 30 jours, 30 conseils qui n'ont pas vieilli d'un jour. »","Série","Utilité quotidienne, aucune notion doctrinale","Profil",22],
+[43,5,"« Cette naissance était annoncée depuis 700 ans. » (Noël)","Carrousel","Saisonnalité : la curiosité est déjà là","Privé · Profil",20],
+[44,5,"« Les prophéties du vendredi. » (Pâques)","Vidéo","Six détails annoncés des siècles avant","Privé · Atelier",21],
+[45,5,"« 5 principes pour la rentrée — valables dès 3 ans. »","Carrousel","Utilité immédiate, grand public","Profil · Privé",20],
+[46,5,"« Le mois où j'ai arrêté d'acheter. » — contentement, budget","Série","Sujet d'argent : universel, non polémique","Profil · Privé",19],
+[47,5,"« La semaine du doute : 5 questions difficiles, honnêtement traitées. »","Article","Honnêteté = confiance ; attire les esprits sincères","Profil · Atelier",18],
+[48,5,"« Cinq endroits qui ont gardé le texte pendant 2 000 ans. »","Série","Géographie + voyage, mémorisable","Privé",18],
+[49,5,"« Le réveillon des empires. » — Daniel 2","Carrousel","Métaphore visuelle forte, fin d'année","Profil",20],
+[50,5,"« 1 minute, 1 nom. » — 10 personnages confirmés par l'archéologie","Série","Format sériel court, très réutilisable","Privé · Profil",22],
+[51,6,"« Le plan et l'architecte. »","Carrousel","Comprendre la causalité par une évidence du quotidien","Privé · Atelier",19],
+[52,6,"« La partition et l'orchestre. » — l'unité de la Bible","Vidéo","Harmonie = unité, sans jargon","Privé",20],
+[53,6,"« La recette et la cuisine. » — universalité des principes","Reel","Universalité incarnée, pas affirmée","Privé",17],
+[54,6,"« La carte et le territoire. » — géographie biblique confirmée","Carrousel","Le territoire valide la carte","Privé · Fiche",19],
+[55,6,"« Le moteur et le mécanicien. » — l'ordre naturel","Reel","Ordre → cause intelligente, sans métaphore usée","Privé",16],
+[56,6,"« Un bail de location : des contraintes qui vous protègent. »","Carrousel","Fait basculer « interdit » en « protection »","Atelier",18],
+[57,6,"« Le pont et l'ingénieur : personne ne traverse en fermant les yeux. »","Vidéo","Confiance fondée sur des calculs, pas un espoir","Privé",17],
+[58,6,"« Une lettre datée de 190 ans avant son arrivée. »","Poster","Image mentale de la prophétie, en une image","Privé · Fiche",21],
+[59,6,"« Le conservateur qui sauve un livre d'un incendie. »","Carrousel","Narration + héroïsme discret","Privé",18],
+[60,6,"« Un livre dans 795 langues : qui fait ça ? »","Poster","Échelle mondiale rendue visible","Privé · Profil",20],
+[61,7,"« Ce qui m'a fait changer d'avis. »","Vidéo","Authenticité : le récit d'un revirement","Profil · Privé",20],
+[62,7,"« La question qui m'a bloqué pendant dix ans. »","Carrousel","Honnêteté sur le doute : la personne se reconnaît","Profil · Atelier",19],
+[63,7,"« Voici ce que j'ai vérifié — et ce que je n'ai pas pu vérifier. »","Fiche","Dire ses limites produit un effet de confiance rare","Fiche · Atelier",19],
+[64,7,"« La fois où j'ai failli tout laisser tomber. »","Audio","Vulnérabilité mesurée, sans misérabilisme","Envoi demandé · Atelier",16],
+[65,7,"« Ce que ma famille y a gagné, concrètement. »","Carrousel","Preuve par les fruits, sans jugement","Profil",18],
+[66,7,"« Un dimanche chez moi, en 12 photos. »","Photo","Immersion douce ; brise les représentations fausses","Profil",15],
+[67,7,"« La lettre que j'écrirais à mon enfant sur ce que je crois. »","Article","Format lettre : intime, très partagé en privé","Privé · Fiche",19],
+[68,7,"« Trois livres ont changé ma vie. Le troisième n'est pas comme les autres. »","Carrousel","Structure de liste + surprise finale","Profil",17],
+[69,7,"« Mon carnet de questions. » — les 12 que je n'ai pas résolues","Fiche","Invitation à l'honnêteté intellectuelle partagée","Atelier · Fiche",18],
+[70,7,"« Ce que je ne sais pas encore. »","Vidéo","La crédibilité naît de l'aveu","Profil · Atelier",17],
+[71,8,"« Ce qui a duré 10 ans. Et ce qui a duré 3 000 ans. »","Poster","Contraste pur, aucune argumentation","Privé · Profil",19],
+[72,8,"« Les best-sellers de 1900. Vous en connaissez combien ? »","Carrousel","Humilité sur la mode éditoriale","Profil",17],
+[73,8,"« Les prédictions ratées des experts les plus sérieux. »","Carrousel","Désarme la confiance excessive dans l'expertise","Profil",18],
+[74,8,"« Trois philosophies qui promettaient le bonheur. »","Article","Met en perspective les sagesses du moment","Profil · Atelier",16],
+[75,8,"« Les conseils parentaux de 1950, 1990, 2025. Et ce qui n'a jamais changé. »","Carrousel","Intemporalité démontrée par comparaison","Profil · Privé",19],
+[76,8,"« Trois empires, trois cendres, un livre. »","Vidéo","Chronologie visuelle mémorable","Privé",20],
+[77,8,"« Ce que coûte vraiment un crédit. » — Proverbes 22:7","Poster","Utilité immédiate, très forte récolte de réactions","Profil · Privé",22],
+[78,8,"« Ce que les régimes autoritaires brûlent en premier. »","Carrousel","Le lecteur tire lui-même la conclusion","Profil",16],
+[79,8,"« Ces expressions que vous utilisez sont dans la Bible. »","Carrousel","Surprise culturelle, conversation facile","Profil · Privé",20],
+[80,8,"« Avant l'imprimerie : quelques copies. Après : 795 langues. »","Poster","Accélération visible ; la diffusion comme dessein","Privé · Fiche",21],
+[81,9,"« Quatre métaux, quatre empires, 1 100 ans. » — Daniel 2","Poster","Schéma mental réutilisable toute une vie","Privé · Fiche",21],
+[82,9,"« La ligne de survie du livre. » — 168 av. n. è. → 2025","Poster","Visualisation de la résistance","Privé · Profil",21],
+[83,9,"« 4 121 langues couvertes. 3 272 qui attendent encore. »","Poster","Échelle + honnêteté sur ce qui reste","Profil",19],
+[84,9,"« Un kilomètre de papier pour une cellule. »","Poster","Chiffre absurde = mémorable","Privé · Profil",20],
+[85,9,"« 1 000 ans d'écart, trois différences. »","Photo","La fidélité vue, pas racontée","Privé · Fiche",20],
+[86,9,"« L'arbre des 40 auteurs. »","Poster","Humanise le livre ; l'unité devient frappante","Profil",18],
+[87,9,"« Les conseils qui ont tenu 3 000 ans vs les tendances de 2026. »","Poster","Contraste visuel immédiat","Profil",18],
+[88,9,"« 533 mètres, avec une pente calculée pour que l'eau coule. »","Poster","Précision d'ingénieur dans un texte ancien","Privé",19],
+[89,9,"« 190 ans. » — une timeline nue, deux points","Poster","La sobriété du chiffre fait l'effet","Privé",20],
+[90,9,"« 53 noms retrouvés dans la pierre. »","Fiche","Accumulation = impression de solidité","Fiche · Profil",20],
+[91,10,"« Le café-question : une seule question, 25 minutes. »","Atelier","Format léger, coût social nul pour l'invité","Atelier",24],
+[92,10,"« Apportez votre meilleure objection. » — règles du jeu écrites","Atelier","Position de force donnée à l'invité","Atelier",21],
+[93,10,"« Vérifions ensemble : 5 faits en 30 minutes. »","Atelier","La preuve est trouvée par le groupe","Atelier",23],
+[94,10,"« La marche et la question. » — 20 minutes, aucun support","Atelier","Côte à côte : contexte idéal pour parler vrai","Atelier",20],
+[95,10,"« Le quiz du dimanche en famille. »","Quiz","Jeu collectif ; les enfants deviennent moteurs","Atelier · Fiche",21],
+[96,10,"« Écrivez votre question sur un papier. »","Atelier","Engage dans un processus, pas dans une réponse","Atelier",19],
+[97,10,"« Lecture à voix haute : Job 38. » — 12 minutes, aucun commentaire","Audio","La beauté du texte agit seule ; silence final","Atelier",18],
+[98,10,"« Le repas des proverbes : 7 proverbes, 7 minutes. »","Atelier","Format ludique, familial, sans pression","Atelier",21],
+[99,10,"« Le club de vérification des prophéties » — 1 prophétie par mois","Atelier","Rendez-vous régulier = répétition espacée sociale","Atelier",22],
+[100,10,"« Le cercle des 7 questions. »","Atelier","Écoute active ; les questions viennent des participants","Atelier",20]
+];
+
+const FAMS = {1:"Micro-récits historiques",2:"Le contenu « objet »",3:"La question pure",4:"Le test à faire soi-même",5:"Séries et calendriers",6:"Analogies qui font comprendre",7:"Contenu humain, 1ʳᵉ personne",8:"Comparaisons et temps long",9:"Le visuel qui explique",10:"Ateliers et interactions"};
+const FCOL = {1:"#E9C46A",2:"#8FB4D9",3:"#C98A1A",4:"#7FB69A",5:"#B79BD9",6:"#D9A38F",7:"#9AA7BF",8:"#D9C48F",9:"#88B0C4",10:"#0B2545"};
+
+const grid = document.getElementById('grid');
+const count = document.getElementById('count');
+const q = document.getElementById('q');
+const fmtSel = document.getElementById('fmt');
+const sortSel = document.getElementById('sort');
+const famsBox = document.getElementById('fams');
+let activeFams = new Set();
+
+/* remplir les formats */
+[...new Set(IDEES.map(i=>i[3]))].sort().forEach(f=>{
+  const o=document.createElement('option'); o.value=f; o.textContent=f; fmtSel.appendChild(o);
+});
+/* boutons familles */
+Object.entries(FAMS).forEach(([n,name])=>{
+  const b=document.createElement('button');
+  b.className='fbtn'; b.textContent=n+'. '+name; b.dataset.f=n;
+  b.onclick=()=>{ const k=+n; activeFams.has(k)?activeFams.delete(k):activeFams.add(k);
+    b.classList.toggle('on'); render(); };
+  famsBox.appendChild(b);
+});
+document.getElementById('reset').onclick=()=>{
+  q.value=''; fmtSel.value=''; sortSel.value='score'; activeFams.clear();
+  [...famsBox.children].forEach(b=>b.classList.remove('on')); render();
+};
+[q,fmtSel,sortSel].forEach(el=>el.addEventListener('input',render));
+
+function render(){
+  const term=q.value.trim().toLowerCase();
+  let list = IDEES.filter(i=>{
+    if(activeFams.size && !activeFams.has(i[1])) return false;
+    if(fmtSel.value && i[3]!==fmtSel.value) return false;
+    if(term){
+      const hay=(i[2]+' '+i[4]+' '+FAMS[i[1]]+' '+i[3]).toLowerCase();
+      if(!hay.includes(term)) return false;
+    }
+    return true;
+  });
+  if(sortSel.value==='score') list.sort((a,b)=>b[6]-a[6]);
+  if(sortSel.value==='id') list.sort((a,b)=>a[0]-b[0]);
+  if(sortSel.value==='fam') list.sort((a,b)=>a[1]-b[1]||a[0]-b[0]);
+
+  count.textContent = list.length + ' idée' + (list.length>1?'s':'') + ' affichée' + (list.length>1?'s':'')
+    + (list.length?' · score maximal affiché : '+list[0][6]+'/27':'');
+
+  grid.innerHTML = list.map(i=>{
+    const top = i[6]>=21 ? ' top' : '';
+    return `<article class="idea${top}" style="border-left-color:${FCOL[i[1]]}">
+      <div class="top">
+        <span class="num">Idée ${i[0]} · Famille ${i[1]}</span>
+        <span class="score">${i[6]}/27</span>
+      </div>
+      <h4>${i[2]}</h4>
+      <div class="meta"><span class="tag">${i[3]}</span><span>${FAMS[i[1]]}</span></div>
+      <p>${i[4]}</p>
+      <div class="sortie">Sortie : ${i[5]}</div>
+    </article>`;
+  }).join('');
+}
+render();
+</script>
+
+<!-- ================= PHASE 4 : PROPHÉTIES SPECTACULAIRES ================= -->
+<script>
+/* 10 idées supplémentaires (phase 4) : 5 dossiers × 2 formats
+   [dossier, accroche, format, sortie, score /25, detail unique, source extérieure] */
+var P4 = [
+  {d:"Cyrus", a:"« À 190 ans de distance : le nom, les portes ouvertes, les eaux détournées. »",
+   f:"Vidéo dossier 4 min", s:"P · A", n:25,
+   det:"Le nom propre plus cinq détails indépendants : le nom, les portes, les eaux, la prise sans combat, le retour des exilés.",
+   src:"Hérodote · Xénophon · cylindre de Cyrus (British Museum)"},
+  {d:"Cyrus", a:"« Le suspect avait 190 ans d'avance. »",
+   f:"Carrousel 9 vues", s:"P · V", n:24,
+   det:"Traiter l'objection « écrit après coup » à l'intérieur du contenu : Qumrân, Septante, et la redatation de 2025.",
+   src:"PLOS ONE, 4 juin 2025 (université de Groningue, modèle Enoch)"},
+  {d:"Ninive", a:"« Les portes des fleuves. »",
+   f:"Vidéo 2 min", s:"P · A", n:21,
+   det:"Nahum 2:6 : la muraille s'écroule sous la crue du Tigre ; Diodore ajoute que le fleuve devint l'ennemi de la ville.",
+   src:"Chronique BM 21901 · vulgate profane : Diodore 2.27 · fouilles de Layard, 1845"},
+  {d:"Ninive", a:"« Le nid de lions a été défiguré. »",
+   f:"Reel 40 s", s:"P · V", n:20,
+   det:"Nahum 2:11, 12 raille « la fosse du lion » ; en 632 av. n. è., un soldat mutile la queue d'un lion sculpté au palais (lecture des conservateurs).",
+   src:"Reliefs de chasse d Assurbanipal, British Museum"},
+  {d:"Josias", a:"« Le nom d'un roi qui ne naîtra que dans 300 ans. »",
+   f:"Carrousel 8 vues", s:"P · V", n:20,
+   det:"1 Rois 13:2 puis 2 Rois 23:15-20, avec le détail de l'épargne du tombeau du prophète de Béthel.",
+   src:"WOL, article « Josias » (environ trois cents ans) · bulla de Nathan-melech, Cité de David"},
+  {d:"Josias", a:"« Ce que Josias a fait, pierre par pierre. »",
+   f:"Fiche A4", s:"F · A", n:19,
+   det:"L'acte précis annoncé — autel démoli, ossements brûlés — réalisé à la lettre, sur un site identifiable.",
+   src:"2 Rois 23:15-20 · archéologie de Béthel et des hauts lieux de Samarie"},
+  {d:"Trente pièces", a:"« Trente pièces : le prix exact d'un esclave. »",
+   f:"Carrousel 7 vues", s:"P · F", n:20,
+   det:"Zacharie 11:12, 13 rapproché d'Exode 21:32 : la somme annoncée n'est pas un chiffre au hasard, elle correspond à une valeur fixée dans la Loi.",
+   src:"Matthieu 26:15 ; 27:3-10 · Exode 21:32"},
+  {d:"Trente pièces", a:"« L'argent a servi à acheter un champ de potier. »",
+   f:"Fiche A4", s:"P · A", n:19,
+   det:"Le geste — jeter la somme dans la maison de Jéhovah — et son usage — acheter le champ d'un potier comme cimetière d'étrangers.",
+   src:"Matthieu 27:6-10 · site d Akeldama, au sud de Jérusalem"},
+  {d:"Messie", a:"« Il a décrit une exécution qui n'existait pas encore. »",
+   f:"Vidéo 3 min", s:"P · A", n:23,
+   det:"Psaume 22 et Ésaïe 53 : mains et pieds percés, vêtements tirés au sort, aucun os brisé — avant l'invention de la crucifixion par Rome.",
+   src:"Jean 19:23, 24, 33, 36 · histoire de la crucifixion"},
+  {d:"Messie", a:"« Ce que le condamné ne pouvait pas organiser. »",
+   f:"Carrousel 8 vues", s:"P · V", n:20,
+   det:"Des détails qui échappent au principal intéressé : trente pièces, partage des vêtements, os intacts, sépulture d'un riche.",
+   src:"Ésaïe 53 · Psaume 34:20 · Ésaïe 53:9 ; Jean 19:38-42"}
+];
+
+(function(){
+  var style = document.createElement('style');
+  style.textContent = [
+    '.p4wrap{max-width:1180px;margin:0 auto 60px;padding:0 20px}',
+    '.p4head{background:#0B2545;color:#fff;border-radius:18px;padding:30px 28px;margin-bottom:18px}',
+    '.p4head .k{color:#E9C46A;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin:0 0 8px}',
+    '.p4head h2{margin:0 0 10px;font-size:clamp(22px,3.4vw,30px);color:#fff}',
+    '.p4head p{margin:0;color:rgba(255,255,255,.82);font-size:14.5px;max-width:78ch}',
+    '.p4bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 16px}',
+    '.p4bar span{font-size:12px;color:#5b6472}',
+    '.p4btn{border:1px solid rgba(11,37,69,.25);background:#fff;color:#0B2545;border-radius:999px;padding:6px 14px;font-size:12.5px;cursor:pointer}',
+    '.p4btn.on{background:#0B2545;color:#E9C46A;border-color:#0B2545}',
+    '.p4grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}',
+    '.p4card{background:#fff;border:1px solid rgba(11,37,69,.14);border-left:4px solid #E9C46A;border-radius:0 14px 14px 0;padding:18px}',
+    '.p4card .top{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;color:#5b6472;text-transform:uppercase;letter-spacing:.1em}',
+    '.p4card .sc{color:#0B2545;font-weight:700}',
+    '.p4card h4{margin:9px 0 10px;font-size:16.5px;line-height:1.35;color:#0B2545}',
+    '.p4card .tagl{display:inline-block;background:#F7F4EC;border:1px solid rgba(11,37,69,.12);border-radius:999px;padding:3px 10px;font-size:11.5px;color:#33415a;margin:0 6px 8px 0}',
+    '.p4card p{margin:0 0 10px;font-size:13.8px;color:#33415a}',
+    '.p4card .src{font-size:12.5px;color:#5b6472;border-top:1px dashed rgba(11,37,69,.14);padding-top:9px}'
+  ].join('');
+  document.head.appendChild(style);
+
+  var wrap = document.createElement('div');
+  wrap.className = 'p4wrap';
+  wrap.innerHTML = '<div class="p4head"><p class="k">Phase 4 · prophéties</p>'
+    + '<h2>Dix idées entièrement consacrées à la précision des prophéties</h2>'
+    + "<p>Cinq dossiers — Cyrus, Ninive, Josias, les trente pièces d'argent, le Messie — chacun exploité en deux formats. "
+    + "Le score /25 mesure l'effet produit (spécificité, écart temporel, nombre de détails, témoin extérieur, trace visitable) ; "
+    + 'le seuil de production est de 19. Un seul système chronologique par contenu : ici, les dates des publications de l\'organisation (chute de Ninive 632 av. n. è. ; la chronologie profane courante donne 612). Détail de chaque dossier : fichiers 11_PROPHETIES_IDEES.md et 13_COFFRET_PROPHETIE.html.</p></div>'
+    + '<div class="p4bar"><span>Trier :</span>'
+    + '<button class="p4btn on" data-sort="score">par score</button>'
+    + '<button class="p4btn" data-sort="dossier">par dossier</button>'
+    + '<button class="p4btn" data-sort="format">par format</button></div>'
+    + '<div class="p4grid" id="p4grid"></div>';
+  document.body.appendChild(wrap);
+
+  var grid = wrap.querySelector('#p4grid');
+  function draw(mode){
+    var list = P4.slice();
+    if(mode === 'score'){ list.sort(function(a,b){ return b.n - a.n; }); }
+    if(mode === 'dossier'){ list.sort(function(a,b){ return a.d === b.d ? b.n - a.n : a.d.localeCompare(b.d); }); }
+    if(mode === 'format'){ list.sort(function(a,b){ return a.f.localeCompare(b.f); }); }
+    grid.innerHTML = list.map(function(i, k){
+      return '<article class="p4card"><div class="top"><span>' + (i.d) + '</span>'
+        + '<span class="sc">' + i.n + '/25' + (i.n >= 21 ? ' · fort' : '') + '</span></div>'
+        + '<h4>' + i.a + '</h4>'
+        + '<div><span class="tagl">' + i.f + '</span><span class="tagl">Sortie : ' + i.s + '</span></div>'
+        + '<p>' + i.det + '</p>'
+        + '<div class="src"><b>À citer :</b> ' + i.src + '</div></article>';
+    }).join('');
+  }
+  draw('score');
+  wrap.querySelectorAll('.p4btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      wrap.querySelectorAll('.p4btn').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      draw(b.getAttribute('data-sort'));
+    });
+  });
+})();
+</script>
+<!-- ================= PHASE 4B : LES ARCHIVES (vague 2) ================= -->
+<script>
+/* 12 idées de la deuxième vague — les documents et les objets
+   [cas, accroche, format, sortie, impact /25, objet ou source à citer] */
+var P4B = [
+  {c:"B04", a:"« Un reçu de 750 grammes d'or a fait tomber un argument. »", f:"Réel 45 s", s:"P · V", n:24,
+   src:"Tablette cunéiforme de 5,5 cm, British Museum ; déchiffrée en 2007 par Michael Jursa (Vienne)."},
+  {c:"B04", a:"« La chaîne de transmission sur un mètre de bande. »", f:"Objet imprimable", s:"F · A", n:22,
+   src:"607 → rédaction → Qumrân → texte massorétique → 1920 → 2007 : six bornes, douze centimètres chacune."},
+  {c:"B05", a:"« Les derniers feux s'éteignent. »", f:"Vidéo 2 min", s:"P · A", n:21,
+   src:"Ostraca de Lakish (1935, salle de garde brûlée), ostracon 4 : « nous ne voyons plus Azéqa »."},
+  {c:"B05", a:"« Le nom divin écrit dans la suie. »", f:"Carrousel 7 vues", s:"P · F", n:20,
+   src:"Musée d'Israël ; à rapprocher de Jérémie 34:6, 7 et 6:1."},
+  {c:"B03", a:"« Ce que le roi vainqueur n'a jamais écrit. »", f:"Carrousel 8 vues", s:"P · V", n:24,
+   src:"Prisme de Taylor : 46 villes prises, Ézéchias « comme un oiseau dans une cage » — et le silence sur Jérusalem."},
+  {c:"B03", a:"« Trois récits, une seule nuit. »", f:"Fiche A4", s:"F · A", n:21,
+   src:"2 Rois 19:35 · Hérodote 2.141 (les souris) · Bérose, cité par Josèphe (la pestilence)."},
+  {c:"B09", a:"« 5-6 octobre 539 av. n. è., sans bataille. »", f:"Carte unique", s:"P · V", n:22,
+   src:"Chronique de Nabonide (British Museum, 1879) : le 16e jour de Tashritu, « sans bataille »."},
+  {c:"B07", a:"« L'hiver 604. »", f:"Vidéo 2 min", s:"P · A", n:21,
+   src:"Fouille Leon Levy d'Askalon : briques vitrifiées ; à Ékron, l'huile d'olive s'arrête net."},
+  {c:"B06", a:"« Ils ont bâti. Il a démoli. »", f:"Carrousel 7 vues", s:"P · V", n:20,
+   src:"Malachie 1:4 ; les Nabatéens au IVe siècle av. n. è. ; Édom rejeté vers l'Idumée."},
+  {c:"B20", a:"« La dépêche que le prophète a lue avant tout le monde. »", f:"Vidéo 90 s", s:"P · V", n:20,
+   src:"Thèbes (No-Amôn) rasée en 663 av. n. è. : Assurbanipal s'en vante sur ses propres tablettes ; Nahoum 3:8-10 s'en sert."},
+  {c:"B01", a:"« 320 ans. »", f:"Poster minimaliste", s:"P", n:22,
+   src:"Daniel 11:11, 12 (vers 536 av. n. è.) → bataille de Raphia, 217 av. n. è. ; source : Polybe 5.82-86."},
+  {c:"B12", a:"« Il ira à Babylone, et il n'y verra rien. »", f:"Carrousel 5 vues", s:"P", n:21,
+   src:"Ézéchiel 12:13 → Sédécias aveuglé à Ribla (2 Rois 25:4-7 ; Jérémie 52:7-11)."}
+];
+
+(function(){
+  var style = document.createElement('style');
+  style.textContent = [
+    '.p4bwrap{max-width:1180px;margin:0 auto 60px;padding:0 20px}',
+    '.p4bhead{background:#08203d;color:#fff;border-radius:18px;padding:30px 28px;margin-bottom:18px;border:1px solid rgba(233,196,106,.35)}',
+    '.p4bhead .k{color:#E9C46A;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin:0 0 8px}',
+    '.p4bhead h2{margin:0 0 10px;font-size:clamp(22px,3.4vw,30px);color:#fff}',
+    '.p4bhead p{margin:0;color:rgba(255,255,255,.82);font-size:14.5px;max-width:80ch}',
+    '.p4bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}',
+    '.p4bcard{background:#fff;border:1px solid rgba(11,37,69,.14);border-left:4px solid #143c6d;border-radius:0 14px 14px 0;padding:17px}',
+    '.p4bcard .top{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;color:#5b6472;text-transform:uppercase;letter-spacing:.1em}',
+    '.p4bcard .sc{color:#0B2545;font-weight:700}',
+    '.p4bcard h4{margin:9px 0 10px;font-size:16px;line-height:1.35;color:#0B2545}',
+    '.p4bcard .tagl{display:inline-block;background:#F7F4EC;border:1px solid rgba(11,37,69,.12);border-radius:999px;padding:3px 10px;font-size:11.5px;color:#33415a;margin:0 6px 8px 0}',
+    '.p4bcard .src{font-size:12.5px;color:#5b6472;border-top:1px dashed rgba(11,37,69,.14);padding-top:9px;margin-top:2px}'
+  ].join('');
+  document.head.appendChild(style);
+
+  var wrap=document.createElement('div');
+  wrap.className='p4bwrap';
+  wrap.innerHTML='<div class="p4bhead"><p class="k">Phase 4B · les archives</p>'
+    + '<h2>Douze idées nées des documents</h2>'
+    + '<p>Un reçu de temple, des tessons sortis d\'une salle de garde brûlée, le prisme d\'un roi qui se vante. '
+    + 'Ces cas ont un avantage décisif : leurs dates (539, 701, 663, 604, 595, 217, 168 av. n. è.) sont les mêmes dans toutes les chronologies — '
+    + 'ils ne peuvent pas être attaqués sur le terrain du calendrier. Deuxième vague complète : fichiers 14_PROPHETIES_VAGUE_2.md et 15_COFFRET_PROPHETIE_2.html.</p></div>'
+    + '<div class="p4bgrid" id="p4bgrid"></div>';
+  document.body.appendChild(wrap);
+
+  var grid=wrap.querySelector('#p4bgrid');
+  grid.innerHTML=P4B.map(function(i){
+    return '<article class="p4bcard"><div class="top"><span>Cas '+i.c+'</span>'
+      + '<span class="sc">'+i.n+'/25'+(i.n>=22?' · fort':'')+'</span></div>'
+      + '<h4>'+i.a+'</h4>'
+      + '<div><span class="tagl">'+i.f+'</span><span class="tagl">Sortie : '+i.s+'</span></div>'
+      + '<div class="src"><b>À citer :</b> '+i.src+'</div></article>';
+  }).join('');
+})();
+</script>
+</body>
+</html>
+

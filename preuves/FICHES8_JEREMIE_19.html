@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR — Jérémie (19) — Babylone : nulle pierre, le rouleau englouti</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR</h1>
+<h2>Jérémie (19) — Babylone : nulle pierre, le rouleau englouti</h2>
+<p class="intro">Le verdict sur Babylone se précise : nulle pierre d'angle ni de fondement ne sera reprise de ses ruines (JR289), tandis qu'Ararat, Minni et Ashkenaz sont convoqués contre elle (JR290). La mer de Babylone est asséchée et Bel vomit sa proie (JR291) ; le peuple reçoit l'ordre de sortir du milieu d'elle (JR292). Ses larges murailles sont rasées, ses portes brûlées (JR293), et le rouleau de Séraja, lesté d'une pierre, s'enfonce dans l'Euphrate (JR294).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR289">JR289</a>
+<a href="#JR290">JR290</a>
+<a href="#JR291">JR291</a>
+<a href="#JR292">JR292</a>
+<a href="#JR293">JR293</a>
+<a href="#JR294">JR294</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR289"><img src="images/prophe_JR289_pierre.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR289</div>
+<h3><a href="#JR289">« Nulle pierre d'angle » : Babylone, ruine à jamais</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR290"><img src="images/prophe_JR290_ararat.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR290</div>
+<h3><a href="#JR290">« Ararat, Minni, Ashkenaz » : la coalition convoquée</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR291"><img src="images/prophe_JR291_devoree.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR291</div>
+<h3><a href="#JR291">« J'assèche sa mer » : Bel vomit ce qu'il a englouti</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR292"><img src="images/prophe_JR292_sortez.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR292</div>
+<h3><a href="#JR292">« Sortez du milieu d'elle » : l'exode avant la chute</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR293"><img src="images/prophe_JR293_murailles.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR293</div>
+<h3><a href="#JR293">« Sa large muraille sera rasée » : Babylone travaille pour le feu</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR294"><img src="images/prophe_JR294_rouleau.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR294</div>
+<h3><a href="#JR294">« Ainsi s'enfoncera Babylone » : le rouleau lesté de Séraja</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR289">
+<div class="visuel"><img src="images/prophe_JR289_pierre.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR289 · CATÉGORIE JR</div>
+<h3>« Nulle pierre d'angle » : Babylone, ruine à jamais</h3>
+<div class="ref">Jérémie 51:24-26</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Babylone paie nulle pierre (paierai → Babylone → habitants → Chaldée → tout → mal → fait → Sion → yeux → voici → montagne → destruction → détruit → terre → étendrai → main → roulerai → rochers → ferai → montagne → brûlante)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR289</div><audio controls preload="none" src="audio/fiche_JR289_pierre.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR289_pierre.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 51:24-26</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Babylone paie nulle pierre (paierai → Babylone → habitants → Chaldée → tout → mal → fait → Sion → yeux → voici → montagne → destruction → détruit → terre → étendrai → main → roulerai → rochers → ferai → montagne → brûlante)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P289 (51:24-26 : jamais rebâtie, nulle pierre) ; état du site ; Jr 51:26</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PAIERAI… BABYLONE… HABITANTS… CHALDÉE… TOUT… MAL… FAIT… SION… YEUX… REGARDEZ… RÈGLEMENT… COMPTES… PUBLIC… DETTE… SANG… TEMPLE… RUINES… FACTURE… PRÉSENTÉE… ENCAISSÉE. » (51:24 — encaissée !)</li>
+<li>« VOICI… MONTAGNE… DESTRUCTION… DÉTRUIT… TERRE… ENTIÈRE… MASSE… ÉCRASANTE… ÉTENDRAI… MAIN… ROULERAI… ROCHERS… DÉBOULONNÉE… PRÉCIPITÉE… FERAI… MONTAGNE… BRÛLANTE… VOLCAN… JUGEMENT. » (51:25 — jugement !)</li>
+<li>« PRENDRA… NULLE… PIERRE… ANGLE… PIERRE… FONDEMENTS… CARRIÈRE… MAUDITE… RÉCUPÉRATION… INTERDITE… BÂTISSEURS… FUTURS… CHERCHERONT… VAIN… MATÉRIAUX… INUTILISABLES… BRIQUES… DISPERSÉES… EMPRUNTÉES. » (51:26 — empruntées !)</li>
+<li>« DÉSOLATIONS… PERPÉTUELLES… OLAM… ÉTERNITÉ… DURÉE… ILLIMITÉE… VERDICT… SANS… EXPIRATION… SIÈCLES… PASSENT… SENTENCE… DEMEURE… RUINE… DÉFINITIVE… JAMAIS… RELEVÉE… JAMAIS… HABITÉE… JAMAIS. » (perpétuelles — jamais !)</li>
+<li>« PSAUME… CENT… VINGT-SEPT… BÂTISSENT… MAISON… JÉHOVAH… NON… PEINE… VAINE… GARDENT… VILLE… GARDE… INUTILE… SAGESSE… BATISSEURS… BABYLONE… CONTRE-EXEMPLE… MONUMENTAL… TRAVAIL… NÉANT. » (Psaume — néant !)</li>
+<li>« DANIEL… DEUX… PIERRE… DÉTACHÉE… SANS… MAINS… FRAPPE… PIEDS… FER… ARGILE… IMAGE… BROYÉE… BALLE… ÉTÉ… VENT… EMPORTE… TRACE… INTROUVABLE… PIERRE… DEVIENT… MONTAGNE… REMPLIT… TERRE. » (Daniel — terre !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La PAIE, ~605 — VESHILLAMTI (les PAIERAI (les LEBABÉL (les BABYLONE (les ULEKHOL (les TOUS (les YOSH BÉ (les HABITANTS (les KASDIM (les CHALDÉE (les ÉT (les KOL (les TOUT (les RAATAM (les MAL (les ASHER (les QUILS (les ASU (les FAIT (les BETSIYYON (les SION (les LEÉYNÉKHEM (les YEUX (les NEUM (les DIT (les YEHOVAH (les HINENI (les VOICI (les ÉLÉKHA (les TOI (les HAR (les MONTAGNE (les HAMMASHHIT (les DESTRUCTION (les NEUM (les DIT (les YEHOVAH (les HAMMASHHIT (les DÉTRUIT (les ET (les KOL (les TOUTE (les HAARETS (les TERRE (les VENATITI (les ÉTENDRAI (les ET (les YADI (les MAIN (les ALÉKHA (les VEGILGALTIKHA (les ROULERAI (les MIN (les HASSELAÏM (les ROCHERS (les UNETATTIKHA (les FERAI (les LEHAR (les MONTAGNE (les SEREPHAH (les BRÛLANTE (les MONTAGNE — les BRÛLANTE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La NULLE-PIERRE (les VELO (les NON (les YIQHU (les PRENDRA (les MIMMEKHA (les TOI (les ÉBÉN (les PIERRE (les LEPINNAH (les ANGLE (les VEÉBÉN (les PIERRE (les LEMOSADOT (les FONDEMENTS (les KI (les CAR (les SHIMMOT (les DÉSOLATIONS (les OLAM (les PERPÉTUELLES (les TIHYEH (les SERAS (les NEUM (les DIT (les YEHOVAH (les ANGLE (les FONDEMENTS (les DEUX (les PIERRES (les ESSENTIELLES (les ÉDIFICE (les ANTIQUE (les PIERRE (les ANGLE (les ALIGNE (les MURS (les PIERRE (les FONDEMENTS (les PORTE (les POIDS (les SANS (les ELLES (les CONSTRUIRE (les IMPOSSIBLE (les CARRIÈRE — les FERMÉE !)</p>
+<h4>5 · Interprétation</h4>
+<p>La RUINE-ÉTERNELLE (les BRIQUES (les CRUES (les CUITES (les BITUME (les MORTIER (les ARGILE (les EUPHRATE (les MATÉRIAU (les PAUVRE (les PIERRE (les RARE (les MÉSOPOTAMIE (les PLAINE (les ALLUVIALE (les CARRIÈRES (les LOINTAINES (les RÉCUPÉRER (les RUINES (les PRATIQUE (les NORMALE (les ANTIQUITÉ (les SPOLIA (les RÉEMPLOI (les UNIVERSEL (les NINIVE (les REBÂTIE (les JÉRUSALEM (les RELEVÉE (les ROME (les RECYCLÉE (les BABYLONE (les SEULE (les INTERDITE (les BRIQUES (les EMPORTÉES (les AILLEURS (les VESTIGES (les EXPOSÉS (les PREUVE (les MORTE (les ATTRACTION (les TOURISTIQUE (les TRAIN (les HALTE (les COURTE (les PROPHÉTIE (les PRÉCISE (les RUINE — les ÉTERNELLE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">51:24</td><td>ENCAISSÉE (PAIERAI !)</td></tr>
+<tr><td class="d">51:25</td><td>JUGEMENT (BRÛLANTE !)</td></tr>
+<tr><td class="d">51:26a</td><td>EMPRUNTÉES (ANGLE !)</td></tr>
+<tr><td class="d">51:26b</td><td>JAMAIS (PERPÉTUELLES !)</td></tr>
+<tr><td class="d">Ps127/Dn2</td><td>TERRE (PIERRE !)</td></tr>
+<tr><td class="d">539+/site</td><td>MORTE (VESTIGES !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (oracle) → 539 : Babylone prise ; puis exode des matériaux — les briques cuites au nom de Neboukadnetsar (estampillées) se retrouvent à Séleucie, Ctésiphon, Bagdad, Hillah : la ville-carrière alimente ses rivales ; Strabon (Iᵉʳ s.) : Babylone « en grande partie déserte » ; jamais relevée comme cité — « tu seras à jamais une ruine » (v. 26) ; le Tell de Babil expose ses vestiges aux touristes.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La « montagne brûlante » (v. 25) : Babylone perchée sur ses tells de décombres — briques calcinées, scories vitrifiées (les fouilles Koldewey : traces d'incendies intenses) ; la plaine alluviale sans pierre : chaque brique cuite valait de l'or — leur dispersion systématique rend la reconstruction impossible, exactement comme annoncé.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Psaume 127:1 (sans Jéhovah, bâtisseurs et gardes peinent en vain) — la THÉORIE ; Daniel 2:34-35, 44-45 (la pierre sans mains broie l'image, devient montagne) — la PIERRE qui remplace les pierres confisquées ; la spoliation archéologique (briques estampillées dispersées, musées du monde) — la PREUVE matérielle de la carrière vidée.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : DETTE DE SION CHIFFRÉE → MONTAGNE DE DESTRUCTION DÉBOULONNÉE → 539 : PRISE → BRIQUES EMPORTÉES AILLEURS → NULLE PIERRE RÉCUPÉRABLE → SITE JAMAIS REBÂTI → RUINE EXPOSÉE, PROPHÉTIE VÉRIFIÉE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« On ne prendra de toi nulle pierre » (v. 26) : paradoxe apparent — les briques FURENT emportées ailleurs ; le sens : nul ne REBÂTIRA avec — les matériaux servent à d'autres villes, jamais à relever Babylone ; la « montagne brûlante » : image du jugement, non d'un volcan — les incendies (guerres, Xerxès 484) la noircissent pour de bon.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nulle pierre annoncée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise ; spoliation amorcée</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Déserte ; vestiges exposés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Iᵉʳ s.+</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101963015">« Pas de guérison pour Babylone » (Tour de Garde)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101963015</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/127">Bible — Psaume 127 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/127</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/2">Bible — Daniel 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR289 — « Nulle pierre d'angle » : Babylone, ruine à jamais</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR290">
+<div class="visuel"><img src="images/prophe_JR290_ararat.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR290 · CATÉGORIE JR</div>
+<h3>« Ararat, Minni, Ashkenaz » : la coalition convoquée</h3>
+<div class="ref">Jérémie 51:27-33</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">royaumes convoqués gués saisis (levez → étendard → terre → sonnez → trompette → nations → consacrez → nations → convoquez → royaumes → Ararat → Minni → Ashkenaz → désignez → tiphsar → chevaux → sauterelles → hérissées)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR290</div><audio controls preload="none" src="audio/fiche_JR290_ararat.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR290_ararat.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 51:27-33</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>royaumes convoqués gués saisis (levez → étendard → terre → sonnez → trompette → nations → consacrez → nations → convoquez → royaumes → Ararat → Minni → Ashkenaz → désignez → tiphsar → chevaux → sauterelles → hérissées)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P290 (51:27-33 : Ararat, Minni, Ashkenaz ; gués saisis ; portes ouvertes) ; 539 ; Dn 5:30</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« LEVEZ… ÉTENDARD… TERRE… SONNEZ… TROMPETTE… NATIONS… CONSACREZ… NATIONS… GUERRE… SAINTE… MOBILISATION… GÉNÉRALE… CONVOQUEZ… ROYAUMES… ARARAT… MINNI… ASHKENAZ… TROIS… ALLIÉS… NOMMÉS… SIÈCLE… AVANCE. » (51:27 — avance !)</li>
+<li>« TIPHSAR… COMMISSAIRE… RECRUTEMENT… DÉSIGNÉ… CHEVAUX… MONTER… SAUTERELLES… HÉRISSÉES… NUÉE… CAVALERIE… INNOMBRABLE… BRUISSEMENT… AILES… SABOTS… TERREUR… PLAIE… ÉGYPTE… TRANSPOSÉE… EUPHRATE. » (51:27 — Euphrate !)</li>
+<li>« MÈDES… CONSACRÉS… GOUVERNEURS… PRÉFETS… TOUT… PAYS… DOMINATION… COALITION… CYRUS… FÉDÉRATEUR… EMPIRE… NAISSANT… TERRE… TREMBLE… SECOUSSE… PENSÉES… JÉHOVAH… ACCOMPLIES… BABYLONE… DÉSERT… INHABITÉ. » (51:28-29 — inhabité !)</li>
+<li>« VAILLANTS… BABYLONE… CESSENT… COMBATTRE… RESTENT… FORTERESSES… FORCE… TOMBÉE… DEVIENNENT… FEMMES… DÉVIRILISÉS… DEMEURES… BRÛLÉES… VERROUS… BRISÉS… ARMÉE… MONDIALE… PARALYSÉE… NUIT… FESTIN. » (51:30 — festin !)</li>
+<li>« COUREUR… COURT… RENCONTRE… COUREUR… ANNONCE… ANNONCE… ROI… BABYLONE… VILLE… PRISE… EXTRÉMITÉ… GUÉS… SAISIS… ROSEAUX… BRÛLÉS… GUERRIERS… ÉPOUVANTÉS… RÉSEAU… ESTAFETTES… NOUVELLES… CATASTROPHES… CASCADENT. » (51:31-32 — cascadent !)</li>
+<li>« FILLE… BABYLONE… COMME… AIRE… TEMPS… FOULAGE… ENCORE… PEU… VIENT… MOISSON… BATTAGE… GRAIN… SÉPARÉ… BALLE… DANIEL… HUIT… BÉLIER… DEUX… CORNES… MÈDES… PERSES… FONCE… NUL… NE… TIENT. » (51:33/Dn 8 — tient !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La CONVOCATION, ~605 — SEU (les LEVEZ (les NÉS (les ÉTENDARD (les BAARÉTS (les TERRE (les TIQOU (les SONNEZ (les SHOPHAR (les TROMPETTE (les BAGGOYIM (les NATIONS (les QADDSHU (les CONSACREZ (les ALÉHA (les ELLE (les GOYIM (les NATIONS (les HASHMIU (les CONVOQUEZ (les ALÉHA (les MAMLEKHOT (les ROYAUMES (les ARARAT (les MINNI (les ASHKENAZ (les PIQDU (les DÉSIGNEZ (les ALÉHA (les TIPHSAR (les TIPHSAR (les HAALU (les MONTER (les SUS (les CHEVAUX (les KEYÉLÉQ (les SAUTERELLES (les SAMAR (les HÉRISSÉES (les TROIS (les ROYAUMES (les NOMMÉS — les CONVOQUÉS !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les MÉDES (les QADDSHU (les CONSACREZ (les ALÉHA (les ELLE (les GOYIM (les NATIONS (les ET (les MALKÉ (les ROIS (les MADAY (les MÈDES (les PAHOTÉHA (les GOUVERNEURS (les VEKHOL (les TOUS (les SEGANÉHA (les PRÉFETS (les VEKHOL (les TOUT (les ÉRETS (les PAYS (les MEMSHALTO (les DOMINATION (les VATTIRAASH (les TREMBLE (les HAARETS (les TERRE (les VATTAHOL (les SECOUSSE (les KI (les CAR (les QAMAH (les ACCOMPLIES (les AL (les BABÉL (les BABYLONE (les MAHSHBOT (les PENSÉES (les YEHOVAH (les LASUM (les RENDRE (les ET (les ÉRETS (les PAYS (les BABÉL (les BABYLONE (les LESHAMMAH (les DÉSERT (les MÉÉYN (les SANS (les YOSHÉB (les INHABITÉ (les MÈDES (les TÊTE (les COALITION — les TREMBLE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Les GUÉS (les HADLU (les CESSENT (les GIBBORÉ (les VAILLANTS (les BABÉL (les BABYLONE (les LEHILLAHÉM (les COMBATTRE (les YASHBU (les RESTENT (les BAMMETSADOT (les FORTERESSES (les NASHETAH (les TOMBÉE (les GEBURATAM (les FORCE (les HAYU (les DEVIENNENT (les LENASHIM (les FEMMES (les HITSTSITU (les BRÛLÉES (les MISHKENOTÉHA (les DEMEURES (les NISHBERU (les BRISÉS (les BERIHÉHA (les VERROUS (les RATS (les COUREUR (les LIRQOT (les RENCONTRE (les RATS (les COUREUR (les YARUTS (les COURT (les UMAGGID (les ANNONCE (les LIQROT (les RENCONTRE (les MAGGID (les ANNONCE (les LEHAGGID (les ANNONCER (les LEMÉLEK (les ROI (les BABÉL (les BABYLONE (les KI (les CAR (les NILKEDAH (les PRISE (les IRO (les VILLE (les MIQQATSÉH (les EXTRÉMITÉ (les VEHAMAABAROT (les GUÉS (les NITPASU (les SAISIS (les VEÉT (les HAAGAMMIM (les ROSEAUX (les SARPHU (les BRÛLÉS (les BAÉSH (les FEU (les VEANSHÉ (les GUERRIERS (les HAMMILHAMAH (les NIBHALU (les ÉPOUVANTÉS (les KI (les CAR (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les ÉLOHÉ (les DIEU (les YISRAÉL (les ISRAËL (les BAT (les FILLE (les BABÉL (les BABYLONE (les KEGORÉN (les AIRE (les ÉT (les TEMPS (les HADRIKHAH (les FOULAGE (les OD (les ENCORE (les MEAT (les PEU (les UBA (les VIENT (les ÉT (les TEMPS (les HAQQATSIR (les MOISSON (les LAH (les GUÉS (les SAISIS (les AIRE — les FOULÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">51:27</td><td>AVANCE (ARARAT !)</td></tr>
+<tr><td class="d">51:28-29</td><td>INHABITÉ (MÈDES !)</td></tr>
+<tr><td class="d">51:30</td><td>FESTIN (FEMMES !)</td></tr>
+<tr><td class="d">51:31-32</td><td>CASCADENT (GUÉS !)</td></tr>
+<tr><td class="d">51:33</td><td>FOULÉE (AIRE !)</td></tr>
+<tr><td class="d">539/Dn8/Dn5:30</td><td>TIENT (BÉLIER !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (oracle) → 539 : Ararat (Urartu, région du Van), Minni (Mannaï, sud-est du Van), Ashkenaz (Ashgouzaï/Scythes, entre mer Noire et Caspienne — tablettes cunéiformes : alliance avec les Mannaï dès le VIIᵉ s.) fournissent cavalerie à Cyrus (Xénophon : Arméniens, Phrygiens, Cappadociens dans l'armée) ; les gués de l'Euphrate « saisis » (v. 32) — l'armée passe le lit détourné ; « cette nuit-là, Belschatsar fut tué » (Dn 5:30).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Triangle nord : Ararat (Van, Turquie/Arménie), Minni (Mannaï, Azerbaïdjan iranien), Ashkenaz (nord, steppes scythes) — le croissant montagneux dominant la Mésopotamie ; les gués (v. 32) : passages de l'Euphrate en amont — saisis, le fleuve détourné vers le marais ; les roseaux des marais incendiés (v. 32) : les fourrés du sud babylonien en feu — signal visible à des lieues.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ashkenaz = Ashgouzaï assyrien (Scythes mer Noire-Caspienne, alliés Mannaï — cunéiforme VIIᵉ s.) — l'archéologie NOMME les convoqués ; Daniel 8:3-4, 20 (bélier deux cornes = rois de Médie et de Perse, nul ne tient) — l'ORDRE DE BATAILLE céleste ; Xénophon, Cyropédie (contingents arméniens contre Babylone) — la source grecque recoupe.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : TROIS ROYAUMES NOMMÉS → MÈDES CONSACRÉS, TERRE TREMBLE → 539 : CAVALERIE-NUÉE EN MARCHE → VAILLANTS PARALYSÉS AU FESTIN → COUREURS EN CASCADE → GUÉS SAISIS, ROSEAUX EN FEU → AIRE FOULÉE : MOISSON DU JUGEMENT</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ararat/Minni/Ashkenaz : localisations aproximatives (Van, Mannaï, steppes) — les frontières antiques fluctuaient ; « tiphsar » (v. 27) : hapax, probablement officier recruteur assyrien (tupsarru, « scribe de tablette ») — le sens militaire reste débattu, la convocation, elle, est claire.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trois royaumes convoqués</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gués saisis ; nuit de la prise</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Belschatsar tué ; aire foulée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 (aube)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200000423">« Ashkenaz » (Étude perspicace, it-1)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200000423</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/27/8">Bible — Daniel 8 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/27/8</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/8">Bible — Daniel 8 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/27/8</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR290 — « Ararat, Minni, Ashkenaz » : la coalition convoquée</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR291">
+<div class="visuel"><img src="images/prophe_JR291_devoree.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR291 · CATÉGORIE JR</div>
+<h3>« J'assèche sa mer » : Bel vomit ce qu'il a englouti</h3>
+<div class="ref">Jérémie 51:34-44</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Babylone dévorée eaux asséchées (dévorée → Neboukadnetsar → roi → Babylone → écrasée → vase → vide → avalée → dragon → rempli → ventre → délices → rejetée → violence → chair → Babylone → dira → Sion → sang → Chaldée → Jérusalem)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR291</div><audio controls preload="none" src="audio/fiche_JR291_devoree.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR291_devoree.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 51:34-44</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Babylone dévorée eaux asséchées (dévorée → Neboukadnetsar → roi → Babylone → écrasée → vase → vide → avalée → dragon → rempli → ventre → délices → rejetée → violence → chair → Babylone → dira → Sion → sang → Chaldée → Jérusalem)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P291 (51:34-44 : dévorée ; eaux asséchées ; dieux jugés) ; Jr 51:36 ; récits de la prise</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DÉVORÉE… NEBOUKADNETSAR… ÉCRASÉE… VASE… VIDE… AVALÉE… DRAGON… TANNIN… MONSTRE… MARIN… REMPLI… VENTRE… DÉLICES… REJETÉE… PLAINTE… SION… JÉRUSALEM… PROCÈS… INTENTÉ… VIOLENCE… CHAIR… SANG… CRIENT. » (51:34-35 — crient !)</li>
+<li>« PRENDS… CAUSE… EXERCE… VENGEANCE… ASSÈCHE… MER… TARIS… SOURCE… EUPHRATE… FLEUVE-MER… LIT… VIDÉ… STRATAGÈME… CYRUS… ANNONCÉ… SIÈCLE… AVANCE… DÉFENSE… NATURELLE… SUPPRIMÉE… PASSERELLE… SÈCHE. » (51:36 — sèche !)</li>
+<li>« MONCEAUX… RUINES… REPAIRE… CHACALS… ÉTONNEMENT… SIFFLEMENT… NUL… HABITANT… RUGISSENT… LIONS… LIONCEAUX… FRÉMISSENT… FESTIN… ENIVRERAI… RÉJOUISSENT… DORMIRONT… SOMMEIL… ÉTERNEL… RÉVEILLERONT… JAMAIS. » (51:37-39 — jamais !)</li>
+<li>« DESCENDRE… AGNEAUX… BOUCHERIE… BÉLIERS… BOUCS… ABATTOIR… DIVIN… SHÉSHAK… ATBASH… BABYLONE… CHIFFRÉE… PRISE… LOUANGE… TERRE… SAISIE… ÉTONNEMENT… NATIONS… MER… MONTÉE… BABYLONE… COUVERTE… FLOTS. » (51:40-42 — flots !)</li>
+<li>« VILLES… DÉSOLATION… PAYS… SEC… LANDE… ARIDE… NUL… HOMME… PASSE… FILS… HOMME… PUNIRAI… BEL… BABYLONE… ARRACHERAI… BOUCHE… ENGLOUTI… NATIONS… AFFLUERONT… PLUS… MURAILLE… BABYLONE… TOMBÉE. » (51:43-44 — tombée !)</li>
+<li>« PSAUME… SOIXANTE-QUATORZE… BRISES… TÊTES… MONSTRE… EAUX… ASSÈCHES… FLEUVES… INTARISSABLES… NAHUM… UN… MENACE… MER… ASSÈCHE… FLEUVES… EXODE… DOUZE… EXÉCUTE… JUGEMENTS… DIEUX… ÉGYPTE… TROIS… TÉMOINS. » (témoins — témoins !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le DRAGON, ~605 — AKHALANU (les DÉVORÉE (les HAMAMANU (les ÉCRASÉE (les NEBUKHADRETSTSAR (les NEBOUKADNETSAR (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les HITSTSIGANU (les VASE (les KIKHLI (les VIDE (les BELAANU (les AVALÉE (les KATTANNIN (les DRAGON (les MILLA (les REMPLI (les KHRESO (les VENTRE (les MIMMAADANAY (les DÉLICES (les HEDIHANU (les REJETÉE (les HAMAS (les VIOLENCE (les BESARI (les CHAIR (les VEÉTSMI (les SANG (les AL (les BABÉL (les BABYLONE (les TOMAR (les DIRA (les YOSHÉBÉT (les SION (les DAMI (les SANG (les EL (les YOSH BÉ (les CHALDÉE (les TOMAR (les DIR (les YERUSHALAYIM (les JÉRUSALEM (les DRAGON — les REJETÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La MER-ASSÉCHÉE (les LAKHÉN (les CÈST POURQUOI (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les HINENI (les VOICI (les RAB (les PRENDS (les ET (les RIBÉKH (les CAUSE (les VENIQQAMTI (les VENGEANCE (les ET (les NEQMATEKH (les VEHAHARABTI (les ASSÈCHE (les ET (les YAMMAH (les MER (les VEHOBASHTI (les TARIS (les ET (les MEQORAH (les SOURCE (les VEHAYETAH (les SERA (les BABÉL (les BABYLONE (les LEGALLIM (les MONCEAUX (les MEON (les REPAIRE (les TANNIM (les CHACALS (les LESHAMMAH (les ÉTONNEMENT (les VELISHREQAH (les SIFFLEMENT (les MÉÉYN (les SANS (les YOSHÉB (les HABITANT (les MER (les EUPHRATE (les LIT — les SEC !)</p>
+<h4>5 · Interprétation</h4>
+<p>BEL-VOMIT (les YAHDAB (les ENSEMBLE (les KAKKEPHIRIM (les LIONS (les YISHAGU (les RUGISSENT (les NAARU (les FRÉMISSENT (les KEGORÉ (les LIONCEAUX (les ARAYOT (les BEHUMMAM (les FESTIN (les ASHIT (les DRESSERAI (les ET (les MISHTÉHEM (les VEHISHKARTIM (les ENIVRERAI (les LEMAAN (les AFIN QUE (les YAALOZU (les RÉJOUISSENT (les VEYASHNU (les DORMIRONT (les SHENAT (les SOMMEIL (les OLAM (les ÉTERNEL (les VELO (les NON (les YAQITSU (les RÉVEILLERONT (les NEUM (les DIT (les YEHOVAH (les ORIDEM (les DESCENDRE (les KEKHARIM (les AGNEAUX (les LITBOAH (les BOUCHERIE (les KEÉYLIM (les BÉLIERS (les IM (les ATTUDIM (les BOUCS (les ÉYKH (les COMMENT (les NILKEDAH (les PRISE (les SHÉSHAK (les SHÉSHAK (les VATTIPHAS (les SAISIE (les TEHILLAT (les LOUANGE (les KOL (les TOUTE (les HAARETS (les TERRE (les ÉYKH (les COMMENT (les HAYETAH (les DEVENUE (les LESHAMMAH (les ÉTONNEMENT (les BABÉL (les BABYLONE (les BAGGOYIM (les NATIONS (les ALAH (les MONTÉE (les AL (les BABÉL (les BABYLONE (les HAYYAM (les MER (les BAHAMON (les TUMULTE (les GALLAV (les FLOTS (les NIKHSETAH (les COUVERTE (les HAYU (les DEVENUES (les ARÉHA (les VILLES (les LESHAMMAH (les DÉSOLATION (les ÉRETS (les PAYS (les TSIYYAH (les SEC (les VAARABAH (les ARIDE (les ÉRETS (les PAYS (les LO (les NON (les YESHEB (les HABITE (les BAHÉN (les KOL (les TOUT (les ISH (les HOMME (les VELO (les NON (les YAABOR (les PASSE (les BAHÉN (les KOL (les TOUT (les BEN (les FILS (les ADAM (les HOMME (les UPHAQADTI (les PUNIRAI (les AL (les BÉL (les BEL (les BEBABÉL (les BABYLONE (les VEHOTSETI (les ARRACHERAI (les ET (les BILO (les ENGLOUTI (les MIPPIV (les BOUCHE (les VELO (les NON (les YINHARU (les AFFLUERONT (les ÉLAV (les LUI (les OD (les PLUS (les GOYIM (les NATIONS (les GAM (les AUSSI (les HOMAT (les MURAILLE (les BABÉL (les BABYLONE (les NAPHALAH (les TOMBÉE (les BEL (les VOMIT (les MURAILLE — les TOMBÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">51:34-35</td><td>CRIENT (DRAGON !)</td></tr>
+<tr><td class="d">51:36</td><td>SÈCHE (ASSÈCHE !)</td></tr>
+<tr><td class="d">51:37-39</td><td>JAMAIS (ÉTERNEL !)</td></tr>
+<tr><td class="d">51:40-42</td><td>FLOTS (SHÉSHAK !)</td></tr>
+<tr><td class="d">51:43-44</td><td>TOMBÉE (VOMIT !)</td></tr>
+<tr><td class="d">539/Hérodote</td><td>TÉMOINS (LIT-SEC !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (oracle) → 539 : Cyrus fait détourner l'Euphrate (Hérodote I, 191 ; Xénophon, Cyropédie VII : canal vers le marais, lit abaissé « à hauteur de cuisse ») — « j'assèche sa mer, je taris sa source » (v. 36) ; les soldats entrent par le lit ; le festin ivre (v. 39, 57 ; Dn 5 — « sommeil éternel », Belschatsar tué) ; Bel « vomit » (v. 44) : les vases du Temple reviennent (Esd 1:7-11), les nations cessent d'affluer au culte de Mardouk.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'Euphrate « mer » (v. 36, 42 — yam, le grand fleuve) traverse Babylone intra-muros : quais, pont, portes fluviales — la défense naturelle ; détourné en amont (Sippar ?), le lit devient passerelle ; « la mer est montée sur Babylone » (v. 42) : double sens — les flots ennemis (Mèdes) la recouvrent, puis les crues sans entretien l'ensablent : le site s'envase, marécageux.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Psaume 74:13-14 (têtes du monstre brisées, fleuves asséchés) — le DIEU-ASSÉCHEUR déjà à l'œuvre (Exode) ; Nahum 1:4 (il menace la mer, assèche les fleuves) — le VERBE qui vide les lits ; Exode 12:12 (jugements contre tous les dieux d'Égypte) — le PRÉCÉDENT : dieux jugés, peuple libéré ; Hérodote + Xénophon + Chronique de Nabonide — trois sources profanes recoupent le lit asséché.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : DRAGON ACCUSÉ PAR SA PROIE → 539 : MER ASSÉCHÉE, LIT PRATICABLE → FESTIN-IVRESSE → SOMMEIL ÉTERNEL → SHÉSHAK PRISE → BEL VOMIT, NATIONS DISPERSÉES → MURAILLE TOMBÉE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Shéshak (v. 41) : atbash de Babel (comme Léb-Qamay 51:1 = Kasdim) — code, non lieu distinct ; « la mer montée » (v. 42) puis « mer asséchée » (v. 36) : les deux images se succèdent — invasion-flot, puis lit vidé ; les dieux « jugés » : statues emportées/fondues — le culte survit sous les Perses, mais l'hégémonie religieuse de Mardouk s'effondre.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dragon accusé ; mer condamnée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Euphrate détourné ; lit à sec</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 (jour)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Festin ; Bel vomit ; prise</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 (nuit)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/74">Bible — Psaume 74 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/74</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/34/1">Bible — Nahum 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/34/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/12">Bible — Exode 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/12</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR291 — « J'assèche sa mer » : Bel vomit ce qu'il a englouti</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR292">
+<div class="visuel"><img src="images/prophe_JR292_sortez.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR292 · CATÉGORIE JR</div>
+<h3>« Sortez du milieu d'elle » : l'exode avant la chute</h3>
+<div class="ref">Jérémie 51:45-48</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">peuple sort cieux jubilent (sortez → milieu → peuple → sauvez → chacun → vie → colère → ardente → Jéhovah → cœur → faiblisse → nouvelles → pays → année → nouvelle → violence → pays → dominateur → dominateur → jours → viennent → punirai → idoles)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR292</div><audio controls preload="none" src="audio/fiche_JR292_sortez.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR292_sortez.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 51:45-48</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>peuple sort cieux jubilent (sortez → milieu → peuple → sauvez → chacun → vie → colère → ardente → Jéhovah → cœur → faiblisse → nouvelles → pays → année → nouvelle → violence → pays → dominateur → dominateur → jours → viennent → punirai → idoles)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P292 (51:45-48 : sortez du milieu d'elle ; je paie à Babylone) ; 539 ; Ap 18:4 (1er accomplissement)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« SORTEZ… MILIEU… ELLE… PEUPLE… SAUVEZ… CHACUN… VIE… COLÈRE… ARDENTE… JÉHOVAH… EXODE… SECOND… LOT… SODOME… URGENCE… VITALE… RESTER… PÉRIR… SORTIR… VIVRE… ORDRE… AMOUR… SÉVÈRE. » (51:45 — sévère !)</li>
+<li>« CŒUR… FAILLISSE… NOUVELLES… PAYS… ANNÉE… NOUVELLE… VIOLENCE… PAYS… DOMINATEUR… DOMINATEUR… RUMEURS… GUERRE… PANIQUE… CONTRÔLÉE… NABONIDE… BELSCHATSAR… CO-RÉGENCE… TROUBLES… DYNASTIQUES… ANNONCÉS. » (51:46 — annoncés !)</li>
+<li>« JOURS… VIENNENT… PUNIRAI… IDOLES… BABYLONE… TOUT… PAYS… HONTEUX… TUÉS… MILIEU… ELLE… PANTHÉON… ENTIER… JUGÉ… MARDOUK… NABO… NANNA… HONTE… PUBLIQUE… CADAVRES… RUES… CAPITALE. » (51:47 — capitale !)</li>
+<li>« CIEUX… TERRE… POUSSENT… CRIS… JOIE… BABYLONE… DÉVASTATEURS… VIENNENT… NORD… COSMOS… ENTIER… JUBILE… JUSTICE… ENFIN… RENDUE… CHŒUR… UNIVERSEL… ALLEGRESSE… TYPE… APOCALYPSE… DIX-HUIT… VINGT. » (51:48 — vingt !)</li>
+<li>« APOCALYPSE… DIX-HUIT… QUATRE… SORTEZ… ELLE… PEUPLE… PARTICIPIEZ… PÉCHÉS… RECEVIEZ… FLÉAUX… REPRISE… LITTÉRALE… ANTITYPE… BABYLONE… GRANDE… PREMIER… ACCOMPLISSEMENT… CINQ-CENT-TRENTE-NEUF… SECOND… FINAL. » (Ap 18:4 — final !)</li>
+<li>« ÉSAÏE… QUARANTE-HUIT… VINGT… SORTEZ… BABYLONE… FUYEZ… CHALDÉENS… VOIX… ALLÉGRESSE… ANNONCEZ… EXTRÉMITÉ… TERRE… JÉHOVAH… RACHETÉ… SERVITEUR… JACOB… EXODE… CHANTÉ… LIBÉRATION… CÉLÉBRÉE. » (Ésaïe — célébrée !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>LORDRE-DE-SORTIE, ~605 — TSEU (les SORTEZ (les MITTOKHAH (les MILIEU (les AMMI (les PEUPLE (les UMALLETU (les SAUVEZ (les ISH (les CHACUN (les ET (les NAPSHO (les VIE (les MÉHARON (les COLÈRE (les APH (les ARDENTE (les YEHOVAH (les UPHÉN (les QUE NON (les YIRAKH (les FAILLISSE (les LEBABKHEM (les CŒUR (les VETIRA U (les CRAIGNIEZ (les BASHSHEMU AH (les NOUVELLES (les HANNISHMAAT (les ENTENDUES (les BAARÉTS (les PAYS (les UBA (les VIENT (les BASHSHANAH (les ANNÉE (les HASHSHEMU AH (les NOUVELLE (les VEAHARAV (les APRÈS (les BASHSHANAH (les ANNÉE (les HASHSHEMU AH (les NOUVELLE (les VEHAMAS (les VIOLENCE (les BAARÉTS (les PAYS (les UMOSHÉL (les DOMINATEUR (les AL (les MOSHÉL (les DOMINATEUR (les SORTIE — les CŒUR-FERME !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les IDOLES-JUGÉES (les LAKHÉN (les CÈST POURQUOI (les HINNÉH (les VOICI (les YAMIM (les JOURS (les BAÏM (les VIENNENT (les NEUM (les DIT (les YEHOVAH (les UPHAQADTI (les PUNIRAI (les AL (les PESILÉ (les IDOLES (les BABÉL (les BABYLONE (les VEKHOL (les TOUT (les ARTSAH (les PAYS (les TÉBOSH (les HONTEUX (les VEKHOL (les TOUS (les HALALÉHA (les TUÉS (les YIPPLU (les TOMBERONT (les BETOKHAH (les MILIEU (les VERANNENU (les JUBILENT (les AL (les BABÉL (les BABYLONE (les SHAMAYIM (les CIEUX (les VAARETS (les TERRE (les VEKHOL (les TOUT (les ASHER (les QUI (les BAHEM (les EUX (les KI (les CAR (les MITSTsAPHON (les NORD (les YABO (les VIENNENT (les LAH (les HASHSHODEDIM (les DÉVASTATEURS (les NEUM (les DIT (les YEHOVAH (les IDOLES (les HONTEUSES (les CIEUX — les JUBILENT !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le DOUBLE-EXODE (les 539 (les PREMIER (les EXILÉS (les SORTENT (les BABYLONE (les DÉCRET (les CYRUS (les ESDRAS (les UN (les CARAVANES (les MONTENT (les JÉRUSALEM (les VASES (les RESTITUÉS (les COLÈRE (les ÉVITÉE (les CŒURS (les FERMES (les RUMEURS (les TRAVERSÉES (les NABONIDE (les EXILÉ (les TÉYMA (les BELSCHATSAR (les RÉGENT (les BABYLONE (les DOMINATEUR (les CONTRE (les DOMINATEUR (les TENSIONS (les DYNASTIQUES (les CHRONIQUE (les NABONIDE (les CONFIRME (les SECOND (les EXODE (les APOCALYPSE (les BABYLONE (les GRANDE (les PEUPLE (les APPELÉ (les SORTIR (les RELIGION (les FAUSSE (les FLÉAUX (les ÉVITÉS (les TYPE (les ANTIQUE (les ANTITYPE (les FINAL (les DEUX (les SORTIES (les UNE (les VOIX — les SORTEZ !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">51:45</td><td>SÉVÈRE (SORTEZ !)</td></tr>
+<tr><td class="d">51:46</td><td>ANNONCÉS (RUMEURS !)</td></tr>
+<tr><td class="d">51:47</td><td>CAPITALE (IDOLES !)</td></tr>
+<tr><td class="d">51:48</td><td>VINGT (JUBILENT !)</td></tr>
+<tr><td class="d">539/Esd1</td><td>CÉLÉBRÉE (EXODE !)</td></tr>
+<tr><td class="d">Ap18:4-20</td><td>FINAL (ANTITYPE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (oracle) → 539/537 : les exilés « sortent du milieu d'elle » (v. 45) avec le décret de Cyrus (Esd 1:1-4) — 42 360 rapatriés (Esd 2:64) chantant l'exode (Is 48:20) ; les « nouvelles d'année en année » (v. 46) : décennie 550-539 — Nabonide retiré à Teyma, Belschatsar régent, Cyrus grignotant l'empire (Chronique de Nabonide, Cylindre de Cyrus) ; « dominateur contre dominateur » : frictions père-fils et révoltes (Gobryas, Gutium).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La sortie (v. 45) : route Babylone → Euphrate amont → Tadmor → Damas → Jérusalem (~900 km, 4 mois, Esd 7:9) ; « du nord viennent les dévastateurs » (v. 48) : l'axe Sippar-Babylone — Cyrus descend l'Euphrate après Opis ; les cieux et la terre témoins : de la Mésopotamie à la Judée, tout le Croissant fertile retentit.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Apocalypse 18:4, 20 (sortez d'elle + ciel en joie : apôtres, prophètes) — l'ANTITYPE mot-à-mot de Jr 51:45, 48, verrou type/antitype ; Ésaïe 48:20 (sortez de Babylone, fuyez, voix d'allégresse) — le CHANT de l'exode de 537 ; la Chronique de Nabonide (co-régence, troubles) — les « nouvelles » du v. 46 dans l'argile.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : ORDRE DE SORTIE + CŒURS FERMES → 550-539 : RUMEURS ANNONCÉES → 539 : IDOLES JUGÉES, TUÉS DANS LES RUES → CIEUX ET TERRE JUBILENT → 537 : EXODE CHANTÉ → HORIZON : SECOND EXODE (AP 18:4)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« 1er accomplissement » (registre) : 539 accomplit littéralement ; Ap 18:4 réapplique à Babylone la Grande — la fiche assume la double lecture, fondatrice de l'exégèse ; « dominateur contre dominateur » (v. 46) : lecture dynastique probable (Nabonide/Belschatsar) — les tablettes confirment les tensions, sans en livrer tout le détail.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ordre de sortie donné</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rumeurs ; troubles dynastiques</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">550-539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute ; exode chanté</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539/537</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1967361">« Le monde commercial a tout lieu de se lamenter » (Tour de Garde)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1967361</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/18">Bible — Révélation 18 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/18</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/48">Bible — Ésaïe 48 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/48</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR292 — « Sortez du milieu d'elle » : l'exode avant la chute</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR293">
+<div class="visuel"><img src="images/prophe_JR293_murailles.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR293 · CATÉGORIE JR</div>
+<h3>« Sa large muraille sera rasée » : Babylone travaille pour le feu</h3>
+<div class="ref">Jérémie 51:49-58</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">murailles rasées portes brûlées (aussi → Babylone → tomber → tués → Israël → tombés → tués → terre → rescapés → épée → partez → arrêtez → loin → souvenez → Jéhovah → Jérusalem → monte → cœur → honteux → opprobre → étrangers → sanctuaire)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR293</div><audio controls preload="none" src="audio/fiche_JR293_murailles.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR293_murailles.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 51:49-58</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>murailles rasées portes brûlées (aussi → Babylone → tomber → tués → Israël → tombés → tués → terre → rescapés → épée → partez → arrêtez → loin → souvenez → Jéhovah → Jérusalem → monte → cœur → honteux → opprobre → étrangers → sanctuaire)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P293 (51:49-58 : murailles tombées, portes brûlées) ; 539 ; Dn 5:30</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« AUSSI… BABYLONE… TOMBER… TUÉS… ISRAËL… TOMBÉS… TUÉS… TERRE… ENTIÈRE… TALION… GÉANT… SANGLANTE… CITÉ… PAIE… HÉCATOMBES… ACCUMULÉES… BALANCE… JUSTICE… BASCULE… CHUTE… MÉRITÉE. » (51:49 — méritée !)</li>
+<li>« RESCAPÉS… ÉPÉE… PARTEZ… ARRÊTEZ… LOIN… SOUVENEZ… JÉHOVAH… JÉRUSALEM… MONTE… CŒUR… EXILÉS… ÉPARGNÉS… PÈLERINAGE… MÉMOIRE… ZION… INTÉRIEURE… AVANT… RETOUR… GÉOGRAPHIQUE… CŒUR… DABORD. » (51:50 — d'abord !)</li>
+<li>« HONTEUX… OPPROBRE… ENTENDU… COUVRE… VISAGES… ÉTRANGERS… VENUS… SANCTUAIRE… MAISON… JÉHOVAH… PROFANATION… SOUVENIR… CUISANT… CINQ-CENT… QUATRE-VINGT-SEPT… VASES… PILLÉS… PARVIS… FOULÉS… HONTE… LAVÉE. » (51:51 — lavée !)</li>
+<li>« JOURS… VIENNENT… PUNIRAI… IDOLES… TOUT… PAYS… GÉMIT… BLESSÉ… MONTERAIT… CIEUX… BABYLONE… FORTIFIERAIT… HAUTEUR… FORCE… DÉVASTATEURS… VIENDRONT… MOI… HYPERBOLE… ANTIGRAVITÉ… NULLE… ÉVASION. » (51:52-53 — évasion !)</li>
+<li>« BRUIT… ÉCROULEMENT… BABYLONE… GRANDE… DESTRUCTION… CHALDÉE… DÉVASTE… GRANDES… EAUX… MUGISSENT… FLOTS… RETENTISSENT… VAUDEVASTATEUR… VIENT… VAILLANTS… PRIS… ARCS… BRISÉS… RÉTRIBUTIONS… PAIE… INTÉGRALE. » (51:54-56 — intégrale !)</li>
+<li>« ENIVRERAI… PRINCES… SAGES… GOUVERNEURS… GUERRIERS… DORMIRONT… SOMMEIL… ÉTERNEL… LARGE… MURAILLE… RASÉE… HAUTES… PORTES… BRÛLÉES… PEUPLES… TRAVAILLENT… VAIN… FEU… LASSÉS… HABACUC… DEUX… TREIZE. » (51:57-58 — treize !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le TALION-GÉANT, ~605 — GAM (les AUSSI (les BABÉL (les BABYLONE (les LINPOL (les TOMBER (les HALELÉ (les TUÉS (les YISRAÉL (les ISRAËL (les GAM (les AUSSI (les LEBABÉL (les BABYLONE (les NAPHLU (les TOMBÉS (les HALELÉ (les TUÉS (les KOL (les TOUTE (les HAARETS (les TERRE (les PELÉTÉ (les RESCAPÉS (les HÉREB (les ÉPÉE (les HALOKHU (les PARTEZ (les AL (les NON (les TAAMODU (les ARRÊTEZ (les ZIKHRU (les SOUVENEZ (les MÉRAHOQ (les LOIN (les ET (les YEHOVAH (les VIRUSHALAYIM (les JÉRUSALEM (les TAALÉH (les MONTE (les AL (les LEBABKHEM (les CŒUR (les BOSHNU (les HONTEUX (les KI (les CAR (les SHAMANU (les ENTENDU (les HERPAH (les OPPROBRE (les KISSETAH (les COUVRE (les KHELIMMAH (les HONTE (les PANÉYNU (les VISAGES (les KI (les CAR (les BA U (les VENUS (les ZARIM (les ÉTRANGERS (les AL (les MIQDASHÉ (les SANCTUAIRE (les BÉYT (les MAISON (les YEHOVAH (les TALION (les RESCAPÉS (les HONTE — les LAVÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>LANTIGRAVITÉ (les LAKHÉN (les CÈST POURQUOI (les HINNÉH (les VOICI (les YAMIM (les JOURS (les BAÏM (les VIENNENT (les NEUM (les DIT (les YEHOVAH (les UPHAQADTI (les PUNIRAI (les AL (les PESILÉHA (les IDOLES (les UBEKHOL (les TOUT (les ARTSAH (les PAYS (les YÉÉNOQ (les GÉMIT (les HALAL (les BLESSÉ (les KI (les SI (les TAALÉH (les MONTERAIT (les BABÉL (les BABYLONE (les HASHSHAMAYIM (les CIEUX (les VEKHI (les SI (les TEBATSTSÉR (les FORTIFIERAIT (les MEROM (les HAUTEUR (les UZZAH (les FORCE (les MÉITTI (les MOI (les YABO U (les VIENDRONT (les SHODEDIM (les DÉVASTATEURS (les LAH (les NEUM (les DIT (les YEHOVAH (les QOL (les BRUIT (les ZEEAQAH (les ÉCROULEMENT (les MIBBABÉL (les BABYLONE (les VESHÉBÉR (les DESTRUCTION (les GADOL (les GRANDE (les MÉÉRETS (les PAYS (les KASDIM (les CHALDÉE (les KI (les CAR (les SHODÉD (les DÉVASTE (les YEHOVAH (les ET (les BABÉL (les BABYLONE (les VEIBBAD (les DÉTRUIT (les MIMMENNAH (les ELLE (les QOL (les VOIX (les GADOL (les GRANDE (les VEHAMU (les MUGISSENT (les GALLÉHEM (les FLOTS (les KEMAYIM (les EAUX (les RABBIM (les GRANDES (les NITTAN (les RETENTISSENT (les SHEON (les QOLAM (les KI (les CAR (les BA (les VIENT (les ALÉHA (les SHODÉD (les DÉVASTATEUR (les AL (les BABÉL (les BABYLONE (les VENILKEDU (les PRIS (les GIBBORÉHA (les VAILLANTS (les HITTALU (les BRISÉS (les QASHTOTAM (les ARCS (les KI (les CAR (les ÉL (les DIEU (les GEMULOT (les RÉTRIBUTIONS (les YEHOVAH (les SHALLÉM (les PAIE (les YESHALLÉM (les INTÉGRALE (les CIEUX (les INUTILES (les ARCS — les BRISÉS !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le FEU-VAIN (les VEHISHKARTI (les ENIVRERAI (les ET (les SARÉHA (les PRINCES (les VEÉT (les HAKHAMÉHA (les SAGES (les PAHOTÉHA (les GOUVERNEURS (les USEGANÉHA (les PRÉFETS (les VEÉT (les GIBBORÉHA (les GUERRIERS (les VEYASHNU (les DORMIRONT (les SHENAT (les SOMMEIL (les OLAM (les ÉTERNEL (les VELO (les NON (les YAQITSU (les RÉVEILLERONT (les NEUM (les DIT (les HAMMÉLEK (les ROI (les YEHOVAH (les TSEBAOT (les ARMÉES (les SHEMO (les NOM (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les HOMOT (les MURAILLE (les BABÉL (les BABYLONE (les HARHABAH (les LARGE (les ARÉR (les RASÉE (les TÉTAREÉR (les USHEARÉHA (les PORTES (les HAGGEBOHIM (les HAUTES (les BAÉSH (les FEU (les YITSTSATTU (les BRÛLÉES (les VEYIGEU (les TRAVAILLENT (les AMMIM (les PEUPLES (les BEDEY (les VAIN (les ULEUMMIM (les NATIONS (les BEDEY (les FEU (les ÉSH (les VEYAÉPHU (les LASSÉS (les DOUBLE (les ENCEINTE (les IMGUR-ENLIL (les NEMED-ENLIL (les HUIT (les PORTES (les MONUMENTALES (les ISHTAR (les GLACURE (les BLEUE (les CÈDRE (les BRONZE (les FLAMMES (les BRIQUES (les VITRIFIÉES (les MURAILLE — les RASÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">51:49</td><td>MÉRITÉE (TALION !)</td></tr>
+<tr><td class="d">51:50-51</td><td>LAVÉE (HONTE !)</td></tr>
+<tr><td class="d">51:52-53</td><td>ÉVASION (CIEUX !)</td></tr>
+<tr><td class="d">51:54-56</td><td>INTÉGRALE (BRISÉS !)</td></tr>
+<tr><td class="d">51:57</td><td>ÉTERNEL (ENIVRERAI !)</td></tr>
+<tr><td class="d">51:58/539</td><td>TREIZE (RASÉE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~605 (oracle) → 539 : la nuit du festin (v. 57 ; Dn 5 — princes, sages, gouverneurs ivres, « sommeil éternel ») ; les vaillants « pris », arcs « brisés » (v. 56 — Hérodote : Babyloniens dansant pendant la prise) ; la large muraille (v. 58) : double enceinte Imgur-Enlil + Nemed-Enlil (Koldewey : jusqu'à ~24 m d'épaisseur totale avec fossés) — démantelée sous les Perses (Xerxès après 484), portes cédre-et-bronze incendiées ; « peuples lassés pour le feu » : tout l'effort bâti part en fumée.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La « large muraille » (v. 58) : ~8 km d'enceinte intérieure + mur extérieur + fossé alimenté — Hérodote (exagérant) : 50 coudées royales d'épaisseur ; la porte d'Ishtar (émaux bleus, taureaux, dragons — Pergamon Museum) : vantaux de cèdre bardés de bronze, proies du feu ; « monterait-elle aux cieux » (v. 53) : l'Étemenanki (ziggourat ~91 m) — même la tour touche-ciel ne sauve pas.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Psaume 127:1 (Rbi8 : bâtisseurs en vain) — l'ÉPITAPHE théologique du v. 58 ; Daniel 4:30 (« Babylone que j'ai bâtie par la force de ma puissance ») — l'ORGUEIL bâti, voué au feu ; Habacuc 2:13 (« les peuples travaillent pour le feu, les nations se lassent pour rien ») — le JUMEAU LITTÉRAL du v. 58, deux témoins.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~605 : TALION PRONONCÉ → RESCAPÉS CONSOLÉS → 539 : FESTIN-IVRESSE → SOMMEIL ÉTERNEL → ARCS BRISÉS → MURAILLE RASÉE → PORTES BRÛLÉES → EFFORT SÉCULAIRE : CENDRES</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Rasée, brûlées » (v. 58) : processus — 539 (brèches) puis démantèlements perses successifs (Xerxès, révoltes 484) ; les murs ne disparaissent pas en une nuit, mais leur sort est scellé : ruines de briques que les voyageurs (Benjamin de Tudèle, XIIᵉ s.) décrivent encore fumantes de légende — jamais relevées.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Muraille condamnée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Festin ; arcs brisés</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 (nuit)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Brèches ; démantèlement ; feu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539-484</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/19/127">Bible — Psaume 127 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/19/127</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/4">Bible — Daniel 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/35/2">Bible — Habacuc 2 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/35/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR293 — « Sa large muraille sera rasée » : Babylone travaille pour le feu</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR294">
+<div class="visuel"><img src="images/prophe_JR294_rouleau.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR294 · CATÉGORIE JR</div>
+<h3>« Ainsi s'enfoncera Babylone » : le rouleau lesté de Séraja</h3>
+<div class="ref">Jérémie 51:59-64</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">rouleau jeté Babylone enfoncée (parole → commanda → Jérémie → prophète → Séraja → fils → Nériya → alla → Babylone → Sédécias → roi → Juda → quatrième → année → règne → Séraja → prince → repos → écrivit → Jérémie → tout → malheur → livre → paroles → écrites → Babylone)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR294</div><audio controls preload="none" src="audio/fiche_JR294_rouleau.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR294_rouleau.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 51:59-64</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>rouleau jeté Babylone enfoncée (parole → commanda → Jérémie → prophète → Séraja → fils → Nériya → alla → Babylone → Sédécias → roi → Juda → quatrième → année → règne → Séraja → prince → repos → écrivit → Jérémie → tout → malheur → livre → paroles → écrites → Babylone)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P294 (51:59-64 : rouleau jeté dans l'Euphrate, Babylone s'enfoncera) ; 539</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PAROLE… COMMANDA… JÉRÉMIE… SÉRAJA… FILS… NÉRIYA… FRÈRE… BARUCH… SECRÉTAIRE… FAMILLE… SCRIBES… ALLA… BABYLONE… SÉDÉCIAS… QUATRIÈME… ANNÉE… CINQ-CENT… QUATRE-VINGT… TREIZE… AMBASSADE… VASSAL… TRIBUT. » (51:59 — tribut !)</li>
+<li>« PRINCE… REPOS… SAR… MENOUHAH… CHAMBELLAN… LOGISTIQUE… ROYALE… ÉCRIVIT… JÉRÉMIE… TOUT… MALHEUR… LIVRE… PAROLES… ÉCRITES… BABYLONE… ACTE… ACCUSATION… COMPLET… ARCHIVÉ… SCELLÉ… PORTÉ… ACCUSÉE. » (51:59-60 — accusée !)</li>
+<li>« ARRIVERAS… BABYLONE… VERRAS… LIRAS… TOUTES… PAROLES… LECTURE… PUBLIQUE… CAPITALE… ENNEMIE… COURAGE… EXTRAORDINAIRE… DIRAS… JÉHOVAH… PARLÉ… EXTERMINER… LIEU… NUL… HABITANT… HOMME… BÊTE… DÉSOLATIONS… ÉTERNELLES. » (51:61-62 — éternelles !)</li>
+<li>« ACHÈVERAS… LIRE… ATTACHERAS… PIERRE… JETTERAS… MILIEU… EUPHRATE… GESTE… PROPHÉTIQUE… LEST… ASSURE… ENFONCEMENT… DÉFINITIF… FLEUVE… TOMBEAU… MANUSCRIT… ENCRE… DISSOUTE… PAROLE… INEFFAÇABLE. » (51:63 — ineffaçable !)</li>
+<li>« DIRAS… AINSI… BABYLONE… ENFONCERA… RELÈVERA… MALHEUR… AMÈNERAI… TOMBERONT… ÉPUISÉS… JUSQUICI… PAROLES… JÉRÉMIE… CLÔTURE… LIVRE… POINT… FINAL… CINQUANTE-DEUX… ÉPILOGUE… HISTORIQUE… SCRIBE… ULTÉRIEUR. » (51:64 — ultérieur !)</li>
+<li>« EXODE… QUINZE… CINQ… ABÎMES… COUVRENT… ENFONCENT… PIERRE… NÉHÉMIE… NEUF… ONZE… JETTES… PROFONDEURS… PIERRE… EAUX… PUISSANTES… MICHÉE… SEPT… DIX-NEUF… JETTERA… PÉCHÉS… PROFONDEURS… MER… TROIS… ÉCHOS. » (échos — échos !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>LAMBASSADE, ~593 — HADDABAR (les PAROLE (les ASHER (les QUE (les TSIVVAH (les COMMANDA (les YIRMEYAHU (les JÉRÉMIE (les HANNABI (les PROPHÈTE (les ET (les SERAYAH (les SÉRAJA (les BEN (les FILS (les NÉRIYYAH (les NÉRIYA (les BELEKHTO (les ALLA (les ET (les TSIDQIYYAHU (les SÉDÉCIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les BABÉL (les BABYLONE (les BISHNAT (les ANNÉE (les REBIÏT (les QUATRIÈME (les LEMOLKHO (les RÈGNE (les USERAYAH (les SÉRAJA (les SAR (les PRINCE (les MENOUHAH (les REPOS (les VAYYIKHTOB (les ÉCRIVIT (les YIRMEYAHU (les JÉRÉMIE (les ET (les KOL (les TOUT (les HARA AH (les MALHEUR (les ASHER (les QUI (les TABO (les VIENDRA (les EL (les BABÉL (les BABYLONE (les EL (les SÉPHÉR (les LIVRE (les ÉHAD (les UN (les ÉT (les KOL (les TOUTES (les HADDEBARIM (les PAROLES (les HAÉLLEH (les CES (les HAKKETUBIM (les ÉCRITES (les EL (les BABÉL (les BABYLONE (les AMBASSADE (les ROULEAU — les ACCUSÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La LECTURE (les VAYYOMÉR (les DIT (les YIRMEYAHU (les JÉRÉMIE (les EL (les SERAYAH (les SÉRAJA (les KHEBOAKHA (les ARRIVERAS (les BABÉL (les BABYLONE (les VERAÏTA (les VERRAS (les VEQARATA (les LIRAS (les ET (les KOL (les TOUTES (les HADDEBARIM (les PAROLES (les HAÉLLEH (les VEAMARTA (les DIRAS (les YEHOVAH (les ATTAH (les TU (les DIBBARTA (les PARLÉ (les EL (les HAMMAQOM (les LIEU (les HAZZÉH (les CE (les LEHAKHRITO (les EXTERMINER (les LEBILTI (les QUE NUL (les HEYOT (les SOIT (les BO (les YOSHÉB (les HABITANT (les LEMÉADAM (les HOMME (les VEAD (les JUSQUÀ (les BEHÉMAH (les BÊTE (les KI (les CAR (les SHIMMOT (les DÉSOLATIONS (les OLAM (les ÉTERNELLES (les TIHYEH (les SERA (les LECTURE (les ENNEMIE (les LIEU — les EXTERMINÉ !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le LEST (les VEHAYAH (les SERA (les KHEKHALLOTKHA (les ACHÈVERAS (les LIQRO (les LIRE (les ET (les HASSÉPHÉR (les LIVRE (les HAZZÉH (les CE (les TIQSHOR (les ATTACHERAS (les ALAV (les LUI (les ÉBÉN (les PIERRE (les VEHISHLAKHTO (les JETTERAS (les EL (les TOKH (les MILIEU (les PERAT (les EUPHRATE (les VEAMARTA (les DIRAS (les KAKHAH (les AINSI (les TISHQA (les ENFONCERA (les BABÉL (les BABYLONE (les VELO (les NON (les TAQUM (les RELÈVERA (les MIPPNÉ (les HARA AH (les MALHEUR (les ASHER (les QUE (les ANI (les JE (les MÉBI (les AMÈNERAI (les ALÉHA (les ELLE (les VEYAÉPHU (les ÉPUISÉS (les AD (les JUSQUICI (les HÉNNAH (les DIBERÉ (les PAROLES (les YIRMEYAHU (les JÉRÉMIE (les PIERRE (les LEST (les FLEUVE (les TOMBEAU (les ENFONCEMENT (les DÉFINITIF (les AMBITIEUX (les TENTERONT (les RELEVER (les ÉCHOUERONT (les ÉPUISÉS (les ALEXANDRE (les MEURT (les BABYLONE (les SELEUCUS (les FONDE (les AILLEURS (les SADDAM (les RECONSTRUIT (les DÉCOR (les VILLE (les JAMAIS (les LEST — les ENFONCÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">51:59-60</td><td>ACCUSÉE (AMBASSADE !)</td></tr>
+<tr><td class="d">51:61-62</td><td>ÉTERNELLES (LECTURE !)</td></tr>
+<tr><td class="d">51:63</td><td>INEFFAÇABLE (LEST !)</td></tr>
+<tr><td class="d">51:64a</td><td>ÉPUISÉS (ENFONCERA !)</td></tr>
+<tr><td class="d">51:64b</td><td>ULTÉRIEUR (CLÔTURE !)</td></tr>
+<tr><td class="d">593→539/Ap18:21</td><td>ÉCHOS (MEULE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~593 (an 4 de Sédécias, ambassade de vassalité à Babylone — Séraja, « prince du repos »/chambellan, porte le rouleau) → 539 : « ainsi Babylone s'enfoncera et ne se relèvera pas » (v. 64) — en une nuit ; « ils tomberont épuisés » : Alexandre rêve de restaurer Babylone (meurt en 323 dans le palais de Neboukadnetsar), Séleucos fonde Séleucie ailleurs, les Parthes l'abandonnent, Saddam bâtit un décor — tous épuisés, la ville jamais relevée ; « jusqu'ici les paroles de Jérémie » : le ch. 52 est l'épilogue historique (chute de Jérusalem).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le « milieu de l'Euphrate » (v. 63) à Babylone : le fleuve (~200-300 m de large, quais) traverse la ville — le rouleau lesté coule au cœur même de la capitale accusée ; geste visible, public, irréversible — comme la meule de l'ange (Ap 18:21) dans la mer ; Séraja repart : la sentence reste, engloutie mais active.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Exode 15:5 (Rbi8 : abîmes les couvrent, ils s'enfoncent comme une pierre) — le MODÈLE : l'armée engloutie ; Néhémie 9:11 (jetés aux profondeurs comme une pierre dans les eaux puissantes) — la RELECTURE du retour d'exil ; Michée 7:19 (tu jetteras leurs péchés aux profondeurs de la mer) — le CONTREPOINT : Babylone engloutie, les péchés pardonnés engloutis ; Apocalypse 18:21 (meule jetée : ainsi Babylone jetée bas) — l'ANTITYPE final.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~593 : ROULEAU ÉCRIT → AMBASSADE À BABYLONE → LECTURE PUBLIQUE CHEZ L'ENNEMI → PIERRE ATTACHÉE → JETÉ AU MILIEU DE L'EUPHRATE → 539 : ENFONCEMENT → SIÈCLES : RELEVEURS ÉPUISÉS → HORIZON : MEULE DE L'APOCALYPSE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Séraja « prince du repos » (v. 59, sar menouhah — hapax) : chambellan ? maître du campement royal ? — la fonction exacte se discute, le voyage est certain ; le rouleau jeté : original perdu — le TEXTE survit dans le livre de Jérémie lui-même (ironie : le fleuve garde la copie, Dieu garde l'original) ; la datation 593 (an 4) suppose Sédécias 597-587.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rouleau porté et jeté</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~593</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Enfoncement : prise d'une nuit</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Releveurs épuisés, jamais relevée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">323+ → XXᵉ s.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/15">Bible — Exode 15 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/2/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/9">Bible — Néhémie 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/33/7">Bible — Michée 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/33/7</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR294 — « Ainsi s'enfoncera Babylone » : le rouleau lesté de Séraja</span><span>Catégorie JR</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR289 — « Nulle pierre d'angle » : Babylone, ruine à jamais</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nulle pierre annoncée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise ; spoliation amorcée</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Déserte ; vestiges exposés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Iᵉʳ s.+</text>
+</svg>
+<h4>JR290 — « Ararat, Minni, Ashkenaz » : la coalition convoquée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trois royaumes convoqués</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gués saisis ; nuit de la prise</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Belschatsar tué ; aire foulée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 (aube)</text>
+</svg>
+<h4>JR291 — « J'assèche sa mer » : Bel vomit ce qu'il a englouti</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dragon accusé ; mer condamnée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Euphrate détourné ; lit à sec</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 (jour)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Festin ; Bel vomit ; prise</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 (nuit)</text>
+</svg>
+<h4>JR292 — « Sortez du milieu d'elle » : l'exode avant la chute</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ordre de sortie donné</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rumeurs ; troubles dynastiques</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">550-539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute ; exode chanté</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539/537</text>
+</svg>
+<h4>JR293 — « Sa large muraille sera rasée » : Babylone travaille pour le feu</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Muraille condamnée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Festin ; arcs brisés</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 (nuit)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Brèches ; démantèlement ; feu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539-484</text>
+</svg>
+<h4>JR294 — « Ainsi s'enfoncera Babylone » : le rouleau lesté de Séraja</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rouleau porté et jeté</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~593</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Enfoncement : prise d'une nuit</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Releveurs épuisés, jamais relevée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">323+ → XXᵉ s.</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

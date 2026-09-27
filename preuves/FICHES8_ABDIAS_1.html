@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES AB1 — Abdias — l'orgueil d'Édom précipité, la violence contre Jacob et le royaume qui revient à Jéhovah</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_AB442_sela.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES AB1</h1>
+<h2>Abdias — l'orgueil d'Édom précipité, la violence contre Jacob et le royaume qui revient à Jéhovah</h2>
+<p class="intro">Le livre le plus court des Écritures hébraïques, prononcé contre Édom, le peuple issu d'Ésaü : l'orgueil de ceux qui habitent « le creux des rochers » et croient leur nid hors d'atteinte, la convocation des nations rassemblées contre eux, le pillage par les alliés, les sages de Téman privés d'intelligence, puis la longue mise en accusation du jour où Édom se tint à l'écart, se réjouit et livra les rescapés de Juda — « comme tu as fait, il te sera fait » —, avant l'ouverture du dernier mouvement, qui transporte le lecteur sur le mont Sion : il y aura des rescapés, la maison de Jacob sera un feu, et des libérateurs monteront juger la montagne d'Ésaü, « et le royaume sera à Jéhovah ».</p>
+<div class="chiffres">
+<div><b>5</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>30</b><span>sources</span></div>
+<div><b>5</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#AB442">AB442</a>
+<a href="#AB443">AB443</a>
+<a href="#AB444">AB444</a>
+<a href="#AB445">AB445</a>
+<a href="#AB446">AB446</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#AB442"><img src="images/prophe_AB442_sela.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AB442</div>
+<h3><a href="#AB442">« L'orgueil de ton cœur t'a égaré » : le creux des rochers, le nid de l'aigle et les sages de Téman</a></h3>
+<div class="meta">Accomplie · 🎧 0:31</div></div></div>
+<div class="carte">
+<a class="img" href="#AB443"><img src="images/prophe_AB443_carrefour.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AB443</div>
+<h3><a href="#AB443">« À cause de la violence faite à ton frère Jacob » : le jour où Édom se tint à l'écart et livra les rescapés</a></h3>
+<div class="meta">Accomplie · 🎧 0:31</div></div></div>
+<div class="carte">
+<a class="img" href="#AB444"><img src="images/prophe_AB444_coupe.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AB444</div>
+<h3><a href="#AB444">« Comme tu as fait, il te sera fait » : le jour de Jéhovah sur toutes les nations et la coupe bue sur la montagne sainte</a></h3>
+<div class="meta">Accomplie / À venir · 🎧 0:27</div></div></div>
+<div class="carte">
+<a class="img" href="#AB445"><img src="images/prophe_AB445_sion.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AB445</div>
+<h3><a href="#AB445">« Sur le mont Sion il y aura des rescapés » : la maison de Jacob comme un feu, Joseph comme une flamme et le retour des captifs</a></h3>
+<div class="meta">Accomplie (1er accomplissement) · 🎧 0:33</div></div></div>
+<div class="carte">
+<a class="img" href="#AB446"><img src="images/prophe_AB446_liberateurs.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE AB446</div>
+<h3><a href="#AB446">« Des libérateurs monteront sur le mont Sion… et le royaume sera à Jéhovah » : la conclusion du livre d'Abdias</a></h3>
+<div class="meta">À venir · 🎧 0:31</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="AB442">
+<div class="visuel"><img src="images/prophe_AB442_sela.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AB442 · CATÉGORIE AB1</div>
+<h3>« L'orgueil de ton cœur t'a égaré » : le creux des rochers, le nid de l'aigle et les sages de Téman</h3>
+<div class="ref">Abdias 1-9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">vision d'abdias voici ce que dit le souverain seigneur jéhovah au sujet d'édom nous avons appris une nouvelle de la part de jéhovah et un messager a été envoyé parmi les nations levez-vous marchons contre édom pour lui faire la guerre voici je te rendrai petit parmi les nations tu seras très méprisé l'orgueil de ton cœur t'a égaré toi qui habites le creux des rochers ta haute demeure et qui dis en ton cœur qui me précipitera jusqu'à terre même si tu places ton nid aussi haut que celui de l'aigle et même si tu le places parmi les étoiles de là je t'en ferai descendre si des voleurs venaient de nuit pendant ton sommeil ne voleraient-ils pas seulement ce qui leur suffit si des vendangeurs venaient ne laisseraient-ils pas des grappillages comme Ésaü a été fouillé ses trésors cachés ont été découverts tous tes alliés t'ont chassé jusqu'à la frontière tes amis t'ont trompé ceux qui mangeaient ton pain t'ont dressé un piège en ce jour-là je ferai disparaître d'édom les sages et de la montagne d'Ésaü l'intelligence tes guerriers ô téman seront terrifiés afin que tout homme soit retranché de la montagne d'Ésaü par le massacre (jugement sur édom ; accomplie)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AB442 · 0:31</div><audio controls preload="none" src="audio/fiche_AB442_sela.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AB442_sela.mp3 · 0:31 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Abdias 1-9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>vision d'abdias voici ce que dit le souverain seigneur jéhovah au sujet d'édom nous avons appris une nouvelle de la part de jéhovah et un messager a été envoyé parmi les nations levez-vous marchons contre édom pour lui faire la guerre voici je te rendrai petit parmi les nations tu seras très méprisé l'orgueil de ton cœur t'a égaré toi qui habites le creux des rochers ta haute demeure et qui dis en ton cœur qui me précipitera jusqu'à terre même si tu places ton nid aussi haut que celui de l'aigle et même si tu le places parmi les étoiles de là je t'en ferai descendre si des voleurs venaient de nuit pendant ton sommeil ne voleraient-ils pas seulement ce qui leur suffit si des vendangeurs venaient ne laisseraient-ils pas des grappillages comme Ésaü a été fouillé ses trésors cachés ont été découverts tous tes alliés t'ont chassé jusqu'à la frontière tes amis t'ont trompé ceux qui mangeaient ton pain t'ont dressé un piège en ce jour-là je ferai disparaître d'édom les sages et de la montagne d'Ésaü l'intelligence tes guerriers ô téman seront terrifiés afin que tout homme soit retranché de la montagne d'Ésaü par le massacre (jugement sur édom ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Abdias — P442 (1-4 : l'orgueil d'Édom ; de là je te précipiterai) ; jugement sur Édom ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« VISION D'ABDIAS… VOICI CE QUE DIT LE SOUVERAIN SEIGNEUR JÉHOVAH… AU SUJET D'ÉDOM… NOUS AVONS APPRIS UNE NOUVELLE… DE LA PART DE JÉHOVAH… ET UN MESSAGER… A ÉTÉ ENVOYÉ PARMI LES NATIONS… LEVEZ-VOUS… MARCHONS CONTRE ÉDOM… POUR LUI FAIRE LA GUERRE… »… « VOICI… JE TE RENDRAI PETIT… PARMI LES NATIONS… TU SERAS TRÈS MÉPRISÉ… »… « L'ORGUEIL DE TON CŒUR… T'A ÉGARÉ… TOI QUI HABITES… LE CREUX DES ROCHERS… TA HAUTE DEMEURE… ET QUI DIS EN TON CŒUR… QUI ME PRÉCIPITERA… JUSQU'À TERRE…? »… « MÊME SI TU PLACES TON NID… AUSSI HAUT QUE CELUI DE L'AIGLE… ET MÊME SI TU LE PLACES… PARMI LES ÉTOILES… DE LÀ… JE T'EN FERAI DESCENDRE… DÉCLARE JÉHOVAH… »… « SI DES VOLEURS… VENAIENT DE NUIT… NE VOLERAIENT-ILS PAS… SEULEMENT CE QUI LEUR SUFFIT…? SI DES VENDANGEURS… VENAIENT… NE LAISSERAIENT-ILS PAS… DES GRAPPILLAGES…? COMME ÉSAÜ A ÉTÉ FOUILLÉ… SES TRÉSORS CACHÉS… ONT ÉTÉ DÉCOUVERTS… »… « TOUS TES ALLIÉS… T'ONT CHASSÉ… JUSQU'À LA FRONTIÈRE… TES AMIS… T'ONT TROMPÉ… CEUX QUI MANGEAIENT TON PAIN… T'ONT DRESSÉ UN PIÈGE… IL N'Y A EN LUI… AUCUNE INTELLIGENCE… »… « N'EST-CE PAS EN CE JOUR-LÀ… DÉCLARE JÉHOVAH… QUE JE FERAI DISPARAÎTRE D'ÉDOM… LES SAGES… ET DE LA MONTAGNE D'ÉSAÜ… L'INTELLIGENCE…? »… « TES GUERRIERS… Ô TÉMAN… SERONT TERRIFIÉS… AFIN QUE TOUT HOMME… SOIT RETRANCHÉ… DE LA MONTAGNE D'ÉSAÜ… PAR LE MASSACRE… »… — ḤAZON ʿOVADYAH… VISION D'ABDIAS… ʿEDOM… ÉDOM… SELA… LE ROCHER… ḤASID… LE CREUX… MEROME… DEMEURE ÉLEVÉE… NESHER… AIGLE… KOKHAVIM… ÉTOILES… ḤOVEVIM… VOLER… BOTSERIM… VENDANGEURS… ʿOLELOT… GRAPPILLAGES… ḤEFES… TRÉSORS CACHÉS… ḤOKMAH… SAGESSE… TEMAN… TÉMAN… GIBBORIM… GUERRIERS… — VERS 607 AV. N. È.… 552… NABONIDE À TÉMA… IVe SIÈCLE… NABATÉENS… 312… PÉTRA… »</li>
+<li>LES TROIS JUMEAUX — Genèse 36:6-8 : Ésaü s'établit dans la montagne de Séir et devient Édom, séparant ses troupeaux de ceux de Jacob — l'origine du peuple dont le livre expose la chute. Job 39:27-30 : « est-ce sur ton ordre que l'aigle s'élève et place son nid en hauteur ? il habite dans le rocher et y passe la nuit » — la même image du nid élevé, employée pour décrire ce qui, aux yeux de Dieu, ne met personne à l'abri. Ézéchiel 25:12-14 : « à cause de ce qu'Édom a fait, parce qu'il a agi en se vengeant contre la maison de Juda… j'étendrai ma main contre Édom » — la condamnation voisine, prononcée à la même époque contre le même peuple.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Abdias est le plus court livre des Écritures hébraïques : vingt et un versets, un seul chapitre, rédigé par un prophète dont on ne sait pratiquement rien sinon le nom, qui signifie « serviteur de Jéhovah ». Le livre porte uniquement sur Édom, le peuple issu d'Ésaü, dont l'histoire est celle d'un jumeau mal disposé envers Jacob. L'ouverture décrit une convocation internationale : une nouvelle a été communiquée de la part de Jéhovah, un messager a circulé parmi les nations, et les peuples sont appelés à marcher contre Édom. Vient ensuite le motif de l'accusation, qui donne au livre sa couleur : l'orgueil. Édom habite « le creux des rochers », il a placé sa demeure « sur les hauteurs », il s'assied au sommet du pays montagneux au sud-est de la mer Morte, et il demande : qui me précipitera jusqu'à terre ? Les versets 5 à 9 décrivent ensuite un pillage total, avec deux comparaisons tirées de la vie quotidienne : ni le voleur nocturne, ni le vendangeur ne laissent un pays aussi vide ; les alliés chassent Édom jusqu'à la frontière, ceux qui partageaient son pain lui tendent un piège, et les sages de Téman — la région réputée pour son intelligence — perdent tout discernement. Le massacre touche jusqu'aux guerriers et retranche les hommes de la montagne d'Ésaü.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA GÉOGRAPHIE DE L'ORGUEIL : « le creux des rochers » traduit le nom même de Séla, la capitale édomite perchée sur des hauteurs rocheuses, dont le site correspond à l'actuelle Pétra ; « ta haute demeure » décrit l'occupation des plateaux escarpés de Séir, entre le sud de la mer Morte et le golfe d'Aqaba. La formulation d'Abdias n'est pas une métaphore gratuite : l'histoire du pays repose réellement sur la protection naturelle de ses reliefs. (2) LE NID DE L'AIGLE : l'image est prise de l'aigle qui niche dans les parois inaccessibles, à l'abri des prédateurs. En disant « même si tu places ton nid parmi les étoiles », le texte élève la comparaison jusqu'à l'absurde pour ôter le dernier argument : l'altitude ne protège pas du Créateur. (3) LE PILLAGE INÉLUCTABLE : les deux images du voleur de nuit et du vendangeur servent à montrer que le jugement dépasse en rigueur l'avidité ordinaire des pilleurs — là où d'autres auraient laissé quelque chose, tout est fouillé, alors même qu'on ne peut pas reprendre autant à un pays qu'à un homme, car il faudrait le connaître entièrement : c'est pourquoi la fin du verset 6 mentionne la découverte des « trésors cachés ». (4) LA RUPTURE DES ALLIANCES ET LA PERTE DES SAGES : les coalitions de l'époque — Tyr, les tribus arabes, les royaumes voisins — sont évoquées par « tous tes alliés » ; ce qui est annoncé n'est pas seulement une conquête, mais l'effondrement du système diplomatique et commercial qui faisait vivre le pays. Téman, au nord de l'Édom, était renommée pour ses sages, comme le rappelle Éliphaz le Témanite dans le livre de Job ; la disparition annoncée de cette intelligence est donc la fin symbolique d'un pays réduit à néant.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « L'Édom antitypique des temps modernes doit disparaître » rappelle que le pays d'Édom « occupait une région montagneuse élevée » et que « Jéhovah pouvait dire, dans un langage figuré, qu'il maniait son épée ou glaive du jugement dans les cieux » ; il insiste sur le fait que l'orgueil de ce peuple l'a conduit à mépriser le peuple de Dieu, et que personne ne peut se soustraire au jugement divin. L'article « Des avertissements divins qui vous concernent » présente la prophétie comme l'un des livres d'avertissement de la Bible : le malheur est décidé contre Édom, et « nul ne peut se soustraire au jugement de Jéhovah ». Lecture commune et exégèse : les commentateurs notent la proximité frappante d'Abdias 1-9 avec Jérémie 49:7-22, au point que les deux textes sont souvent mis côte à côte dans les synopses : la description de l'orgueil des rochers, du nid de l'aigle et de la disparition des sages de Téman s'y retrouve presque mot pour mot. La plupart des exégètes datent l'oracle de la période qui suit la chute de Jérusalem en 607 av. n. è., en raison de la mention de la participation d'Édom au pillage de la ville.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 607 av. n. è.</td><td>La prophétie est prononcée contre Édom ; les nations sont appelées à marcher contre le pays (Abdias 1-2)</td></tr>
+<tr><td class="d">Vers 607-580 av. n. è.</td><td>Après la chute de Jérusalem, Édom est emporté dans le même mouvement de conquête babylonienne que les autres royaumes de la région (Jérémie 25:15-21)</td></tr>
+<tr><td class="d">Vers 552 av. n. è.</td><td>Campagne de Nabonide, roi de Babylone, vers Téma et le pays d'Édom ; l'autonomie du pays est définitivement atteinte</td></tr>
+<tr><td class="d">IVe siècle av. n. è.</td><td>Les Nabatéens occupent le territoire édomite et s'installent à Pétra ; les Édomites ne reviendront jamais dans leur pays</td></tr>
+<tr><td class="d">130-120 av. n. è.</td><td>Jean Hyrcan soumet la population édomite regroupée au sud de Juda et la contraint à adopter le judaïsme (Flavius Josèphe, Antiquités XIII)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Après la destruction de Jérusalem par les Romains, en 70 de n. è., l'Idumée disparaît de l'histoire ; le peuple est absorbé</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE PAYS D'ÉDOM ET SES VILLES : la région, appelée Séir, s'étend au sud-est de la mer Morte ; ses villes principales sont Séla, Maon, Etsion-Guéber et Elath ; les sources égyptiennes de la XIIe dynastie et les lettres d'Amarna mentionnent Udumu, ce qui rattache le pays à l'histoire attestée avant la monarchie israélite. (2) LES CONFLITS AVEC ISRAËL : 2 Samuel 8:13, 14 et 2 Rois 8:20-22 rapportent les victoires de David puis la révolte d'Édom contre Yoram ; 2 Rois 14:7 rapporte qu'Amatzia frappa Édom dans la vallée du Sel et prit Séla. (3) LA HAINE AU MOMENT DE 607 : le Psaume 137:7 dit d'Édom qu'il criait « dénudez-la », Lamentations 4:21 se réjouit à l'avance de la coupe qui passera à Édom, et Ézéchiel 25:12-14 dénonce la vengeance du pays contre Juda. (4) LA FIN D'ÉDOM : l'historien Flavius Josèphe rapporte la soumission des Iduméens par Jean Hyrcan entre 130 et 120 av. n. è., et la note selon laquelle ils furent contraints d'adopter la religion juive ; le même auteur signale l'origine iduméenne d'Antipater, père d'Hérode le Grand. (5) LES SOURCES CUNÉIFORMES : les textes babyloniens mentionnent, sous Nabonide, une campagne vers Téma ; plusieurs historiens de la Mésopotamie estiment que les troupes engagées comprenaient des soldats judéens, ce qui correspond au tableau d'un Édom conquis à son tour après avoir applaudi à la ruine de Jérusalem. (6) LES TEXTES DE QUMRÂN ET LA LITTÉRATURE JUIVE : la figure d'Édom comme adversaire héréditaire y est reprise ; la tradition rabbinique lit le livre comme le modèle du jugement des oppresseurs.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) SÉLA ET LES ROCHERS : Séla — « le rocher » — est le nom de la capitale édomite ; les hauteurs du site d'Umm el-Biyara, à Pétra, ont livré des vestiges d'habitations et des citernes datés du VIIe siècle av. n. è., ce qui documente l'occupation édomite d'un lieu naturellement défendu. (2) LES PLATEAUX DE SÉIR : le pays s'élève à plus de mille mètres, découpé par des canyons profonds et des passes étroites ; cette configuration explique la formule « le creux des rochers ». (3) LES DEUX EXTRÉMITÉS : Édom s'étend du sud de la mer Morte au golfe d'Aqaba, avec les ports d'Etsion-Guéber et d'Elath ; il contrôle donc, à l'époque, une partie des routes du commerce caravanier entre l'Arabie et la Méditerranée. (4) TÉMAN : localité du nord du pays, en bordure des routes qui montent vers la Arabah ; la réputation de sagesse de ses habitants est mentionnée en Jérémie 49:7 et illustrée par Éliphaz le Témanite, ami de Job (Job 2:11). (5) LA ARABAH ET LE JOURDAIN : la dépression qui longe le pays à l'ouest constitue la voie naturelle des incursions venant du nord ; c'est par là que passent les armées qui vont démanteler Édom. (6) LES ROUTES DE DÉPORTATION ET DE FUITE : les pistes qui traversent le pays vers le Néguev servent ensuite aux Édomites eux-mêmes, qui glissent vers le sud de Juda au fur et à mesure de l'installation des Nabatéens.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) L'ARCHÉOLOGIE D'ÉDOM : les fouilles conduites à Umm el-Biyara, à Tawilan et à Buseirah — la Botsra biblique — aux XIXe et XXe siècles ; l'exploration de Pétra par l'école biblique de Jérusalem en 1934 puis la reprise tchèque après 1960 ont été décisives. Des prospections et des fouilles récentes ont ainsi documenté une occupation du pays par les Édomites dès la fin du VIIIe siècle av. n. è., antérieure à la pression nabatéenne. (2) LES CITERNES ET LES TERRASSES : les installations hydrauliques et agricoles retrouvées sur les hauteurs, à Tawilan et Ghrareh notamment, attestent l'aménagement intensif du territoire ; les Édomites sont associés aux débuts d'une irrigation maîtrisée dans la région bien avant l'expansion nabatéenne. (3) LA MÉTALLURGIE DU CUIVRE : les travaux archéologiques dirigés par Thomas Levy à Khirbet en-Nahas, dans la vallée de Faynan, ont montré l'existence d'une production de cuivre à grande échelle dès le Xe siècle av. n. è. ; des datations et des analyses isotopiques ont été utilisées pour établir l'ampleur de cette industrie, ce qui éclaire la richesse du pays que le prophète décrit en termes de « trésors cachés ». (4) LA FIN DE L'OCCUPATION : l'abandon progressif des sites édomites et l'arrivée des Nabatéens à Pétra sont attestés par la céramique et les inscriptions ; vers 312 av. n. è., des sources grecques mentionnent pour la première fois les Nabatéens à Pétra. (5) LES INSCRIPTIONS : les graffiti et documents nabatéens découverts à Pétra, Hégra et dans le Néguev confirment la présence d'une civilisation arabe dans le territoire édomite après le départ des Édomites. (6) PRUDENCE : l'archéologie documente l'occupation, la richesse métallurgique et la disparition du pays ; elle ne peut pas fournir de preuve directe du discours prophétique lui-même.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>VISION D'ABDIAS CONTRE ÉDOM (v. 1) → CONVOCATION DES NATIONS : « MARCHONS CONTRE ÉDOM » (v. 1) → « JE TE RENDRAI PETIT PARMI LES NATIONS » (v. 2) → L'ORGUEIL : LE CREUX DES ROCHERS, LA HAUTE DEMEURE, « QUI ME PRÉCIPITERA ? » (v. 3) → LE NID DE L'AIGLE PARMI LES ÉTOILES → « JE T'EN FERAI DESCENDRE » (v. 4) → PILLAGE TOTAL : VOLETURS ET VENDANGEURS N'ÉPARGNENT RIEN (v. 5, 6) → « TOUS TES ALLIÉS T'ONT CHASSÉ » ; LE PAIN PARTAGÉ DEVIENT UN PIÈGE (v. 7) → LES SAGES DE TÉMAN PERDENT L'INTELLIGENCE (v. 8, 9) → VERS 552 : CAMPAGNE DE NABONIDE → IVe SIÈCLE : LES NABATÉENS OCCUPENT PÉTRA → 130-120 : JEAN HYRCAN SOUMET L'IDUMÉE → 70 DE N. È. : DISPARITION DE L'IDUMÉE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec la référence du registre (jugement sur Édom) et le statut « Accomplie ». L'IDENTITÉ DU PROPHÈTE : la fiche signale que l'on ne sait presque rien de la personne d'Abdias, la Bible mentionnant plusieurs hommes de ce nom ; elle ne tranche pas entre les identifications possibles. LA DATATION : la fiche retient la période qui suit 607 av. n. è., sans fixer d'année précise, la question de la date étant discutée dans l'érudition. SÉLA : la fiche identifie le « creux des rochers » au site de Séla et à l'occupation édomite d'Umm el-Biyara, sans affirmer que toute la ville se trouvait là. LA CAMPAGNE DE NABONIDE : la fiche la mentionne comme jalon historique, les détails de l'expédition étant reconstitués à partir de sources fragmentaires. LES VERSETS 1-9 : la fiche traite le mouvement d'ouverture jusqu'à la disparition des sages ; les versets 10 à 21 font l'objet des fiches suivantes. CE QUE CETTE FICHE NE DIT PAS : elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Abdias prononce la vision contre Édom : l'orgueil, le pillage, la perte des sages (Abdias 1-9)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom est emporté dans le mouvement de conquête babylonienne de la région (Jérémie 25:15-21)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607-580 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne de Nabonide vers Téma ; l'autonomie d'Édom s'achève</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 552 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Installation nabatéenne dans le territoire édomite ; Pétra devient leur capitale</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IVe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jean Hyrcan soumet l'Idumée et impose le judaïsme à sa population (Josèphe, Antiquités)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">130-120 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Après la chute de Jérusalem, l'Idumée disparaît de l'histoire</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">70 de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/36">Bible — Genèse 36 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/36</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/39">Bible — Job 39 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/39</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/27">Bible — Genèse 27 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/27</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/108">Bible — Psaume 108 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/108</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174">Abdias (livre) — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101986085">L'Édom antitypique des temps modernes doit disparaître — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101986085</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AB442 — « L'orgueil de ton cœur t'a égaré » : le creux des rochers, le nid de l'aigle et les sages de Téman</span><span>Catégorie AB1</span></div></div>
+</article>
+<article class="fiche" id="AB443">
+<div class="visuel"><img src="images/prophe_AB443_carrefour.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AB443 · CATÉGORIE AB1</div>
+<h3>« À cause de la violence faite à ton frère Jacob » : le jour où Édom se tint à l'écart et livra les rescapés</h3>
+<div class="ref">Abdias 10-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">à cause de la violence faite à ton frère jacob la honte te couvrira et tu seras retranché pour toujours le jour où tu te tenais en face de lui le jour où des étrangers emmenaient captive son armée et où des étrangers entraient dans ses portes et jetaient le sort sur jérusalem toi aussi tu étais comme l'un d'eux ne regarde pas avec plaisir le jour de ton frère le jour de son désastre ne te réjouis pas au sujet des fils de juda au jour de leur destruction ne parle pas avec arrogance au jour de la détresse ne te tiens pas aux carrefours pour exterminer ses rescapés ne livre pas ses survivants au jour de la détresse (psaume 137:7 ; jérémie 49:17, 18 ; lamentations 4:21, 22 ; accomplie)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AB443 · 0:31</div><audio controls preload="none" src="audio/fiche_AB443_carrefour.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AB443_carrefour.mp3 · 0:31 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Abdias 10-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>à cause de la violence faite à ton frère jacob la honte te couvrira et tu seras retranché pour toujours le jour où tu te tenais en face de lui le jour où des étrangers emmenaient captive son armée et où des étrangers entraient dans ses portes et jetaient le sort sur jérusalem toi aussi tu étais comme l'un d'eux ne regarde pas avec plaisir le jour de ton frère le jour de son désastre ne te réjouis pas au sujet des fils de juda au jour de leur destruction ne parle pas avec arrogance au jour de la détresse ne te tiens pas aux carrefours pour exterminer ses rescapés ne livre pas ses survivants au jour de la détresse (psaume 137:7 ; jérémie 49:17, 18 ; lamentations 4:21, 22 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Abdias — P443 (8-14 : le jour de la calamité de Jacob ; tu te tenais à l'écart, tu livrais les rescapés) ; Psaume 137:7 ; Jérémie 49:17, 18 ; Lamentations 4:21, 22 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« À CAUSE DE LA VIOLENCE… FAITE À TON FRÈRE JACOB… LA HONTE TE COUVRIRA… ET TU SERAS RETRANCHÉ… POUR TOUJOURS… »… « LE JOUR OÙ TU TE TENAIS… EN FACE DE LUI… LE JOUR OÙ DES ÉTRANGERS… EMMENAIENT CAPTIVE SON ARMÉE… OÙ DES ÉTRANGERS… ENTRAIENT DANS SES PORTES… ET JETAIENT LE SORT… SUR JÉRUSALEM… TOI AUSSI… TU ÉTAIS COMME L'UN D'EUX… »… « NE REGARDE PAS AVEC PLAISIR… LE JOUR DE TON FRÈRE… LE JOUR DE SON DÉSASTRE… NE TE RÉJOUIS PAS… AU SUJET DES FILS DE JUDA… AU JOUR DE LEUR DESTRUCTION… NE PARLE PAS AVEC ARROGANCE… AU JOUR DE LA DÉTRESSE… »… « NE PÉNÈTRE PAS DANS LA PORTE… DE MON PEUPLE… AU JOUR DE LEUR CALAMITÉ… NE REGARDE PAS… LEUR MALHEUR… NE METS PAS LA MAIN… SUR LEURS BIENS… »… « NE TE TIENS PAS… AUX CARREFOURS… POUR EXTERMINER SES RESCAPÉS… NE LIVRE PAS… SES SURVIVANTS… AU JOUR DE LA DÉTRESSE… »… — ḤAMAS… VIOLENCE… ʾAḤ… FRÈRE… SHABAH… CAPTURE… NAKRI… ÉTRANGER… NOQED… LOUCHER… ṬIBBEAḤ… ABATTAGE… MIFLAT… RESCAPÉS… ŚARID… SURVIVANTS… PEREQ… CARREFOUR… TSARAH… DÉTRESSE… EḌOM… ʾADOM… ROUGE… — 607 AV. N. È.… PSAUME 137:7… LAMENTATIONS 4:21… JÉRÉMIE 49:17, 18… MALAKI 1:2-4… ÈRE CHRÉTIENNE… ROME… »</li>
+<li>LES TROIS JUMEAUX — Lamentations 4:21, 22 : « réjouis-toi et exulte, ô fille d'Édom… mais la coupe passera aussi vers toi » — la réponse poétique à la joie d'Édom au jour de la ruine de Jérusalem. Psaume 137:7 : « souviens-toi, ô Jéhovah, contre les fils d'Édom du jour de Jérusalem, eux qui disaient : dénudez-la… » — la plainte des exilés, qui nomment Édom parmi les responsables. Malaki 1:2-4 : « Édom dit : nous avons été écrasés, mais nous reviendrons et nous rebâtirons les lieux dévastés… ils seront appelés territoire de méchanceté, le peuple que Jéhovah a condamné pour toujours » — la reprise postérieure du verdict, à l'adresse du même peuple.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les versets 10 à 14 forment le cœur du livre : ils énoncent la raison du jugement. Le prophète remonte des manifestations extérieures de l'orgueil à un acte concret : « à cause de la violence faite à ton frère Jacob ». Le mot « frère » n'est pas une figure : Édom descend d'Ésaü, jumeau de Jacob, et les deux peuples se considèrent depuis l'origine comme apparentés. Le texte énumère ensuite une série de comportements précis, introduits par des impératifs négatifs qui reprennent les gestes réellement commis : s'être tenu « en face » au jour où des étrangers emmenaient l'armée captive, être entré dans les portes de la ville en même temps que les envahisseurs, avoir jeté le sort sur Jérusalem « comme l'un d'eux ». Puis viennent six recommandations successives — ne pas regarder avec plaisir, ne pas se réjouir, ne pas parler avec arrogance, ne pas pénétrer dans la porte, ne pas regarder le malheur, ne pas mettre la main sur les biens — et enfin la faute la plus grave : se tenir aux carrefours pour exterminer les rescapés et livrer les survivants au jour de la détresse. Le tableau compose le portrait collectif d'un peuple qui n'a pas porté le coup principal, mais qui a accompagné le pillage, applaudi et coupé les voies de fuite.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA VIOLENCE ET LE LIEN DE FRATERNITÉ : le mot hébreu ḥamas, employé au verset 10, désigne la violence injuste, celle qui brise un droit ; son usage ici, avec le mot « frère », souligne l'aggravation du crime — ce n'est pas une guerre entre étrangers, mais la trahison d'un lien de parenté. Cette dimension explique pourquoi le livre de Malaki, rédigé bien après, cite encore Édom comme exemple de condamnation durable. (2) LES SIX IMPÉRATIFS : la forme de la recommandation négative est caractéristique des textes de sagesse ; elle énumère ce qui n'aurait pas dû être fait et qui a été fait. Le détail des fautes dessine une gradation : le regard complaisant, la parole arrogante, l'entrée dans la ville, la main mise sur les biens, l'attente aux carrefours, la livraison des fuyards — de la passivité au crime organisé. (3) LES PORTES ET LE SORT : « entrer dans ses portes » signifie pénétrer dans une ville prise ; « jeter le sort » évoque le partage du butin entre soldats, décrit aussi dans d'autres textes de l'époque pour les villes saccagées. La précision du vocabulaire montre que l'auteur décrit un événement daté : la prise de Jérusalem par les Babyloniens. (4) LES CARREFOURS : le mot traduit par « carrefour » désigne un lieu de croisement des routes, poste idéal pour intercepter les fuyards. En s'y tenant, les Édomites ont participé à l'anéantissement des survivants, alors qu'ils auraient pu laisser passer les rescapés. Le registre du projet rattache l'accomplissement de cette prophétie aux textes du Psaume 137:7, de Jérémie 49:17, 18 et de Lamentations 4:21, 22, qui tous commentent la même conduite.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « L'Édom antitypique des temps modernes doit disparaître » rapporte que, selon le livre d'Abdias, les Édomites ont « pillé » et « livré les survivants à l'ennemi », poussant la malveillance jusqu'à s'attirer cette déclaration : « à cause de la violence contre ton frère Jacob, la honte te couvrira, et assurément tu seras retranché jusqu'à des temps indéfinis. Comme tu as fait, il te sera fait. » L'article « Des avertissements divins qui vous concernent » résume la même accusation : Édom a apporté son aide aux envahisseurs, sinon par la force, du moins par sa joie et sa complaisance. Lecture commune et exégèse : les commentateurs rapprochent les versets 10 à 14 du Psaume 137:7 et de Lamentations 4:21, 22, qui décrivent le même comportement ; ils notent que le livre d'Ézéchiel (25:12-14 et 35) développe cette accusation en parallèle, avec des motifs très proches — la vengeance, la haine, le désir de s'emparer du territoire. Beaucoup d'exégètes relèvent que le texte ne condamne pas seulement un acte isolé, mais une disposition d'esprit persistante, ce qui explique la sévérité de la suite du livre.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">607 av. n. è.</td><td>Jérusalem est prise et pillée ; Édom se tient du côté des envahisseurs et intercepte les fuyards (Abdias 10-14 ; Psaume 137:7)</td></tr>
+<tr><td class="d">Après 607 av. n. è.</td><td>Édom est à son tour visé par le jugement : « comme tu as fait, il te sera fait » (Abdias 15)</td></tr>
+<tr><td class="d">Vers 580-552 av. n. è.</td><td>Le pays est conquis puis intégré à la sphère babylonienne ; sa richesse est exploitée, ses routes commerciales passent sous contrôle</td></tr>
+<tr><td class="d">IVe siècle av. n. è.</td><td>Les Nabatéens occupent le territoire édomite ; les Édomites se regroupent au sud de Juda, en Idumée (Jérémie 49:17, 18)</td></tr>
+<tr><td class="d">IIe siècle av. n. è.</td><td>Jean Hyrcan soumet l'Idumée ; l'ancien peuple cesse d'exister comme entité politique</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>L'Idumée fournit encore une dynastie — celle d'Hérode — avant de disparaître totalement de l'histoire après 70 de n. è.</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA CHUTE DE JÉRUSALEM : 2 Rois 25 et Jérémie 39 et 52 rapportent la prise de la ville, l'incendie du temple, le partage du butin et la déportation ; c'est le contexte exact du verset 11. (2) LE RÔLE D'ÉDOM : Psaume 137:7, Lamentations 4:21, 22 et Ézéchiel 25:12-14 et 35:5, 15 décrivent — à quelques années d'intervalle — la même hostilité, ce qui constitue un faisceau de témoignages concordants. (3) LA CONVENTION DE JÉRÉMIE : Jérémie 27:1-7 avertit les rois d'Édom, de Moab, d'Ammon, de Tyr et de Sidon de se soumettre au joug babylonien ; la mention d'Édom dans cette liste montre que le royaume existait encore et était intégré aux calculs diplomatiques de l'époque. (4) LA PROMESSE DE JÉRÉMIE 49 : « pour Édom… je l'ai juré, Botsra deviendra un objet de stupeur » ; la description y reprend celles d'Abdias, y compris le nid de l'aigle et la disparition de la sagesse de Téman. (5) ÉZÉCHIEL 35 : le chapitre est consacré tout entier à la montagne de Séir, accusée d'avoir nourri une haine éternelle et d'avoir livré les Israélites à l'épée au jour de la calamité. (6) LA SUITE HISTORIQUE : les sources grecques puis romaines — Diodore, Strabon, Josèphe — attestent l'installation des Nabatéens dans l'ancien territoire édomite, puis la conversion forcée des Iduméens au judaïsme ; aucune d'elles ne signale un retour des Édomites dans leur pays.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA MONTAGNE DE SÉIR : le pays d'Édom correspond aux hauteurs à l'est de la Arabah, du ouadi al-Hasa au golfe d'Aqaba ; sa position lui permettait de contrôler les routes de commerce entre l'Arabie et la Méditerranée, avantage économique qui explique l'intérêt des empires pour la région. (2) LES CARREFOURS : les routes qui descendent de Jérusalem vers le sud — la piste d'Hébron vers le Néguev et celle de la Arabah — se croisent en plusieurs points sur les confins méridionaux de Juda ; c'est là que les fuyards de 607 pouvaient être interceptés. (3) LA ARABAH : la longue dépression du Jourdain, prolongée par la Arabah, constitue la frontière naturelle entre Juda et Édom ; elle offre un axe de circulation nord-sud que les armées babyloniennes pouvaient suivre. (4) BOTSRA ET TÉMAN : la première, identifiée à Buseirah, se situe au nord du pays, la seconde plus au sud, sur les routes caravanières ; la double mention de ces deux villes, chez Abdias et chez Jérémie, dessine la géographie de la nation condamnée. (5) LE NÉGUEV ET HÉBRON : après l'installation nabatéenne, les Édomites occupent un territoire qui monte jusqu'à Hébron, au cœur du sud judéen ; c'est la région qui portera le nom d'Idumée dans les sources grecques. (6) SAREPTA ET SÉPHARAD : ces deux noms, qui apparaissent plus loin (versets 19, 20), situent l'horizon de la restauration annoncée — Sarepta sur la côte phénicienne, au nord, Sépharad dans une région de dispersion que les exégètes rattachent à l'Asie Mineure.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES NIVEAUX DE DESTRUCTION DE JÉRUSALEM : la ville d'époque judéenne a livré aux fouilleurs une épaisse couche d'incendie et d'effondrement datée du début du VIe siècle av. n. è. ; les tessons et les objets écrasés sous les blocs, notamment dans le quartier du côté est, illustrent la violence d'une destruction qui a laissé des traces matérielles. (2) LES SCEAUX ET LES BULLES : de très nombreux sceaux judéens de la fin du VIIe siècle et du début du VIe siècle — plus de deux cents bulles dans le lot dit « de la maison de Bullae » découvert dans l'Ophel, dont certaines portent le nom de personnages connus par Jérémie — témoignent du pillage des archives et des objets précieux, exactement le type de biens dont parle Abdias 13. (3) L'ARCHÉOLOGIE D'ÉDOM : l'occupation édomite du plateau, avec ses citernes et ses installations agro-pastorales, s'achève à l'époque perse ; les prospections montrent une contraction de la vie villageoise, suivie de la présence nabatéenne, ce qui correspond au départ définitif du peuple. (4) LA MÉTALLURGIE DU CUIVRE À FAYNAN : les études menées sur le site de Khirbet en-Nahas ont révélé une production massive de cuivre à l'époque édomite, ce qui confirme la richesse industrielle et commerciale du pays et éclaire les mentions répétées des « trésors » et du « butin ». (5) LES INSCRIPTIONS NABATÉENNES : les premières inscriptions nabatéennes apparaissent sur le territoire édomite dès la fin du IVe siècle av. n. è., en cohérence avec la chronologie grecque qui situe des Nabatéens à Pétra vers 312 av. n. è. (6) PRUDENCE : l'archéologie documente la destruction de 607, la richesse d'Édom et sa disparition ; elle n'établit pas nommément la participation édomite au pillage, que seuls les textes bibliques rapportent.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« À CAUSE DE LA VIOLENCE FAITE À TON FRÈRE JACOB » (v. 10) → « LE JOUR OÙ TU TE TENAIS EN FACE DE LUI » ; LES ÉTRANGERS, LES PORTES, LE SORT JETÉ (v. 11) → « NE REGARDE PAS AVEC PLAISIR LE JOUR DE TON FRÈRE » (v. 12) → « NE PÉNÈTRE PAS DANS LA PORTE… NE METS PAS LA MAIN SUR LES BIENS » (v. 13) → « NE TE TIENS PAS AUX CARREFOURS… NE LIVRE PAS SES SURVIVANTS » (v. 14) → « COMME TU AS FAIT, IL TE SERA FAIT » (v. 15) → PSAUME 137:7 : « DÉNUDEZ-LA » → LAMENTATIONS 4:21 : « LA COUPE PASSERA AUSSI VERS TOI » → JÉRÉMIE 49:17, 18 : BOTSRA, OBJET DE STUPEUR → ÉZÉCHIEL 35 : LA MONTAGNE DE SÉIR LIVRÉE AU JUGEMENT → INSTALLATION NABATÉENNE, IDUMÉE, DISPARITION APRÈS 70 DE N. È.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Psaume 137:7 ; Jérémie 49:17, 18 ; Lamentations 4:21, 22) et le statut « Accomplie ». LES SIX IMPÉRATIFS : la fiche les présente comme la reprise, sous forme d'avertissement, de gestes déjà commis ; elle ne prétend pas déterminer lesquels ont eu lieu exactement et lesquels sont des mises en garde générales. LE MOMENT DE L'ÉVÉNEMENT : la fiche rattache la scène à la prise de Jérusalem de 607 av. n. è., conformément à la datation retenue par les publications, sans entrer dans le débat sur une éventuelle seconde phase de l'oracle. LA PARTICIPATION D'ÉDOM : les sources bibliques la décrivent ; la fiche signale les degrés divers d'implication que les textes laissent entrevoir — passivité, joie, pillage, livraison des fuyards. LES VILLES CITÉES : la fiche donne les identifications les plus courantes de Botsra et Téman, dont les emplacements exacts sont encore discutés. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 15 à 21 (fiches suivantes) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Jérusalem ; Édom assiste au pillage et intercepte les rescapés (Abdias 10-14 ; Psaume 137:7)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie avertit les rois voisins, dont Édom, de se soumettre au joug babylonien (Jérémie 27:1-7)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Après 607 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ézéchiel dénonce la montagne de Séir et annonce sa désolation (Ézéchiel 35)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe siècle av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les Nabatéens occupent le territoire édomite ; les Édomites se regroupent en Idumée</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IVe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jean Hyrcan soumet l'Idumée (Flavius Josèphe, Antiquités XIII)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">130-120 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'Idumée disparaît de l'histoire après la chute de Jérusalem</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">70 de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/25">Bible — Genèse 25 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/25</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/60">Bible — Psaume 60 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/60</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/12">Bible — Romains 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/17">Bible — Actes 17 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/17</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174">Abdias (livre) — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200274175">Abdias (prophète) — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200274175</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AB443 — « À cause de la violence faite à ton frère Jacob » : le jour où Édom se tint à l'écart et livra les rescapés</span><span>Catégorie AB1</span></div></div>
+</article>
+<article class="fiche" id="AB444">
+<div class="visuel"><img src="images/prophe_AB444_coupe.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AB444 · CATÉGORIE AB1</div>
+<h3>« Comme tu as fait, il te sera fait » : le jour de Jéhovah sur toutes les nations et la coupe bue sur la montagne sainte</h3>
+<div class="ref">Abdias 15, 16</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / À venir</span>
+<span class="badge">car le jour de jéhovah est proche pour toutes les nations comme tu as fait il te sera fait tes actions retomberont sur ta tête car de même que vous avez bu sur ma montagne sainte toutes les nations boiront sans cesse elles boiront et elles avaleront et elles seront comme si elles n'avaient pas été (jérémie 49 ; application universelle ; accomplie / à venir)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AB444 · 0:27</div><audio controls preload="none" src="audio/fiche_AB444_coupe.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AB444_coupe.mp3 · 0:27 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Abdias 15, 16</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>car le jour de jéhovah est proche pour toutes les nations comme tu as fait il te sera fait tes actions retomberont sur ta tête car de même que vous avez bu sur ma montagne sainte toutes les nations boiront sans cesse elles boiront et elles avaleront et elles seront comme si elles n'avaient pas été (jérémie 49 ; application universelle ; accomplie / à venir)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Abdias — P444 (15, 16 : le jour de Jéhovah sur toutes les nations ; comme tu as fait, il te sera fait) ; Jérémie 49 ; application universelle ; Accomplie / À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« CAR LE JOUR DE JÉHOVAH… EST PROCHE… POUR TOUTES LES NATIONS… »… « COMME TU AS FAIT… IL TE SERA FAIT… TES ACTIONS… RETOMBERONT SUR TA TÊTE… »… « CAR DE MÊME QUE VOUS AVEZ BU… SUR MA MONTAGNE SAINTE… TOUTES LES NATIONS… BOIRONT SANS CESSE… ELLES BOIRONT… ET ELLES AVALERONT… ET ELLES SERONT… COMME SI ELLES N'AVAIENT PAS ÉTÉ… »… — YOM YEHWH… LE JOUR DE JÉHOVAH… QAROV… PROCHE… KOL HAGGOYIM… TOUTES LES NATIONS… GEMUL… RÉTRIBUTION… ḤAMAS… VIOLENCE… KOS… LA COUPE… SHATU… BOIRE… SHERUFAH… EMBRASEMENT… ʿAL HAR QODSHI… SUR MA MONTAGNE SAINTE… — 607… JÉRUSALEM… HABAKUK 2:16… JÉRÉMIE 25:15-29… LAMENTATIONS 4:21… ÉSAÏE 51:17… MALAKI… ACTES 17:31… RÉVÉLATION 16… 19:11-21… »</li>
+<li>LES TROIS JUMEAUX — Jérémie 25:15, 16 : « prends de ma main la coupe du vin de la colère et fais-la boire à toutes les nations… elles boiront, elles chancelleront » — la même image, employée par Jérémie à la même époque pour annoncer le jugement de toutes les nations, Édom compris. Habakuk 2:16 : « tu seras rassasié d'ignominie plutôt que de gloire ; bois toi aussi et étale ton incirconcision ; la coupe de la droite de Jéhovah viendra vers toi » — la formule du retournement, adressée à un oppresseur orgueilleux. Luc 21:25, 26 : « il y aura sur la terre angoisse des nations… les hommes défailliront de peur » — l'annonce par Jésus d'un temps de jugement universel qui rejoint le « jour de Jéhovah pour toutes les nations » d'Abdias.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les versets 15 et 16 sont le pivot du livre : ils transportent l'annonce d'Édom à l'échelle du monde. « Car le jour de Jéhovah est proche pour toutes les nations » — l'expression, déjà employée par Joël et reprise par Amos, Sophonie, Zacharie et Malaki, désigne dans les prophètes un temps d'intervention où Jéhovah juge et renverse les puissances hostiles. Abdias l'emploie pour introduire la règle qui gouverne tout le livre et qu'il formula au verset 10 : « comme tu as fait, il te sera fait ; tes actions retomberont sur ta tête. » Le verset 16 développe ensuite une image très concrète : ceux qui ont bu sur la montagne sainte — c'est-à-dire les nations qui ont festoyé dans Jérusalem prise, comme le note la Bible annotée, ou plus largement les victorieux qui y ont célébré leur triomphe — boiront à leur tour, mais cette fois la coupe de la colère divine, et cela « sans cesse » ; elles boiront, elles avaleront, et elles seront « comme si elles n'avaient pas été ». L'annonce ne vise donc plus un pays, mais l'ensemble des nations du monde connu ; elle rejoint le livre de Jérémie 25, où la même coupe circule de peuple en peuple, en commençant par Jérusalem.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE « JOUR DE JÉHOVAH » : la formule n'est pas synonyme de « fin du monde » dans les prophètes ; elle désigne une intervention datée de Dieu dans l'histoire, le jour où il règle les comptes d'une situation. Chez Abdias, elle est dite « proche » et « pour toutes les nations », ce qui élargit considérablement la portée du jugement d'Édom : ce qui arrive à un peuple annonce ce qui attend tous ceux qui se comportent de la même manière. (2) LA RÉTRIBUTION EXACTE : la phrase « comme tu as fait, il te sera fait » est la formulation la plus concise du principe de la justice rétributive, connu ailleurs sous la forme du talion (Exode 21:23-25) et repris dans les Écritures grecques : « ce qu'un homme sème, cela aussi il le moissonnera » (Galates 6:7). Le texte ajoute une image commerciale forte : les actions « retomberont sur ta tête », comme un fardeau porté qui bascule sur celui qui l'a chargé. (3) LA COUPE : dans l'usage prophétique, la coupe est l'instrument du jugement ; la boire signifie en subir entièrement les effets. Le jeu des versets est saisissant : ceux qui ont trinqué sur la montagne de Dieu au jour de la profanation boiront eux aussi, mais à leur propre perte. La comparaison avec Habakuk 2:16, Jérémie 25:15-29 et Lamentations 4:21 montre que cette image était un motif bien établi de la prédication prophétique de l'époque. (4) « COMME SI ELLES N'AVAIENT PAS ÉTÉ » : la formule décrit un effacement complet — non une défaite passagère, mais une disparition. Le registre du projet retient le statut « Accomplie / À venir » : le jugement a connu des réalisations historiques, et le passage porte une portée qui concerne « toutes les nations » et reste ouverte dans la suite du dessein divin.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « L'Édom antitypique des temps modernes doit disparaître » cite explicitement les mots « comme tu as fait, il te sera fait », rappelle que la vengeance divine contre Édom fut exécutée par l'entremise de Nabuchodonosor, et présente « le livre de Jéhovah » comme un livre de comptes, où sont portés les griefs qu'il a avec ses ennemis et les oppresseurs de son peuple : ce qui a été écrit au sujet de l'ancien Édom s'est accompli, ce qui garantit que la prophétie se réalisera de façon aussi certaine sur l'Édom des temps modernes. Lecture commune et exégèse : les commentateurs font de ce verset le centre du livre et le rapprochent de la règle énoncée en Joël 3:4-8 et en Jérémie 50-51 à l'égard de Babylone ; ils relèvent que la mention de « toutes les nations » donne à l'oracle d'Édom une valeur exemplaire : il devient le cas particulier d'une loi générale. Le verset 16 est lu comme une annonce du jugement des puissances orgueilleuses, application que la littérature du projet rattache à l'« application universelle » mentionnée dans le registre.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 607 av. n. è.</td><td>Le principe est énoncé : « comme tu as fait, il te sera fait » ; le jour de Jéhovah est annoncé pour toutes les nations (Abdias 15, 16)</td></tr>
+<tr><td class="d">Vers 607-582 av. n. è.</td><td>Babylone exécute le jugement sur les royaumes de la région, Édom compris (Jérémie 25:15-21 ; 27:1-7)</td></tr>
+<tr><td class="d">539-537 av. n. è.</td><td>Babylone tombe à son tour ; la même coupe est appliquée à la puissance qui avait frappé les nations (Jérémie 50, 51)</td></tr>
+<tr><td class="d">IVe-IIIe siècle av. n. è.</td><td>Édom cesse d'exister comme peuple ; sa disparition complète illustre la formule « comme si elles n'avaient pas été »</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Paul rappelle devant les Athéniens que Dieu « a fixé un jour où il va juger la terre habitée avec justice » (Actes 17:31)</td></tr>
+<tr><td class="d">À venir</td><td>Le jour de Jéhovah annoncé pour « toutes les nations » trouve son application finale dans le jugement des puissances hostiles (Révélation 16:14 ; 19:11-21)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA COUPE DANS LES PROPHÈTES : Jérémie 25:15-29 décrit la circulation de la coupe parmi les nations, avec une liste où figurent Édom, Moab, Ammon, Tyr, Sidon et les autres ; Habakuk 2:16 applique la même image à l'orgueilleux ; Lamentations 4:21, 22 l'emploie pour Édom. Ces textes contemporains montrent que la métaphore d'Abdias 16 appartient à un ensemble d'annonces convergentes. (2) LA CHUTE DE BABYLONE : la prise de la ville par Cyrus en 539 av. n. è. est documentée par la Chronique de Nabonide et par les textes de Cyrus ; la littérature prophétique l'interprète comme le retournement du jugement sur l'oppresseur, exactement le mouvement décrit par le verset 15. (3) LA DISPARITION D'ÉDOM : toutes les sources anciennes — grecques, romaines, juives — confirment qu'aucun État édomite ne se reforme après l'époque perse. (4) LA FORMULE DU « JOUR DE JÉHOVAH » : elle est employée par Joël 1:15 ; 2:1, 31 ; Amos 5:18-20 ; Sophonie 1:7, 14 ; Zacharie 14:1 et Malaki 4:5 ; cette convergence montre que l'expression appartenait au langage prophétique courant et que son usage par Abdias n'est pas isolé. (5) LE PRINCIPE DE RÉTRIBUTION DANS LE NOUVEAU TESTAMENT : Romains 2:5-11 et Galates 6:7, 8 reprennent l'idée d'une rétribution conforme aux actes, ce qui montre la permanence du principe dans la révélation biblique. (6) LE TÉMOIGNAGE DE L'HISTOIRE RELIGIEUSE : la tradition juive puis chrétienne a constamment appliqué ce passage aux persécuteurs du peuple de Dieu, en y voyant la garantie d'un jugement final équitable.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA MONTAGNE SAINTE : l'expression désigne Sion, le mont du temple à Jérusalem ; c'est là que les vainqueurs de 607 ont célébré leur victoire et profané le sanctuaire, selon le contexte du livre. (2) LES NATIONS DE LA COUPE : la liste de Jérémie 25 couvre l'ensemble du Proche-Orient de l'époque — Égypte, Philistie, Édom, Moab, Ammon, Tyr, Sidon, Dedan, Téma, Bouz, Arabie, Élam, la Médie, puis Babylone : la géographie du passage épouse celle du monde connu. (3) LES ROUTES DU COMMERCE : Édom, Moab et Ammon contrôlaient les routes caravanières de l'est ; la Babylonie tenait celles de la Mésopotamie : le « jour de Jéhovah » annoncé atteint donc les centres de puissance économique de l'époque. (4) SÉPHARAD ET SAREPTA : les horizons lointains mentionnés au verset 20 — région de dispersion et ville phénicienne — montrent que le livre situe la rétribution et la restauration à l'échelle des empires, non seulement des voisins immédiats. (5) LES MERS ET LES DÉSERTS : la Méditerranée à l'ouest, le désert d'Arabie à l'est, la mer Rouge au sud dessinent les limites du monde d'Abdias, dont la prophétie annonce que partout la coupe sera bue. (6) LA MÉSOPOTAMIE : les centres impériaux de Babylone, puis de la Perse, sont les instruments du jugement évoqués par l'histoire d'Édom comme par celle de Juda.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA COUPE DANS LA MATÉRIALITÉ ANCIENNE : les coupes et les cratères à boire, très présents dans les trouvailles archéologiques du Proche-Orient ancien, servaient aussi aux libations rituelles ; leur usage courant explique la force de l'image prophétique et sa lisibilité immédiate. (2) LES RITUELS DE TRIOMPHE : les sources assyriennes et babyloniennes, ainsi que les bas-reliefs, montrent les vainqueurs banquetant après la prise d'une ville ; c'est le contexte que suppose le verset 16 en parlant de ceux qui ont bu sur la montagne sainte. (3) LA STRATIGRAPHIE DE JÉRUSALEM : la couche de destruction du début du VIe siècle av. n. è. est attestée en plusieurs quartiers de la ville ; les fouilles de l'Ophel et du quartier juif ont livré des vestiges de maisons brûlées, ce qui documente la catastrophe. (4) LES TEXTES DE MALÉDICTION ET DE VENGEANCE : des documents mésopotamiens et égyptiens comportent des formules de rétribution ; la formulation biblique « comme tu as fait, il te sera fait » s'inscrit dans ce genre littéraire en lui donnant une portée morale universalisée. (5) LA DISPARITION DES PEUPLES : en histoire de l'Antiquité, la disparition de petites entités nationales comme Édom est courante et documentée ; ce qui distingue le cas d'Édom, c'est la durée de la mémoire qu'en gardent les textes bibliques. (6) PRUDENCE : les preuves matérielles éclairent les pratiques du banquet et la destruction de Jérusalem ; l'application du principe de rétribution à « toutes les nations » relève du message prophétique, non de la démonstration archéologique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« LE JOUR DE JÉHOVAH EST PROCHE POUR TOUTES LES NATIONS » (v. 15) → RÈGLE DE RÉTRIBUTION : « COMME TU AS FAIT, IL TE SERA FAIT » → « TES ACTIONS RETOMBERONT SUR TA TÊTE » → CEUX QUI ONT BU SUR LA MONTAGNE SAINTE (v. 16) → « TOUTES LES NATIONS BOIRONT SANS CESSE » → « ELLES SERONT COMME SI ELLES N'AVAIENT PAS ÉTÉ » → JÉRÉMIE 25:15-29 : LA COUPE CIRCULE PARMI LES PEUPLES → HABAKUK 2:16 : LA COUPE DE LA DROITE DE JÉHOVAH → 539 : BABYLONE TOMBE À SON TOUR → ACTES 17:31 : UN JOUR FIXÉ POUR JUGER LA TERRE HABITÉE → RÉVÉLATION 16:14 ; 19:11-21 : LE JUGEMENT DES NATIONS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec la référence du registre (Jérémie 49 ; application universelle) et le statut « Accomplie / À venir ». LE JOUR DE JÉHOVAH : la fiche en expose la définition prophétique générale et son extension « à toutes les nations » ; elle ne fixe aucune date pour l'application finale. LA COUPE : la fiche décrit l'image et son usage chez Jérémie et Habakuk sans en proposer d'interprétation allégorique détaillée. « AYANT BU SUR MA MONTAGNE SAINTE » : la fiche retient l'explication des commentateurs — le banquet des vainqueurs dans Jérusalem prise — et signale que le texte peut aussi évoquer, dans un sens plus large, toutes les nations qui ont porté atteinte au lieu saint. LE PRINCIPE DE RÉTRIBUTION : la fiche le présente tel qu'il est formulé, en le rapprochant d'autres passages bibliques, sans en tirer de conséquence individuelle. LE STATUT DOUBLE : la fiche distingue clairement la part historique et la part encore attendue, sans les confondre. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 17 à 21 (fiches suivantes) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Abdias énonce la règle du jugement : « comme tu as fait, il te sera fait » (Abdias 15, 16)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le jugement s'exécute sur Édom et les royaumes voisins (Jérémie 25:15-21)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607-582 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babylone tombe à son tour : la coupe est appliquée à la puissance qui avait frappé les nations (Jérémie 50, 51)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom disparaît : prophétie devenue « comme si elle n'avait pas été »</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IVe-IIe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paul annonce aux Athéniens un jour fixé pour juger la terre habitée (Actes 17:31)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Application finale du jour de Jéhovah sur toutes les nations (Révélation 16:14 ; 19:11-21)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/13">Bible — Romains 13 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/14">Bible — Romains 14 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/14</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/60/5">Bible — 1 Pierre 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/60/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/1">Bible — 1 Corinthiens 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/1</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174">Abdias (livre) — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1989289">Des avertissements divins qui vous concernent — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1989289</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AB444 — « Comme tu as fait, il te sera fait » : le jour de Jéhovah sur toutes les nations et la coupe bue sur la montagne sainte</span><span>Catégorie AB1</span></div></div>
+</article>
+<article class="fiche" id="AB445">
+<div class="visuel"><img src="images/prophe_AB445_sion.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AB445 · CATÉGORIE AB1</div>
+<h3>« Sur le mont Sion il y aura des rescapés » : la maison de Jacob comme un feu, Joseph comme une flamme et le retour des captifs</h3>
+<div class="ref">Abdias 17-20</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (1er accomplissement)</span>
+<span class="badge">mais sur le mont sion il y aura des rescapés et il sera saint et la maison de jacob reprendra possession de ses biens la maison de jacob deviendra un feu et la maison de joseph une flamme et la maison d'ésaü sera comme du chaume ils la brûleront et la dévoreront et il n'y aura aucun survivant de la maison d'ésaü car jéhovah lui-même l'a dit et ceux du néguev posséderont la montagne d'ésaü et ceux de la sheféla le pays des philistins ils posséderont le territoire d'éphraïm et le territoire de samarie et benjamin possédera galaad et les exilés de cette armée des fils d'israël posséderont le pays des cananéens jusqu'à sarepta et les exilés de jérusalem qui sont à sépharad posséderont les villes du néguev (retour de 537 av. n. è. ; esdras 1:1-4 ; accomplie — 1er accomplissement)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AB445 · 0:33</div><audio controls preload="none" src="audio/fiche_AB445_sion.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AB445_sion.mp3 · 0:33 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Abdias 17-20</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (1er accomplissement)</td></tr>
+<tr><td class="d">Chronologie</td><td>mais sur le mont sion il y aura des rescapés et il sera saint et la maison de jacob reprendra possession de ses biens la maison de jacob deviendra un feu et la maison de joseph une flamme et la maison d'ésaü sera comme du chaume ils la brûleront et la dévoreront et il n'y aura aucun survivant de la maison d'ésaü car jéhovah lui-même l'a dit et ceux du néguev posséderont la montagne d'ésaü et ceux de la sheféla le pays des philistins ils posséderont le territoire d'éphraïm et le territoire de samarie et benjamin possédera galaad et les exilés de cette armée des fils d'israël posséderont le pays des cananéens jusqu'à sarepta et les exilés de jérusalem qui sont à sépharad posséderont les villes du néguev (retour de 537 av. n. è. ; esdras 1:1-4 ; accomplie — 1er accomplissement)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Abdias — P445 (17-20 : sur le mont Sion il y aura des rescapés ; la maison de Jacob possédera son héritage) ; retour de 537 av. n. è. ; Esdras 1:1-4 ; Accomplie (1er accomplissement)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MAIS SUR LE MONT SION… IL Y AURA DES RESCAPÉS… ET IL SERA SAINT… ET LA MAISON DE JACOB… REPRENDRA POSSESSION… DE SES BIENS… »… « LA MAISON DE JACOB… DEVIENDRA UN FEU… ET LA MAISON DE JOSEPH… UNE FLAMME… ET LA MAISON D'ÉSAÜ… SERA COMME DU CHAUME… ILS LA BRÛLERONT… ET LA DÉVORERONT… ET IL N'Y AURA AUCUN SURVIVANT… DE LA MAISON D'ÉSAÜ… CAR JÉHOVAH LUI-MÊME… L'A DIT… »… « ET CEUX DU NÉGUEV… POSSÉDERONT LA MONTAGNE D'ÉSAÜ… ET CEUX DE LA SHEFÉLA… LE PAYS DES PHILISTINS… ILS POSSÉDERONT LE TERRITOIRE D'ÉPHRAÏM… ET LE TERRITOIRE DE SAMARIE… ET BENJAMIN… POSSÉDERA GALAAD… »… « ET LES EXILÉS… DE CETTE ARMÉE DES FILS D'ISRAËL… POSSÉDERONT LE PAYS DES CANANÉENS… JUSQU'À SAREPTA… ET LES EXILÉS DE JÉRUSALEM… QUI SONT À SÉPHARAD… POSSÉDERONT LES VILLES DU NÉGUEV… »… — HAR TSION… LE MONT SION… PELETAH… RESCAPÉS… QODESH… SAINT… YARASH… POSSÉDER… ʾESH… LE FEU… LEHAVAH… LA FLAMME… QASH… LE CHAUME… LO… SARID… AUCUN SURVIVANT… NEGEV… LE NÉGUEV… SHEFELAH… LA SHEFÉLA… ʾEFRAYIM… ÉPHRAÏM… SHOMERON… SAMARIE… BINYAMIN… BENJAMIN… GILʿAD… GALAAD… TSAREFAT… SAREPTA… SEFARAD… SÉPHARAD… — 537 AV. N. È.… ÉDIT DE CYRUS… 520-516… SECOND TEMPLE… ÉPOQUE PERSE… YÉHOUD… HÉBREU ET GREC… »</li>
+<li>LES TROIS JUMEAUX — Ézéchiel 40 à 48 : la vision du sanctuaire restauré, du pays partagé entre les tribus et de la ville dont le nom final est « Jéhovah est là » — la contrepartie de la possession du pays annoncée en Abdias 17-20. Esdras 1:1-4 : l'édit de Cyrus autorisant le retour et la reconstruction du temple à Jérusalem — l'accomplissement historique désigné par le registre pour cette prophétie, « afin que s'accomplisse la parole de Jéhovah ». Néhémie 11:1-36 : la liste des familles revenues de l'exil et réinstallées dans les villes de Juda et de Benjamin — un document qui correspond à la répartition géographique décrite en Abdias 19 et 20.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Au verset 17, le livre change entièrement de ton. Le « mais » marque la rupture : après huit versets de jugement sur Édom vient l'ouverture de la restauration. Trois éléments composent le tableau. D'abord un sanctuaire et des survivants : « sur le mont Sion il y aura des rescapés, et il sera saint ; et la maison de Jacob reprendra possession de ses biens ». Ensuite une image de feu et de nature : la maison de Jacob devient un feu, la maison de Joseph une flamme, la maison d'Ésaü du chaume qui se consume, avec cette conclusion : « il n'y aura aucun survivant de la maison d'Ésaü, car Jéhovah lui-même l'a dit ». Enfin une géographie de la restauration, donnée dans le détail : ceux du Néguev posséderont la montagne d'Ésaü ; ceux de la Sheféla, le pays des Philistins ; Éphraïm et Samarie, Benjamin et Galaad ; les exilés d'Israël posséderont le pays jusqu'à Sarepta au nord, et les exilés de Jérusalem qui sont à Sépharad, les villes du Néguev. Le texte décrit donc non seulement un retour, mais une réinstallation structurée : chaque groupe retrouve ou reçoit son territoire, et la ville sainte devient le centre autour duquel s'organise le pays retrouvé.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA SYMÉTRIE DU FEU : le livre a commencé par une ville prise et pillée ; il montre maintenant Jacob devenu « un feu » et Joseph « une flamme » devant Ésaü changé en chaume. L'image inverse exactement le rapport de force initial : les agressés deviennent l'élément actif. Il faut noter que « Jacob » et « Joseph » désignent ici les deux royaumes — Juda et Israël — dont la réunion est présentée comme la condition de la restauration, ce que confirme la mention conjointe d'Éphraïm, de Samarie, de Benjamin et de Galaad. (2) LE SANCTUAIRE : « il sera saint » signifie que Sion retrouve sa vocation : elle est mise à part pour le culte, ce qui, dans la logique du livre, s'oppose au jour où les nations y ont festoyé (verset 16). Les exégètes rapprochent ce point de Joël 3:5, qui emploie les mêmes mots — « il y aura des rescapés sur le mont Sion » — et de Michée 4:1, 2 pour la vocation universelle de la montagne. (3) LA GÉOGRAPHIE DE LA RESTAURATION : les quatre directions sont couvertes — le Néguev et la montagne d'Ésaü au sud, la Sheféla et le pays philistin à l'ouest, Éphraïm, Samarie et Galaad au centre et à l'est, Sarepta au nord. Le texte ne décrit donc pas une simple réoccupation de Juda, mais la recomposition d'un pays d'Israël uni, dont les frontières englobent des territoires qui n'avaient jamais été repris depuis la chute de Samarie en 722. (4) SÉPHARAD : ce nom n'apparaît qu'ici dans la Bible hébraïque ; les hypothèses les plus courantes le rattachent à une région d'Asie Mineure — la tradition le lie à Sardes — où des Judéens avaient été déportés. Sa mention montre que le retour annoncé concerne aussi les exilés les plus éloignés.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Amos (Livre d') » de la Bibliothèque en ligne rappelle, à propos de la prophétie voisine, que la promesse de reconstruire « la hutte de David » et le retour des captifs ont connu un accomplissement précis : « conformément à la parole de Jéhovah transmise par Amos, des descendants d'Israël et de Juda, captifs à Babylone, retournèrent dans leur pays en 537, afin de le reconstruire ». L'article « L'Édom antitypique des temps modernes doit disparaître » présente de son côté le contraste entre Édom, dont la fin est définitive, et la maison de Jacob, qui reprend possession de son héritage. Lecture commune et exégèse : le passage est lu comme une prophétie de restauration nationale après l'exil, avec un prolongement messianique. Les commentateurs relèvent la proximité de Joël 3:5 (« il y aura des rescapés sur le mont Sion ») et le fait que le Nouveau Testament reprend la notion de « rescapés » pour les élus. Ils notent également que la description territoriale d'Abdias 19, 20 correspond à la géographie réelle de la province perse de Yehoud élargie aux zones revendiquées par les rapatriés. Le statut retenu par le registre — « Accomplie (1er accomplissement) » — suit cette lecture en deux temps.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">537 av. n. è.</td><td>Édit de Cyrus : retour des premiers captifs juifs à Jérusalem et début de la reconstruction (Esdras 1:1-4)</td></tr>
+<tr><td class="d">520-516 av. n. è.</td><td>Reconstruction et inauguration du second temple sous Zorobabel, de la maison de David (Aggée 1 ; Esdras 6:14-16)</td></tr>
+<tr><td class="d">Ve siècle av. n. è.</td><td>Réinstallation des familles revenues dans les villes de Juda et de Benjamin ; repeuplement de Jérusalem (Néhémie 11:1-36)</td></tr>
+<tr><td class="d">Époque perse</td><td>La province de Yehoud s'organise, avec son gouverneur, son temple et sa vie religieuse restaurée (Esdras, Néhémie ; papyrus d'Éléphantine)</td></tr>
+<tr><td class="d">IIe siècle av. n. è.</td><td>Sous les Maccabées, les territoires du sud et de l'est, dont Idumée, passent sous contrôle judéen, ce qui prolonge l'expansion annoncée</td></tr>
+<tr><td class="d">À venir</td><td>La portée pleine de la promesse — Sion sanctuaire, rassemblement des rescapés — est rattachée dans la littérature du projet au règne messianique (voir la fiche suivante)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) L'ÉDIT DE CYRUS : Esdras 1:1-4 et 6:3-5 en rapportent le texte ; le cylindre de Cyrus, découvert en 1879 et conservé au British Museum, décrit la politique de restauration des sanctuaires des peuples soumis au nouvel empire, ce qui inscrit le retour juif dans une pratique administrative attestée. (2) LA LISTE DES RAPATRIÉS : Esdras 2 et Néhémie 7 donnent le décompte des familles revenues, par villes et par clans, avec les prêtres, les lévites, les chantres, les portiers et les serviteurs du temple ; ces documents administratifs constituent la trace la plus concrète de l'accomplissement du retour. (3) LA RÉINSTALLATION : Néhémie 11 décrit le tirage au sort pour installer un dixième de la population à Jérusalem et énumère les villes occupées dans le Néguev judéen, comme Dibon, Yekabtséel, Béer-Shéva et leurs villages. (4) LES TERRITOIRES REVENDIQUÉS : la Sheféla, la région d'Éphraïm et de Samarie, la Transjordanie — Galaad — correspondent au cadre géographique des provinces perses successives ; les archives d'Éléphantine et le matériel administratif de Yehoud attestent l'existence de cette entité. (5) SAREPTA : la ville, identifiée à Sarafend sur la côte libanaise entre Tyr et Sidon, est mentionnée dans 1 Rois 17 et Luc 4:26 ; sa position au nord indique que le texte vise la côte phénicienne. (6) SÉPHARAD : l'identification est discutée ; la tradition juive et plusieurs commentateurs modernes la rattachent à Sardes, en Lydie, d'où des Judéens auraient été dispersés, ce qui expliquerait la formulation « les exilés de Jérusalem qui sont à Sépharad ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE MONT SION : la colline de Jérusalem où se dressait le temple ; après l'exil, elle redevient le centre religieux et politique de la communauté revenue, comme le montrent Aggée, Zekaria et Néhémie. (2) LE NÉGUEV ET LA MONTAGNE D'ÉSAÜ : le Néguev judéen est la zone semi-aride au sud d'Hébron ; la « montagne d'Ésaü » désigne les hauteurs d'Édom, immédiatement à l'est de la Arabah. La prophétie annonce donc une expansion vers le sud-est, sur le territoire du peuple condamné. (3) LA SHEFÉLA ET LE PAYS DES PHILISTINS : la plaine côtière méridionale et les basses collines de la transition, dont les villes principales étaient Gaza, Ashkelon, Ashdod, Ekron et Gath. (4) ÉPHRAÏM, SAMARIE, GALAAD : le centre du pays et la Transjordanie septentrionale, territoires du royaume du Nord disparu en 722 ; leur mention signifie la fin de la division entre les deux royaumes. (5) SAREPTA : sur la côte phénicienne, entre Tyr et Sidon, à une quarantaine de kilomètres au nord de Tyr ; la mention du « pays des Cananéens jusqu'à Sarepta » décrit donc l'ensemble de la côte nord, jusqu'à la frontière phénicienne. (6) LES VILLES DU NÉGUEV : les listes de Néhémie 11 et les prospections archéologiques du Néguev judéen montrent un réseau de localités réoccupées à l'époque perse, ce qui donne un contenu concret à la formule du verset 20.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE CYLINDRE DE CYRUS : ce texte cunéiforme proclame la restauration des cultes et le retour des populations déportées, en accord avec l'édit rapporté par Esdras ; il constitue la pièce documentaire majeure du contexte du retour. (2) LES SCEAUX ET LES MONNAIES DE YÉHOUD : les cachets portant l'inscription « Yehoud », les monnaies à la chouette ou au lis et les bulles administratives découvertes en Juda attestent l'organisation d'une province autonome avec son gouverneur, sa fiscalité et son temple — la structure dont la prophétie annonce la reconstitution. (3) LES OSTRACA ET LES PAPYRUS : les lettres d'Éléphantine, écrites au Ve siècle av. n. è. par une colonie militaire judéenne en Égypte, mentionnent le temple de Jérusalem, le gouverneur de Yehoud et des correspondances officielles ; elles documentent la vitalité de la communauté restaurée. (4) LA RÉOCCUPATION DU TERRITOIRE : les prospections dans la Sheféla, la région d'Hébron et le Néguev judéen montrent une reprise de l'habitat à l'époque perse, avec des sites réoccupés après un abandon de plusieurs décennies. (5) LES INSTALLATIONS AGRICOLES : pressoirs, terrasses et citernes réutilisés ou reconstruits dans les zones de peuplement perse témoignent d'une remise en culture du pays, en cohérence avec les promesses de replantation des prophètes de la restauration. (6) PRUDENCE : l'archéologie établit le retour, la reconstruction et la réinstallation ; elle ne mesure pas la portée religieuse de la prophétie, qui est lue par le projet comme ayant un premier accomplissement en 537 et une portée plus large.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>RUPTURE : « MAIS SUR LE MONT SION… » (v. 17) → LES RESCAPÉS ET LA SAINTETÉ DE SION → « LA MAISON DE JACOB REPRENDRA POSSESSION DE SES BIENS » (v. 17) → JACOB, LE FEU ; JOSEPH, LA FLAMME ; ÉSAÜ, LE CHAUME (v. 18) → « AUCUN SURVIVANT DE LA MAISON D'ÉSAÜ » (v. 18) → LE NÉGUEV POSSÉDERA LA MONTAGNE D'ÉSAÜ ; LA SHEFÉLA, LE PAYS DES PHILISTINS (v. 19) → ÉPHRAÏM, SAMARIE, BENJAMIN, GALAAD (v. 19) → LE PAYS CANANÉEN JUSQU'À SAREPTA ; SÉPHARAD ET LES VILLES DU NÉGUEV (v. 20) → 537 : ÉDIT DE CYRUS ET RETOUR (ESDRAS 1:1-4) → 516 : SECOND TEMPLE → NÉHÉMIE 11 : LES VILLES RÉOCCUPÉES → PROLONGEMENT MESSIANIQUE (FICHE AB446)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (retour de 537 av. n. è. ; Esdras 1:1-4) et le statut « Accomplie (1er accomplissement) ». JACOB, JOSEPH, ÉSAÜ : la fiche expose l'identification la plus courante de ces noms aux deux royaumes et au peuple édomite, sans exclure la lecture collective plus large. LA GÉOGRAPHIE DES VERSETS 19 ET 20 : la fiche décrit les régions citées et leur correspondance historique ; elle ne dresse pas de carte des frontières effectives de la province perse, qui restent discutées. SAREPTA ET SÉPHARAD : la fiche donne l'identification courante de Sarepta et signale que celle de Sépharad est discutée. LE « 1er ACCOMPLISSEMENT » : la fiche traite la réalisation historique de 537 et renvoie à la fiche suivante pour la portée encore attendue, sans les confondre. LES TERRITOIRES DES MACCABÉES : la fiche les mentionne comme prolongement historique, sans en faire un accomplissement de la prophétie. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas du verset 21 (fiche suivante) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Annonce de la restauration : rescapés sur Sion, feu de Jacob contre le chaume d'Ésaü (Abdias 17-20)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus : retour des premiers captifs et début de la reconstruction (Esdras 1:1-4)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reconstruction et inauguration du second temple (Aggée 1 ; Esdras 6:14-16)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520-516 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réinstallation dans les villes de Juda et de Benjamin (Néhémie 11:1-36)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Organisation de la province de Yehoud ; sceaux et monnaies à son nom</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque perse</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Extension judéenne vers le sud et l'est sous les Maccabées, dont l'Idumée</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe siècle av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/40">Bible — Ézéchiel 40 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/40</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/4">Bible — Romains 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/20">Bible — Actes 20 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/20</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/2">Bible — 1 Corinthiens 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/2</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174">Abdias (livre) — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251">Amos (Livre d') — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010251</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AB445 — « Sur le mont Sion il y aura des rescapés » : la maison de Jacob comme un feu, Joseph comme une flamme et le retour des captifs</span><span>Catégorie AB1</span></div></div>
+</article>
+<article class="fiche" id="AB446">
+<div class="visuel"><img src="images/prophe_AB446_liberateurs.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE AB446 · CATÉGORIE AB1</div>
+<h3>« Des libérateurs monteront sur le mont Sion… et le royaume sera à Jéhovah » : la conclusion du livre d'Abdias</h3>
+<div class="ref">Abdias 21</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir</span>
+<span class="badge">et des libérateurs monteront sur le mont sion pour juger la montagne d'ésaü et le royaume sera à jéhovah (daniel 2:44 ; révélation 11:15 ; à venir)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche AB446 · 0:31</div><audio controls preload="none" src="audio/fiche_AB446_liberateurs.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_AB446_liberateurs.mp3 · 0:31 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Abdias 21</td></tr>
+<tr><td class="d">Statut</td><td>À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>et des libérateurs monteront sur le mont sion pour juger la montagne d'ésaü et le royaume sera à jéhovah (daniel 2:44 ; révélation 11:15 ; à venir)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Abdias — P446 (21 : des libérateurs monteront sur le mont Sion ; le royaume sera à Jéhovah) ; Daniel 2:44 ; Révélation 11:15 ; À venir</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ET DES LIBÉRATEURS… MONTERONT SUR LE MONT SION… POUR JUGER LA MONTAGNE D'ÉSAÜ… ET LE ROYAUME… SERA À JÉHOVAH… »… — MOSHIʿIM… DES LIBÉRATEURS OU SAUVEURS… ʿALAH… MONTER… HAR TSION… LE MONT SION… LISH-POT… POUR JUGER… HAR ʿESAV… LA MONTAGNE D'ÉSAÜ… HAMMELUKHAH… LE ROYAUME… YEHWH… JÉHOVAH… — 537 AV. N. È.… RETOUR DE L'EXIL… Ier SIÈCLE… ACTES 1:6-8 ; 2:34, 35… 1914 ET LA ROYAUTÉ DU CHRIST… DANIEL 2:44… 7:13, 14… RÉVÉLATION 12:10… 11:15… 14:1… 21:1-4… »</li>
+<li>LES TROIS JUMEAUX — Daniel 2:44 : « le Dieu du ciel établira un royaume qui ne sera jamais détruit… il brisera et supprimera tous ces royaumes, mais lui-même subsistera pour des temps indéfinis » — la promesse royale qui clôt le livre d'Abdias, formulée en détail par le prophète contemporain de l'exil. Révélation 11:15 : « le royaume du monde est devenu le royaume de notre Seigneur et de son Christ, et il régnera pour toujours et à jamais » — la reprise littérale du dernier mot d'Abdias dans les Écritures grecques. Zekaria 14:9 : « Jéhovah deviendra roi sur toute la terre ; en ce jour-là, Jéhovah sera un, et son nom sera un » — la même formulation finale, chez un autre prophète de l'époque postérieure à l'exil.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Abdias se termine en une seule phrase, la plus brève des conclusions prophétiques de l'Ancien Testament : « Et des libérateurs monteront sur le mont Sion pour juger la montagne d'Ésaü, et le royaume sera à Jéhovah. » Cette finale rassemble tout ce qui précède. Les « libérateurs » — le mot hébreu est de la même racine que les noms de Josué et de Jésus, qui signifie « Jéhovah sauve » — sont des sauveurs suscités par Dieu, comparables aux juges de l'époque des Juges, qui montent de la ville sainte pour juger, c'est-à-dire pour rendre un verdict contre la montagne d'Ésaü. Le livre ne s'achève donc pas sur la disparition d'un peuple, mais sur l'avènement d'un règne : ce n'est pas Juda qui est placé au sommet du monde, c'est Jéhovah lui-même — « le royaume sera à Jéhovah ». Le registre du projet classe cette prophétie comme « À venir », en renvoyant à Daniel 2:44 et à Révélation 11:15.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois notations. (1) « DES LIBÉRATEURS » : le terme est au pluriel et sans article défini précis, ce qui a fait débat chez les commentateurs. L'Annotée de Neuchâtel y voit « des héros semblables à ceux de l'époque des juges, qui seront suscités de Dieu » et qui agiront comme représentants de l'autorité divine sur le monde ; d'autres y lisent l'annonce d'une lignée de chefs issus de Sion. Dans tous les cas, le texte souligne que la délivrance ne vient pas de la puissance d'Israël, mais d'hommes établis par Dieu, et qu'elle part du mont Sion, devenu le centre du monde restauré. (2) « POUR JUGER LA MONTAGNE D'ÉSAÜ » : juger, dans le vocabulaire hébraïque, signifie rendre justice en faveur de l'opprimé autant que condamner l'oppresseur. La montagne d'Ésaü — Édom — devient donc le symbole de toutes les puissances qui ont combattu Sion : c'est une figure, et non plus seulement un pays, comme le montre la suite du canon biblique, où Édom personnifie les adversaires de Dieu. (3) « LE ROYAUME SERA À JÉHOVAH » : la phrase finale transfère le sujet du livre — non plus les nations, non plus Édom, non plus Juda, mais Jéhovah. Le vocabulaire du royaume, employé dès le début de la royauté israélite, devient ici universel : il n'est plus question d'un trône sur une nation, mais d'un règne qui s'étend à tout. Cette formulation trouve un écho dans Zekaria 14:9 et, dans les Écritures grecques, dans Révélation 11:15 et 12:10.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « L'Édom antitypique des temps modernes doit disparaître » présente l'ensemble du livre comme la démonstration que « celui qui vous touche touche à la prunelle de mon œil » (Zekaria 2:8) et que les adversaires du peuple de Dieu seront retranchés ; le contraste entre Édom, dont il ne reste aucun survivant, et la maison de Jacob, rétablie sur son héritage, conduit naturellement à la conclusion sur le royaume. Lecture commune et exégèse : ce verset est souvent présenté comme la pointe du livre et l'une des formulations les plus claires du thème du règne de Dieu dans les prophètes. Les commentateurs relèvent qu'Abdias est placé, dans la Bible hébraïque, parmi les douze « petits prophètes », dont les livres se terminent fréquemment sur une perspective universelle : Joël sur la source qui sort du temple (3:18-21), Amos sur la hutte de David relevée (9:11-15), Michée sur le pardon de Dieu (7:18-20), Habakuk sur la connaissance de la gloire de Jéhovah remplissant la terre (2:14). Le Nouveau Testament reprend cette finale dans Révélation, où la proclamation du royaume appartient aux derniers chapitres. La portée messianique du passage est généralement reconnue dans la lecture chrétienne, sans que le texte nomme un personnage.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 607 av. n. è.</td><td>La conclusion est prononcée et consignée : des libérateurs sur Sion, le royaume à Jéhovah (Abdias 21)</td></tr>
+<tr><td class="d">537 av. n. è.</td><td>Le premier accomplissement de la restauration commence : retour des captifs et reconstruction du temple (Esdras 1:1-4)</td></tr>
+<tr><td class="d">Époque perse et hellénistique</td><td>Les communautés restaurées attendent le rétablissement de la royauté davidique ; les textes prophétiques postérieurs entretiennent cette espérance (Aggée 2:20-23 ; Zekaria 6:12, 13)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Jésus est reconnu comme le roi promis ; ses disciples l'interrogent sur le rétablissement du royaume (Actes 1:6-8), et Pierre proclame sa royauté céleste (Actes 2:34-36)</td></tr>
+<tr><td class="d">À venir</td><td>Établissement du royaume annoncé par Daniel 2:44 ; proclamation « le royaume du monde est devenu le royaume de notre Seigneur et de son Christ » (Révélation 11:15)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) L'ATTENTE DU RÈGNE APRÈS L'EXIL : les prophètes de la restauration — Aggée, Zekaria, Malaki — développent l'espérance d'un roi issu de la maison de David ; Aggée 2:20-23 applique au gouverneur Zorobabel l'image du sceau royal, en des termes qui rappellent 2 Samuel 7. (2) LES TITRES DE JÉSUS : au Ier siècle, l'attente d'un libérateur est si forte que les disciples demandent à Jésus : « Seigneur, est-ce en ce temps que tu rétablis le royaume pour Israël ? » (Actes 1:6) ; la réponse renvoie à une autorité reçue au ciel. (3) LA PROCLAMATION APOSTOLIQUE : Actes 2:34-36 et Actes 17:31 proclament que Dieu a établi un Roi et fixé un jour de jugement, reprenant la structure d'Abdias — des libérateurs, un jugement, un royaume. (4) DANIEL 2:44 : le chapitre, daté de la période babylonienne, décrit la succession des empires puis l'établissement d'un royaume qui ne sera jamais détruit ; les exégètes reconnaissent dans l'énumération des métaux une description de la marche de l'histoire jusqu'à Rome, ce qui montre la portée universelle de l'annonce. (5) LES ÉCRITS DE QUMRÂN : plusieurs textes de la communauté, notamment le Rouleau de la Guerre et les commentaires prophétiques dits pesharim, reprennent l'attente du jugement des nations au profit du peuple de Dieu. (6) RÉVÉLATION : aux chapitres 11, 12, 19 et 21, la royauté de Dieu et de son Christ est proclamée en des termes qui reprennent les formulations prophétiques ; la formule du dernier verset d'Abdias y correspond mot pour mot. (7) PRUDENCE : les sources historiques montrent la permanence de l'espérance royale ; elles ne permettent pas de fixer une date au dernier verset.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE MONT SION : dans le livre d'Abdias, Sion est le point de départ des libérateurs, comme elle était le lieu profané au temps de la ruine ; la géographie du livre est donc construite sur deux montagnes — Sion et la montagne d'Ésaü. (2) LA MONTAGNE D'ÉSAÜ : le plateau édomite, au sud-est de la mer Morte et de la Arabah, dont les hauteurs dominent les routes caravanières ; c'est le lieu du jugement. (3) LES DEUX AXES DU MONDE ANCIEN : Sion se situe sur l'axe nord-sud qui relie l'Égypte à la Syrie ; Édom contrôle l'axe est-ouest des caravanes venues d'Arabie ; la confrontation des deux montagnes résume donc, dans la géographie de l'époque, un enjeu de routes et de commerce. (4) LES LIEUX DE LA RESTAURATION : les versets 19 et 20 dessinent un pays qui s'étend du Néguev au nord de la côte phénicienne, en passant par la Sheféla, Éphraïm, Samarie, la Transjordanie et les villes du sud ; le dernier verset pose au-dessus de cet ensemble la ville sainte comme centre d'autorité. (5) LES HAUTEURS SYMBOLIQUES : dans la littérature biblique, les hauts lieux sont les lieux du culte ; la montagne d'Ésaü représente ce qui doit être jugé, Sion ce qui doit être exalté. (6) L'ÉCHO GÉOGRAPHIQUE DANS LE NOUVEAU TESTAMENT : Révélation 14:1 situe les 144 000 avec l'Agneau « sur le mont Sion », reprenant la même polarité entre la montagne sainte et les puissances hostiles.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE MONT SION ET LA VILLE ANTIQUE : les fouilles de l'Ophel et de la Cité de David ont dégagé les niveaux de l'époque perse, avec des traces de réoccupation, de fortifications reconstruites et d'activité administrative, ce qui documente la restauration décrite par les prophètes postérieurs à l'exil. (2) LES SCEAUX DE YÉHOUD ET DE JÉRUSALEM : les bulles et cachets du Ve-IVe siècle av. n. è. prouvent que la ville restaurée disposait d'une administration organisée, élément indispensable à la reprise d'un pouvoir local après l'exil. (3) LE TERRITOIRE ÉDOMITE : les prospections montrent l'abandon progressif des sites du plateau, ce qui contraste avec la reprise de l'habitat observée en Juda à la même époque — deux trajectoires opposées qu'illustre le contraste final d'Abdias. (4) LES MANUSCRITS : le livre d'Abdias est conservé dans les manuscrits de la mer Morte, ce qui atteste sa transmission continue depuis l'Antiquité ; sa brièveté et sa place parmi les douze prophètes expliquent qu'il ait été copié avec eux. (5) LA CHRONOLOGIE : la séquence des empires décrite en Daniel 2 et la séquence historique vérifiée par les sources mésopotamiennes, perses, grecques et romaines, fournissent le cadre dans lequel la promesse d'un royaume permanent a été conservée puis reprise. (6) PRUDENCE : les sciences historiques et archéologiques éclairent le cadre du retour, de la restauration et de l'émergence de l'espérance royale ; elles ne portent aucun jugement sur l'accomplissement futur évoqué par le texte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« ET DES LIBÉRATEURS MONTERONT SUR LE MONT SION » (v. 21) → « POUR JUGER LA MONTAGNE D'ÉSAÜ » (v. 21) → « ET LE ROYAUME SERA À JÉHOVAH » (v. 21) → 537 : RETOUR DE L'EXIL ET RECONSTRUCTION (ESDRAS 1:1-4) → ÉPOQUE PERSE : ATTENTE DU REJETON DE DAVID (AGGÉE 2:20-23 ; ZEKARIA 6:12, 13) → Ier SIÈCLE : « EST-CE EN CE TEMPS QUE TU RÉTABLIS LE ROYAUME ? » (ACTES 1:6-8) → DANIEL 2:44 : LE ROYAUME QUI NE SERA JAMAIS DÉTRUIT → RÉVÉLATION 11:15 : « LE ROYAUME DU MONDE EST DEVENU LE ROYAUME DE NOTRE SEIGNEUR » → RÉVÉLATION 21:1-4 : LA PROMESSE FINALE ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre la prophétie avec les références du registre (Daniel 2:44 ; Révélation 11:15) et le statut « À venir ». L'IDENTITÉ DES « LIBÉRATEURS » : la fiche signale les deux grandes lectures — chefs suscités par Dieu pour juger les puissances hostiles, ou lignée de sauveurs issus de Sion — sans trancher, le texte ne nommant personne. LE JUGEMENT DE LA MONTAGNE D'ÉSAÜ : la fiche expose la valeur symbolique d'Édom sans dresser de tableau de l'exécution future du jugement. LA DATE : aucun élément de la fiche ne permet de dater l'accomplissement attendu ; le statut « À venir » du registre y renvoie sans le dater. LA LECTURE MESSIANIQUE : la fiche la mentionne comme lecture reconnue, sans entrer dans les débats confessionnels, la règle du projet étant de ne présenter que les preuves. CE QUE CETTE FICHE NE DIT PAS : elle clôt le livre d'Abdias et ne traite pas des prophètes suivants du registre (Jonas) ; elle ne formule aucune application aux communautés religieuses actuelles.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dernier verset d'Abdias : des libérateurs sur Sion, le jugement de la montagne d'Ésaü, le royaume à Jéhovah</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier accomplissement de la restauration : retour des captifs (Esdras 1:1-4)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Attente du rejeton davidique chez Aggée et Zekaria (Aggée 2:20-23 ; Zekaria 6:12, 13)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque perse</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Proclamation de Jésus comme Roi ; question des disciples sur le rétablissement du royaume (Actes 1:6-8 ; 2:34-36)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Établissement du royaume indestructible annoncé par Daniel 2:44</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Proclamation finale : « le royaume du monde est devenu le royaume de notre Seigneur et de son Christ » (Révélation 11:15)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/22">Bible — Actes 22 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/22</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/13">Bible — Actes 13 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/6">Bible — Romains 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/3">Bible — Galates 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/3</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174">Abdias (livre) — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200274174</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101986085">L'Édom antitypique des temps modernes doit disparaître — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101986085</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche AB446 — « Des libérateurs monteront sur le mont Sion… et le royaume sera à Jéhovah » : la conclusion du livre d'Abdias</span><span>Catégorie AB1</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie AB1</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>AB442 — « L'orgueil de ton cœur t'a égaré » : le creux des rochers, le nid de l'aigle et les sages de Téman</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Abdias prononce la vision contre Édom : l'orgueil, le pillage, la perte des sages (Abdias 1-9)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom est emporté dans le mouvement de conquête babylonienne de la région (Jérémie 25:15-21)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607-580 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne de Nabonide vers Téma ; l'autonomie d'Édom s'achève</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 552 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Installation nabatéenne dans le territoire édomite ; Pétra devient leur capitale</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IVe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jean Hyrcan soumet l'Idumée et impose le judaïsme à sa population (Josèphe, Antiquités)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">130-120 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Après la chute de Jérusalem, l'Idumée disparaît de l'histoire</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">70 de n. è.</text>
+</svg>
+<h4>AB443 — « À cause de la violence faite à ton frère Jacob » : le jour où Édom se tint à l'écart et livra les rescapés</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Jérusalem ; Édom assiste au pillage et intercepte les rescapés (Abdias 10-14 ; Psaume 137:7)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie avertit les rois voisins, dont Édom, de se soumettre au joug babylonien (Jérémie 27:1-7)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Après 607 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ézéchiel dénonce la montagne de Séir et annonce sa désolation (Ézéchiel 35)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe siècle av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les Nabatéens occupent le territoire édomite ; les Édomites se regroupent en Idumée</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IVe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jean Hyrcan soumet l'Idumée (Flavius Josèphe, Antiquités XIII)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">130-120 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'Idumée disparaît de l'histoire après la chute de Jérusalem</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">70 de n. è.</text>
+</svg>
+<h4>AB444 — « Comme tu as fait, il te sera fait » : le jour de Jéhovah sur toutes les nations et la coupe bue sur la montagne sainte</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Abdias énonce la règle du jugement : « comme tu as fait, il te sera fait » (Abdias 15, 16)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le jugement s'exécute sur Édom et les royaumes voisins (Jérémie 25:15-21)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607-582 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babylone tombe à son tour : la coupe est appliquée à la puissance qui avait frappé les nations (Jérémie 50, 51)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édom disparaît : prophétie devenue « comme si elle n'avait pas été »</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IVe-IIe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paul annonce aux Athéniens un jour fixé pour juger la terre habitée (Actes 17:31)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Application finale du jour de Jéhovah sur toutes les nations (Révélation 16:14 ; 19:11-21)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>AB445 — « Sur le mont Sion il y aura des rescapés » : la maison de Jacob comme un feu, Joseph comme une flamme et le retour des captifs</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Annonce de la restauration : rescapés sur Sion, feu de Jacob contre le chaume d'Ésaü (Abdias 17-20)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus : retour des premiers captifs et début de la reconstruction (Esdras 1:1-4)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reconstruction et inauguration du second temple (Aggée 1 ; Esdras 6:14-16)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520-516 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réinstallation dans les villes de Juda et de Benjamin (Néhémie 11:1-36)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Organisation de la province de Yehoud ; sceaux et monnaies à son nom</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque perse</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Extension judéenne vers le sud et l'est sous les Maccabées, dont l'Idumée</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe siècle av. n. è.</text>
+</svg>
+<h4>AB446 — « Des libérateurs monteront sur le mont Sion… et le royaume sera à Jéhovah » : la conclusion du livre d'Abdias</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dernier verset d'Abdias : des libérateurs sur Sion, le jugement de la montagne d'Ésaü, le royaume à Jéhovah</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 607 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier accomplissement de la restauration : retour des captifs (Esdras 1:1-4)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Attente du rejeton davidique chez Aggée et Zekaria (Aggée 2:20-23 ; Zekaria 6:12, 13)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Époque perse</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Proclamation de Jésus comme Roi ; question des disciples sur le rétablissement du royaume (Actes 1:6-8 ; 2:34-36)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Établissement du royaume indestructible annoncé par Daniel 2:44</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Proclamation finale : « le royaume du monde est devenu le royaume de notre Seigneur et de son Christ » (Révélation 11:15)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

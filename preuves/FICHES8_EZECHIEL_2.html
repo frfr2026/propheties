@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES EZ — Ézéchiel (2) — la fin, les abominations et la gloire qui part</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_EZ307_hauts.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES EZ</h1>
+<h2>Ézéchiel (2) — la fin, les abominations et la gloire qui part</h2>
+<p class="intro">Le verdict tombe sur les montagnes : hauts lieux désolés, autels brisés, et un reste qui se souviendra (EZ307). « La fin est venue » — ni l'argent ni l'or ne délivreront (EZ308). En vision, Ézéchiel contemple les quatre abominations du Temple (EZ309), puis le scribe en lin marque les fronts qui soupirent avant que les six hommes ne frappent (EZ310). La gloire quitte la maison, étape par étape, jusqu'à la montagne de l'orient (EZ311), tandis que Pelatya meurt en pleine prophétie (EZ312).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:15</div><audio controls preload="none" src="audio/fiche_ED_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_ED_intro.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:15</div><audio controls preload="none" src="audio/fiche_NE_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_NE_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#EZ307">EZ307</a>
+<a href="#EZ308">EZ308</a>
+<a href="#EZ309">EZ309</a>
+<a href="#EZ310">EZ310</a>
+<a href="#EZ311">EZ311</a>
+<a href="#EZ312">EZ312</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#EZ307"><img src="images/prophe_EZ307_hauts.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ307</div>
+<h3><a href="#EZ307">« Vos hauts lieux seront désolés » : le verdict des montagnes</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ308"><img src="images/prophe_EZ308_fin.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ308</div>
+<h3><a href="#EZ308">« La fin est venue » : ni l'argent ni l'or ne délivrent</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ309"><img src="images/prophe_EZ309_abominations.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ309</div>
+<h3><a href="#EZ309">« Tu verras de plus grandes abominations » : le Temple profané</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ310"><img src="images/prophe_EZ310_signe.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ310</div>
+<h3><a href="#EZ310">« Une marque sur les fronts » : le taw des soupirants</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ311"><img src="images/prophe_EZ311_gloire.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ311</div>
+<h3><a href="#EZ311">« La gloire monta » : Dieu quitte sa maison</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ312"><img src="images/prophe_EZ312_pelatya.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ312</div>
+<h3><a href="#EZ312">« Pelatya mourut » : la marmite retournée</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="EZ307">
+<div class="visuel"><img src="images/prophe_EZ307_hauts.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ307 · CATÉGORIE EZ</div>
+<h3>« Vos hauts lieux seront désolés » : le verdict des montagnes</h3>
+<div class="ref">Ézéchiel 6:1-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">hauts lieux désolés reste souvient (face → montagnes → Israël → prophétise → montagnes → collines → ravins → vallées → amène → épée → hauts lieux → désolés → autels → désolés → brisés → idoles → disparaissent → encens → abattus → œuvres → effacées → tué → tombera → milieu → saurez → Jéhovah)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ307</div><audio controls preload="none" src="audio/fiche_EZ307_hauts.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ307_hauts.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 6:1-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>hauts lieux désolés reste souvient (face → montagnes → Israël → prophétise → montagnes → collines → ravins → vallées → amène → épée → hauts lieux → désolés → autels → désolés → brisés → idoles → disparaissent → encens → abattus → œuvres → effacées → tué → tombera → milieu → saurez → Jéhovah)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P307 (6:1-14 : hauts lieux désolés, autels ravagés, villes en ruines) ; 2R 25:8-11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« FACE… MONTAGNES… ISRAËL… PROPHÉTISE… MONTAGNES… COLLINES… RAVINS… VALLÉES… RELIEF… ACCUSÉ… AMÈNE… ÉPÉE… HAUTS-LIEUX… DÉSOLÉS… AUTELS… BRISÉS… IDOLES… DISPARAISSENT… ENCENS… ABATTUS… ŒUVRES… EFFACÉES… TUÉ… MILIEU… SAUREZ… JÉHOVAH. » (6:1-7 — Jéhovah !)</li>
+<li>« LAISSERAI… RESTE… RÉCHAPPÉS… ÉPÉE… NATIONS… DISPERSÉS… PAYS… SOUVIENDRONT… MOI… CŒUR… PROSTITUÉ… BRISÉ… YEUX… PROSTITUÉS… IDOLES… DÉGOÛT… EUX-MÊMES… MAUX… ABOMINATIONS… SAURONT… VAIN… PARLÉ… FUNESTE… NON. » (6:8-10 — non !)</li>
+<li>« FRAPPE… MAINS… TAPE… PIED… HÉLAS… ABOMINATIONS… MAISON… ISRAËL… ÉPÉE… FAMINE… PESTE… TOMBERONT… LOIN… PESTE… MOURRA… PRÈS… ÉPÉE… RESTANT… ASSIÉGÉ… FAMINE… ASSOUVIRAI… COLÈRE… EUX… GÉOGRAPHIE… JUGEMENT… TRIPLE… CERCLE. » (6:11-12 — cercle !)</li>
+<li>« SAURONT… TUÉS… MILIEU… IDOLES… AUTELS… COLLINES… SOMMETS… ARBRE… TOUFFU… TÉRÉBINTHE… ÉPAIS… ODEUR… REPOSANTE… OFFRAIENT… MAIN… TENDRAI… PAYS… SOLITUDE… PIRE… DÉSERT… DIBLA… LIEUX… HABITATION… SAURONT… JÉHOVAH. » (6:13-14 — Jéhovah !)</li>
+<li>« SOIXANTE-DEUX… FOIS… SAURONT… JÉHOVAH… ÉZÉCHIEL… FORMULE… SIGNATURE… PREMIÈRE… OCCURRENCE… CHAPITRE… SIX… CONNAISSANCE… EXPÉRIENTIELLE… JUGEMENT… RÉVÈLE… DIEU… THÉOLOGIE… CATASTROPHE… PÉDAGOGIE… DIVINE… DOULOUREUSE. » (62 fois — douloureuse !)</li>
+<li>« DIBLA… DIBLATH… DÉSERT… SYRIEN… ARIDITÉ… ABSOLUE… RÉFÉRENCE… EXTRÊME… NÉGUEV… FERTILE… DEVIENDRA… HAMADA… JOSIAS… RÉFORME… DÉTRUIT… HAUTS-LIEUX… RECONSTRUITS… MANASSÉ… AMON… RECHUTE… FATALE… DÉFINITIVE. » (Dibla — définitive !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les MONTAGNES-ACCUSÉES, 613/593 — VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les SIM (les METS (les PANÉKHA (les FACE (les EL (les HARÉ (les MONTAGNES (les YISRAÉL (les ISRAËL (les VEHINNABÉTA (les PROPHÉTISE (les ALÉHEM (les EUX (les VEAMARTA (les DIRAS (les HARÉ (les MONTAGNES (les YISRAÉL (les ISRAËL (les SHIMU (les ÉCOUTEZ (les DEBAR (les PAROLE (les ADONAY (les SOUVERAIN (les YEHOVIH (les JÉHOVAH (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les JÉHOVAH (les LEHARIM (les MONTAGNES (les VELAGGEBAOT (les COLLINES (les LAAPHIQIM (les RAVINS (les VELAGGEAYOT (les VALLÉES (les HINENI (les VOICI (les ANI (les JE (les MÉBI (les AMÈNE (les ALÉKHEM (les VOUS (les HÉREB (les ÉPÉE (les VEIBBADTI (les DÉTRUIRAI (les BAMOTÉKHEM (les HAUTS-LIEUX (les VENASHAMMU (les DÉSOLÉS (les MIZBEHOTÉKHEM (les AUTELS (les VENISHBERU (les BRISÉS (les HAMMANÉKHEM (les ENCENS (les VEHIPPALTI (les TOMBERAI (les HALELÉKHEM (les TUÉS (les LIPHNÉ (les DEVANT (les GILLULÉKHEM (les IDOLES (les MONTAGNES (les ÉPÉE (les HAUTS-LIEUX — les DÉSOLÉS !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le RESTE-QUI-SE-SOUVIENT (les VEHOTARTI (les LAISSERAI (les BIHEYOT (les RESTE (les LAKHEM (les VOUS (les PELÍTÉ (les RÉCHAPPÉS (les HÉREB (les ÉPÉE (les BAGGOYIM (les NATIONS (les BEHAZAROTÉKHEM (les DISPERSÉS (les BAARATSOT (les PAYS (les VEZAKHERU (les SOUVIENDRONT (les PELÍTÉKHEM (les RÉCHAPPÉS (les OTI (les MOI (les BAGGOYIM (les NATIONS (les ASHER (les OÙ (les NISHBU (les CAPTIFS (les SHAM (les LÀ (les ASHER (les CAR (les NISHBARTI (les BRISÉ (les ET (les LIBBAM (les CŒUR (les HAZZONÉH (les PROSTITUÉ (les ASHER (les QUI (les SAR (les DÉTOURNÉ (les MÉALAY (les MOI (les VEÉT (les ÉYNÉHEM (les YEUX (les HAZZONOT (les PROSTITUÉS (les AHARÉ (les APRÈS (les GILLULÉHEM (les IDOLES (les VENAQOTU (les DÉGOÛT (les BIPHNEHEM (les EUX-MÊMES (les EL (les HARAOT (les MAUX (les ASHER (les QUILS (les ASU (les FAIT (les LEKHOL (les TOUTES (les TOABOTÉHEM (les ABOMINATIONS (les VEYADEU (les SAURONT (les KI (les QUE (les ANI (les JE (les YEHOVAH (les LO (les NON (les EL (les VAIN (les HIN (les CHINNAM (les DIBBARTI (les PARLÉ (les LAASOT (les FAIRE (les LAHEM (les EUX (les ET (les HARA AH (les FUNESTE (les HAZZOT (les RESTE (les CŒUR-BRISÉ (les DÉGOÛT — les SAURONT !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le TRIPLE-CERCLE (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les JÉHOVAH (les HAKKÉH (les FRAPPE (les BEKHAPPEKHA (les MAINS (les UREQAH (les TAPE (les BERAGLEKHA (les PIED (les VEÉMAR (les DIS (les AHHAH (les HÉLAS (les EL (les KOL (les TOUTES (les TOABOT (les ABOMINATIONS (les RAOT (les MAUVAISES (les BÉYT (les MAISON (les YISRAÉL (les ISRAËL (les ASHER (les CAR (les BAHÉREB (les ÉPÉE (les BARAAB (les FAMINE (les UBADDEBÉR (les PESTE (les YIPPOLU (les TOMBERONT (les HARA HOQ (les LOIN (les BADDEBÉR (les PESTE (les YAMUT (les MOURRA (les VEHAQQAROB (les PRÈS (les BAHÉREB (les ÉPÉE (les YIPPOL (les TOMBERA (les VEHANNISHAR (les RESTANT (les VEHANNATSUR (les ASSIÉGÉ (les BARAAB (les FAMINE (les YAMUT (les MOURRA (les VEKHILLITI (les ASSOUVIRAI (les HEMATI (les COLÈRE (les BAM (les EUX (les UIDATEM (les SAURONT (les KI (les QUE (les ANI (les JE (les YEHOVAH (les BIHEYOT (les QUAND (les HALELÉHEM (les TUÉS (les BETOKH (les MILIEU (les GILLULÉHEM (les IDOLES (les SEBIBOT (les AUTOUR (les MIZBEHOTÉHEM (les AUTELS (les EL (les KOL (les TOUTE (les GIBAH (les COLLINE (les RAMAH (les HAUTE (les BEKHOL (les TOUS (les RASHÉ (les SOMMETS (les HEHARIM (les MONTAGNES (les VETAHAT (les SOUS (les KOL (les TOUT (les ÉTS (les ARBRE (les RAANAN (les TOUFFU (les VETAHAT (les SOUS (les KOL (les TOUT (les ÉLAH (les TÉRÉBINTHE (les ABUTTAH (les ÉPAIS (les MEQOM (les LIEU (les ASHER (les OÙ (les NATENU (les OFFRAIENT (les SHAM (les LÀ (les RÉYAH (les ODEUR (les NIHOAH (les REPOSANTE (les LEKHOL (les TOUTES (les GILLULÉHEM (les IDOLES (les VENATITI (les TENDRAI (les ET (les YADI (les MAIN (les ALÉHEM (les EUX (les VENATATTI (les FERAI (les ET (les HAARÉTS (les PAYS (les SHEMAMAH (les SOLITUDE (les UMESHAMMAH (les DÉSOLÉE (les MIMMIDBAR (les DÉSERT (les DIBLATAH (les DIBLA (les BEKHOL (les TOUS (les MOSHBOTÉHEM (les HABITATION (les VEYADEU (les SAURONT (les KI (les QUE (les ANI (les JE (les YEHOVAH (les CERCLE (les IDOLES (les DIBLA — les SAURONT !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">6:1-7</td><td>JÉHOVAH (MONTAGNES !)</td></tr>
+<tr><td class="d">6:8-10</td><td>NON (RESTE !)</td></tr>
+<tr><td class="d">6:11-12</td><td>CERCLE (HÉLAS !)</td></tr>
+<tr><td class="d">6:13-14</td><td>JÉHOVAH (DIBLA !)</td></tr>
+<tr><td class="d">62×/2R25</td><td>DOULOUREUSE (SIGNATURE !)</td></tr>
+<tr><td class="d">607/villes</td><td>DÉFINITIVE (RUINES !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>613/593 (oracle) → 609/589-607/587 : les villes dévastées (Lakish, Azéqa — lettres de Lakish : signaux de feu, détresse), les hauts lieux (Arad, Béer-Shéba — sanctuaires démantelés, cornes d'autel retrouvées) désolés, les autels brisés (2R 25:8-11) ; le reste : 745 + 832 + 3 023 déportés (Jr 52:28-30) + pauvres vignerons (52:16) — « ils se souviendront » (v. 9 ; Za 10:9, Ps 137) ; « pas en vain » (v. 10) : la menace exécutée prouve la parole.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Relief accusé (v. 2-3) : montagnes (Éphraïm, Juda), collines (Shéphélah), ravins (oueds), vallées (Rephaïm, Hinnom-Topheth) — chaque lieu de culte illicite nommé ; « sous tout arbre touffu » (v. 13) : bosquets sacrés (ashérah) ; Dibla (v. 14, Diblat — désert syrien oriental ?) : l'aridité absolue comme étalon — le Néguev fertile deviendra hamada.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>« La chrétienté le saura » (Tour de Garde — Éz 6:1-14 cité : 1ʳᵉ des 62 occurrences de « vous saurez que je suis Jéhovah ») — la FORMULE-SIGNATURE du livre ; Ézéchiel 6 (nwt + Rbi8 — montagnes, reste, triple cercle, Dibla) — le TEXTE ; les autels à cornes (Arad, Béer-Shéba — sanctuaires démantelés sous Josias, jamais relevés) — l'ARCHÉOLOGIE des hauts lieux brisés.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>593 : MONTAGNES ACCUSÉES → ÉPÉE ANNONCÉE → RESTE PROMIS → 589-587 : TRIPLE CERCLE (LOIN/PESTE, PRÈS/ÉPÉE, ASSIÉGÉ/FAMINE) → VILLES DÉVASTÉES → 587 : TUÉS PARMI LES IDOLES → ILS SAVENT</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Pire que le désert de Dibla » (v. 14) : hyperbole — Juda reste habitable (vignerons, 52:16) mais désolé ; Dibla/Diblath : identification incertaine (est désertique ?) — le sens (aridité extrême) est sûr ; 62 occurrences : compte massorétique du refrain « savoir que je suis Jéhovah » (formes variables) — l'ordre de grandeur fait la signature.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Montagnes accusées</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">613/593</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Triple cercle exécuté</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">589-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Villes dévastées ; ils savent</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101971007">« La chrétienté le saura — à l'heure de sa fin » (Tour de Garde)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101971007</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/6">Bible — Ézékiel 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/6">Bible — Ézékiel 6 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/6</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ307 — « Vos hauts lieux seront désolés » : le verdict des montagnes</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ308">
+<div class="visuel"><img src="images/prophe_EZ308_fin.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ308 · CATÉGORIE EZ</div>
+<h3>« La fin est venue » : ni l'argent ni l'or ne délivrent</h3>
+<div class="ref">Ézéchiel 7:1-27</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">fin venue richesses inutiles (fin → quatre → coins → pays → fin → toi → colère → jugerai → conduite → comptes → abominations → œil → épargnera → compassion → voies → sauront → Jéhovah → malheur → unique → venu → fin → venue → veille → vient → tour → venu → habitant → temps → jour → proche → confusion → montagnes → cris → joie)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ308</div><audio controls preload="none" src="audio/fiche_EZ308_fin.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ308_fin.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 7:1-27</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>fin venue richesses inutiles (fin → quatre → coins → pays → fin → toi → colère → jugerai → conduite → comptes → abominations → œil → épargnera → compassion → voies → sauront → Jéhovah → malheur → unique → venu → fin → venue → veille → vient → tour → venu → habitant → temps → jour → proche → confusion → montagnes → cris → joie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P308 (7:1-27 : la fin est venue ; ni argent ni or ne délivrent) ; 2R 25:1-11 ; Lm 4:1 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« FIN… QUATRE… COINS… PAYS… FIN… TOI… COLÈRE… JUGERAI… CONDUITE… COMPTES… ABOMINATIONS… ŒIL… ÉPARGNERA… COMPASSION… VOIES… SAURONT… JÉHOVAH… QÉTS… MOT… CLÉ… CINQ… FOIS… SEPT… VERSETS… MARTELÉ… INÉVITABLE… TOTAL… GÉOGRAPHIQUE. » (7:1-4 — géographique !)</li>
+<li>« MALHEUR… UNIQUE… RAAH… VENU… FIN… VENUE… VEILLE… VIENT… TOUR… TSAPHIRAH… VENU… HABITANT… TEMPS… JOUR… PROCHE… CONFUSION… MONTAGNES… CRIS… JOIE… VERGE… FLEURIT… ORGUEIL… BOURGEONNE… VIOLENCE… VERGE… MÉCHANCETÉ. » (7:5-11 — méchanceté !)</li>
+<li>« TEMPS… VENU… JOUR… ARRIVÉ… ACHETEUR… RÉJOUISSE… VENDEUR… AFFLIGE… COLÈRE… MULTITUDE… VENDEUR… RECOUVRERA… JUBILÉ… SUPPRIMÉ… VISION… MULTITUDE… RÉVOQUÉE… VIE… RAFFERMIRA… FAUTE… ÉCONOMIE… ANÉANTIE… CONTRATS… CADUCS. » (7:12-13 — caducs !)</li>
+<li>« TROMPETTE… SONNÉE… PRÉPARÉ… COMBAT… VONT… COLÈRE… MULTITUDE… ÉPÉE… DEHORS… PESTE… FAMINE… DEDANS… RÉCHAPPÉS… MONTAGNES… COLOMBES… VALLÉES… GÉMISSANT… FAUTE… MAINS… FAIBLES… GENOUX… EAU… SACS… TERREUR… HONTE… CRÂNES… RASÉS. » (7:14-18 — rasés !)</li>
+<li>« ARGENT… JETTERONT… RUES… OR… IMPURETÉ… NIDDAH… ARGENT… OR… DÉLIVRENT… JOUR… FUREUR… RASSASIENT… ÂMES… REMPLISSENT… ENTRAILLES… PIERRE… ACHOPPEMENT… FAUTE… BEAUTÉ… ORNEMENTS… ORGUEIL… IMAGES… ABOMINABLES… RENDRAI… IMPUR. » (7:19-20 — impur !)</li>
+<li>« LIVRERAI… ÉTRANGERS… PILLAGE… IMPIES… BUTIN… PROFANERONT… DÉTOURNERAI… FACE… LIEU… SECRET… VIOLENTS… ENTRERONT… CHAÎNE… FAIS… PAYS… JUGEMENTS… SANGLANTS… VILLE… VIOLENCE… PIRES… NATIONS… MAISONS… ORGUEIL… FORTS… CESSERA… SANCTUAIRES… PROFANÉS. » (7:21-24 — profanés !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le QÉTS, 613/593 — VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les VEATTAH (les TOI (les BEN (les FILS (les ADAM (les HOMME (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les JÉHOVAH (les LEADMAT (les PAYS (les YISRAÉL (les ISRAËL (les QÉTS (les FIN (les BA (les VENU (les HAQQÉTS (les FIN (les AL (les ARBAAT (les QUATRE (les KANPHOT (les COINS (les HAARÉTS (les PAYS (les ATTAH (les MAINTENANT (les HAQQÉTS (les FIN (les ALAYIKH (les TOI (les VESHILLAHTI (les ENVERRAI (les APPI (les COLÈRE (les BAKH (les TOI (les USHAPHATTIKH (les JUGERAI (les KIDRAKHAYIKH (les CONDUITE (les VENATATTI (les METTRAI (les ALAYIKH (les TOI (les ET (les KOL (les TOUTES (les TOABOTAYIKH (les ABOMINATIONS (les VELO (les NON (les TAHOS (les ÉPARGNERA (les ÉYNI (les ŒIL (les ALAYIKH (les TOI (les VELO (les NON (les ÉHMOL (les COMPASSION (les KI (les CAR (les DERAKHAYIKH (les VOIES (les ALAYIKH (les TOI (les ÉTTÉN (les METTRAI (les UTOABOTAYIKH (les ABOMINATIONS (les BETOKHÉKH (les MILIEU (les TIHEYÉNAH (les SERONT (les UIDATEM (les SAUREZ (les KI (les QUE (les ANI (les JE (les YEHOVAH (les FIN (les QUATRE-COINS (les SANS-PITIÉ — les FIN !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le MALHEUR-UNIQUE (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les JÉHOVAH (les RAAH (les MALHEUR (les AHAT (les UNIQUE (les RAAH (les HINNÉH (les VOICI (les BAAH (les VENU (les QÉTS (les FIN (les BA (les VENU (les BA (les VENU (les HAQQÉTS (les FIN (les HÉQITS (les VEILLE (les ÉLÉKHA (les TOI (les HINNÉH (les VOICI (les BAAH (les VIENT (les BAAH (les VENU (les HATSTSEPHIRAH (les TOUR (les ÉLÉKHA (les TOI (les YOSHÉB (les HABITANT (les HAARÉTS (les PAYS (les BA (les VIENT (les HAÉT (les TEMPS (les QAROB (les PROCHE (les HAYYOM (les JOUR (les MEHUMAH (les CONFUSION (les VELO (les NON (les HÉDAD (les CRIS-JOIE (les HARIM (les MONTAGNES (les MALHEUR (les TOUR (les CONFUSION — les JOUR !)</p>
+<h4>5 · Interprétation</h4>
+<p>LOR-IMPURETÉ (les KASPAHM (les ARGENT (les BAHHUTSOT (les RUES (les YASHLIKU (les JETTERONT (les UZEHABAM (les OR (les LENIDDAH (les IMPURETÉ (les YIHYEH (les SERA (les KASPAM (les ARGENT (les UZEHABAM (les OR (les LO (les NON (les YUKHAL (les POURRA (les LEHATSILAM (les DÉLIVRER (les BEYOM (les JOUR (les ÉBRAT (les FUREUR (les YEHOVAH (les NAPSHAM (les ÂMES (les LO (les NON (les YESABBÉU (les RASSASIENT (les UMÉÉHEM (les ENTRAILLES (les LO (les NON (les YEMALLEU (les REMPLISSENT (les KI (les CAR (les MIKHSHOL (les ACHOPPEMENT (les AVONAM (les FAUTE (les HAYAH (les FUT (les UTSEBI (les BEAUTÉ (les ÉDYO (les ORNEMENTS (les LEGAON (les ORGUEIL (les SAMAHU (les MIS (les VETSALMÉ (les IMAGES (les TOABOTAM (les ABOMINABLES (les SHIQQUTSEHEM (les HORREURS (les ASU (les FIRENT (les BO (les LUI (les AL (les KÉN (les CÈST POURQUOI (les NETATTIV (les RENDRAI (les LAHEM (les EUX (les LENIDDAH (les IMPUR (les ANGOISSE (les VIENDRA (les PAIX (les CHERCHÉE (les NULLE (les CALAMITÉ (les CALAMITÉ (les RUMEUR (les RUMEUR (les VISION (les PROPHÈTE (les CHERCHÉE (les LOI (les PRÊTRE (les PÉRIE (les CONSEIL (les ANCIENS (les ROI (les DEUIL (les PRINCE (les DÉSESPOIR (les MAINS (les PEUPLE (les TREMBLENT (les CONDUITE (les JUGEMENTS (les SAURONT — les JÉHOVAH !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">7:1-4</td><td>GÉOGRAPHIQUE (FIN !)</td></tr>
+<tr><td class="d">7:5-11</td><td>MÉCHANCETÉ (TOUR !)</td></tr>
+<tr><td class="d">7:12-13</td><td>CADUCS (JUBILÉ !)</td></tr>
+<tr><td class="d">7:14-18</td><td>RASÉS (TROMPETTE !)</td></tr>
+<tr><td class="d">7:19-20</td><td>IMPUR (NIDDAH !)</td></tr>
+<tr><td class="d">7:21-27/607</td><td>JÉHOVAH (ROI-DEUIL !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>613/593 (oracle) → 609/589-607/587 : « l'argent jeté dans les rues » (v. 19) — les trésors (Temple, palais) pillés (2R 25:13-17 ; Jr 52:17-23), l'or du Temple fondu en butin ; « l'or sera une impureté » (Lm 4:1 — « comment l'or s'est-il terni ! ») ; la trompette sans soldats (v. 14 — armée dispersée, Jr 52:8) ; « le vendeur ne recouvrera pas » (v. 13 — jubilé caduc, propriété anéantie) ; le roi en deuil (v. 27 — Tsidqiya aveuglé), le prince en désespoir ; « calamité sur calamité » (v. 26 — brèche, fuite, incendie, Ribla, Mizpa).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Quatre coins du pays » (v. 2) : Dan au nord, Béer-Shéba au sud, la mer à l'ouest, le Jourdain à l'est — la fin totale, géographique ; les rues (v. 19, hutsot) : argent piétiné là où l'on commerçait ; les montagnes (v. 7, 16) : confusion puis refuge des colombes-réchappés ; les nations « les pires » (v. 24) : Chaldéens — maisons occupées, sanctuaires profanés.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 7 (triple tradition nwtsty/nwt/Rbi8 — qéts ×5, niddah, tour/aurore) — le CHAPITRE le plus martelé du livre ; Lamentations 4:1 (or terni, pierres sacrées dispersées) — la PHOTOGRAPHIE du verset 19 ; tsaphirah (v. 7, 10 — « tour »/aurore/couronne ? hapax débattu) — le MOT-MYSTÈRE : le tour vient, l'aurore se lève, la couronne tombe — trois lectures, un verdict.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>593 : FIN ×5 MARTELÉE → TOUR VENU → JUBILÉ CADUC → TROMPETTE SANS SOLDATS → 589-587 : ARGENT DANS LES RUES → OR-IMPURETÉ → MAISONS PRISES → ROI EN DEUIL → CALAMITÉS EN CASCADE → ILS SAVENT</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Jubilé » (v. 13) : lecture traditionnelle (Lévitique 25 — retour des terres) — le verset annonce l'effondrement du droit foncier, jubilé ou non ; « les pires des nations » (v. 24) : les Chaldéens — jugement moral assumé (Ha 1:6 « nation amère et impétueuse ») ; tsaphirah : la fiche retient « tour » (contexte : ton tour est venu) sans trancher l'hapax.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin martelée ×5</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">613/593</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trompette ; rues d'argent</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">589-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Roi en deuil ; cascade</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/7">Bible — Ézékiel 7 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/7</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/7">Bible — Ézékiel 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/7</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/7">Bible — Ézékiel 7 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/7</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ308 — « La fin est venue » : ni l'argent ni l'or ne délivrent</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ309">
+<div class="visuel"><img src="images/prophe_EZ309_abominations.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ309 · CATÉGORIE EZ</div>
+<h3>« Tu verras de plus grandes abominations » : le Temple profané</h3>
+<div class="ref">Ézéchiel 8:1-18</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">abominations Temple fureur (sixième → année → sixième → mois → cinquième → mois → assis → maison → anciens → Juda → devant → main → Souverain → tombe → figure → feu → reins → bas → feu → reins → haut → haschmal → tend → forme → main → prend → toupet → esprit → soulève → terre → ciel → visions → Jérusalem)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ309</div><audio controls preload="none" src="audio/fiche_EZ309_abominations.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ309_abominations.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 8:1-18</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>abominations Temple fureur (sixième → année → sixième → mois → cinquième → mois → assis → maison → anciens → Juda → devant → main → Souverain → tombe → figure → feu → reins → bas → feu → reins → haut → haschmal → tend → forme → main → prend → toupet → esprit → soulève → terre → ciel → visions → Jérusalem)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P309 (8:1-18 : abominations du temple ; je traiterai avec fureur) ; 2Ch 36:14-19 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« SIXIÈME… ANNÉE… SIXIÈME… MOIS… CINQUIÈME… JOUR… ASSIS… MAISON… ANCIENS… JUDA… DEVANT… MAIN… TOMBE… FIGURE… FEU… HASCHMAL… MAIN… TOUPET… CHEVEUX… ESPRIT… SOULÈVE… TERRE… CIEL… VISIONS… JÉRUSALEM… TRANSPORT… PROPHÉTIQUE. » (8:1-3 — prophétique !)</li>
+<li>« IMAGE… JALOUSIE… SIÈGE… PORTE… NORD… AUTEL… ENTRÉE… GLOIRE… DIEU… ISRAËL… PRÉSENTE… ENCORE… VOIS-TU… GRANDES… ABOMINATIONS… ÉLOIGNER… SANCTUAIRE… VERRAS… PLUS… GRANDES… PREMIÈRE… STATION… IDOLE… OFFICIELLE… PARVIS. » (8:4-6 — parvis !)</li>
+<li>« PARVIS… TROU… MUR… CREUSE… PORTE… ENTRE… REPTILES… BÊTES… REPOUSSANTES… IDOLES… TAILLÉES… MUR… SOIXANTE-DIX… ANCIENS… JAAZANIA… SHAPHAN… ENCENSOIR… CHACUN… NUAGE… ENCENS… MONTE… DISENT… JÉHOVAH… VOIT… ABANDONNÉ… PAYS. » (8:7-12 — pays !)</li>
+<li>« PORTE… NORD… MAISON… FEMMES… ASSISES… PLEURANT… TAMMOUZ… DUMUZI… BERGER… MORT… RESSUSCITANT… ÉPOUSE… ISHTAR… DEUIL… ÉTÉ… RITUEL… BABYLONIEN… IMPORTÉ… CULTE… FÉMININ… SANCTUAIRE… JÉHOVAH… SYNCRÉTISME… LARMES. » (8:13-14 — larmes !)</li>
+<li>« PARVIS… INTÉRIEUR… ENTRÉE… TEMPLE… PORTIQUE… AUTEL… VINGT-CINQ… HOMMES… DOS… TEMPLE… FACE… EST… PROSTERNENT… SOLEIL… EST… DOS… ARCHE… FACE… ASTRE… APOSTASIE… GÉOMÉTRIQUE… TOTALE… PRÊTRES… PROBABLES… SACRILÈGE… SOMMET. » (8:15-16 — sommet !)</li>
+<li>« TROP… PEU… MAISON… JUDA… REMPLISSENT… PAYS… VIOLENCE… REVIENNENT… PROVOQUER… RAMEAU… NEZ… MOI… AUSSI… FUREUR… ŒIL… PITIÉ… CRIERONT… OREILLES… ÉCOUTERAI… DEUX-CHRONIQUES… TRENTE-SIX… SOUILLÈRENT… MAISON… MOQUÈRENT… PROPHÈTES… COLÈRE… SANS… REMÈDE. » (8:17-18 — remède !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le TRANSPORT, an 6 — VAYHI (les FUT (les BASHSHANAH (les ANNÉE (les HASHISHIT (les SIXIÈME (les BASHISHI (les SIXIÈME (les BAHAMISHAH (les CINQUIÈME (les LAHODÉSH (les MOIS (les ANI (les JE (les YOSHÉB (les ASSIS (les BEBÉYTI (les MAISON (les VEZIQNÉ (les ANCIENS (les YEHUDAH (les JUDA (les YOSH EBIM (les ASSIS (les LEPHANAY (les DEVANT (les VATTIPPOL (les TOMBA (les ALAY (les MOI (les SHAM (les LÀ (les YAD (les MAIN (les ADONAY (les SOUVERAIN (les YEHOVIH (les VAÉRA (les VIS (les VEHINNÉH (les VOICI (les DEMUT (les FIGURE (les KEMARÉH (les ASPECT (les ÉSH (les FEU (les MIMMARÉH (les ASPECT (les MOTNAV (les REINS (les ULEMATTAH (les BAS (les ÉSH (les FEU (les UMIMMOTNAV (les REINS (les ULEMAALAH (les HAUT (les KEMARÉH (les ASPECT (les ZOHAR (les ÉCLAT (les KEÉYN (les COMME (les HAHASHMAL (les HASCHMAL (les VAYISHLAH (les TENDIT (les TABNIT (les FORME (les YAD (les MAIN (les VAYIQQAHÉNI (les PRIT (les BETSIYTSIT (les TOUPET (les ROSHI (les TÊTE (les VATTISSA (les SOULEVA (les OTI (les MOI (les RUUAH (les ESPRIT (les BÉYN (les ENTRE (les HAARÉTS (les TERRE (les VEHASSHAMAYIM (les CIEL (les VATTABÉ (les AMENA (les OTI (les MOI (les YERUSHALAYMAH (les JÉRUSALEM (les BEMAROT (les VISIONS (les ÉLOHIM (les DIEU (les TRANSPORT (les TOUPET (les JÉRUSALEM — les VISIONS !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les QUATRE-STATIONS (les SÉMÉL (les IMAGE (les HAQQINAH (les JALOUSIE (les PORTE-NORD (les AUTEL (les STATION-UN (les TROU-MUR (les CREUSE (les PORTE-CACHÉE (les REPTILES (les BÊTES (les IDOLES-TAILLÉES (les SOIXANTE-DIX-ANCIENS (les JAAZANIA-SHAPHAN (les ENCENSOIRS (les NUAGE (les STATION-DEUX (les FEMMES (les TAMMOUZ (les PLEURS (les STATION-TROIS (les VINGT-CINQ-HOMMES (les DOS-TEMPLE (les FACE-SOLEIL (les STATION-QUATRE (les CRESCENDO (les PLUS-GRANDES (les REFRAIN (les TROIS-FOIS (les STATIONS — les FUREUR !)</p>
+<h4>5 · Interprétation</h4>
+<p>La FUREUR (les HAMÉAT (les TROP-PEU (les LEBÉYT (les MAISON (les YEHUDAH (les JUDA (les MÉASOT (les FAIRE (les ET (les HATTOÉBOT (les ABOMINATIONS (les ASHER (les QUILS (les ASU (les FIRENT (les PHOH (les ICI (les KI (les CAR (les MALU (les REMPLIRENT (les ET (les HAARÉTS (les PAYS (les HAMAS (les VIOLENCE (les VAYASHUBU (les REVIENNENT (les LEHAKISÉNI (les PROVOQUER (les VEHINNAM (les VOICI (les SHOLEHIM (les METTENT (les ET (les HAZZEMORAH (les RAMEAU (les EL (les APPAM (les NEZ (les VEGAM (les AUSSI (les ANI (les JE (les ÉÉSÉH (les AGIRAI (les BEHÉMAH (les FUREUR (les LO (les NON (les TAHOS (les ÉPARGNERA (les ÉYNI (les ŒIL (les VELO (les NON (les ÉHMOL (les PITIÉ (les VEQAREU (les CRIERONT (les BEOZNAY (les OREILLES (les QOL (les VOIX (les GADOL (les GRANDE (les VELO (les NON (les ÉSHMA (les ÉCOUTERAI (les ELÉHEM (les EUX (les JAAZANIA-FILS-DE-SHAPHAN (les FAMILLE-SCRIBE (les SHAPHAN (les JOSIAS (les RÉFORME (les LIVRE-TROUVÉ (les FILS (les APOSTAT (les ÉLITE (les POURRIE (les SOMMET (les FUREUR — les SANS-REMÈDE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">8:1-4</td><td>PROPHÉTIQUE (TOUPET !)</td></tr>
+<tr><td class="d">8:5-6</td><td>PARVIS (JALOUSIE !)</td></tr>
+<tr><td class="d">8:7-12</td><td>PAYS (70-ANCIENS !)</td></tr>
+<tr><td class="d">8:14</td><td>LARMES (TAMMOUZ !)</td></tr>
+<tr><td class="d">8:16</td><td>SOMMET (SOLEIL !)</td></tr>
+<tr><td class="d">8:17-18/2Ch36</td><td>REMÈDE (FUREUR !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>An 6 de l'exil (612/592, vision datée) : les 4 stations — (1) l'image de la jalousie (porte nord, cf. Manassé 2R 21:7, idole installée dans le Temple) ; (2) les 70 anciens + Jaazania fils de Shaphan (famille du scribe de Josias — l'élite réformatrice apostasiée) encensant reptiles et bêtes dans une chambre murée ; (3) les femmes pleurant Tammouz (Dumuzi mésopotamien, deuil rituel d'été) ; (4) ~25 hommes (prêtres ?) dos au sanctuaire, face au soleil levant ; « Jéhovah ne nous voit pas » (v. 12) — théologie de l'abandon ; 2Ch 36:14-19 : chefs, prêtres, peuple souillent la maison, se moquent des messagers — « la colère sans remède » (v. 16), incendie (v. 19).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Itinéraire visionnaire (nord → intérieur) : porte nord du parvis intérieur (image) → mur creusé (chambre des 70) → porte nord de la maison (femmes) → parvis intérieur entre portique et autel (adorateurs du soleil, face à l'est — le mont des Oliviers au loin) ; le soleil à l'est : culte solaire (chars du soleil, 2R 23:11 — Josias les avait brûlés, ils sont revenus) ; Tammouz : import babylonien — l'exil culturel précède l'exil physique.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>« La religion babylonienne engendre la violence » (Tour de Garde — Tammouz, adorateurs du soleil, 25 exécutés les premiers Éz 9) — le COMMENTAIRE officiel ; Ézéchiel 8 (nwtsty — toupet, 70 anciens, Tammouz, soleil) — le TEXTE ; 2 Rois 21:3-7 (Manassé : autels de Baal, armée des cieux, idole dans la maison) — l'ORIGINE royale des abominations ; le « rameau au nez » (v. 17 — rite zoroastrien/mazdéen ? debated) — le DÉTAIL obscur assumé.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>592 : TRANSPORT PAR LE TOUPET → STATION 1 : IMAGE (PARVIS) → STATION 2 : 70 ANCIENS (CHAMBRE MURÉE) → STATION 3 : FEMMES/TAMMOUZ (PORTE) → STATION 4 : 25 HOMMES/SOLEIL (AUTEL) → 587 : FUREUR SANS REMÈDE — INCENDIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Vision, non visite physique : Ézéchiel reste à Tel-Abib — les scènes sont montrées, leur réalité historique confirmée par 2Ch 36:14 ; Jaazania fils de Shaphan : homonyme ou parent du scribe de Josias — l'ironie (famille réformatrice apostasiée) demeure ; « rameau au nez » (v. 17) : geste obscur (insulte ? rite ?) — la provocation est claire, le rite débattu.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Manassé : idole installée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">698-642</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision des 4 stations</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612/592</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fureur : incendie sans remède</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1964805">« La religion babylonienne engendre la violence... » (Tour de Garde)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1964805</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/8">Bible — Ézékiel 8 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/8</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/21">Bible — 2 Rois 21 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/21</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ309 — « Tu verras de plus grandes abominations » : le Temple profané</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ310">
+<div class="visuel"><img src="images/prophe_EZ310_signe.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ310 · CATÉGORIE EZ</div>
+<h3>« Une marque sur les fronts » : le taw des soupirants</h3>
+<div class="ref">Ézéchiel 9:1-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">marque sauve six frappent (cria → oreilles → voix → approchez → châtiments → ville → chacun → instrument → destruction → main → six → hommes → porte → supérieure → nord → chacun → instrument → mort → main → milieu → homme → vêtu → lin → encrier → écrivain → reins → entrèrent → tinrent → autel → bronze)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ310</div><audio controls preload="none" src="audio/fiche_EZ310_signe.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ310_signe.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 9:1-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>marque sauve six frappent (cria → oreilles → voix → approchez → châtiments → ville → chacun → instrument → destruction → main → six → hommes → porte → supérieure → nord → chacun → instrument → mort → main → milieu → homme → vêtu → lin → encrier → écrivain → reins → entrèrent → tinrent → autel → bronze)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P310 (9:1-11 : signe sur le front des soupirants ; six hommes frappent sans pitié) ; 607 ; Ap 7:1-3 ; Accomplie (1er accomplissement)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« CRIA… OREILLES… VOIX… FORTE… APPROCHEZ… CHÂTIMENTS… VILLE… CHACUN… INSTRUMENT… DESTRUCTION… SIX… HOMMES… PORTE… SUPÉRIEURE… NORD… MILIEU… HOMME… LIN… ENCRIER… CEINTURE… TIENNENT… AUTEL… BRONZE… ESCOUADE… CÉLESTE… SEPT… SEPTIÈME… GRÂCE. » (9:1-2 — grâce !)</li>
+<li>« GLOIRE… DIEU… ISRAËL… ÉLÈVE… CHÉRUBIN… SEUIL… MAISON… CRIE… HOMME… LIN… PASSE… MILIEU… JÉRUSALEM… MARQUE… TAW… FRONTS… HOMMES… SOUPIRENT… GÉMISSENT… ABOMINATIONS… TAV… DERNIÈRE… LETTRE… CROIX… ANCIENNE… SIGNATURE… JOB… TRENTE-ET-UN. » (9:3-4 — trente-et-un !)</li>
+<li>« PASSEZ… APRÈS… FRAPPEZ… ŒIL… PITIÉ… MISÉRICORDE… TUEZ… VIEUX… JEUNES… VIERGES… ENFANTS… FEMMES… APPROCHEZ… AUCUN… MARQUÉ… COMMENCEZ… SANCTUAIRE… COMMENCENT… ANCIENS… MAISON… JUGEMENT… COMMENCE… MAISON… DIEU… PIERRE… PREMIÈRE… QUATRE… DIX-SEPT. » (9:5-6 — dix-sept !)</li>
+<li>« SOUILLEZ… MAISON… REMPLISSEZ… PARVIS… TUÉS… SORTEZ… FRAPPEZ… VILLE… RESTE… SEUL… TOMBE… FACE… CRIE… AH… SOUVERAIN… DÉTRUIRE… RESTE… ISRAËL… DÉVERSANT… FUREUR… JÉRUSALEM… INTERCESSION… ÉZÉCHIEL… MOÏSE… ABRAHAM… AMOS… LIGNÉE… MÉDIATEURS. » (9:7-8 — médiateurs !)</li>
+<li>« FAUTE… ISRAËL… JUDA… GRANDE… EXTRÊMEMENT… PAYS… REMPLI… SANG… VILLE… PERVERSION… DISENT… JÉHOVAH… ABANDONNÉ… VOIT… MOI… AUSSI… ŒIL… PITIÉ… RETOMBER… CONDUITE… TÊTE… HOMME… LIN… RAPPORTE… FAIT… COMMANDÉ… MISSION… GRÂCE… ACCOMPLIE… REGISTRE… CLOS. » (9:9-11 — clos !)</li>
+<li>« APOCALYPSE… SEPT… UN… TROIS… RETENEZ… VENTS… BLESSIEZ… TERRE… MER… ARBRES… SCELLÉS… FRONTS… SERVITEURS… TYPE… ANTITYPE… JÉRUSALEM… MONDE… ENCRE… SCEAU… SOUPIRANTS… OINTS… PREMIER… ACCOMPLISSEMENT… SECOND… FINAL… SCEAU… FRONT… COMMUN. » (Ap 7 — commun !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>LESCOUADE, an 6 — VAYYIQRA (les CRIA (les BEOZNAY (les OREILLES (les QOL (les VOIX (les GADOL (les FORTE (les LÉMOR (les DISANT (les QAREBU (les APPROCHEZ (les PEQUDDOT (les CHÂTIMENTS (les HAÏR (les VILLE (les VEISH (les CHACUN (les KHELI (les INSTRUMENT (les MASHHITO (les DESTRUCTION (les BEYADO (les MAIN (les VEHINNÉH (les VOICI (les SHISH AH (les SIX (les ANASHIM (les HOMMES (les BAÏM (les VENANT (les MIDDERÉKH (les CHEMIN (les SHAAR (les PORTE (les HAÉLYON (les SUPÉRIEURE (les ASHER (les QUI (les MAPHNÉH (les TOURNÉE (les TSAPHONAH (les NORD (les VEISH (les CHACUN (les KHELI (les INSTRUMENT (les MAPATSO (les MORT (les BEYADO (les MAIN (les VEISH (les HOMME (les ÉHAD (les UN (les BETOKHAM (les MILIEU (les LABUSH (les VÊTU (les BADDIM (les LIN (les VEQÉSÉT (les ENCRIER (les HASSOPHÉR (les ÉCRIVAIN (les BEMOTNAV (les CEINTURE (les VAYYABO U (les ENTRÈRENT (les VAYYAAMDU (les TINRENT (les ÉTSÉL (les PRÈS (les MIZBAH (les AUTEL (les HANNEHOSHÉT (les BRONZE (les ESCOUADE (les SIX+UN (les BRONZE — les SEUIL !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le TAW (les UKHEBOD (les GLOIRE (les ÉLOHÉ (les DIEU (les YISRAÉL (les ISRAËL (les NAALAH (les ÉLÈVE (les MÉAL (les DESSUS (les HAKKERUB (les CHÉRUBIN (les ASHER (les OÙ (les HAYAH (les ÉTAIT (les EL (les VERS (les MIPHTAN (les SEUIL (les HABBAYIT (les MAISON (les VAYYIQRA (les CRIA (les EL (les HAISH (les HOMME (les HALABUSH (les VÊTU (les HABBADDIM (les LIN (les ASHER (les QUI (les QÉSÉT (les ENCRIER (les HASSOPHÉR (les ÉCRIVAIN (les BEMOTNAV (les CEINTURE (les VAYYOMÉR (les DIT (les YEHOVAH (les ÉLAV (les LUI (les ABOR (les PASSE (les BETOKH (les MILIEU (les HAÏR (les VILLE (les BETOKH (les MILIEU (les YERUSHALAYIM (les JÉRUSALEM (les VEHITVITA (les MARQUE (les TAW (les TAW (les AL (les SUR (les MITS HOT (les FRONTS (les HAANASHIM (les HOMMES (les HANNÉÉNAHIM (les SOUPIRENT (les VEHANNÉÉNAQIM (les GÉMISSENT (les AL (les KOL (les TOUTES (les HATTOÉBOT (les ABOMINATIONS (les HANNÉASOT (les COMMISES (les BETOKHAH (les ELLE (les TAW (les SOUPIRANTS (les FRONTS — les MARQUÉS !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le COMMENCEZ-PAR-MOI (les ULALLÉH (les AUTRES (les AMAR (les DIT (les BEOZNAY (les OREILLES (les IBRU (les PASSEZ (les BAÏR (les VILLE (les AHARAV (les APRÈS-LUI (les VEHAKKU (les FRAPPEZ (les AL (les NON (les TAHOS (les PITIÉ (les ÉYNEKHEM (les ŒIL (les VEAL (les NON (les TAHMOLU (les MISÉRICORDE (les ZAQÉN (les VIEUX (les BAHUR (les JEUNES (les UBETULAH (les VIERGES (les VETAPH (les ENFANTS (les VENASHIM (les FEMMES (les TAHAROGU (les TUEZ (les LEMASHHIT (les EXTERMINER (les VEAL (les AUCUN (les KOL (les TOUT (les ISH (les HOMME (les ASHER (les QUI (les ALAV (les LUI (les HATTAW (les MARQUE (les AL (les NON (les TIGGESHU (les APPROCHEZ (les UMIMMIQDASHI (les SANCTUAIRE (les TAHÉLLU (les COMMENCEZ (les VAYYAHÉLLU (les COMMENCÈRENT (les BAANASHIM (les HOMMES (les HAZZEQÉNIM (les ANCIENS (les ASHER (les QUI (les LIPHNÉ (les DEVANT (les HABBAYIT (les MAISON (les VAYYOMÉR (les DIT (les ALÉHEM (les EUX (les TAMMEU (les SOUILLEZ (les ET (les HABBAYIT (les MAISON (les UMALLEU (les REMPLISSEZ (les ET (les HAHATSÉROT (les PARVIS (les HALALIM (les TUÉS (les TSÉU (les SORTEZ (les VEYATSEU (les SORTIRENT (les VEHIKKU (les FRAPPÈRENT (les BAÏR (les VILLE (les VAYHI (les FUT (les KEHAKKOTAM (les FRAPPENT (les VAANI (les JE (les NISHARTI (les RESTE (les VAÉPPELAH (les TOMBE (les AL (les PANAY (les FACE (les VAÉZAQ (les CRIE (les VAOMAR (les DIS (les AHHAH (les AH (les ADONAY (les SOUVERAIN (les YEHOVIH (les HAMASHHIT (les DÉTRUIRE (les ATTAH (les TU (les ET (les KOL (les TOUT (les SHEÉRIT (les RESTE (les YISRAÉL (les ISRAËL (les BESHAPHEKHÉKHA (les DÉVERSANT (les ET (les HEMATÉKHA (les FUREUR (les AL (les YERUSHALAYIM (les JÉRUSALEM (les SANCTUAIRE (les ANCIENS (les INTERCESSION — les RESTE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">9:1-2</td><td>GRÂCE (SIX+UN !)</td></tr>
+<tr><td class="d">9:3-4</td><td>TRENTE-ET-UN (TAW !)</td></tr>
+<tr><td class="d">9:5-6</td><td>DIX-SEPT (SANCTUAIRE !)</td></tr>
+<tr><td class="d">9:7-8</td><td>MÉDIATEURS (AH !)</td></tr>
+<tr><td class="d">9:9-11</td><td>CLOS (RAPPORT !)</td></tr>
+<tr><td class="d">607/Ap7:1-3</td><td>COMMUN (SCEAU !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>An 6 (612/592, vision) → 607/587 : les marqués épargnés — Ébed-Mélec (Jr 39:18, « je te délivrerai »), Baruch (Jr 45:5), les Réchabites (Jr 35), Guedalia et le reliquat (2R 25:22) ; « commencez par mon sanctuaire » (v. 6) : les 70 anciens (ch. 8) frappés les premiers, puis Seraya et les notables à Ribla (Jr 52:24-27) ; le sang remplit les parvis (v. 7 ; Lm 2:20-21, prêtres tués dans le sanctuaire) ; « j'ai fait comme tu m'as commandé » (v. 11) : le registre de grâce clos avant le massacre.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Porte supérieure du nord (v. 2) : l'axe du jugement — d'où viennent les Chaldéens (Jr 1:14-15) ; l'autel de bronze (v. 2) : le rassemblement au parvis — le jugement part de l'autel ; « au milieu de la ville » (v. 4) : le scribe parcourt Jérusalem maison par maison — marquage individuel ; du sanctuaire (v. 6) à la ville (v. 7) : l'onde de choc centrifuge.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 9 (nwt + Rbi8 — taw, six hommes, sanctuaire premier, rapport final) — le TEXTE ; Apocalypse 7:1-3 (vents retenus, sceau sur les fronts des serviteurs avant le mal) — l'ANTITYPE : même séquence (marquer AVANT de frapper) ; le taw (dernière lettre, forme de croix/X en paléo-hébreu, signature en Jb 31:35) — la PALÉOGRAPHIE : une croix avant la lettre ; 1 Pierre 4:17 (jugement commençant par la maison de Dieu) — l'ÉCHO apostolique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>592 : ESCOUADE CÉLESTE → GLOIRE AU SEUIL → MARQUAGE DES SOUPIRANTS → RAPPORT : « FAIT » → 587 : FRAPPE (SANCTUAIRE PUIS VILLE) → MARQUÉS ÉPARGNÉS → REGISTRE : 1ER ACCOMPLISSEMENT → HORIZON : SCEAU APOCALYPTIQUE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« 1er accomplissement » (registre) : 607 accomplit littéralement ; Ap 7 réapplique — la fiche assume le double niveau ; « tuez vieux, jeunes, vierges, enfants, femmes » (v. 6) : l'universalité du jugement national — les individus marqués (soupirants : Jérémie, Baruch, Ébed-Mélec, Réchabites) survivent ; les six hommes : anges exécuteurs (cf. 2R 19:35, 185 000 Assyriens) — instruments, non bourreaux humains.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision : marquage ordonné</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">612/592</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Marqués épargnés ; frappe</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sceau final (Ap 7)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Horizon</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/9">Bible — Ézékiel 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/9">Bible — Ézékiel 9 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/7">Bible — Révélation 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/7</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ310 — « Une marque sur les fronts » : le taw des soupirants</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ311">
+<div class="visuel"><img src="images/prophe_EZ311_gloire.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ311 · CATÉGORIE EZ</div>
+<h3>« La gloire monta » : Dieu quitte sa maison</h3>
+<div class="ref">Ézéchiel 10:18, 19 ; 11:22-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">gloire quitte montagne orient (gloire → Jéhovah → sort → seuil → maison → tient → chérubins → lèvent → ailes → élèvent → terre → yeux → roues → arrêtent → entrée → porte → orientale → maison → gloire → dessus → soulève → Chaldée → exilés → vision → élève → dis → paroles)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ311</div><audio controls preload="none" src="audio/fiche_EZ311_gloire.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ311_gloire.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 10:18, 19 ; 11:22-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>gloire quitte montagne orient (gloire → Jéhovah → sort → seuil → maison → tient → chérubins → lèvent → ailes → élèvent → terre → yeux → roues → arrêtent → entrée → porte → orientale → maison → gloire → dessus → soulève → Chaldée → exilés → vision → élève → dis → paroles)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P311 (10:18, 19 ; 11:22-23 : gloire quitte la maison, se tient sur la montagne) ; 2Ch 36:19 ; destruction du temple ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« GLOIRE… JÉHOVAH… SORT… SEUIL… MAISON… TIENT… CHÉRUBINS… LÈVENT… AILES… ÉLÈVENT… TERRE… YEUX… ROUES… ARRÊTENT… ENTRÉE… PORTE… ORIENTALE… GLOIRE… DESSUS… CHAR… CÉLESTE… DÉCOLLE… SEUIL… PORTE-EST… VOL… INTÉRIEUR. » (10:18-19 — intérieur !)</li>
+<li>« CHÉRUBINS… LÈVENT… AILES… ROUES… GLOIRE… DESSUS… MONTE… MILIEU… VILLE… ARRÊTE… MONTAGNE… EST… VILLE… OLIVIERS… HUIT… CENTS… MÈTRES… EST… TEMPLE… PAUSE… MÉDITATIVE… RÉTICENCE… DIVINE… DÉPART… LENTEUR… LONGANIMITÉ… VISIBLE. » (11:22-23 — visible !)</li>
+<li>« ÉTAPES… CINQ… SAINT… SAINTS… TRÔNE… SEUIL… NEUF… TROIS… PORTE… EST… DIX… DIX-NEUF… MILIEU… VILLE… ONZE… VINGT-DEUX… MONTAGNE… ONZE… VINGT-TROIS… SORTIE… GRADUÉE… DIEU… PART… LENTEMENT… FRAPPE… JAMAIS… VITE… PATIENCE… GÉOGRAPHIE. » (étapes — géographie !)</li>
+<li>« ESPRIT… SOULÈVE… AMÈNE… CHALDÉE… EXILÉS… VISION… ÉLÈVE… DIS… PAROLES… JÉHOVAH… RETOUR… KEBAR… INFORMATEUR… DÉPORTÉS… NOUVELLE… TERRIBLE… DIEU… PARTI… TEMPLE… VIDE… JUGEMENT… PROCHE… PRÉPAREZ… CŒURS. » (11:24-25 — cœurs !)</li>
+<li>« PREMIER-ROIS… HUIT… GLOIRE… REMPLIT… MAISON… NUÉE… PRÊTRES… TENIR… SERVICE… DÉDICACE… SALOMON… ENTRÉE… TRIOMPHALE… ÉZÉCHIEL… SORTIE… FUNÈBRE… QUATRE… SIÈCLES… PLUS… TARD… MÊME… GLOIRE… SENS… INVERSE… SYMÉTRIE… TRAGIQUE. » (1R 8 — tragique !)</li>
+<li>« ZACHARIE… QUATORZE… QUATRE… PIEDS… POSERONT… MONT… OLIVIERS… EST… JÉRUSALEM… FENDRA… MILIEU… VALLÉE… IMMENSE… RETOUR… GLOIRE… MÊME… MONTAGNE… DÉPART… ÉZÉCHIEL… ARRIVÉE… ZACHARIE… OLIVIERS… GARE… CÉLESTE… DÉPARTS… ARRIVÉES. » (Za 14:4 — arrivées !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le DÉCOLLAGE, an 6 — VAYYÉTSÉ (les SORT (les KHEBOD (les GLOIRE (les YEHOVAH (les MÉAL (les DESSUS (les MIPHTAN (les SEUIL (les HABBAYIT (les MAISON (les VAYYAAMOD (les TIENT (les AL (les DESSUS (les HAKKERUBIM (les CHÉRUBINS (les VAYYISSEU (les LÈVENT (les HAKKERUBIM (les CHÉRUBINS (les ET (les KANPHÉHEM (les AILES (les VAYYÉROMEMU (les ÉLÈVENT (les MIN (les DE (les HAARÉTS (les TERRE (les LEÉYNAY (les YEUX (les BETSÉTAM (les SORTIE (les VEHAOPHANNIM (les ROUES (les LEUMMATAM (les EUX (les VAYYAAMOD (les ARRÊTENT (les PÉTAH (les ENTRÉE (les SHAAR (les PORTE (les BÉYT (les MAISON (les YEHOVAH (les HAQQADMONI (les ORIENTALE (les UKHEBOD (les GLOIRE (les ÉLOHÉ (les DIEU (les YISRAÉL (les ISRAËL (les ALÉHEM (les DESSUS (les LEMAALAH (les DÉCOLLAGE (les SEUIL (les AILES (les PORTE-EST — les VOL !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La MONTAGNE-EST (les VAYYISSEU (les LÈVENT (les HAKKERUBIM (les CHÉRUBINS (les ET (les KANPHÉHEM (les AILES (les VEHAOPHANNIM (les ROUES (les LEUMMATAM (les EUX (les UKHEBOD (les GLOIRE (les ÉLOHÉ (les DIEU (les YISRAÉL (les ISRAËL (les ALÉHEM (les DESSUS (les LEMAALAH (les VAYYAAL (les MONTE (les KHEBOD (les GLOIRE (les YEHOVAH (les MITTOK (les MILIEU (les HAÏR (les VILLE (les VAYYAAMOD (les ARRÊTE (les AL (les SUR (les HEHAR (les MONTAGNE (les ASHER (les QUI (les MIQQÉDÉM (les EST (les LAÏR (les VILLE (les VERUUAH (les ESPRIT (les NESAATNI (les SOULÈVE (les VATTEBIÉNI (les AMÈNE (les KHASDIMAH (les CHALDÉE (les EL (les HAGGOLAH (les EXILÉS (les BAMMARÉH (les VISION (les BERUUAH (les ESPRIT (les ÉLOHIM (les DIEU (les VAYYAAL (les ÉLÈVE (les MÉALAY (les MOI (les HAMMARÉH (les VISION (les ASHER (les QUE (les RAÏTI (les VIS (les VAADABBÉR (les DIS (les EL (les HAGGOLAH (les EXILÉS (les ET (les KOL (les TOUTES (les DIBERÉ (les PAROLES (les YEHOVAH (les ASHER (les QUIL (les HÉRANI (les MONTRA (les MONTAGNE (les CHALDÉE (les EXILÉS — les INFORMÉS !)</p>
+<h4>5 · Interprétation</h4>
+<p>La LONGANIMITÉ-VISIBLE (les DIEU (les NE (les CLAQUE (les PORTE (les CINQ (les ÉTAPES (les ADIEUX (les PROGRESSIFS (les TRÔNE (les SEUIL (les PORTE (les VILLE (les MONTAGNE (les CHAQUE (les PAUSE (les APPEL (les REPENTIR (les IGNORÉ (les MONTAGNE (les DERNIER (les REGARD (les ARRIÈRE (les VILLE (les CONDAMNÉE (les PUIS (les DISPARITION (les EXILÉS (les INFORMÉS (les TEMPLE (les VIDE (les COQUILLE (les BRÛLERA (les DIX (les AB (les SANS (les GLOIRE (les DEDANS (les DÉPART — les LENT !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">10:18-19</td><td>INTÉRIEUR (DÉCOLLE !)</td></tr>
+<tr><td class="d">11:22-23</td><td>VISIBLE (OLIVIERS !)</td></tr>
+<tr><td class="d">5-étapes</td><td>GÉOGRAPHIE (SEUIL !)</td></tr>
+<tr><td class="d">11:24-25</td><td>CŒURS (CHALDÉE !)</td></tr>
+<tr><td class="d">1R8/contraste</td><td>TRAGIQUE (ENTRÉE !)</td></tr>
+<tr><td class="d">607/2Ch36:19</td><td>ARRIVÉES (VIDE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>An 6 (612/592, vision) → 607/587 : Dieu déménage AVANT l'incendie — le Temple brûlé le 10 Ab (2Ch 36:19 ; JR296) est déjà vide de la gloire ; symétrie tragique avec 1R 8:10-11 (la nuée remplit la maison à la dédicace, ~1024/967 — les prêtres ne peuvent servir) ; le retour : Éz 43:1-5 — la gloire revient par la porte orientale (même porte !) dans le Temple visionnaire ; entre les deux : 70 ans d'absence + second Temple sans gloire visible (Aggée 2:3).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Trajectoire (vue d'Ézéchiel) : Saint des saints → seuil oriental → porte orientale du parvis → verticale du centre-ville → mont des Oliviers (~800 m à l'est, 818 m d'altitude, dominant le Temple de ~100 m) ; la montagne « à l'est » : le belvédère divin — même montagne où David pleure (2S 15:30), où Jésus enseignera (Mt 24:3) et d'où il montera (Ac 1:12) ; Za 14:4 : les pieds s'y poseront — la gare des arrivées comme des départs.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 10-11 (nwt — décollage, 5 étapes, Oliviers, retour au Kebar) — le TEXTE ; 1 Rois 8:10-11 (nuée de gloire à la dédicace) — le CONTREPOINT : entrée triomphale vs sortie funèbre ; Zacharie 14:4 (Rbi8 — pieds sur les Oliviers, montagne fendue) — le RETOUR annoncé au même lieu ; Ézéchiel 43:1-5 (gloire revenant par l'est) — la BOUCLE refermée dans la vision finale.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>967 : GLOIRE ENTRE (1R 8) → 592 : GLOIRE SORT EN 5 ÉTAPES → PAUSE AUX OLIVIERS → EXILÉS INFORMÉS → 587 : TEMPLE VIDE BRÛLÉ → 70 ANS D'ABSENCE → VISION : RETOUR PAR L'EST (ÉZ 43)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Vision : le départ est montré en symboles (chérubins, roues) — la réalité (Dieu retirant sa protection) s'accomplit en 587 ; « montagne à l'est » : les Oliviers par tradition et topographie (seule montagne à l'est immédiat) — le texte ne nomme pas ; le second Temple : gloire non revenue visiblement — les rabbins eux-mêmes notent 5 absences (arche, feu, gloire, esprit, urim).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gloire entre (dédicace)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~967</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gloire sort (5 étapes)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612/592</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Temple vide brûlé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/10">Bible — Ézékiel 10 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/11">Bible — Ézékiel 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/38/14">Bible — Zacharie 14 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/38/14</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ311 — « La gloire monta » : Dieu quitte sa maison</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ312">
+<div class="visuel"><img src="images/prophe_EZ312_pelatya.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ312 · CATÉGORIE EZ</div>
+<h3>« Pelatya mourut » : la marmite retournée</h3>
+<div class="ref">Ézéchiel 11:1-13</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">princes jugés Pelatya meurt (esprit → soulève → amène → porte → orientale → maison → tournée → est → entrée → vingt-cinq → hommes → Jaazania → Azzour → Pelatya → Benaya → princes → peuple → voici → hommes → méditent → injustice → mauvais → conseils → ville → disent → temps → bâtir → maisons → marmite → viande)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ312</div><audio controls preload="none" src="audio/fiche_EZ312_pelatya.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ312_pelatya.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 11:1-13</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>princes jugés Pelatya meurt (esprit → soulève → amène → porte → orientale → maison → tournée → est → entrée → vingt-cinq → hommes → Jaazania → Azzour → Pelatya → Benaya → princes → peuple → voici → hommes → méditent → injustice → mauvais → conseils → ville → disent → temps → bâtir → maisons → marmite → viande)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P312 (11:1-13 : Pelatya meurt ; les hommes de la ville n'échapperont pas) ; Éz 11:13 ; 2R 25:8-11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ESPRIT… SOULÈVE… AMÈNE… PORTE… ORIENTALE… MAISON… VINGT-CINQ… HOMMES… JAAZANIA… AZZOUR… PELATYA… BENAYA… PRINCES… PEUPLE… COMITÉ… DIRECTEUR… SIÈGE… MÉDITENT… INJUSTICE… MAUVAIS… CONSEILS… VILLE… ÉTAT-MAJOR… IMPIÉTÉ. » (11:1-2 — impiété !)</li>
+<li>« DISENT… TEMPS… BÂTIR… MAISONS… MARMITE… VIANDE… PROVERBE… SÉCURITÉ… MURS… PROTÈGENT… RESTER… DEDANS… VIVRE… PROPHÉTISE… EUX… ESPRIT… TOMBE… DIS… AINSI… JÉHOVAH… PARLÉ… MAISON… ISRAËL… SAIS… PENSÉES… ESPRIT… TÉLÉPATHIE… DIVINE. » (11:3-5 — divine !)</li>
+<li>« MULTIPLIÉ… TUÉS… VILLE… REMPLI… RUES… TUÉS… TUÉS… VIANDE… MARMITE… VOUS… SORTIRAI… CRAINT… ÉPÉE… FERAI… VENIR… ÉPÉE… SORTIRAI… LIVRERAI… ÉTRANGERS… JUGEMENTS… TOMBEREZ… ÉPÉE… JUGERAI… FRONTIÈRE… ISRAËL… SAUREZ… JÉHOVAH. » (11:6-10 — Jéhovah !)</li>
+<li>« SERA… MARMITE… SEREZ… VIANDE… JUGERAI… FRONTIÈRE… SAUREZ… MARCHÉ… DÉCRETS… AGI… COUTUMES… NATIONS… RIBLA… HAMATH… FRONTIÈRE… NORD… TRIBUNAL… EXTRATERRITORIAL… TSIDQIYA… PRINCES… JUGÉS… HORS… FRONTIÈRES… EXIL… CONDAMNÉS. » (11:11-12 — condamnés !)</li>
+<li>« PROPHÉTISAIS… PELATYA… BENAYA… MOURUT… TOMBAI… FACE… CRIAI… AH… SOUVERAIN… ACHEVÉ… RESTE… ISRAËL… MORT… SUBITE… VISION… RÉALITÉ… JÉRUSALEM… MÊME… HEURE… KEBAR… TÉLÉSCOPE… PROPHÉTIQUE… ANANIAS… SAPHIRA… ACTES… CINQ… ÉCHO… NOUVEAU… TESTAMENT. » (11:13 — testament !)</li>
+<li>« HANANIA… FAUX… PROPHÈTE… JÉRÉMIE… VINGT-HUIT… ANNÉE… MÊME… MOURRAS… SEPTIÈME… MOIS… MOURUT… PAROLE… EXÉCUTÉE… PELATYA… INSTANT… MÊME… MEURT… VÉRIFICATION… IMMÉDIATE… CRÉDIBILITÉ… PROPHÈTE… EXILÉS… CONVAINCUS… TERRIFIÉS… CONVERTIS… NON. » (Hanania — non !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le COMITÉ, an 6 — VATTISSA (les SOULÈVE (les OTI (les MOI (les RUUAH (les ESPRIT (les VATTABÉ (les AMÈNE (les OTI (les MOI (les EL (les SHAAR (les PORTE (les BÉYT (les MAISON (les YEHOVAH (les HAQQADMONI (les ORIENTALE (les HAPPONÉH (les TOURNÉE (les QÉDM AH (les EST (les VEHINNÉH (les VOICI (les BEPHÉTAH (les ENTRÉE (les HASHAAR (les PORTE (les ÉSRIM (les VINGT (les VAHAMISHAH (les CINQ (les ISH (les HOMMES (les UVAÉREH (les VOIS (les BETOKHAM (les EUX (les ET (les YAAZANYAH (les JAAZANIA (les BEN (les FILS (les AZZUR (les AZZOUR (les UPHELATYAHU (les PELATYA (les BEN (les FILS (les BENAYAHU (les BENAYA (les SARÉ (les PRINCES (les HAAM (les PEUPLE (les VAYYOMÉR (les DIT (les ÉLAY (les MOI (les BEN (les FILS (les ADAM (les HOMME (les ÉLLEH (les VOICI (les HAANASHIM (les HOMMES (les HAHOSHEBIM (les MÉDITENT (les AVÉN (les INJUSTICE (les VEHAYYOATSIM (les CONSEILS (les ATSAT (les MAUVAIS (les RAAH (les BAÏR (les VILLE (les HAZZOT (les COMITÉ (les PRINCES (les MAUVAIS-CONSEILS — les VILLE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La MARMITE-RETOURNÉE (les HAOMERIM (les DISENT (les LO (les NON (les BEQAROB (les TEMPS (les BENOT (les BÂTIR (les BATTIM (les MAISONS (les HI (les ELLE (les HAPPARUR (les MARMITE (les VAANAHNU (les NOUS (les HABBASAR (les VIANDE (les LAKHÉN (les CÈST POURQUOI (les HINNABÉ (les PROPHÉTISE (les ALÉHEM (les EUX (les HINNABÉ (les PROPHÉTISE (les BEN (les FILS (les ADAM (les HOMME (les VATTIPPOL (les TOMBE (les ALAY (les MOI (les RUUAH (les ESPRIT (les YEHOVAH (les VAYYOMÉR (les DIT (les ÉLAY (les MOI (les ÉMOR (les DIS (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les KÉN (les AINSI (les AMARTEM (les PARLÉ (les BÉYT (les MAISON (les YISRAÉL (les ISRAËL (les UMAALOT (les PENSÉES (les RUHAKHEM (les ESPRIT (les ANI (les JE (les YADATI (les SAIS (les MARMITE (les PENSÉES-LUES (les PROPHÉTISE — les EUX !)</p>
+<h4>5 · Interprétation</h4>
+<p>La MORT-EN-DIRECT (les HIRBÉYTEM (les MULTIPLIÉ (les HALELÉKHEM (les TUÉS (les BAÏR (les VILLE (les HAZZOT (les UMILLÉTEM (les REMPLI (les ET (les HUTSOTÉHA (les RUES (les HALAL (les TUÉS (les LAKHÉN (les CÈST POURQUOI (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les HALELÉKHEM (les TUÉS (les ASHER (les QUE (les SAMTEM (les MIS (les BETOKHAH (les ELLE (les HÉMMAH (les EUX (les HABBASAR (les VIANDE (les VEHI (les ELLE (les HAPPARUR (les MARMITE (les VEÉTKHEM (les VOUS (les OTSI (les SORTIRAI (les MITTOKHAH (les ELLE (les HÉREB (les ÉPÉE (les YERÉTEM (les CRAINT (les VEHÉREB (les ÉPÉE (les ABI (les VENIR (les ALÉKHEM (les VOUS (les NEUM (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les VEHOTSETI (les SORTIRAI (les ÉTKHEM (les VOUS (les MITTOKHAH (les ELLE (les VENATATTI (les LIVRERAI (les ÉTKHEM (les VOUS (les BEYAD (les MAIN (les ZARIM (les ÉTRANGERS (les UB AKHEM (les VOUS (les ÉÉSÉH (les EXÉCUTERAI (les SHEPHATIM (les JUGEMENTS (les BAHÉREB (les ÉPÉE (les TIPPOLU (les TOMBEREZ (les AL (les GEBUL (les FRONTIÈRE (les YISRAÉL (les ISRAËL (les ÉSHPOT (les JUGERAI (les ÉTKHEM (les VOUS (les UIDATEM (les SAUREZ (les KI (les QUE (les ANI (les JE (les YEHOVAH (les LO (les NON (les TIHYÉH (les SERA (les LAKHEM (les VOUS (les LEPARUR (les MARMITE (les VEATTEM (les VOUS (les TIHYU (les SEREZ (les BETOKHAH (les ELLE (les LEBASAR (les VIANDE (les EL (les GEBUL (les FRONTIÈRE (les YISRAÉL (les ISRAËL (les ÉSHPOT (les JUGERAI (les ÉTKHEM (les VOUS (les UIDATEM (les SAUREZ (les KI (les QUE (les ANI (les JE (les YEHOVAH (les ASHER (les CAR (les BEHUQQOTAY (les DÉCRETS (les LO (les NON (les HALAKHTEM (les MARCHÉ (les VEÉT (les MISHPATAY (les ORDONNANCES (les LO (les NON (les ASITEM (les FAITES (les UKEMISHPETÉ (les COUTUMES (les HAGGOYIM (les NATIONS (les ASHER (les QUI (les SEBIBOTÉKHEM (les ALENTOUR (les ASITEM (les AGI (les VAYHI (les FUT (les KEHINNABEI (les PROPHÉTISAIS (les UPHELATYAHU (les PELATYA (les BEN (les FILS (les BENAYAHU (les BENAYA (les MÉT (les MOURUT (les VAÉPPOL (les TOMBAI (les AL (les PANAY (les FACE (les VAÉZAQ (les CRIAI (les QOL (les VOIX (les GADOL (les GRANDE (les VAOMAR (les DIS (les AHHAH (les AH (les ADONAY (les SOUVERAIN (les YEHOVIH (les KHALAH (les ACHEVÉ (les ATTAH (les TU (les OSÉH (les FAIS (les ET (les SHEÉRIT (les RESTE (les YISRAÉL (les ISRAËL (les MARMITE (les FRONTIÈRE (les PELATYA — les MORT !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">11:1-2</td><td>IMPIÉTÉ (25 !)</td></tr>
+<tr><td class="d">11:3-5</td><td>DIVINE (MARMITE !)</td></tr>
+<tr><td class="d">11:6-10</td><td>JÉHOVAH (FRONTIÈRE !)</td></tr>
+<tr><td class="d">11:11-12</td><td>CONDAMNÉS (RIBLA !)</td></tr>
+<tr><td class="d">11:13a</td><td>TESTAMENT (MOURUT !)</td></tr>
+<tr><td class="d">11:13b/607</td><td>NON (AH !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>An 6 (612/592, vision) : les 25 princes (Jaazania fils d'Azzour, Pelatya fils de Benaya — l'état-major resté à Jérusalem) prêchent la sécurité des murs (« la marmite, c'est la ville ; la viande, c'est nous » — rester dedans = vivre) ; Dieu retourne le proverbe : la viande = les tués déjà dans les rues (purges, famine), eux seront extraits pour être jugés « à la frontière » — Ribla, Hamath (Jr 52:9-11, 24-27 ; JR295-JR296) ; « pendant que je prophétisais, Pelatya mourut » (v. 13) : mort subite à Jérusalem, simultanée à la vision du Kebar — comme Hanania (Jr 28:17, 7ᵉ mois) et, plus tard, Ananias (Ac 5:5, aux pieds de Pierre).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Porte orientale de la maison (v. 1) : le conseil se tient à l'entrée du Temple — pouvoir politique adossé au sanctuaire ; « à la frontière d'Israël » (v. 10-11) : Ribla, au nord, hors des frontières — tribunal extraterritorial de Neboukadnetsar ; la marmite (parur — chaudron) : les murs comme récipient — image retournée : la ville cuira, mais sans eux dedans.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 11 (Rbi8 + nwtsty — 25 princes, marmite retournée, frontière, mort de Pelatya) — le TEXTE ; Actes 5:1-11 (Ananias et Saphira tombent pendant la parole de Pierre) — le PARALLÈLE néotestamentaire : mort-sanction en direct ; Jérémie 28:15-17 (Hanania : « cette année tu mourras », mort au 7ᵉ mois) — le PRÉCÉDENT : prophétie-autodafé ; Ribla (Jr 52 — frontière nord) — le LIEU du jugement annoncé.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>592 : CONSEIL DES 25 À LA PORTE EST → PROVERBE-MARMITE → RETOURNEMENT : VIANDE = TUÉS → JUGEMENT À LA FRONTIÈRE ANNONCÉ → PELATYA MEURT EN DIRECT → 587 : RIBLA — FRONTIÈRE EXÉCUTÉE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Vision + réalité : Pelatya meurt à Jérusalem pendant qu'Ézéchiel voit au Kebar — simultanéité prophétique (cf. Élisée/Guéhazi, 2R 5:26) ; « achevé le reste ? » (v. 13) : l'intercession obtient une réponse (v. 14-21 — cœur nouveau promis) hors du périmètre P312 ; Jaazania fils d'Azzour ≠ Jaazania fils de Shaphan (8:11) — deux homonymes, même milieu apostat.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Conseil des 25 ; Pelatya meurt</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">612/592</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Marmite retournée : siège</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">589-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ribla : frontière exécutée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/11">Bible — Ézékiel 11 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/11">Bible — Ézékiel 11 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/5">Bible — Actes 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/5</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ312 — « Pelatya mourut » : la marmite retournée</span><span>Catégorie EZ</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie EZ</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>EZ307 — « Vos hauts lieux seront désolés » : le verdict des montagnes</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Montagnes accusées</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">613/593</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Triple cercle exécuté</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">589-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Villes dévastées ; ils savent</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>EZ308 — « La fin est venue » : ni l'argent ni l'or ne délivrent</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin martelée ×5</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">613/593</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trompette ; rues d'argent</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">589-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Roi en deuil ; cascade</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>EZ309 — « Tu verras de plus grandes abominations » : le Temple profané</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Manassé : idole installée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">698-642</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision des 4 stations</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612/592</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fureur : incendie sans remède</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>EZ310 — « Une marque sur les fronts » : le taw des soupirants</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision : marquage ordonné</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">612/592</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Marqués épargnés ; frappe</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sceau final (Ap 7)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Horizon</text>
+</svg>
+<h4>EZ311 — « La gloire monta » : Dieu quitte sa maison</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gloire entre (dédicace)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~967</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gloire sort (5 étapes)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612/592</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Temple vide brûlé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<h4>EZ312 — « Pelatya mourut » : la marmite retournée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Conseil des 25 ; Pelatya meurt</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">612/592</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Marmite retournée : siège</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">589-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ribla : frontière exécutée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607/587</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-52 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

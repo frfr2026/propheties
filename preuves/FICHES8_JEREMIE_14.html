@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR — Jérémie (14) — Le siège : faux espoirs, vraie issue</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR</h1>
+<h2>Jérémie (14) — Le siège : faux espoirs, vraie issue</h2>
+<p class="intro">L'armée du Pharaon n'est qu'un répit : les Chaldéens reviendront brûler la ville (JR259). Sédécias consulte en secret et n'obtient qu'une miche quotidienne jusqu'à l'épuisement (JR260). L'issue divine est paradoxale : qui sortira vers les Chaldéens vivra (JR261) — sinon la ville sera prise et la famille royale livrée (JR262). Ébed-Mélek, qui sauva le prophète, aura son âme pour butin (JR263), et Jérémie, enchaîné puis libéré à Rama, restera auprès de Guedalia (JR264).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR259">JR259</a>
+<a href="#JR260">JR260</a>
+<a href="#JR261">JR261</a>
+<a href="#JR262">JR262</a>
+<a href="#JR263">JR263</a>
+<a href="#JR264">JR264</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR259"><img src="images/prophe_JR259_egypte.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR259</div>
+<h3><a href="#JR259">« Ils se relèveraient blessés » : l'Égypte repart, la ville brûle</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR260"><img src="images/prophe_JR260_pain.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR260</div>
+<h3><a href="#JR260">« Y a-t-il une parole ? » — Oui : une miche jusqu'à la fin</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR261"><img src="images/prophe_JR261_sort.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR261</div>
+<h3><a href="#JR261">« Celui qui sortira vivra » : la vie pour butin</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR262"><img src="images/prophe_JR262_famille.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR262</div>
+<h3><a href="#JR262">« Tes amis t'ont trompé » : le chant des femmes du palais</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR263"><img src="images/prophe_JR263_ebed.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR263</div>
+<h3><a href="#JR263">Ébed-Mélek : « Tu auras ton âme pour butin »</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR264"><img src="images/prophe_JR264_guedalia.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR264</div>
+<h3><a href="#JR264">Chaînes ôtées à Rama : Jérémie libre auprès de Guedalia</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR259">
+<div class="visuel"><img src="images/prophe_JR259_egypte.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR259 · CATÉGORIE JR</div>
+<h3>« Ils se relèveraient blessés » : l'Égypte repart, la ville brûle</h3>
+<div class="ref">Jérémie 37:6-10</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Égypte repart ville brûle (fut → parole → Jéhovah → Jérémie → prophète → dis → ainsi → Jéhovah → Dieu → Israël → direz → roi)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR259</div><audio controls preload="none" src="audio/fiche_JR259_egypte.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR259_egypte.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 37:6-10</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Égypte repart ville brûle (fut → parole → Jéhovah → Jérémie → prophète → dis → ainsi → Jéhovah → Dieu → Israël → direz → roi)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P259 (37:6-10 : Égypte repart, Chaldéens brûlent) ; accomplissement Jr 37:7-10 ; 2R 25:9</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« FUT… PAROLE… JÉHOVAH… JÉRÉMIE… PROPHÈTE… AINSI… DIEU… ISRAËL… DIREZ… ROI… JUDA… ENVOYÉS… CONSULTER… ARMÉE… PHARAON… SORTIE… SECOURS… RETOURNERA… PAYS… ÉGYPTE. » (37:6-7 — Égypte !)</li>
+<li>« CHALDÉENS… REVIENDRONT… COMBATTRONT… VILLE… PRENDRONT… BRÛLERONT… FEU… FAITES… ILLUSION… IRONT… LOIN… IRONT… BATTRIEZ… ARMÉE… RESTERAIT… BLESSÉS… RELÈVERAIENT… TENTE… BRÛLERAIENT… VILLE… FEU. » (37:8-10 — feu !)</li>
+<li>« RÉPIT… ÉGYPTIEN… PHARAON… HOPHRA… SORTIE… RETRAIT… BABYLONIEN… ESPOIR… VAIN… JÉRUSALEM… RESPIRE… ILLUSION… FATALE. » (répit — fatale !)</li>
+<li>« CONSULTATION… SANS… REPENTIR… SÉDÉCIAS… DEMANDE… PRIÈRE… CONFESSION… AUCUNE… DIEU… RÉPOND… JUGEMENT… CONFIRMÉ… GRÂCE… REFUSÉE. » (consultation — refusée !)</li>
+<li>« BLESSÉS… TENTES… IMAGE… EXTREME… DIEU… NA… BESOIN… ARMÉE… TRANSPERCÉS… SUFFISENT… EXÉCUTER… DESSEIN… TOUTE-PUISSANCE… MANIFESTE. » (blessés — manifeste !)</li>
+<li>« ÉZÉCHIEL… VIGNE… AIGLE… ÉGYPTE… ALLIANCE… VASSALE… TRAHIE… SARMENT… ARRACHÉ… FRUIT… EMPORTÉ… PARALLÈLE… EXIL. » (Ézéchiel — exil !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Répit égyptien, ~588 — VAYHI (les FUT (les DÉBAR (les PAROLE (les YEHOVAH (les EL (les YIRMEYAHU (les JÉRÉMIE (les HANNABI (les PROPHÈTE (les LÉMOR (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les ÉLOHÉ (les DIEU (les YISRAÉL (les ISRAËL (les KOH (les AINSI (les TOMRU (les DIREZ (les EL (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les HASHOLÉAH (les ENVOYÉS (les ETKHEM (les VOUS (les ÉLAY (les VERS (les LEDORSHÉNI (les CONSULTER (les HINNÉH (les VOICI (les HÉL (les ARMÉE (les PAROH (les PHARAON (les HAYYOTSÉ (les SORTIE (les LAKHEM (les VOUS (les LEÉZRAH (les SECOURS (les SHABAH (les RETOURNERA (les EL (les ARTSo (les PAYS (les MITSRAYIM (les ÉGYPTE (les SECOURS — les REPART !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le RETOUR (les VESHABU (les REVIENDRONT (les HAKKASDIM (les CHALDÉENS (les VENILHAMU (les COMBATTRONT (les AL (les HAIR (les VILLE (les HAZZOT (les CE (les ULEKHADUHA (les PRENDRONT (les USRAPUHA (les BRÛLERONT (les BAÉSH (les FEU (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les AL (les NON (les TASHSHIU (les ILLUSION (les NAPHSHEKHEM (les VOUS (les LÉMOR (les HALOKH (les IRONT (les YÉLKHU (les LOIN (les MÉALÉNU (les NOUS (les HAKKASDIM (les CHALDÉENS (les KI (les CAR (les LO (les NON (les YÉLÉKHU (les IRONT (les RETOUR — les CERTAIN !)</p>
+<h4>5 · Interprétation</h4>
+<p>Les BLESSÉS (les KI (les CAR (les IM (les SI (les HIKKITEM (les BATTRIEZ (les KOL (les TOUTE (les HÉL (les ARMÉE (les KASDIM (les CHALDÉENS (les HANNILHAMIM (les COMBATTENT (les ITTKHEM (les VOUS (les VENISHARU (les RESTERAIT (les BAM (les EUX (les ANASHIM (les HOMMES (les MEDUQQARIM (les BLESSÉS (les ISH (les CHACUN (les BEOHOLO (les TENTE (les YAQUMU (les RELÈVERAIENT (les VESAREPHU (les BRÛLERAIENT (les ET (les HAIR (les VILLE (les HAZZOT (les CE (les BAÉSH (les FEU (les MÊME (les TRANSPERCÉS (les SUFFIRAIENT (les BLESSÉS — les BRÛLENT !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">37:6</td><td>PAROLE (PROPHÈTE !)</td></tr>
+<tr><td class="d">37:7</td><td>PHARAON (ÉGYPTE !)</td></tr>
+<tr><td class="d">37:8</td><td>REVIENDRONT (FEU !)</td></tr>
+<tr><td class="d">37:9</td><td>ILLUSION (IRONT !)</td></tr>
+<tr><td class="d">37:10</td><td>BLESSÉS (FEU !)</td></tr>
+<tr><td class="d">2R 25:9</td><td>BRÛLÉE (587 !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>588 : Hophra (Apriès) sort d'Égypte, Nabuchodonosor lève provisoirement le siège — faux espoir ; l'Égypte repart sans livrer bataille décisive, les Chaldéens reviennent et brûlent la ville en 587 (2R 25:9) ; Ézéchiel 17 (la vigne et l'aigle) dénonce la même alliance égyptienne depuis l'exil.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Égypte → Juda : l'armée du Pharaon remonte la Via Maris puis repart ; Jérusalem respire quelques mois — répit qui permet à Jérémie de sortir (v. 12) puis d'être arrêté et battu (v. 13-16).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Stratégie du répit : lever un siège mobilise des mois de logistique — le retour babylonien était militairement coûteux donc improbable aux yeux du monde ; la prophétie annonce l'improbable (retour + incendie par des blessés), excluant le pronostic naturel.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>588 : PHARAON SORT → SIÈGE LEVÉ → FAUX ESPOIR → ÉGYPTE REPART → CHALDÉENS REVIENNENT → MÊME BLESSÉS ILS BRÛLERONT → 587 : INCENDIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Sédécias demande l'intercession (v. 3) sans repentance : Dieu répond par la confirmation du jugement ; le verset 10 est l'hyperbole judiciaire la plus forte de Jérémie — l'instrument importe peu, le dessein est certain.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hophra sort ; les Chaldéens lèvent le siège</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : l'Égypte repartira, la ville brûlera</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour des Chaldéens ; incendie de Jérusalem</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/37">Bible — Jérémie 37 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/37</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/37">Bible — Jérémie 37 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/37</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/17">Bible — Ézéchiel 17 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/17</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR259 — « Ils se relèveraient blessés » : l'Égypte repart, la ville brûle</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR260">
+<div class="visuel"><img src="images/prophe_JR260_pain.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR260 · CATÉGORIE JR</div>
+<h3>« Y a-t-il une parole ? » — Oui : une miche jusqu'à la fin</h3>
+<div class="ref">Jérémie 37:17-21</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Pain jusqu'à épuisement (envoya → Sédécias → chercher → interrogea → secret → maison → dit → parole → part → Jéhovah → répondit → oui)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR260</div><audio controls preload="none" src="audio/fiche_JR260_pain.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR260_pain.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 37:17-21</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Pain jusqu'à épuisement (envoya → Sédécias → chercher → interrogea → secret → maison → dit → parole → part → Jéhovah → répondit → oui)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P260 (37:17-21 : pain jusqu'à épuisement) ; accomplissement Jr 38:9 ; 52:6</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ENVOYA… SÉDÉCIAS… CHERCHER… INTERROGEA… SECRET… MAISON… PAROLE… PART… JÉHOVAH… RÉPONDIT… OUI… LIVRÉ… MAINS… ROI… BABYLONE… PÉCHÉ… SERVITEURS… PEUPLE… MIS… PRISON. » (37:17-18 — prison !)</li>
+<li>« PROPHÈTES… ANNONCÉ… BABYLONE… VIENDRAIT… PAYS… FRAPPÉ… MIS… MAISON… DÉTENTION… JONATHAN… SECRÉTAIRE… PRISON… CACHOTS… LONGTEMPS… ORDONNA… GARDÂT… COUR… PRISON… DONNÂT… JOUR… PAIN… RUE… BOULANGERS… PAIN… VILLE… CONSOMMÉ… DEMEURA… COUR… PRISON. » (37:19-21 — prison !)</li>
+<li>« SECRET… PALAIS… ROI… CRAINT… PRINCES… CONSULTE… CACHETTE… PAROLE… REDOUTÉE… DÉSIRÉE… FAIBLESSE… ROYALE… PATHÉTIQUE. » (secret — pathétique !)</li>
+<li>« OÙ… SONT… PROPHÈTES… PAIX… QUESTION… IRONIQUE… MENSONGE… DÉMASQUÉ… ÉVÉNEMENTS… JUGENT… FAUX… SILENCE… ACCABLANT. » (où — accablant !)</li>
+<li>« CACHOT… VOÛTÉ… FOSSE… JOURS… NOMBREUX… PROPHÈTE… INNOCENT… BATTU… ENFERMÉ… PREUVE… FIDÉLITÉ… PRIX… VÉRITÉ… SOUFFRANCE. » (cachot — souffrance !)</li>
+<li>« MICHE… QUOTIDIENNE… RATION… SIÈGE… RUE… BOULANGERS… CORPORATION… PAIN… ÉPUISÉ… FAMINE… MESURÉE… PROPHÈTE… NOURRI… MIRACLE. » (miche — miracle !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Interrogatoire secret, 588 — VAYYISHLAH (les ENVOYA (les Hammélekh (les ROI (les TSIDQIYAHU (les SÉDÉCIAS (les VAYYIQQAHÉHU (les CHERCHER (les VAYYISHALÉHU (les INTERROGEA (les HAMMélekh (les ROI (les BESÉTER (les SECRET (les BÉBÉTO (les MAISON (les VAYYOMER (les DIT (les HAYÉSH (les Y A-T-IL (les DABAR (les PAROLE (les MÉIM (les PART (les YEHOVAH (les VAYYOMER (les RÉPONDIT (les YIRMEYAHU (les JÉRÉMIE (les YESH (les OUI (les UBEYAD (les MAINS (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les TINNATÉN (les LIVRÉ (les SECRET — les OUI !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le PROCÈS (les VAYYOMER (les DIT (les YIRMEYAHU (les JÉRÉMIE (les EL (les HAMMélekh (les ROI (les TSIDQIYAHU (les SÉDÉCIAS (les MÉH (les QUOI (les HATATI (les PÉCHÉ (les LEKHA (les TOI (les ULEABADÉKHA (les SERVITEURS (les ULAAM (les PEUPLE (les HAZÉH (les CE (les KI (les QUE (les NETATTEM (les MIS (les OTI (les MOI (les EL (les BÉT (les MAISON (les HAKKÉLOU (les PRISON (les VEAYO (les OÙ SONT (les NEBIÉKHEM (les PROPHÈTES (les ASHER (les QUE (les NIBBEU (les ANNONCÉ (les LAKHEM (les VOUS (les LÉMOR (les LO (les NON (les YABO (les VIENDRAIT (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les ALÉKHEM (les VOUS (les VEAL (les PAYS (les HAARETS (les CE (les HAZZOT (les PROCÈS — les INNOCENT !)</p>
+<h4>5 · Interprétation</h4>
+<p>La MICHE (les VEATTAH (les MAINTENANT (les SHEMA (les ÉCOUTE (les NA (les ADONI (les SEIGNEUR (les HAMMélekh (les ROI (les TIPPAL (les TOMBE (les NA (les TEHINNATI (les SUPPLICATION (les LEPHANÉKHA (les DEVANT (les VEAL (les NON (les TESHIBÉNI (les RENOYE (les BÉT (les MAISON (les YEHONATAN (les JONATHAN (les HASSOPHÉR (les SECRÉTAIRE (les VELO (les NON (les AMUT (les MEURE (les SHAM (les LÀ (les VAYTSAW (les ORDONNA (les HAMMélekh (les ROI (les TSIDQIYAHU (les SÉDÉCIAS (les VAYYAQIDU (les GARDÂT (les ET (les YIRMEYAHU (les JÉRÉMIE (les BAHATSAR (les COUR (les HAMMATARA (les PRISON (les VENATON (les DONNÂT (les LO (les LUI (les KHIKKAR (les MICHE (les LEHEM (les PAIN (les LAYYOM (les JOUR (les MIHUTS (les RUE (les HAOPHIM (les BOULANGERS (les AD (les JUSQU (les TOM (les ÉPUISÉ (les KOL (les TOUT (les HALLEHEM (les PAIN (les MIN (les HAIR (les VILLE (les VAYYESHEB (les DEMEURA (les YIRMEYAHU (les JÉRÉMIE (les BAHATSAR (les COUR (les HAMMATARA (les PRISON (les MICHE — les QUOTIDIENNE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">37:17</td><td>OUI (BABYLONE !)</td></tr>
+<tr><td class="d">37:18</td><td>PRISON (PÉCHÉ !)</td></tr>
+<tr><td class="d">37:19</td><td>PROPHÈTES (PAYS !)</td></tr>
+<tr><td class="d">37:20</td><td>JONATHAN (MEURE !)</td></tr>
+<tr><td class="d">37:21</td><td>BOULANGERS (VILLE !)</td></tr>
+<tr><td class="d">38:9/52:6</td><td>ÉPUISÉ (FAMINE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>588 : Jérémie, battu et jeté au cachot de Jonathan, obtient son transfert à la cour de la Garde avec une ration quotidienne ; Jr 38:9 (« il n'y a presque plus de pain ») et Jr 52:6 (« la famine sévit, plus de pain ») accomplissent la mesure : la miche dure jusqu'à l'épuisement total.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Rue des boulangers : corporation localisée de Jérusalem — les fours de la ville assiégée tournent jusqu'au dernier grain ; maison de Jonathan le secrétaire convertie en prison : l'administration royale devient geôle.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Nutrition de siège : une miche (kikkar) par jour = ration de survie (~1500-2000 kcal) ; Lamentations 4:4-9 décrit la famine terminale — le calendrier du pain (v. 21 → Jr 52:6) date la chute au 4e mois de 587.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>588 : CACHOT DE JONATHAN → ROI EN SECRET : Y A-T-IL UNE PAROLE ? → OUI : LIVRÉ → OÙ SONT VOS PROPHÈTES ? → TRANSFERT + MICHE/JOUR → JUSQU'À ÉPUISEMENT (587)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Sédécias craint ses princes (secret) mais protège le prophète (transfert + ration) : faiblesse mêlée d'égards ; la question « où sont vos prophètes ? » (v. 19) reste sans réponse — le silence condamne.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arrestation, coups, cachot de Jonathan</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Interrogatoire secret + miche quotidienne</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Plus de pain dans la ville (Jr 52:6)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587 (4e mois)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/37">Bible — Jérémie 37 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/37</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/52">Bible — Jérémie 52 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/52</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/4">Bible — Lamentations 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/25/4</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR260 — « Y a-t-il une parole ? » — Oui : une miche jusqu'à la fin</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR261">
+<div class="visuel"><img src="images/prophe_JR261_sort.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR261 · CATÉGORIE JR</div>
+<h3>« Celui qui sortira vivra » : la vie pour butin</h3>
+<div class="ref">Jérémie 38:1-4</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Qui sort vivra (entendirent → Shephatia → Mattan → Guedalia → Pashhour → Jucal → Shelemia → Pashhour → Malkija → paroles → Jérémie)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR261</div><audio controls preload="none" src="audio/fiche_JR261_sort.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR261_sort.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 38:1-4</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Qui sort vivra (entendirent → Shephatia → Mattan → Guedalia → Pashhour → Jucal → Shelemia → Pashhour → Malkija → paroles → Jérémie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P261 (38:1-4 : qui sort vers les Chaldéens vivra) ; accomplissement Jr 39:9 ; 52:15-16</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ENTENDIRENT… SHEPHATIA… MATTAN… GUEDALIA… PASHHOUR… JUCAL… SHÉLÉMIA… PASHHOUR… MALKIJA… PAROLES… JÉRÉMIE… ADRESSAIT… PEUPLE… RESTERA… VILLE… MOURRA… ÉPÉE… FAMINE… PESTE… SORTIRA… CHALDÉENS… VIVRA… VIE… BUTIN… VIVRA. » (38:1-2 — vivra !)</li>
+<li>« VILLE… LIVRÉE… ARMÉE… ROI… BABYLONE… PRENDRA… CHEFS… DIRENT… ROI… FASSE… MOURIR… HOMME… PERDRE… COURAGE… GUERRE… RESTENT… VILLE… PEUPLE… PARLANT… VEUT… BIEN… MAL… PEUPLE. » (38:3-4 — peuple !)</li>
+<li>« QUATRE… CHEFS… NOMMÉS… CONJURATION… PRINCES… CONNUS… JUCAL… PASHHOUR… FAMILIERS… ROI… PRESSION… MORT… PROPHÈTE… ACCUSÉ… TRAHISON. » (quatre — trahison !)</li>
+<li>« BUTIN… VIE… SEUL… GAIN… PERDRE… TOUT… SAUVER… ÂME… PARADOXE… ÉVANGÉLIQUE… AVANT… LETTRE… SORTIR… VIVRE… RESTER… MOURIR. » (butin — mourir !)</li>
+<li>« DÉMORALISATION… ACCUSATION… DÉFAITISME… GUERRE… PATRIOTISME… PIÉGÉ… VÉRITÉ… TRAHISON… FIDÉLITÉ… DIEU… APPELÉE… MAL… PEUPLE. » (démoralisation — peuple !)</li>
+<li>« TRANSFUGES… NOMBREUX… DÉJÀ… PASSÉS… CHALDÉENS… DIX-NEUF… VINGT-DEUX… PREUVE… ÉCOUTE… PEUPLE… CROIT… PRINCES… REFUSENT. » (transfuges — refusent !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Quatre chefs, ~588 — VAYYISHMA (les ENTENDIT (les SHEPHATYAH (les SHEPHATIA (les BEN (les FILS (les MATTAN (les MATTAN (les UGHEDALYAHU (les GUEDALIA (les BEN (les FILS (les PASHHUR (les PASHHOUR (les VEYUKHAL (les JUCAL (les BEN (les FILS (les SHELEMYAHU (les SHÉLÉMIA (les UPASHHUR (les PASHHOUR (les BEN (les FILS (les MALKIYAH (les MALKIJA (les ET (les HADDEBARIM (les PAROLES (les ASHER (les QUE (les YIRMEYAHU (les JÉRÉMIE (les MEDABBÉR (les ADRESSAIT (les EL (les KOL (les TOUT (les HAAM (les PEUPLE (les LÉMOR (les QUATRE NOMS (les QUATRE PATRO—NYMES (les CHEFS — les ENTENDIRENT !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le BUTIN (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les HAYYOSHEB (les RESTERA (les BAIR (les VILLE (les HAZZOT (les CE (les YAMUT (les MOURRA (les BEHÉREB (les ÉPÉE (les BARAAB (les FAMINE (les UBADDÉBER (les PESTE (les VEHAYYOTSÉ (les SORTIRA (les EL (les HAKKASDIM (les CHALDÉENS (les YIHYÉH (les VIVRA (les VEHAYTAH (les SERA (les LO (les LUI (les NAFSHO (les VIE (les LESHALAL (les BUTIN (les VAHAY (les VIVRA (les LA VIE (les POUR SEUL (les GAIN (les BUTIN — les VIE !)</p>
+<h4>5 · Interprétation</h4>
+<p>L'ACCUSATION (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les NATON (les LIVRÉE (les TINNATÉN (les SERA (les HAIR (les VILLE (les HAZZOT (les CE (les BEYAD (les MAIN (les HÉL (les ARMÉE (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les ULEKHADAH (les PRENDRA (les VAYYOMRU (les DIRENT (les HASSARIM (les CHEFS (les EL (les HAMMélekh (les ROI (les YUMAT (les MOURIR (les NA (les ET (les HAISH (les HOMME (les HAZÉH (les CE (les KI (les CAR (les AL (les KÉN (les HU (les IL (les MERAPPÉ (les PERDRE (les ET (les YEDÉ (les MAINS (les ANSHÉ (les HOMMES (les HAMMILHAMAH (les GUERRE (les HANNISHARIM (les RESTENT (les BAIR (les VILLE (les HAZZOT (les CE (les VEÉT (les YEDÉ (les MAINS (les KHOL (les TOUT (les HAAM (les PEUPLE (les LEDABBÉR (les PARLANT (les ALÉHEM (les EUX (les ET (les HADDEBARIM (les PAROLES (les HAÉLÉH (les CE (les KI (les CAR (les LO (les NON (les HAISH (les HOMME (les HAZÉH (les CE (les DORESH (les VEUT (les ET (les SHELOM (les BIEN (les HAAM (les PEUPLE (les HAZÉH (les CE (les KI (les MAIS (les IM (les ET (les HARA AH (les MAL (les DÉFAITISME (les OU VÉRITÉ (les ACCUSATION — les MORT !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">38:1</td><td>CHEFS (PEUPLE !)</td></tr>
+<tr><td class="d">38:2</td><td>BUTIN (VIVRA !)</td></tr>
+<tr><td class="d">38:3</td><td>PRENDRA (BABYLONE !)</td></tr>
+<tr><td class="d">38:4</td><td>MOURIR (MAL !)</td></tr>
+<tr><td class="d">Jr 39:9</td><td>TRANSFUGES (DÉPORTÉS !)</td></tr>
+<tr><td class="d">Jr 52:15-16</td><td>VIVRA (VIGNERONS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>588-587 : de nombreux transfuges passent aux Chaldéens (Jr 38:19, 52:15) et ont la vie sauve — déportés ou laissés comme vignerons ; les quatre chefs accusateurs (dont Jucal et Pashhour, familiers du roi) obtiennent la citerne (v. 5-6) ; Jr 42 confirmera : obéir = vivre.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Dedans/dehors : rester dans la ville assiégée = mourir ; sortir vers les lignes chaldéennes = vivre — la géographie du salut est inversée ; les transfuges franchissent le glacis entre les murs et le camp.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Psychologie du siège : l'appel à la reddition individuelle (« sortez ») sape le moral collectif — les chefs ont militairement raison (démoralisation) et théologiquement tort (Dieu l'ordonne) ; le paradoxe « perdre pour gagner » anticipe l'éthique évangélique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>588 : 4 CHEFS ENTENDENT → RESTER = ÉPÉE/FAMINE/PESTE → SORTIR = VIE POUR BUTIN → VILLE PRISE → ACCUSATION : DÉFAITISME → MORT DEMANDÉE → TRANSFUGES VIVENT (587)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Jérémie répète Jr 21:9 : la constance du message prouve sa source ; les chefs confondent patriotisme et fidélité — vouloir le « bien du peuple » contre Dieu, c'est vouloir son mal.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prédication : qui sort vivra, vie pour butin</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Accusation de trahison ; citerne de Malkija</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Transfuges épargnés ; ville prise</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/38">Bible — Jérémie 38 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/38</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/42">Bible — Jérémie 42 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/42</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/42">Bible — Jérémie 42 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/42</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR261 — « Celui qui sortira vivra » : la vie pour butin</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR262">
+<div class="visuel"><img src="images/prophe_JR262_famille.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR262 · CATÉGORIE JR</div>
+<h3>« Tes amis t'ont trompé » : le chant des femmes du palais</h3>
+<div class="ref">Jérémie 38:14-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Ville prise famille livrée (envoya → Sédécias → chercher → Jérémie → prophète → venir → troisième → entrée → maison → Jéhovah → dit → demander)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR262</div><audio controls preload="none" src="audio/fiche_JR262_famille.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR262_famille.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 38:14-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Ville prise famille livrée (envoya → Sédécias → chercher → Jérémie → prophète → venir → troisième → entrée → maison → Jéhovah → dit → demander)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P262 (38:14-23 : ville prise, femmes/fils livrés) ; accomplissement 2R 25:4-7</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ENVOYA… SÉDÉCIAS… CHERCHER… JÉRÉMIE… PROPHÈTE… VENIR… TROISIÈME… ENTRÉE… MAISON… JÉHOVAH… DEMANDER… CHOSE… CACHE… RIEN… DIE… VÉRITÉ… FERAS… MOURIR… CONSEILLE… ÉCOUTERAS. » (38:14-15 — écouteras !)</li>
+<li>« JURA… SÉDÉCIAS… SECRET… VIVANT… JÉHOVAH… FAIT… ÂME… FERAI… MOURIR… LIVRERAI… HOMMES… CHERCHENT… VIE… SORTS… RENDS… OFFICIERS… BABYLONE… SAUVERAS… VIE… FAMILLE… JÉRUSALEM… BRÛLÉE. » (38:16-17 — brûlée !)</li>
+<li>« REFUSES… RENDRE… VILLE… LIVRÉE… CHALDÉENS… BRÛLERONT… ÉCHAPPERAS… CRAINS… JUIFS… PASSÉS… CHALDÉENS… LIVRE… JOUET… LIVRERA… MALTRAITERONT… ÉCOUTE… VOIX… JÉHOVAH… PARLE… IRA… BIEN… VIVRA… ÂME. » (38:18-20 — âme !)</li>
+<li>« REFUSES… SORTIR… PAROLE… FAIT… VOIR… FEMMES… RESTÉES… PALAIS… CONDUIRA… OFFICIERS… BABYLONE… CHANTERONT… TROMPÉ… MEILLEURS… AMIS… PIEDS… ENFONCENT… BOUE… ABANDONNENT… CONDUIRA… FEMMES… FILS… BABYLONIENS… ÉCHAPPERAS… PRISONNIER… FEU… JÉRUSALEM. » (38:21-23 — Jérusalem !)</li>
+<li>« TROISIÈME… ENTRÉE… TEMPLE… LIEU… DISCRET… RENCONTRE… SECRÈTE… DERNIÈRE… CHANCE… ROI… TREMBLANT… PROPHÈTE… FERME… VÉRITÉ… FINALE. » (troisième — finale !)</li>
+<li>« CHANT… MOQUEUR… FEMMES… HAREM… RAILLENT… ROI… AMIS… FLATTEURS… ENFONCÉ… BOURBIER… ABANDONNÉ… IRONIE… TRAGIQUE… PROPHÉTIQUE. » (chant — prophétique !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Troisième entrée, ~587 — VAYYISHLAH (les ENVOYA (les HAMMélekh (les ROI (les TSIDQIYAHU (les SÉDÉCIAS (les VAYYIQQAH (les CHERCHER (les ET (les YIRMEYAHU (les JÉRÉMIE (les HANNABI (les PROPHÈTE (les ÉLAYV (les VERS (les EL (les MABO (les ENTRÉE (les HASHELISHI (les TROISIÈME (les ASHER (les QUE (les BEBÉT (les MAISON (les YEHOVAH (les VAYYOMER (les DIT (les HAMMélekh (les ROI (les EL (les YIRMEYAHU (les JÉRÉMIE (les SHOÉL (les DEMANDER (les ANI (les MOI (les OTEKHA (les TOI (les DABAR (les CHOSE (les AL (les NON (les TEKAHÉD (les CACHE (les MIMMENNI (les MOI (les DABAR (les RIEN (les DERNIÈRE (les CONSULTATION (les ENTRÉE — les TROISIÈME !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le SERMENT (les VAYYOMER (les DIT (les YIRMEYAHU (les JÉRÉMIE (les EL (les TSIDQIYAHU (les SÉDÉCIAS (les KI (les SI (les AGGID (les DIE (les LEKHA (les TOI (les HALO (les NON (les HAMÉT (les MOURIR (les TEMITÉNI (les FERAS (les VEKHI (les SI (les IATSEKHA (les CONSEILLE (les LO (les NON (les TISHMA (les ÉCOUTERAS (les ÉLAY (les MOI (les VAYYISHSHABA (les JURA (les HAMMélekh (les ROI (les TSIDQIYAHU (les SÉDÉCIAS (les EL (les YIRMEYAHU (les JÉRÉMIE (les BASSÉTER (les SECRET (les LÉMOR (les HAY (les VIVANT (les YEHOVAH (les ASHER (les QUE (les ASAH (les FAIT (les LANU (les NOUS (les ET (les HANNÉPHESH (les ÂME (les HAZZOT (les CE (les IM (les SI (les AMITEKHA (les MOURIR (les VEIM (les SI (les ÉTTENKHA (les LIVRERAI (les BEYAD (les MAIN (les HAANASHIM (les HOMMES (les HAÉLÉH (les CE (les HAMEBAQSHIM (les CHERCHENT (les ET (les NAPHSHEKHA (les VIE (les SERMENT — les SECRET !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le CHANT (les VEIM (les SI (les MAÉN (les REFUSES (les ATTAH (les TOI (les LATSÉT (les SORTIR (les ZÉH (les VOICI (les HADDABAR (les PAROLE (les ASHER (les QUE (les HIRANI (les FAIT VOIR (les YEHOVAH (les VEHINNÉH (les VOICI (les KHOL (les TOUTES (les HANNASHIM (les FEMMES (les ASHER (les QUE (les NISHARU (les RESTÉES (les BEBÉT (les PALAIS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les MUTSAOT (les CONDUIRA (les EL (les SARÉ (les OFFICIERS (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les VEHÉNNAH (les ELLES (les OMROT (les DIRONT (les HISSIUHA (les TROMPÉ (les VEYAKHLU (les DOMINÉ (les LEKHA (les TOI (les ANSHÉ (les HOMMES (les SHELOMEKHA (les PAIX (les TOBEU (les ENFONCÉS (les BABBITS (les BOUE (les RAGLÉKHA (les PIEDS (les NOSOGU (les RETIRÉS (les AHOR (les ARRIÈRE (les VEÉT (les KOL (les TOUTES (les NASHÉKHA (les FEMMES (les VEÉT (les BANÉKHA (les FILS (les MOTSIIM (les CONDUIRA (les EL (les HAKKASDIM (les CHALDÉENS (les VEATTAH (les TOI (les LO (les NON (les TIMMALÉT (les ÉCHAPPERAS (les MIYYADAM (les MAIN (les KI (les CAR (les BEYAD (les MAIN (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les TITTAPHÉS (les PRIS (les VEÉT (les HAIR (les VILLE (les HAZZOT (les CE (les TISROPH (les BRÛLERA (les BAÉSH (les FEU (les CHANT — les MOQUEUR !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">38:14-15</td><td>CACHE (ÉCOUTERAS !)</td></tr>
+<tr><td class="d">38:16</td><td>SECRET (VIE !)</td></tr>
+<tr><td class="d">38:17</td><td>FAMILLE (BRÛLÉE !)</td></tr>
+<tr><td class="d">38:18-20</td><td>JOUET (ÂME !)</td></tr>
+<tr><td class="d">38:21-22</td><td>BOUE (BABYLONE !)</td></tr>
+<tr><td class="d">38:23/2R 25</td><td>FEU (PRIS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~587, derniers jours du siège : Sédécias craint les transfuges plus que Dieu (v. 19) et refuse de sortir ; les femmes du harem sont emmenées (2R 25, Jr 52), ses fils tués à Ribla, la ville brûlée — le chant moqueur (v. 22) scelle la honte du roi enlisé.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Troisième entrée du Temple : lieu discret entre palais et sanctuaire pour la dernière consultation ; les pieds dans la boue (v. 22) : image du bourbier où Jérémie lui-même enfonça (v. 6) — le roi rejoint son prophète dans la fange.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Psychologie de l'indécision : Sédécias jure en secret (v. 16), craint les moqueries (v. 19), demande le silence (v. 24-26) — profil d'évitement anxieux ; Ézéchiel 12 (le prince sortant par le mur, aveuglé) et 17:16 (mourra à Babylone) confirment depuis l'exil.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>~587 : 3e ENTRÉE, SECRET → SERMENT DE VIE → SORS = VIE + VILLE SAUVE → SI NON = FEMMES CHANTENT TA HONTE → PIEDS EN BOUE → FILS LIVRÉS → VILLE BRÛLÉE (587)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le chant des femmes (v. 22) cite les « hommes de ta paix » (princes flatteurs) : ceux qui promettaient la paix abandonnent ; Sédécias choisit la peur des hommes — et perd tout ce qu'il voulait sauver.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dernière consultation à la 3e entrée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Refus de sortir : peur des transfuges</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Femmes emmenées, fils tués, ville brûlée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/12">Bible — Ézéchiel 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/17">Bible — Ézéchiel 17 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/17</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/25/4">Bible — Lamentations 4 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/25/4</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR262 — « Tes amis t'ont trompé » : le chant des femmes du palais</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR263">
+<div class="visuel"><img src="images/prophe_JR263_ebed.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR263 · CATÉGORIE JR</div>
+<h3>Ébed-Mélek : « Tu auras ton âme pour butin »</h3>
+<div class="ref">Jérémie 39:15-18</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Ébed-Mélek sauvé (fut → parole → Jéhovah → Jérémie → dis → enfermé → encore → cour → garde → dis → va → parle → Ébed-Mélek)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR263</div><audio controls preload="none" src="audio/fiche_JR263_ebed.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR263_ebed.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 39:15-18</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Ébed-Mélek sauvé (fut → parole → Jéhovah → Jérémie → dis → enfermé → encore → cour → garde → dis → va → parle → Ébed-Mélek)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P263 (39:15-18 : Ébed-Mélek sauvé, âme pour butin) ; accomplissement Jr 39:16-18</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« FUT… PAROLE… JÉHOVAH… JÉRÉMIE… ENFERMÉ… ENCORE… COUR… GARDE… VA… PARLE… ÉBED-MÉLEK… ÉTHIOPIEN… AINSI… ARMÉES… DIEU… ISRAËL… RÉALISE… PAROLES… VILLE… MALHEUR… BIEN… ARRIVERONT… JOUR… DEVANT. » (39:15-16 — devant !)</li>
+<li>« DÉLIVRERAI… JOUR… LIVRÉ… MAIN… HOMMES… PEUR… FERAI… ÉCHAPPER… AURAS… ÂME… BUTIN… CONFIANCE… MOI… FOI… ÉTRANGER… RÉCOMPENSÉE… GRATITUDE… DIVINE… MANIFESTE… SALUT… PERSONNEL. » (39:17-18 — personnel !)</li>
+<li>« SERVITEUR… ROI… TITRE… EUNUQUE… ÉTHIOPIEN… PALAIS… SÉDÉCIAS… ADORATEUR… FERVENT… ÉTRANGER… FIDÈLE… CŒUR… CIRCONCIS… FOI… VRAIE. » (serviteur — vraie !)</li>
+<li>« CITERNE… MALKIJA… BOUE… FAIM… MORT… LENTE… PRINCES… ACCUSENT… SÉDITION… ROI… LIVRE… PROPHÈTE… ÉBED… INTERCÈDE… PÉRIL… VIE. » (citerne — vie !)</li>
+<li>« TRENTE… HOMMES… CORDES… CHIFFONS… AISSELLES… DÉLICATESSE… SAUVETAGE… SOIGNÉ… COMPASSION… PRATIQUE… DÉTAILS… TOUCHANTS… AMOUR… PROCHAIN. » (trente — prochain !)</li>
+<li>« RECONNAISSANCE… JÉHOVAH… GARDE… ÂMES… FIDÈLES… DÉLIVRE… MÉCHANTS… PSAUME… QUATRE-VINGT-DIX-SEPT… PRINCIPE… ÉTERNEL… ILLUSTRÉ… HISTOIRE. » (reconnaissance — histoire !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Parole en détention, 587 — VAYHI (les FUT (les DÉBAR (les PAROLE (les YEHOVAH (les EL (les YIRMEYAHU (les JÉRÉMIE (les LÉMOR (les BIHYOTO (les ÉTANT (les ATSUR (les ENFERMÉ (les BAHATSAR (les COUR (les HAMMATARA (les GARDE (les LÉMOR (les HALOKH (les VA (les VEAMARTA (les PARLE (les EL (les ÉBÉD (les ÉBED-MÉLEK (les MÉLEKH (les HAKKUSHI (les ÉTHIOPIEN (les LÉMOR (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les TSEBAOT (les ARMÉES (les ÉLOHÉ (les DIEU (les YISRAÉL (les ISRAËL (les HINENI (les VOICI (les MÉBI (les RÉALISE (les ET (les DEBARAY (les PAROLES (les EL (les HAIR (les VILLE (les HAZZOT (les CE (les LERA AH (les MALHEUR (les VELO (les NON (les LETOBAH (les BIEN (les VEHAYU (les ARRIVERONT (les BAYYOM (les JOUR (les HAHU (les CE (les LEPHANÉKHA (les DEVANT (les PAROLE — les DÉTENTION !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La DÉLIVRANCE (les VEHITSSALTIKHA (les DÉLIVRERAI (les BAYYOM (les JOUR (les HAHU (les CE (les NEUM (les DIT (les YEHOVAH (les VELO (les NON (les TINNATÉN (les LIVRÉ (les BEYAD (les MAIN (les HAANASHIM (les HOMMES (les ASHER (les QUE (les ATTAH (les TOI (les YAGOR (les PEUR (les MIPPNÉHEM (les EUX (les KI (les CAR (les MALLÉT (les ÉCHAPPER (les AMALLETKHA (les FERAI (les UBHEHÉREB (les ÉPÉE (les LO (les NON (les TIPPOL (les TOMBERAS (les VEHAYTAH (les SERA (les LEKHA (les TOI (les NAFSHEKHA (les ÂME (les LESHALAL (les BUTIN (les KI (les CAR (les BATAHTA (les CONFIANCE (les BI (les MOI (les NEUM (les DIT (les YEHOVAH (les DÉLIVRANCE — les CONFIANCE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le SAUVETAGE (les ÉBED-MÉLEK (les APPRIT (les QUE LES PRINCES (les AVAIENT (les JETÉ (les JÉRÉMIE (les DANS (les LA CITERNE (les DE MALKIJA (les POUR (les QUIL (les Y MEURE (les DE FAIM (les IL PLAIDA (les SA CAUSE (les AUPRÈS (les DU ROI (les AU PÉRIL (les DE SA VIE (les Ô MON SEIGNEUR (les CES HOMMES (les ONT MAL AGI (les SUR (les L'ORDRE (les DU ROI (les IL PRIT (les TRENTE HOMMES (les ET SECOURUT (les LE PROPHÈTE (les AVEC (les DES CHIFFONS (les SOUS (les LES AISSELLES (les SAUVETAGE — les CHIFFONS !). La GRATITUDE (les JÉHOVAH (les REMARQUA (les LA FOI (les DÉBED-MÉLEK (les QUI LUI PERMIT (les DE SURMONTER (les TOUTE CRAINTE (les ÉTRANGER (les EUNUQUE (les ÉTHIOPIEN (les MAIS (les ADORATEUR (les FERVENT (les IL GARDE (les LES ÂMES (les DE SES FIDÈLES (les GRATITUDE — les DIVINE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">39:15</td><td>GARDE (PARLE !)</td></tr>
+<tr><td class="d">39:16</td><td>MALHEUR (DEVANT !)</td></tr>
+<tr><td class="d">38:7-9</td><td>INTERCÈDE (FAMINE !)</td></tr>
+<tr><td class="d">38:10-13</td><td>TRENTE (CORDE !)</td></tr>
+<tr><td class="d">39:17-18</td><td>BUTIN (MOI !)</td></tr>
+<tr><td class="d">Ps 97:10</td><td>FIDÈLES (DÉLIVRE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>587 : Ébed-Mélek (« serviteur du roi », eunuque éthiopien du palais) sauve Jérémie de la citerne ; en retour, Dieu lui promet l'évasion pendant le sac — « ton âme pour butin » ; il survit aux Babyloniens comme Jérémie survit aux princes — double délivrance.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Porte de Benjamin (v. 38:7) : Ébed-Mélek y trouve le roi siégeant en justice ; citerne de Malkija dans la cour de la Garde : puits sans eau, boueux — le sauvetage aux cordes et chiffons.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Médecine du sauvetage : les chiffons sous les aisselles (Jr 38:12) protègent des cordes — geste de soin qui évite les lacérations ; un homme affaibli par la faim ne peut être hissé à vif — le détail prouve l'authenticité du récit.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>587 : JÉRÉMIE EN CITERNE — Mort de faim → ÉBED PLAIDE AU PÉRIL DE SA VIE → 30 HOMMES + CORDES + CHIFFONS → PROPHÈTE SAUVÉ → PROMESSE : ÂME POUR BUTIN → SAC : ÉBED ÉCHAPPE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le nom est peut-être un titre (« serviteur du roi ») : l'anonymat grandit l'exemple — tout étranger confiant peut être un Ébed-Mélek ; Psaume 97:10 en fait le cas d'école de la gratitude divine.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie jeté dans la citerne de Malkija</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ébed-Mélek intercède et le fait remonter</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sac de Jérusalem : Ébed-Mélek échappe à l'épée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2007085">wol — Jéhovah est un Dieu reconnaissant<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2007085</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001247">wol — Ébed-Mélek (étude)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001247</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/97">Bible — Psaume 97 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/97</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR263 — Ébed-Mélek : « Tu auras ton âme pour butin »</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR264">
+<div class="visuel"><img src="images/prophe_JR264_guedalia.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR264 · CATÉGORIE JR</div>
+<h3>Chaînes ôtées à Rama : Jérémie libre auprès de Guedalia</h3>
+<div class="ref">Jérémie 40:1-6</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Jérémie libéré Guedalia (parole → fut → Jérémie → part → Jéhovah → après → Nebouzaradan → chef → gardes → renvoyé → Rama → pris)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR264</div><audio controls preload="none" src="audio/fiche_JR264_guedalia.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR264_guedalia.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 40:1-6</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Jérémie libéré Guedalia (parole → fut → Jérémie → part → Jéhovah → après → Nebouzaradan → chef → gardes → renvoyé → Rama → pris)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P264 (40:1-6 : Jérémie libéré, reste avec Guedalia) ; accomplissement Jr 40:4-5</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PAROLE… JÉRÉMIE… JÉHOVAH… APRÈS… NEBOUZARADAN… CHEF… GARDES… RENVOYÉ… RAMA… PRIS… LIÉ… CHAÎNES… CAPTIFS… JÉRUSALEM… JUDA… DÉPORTÉS… BABYLONE… PRIT… JÉRÉMIE… DIT… DIEU… PRONONCÉ… MAL… LIEU… ACCOMPLI… DIT… PÉCHÉ… OBÉI… VOIX… ARRIVÉ. » (40:1-3 — arrivé !)</li>
+<li>« AFFRANCHIS… CHAÎNES… MAINS… PLAÎT… VENIR… BABYLONE… VIENS… VEILLERAI… PLAÎT… VIENS… PAYS… DEVANT… VAS… PLAÎT… CONVIENT… RETOURNE… GUEDALIA… AHIKAM… SHAPHAN… GOUVERNEUR… VILLES… JUDA… DEMEURE… PEUPLE… DONNA… VIVRES… PRÉSENT… LAISSA… ALLER. » (40:4-5 — aller !)</li>
+<li>« ALLA… GUEDALIA… MITSPA… RESTA… PEUPLE… RESTÉ… PAYS… CHOIX… PROPHÈTE… RESTER… RUINES… PLUTÔT… HONNEURS… BABYLONE… FIDÉLITÉ… TROUPEAU… DÉCIMÉ… BERGER… DEMEURE. » (40:6 — demeure !)</li>
+<li>« PAÏEN… CONFESSE… DIEU… JUDA… PRONONCÉ… ACCOMPLI… THÉOLOGIE… JUSTE… BOUCHE… ENNEMI… IRONIE… PROVIDENCE… VAINQUEUR… PRÊCHE… VAINCU… VRAI. » (païen — vrai !)</li>
+<li>« RAMA… RASSEMBLEMENT… CAPTIFS… CHAÎNES… DEUX… DEUX… MAIN… MAIN… PROPHÈTE… CONFONDU… FOULE… RECONNU… LIBÉRÉ… ERREUR… RÉPARÉE… DESTIN. » (Rama — destin !)</li>
+<li>« MITSPA… NORD… JÉRUSALEM… CAPITALE… PROVISOIRE… GUEDALIA… GOUVERNEUR… SHAPHAN… FAMILLE… JUSTE… ADMINISTRATEUR… SAGE… ESPOIR… RESTE. » (Mitspa — reste !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Après Rama, 587 — HADDABAR (les PAROLE (les ASHER (les HAYAH (les FUT (les EL (les YIRMEYAHU (les JÉRÉMIE (les MÉÉT (les PART (les YEHOVAH (les AHAR (les APRÈS (les SHALLOAH (les RENVOYÉ (les OTO (les LE (les NEBUZARADAN (les NEBOUZARADAN (les RAB (les CHEF (les TABBACHIM (les GARDES (les MIN (les HARAMAH (les RAMA (les BEQAKHTO (les PRIS (les OTO (les LE (les VEHU (les LUI (les ASUR (les LIÉ (les BÉAZIQQIM (les CHAÎNES (les BETOKH (les MILIEU (les KOL (les TOUS (les GALUT (les CAPTIFS (les YERUSHALAYIM (les JÉRUSALEM (les VIHUDAH (les JUDA (les HAMMUGLIM (les DÉPORTÉS (les BABÉLAH (les BABYLONE (les LE PROPHÈTE (les ENCHAÎNÉ (les PAR ERREUR (les RAMA — les CHAÎNES !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La CONFESSION (les VAYYIQQAH (les PRIT (les RAB (les CHEF (les TABBACHIM (les GARDES (les ET (les YIRMEYAHU (les JÉRÉMIE (les VAYYOMER (les DIT (les ÉLAYV (les LUI (les YEHOVAH (les ÉLOHÉKHA (les DIEU (les DIBBÉR (les PRONONCÉ (les ET (les HARA AH (les MAL (les HAZZOT (les CE (les EL (les HAMMAQOM (les LIEU (les HAZÉH (les CE (les VAYYABÉ (les AMENA (les YEHOVAH (les VAYYAAS (les ACCOMPLI (les KAASHER (les COMME (les DIBBÉR (les DIT (les KI (les CAR (les HATATEM (les PÉCHÉ (les LA-YEHOVAH (les JÉHOVAH (les VELO (les NON (les SHEMATEM (les OBÉI (les BEQOLO (les VOIX (les VEHAYAH (les ARRIVÉ (les LAKHEM (les VOUS (les HADDABAR (les CHOSE (les HAZÉH (les CE (les UN PAÏEN (les QUI PRÊCHE (les JUSTE (les CONFESSION — les PAÏENNE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le CHOIX (les VEATTAH (les MAINTENANT (les HINNÉH (les VOICI (les PITTAYTIKHA (les AFFRANCHIS (les HAYYOM (les AUJOURDHUI (les MIN (les HA AZIQQIM (les CHAÎNES (les ASHER (les QUE (les AL (les YADÉKHA (les MAINS (les IM (les SI (les TOB (les BON (les BEÉYNÉKHA (les YEUX (les LABO (les VENIR (les ITTI (les MOI (les BABÉL (les BABYLONE (les BO (les VIENS (les VEASIM (les METTRAI (les ET (les ÉYNI (les OEIL (les ALÉKHA (les TOI (les VEIM (les SI (les RA (les MAUVAIS (les BEÉYNÉKHA (les YEUX (les LABO (les VENIR (les ITTI (les MOI (les BABÉL (les BABYLONE (les HADAL (les CESSE (les RÉÉH (les VOIS (les KOL (les TOUT (les HAARETS (les PAYS (les LEPHANÉKHA (les DEVANT (les EL (les TOB (les BON (les VEEL (les HAYYASHAR (les DROIT (les BEÉYNÉKHA (les YEUX (les LALÉKHET (les ALLER (les SHAMMAH (les LÀ (les LÉKH (les VAS (les ODENNU (les ENCORE (les YASHUB (les RETOURNE (les VESHUB (les VERS (les EL (les GUEDALYAHU (les GUEDALIA (les BEN (les FILS (les AHIQAM (les AHIKAM (les BEN (les FILS (les SHAPHAN (les SHAPHAN (les ASHER (les QUE (les HIPHQID (les ÉTABLI (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les BEARÉ (les VILLES (les YEHUDAH (les JUDA (les USHOB (les DEMEURE (les ITTO (les LUI (les BETOKH (les MILIEU (les HAAM (les PEUPLE (les O (les OU (les EL (les KOL (les TOUT (les ASHER (les QUE (les YASHAR (les BON (les BEÉYNÉKHA (les YEUX (les LALÉKHET (les ALLER (les LÉKH (les VAS (les VAYYITTEN (les DONNA (les LO (les LUI (les RAB (les CHEF (les TABBACHIM (les GARDES (les ARUHAT (les VIVRES (les UMASSÉT (les PRÉSENT (les VAYSHALLEHÉHU (les LAISSA ALLER (les VAYYABO (les ALLA (les YIRMEYAHU (les JÉRÉMIE (les EL (les GUEDALYAHU (les GUEDALIA (les BEN (les FILS (les AHIQAM (les AHIKAM (les HAMMITSPAH (les MITSPA (les VAYYESHEB (les RESTA (les ITTO (les LUI (les BETOKH (les MILIEU (les HAAM (les PEUPLE (les HANNISHARIM (les RESTÉ (les BAARETS (les PAYS (les VIVRES (les ET PRÉSENT (les PUIS (les MITSPA (les CHOIX — les RESTER !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">40:1</td><td>RAMA (BABYLONE !)</td></tr>
+<tr><td class="d">40:2-3</td><td>PÉCHÉ (CE !)</td></tr>
+<tr><td class="d">40:4</td><td>CHAÎNES (ALLER !)</td></tr>
+<tr><td class="d">40:5</td><td>GUEDALIA (ALLER !)</td></tr>
+<tr><td class="d">40:6</td><td>MITSPA (PAYS !)</td></tr>
+<tr><td class="d">39:11-14</td><td>ORDRE (ROI !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>587 : Nebouzaradan trouve Jérémie enchaîné à Rama (erreur des soldats), le libère avec vivres et présent sur ordre de Nabuchodonosor lui-même (Jr 39:11-14) ; le prophète choisit Mitspa et Guedalia (fils d'Ahikam le juste, Jr 26:24) plutôt que les honneurs de Babylone — il reste avec le reste.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Rama (rassemblement des captifs, Jr 31:15 !) → Mitspa (Tell en-Nasbeh, 12 km au nord) : nouvelle capitale du reste ; tout le pays devant lui (v. 4) — Jérémie choisit les ruines.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Caravaneology : captifs enchaînés deux à deux, main à main — Jérémie confondu dans le convoi ; la libération avec rations (aruhah) et présent (massét) suit le protocole babylonien de clémence royale — ordre du roi transmis au chef des gardes.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>587 RAMA : ENCHAÎNÉ PAR ERREUR → PAÏEN CONFESSE : DIEU A DIT, DIEU A FAIT → CHAÎNES ÔTÉES → BABYLONE OU RESTE ? → VIVRES + PRÉSENT → MITSPA AVEC GUEDALIA</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le capitaine païen prêche mieux que les princes de Juda (v. 2-3) : ironie de la providence ; Jérémie refuse Babylone — le berger reste avec le troupeau décimé, jusqu'en Égypte (Jr 43).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute : Jérémie enchaîné, mené à Rama</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nebouzaradan le libère : chaînes ôtées, vivres</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mitspa : il reste avec Guedalia et le reste</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200000787">wol — Lien (étude)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200000787</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/40">Bible — Jérémie 40 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/40</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/40">Bible — Jérémie 40 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/40</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR264 — Chaînes ôtées à Rama : Jérémie libre auprès de Guedalia</span><span>Catégorie JR</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR259 — « Ils se relèveraient blessés » : l'Égypte repart, la ville brûle</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hophra sort ; les Chaldéens lèvent le siège</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle : l'Égypte repartira, la ville brûlera</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour des Chaldéens ; incendie de Jérusalem</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>JR260 — « Y a-t-il une parole ? » — Oui : une miche jusqu'à la fin</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arrestation, coups, cachot de Jonathan</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Interrogatoire secret + miche quotidienne</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Plus de pain dans la ville (Jr 52:6)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587 (4e mois)</text>
+</svg>
+<h4>JR261 — « Celui qui sortira vivra » : la vie pour butin</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prédication : qui sort vivra, vie pour butin</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Accusation de trahison ; citerne de Malkija</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Transfuges épargnés ; ville prise</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>JR262 — « Tes amis t'ont trompé » : le chant des femmes du palais</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dernière consultation à la 3e entrée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Refus de sortir : peur des transfuges</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Femmes emmenées, fils tués, ville brûlée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>JR263 — Ébed-Mélek : « Tu auras ton âme pour butin »</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jérémie jeté dans la citerne de Malkija</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ébed-Mélek intercède et le fait remonter</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sac de Jérusalem : Ébed-Mélek échappe à l'épée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>JR264 — Chaînes ôtées à Rama : Jérémie libre auprès de Guedalia</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute : Jérémie enchaîné, mené à Rama</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nebouzaradan le libère : chaînes ôtées, vivres</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mitspa : il reste avec Guedalia et le reste</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

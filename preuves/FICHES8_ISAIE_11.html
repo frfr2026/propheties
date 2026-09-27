@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES IS — Isaïe (11) — L'oiseau de proie, Babylone veuve et le serviteur frappé</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_IS_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES IS</h1>
+<h2>Isaïe (11) — L'oiseau de proie, Babylone veuve et le serviteur frappé</h2>
+<p class="intro">J'annonce dès le commencement ce qui doit arriver, et j'appelle du levant un oiseau de proie ; la vierge fille de Babylone descendra dans la poussière, veuve et sans enfants en un seul jour ; l'aimé de Jéhovah exécutera son dessein contre les Chaldéens ; le serviteur sera donné comme lumière des nations jusqu'aux extrémités de la terre ; des rois deviendront des tuteurs pour Sion ; et il livrera son dos aux frappeurs sans cacher son visage aux crachats.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:15</div><audio controls preload="none" src="audio/fiche_IS_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_IS_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#IS163">IS163</a>
+<a href="#IS164">IS164</a>
+<a href="#IS165">IS165</a>
+<a href="#IS166">IS166</a>
+<a href="#IS167">IS167</a>
+<a href="#IS168">IS168</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#IS163"><img src="images/prophe_IS163_oiseau.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE IS163</div>
+<h3><a href="#IS163">« J'annonce dès le commencement la fin » : l'oiseau de proie du levant</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#IS164"><img src="images/prophe_IS164_veuve.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE IS164</div>
+<h3><a href="#IS164">« En un seul jour » : Babylone veuve, ses astrologues en chaume</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#IS165"><img src="images/prophe_IS165_aime.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE IS165</div>
+<h3><a href="#IS165">« Jéhovah l'a aimé » : l'élu exécutera son dessein contre Babylone</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#IS166"><img src="images/prophe_IS166_lumiere.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE IS166</div>
+<h3><a href="#IS166">« Lumière des nations » : le serviteur formé dès le ventre</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#IS167"><img src="images/prophe_IS167_nourriciers.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE IS167</div>
+<h3><a href="#IS167">« Des rois seront tes nourriciers » : Sion allaitée par les princesses</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#IS168"><img src="images/prophe_IS168_dos.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE IS168</div>
+<h3><a href="#IS168">« J'ai livré mon dos aux frappeurs » : le serviteur au visage de silex</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="IS163">
+<div class="visuel"><img src="images/prophe_IS163_oiseau.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE IS163 · CATÉGORIE IS</div>
+<h3>« J'annonce dès le commencement la fin » : l'oiseau de proie du levant</h3>
+<div class="ref">Isaïe 46:8-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Fin annoncée (souvenez → ressaisissez → cœur → premières → commencement → conseil → oiseau → formé)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche IS163</div><audio controls preload="none" src="audio/fiche_IS163_oiseau.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_IS163_oiseau.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Isaïe 46:8-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Fin annoncée (souvenez → ressaisissez → cœur → premières → commencement → conseil → oiseau → formé)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Isaïe — P163 (46:8-11 : fin annoncée, oiseau de proie) ; accomplissement Esd 1:1-4</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« SOUVENEZ… RESSAISISSEZ… PRENEZ… CŒUR… TRANSGRESSEURS. » (46:8 — transgresseurs !)</li>
+<li>« SOUVENEZ… PREMIÈRES… AUTREFOIS… DIVIN… DIEU… AUTRE… NON… COMME… MOI… NON. » (46:9 — non !)</li>
+<li>« COMMENCEMENT… RÉVÈLE… CONCLUSION… TEMPS… ANCIENS… NON… FAITES… CONSEIL… TIENDRA… PLAISIR… FERAI. » (46:10 — ferai !)</li>
+<li>« APPELLE… LEVANT… OISEAU… PROIE… PAYS… LOINTAIN… HOMME… CONSEIL… DIT… ARRIVER… FORMÉ… FAIRE. » (46:11 — faire !)</li>
+<li>« JUSTICE… APPROCHER… LOIN… NON… SALUT… TARDERA… NON… DONNERAI… SION… ISRAËL… BEAUTÉ. » (46:13 — beauté !)</li>
+<li>« ESPRIT… CYRUS… RÉVEILLÉ… VOIX… PROCLAMÉE… ÉCRIT… MONTE… REBÂTISSE… MAISON. » (Esd 1:1-3 — maison !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~732 — SOUVENEZ (les ZIKRU (les RESSAISISSEZ (les HITOSHASHU (les VIRON (les HOMMES (les PRENEZ (les HASHIBU (les CŒUR (les LEB (les TRANSGRESSEURS (les POSHEIM (les HÉSITANTS (les IDOLÂTRIE (les CULTE (les VRAI (les BALANCENT (les APPEL (les MÉMOIRE (les HISTOIRE (les JUGE (les PÉDAGOGIE — les REMÉMORATION !). Les PREMIÈRES (les RISHONOT (les MEOLAM (les AUTREFOIS (les EXODE (les SINAÏ (les CONQUÊTE (les DAVID (les PREUVES (les PASSÉES (les GARANTIES (les FUTURES (les EL (les DIVIN (les ELOHIM (les DIEU (les EPHES (les NON (les OD (les AUTRE (les KAMONI (les COMME MOI (les AYIN (les NON (les MONOTHÉISME — les EXCLUSIF !). Le CONSEIL (les ETSAH (les TIENDRA (les TAQUM (les HEPHTSI (les PLAISIR (les EESSEH (les FERAI (les KOL (les TOUT (les DESSEIN (les IMMUABLE (les POUVOIR (les ILLIMITÉ (les Dn 4:35 (les RIEN (les EMPÊCHE (les THÉOLOGIE — les SOUVERAINETÉ !).</p>
+<h4>4 · Explication du texte</h4>
+<p>La CONCLUSION : RESHIT (les COMMENCEMENT (les MAGGID (les RÉVÈLE (les AHARIT (les FIN (les MEQEDDEM (les TEMPS ANCIENS (les LO NAASU (les NON FAITES (les GENÈSE 3:15 (les DÉJÀ (les FIN (les ANNONCÉE (les ÉDEN (les GOLGOTHA (les HARMAGUÉDON (les ARC (les ENTIER (les PROPHÉTIE (les STRUCTURE (les CHRONOLOGIE — les TOTALE !). L'OISEAU : AYIT (les PROIE (les AETOS (les AIGLE (les LXX (les NESHER (les EMBLÈME (les CYRUS (les OR (les ÉTENDARD (les FONCE (les SOUDAIN (les INATTENDU (les RAPIDITÉ (les OPIS (les SIPPAR (les BABYLONE (les 1 MOIS (les FAUCON (les 300 KM/H (les PIQUÉ (les ORNITHOLOGIE — les MILITAIRE !). Le PAYS : ERETS (les MERHAQ (les LOINTAIN (les ISH (les HOMME (les ATSATI (les CONSEIL (les DIBBARTI (les DIT (les ABIENA (les ARRIVER (les YATSARTI (les FORMÉ (les EESENAH (les FAIRE (les PERSE (les FARS (les 1 500 KM (les PASARGADES (les PAROLE (les ACTE (les DOUBLE (les VERBE (les GÉOGRAPHIE — les DESSEIN !).</p>
+<h4>5 · Interprétation</h4>
+<p>Application CYRUS : 200 ANS (les AVANCE (les NOM (les STRATÉGIE (les EUPHRATE (les DÉTOURNÉ (les PORTES (les OUVERTES (les NUIT (les 16 TISHRI (les 539 (les PRÉCISION (les CHIRURGICALE (les DEVINS (les JAMAIS (les OSENT (les DÉTAILS (les PEUR (les TORT (les DIEU (les VRAI (les PROUVE (les APOLOGÉTIQUE — les DATES !) + AIGLE (les OR (les XÉNOPHON (les CYROPÉDIE (les ÉTENDARD (les PERSAN (les AIGLE (les DÉPLOYÉ (les TENTE (les ROYALE (les SYMBOLE (les CONFIRMÉ (les SOURCES (les PAÏENNES (les HÉRALDIQUE — les PROIE !) + 538 (les ÉDIT (les ESPRIT (les RÉVEILLÉ (les Esd 1 (les VOIX (les PEUPLE (les MONTE (les MAISON (les REBÂTIT (les CONSEIL (les TENU (les PLAISIR (les FAIT (les HISTOIRE — les TÉMOIN !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">46:8</td><td>RESSAISISSEZ (CŒUR !)</td></tr>
+<tr><td class="d">46:9</td><td>PREMIÈRES (DIEU !)</td></tr>
+<tr><td class="d">46:10</td><td>CONSEIL (TIENDRA !)</td></tr>
+<tr><td class="d">46:11</td><td>OISEAU (LEVANT !)</td></tr>
+<tr><td class="d">46:13</td><td>SION (BEAUTÉ !)</td></tr>
+<tr><td class="d">Esd 1:1-3</td><td>ÉDIT (VOIX !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PASARGADES : FARS (les CAPITALE (les TOLÉRANCE (les JARDINS (les PARADEISOS (les TOMBEAU (les CHAMBRE (les PIERRE (les ALEXANDRE (les RESPECT (les 330 (les ARCHÉOLOGIE (les PALAIS (les COLONNES (les HISTOIRE — les ORIGINE !). L'AIGLE : ÉTENDARD (les PERSE (les HÉRODOTE (les XÉNOPHON (les ROME (les COPIERA (les AQUILA (les LÉGIONS (les SYMBOLE (les PUISSANCE (les HÉRALDIQUE — les UNIVERSELLE !). Dn 4:35 (les NÉBUCADNETSAR (les CONVERTI (les HABITANTS (les TERRE (les NÉANT (les VOLONTÉ (les FAIT (les MAIN (les FRAPPE (les QUI (les DIT (les QUE FAIS-TU (les ROI (les TÉMOIGNE (les DOXOLOGIE — les PAÏENNE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le LEVANT : EST (les BABYLONE (les TIGRE (les ÉLAM (les GOLFE (les ZAGROS (les PASSES (les 1 500 KM (les MARCHE (les ARMÉES (les PLAINE (les DESCENDENT (les GÉOSTRATÉGIE — les ORIENT !). Le PAYS : MERHAQ (les LOINTAIN (les EXOTIQUE (les INCONNU (les JUDA (les 732 (les PUISSANCE (les FUTURE (les CARTE (les VIDE (les GÉOGRAPHIE — les PROPHÉTIE !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le FAUCON : FALCO (les PEREGRINUS (les 390 KM/H (les PIQUÉ (les RECORD (les ANIMAL (les PROIE (les SURPRISE (les SOUDAIN (les CYRUS (les ANALOGIE (les ORNITHOLOGIE (les CONFIRME — les RAPIDITÉ !). La PROPHÉTIE : 200 ANS (les NOM (les LIEU (les MÉTHODE (les DATE (les 4 VARIABLES (les PRÉCISES (les PROBABILITÉS (les NULLES (les HASARD (les EXCLU (les STATISTIQUE — les PREUVE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>SOUVENEZ dit (ressaisissez) → PREMIÈRES citées (autrefois) → COMMENCEMENT lié (fin) → CONSEIL tenu (plaisir) → OISEAU appelé (levant) → HOMME formé (pays) → PAROLE arrivée (faire).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS la PRESCIENCE SEULE (le conseil tiendra : pouvoir, pas seulement savoir). Ne NOMME PAS Cyrus ICI (le nom fut donné en 44:28 et 45:1 ; ici le titre). Ne DIT PAS l'AIGLE LITTÉRAL (emblème et rapidité : l'homme fond comme l'oiseau). Ne DATE PAS le SALUT au JOUR (46:13 : il ne tardera pas, au moment voulu).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FIN (ANNONCÉE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FONCE (AIGLE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ÉDIT (ESPRIT !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CAPITALE (JARDINS !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Pasargades</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NÉANT (TÉMOIN !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dn 4</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/46">Isaïe 46 — Référence (Bel, fin annoncée, oiseau, 46:8-11)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/46</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/46">Isaïe 46 — Bible d'étude (conseil, Cyrus, salut, Sion)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/46</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/46">Isaïe 46 — Traduction du monde nouveau (oiseau de proie, formé)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/46</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche IS163 — « J'annonce dès le commencement la fin » : l'oiseau de proie du levant</span><span>Catégorie IS</span></div></div>
+</article>
+<article class="fiche" id="IS164">
+<div class="visuel"><img src="images/prophe_IS164_veuve.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE IS164 · CATÉGORIE IS</div>
+<h3>« En un seul jour » : Babylone veuve, ses astrologues en chaume</h3>
+<div class="ref">Isaïe 47:1-15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Veuve soudaine (descends → moulin → nudité → silence → joug → maîtresse → veuve → chaume)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche IS164</div><audio controls preload="none" src="audio/fiche_IS164_veuve.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_IS164_veuve.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Isaïe 47:1-15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Veuve soudaine (descends → moulin → nudité → silence → joug → maîtresse → veuve → chaume)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Isaïe — P164 (47:1-15 : veuvage en un jour, astrologues) ; accomplissement Dn 5:30-31</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DESCENDS… ASSIEDS… POUSSIÈRE… VIERGE… BABYLONE… TERRE… TRÔNE… NON… DÉLICATE… RAFFINÉE… NON. » (47:1 — non !)</li>
+<li>« MOULIN… BRAS… MOUDS… FARINE… VOILE… TRAÎNE… JAMBE… TRAVERSE… FLEUVES. » (47:2 — fleuves !)</li>
+<li>« NUDITÉ… DÉCOUVERTE… OPPROBRE… VU… VENGEANCE… EXERCERAI… HOMME… NON. » (47:3 — non !)</li>
+<li>« RACHÈTE… JÉHOVAH… ARMÉES… NOM… SAINT… ISRAËL. » (47:4 — Israël !)</li>
+<li>« SILENCE… TÉNÈBRES… CHALDÉENS… MAÎTRESSE… ROYAUMES… NON. » (47:5 — non !)</li>
+<li>« INDIGNÉ… PEUPLE… PROFANÉ… HÉRITAGE… LIVRÉS… MAIN… MISÉRICORDE… NON… VIEILLARD… JOUG… PESANT. » (47:6 — pesant !)</li>
+<li>« MAÎTRESSE… TOUJOURS… PRIS… CŒUR… NON… SOUVENUE… CONCLUSION… NON. » (47:7 — non !)</li>
+<li>« PLAISIRS… SÉCURITÉ… SUIS… AUTRE… NON… VEUVE… NON… ENFANTS… PERTE… NON. » (47:8 — non !)</li>
+<li>« DEUX… SOUDAINEMENT… UN… JOUR… PERTE… VEUVAGE… INTÉGRALITÉ… SORCELLERIES… SORTILÈGES… EXCÈS. » (47:9 — excès !)</li>
+<li>« CONFIANCE… MÉCHANCETÉ… VOIT… NON… SAGESSE… CONNAISSANCE… ÉGARÉE… SUIS… AUTRE… NON. » (47:10 — non !)</li>
+<li>« MALHEUR… AUBE… CONNAÎTRAS… NON… CALAMITÉ… TOMBERA… DÉTOURNER… NON… RUINE… SOUDAIN… SAURAS… NON. » (47:11 — non !)</li>
+<li>« TIENS… SORTS… SORCELLERIES… JEUNESSE… PROFIT… ÉPOUVANTE… PEUT-ÊTRE. » (47:12 — peut-être !)</li>
+<li>« LASSÉE… CONSEILLERS… LÈVENT… SAUVENT… ADORATEURS… CIEUX… ÉTOILES… LUNES… CONNAISSANCE… VIENDRONT. » (47:13 — viendront !)</li>
+<li>« CHAUME… FEU… BRÛLERA… DÉLIVRERONT… NON… ÂME… FLAMME… BRAISE… CHAUFFER… NON… FEU… ASSEOIR… NON. » (47:14 — non !)</li>
+<li>« MARCHANDS… JEUNESSE… ERRERONT… ROUTE… SAUVEUR… NON. » (47:15 — non !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~732 — la VIERGE (les BETULAH (les FILLE (les BABYLONE (les BABEL (les INVIOLÉE (les CONQUÉRANT (les JAMAIS (les PRISE (les PUISSANCE (les MONDIALE (les DEPUIS (les TRÔNE (les INCONTESTÉ (les IDIOME (les HÉBREU (les VILLE — les FEMME !). Le MOULIN (les REHAYIM (les BRAS (les TEHANI (les MOUDS (les QEMAH (les FARINE (les TÂCHE (les ESCLAVE (les FEMME (les PAUVRE (les VOILE (les TSAAMAH (les ÔTÉ (les TRAÎNE (les SHOBEL (les RELEVÉE (les JAMBE (les SHOQ (les NUE (les FLEUVES (les GUÉ (les REINE (les SERVANTE (les SOCIOLOGIE — les DÉCHÉANCE !). La MAÎTRESSE (les GEBERETH (les MELAKIM (les ROYAUMES (les DOMINATION (les CRUELLE (les TOUT (les ORIENT (les TITRE (les PERDU (les JAMAIS (les RENDU (les POLITIQUE — les FINIE !).</p>
+<h4>4 · Explication du texte</h4>
+<p>Le JOUG : QATSAPHTI (les INDIGNÉ (les AMMI (les PEUPLE (les HILLALTI (les PROFANÉ (les NAHALATI (les HÉRITAGE (les NETATIM (les LIVRÉS (les BEYADEK (les MAIN (les LO SAMT (les MISÉRICORDE (les RAHAMIM (les NON (les ZAQEN (les VIEILLARD (les ULEKHA (les JOUG (les HIKBADT (les PESANT (les MEOD (les INSTRUMENT (les DÉPASSÉ (les ORDRE (les CRUAUTÉ (les EXCÈS (les RESPONSABLE (les THÉODICÉE — les LIMITE !). La VEUVE : ALMANAH (les ESHAB (les ASSISE (les LO EDA (les CONNAÎTRAI (les SHEKOL (les PERTE (les BANIM (les ENFANTS (les PITOM (les SOUDAINEMENT (les YOM (les EHAD (les UN JOUR (les SHELÉMUTAM (les INTÉGRALITÉ (les CALAMITÉS (les FEMME (les ORIENT (les PIRES (les ANTHROPOLOGIE — les DEUIL !). Le CHAUME : QASH (les HAYU (les DEVENUS (les ESH (les FEU (les TISREPHEM (les BRÛLERA (les LO YATSILU (les DÉLIVRERONT (les NAPSHAM (les ÂME (les MIYAD (les POUVOIR (les LEHABAH (les FLAMME (les GEHELETH (les BRAISE (les HAMAM (les CHAUFFER (les UR (les FEU (les YASHAB (les ASSEOIR (les INUTILE (les MÊME (les CENDRES (les COMBUSTION — les TOTALE !). Les CIEUX : HOBERÉ (les ADORATEURS (les SHAMAYIM (les DIVISENT (les CIEL (les ZONES (les HOZIM (les OBSERVENT (les KOKABIM (les ÉTOILES (les MODIIM (les DISPENSENT (les HODASHIM (les LUNES (les HOROSCOPES (les ZODIAQUE (les BABYLONE (les INVENTÉ (les ASTRONOMIE — les ASTROLOGIE !).</p>
+<h4>5 · Interprétation</h4>
+<p>Application 539 : NUIT (les 16 TISHRI (les FESTIN (les 1 000 (les GRANDS (les PORTES (les QUAIS (les OUVERTES (les EUPHRATE (les BAS (les GOBRYAS (les ENTRE (les PALAIS (les PRIS (les BALTHAZAR (les TUÉ (les ROYAUME (les PERDU (les ENFANTS (les MORTS (les VEUVE (les EMPIRE (les UN JOUR (les LITTÉRAL (les CHRONOLOGIE — les SOUDAIN !) + CHAUME (les ASTROLOGUES (les SIÈCLES (les OBSERVATIONS (les TABLETTES (les EPHÉMÉRIDES (les PRÉDIT (les RIEN (les SAUVÉ (les PERSONNE (les FEU (les PERSAN (les TEMPLES (les PILLÉS (les PRÊTRES (les TUÉS (les SCIENCE (les FAUSSE (les ÉCHEC — les TOTAL !) + RÉVÉLATION (les Ré 18:7-8 (les REINE (les ASSISE (les VEUVE (les NON (les DEUIL (les JAMAIS (les UN JOUR (les FLÉAUX (les MORT (les DEUIL (les FAMINE (les FEU (les BRÛLÉE (les BABYLONE (les GRANDE (les ANTITYPE (les MODERNE (les ESCHATOLOGIE — les RÉPÈTE !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">47:1-2</td><td>MOULIN (POUSSIÈRE !)</td></tr>
+<tr><td class="d">47:3</td><td>OPPROBRE (VU !)</td></tr>
+<tr><td class="d">47:5</td><td>TÉNÈBRES (SILENCE !)</td></tr>
+<tr><td class="d">47:6</td><td>JOUG (VIEILLARD !)</td></tr>
+<tr><td class="d">47:8-9</td><td>VEUVE (JOUR !)</td></tr>
+<tr><td class="d">47:13-14</td><td>CHAUME (FEU !)</td></tr>
+<tr><td class="d">Dn 5:30</td><td>NUIT (MÊME !)</td></tr>
+<tr><td class="d">Ré 18:7-8</td><td>REINE (RÉPÈTE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le MOULIN : REHAYIM (les 2 MEULES (les FEMMES (les ESCLAVES (les MATIN (les EXODE 11:5 (les SERVANTE (les Mt 24:41 (les 2 MOUDRONT (les QUOTIDIEN (les ANTIQUE (les ARCHÉOLOGIE (les BASALTE (les TROUVÉS (les ETHNOGRAPHIE — les TÂCHE !). VAT 4956 (les ÉPHÉMÉRIDE (les 568 (les LUNE (les PLANÈTES (les POSITIONS (les EXACTES (les SCIENCE (les VRAIE (les INTERPRÉTATION (les FAUSSE (les ASTRONOMIE (les BONNE (les ASTROLOGIE (les MAUVAISE (les ÉPISTÉMOLOGIE — les DISTINCTION !). La POUSSIÈRE : APHAR (les DEUIL (les HUMILIATION (les JOB 2:8 (les TÊTE (les COUVERTE (les TRÔNE (les QUITTÉ (les SOL (les ASSIS (les RITUEL (les ORIENT (les ANTHROPOLOGIE — les CENDRE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Les FLEUVES : EUPHRATE (les CANAUX (les BABYLONE (les TRAVERSÉE (les GUÉ (les JAMBES (les NUES (les HONTE (les FEMME (les NOBLE (les JAMAIS (les MARCHE (les TOPOGRAPHIE — les HUMILIATION !). Les TÉNÈBRES : HOSHEK (les OUBLI (les PRISON (les SILENCE (les DEMAMAH (les TRÔNE (les VIDE (les PALAIS (les RUINES (les KASR (les MONTICULE (les AUJOURD'HUI (les GÉOGRAPHIE — les OMBRE !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le ZODIAQUE : 12 SIGNES (les BABYLONE (les INVENTÉ (les HOROSCOPE (les HORA (les SKOPEO (les GREC (les REPREND (les PRÉDICTIONS (les VAGUES (les BARNUM (les EFFET (les PSYCHOLOGIE (les DÉMONTRE — les CHARLATAN !). Le CHAUME : QASH (les TIGES (les SÈCHES (les COMBUSTION (les RAPIDE (les 800 °C (les CENDRES (les LÉGÈRES (les VENT (les DISPERSE (les BRAISE (les AUCUNE (les CHALEUR (les NULLE (les PHYSIQUE — les INUTILITÉ !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>DESCENDS ordonné (poussière) → MOULIN pris (farine) → NUDITÉ vue (opprobre) → SILENCE entré (ténèbres) → JOUG pesé (vieillard) → MAÎTRESSE crue (toujours) → VEUVE faite (jour) → CHAUME brûlé (braise).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS Babylone DÉTRUITE EN 539 (prise ; la ruine vint par étapes). Ne DIT PAS les ASTROLOGUES IGNORANTS (bons astronomes ; faux prophètes). Ne CONFOND PAS la VEUVE et la VIERGE (inviolée puis veuve : deux images). Ne DIT PAS la VENGEANCE SANS HOMME AU SENS ABSOLU (Cyrus fut l'instrument).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">VEUVE (PROMISE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">1 000 (VIN !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Festin</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ENTRE (GOBRYAS !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">16</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PRISE (NUIT !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">GRANDE (FEU !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ré 18</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1102001028">La fausse religion — Prophétie d'Isaïe (Is 47, veuvage, astrologues, chaume)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1102001028</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/47">Isaïe 47 — Référence (vierge, veuve, astrologues, 47:1-15)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/47</a>
+<a href="https://www.jw.org/en/library/bible/nwt/books/isaiah/47/">Isaiah 47 — NWT anglaise (dust, widowhood, stargazers, stubble)<br>https://www.jw.org/en/library/bible/nwt/books/isaiah/47/</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche IS164 — « En un seul jour » : Babylone veuve, ses astrologues en chaume</span><span>Catégorie IS</span></div></div>
+</article>
+<article class="fiche" id="IS165">
+<div class="visuel"><img src="images/prophe_IS165_aime.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE IS165 · CATÉGORIE IS</div>
+<h3>« Jéhovah l'a aimé » : l'élu exécutera son dessein contre Babylone</h3>
+<div class="ref">Isaïe 48:14-15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Aimé appelé (rassemblez → qui → aimé → exécutera → bras → parlé → appelé → voie)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche IS165</div><audio controls preload="none" src="audio/fiche_IS165_aime.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_IS165_aime.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Isaïe 48:14-15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Aimé appelé (rassemblez → qui → aimé → exécutera → bras → parlé → appelé → voie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Isaïe — P165 (48:14-15 : l'aimé contre Babylone) ; accomplissement Dn 5:30-31</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« RASSEMBLEZ… ENTENDEZ… QUI… RÉVÉLÉ… AIMÉ… EXÉCUTERA… BABYLONE… PLAISIR… BRAS… CHALDÉENS. » (48:14 — Chaldéens !)</li>
+<li>« PARLÉ… APPELÉ… FAIT… VENIR… RÉUSSIR… VOIE. » (48:15 — voie !)</li>
+<li>« PREMIÈRES… RÉVÉLÉES… BOUCHE… SORTIES… ENTENDRE… SOUDAIN… AGI… ARRIVÉES. » (48:3 — arrivées !)</li>
+<li>« DUR… COU… TENDON… FER… FRONT… CUIVRE… RÉVÉLAIS… AVANT… ARRIVE… IDOLE… NON. » (48:4-5 — non !)</li>
+<li>« NOUVELLES… PRÉSENT… RÉSERVE… CONNAISSAIS… NON… CRÉÉES… ENTENDUES… NON… CONNAISSAIS… NON. » (48:6-7 — non !)</li>
+<li>« AFFINÉ… NON… ARGENT… CHOIX… FOUR… FUSION… AFFLICTION… CAUSE… MOI… GLOIRE… AUTRE… NON. » (48:10-11 — non !)</li>
+<li>« SORTEZ… BABYLONE… FUYEZ… CHALDÉENS… CRI… JOIE… ANNONCEZ… EXTRÉMITÉ… TERRE… RACHETÉ… JACOB. » (48:20 — Jacob !)</li>
+<li>« SOIF… NON… MARCHAIT… DÉVASTÉS… ROCHER… FENDU… EAUX… COULÉES… PAIX… MÉCHANTS… NON. » (48:21-22 — non !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~732 — RASSEMBLEZ (les HIQQABTSU (les KULKHEM (les TOUS (les SHIMU (les ENTENDEZ (les TRIBUNAL (les IDOLES (les DÉFIÉES (les MI (les QUI (les HIGGID (les RÉVÉLÉ (les ELEH (les CHOSES (les SILENCE (les IDOLES (les MUETTES (les PROCÈS — les TÉMOINS !). L'AIMÉ (les AHÉBO (les YHWH (les JÉHOVAH (les AIME (les CHOISIT (les DESSEIN (les PRÉCIS (les CYRUS (les PAÏEN (les ÉLU (les FONCTION (les PAS SALUT (les AMOUR (les MISSION (les THÉOLOGIE — les ÉLECTION !). Le COU (les OREP (les GID (les TENDON (les BARZEL (les FER (les METSAH (les FRONT (les NEHOSHETH (les CUIVRE (les RAIDEUR (les TÊTU (les JUDA (les EXIL (les ANATOMIE (les MÉTALLURGIE — les OBSTINATION !).</p>
+<h4>4 · Explication du texte</h4>
+<p>Le PLAISIR : HEPHTSO (les YASSEH (les EXÉCUTERA (les BEBABEL (les BABYLONE (les UZERO (les BRAS (les KASDIM (les CHALDÉENS (les DESTRUCTION (les PUISSANCE (les MONDIALE (les INSTRUMENT (les PAÏEN (les VOLONTÉ (les DIVINE (les PARADOXE (les PROVIDENCE (les STRATÉGIE — les CÉLESTE !). L'APPEL : ANI (les MOI (les DIBBARTI (les PARLÉ (les APH (les EN OUTRE (les QERATIV (les APPELÉ (les HABIOTIV (les VENIR (les HITSLIAH (les RÉUSSIR (les DARKO (les VOIE (les TRIPLE (les VERBE (les PAROLE (les VOCATION (les SUCCÈS (les GARANTI (les CARRIÈRE — les DIVINE !). Les NOUVELLES : HADASHOT (les MEATTAH (les PRÉSENT (les NETSUROT (les RÉSERVE (les LO YEDATAM (les CONNAISSAIS (les NIBREU (les CRÉÉES (les YESH (les EX NIHILO (les APPARENCE (les SOUDAIN (les IMPRÉVISIBLE (les OBSERVATION (les HUMAINE (les COSMOLOGIE — les PROPHÉTIE !). Le FOUR : TSARAPHTIKHA (les AFFINÉ (les LO KHESEPH (les NON ARGENT (les BEHARTIKHA (les CHOIX (les BEKHUR (les FOUR (les MATSREF (les FUSION (les ONI (les AFFLICTION (les EXIL (les CREUSET (les CŒUR (les RÉVÉLÉ (les SCORIES (les ÔTÉES (les MÉTALLURGIE — les ÉPREUVE !).</p>
+<h4>5 · Interprétation</h4>
+<p>Application CYRUS : 559-539 (les 20 ANS (les VOIE (les RÉUSSIE (les MÉDIE (les LYDIE (les BABYLONE (les EMPIRE (les BRAS (les CHALDÉENS (les PLAISIR (les FAIT (les PROPHÉTIE (les MOT À MOT (les CARRIÈRE — les GUIDÉE !) + SOUDAIN (les PITOM (les ASITI (les AGI (les VATTOBONAH (les ARRIVÉES (les 16 TISHRI (les UNE NUIT (les PERSONNE (les PRÉVU (les HÉRODOTE (les ÉTONNÉ (les CRÉÉES (les RIEN (les MIRACLE (les POLITIQUE (les HISTOIRE — les SOUDAINE !) + SORTEZ (les TSEU (les BABYLONE (les UBBERHU (les FUYEZ (les QOL (les CRI (les RINNAH (les JOIE (les AD (les QETSEH (les EXTRÉMITÉ (les ERETS (les GAAL (les RACHETÉ (les YAAQOB (les EXODE (les SECOND (les LIBÉRATION — les PROCLAMÉE !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">48:3</td><td>SOUDAIN (AGI !)</td></tr>
+<tr><td class="d">48:4-5</td><td>FER (FRONT !)</td></tr>
+<tr><td class="d">48:6-7</td><td>NOUVELLES (CRÉÉES !)</td></tr>
+<tr><td class="d">48:10-11</td><td>FOUR (GLOIRE !)</td></tr>
+<tr><td class="d">48:14</td><td>AIMÉ (BRAS !)</td></tr>
+<tr><td class="d">48:15</td><td>VOIE (RÉUSSIE !)</td></tr>
+<tr><td class="d">48:20</td><td>SORTEZ (JOIE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le FER : BARZEL (les ÂGE (les 1200 (les HITTITES (les SECRET (les PHILISTINS (les MONOPOLE (les 1S 13:19 (les COU (les RAIDE (les INDOCILE (les MÉTAPHORE (les TECHNIQUE (les ARCHÉOLOGIE (les CONFIRME — les DURETÉ !). Le CUIVRE : NEHOSHETH (les FRONT (les INSOLENT (les Jr 3:3 (les TIMHA (les LABAN (les INSOUMIS (les ALLIAGE (les BRONZE (les MIROIRS (les POLIS (les DURS (les BRILLANTS (les MÉTALLURGIE — les FRONT !). 1919 (les SORTEZ (les RÉPÉTÉ (les BABYLONE (les GRANDE (les Ré 18:4 (les PEUPLE (les APPEL (les LIBÉRATION (les MODERNE (les ANTITYPE (les HISTOIRE — les ÉCHO !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>BABYLONE : CENTRE (les MONDE (les EXILÉS (les DISPERSÉS (les EMPIRE (les SORTEZ (les CONVERGENCE (les JUDA (les 1 500 KM (les ROUTES (les CARAVANES (les GÉOGRAPHIE — les EXODE !). Le DÉSERT : MIDBAR (les SOIF (les NON (les ROCHER (les BAQA (les FENDU (les MAYIM (les COULÉES (les YIZBU (les EXODE (les RÉPÉTÉ (les REPHIDIM (les MASSAH (les TOPOGRAPHIE — les MIRACLE !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'AFFINAGE : CREUSET (les 1 000 °C (les PLOMB (les COUPELLATION (les ARGENT (les PUR (les SCORIES (les ÉCUMÉES (les EXIL (les TEMPÉRATURE (les CŒUR (les PURIFIÉ (les MÉTALLURGIE (les CONFIRME — les IMAGE !). La SOIF : DÉSHYDRATATION (les DÉSERT (les 3 JOURS (les MORT (les EAU (les ROCHER (les SURNATURELLE (les BESOIN (les VITAL (les COMBLÉ (les PHYSIOLOGIE — les MIRACLE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>RASSEMBLEZ dit (tribunal) → QUI défie (idoles) → AIMÉ choisi (Cyrus) → PLAISIR exécuté (Babel) → PARLÉ promis (appelé) → VOIE réussie (venir) → SORTEZ crié (joie).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS l'AIMÉ SAUVÉ (élu pour une mission, pas pour le salut). Ne DIT PAS les IDOLES CAPABLES (le défi reste sans réponse). Ne CONFOND PAS premières et nouvelles (passé prouvé, futur créé). Ne DIT PAS la PAIX POUR TOUS (48:22 : pas de paix pour les méchants).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">AIMÉ (DÉSIGNÉ !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">VOIE (OUVERTE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">559</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRAS (FRAPPE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SORTEZ (CRI !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ÉCHO (GRANDE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1102001029">Jéhovah enseigne — Prophétie d'Isaïe (Is 48, aimé, Cyrus, sortez)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1102001029</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/48">Isaïe 48 — Référence (aimé, four, sortez, 48:3-22)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/48</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990084">Livre 23, Isaïe — Aperçu (45:1-48:22, Cyrus, Bel, chaume)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990084</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche IS165 — « Jéhovah l'a aimé » : l'élu exécutera son dessein contre Babylone</span><span>Catégorie IS</span></div></div>
+</article>
+<article class="fiche" id="IS166">
+<div class="visuel"><img src="images/prophe_IS166_lumiere.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE IS166 · CATÉGORIE IS</div>
+<h3>« Lumière des nations » : le serviteur formé dès le ventre</h3>
+<div class="ref">Isaïe 49:1-7</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Lumière levée (îles → ventre → épée → flèche → vain → Jacob → lumière → rois)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche IS166</div><audio controls preload="none" src="audio/fiche_IS166_lumiere.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_IS166_lumiere.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Isaïe 49:1-7</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Lumière levée (îles → ventre → épée → flèche → vain → Jacob → lumière → rois)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Isaïe — P166 (49:1-7 : serviteur, lumière des nations) ; accomplissement Lc 2:32 ; Ac 13:46-47</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ÉCOUTEZ… ÎLES… ATTENTION… NATIONS… LOINTAINES… APPELÉ… NAISSANCE… MENTIONNÉ… NOM… VENTRE… MÈRE. » (49:1 — mère !)</li>
+<li>« BOUCHE… ÉPÉE… TRANCHANTE… ABRITÉ… OMBRE… MAIN… FLÈCHE… AIGUISÉE… CACHÉ… CARQUOIS. » (49:2 — carquois !)</li>
+<li>« SERVITEUR… ISRAËL… SPLENDEUR… MONTRERAI. » (49:3 — montrerai !)</li>
+<li>« TRAVAILLÉ… RIEN… ÉPUISÉ… FORCES… VAIN… VIDE… JUGE… JÉHOVAH… RÉCOMPENSE… DIEU. » (49:4 — Dieu !)</li>
+<li>« FORMÉ… VENTRE… SERVITEUR… RAMÈNE… JACOB… RASSEMBLÉ… ISRAËL… GLORIFIÉ… YEUX… FORCE. » (49:5 — force !)</li>
+<li>« SUFFISANT… NON… SERVITEUR… RÉTABLIRA… TRIBUS… JACOB… RAMÈNERA… PRÉSERVÉS… ISRAËL… DONNÉ… LUMIÈRE… NATIONS… SALUT… EXTRÉMITÉS… TERRE. » (49:6 — terre !)</li>
+<li>« RACHETEUR… SAINT… ISRAËL… MÉPRISÉ… DÉTESTÉ… NATION… SERVITEUR… DIRIGEANTS… ROIS… VERRONT… LÈVERONT… PRINCES… PROSTERNERONT… FIDÈLE… CHOISI. » (49:7 — choisi !)</li>
+<li>« YEUX… VU… SALUT… PRÉPARÉ… PEUPLES… LUMIÈRE… NATIONS… RÉVÉLATION… GLOIRE… ISRAËL. » (Lc 2:30-32 — Israël !)</li>
+<li>« PAROLE… ANNONCÉE… D'ABORD… REPOUSSEZ… INDIGNES… VIE… TOURNONS… NATIONS… LUMIÈRE… SALUT… EXTRÉMITÉ. » (Ac 13:46-47 — extrémité !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~732 — le DEUXIÈME (les CHANT (les 4 CHANTS (les SERVITEUR (les 42 (les DOUX (les 49 (les GUERRIER (les 50 (les FRAPPÉ (les 53 (les AGNEAU (les PROGRESSION (les RÉVÉLATION (les PORTRAIT (les COMPLET (les LITTÉRATURE — les TÉTRAPTYQUE !). Les ÎLES (les IYIM (les NATIONS (les LEUMMIM (les LOINTAINES (les MERHAQ (les AUDITOIRE (les MONDIAL (les PAS SEULEMENT (les ISRAËL (les PAÏENS (les INVITÉS (les UNIVERSALISME (les MISSION — les MONDIALE !). Le VENTRE (les BETEN (les IMI (les MÈRE (les QARA (les APPELÉ (les MENTIONNÉ (les HIZKIR (les SHEMI (les NOM (les JÉRÉMIE (les 1:5 (les PAUL (les Ga 1:15 (les JEAN (les Lc 1:15 (les VOCATION (les PRÉNATALE (les EMBRYOLOGIE — les ÉLECTION !).</p>
+<h4>4 · Explication du texte</h4>
+<p>L'ÉPÉE : HEREB (les HADDAH (les TRANCHANTE (les PI (les BOUCHE (les SAM (les RENDU (les BETSEL (les OMBRE (les YADO (les MAIN (les HESTIRANI (les ABRITÉ (les HETS (les FLÈCHE (les BARUR (les AIGUISÉE (les POLIE (les BEASHPATO (les CARQUOIS (les HISTIRANI (les CACHÉ (les COMBAT (les VERBAL (les MESSAGE (les ACÉRÉ (les ARME (les RÉSERVÉE (les TEMPS (les VENU (les ARMURERIE — les PAROLE !). Le VAIN : LERIQ (les RIEN (les YAGATI (les TRAVAILLÉ (les KOHI (les FORCES (les KILLITI (les ÉPUISÉ (les HEBEL (les VIDE (les TOHU (les MISHPATI (les JUGEMENT (les ET (les YHWH (les PEULLATI (les RÉCOMPENSE (les ET (les ELOHAY (les PLAINTE (les REJET (les SIENS (les CONFIANCE (les DIEU (les PSYCHOLOGIE — les MINISTÈRE !). La LUMIÈRE : NAQAL (les TROP PEU (les HEYOTKHA (les QUE TU SOIS (les HOSHIB (les RÉTABLIRA (les SHIBTÉ (les TRIBUS (les NETSIRÉ (les PRÉSERVÉS (les NETATTIKHA (les DONNÉ (les LEOR (les LUMIÈRE (les GOYIM (les YESHUATI (les SALUT (les AD (les QETSEH (les EXTRÉMITÉS (les MISSION (les ÉLARGIE (les ISRAËL (les PLUS (les MONDE (les OPTIQUE — les SALUT !). Le MÉPRISÉ : NIBZEH (les NEPHESH (les ÂME (les METAEB (les DÉTESTÉ (les GOY (les EBED (les MOSHELIM (les DIRIGEANTS (les MELAKIM (les YIRU (les VERRONT (les VÉQAMU (les LÈVERONT (les SARIM (les VEISHTAHAVU (les PROSTERNERONT (les REVERSEMENT (les HONNEUR (les ESCHATOLOGIE — les GLOIRE !).</p>
+<h4>5 · Interprétation</h4>
+<p>Application JÉSUS : REJET (les Jn 1:11 (les IDIA (les SIENS (les OUK (les NON (les PARELABON (les REÇU (les NAZARETH (les PRÉCIPICE (les Lc 4:29 (les VAIN (les APPARENT (les CROIX (les ÉCHEC (les JUGEMENT (les DIEU (les RÉSURRECTION (les VINDICTE (les PARADOXE — les MINISTÈRE !) + SIMÉON (les Lc 2:25-32 (les 2 av. n. è. (les NUNC (les DIMITTIS (les PHOS (les EIS (les APOKALUPSIN (les ETHNON (les DOXA (les LAOU (les SOU (les ISRAËL (les BÉBÉ (les BRAS (les VIEILLARD (les PAIX (les LITURGIE — les CRÈCHE !) + ANTIOCHE (les Ac 13:46-47 (les 47 (les PISIDIE (les SYNAGOGUE (les JUIFS (les CONTREDISENT (les BLASPHÈMENT (les PAUL (les HARDIESSE (les PARRÉSIA (les STREPHOMENA (les TOURNONS (les ETHNI (les TETAKHEN (les ORDONNÉ (les PHOS (les SOTÉRIAN (les ESCHATOU (les TOURNANT (les MISSIONS (les HISTOIRE — les PAÏENS !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">49:1</td><td>VENTRE (NOM !)</td></tr>
+<tr><td class="d">49:2</td><td>ÉPÉE (CARQUOIS !)</td></tr>
+<tr><td class="d">49:4</td><td>VAIN (JUGE !)</td></tr>
+<tr><td class="d">49:5</td><td>JACOB (RAMENÉ !)</td></tr>
+<tr><td class="d">49:6</td><td>LUMIÈRE (EXTRÉMITÉS !)</td></tr>
+<tr><td class="d">49:7</td><td>ROIS (LEVÉS !)</td></tr>
+<tr><td class="d">Lc 2:32</td><td>SIMÉON (GLOIRE !)</td></tr>
+<tr><td class="d">Ac 13:47</td><td>TOURNANT (PAÏENS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>QUMRÂN : 1Q-ÉSAÏE (les 49:1-7 (les LISIBLE (les IIE SIÈCLE (les AVANT JÉSUS (les 200 ANS (les TEXTE (les FIXÉ (les PREUVE (les ANTÉRIORITÉ (les PALÉOGRAPHIE — les MANUSCRIT !). CORNEILLE : Ac 10 (les 36 (les CÉSARÉE (les CENTURION (les CRAINT (les DIEU (les PIERRE (les TOIT (les NAPPE (les ESPRIT (les PAÏENS (les PREMIERS (les LUMIÈRE (les ALLUMÉE (les HISTOIRE — les TOURNANT !). OINTS : 144 000 (les LUMIÈRE (les SECONDAIRE (les Mt 5:14 (les MONDE (les PHOS (les GRANDE FOULE (les SECONDE (les ÉCLAIRÉS (les PRÉDICATION (les MONDIALE (les MISSION — les CONTINUE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Les ÎLES : YAVAN (les GRÈCE (les KITTIM (les CHYPRE (les TARSHISH (les ESPAGNE (les PAUL (les PROJET (les Rm 15:24 (les EXTRÉMITÉS (les CONNUES (les GÉOGRAPHIE — les MISSION !). ANTIOCHE : PISIDIE (les PLATEAU (les ANATOLIE (les 1 200 M (les SYNAGOGUE (les SABBAT (les FOULE (les VILLE (les ENTIÈRE (les SUIVANT (les TOPOGRAPHIE — les TOURNANT !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'ÉPÉE : GLAIVE (les ROMAIN (les 50 CM (les DOUBLE (les TRANCHANT (les BOUCHE (les PAROLE (les Héb 4:12 (les TRANCHE (les ÂME (les ESPRIT (les MOELLES (les CHIRURGIE (les VERBALE (les MÉTALLURGIE — les MESSAGE !). La FLÈCHE : HETS (les POLIE (les BARUR (les AÉRODYNAMIQUE (les CARQUOIS (les CUIR (les 30 FLÈCHES (les ARCHER (les PERSAN (les PORTÉE (les 200 M (les BALISTIQUE — les CACHÉE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>ÎLES appelées (écoutez) → VENTRE élu (nom) → ÉPÉE aiguisée (bouche) → FLÈCHE polie (carquois) → VAIN plaint (juge) → JACOB ramené (trop peu) → LUMIÈRE donnée (extrémités) → ROIS levés (prosternés).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS le SERVITEUR = ISRAËL SEUL (il ramène Jacob : distinct du peuple). Ne DIT PAS Jésus ÉCLAIRANT LES PAÏENS DÈS 29 (ministère à Israël ; puis disciples). Ne DIT PAS le TRAVAIL VRAIMENT VAIN (apparence ; Dieu juge et récompense). Ne DATE PAS la PROSTERNATION des ROIS (déjà en partie ; pleinement au Royaume).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CHANT (DEUXIÈME !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FIXÉ (TEXTE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Qumrân</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SIMÉON (BRAS !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CORNEILLE (NAPPE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">36</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PISIDIE (TOURNE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">47</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/49">Isaïe 49 — Traduction du monde nouveau (serviteur, lumière, rois, 49:1-7)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/49</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2007042">Points marquants d'Isaïe II — Tour de Garde (49:6, lumière, Actes 13)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2007042</a>
+<a href="https://wol.jw.org/en/wol/b/r1/lp-e/nwtsty/23/49">Isaiah 49 — Bible d'étude anglaise (sword, light, ends of earth)<br>https://wol.jw.org/en/wol/b/r1/lp-e/nwtsty/23/49</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche IS166 — « Lumière des nations » : le serviteur formé dès le ventre</span><span>Catégorie IS</span></div></div>
+</article>
+<article class="fiche" id="IS167">
+<div class="visuel"><img src="images/prophe_IS167_nourriciers.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE IS167 · CATÉGORIE IS</div>
+<h3>« Des rois seront tes nourriciers » : Sion allaitée par les princesses</h3>
+<div class="ref">Isaïe 49:22-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Sion nourrie (oubliée → sein → main → signal → bras → épaules → rois → poussière)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche IS167</div><audio controls preload="none" src="audio/fiche_IS167_nourriciers.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_IS167_nourriciers.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Isaïe 49:22-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Sion nourrie (oubliée → sein → main → signal → bras → épaules → rois → poussière)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Isaïe — P167 (49:22-23 : rois nourriciers) ; accomplissement Esd 6:6-12 ; 7:11-26</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ABANDONNÉE… OUBLIÉE… SION… DIT. » (49:14 — dit !)</li>
+<li>« FEMME… OUBLIE… NOURRISSON… COMPASSION… NON… FILS… VENTRE… OUBLIERAIENT… OUBLIERAI… NON. » (49:15 — non !)</li>
+<li>« GRAVÉE… PAUMES… MAINS… MURAILLES… DEVANT… CONTINUELLEMENT. » (49:16 — continuellement !)</li>
+<li>« PÈRE… ENFANTS… DONNÉS… PERDUS… STÉRILE… EXILÉE… PRISONNIÈRE… ÉLEVÉ… SEULE… VIENNENT. » (49:21 — viennent !)</li>
+<li>« LÈVERAI… MAIN… NATIONS… ÉLÈVERAI… SIGNAL… PEUPLES… PORTERONT… FILS… BRAS… FILLES… ÉPAULES. » (49:22 — épaules !)</li>
+<li>« ROIS… TUTEURS… PRINCESSES… NOURRICES… INCLINERONT… FACE… TERRE… LÉCHERONT… POUSSIÈRE… PIEDS… SAURAS… JÉHOVAH… ESPÈRENT… HONTE… NON. » (49:23 — non !)</li>
+<li>« LAISSEZ… ŒUVRE… MAISON… DIEU… GOUVERNEUR… JUIFS… ANCIENS… REBÂTISSENT… LIEU. » (Esd 6:7 — lieu !)</li>
+<li>« FRAIS… BIENS… ROI… TRIBUTS… DONNÉS… SANS… NÉGLIGENCE… TAUREAUX… BÉLIERS… AGNEAUX… BLÉ… SEL… VIN… HUILE… JOUR… JOUR. » (Esd 6:8-9 — jour !)</li>
+<li>« ARGENT… 100… TALENTS… BLÉ… 100… CORS… VIN… 100… BATHS… HUILE… 100… SEL… SANS… PRESCRIPTION. » (Esd 7:22 — prescription !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~732 — l'OUBLI (les SHAKHAH (les AZABANI (les ABANDONNÉE (les VATOMER (les DIT (les TSIYON (les SION (les EXIL (les DÉSESPOIR (les PLAINTE (les MATERNELLE (les PSYCHOLOGIE — les EXIL !). Le SEIN (les ISHAH (les FEMME (les TISHKAH (les OUBLIE (les ULAH (les NOURRISSON (les MERAHEM (les COMPASSION (les BEN (les BITNAH (les VENTRE (les GAM (les MÊME (les TISHKAHNAH (les OUBLIERAIENT (les ANI (les MOI (les LO ESHKAHÉK (les OUBLIERAI (les ARGUMENT (les A FORTIORI (les MATERNITÉ — les DIVINE !). Les PAUMES (les KAPAYIM (les HAQQOTIK (les GRAVÉE (les TATOUAGE (les ESCLAVE (les MARQUÉ (les MAÎTRE (les INEFFAÇABLE (les HOMOTAYIK (les MURAILLES (les NEGDI (les DEVANT (les TAMID (les CONTINUELLEMENT (les DERMATOLOGIE — les MÉMOIRE !).</p>
+<h4>4 · Explication du texte</h4>
+<p>Le SIGNAL : NES (les PERCHE (les ÉTENDARD (les ARIM (les LÈVERAI (les YADI (les MAIN (les EL (les GOYIM (les NATIONS (les AMMIM (les PEUPLES (les RALLIEMENT (les VISIBLE (les LOIN (les RASSEMBLEMENT (les ORDONNÉ (les VEXILLOLOGIE — les DIVINE !). Les BRAS : HEHÉBIU (les PORTERONT (les BANAYIK (les FILS (les BEHETSEN (les SEIN (les BRAS (les UBNOTAYIK (les FILLES (les AL (les KATEPH (les ÉPAULE (les YESSEO (les PORTÉES (les ENFANTS (les RAMENÉS (les NOURRISSONS (les ROYAUX (les PUÉRICULTURE — les NATIONS !). Les TUTEURS : OMENAYIK (les NOURRICIERS (les MELAKIM (les ROIS (les SAROTAM (les PRINCESSES (les MEYNIQOTAYIK (les NOURRICES (les APPAYIM (les FACE (les ERETS (les TERRE (les YISHTAHAVU (les PROSTERNERONT (les LAKH (les APHAR (les POUSSIÈRE (les RAGLAYIK (les PIEDS (les YELAHÉKHU (les LÉCHERONT (les PROTOCOLE (les PERSE (les PROSKYNÈSE (les HUMILIATION (les ROYALE (les DIPLOMATIE — les INVERSÉE !).</p>
+<h4>5 · Interprétation</h4>
+<p>Application PERSE : CYRUS (les 538 (les ÉDIT (les USTENSILES (les 5 400 (les RENDUS (les ARGENT (les OR (les VOISINS (les FINANCENT (les NOURRICIER (les PREMIER (les PATERNITÉ — les IMPÉRIALE !) + DARIUS (les 520-515 (les RECHERCHE (les ARCHIVES (les ECBATANE (les ROULEAU (les TROUVÉ (les TATTENAÏ (les GOUVERNEUR (les ORDRE (les LAISSEZ (les FRAIS (les TRÉSOR (les TRIBUTS (les EUPHRATE (les SACRIFICES (les QUOTIDIENS (les FOURNIS (les SANS NÉGLIGENCE (les PEINE (les MORT (les SABOTEURS (les Esd 6:11 (les TUTELLE (les LÉGALE (les BUDGET — les ROYAL !) + ARTAXERXÈS (les 458 (les ESDRAS (les LETTRE (les 100 TALENTS (les ARGENT (les 3 TONNES (les BLÉ (les VIN (les HUILE (les SEL (les ILLIMITÉ (les EXEMPTIONS (les IMPÔTS (les PRÊTRES (les LÉVITES (les Esd 7:24 (les MAGISTRATS (les NOMMÉS (les LOI (les ENSEIGNÉE (les ALLAITEMENT (les COMPLET (les ÉCONOMIE — les PERSANE !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">49:14-15</td><td>SEIN (OUBLI !)</td></tr>
+<tr><td class="d">49:16</td><td>PAUMES (GRAVÉE !)</td></tr>
+<tr><td class="d">49:21</td><td>ÉLEVÉ (SEULE !)</td></tr>
+<tr><td class="d">49:22</td><td>SIGNAL (BRAS !)</td></tr>
+<tr><td class="d">49:23</td><td>ROIS (POUSSIÈRE !)</td></tr>
+<tr><td class="d">Esd 6:7-9</td><td>DARIUS (FRAIS !)</td></tr>
+<tr><td class="d">Esd 7:22</td><td>100 (TALENTS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>TATTENAÏ : PAHAH (les EUPHRATE (les GOUVERNEUR (les ENQUÊTE (les 520 (les QUI (les AUTORISA (les DARIUS (les RÉPOND (les LAISSEZ (les TABLETTE (les CUNÉIFORME (les NOM (les ATTESTÉ (les ARCHIVES (les PERSES (les ÉPIGRAPHIE — les FONCTIONNAIRE !). Le TALENT : KIKKAR (les 34 KG (les ARGENT (les 100 TALENTS (les 3,4 TONNES (les FORTUNE (les COLOSSALE (les TEMPLE (les TRÉSOR (les MÉTROLOGIE — les GÉNÉROSITÉ !). NÉHÉMIE : 445 (les ÉCHANSON (les LETTRES (les GOUVERNEURS (les EUPHRATE (les BOIS (les FORÊT (les ROYALE (les PORTES (les MURAILLE (les ESCORTE (les CAVALERIE (les NOURRICIER (les CONTINUE (les HISTOIRE — les ÉCHANSON !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>SUZE-PERSEPOLIS (les CAPITALES (les HIVER (les PRINTEMPS (les DÉCRETS (les EXPÉDIÉS (les JUDA (les 2 000 KM (les COURREURS (les ROUTE (les ROYALE (les HÉRODOTE (les 111 ÉTAPES (les POSTE (les IMPÉRIALE (les GÉOGRAPHIE — les EMPIRE !). Le SIGNAL : MONTAGNE (les DÉNUDÉE (les Is 13:2 (les FEU (les NUIT (les FUMÉE (les JOUR (les VISIBLE (les 50 KM (les TÉLÉGRAPHIE — les OPTIQUE !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le TATOUAGE : QAQA (les Lév 19:28 (les INTERDIT (les ISRAËL (les DIEU (les EXCEPTION (les POÉTIQUE (les ENCRE (les DERME (les INEFFAÇABLE (les MÉMOIRE (les PERMANENTE (les DERMATOLOGIE — les IMAGE !). Le LAIT : NOURRICES (les PRINCESSES (les ALLAITEMENT (les MERCENAIRE (les ROYAL (les ENFANTS (les SION (les CROISSANCE (les ASSURÉE (les NUTRITION — les IMAGES !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>OUBLI plaint (Sion) → SEIN juré (femme) → PAUMES gravées (murailles) → MAIN levée (signal) → BRAS chargés (fils) → ROIS penchés (poussière) → HONTE épargnée (espèrent).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS les ROIS CONVERTIS (nourriciers païens ; tutelle, pas foi). Ne DIT PAS Sion SANS EXIL (oubli ressenti ; jamais abandonnée). Ne DATE PAS au JOUR (538, 520, 458, 445 : allaitement par étapes). Ne RÉDUIT PAS aux PERSES (Cyrus, Darius, Artaxerxès : trois nourriciers).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SEIN (JURÉ !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CYRUS (REND !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DARIUS (ORDRE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ESDRAS (LETTRE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">458</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BOIS (FORÊT !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1001060026">Isaïe — Traduction interlinéaire (49:22-23, rois, nourrices, poussière)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1001060026</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/49">Isaïe 49 — Bible d'étude (sein, signal, rois, 49:14-23)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/49</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/6">Esdras 6 — Traduction du monde nouveau (Darius, frais, sacrifices)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/6</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche IS167 — « Des rois seront tes nourriciers » : Sion allaitée par les princesses</span><span>Catégorie IS</span></div></div>
+</article>
+<article class="fiche" id="IS168">
+<div class="visuel"><img src="images/prophe_IS168_dos.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE IS168 · CATÉGORIE IS</div>
+<h3>« J'ai livré mon dos aux frappeurs » : le serviteur au visage de silex</h3>
+<div class="ref">Isaïe 50:4-9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Dos livré (langue → matin → oreille → non-rebelle → dos → joues → visage → silex)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche IS168</div><audio controls preload="none" src="audio/fiche_IS168_dos.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_IS168_dos.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Isaïe 50:4-9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Dos livré (langue → matin → oreille → non-rebelle → dos → joues → visage → silex)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Isaïe — P168 (50:4-9 : dos aux frappeurs, visage non caché) ; accomplissement Mt 26:67 ; 27:26,30</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DONNÉ… LANGUE… ENSEIGNÉS… SACHE… MOTS… RÉPONDRE… ÉPUISÉ… RÉVEILLE… MATIN… MATIN… OREILLE… ÉCOUTE… ENSEIGNÉS. » (50:4 — enseignés !)</li>
+<li>« OUVERT… OREILLE… REBELLÉ… NON… TOURNÉ… OPPOSÉE… NON. » (50:5 — non !)</li>
+<li>« OFFERT… DOS… FRAPPAIENT… JOUES… ARRACHAIENT… BARBE… CACHÉ… NON… VISAGE… HUMILIATIONS… CRACHATS. » (50:6 — crachats !)</li>
+<li>« SECOURRA… SENTIRAI… NON… HUMILIÉ… RENDU… VISAGE… DUR… SILEX… SAIS… HONTE… NON. » (50:7 — non !)</li>
+<li>« LOIN… NON… DÉCLARE… JUSTE… ACCUSER… DEBOUT… ENSEMBLE… LITIGE… AVANCE. » (50:8 — avance !)</li>
+<li>« SECOURRA… CONDAMNERA… TOMBERONT… LAMBEAUX… VÊTEMENT… TEIGNE… DÉVORERA. » (50:9 — dévorera !)</li>
+<li>« CRACHÈRENT… VISAGE… FRAPPÈRENT… POING… GIFLES… PROPHÉTISE… CHRIST… FRAPPÉ. » (Mt 26:67-68 — frappé !)</li>
+<li>« FLAGELLÉ… LIVRA… ATTACHER… ROSEAU… FRAPPÈRENT… TÊTE… CRACHÈRENT… AGENOUILLÈRENT… HOMMAGE. » (Mt 27:26,30 — hommage !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~732 — le TROISIÈME (les CHANT (les SERVITEUR (les CONFESSION (les PREMIÈRE (les PERSONNE (les JE (les SOUFFRANT (les FIDÈLE (les VINDIQUÉ (les PROGRESSION (les 49:4 (les VAIN (les 50:6 (les FRAPPÉ (les 53 (les AGNEAU (les LITTÉRATURE — les AUTOBIOGRAPHIE !). La LANGUE (les LASHON (les LIMMUDIM (les ENSEIGNÉS (les DISCIPLES (les YADA (les SACHE (les LAUT (les SOUTENIR (les ET (les YAEF (les ÉPUISÉ (les DAVAR (les PAROLE (les MATIN (les BABOQER (les YAIR (les RÉVEILLE (les OZEN (les OREILLE (les LISHMOA (les ÉCOUTER (les PÉDAGOGIE (les DIVINE (les ÉCOLE — les MATINALE !). L'OREILLE (les PATAH (les OUVERT (les LO MARITI (les REBELLÉ (les AHOR (les ARRIÈRE (les LO NESUGOTI (les RETIRÉ (les OBÉISSANCE (les PARFAITE (les DISCIPLE (les MODÈLE (les AUDITION — les SOUMISSION !).</p>
+<h4>4 · Explication du texte</h4>
+<p>Le DOS : GÉVI (les NATATI (les OFFERT (les LEMAKKIM (les FRAPPENT (les FLAGELLATION (les FOULE (les COUPS (les VOLONTAIRE (les LIVRAISON (les PASSIVE (les RÉSISTANCE (les NULLE (les SOUMISSION (les DERMATOLOGIE — les MEURTRI !). Les JOUES : LEHAYAY (les LEMORTIM (les ARRACHENT (les ZAQAN (les BARBE (les IGNOMINIE (les SUPRÊME (les ORIENT (les 2S 10:4 (les HANUN (les AMMON (les GUERRE (les PROVOQUÉE (les HONNEUR (les MASCULIN (les VISAGE — les DÉSHONORÉ !). Les CRACHATS : KELIMMOT (les HUMILIATIONS (les ROQ (les LO HISTARTI (les CACHÉ (les PANAY (les VISAGE (les MÉPRIS (les PHYSIQUE (les SOUILLURE (les RITUELLE (les DÉGOÛT (les ABSOLU (les SALIVE — les OUTRAGE !). Le SILEX : HALLAMISH (les TSUR (les ROCHER (les SAMTI (les RENDU (les PANAY (les FACE (les IMPASSIBLE (les SANS CRAINTE (les SANS COLÈRE (les Éz 3:8-9 (les FRONT (les DIAMANT (les Lc 9:51 (les AFFERMIT (les JÉRUSALEM (les MINÉRALOGIE — les DÉTERMINATION !). Le PROCÈS : MATSDIQI (les JUSTIFIE (les QAROB (les PROCHE (les MI YARIB (les ACCUSE (les NAAMDAH (les DEBOUT (les YAHAD (les ENSEMBLE (les BAAL (les MISHPATI (les LITIGE (les YIGGASH (les AVANCE (les DÉFI (les JUDICIAIRE (les TRIBUNAL — les DIVIN !).</p>
+<h4>5 · Interprétation</h4>
+<p>Application PASSION : SANHÉDRIN (les Mt 26:59-68 (les NUIT (les 14 NISAN (les 33 (les CAÏPHE (les FAUX (les TÉMOINS (les BLASPHÈME (les DÉCHIRE (les VÊTEMENTS (les EPTUSAN (les CRACHÈRENT (les PROSOPON (les VISAGE (les EKOLAPHISAN (les POINGS (les ERHAPISAN (les GIFLES (les PROPHÉTEUSON (les MOQUERIE (les PROCÈS — les JUIF !) + PRÉTOIRE (les Mt 27:26-31 (les MATIN (les PILATE (les PHRAGELLÓSAS (les FLAGELLÉ (les PAREDOKEN (les LIVRA (les STAUROTHINAI (les ATTACHER (les SPATHON (les ROSEAU (les ETUPTON (les FRAPPAIENT (les KEPHALIN (les TÊTE (les ENEPTUON (les CRACHÈRENT (les GONUPETÉSANTES (les AGENOUILLÉS (les PROSEKUNOUN (les HOMMAGE (les IRONIQUE (les PROCÈS — les ROMAIN !) + BARBE (les ARRACHÉE (les ÉVANGILES (les Taisent (les DÉTAIL (les ACCOMPLI (les QUAND (les NUIT (les GARDES (les Lc 22:63-65 (les VOILÉ (les FRAPPAIENT (les BLASPHÈMES (les NOMBREUX (les HISTOIRE — les SOBRE !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">50:4</td><td>LANGUE (MATIN !)</td></tr>
+<tr><td class="d">50:5</td><td>OREILLE (OUVERTE !)</td></tr>
+<tr><td class="d">50:6</td><td>DOS (CRACHATS !)</td></tr>
+<tr><td class="d">50:7</td><td>SILEX (HONTE !)</td></tr>
+<tr><td class="d">50:8-9</td><td>JUSTE (TEIGNE !)</td></tr>
+<tr><td class="d">Mt 26:67-68</td><td>SANHÉDRIN (NUIT !)</td></tr>
+<tr><td class="d">Mt 27:26,30</td><td>PRÉTOIRE (ROSEAU !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>HANUN : 2S 10:4 (les AMMON (les BARBE (les COUPÉE (les MOITIÉ (les VÊTEMENTS (les FESSES (les AMBASSADEURS (les DAVID (les GUERRE (les VENGEANCE (les PRÉCÉDENT (les IGNOMINIE (les DIPLOMATIE — les CASUS BELLI !). Le FLAGELLUM (les LANIÈRES (les CUIR (les OSSELETS (les PLOMB (les 39 COUPS (les DOS (les LABOURÉ (les HÉMORRAGIE (les CHOC (les MORTEL (les SOUVENT (les ARCHÉOLOGIE (les INSTRUMENTS (les TROUVÉS (les TRAUMATOLOGIE — les ROMAINE !). La TEIGNE : ASH (les VÊTEMENT (les BAGAD (les YIBLU (les LAMBEAUX (les YOKLEM (les DÉVORERA (les ADVERSAIRES (les USÉS (les TEMPS (les JUSTICE (les DIVINE (les ENTOMOLOGIE — les JUGEMENT !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le SANHÉDRIN : PALAIS (les CAÏPHE (les MONT SION (les NUIT (les COUR (les PIERRE (les RENIEMENT (les COQ (les PROCÈS (les NOCTURNE (les ILLÉGAL (les TOPOGRAPHIE — les NUIT !). Le PRÉTOIRE : ANTONIA (les GABBATHA (les DALLAGE (les LITHOSTROTOS (les FOUILLÉ (les SŒURS (les SION (les COHORTE (les 600 (les HOMMES (les MOQUERIE (les COLLECTIVE (les ARCHÉOLOGIE — les LIEU !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le SILEX : SILICE (les QUARTZ (les DURETÉ (les 7 (les MOHS (les ÉCLATS (les TRANCHANTS (les OUTILS (les PRÉHISTOIRE (les VISAGE (les IMPASSIBLE (les MINÉRALOGIE (les CONFIRME — les DURETÉ !). La BARBE : PILOSITÉ (les TESTOSTÉRONE (les ARRACHEMENT (les DOULEUR (les FOLLICULES (les SAIGNENT (les HONNEUR (les MASCULIN (les ORIENT (les DERMATOLOGIE — les SOUFFRANCE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LANGUE donnée (matin) → OREILLE ouverte (écoute) → REBELLION refusée (arrière) → DOS offert (frappeurs) → JOUES tendues (barbe) → VISAGE montré (crachats) → SILEX rendu (honte) → JUSTE proche (procès).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS le SERVITEUR = ÉSAÏE SEUL (le prophète parle ; Jésus accomplit). Ne DÉCRIT PAS l'ARRACHEMENT dans les ÉVANGILES (sobre ; accompli dans la nuit). Ne DIT PAS Jésus PASSIF PAR FAIBLESSE (livraison volontaire ; légions disponibles). Ne DATE PAS la VINDICTE au JOUR (proche : résurrection le troisième jour).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CHANT (TROISIÈME !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BARBE (GUERRE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Hanun</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NUIT (CRACHATS !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FLAGELLÉ (COHORTE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Matin</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JUSTE (LEVÉ !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/50">Isaïe 50 — Traduction du monde nouveau (langue, dos, silex, 50:4-9)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/50</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/50">Isaïe 50 — Bible d'étude (serviteur, frappeurs, justifié)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/50</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/26">Matthieu 26 — Traduction du monde nouveau (sanhédrin, crachats, poings)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/26</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche IS168 — « J'ai livré mon dos aux frappeurs » : le serviteur au visage de silex</span><span>Catégorie IS</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie IS</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>IS163 — « J'annonce dès le commencement la fin » : l'oiseau de proie du levant</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FIN (ANNONCÉE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FONCE (AIGLE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ÉDIT (ESPRIT !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CAPITALE (JARDINS !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Pasargades</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NÉANT (TÉMOIN !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dn 4</text>
+</svg>
+<h4>IS164 — « En un seul jour » : Babylone veuve, ses astrologues en chaume</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">VEUVE (PROMISE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">1 000 (VIN !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Festin</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ENTRE (GOBRYAS !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">16</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PRISE (NUIT !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">GRANDE (FEU !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ré 18</text>
+</svg>
+<h4>IS165 — « Jéhovah l'a aimé » : l'élu exécutera son dessein contre Babylone</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">AIMÉ (DÉSIGNÉ !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">VOIE (OUVERTE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">559</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRAS (FRAPPE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SORTEZ (CRI !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ÉCHO (GRANDE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919</text>
+</svg>
+<h4>IS166 — « Lumière des nations » : le serviteur formé dès le ventre</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CHANT (DEUXIÈME !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FIXÉ (TEXTE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Qumrân</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SIMÉON (BRAS !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CORNEILLE (NAPPE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">36</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PISIDIE (TOURNE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">47</text>
+</svg>
+<h4>IS167 — « Des rois seront tes nourriciers » : Sion allaitée par les princesses</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SEIN (JURÉ !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CYRUS (REND !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DARIUS (ORDRE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ESDRAS (LETTRE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">458</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BOIS (FORÊT !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">445</text>
+</svg>
+<h4>IS168 — « J'ai livré mon dos aux frappeurs » : le serviteur au visage de silex</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">CHANT (TROISIÈME !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BARBE (GUERRE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Hanun</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NUIT (CRACHATS !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 Nisan</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FLAGELLÉ (COHORTE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Matin</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JUSTE (LEVÉ !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-28 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

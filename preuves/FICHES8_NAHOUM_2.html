@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES NA2 — Nahum 3 — La ville de sang, No-Amôn et la blessure incurable</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_NA467_ville_sang.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES NA2</h1>
+<h2>Nahum 3 — La ville de sang, No-Amôn et la blessure incurable</h2>
+<p class="intro">Le dernier chapitre de Nahum prononce la sentence complète sur Ninive. Il s'ouvre par l'un des malheurs les plus durs du livre — « malheur à la ville de sang ! » — et par la description d'un champ de bataille : le bruit du fouet, le fracas des roues, le galop des chevaux, l'épée qui brille, la lance qui étincelle, et des cadavres en tel nombre qu'on trébuche sur les morts. La cause est ensuite nommée : « la prostituée pleine de grâce, maîtresse magicienne, qui vendait des nations par ses prostitutions et des peuples par sa magie ». Puis vient la réponse divine — « me voici contre toi » — et l'humiliation publique : les pans de la robe relevés sur le visage, la nudité montrée aux nations, le spectacle donné en exemple, les spectateurs qui fuient sans que personne console. Au cœur du chapitre, une comparaison historique : « es-tu meilleure que No-Amôn ? » — Thèbes, l'orgueilleuse cité du Nil, entourée d'eaux, forte du Koush et de l'Égypte, alliée de Put et des Libyens, prise et déportée. Si elle est tombée, Ninive ne tiendra pas non plus. La fin du chapitre revient au siège : qu'on puise de l'eau et qu'on refasse des briques, le feu dévorera tout ; marchands et officiers s'envolent comme des sauterelles ; les bergers sommeillent ; et la conclusion est sans appel : « il n'y a pas de remède à ta blessure », et tous ceux qui entendront parler de la ville applaudiront.</p>
+<div class="chiffres">
+<div><b>3</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>15</b><span>sources</span></div>
+<div><b>3</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#NA467">NA467</a>
+<a href="#NA468">NA468</a>
+<a href="#NA469">NA469</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#NA467"><img src="images/prophe_NA467_ville_sang.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE NA467</div>
+<h3><a href="#NA467">« Malheur à la ville de sang ! » : le fouet, les cadavres entassés et la prostituée maîtresse de sorcelleries dépouillée devant les nations</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#NA468"><img src="images/prophe_NA468_thebes.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE NA468</div>
+<h3><a href="#NA468">« Es-tu meilleure que No-Amôn ? » : Thèbes assise au bord du Nil, Koush et l'Égypte, Put et les Libyens, puis les figuiers précoces</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#NA469"><img src="images/prophe_NA469_briques.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE NA469</div>
+<h3><a href="#NA469">« Il n'y a pas de remède à ta blessure » : puise de l'eau pour le siège, les sauterelles qui s'envolent, les bergers qui sommeillent et la ville jamais relevée</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="NA467">
+<div class="visuel"><img src="images/prophe_NA467_ville_sang.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE NA467 · CATÉGORIE NA2</div>
+<h3>« Malheur à la ville de sang ! » : le fouet, les cadavres entassés et la prostituée maîtresse de sorcelleries dépouillée devant les nations</h3>
+<div class="ref">Nahum 3:1-7</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">malheur à la ville de sang elle est toute pleine de mensonge et de violence et elle ne cesse de se livrer au pillage on entend le bruit du fouet le bruit retentissant des roues les chevaux qui galopent et les chars qui bondissent les cavaliers s'élancent l'épée brille et la lance étincelle c'est une multitude de blessés une foule de cadavres des corps morts à l'infini on trébuche sur les morts c'est à cause des nombreuses prostitutions de la prostituée pleine d'attraits maîtresse magicienne qui vendait les nations par ses prostitutions et les peuples par sa magie me voici contre toi déclare jéhovah des armées je relèverai tes pans de robe sur ta face je montrerai ta nudité aux nations et ta honte aux royaumes je jetterai sur toi des immondices je te rendrai méprisable et je te donnerai en spectacle tous ceux qui te verront fuiront loin de toi et diront ninive a été dévastée qui la plaindra où te chercherai-je des consolateurs (nahum 3:5-7 ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche NA467</div><audio controls preload="none" src="audio/fiche_NA467_ville_sang.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_NA467_ville_sang.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Nahum 3:1-7</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>malheur à la ville de sang elle est toute pleine de mensonge et de violence et elle ne cesse de se livrer au pillage on entend le bruit du fouet le bruit retentissant des roues les chevaux qui galopent et les chars qui bondissent les cavaliers s'élancent l'épée brille et la lance étincelle c'est une multitude de blessés une foule de cadavres des corps morts à l'infini on trébuche sur les morts c'est à cause des nombreuses prostitutions de la prostituée pleine d'attraits maîtresse magicienne qui vendait les nations par ses prostitutions et les peuples par sa magie me voici contre toi déclare jéhovah des armées je relèverai tes pans de robe sur ta face je montrerai ta nudité aux nations et ta honte aux royaumes je jetterai sur toi des immondices je te rendrai méprisable et je te donnerai en spectacle tous ceux qui te verront fuiront loin de toi et diront ninive a été dévastée qui la plaindra où te chercherai-je des consolateurs (nahum 3:5-7 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Nahum — P467 (3:1-7 : malheur à la ville de sang ; je relèverai tes jupes sur ta face ; tous te verront) ; Nahum 3:5-7 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MALHEUR À LA VILLE DE SANG…! ELLE EST TOUTE PLEINE DE MENSONGE ET DE VIOLENCE… ET ELLE NE CESSE DE SE LIVRER AU PILLAGE… ON ENTEND LE BRUIT DU FOUET… LE BRUIT RETENTISSANT DES ROUES… LES CHEVAUX QUI GALOPENT… ET LES CHARS QUI BONDISSENT… »… « LES CAVALIERS S'ÉLANCENT… L'ÉPÉE BRILLE… ET LA LANCE ÉTINCELLE… C'EST UNE MULTITUDE DE BLESSÉS… UNE FOULE DE CADAVRES… DES CORPS MORTS À L'INFINI… ON TRÉBUCHE SUR LES MORTS… »… « C'EST À CAUSE DES NOMBREUSES PROSTITUTIONS DE LA PROSTITUÉE… PLEINE D'ATRAITS… MAÎTRESSE MAGICIENNE… QUI VENDAIT LES NATIONS PAR SES PROSTITUTIONS… ET LES PEUPLES PAR SA MAGIE… »… « ME VOICI CONTRE TOI… DÉCLARE JÉHOVAH DES ARMÉES… JE RELÈVERAI TES PANS DE ROBE SUR TA FACE… JE MONTRERAI TA NUDITÉ AUX NATIONS… ET TA HONTE AUX ROYAUMES… »… « JE JETTERAI SUR TOI DES IMMONDICES… JE TE RENDRAI MÉPRISABLE… ET JE TE DONNERAI EN SPECTACLE… »… « TOUS CEUX QUI TE VERRONT FUIRONT LOIN DE TOI… ET DIRONT… NINIVE A ÉTÉ DÉVASTÉE… QUI LA PLAINDRA…? OÙ TE CHERCHERAI-JE DES CONSOLATEURS…? »… — HOY… MALHEUR… ʿIR DAMIM… LA VILLE DE SANG… KAZAV… LE MENSONGE… PEREQ… LA VIOLENCE… TEREF… LA RAPINE, LE PILLAGE… SHOT… LE FOUET… RAʿASH… LE FRACAS… OFAN… LA ROUE… DOTS… LE GALOP… MERKAVAH… LE CHAR… PARASH… LE CAVALIER… LAHAV… LA FLAMME… ḤEREV… L'ÉPÉE… ḤANIT… LA LANCE… ḤALAL… LES BLESSÉS… PEGER… LE CADAVRE… ZONAH… LA PROSTITUÉE… ḤEN… LA GRÂCE… BAʿALAT KESHAFIM… MAÎTRESSE DE SORCELLERIES… MAKHERET… QUI VEND… GOYIM… LES NATIONS… NEDER… LE SPECTACLE… QIṬṬUR… LES IMMONDICES… — 722… 663… 632… 612… ISAÏE 23:17… ÉZÉCHIEL 16:36-41… ÉZÉCHIEL 23… RÉVÉLATION 17:1-6… 18:7, 8… 19/68 PRIS… »</li>
+<li>LES TROIS JUMEAUX — Ézéchiel 16:36-41 : « à cause de tes prostitutions… je vais te découvrir, oui te découvrir, et exposer ta nudité… je te donnerai en spectacle à des femmes » — le même geste de sentence, appliqué par Ézéchiel à Jérusalem infidèle : la ville dépouillée devant les nations n'est pas ici un peuple étranger seulement, elle est d'abord un avertissement pour la ville qui a reçu la connaissance (Ézéchiel 23 développe l'image avec Ohola et Oholiba). Révélation 17:1-6 et 18:7, 8 : Babylone la grande est décrite comme « la mère des prostituées » en habits écarlates et pourpres, et sa chute est annoncée par la formule « je suis assise en reine… et je ne verrai jamais le deuil » ; le vocabulaire de l'ornement, de l'enivrement des nations et du jugement soudain reprend celui de Nahum 3. Psaume 5:6, 7 : « tu feras périr ceux qui profèrent des mensonges ; l'homme de sang et de tromperie, Jéhovah le déteste » — la déclaration la plus directe du principe mis en œuvre contre Ninive, et l'association du sang et du mensonge que le chapitre attache au nom même de la ville.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 3 reprend l'accusation du premier chapitre et la porte au dernier degré. Ninive est appelée « ville de sang » — l'expression désigne une cité dont la prospérité repose sur le sang versé, ce que confirment les annales assyriennes, où les rois énumèrent sans détour les supplices, les déportations et les tueries de leurs campagnes. Le verset 2 en donne la traduction sonore : bruit du fouet, fracas des roues, galop des chevaux, bond des chars. Le verset 3 en montre le résultat : blessés, cadavres entassés, au point que les combattants trébuchent sur les morts — tableau d'un champ de bataille comme l'Assyrie en avait laissé tant derrière elle, et qu'elle est désormais destinée à connaître chez elle. Le verset 4 nomme la cause plus profonde : la ville est une prostituée, « pleine d'attraits, maîtresse magicienne », qui « vendait les nations par ses prostitutions et les peuples par sa magie ». Les alliés et les vassaux attirés par la richesse et la puissance de la capitale se retrouvaient réduits en servitude. La conséquence est une humiliation publique : Jéhovah relèvera les pans de la robe de la ville sur son visage, montrera sa nudité aux nations, jettera sur elle des immondices et la donnera en spectacle. Le chapitre se termine par la désolation de la ville dévastée que personne ne plaint, et par la question sans réponse : où trouver des consolateurs ?</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE NOM DES CHOSES : les deux premiers versets du chapitre opposent le crime et son écho. Ninive est « ville de sang », en hébreu ʿir damim — le mot damim, au pluriel, évoque les sangs versés, comme dans les textes bibliques sur le meurtre qui souille la terre (Genèse 4:10 ; Nombres 35:33). Le prophète énumère les trois formes de la violence de l'empire : le mensonge politique, la violence armée et le pillage continu. (2) LE TABLEAU SONORE ET VISUEL : bruit du fouet, roues, chevaux, chars, éclat des lames. La précision de ces détails correspond à ce que montrent les reliefs de Ninive, où sont représentés attelages, machines de siège, lances et captifs ; le prophète décrit avec le vocabulaire d'un témoin ce que les artisans assyriens ont gravé sur les murs de leurs palais. (3) LA PROSTITUÉE MAGICIENNE : l'image de la prostitution pour une ville n'est pas d'abord sexuelle ; dans le langage prophétique, elle désigne le pacte d'infidélité qui se donne à d'autres puissances et l'attrait trompeur d'un allié ou d'un culte. Attachée à Ninive, elle dénonce une diplomatie de séduction et une religion de sortilèges que la ville imposait aux peuples. Plusieurs commentaires rapprochent ce passage de la description de Babylone la grande en Révélation 17 et 18. (4) L'HUMILIATION PUBLIQUE : relever les pans de la robe d'une femme devant les nations est, dans le monde ancien, l'humiliation la plus brutale — celle des prisonnières et des villes vaincues. Le prophète emploie cette image pour dire que la cité qui dominait les peuples sera exposée sans défense, et que « tous ceux qui la verront fuiront loin d'elle ».</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 34 — Nahoum » situe cette section dans la « vision de la destruction de Ninive » et rappelle que « l'orgueil implacable de l'Assyrie et ses dieux païens ne pouvaient la sauver de l'exécution du jugement de Jéhovah » ; il souligne que la prophétie illustre des principes bibliques fondamentaux, la première parole de la vision rappelant la raison du deuxième des Dix Commandements, et le portail « Assyrie » de la Bibliothèque en ligne observe que c'est « à juste titre que le prophète Nahoum qualifia Ninive, la capitale de l'Assyrie, de “repaire des lions” et de “ville meurtrière” ». Lecture commune et exégèse : la Bible Annotée et les commentaires modernes s'arrêtent sur le mot « prostituée » et sur le motif de la nudité exposée, qu'ils comparent à Ézéchiel 16 et 23 et à Révélation 17-18 ; ils relèvent que le vocabulaire de la « ville de sang » sert dans la Bible à qualifier la souillure par le meurtre et que ce chapitre vise la logique même de l'empire assyrien — le pillage organisé et la tromperie des peuples vassaux. Les exégètes notent également que l'accumulation du verset 3 fournit l'une des descriptions de champ de bataille les plus denses de la littérature hébraïque.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 740-632 av. n. è.</td><td>L'oracle est consigné : ville de sang, prostituée magicienne, humiliation publique annoncée (Nahum 3:1-7)</td></tr>
+<tr><td class="d">VIIIe-VIIe siècle av. n. è.</td><td>Les campagnes assyriennes multiplient les massacres et les déportations, dans le pays du Nord comme en Juda, en Élam et en Égypte (2 Rois 17:5, 6 ; 18:13-16)</td></tr>
+<tr><td class="d">632 av. n. è.</td><td>Prise de Ninive : la ville est pillée dans son propre pays, ses habitants massacrés ou emmenés (date des historiens : 612 av. n. è.)</td></tr>
+<tr><td class="d">Pendant la prise</td><td>Les palais de la ville sont pillés, les trésors dispersés et les captifs emmenés — exactement le sort infligé à d'autres, appliqué à Ninive</td></tr>
+<tr><td class="d">Après 632 av. n. è.</td><td>La ville dévastée demeure sans consolateurs : aucune puissance ne se lève pour la relever, ce qui correspond à la question du verset 7</td></tr>
+<tr><td class="d">Ensuite</td><td>Le principe demeure dans les Écritures : les empires de proie sont jugés, motif repris pour Babylone en Révélation 17-18</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA VIOLENCE REVENDIQUÉE : les annales d'Assournasirpal II, de Salmanasar III, de Tiglath-Piléser III et d'Assurbanipal décrivent avec précision des massacres, des mutilations et des déportations ; le portail « Assyrie » relève que ces pratiques étaient proclamées dans les inscriptions royales, ce qui donne son sens concret à l'accusation de « ville de sang ». (2) LES RELIEFS : les scènes de siège, de décapitation, de capture et d'hommage ornent les palais de Ninive et de Kalhou ; conservés pour une large part au British Museum, ils documentent visuellement le bruit du fouet, des roues et des chars du verset 2. (3) LES VASSALITÉS PAR LA SÉDUCTION : les traités et les engagements imposés par l'Assyrie à ses vassaux — hommages, tributs, cultes royaux d'Assur — illustrent la formule « qui vendait les nations par ses prostitutions ». (4) LES SORTIES DE TROUPES : les rois assyriens revendiquent le nombre des prisonniers et le butin ; la pratique du décompte officiel confirme le caractère systématique du pillage dénoncé au verset 1. (5) LES RELIGIONS DE LA VILLE : les temples de Ninive, notamment celui de Nabou et le sanctuaire d'Ishtar, et la documentation sur les devins et les exorcistes de la cour, éclairent la qualification de « maîtresse de sorcelleries ». (6) LA FIN DE LA VILLE : la chronique babylonienne décrit un « grand massacre des chefs » et la ville « réduite en un amas de décombres », ce qui correspond à l'inversion promise : celle qui frappait les autres subit elle-même le traitement. (7) PRUDENCE : les sources assyriennes et babyloniennes établissent la réalité des massacres, des déportations et du pillage ; l'évaluation morale de ces faits relève du texte prophétique.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE THÉÂTRE DE LA GUERRE : les campagnes assyriennes concernaient toutes les directions à partir de Ninive — le nord de la Mésopotamie, la côte méditerranéenne, la Babylonie, l'Élam, l'Égypte ; le verset 3 renvoie à ces expéditions lointaines dont la puissance reposait sur des routes militaires entretenues. (2) LA CAPITALE ASSIÉGÉE : la ville, adossée au Tigre et traversée par le Khosr, formait un objectif vaste et difficile à encercler, ce qui explique la longueur du siège et la violence de l'irruption finale décrite par le prophète. (3) LES NATIONS VENDUES : l'expression « vendait les nations » correspond à la géographie politique de l'empire — un centre qui absorbait la richesse des provinces et des royaumes tributaires depuis l'Anatolie jusqu'au golfe Persique. (4) LES ROUTES DU BUTIN : les objets exhumés hors d'Assyrie portant des motifs impériaux, ou déplacés après la chute, reflètent la circulation des biens et des personnes qu'impliquait ce système. (5) LE SPECTACLE DE LA VILLE DÉVASTÉE : la ville détruite située au bord d'un grand fleuve devenait visible pour tous les voyageurs de la vallée ; « tous ceux qui te verront fuiront loin de toi » situe la scène sur un axe de circulation intensément fréquenté. (6) LA DISPARITION : l'absence de consolation exprime aussi un fait géographique — à la différence d'autres capitales, Ninive n'a pas été relevée à la même place après sa chute, ce que la formule « qui la plaindra ? » rend en langage prophétique.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES RELEVÉS D'ANNALES : les prismes et les cylindres cunéiformes offrent des comptes rendus chiffrés de campagnes ; leur étude, commencée au XIXe siècle, permet de confronter l'accusation prophétique à la documentation administrative. (2) L'ICONOGRAPHIE DES SIÈGES : les reliefs du palais sud-ouest de Sennachérib et du palais nord d'Assurbanipal présentent des armes, des tours de siège, des béliers et des files de captifs ; ces images comptent parmi les sources les plus fiables sur la poliorcétique assyrienne. (3) LES NIVEAUX DE DESTRUCTION : les couches d'incendie et d'effondrement relevées lors des fouilles de Kuyunjik attestent une destruction brutale de la ville au moment de sa prise, suivie d'un abandon. (4) LE BUTIN ARCHÉOLOGIQUE : la dispersion d'objets de luxe assyriens et l'usage de blocs de la ville comme matériau de construction après 612 av. n. è. illustrent le pillage dont parle le texte. (5) LA DÉMOGRAPHIE DE L'EMPIRE : les déportations massives organisées par les Assyriens ont modifié la composition des populations du Proche-Orient ; les listes de déportés et les traditions sur l'installation des gens de Samarie en Médie et en Mésopotamie permettent d'en suivre les effets. (6) LA DOCUMENTATION DES DÉVINS : les tablettes de la bibliothèque d'Assurbanipal comprennent de nombreux textes de divination et d'exorcisme, ce qui documente la place des pratiques magiques à la cour visée par le verset 4. (7) PRUDENCE : l'archéologie et l'épigraphie démontrent la réalité de la violence impériale et de la destruction de la ville ; elles ne formulent aucun jugement moral, qui appartient au message prophétique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>« MALHEUR À LA VILLE DE SANG ! » PLEINE DE MENSONGE, DE VIOLENCE ET DE PILLAGE (3:1) → LE BRUIT DE LA GUERRE : FOUET, ROUES, CHEVAUX, CHARS (3:2) → LE RÉSULTAT : CAVALIERS, ÉPÉE QUI BRILLE, LANCE QUI ÉTINCELLE, CADAVRES À L'INFINI, ON TRÉBUCHE SUR LES MORTS (3:3) → LA CAUSE : LA PROSTITUÉE MAÎTRESSE DE SORCELLERIES QUI VENDAIT LES NATIONS (3:4) → « ME VOICI CONTRE TOI » : LA NUDITÉ MONTRÉE AUX NATIONS, LA HONTE AUX ROYAUMES (3:5) → LES IMMONDICES ET LE SPECTACLE (3:6) → LA VILLE DÉVASTÉE SANS CONSOLATEURS (3:7) → HISTOIRE : LES ANNALES ASSYRIENNES PUIS LA CHUTE DE NINIVE (632 AV. N. È. SELON LES PUBLICATIONS ; 612 AV. N. È. SELON LES HISTORIENS) → LE MOTIF REPRIS POUR BABYLONE (RÉVÉLATION 17-18)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Nahum 3:5-7) et le statut « Accomplie ». LA FIGURE DE LA PROSTITUÉE : la fiche explique l'image comme celle d'une politique de séduction et d'un culte trompeur, sans en faire une description de mœurs ni l'appliquer à des personnes réelles. LES SORCELLERIES : la fiche présente la mention comme visant les pratiques de divination de la cour assyrienne, attestées par les textes, sans entrer dans l'inventaire de ces pratiques. LES IMMONDICES : la fiche mentionne l'image sans en détailler l'analyse rituelle. LES CADAVRES DU VERSET 3 : la fiche comprend la scène comme le dépeint du sort que Ninive infligeait aux autres, sans la rattacher à un épisode militaire précis. LE VERSET 7 : la fiche rapporte la question sur les consolateurs sans en tirer de comparaison avec d'autres villes que celles que les textes autorisent. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 8 à 19 (fiches suivantes) ni du développement du motif de la prostituée dans les prophètes ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Politique de terreur et de déportation des rois assyriens : Assournasirpal, Salmanasar III (annales royales)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IXe siècle av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie et déportation du royaume du Nord (2 Rois 17:5, 6)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">740-722 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne de Sennachérib en Juda ; traité d'hommage imposé à Ézéchias (2 Rois 18:13-16)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahum 3:1-7 est consigné : la ville de sang et son humiliation annoncée</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant 632 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Ninive : la violence impériale se retourne contre la capitale (date des historiens : 612 av. n. è.)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">632 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Aucun consolateur : la ville n'est pas relevée, le motif est repris pour Babylone en Révélation 17-18</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Après la chute</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/5">Bible — Psaume 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/4">Bible — Genèse 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/5">Bible — Deutéronome 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/4/35">Bible — Nombres 35 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/4/35</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990095">Livre de la Bible numéro 34 — Nahoum — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990095</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche NA467 — « Malheur à la ville de sang ! » : le fouet, les cadavres entassés et la prostituée maîtresse de sorcelleries dépouillée devant les nations</span><span>Catégorie NA2</span></div></div>
+</article>
+<article class="fiche" id="NA468">
+<div class="visuel"><img src="images/prophe_NA468_thebes.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE NA468 · CATÉGORIE NA2</div>
+<h3>« Es-tu meilleure que No-Amôn ? » : Thèbes assise au bord du Nil, Koush et l'Égypte, Put et les Libyens, puis les figuiers précoces</h3>
+<div class="ref">Nahum 3:8-13</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">es-tu meilleure que no-amôn qui était assise au bord du nil entourée par les eaux ayant la mer pour rempart la mer pour murailles koush et l'égypte étaient sa force innombrable put et les libyens étaient ses auxiliaires elle aussi est allée en exil elle est allée en captivité ses petits enfants ont été écrasés au coin de toutes les rues et on a jeté le sort sur ses nobles et tous ses grands hommes ont été liés de chaînes toi aussi tu seras ivre tu seras cachée tu chercheras un refuge contre l'ennemi toutes tes forteresses sont des figuiers avec des figues précoces quand on les secoue elles tombent dans la bouche de qui les mange voici que ton peuple au milieu de toi ce sont des femmes les portes de ton pays seront grandes ouvertes devant tes ennemis et le feu consumera tes verrous (nahum 3:8-13 ; sac de thèbes en 663 avant notre ère ; puis ninive ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche NA468</div><audio controls preload="none" src="audio/fiche_NA468_thebes.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_NA468_thebes.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Nahum 3:8-13</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>es-tu meilleure que no-amôn qui était assise au bord du nil entourée par les eaux ayant la mer pour rempart la mer pour murailles koush et l'égypte étaient sa force innombrable put et les libyens étaient ses auxiliaires elle aussi est allée en exil elle est allée en captivité ses petits enfants ont été écrasés au coin de toutes les rues et on a jeté le sort sur ses nobles et tous ses grands hommes ont été liés de chaînes toi aussi tu seras ivre tu seras cachée tu chercheras un refuge contre l'ennemi toutes tes forteresses sont des figuiers avec des figues précoces quand on les secoue elles tombent dans la bouche de qui les mange voici que ton peuple au milieu de toi ce sont des femmes les portes de ton pays seront grandes ouvertes devant tes ennemis et le feu consumera tes verrous (nahum 3:8-13 ; sac de thèbes en 663 avant notre ère ; puis ninive ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Nahum — P468 (3:8-13 : es-tu meilleure que No-Amôn (Thèbes) ? Tes fortifications sont comme des figuiers précoces) ; sac de Thèbes en 663 av. n. è. (date neutre) ; puis Ninive ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ES-TU MEILLEURE QUE NO-AMÔN… QUI ÉTAIT ASSISE AU BORD DU NIL… ENTOURÉE PAR LES EAUX… AYANT LA MER POUR REMPART… LA MER POUR MURAILLES…? »… « KOUSH ET L'ÉGYPTE ÉTAIENT SA FORCE INNOMBRABLE… PUT ET LES LIBYENS ÉTAIENT SES AUXILIAIRES… ELLE AUSSI EST ALLÉE EN EXIL… ELLE EST ALLÉE EN CAPTIVITÉ… SES PETITS ENFANTS ONT ÉTÉ ÉCRASÉS AU COIN DE TOUTES LES RUES… ET ON A JETÉ LE SORT SUR SES NOBLES… ET TOUS SES GRANDS HOMMES ONT ÉTÉ LIÉS DE CHAÎNES… »… « TOI AUSSI TU SERAS IVRE… TU SERAS CACHÉE… TU CHERCHERAS UN REFUGE CONTRE L'ENNEMI… »… « TOUTES TES FORTERESSES SONT DES FIGUIERS AVEC DES FIGUES PRÉCOCES… QUAND ON LES SECOUE… ELLES TOMBENT DANS LA BOUCHE DE QUI LES MANGE… »… « VOICI QUE TON PEUPLE AU MILIEU DE TOI… CE SONT DES FEMMES… LES PORTES DE TON PAYS SERONT GRANDES OUVERTES DEVANT TES ENNEMIS… ET LE FEU CONSUMERA TES VERROUS… »… — NO-AMON… LA VILLE DU DIEU AMON… THÈBES… YEʾORIM… LES BRAS DU NIL, LES CANAUX… ḤEL YAM… LE REMPART DE LA MER… ḤOMAH… LA MURAILLE… KUSH… LE KOUSH, LA NUBIE… MITSRAYIM… L'ÉGYPTE… PUT… LES PAYS DE PUT… LUVIM… LES LIBYENS… GOLAH… L'EXIL… SHEVI… LA CAPTIVITÉ… RUTTU… ÉCRASÉS, PAR CESSUS DE VIOLE… YADDU GORAL… ON JETTE LE SORT… ḤANNOT… LES CHAÎNES… SHIKKORAH… IVRE… NEḤBAʾAH… CACHÉE… MAʿOZ… LE REFUGE… TEʾENAH… LE FIGUIER… BIKKURAH… LA FIGUE PRÉCOCE… NOʿAH… ON LA SECOUE, ELLE TOMBE… BEṬEN… LE VENTRE, LE MILIEU… SHOʿARIM… LES PORTES… BERIAḤIM… LES VERROUS… — 663 AV. N. È.… ASSURBANIPAL… KARNAK… LOUXOR… THÈBES-OUEST… JÉRÉMIE 46:25… ÉZÉCHIEL 30:14-16… NOM DU CULTE D'AMON… DATE NEUTRE DU REGISTRE… »</li>
+<li>LES TROIS JUMEAUX — Deutéronome 1:28 : « les villes sont grandes et fortifiées jusqu'au ciel » — la formule que les explorateurs employaient pour les cités du pays de Canaan, et qui dit exactement ce que Ninive pensait de ses propres défenses, avant l'objection de Nahum : la ville assise au bord du fleuve, entourée d'eau, n'a pas été sauvée. Josué 6:1-20 : Jéricho, « rigoureusement fermée… personne ne sortait et personne n'entrait », tombe par une action de Jéhovah et non par la force des assaillants : le motif de la ville imprenable qui cède s'enracine dans la plus ancienne tradition du peuple. Ézéchiel 30:14-16 : « je dévasterai Pathros… je répandrai ma fureur sur Sîn, la forteresse de l'Égypte, j'anéantirai la foule de No… je jette le feu en Égypte » — un prophète contemporain nomme No (Thèbes) dans la même liste que Nahum, et de deux manières : la ville de Thèbes est prise comme exemple du sort réservé aux puissances orgueilleuses, et Jérémie 46:25 annonce également le jugement sur Amôn de No et sur l'Égypte.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre renforce son argument par un précédent historique que les auditeurs de Nahum pouvaient vérifier : Thèbes, appelée ici No-Amôn, la ville du dieu Amôn. À l'époque où Nahum écrit, ce nom vient de frapper les esprits : en 663 av. n. è., les armées d'Assurbanipal ont pris et pillé la grande cité égyptienne, emportant thèbes et déportant ses notables — événement relaté dans les annales du roi et par les historiens grecs. Nahum met cette catastrophe en regard de la confiance de Ninive. La description qu'il donne de No-Amôn souligne tout ce qui semblait la rendre inattaquable : elle est « assise au bord du Nil », entourée par les eaux, avec « la mer pour rempart, la mer pour murailles » ; elle s'appuie sur la force innombrable de Koush — la Nubie — et de l'Égypte, et sur les alliés de Put et de Libye. Et pourtant : l'exil, la captivité, les enfants écrasés au coin des rues, le sort jeté sur les nobles et les grands hommes enchaînés. Le raisonnement est direct : si la ville forte du Nil est tombée, Ninive ne peut prétendre à mieux. Le verset 11 ajoute une image d'ivresse et de refuge introuvable ; le verset 12, les « figuiers avec des figues précoces » qui tombent au moindre secousse ; le verset 13 annonce la faiblesse des défenseurs et les portes ouvertes, avec le feu qui consume les verrous.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE NOM ET L'IDENTITÉ DE NO-AMÔN : No-Amôn signifie « la ville d'Amôn », c'est-à-dire Thèbes, capitale religieuse et politique du sud de l'Égypte, où se trouvaient les grands sanctuaires de Karnak et de Louxor ; la Bible emploie ailleurs le nom No seul (Jérémie 46:25 ; Ézéchiel 30:14-16). Le choix de ce précédent n'est pas fortuit : parmi les grandes villes prises par les Assyriens eux-mêmes, Thèbes était la plus prestigieuse et la plus récente. (2) LA DOUBLE PROTECTION : l'eau comme rempart et la puissance des alliés constituent les deux défenses que présentaient Thèbes et Ninive. Le prophète nomme Koush — la puissante dynastie nubienne qui avait régné sur l'Égypte jusqu'au milieu du VIIe siècle — l'Égypte elle-même, Put et les Libyens. L'énumération correspond à la géographie politique réelle des armées égyptiennes de l'époque. (3) LES FIGUIERS PRÉCOCES : la figue précoce mûrit au début de la saison et tient mal à l'arbre ; la secouer suffit à la faire tomber. Les commentaires relèvent que l'image décrit à la fois la fragilité des forteresses et la disposition des ennemis, la bouche ouverte pour recevoir. (4) LES FEMMES ET LES VERROUS : le verset 13 emploie une formule qui, dans le langage de l'époque, exprime l'absence de combattants aptes à la guerre — non un jugement sur les personnes, mais la constatation d'une armée privée de ses hommes à la suite des campagnes et des pertes. Le feu qui consume les verrous complète le tableau : la barre de bois ou de métal des portes, dernier rempart de la ville, brûle. Le registre rattache l'accomplissement au sac de Thèbes en 663 av. n. è. (date donnée telle quelle) et, ensuite, à Ninive.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 34 — Nahoum » rappelle que les monuments et les inscriptions de Ninive attestent la cruauté de ses habitants et que la prophétie s'adressait à une ville dont l'orgueil et les dieux ne pouvaient la sauver ; l'article « L'oppression cessa » souligne que le récit de la destruction de Ninive garantit que l'oppression ne durera pas indéfiniment, ce qui correspond exactement à la leçon tirée du sort de No-Amôn. Lecture commune et exégèse : les commentaires datent volontiers le livre après 663 av. n. è. précisément parce que la chute de Thèbes y est présentée comme un fait passé — argument chronologique classique — et rappellent que c'est l'armée d'Assurbanipal qui a pris la ville, ce qui rend la comparaison plus mordante encore : Ninive est avertie par sa propre victoire. Les exégètes relèvent également que le tableau des versets 10 à 13 s'appuie sur le sort des vaincus de l'époque — enfants, nobles, notables enchaînés — pour dire que la ville qui a infligé ce traitement le subira à son tour.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 663 av. n. è.</td><td>Thèbes (No-Amôn) est prise et pillée par les armées d'Assurbanipal ; ses notables sont déportés (sac de Thèbes, 663 av. n. è. — date neutre retenue par le registre)</td></tr>
+<tr><td class="d">Après 663 av. n. è.</td><td>Nahum invoque cette catastrophe comme précédent : « es-tu meilleure que No-Amôn ? » (Nahum 3:8)</td></tr>
+<tr><td class="d">722 av. n. è.</td><td>Chute de Samarie : l'Assyrie avait déjà montré le sort qu'elle réservait aux villes prises (2 Rois 17:5, 6)</td></tr>
+<tr><td class="d">632 av. n. è.</td><td>Prise de Ninive : la ville forte du Tigre subit ce que Thèbes avait subi, comme le prophète l'annonçait (date des historiens : 612 av. n. è.)</td></tr>
+<tr><td class="d">Après 632 av. n. è.</td><td>Effondrement de l'empire assyrien ; les verrous de ses villes ne protègent plus rien</td></tr>
+<tr><td class="d">Époques suivantes</td><td>Ni Thèbes ni Ninive ne retrouvent leur rang de capitales d'empire ; les deux sites deviennent des tells de ruines</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE SAC DE THÈBES : les annales d'Assurbanipal relatent la campagne d'Égypte et la prise de Thèbes, avec le butin et les déportations ; les historiens grecs mentionnent également l'événement, et la datation de 663 av. n. è. est admise. (2) LE NOM DE LA VILLE : l'égyptien établit « la ville d'Amôn » comme nom de Thèbes, ce que la Bible rend par No-Amôn, tandis que Jérémie 46:25 et Ézéchiel 30:14-16 emploient « No » ; la concordance des trois textes bibliques avec l'épigraphie égyptienne documente l'identification. (3) LES ALLIÉS NOMMÉS : la dynastie nubienne de la XXVe dynastie régna sur l'Égypte jusqu'au milieu du VIIe siècle ; les sources assyriennes mentionnent les rois de Koush et les coalisés égyptiens, ce qui correspond à la liste de Koush, de l'Égypte, de Put et des Libyens. (4) LES PRATIQUES DE GUERRE : les traitements décrits au verset 10 — enfants tués, nobles tirés au sort, notables enchaînés — sont attestés dans les sources assyriennes et dans les représentations de captifs, que le portail « Assyrie » signale en détail. (5) LA CHRONOLOGIE DU LIVRE : la mention de la chute de Thèbes comme événement passé fournit le terminus a quo du livre, ce qui situe Nahum entre 663 et 632/612 av. n. è. ; cette datation, largement acceptée, appuie la valeur historique du texte. (6) LES FORTIFICATIONS ET L'EAU : les descriptions anciennes de Thèbes, traversée par le Nil et couverte de canaux sur les deux rives, correspondent à l'image des « eaux autour d'elle » ; les temples de Karnak et de Louxor conservent les traces des restaurations entreprises après le passage des armées. (7) PRUDENCE : les sources confirment la prise de Thèbes et la réalité des pratiques décrites ; elles ne permettent pas de suivre le détail de chaque verset sur le terrain.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) THÈBES ET LE NIL : la ville occupait les deux rives du Nil, avec ses temples sur la rive est et ses nécropoles sur la rive ouest ; les canaux et les bras du fleuve justifient la formule « assise au bord du Nil, entourée par les eaux ». (2) LA LARGEUR DE LA PLAINE : la plaine alluviale de Thèbes, large de plusieurs kilomètres, offrait des cultures et des accès multiples ; les hauteurs du désert, à l'ouest, formaient un cadre naturel aux tombeaux royaux. (3) NINIVE ET LE TIGRE : la comparaison repose sur une symétrie géographique réelle — deux capitales fluviales, vivant de l'eau et d'un système de canaux, mais situées sur deux fleuves différents ; Ninive était traversée par le Khosr et bordée par le Tigre. (4) KOUSH, PUT ET LES LIBYENS : la mention de ces peuples dessine un axe sud et ouest — Nubie, côtes de la mer Rouge, Libye — qui correspond aux zones d'influence égyptienne de la fin du VIIIe et du VIIe siècle. (5) LES VOIES D'INVASION : de la Mésopotamie vers l'Égypte, les routes longent le Levant puis traversent le Sinaï ; c'est par là que passa l'armée assyrienne vers Thèbes, et par là aussi que Ninive fut atteinte depuis le sud et l'est. (6) LA DISPARITION DES DEUX CAPITALES : abandonnées, Thèbes perdit son rôle de métropole au profit d'autres centres, et Ninive resta ensevelie jusqu'aux fouilles du XIXe siècle — aboutissement commun de deux villes d'eau et de pouvoir.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES TEXTES D'ASSURBANIPAL : les tablettes et les inscriptions royales décrivent la campagne d'Égypte, la prise de Thèbes et le butin ; ces documents sont conservés au British Museum et ont été publiés, ce qui donne une base épigraphique au verset 8. (2) LES TEMPLES DE KARNAK ET DE LOUXOR : les blocs, les reliefs et les inscriptions de restauration attestent l'ampleur des destructions et des reconstructions qui suivirent le sac de la ville, apportant une confirmation matérielle de l'événement. (3) LES PRISONS ET LES EXILS : les listes de captifs des annales assyriennes et les traces de déportations en Égypte et en Nubie documentent la pratique décrite au verset 10. (4) LA STRATIGRAPHIE DE NINIVE : les couches d'incendie et d'effondrement de Kuyunjik attestent une destruction violente de la capitale assyrienne, comparable à celle dont Thèbes avait été victime. (5) LA MÉTROLOGIE DU SIÈGE : l'archéologie militaire a étudié les murs, les portes et les systèmes d'eau des deux villes, ce qui permet d'apprécier la portée de l'image des figuiers fragiles appliquée à des fortifications réelles. (6) LA CHRONOLOGIE ABSOLUE : l'éclipse et les listes éponymales assyriennes, conjuguées à la stèle égyptienne et aux données astronomiques, ont permis de fixer la date de 663 av. n. è. pour la chute de Thèbes. (7) PRUDENCE : l'archéologie confirme la prise des deux villes et le sort de leurs élites ; elle n'aborde pas la question du jugement divin porté par le texte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>QUESTION : « ES-TU MEILLEURE QUE NO-AMÔN… ? » (3:8) → LES AVANTAGES DE THÈBES : LE NIL, LES EAUX TOUT AUTOUR, LA MER POUR MURAILLES (3:8) → LES ALLIÉS : KOUSH ET L'ÉGYPTE, PUT ET LES LIBYENS (3:9) → LE RÉSULTAT : EXIL, CAPTIVITÉ, ENFANTS ÉCRASÉS, SORT JETÉ SUR LES NOBLES, CHAÎNES (3:10) → APPLICATION À NINIVE : TOI AUSSI TU SERAS IVRE, CACHÉE, SANS REFUGE (3:11) → LES FORTERESSES-FIGUIERS : UNE SECOUSSE ET TOUT TOMBE (3:12) → LES DÉFENSEURS FAIBLES, LES PORTES OUVERTES, LE FEU SUR LES VERROUS (3:13) → HISTOIRE : SAC DE THÈBES EN 663 AV. N. È. (DATE NEUTRE DU REGISTRE) → PUIS NINIVE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (sac de Thèbes en 663 av. n. è. (date neutre) ; puis Ninive) et le statut « Accomplie ». LA DATE DE THÈBES : la fiche reprend la date de 663 av. n. è. telle qu'elle figure au registre, qualifiée de date neutre. LE VERSET 13 : la fiche explique la formule sur les femmes comme l'expression d'une armée privée de combattants, conformément à l'usage du langage de l'époque, sans en faire un jugement sur les personnes. LES ALLIÉS : la fiche présente Koush, Put et les Libyens tels que les textes bibliques et les sources les nomment, sans prétendre fixer leur extension territoriale exacte. LES FIGUIERS : la fiche expose l'image agraire sans chercher à identifier l'essence précise du figuier précoce. LE VERSET 11 : la fiche mentionne l'ivresse et le refuge introuvable sans entrer dans l'analyse des coupes de colère d'autres prophètes. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 1 à 7 (fiche précédente) ni des versets 14 à 19 (fiche suivante) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dynastie nubienne en Égypte ; Thèbes, capitale religieuse, domine la vallée du Nil</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 750-663 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise et pillage de Thèbes par les armées d'Assurbanipal ; déportation des notables (date neutre du registre)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">663 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahum consigne la comparaison : « es-tu meilleure que No-Amôn ? » (Nahum 3:8-13)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">663-632 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Ninive ; les forteresses-figuiers tombent (date des historiens : 612 av. n. è.)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">632 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Effondrement de l'empire assyrien ; plus aucune défense ne subsiste</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Après 632 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les fouilles de Ninive et l'étude des textes d'Assurbanipal confirment la prise de Thèbes et la chronologie du livre</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">XIXe siècle de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/1">Bible — Deutéronome 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/6/2">Bible — Josué 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/6/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/2">Bible — Exode 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/2">Bible — 1 Samuel 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/2</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200000447">Assyrie — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200000447</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche NA468 — « Es-tu meilleure que No-Amôn ? » : Thèbes assise au bord du Nil, Koush et l'Égypte, Put et les Libyens, puis les figuiers précoces</span><span>Catégorie NA2</span></div></div>
+</article>
+<article class="fiche" id="NA469">
+<div class="visuel"><img src="images/prophe_NA469_briques.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE NA469 · CATÉGORIE NA2</div>
+<h3>« Il n'y a pas de remède à ta blessure » : puise de l'eau pour le siège, les sauterelles qui s'envolent, les bergers qui sommeillent et la ville jamais relevée</h3>
+<div class="ref">Nahum 3:14-19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">puise de l'eau pour le siège renforce tes fortifications descends dans la boue et piétine l'argile prends le moule à briques c'est là que le feu te dévorera l'épée t'exterminera elle te dévorera comme des sauterelles entasse-toi comme les sauterelles tes marchands sont plus nombreux que les étoiles des cieux et tes gardes sont comme les sauterelles tes officiers comme une nuée de sauterelles qui campent dans les haies par un jour de froid le soleil se lève elles s'envolent et personne ne sait où elles sont tes bergers sommeillent ô roi d'assyrie tes nobles restent dans leurs demeures ton peuple est dispersé sur les montagnes et personne ne le rassemble il n'y a pas de soulagement pour ta catastrophe ta blessure est impossible à guérir tous ceux qui entendront la nouvelle à ton sujet applaudiront car qui n'a pas souffert à cause de ton incessante cruauté (nahum 3:14-19 ; chute de ninive ; ville jamais relevée ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche NA469</div><audio controls preload="none" src="audio/fiche_NA469_briques.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_NA469_briques.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Nahum 3:14-19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>puise de l'eau pour le siège renforce tes fortifications descends dans la boue et piétine l'argile prends le moule à briques c'est là que le feu te dévorera l'épée t'exterminera elle te dévorera comme des sauterelles entasse-toi comme les sauterelles tes marchands sont plus nombreux que les étoiles des cieux et tes gardes sont comme les sauterelles tes officiers comme une nuée de sauterelles qui campent dans les haies par un jour de froid le soleil se lève elles s'envolent et personne ne sait où elles sont tes bergers sommeillent ô roi d'assyrie tes nobles restent dans leurs demeures ton peuple est dispersé sur les montagnes et personne ne le rassemble il n'y a pas de soulagement pour ta catastrophe ta blessure est impossible à guérir tous ceux qui entendront la nouvelle à ton sujet applaudiront car qui n'a pas souffert à cause de ton incessante cruauté (nahum 3:14-19 ; chute de ninive ; ville jamais relevée ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Nahum — P469 (3:14-19 : puise de l'eau ; le feu te dévorera ; ta blessure est incurable ; tous applaudiront ta ruine) ; chute de Ninive ; ville jamais relevée ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PUISE DE L'EAU POUR LE SIÈGE… RENFORCE TES FORTIFICATIONS… DESCENDS DANS LA BOUE ET PIÉTINE L'ARGILE… PRENDS LE MOULE À BRIQUES… »… « C'EST LÀ QUE LE FEU TE DÉVORERA… L'ÉPÉE T'EXTERMINERA… ELLE TE DÉVORERA COMME DES SAUTERELLES… ENTASSE-TOI COMME LES SAUTERELLES… »… « TES MARCHANDS SONT PLUS NOMBREUX QUE LES ÉTOILES DES CIEUX… ET TES GARDES SONT COMME LES SAUTERELLES… TES OFFICIERS COMME UNE NUÉE DE SAUTERELLES… QUI CAMPENT DANS LES HAIES PAR UN JOUR DE FROID… LE SOLEIL SE LÈVE… ELLES S'ENVOLENT… ET PERSONNE NE SAIT OÙ ELLES SONT… »… « TES BERGERS SOMMEILLENT… Ô ROI D'ASSYRIE… TES NOBLES RESTENT DANS LEURS DEMEURES… TON PEUPLE EST DISPERSÉ SUR LES MONTAGNES… ET PERSONNE NE LE RASSEMBLE… »… « IL N'Y A PAS DE SOULAGEMENT POUR TA CATASTROPHE… TA BLESSURE EST IMPOSSIBLE À GUÉRIR… TOUS CEUX QUI ENTENDRONT LA NOUVELLE À TON SUJET APPLAUDIRONT… CAR QUI N'A PAS SOUFFERT… À CAUSE DE TON INCESSANTE CRUAUTÉ…? »… — SHAʾAV… PUISER… MATSOR… LE SIÈGE… ḤAZZEQ… RENFORCER… ḤOMAH… LA MURAILLE… ṬIT… LA BOUE… ḤAMAR… L'ARGILE… LAVEN… LE MOULE À BRIQUES… ʾESH… LE FEU… ḤEREV… L'ÉPÉE… ʾARBEH… LES SAUTERELLES… YELEQ… LE CRIQUET… ROKHEL… LE MARCHAND… KOKHEVE HA-SHAMAYIM… LES ÉTOILES DES CIEUX… ṬAFSAR… L'OFFICIER, LE GARDE… MINZAR… LES SENTINELLES… GEDUD… LA TROUPE… ROʿIM… LES BERGERS… NAMNU… ILS SOMMEILLENT… NASHIʾIM… LES NOBLES… MAH… LA CATASTROPHE, LA BLESSURE… SHOVER… LA RUPTURE… ḤALAH… LA BLESSURE… ANAḤAH… LE SOULAGEMENT… TIQQA… SE TENIR, GUÉRIR… MAḤAʾ KAF… FRAPPER DANS LES MAINS, APPLAUDIR… RAʿAH… LA CRUAUTÉ, LE MAL… — 612… 632 AV. N. È.… NABOPOLASSAR… LES MÈDES… MESOPILA DE XÉNOPHON… PSAUME 137:8, 9… JÉRÉMIE 50-51… »</li>
+<li>LES TROIS JUMEAUX — Juges 3:12-30 : Églon, roi de Moab, oppresseur d'Israël, tombe sous le coup d'un geste d'Éhoud, et « le pays fut en repos pendant quatre-vingts ans » — le précédent que Nahum met en œuvre en annonçant la chute de Ninive et le soulagement de Juda : la ruine de l'oppresseur se traduit immédiatement en repos pour les opprimés. Psaume 137:8, 9 : appel à Jéhovah contre Babylone, « qui as à nous rendre le mal que tu nous as fait » — expression canonique du soulagement que représente la chute d'une puissance de proie, sentiment que Nahum place dans la bouche de ceux qui applaudiront la ruine de Ninive. Esther 3:8-10 et 8:11-17 : le récit d'Haman, qui « a rempli ses greniers » et préparé des poteaux de supplice, avant que le roi ne le fasse pendre au poteau qu'il avait dressé — une autre ville et un autre oppresseur dont la faillite devient le sujet d'une joie publique pour les peuples menacés.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre se referme sur le siège, avec une ironie en deux mouvements. D'abord, Nahum lance des ordres à la ville comme un chef d'atelier : puise de l'eau pour le siège, renforce tes fortifications, descends dans la boue et piétine l'argile, prends le moule à briques. Les défenses d'une ville antique reposaient en partie sur des murs de briques crues qu'il fallait sans cesse réparer et reconstruire, surtout sous la pluie et sous les coups de bélier ; ces travaux mobilisaient des milliers de personnes et des réserves d'eau considérables. Le verset 15 fait entendre la réplique : c'est là que le feu dévorera la ville, que l'épée l'exterminera ; elle sera dévorée « comme des sauterelles ». Le verset 16 introduit alors une image saisissante : les marchands de Ninive, plus nombreux que les étoiles des cieux, s'envolent comme la sauterelle qui ouvre les ailes ; et le verset 17 compare les officiers à ces insectes qui, réfugiés dans les haies par temps froid, disparaissent sans qu'on sache où, dès que le soleil brille — tableau d'une administration et d'un commerce qui fuient à la première alerte. Le verset 18 décrit les « bergers » qui sommeillent, les nobles immobiles et le peuple dispersé sans personne pour le rassembler. Le verset 19 donne la conclusion médicale : « il n'y a pas de remède à ta blessure, ta plaie est mortelle », et l'annonce finale : tous ceux qui entendront parler de la ville applaudiront, car il n'est personne qui n'ait souffert de sa cruauté.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LES TRAVAUX DU SIÈGE : les quatre impératifs du verset 14 décrivent les opérations réelles d'une ville assiégée dans le Proche-Orient ancien : puiser de l'eau pour remplir les citernes et les bassins, réparer les brèches, gâcher l'argile et mouler des briques pour colmater les murs. Les fouilles de sites assiégés et les reliefs de siège montrent l'importance de ces travaux ; le prophète les fait décrire par l'ennemi comme une ultime tentative, aussitôt annulée. (2) LE FEU ET L'ÉPÉE : la réponse emploie les deux instruments de la guerre de siège, l'incendie et le massacre par l'épée, et reprend l'image animale des sauterelles, insectes qui dévorent tout sur leur passage. Nahum retourne le symbole : la ville qui dévorait les nations sera elle-même dévorée. (3) LES SAUTERELLES ET LES MARCHANDS : la comparaison des officiers et des marchands avec les criquets est remarquable à plus d'un titre : elle joue sur nombre et mobilité, et sur la disparition brusque au soleil levant. Les commentateurs y voient une satire de la prospérité fondée sur le commerce international et sur une administration qui n'a aucune fidélité — le personnel impérial s'évapore dès que la ville est menacée. Les documents assyriens attestent la place des marchands et des scribes de cour dans la vie de la capitale. (4) LA BLESSURE INCURABLE : le dernier verset emploie un vocabulaire médical — la blessure, le remède, la guérison impossible — pour dire qu'il n'y aura pas de relèvement. L'histoire a confirmé la formule d'une manière rarement atteinte : Ninive ne fut jamais reconstruite comme capitale, le site resta un tell pendant des siècles, et les fouilles du XIXe siècle n'ont rendu au monde que des ruines. Le registre rattache l'accomplissement à la chute de Ninive et à ce que la ville ne fut jamais relevée.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 34 — Nahoum » commente le même verset final dans la version de la Bibliothèque en ligne : « il n'y a pas de soulagement pour ta catastrophe ; ta blessure est impossible à guérir. Tous ceux qui entendront la nouvelle à ton sujet applaudiront, car qui n'a pas souffert à cause de ton incessante cruauté ? » ; il rappelle que les monuments et les inscriptions de Ninive attestent la cruauté de ses habitants et que l'orgueil implacable de l'Assyrie et ses dieux païens ne pouvaient la sauver. L'article « Ninive, “La ville sanguinaire” » souligne de son côté que la ville « avait coutume de saccager une ville, d'emporter le butin et de traiter les captifs cruellement », ce qui explique la joie de la fin du livre. Lecture commune et exégèse : les commentateurs notent que le chapitre se termine sans perspective de relèvement, contrairement aux livres prophétiques qui réservent une issue au peuple de Dieu — Nahum est le seul livre prophétique entièrement consacré à la ruine d'une puissance étrangère. Ils relèvent aussi que la description des marchands et des officiers qui s'envolent correspond au fonctionnement d'une capitale impériale cosmopolite, et que la conclusion « tous applaudiront » rejoint le psaume 137 et la joie des peuples délivrés d'un oppresseur.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 740-632 av. n. è.</td><td>L'oracle est consigné : les travaux du siège dérisoires, le feu, les marchands qui s'envolent, la blessure inguérissable (Nahum 3:14-19)</td></tr>
+<tr><td class="d">632 av. n. è.</td><td>Prise de Ninive : incendie de la ville, massacre de l'élite, disparition de l'administration (date des historiens : 612 av. n. è.)</td></tr>
+<tr><td class="d">Après 632 av. n. è.</td><td>La dynastie assyrienne s'éteint ; les tentatives de maintien d'un pouvoir assyrien échouent définitivement après la chute de Harân</td></tr>
+<tr><td class="d">VIe siècle av. n. è.</td><td>Le site est abandonné ; les siècles suivants le recouvrent de sédiments</td></tr>
+<tr><td class="d">401 av. n. è.</td><td>Xénophon, traversant la région, ne voit qu'un site ruiné (Mespila) — illustration historique de la « blessure inguérissable »</td></tr>
+<tr><td class="d">Ensuite</td><td>Juda et les nations voisines ne subissent plus la pression assyrienne : le soulagement annoncé est un fait de l'histoire du Levant</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA CHRONIQUE BABYLONIENNE : elle rapporte la marche le long du Tigre, le combat violent contre Ninive, le massacre des chefs, le pillage et la ville « réduite en un amas de décombres » — la séquence exacte du désastre annoncé aux versets 15 à 19. (2) LES SOURCES GRECQUES : la tradition grecque sur la fin de Ninive évoque l'effondrement du pouvoir assyrien et la destruction de la ville ; Xénophon, passant sur le site en 401 av. n. è., décrit une ville déserte et démesurée, preuve de l'abandon durable. (3) LA RICHESSE COMMERÇANTE : les archives et les tablettes de Ninive mentionnent des marchands, des intendants, des intendants de palais et des messagers, et les routes commerciales aboutissaient dans la capitale ; la mention des « marchands plus nombreux que les étoiles » n'est pas une hyperbole vide. (4) LA FIN DE LA DYNASTIE : les listes royales et les chroniques situent la fin du pouvoir assyrien dans les années qui suivent la chute de la capitale ; après Assur-uballit II, plus aucun roi d'Assyrie ne règne. (5) LA CESSATION DE LA MENACE : pour Juda, la disparition de l'Assyrie change durablement la situation politique, ce qui correspond au soulagement exprimé dans le livre ; les mêmes décennies voient l'ascension de Babylone, dont la menace prendra le relais. (6) LA JOIE DES PEUPLES : les sources mésopotamiennes et bibliques attestent le caractère redouté de la domination assyrienne ; la chute de la capitale est célébrée dans plusieurs textes, ce qui éclaire la formule finale « tous ceux qui entendront la nouvelle applaudiront ». (7) PRUDENCE : les sources documentent la chute, l'abandon du site et le caractère craint de l'empire ; l'évaluation morale finale appartient au texte prophétique.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA BRIQUE CRUE : dans la Mésopotamie alluviale, la pierre de taille manquait ; les murailles étaient faites de briques d'argile séchées, réparées et remplacées à mesure des pluies et des hivers ; d'où la réalité concrète des ordres : boue, argile, moule. (2) L'EAU DU SIÈGE : la défense d'une ville comme Ninive dépendait de ses citernes et de ses canaux ; puiser de l'eau constituait une priorité immédiate avant les combats rangés. (3) LES HAIES ET LES INSECTES : les haies de la campagne mésopotamienne et l'arrivée des criquets au printemps sont des réalités agricoles observables ; l'image du verset 17 s'appuie sur un phénomène saisonnier que les auditeurs connaissaient de première main. (4) LES MONTAGNES ET LA DISPERSION : les montagnes mentionnées au verset 18 désignent les reliefs du nord et de l'est, vers l'Arménie et le Zagros, où les réfugiés se dispersaient naturellement après l'effondrement de l'empire. (5) LE TELL DE NINIVE : après l'abandon, l'addition des ruines a formé deux éminences, Kuyunjik et Nebi Yunus, qui dominent encore la plaine de Mossoul ; c'est là que les fouilles ont retrouvé les palais de la ville disparue. (6) LA PROXIMITÉ DU FLEUVE : l'utilisation séculaire des blocs de Ninive comme matériau de construction, et la proximité du Tigre qui charriait les débris, expliquent que la ville ait été effacée du paysage plus complètement que d'autres capitales antiques.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES BRIQUES ET LES MURS : les vestiges de murailles de Ninive et d'autres villes assyriennes donnent la mesure des travaux décrits au verset 14 ; l'analyse des briques crues et des briques cuites renseigne sur les techniques de réparation rapide en temps de siège. (2) LES NIVEAUX DE DESTRUCTION : les couches d'incendie et d'éboulis des palais de Ninive témoignent de la destruction par le feu annoncée au verset 15 ; les tablettes de la bibliothèque d'Assurbanipal, brisées et brûlées, en portent la trace. (3) LA BIBLIOTHÈQUE DÉTERRÉE : la mise au jour de dizaines de milliers de fragments à Kuyunjik au XIXe siècle est directement liée à la destruction même qui a enseveli les collections — la ville devait disparaître pour que ses archives nous parviennent. (4) LES RESTES DU COMMERCE : sceaux, poids, contrats et lettres commerciales retrouvés sur le site documentent le milieu des marchands évoqués au verset 16. (5) L'ARCHÉOZOOLOGIE DES SAUTERELLES : l'étude des nuées de criquets dans la région — leur disparition au lever du soleil et leur envol brusque — permet de comprendre la justesse de l'image du verset 17. (6) LA PALÉOÉCOLOGIE : les analyses de sédiments et de pollens montrent l'abandon des zones cultivées autour du site après sa chute, en cohérence avec la disparition d'un centre urbain de cette taille. (7) PRUDENCE : l'archéologie démontre la destruction, l'incendie et l'abandon définitif de Ninive ; elle ne peut évaluer la portée morale du jugement annoncé par le prophète.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>ORDRES IRONIQUES : PUISE DE L'EAU, RENFORCE TES FORTIFICATIONS, DESCENDS DANS LA BOUE, PIÉTINE L'ARGILE, PRENDS LE MOULE À BRIQUES (3:14) → RÉPLIQUE : « C'EST LÀ QUE LE FEU TE DÉVORERA ; L'ÉPÉE T'EXTERMINERA » (3:15) → LES MARCHANDS PLUS NOMBREUX QUE LES ÉTOILES S'ENVOLENT (3:16) → LES OFFICIERS COMME LES SAUTERELLES DU MATIN : « PERSONNE NE SAIT OÙ ELLES SONT » (3:17) → LES BERGERS SOMMEILLENT, LES NOBLES IMMOBILES, LE PEUPLE DISPERSÉ SANS RASSEMBLEUR (3:18) → VERDICT : « IL N'Y A PAS DE SOULAGEMENT… TA BLESSURE EST IMPOSSIBLE À GUÉRIR » (3:19) → « TOUS CEUX QUI ENTENDRONT… APPLAUDIRONT » (3:19) → HISTOIRE : NINIVE TOMBE, N'EST JAMAIS RELEVÉE ; XÉNOPHON N'Y VOIT QUE DES RUINES EN 401 AV. N. È.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (chute de Ninive ; ville jamais relevée) et le statut « Accomplie ». LES TRAVAUX DU VERSET 14 : la fiche décrit les opérations réelles d'un siège sans chercher à établir la séquence exacte des travaux entrepris à Ninive. LES SAUTERELLES : la fiche expose l'image comme une satire du commerce et de l'administration, sans prétendre chiffrer les effectifs concernés. LE VERSET 18 : la fiche mentionne les bergers et les nobles sans les identifier à des personnages historiques précis. LA « BLESSURE » : la fiche rapporte la formule médicale et son sens de ruine définitive, telle que l'histoire l'a vérifiée par l'abandon du site ; elle ne tire pas de conclusion sur le sort des personnes. L'APPLAUDISSEMENT : la fiche le rapporte comme l'expression du soulagement des peuples opprimés, en rapprochant le discours du Psaume 137, sans l'appliquer à des populations actuelles. L'APRÈS-632 : la fiche indique l'effondrement de l'empire sans détailler les campagnes finales. CE QUE CETTE FICHE NE DIT PAS : elle clôt le livre de Nahum et ne traite pas du livre d'Habacuc (vague suivante) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Apogée de l'empire assyrien ; Ninive devient une capitale monumentale sous Sennachérib</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin du VIIIe siècle av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahum 3:14-19 : les travaux du siège, les marchands, la blessure inguérissable</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant 632 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Ninive ; incendie et pillage de la ville (date des historiens : 612 av. n. è.)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">632 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Disparition de la dynastie assyrienne ; échec des dernières tentatives de restauration</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin du VIIe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Xénophon décrit un site ruiné et désert (Mespila)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">401 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fouilles de Kuyunjik et de Nebi Yunus : les palais et la bibliothèque de Ninive sont retrouvés sous le tell</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">XIXe siècle de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/3">Bible — Juges 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/17/3">Bible — Esther 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/17/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/3">Bible — Psaume 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/21/2">Bible — Ecclésiaste 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/21/2</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1960165">Ninive, “ La ville sanguinaire ” — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1960165</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche NA469 — « Il n'y a pas de remède à ta blessure » : puise de l'eau pour le siège, les sauterelles qui s'envolent, les bergers qui sommeillent et la ville jamais relevée</span><span>Catégorie NA2</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie NA2</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>NA467 — « Malheur à la ville de sang ! » : le fouet, les cadavres entassés et la prostituée maîtresse de sorcelleries dépouillée devant les nations</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Politique de terreur et de déportation des rois assyriens : Assournasirpal, Salmanasar III (annales royales)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IXe siècle av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Samarie et déportation du royaume du Nord (2 Rois 17:5, 6)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">740-722 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Campagne de Sennachérib en Juda ; traité d'hommage imposé à Ézéchias (2 Rois 18:13-16)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahum 3:1-7 est consigné : la ville de sang et son humiliation annoncée</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant 632 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Ninive : la violence impériale se retourne contre la capitale (date des historiens : 612 av. n. è.)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">632 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Aucun consolateur : la ville n'est pas relevée, le motif est repris pour Babylone en Révélation 17-18</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Après la chute</text>
+</svg>
+<h4>NA468 — « Es-tu meilleure que No-Amôn ? » : Thèbes assise au bord du Nil, Koush et l'Égypte, Put et les Libyens, puis les figuiers précoces</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dynastie nubienne en Égypte ; Thèbes, capitale religieuse, domine la vallée du Nil</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 750-663 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise et pillage de Thèbes par les armées d'Assurbanipal ; déportation des notables (date neutre du registre)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">663 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahum consigne la comparaison : « es-tu meilleure que No-Amôn ? » (Nahum 3:8-13)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">663-632 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Ninive ; les forteresses-figuiers tombent (date des historiens : 612 av. n. è.)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">632 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Effondrement de l'empire assyrien ; plus aucune défense ne subsiste</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Après 632 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les fouilles de Ninive et l'étude des textes d'Assurbanipal confirment la prise de Thèbes et la chronologie du livre</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">XIXe siècle de n. è.</text>
+</svg>
+<h4>NA469 — « Il n'y a pas de remède à ta blessure » : puise de l'eau pour le siège, les sauterelles qui s'envolent, les bergers qui sommeillent et la ville jamais relevée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Apogée de l'empire assyrien ; Ninive devient une capitale monumentale sous Sennachérib</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin du VIIIe siècle av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahum 3:14-19 : les travaux du siège, les marchands, la blessure inguérissable</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant 632 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Ninive ; incendie et pillage de la ville (date des historiens : 612 av. n. è.)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">632 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Disparition de la dynastie assyrienne ; échec des dernières tentatives de restauration</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin du VIIe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Xénophon décrit un site ruiné et désert (Mespila)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">401 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fouilles de Kuyunjik et de Nebi Yunus : les palais et la bibliothèque de Ninive sont retrouvés sous le tell</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">XIXe siècle de n. è.</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

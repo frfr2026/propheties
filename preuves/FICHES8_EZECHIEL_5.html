@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES EZ — Ézéchiel (5) — la complainte des princes, le creuset, les deux sœurs</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_EZ325_lionceaux.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES EZ</h1>
+<h2>Ézéchiel (5) — la complainte des princes, le creuset, les deux sœurs</h2>
+<p class="intro">Complainte sur les princes : lionceaux pris à la fosse, vigne arrachée, plus de sceptre (EZ325). Les rebelles seront purgés et n'entreront pas dans le pays (EZ326), la forêt du sud s'embrase (EZ327), l'épée sort du fourreau et le roi de Babylone consulte à la croisée (EZ328). Jérusalem fond comme scories dans le creuset, faute d'un homme dans la brèche (EZ329), et les deux sœurs, Samarie et Jérusalem, sont jugées par leurs amants (EZ330).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#EZ325">EZ325</a>
+<a href="#EZ326">EZ326</a>
+<a href="#EZ327">EZ327</a>
+<a href="#EZ328">EZ328</a>
+<a href="#EZ329">EZ329</a>
+<a href="#EZ330">EZ330</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#EZ325"><img src="images/prophe_EZ325_lionceaux.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ325</div>
+<h3><a href="#EZ325">« La lionne et ses lionceaux » : complainte sur les princes</a></h3>
+<div class="meta">Accomplie · 🎧 0:12</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ326"><img src="images/prophe_EZ326_rebelles.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ326</div>
+<h3><a href="#EZ326">« Ils n'entreront pas » : les rebelles purgés au désert des peuples</a></h3>
+<div class="meta">Accomplie · 🎧 0:14</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ327"><img src="images/prophe_EZ327_foret.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ327</div>
+<h3><a href="#EZ327">« La forêt du sud » : le feu de TÉMAN-SUD à DAROM</a></h3>
+<div class="meta">Accomplie · 🎧 0:14</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ328"><img src="images/prophe_EZ328_epee.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ328</div>
+<h3><a href="#EZ328">« L'épée est aiguisée » : la croisée des chemins tranche pour Jérusalem</a></h3>
+<div class="meta">Accomplie · 🎧 0:12</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ329"><img src="images/prophe_EZ329_creuset.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ329</div>
+<h3><a href="#EZ329">« Je n'en ai pas trouvé » : le creuset et la brèche vide</a></h3>
+<div class="meta">Accomplie · 🎧 0:12</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ330"><img src="images/prophe_EZ330_soeurs.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ330</div>
+<h3><a href="#EZ330">« Oholah et Oholibah » : les deux sœurs jugées par leurs amants</a></h3>
+<div class="meta">Accomplie · 🎧 0:15</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="EZ325">
+<div class="visuel"><img src="images/prophe_EZ325_lionceaux.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ325 · CATÉGORIE EZ</div>
+<h3>« La lionne et ses lionceaux » : complainte sur les princes</h3>
+<div class="ref">Ézéchiel 19:1-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">princes lionceaux cage pleurés (complainte → princes → Israël → mère → lionne → couchée → lions → lionceaux → éleva → petits → éleva → devint → lion → apprit → déchirer → proie → dévora → hommes → nations → pris → fosse → crocs → Égypte → espoir → perdu → prit → devint → lion → marcha → déchirer → dévora → veuves → dévasta → villes → pays → désolé → voix → nations → filet → pris → fosse → cage → crocs → Babylone → forteresse → voix → montagnes → Israël → mère → vigne → sang → eaux → féconde → touffue → rameaux → sceptres → souverains → hauteur → branches → arrachée → fureur → terre → vent → est → fruit → rameaux → rompus → feu → désert → sèche → aride → feu → branche → fruit → rameau → sceptre → souverain → complainte)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ325 · 0:12</div><audio controls preload="none" src="audio/fiche_EZ325_lionceaux.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ325_lionceaux.mp3 · 0:12 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 19:1-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>princes lionceaux cage pleurés (complainte → princes → Israël → mère → lionne → couchée → lions → lionceaux → éleva → petits → éleva → devint → lion → apprit → déchirer → proie → dévora → hommes → nations → pris → fosse → crocs → Égypte → espoir → perdu → prit → devint → lion → marcha → déchirer → dévora → veuves → dévasta → villes → pays → désolé → voix → nations → filet → pris → fosse → cage → crocs → Babylone → forteresse → voix → montagnes → Israël → mère → vigne → sang → eaux → féconde → touffue → rameaux → sceptres → souverains → hauteur → branches → arrachée → fureur → terre → vent → est → fruit → rameaux → rompus → feu → désert → sèche → aride → feu → branche → fruit → rameau → sceptre → souverain → complainte)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P325 (19:1-14 : lionceaux pris, vigne arrachée, plus de sceptre) ; 2R 23:31-34 ; 25:1-11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« COMPLAINTE… PRINCES… ISRAËL… QINAH… CHANT… FUNÈBRE… RYTHME… BOITEUX… TROIS… DEUX… SANGLOTS… MÉTRIQUES… ÉLÉGIE… COMMANDÉE… DIEU… ORDONNE… PLEURER… ROIS… IMPIES… PARADOXE… JUGEMENT… CHANTÉ… LARMES… PROPHÉTIQUES… DEUIL… NATIONAL… ORCHESTRÉ… CIEL. » (19:1 — ciel !)</li>
+<li>« MÈRE… LIONNE… COUCHÉE… LIONS… LIONCEAUX… ÉLEVA… PETITS… LABI… LIONNE… JUDA… GENÈSE… QUARANTE-NEUF… NEUF… LION… TRIBU… DAVID… DYNASTIE… FÉLINE… ROYALE… COUCHÉE… NATIONS… FAUVES… VOISINS… PHARAON… NÉCO… NÉBUCADNETSAR… MÉNAGERIE… IMPÉRIALE… GRIFFES… DEHORS. » (19:2 — dehors !)</li>
+<li>« ÉLEVA… DEVINT… LION… DÉCHIRER… PROIE… DÉVORA… HOMMES… NATIONS… PRIS… FOSSE… CROCS… ÉGYPTE… YOACHAZ… SHALLUM… VINGT-TROIS… ANS… TROIS… MOIS… RÈGNE… SIX-CENT-NEUF… RIBLA… ENCHAÎNÉ… NÉCO… TRIBUT… CENT… TALENTS… ARGENT… TALENT… OR… JOYAQIM… REMPLAÇANT… NOMMÉ… CAGE… PREMIÈRE. » (19:3-4 — première !)</li>
+<li>« ESPOIR… PERDU… PRIT… DEVINT… LION… MARCHA… DÉCHIRER… DÉVORA… VEUVES… DÉVASTA… VILLES… PAYS… DÉSOLÉ… VOIX… YOYAKIN… DIX-HUIT… ANS… TROIS… MOIS… RÈGNE… CINQ-CENT-QUATRE-VINGT-DIX-SEPT… OU… SÉDÉCIAS… ONZE… ANS… DÉBAT… EXÉGÈTES… SECOND… LIONCEAU… FLOU… VOLONTAIRE… DEUX… CAPTURES… BABYLONE… MÊME… FILET. » (19:5-7 — filet !)</li>
+<li>« NATIONS… FILET… PRIS… FOSSE… CAGE… CROCS… BABYLONE… FORTERESSE… VOIX… MONTAGNES… ISRAËL… HAHIM… CROCHETS… NARINES… TAUREAU… DOMPTÉ… KELUB… CAGE… OSIER… FER… YOYAKIN… EXIL… DORÉ… RATIONS… TABLES… ROI… TRENTE-SEPT… ANS… PLUS… TARD… TÊTE… LEVÉE… ÉVIL-MERODAK… SÉDÉCIAS… FORTERESSE… AVEUGLE… SILENCE… MONTAGNES. » (19:8-9 — montagnes !)</li>
+<li>« VIGNE… SANG… EAUX… FÉCONDE… TOUFFUE… RAMEAUX… SCEPTRES… HAUTEUR… ARRACHÉE… FUREUR… VENT… EST… FRUIT… ROMPUS… FEU… DÉSERT… SÈCHE… ARIDE… BRANCHE… SCEPTRE… COMPLAINTE… MATTOT… BÂTONS… COMMANDEMENT… DAVID… SALOMON… JOSIAS… BRANCHES… HAUTES… VISIBLES… LOIN… VENT… ORIENT… ARRACHE… SION… DÉSERT… BABYLONE… EXIL… ARIDE… FEU… INTERNE… GUERRE… CIVILE… SCEPTRE… BRISÉ… COMPLAINTE… ÉTERNELLE. » (19:10-14 — éternelle !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La LIONNE-JUDA (les VEATTAH (les TOI (les SA (les PRONONCE (les QINAH (les COMPLAINTE (les EL (les NESIÉ (les PRINCES (les YISRAÉL (les ISRAËL (les VEAMARTA (les DIRAS (les MAH (les QUOI (les IMMEKHA (les MÈRE (les LABI (les LIONNE (les BÉYN (les PARMI (les ARAYOT (les LIONS (les RABATSAH (les COUCHÉE (les BETOKH (les MILIEU (les KEPHIRIM (les LIONCEAUX (les RIBBETA (les ÉLEVA (les GURÉHA (les PETITS (les VATTAAL (les ÉLEVA (les MÉGURÉHA (les PETITS (les ÉHAD (les UN (les KEPHIR (les LIONCEAU (les HAYAH (les DEVINT (les VAYYILMAD (les APPRIT (les LITROPH (les DÉCHIRER (les TÉRÉPH (les PROIE (les ADAM (les HOMMES (les AKHAL (les DÉVORA (les LIONNE (les LIONCEAU (les PROIE — les DÉVORÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La FOSSE-ÉGYPTE (les VAYYISHMEU (les ENTENDIRENT (les ÉLAV (les LUI (les GOYIM (les NATIONS (les BESHAHTAM (les FOSSE (les NITPAS (les PRIS (les VAYBIUHU (les MENÈRENT (les BEHAHIM (les CROCS (les EL (les ÉRÉTS (les PAYS (les MITSeRAYIM (les ÉGYPTE (les VATTÉRÉ (les VIT (les KI (les QUE (les NOHALAH (les ESPOIR (les NIKHZEBAH (les DÉÇU (les TIQVATIAH (les ATTENTE (les AVEDAH (les PERDU (les VATTIQQAH (les PRIT (les ÉHAD (les UN (les MIGGURÉHA (les PETITS (les KEPHIR (les LIONCEAU (les SAMATHU (les FIT (les VAYITHALLÉKH (les MARCHA (les BETOKH (les MILIEU (les ARAYOT (les LIONS (les KEPHIR (les LIONCEAU (les HAYAH (les DEVINT (les VAYYILMAD (les APPRIT (les LITROPH (les DÉCHIRER (les TÉRÉPH (les PROIE (les ADAM (les HOMMES (les AKHAL (les DÉVORA (les VAYYÉDA (les CONNUT (les ALMENOTAV (les VEUVES (les VAYYAHARÉB (les DÉVASTA (les ARÉHEM (les VILLES (les VAYYÉSHAM (les DÉSOLÉ (les ÉRÉTS (les PAYS (les UMLOAH (les CONTENU (les MIQQOL (les VOIX (les SHAAGATO (les RUGISSANTE (les FOSSE (les CROCS (les ÉGYPTE — les PREMIER !)</p>
+<h4>5 · Interprétation</h4>
+<p>La VIGNE-ARRACHÉE (les FILET (les NATIONS (les FOSSE (les SECOND (les CAGE (les KELUB (les CROCS (les NARINES (les ROI (les BABYLONE (les FORTERESSE (les METSUDAH (les VOIX (les MONTAGNES (les ISRAËL (les ÉTEINTE (les PUIS (les VIGNE (les GÉPHÉN (les SANG (les DAMÉKHA (les EAUX (les FÉCONDE (les TOUFFUE (les MATTOT (les RAMEAUX (les SHEBATIM (les SCEPTRES (les MOSHELIM (les SOUVERAINS (les HAUTEUR (les VISIBLE (les ARRACHÉE (les NATASH (les FUREUR (les HÉMAH (les TERRE (les QADIM-BRÛLANT (les RUUAH (les FRUIT (les DESSÉCHÉ (les ROMPUS (les DESSÉCHÉS (les FEU (les DÉVORÉS (les DÉSERT (les MIDBAR (les SÈCHE (les TSIYYAH (les FEU (les BRANCHE (les FRUIT (les DÉVORÉ (les SCEPTRE (les BRISÉ (les COMPLAINTE (les ÉTERNELLE (les VIGNE — les ARRACHÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">19:1</td><td>CIEL (QINAH !)</td></tr>
+<tr><td class="d">19:2</td><td>DEHORS (LABI !)</td></tr>
+<tr><td class="d">19:3-4</td><td>PREMIÈRE (RIBLA !)</td></tr>
+<tr><td class="d">19:5-7</td><td>FILET (SECOND !)</td></tr>
+<tr><td class="d">19:8-9</td><td>MONTAGNES (KELUB !)</td></tr>
+<tr><td class="d">19:10-14</td><td>ÉTERNELLE (MATTOT !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Vers 592 : QINAH commandée sur les NESIÉ (v. 1, rythme funèbre 3+2) — la lionne (Juda, cf. Gn 49:9) ; premier lionceau : Yoachaz/Shallum, 23 ans, 3 mois de règne, pris à Ribla par Néco en 609, mené en Égypte où il meurt (vv. 3-4 ; 2R 23:31-34, Jr 22:10-12) ; second lionceau : Yoyakîn (18 ans, 3 mois, 597, exil doré puis tête levée par Évil-Merodak, 2R 25:27-30) et/ou Sédécias (filet, fosse, cage, crocs, forteresse, voix éteinte — vv. 5-9 ; 2R 25:1-11) — le flou volontaire couvre les deux captures babyloniennes ; la vigne (vv. 10-14) : féconde sous David-Salomon-Josias, arrachée par le vent d'est (Babylone), transplantée au désert (exil), consumée par son propre feu (guerres civiles, révoltes suicidaires) — « plus de sceptre » (v. 14 ; cf. 21:26-27).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Ribla sur l'Oronte (v. 4 ; 2R 23:33) : la fosse du premier lionceau, à ~400 km au nord ; l'Égypte (v. 4) : cage lointaine de Yoachaz ; Babylone (v. 9) : forteresse du second — METSUDAH, citadelle prison ; « les montagnes d'Israël » (v. 9) : le rugissement royal s'y tait ; la vigne « près des eaux » (v. 10) → « désert, terre sèche » (v. 13) : de Sion irriguée à Babylone aride — transplantation punitive.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>2 Rois 23:31-34 (Rbi8 — Yoachaz : 3 mois, Ribla, Égypte, tribut) + 2 Rois 25:1-11 — le PROCÈS-VERBAL des deux fosses ; Genèse 49:9 (nwt — « lion… lionne : qui le fera lever ? », Juda) — la SOURCE de la lionne ; Daniel 7:4 (nwt — le lion à ailes d'aigle, premier empire) — le LION royal dans la ménagerie des empires.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>609 : 1ER LIONCEAU (YOACHAZ → ÉGYPTE) → 597/587 : 2ND LIONCEAU (YOYAKIN/SÉDÉCIAS → BABYLONE) → VIGNE FÉCONDE ARRACHÉE → DÉSERT → FEU INTERNE → PLUS DE SCEPTRE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Second lionceau débattu (v. 5-9) : Yoyakîn (cage, exil, voix éteinte puis relevée) ou Sédécias (filet, fosse, forteresse aveugle) — la fiche assume le flou volontaire (deux captures, un même filet babylonien) ; « veuves/palais » (v. 7, ALMENOTAV) : sens incertain (veuves multipliées ou palais connus/détruits) — les deux lectures convergent vers la dévastation ; QINAH sur des impies : Dieu ordonne le deuil de la royauté déchue — paradoxe assumé (jugement pleuré, pas applaudi).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Yoachaz → Égypte</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Yoyakîn/Sédécias → Babylone</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597/587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vigne arrachée ; sceptre brisé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/49">Bible — Genèse 49 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/49</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/12/23">Bible — 2 Rois 23 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/12/23</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/7">Bible — Daniel 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/7</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ325 — « La lionne et ses lionceaux » : complainte sur les princes</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ326">
+<div class="visuel"><img src="images/prophe_EZ326_rebelles.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ326 · CATÉGORIE EZ</div>
+<h3>« Ils n'entreront pas » : les rebelles purgés au désert des peuples</h3>
+<div class="ref">Ézéchiel 20:1-38</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">rebelles purgés pays refusé (septième → année → cinquième → mois → dixième → vinrent → anciens → Israël → consulter → assirent → parole → laisserai → consulter → vivant → laisserai → consulter → jugeras → connaître → abominations → pères → jour → choisis → Israël → levai → main → descendance → Jacob → connaître → Égypte → levai → main → Jéhovah → Dieu → jour → levai → main → sortir → Égypte → pays → exploré → lait → miel → beau → dis → rejetez → abominations → yeux → souillez → idoles → Égypte → rebellèrent → écouter → rejetèrent → quittèrent → verser → fureur → consommer → colère → Égypte → agis → nom → profané → yeux → nations → connaître → sortir → sortir → désert → donnai → statuts → connaître → lois → pratiquer → vivre → donnai → sabbats → signe → sanctifie → rebellèrent → désert → statuts → lois → sabbats → verser → fureur → exterminer → désert → retirai → main → agis → nom → profané → yeux → nations → sortir → levai → main → désert → disperser → nations → disséminer → pays → lois → statuts → sabbats → yeux → idoles → pères → donnai → statuts → bons → lois → vivraient → souillai → offrandes → premier-né → dévaster → saurez → souillez → pères → prostituez → infamies → offrandes → fils → feu → souillez → idoles → laisserais → consulter → vivant → laisserai → consulter → esprit → arrivera → nations → familles → pays → bois → pierre → vivant → règne → main → forte → bras → étendu → fureur → répandue → sortir → peuples → rassemblerai → pays → dispersés → main → forte → bras → étendu → fureur → répandue → amènerai → désert → peuples → jugement → face → face → pères → désert → Égypte → passer → verge → lien → alliance → séparerai → rebelles → révoltés → sortir → séjournent → entreront → terre → Israël → saurez)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ326 · 0:14</div><audio controls preload="none" src="audio/fiche_EZ326_rebelles.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ326_rebelles.mp3 · 0:14 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 20:1-38</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>rebelles purgés pays refusé (septième → année → cinquième → mois → dixième → vinrent → anciens → Israël → consulter → assirent → parole → laisserai → consulter → vivant → laisserai → consulter → jugeras → connaître → abominations → pères → jour → choisis → Israël → levai → main → descendance → Jacob → connaître → Égypte → levai → main → Jéhovah → Dieu → jour → levai → main → sortir → Égypte → pays → exploré → lait → miel → beau → dis → rejetez → abominations → yeux → souillez → idoles → Égypte → rebellèrent → écouter → rejetèrent → quittèrent → verser → fureur → consommer → colère → Égypte → agis → nom → profané → yeux → nations → connaître → sortir → sortir → désert → donnai → statuts → connaître → lois → pratiquer → vivre → donnai → sabbats → signe → sanctifie → rebellèrent → désert → statuts → lois → sabbats → verser → fureur → exterminer → désert → retirai → main → agis → nom → profané → yeux → nations → sortir → levai → main → désert → disperser → nations → disséminer → pays → lois → statuts → sabbats → yeux → idoles → pères → donnai → statuts → bons → lois → vivraient → souillai → offrandes → premier-né → dévaster → saurez → souillez → pères → prostituez → infamies → offrandes → fils → feu → souillez → idoles → laisserais → consulter → vivant → laisserai → consulter → esprit → arrivera → nations → familles → pays → bois → pierre → vivant → règne → main → forte → bras → étendu → fureur → répandue → sortir → peuples → rassemblerai → pays → dispersés → main → forte → bras → étendu → fureur → répandue → amènerai → désert → peuples → jugement → face → face → pères → désert → Égypte → passer → verge → lien → alliance → séparerai → rebelles → révoltés → sortir → séjournent → entreront → terre → Israël → saurez)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P326 (20:1-38 : rebelles exclus, rassemblement) ; Éz 20:38 ; retour 537 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« SEPTIÈME… ANNÉE… CINQUIÈME… MOIS… DIXIÈME… VINRENT… ANCIENS… CONSULTER… ASSIRENT… PAROLE… LAISSERAI… CONSULTER… VIVANT… LAISSERAI… QUATORZE… AOÛT… CINQ-CENT-QUATRE-VINGT-ONZE… DATE… PRÉCISE… PROCÈS-VERBAL… DEUXIÈME… DÉLÉGATION… QUATORZE… UN… DÉJÀ… REFUSÉE… RÉCIDIVE… CONSULTANTS… ENTÊTÉS… IDOLES… CŒUR… TOUJOURS… VERDICT… IDENTIQUE… AGGRAVÉ… MOTIVÉ… HISTOIRE… LONGUE. » (20:1-3 — longue !)</li>
+<li>« CHOISIS… LEVAI… MAIN… DESCENDANCE… CONNAÎTRE… ÉGYPTE… SORTIR… PAYS… EXPLORÉ… LAIT… MIEL… BEAU… REJETEZ… ABOMINATIONS… SOUILLEZ… REBELLÈRENT… ÉCOUTER… FUREUR… AGIS… NOM… PROFANÉ… NATIONS… TUR… EXPLORER… ÉCLAIREUR… DIVIN… CANAAN… RECONNUE… TSEBI… BEAUTÉ… FLEUR… PAYS… ÉGYPTE… DÉJÀ… REBELLES… IDOLES… NIL… CONSERVÉES… NOM… SAUVE… SEUL… MOTIF… GRÂCE… SOUVERAINE. » (20:4-9 — souveraine !)</li>
+<li>« DÉSERT… STATUTS… LOIS… VIVRE… SABBATS… SIGNE… SANCTIFIE… REBELLÈRENT… REJETÈRENT… PROFANÈRENT… FUREUR… EXTERMINER… RETIRAI… MAIN… NOM… NATIONS… SORTIR… SHABBATOT… PLURIEL… HEBDOMADAIRE… ANNUELS… SABBATIQUES… JUBILÉ… CALENDRIER… SAINT… COMPLET… SIGNE… ALLIANCE… EXODE… TRENTE-ET-UN… TREIZE… PROFANÉ… NOM… SAUVE… DEUXIÈME… FOIS… PATIENCE… INEXPLICABLE. » (20:10-17 — inexplicable !)</li>
+<li>« FILS… REBELLÈRENT… DISPERSER… NATIONS… DISSÉMINER… PAYS… YEUX… IDOLES… STATUTS… BONS… VIVRAIENT… SOUILLAI… PREMIER-NÉ… DÉVASTER… SAUREZ… HUQQIM… LOIS… RAÏM… MAUVAISES… PARADOXE… DIEU… LIVRE… CULTES… ENFANTS… SACRIFIÉS… TOPHET… ANTICIPÉ… ENDURCISSEMENT… JUDICIAIRE… TROISIÈME… GÉNÉRATION… SERMENT… DISPERSION… LÉVITIQUE… VINGT-SIX… TRENTE-TROIS… EXIL… JURÉ… DÉSERT. » (20:18-26 — désert !)</li>
+<li>« SOUILLEZ… PÈRES… PROSTITUEZ… OFFRANDES… FILS… FEU… IDOLES… CONSULTER… VIVANT… ESPRIT… NATIONS… BOIS… PIERRE… BAMAH… HAUT… LIEU… MAH… QUOI… BA… VIENT… JEU… MOTS… QUOI… VIENT… LÀ… HAUTS… LIEUX… CANAAN… PROJET… ASSIMILATION… TOTALE… SOYONS… PAÏENS… DEMANDE… REJETÉE… AVANCE… RÈGNE… IMPOSÉ… CONVERSION… FORCÉE… EXIL… CREUSET. » (20:27-32 — creuset !)</li>
+<li>« RÈGNE… MAIN… FORTE… BRAS… ÉTENDU… FUREUR… SORTIR… PEUPLES… RASSEMBLERAI… DISPERSÉS… DÉSERT… PEUPLES… JUGEMENT… FACE… VERGE… LIEN… ALLIANCE… SÉPARERAI… REBELLES… RÉVOLTÉS… SORTIR… ENTRERONT… TERRE… ISRAËL… SAUREZ… MIDBAR… DÉSERT… AMMIM… PEUPLES… TRIBUNAL… NOMADE… SHEBET… HOULETTE… BERGER… COMPTE… BREBIS… SOIR… MASORET… LIEN… ALLIANCE… REBELLES… PURGÉS… CINQ-CENT-TRENTE-SEPT… REPENTANTS… MONTENT… QUARANTE-DEUX… MILLE… REBELLES… RESTENT… OUBLIÉS. » (20:33-38 — oubliés !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La DATE-REFUS (les VAYHI (les FUT (les BASHSHANAH (les ANNÉE (les HASHSHEBIÏT (les SEPTIÈME (les BAHAMISHI (les CINQUIÈME (les BEASOR (les DIXIÈME (les LAHODÉSH (les MOIS (les BAU (les VINRENT (les ANASHIM (les HOMMES (les MIZZIqNÉ (les ANCIENS (les YISRAÉL (les ISRAËL (les LIDROSH (les CONSULTER (les ET (les YEHOVAH (les VAYYESHBU (les ASSIRENT (les LEFANAY (les DEVANT (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les DABBÉR (les PARLE (les ET (les ZIQNÉ (les ANCIENS (les YISRAÉL (les ISRAËL (les VEAMARTA (les DIRAS (les ALÉHEM (les EUX (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les HALIDROSH (les CONSULTER (les OTTI (les MOI (les ATTEM (les VOUS (les BAÏM (les VENEZ (les HAY (les VIVANT (les ANI (les JE (les IM (les SI (les IDDARÉSH (les LAISSERAI (les LAKHEM (les VOUS (les NEUM (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les DATE (les ANCIENS (les REFUS — les JURÉ !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le NOM-ÉPARGNÉ (les BEYOM (les JOUR (les BAHARI (les CHOISIS (les BEYISRAÉL (les ISRAËL (les VAESSA (les LEVAI (les YADI (les MAIN (les LEZÉRA (les DESCENDANCE (les BÉYT (les MAISON (les YAAQOB (les JACOB (les VAIVVADA (les CONNAÎTRE (les LAHEM (les EUX (les BEÉRÉTS (les PAYS (les MITSeRAYIM (les ÉGYPTE (les VAESSA (les LEVAI (les YADI (les MAIN (les LAHEM (les EUX (les LÉMOR (les DISANT (les ANI (les JE (les YEHOVAH (les ÉLOHÉKHEM (les DIEU (les BAYYOM (les JOUR (les HAHU (les NASA’TI (les LEVAI (les YADI (les MAIN (les LAHEM (les EUX (les LEHOTSIAM (les SORTIR (les MÉÉRÉTS (les PAYS (les MITSeRAYIM (les ÉGYPTE (les EL (les ÉRÉTS (les PAYS (les ASHER (les QUE (les TARTI (les EXPLORÉ (les LAHEM (les EUX (les ZABAT (les RUISSELANT (les HALAB (les LAIT (les UDEBASH (les MIEL (les TSEBI (les BEAU (les HI (les LEKHOL (les TOUS (les HAARATSOT (les PAYS (les ÉGYPTE (les LAIT (les MIEL — les EXPLORÉ !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le DÉSERT-TRIBUNAL (les RÉBELLION (les ÉGYPTE (les NOM (les SAUVE (les RÉBELLION (les DÉSERT (les NOM (les SAUVE (les RÉBELLION (les FILS (les DISPERSION (les JURÉE (les RÉBELLION (les CANAAN (les BAMAH (les PROJET (les PAÏEN (les REFUSÉ (les REFUS (les CONSULTATION (les RÉPÉTÉ (les VIVANT (les JE (les RÈGNERAI (les MAIN (les FORTE (les BRAS (les ÉTENDU (les FUREUR (les SORTIRAI (les PEUPLES (les RASSEMBLERAI (les PAYS (les DÉSERT (les PEUPLES (les JUGEMENT (les FACE (les VERGE (les SHEBET (les LIEN (les MASORET (les ALLIANCE (les PURGERAI (les REBELLES (les MORADIM (les RÉVOLTÉS (les POSHEÏM (les SORTIRAI (les SÉJOUR (les ENTRERONT (les NON (les TERRE (les ISRAËL (les SAUREZ (les JÉHOVAH (les CINQ-CENT-TRENTE-SEPT (les REPENTANTS (les MONTENT (les REBELLES (les RESTENT (les DÉSERT — les TRIBUNAL !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">20:1-3</td><td>LONGUE (AN-7 !)</td></tr>
+<tr><td class="d">20:4-9</td><td>SOUVERAINE (TUR !)</td></tr>
+<tr><td class="d">20:10-17</td><td>INEXPLICABLE (SHABBATOT !)</td></tr>
+<tr><td class="d">20:18-26</td><td>DÉSERT (JURÉE !)</td></tr>
+<tr><td class="d">20:27-32</td><td>CREUSET (BAMAH !)</td></tr>
+<tr><td class="d">20:33-38</td><td>OUBLIÉS (MASORET !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>14 août 591 (an 7, v. 1) : seconde délégation refusée (cf. 14:1) — mais refus motivé par 35 versets d'histoire : Égypte rebelle, nom épargné (vv. 4-9, TUR/exploré, TSEBI/beau) ; désert rebelle (statuts-vie, SHABBATOT-signe), nom épargné (vv. 10-17) ; fils rebelles, dispersion jurée (vv. 18-26, statuts « non bons » = livraison judiciaire aux cultes meurtriers) ; Canaan rebelle (BAMAH, jeu de mots v. 29), projet « soyons comme les nations » rejeté (vv. 27-32) ; sentence : règne imposé à main forte (v. 33), rassemblement (v. 34), désert des peuples, jugement face à face (vv. 35-36), passage sous la verge, lien d'alliance MASORET (v. 37), purge : les rebelles sortent de leur séjour mais n'entrent PAS dans le pays (v. 38) ; 537 : les repentants montent (Esd 2:64-65), les rebelles restent — oubliés de l'histoire, exactement comme annoncé.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'Égypte (vv. 5-9) : idoles du Nil conservées ; le désert (vv. 10-26) : tribunal des pères ; Canaan explorée (v. 6, TUR) : « le plus beau des pays » ; le désert des peuples (v. 35, MIDBAR HAAMMIM) : lieu indéfini, partout et nulle part — le tribunal nomade suit les dispersés ; « ils n'entreront pas dans la terre » (v. 38) : la frontière comme couperet — des milliers d'exilés restent en Mésopotamie, leurs tombes s'y trouvent encore.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 20:38 + Esdras 2:64-65 — le PROCÈS-VERBAL (purge annoncée, 42 360 montants) ; Psaume 95:11 (nwt — « ils n'entreront pas dans mon repos », serment du désert) — le PRÉCÉDENT du refus d'entrée ; Psaume 106:26 (Rbi8 — « il leva la main : les faire tomber au désert ») — le SERMENT rappelé ; Matthieu 25:32-33 (nwt — le berger sépare brebis et chèvres) — la VERGE du Maître.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>591 : REFUS MOTIVÉ → ÉGYPTE/DÉSERT/FILS/CANAAN : 4 RÉBELLIONS → NOM ÉPARGNÉ ×3, DISPERSION JURÉE → RÈGNE IMPOSÉ → DÉSERT DES PEUPLES → VERGE → REBELLES EXCLUS → 537 : REPENTANTS MONTENT</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Statuts non bons » (vv. 25-26) : paradoxe assumé (livraison judiciaire, cf. Ps 81:13, Rm 1:24) — Dieu ne commande pas le mal, il y livre ; BAMAH (v. 29) : jeu de mots (BAH-MAH, « quoi-y-vient ») — étymologie populaire du prophète, pas linguistique ; la purge (v. 38) : accomplie en 537 par les non-retours — identification collective (les restés), pas listes nominatives ; le désert des peuples : horizon 537 + échos futurs (le tri continue) — la fiche suit le registre (Accomplie).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Refus motivé ; histoire</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 août 591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Désert des peuples ; verge</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">591-537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Repentants montent ; rebelles restent</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/95">Bible — Psaume 95 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/95</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/19/106">Bible — Psaume 106 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/19/106</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/25">Bible — Matthieu 25 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/25</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ326 — « Ils n'entreront pas » : les rebelles purgés au désert des peuples</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ327">
+<div class="visuel"><img src="images/prophe_EZ327_foret.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ327 · CATÉGORIE EZ</div>
+<h3>« La forêt du sud » : le feu de TÉMAN-SUD à DAROM</h3>
+<div class="ref">Ézéchiel 20:45-49</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">forêt sud feu consumée (tourne → face → sud → distille → sud → prophétise → forêt → champs → sud → forêt → sud → écoute → parole → allume → feu → dévorera → arbre → vert → arbre → sec → flamme → flambante → éteindra → visages → sud → nord → brûlés → chair → verra → allumé → éteindra → dis → disent → paraboles)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ327 · 0:14</div><audio controls preload="none" src="audio/fiche_EZ327_foret.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ327_foret.mp3 · 0:14 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 20:45-49</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>forêt sud feu consumée (tourne → face → sud → distille → sud → prophétise → forêt → champs → sud → forêt → sud → écoute → parole → allume → feu → dévorera → arbre → vert → arbre → sec → flamme → flambante → éteindra → visages → sud → nord → brûlés → chair → verra → allumé → éteindra → dis → disent → paraboles)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P327 (20:45-49 : le feu dans la forêt du sud) ; Jr 52:12-13 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« TOURNE… FACE… SUD… DISTILLE… SUD… PROPHÉTISE… FORÊT… CHAMPS… SUD… TÉMAN-SUD… DAROM… NÉGUEV… TROIS… MOTS… SUD… TRIPLE… EMPHASE… GÉOGRAPHIE… SACRÉE… BABYLONE… NORD… JUDA… SUD… PROPHÈTE… PIVOTE… CORPS… ENTIER… BOUSSOLE… HUMAINE… DOIGT… JÉRUSALEM… SEPT… CENTS… KILOMÈTRES… VISEUR… PROPHÉTIQUE… RÉGLÉ. » (20:46 — réglé !)</li>
+<li>« FORÊT… SUD… ÉCOUTE… PAROLE… ALLUME… FEU… DÉVORERA… ARBRE… VERT… ARBRE… SEC… YAAR… FORÊT… PEUPLE… MASSIF… ARBRES… INDIVIDUS… VERT… JUSTE… SEC… IMPIE… FEU… GUERRE… NÉBUCADNETSAR… TORCHE… DIVINE… VERT… SEC… MÊME… DESTIN… GUERRE… AVEUGLE… JUSTES… EMPORTÉS… EXIL… SECS… CONSUMÉS… COLÈRE. » (20:47 — colère !)</li>
+<li>« FLAMME… FLAMBANTE… ÉTEINDRA… LAHABAT… SHALHÉBÉT… FLAMME… FLAMBOIEMENT… REDOUBLEMENT… SUPERLATIF… HÉBREU… BRASIER… ABSOLU… INEXTINGUIBLE… POMPIERS… INUTILES… ÉGYPTE… SECOURS… MANQUÉ… ALLIANCES… EAU… FEU… HUILE… NÉGOCIATIONS… SÉDÉCIAS… DERNIÈRE… HEURE… VAINES… PROPHÈTES… MENSONGE… ARROSOIRS… PERCÉS. » (20:47 — percés !)</li>
+<li>« VISAGES… SUD… NORD… BRÛLÉS… CHAIR… VERRA… ALLUMÉ… ÉTEINDRA… BEER-SHÉBA… DAN… EN… SENS… INVERSE… NÉGUEV… GALILÉE… PAYS… ENTIER… LONGUEUR… COMPLET… PANIM… FACES… SURFACES… ÉCORCES… FEUILLES… TOUT… BRÛLE… DEHORS… DEDANS… CHAIR… TÉMOIN… UNIVERSELLE… SIGNATURE… DIVINE… INCENDIE… CRIMINEL… ASSUMÉ… DIEU… PYROMANE… JUSTE. » (20:47-48 — juste !)</li>
+<li>« DIS… DISENT… PARABOLES… AH… SOUPIR… PROPHÈTE… LAS… MESHALIM… ÉNIGMES… DEVINETTES… PUBLIC… MOQUEUR… PARLE… TOUJOURS… CODES… FORÊT… SUD… COMPREND… RIEN… DEMANDE… CLARTÉ… RÉPONSE… CHAPITRE… VINGT-ET-UN… ÉPÉE… JÉRUSALEM… LANGAGE… ORDINAIRE… SANS… IMAGES… SANGlant… DIRECT… PLAINTES… EXAUCÉES… REGRETS… ÉTERNELS. » (20:49 — éternels !)</li>
+<li>« JÉRÉMIE… CINQUANTE-DEUX… DOUZE… TREIZE… DIX-NEUVIÈME… ANNÉE… NÉBUCADNETSAR… CINQUIÈME… MOIS… DIXIÈME… JOUR… NÉBUZARADAN… VINT… JÉRUSALEM… BRÛLA… MAISON… JÉHOVAH… MAISON… ROI… MAISONS… GRANDES… FEU… DIX… AOÛT… CINQ-CENT-QUATRE-VINGT-SEPT… FORÊT… SUD… BRASIER… CONSTATÉ… PROCÈS-VERBAL… CENDRES… FUMANTES. » (Jr 52 — fumantes !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le TRIPLE-SUD (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les SIM (les TOURNE (les PHANÉKHA (les FACE (les DÉREKH (les VERS (les TÉMAN-SUD (les SUD (les VEHATTÉPH (les DISTILLE (les EL (les DAROM (les SUD (les VEHINNABÉ (les PROPHÉTISE (les EL (les YAAR (les FORÊT (les SEDEH (les CHAMPS (les HANNÉGUEV (les SUD (les TÉMAN-SUD (les DAROM (les NÉGUEV (les TROIS (les SYNONYMES (les EMPHASE (les TOTALE (les JUDA (les VISÉE (les BABYLONE (les DOS (les FACE (les JÉRUSALEM (les CORPS (les BOUSSOLE (les GÉOGRAPHIE (les ORACLE (les TRIPLE (les SUD (les FORÊT — les VISÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le BRASIER-INEXTINGUIBLE (les VEAMARTA (les DIRAS (les LEYAAR (les FORÊT (les HANNÉGUEV (les SUD (les SHEMA (les ÉCOUTE (les DEBAR (les PAROLE (les YEHOVAH (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les HINENI (les VOICI (les MATSSIT (les ALLUME (les BEKH (les TOI (les ÉSH (les FEU (les VEAKHELAH (les DÉVORERA (les BEKH (les TOI (les KOL (les TOUT (les ÉTS (les ARBRE (les LAH (les VERT (les VEKHOL (les TOUT (les ÉTS (les ARBRE (les YABÉSH (les SEC (les LO (les NON (les TIKHBEH (les ÉTEINDRA (les LAHÉBÉT (les FLAMME (les SHALHÉBÉT (les FLAMBOIEMENT (les VENITSRABU (les BRÛLÉS (les BAH (les ELLE (les KHOL (les TOUS (les PANIM (les VISAGES (les MINNÉGUEV (les SUD (les TSAPHONAH (les NORD (les VERA U (les VERRA (les KHOL (les TOUTE (les BASAR (les CHAIR (les KI (les QUE (les ANI (les JE (les YEHOVAH (les HITSsATTIHA (les ALLUMÉ (les LO (les NON (les TIKHBEH (les ÉTEINDRA (les VERT (les SEC (les SUD-NORD — les BRASIER !)</p>
+<h4>5 · Interprétation</h4>
+<p>La PLAINTE-EXAUCÉE (les AH (les AHAD (les SOUPIR (les ADONAY (les SOUVERAIN (les YEHOVIH (les OMRIM (les DISENT (les LI (les MOI (les HALO (les NON (les MESHALIM (les PARABOLES (les HU (les IL (les MEMASHSHÉL (les PARLE (les PROPHÈTE (les LAS (les MOQUERIES (les TOUJOURS (les IMAGES (les FORÊT (les AIGLES (les VIGNE (les MARMITES (les JAMAIS (les CLAIR (les DEMANDE (les SIMPLICITÉ (les RÉPONSE (les CHAPITRE (les VINGT-ET-UN (les ÉPÉE (les JÉRUSALEM (les JUSTE (les MÉCHANT (les RETRANCHÉS (les LANGAGE (les ORDINAIRE (les DIRECT (les SANGLANT (les VERT (les JUSTE (les SEC (les MÉCHANT (les CLÉ (les FOURNIE (les LUC (les VINGT-TROIS (les TRENTE-ET-UN (les BOIS (les VERT (les SEC (les JÉSUS (les CROIX (les REPREND (les PARABOLE (les PLAINTE — les EXAUCÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">20:46</td><td>RÉGLÉ (TÉMAN-SUD !)</td></tr>
+<tr><td class="d">20:47a</td><td>COLÈRE (YAAR !)</td></tr>
+<tr><td class="d">20:47b</td><td>PERCÉS (SHALHÉBÉT !)</td></tr>
+<tr><td class="d">20:47c-48</td><td>JUSTE (PANIM !)</td></tr>
+<tr><td class="d">20:49</td><td>ÉTERNELS (MESHALIM !)</td></tr>
+<tr><td class="d">Jr52</td><td>FUMANTES (AOÛT !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>591 : le prophète pivote vers le sud — TÉMAN-SUD, DAROM, NÉGUEV, triple synonyme, triple emphase (v. 46, HATTÉPH/distille comme Am 7:16, Mi 2:6) ; la forêt (YAAR = Juda, arbres = habitants, vert = justes, sec = impies) s'embrase d'un feu inextinguible (LAHABAT SHALHÉBÉT, v. 47), du Néguev au nord (Beer-Shéba→Dan inversé), toute chair témoin de l'allumage divin (v. 48) ; soupir du prophète : « ils disent : paraboles ! » (v. 49, MESHALIM) — réponse : Éz 21 en langage ordinaire (épée, Jérusalem nommée) ; 10 août 587 : Nébuzaradan brûle maison de Dieu, maison du roi, toutes les grandes maisons (Jr 52:12-13) — la forêt du sud en cendres fumantes.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Tel-Abib→Jérusalem : ~700-1 000 km vers le sud-sud-ouest — le corps du prophète comme boussole (v. 46) ; le NÉGUEV (v. 46-47, HANNÉGUEV avec article = région du sud) : de Beer-Shéba aux forêts de Judée ; « du sud au nord » (v. 47) : l'incendie parcourt tout le pays, Dan→Beer-Shéba inversé en Néguev→Tsaphon ; la forêt des champs (YAAR SÉDÉH) : les massifs boisés de Judée + la population — double lecture assumée par le texte (arbres/hommes).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Jérémie 52:12-13 — le PROCÈS-VERBAL (date, officier, triple incendie) ; Psaume 83:15 (nwt — « comme le feu dévore la forêt ») — la FORMULE du brasier forestier ; Joël 2:3 (nwt — « devant lui un feu dévore ») + Jérémie 11:16 (nwt — « grand fracas, il a embrasé » l'olivier) — le CHŒUR des incendies divins ; Luc 23:31 (« bois vert… sec ») — la REPRISE du Maître en route vers la croix.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>591 : PIVOT VERS LE SUD (TÉMAN-SUD/DAROM/NÉGUEV) → FORÊT EMBRASÉE (VERT + SEC) → INEXTINGUIBLE → PLAINTE « PARABOLES ! » → ÉZ 21 EN CLAIR → 10 AOÛT 587 : TRIPLE INCENDIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Vert/sec (v. 47) : justes et impies emportés ensemble par la guerre — non pas égalité morale mais indiscernement du fléau (cf. 21:3, « le juste et le méchant ») ; la plainte (v. 49) : fatigue authentique du prophète, pas mise en scène — Dieu y répond par la clarté d'Éz 21 ; forêt = Juda : identification contextuelle (suite Éz 21:2, « tourne ta face vers Jérusalem ») — le texte la confirme lui-même.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pivot sud ; forêt embrasée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Plainte ; Éz 21 en clair</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">591</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Triple incendie</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">10 août 587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/83">Bible — Psaume 83 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/83</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/29/2">Bible — Joël 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/29/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/11">Bible — Jérémie 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/11</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ327 — « La forêt du sud » : le feu de TÉMAN-SUD à DAROM</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ328">
+<div class="visuel"><img src="images/prophe_EZ328_epee.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ328 · CATÉGORIE EZ</div>
+<h3>« L'épée est aiguisée » : la croisée des chemins tranche pour Jérusalem</h3>
+<div class="ref">Ézéchiel 21:1-32</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">épée croisée Jérusalem tranche (tourne → face → Jérusalem → distille → sanctuaires → prophétise → terre → Israël → viens → tirerai → épée → fourreau → retrancherai → juste → méchant → épée → sortira → chair → sud → nord → chair → saura → tiré → retournera → gémis → bris → reins → amertume → gémis → yeux → diront → gémis → nouvelle → vient → cœur → fondra → mains → faibliront → esprit → éteindra → genoux → fondront → vient → arrive → prophétise → épée → aiguisée → fourbie → égorger → aiguisée → briller → éclair → fourbie → réjouirons → sceptre → fils → méprise → bois → fourbir → main → épée → aiguisée → fourbie → main → tueur → crie → hurle → peuple → princes → Israël → livrés → épée → peuple → frappe → cuisse → épreuve → sceptre → méprisant → prophétise → frappe → mains → épée → double → triple → tués → grande → entoure → fondre → cœur → chute → épée → menaçante → portes → briller → aiguisée → égorger → droite → gauche → face → destinée → frapperai → mains → assouvirai → fureur → trace → chemins → épée → roi → Babylone → pays → poteau → indicateur → entrée → chemin → ville → dispose → chemin → épée → Rabba → Ammonites → chemin → Juda → Jérusalem → forte → roi → Babylone → embranchement → tête → chemins → divination → secoue → flèches → interroge → théraphim → examine → foie → droite → divination → Jérusalem → béliers → bouche → carnage → voix → guerre → remblais → forts → yeux → divination → vaine → serments → rappellera → faute → pris → rappelez → faute → transgressions → péchés → actions → rappelés → pris → main → profane → méchant → prince → Israël → jour → faute → finale → tiare → couronne → abaisse → haut → élève → bas → ruine → ruine → ruine → ruine → vienne → droit → donnerai → Ammonites → opprobre → épée → tirée → fourbie → égorger → dévorer → briller → visions → vaines → devinent → mensonge → cous → tués → méchants → jour → faute → finale → fourreau → créé → origine → jugerai → répandrai → indignation → soufflerai → feu → fureur → livrerai → brutaux → destruction → feu → proie → sang → pays → souviendra)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ328 · 0:12</div><audio controls preload="none" src="audio/fiche_EZ328_epee.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ328_epee.mp3 · 0:12 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 21:1-32</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>épée croisée Jérusalem tranche (tourne → face → Jérusalem → distille → sanctuaires → prophétise → terre → Israël → viens → tirerai → épée → fourreau → retrancherai → juste → méchant → épée → sortira → chair → sud → nord → chair → saura → tiré → retournera → gémis → bris → reins → amertume → gémis → yeux → diront → gémis → nouvelle → vient → cœur → fondra → mains → faibliront → esprit → éteindra → genoux → fondront → vient → arrive → prophétise → épée → aiguisée → fourbie → égorger → aiguisée → briller → éclair → fourbie → réjouirons → sceptre → fils → méprise → bois → fourbir → main → épée → aiguisée → fourbie → main → tueur → crie → hurle → peuple → princes → Israël → livrés → épée → peuple → frappe → cuisse → épreuve → sceptre → méprisant → prophétise → frappe → mains → épée → double → triple → tués → grande → entoure → fondre → cœur → chute → épée → menaçante → portes → briller → aiguisée → égorger → droite → gauche → face → destinée → frapperai → mains → assouvirai → fureur → trace → chemins → épée → roi → Babylone → pays → poteau → indicateur → entrée → chemin → ville → dispose → chemin → épée → Rabba → Ammonites → chemin → Juda → Jérusalem → forte → roi → Babylone → embranchement → tête → chemins → divination → secoue → flèches → interroge → théraphim → examine → foie → droite → divination → Jérusalem → béliers → bouche → carnage → voix → guerre → remblais → forts → yeux → divination → vaine → serments → rappellera → faute → pris → rappelez → faute → transgressions → péchés → actions → rappelés → pris → main → profane → méchant → prince → Israël → jour → faute → finale → tiare → couronne → abaisse → haut → élève → bas → ruine → ruine → ruine → ruine → vienne → droit → donnerai → Ammonites → opprobre → épée → tirée → fourbie → égorger → dévorer → briller → visions → vaines → devinent → mensonge → cous → tués → méchants → jour → faute → finale → fourreau → créé → origine → jugerai → répandrai → indignation → soufflerai → feu → fureur → livrerai → brutaux → destruction → feu → proie → sang → pays → souviendra)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P328 (21:1-32 : épée, croisée des chemins, Ammon) ; 2R 25:1-11 ; Éz 21:19-22, 28-32 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« TOURNE… FACE… JÉRUSALEM… DISTILLE… SANCTUAIRES… PROPHÉTISE… TERRE… ISRAËL… VIENS… TIRERAI… ÉPÉE… FOURREAU… RETRANCHERAI… JUSTE… MÉCHANT… HINENI… ME VOICI… CONTRE… TOI… HÉRÉB… LAME… NÉDANAH… FOURREAU… GAINÉE… DÉGAINÉE… TSADDIQ… RASHA… JUSTE… MÉCHANT… MÊME… TRANCHANT… GUERRE… INDISTINCTE… EXIL… JUSTES… MORT… MÉCHANTS… MOISSON… AVEUGLE… FAULX… GUERRE. » (21:1-4 — guerre !)</li>
+<li>« GÉMIS… BRIS… REINS… AMERTUME… YEUX… DIRONT… GÉMIS… NOUVELLE… VIENT… CŒUR… FONDRA… MAINS… FAIBLIRONT… ESPRIT… ÉTEINDRA… GENOUX… FONDONT… ANAH… GÉMISSEMENT… MOTE… REINS… BRISÉS… LOMBALGIE… PROPHÉTIQUE… SPECTACLE… RUE… TEL-ABIB… HOMME… PLIÉ… DEUX… QUESTION… INÉVITABLE… POURQUOI… RÉPONSE… NOUVELLE… VIENT… SHEMUAAH… ANNONCE… MAUVAISE… EFFONDREMENT… COLLECTIF… ANATOMIE… PEUR. » (21:6-7 — peur !)</li>
+<li>« ÉPÉE… AIGUISÉE… FOURBIE… ÉGORGER… BRILLER… ÉCLAIR… RÉJOUIRONS… SCEPTRE… FILS… MÉPRISE… BOIS… HEDDAH… AIGUISER… MORAT… FOURBIR… POLIR… MIROIR… TABBAH… ÉGORGEMENT… BOUCHERIE… GUERRE… SHEBET… BENI… SCEPTRE… FILS… JUDA… DAVID… MAAS… MÉPRISE… BOIS… ORDINAIRE… ORGUEIL… ROYAL… MOQUÉ… LAME… SUPÉRIEURE… TRÔNE… INFÉRIEUR… HIÉRARCHIE… INVERSÉE. » (21:9-10 — inversée !)</li>
+<li>« CRIE… HURLE… PEUPLE… PRINCES… LIVRÉS… FRAPPE… CUISSE… ÉPREUVE… SCEPTRE… MÉPRISANT… FRAPPE… MAINS… DOUBLE… TRIPLE… TUÉS… GRANDE… ENTOURE… YAD… CUISSE… FRAPPÉE… DEUIL… JÉRÉMIE… TRENTE-ET-UN… DIX-NEUF… GESTE… FUNÈBRE… KAP… PAUMES… FRAPPÉES… APPLAUDISSEMENT… JUGEMENT… DIEU… MÊME… FRAPPE… MAINS… DIX-SEPT… COLÈRE… RYTHMÉE… ÉPÉE… MULTIPLIÉE… MIROIR… REFLETS… MORTELS. » (21:12-14 — mortels !)</li>
+<li>« TRACE… CHEMINS… ÉPÉE… ROI… BABYLONE… PAYS… POTEAU… INDICATEUR… RABBA… AMMONITES… JUDA… JÉRUSALEM… FORTE… EMBRANCHEMENT… DIVINATION… FLÈCHES… THÉRAPHIM… FOIE… DROITE… JÉRUSALEM… BÉLIERS… BOUCHE… CARNAGE… VOIX… REMBLAIS… FORTS… YAD… POTEAU… MAIN… INDICATRICE… MÈRE… ROUTES… DAMAS… RIBLA… CARREFOUR… NÉBUCADNETSAR… HÉSITE… RABBA… EST… JÉRUSALEM… SUD-OUEST… BELOmANCIE… FLÈCHES… SECOUÉES… HÉPATOSCOPIE… FOIE… LU… THÉRAPHIM… CONSULTÉS… DROITE… JÉRUSALEM… SORT… DIVIN… PIPÉ… DÉS… CÉLESTES… TRUQUÉS. » (21:18-22 — truqués !)</li>
+<li>« TIARE… COURONNE… ABAISSE… HAUT… ÉLÈVE… BAS… RUINE… RUINE… RUINE… VIENNE… DROIT… DONNERAI… AMMONITES… OPPROBRE… ÉPÉE… TIRÉE… FOURBIE… VISIONS… VAINES… COUS… TUÉS… FOURREAU… CRÉÉ… ORIGINE… JUGERAI… INDIGNATION… FEU… BRUTAUX… PROIE… SANG… SOUVIENDRA… TSANIPH… TURBAN… SACERDOTAL… ATARAH… COURONNE… ROYALE… DOUBLE… DÉPOSITION… PRÊTRE… ROI… AVVAH… RUINE… TROIS… FOIS… SUPERLATIF… ABSOLU… ASHER-LO… CELUI… MISHPAT… DROIT… LÉGAL… SHILOH… GENÈSE… QUARANTE-NEUF… DIX… MÊME… ATTENTE… AMMON… MOQUÉE… ENSUITE… JUGÉE… FEU… OUBLI… TOTAL. » (21:25-32 — total !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>L'ÉPÉE-DÉGAINÉE (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les SIM (les TOURNE (les PHANÉKHA (les FACE (les EL (les YERUSHALAYIM (les JÉRUSALEM (les VEHATTÉPH (les DISTILLE (les EL (les MIQDASHIM (les SANCTUAIRES (les VEHINNABÉ (les PROPHÉTISE (les EL (les ADMAT (les TERRE (les YISRAÉL (les ISRAËL (les VEAMARTA (les DIRAS (les LEADMAT (les TERRE (les YISRAÉL (les ISRAËL (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les HINENI (les VOICI (les ÉLÉKHA (les TOI (les VEHOTSETI (les TIRERAI (les HARBI (les ÉPÉE (les MITTAaRAH (les FOURREAU (les VEHIKHRATTI (les RETRANCHERAI (les MIMMÉKH (les TOI (les TSADDIQ (les JUSTE (les VERASHA (les MÉCHANT (les ÉPÉE (les JUSTE (les MÉCHANT — les RETRANCHÉS !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La CROISÉE-TRANCHÉE (les SIM (les TRACE (les LEKHA (les TOI (les SHENAYIM (les DEUX (les DERAKHIM (les CHEMINS (les LABO (les VENIR (les HÉRÉB (les ÉPÉE (les MÉLÉKH (les ROI (les BABÉL (les BABYLONE (les MÉÉRÉTS (les PAYS (les ÉHAD (les MÊME (les YÉTSEU (les PARTENT (les SHENÉHEM (les DEUX (les VEYAD (les POTEAU (les BARA (les FAIS (les BEROSH (les ENTRÉE (les DÉREKH (les CHEMIN (les ÏR (les VILLE (les BARA (les FAIS (les DÉREKH (les CHEMIN (les LABO (les VENIR (les HÉRÉB (les ÉPÉE (les EL (les RABBAT (les RABBA (les BENÉ (les FILS (les AMMON (les AMMON (les VIHUDAH (les JUDA (les EL (les YERUSHALAYIM (les JÉRUSALEM (les BETSURAH (les FORTE (les KI (les CAR (les AMAD (les TIENT (les MÉLÉKH (les ROI (les BABÉL (les BABYLONE (les EL (les PÉRÉQ (les EMBRANCHEMENT (les HADDERAKHIM (les CHEMINS (les BEROSH (les TÊTE (les SHENÉ (les DEUX (les HADDERAKHIM (les CHEMINS (les LIQSAM (les DIVINATION (les QÉSÉM-SORT (les QILQAL (les SECOUE (les BAHITSTSIM (les FLÈCHES (les SHAAL (les INTERROGE (les BATTERAPHIM (les THÉRAPHIM (les RAAH (les EXAMINE (les BAKKABÉD (les FOIE (les CROISÉE (les FLÈCHES (les FOIE — les JÉRUSALEM !)</p>
+<h4>5 · Interprétation</h4>
+<p>La RUINE-TROIS (les DROITE (les JÉRUSALEM (les BÉLIERS (les KARIM (les BOUCHE (les CARNAGE (les VOIX (les TERUUAH (les REMBLAIS (les SOLELAH (les FORTS (les DAYÉQ (les SERMENTS (les NULS (les FAUTE (les RAPPELÉE (les PRIS (les MAIN (les PRINCE (les HALAL (les PROFANE (les RASHA (les MÉCHANT (les JOUR (les FAUTE (les FINALE (les TIARE (les HASIYR (les ÔTÉE (les COURONNE (les HURIYM (les ENLEVÉE (les BAS (les HAUT (les HAUT (les BAS (les RUINE (les AVVAH (les RUINE (les RUINE (les NE (les SERA (les PLUS (les VIENDRA (les ASHER-LO (les HAMMISHPAT (les DROIT (les DONNERAI (les AMMON (les MOQUÉE (les ÉPÉE (les TIRÉE (les VISIONS (les VAINES (les COUS (les TUÉS (les ORIGINE (les JUGÉE (les FEU (les PROIE (les OUBLI (les TOTAL (les CINQ-CENT-QUATRE-VINGT-HUIT (les SIÈGE (les DROITE (les VÉRIFIÉE (les RUINE — les TROIS !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">21:1-4</td><td>GUERRE (NÉDANAH !)</td></tr>
+<tr><td class="d">21:6-7</td><td>PEUR (ANAH !)</td></tr>
+<tr><td class="d">21:9-10</td><td>INVERSÉE (HEDDAH !)</td></tr>
+<tr><td class="d">21:12-14</td><td>MORTELS (KAP !)</td></tr>
+<tr><td class="d">21:18-22</td><td>TRUQUÉS (QÉSÉM-SORT !)</td></tr>
+<tr><td class="d">21:25-32</td><td>TOTAL (AVVAH !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>591 : réponse à la plainte « paraboles ! » (20:49) — langage ordinaire, Jérusalem nommée (v. 1) ; l'épée dégainée contre juste ET méchant (vv. 3-4), irréversible (v. 5) ; gémissement aux reins brisés, nouvelle qui fait fondre les cœurs (vv. 6-7, ANAH/MOTÉ) ; épée HEDDAH/MORAT, aiguisée-fourbie pour égorger-briller, le sceptre royal moqué (vv. 9-10) ; hurlements, cuisse frappée, paumes frappées (vv. 12-14, KAP — Dieu frappe aussi, v. 17) ; la croisée : deux chemins (Rabba/Jérusalem), poteau YAD (v. 19), bélomancie + théraphim + hépatoscopie (v. 21, QÉSÉM-SORT triple), la droite sort pour Jérusalem — béliers, remblais, forts (v. 22) ; prince HALAL déposé : tiare ôtée, couronne enlevée, AVVAH ×3 (vv. 25-27) jusqu'à ASHER-LO HAMMISHPAT (cf. Gn 49:10, Shiloh) ; Ammon moqueuse jugée à son tour, livrée au feu et à l'oubli (vv. 28-32) ; 588 : le siège vérifie la droite — 2R 25:1-11.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Du sud au nord » (v. 4) : toute la chair du pays sous la lame ; Rabba des Ammonites (v. 20, Amman) vs Jérusalem ville forte : les deux chemins partent du même pays (Babylone) — la route royale se divise vers l'est (Transjordanie) ou le sud-ouest (Juda) ; l'embranchement (PÉRÉQ HADDERAKHIM, v. 21) : probablement Ribla/Damas — QG de NéBUCADNETSAR ; Ammon « au lieu où tu as été créé » (v. 30) : jugée chez elle, jamais déportée avant — invasion totale, disparition comme nation.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>2 Rois 25:1-11 — le PROCÈS-VERBAL (siège, béliers, brèche, fuite, Ribla) ; Ézéchiel 21 (Rbi8 + nwtsty — double traduction : croisée, tiare ôtée, ruine ×3) — le TEXTE sous deux éclairages ; Deutéronome 32:41-42 (Rbi8 — « j'aiguiserai mon épée fulgurante ») — la SOURCE de la lame divine ; Genèse 49:10 (Shiloh, « celui à qui il appartient ») — la CLÉ d'ASHER-LO.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>591 : ÉPÉE DÉGAINÉE (JUSTE + MÉCHANT) → GÉMISSEMENT → AIGUISÉE-FOURBIE → CROISÉE : DROITE = JÉRUSALEM → TIARE ÔTÉE, AVVAH ×3 → 588 : SIÈGE → AMMON ENSUITE OUBLIÉE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Juste retranché avec le méchant (vv. 3-4) : indiscernement du fléau guerrier, pas négation d'Éz 18 (tribunal individuel) ni du marquage d'Éz 9 — les deux coexistent (exil des justes, mort des impies) ; ASHER-LO HAMMISHPAT (v. 27) : horizon messianique (Shiloh, Gn 49:10) — la fiche le signale, le registre classe Accomplie (siège) ; Ammon (vv. 28-32) : jugement post-587 (campagnes babyloniennes, puis arabes) — attesté globalement, pas daté au jour.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Épée dégainée ; croisée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège : droite vérifiée</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">janv. 588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Avvah ; Ammon oubliée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587–?</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/21">Bible — Ézékiel 21 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/21">Bible — Ézékiel 21 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/5/32">Bible — Deutéronome 32 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/5/32</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ328 — « L'épée est aiguisée » : la croisée des chemins tranche pour Jérusalem</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ329">
+<div class="visuel"><img src="images/prophe_EZ329_creuset.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ329 · CATÉGORIE EZ</div>
+<h3>« Je n'en ai pas trouvé » : le creuset et la brèche vide</h3>
+<div class="ref">Ézéchiel 22:1-31</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">ville sang creuset brèche jugée (jugeras → ville → sang → connaître → abominations → ville → verse → sang → milieu → temps → vienne → idoles → souiller → coupable → sang → versé → souillée → idoles → approcher → jours → parvenue → années → livrée → opprobre → nations → moquerie → pays → proches → lointaines → moqueront → souillée → nom → trouble → princes → Israël → bras → versé → sang → père → mère → méprisés → étranger → opprimé → orphelin → veuve → lésés → saintes → méprisées → sabbats → profanés → calomniateurs → sang → montagnes → mange → infamie → nudité → père → découverte → impure → humiliée → abomination → prochain → belle-fille → souille → sœur → humilie → présents → sang → intérêt → usure → profit → prochain → extorsion → oublié → frappe → mains → profit → sang → milieu → cœur → tiendra → mains → fortes → jours → agirai → parlé → agirai → disperserai → nations → disséminerai → pays → consumerai → souillure → profanée → yeux → nations → sauras → scories → bronze → étain → fer → plomb → creuset → argent → scories → rassemble → Jérusalem → argent → bronze → fer → plomb → étain → creuset → souffler → feu → fondre → colère → fureur → rassemblerai → mettrai → fondrai → rassemblerai → soufflerai → feu → fureur → fondus → milieu → argent → fond → creuset → fondrez → milieu → saurez → répands → fureur → pays → purifié → arrosé → colère → conjuration → prophètes → lion → rugissant → proie → âmes → trésors → richesses → veuves → prêtres → violent → loi → profanent → saintes → saint → profane → pur → impur → sabbats → profané → princes → loups → proie → sang → âmes → gain → prophètes → mortier → visions → vaines → divinations → mensongères → dit → parlé → peuple → pays → extorsion → rapine → malheureux → pauvre → étranger → droit → cherché → homme → muraille → brèche → pays → détruise → trouvé → répandrai → indignation → consumerai → feu → fureur → retomber → conduite → tête)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ329 · 0:12</div><audio controls preload="none" src="audio/fiche_EZ329_creuset.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ329_creuset.mp3 · 0:12 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 22:1-31</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>ville sang creuset brèche jugée (jugeras → ville → sang → connaître → abominations → ville → verse → sang → milieu → temps → vienne → idoles → souiller → coupable → sang → versé → souillée → idoles → approcher → jours → parvenue → années → livrée → opprobre → nations → moquerie → pays → proches → lointaines → moqueront → souillée → nom → trouble → princes → Israël → bras → versé → sang → père → mère → méprisés → étranger → opprimé → orphelin → veuve → lésés → saintes → méprisées → sabbats → profanés → calomniateurs → sang → montagnes → mange → infamie → nudité → père → découverte → impure → humiliée → abomination → prochain → belle-fille → souille → sœur → humilie → présents → sang → intérêt → usure → profit → prochain → extorsion → oublié → frappe → mains → profit → sang → milieu → cœur → tiendra → mains → fortes → jours → agirai → parlé → agirai → disperserai → nations → disséminerai → pays → consumerai → souillure → profanée → yeux → nations → sauras → scories → bronze → étain → fer → plomb → creuset → argent → scories → rassemble → Jérusalem → argent → bronze → fer → plomb → étain → creuset → souffler → feu → fondre → colère → fureur → rassemblerai → mettrai → fondrai → rassemblerai → soufflerai → feu → fureur → fondus → milieu → argent → fond → creuset → fondrez → milieu → saurez → répands → fureur → pays → purifié → arrosé → colère → conjuration → prophètes → lion → rugissant → proie → âmes → trésors → richesses → veuves → prêtres → violent → loi → profanent → saintes → saint → profane → pur → impur → sabbats → profané → princes → loups → proie → sang → âmes → gain → prophètes → mortier → visions → vaines → divinations → mensongères → dit → parlé → peuple → pays → extorsion → rapine → malheureux → pauvre → étranger → droit → cherché → homme → muraille → brèche → pays → détruise → trouvé → répandrai → indignation → consumerai → feu → fureur → retomber → conduite → tête)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P329 (22:1-31 : le creuset, la brèche vide) ; Jr 5:1 ; 2Ch 36:16 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« JUGERAS… VILLE… SANG… CONNAÎTRE… ABOMINATIONS… VERSE… MILIEU… TEMPS… IDOLES… SOUILLER… COUPABLE… OPPROBRE… MOQUERIE… DAMIM… SANGS… PLURIEL… MEURTRES… MULTIPLES… JUSTICE… EXPÉDITIVE… PROPHÈTES… ASSASSINÉS… URIE… JÉRÉMIE… VINGT-SIX… VINGT… ENFANTS… TOPHET… IDOLES… FABRIQUÉES… MAISON… ARTISANAT… RELIGIEUX… LOCAL… JOURS… APPROCHÉS… ÉCHÉANCE… AVANCÉE… FAUTE… HORLOGE… JUDICIAIRE… DÉTRAQUÉE. » (22:1-5 — détraquée !)</li>
+<li>« PRINCES… BRAS… SANG… PÈRE… MÈRE… ÉTRANGER… ORPHELIN… VEUVE… SAINTES… SABBATS… CALOMNIATEURS… MONTAGNES… INFAMIE… NUDITÉ… IMPURE… ABOMINATION… PROCHAIN… BELLE-FILLE… SŒUR… PRÉSENTS… INTÉRÊT… USURE… EXTORSION… OUBLIÉ… DÉCALOGUE… ENTIER… VIOLÉ… CINQ… SIX… SEPT… HUIT… NEUF… DIX… COMMANDEMENTS… PIÉTINÉS… CASCADE… HORREURS… FAMILIALES… SEXUELLES… ÉCONOMIQUES… CATALOGUE… ACCUSATION… TRIBUNAL… MINUTES… LOURDES… VERDICT… ÉVIDENT. » (22:6-12 — évident !)</li>
+<li>« FRAPPE… MAINS… PROFIT… SANG… CŒUR… TIENDRA… FORTES… AGIRAI… DISPERSERAI… NATIONS… DISSÉMINERAI… PAYS… SOUILLURE… PROFANÉE… SAURAS… MAKKAH… FRAPPE… PAUMES… INDIGNATION… GESTUELLE… CŒUR… LIBBEKHA… TIENDRA… YAAMOD… DEBOUT… CRASH… CARDIAQUE… ANNONCÉ… MAINS… MOLLES… JOUR… COLÈRE… DISPERSION… REMÈDE… DISSÉMINATION… PURGATION… SOUILLURE… CONSUMÉE… EXIL… DÉSINTOXICATION… FORCÉE. » (22:13-16 — forcée !)</li>
+<li>« SCORIES… BRONZE… ÉTAIN… FER… PLOMB… CREUSET… ARGENT… RASSEMBLE… JÉRUSALEM… SOUFFLER… FEU… FONDRE… COLÈRE… FUREUR… FONDUS… SAUREZ… SIGIM… DÉCHETS… MÉTALLURGIE… ALLIAGE… IMPIES… CINQ… MÉTAUX… VILS… ARGENT… NOBLE… PERDU… MASSIF… KUR… FOURNEAU… JÉRUSALEM… CREUSET… GÉANT… SIÈGE… SOUFFLET… BABYLONIEN… TEMPÉRATURE… FUSION… FONTE… TOTALE… CONNAISSANCE… DIEU… THERMIQUE… BRÛLANTE. » (22:17-22 — brûlante !)</li>
+<li>« PURIFIÉ… ARROSÉ… COLÈRE… CONJURATION… PROPHÈTES… LION… PROIE… ÂMES… TRÉSORS… VEUVES… PRÊTRES… LOI… SAINT… PROFANE… PUR… IMPUR… SABBATS… PRINCES… LOUPS… SANG… GAIN… MORTIER… VISIONS… DIVINATIONS… PEUPLE… EXTORSION… RAPINE… PAUVRE… ÉTRANGER… QUÉSHER… COMPLOT… SACERDOTAL… PROPHÉTIQUE… LIONS… RUGISSANTS… LOUPS… RAPACES… FAUNE… PRÉDATRICE… COMPLÈTE… PRÊTRES… AVEUGLES… VOLONTAIRES… YEUX… DÉTOURNÉS… SABBATS… PEUPLE… IMITE… ÉLITES… CORRUPTION… RUISSELLEMENT… VERS… BAS. » (22:23-29 — bas !)</li>
+<li>« CHERCHÉ… HOMME… MURAILLE… BRÈCHE… PAYS… DÉTRUISE… TROUVÉ… RÉPANDRAI… INDIGNATION… CONSUMERAI… FEU… RETOMBER… CONDUITE… TÊTE… BIQQÉS… CHERCHÉ… INSPECTION… DIVINE… RECENSEMENT… JUSTES… ZÉRO… TROUVÉ… GADÉR… MUR… PÉRÉTS… BRÈCHE… INFANTERIE… CÉLESTE… ASSAUT… MURAILLE… TROUÉE… DÉFENSEUR… MANQUANT… MOÏSE… EXODE… TRENTE-DEUX… PHINÉES… NOMBRES… VINGT-CINQ… ABSENTS… JÉRÉMIE… SEUL… INSUFFISANT… COLÈRE… RÉPANDUE… CONDUITE… RETOMBÉE… TÊTE… JUSTICE… GÉOMÉTRIQUE. » (22:30-31 — géométrique !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La VILLE-SANG (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les VEATTAH (les TOI (les BEN (les FILS (les ADAM (les HOMME (les HATISHPOT (les JUGERAS (les HATISHPOT (les JUGERAS (les ET (les ÏR (les VILLE (les HADDAMIM (les SANG (les VEHODATAH (les CONNAÎTRE (les OTAH (les ELLE (les ÉT (les KHOL (les TOUTES (les TOABOTÉHA (les ABOMINATIONS (les VEAMARTA (les DIRAS (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les ÏR (les VILLE (les SHOPHÉKHÉT (les VERSE (les DAM (les SANG (les BETOKHAH (les MILIEU (les LABO (les VENIR (les ÏTTAH (les TEMPS (les VEASOSAH (les FAIT (les GILLULIM (les IDOLES (les ALÉHA (les ELLE (les LETAAMEAH (les SOUILLER (les VILLE (les SANG (les IDOLES — les COUPABLE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les SCORIES-FONDUES (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les BÉYT (les MAISON (les YISRAÉL (les ISRAËL (les HAYU (les DEVENUE (les LI (les MOI (les LESIG (les SCORIES (les KULLAM (les TOUS (les NEHOSHÉT (les BRONZE (les UBEDIL (les ÉTAIN (les UBARZÉL (les FER (les VEOPHÉRÉT (les PLOMB (les BETOKH (les MILIEU (les KHUR (les CREUSET (les SIGIM (les SCORIES (les KHÉSÉPH (les ARGENT (les HAYU (les LAKHÉN (les CÈST POURQUOI (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les YAAN (les PUISQUE (les HEYOT (les DEVENUS (les KHULKHEM (les TOUS (les LESIG (les SCORIES (les LAKHÉN (les CÈST POURQUOI (les HINENI (les VOICI (les QOBÉTS (les RASSEMBLE (les ÉTKHEM (les VOUS (les EL (les MILIEU (les TOKHAH (les YERUSHALAYIM (les JÉRUSALEM (les SCORIES (les CINQ (les MÉTAUX — les FONDUES !)</p>
+<h4>5 · Interprétation</h4>
+<p>La BRÈCHE-VIDE (les PAYS (les NON-PURIFIÉ (les LOTOHARAH (les PLUIE (les ZAAM (les COLÈRE (les SÉCHERESSE (les DIVINE (les COMPLOT (les PROPHÈTES (les LIONS (les ARIÉH (les ÂMES (les DÉVORÉES (les TRÉSORS (les VEUVES (les PRÊTRES (les HAMAS (les VIOLENT (les TORAH (les SAINT (les PROFANE (les CONFONDUS (les SABBATS (les IGNORÉS (les PRINCES (les LOUPS (les ZÉÉBIM (les SANG (les GAIN (les BETSA (les MORTIER (les TAPHÉL (les VISIONS (les SHAW (les PEUPLE (les GEZÉL (les RAPINE (les PAUVRE (les ÉTRANGER (les CHERCHÉ (les BIQQÉS (les HOMME (les MUR (les GADÉR (les BRÈCHE (les PÉRÉTS (les TROUVÉ (les LO (les NON (les JÉRÉMIE (les CINQ (les UN (les COURS (les PLACES (les CHERCHEZ (les TROUVEZ (les NON (les CHRONIQUES (les TRENTE-SIX (les SEIZE (les MOQUAIENT (les MÉPRISAIENT (les TROMPAIENT (les PROPHÈTES (les FUREUR (les SANS-REMÈDE (les CINQ-CENT-QUATRE-VINGT-SEPT (les CREUSET (les ALLUMÉ (les BRÈCHE — les VIDE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">22:1-5</td><td>DÉTRAQUÉE (DAMIM !)</td></tr>
+<tr><td class="d">22:6-12</td><td>ÉVIDENT (DÉCALOGUE !)</td></tr>
+<tr><td class="d">22:13-16</td><td>FORCÉE (MAKKAH !)</td></tr>
+<tr><td class="d">22:17-22</td><td>BRÛLANTE (SIGIM !)</td></tr>
+<tr><td class="d">22:23-29</td><td>BAS (ZÉÉBIM !)</td></tr>
+<tr><td class="d">22:30-31</td><td>GÉOMÉTRIQUE (PÉRÉTS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Vers 591 : double VERDICT — IR HADDAMIM, ville des sangs (DAMIM pluriel : meurtres judiciaires, prophètes assassinés comme Urie, Jr 26:20-23, enfants du Tophet), idoles fabriquées maison (vv. 1-5) ; catalogue du Décalogue violé en entier — princes sanguinaires, parents méprisés, étranger/veuve lésés, sabbats profanés, calomnies, hauts lieux, incestes, usure, oubli de Dieu (vv. 6-12) ; mains divines frappées (MAKKAH), dispersion-purgation (vv. 13-16) ; SIGIM : maison devenue scories — bronze, étain, fer, plomb (vv. 17-18), rassemblée-fondue dans le creuset-Jérusalem par le soufflet babylonien (vv. 19-22, KHUR) ; pays non purifié, non arrosé (v. 24) : complot des prophètes-lions, prêtres violant la Torah (HAMAS), princes-loups (ZÉÉBIM, gain BETSA), prophètes-TAPHÉL (cf. ch. 13), peuple extorqueur (vv. 23-29) ; BIQQÉS : inspection divine, ZÉRO juste pour la brèche (v. 30, PÉRÉTS) — fureur sans remède (v. 31 ; 2Ch 36:16) ; 588-587 : le creuset allumé — Jr 5:1 (personne dans les rues) vérifié.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Au milieu de toi » (vv. 3, 13) : le sang versé intra-muros — la ville close comme scène de crime ; « les nations proches et lointaines » (vv. 4-5, 16) : l'opprobre exporté — Jérusalem, moquerie régionale ; le creuset (KHUR, vv. 18-22) : fourneau métallurgique — la ville assiégée comme four, les Chaldéens comme soufflet ; la brèche (PÉRÉTS, v. 30) : trouée des remparts — sans défenseur, l'infanterie céleste y passe en 587.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Jérémie 5:1 (« cherchez… trouvez un homme » — personne) + 2 Chroniques 36:15-16 (moqueries, fureur « sans remède ») — le DOUBLE PROCÈS-VERBAL ; Ésaïe 59:16 (nwt — « il vit qu'il n'y avait pas d'homme ») — le PARALLÈLE de la brèche vide ; Malachie 3:2-3 (nwt — « feu d'affineur », fils de Lévi épurés) — le CREUSET raffineur ; Genèse 18:32 (nwt — dix justes cherchés à Sodome) — le PRÉCÉDENT du recensement.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>591 : VILLE-SANG + DÉCALOGUE VIOLÉ → MAINS FRAPPÉES → SCORIES → CREUSET-JÉRUSALEM → FAUNE PRÉDATRICE (LIONS/LOUPS) → BIQQÉS : ZÉRO → 588-587 : FUSION</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Il n'y a pas d'homme » (v. 30) vs Jérémie/Baruc/Ébed-Mélec : l'homme cherché est un intercesseur-efficace type Moïse/Phinéées, pas tout juste — Jérémie seul ne suffit pas (cf. Jr 15:1, Moïse+Samuel insuffisants) — nuance assumée ; le catalogue (vv. 6-12) : accusations textuelles, pas dossiers judiciaires nominatifs — la fiche les rapporte ; le creuset (vv. 17-22) : fusion punitive ici (vs Ml 3 raffinage) — les deux images coexistent (punition des scories, épuration du reste).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ville-sang ; scories</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VERS-591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Creuset allumé</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fusion ; fureur versée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">août 587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/59">Bible — Ésaïe 59 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/23/59</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/39/3">Bible — Malaki 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/39/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/18">Bible — Genèse 18 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/1/18</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ329 — « Je n'en ai pas trouvé » : le creuset et la brèche vide</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ330">
+<div class="visuel"><img src="images/prophe_EZ330_soeurs.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ330 · CATÉGORIE EZ</div>
+<h3>« Oholah et Oholibah » : les deux sœurs jugées par leurs amants</h3>
+<div class="ref">Ézéchiel 23:1-49</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">deux sœurs amants jugées (femmes → filles → mère → prostituèrent → Égypte → jeunesse → aînée → Oholah → sœur → Oholibah → enfantèrent → fils → filles → Oholah → Samarie → Oholibah → Jérusalem → prostituas → amants → Assyriens → voisins → pourpre → gouverneurs → chefs → cavaliers → prostitutions → élite → Assyriens → souilla → idoles → éprit → abandonna → Égypte → jeunesse → sein → virginal → prostitution → livrai → amants → Assyriens → éprise → découvrirent → nudité → fils → filles → tuèrent → épée → exemple → femmes → jugements → sœur → vit → corrompue → amours → prostitutions → pires → Assyriens → gouverneurs → chefs → cavaliers → souillée → voie → multiplia → prostitutions → hommes → mur → Chaldéens → vermillon → ceintures → reins → turbans → chefs → Babyloniens → Chaldée → éprit → regard → messagers → Chaldée → Babyloniens → lit → amours → souillèrent → détacha → découvrit → prostitutions → nudité → détacha → sœur → multiplia → prostitutions → jeunesse → Égypte → éprit → débauchés → Égypte → regretté → infamie → jeunesse → Égyptiens → sein → seins → jeunesse → réveille → amants → détachée → amène → Babyloniens → Chaldéens → Peqod → Shoa → Qoa → Assyriens → élite → gouverneurs → chefs → cavaliers → armes → chars → roues → foule → peuples → targe → bouclier → casque → jugement → jugeront → jugements → jalousie → fureur → couperont → nez → oreilles → reste → épée → fils → filles → reste → feu → dépouilleront → vêtements → bijoux → cesser → infamie → prostitution → Égypte → lèveras → yeux → souviendras → Égypte → livre → hais → détachée → haine → labeur → nue → découverte → nudité → infamie → prostitutions → prostituée → nations → souillée → idoles → voie → sœur → coupe → main → boiras → coupe → sœur → profonde → large → rire → moquerie → contient → ivresse → chagrin → stupeur → désolation → Samarie → boiras → épuiseras → tessons → déchireras → seins → parlé → oublié → jeté → dos → porte → infamie → prostitutions → jugeras → connaître → abominations → adultère → sang → mains → adultère → idoles → feu → fils → enfantés → dévorer → sanctuaire → sabbats → égorgé → fils → idoles → sanctuaire → profaner → maison → envoyé → hommes → loin → messager → lavée → fardé → yeux → parée → lit → honneur → table → encens → huile → foule → insouciante → Sabéens → désert → bracelets → couronnes → usée → adultères → prostitutions → prostituée → infâmes → justes → jugeront → adultères → sang → adultères → sang → mains → assemblée → terreur → pillage → lapidera → épée → fils → filles → maisons → feu → cesser → infamie → pays → femmes → instruites → imiteront → infamie → retomber → infamie → péchés → idoles → saurez)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ330 · 0:15</div><audio controls preload="none" src="audio/fiche_EZ330_soeurs.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ330_soeurs.mp3 · 0:15 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 23:1-49</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>deux sœurs amants jugées (femmes → filles → mère → prostituèrent → Égypte → jeunesse → aînée → Oholah → sœur → Oholibah → enfantèrent → fils → filles → Oholah → Samarie → Oholibah → Jérusalem → prostituas → amants → Assyriens → voisins → pourpre → gouverneurs → chefs → cavaliers → prostitutions → élite → Assyriens → souilla → idoles → éprit → abandonna → Égypte → jeunesse → sein → virginal → prostitution → livrai → amants → Assyriens → éprise → découvrirent → nudité → fils → filles → tuèrent → épée → exemple → femmes → jugements → sœur → vit → corrompue → amours → prostitutions → pires → Assyriens → gouverneurs → chefs → cavaliers → souillée → voie → multiplia → prostitutions → hommes → mur → Chaldéens → vermillon → ceintures → reins → turbans → chefs → Babyloniens → Chaldée → éprit → regard → messagers → Chaldée → Babyloniens → lit → amours → souillèrent → détacha → découvrit → prostitutions → nudité → détacha → sœur → multiplia → prostitutions → jeunesse → Égypte → éprit → débauchés → Égypte → regretté → infamie → jeunesse → Égyptiens → sein → seins → jeunesse → réveille → amants → détachée → amène → Babyloniens → Chaldéens → Peqod → Shoa → Qoa → Assyriens → élite → gouverneurs → chefs → cavaliers → armes → chars → roues → foule → peuples → targe → bouclier → casque → jugement → jugeront → jugements → jalousie → fureur → couperont → nez → oreilles → reste → épée → fils → filles → reste → feu → dépouilleront → vêtements → bijoux → cesser → infamie → prostitution → Égypte → lèveras → yeux → souviendras → Égypte → livre → hais → détachée → haine → labeur → nue → découverte → nudité → infamie → prostitutions → prostituée → nations → souillée → idoles → voie → sœur → coupe → main → boiras → coupe → sœur → profonde → large → rire → moquerie → contient → ivresse → chagrin → stupeur → désolation → Samarie → boiras → épuiseras → tessons → déchireras → seins → parlé → oublié → jeté → dos → porte → infamie → prostitutions → jugeras → connaître → abominations → adultère → sang → mains → adultère → idoles → feu → fils → enfantés → dévorer → sanctuaire → sabbats → égorgé → fils → idoles → sanctuaire → profaner → maison → envoyé → hommes → loin → messager → lavée → fardé → yeux → parée → lit → honneur → table → encens → huile → foule → insouciante → Sabéens → désert → bracelets → couronnes → usée → adultères → prostitutions → prostituée → infâmes → justes → jugeront → adultères → sang → adultères → sang → mains → assemblée → terreur → pillage → lapidera → épée → fils → filles → maisons → feu → cesser → infamie → pays → femmes → instruites → imiteront → infamie → retomber → infamie → péchés → idoles → saurez)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P330 (23:1-49 : Oholah et Oholibah jugées) ; 2R 17:5-6 ; 25:1-11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« FEMMES… FILLES… MÈRE… ÉGYPTE… JEUNESSE… OHOLAH… OHOLIBAH… ENFANTÈRENT… SAMARIE… JÉRUSALEM… OHEL… TENTE… AH… SIENNE… TENTE… ELLE… PROPRE… SANCTUAIRES… BÉTHEL… DAN… SCHISME… JÉROBOAM… OHELI… TENTE… IB… MOI… ELLE… TEMPLE… JÉRUSALEM… PRÉSENCE… DIVINE… DOMICILIÉE… NOMS… PROGRAMMES… THÉOLOGIE… ONOMASTIQUE… AÎNÉE… CADETTE… MÈRE… PATRIARCHES… COMMUNE… ÉGYPTE… BERCEAU… SOUILLÉ… DÉJÀ. » (23:1-4 — déjà !)</li>
+<li>« ASSYRIENS… VOISINS… POURPRE… GOUVERNEURS… CAVALIERS… ÉLITE… IDOLES… ÉGYPTE… SEIN… LIVRAI… AMANTS… DÉCOUVRIRENT… NUDITÉ… TUÈRENT… EXEMPLE… JUGEMENTS… TEKHÉLET… BLEU… POURPRE… UNIFORMES… ARMÉE… ASSYRIENNE… SOIE… FER… SÉDUCTION… MILITAIRE… MENAHEM… TRIBUT… PUL… OSÉE… VASSAL… SALMANASAR… SEPT-CENT-VINGT-DEUX… SARGON… SAMARIE… TOMBE… DÉPORTATION… EXEMPLE… FEMMES… LEÇON… INAPPIRSE… CADETTE… AVEUGLE… VOLONTAIRE. » (23:5-10 — volontaire !)</li>
+<li>« CORROMPUE… PIRES… ASSYRIENS… CHALDÉENS… VERMILLON… CEINTURES… TURBANS… BABYLONIENS… MESSAGERS… LIT… DÉTACHA… NUDITÉ… MULTIPLIA… JEUNESSE… ÉGYPTE… DÉBAUCHÉS… INFAMIE… SHASHAR-ROUGE… ROUGE… MINIum… FRESQUES… BABYLONE… PORNOGRAPHIE… MURALE… ÉZÉCHIAS… AMBASSADE… ISAÏE… TRENTE-NEUF… MÉRODAK… TRÉSORS… MONTRÉS… SÉDUCTION… ARTISTIQUE… PUIS… CHARNELLE… ÉZÉCHIAS… MANASSÉ… PIRE… SACRIFICES… ENFANTS… HINNOM… RECORDS… ABOMINATION… BATTUS. » (23:11-21 — battus !)</li>
+<li>« RÉVEILLE… AMANTS… BABYLONIENS… CHALDÉENS… PEQOD… SHOA… QOA… ASSYRIENS… ARMES… CHARS… TARGE… JUGEMENT… JALOUSIE… FUREUR… NEZ… OREILLES… ÉPÉE… FEU… DÉPOUILLERONT… BIJOUX… CESSER… ÉGYPTE… COALITION… IMPÉRIALE… TRIBUS… ARAMÉENNES… PEQOD… INSPECTION… SHOA… RICHES… QOA… NAINS… SOBRIQUETS… MÉPRISANTS… MUTILATION… FACIALE… SUPPLICE… ANTIQUE… HÉRODOTE… CONFIRME… MŒURS… PERSES… NEZ… COUPÉ… ADULTÈRES… MARQUAGE… INFAMANT… CINQ-CENT-QUATRE-VINGT-SEPT… EXÉCUTION… CAPITALE… ASSIÉGÉE. » (23:22-27 — assiégée !)</li>
+<li>« LIVRE… HAIS… HAINE… LABEUR… NUE… INFAMIE… NATIONS… IDOLES… VOIE… SŒUR… COUPE… BOIRAS… PROFONDE… LARGE… RIRE… MOQUERIE… IVRESSE… CHAGRIN… STUPEUR… DÉSOLATION… ÉPUISERAS… TESSONS… DÉCHIRERAS… SEINS… OUBLIÉ… DOS… COS… COUPE… COLÈRE… PSAUME… SOIXANTE-QUINZE… NEUF… JÉRÉMIE… VINGT-CINQ… QUINZE… TOURNÉE… NATIONS… SAMARIE… BUE… SEPT-CENT-VINGT-DEUX… JÉRUSALEM… RESSERVIE… CINQ-CENT-QUATRE-VINGT-SEPT… LIE… TESSONS… RONGÉS… DÉSÉSPOIR… SEINS… DÉCHIRÉS… DEUIL… HISTRION… TRAGÉDIE… TOTALE. » (23:28-35 — totale !)</li>
+<li>« JUGERAS… ABOMINATIONS… ADULTÈRE… SANG… IDOLES… FEU… FILS… SANCTUAIRE… SABBATS… ÉGORGÉ… PROFANER… LOIN… LAVÉE… FARDÉE… LIT… ENCENS… HUILE… SABÉENS… BRACELETS… COURONNES… USÉE… JUSTES… LAPIDERA… ÉPÉE… MAISONS… FEU… INSTRUITES… IMITERONT… RETOMBER… SAUREZ… DOUBLE… CHEF… ACCUSATION… ADULTÈRE… MEURTRE… ENFANTS… ÉGORGÉS… MATIN… TEMPLE… APRÈS-MIDI… MÊME… JOUR… SACRILÈGE… HORAIRE… CHARGÉ… TOILETTE… SÉDUCTION… DIPLOMATIQUE… HUILE… SACRÉE… GASPILLÉE… QAHAL… ASSEMBLÉE… TRIBUNAL… POPULAIRE… LAPIDATION… LÉGALE… MAISONS… BRÛLÉES… LEÇON… FEMMES… HISTOIRE… JUGE. » (23:36-49 — juge !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les DEUX-SŒURS (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les SHETAYIM (les DEUX (les NASHIM (les FEMMES (les BENOT (les FILLES (les ÉM (les MÈRE (les ÉHAT (les MÊME (les HAYU (les VATIZNÉNAH (les PROSTITUÈRENT (les BEMITSRAYIM (les ÉGYPTE (les BINeURÉHEM (les JEUNESSE (les ZANU (les SHAM (les LÀ (les MOAKHU (les PRESSÉS (les SHEDÉHEM (les SEIN (les VESHAM (les LÀ (les ÏSSU (les MANIÉS (les DADDÉ (les SEINS (les BETULÉHEM (les VIRGINAUX (les VETTIQRAÉNAH (les NOMMÉES (les SHE MOTAN (les NOMS (les OHOLAH (les OHOLAH (les HAGGEDOLAH (les AÎNÉE (les VEOHOLIBAH (les OHOLIBAH (les AHOTAH (les SŒUR (les VATTIHYÉNAH (les FURENT (les LI (les MOI (les VATTÉLADNAH (les ENFANTÈRENT (les BANIM (les FILS (les UBANOT (les FILLES (les USHMOTAN (les NOMS (les SHOMRON (les SAMARIE (les OHOLAH (les VIRUSHALAYIM (les JÉRUSALEM (les OHOLIBAH (les SŒURS (les NOMS (les ÉGYPTE — les MARIÉES !)</p>
+<h4>4 · Explication du texte</h4>
+<p>LAÎNÉE-EXEMPLE (les VATTIZÉN (les PROSTITUA (les OHOLAH (les OHOLAH (les TAHTAY (les MOI (les VATTAAGAB (les ÉPRIT (les AL (les MEAHABÉHA (les AMANTS (les EL (les ASSHUR (les ASSYRIE (les QEROBIM (les VOISINS (les LEBUShÉ (les VÊTUS (les TEKHÉLET (les POURPRE (les PAHOT (les GOUVERNEURS (les USEGANIM (les CHEFS (les BAHURÉ (les ÉLITE (les HÉMED (les KULLAM (les TOUS (les PARASHIM (les CAVALIERS (les ROKHBÉ (les MONTÉS (les SUSSIM (les CHEVAUX (les VATTITTÉN (les LIVRA (les TAZNUTÉHA (les PROSTITUTIONS (les ALÉHEM (les EUX (les MIBHAR (les ÉLITE (les BENÉ (les FILS (les ASSHUR (les ASSYRIE (les KULLAM (les TOUS (les UVKHOL (les TOUTES (les ASHER (les DONT (les AGBAH (les ÉPRIT (les BEKHOL (les TOUTES (les GILLULÉHEM (les IDOLES (les NITMEAH (les SOUILLA (les AÎNÉE (les ASSYRIE (les POURPRE — les LIVRÉE !)</p>
+<h4>5 · Interprétation</h4>
+<p>La COUPE-BUE (les CADETTE (les PIRRÉ (les CORROMPUE (les PIRES (les TASHHIT (les ASSYRIE (les ÉGYPTE (les CHALDÉE (les FRESQUES (les VERMILLON (les MESSAGERS (les LIT (les DÉTACHEMENT (les MUTUEL (les COALITION (les RÉVEILLÉE (les BABYLONE (les PEQOD (les SHOA (les QOA (les ARMES (les CHARS (les BOUCLIERS (les JUGEMENT (les DÉLÉGUÉ (les JALOUSIE (les FUREUR (les MUTILATION (les NEZ (les OREILLES (les FEU (les DÉPOUILLEMENT (les COUPE (les COS (les SŒUR (les BUE (les ÉPUISÉE (les TESSONS (les RONGÉS (les SEINS (les DÉCHIRÉS (les DOUBLE (les JUGEMENT (les ADULTÈRE (les NAAPH (les SANG (les DAMIM (les ENFANTS (les BRÛLÉS (les TEMPLE (les PROFANÉ (les MÊME (les JOUR (les TOILETTE (les DIPLOMATIE (les SABÉENS (les COURONNES (les QAHAL (les ASSEMBLÉE (les LAPIDATION (les SEQILAH (les MAISONS (les BRÛLÉES (les FEMMES (les INSTRUITES (les SEPT-CENT-VINGT-DEUX (les AÎNÉE (les CINQ-CENT-QUATRE-VINGT-SEPT (les CADETTE (les COUPE — les BUE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">23:1-4</td><td>DÉJÀ (OHEL !)</td></tr>
+<tr><td class="d">23:5-10</td><td>VOLONTAIRE (TEKHÉLET !)</td></tr>
+<tr><td class="d">23:11-21</td><td>BATTUS (SHASHAR-ROUGE !)</td></tr>
+<tr><td class="d">23:22-27</td><td>ASSIÉGÉE (PEQOD !)</td></tr>
+<tr><td class="d">23:28-35</td><td>TOTALE (COS !)</td></tr>
+<tr><td class="d">23:36-49</td><td>JUGE (QAHAL !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Vers 591 : les noms-programmes — OHOLAH (OHEL-AH, « sa tente à elle » : Béthel/Dan du schisme, 1R 12:26-33), OHOLIBAH (OHELI-BAH, « ma tente en elle » : le temple) — filles d'une mère (patriarches), prostituées en Égypte déjà (vv. 1-4) ; l'aînée : amours assyriens (uniformes TEKHÉLET, cavaliers), tributs (Menahem à Pul, 2R 15:19 ; Osée vassal), livrée aux amants : Samarie tombe en 722 (Sargon), déportation, exemple inutile (vv. 5-10 ; 2R 17:5-6) ; la cadette, témoin et pire : Assyrie, puis Chaldéens peints en vermillon (SHASHAR-ROUGE, fresques vues par l'ambassade d'Ézéchias, cf. Is 39), puis retour à l'Égypte (vv. 11-21 ; Manassé : enfants à Hinnom) ; sentence : coalition réveillée (Babyloniens, Chaldéens, Peqod/Shoa/Qoa — tribus araméennes aux sobriquets méprisants, Assyriens), mutilation faciale antique (nez/oreilles, cf. Hérodote), feu, dépouillement (vv. 22-27) ; la coupe COS de la sœur bue jusqu'aux tessons rongés (vv. 28-35, cf. Jr 25:15) ; double jugement : adultère (NAAPH) + sang (DAMIM) — enfants égorgés le matin, temple profané l'après-midi du même jour (vv. 36-39), diplomatie fardée aux Sabéens avec l'encens sacré (vv. 40-44), QAHAL : lapidation légale (SEQILAH), maisons brûlées, femmes instruites (vv. 45-49) ; 587 : exécution — 2R 25:1-11.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'Égypte (vv. 3, 8, 19-21) : berceau souillé et retour fatal — l'alliance Hophra ; l'Assyrie (vv. 5-7, 12) : voisins du nord-est, cavaliers TEKHÉLET ; la Chaldée (vv. 14-17) : fresques SHASHAR-ROUGE, messagers envoyés, amants venus ; Peqod/Shoa/Qoa (v. 23) : confins araméens de l'empire — la coalition encercle ; la coupe (vv. 31-34) : de Samarie (722) à Jérusalem (587) — même calice, 135 ans d'intervalle ; le sanctuaire (vv. 38-39) : profané le jour même des sacrifices d'enfants — géographie sacrée violée.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>2 Rois 17:5-6 (nwt + Rbi8 — siège de Samarie, déportation en Assyrie) + 2 Rois 25:1-11 — le DOUBLE PROCÈS-VERBAL (aînée 722, cadette 587) ; Ézéchiel 23 (nwt — le chapitre entier : noms, fresques, coalition, coupe, QAHAL) — le TEXTE intégral ; Jérémie 25:15-28 (la coupe de la fureur passant de nation en nation) — le RITE de la coupe ; 1 Rois 12:26-33 (schisme, Béthel/Dan) — la SOURCE d'« OHOLAH ».</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>ÉGYPTE : DEUX SŒURS NOMMÉES → 722 : AÎNÉE LIVRÉE (EXEMPLE INUTILE) → CADETTE PIRE (ASSYRIE/CHALDÉE/ÉGYPTE) → COALITION RÉVEILLÉE → COUPE BUE (TESSONS) → 587 : QAHAL (LAPIDATION/FEU)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Crudit du langage (vv. 19-21, etc.) : choc voulu par le texte pour réveiller — la fiche cite les faits (alliances), pas les images crues, et le signale ; Peqod/Shoa/Qoa (v. 23) : identifications incertaines (tribus araméennes/babyloniennes) — sobriquets probable, assumé ; « hommes justes » (v. 45) : les exécutants païens justes relativement (instruments) — paradoxe assumé (cf. Hab 1:12-13) ; la cadette « pire » (v. 11) : supériorité du crime à lumière égale ou supérieure (temple présent) — thèse du texte, rapportée.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Aînée livrée ; exemple</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cadette accusée ; coupe</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 591</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Coalition ; QAHAL</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/23">Bible — Ézékiel 23 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/23</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/12/17">Bible — 2 Rois 17 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/12/17</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/17">Bible — 2 Rois 17 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/17</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ330 — « Oholah et Oholibah » : les deux sœurs jugées par leurs amants</span><span>Catégorie EZ</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie EZ</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>EZ325 — « La lionne et ses lionceaux » : complainte sur les princes</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Yoachaz → Égypte</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Yoyakîn/Sédécias → Babylone</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597/587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vigne arrachée ; sceptre brisé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>EZ326 — « Ils n'entreront pas » : les rebelles purgés au désert des peuples</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Refus motivé ; histoire</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14 août 591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Désert des peuples ; verge</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">591-537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Repentants montent ; rebelles restent</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<h4>EZ327 — « La forêt du sud » : le feu de TÉMAN-SUD à DAROM</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pivot sud ; forêt embrasée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Plainte ; Éz 21 en clair</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">591</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Triple incendie</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">10 août 587</text>
+</svg>
+<h4>EZ328 — « L'épée est aiguisée » : la croisée des chemins tranche pour Jérusalem</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Épée dégainée ; croisée</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège : droite vérifiée</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">janv. 588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Avvah ; Ammon oubliée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587–?</text>
+</svg>
+<h4>EZ329 — « Je n'en ai pas trouvé » : le creuset et la brèche vide</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ville-sang ; scories</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VERS-591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Creuset allumé</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fusion ; fureur versée</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">août 587</text>
+</svg>
+<h4>EZ330 — « Oholah et Oholibah » : les deux sœurs jugées par leurs amants</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Aînée livrée ; exemple</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cadette accusée ; coupe</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 591</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Coalition ; QAHAL</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+P8-55 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

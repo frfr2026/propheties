@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JN1 — Jonas — Ninive, les quarante jours et le signe du Fils de l'homme</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JN447_ninive.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JN1</h1>
+<h2>Jonas — Ninive, les quarante jours et le signe du Fils de l'homme</h2>
+<p class="intro">Le livre du prophète envoyé malgré lui : « lève-toi, va à Ninive, la grande ville », la fuite vers Tarsis, la tempête, le grand poisson et les trois jours et trois nuits ; puis la prédication de cinq mots — « encore quarante jours et Ninive sera renversée » —, la repentance du roi et du peuple, la calamité écartée, et le débat final entre le prophète et son Dieu autour d'un ricin, avant que Jésus lui-même ne fasse de Jonas le signe annonçant sa mise au tombeau et sa résurrection.</p>
+<div class="chiffres">
+<div><b>4</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>20</b><span>sources</span></div>
+<div><b>4</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JN447">JN447</a>
+<a href="#JN448">JN448</a>
+<a href="#JN449">JN449</a>
+<a href="#JN450">JN450</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JN447"><img src="images/prophe_JN447_ninive.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JN447</div>
+<h3><a href="#JN447">« Lève-toi, va à Ninive, la grande ville » : la fuite vers Tarsis, la tempête et le grand poisson</a></h3>
+<div class="meta">Accomplie (mission exécutée)</div></div></div>
+<div class="carte">
+<a class="img" href="#JN448"><img src="images/prophe_JN448_repentir.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JN448</div>
+<h3><a href="#JN448">« Encore quarante jours, et Ninive sera renversée » : la repentance du roi, du peuple et des bêtes</a></h3>
+<div class="meta">Accomplie (délai écoulé sans ruine, après repentance)</div></div></div>
+<div class="carte">
+<a class="img" href="#JN449"><img src="images/prophe_JN449_ricin.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JN449</div>
+<h3><a href="#JN449">« Je savais que tu es un Dieu miséricordieux » : la cabane, le ricin et la dernière question posée au prophète</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JN450"><img src="images/prophe_JN450_signe.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JN450</div>
+<h3><a href="#JN450">« Le signe de Jonas » : trois jours et trois nuits dans le cœur de la terre</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JN447">
+<div class="visuel"><img src="images/prophe_JN447_ninive.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JN447 · CATÉGORIE JN1</div>
+<h3>« Lève-toi, va à Ninive, la grande ville » : la fuite vers Tarsis, la tempête et le grand poisson</h3>
+<div class="ref">Jonas 1:1-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (mission exécutée)</span>
+<span class="badge">la parole de jéhovah fut adressée à jonas fils d'amittaï lève-toi va à ninive la grande ville et proclame contre elle que leur méchanceté est montée jusqu'à moi mais jonas se leva pour fuir à tarsis loin de jéhovah il descendit à joppé et trouva un navire qui allait à tarsis il paya le prix de la traversée et descendit dedans jéhovah fit souffler un grand vent sur la mer et il y eut une grande tempête le navire menaçait de se briser les marins eurent peur et jetèrent la cargaison à la mer mais jonas était descendu dans la cale et dormait profondément le capitaine lui dit lève-toi invoque ton dieu peut-être le vrai dieu pensera à nous ils tirèrent au sort et le sort tomba sur jonas il leur dit je suis hébreu et je crains jéhovah le dieu des cieux qui a fait la mer et la terre alors ils furent saisis d'une grande crainte et lui demandèrent que devons-nous te faire pour que la mer se calme il répondit prenez-moi et jetez-moi à la mer et la mer se calmera je sais que c'est à cause de moi que cette grande tempête est sur vous les hommes ramèrent pour regagner la terre mais ils ne purent car la mer les poussait ils crièrent à jéhovah ne nous fais pas périr pour l'âme de cet homme et ne nous tiens pas pour coupables puis ils prirent jonas et le jetèrent à la mer et la mer cessa sa fureur alors jéhovah fit venir un grand poisson pour engloutir jonas et jonas resta dans le ventre du poisson trois jours et trois nuits (jonas 3:1-4 ; accomplie — mission exécutée)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JN447</div><audio controls preload="none" src="audio/fiche_JN447_ninive.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JN447_ninive.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jonas 1:1-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (mission exécutée)</td></tr>
+<tr><td class="d">Chronologie</td><td>la parole de jéhovah fut adressée à jonas fils d'amittaï lève-toi va à ninive la grande ville et proclame contre elle que leur méchanceté est montée jusqu'à moi mais jonas se leva pour fuir à tarsis loin de jéhovah il descendit à joppé et trouva un navire qui allait à tarsis il paya le prix de la traversée et descendit dedans jéhovah fit souffler un grand vent sur la mer et il y eut une grande tempête le navire menaçait de se briser les marins eurent peur et jetèrent la cargaison à la mer mais jonas était descendu dans la cale et dormait profondément le capitaine lui dit lève-toi invoque ton dieu peut-être le vrai dieu pensera à nous ils tirèrent au sort et le sort tomba sur jonas il leur dit je suis hébreu et je crains jéhovah le dieu des cieux qui a fait la mer et la terre alors ils furent saisis d'une grande crainte et lui demandèrent que devons-nous te faire pour que la mer se calme il répondit prenez-moi et jetez-moi à la mer et la mer se calmera je sais que c'est à cause de moi que cette grande tempête est sur vous les hommes ramèrent pour regagner la terre mais ils ne purent car la mer les poussait ils crièrent à jéhovah ne nous fais pas périr pour l'âme de cet homme et ne nous tiens pas pour coupables puis ils prirent jonas et le jetèrent à la mer et la mer cessa sa fureur alors jéhovah fit venir un grand poisson pour engloutir jonas et jonas resta dans le ventre du poisson trois jours et trois nuits (jonas 3:1-4 ; accomplie — mission exécutée)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jonas — P447 (1:2, 3 : lève-toi, va à Ninive et crie contre elle) ; Jonas 3:1-4 ; Accomplie (mission exécutée)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« LA PAROLE DE JÉHOVAH… FUT ADRESSÉE À JONAS… FILS D'AMITTAÏ… LÈVE-TOI… VA À NINIVE… LA GRANDE VILLE… ET PROCLAME CONTRE ELLE… QUE LEUR MÉCHANCETÉ… EST MONTÉE JUSQU'À MOI… »… « MAIS JONAS… SE LEVA POUR FUIR… À TARSIS… LOIN DE JÉHOVAH… IL DESCENDIT À JOPPÉ… ET TROUVA UN NAVIRE… QUI ALLAIT À TARSIS… IL PAYA LE PRIX DE LA TRAVERSÉE… ET DESCENDIT DEDANS… POUR ALLER AVEC EUX À TARSIS… LOIN DE JÉHOVAH… »… « ET JÉHOVAH… FIT SOUFFLER UN GRAND VENT… SUR LA MER… ET IL Y EUT UNE GRANDE TEMPÊTE… LE NAVIRE MENAÇAIT DE SE BRISER… »… « LES MARINS EURENT PEUR… ET JETÈRENT LA CARGAISON À LA MER… MAIS JONAS ÉTAIT DESCENDU… DANS LA CALE DU NAVIRE… ET DORMAIT PROFONDÉMENT… LE CAPITAINE LUI DIT… LÈVE-TOI… INVOQUE TON DIEU… PEUT-ÊTRE LE VRAI DIEU… PENSERA-T-IL À NOUS… ET NOUS NE PÉRIRONS PAS… »… « ILS SE DIRENT L'UN À L'AUTRE… VIENS… TIRONS AU SORT… POUR SAVOIR À CAUSE DE QUI… CE MALHEUR NOUS ARRIVE… ET LE SORT TOMBA SUR JONAS… »… « ALORS IL LEUR DIT… JE SUIS HÉBREU… ET JE CRAINS JÉHOVAH… LE DIEU DES CIEUX… QUI A FAIT LA MER ET LA TERRE… »… « LES HOMMES FURENT SAISIS D'UNE GRANDE CRAINTE… ET LUI DEMANDÈRENT… QUE DEVRIONS-NOUS TE FAIRE… POUR QUE LA MER SE CALME…? … CAR LA MER DEVENAIT DE PLUS EN PLUS DÉCHAÎNÉE… »… « IL LEUR RÉPONDIT… PRENEZ-MOI… ET JETEZ-MOI À LA MER… ET LA MER SE CALMERA… CAR JE SAIS… QUE C'EST À CAUSE DE MOI… QUE CETTE GRANDE TEMPÊTE EST SUR VOUS… »… « LES HOMMES RAMÈRENT… POUR REGAGNER LA TERRE… MAIS ILS NE PURENT… CAR LA MER LES POUSSAIT… »… « ALORS ILS CRIÈRENT À JÉHOVAH… AH JÉHOVAH… NE NOUS FAIS PAS PÉRIR… POUR L'ÂME DE CET HOMME… ET NE NOUS TIENS PAS POUR COUPABLES… CAR TU AS AGI… À TA GUISE… »… « PUIS ILS PRIRENT JONAS… ET LE JETÈRENT À LA MER… ET LA MER CESSA SA FUREUR… ET LES HOMMES CONÇURENT UNE GRANDE CRAINTE ENVERS JÉHOVAH… »… « ET JÉHOVAH… FIT VENIR UN GRAND POISSON… POUR ENGLOUTIR JONAS… ET JONAS RESTA… DANS LE VENTRE DU POISSON… TROIS JOURS ET TROIS NUITS… »… — DAG GADOL… UN GRAND POISSON… TARSHISH… TARSIS… TARTESSOS… YAFO… JOPPÉ… ḤEVEL… LA CARGAISON… GORAL… LE SORT… ʿIVRI… HÉBREU… SAʿAR GADOL… GRANDE TEMPÊTE… — 844-803… 2 ROIS 14:25… JÉROBOAM II… 612… CHUTE DE NINIVE… »</li>
+<li>LES TROIS JUMEAUX — 2 Rois 14:25 : « Il rétablit la frontière d'Israël… selon la parole de Jéhovah… qu'il avait dite par l'intermédiaire de son serviteur Jonas, fils d'Amitthaï, le prophète » — Jonas est un prophète connu en Israël, dont l'activité est datée sous Jéroboam II, ce qui rattache le livre à un personnage historique. Psaume 139:7-10 : « Où irai-je loin de ton esprit ? Où fuirai-je loin de ta face ?… là ta main me conduira » — le texte qui répond par avance à l'illusion de la fuite de Jonas. Exode 9:16 : « c'est pour te faire voir ma puissance, et pour que mon nom soit annoncé par toute la terre » — la parole adressée à un roi étranger, qui éclaire la portée universelle de la mission confiée à Jonas.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le livre s'ouvre par une mission d'un genre inattendu : un prophète israélite est envoyé vers une capitale étrangère, à plus de mille kilomètres au nord-est, avec pour seule consigne de « proclamer contre elle » le message qu'il recevra. Ninive est présentée comme une grande ville, et le motif de l'intervention divine est explicite : sa méchanceté est montée jusqu'à Jéhovah. Or la réponse de Jonas est un refus immédiat : au lieu de monter vers le nord, il descend vers le sud-ouest, jusqu'au port de Joppé, et embarque pour Tarsis, la destination la plus lointaine qu'un navire puisse atteindre dans cette direction — colonie phénicienne à l'extrémité de la Méditerranée, en Espagne. Suit le récit de la tempête : vent violent, navire qui menace de se briser, cargaison jetée par-dessus bord, marins priant chacun son dieu. Le contraste est frappant : le prophète dort dans la cale tandis que les païens le réveillent pour lui demander d'invoquer son Dieu. Le tirage au sort désigne Jonas ; interrogé, il se présente comme hébreu, serviteur du Dieu qui a fait la mer et la terre, et il demande à être jeté par-dessus bord. Les marins hésitent, rament, puis obéissent. La mer se calme, ils offrent un sacrifice, et un grand poisson engloutit le prophète, qui reste trois jours et trois nuits dans son ventre.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE TRAJET DE LA FUITE : Joppé, l'actuelle Jaffa, est le seul port naturel de la côte judéenne ; Tarsis est l'identification la plus courante d'un comptoir lointain du sud de l'Espagne, associé au commerce des métaux précieux (1 Rois 10:22 ; Ézéchiel 27:12). Les quatre verbes de descente — descendit à Joppé, descendit dans le navire, descendit dans la cale, plus tard « descendra » vers les profondeurs — dessinent une trajectoire continue vers le bas, image du refus. (2) LA TEMPÊTE ET LES MARINS : le texte ne cache jamais que les professionnels de la mer, venus de milieux idolâtres, font tout ce qui est en leur pouvoir : ils allègent le navire, invoquent leurs dieux, réveillent le passager, interrogent, hésitent avant d'attenter à sa vie, et finalement prient le Dieu qu'ils viennent de découvrir ; le récit les montre plus respectueux du sacré que le prophète. (3) LE DIEU QUI A FAIT LA MER : la déclaration de Jonas en 1:9 est volontairement placée au moment où il se trouve en pleine mer : le Créateur du milieu où il croyait disparaître est précisément celui dont il voulait s'éloigner. (4) LE GRAND POISSON : le texte hébreu dit simplement « un grand poisson » (dag gadol) ; l'animal n'est pas décrit, ce qui a laissé place à toutes les traductions postérieures — baleine, monstre marin. Ce qui est mis en avant, ce n'est pas l'espèce mais le fait que l'instrument du châtiment devient l'abri: le poisson est « prévu » par Jéhovah pour engloutir, non pour dévorer.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Jonas (Livre de) » de la Bibliothèque en ligne rappelle qu'il s'agit vraisemblablement du même Jonas mentionné en 2 Rois 14:25 et qu'il a dû prophétiser sous le règne de Jéroboam II, vers 844-803 avant notre ère ; il résume le premier chapitre en trois étapes — la mission confiée, la fuite à Joppé et l'embarquement pour Tarsis, la tempête suscitée par Jéhovah. Lecture commune et exégèse : les commentateurs reconnaissent dans ce récit une construction littéraire très travaillée — une succession de scènes contrastées et un renversement systématique des rôles — mais ils insistent aussi sur son ancrage géographique précis : des ports réels, une destination commerciale réelle, un nom de prophète connu par ailleurs. La prière du chapitre 2, composée en poésie, est souvent lue en parallèle avec les psaumes d'action de grâces ; le chapitre 1 est rapproché de la tempête de Marc 4:35-41, où des marins et des disciples terrifiés découvrent de la même manière l'autorité du Créateur sur la mer.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 844 av. n. è.</td><td>La parole est adressée à Jonas ; le prophète refuse la mission et fuit vers Tarsis (Jonas 1:1-3)</td></tr>
+<tr><td class="d">Vers 844 av. n. è.</td><td>La tempête éclate, le sort désigne Jonas, il est jeté à la mer et englouti par un grand poisson (Jonas 1:4-17)</td></tr>
+<tr><td class="d">Trois jours et trois nuits</td><td>Séjour dans le ventre du poisson, suivi d'une prière et du rejet sur la terre ferme (Jonas 2:1-10)</td></tr>
+<tr><td class="d">Vers 844 av. n. è.</td><td>La parole est adressée une seconde fois : Jonas se lève et va à Ninive (Jonas 3:1-4) — la mission finit par être exécutée</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Jésus cite l'épisode comme le signe annonçant sa mise au tombeau et sa résurrection (Matthieu 12:39, 40)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Les marins de Jonas et les Ninivites convertis servent de référence dans l'enseignement de Jésus sur la foi des nations (Matthieu 12:41)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LE PROPHÈTE JONAS : 2 Rois 14:25 situe son activité sous Jéroboam II, roi d'Israël de 844 à 803 environ ; le livre n'est donc pas une fiction détachée de l'histoire, mais se rattache à un personnage dont le ministère est attesté dans les livres des Rois. (2) NINIVE À CETTE ÉPOQUE : la ville, installée sur la rive gauche du Tigre, en face de l'actuelle Mossoul, était une cité ancienne et importante, bien que la capitale impériale ait été alors Kalhu (Nimroud) ; nos sources cunéiformes montrent l'ampleur des travaux royaux dans la région au IXe siècle. (3) LE CONTEXTE ASSYRIEN : les règnes de Shalmaneser III (858-824) marquent une poussée vers l'ouest qui atteint Israël — bataille de Qarqar en 853, tributs d'Ahab — puis le pays connaît des troubles intérieurs et une période de recul ; la tradition assyrienne elle-même, par des textes tardifs, garde la mémoire d'une grande épidémie et d'un moment de détresse à la fin de cette période. (4) JOPPÉ : le port est attesté dans des sources égyptiennes anciennes et par les listes géographiques ; c'est le débouché maritime naturel de Juda. (5) TARSIS : les sources phéniciennes et grecques attestent une cité de Tartessos dans le sud de l'Espagne, riche en argent, située au-delà des colonnes de Melkart ; les « navires de Tarsis » désignent dans la Bible les grands navires de haute mer. (6) LES MARINS ET LE TIRAGE AU SORT : le sort, employé dans l'Antiquité pour désigner un coupable, est mentionné dans de nombreux textes anciens ; le souci exprimé par les marins de ne pas verser le sang innocent correspond à des pratiques rituelles attestées chez les Phéniciens. (7) LA POSTÉRITÉ DU RÉCIT : le livre de Jonas est conservé dans les manuscrits de la mer Morte et commenté dans la littérature juive ancienne, qui en discute le sens et l'historicité.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) NINIVE : sur la rive est du Tigre, au nord de la Mésopotamie, sur un carrefour de routes commerciales entre l'Anatolie, la Babylonie et l'Iran ; le site est marqué aujourd'hui par deux tells, Kuyunjik et Nebi Yunus, et la tradition locale a établi sur le second un sanctuaire associé au souvenir du prophète. (2) JOPPÉ : port naturel ouvert sur la Méditerranée orientale, à 55 kilomètres de Jérusalem ; sa position en fit pendant des siècles la porte maritime de la Judée et le point de débarquement des bois du Liban destinés au temple (2 Chroniques 2:16 ; Esdras 3:7). (3) TARSIS : à l'extrémité occidentale de la Méditerranée, au-delà du détroit de Gibraltar, dans une région dont les sources grecques vantent les richesses minières ; la distance fait de la fuite de Jonas un trajet d'environ trois mille cinq cents kilomètres — le contraire exact de la direction demandée. (4) LE CYCLE DES VENTS EN MÉDITERRANÉE : la description d'un vent violent venu sur la mer, produisant en peu de temps une mer dangereuse pour un navire à voile et à rames, correspond au comportement réel des tempêtes de la Méditerranée orientale. (5) LES ROUTES MARITIMES PHÉNICIENNES : les Phéniciens reliaient Tyr et Sidon à l'Égypte, à Chypre et à l'Occident ; le navire de Jonas appartient à ce réseau commercial, ce que confirme le paiement du prix de la traversée. (6) LES PROFONDEURS : la mention de « l'abîme » et du « cœur des mers » dans la prière du chapitre 2 correspond à une familiarité réelle avec la mer ; la ligne de côte israélienne est bordée de hauts-fonds et de courants que les marins de l'époque connaissaient bien. (7) LA DISTANCE DE NINIVE : depuis Samarie, le trajet vers Ninive suppose une marche d'un mois environ par les routes du nord, en passant par Damas et la vallée de l'Euphrate.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES FOUILLES DE NINIVE : les explorations menées à partir du milieu du XIXe siècle sur le tell de Kuyunjik ont mis au jour les palais de Sennachérib et d'Assurbanipal, ainsi que des milliers de tablettes cunéiformes, dont la bibliothèque royale ; les reliefs portent des traces de feu et de suie, ce qui correspond aux récits de la destruction de la ville en 612 avant notre ère. (2) LES FORTIFICATIONS : la muraille de Ninive, longue d'une douzaine de kilomètres, atteignait peut-être trente mètres de hauteur et une épaisseur considérable, avec une quinzaine de portes monumentales ; sa description permet de comprendre l'expression « la grande ville ». (3) LES GRANDS CÉTACÉS DE MÉDITERRANÉE : plusieurs espèces de grands cétacés sont présentes en Méditerranée, notamment le cachalot, capable de plonger à de grandes profondeurs, et le rorqual commun ; des observations modernes confirment leur passage au large des côtes levantines. Le texte biblique ne nomme aucune espèce : il dit seulement « un grand poisson », ce que la zoologie ne permet ni d'identifier ni d'écarter. (4) LA PHYSIOLOGIE HUMAINE ET LES RÉCITS DE SURVIE : les cas documentés de personnes avalées par un grand cétacé et retrouvées vivantes sont rares et contestés ; la fiche ne les invoque pas comme preuve, le texte rapportant un fait présenté comme miraculeux. (5) LES MESURES ET LES ESTIMATIONS : les études archéologiques évaluent la superficie de Ninive à plusieurs centaines d'hectares à son apogée, ce qui éclaire la donnée de Jonas 3:3 — « trois journées de chemin » — sans trancher la question de la mesure exacte. (6) LES TABLETTES MÉTÉOROLOGIQUES ET LES RÉCITS DE TEMPÊTE : des textes mésopotamiens décrivent des tempêtes soudaines et destructrices sur les fleuves et sur la mer ; la précision du tableau de Jonas 1 s'accorde avec l'expérience nautique de l'époque.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>MISSION : « LÈVE-TOI, VA À NINIVE… SA MÉCHANCETÉ EST MONTÉE JUSQU'À MOI » (1:1, 2) → REFUS ET FUITE : JOPPÉ, NAVIRE POUR TARSIS, PAIEMENT DU PRIX (1:3) → TEMPÊTE SUSCITÉE PAR JÉHOVAH ; CARGAISON JETÉE ; LE PROPHÈTE DORT (1:4-6) → TIRAGE AU SORT : LE SORT TOMBE SUR JONAS (1:7) → « JE CRAINS JÉHOVAH, QUI A FAIT LA MER ET LA TERRE » (1:9) → JONAS JETÉ À LA MER ; LA MER SE CALME ; LES MARINS OFFRENT UN SACRIFICE (1:15, 16) → « JÉHOVAH FIT VENIR UN GRAND POISSON » : TROIS JOURS ET TROIS NUITS (1:17) → JONAS 3:1-4 : LA MISSION FINALEMENT EXÉCUTÉE → MATTHIEU 12:39, 40 : LE SIGNE DU FILS DE L'HOMME</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Jonas 3:1-4) et le statut « Accomplie (mission exécutée) ». L'ESPÈCE DU POISSON : la fiche rappelle que le texte dit « un grand poisson » et ne se prononce pas sur son identification ; les rapprochements avec les cétacés sont présentés comme des observations de zoologie générale, non comme une démonstration. LE TIRAGE AU SORT : la fiche le décrit comme une pratique attestée sans lui attribuer de valeur normative. LES SOURCES ASSYRIENNES : la fiche mentionne la période de troubles de la fin du IXe siècle sans prétendre identifier un événement de repentance nationale ni le dater. LA DURÉE DU SÉJOUR : la fiche prend l'expression « trois jours et trois nuits » telle qu'elle se présente, sans en faire un calcul d'heures. CE QUE CETTE FICHE NE DIT PAS : elle traite du premier chapitre jusqu'à l'engloutissement ; la prédication à Ninive, la leçon du ricin et le signe cité par Jésus font l'objet des fiches suivantes. Elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ministère de Jonas sous Jéroboam II, roi d'Israël (2 Rois 14:25)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844-803 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mission confiée à Jonas et fuite vers Tarsis depuis Joppé (Jonas 1:1-3)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tempête, tirage au sort, jeté à la mer, englouti par un grand poisson (Jonas 1:4-17)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séjour dans le poisson et prière de délivrance (Jonas 2:1-10)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Trois jours et trois nuits</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mission exécutée : Jonas prêche à Ninive (Jonas 3:1-4)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction de Ninive par les Mèdes et les Babyloniens, environ deux siècles après la prédication de Jonas</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/32/1">Bible — Jonas 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/32/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/139">Bible — Psaume 139 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/139</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/9">Bible — Exode 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/10">Bible — Actes 10 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/10</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012450">Jonas (Livre de) — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012450</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JN447 — « Lève-toi, va à Ninive, la grande ville » : la fuite vers Tarsis, la tempête et le grand poisson</span><span>Catégorie JN1</span></div></div>
+</article>
+<article class="fiche" id="JN448">
+<div class="visuel"><img src="images/prophe_JN448_repentir.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JN448 · CATÉGORIE JN1</div>
+<h3>« Encore quarante jours, et Ninive sera renversée » : la repentance du roi, du peuple et des bêtes</h3>
+<div class="ref">Jonas 3:1-10</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (délai écoulé sans ruine, après repentance)</span>
+<span class="badge">la parole de jéhovah fut adressée à jonas une seconde fois lève-toi va à ninive la grande ville et proclame-lui le message que je te dis et jonas se leva et alla à ninive selon la parole de jéhovah or ninive était une grande ville devant le vrai dieu trois journées de chemin jonas entra dans la ville et marcha un jour en proclamant encore quarante jours et ninive sera renversée alors les hommes de ninive crurent en dieu ils proclamèrent un jeûne et se couvrirent de sacs du plus grand au plus petit la parole parvint au roi de ninive il se leva de son trône ôta son manteau royal se couvrit d'un sac et s'assit sur la cendre puis il fit proclamer dans ninive par décret du roi et de ses grands que ni homme ni animal ne goûte à quoi que ce soit que chacun se détourne de sa mauvaise voie et de la violence qui est dans ses mains qui sait si le vrai dieu ne renoncera pas à sa colère et ne se détournera pas pour que nous ne périssions pas quand le vrai dieu vit ce qu'ils faisaient il renonça au mal qu'il avait annoncé et ne le fit pas (jonas 3:5-10 ; accomplie — délai écoulé sans ruine, après repentance)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JN448</div><audio controls preload="none" src="audio/fiche_JN448_repentir.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JN448_repentir.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jonas 3:1-10</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (délai écoulé sans ruine, après repentance)</td></tr>
+<tr><td class="d">Chronologie</td><td>la parole de jéhovah fut adressée à jonas une seconde fois lève-toi va à ninive la grande ville et proclame-lui le message que je te dis et jonas se leva et alla à ninive selon la parole de jéhovah or ninive était une grande ville devant le vrai dieu trois journées de chemin jonas entra dans la ville et marcha un jour en proclamant encore quarante jours et ninive sera renversée alors les hommes de ninive crurent en dieu ils proclamèrent un jeûne et se couvrirent de sacs du plus grand au plus petit la parole parvint au roi de ninive il se leva de son trône ôta son manteau royal se couvrit d'un sac et s'assit sur la cendre puis il fit proclamer dans ninive par décret du roi et de ses grands que ni homme ni animal ne goûte à quoi que ce soit que chacun se détourne de sa mauvaise voie et de la violence qui est dans ses mains qui sait si le vrai dieu ne renoncera pas à sa colère et ne se détournera pas pour que nous ne périssions pas quand le vrai dieu vit ce qu'ils faisaient il renonça au mal qu'il avait annoncé et ne le fit pas (jonas 3:5-10 ; accomplie — délai écoulé sans ruine, après repentance)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jonas — P448 (3:4 : encore quarante jours, et Ninive sera renversée) ; Jonas 3:5-10 : les Ninivites se repentirent, la calamité fut écartée ; Accomplie (délai écoulé sans ruine, après repentance)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« LA PAROLE DE JÉHOVAH… FUT ADRESSÉE À JONAS… UNE SECONDE FOIS… LÈVE-TOI… VA À NINIVE… LA GRANDE VILLE… ET PROCLAME-LUI… LE MESSAGE QUE JE TE DIS… »… « ET JONAS SE LEVA… ET ALLA À NINIVE… SELON LA PAROLE DE JÉHOVAH… OR NINIVE ÉTAIT UNE GRANDE VILLE… DEVANT LE VRAI DIEU… TROIS JOURNÉES DE CHEMIN… »… « ET JONAS SE MIT EN ROUTE… DANS LA VILLE… SUR UNE JOURNÉE DE CHEMIN… EN PROCLAMANT… ENCORE QUARANTE JOURS… ET NINIVE SERA RENVERSÉE… »… « ALORS LES HOMMES DE NINIVE… CRURENT EN DIEU… ET ILS PROCLAMÈRENT UN JEÛNE… ET SE COUVRIRENT DE SACS… DU PLUS GRAND AU PLUS PETIT… »… « LA PAROLE… PARVINT AU ROI DE NINIVE… ET IL SE LEVA DE SON TRÔNE… ÔTA SON MANTEAU… SE COUVRIT D'UN SAC… ET S'ASSIT SUR LA CENDRE… »… « PUIS IL FIT PROCLAMER… DANS NINIVE… PAR DÉCRET DU ROI ET DE SES GRANDS… QUE NI HOMME NI ANIMAL… NE GOÛTE À QUOI QUE CE SOIT… NI NE BOIVE D'EAU… »… « QU'ILS SE COUVRENT DE SACS… HOMMES ET BÊTES… ET QU'ILS CRIENT VERS DIEU AVEC FORCE… QUE CHACUN SE DÉTOURNE… DE SA MAUVAISE VOIE… ET DE LA VIOLENCE QUI EST DANS SES MAINS… »… « QUI SAIT… SI LE VRAI DIEU… NE RENONCERA PAS À SA COLÈRE… ET NE SE DÉTOURNERA PAS… POUR QUE NOUS NE PÉRISSIONS PAS…? »… « QUAND LE VRAI DIEU… VIT CE QU'ILS FAISAIENT… CAR ILS ÉTAIENT REVENUS… DE LEURS MAUVAISES VOIES… IL RENONÇA AU MAL… QU'IL AVAIT ANNONCÉ… ET NE LE FIT PAS… »… — NEHAFAKH… RENVERSÉE OU RETOURNÉE… HAFAKH… RETOURNEMENT… ʾARBAʿIM YOM… QUARANTE JOURS… TSAʿAQ… CRIER… SAQ… LE SAC… ʾEFER… LA CENDRE… ḤAMAS… LA VIOLENCE… NAḤAM… RENONCER… SHUV… REVENIR… — 844… 722… 701… 612… NAHOUM 1-3… SOPHONIE 2:13… CHRONIQUE BABYLONIENNE… MATTHIEU 12:41… LUC 11:32… »</li>
+<li>LES TROIS JUMEAUX — Jérémie 18:7, 8 : « si cette nation se détourne de sa méchanceté, je renoncerai au mal que je voulais lui faire » — le principe de la prophétie conditionnelle, qui explique pourquoi la menace de Jonas pouvait ne pas s'accomplir sans que la parole divine ait failli. Ézéchiel 33:11 : « je ne prends pas plaisir à la mort du méchant, mais à ce que le méchant change de voie et vive » — la même volonté divine, exposée à un prophète de l'exil. Matthieu 12:41 : « les hommes de Ninive se lèveront lors du jugement avec cette génération et la condamneront, car ils se sont repentis à la prédication de Jonas » — Jésus lui-même atteste que le changement de conduite des Ninivites a bien eu lieu.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 3 reprend le récit là où il s'était interrompu : la parole de Jéhovah est adressée à Jonas une seconde fois, avec la même mission, et cette fois le prophète obéit. Ninive est décrite par une double mesure : « une grande ville devant le vrai Dieu, trois journées de chemin », puis, au verset 4, par le trajet que le prophète parcourt d'abord, « une journée de chemin ». Le contenu du message est d'une brièveté extrême — cinq mots en hébreu selon les commentateurs : « Encore quarante jours, et Ninive sera renversée. » Le résultat est immédiat et total : les hommes de Ninive croient en Dieu, proclament un jeûne, se couvrent de sacs, du plus grand au plus petit ; la nouvelle atteint le roi, qui descend de son trône, ôte son manteau, se couvre d'un sac et s'assied sur la cendre — gestes codifiés du deuil et de l'humiliation. Le roi fait ensuite publier un décret qui surprend par son ampleur : le jeûne s'étend aux animaux, et l'ordre est donné à tous de se détourner de sa mauvaise voie et « de la violence qui est dans leurs mains ». Le chapitre se ferme sur la réaction divine : Dieu vit leurs œuvres, il renonça au mal annoncé, et ne le fit pas.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LES DEUX MESURES DE LA VILLE : l'expression « trois journées de chemin » a été comprise de deux manières — soit la traversée de la ville, soit son pourtour, ou plutôt la longueur totale du territoire urbain dont un prophète devait faire le tour ; le verset 4 emploie une autre expression, « une journée de chemin », qui désigne la distance parcourue dans la journée de prédication. La tradition du texte insiste sur la grandeur du lieu, ce que l'archéologie confirme pour l'époque assyrienne tardive. (2) LE VERBE « RENVERSER » : le mot hébreu hafakh signifie littéralement retourner, bouleverser ; il décrit à la fois la destruction — comme celle de Sodome — et le renversement intérieur. Plusieurs commentateurs soulignent que Ninive a été « renversée » exactement dans le sens que le verbe permet : retournée par la repentance, avant de l'être plus tard par le jugement. Le délai de quarante jours est un temps de grâce, et le texte souligne que ce délai fut utilisé dès les premiers jours. (3) LES GESTES DE REPENTANCE : le jeûne, le sac, la cendre, le fait de descendre de son trône — le roi de Ninive fait exactement ce que les prophètes réclamaient à Israël. Le décret ordonne non seulement un rite, mais un changement de conduite : « que chacun se détourne de sa mauvaise voie et de la violence qui est dans ses mains ». La mention de la violence est significative pour une ville dont les bas-reliefs royaux représentent précisément des scènes de cruauté envers les prisonniers. (4) « QUI SAIT ? » : la formule du roi exprime une espérance sans présomption. Elle repose sur le principe énoncé ailleurs par les prophètes : la menace divine n'est pas un destin figé, mais un appel ; c'est pourquoi le renoncement de Dieu n'est pas un changement de caractère ni une faiblesse, mais la réponse prévue à un changement réel de conduite. Le statut retenu par le registre reconnaît exactement cela : le délai de quarante jours s'est écoulé sans que la ruine survienne, parce que les Ninivites se sont repentis.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Jonas (Livre de) » de la Bibliothèque en ligne résume le contenu du livre en suivant l'ordre du récit, et l'article « Ninive » de la Bibliothèque en ligne décrit la ville telle que l'archéologie la révèle — tell de Kuyunjik, palais de Sennachérib et d'Assurbanipal, bibliothèque de milliers de tablettes, reliefs endommagés par le feu — tout en rappelant que les chroniques babyloniennes décrivent sa destruction : « la ville, ils la changèrent en amas de ruines ». L'article « L'Empire assyrien » de la même encyclopédie rappelle que Ninive était appelée « ville meurtrière » et « repaire des lions » (Nahoum 2:11 ; 3:1). Lecture commune et exégèse : les commentateurs notent que le succès de la prédication de Jonas est radicalement différent de l'accueil reçu par les autres prophètes ; plusieurs y voient une leçon adressée à Israël — des païens se convertissent à cinq mots, alors que le peuple de l'alliance résiste à des années d'avertissements. Ils soulignent également la place de ce chapitre dans l'enseignement de Jésus : les Ninivites sont donnés en exemple à une génération incrédule, et leur conversion est présentée comme un fait attesté.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 844 av. n. è.</td><td>Jonas prêche à Ninive : « encore quarante jours, et Ninive sera renversée » (Jonas 3:4)</td></tr>
+<tr><td class="d">Vers 844 av. n. è.</td><td>Les Ninivites croient en Dieu, proclament un jeûne et se couvrent de sacs ; le roi s'assied sur la cendre et publie un décret (Jonas 3:5-9)</td></tr>
+<tr><td class="d">Fin des quarante jours</td><td>Dieu renonce au mal annoncé ; la ville n'est pas détruite à ce moment-là (Jonas 3:10)</td></tr>
+<tr><td class="d">IXe-VIIIe siècle av. n. è.</td><td>La puissance assyrienne poursuit son expansion vers l'ouest et devient l'instrument du jugement d'Israël en 740-722 (2 Rois 15:19, 29 ; 17:6)</td></tr>
+<tr><td class="d">VIIe siècle av. n. è.</td><td>Nahoum et Sophonie annoncent la ruine de Ninive, cette fois sans condition remplie (Nahoum 1-3 ; Sophonie 2:13)</td></tr>
+<tr><td class="d">612 av. n. è.</td><td>Prise et destruction de Ninive par les Mèdes et les Babyloniens, comme l'attestent les chroniques babyloniennes</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Jésus cite les Ninivites repentis comme témoins au jour du jugement (Matthieu 12:41 ; Luc 11:32)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) L'AMPLEUR DE NINIVE : les fouilles ont révélé une enceinte de douze kilomètres environ, une quinzaine de portes monumentales, les palais royaux et des milliers de tablettes ; à son apogée, la ville comptait une population de plusieurs dizaines de milliers d'habitants, ce qui rend vraisemblable la description d'une grande métropole. (2) LE CONTEXTE DU IXe SIÈCLE : la puissance assyrienne atteint son zénith sous Shalmaneser III (858-824), puis entre dans une période d'affaiblissement intérieur et de troubles ; plusieurs historiens relèvent des signes de crise dans ces décennies. (3) LES SOURCES ASSYRIENNES ET BABYLONIENNES : les annales royales, les inscriptions de fondation et la Chronique babylonienne sur la chute de Ninive fournissent le cadre historique de la ville ; la Chronique décrit la prise de la ville et son pillage. (4) LA MÉMOIRE LOCALE : le tell de Nebi Yunus, sur le site de Ninive, porte le nom de « prophète Jonas » et abritait un sanctuaire associé à sa mémoire, ce qui atteste la persistance de la tradition, y compris dans un milieu non juif et non chrétien. (5) LE PRINCIPE DE LA PROPHÉTIE CONDITIONNELLE : Jérémie 18:7-10, Jérémie 26:2, 3, Ézéchiel 33:11-19 et Joël 2:13-14 exposent que la menace annoncée est conditionnelle ; la non-réalisation de la ruine après la repentance n'est donc pas un échec, mais la conséquence annoncée. (6) LE TÉMOIGNAGE DU NOUVEAU TESTAMENT : Matthieu 12:41 et Luc 11:32, dans la bouche de Jésus, supposent la réalité de la conversion des Ninivites — « des hommes de Ninive se lèveront lors du jugement… car ils se sont repentis ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) SITUATION DE NINIVE : sur la rive gauche du Tigre, face à l'emplacement de l'actuelle Mossoul, dans une plaine alluviale fertile arrosée par un réseau de canaux ; deux tells principaux, Kuyunjik et Nebi Yunus, marquent le site. (2) LES DIMENSIONS : la ville fortifiée formait un polygone irrégulier d'environ douze kilomètres de périmètre, avec des portes monumentales ; cette étendue explique que le prophète ait mis du temps à la parcourir, et l'expression « trois journées de chemin » reste discutée entre circuit, traversée et longueur du district. (3) LES CANAUX ET L'EAU : les Assyriens ont conduit l'eau jusqu'à Ninive par un système d'aqueducs et de canaux, dont le célèbre ouvrage de Jerwan attribué à Sennachérib ; l'abondance des ressources hydrauliques permettait une population nombreuse. (4) LES ROUTES : Ninive se trouvait sur l'axe qui relie l'Assyrie à la Babylonie au sud, à l'Anatolie au nord-ouest et au plateau iranien à l'est ; la ville de Jonas était ainsi au cœur du monde de son temps. (5) LA ROUTE DEPUIS ISRAËL : de Samarie, l'itinéraire passe par la vallée de Yizréel, la plaine de Damas puis les rives de l'Euphrate et du Khabour, ce qui représente plusieurs centaines de kilomètres vers le nord-est. (6) LA POSITION DU PROPHÈTE DANS LA VILLE : le texte mentionne qu'il se tient ensuite « à l'est de la ville » (4:5) ; la plaine orientale de Ninive, en bordure des jardins irrigués, correspond au cadre naturel d'une cabane de branchages. (7) LE SITE AUJOURD'HUI : le tell de Kuyunjik est partiellement fouillé, le tell de Nebi Yunus est occupé par un village, un cimetière et une mosquée, ce qui a longtemps limité les recherches archéologiques sur cette partie du site.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES DÉCOUVERTES DE KUYUNJIK : les fouilles entreprises dès 1842 puis en 1847-1851 ont mis au jour les demeures royales de Sennachérib et d'Assurbanipal ; la bibliothèque de ce dernier comptait plus de vingt mille tablettes et fragments, ce qui documente l'administration, la science et la religion de la capitale. (2) LES TRACES D'INCENDIE : les reliefs et les éléments architecturaux portent des traces de feu et de suie, signalées dès les premières explorations ; elles confirment la destruction violente de 612 avant notre ère mentionnée par la Chronique babylonienne. (3) LES MÉTABOLITES ET L'ÉCONOMIE VIVRIÈRE : l'archéobotanique et les textes administratifs montrent la dépendance de Ninive aux cultures céréalières et à l'élevage de la plaine du Tigre ; le décret rapporté en Jonas 3, qui étend le jeûne aux animaux, prend tout son relief dans une économie où les troupeaux font partie intégrante de la vie de la cité. (4) LES PRATIQUES DE REPENTANCE : les rituels de deuil et d'humiliation — sacs, cendre, jeûne, prosternation — sont attestés dans les textes mésopotamiens comme gestes de soumission devant une divinité ou devant un roi victorieux ; le récit de Jonas les emploie dans leur sens habituel. (5) LES RELIEFS ROYAUX : les bas-reliefs assyriens représentent avec insistance les traitements infligés aux prisonniers et les chasses royales ; ils donnent un fondement concret à la mention de la « violence » dont les Ninivites devaient se détourner. (6) LA VÉGÉTATION ET LE CLIMAT : la plaine de Ninive permettait dans l'Antiquité une agriculture irriguée et l'entretien de jardins royaux, ce qui éclaire le cadre du chapitre 4, avec la cabane et l'ombre de la plante. (7) PRUDENCE : l'archéologie documente la ville, son économie et sa fin ; l'épisode de la repentance n'est connu que par le texte biblique et par l'écho qu'en donne l'enseignement de Jésus.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>SECONDE MISSION : « LÈVE-TOI, VA À NINIVE » (3:1, 2) → OBÉISSANCE DE JONAS (3:3) → NINIVE, GRANDE VILLE, TROIS JOURNÉES DE CHEMIN (3:3) → UNE JOURNÉE DE PRÉDICATION : « ENCORE QUARANTE JOURS ET NINIVE SERA RENVERSÉE » (3:4) → LES NINIVITES CROIENT DIEU ; JEÛNE ET SACS DU PLUS GRAND AU PLUS PETIT (3:5) → LE ROI SE LÈVE DE SON TRÔNE, ÔTE SON MANTEAU, SE COUVRE D'UN SAC, S'ASSIED SUR LA CENDRE (3:6) → DÉCRET : HOMMES ET BÊTES, CRIER VERS DIEU, SE DÉTOURNER DE LA VIOLENCE (3:7, 8) → « QUI SAIT SI DIEU NE RENONCERA PAS ? » (3:9) → « DIEU VIT LEURS ŒUVRES… ET NE LE FIT PAS » (3:10) → DU RÉPIT À LA RUINE : NAHOUM ET SOPHONIE PUIS 612 AV. N. È.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Jonas 3:5-10) et le statut « Accomplie (délai écoulé sans ruine, après repentance) ». LES MESURES DE LA VILLE : la fiche expose les deux lectures des expressions « trois journées de chemin » et « une journée de chemin » sans trancher, la question étant discutée. LE VERBE « RENVERSER » : la fiche signale la double valeur du mot hébreu — détruire et retourner — sans en faire une démonstration. LE DÉCRET ROYAL : la fiche le présente tel que le texte le rapporte, en le rapprochant des pratiques de deuil attestées, sans prétendre identifier le roi de Ninive par son nom, le texte ne le donnant pas. L'ÉTENDUE DU CHANGEMENT : la fiche parle de repentance et de changement de conduite selon ce que dit le texte ; elle ne prétend pas que la ville soit devenue adoratrice de Jéhovah ni qu'elle ait été durablement réformée. LA SUITE DE L'HISTOIRE : la fiche rappelle que la destruction annoncée par Nahoum s'est réalisée en 612, sans confondre les deux messages. LA MORT DU PROPHÈTE : le récit ne rapporte pas l'issue de la vie de Jonas, et la fiche ne la suppose pas. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas du chapitre 4 (fiche suivante) ni du signe cité par Jésus (dernière fiche de la vague) ; elle ne formule aucune application aux communautés religieuses actuelles.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Seconde mission ; Jonas part et prêche à Ninive (Jonas 3:1-4)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Repentance générale : jeûne, sacs, décret royal (Jonas 3:5-9)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dieu renonce au mal annoncé ; la ville est épargnée (Jonas 3:10)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin des quarante jours</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'Assyrie devient la puissance dominante et emporte le royaume du Nord d'Israël</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">745-722 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahoum et Sophonie annoncent la ruine de Ninive (Nahoum 1-3 ; Sophonie 2:13)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIe siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ninive est prise et détruite par les Mèdes et les Babyloniens</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/32/4">Bible — Jonas 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/32/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/34">Bible — Exode 34 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/2/34</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/3">Bible — Zekaria 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/3</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200013190">Ninive — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200013190</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1976207">Ninive — l'orgueilleuse capitale assyrienne — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1976207</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JN448 — « Encore quarante jours, et Ninive sera renversée » : la repentance du roi, du peuple et des bêtes</span><span>Catégorie JN1</span></div></div>
+</article>
+<article class="fiche" id="JN449">
+<div class="visuel"><img src="images/prophe_JN449_ricin.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JN449 · CATÉGORIE JN1</div>
+<h3>« Je savais que tu es un Dieu miséricordieux » : la cabane, le ricin et la dernière question posée au prophète</h3>
+<div class="ref">Jonas 4:1-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">cela déplut beaucoup à jonas et il fut irrité il pria jéhovah et dit ah jéhovah n'était-ce pas ce que je disais quand j'étais encore dans mon pays c'est pourquoi je me suis empressé de fuir à tarsis car je savais que tu es un dieu miséricordieux et compatissant lent à la colère abondant en fidélité et qui renonce au mal maintenant jéhovah prends ma vie car la mort m'est préférable à la vie jéhovah lui demanda fais-tu bien de t'irriter alors jonas sortit de la ville et s'assit à l'est de la ville il se fit une cabane et s'y assit à l'ombre pour voir ce qui arriverait à la ville alors jéhovah dieu fit pousser un ricin pour faire de l'ombre au-dessus de sa tête afin de le délivrer de son irritation et jonas éprouva une grande joie à cause du ricin mais le lendemain matin dieu fit venir un ver qui piqua le ricin et il se dessécha quand le soleil se leva dieu fit venir un vent d'est brûlant et le soleil darda ses rayons sur la tête de jonas il défaillait et demandait à mourir dieu dit à jonas fais-tu bien de t'irriter à cause du ricin il répondit je fais bien de m'irriter au point de vouloir mourir alors jéhovah dit tu as pitié du ricin pour lequel tu n'as pas travaillé et que tu n'as pas fait pousser qui est apparu en une nuit et a disparu en une nuit et moi je ne devrais pas avoir pitié de ninive la grande ville où il y a plus de cent vingt mille hommes qui ne distinguent pas leur droite de leur gauche ainsi que beaucoup d'animaux (jonas 4:2, 3, 10, 11 ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JN449</div><audio controls preload="none" src="audio/fiche_JN449_ricin.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JN449_ricin.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jonas 4:1-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>cela déplut beaucoup à jonas et il fut irrité il pria jéhovah et dit ah jéhovah n'était-ce pas ce que je disais quand j'étais encore dans mon pays c'est pourquoi je me suis empressé de fuir à tarsis car je savais que tu es un dieu miséricordieux et compatissant lent à la colère abondant en fidélité et qui renonce au mal maintenant jéhovah prends ma vie car la mort m'est préférable à la vie jéhovah lui demanda fais-tu bien de t'irriter alors jonas sortit de la ville et s'assit à l'est de la ville il se fit une cabane et s'y assit à l'ombre pour voir ce qui arriverait à la ville alors jéhovah dieu fit pousser un ricin pour faire de l'ombre au-dessus de sa tête afin de le délivrer de son irritation et jonas éprouva une grande joie à cause du ricin mais le lendemain matin dieu fit venir un ver qui piqua le ricin et il se dessécha quand le soleil se leva dieu fit venir un vent d'est brûlant et le soleil darda ses rayons sur la tête de jonas il défaillait et demandait à mourir dieu dit à jonas fais-tu bien de t'irriter à cause du ricin il répondit je fais bien de m'irriter au point de vouloir mourir alors jéhovah dit tu as pitié du ricin pour lequel tu n'as pas travaillé et que tu n'as pas fait pousser qui est apparu en une nuit et a disparu en une nuit et moi je ne devrais pas avoir pitié de ninive la grande ville où il y a plus de cent vingt mille hommes qui ne distinguent pas leur droite de leur gauche ainsi que beaucoup d'animaux (jonas 4:2, 3, 10, 11 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jonas — P449 (4:2, 3, 10, 11 : je savais que tu es un Dieu miséricordieux, lent à la colère) ; Jonas 4:2, 10, 11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« CELA DÉPLUT BEAUCOUP À JONAS… ET IL FUT IRRITÉ… ET IL PRIA JÉHOVAH… AH JÉHOVAH… N'ÉTAIT-CE PAS CE QUE JE DISAIS… QUAND J'ÉTAIS ENCORE DANS MON PAYS…? C'EST POURQUOI… JE ME SUIS EMPRESSÉ DE FUIR À TARSIS… CAR JE SAVAIS… QUE TU ES UN DIEU MISÉRICORDIEUX ET COMPATISSANT… LENT À LA COLÈRE… ABONDANT EN FIDÉLITÉ… ET QUI RENONCE AU MAL… »… « MAINTENANT… JÉHOVAH… PRENDS MA VIE… CAR LA MORT M'EST PRÉFÉRABLE… À LA VIE… JÉHOVAH LUI DEMANDA… FAIS-TU BIEN… DE T'IRRITER…? »… « ALORS JONAS… SORTIT DE LA VILLE… ET S'ASSIT À L'EST DE LA VILLE… IL SE FIT UNE CABANE… ET S'Y ASSIT À L'OMBRE… POUR VOIR CE QUI ARRIVERAIT À LA VILLE… »… « ALORS JÉHOVAH DIEU… FIT POUSSER UN RICIN… POUR FAIRE DE L'OMBRE… AU-DESSUS DE SA TÊTE… AFIN DE LE DÉLIVRER DE SON IRRITATION… ET JONAS ÉPROUVA UNE GRANDE JOIE… À CAUSE DU RICIN… »… « MAIS LE LENDEMAIN MATIN… DIEU FIT VENIR UN VER… QUI PIQUA LE RICIN… ET IL SE DESSÉCHA… »… « QUAND LE SOLEIL SE LEVA… DIEU FIT VENIR UN VENT D'EST BRÛLANT… ET LE SOLEIL DARDA SES RAYONS… SUR LA TÊTE DE JONAS… IL DÉFAILLAIT… ET DEMANDAIT À MOURIR… »… « DIEU DIT À JONAS… FAIS-TU BIEN DE T'IRRITER… À CAUSE DU RICIN…? IL RÉPONDIT… JE FAIS BIEN DE M'IRRITER… AU POINT DE VOULOIR MOURIR… »… « ALORS JÉHOVAH DIT… TU AS PITIÉ DU RICIN… POUR LEQUEL TU N'AS PAS TRAVAILLÉ… ET QUE TU N'AS PAS FAIT POUSSER… QUI EST APPARU EN UNE NUIT… ET A DISPARU EN UNE NUIT… »… « ET MOI… JE NE DEVRAIS PAS AVOIR PITIÉ… DE NINIVE… LA GRANDE VILLE… OÙ IL Y A PLUS DE CENT VINGT MILLE HOMMES… QUI NE DISTINGUENT PAS… LEUR DROITE DE LEUR GAUCHE… AINSI QUE BEAUCOUP D'ANIMAUX…? »… — QIQAYON… LA PLANTE À OMBRE… TOLAʿAT… LE VER… RUAH QADIM… LE VENT D'EST… ḤAMSIYN… LE VENT DU DÉSERT… ʾADONAI… DIEU MISÉRICORDIEUX… RAḤUM… COMPATISSANT… ʾEREK ʾAPPAYIM… LENT À LA COLÈRE… RAV ḤESED… ABONDANT EN FIDÉLITÉ… NOḤAM… QUI RENONCE… SHETEIM ʿESREH RIBBO… CENT VINGT MILLE… — EXODE 34:6, 7… PSAUME 86:15… JOËL 2:13… NAHOUM 1:3… MATTHIEU 12:41… LUC 11:32… ROMAINS 10:12… »</li>
+<li>LES TROIS JUMEAUX — Exode 34:6, 7 : « Jéhovah, Jéhovah, un Dieu miséricordieux et compatissant, lent à la colère, abondant en fidélité et en vérité » — la formule que Jonas cite presque mot pour mot, révélée à Moïse après la faute du veau d'or : le prophète récite donc une déclaration que tout Israélite connaissait. Psaume 86:15 : « toi, ô Jéhovah, tu es un Dieu compatissant et miséricordieux, lent à la colère, grand en fidélité et en vérité » — reprise liturgique de la même confession, adressée par un homme en détresse. Actes 26:17-20 : Paul raconte à Agrippa comment il a été envoyé vers les nations pour qu'elles se repentent et fassent des œuvres qui conviennent à la repentance — la même logique missionnaire que celle que Jonas refuse, mais assumée par l'apôtre.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 4 rompt le fil du récit triomphal : après le succès de sa prédication, Jonas est mécontent et irrité. Sa prière explique tout : il savait que Jéhovah est un Dieu miséricordieux et compatissant, lent à la colère, abondant en fidélité et qui renonce au mal — c'est précisément ce qu'il voulait éviter en fuyant vers Tarsis. Il préfère mourir plutôt que de vivre une telle issue. La question de Jéhovah — « fais-tu bien de t'irriter ? » — ne reçoit pas de réponse, et le prophète sort de la ville pour s'installer à l'est, dans une cabane, afin de voir ce qui arriverait. Vient alors la parabole vivante qui a donné au livre sa dernière image : Dieu fait pousser une plante qui procure de l'ombre, Jonas en éprouve une grande joie ; le lendemain, un ver pique la plante, qui se dessèche, puis un vent d'est brûlant et le soleil frappent la tête du prophète, qui souhaite mourir. La question revient : « fais-tu bien de t'irriter à cause de la plante ? » — et il répond que oui. Le livre se termine alors sur la parole de Dieu, seule conclusion des Écritures hébraïques à rester en forme de question : toi, tu as pitié d'une plante pour laquelle tu n'as pas travaillé, et moi, je ne devrais pas avoir pitié de Ninive, la grande ville, où il y a plus de cent vingt mille hommes « qui ne distinguent pas leur droite de leur gauche », ainsi que beaucoup d'animaux ?</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA FORMULE CITÉE : la confession de Jonas est presque mot pour mot celle d'Exode 34:6, 7 ; l'ironie du récit tient au fait que le prophète emploie cette déclaration non pas pour louer Dieu, mais pour lui reprocher sa bonté. Sa réaction est celle d'un homme dont l'annonce n'a pas produit l'effet attendu sur ses adversaires ; les commentateurs relèvent aussi la dimension nationale : la ruine de Ninive aurait été, pour Israël, une bonne nouvelle politique. (2) LA PLANTE : le mot hébreu qiqayon n'apparaît qu'ici dans la Bible ; il a été identifié tour à tour au ricin — plante à croissance très rapide, dont l'ombre est large — et à d'autres végétaux rampants comme la coloquinte ; la Septante emploie le terme de courge, ce qui explique les traductions anciennes par « lierre » ou « calebasse ». L'essentiel est la fonction de la plante : elle sert de leçon, et non de décor. (3) LE VER ET LE VENT D'EST : le ver qui attaque la tige provient du vocabulaire de la vie agricole — les végétaux à croissance rapide sont tendres et vulnérables ; le vent d'est brûlant, sec et poussiéreux, correspond à un phénomène climatique bien connu dans la région, où les vents du désert peuvent faire monter les températures de plusieurs degrés en quelques heures. (4) LA QUESTION FINALE : le livre se termine sans réponse, ce qui laisse au lecteur le soin de conclure. La construction est délibérée : Jonas a pitié d'une plante, mais pas d'une ville ; la pitié qu'il accorde à ce qui lui est utile le condamne sur ce qu'il refuse aux autres. Les « cent vingt mille hommes qui ne distinguent pas leur droite de leur gauche » sont généralement compris comme l'ensemble de la population, y compris les jeunes enfants ; la mention des animaux complète l'image d'une création entière concernée par la miséricorde divine.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Jonas (Livre de) » de la Bibliothèque en ligne présente le contenu du chapitre 4 en deux points — l'installation du prophète à l'est de la ville pour voir ce qui adviendrait, puis la leçon de miséricorde enseignée « en se servant de la lagénaire » ; l'article « Ninive » rappelle que le site porte aujourd'hui le nom du prophète. Lecture commune et exégèse : les commentateurs rapprochent ce chapitre des débats des Écritures sur la portée universelle de la miséricorde — Abraham intercédant pour Sodome (Genèse 18), Élie à l'Horeb (1 Rois 19), le livre de Ruth, l'appel de Corneille (Actes 10) — et notent que la question finale de Dieu est l'une des conclusions les plus ouvertes du canon hébraïque. Beaucoup soulignent que le livre n'est pas un traité sur les nations, mais un traité sur le prophète : c'est Jonas qui apprend à la fin ce qu'il récitait au début. La reprise par Jésus en Matthieu 12 relit l'ensemble de l'épisode à la lumière du jugement et de la résurrection.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Vers 844 av. n. è.</td><td>Après la repentance des Ninivites, Jonas exprime son mécontentement et sa connaissance du caractère de Dieu (Jonas 4:1-3)</td></tr>
+<tr><td class="d">Vers 844 av. n. è.</td><td>Le prophète s'installe à l'est de la ville ; la plante, le ver et le vent d'est servent de leçon (Jonas 4:5-8)</td></tr>
+<tr><td class="d">Vers 844 av. n. è.</td><td>La question finale sur Ninive clôt le livre (Jonas 4:9-11)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Jésus rappelle que les Ninivites se repentirent et qu'ils se lèveront au jour du jugement (Matthieu 12:41 ; Luc 11:32)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>La miséricorde divine est annoncée aux non-Juifs sans distinction de peuple : Corneille et sa maison (Actes 10:34, 35 ; 11:18)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Paul confirme que Dieu « ne fait pas de distinction entre les hommes » : le même Seigneur est riche pour tous ceux qui l'invoquent (Romains 10:12)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA FORMULE DE L'EXODE : Exode 34:6, 7 est l'un des textes les plus cités des Écritures hébraïques — on le retrouve en Nombres 14:18, Psaume 86:15, Psaume 103:8, Psaume 145:8, Joël 2:13, Nahoum 1:3, Nehémie 9:17 — ce qui montre que Jonas 4:2 cite une confession établie, sans doute apprise par cœur. (2) LA QUESTION NATIONALE : la menace assyrienne sur Israël commence précisément au IXe siècle ; la perspective de la ruine de Ninive était donc, dans l'esprit d'un Israélite de cette époque, une espérance de délivrance, ce qui éclaire l'irritation du prophète. (3) L'HISTOIRE ULTÉRIEURE DE NINIVE : les prophètes du VIIIe et du VIIe siècle, notamment Nahoum et Sophonie, annoncent la ruine de la ville (Nahoum 1:8-14 ; 2:10-13 ; Sophonie 2:13-15) ; sa destruction en 612 avant notre ère est confirmée par la Chronique babylonienne, qui décrit la prise et le pillage. C'est ce contraste qui rend le récit de Jonas si déconcertant : la ville a été épargnée à un moment, et détruite plus tard. (4) L'ÉCHO DANS LE JUDAÏSME : les manuscrits de la mer Morte conservent des fragments du livre ; la littérature juive ancienne discute du sens du livre et de sa portée. (5) L'ÉCHO CHRÉTIEN : Jésus cite les Ninivites comme exemple de repentance et le signe de Jonas comme figure de sa résurrection (Matthieu 12:39-41), ce qui a maintenu la lecture du livre dans toute la tradition chrétienne. (6) LA CONTINUITÉ DU SOUVENIR LOCAL : le tell de Nebi Yunus, sur le site de Ninive, porte le nom du prophète et abritait un sanctuaire à sa mémoire, que les voyageurs des siècles passés ont visité et décrit ; cette tradition, sans valeur de preuve historique, montre la persistance de l'histoire.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LES ENVIRONS EST DE NINIVE : la plaine orientale, arrosée par les canaux venus du Tigre, portait les jardins et les cultures qui alimentaient la ville ; c'est là que le texte situe la cabane du prophète, exposée au soleil levant. (2) LE CLIMAT DE LA PLAINE MÉSOPOTAMIENNE : été très chaud, avec des températures dépassant souvent quarante degrés et des vents de nord-ouest ou d'est apportant la poussière du désert ; cette donnée explique la nécessité de l'ombre et l'effet de la disparition de la plante. (3) LE VENT D'EST : dans toute la région, ce vent — appelé localement sharqi ou hamsin — est sec et brûlant ; les textes anciens et les observations modernes en décrivent les effets sur les personnes exposées. (4) LES JARDINS ET LES PLANTES À CROISSANCE RAPIDE : dans les zones irriguées de Mésopotamie poussaient des plantes à développement très rapide, notamment des cucurbitacées, dont l'ombrage est apprécié ; la mention du qiqayon s'inscrit dans ce contexte agricole précis. (5) LA PLACE DE NINIVE DANS LA GÉOGRAPHIE DU LIVRE : le récit oppose Joppé, port de l'ouest, à Ninive, métropole de l'est, et Tarsis, l'extrémité occidentale du monde méditerranéen ; la géographie du livre est ainsi construite comme une carte du refus puis de l'obéissance. (6) LA POPULATION ESTIMÉE : les études archéologiques évaluent la population de la Ninive des Sennachérib à plusieurs dizaines de milliers d'habitants au minimum, et les estimations les plus hautes dépassent cent mille personnes en comptant la périphérie ; le chiffre de « plus de cent vingt mille » donné par le texte est donc du même ordre de grandeur que les évaluations modernes, même s'il reste impossible à vérifier précisément.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA BOTANIQUE DU RICIN : le ricin (Ricinus communis) est une plante à croissance rapide, capable, dans de bonnes conditions, d'atteindre plusieurs mètres en une saison ; ses feuilles larges procurent une ombre dense — ce qui correspond au texte. Le ricin contient de la ricine, toxique, notamment dans ses graines, et il est sensible aux attaques d'insectes. (2) LES PLANTES DU PROCHE-ORIENT ANCIEN : les jardins royaux assyriens, décrits par les textes et les reliefs, comportaient des végétaux arboricoles et des cultures irriguées ; la campagne de Ninive fournissait donc des plantes à croissance rapide et à large feuillage. (3) L'ENTOMOLOGIE : de nombreuses chenilles et larves, dont celles de petits Lépidoptères et de mouches, perforent les tiges tendres des végétaux et provoquent leur flétrissement brutal en une seule nuit de chaleur ; le récit emploie une image conforme à l'observation agricole. (4) LA PHYSIOLOGIE DE LA CHALEUR : l'exposition prolongée au soleil, accompagnée d'une déshydratation, provoque des symptômes d'épuisement — vertiges, faiblesse, troubles du jugement — que le texte résume par « il défaillait et demandait à mourir » ; cette réaction est conforme aux données médicales modernes. (5) LES MÉTHODES ARCHÉOLOGIQUES À NINIVE : depuis la reprise des travaux et les nouvelles prospections, les techniques de l'archéologie moderne ont permis de documenter l'étendue et l'organisation urbaine de la ville, tout en révélant que les parties les plus riches du site restent inaccessibles sous les constructions actuelles. (6) L'ÉVALUATION DES POPULATIONS ANCIENNES : les démographes de l'Antiquité estiment les populations urbaines à partir de la superficie et de la densité d'occupation ; les résultats donnent, pour de grandes capitales, des ordres de grandeur de plusieurs dizaines de milliers d'habitants — ce qui rend le chiffre du texte plausible sans permettre de le confirmer. (7) PRUDENCE : la botanique, la médecine et l'archéologie expliquent les éléments matériels du récit ; la leçon du passage, elle, relève du message religieux.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>MÉCONTENTEMENT DE JONAS ET PRIÈRE : « JE SAVAIS QUE TU ES UN DIEU MISÉRICORDIEUX… » (4:1, 2) → DEMANDE DE MOURIR ; PREMIÈRE QUESTION : « FAIS-TU BIEN DE T'IRRITER ? » (4:3, 4) → LA CABANE À L'EST DE LA VILLE (4:5) → LA PLANTE QUI PROCURE L'OMBRE : GRANDE JOIE DU PROPHÈTE (4:6) → LE VER, LA PLANTE DESSÉCHÉE, LE VENT D'EST BRÛLANT (4:7, 8) → SECONDE QUESTION ; « JE FAIS BIEN DE M'IRRITER » (4:9) → « TU AS PITIÉ DE LA PLANTE… MOI JE NE DEVRAIS PAS AVOIR PITIÉ DE NINIVE ? » (4:10, 11) → LES CENT VINGT MILLE HOMMES ET LES ANIMAUX (4:11) → MATTHIEU 12:41 : LES NINIVITES SE LÈVERONT AU JUGEMENT → ACTES 10:34, 35 : LA MISÉRICORDE POUR TOUTES LES NATIONS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Jonas 4:2, 10, 11) et le statut « Accomplie ». LA PLANTE : la fiche signale le débat sur le qiqayon — ricin ou autre cucurbitacée — sans trancher, le mot hébreu n'apparaissant qu'une fois dans le texte biblique. LES CHIFFRES : la fiche donne l'ordre de grandeur des estimations démographiques modernes et signale que le chiffre du texte ne peut être vérifié. LA FORMULE CITÉE : la fiche indique qu'il s'agit d'une confession connue de Moïse au Sinaï, sans développer les usages liturgiques postérieurs. LE SILENCE FINAL : la fiche souligne que le livre se termine sur une question sans réponse, ce qui appartient à sa composition et non à une lacune du texte. L'ARTICULATION AVEC LA SUITE : la fiche rappelle la destruction de 612 av. n. è. sans la présenter comme un démenti du pardon accordé deux siècles plus tôt, les deux messages étant distincts dans les Écritures. LES RÉACTIONS DU PROPHÈTE : la fiche expose ce que le texte dit de son irritation, sans entrer dans l'analyse psychologique de son désir de mourir. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas du signe de Jonas cité par Jésus (fiche suivante) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jonas exprime son mécontentement et cite le caractère miséricordieux de Dieu (Jonas 4:1-3)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La cabane à l'est de Ninive ; la plante, le ver et le vent d'est (Jonas 4:5-8)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Question finale sur la pitié pour Ninive (Jonas 4:9-11)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahoum et Sophonie annoncent la ruine de Ninive (Nahoum 1-3 ; Sophonie 2:13)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe-VIIe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction de Ninive par les Mèdes et les Babyloniens</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">612 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus cite les Ninivites repentis et l'apôtre Paul annonce la miséricorde aux nations (Matthieu 12:41 ; Actes 26:18-20)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/16">Bible — Matthieu 16 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/16</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/86">Bible — Psaume 86 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/86</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/26">Bible — Actes 26 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/26</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/62/1">Bible — 1 Jean 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/62/1</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001701">L'Empire assyrien — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001701</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JN449 — « Je savais que tu es un Dieu miséricordieux » : la cabane, le ricin et la dernière question posée au prophète</span><span>Catégorie JN1</span></div></div>
+</article>
+<article class="fiche" id="JN450">
+<div class="visuel"><img src="images/prophe_JN450_signe.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JN450 · CATÉGORIE JN1</div>
+<h3>« Le signe de Jonas » : trois jours et trois nuits dans le cœur de la terre</h3>
+<div class="ref">Matthieu 12:39, 40 ; 16:4 ; Luc 11:29, 30</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">quelques scribes et pharisiens lui dirent maître nous voulons voir un signe de ta part il leur répondit une génération méchante et adultère cherche un signe mais il ne lui sera donné que le signe de jonas le prophète car de même que jonas fut dans le ventre du grand poisson trois jours et trois nuits de même le fils de l'homme sera dans le cœur de la terre trois jours et trois nuits les hommes de ninive se lèveront lors du jugement avec cette génération et la condamneront car ils se sont repentis à la prédication de jonas et voici il y a ici plus que jonas (matthieu 12:40 ; 16:4 ; luc 11:29, 30 ; accomplie)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JN450</div><audio controls preload="none" src="audio/fiche_JN450_signe.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JN450_signe.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Matthieu 12:39, 40 ; 16:4 ; Luc 11:29, 30</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>quelques scribes et pharisiens lui dirent maître nous voulons voir un signe de ta part il leur répondit une génération méchante et adultère cherche un signe mais il ne lui sera donné que le signe de jonas le prophète car de même que jonas fut dans le ventre du grand poisson trois jours et trois nuits de même le fils de l'homme sera dans le cœur de la terre trois jours et trois nuits les hommes de ninive se lèveront lors du jugement avec cette génération et la condamneront car ils se sont repentis à la prédication de jonas et voici il y a ici plus que jonas (matthieu 12:40 ; 16:4 ; luc 11:29, 30 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jonas — P450 (Matthieu 12:39, 40, signe de Jonas : le Fils de l'homme sera trois jours et trois nuits dans le cœur de la terre) ; Matthieu 12:40 ; 16:4 ; Luc 11:29, 30 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ALORS QUELQUES SCRIBES ET PHARISIENS… LUI DIRENT… MAÎTRE… NOUS VOULONS VOIR… UN SIGNE DE TA PART… »… « IL LEUR RÉPONDIT… UNE GÉNÉRATION MÉCHANTE ET ADULTÈRE… CHERCHE UN SIGNE… MAIS IL NE LUI SERA DONNÉ… QUE LE SIGNE DE JONAS LE PROPHÈTE… »… « CAR DE MÊME QUE JONAS… FUT DANS LE VENTRE DU GRAND POISSON… TROIS JOURS ET TROIS NUITS… DE MÊME LE FILS DE L'HOMME… SERA DANS LE CŒUR DE LA TERRE… TROIS JOURS ET TROIS NUITS… »… « LES HOMMES DE NINIVE… SE LÈVERONT LORS DU JUGEMENT… AVEC CETTE GÉNÉRATION… ET LA CONDAMNERONT… CAR ILS SE SONT REPENTIS… À LA PRÉDICATION DE JONAS… ET VOICI… IL Y A ICI… PLUS QUE JONAS… »… « LA REINE DU SUD… SE LÈVERA LORS DU JUGEMENT… AVEC CETTE GÉNÉRATION… ET LA CONDAMNERA… CAR ELLE VINT DES EXTRÉMITÉS DE LA TERRE… POUR ENTENDRE LA SAGESSE DE SALOMON… ET VOICI… IL Y A ICI PLUS QUE SALOMON… »… « UNE GÉNÉRATION MÉCHANTE… ET ADULTÈRE… CHERCHE UN SIGNE… MAIS IL NE LUI SERA DONNÉ… QUE LE SIGNE DE JONAS… »… — SEMEION… SIGNE… IONAS… JONAS… KARDIA TES GES… LE CŒUR DE LA TERRE… TREIS HEMERAS KAI TREIS NYKTAS… TROIS JOURS ET TROIS NUITS… ANISTEMI… SE LEVER… KRISIS… JUGEMENT… METANOIA… REPENTIR… NINIVITAI… NINIVITES… — 33 DE N. È.… 14 NISAN… CRUCIFIXION… 16 NISAN… RÉSURRECTION… ACTES 2:23-36… 1 CORINTHIENS 15:3-8… OSÉE 6:2… »</li>
+<li>LES TROIS JUMEAUX — Osée 6:2 : « après deux jours il nous ranimera ; au troisième jour il nous relèvera, et nous vivrons devant lui » — la formule du troisième jour, déjà présente chez les prophètes avant Jésus, et rapprochée par les commentateurs du signe de Jonas. 1 Corinthiens 15:3-8 : « Christ est mort pour nos péchés selon les Écritures ; il a été enseveli, et il a été ressuscité le troisième jour selon les Écritures ; il est apparu à Céphas, puis aux douze… puis à plus de cinq cents frères » — la déclaration chrétienne la plus ancienne sur le déroulement des faits, avec la liste des témoins. Actes 2:23-32 : le discours de la Pentecôte proclame que Dieu a ressuscité Jésus, « car tu ne laisseras pas mon âme dans le schéol » — l'accomplissement public, attesté par les apôtres devant la foule de Jérusalem.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Trois évangiles rapportent la même scène : des scribes et des pharisiens demandent à Jésus un signe, c'est-à-dire une démonstration spectaculaire venue du ciel. La réponse est un refus suivi d'une unique exception : il ne leur sera donné que le signe de Jonas. Matthieu en donne l'explication la plus complète : de même que Jonas fut dans le ventre du grand poisson trois jours et trois nuits, de même le Fils de l'homme sera dans le cœur de la terre trois jours et trois nuits. Marc 8:11, 12 rapporte le même refus sans l'explication ; Luc 11:29, 30 précise que ce signe s'accomplira dans la personne de Jésus, et non comme un prodige céleste : « car de même que Jonas devint un signe pour les Ninivites, ainsi le Fils de l'homme le sera aussi pour cette génération ». Matthieu ajoute deux comparaisons qui situent la responsabilité de ses contemporains : les hommes de Ninive se lèveront au jugement et condamneront cette génération, parce qu'ils se sont repentis à la prédication de Jonas, et voici qu'il y a là « plus que Jonas » ; la reine du Sud se lèvera de même, elle qui vint de loin pour entendre la sagesse de Salomon — et voici « plus que Salomon ». Le registre classe cette prophétie comme accomplie, avec référence à Matthieu 12:40, 16:4 et Luc 11:29, 30.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE SENS DU « SIGNE » : dans les Évangiles, un signe n'est pas seulement un miracle, mais une démonstration d'autorité censée authentifier une mission. La génération qui demandait un signe venait d'en recevoir plusieurs — guérisons, exorcismes — et se refusait néanmoins à croire ; en répondant par « le signe de Jonas », Jésus annonce non un prodige dans le ciel, mais un événement de sa propre vie, la mise au tombeau et la résurrection. (2) LA FORMULE DES TROIS JOURS : l'expression « trois jours et trois nuits » est un idiome hébreu qui désigne une période comprise entre un jour et demi et trois jours pleins ; on la retrouve dans d'autres textes, comme Esther 4:16 (« trois jours, nuit et jour ») ou Matthieu 27:63, 64 (« après trois jours je me relève »). Les Évangiles, qui rapportent la crucifixion la veille d'un sabbat et la découverte du tombeau vide le premier jour de la semaine, ne retiennent donc pas une durée de soixante-douze heures exactes, mais la séquence des trois jours. (3) LA COMPARAISON QUI VA PLUS LOIN : le signe ne se réduit pas au séjour dans la tombe. Jonas est un prophète envoyé de Dieu vers un peuple étranger, qui a laissé son message être l'occasion d'une conversion ; Jésus est celui que les Ninivites reconnaîtront comme plus grand que Jonas, et dont la mort suivie de la résurrection devient le message adressé au monde. (4) LE CADRE JUDICIAIRE : le texte emploie le vocabulaire du tribunal — se lever au jugement, condamner — pour dire que des non-Juifs qui se sont repentis attestent contre une génération qui refuse. La reine du Sud et les Ninivites sont deux exemples de recherche sincère, opposés à l'exigence d'un spectaculaire qui dispenserait de croire.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Jonas (Livre de) » de la Bibliothèque en ligne rappelle que l'on ne peut pas considérer les Ninivites comme des personnages imaginaires, puisque, dans les Écritures grecques, Jésus s'y réfère comme à des personnes qui se relèveront lors du jugement et qui condamneront une génération de Juifs insensibles. Lecture commune et exégèse : l'application du signe de Jonas à la résurrection est habituellement présentée comme la clé de lecture du livre entier : Jonas traversant la mort et revenant annoncer la miséricorde aux nations préfigure, d'une manière plus petite, le trajet du Christ. Les commentateurs relèvent que les Évangiles emploient trois formulations du délai — « trois jours et trois nuits », « après trois jours », « le troisième jour » — qui correspondent au langage juif de l'époque. Ils soulignent également que la mention de « plus que Jonas » rattache l'annonce à la personne de Jésus, et non à un événement indépendant de lui.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">33 de n. è., 14 Nisan</td><td>Jésus est arrêté, jugé, mis à mort sur un poteau et enseveli avant le début du sabbat (Matthieu 27:57-60 ; Luc 23:50-54)</td></tr>
+<tr><td class="d">15 Nisan (sabbat)</td><td>Le tombeau reste fermé et gardé ; les prêtres obtiennent des gardes (Matthieu 27:62-66)</td></tr>
+<tr><td class="d">16 Nisan, premier jour de la semaine</td><td>Le tombeau est trouvé vide ; Jésus apparaît à Marie Madeleine, puis aux disciples (Matthieu 28 ; Luc 24)</td></tr>
+<tr><td class="d">33 de n. è., Pentecôte</td><td>Pierre proclame devant la foule que Dieu a ressuscité Jésus ; environ trois mille personnes sont baptisées (Actes 2:22-41)</td></tr>
+<tr><td class="d">Vers 55 de n. è.</td><td>Paul transmet la formule ancienne : Christ est mort, a été enseveli et a été ressuscité le troisième jour, avec la liste des témoins (1 Corinthiens 15:3-8)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>La comparaison avec les Ninivites et la reine du Sud reste attachée à l'enseignement de Jésus (Matthieu 12:41, 42 ; Luc 11:31, 32)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES TÉMOINS DE LA RÉSURRECTION : 1 Corinthiens 15:3-8, rédigé vers le milieu du Ier siècle, énumère les apparitions — Céphas, les douze, plus de cinq cents frères, Jacques, puis Paul lui-même — et constitue l'une des formules de foi les plus anciennes du christianisme ; sa rédaction précoce est reconnue par les historiens du Nouveau Testament. (2) LES RÉCITS ÉVANGÉLIQUES : les quatre évangiles rapportent la mise au tombeau et la découverte de la tombe vide, avec des détails vérifiables — le nom de Joseph d'Arimathie, la garde, la pierre roulée, les linges. (3) LA PRÉDICATION PUBLIQUE : Actes 2, 3 et 4 rapportent la proclamation de la résurrection à Jérusalem même, quelques semaines après les faits, alors que les autorités pouvaient facilement produire le corps si l'annonce avait été fausse. (4) LE CONTEXTE ROMAIN ET JUIF : la coutume de l'ensevelissement rapide avant le sabbat, l'usage de sceller et de garder la tombe d'un condamné à mort politique, et la procédure des gardes romaines sont documentées par les sources de l'époque, notamment Flavius Josèphe et les textes juridiques romains. (5) LA TRANSFORMATION DES DISCIPLES : les sources rapportent que des hommes craintifs et dispersés se sont mis à prêcher publiquement ; plusieurs historiens, croyants ou non, considèrent cette transformation et la prédication d'une tombe vide comme des faits à expliquer. (6) LE TÉMOIGNAGE DE L'ÉCRITURE : Osée 6:2 et le Psaume 16:10 sont cités dans le Nouveau Testament comme des textes annonçant le troisième jour (Luc 24:46 ; Actes 2:27-31). (7) PRUDENCE : l'histoire établit le contexte et les témoignages anciens ; elle ne peut pas démontrer un miracle, qui est l'objet de la foi.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA MER ET JOPPÉ : le signe prend sa source dans une traversée réelle, depuis le port de Joppé, sur une mer où les tempêtes sont fréquentes ; l'épisode de Jonas n'est pas situé dans un pays imaginaire. (2) NINIVE ET LA DESTINATION DE LA MISSION : la ville de l'est, à des centaines de kilomètres, représente les nations auxquelles la miséricorde est annoncée, ce qui donne au signe sa portée universelle. (3) JÉRUSALEM ET LE TOMBEAU : les Évangiles situent la mise au tombeau dans un jardin, près du lieu de l'exécution, à l'extérieur des murs de la ville ; les vestiges du tombeau dit du Saint-Sépulcre et ceux du tombeau dit du Jardin sont situés dans cette périphérie nord et ouest. (4) LE COMPUT DES JOURS À JÉRUSALEM : le jour juif commence au coucher du soleil ; un ensevelissement fait avant le sabbat et la visite des femmes au premier jour de la semaine encadrent l'intervalle, ce qui correspond au récit. (5) LES ROUTES DE LA DIFFUSION : depuis Jérusalem, la proclamation de la résurrection gagne la Samarie, Antioche, l'Asie Mineure, la Grèce et Rome ; les missions de Paul, décrites dans les Actes, suivent exactement ces axes. (6) LA PÉNINSULE ITALIENNE : Rome, où Paul est conduit, devient à son tour le point de départ de la diffusion vers l'Occident, ce qui prolonge la portée du signe de Jonas à l'échelle de l'empire. (7) LA GÉOGRAPHIE SYMBOLIQUE : le « cœur de la terre » exprime dans la langue de l'époque le domaine des morts, sans désignation géographique ; la fiche ne lui prête donc aucun lieu précis.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA CHRONOLOGIE INCLUSIVE : dans le comput juif, une fraction de jour compte pour un jour entier ; les expressions « trois jours et trois nuits », « le troisième jour » et « après trois jours » sont employées comme équivalentes dans les textes de l'époque, comme le montrent le livre d'Esther et les écrits rabbiniques. (2) L'ARCHÉOLOGIE DU TOMBEAU : les tombes juives du Ier siècle en Judée sont bien connues — chambres taillées, pierre roulante, bancs d'ensevelissement — et correspondent aux descriptions des Évangiles. Le tombeau du Saint-Sépulcre, partiellement conservé, et le tombeau dit du Jardin présentent ce type de dispositif. (3) LES DONNÉES CRITIQUES DE L'HISTOIRE ANCIENNE : l'historien romain Tacite mentionne, dans ses Annales, que le nom des chrétiens vient du Christ, « mis à mort par le procurateur Ponce Pilate » ; cette mention, hostile, confirme la réalité de l'exécution. (4) LA CONTINUITÉ DE LA COMMUNAUTÉ : les fouilles de Jérusalem ont mis au jour des vestiges de la communauté judéo-chrétienne primitive — tombes, inscriptions, lieux de réunion — attestant la présence durable des disciples dans la ville. (5) LES MANUSCRITS : les découvertes du XXe siècle, notamment les papyrus anciens et les manuscrits de la mer Morte, ont établi la transmission ancienne des textes évangéliques et de certaines formules de foi. (6) LA MÉTHODE DU SÉISME : le récit de Matthieu 27:51-54 mentionne un tremblement de terre et des rochers fendus au moment de la mort de Jésus ; la région de Jérusalem est parcourue de failles actives, ce qui rend l'épisode géologiquement plausible, sans qu'aucune trace ne permette de le dater. (7) PRUDENCE : ces éléments scientifiques et archéologiques éclairent le cadre des faits ; la résurrection elle-même est présentée dans le texte comme un acte de Dieu, attesté par des témoins, et non comme un phénomène mesurable.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>DEMANDE D'UN SIGNE PAR LES SCRIBES ET LES PHARISIENS (Mt 12:38) → RÉPONSE : « IL NE LUI SERA DONNÉ QUE LE SIGNE DE JONAS LE PROPHÈTE » (Mt 12:39) → EXPLICATION : « DE MÊME QUE JONAS FUT DANS LE VENTRE DU GRAND POISSON TROIS JOURS ET TROIS NUITS, DE MÊME LE FILS DE L'HOMME SERA DANS LE CŒUR DE LA TERRE TROIS JOURS ET TROIS NUITS » (Mt 12:40) → LES NINIVITES SE LÈVERONT AU JUGEMENT ; « IL Y A ICI PLUS QUE JONAS » (Mt 12:41) → LA REINE DU SUD ; « PLUS QUE SALOMON » (Mt 12:42) → 33 DE N. È. : ENSEVELISSEMENT, TOMBEAU GARDÉ, TOMBE TROUVÉE VIDE LE TROISIÈME JOUR → ACTES 2 : PROCLAMATION DE LA RÉSURRECTION À JÉRUSALEM → 1 CORINTHIENS 15:3-8 : LA FORMULE DE FOI ET LES TÉMOINS → MATTHIEU 16:4 ET LUC 11:29, 30 : LE MÊME SIGNE RÉPÉTÉ</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Matthieu 12:40 ; 16:4 ; Luc 11:29, 30) et le statut « Accomplie ». LA NATURE DU SIGNE : la fiche expose le sens que Jésus donne lui-même au signe de Jonas — sa mise au tombeau et sa résurrection — sans proposer d'autres lectures. LA DURÉE : la fiche explique la valeur de l'expression « trois jours et trois nuits » dans l'usage hébraïque, sans entrer dans les calculs de calendrier discutés entre confessions. LES TÉMOINS : la fiche rapporte la liste donnée par 1 Corinthiens 15:3-8 et signale l'ancienneté de cette formule, sans prétendre démontrer la résurrection par des moyens historiques. LES MENTIONS EXTÉRIEURES : la fiche cite Tacite pour la réalité de l'exécution ; elle ne lui attribue aucune valeur de témoignage sur la résurrection. L'ARCHÉOLOGIE FUNÉRAIRE : la fiche décrit les tombes juives du Ier siècle pour éclairer le contexte, sans affirmer qu'un tombeau particulier soit celui de Jésus. CE QUE CETTE FICHE NE DIT PAS : elle clôt la vague consacrée à Jonas et ne traite pas des prophètes suivants du registre (Michée) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus refuse un signe et annonce le signe de Jonas : trois jours et trois nuits dans le cœur de la terre (Matthieu 12:39, 40)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le même enseignement est répété et rattaché à sa personne (Matthieu 16:4 ; Luc 11:29, 30)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus est mis à mort et enseveli avant le sabbat (Matthieu 27:57-60)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 de n. è., 14 Nisan</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le tombeau est trouvé vide ; les apparitions commencent (Matthieu 28 ; Luc 24)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 de n. è., 16 Nisan</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre proclame publiquement la résurrection à Jérusalem (Actes 2:22-41)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 de n. è., Pentecôte</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paul transmet la formule ancienne avec la liste des témoins (1 Corinthiens 15:3-8)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 55 de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/12">Bible — Matthieu 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/42/11">Bible — Luc 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/42/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/5">Bible — Romains 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/45/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/13">Bible — 1 Corinthiens 13 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/2">Bible — Galates 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JN450 — « Le signe de Jonas » : trois jours et trois nuits dans le cœur de la terre</span><span>Catégorie JN1</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JN1</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JN447 — « Lève-toi, va à Ninive, la grande ville » : la fuite vers Tarsis, la tempête et le grand poisson</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ministère de Jonas sous Jéroboam II, roi d'Israël (2 Rois 14:25)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844-803 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mission confiée à Jonas et fuite vers Tarsis depuis Joppé (Jonas 1:1-3)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tempête, tirage au sort, jeté à la mer, englouti par un grand poisson (Jonas 1:4-17)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séjour dans le poisson et prière de délivrance (Jonas 2:1-10)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Trois jours et trois nuits</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mission exécutée : Jonas prêche à Ninive (Jonas 3:1-4)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction de Ninive par les Mèdes et les Babyloniens, environ deux siècles après la prédication de Jonas</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612 av. n. è.</text>
+</svg>
+<h4>JN448 — « Encore quarante jours, et Ninive sera renversée » : la repentance du roi, du peuple et des bêtes</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Seconde mission ; Jonas part et prêche à Ninive (Jonas 3:1-4)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Repentance générale : jeûne, sacs, décret royal (Jonas 3:5-9)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dieu renonce au mal annoncé ; la ville est épargnée (Jonas 3:10)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Fin des quarante jours</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'Assyrie devient la puissance dominante et emporte le royaume du Nord d'Israël</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">745-722 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahoum et Sophonie annoncent la ruine de Ninive (Nahoum 1-3 ; Sophonie 2:13)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIe siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ninive est prise et détruite par les Mèdes et les Babyloniens</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612 av. n. è.</text>
+</svg>
+<h4>JN449 — « Je savais que tu es un Dieu miséricordieux » : la cabane, le ricin et la dernière question posée au prophète</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jonas exprime son mécontentement et cite le caractère miséricordieux de Dieu (Jonas 4:1-3)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La cabane à l'est de Ninive ; la plante, le ver et le vent d'est (Jonas 4:5-8)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Question finale sur la pitié pour Ninive (Jonas 4:9-11)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 844 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nahoum et Sophonie annoncent la ruine de Ninive (Nahoum 1-3 ; Sophonie 2:13)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe-VIIe siècle av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction de Ninive par les Mèdes et les Babyloniens</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">612 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus cite les Ninivites repentis et l'apôtre Paul annonce la miséricorde aux nations (Matthieu 12:41 ; Actes 26:18-20)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>JN450 — « Le signe de Jonas » : trois jours et trois nuits dans le cœur de la terre</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus refuse un signe et annonce le signe de Jonas : trois jours et trois nuits dans le cœur de la terre (Matthieu 12:39, 40)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le même enseignement est répété et rattaché à sa personne (Matthieu 16:4 ; Luc 11:29, 30)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus est mis à mort et enseveli avant le sabbat (Matthieu 27:57-60)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 de n. è., 14 Nisan</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le tombeau est trouvé vide ; les apparitions commencent (Matthieu 28 ; Luc 24)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 de n. è., 16 Nisan</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre proclame publiquement la résurrection à Jérusalem (Actes 2:22-41)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 de n. è., Pentecôte</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paul transmet la formule ancienne avec la liste des témoins (1 Corinthiens 15:3-8)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 55 de n. è.</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

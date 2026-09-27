@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR — Jérémie (6) — La vie pour butin et les rois jugés</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR</h1>
+<h2>Jérémie (6) — La vie pour butin et les rois jugés</h2>
+<p class="intro">Sédécias demande un miracle contre Nabuchodonosor ; Jérémie répond que la ville sera livrée et brûlée, mais que celui qui sortira vers les Chaldéens aura la vie sauve pour butin. La maison de David doit rendre la justice chaque matin, sinon le feu dévorera la forêt du palais. Si la parole n'est pas écoutée, cette maison splendide comme le Galaad deviendra une ruine dont les cèdres finiront au feu. Shallum mourra en exil sans revoir son pays ; Yehoïaqim aura la sépulture d'un âne, traîné hors des portes ; les bergers seront la pâture du vent et les douleurs viendront comme l'enfantement.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR211">JR211</a>
+<a href="#JR212">JR212</a>
+<a href="#JR213">JR213</a>
+<a href="#JR214">JR214</a>
+<a href="#JR215">JR215</a>
+<a href="#JR216">JR216</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR211"><img src="images/prophe_JR211_vie.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR211</div>
+<h3><a href="#JR211">« Ta vie pour butin » : Sédécias, le siège et le choix</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR212"><img src="images/prophe_JR212_foret.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR212</div>
+<h3><a href="#JR212">Le feu à la forêt du palais : justice du matin ou incendie</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR213"><img src="images/prophe_JR213_ruine.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR213</div>
+<h3><a href="#JR213">« Cette maison deviendra une ruine » : Galaad promis au désert</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR214"><img src="images/prophe_JR214_shallum.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR214</div>
+<h3><a href="#JR214">Shallum qui s'en va : trois mois de règne, l'exil sans retour</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR215"><img src="images/prophe_JR215_ane.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR215</div>
+<h3><a href="#JR215">Yehoïaqim : le palais de cèdre et la sépulture d'un âne</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR216"><img src="images/prophe_JR216_bergers.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR216</div>
+<h3><a href="#JR216">Les amants brisés : bergers au vent et douleurs d'enfantement</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR211">
+<div class="visuel"><img src="images/prophe_JR211_vie.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR211 · CATÉGORIE JR</div>
+<h3>« Ta vie pour butin » : Sédécias, le siège et le choix</h3>
+<div class="ref">Jérémie 21:1-10</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Vie pour butin (dis → parole → vers → Sédécias → envoya → Pashhour → Malkiya → Sophonie → Maasséya → prêtre → interroge)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR211</div><audio controls preload="none" src="audio/fiche_JR211_vie.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR211_vie.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 21:1-10</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Vie pour butin (dis → parole → vers → Sédécias → envoya → Pashhour → Malkiya → Sophonie → Maasséya → prêtre → interroge)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P211 (21:1-10 : vie sauve pour butin) ; accomplissement Jr 38:2 ; 39:9 ; 52:4-27</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PAROLE… VERS… SÉDÉCIAS… ENVOYA… PASHHOUR… MALKIYA… SOPHONIE… MAASSÉYA… PRÊTRE… INTERROGE. » (21:1 — interroge !)</li>
+<li>« NABUCHODONOSOR… BABYLONE… GUERRE… FERA… MIRACLE… ÉLOIGNERA. » (21:2 — éloignera !)</li>
+<li>« DÉTOURNERAI… ARMES… GUERRE… MAINS… COMBATTEZ… MURS… ROI… BABYLONE… CHALDÉENS… ASSIÈGENT… RASSEMBLERAI… MILIEU… VILLE. » (21:4 — ville !)</li>
+<li>« COMBATTRAI… MAIN… ÉTENDUE… BRAS… FORT… COLÈRE… FUREUR… GRANDE… IRRITATION… FRAPPERAI… HABITANTS… HOMMES… BÊTES… PESTE… GRANDE… MOURRONT. » (21:5-6 — mourront !)</li>
+<li>« METS… DEVANT… CHEMIN… VIE… CHEMIN… MORT… RESTERA… VILLE… MOURRA… ÉPÉE… FAMINE… PESTE… SORTIRA… RENDRA… CHALDÉENS… VIE… SAUVE… VIE… BUTIN. » (21:8-9 — butin !)</li>
+<li>« DIRIGE… REGARDS… VILLE… MAL… NON… BIEN… LIVRÉE… MAINS… ROI… BABYLONE… BRÛLERA… FEU. » (21:10 — feu !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem assiégée, 588 — PAROLE (les HADDABAR (les PAROLE (les ASHER (les HAYAH (les FUT (les EL (les VERS (les YIRMEYAHU (les JÉRÉMIE (les MÉÉT (les YEHOVAH (les KAASHER (les LORSQUE (les SHALAH (les ENVOYA (les ÉLAÏV (les TSI DQ IYAHU (les SÉDÉCIAS (les HAMMÉLEK (les ROI (les ET (les PASHHUR (les PASHHOUR (les BEN (les FILS (les MALKIYAH (les MALKIYA (les VEÉT (les TSEPHANYAH (les SOPHONIE (les BEN (les FILS (les MAASEYAH (les MAASSÉYA (les HAKKOHÉN (les PRÊTRE (les LÉMOR (les DEUXIÈME (les PASHHOUR (les MALKIYA (les PAS (les IMMER (les PAROLE — les DEMANDÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le MIRACLE (les DERASH (les INTERROGE (les NA (les DE (les BAADÉNU (les NOUS (les ET (les YEHOVAH (les KI (les NEBOKHADNETSAR (les NABUCHODONOSOR (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les NILHAM (les GUERRE (les ALÉNU (les NOUS (les ULAÏ (les PEUT-ÊTRE (les YAASEH (les FERA (les YEHOVAH (les ITTANU (les NOUS (les KEKHOL (les TOUT (les NIPHLEOTAV (les MIRACLE (les VEYAALÉH (les ÉLOIGNERA (les MÉALÉNU (les ÉZÉCHIAS (les SOUVENIR (les 701 (les SANKHÉRIB (les ÉCHEC (les MIRACLE — les REFUSÉ !). Les ARMES (les HINENI (les VOICI (les MÉSÉB (les DÉTOURNERAI (les ET (les KELÉ (les ARMES (les HAMMILHAMAH (les GUERRE (les ASHER (les BEYÉDKHEM (les MAINS (les ASHER (les ATTEM (les VOUS (les NILHAMIM (les COMBATTEZ (les BAM (les ET (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les VEÉT (les HAKKASDIM (les CHALDÉENS (les HATSARIM (les ASSIÈGENT (les ALÉKHEM (les VOUS (les MIHUTS (les MURS (les LAHOMAH (les VEASAPHTI (les RASSEMBLERAI (les OTAM (les EL (les TOKH (les MILIEU (les HAIR (les VILLE (les HAZZOT (les CETTE (les ARMES — les RETOURNÉES !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le CHEMIN (les NATATTI (les METS (les LIPH NÉKHEM (les DEVANT (les ET (les DÉREKH (les CHEMIN (les HAHAYYIM (les VIE (les VEÉT (les DÉREKH (les CHEMIN (les HAMMAVET (les MORT (les HAYYOSHÉB (les RESTERA (les BAIR (les VILLE (les HAZZOT (les CETTE (les YAMUT (les MOURRA (les BEHÉREV (les ÉPÉE (les UBARAAB (les FAMINE (les UBADDÉBER (les PESTE (les VEHAYYOTSÉ (les SORTIRA (les VENA PHAL (les RENDRA (les AL (les HAKKASDIM (les CHALDÉENS (les HATSARIM (les ASSIÈGENT (les ALÉKHEM (les VEHAYAH (les VIE (les LO (les NAPHSHO (les ÂME (les LESHALAL (les BUTIN (les VAHAY (les VIVRA (les ÉBÉD-MÉLEK (les SORTI (les SAUVÉ (les BARUC (les ÉPARGNÉ (les CHEMIN — les CHOISI !). Le FEU (les KI (les SAMTI (les DIRIGE (les PHANAÏ (les REGARDS (les EL (les HAIR (les VILLE (les HAZZOT (les CETTE (les LERAAH (les MAL (les VÉLO (les NON (les LETOBAH (les BIEN (les NEUM (les YEHOVAH (les BEYAD (les MAINS (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les TINNATÉN (les LIVRÉE (les USRAPHAH (les BRÛLERA (les BAESH (les FEU (les 588 (les DEMANDE (les 587 (les FEU — les VENU !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">21:1-2</td><td>MIRACLE (ÉLOIGNERA !)</td></tr>
+<tr><td class="d">21:4</td><td>ARMES (VILLE !)</td></tr>
+<tr><td class="d">21:5-6</td><td>PESTE (MOURRONT !)</td></tr>
+<tr><td class="d">21:8-9</td><td>BUTIN (VIVRA !)</td></tr>
+<tr><td class="d">21:10</td><td>FEU (BRÛLERA !)</td></tr>
+<tr><td class="d">Jr 39:9</td><td>DÉPORTA (RESTE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Siège de 588–587 (Jr 52:4-27) : famine atroce, brèche, fuite de Sédécias, capture à Jéricho ; ceux qui sortirent (transfuges, Jr 39:9) eurent la vie sauve ; Ébed-Mélek et Baruc épargnés (Jr 39:15-18 ; 45:5) ; ville livrée et brûlée comme annoncé.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Jérusalem assiégée : remparts investis par les Chaldéens « à l'extérieur de la muraille » ; porte entre les deux murs (fuite nocturne, 2R 25:4) ; plaines de Jéricho où Sédécias est capturé.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Poliorcétique : un siège de 18 mois (décembre 589–juillet 587) produit mécaniquement le triptyque épée-famine-peste — Jr 21:9 décrit la réalité épidémiologique des sièges antiques.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>SÉDÉCIAS DEMANDE UN MIRACLE → ARME RETOURNÉES → VIE OU MORT → SORTIS SAUVÉS → VILLE BRÛLÉE 587</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Pashhour fils de Malkiya (21:1) ≠ Pashhour fils d'Immer (ch. 20) ; le « butin » (shalal) = la vie elle-même, seul bien conservé.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sédécias consulte Jérémie pendant le siège</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Brèche, fuite, capture à Jéricho</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Juil. 587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ville livrée et brûlée ; transfuges épargnés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Août 587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/21">Bible — Jérémie 21 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/21">Bible — Jérémie 21 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/38">Bible — Jérémie 38 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/38</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR211 — « Ta vie pour butin » : Sédécias, le siège et le choix</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR212">
+<div class="visuel"><img src="images/prophe_JR212_foret.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR212 · CATÉGORIE JR</div>
+<h3>Le feu à la forêt du palais : justice du matin ou incendie</h3>
+<div class="ref">Jérémie 21:11-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Forêt du palais (dis → maison → roi → Juda → écoutez → parole → maison → David → rendez → justice → matin → délivrez → opprimé)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR212</div><audio controls preload="none" src="audio/fiche_JR212_foret.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR212_foret.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 21:11-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Forêt du palais (dis → maison → roi → Juda → écoutez → parole → maison → David → rendez → justice → matin → délivrez → opprimé)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P212 (21:11-14 : feu à la forêt) ; accomplissement 2R 25:9</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MAISON… ROI… JUDA… ÉCOUTEZ… PAROLE. » (21:11 — parole !)</li>
+<li>« MAISON… DAVID… RENDEZ… JUSTICE… MATIN… DÉLIVREZ… OPPRIMÉ… MAINS… OPPRESSEUR… COLÈRE… ÉCLATE… FEU… BRÛLE… NON… ÉTEINDRE… MÉCHANCETÉ… ACTIONS. » (21:12 — actions !)</li>
+<li>« EN… VEUX… TOI… ASSISE… VALLÉE… ROCHER… PLAINE… DITES… QUI… DESCENDRA… QUI… ENTRERA… DEMEURES. » (21:13 — demeures !)</li>
+<li>« CHÂTIERAI… FRUIT… ŒUVRES… METTRAI… FEU… FORÊT… DÉVORERA… ALENTOURS. » (21:14 — alentours !)</li>
+<li>« BRÛLA… MAISON… ROI… MAISONS… JÉRUSALEM… MAISONS… IMPORTANCE… FEU. » (2R 25:9 — feu !)</li>
+<li>« PRATIQUEZ… DROIT… JUSTICE… DÉLIVREZ… EXPLOITÉ… OPPRIME… NON… MALTRAITEZ… ÉTRANGER… ORPHELIN… VEUVE… NON… VERSEZ… SANG… INNOCENTS… LIEU. » (Jr 22:3 — lieu !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem assiégée, 588 — MAISON (les ULEBÉYT (les MAISON (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les SHIMU (les ÉCOUTEZ (les DEBAR (les PAROLE (les YEHOVAH (les BÉYT (les MAISON (les DAVID (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les TRIBUNAL (les ROYAL (les DERNIER (les AVERTISSEMENT (les SIÈGE (les EN (les COURS (les MAISON — les JUGE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le MATIN (les DINU (les RENDEZ (les LABBOQER (les MATIN (les MISHPAT (les JUSTICE (les VEHATSILU (les DÉLIVREZ (les GAZUL (les OPPRIMÉ (les MIYYAD (les MAINS (les OSHÉQ (les OPPRESSEUR (les PEN (les TETSÉ (les ÉCLATE (les KHAESH (les FEU (les HAMATI (les COLÈRE (les UBAARAH (les BRÛLE (les VEÉYN (les NON (les MEKHABBÉH (les ÉTEINDRE (les MIPPNÉ (les ROA (les MÉCHANCETÉ (les MAALELÉKHEM (les ACTIONS (les AUDIENCES (les AUBE (les TRIBUNAUX (les CORROMPUS (les SIÈGE (les AGGRAVE (les OPPRESSION (les MATIN — les JUSTICE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le ROCHER (les HINENI (les EN (les VEUX (les ÉLAÏK (les TOI (les YOSHEBET (les ASSISE (les HAÉMEQ (les VALLÉE (les TSUR (les ROCHER (les HAMMISHOR (les PLAINE (les NEUM (les YEHOVAH (les HAOMERIM (les DITES (les MI (les QUI (les YÉHAT (les DESCENDRA (les ALÉNU (les NOUS (les UMI (les QUI (les YABO (les ENTRERA (les BIMEONOTÉNU (les DEMEURES (les INEXPUGNABLE (les ILLUSION (les SION (les FORTERESSE (les ROCHER — les ORGUEIL !). La FORÊT (les UPAQADTI (les CHÂTIERAI (les ALÉKHEM (les KIPHRI (les FRUIT (les MAALELÉKHEM (les ŒUVRES (les NEUM (les YEHOVAH (les VEHITSATTI (les METTRAI (les ESH (les FEU (les BEYAARAH (les FORÊT (les VEAKHELAH (les DÉVORERA (les KOL (les TOUT (les SEBIBÉHA (les ALENTOURS (les MAISON (les FORÊT (les LIBAN (les PALAIS (les CÈDRES (les 1R (les SEPT (les DEUX (les FORÊT — les BRÛLÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">21:11-12</td><td>MATIN (ACTIONS !)</td></tr>
+<tr><td class="d">21:13</td><td>ROCHER (DEMEURES !)</td></tr>
+<tr><td class="d">21:14</td><td>FORÊT (ALENTOURS !)</td></tr>
+<tr><td class="d">Jr 22:3</td><td>OPPRIMÉ (LIEU !)</td></tr>
+<tr><td class="d">2R 25:9</td><td>BRÛLA (FEU !)</td></tr>
+<tr><td class="d">Jr 52:13</td><td>IMPORTANCE (FEU !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>2 Rois 25:9 et Jérémie 52:13 (587) : la maison du roi brûlée avec toutes les maisons importantes ; la « forêt » = la Maison de la Forêt du Liban (1R 7:2 : palais aux 45 colonnes de cèdre) ; les audiences corrompues du matin dénoncées en Jérémie 22:3, Sophonie 3:3.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Palais royal sur l'Ophel, « assis dans la vallée sur le rocher de la plaine » : Jérusalem perchée mais vulnérable ; Maison de la Forêt du Liban : 45 piliers de cèdre — un brasier promis aux flammes.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Incendie : un palais lambrissé de cèdre (bois résineux) avec 45 colonnes est un combustible idéal — la prophétie décrit un embrasement total techniquement inévitable.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>JUSTICE DU MATIN EXIGÉE → REFUSÉE → ORGUEIL DU ROCHER → FEU À LA FORÊT → PALAIS BRÛLÉ 587</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>L'oracle vise la maison royale de Sédécias pendant le siège ; la « forêt » est le palais, pas une forêt littérale.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dernier appel à la justice pendant le siège</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le feu dévore le palais et ses cèdres</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Août 587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les alentours : toutes les maisons importantes brûlées</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/21">Bible — Jérémie 21 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/21</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/22">Bible — Jérémie 22 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/22</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/38">Bible — Jérémie 38 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/38</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR212 — Le feu à la forêt du palais : justice du matin ou incendie</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR213">
+<div class="visuel"><img src="images/prophe_JR213_ruine.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR213 · CATÉGORIE JR</div>
+<h3>« Cette maison deviendra une ruine » : Galaad promis au désert</h3>
+<div class="ref">Jérémie 22:1-9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Maison ruine (dis → descends → maison → roi → Juda → prononce → parole → écoute → roi → trône → David → serviteurs → peuple → portes)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR213</div><audio controls preload="none" src="audio/fiche_JR213_ruine.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR213_ruine.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 22:1-9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Maison ruine (dis → descends → maison → roi → Juda → prononce → parole → écoute → roi → trône → David → serviteurs → peuple → portes)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P213 (22:1-9 : maison ruine) ; accomplissement 2R 25:9 ; Jr 39:8</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DESCENDS… MAISON… ROI… JUDA… PRONONCE… PAROLE. » (22:1 — parole !)</li>
+<li>« ÉCOUTE… PAROLE… ROI… TRÔNE… DAVID… SERVITEURS… PEUPLE… ENTREZ… PORTES. » (22:2 — portes !)</li>
+<li>« PRATIQUEZ… DROIT… JUSTICE… DÉLIVREZ… EXPLOITÉ… NON… MALTRAITEZ… ÉTRANGER… ORPHELIN… VEUVE… NON… VERSEZ… SANG… INNOCENTS. » (22:3 — innocents !)</li>
+<li>« SI… APPLIQUEZ… OBSERVER… PAROLE… ENTRERONT… PORTES… ROIS… TRÔNE… DAVID… CHARS… CHEVAUX… DEMEURERA… TOUJOURS. » (22:4 — toujours !)</li>
+<li>« SI… NON… ÉCOUTEZ… PAROLES… JURE… MOI-MÊME… MAISON… DEVIENDRA… RUINE. » (22:5 — ruine !)</li>
+<li>« GALAAD… SOMMET… LIBAN… FERAI… DÉSERT… VILLE… INHABITÉE… PRÉPARE… DESTRUCTEURS… ARMES… ABATTRONT… CÈDRES… JETTERONT… FEU… NATIONS… PASSERONT… POURQUOI… ABANDONNÉ… ALLIANCE… PROSTERNÉS… DIEUX… SERVIS. » (22:6-9 — servis !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Palais royal, ~601 — DESCENDS (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les RED (les DESCENDS (les BÉYT (les MAISON (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les VEDIBBARTA (les PRONONCE (les SHAM (les LÀ (les ET (les HADDABAR (les PAROLE (les HAZÉH (les CETTE (les GUEULE (les LOUP (les YEHOÏAQIM (les COLÈRE (les COURAGE (les DESCENDS — les PRONONCE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le DROIT (les ASU (les PRATIQUEZ (les MISHPAT (les DROIT (les UTSEDAQAH (les JUSTICE (les VEHATSILU (les DÉLIVREZ (les GAZUL (les EXPLOITÉ (les MIYYAD (les MAIN (les OSHÉQ (les OPPRIME (les VEGÉR (les ÉTRANGER (les YATOM (les ORPHELIN (les VEALMANAH (les VEUVE (les AL (les NON (les TONUK (les MALTRAITEZ (les AL (les NON (les TAHAMOSU (les VIOLENCE (les VEDAM (les SANG (les NAQI (les INNOCENTS (les AL (les NON (les TISHPEKHU (les VERSEZ (les BAMMAQOM (les LIEU (les HAZÉH (les CE (les URIE (les TUÉ (les 26 (les VINGT-DEUX (les VINGT-TROIS (les DROIT — les EXIGÉ !). Le SERMENT (les VEIM (les SI (les LO (les NON (les TISHMEU (les ÉCOUTEZ (les ET (les HADDEBARIM (les PAROLES (les HAÉLÉH (les CES (les BI (les MOI-MÊME (les NISHBATI (les JURE (les NEUM (les YEHOVAH (les KI (les LEHORBAH (les RUINE (les YIHYÉH (les DEVIENDRA (les HABBAYIT (les MAISON (les HAZÉH (les CETTE (les SERMENT — les DIVIN !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le GALAAD (les KI (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les AL (les BÉYT (les MAISON (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les GILAD (les GALAAD (les ATTAH (les TU (les LI (les MOI (les ROSH (les SOMMET (les HALLEBANON (les LIBAN (les IM-LO (les CERTAINEMENT (les ASHITEKHA (les FERAI (les MIDBAR (les DÉSERT (les ARIM (les VILLE (les LO (les NON (les NOSHABU (les INHABITÉE (les SPLENDEUR (les FERTILITÉ (les BEAUTÉ (les DÉSERT (les GALAAD — les RUINÉ !). Les DESTRUCTEURS (les VEQIDDASHTI (les PRÉPARE (les ALÉKA (les CONTRE (les MASHHITIM (les DESTRUCTEURS (les ISH (les CHACUN (les VEHÉLAÏV (les ARMES (les VEKHARÉTU (les ABATTRONT (les MIBHAR (les CHOIX (les ARAZÉKA (les CÈDRES (les VEHIPPILU (les JETTERONT (les AL (les HAESH (les FEU (les VEABERU (les PASSERONT (les GOYIM (les NATIONS (les RABBIM (les NOMBREUSES (les AL (les HAIR (les VILLE (les HAZZOT (les CETTE (les VEAMERU (les DIRONT (les ISH (les EL (les RÉÉHU (les COMPAGNON (les AL (les MEH (les POURQUOI (les ASAH (les FAIT (les YEHOVAH (les KAKHAH (les AINSI (les LAIR (les VILLE (les HAGGEDOLAH (les GRANDE (les HAZZOT (les CETTE (les VEAMERU (les DIRONT (les AL (les ASHER (les AZEBU (les ABANDONNÉ (les ET (les BERIT (les ALLIANCE (les YEHOVAH (les ÉLOHÉHEM (les DIEU (les VAYYISH TAHAVU (les PROSTERNÉS (les LÉLOHIM (les DIEUX (les AHÉRIM (les AUTRES (les VAYYAA BEDUM (les SERVIS (les DESTRUCTEURS — les SACRÉS !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">22:1-3</td><td>DROIT (INNOCENTS !)</td></tr>
+<tr><td class="d">22:4</td><td>ROIS (TOUJOURS !)</td></tr>
+<tr><td class="d">22:5</td><td>RUINE (JURÉ !)</td></tr>
+<tr><td class="d">22:6-7</td><td>CÈDRES (FEU !)</td></tr>
+<tr><td class="d">22:8-9</td><td>NATIONS (SERVIS !)</td></tr>
+<tr><td class="d">2R 25:9</td><td>BRÛLA (MAISONS !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>587 : Nebuzaradan brûle la maison du roi et toutes les maisons de Jérusalem (2R 25:9 ; Jr 39:8) — la maison splendide devient ruine ; les passants s'interrogent (Lm 2:15 ; 1R 9:8-9, même motif sous Salomon) ; Urie exécuté par Yehoïaqim : le sang innocent versé (Jr 26:20-23).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Palais royal sur l'Ophel : bâtiments lambrissés de cèdres du Liban ; Galaad (verdoyant, baume) et Liban (cèdres majestueux) : images de splendeur promises au désert — contraste géographique maximal.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Dendro-archéologie : poutres de cèdre carbonisées retrouvées dans les palais incendiés du Proche-Orient (Kalhu, Jérusalem) — les « cèdres de choix jetés au feu » laissent des traces identifiables.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>DROIT EXIGÉ AU PALAIS → SERMENT : RUINE → GALAAD→DÉSERT → CÈDRES AU FEU → 587 : RUINE + QUESTION DES NATIONS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Oracle conditionnel (v. 4 : si vous pratiquez, les rois resteront) ; la ruine résulte du choix de Juda, jurée par Dieu lui-même.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle au palais : droit ou ruine</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~601</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Urie exécuté : le sang innocent versé</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~601</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Palais brûlé, maison devenue ruine</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/22">Bible — Jérémie 22 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/22</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/12/25">Bible — 2 Rois 25 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/12/25</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/25">Bible — 2 Rois 25 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/25</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR213 — « Cette maison deviendra une ruine » : Galaad promis au désert</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR214">
+<div class="visuel"><img src="images/prophe_JR214_shallum.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR214 · CATÉGORIE JR</div>
+<h3>Shallum qui s'en va : trois mois de règne, l'exil sans retour</h3>
+<div class="ref">Jérémie 22:10-12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Shallum (dis → non → pleurez → mort → non → plaignez → pleurez → amer → va → non → reviendra → non → verra → pays)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR214</div><audio controls preload="none" src="audio/fiche_JR214_shallum.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR214_shallum.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 22:10-12</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Shallum (dis → non → pleurez → mort → non → plaignez → pleurez → amer → va → non → reviendra → non → verra → pays)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P214 (22:10-12 : Shallum en exil) ; accomplissement 2R 23:31-34</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« NON… PLEUREZ… MORT… NON… PLAIGNEZ… PLEUREZ… AMER… VA… NON… REVIENDRA… NON… VERRA… PAYS… NATAL. » (22:10 — natal !)</li>
+<li>« AINSI… SHALLUM… FILS… JOSIAS… ROI… JUDA… RÉGNA… PLACE… PÈRE… SORTIT… LIEU… NON… REVIENDRA. » (22:11 — reviendra !)</li>
+<li>« MOURRA… LIEU… EMMENÉ… CAPTIF… NON… VERRA… PAYS. » (22:12 — pays !)</li>
+<li>« VINGT-TROIS… ANS… YEHOAHAZ… RÉGNA… TROIS… MOIS… JÉRUSALEM… MÈRE… HAMUTAL… FIT… MAL… YEUX. » (2R 23:31-32 — yeux !)</li>
+<li>« PHARAON… NÉCO… ENCHAÎNA… RIBLA… PAYS… HAMATH… NON… RÈGNE… IMPOSA… PAYS… CENT… TALENTS… ARGENT… TALENT… OR. » (2R 23:33 — or !)</li>
+<li>« EMPORTÉ… ÉGYPTE… MOURUT… LÀ… PAYS… DONNA… ARGENT… OR… PHARAON… TAXA… CHACUN… FORTUNE. » (2R 23:34-35 — fortune !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, ~609 — NON (les AL (les NON (les TIBKU (les PLEUREZ (les LEMET (les MORT (les VEAL (les NON (les TANUDU (les PLAIGNEZ (les LO (les BEKHU (les PLEUREZ (les BAKHOH (les AMER (les LAHOLÉKH (les VA (les KI (les LO (les NON (les YASHUB (les REVIENDRA (les OD (les PLUS (les VÉLO (les NON (les YIRÉH (les VERRA (les ET (les ÉRETS (les PAYS (les MOLADTO (les NATAL (les JOSIAS (les TUÉ (les MEGUIDDO (les MORT (les HONORABLE (les EXIL (les PIRE (les MORT (les NON — les PLEUREZ !)</p>
+<h4>4 · Explication du texte</h4>
+<p>SHALLUM (les KI (les AINSI (les KOH (les AMAR (les DIT (les YEHOVAH (les EL (les SHALLUM (les BEN (les FILS (les YOSHIYAHU (les JOSIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les HAMMOLÉKH (les RÉGNA (les TAHAT (les PLACE (les YOSHIYAHU (les PÈRE (les ABIV (les ASHER (les YATSA (les SORTIT (les MIN (les HAMMAQOM (les LIEU (les HAZÉH (les CE (les LO (les NON (les YASHUB (les REVIENDRA (les SHAM (les LÀ (les OD (les PLUS (les YEHOAHAZ (les NOM (les TRÔNE (les SHALLUM (les NOM (les NAISSANCE (les TROIS (les MOIS (les SHALLUM — les PARTI !)</p>
+<h4>5 · Interprétation</h4>
+<p>La MORT (les KI (les BIMAQOM (les LIEU (les ASHER (les HIGLUHU (les EMMENÉ (les SHAMMAH (les LÀ (les YAMUT (les MOURRA (les VEÉT (les HAARETS (les PAYS (les HAZZOT (les CE (les LO (les NON (les YIRÉH (les VERRA (les OD (les PLUS (les RIBLA (les DABORD (les ÉGYPTE (les ENSUITE (les JAMAIS (les RETOUR (les MORT — les EXIL !). Les CHAÎNES (les VAYYAASEHU (les ENCHAÎNA (les PAROH (les PHARAON (les NEKHOH (les NÉCO (les BERIBLAH (les RIBLA (les BEÉRETS (les PAYS (les HAMAT (les HAMATH (les MIMMOLOKH (les NON (les RÈGNE (les BIRUSALAYIM (les JÉRUSALEM (les VAYYITTÉN (les IMPOSA (les ONESH (les AMENDE (les AL (les HAARETS (les PAYS (les MÉAH (les CENT (les KIKKAR (les TALENTS (les KÉSEPH (les ARGENT (les VEKHIKKAR (les TALENT (les ZAHAB (les OR (les MEGUIDDO (les 609 (les NÉCO (les MONTE (les EUPHRATE (les CHAÎNES — les RIBLA !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">22:10</td><td>PLEUREZ (NATAL !)</td></tr>
+<tr><td class="d">22:11</td><td>SHALLUM (REVIENDRA !)</td></tr>
+<tr><td class="d">22:12</td><td>MOURRA (PAYS !)</td></tr>
+<tr><td class="d">2R 23:31</td><td>TROIS (MOIS !)</td></tr>
+<tr><td class="d">2R 23:33</td><td>RIBLA (OR !)</td></tr>
+<tr><td class="d">2R 23:34</td><td>ÉGYPTE (MOURUT !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>609 : Josias tué à Meguiddo par Néco ; Yehoahaz (Shallum), 23 ans, règne 3 mois, déposé à Ribla, emmmené en Égypte où il meurt (2R 23:31-34 ; Jr 22:10-12) ; tribut de 100 talents d'argent + 1 talent d'or ; Chronique babylonienne : Néco monte vers Harran en 609.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Meguiddo : champ de bataille où meurt Josias ; Ribla sur l'Oronte (Liban) : quartier général de Néco où Yehoahaz est enchaîné ; Égypte : lieu de captivité et de mort — le pays natal jamais revu.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Épigraphie : sceau « Yehoahaz fils du roi » (bulla du marché des antiquités, débattu) ; la chronologie 609 est ancrée par l'éclipse et les chroniques mésopotamiennes (bataille de Harran).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>MEGUIDDO 609 : JOSIAS TUÉ → SHALLUM 3 MOIS → RIBLA : ENCHAÎNÉ → ÉGYPTE : MEURT → JAMAIS REVU</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne pas pleurer Josias (mort honorable) mais Shallum (exil sans retour) : paradoxe assumé par l'oracle lui-même.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Meguiddo : mort de Josias</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Shallum règne 3 mois, déposé à Ribla</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort en Égypte, pays natal jamais revu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Après 609</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012322">Joachaz (étude perspicace)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012322</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200002422">Jérémie, livre de (étude)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200002422</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/23">Bible — 2 Rois 23 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/23</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR214 — Shallum qui s'en va : trois mois de règne, l'exil sans retour</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR215">
+<div class="visuel"><img src="images/prophe_JR215_ane.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR215 · CATÉGORIE JR</div>
+<h3>Yehoïaqim : le palais de cèdre et la sépulture d'un âne</h3>
+<div class="ref">Jérémie 22:13-19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Sépulture d'âne (dis → malheur → bâtit → maison → injustice → chambres → hautes → droiture → sert → prochain → rien → donne → travail)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR215</div><audio controls preload="none" src="audio/fiche_JR215_ane.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR215_ane.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 22:13-19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Sépulture d'âne (dis → malheur → bâtit → maison → injustice → chambres → hautes → droiture → sert → prochain → rien → donne → travail)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P215 (22:13-19 : sépulture d'âne) ; accomplissement 2R 24:1-6 ; Jr 36:30</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MALHEUR… BÂTIT… MAISON… INJUSTICE… CHAMBRES… HAUTES… DROITURE… SERT… PROCHAIN… RIEN… DONNE… TRAVAIL… SALAIRE. » (22:13 — salaire !)</li>
+<li>« DIT… BÂTIRAI… VASTE… MAISON… SPACIEUSES… CHAMBRES… PERCE… FENÊTRES… LAMBRISSE… CÈDRE… PEINS… VERMILLON. » (22:14 — vermillon !)</li>
+<li>« RÈGNES… PASSION… CÈDRE… PÈRE… MANGEAIT… BUVAIT… PRATIQUAIT… DROIT… JUSTICE… HEUREUX… JUGEAIT… PAUVRE… INDIGENT… CONNAÎTRE. » (22:15-16 — connaître !)</li>
+<li>« YEUX… CŒUR… PROFIT… INJUSTE… VERSER… SANG… INNOCENT… OPPRESSION… VIOLENCE. » (22:17 — violence !)</li>
+<li>« NON… LAMENTATION… HÉLAS… FRÈRE… HÉLAS… SŒUR… HÉLAS… SEIGNEUR… HÉLAS… MAJESTÉ. » (22:18 — majesté !)</li>
+<li>« SÉPULTURE… ÂNE… ENTERRÉ… TRAÎNÉ… JETÉ… AU-DELÀ… PORTES… JÉRUSALEM. » (22:19 — Jérusalem !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, ~601 — MALHEUR (les HOY (les MALHEUR (les BONÉH (les BÂTIT (les BÉYTO (les MAISON (les BELO (les INJUSTICE (les TSEDEQ (les VEALIYOTAV (les CHAMBRES (les HAUTES (les BELO (les DROITURE (les MISHPAT (les BERÉÉHU (les PROCHAIN (les YAA BOD (les SERT (les HINNAM (les RIEN (les UPHOULATO (les TRAVAIL (les LO (les NON (les YITTÉN (les DONNE (les LO (les CORVÉES (les IMPAYÉES (les PALAIS (les PHARAONIQUE (les MALHEUR — les BÂTIT !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le CÈDRE (les HAOMÉR (les DIT (les EBNÉH (les BÂTIRAI (les LI (les BÉYT (les VASTE (les MIDDOT (les MAISON (les VAALIYOT (les SPACIEUSES (les MEREWAHIM (les CHAMBRES (les VEQARA (les PERCE (les LO (les HALLONAÏV (les FENÊTRES (les VESAPHUN (les LAMBRISSE (les BAAREZ (les CÈDRE (les VEMASHOAH (les PEINS (les BASHASHAR (les VERMILLON (les LUXE (les ÉGYPTE (les TRIBUT (les PEUPLE (les ÉCRASÉ (les CÈDRE — les VERMILLON !). Le PÈRE (les HATIMLOKH (les RÈGNES (les KI (les ATTAH (les METAHARÉH (les PASSION (les BAAREZ (les CÈDRE (les ABIKHA (les PÈRE (les HALO (les NE (les AKHAL (les MANGEAIT (les VESHATAH (les BUVAIT (les VAYYAAS (les PRATIQUAIT (les MISHPAT (les DROIT (les UTSEDAQAH (les JUSTICE (les AZ (les TOB (les HEUREUX (les LO (les DAN (les JUGEAIT (les DIN (les ANI (les PAUVRE (les VEÉBYON (les INDIGENT (les AZ (les TOB (les HALO (les NEST (les ZOT (les DAAT (les CONNAÎTRE (les OTI (les MOI (les JOSIAS (les MODÈLE (les FILS (les INDIGNE (les PÈRE — les JUGE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le SANG (les KI (les LO (les NON (les ÉYNÉKA (les YEUX (les VELIBBEKHA (les CŒUR (les KI (les IM (les AL (les BITSEKHA (les PROFIT (les HABATSA (les INJUSTE (les VEAL (les VERSER (les DAM (les SANG (les NAQI (les INNOCENT (les LISH POKH (les VEAL (les HAOSHEQ (les OPPRESSION (les VEAL (les HAMMERUTSAH (les VIOLENCE (les LAASOT (les URIE (les ÉGORGÉ (les PROPHÈTES (les TRAQUÉS (les SANG — les VERSÉ !). L'ÂNE (les LAKHÉN (les CEST (les POURQUOI (les KOH (les AINSI (les AMAR (les DIT (les YEHOVAH (les EL (les YEHOYAQIM (les YEHOÏAQIM (les BEN (les FILS (les YOSHIYAHU (les JOSIAS (les MÉLEK (les ROI (les YEHUDAH (les JUDA (les LO (les NON (les YISpEDU (les LAMENTATION (les LO (les HOY (les HÉLAS (les AHI (les FRÈRE (les VEHOY (les HÉLAS (les AHOT (les SŒUR (les HOY (les HÉLAS (les ADON (les SEIGNEUR (les VEHOY (les HÉLAS (les HODOH (les MAJESTÉ (les QEBURAT (les SÉPULTURE (les HAMOR (les ÂNE (les YIQQABÉR (les ENTERRÉ (les SAHOB (les TRAÎNÉ (les VEHASHLÉKH (les JETÉ (les MEHALAH (les AU-DELÀ (les LESHAARÉ (les PORTES (les YERUSHALAYIM (les JÉRUSALEM (les ONZE (les ANS (les 628 (les 618 (les MORT (les SIÈGE (les ÂNE — les JETÉ !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">22:13-14</td><td>CÈDRE (VERMILLON !)</td></tr>
+<tr><td class="d">22:15-16</td><td>PÈRE (CONNAÎTRE !)</td></tr>
+<tr><td class="d">22:17</td><td>SANG (VIOLENCE !)</td></tr>
+<tr><td class="d">22:18</td><td>HÉLAS (MAJESTÉ !)</td></tr>
+<tr><td class="d">22:19</td><td>ÂNE (JÉRUSALEM !)</td></tr>
+<tr><td class="d">Jr 36:30</td><td>CADAVRE (GELÉE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Yehoïaqim (Éliaqim), 11 ans de règne (628–618) : corvées impayées, meurtre d'Urie (Jr 26:20-23), rouleau brûlé (Jr 36) ; meurt pendant le siège de 598, privé de sépulture royale (2R 24:6 : « se coucha avec ses pères » sans honneurs ; Jr 36:30 : cadavre exposé au chaud et à la gelée) ; Josèphe : corps jeté hors des murs.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Palais de cèdre et vermillon à Jérusalem, bâti sur corvées ; « au-delà des portes » : voirie hors les murs, lieu d'infamie — l'inverse du tombeau royal ; cèdres du Liban importés à grands frais.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Pigments : le vermillon (shashar — minium/oxyde de plomb rouge) identifié sur les enduits palatiaux du Fer II (Samaria, Ramat Rahel) — le luxe décrit est archéologiquement attesté.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>CORVÉES + CÈDRE + SANG → PAS DE DEUIL → SÉPULTURE D'ÂNE → 598 : MORT INFÂME → FILS ASSIÉGÉ</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>La Bible ne détaille pas la mort de Yehoïaqim ; seule l'absence de sépulture royale est affirmée (Jr 22:19 ; 36:30).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Règne d'injustice de Yehoïaqim</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">628–618</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle de la sépulture d'âne</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~601</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort pendant le siège, sans sépulture royale</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">598</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012327">Jéhoïakim (étude perspicace)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012327</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1964766">L'esprit hautain va devant la chute<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1964766</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/36">Bible — Jérémie 36 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/36</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR215 — Yehoïaqim : le palais de cèdre et la sépulture d'un âne</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR216">
+<div class="visuel"><img src="images/prophe_JR216_bergers.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR216 · CATÉGORIE JR</div>
+<h3>Les amants brisés : bergers au vent et douleurs d'enfantement</h3>
+<div class="ref">Jérémie 22:20-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Amants brisés (dis → monte → Liban → crie → élève → voix → Basan → crie → Abarim → amants → brisés)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR216</div><audio controls preload="none" src="audio/fiche_JR216_bergers.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR216_bergers.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 22:20-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Amants brisés (dis → monte → Liban → crie → élève → voix → Basan → crie → Abarim → amants → brisés)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P216 (22:20-23 : bergers emportés) ; accomplissement 2R 24:12-16 ; 25:4-7</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MONTE… LIBAN… CRIE… ÉLÈVE… VOIX… BASAN… CRIE… ABARIM… AMANTS… BRISÉS. » (22:20 — brisés !)</li>
+<li>« PARLÉ… PROSPÉRITÉS… DIT… NON… ÉCOUTERAI… CONDUITE… JEUNESSE… NON… ÉCOUTÉ… VOIX. » (22:21 — voix !)</li>
+<li>« VENT… EMPORTERA… BERGERS… AMANTS… IRONT… CAPTIVITÉ… SERA… HONTE… CONFUSION… MÉCHANCETÉ. » (22:22 — méchanceté !)</li>
+<li>« HABITES… LIBAN… NID… CÈDRES… GÉMIRAS… DOULEURS… ATTEINDRONT… FEMME… TRAVAIL. » (22:23 — travail !)</li>
+<li>« SORTIT… ROI… MÈRE… SERVITEURS… PRINCES… EUNUQUES… PRIT… DÉPORTA… DIX… MILLE. » (2R 24:12-14 — mille !)</li>
+<li>« SAISIRENT… ROI… MENÈRENT… RIBLA… PARLÈRENT… JUGEMENT… ÉGORGÈRENT… FILS… YEUX… AVEUGLÈRENT… ENCHAÎNÈRENT… BRONZE… EMMENÈRENT… BABYLONE. » (2R 25:6-7 — Babylone !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, ~601 — MONTE (les ALI (les MONTE (les HALLEBANON (les LIBAN (les UTSA AQI (les CRIE (les UBBASHAN (les BASAN (les TENI (les ÉLÈVE (les QOLÉK (les VOIX (les UMÉABARIM (les ABARIM (les TSA AQI (les CRIE (les KI (les NISHBERU (les BRISÉS (les KOL (les TOUS (les MEAHABAÏK (les AMANTS (les TROIS (les SOMMETS (les NORD (les EST (les SUD (les ÉGYPTE (les BABYLONE (les ASSYRIE (les ALLIÉS (les TOUS (les BRISÉS (les MONTE — les CRIE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La JEUNESSE (les DIBBARTI (les PARLÉ (les ÉLAÏK (les TOI (les BESH ALVOTAYIK (les PROSPÉRITÉS (les AMART (les DIT (les LO (les NON (les ESHMA (les ÉCOUTERAI (les ZÉH (les CETTE (les DAR KÉK (les CONDUITE (les MINNEURAYIK (les JEUNESSE (les KI (les LO (les NON (les SHAMAT (les ÉCOUTÉ (les BEQOLI (les VOIX (les MANASSÉ (les AMON (les JOSIAS (les EXCEPTÉ (les TRENTE (les ANS (les SOURDE (les JEUNESSE — les REBELLE !). Le VENT (les KOL (les TOUS (les ROAYIK (les BERGERS (les TIRÉM (les EMPORTERA (les RUAH (les VENT (les UMEAHABAÏK (les AMANTS (les BASHEBI (les CAPTIVITÉ (les YÉLÉKHU (les IRONT (les KI (les AZ (les ALORS (les TÉBOSHI (les HONTE (les VENIKHLAMT (les CONFUSION (les MIKKOL (les TOUTE (les RAATÉK (les MÉCHANCETÉ (les PÂTURE (les VENT (les BALAYÉS (les VENT — les EMPORTÉ !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le NID (les YOSHEBTI (les HABITES (les BALLEBANON (les LIBAN (les MEQUNNANTI (les NID (les BAA RAZIM (les CÈDRES (les MAH (les COMBIEN (les NEHNANT (les GÉMIRAS (les BEBOLÉKH (les ATTEINDRONT (les HEBALIM (les DOULEURS (les HIL (les ANGOISSE (les KEYOLEDAH (les ENFANTE (les AIGLE (les INTOUCHABLE (les PALAIS (les CÈDRE (les ALTITUDE (les ILLUSION (les NID — les GÉMISSANT !). RIBLA (les VAYYITPESU (les SAISIRENT (les ET (les HAMMÉLEK (les ROI (les VAYYAA LU (les MENÈRENT (les OTO (les EL (les MÉLEK (les ROI (les BABÉL (les BABYLONE (les RIBLATAH (les RIBLA (les VAYEDABBERU (les PARLÈRENT (les ITTO (les JUGEMENT (les MISHPAT (les VEÉT (les BENÉ (les FILS (les TSIDQIYAHU (les SÉDÉCIAS (les SHAHATU (les ÉGORGÈRENT (les LEÉYNAÏV (les YEUX (les VEÉT (les ÉYNÉ (les YEUX (les TSIDQIYAHU (les IVVÉR (les AVEUGLÈRENT (les VAYYAASEHU (les ENCHAÎNÈRENT (les BAN E HUSHTAYIM (les BRONZE (les VAYEBIUHU (les EMMENÈRENT (les BABÉL (les BABYLONE (les DOULEURS (les VRAIES (les RIBLA — les JUGÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">22:20</td><td>AMANTS (BRISÉS !)</td></tr>
+<tr><td class="d">22:21</td><td>JEUNESSE (VOIX !)</td></tr>
+<tr><td class="d">22:22</td><td>VENT (MÉCHANCETÉ !)</td></tr>
+<tr><td class="d">22:23</td><td>NID (TRAVAIL !)</td></tr>
+<tr><td class="d">2R 24:12-16</td><td>DÉPORTA (BABYLONE !)</td></tr>
+<tr><td class="d">2R 25:4-7</td><td>RIBLA (AVEUGLÉ !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Amants brisés : l'Égypte de Néco puis d'Hophra abandonne Juda (Jr 37:5-8 ; 2R 24:7) ; bergers au vent : déportations de 597 (10 000) et 587 ; Sédécias aveuglé à Ribla après l'égorgement de ses fils (2R 25:6-7) — les douleurs promises.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Liban, Basan, Abarim : trois points cardinaux d'où Juda attendait secours — tous muets ; Ribla sur l'Oronte : tribunal de Nabuchodonosor où les bergers sont jugés ; nid dans les cèdres : palais d'altitude de Jérusalem.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Écologie : l'aigle nichant dans les cèdres du Liban à 2 000 m — image d'invulnérabilité réfutée par la chute ; les douleurs d'enfantement (mashal obstétrical) : motif universel de la détresse inévitable.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>AMANTS BRISÉS AUX 3 HORIZONS → BERGERS AU VENT 597 → NID GÉMISSANT → RIBLA 587 → DOULEURS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>L'oracle vise les dirigeants (bergers) et alliés (amants) de Juda ; le reste fidèle est épargné (Jr 24:5-7).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle des amants brisés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~601</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bergers déportés : 10 000 captifs</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ribla : le dernier berger aveuglé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/23">Bible — Jérémie 23 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/23</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/23">Bible — Jérémie 23 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/23</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/23">Bible — Jérémie 23 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/23</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR216 — Les amants brisés : bergers au vent et douleurs d'enfantement</span><span>Catégorie JR</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR211 — « Ta vie pour butin » : Sédécias, le siège et le choix</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sédécias consulte Jérémie pendant le siège</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Brèche, fuite, capture à Jéricho</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Juil. 587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ville livrée et brûlée ; transfuges épargnés</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Août 587</text>
+</svg>
+<h4>JR212 — Le feu à la forêt du palais : justice du matin ou incendie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Dernier appel à la justice pendant le siège</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le feu dévore le palais et ses cèdres</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Août 587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les alentours : toutes les maisons importantes brûlées</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>JR213 — « Cette maison deviendra une ruine » : Galaad promis au désert</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle au palais : droit ou ruine</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~601</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Urie exécuté : le sang innocent versé</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~601</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Palais brûlé, maison devenue ruine</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<h4>JR214 — Shallum qui s'en va : trois mois de règne, l'exil sans retour</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Meguiddo : mort de Josias</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Shallum règne 3 mois, déposé à Ribla</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort en Égypte, pays natal jamais revu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Après 609</text>
+</svg>
+<h4>JR215 — Yehoïaqim : le palais de cèdre et la sépulture d'un âne</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Règne d'injustice de Yehoïaqim</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">628–618</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle de la sépulture d'âne</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~601</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort pendant le siège, sans sépulture royale</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">598</text>
+</svg>
+<h4>JR216 — Les amants brisés : bergers au vent et douleurs d'enfantement</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oracle des amants brisés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~601</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bergers déportés : 10 000 captifs</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ribla : le dernier berger aveuglé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-36 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

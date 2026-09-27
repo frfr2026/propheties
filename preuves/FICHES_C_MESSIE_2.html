@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES C — Le Messie : le ministère (2e partie)</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_C2_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 7</div>
+<h1>FICHES C</h1>
+<h2>Le Messie : le ministère (2e partie)</h2>
+<p class="intro">Après le lieu, la mère et le précurseur (1re partie), voici le ministère : neuf fiches qui suivent Jésus de Nazareth à Jérusalem. L'entrée triomphale sur un ânon, la lecture d'Ésaïe 61 à la synagogue, la lumière levée sur la Galilée, le Prophète annoncé par Moïse, les miracles qui répondent à Jean, les paraboles promises par Asaph, le Serviteur doux d'Ésaïe 42, les maladies portées d'Ésaïe 53:4, et le surnom de Nazaréen. Deux précisions de périmètre : Ésaïe 53 n'entre ici que par son verset 4, celui que Matthieu applique aux guérisons — le reste du chant appartient à la catégorie D ; et la pierre angulaire, rejetée puis exaltée, attendra elle aussi la catégorie D, avec le procès, la mort et la résurrection.</p>
+<div class="chiffres">
+<div><b>9</b><span>fiches</span></div>
+<div><b>10</b><span>blocs par fiche</span></div>
+<div><b>36</b><span>sources</span></div>
+<div><b>9</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:40</div><audio controls preload="none" src="audio/fiche_AC00_intro_categorie.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_AC00_intro_categorie.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:42</div><audio controls preload="none" src="audio/fiche_C2_00_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_C2_00_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#C006">C006</a>
+<a href="#C007">C007</a>
+<a href="#C008">C008</a>
+<a href="#C009">C009</a>
+<a href="#C010">C010</a>
+<a href="#C011">C011</a>
+<a href="#C012">C012</a>
+<a href="#C013">C013</a>
+<a href="#C014">C014</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#C006"><img src="images/prophe_C006_entree.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C006</div>
+<h3><a href="#C006">L'entrée triomphale — ton roi vient à toi, humble</a></h3>
+<div class="meta">Accomplie · 🎧 0:38</div></div></div>
+<div class="carte">
+<a class="img" href="#C007"><img src="images/prophe_C007_nazareth.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C007</div>
+<h3><a href="#C007">Ésaïe 61 à Nazareth — aujourd'hui, cette parole</a></h3>
+<div class="meta">Accomplie · 🎧 0:34</div></div></div>
+<div class="carte">
+<a class="img" href="#C008"><img src="images/prophe_C008_galilee.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C008</div>
+<h3><a href="#C008">La Galilée des nations — une grande lumière</a></h3>
+<div class="meta">Accomplie · 🎧 0:35</div></div></div>
+<div class="carte">
+<a class="img" href="#C009"><img src="images/prophe_C009_moise.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C009</div>
+<h3><a href="#C009">Le prophète comme Moïse — écoutez-le</a></h3>
+<div class="meta">Accomplie · 🎧 0:36</div></div></div>
+<div class="carte">
+<a class="img" href="#C010"><img src="images/prophe_C010_miracles.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C010</div>
+<h3><a href="#C010">Les miracles — la réponse à Jean en prison</a></h3>
+<div class="meta">Accomplie · 🎧 0:34</div></div></div>
+<div class="carte">
+<a class="img" href="#C011"><img src="images/prophe_C011_paraboles.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C011</div>
+<h3><a href="#C011">Les paraboles — j'ouvrirai ma bouche en illustrations</a></h3>
+<div class="meta">Accomplie · 🎧 0:38</div></div></div>
+<div class="carte">
+<a class="img" href="#C012"><img src="images/prophe_C012_serviteur.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C012</div>
+<h3><a href="#C012">Le Serviteur doux — le roseau froissé</a></h3>
+<div class="meta">Accomplie · 🎧 0:32</div></div></div>
+<div class="carte">
+<a class="img" href="#C013"><img src="images/prophe_C013_maladies.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C013</div>
+<h3><a href="#C013">Il a porté nos maladies — les soirées de Capharnaüm</a></h3>
+<div class="meta">Accomplie · 🎧 0:32</div></div></div>
+<div class="carte">
+<a class="img" href="#C014"><img src="images/prophe_C014_nazareen.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE C014</div>
+<h3><a href="#C014">Le Nazaréen — il sera appelé de ce nom</a></h3>
+<div class="meta">Accomplie · 🎧 0:34</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Dix blocs par fiche, toujours dans le même ordre. Le dixième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="C006">
+<div class="visuel"><img src="images/prophe_C006_entree.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C006 · CATÉGORIE C</div>
+<h3>L'entrée triomphale — ton roi vient à toi, humble</h3>
+<div class="ref">Zacharie 9:9-10 ; Matthieu 21:1-11 ; Marc 11:1-11 ; Luc 19:28-44 ; Jean 12:12-19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C006 · 0:38</div><audio controls preload="none" src="audio/fiche_C2_06_entree.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C2_06_entree.mp3 · 0:38 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Zacharie 9:9-10 ; Matthieu 21:1-11 ; Marc 11:1-11 ; Luc 19:28-44 ; Jean 12:12-19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Zacharie — P503 (9:9) ; contexte : P502 (9:1-8)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Sois très joyeuse, fille de Sion ! Pousse des cris de triomphe, fille de Jérusalem ! Ton roi vient à toi : il est juste et victorieux, humble, monté sur un âne, sur un ânon, le petit d'une ânesse. » (Za 9:9)</li>
+<li>« Je retrancherai le char d'Éphraïm et le cheval de Jérusalem ; il annoncera la paix aux nations. » (Za 9:10)</li>
+<li>« Hosanna au Fils de David ! Béni soit celui qui vient au nom de Jéhovah ! » (Mt 21:9, reprenant Ps 118:25-26)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Zacharie prophétise vers 520-518, après le retour d'exil : son chapitre 9 s'ouvre sur le jugement des voisins — Hadrac, Damas, Tyr, la Philistie — puis basculle vers Sion et son roi. Cinq siècles et demi plus tard, à quelques jours de la Pâque de 33, Jésus monte de Béthanie et Bethphagé, sur le versant oriental du mont des Oliviers. Les pèlerins affluent déjà à Jérusalem pour la fête ; la foule qui descend avec lui grossit à chaque pas, et l'acclamation éclate.</p>
+<h4>4 · Explication du texte</h4>
+<p>Le verset 10 donne la clé du verset 9 : le cheval et le char retranchés, c'est la guerre abolie — le roi promis ne monte pas un destrier mais un âne, monture de paix et, en Israël, monture des chefs (Jg 10:4 ; 1R 1:33, Salomon intronisé sur la mule de David). « Humble » traduit un mot qui dit aussi l'affliction : le roi vient en doux, non en conquérant. Matthieu précise l'ânesse et son ânon ; Marc et Luc ajoutent que l'ânon n'avait encore porté personne — un animal neuf pour un usage sacré, comme les vaches de l'arche (1S 6:7). « Hosanna » n'est pas un cri de joie : c'est le verset 25 du Psaume 118, « sauve donc ! », détourné de la liturgie vers Jésus.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Jésus s'est présenté ce jour-là comme le Roi promis, pacifique et légitime : l'ânon trouvé comme annoncé, les vêtements étendus comme pour Jéhu (2R 9:13, rite d'intronisation), le Psaume 118 clamé par la foule. Les publications précisent le détail de Matthieu 21:7 : les disciples mirent leurs vêtements sur l'ânon, et c'est sur ces vêtements que Jésus s'assit — non sur deux animaux à la fois. Le même jour, Jésus pleure sur la ville (Lc 19:41-44) : le Roi présenté est aussi le Juge annoncé.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">520-518 av. n. è.</td><td>Zacharie 9:9 nomme le roi humble cinq siècles et demi d'avance</td></tr>
+<tr><td class="d">33 de n. è., avant Pâque</td><td>L'ânesse et l'ânon trouvés à Bethphagé, comme Jésus l'avait dit</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Descente du mont des Oliviers : vêtements, rameaux, Psaume 118 acclamé</td></tr>
+<tr><td class="d">33 de n. è.</td><td>« Si eux se taisent, les pierres crieront » (Lc 19:40) ; pleurs sur Jérusalem</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Entrée dans le temple, regard sur toutes choses, retour à Béthanie (Mc 11:11)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le dossier est liturgique et royal. Le Psaume 118 appartient au Hallel, chanté à la Pâque : la foule détourne vers Jésus l'antienne du pèlerinage. 2 Rois 9:13 fournit le précédent des vêtements étendus sous les pas du roi proclamé. 1 Rois 1:33 montre Salomon intronisé sur la mule de David : la monture pacifique du sacre. Josèphe, de son côté, décrit les foules immenses de la Pâque — Jérusalem déborde de pèlerins, et c'est devant eux que l'acclamation éclate. Jean 12:16 ajoute la note d'honnêteté : les disciples eux-mêmes ne comprirent qu'après la glorification.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'itinéraire est une descente : Bethphagé et Béthanie sur le versant oriental, la route qui contourne le mont des Oliviers, la vallée du Cédron en contrebas, puis la remontée vers le Temple. C'est au tournant où la ville apparaît que Jésus pleure (Lc 19:41) : la topographie commande la dramaturgie. Le mont des Oliviers fait face au Temple, à moins d'un kilomètre à vol d'oiseau : le Roi vient à Sion par la route orientale, celle des pèlerins de Jéricho et de Béthanie.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La topographie du mont des Oliviers et le tracé de la route antique, jalonnée de tombeaux du Ier siècle, correspondent au récit des quatre Évangiles. L'archéologie funéraire de Béthanie (tombeaux à kokhim du Second Temple) confirme l'occupation du village au temps de Marthe, Marie et Lazare. La zoologie historique éclaire le choix de la monture : l'âne blanc des chefs israélites (Jg 5:10) n'a rien d'une bête de somme quelconque — c'est la monture du pouvoir en temps de paix, opposée au cheval de guerre du verset 10.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Marc, Luc et Jean ne mentionnent que l'ânon : Matthieu complète, il ne contredit pas — la question des lecteurs citée en source tranche le détail de Matthieu 21:7. La foule qui acclame ne comprend pas ce qu'elle chante (Jn 12:16) : l'accomplissement constaté n'implique pas l'adhésion lucide. Cette fiche ne fixe pas le jour exact de l'entrée dans la semaine pascale. Les pleurs sur Jérusalem (Lc 19:41-44) annoncent 70 : voir B007.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zacharie 9:9</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520-518</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'ânon trouvé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33, av. Pâque</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'entrée</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pleurs sur la ville</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple, puis Béthanie</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1965567">Sur quel animal Jésus fit-il son entrée ? — QR<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1965567</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/38/9">Zacharie 9 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/38/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/21">Matthieu 21 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/21</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C006 — L'entrée triomphale — ton roi vient à toi, humble</span><span>Catégorie C</span></div></div>
+</article>
+<article class="fiche" id="C007">
+<div class="visuel"><img src="images/prophe_C007_nazareth.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C007 · CATÉGORIE C</div>
+<h3>Ésaïe 61 à Nazareth — aujourd'hui, cette parole</h3>
+<div class="ref">Ésaïe 61:1-3 ; Luc 4:16-30 ; Matthieu 11:5</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C007 · 0:34</div><audio controls preload="none" src="audio/fiche_C2_07_nazareth.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C2_07_nazareth.mp3 · 0:34 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 61:1-3 ; Luc 4:16-30 ; Matthieu 11:5</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P177 (61:1-3), P596 (61:1-2), P605 (61:1)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« L'esprit du Souverain Seigneur Jéhovah est sur moi, car Jéhovah m'a oint pour annoncer la bonne nouvelle aux humbles ; il m'a envoyé pour panser ceux qui ont le cœur brisé, proclamer la libération aux captifs, l'ouverture des yeux aux prisonniers, pour proclamer l'année de bienveillance de Jéhovah. » (Is 61:1-2a)</li>
+<li>« Et le jour de vengeance de notre Dieu. » (Is 61:2b — le membre de phrase que Jésus ne lit pas)</li>
+<li>« Aujourd'hui, cette parole que vous venez d'entendre est accomplie. » (Lc 4:21)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Un sabbat, à Nazareth, « où il avait été élevé », Jésus entre dans la synagogue « comme il en avait l'habitude » et se lève pour lire. On lui remet le rouleau d'Ésaïe ; il le déroule, trouve le passage, lit, roule le livre, s'assied — la position du maître qui enseigne — et prononce une seule phrase de commentaire. C'est le manifeste du ministère galiléen, dans les premiers mois qui suivent le baptême de 29. Tous les yeux sont fixés sur lui.</p>
+<h4>4 · Explication du texte</h4>
+<p>La lecture est un acte exégétique : Jésus lit 61:1 jusqu'au milieu du verset 2 et s'arrête avant « le jour de vengeance ». La coupure est le message : la première venue ouvre « l'année » — la longue période de faveur — et réserve la vengeance. Luc, écrivant en grec, cite selon les Septante : « l'année favorable de Jéhovah ». « Oint » (mashach), c'est le mot même de Messie et de Christ : en lisant, Jésus se désigne. La mission listée est spirituelle avant d'être sociale : cœurs brisés, captifs du péché, aveugles de l'ignorance, écrasés relevés.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Jésus, oint d'esprit saint à son baptême de 29, s'est appliqué à lui-même la prophétie et a ouvert « l'année de bienveillance » — toute la période pendant laquelle Dieu montre sa faveur à ceux qui se tournent vers lui. Les publications soulignent que l'accomplissement d'Ésaïe 61 est d'abord spirituel : le bonheur matériel n'est pas la chose primordiale. Et elles notent le paradoxe final : admiré (« tous lui rendaient témoignage »), Jésus est rejeté dans l'heure — « médecin, guéris-toi toi-même » — et conduit au précipice. L'Oint proclamé chez lui, puis chassé de chez lui.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe-VIIe s. av. n. è.</td><td>Ésaïe 61 : le manifeste de l'Oint (même rouleau que B004)</td></tr>
+<tr><td class="d">IIe s. av. n. è.</td><td>Les Septante : « l'année favorable » — le texte que Luc citera</td></tr>
+<tr><td class="d">29 de n. è., automne</td><td>Baptême : l'onction d'esprit qui fait l'Oint</td></tr>
+<tr><td class="d">30 de n. è. env.</td><td>Lecture à Nazareth : « aujourd'hui, cette parole est accomplie »</td></tr>
+<tr><td class="d">30 de n. è. env.</td><td>Rejet et précipice évité ; départ pour Capharnaüm (voir C008)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La note d'étude sur Luc 4:17 donne la mesure du rouleau : le grand rouleau d'Ésaïe de la mer Morte assemble 17 feuilles cousues, 7,3 mètres de long, 54 colonnes — celui de Nazareth avait peut-être une longueur semblable. Dérouler jusqu'au chapitre 61 prenait du temps : le silence de la synagogue fait partie de la scène. L'inscription de Théodotos, à Jérusalem (Ier siècle), atteste une synagogue bâtie « pour la lecture de la Loi » : le cadre liturgique du récit est épigraphiquement confirmé.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Nazareth : un bourg de Basse-Galilée, dans une cuvette à l'écart des grandes routes (voir C014). La synagogue — le lieu de lecture, d'enseignement et de jugement local — en est le cœur. Le « sourcil de la montagne » où l'on veut précipiter Jésus (Lc 4:29) est montré traditionnellement au mont du Précipice, à deux kilomètres au sud : tradition, pas fouille (voir Limites). De Nazareth rejetante, Jésus descend à Capharnaüm, au bord du lac : trente kilomètres vers le nord-est, et un changement de monde.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le texte lu est doublement verrouillé : le rouleau 1QIsa-a (IIe siècle avant notre ère) contient Ésaïe 61 dans un hébreu antérieur au christianisme, et la Septante en donne le grec que Luc reprend. L'archéologie de Nazareth (maisons à cour, citernes, pressoirs et silos du Ier siècle) confirme un bourg juif rural et pieux — le décor exact du récit. Sous la synagogue blanche de Capharnaüm (IVe siècle), les fouilles ont dégagé des murs en basalte du Ier siècle : la pierre des synagogues où Jésus enseigna.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>L'emplacement exact de la synagogue de Nazareth n'est pas localisé, et le mont du Précipice est une identification traditionnelle. L'année de la lecture (vers 30) est approximative : Luc la place au début du ministère galiléen sans la dater au mois près. Le « jour de vengeance » non lu renvoie à un avenir que cette fiche ne date pas. Le rejet de Nazareth montre, comme en C006, que l'accomplissement constaté ne force pas l'adhésion.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 61</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe-VIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Septante</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Onction au baptême</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lecture à Nazareth</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30 env.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rejet, puis Capharnaüm</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30 env.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1970805">Il est encore temps de profiter de l'année de bienveillance<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1970805</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/42/4">Luc 4 — Bible d'étude (le rouleau de 7,3 m)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/42/4</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965082">Luc 4:16-21 et Ésaïe 61:1-2 cités<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965082</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C007 — Ésaïe 61 à Nazareth — aujourd'hui, cette parole</span><span>Catégorie C</span></div></div>
+</article>
+<article class="fiche" id="C008">
+<div class="visuel"><img src="images/prophe_C008_galilee.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C008 · CATÉGORIE C</div>
+<h3>La Galilée des nations — une grande lumière</h3>
+<div class="ref">Ésaïe 9:1-2 ; Matthieu 4:12-17, 23-25 ; Luc 4:31</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C008 · 0:35</div><audio controls preload="none" src="audio/fiche_C2_08_galilee.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C2_08_galilee.mp3 · 0:35 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 9:1-2 ; Matthieu 4:12-17, 23-25 ; Luc 4:31</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P119 (9:1-2), P597 (9:1-2)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Le peuple qui marchait dans les ténèbres a vu une grande lumière ; sur ceux qui habitaient le pays de l'ombre de la mort, une lumière a brillé. » (Is 9:2)</li>
+<li>« Pays de Zabulon et pays de Nephtali, route de la mer, au-delà du Jourdain, Galilée des nations ! » (Is 9:1 ; Mt 4:15)</li>
+<li>« Il quitta Nazareth et s'installa à Capharnaüm, au bord de la mer, dans le territoire de Zabulon et de Nephtali. » (Mt 4:13)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le paradoxe est voulu par Ésaïe : le nord — Zabulon et Nephtali — a été la première proie de Tiglath-Piléser III (2R 15:29, voir A010 : « le pays de Nephtali » emmené en Assyrie) ; il sera le premier éclairé. Huit siècles plus tard, quand Jésus apprend l'arrestation de Jean, il se retire en Galilée, quitte Nazareth qui l'a rejeté (voir C007) et s'installe à Capharnaüm. Matthieu cite l'oracle au moment exact du déménagement : la lumière a une adresse.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Galilée des nations » (littéralement « cercle des nations ») dit la mixité : dès Salomon, vingt villes galiléennes ont été cédées à Hiram de Tyr (1R 9:11), et la « route de la mer » (la Via Maris, Damas-Côte-Égypte) brasse les peuples. Les « ténèbres », au sens premier, ce sont les armées assyriennes ; au sens plénier, l'obscurité spirituelle où « l'ombre de la mort » règne. La « grande lumière », c'est l'enseignement et les œuvres (Mt 4:23 : enseigner, prêcher, guérir — le triptyque du ministère). Capharnaüm, « au bord de la mer » et « au-delà du Jourdain » vu de Jérusalem, coche chaque membre de l'oracle.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Capharnaüm est devenue « sa ville » (Mt 9:1) et le quartier général de la lumière : c'est là que Jésus appelle les quatre premiers disciples, puis Matthieu au bureau des impôts, choisit les douze sur une montagne proche — tous Galiléens sauf peut-être Judas — et accomplit l'essentiel de ses œuvres de puissance. Les foules qui affluent « de Galilée, de la Décapole, de Jérusalem, de Judée et d'au-delà du Jourdain » (Mt 4:25) dessinent la carte de la lumière : Juifs et nations mêlés, comme le nom l'annonçait.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">733 av. n. è. env.</td><td>Tiglath-Piléser III ravage Nephtali (2R 15:29) : les ténèbres</td></tr>
+<tr><td class="d">VIIIe s. av. n. è.</td><td>Ésaïe 9:1-2 promet la grande lumière aux mêmes territoires</td></tr>
+<tr><td class="d">30 de n. è. env.</td><td>Arrestation de Jean ; Jésus s'installe à Capharnaüm (Mt 4:12-13)</td></tr>
+<tr><td class="d">30-32 de n. è.</td><td>Le ministère galiléen : Mt 4:23-25, les foules des cinq régions</td></tr>
+<tr><td class="d">31 de n. è. env.</td><td>Les douze choisis près de Capharnaüm, Galiléens pour la plupart</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>2 Rois 15:29 nomme les victimes : « tout le pays de Nephtali » — les mêmes noms que l'oracle, huit siècles avant Matthieu. 1 Rois 9:11 explique la mixité : Salomon paie Hiram en villes galiléennes. Le bureau des impôts de Capharnaüm (Mt 9:9) suppose un poste-frontière : la ville est à la limite de la Galilée d'Antipas et de la Gaulanitide de Philippe, sur la route de Damas — le « cercle des nations » en acte. L'économie du lac (pêche, salaisons, batellerie) explique que quatre pêcheurs deviennent « pêcheurs d'hommes ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le lac de Galilée — 21 kilomètres sur 12, à 212 mètres au-dessous de la mer, eau douce et poissonneuse — est le centre du monde de la fiche. Capharnaüm (Tell Hum, probablement) occupe la rive nord, en Nephtali, près de la frontière de Zabulon : les deux tribus de l'oracle. La Via Maris passe à proximité ; la Décapole hellénistique borde la rive orientale. La Galilée, à son maximum une centaine de kilomètres sur cinquante, embrasse Aser, Issacar, Nephtali et Zabulon : toute la carte tient dans un week-end de marche.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Les fouilles de Capharnaüm ont livré la synagogue de basalte du Ier siècle sous la blanche du IVe, et la « maison de Pierre » devenue lieu de culte très tôt (graffiti, puis église octogonale). La « barque de Galilée », coque de pêche du Ier siècle découverte en 1986 dans la vase et datée par le carbone 14 et la céramique associée, montre l'embarcation-type des disciples. Les poids de filets, hameçons et salaisons retrouvés autour du lac confirment l'économie de la pêche décrite par les Évangiles.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>L'identification Capharnaüm = Tell Hum est quasi certaine (toponymie arabe Kefar Nahum, tradition, distance) mais sans inscription nominative : aucun « Capharnaüm » gravé n'a été trouvé. La « maison de Pierre » est un lieu vénéré très tôt, pas une adresse certifiée. La barque de 1986 est une barque du temps de Jésus, pas la barque de Jésus. Les chiffres de population de la Galilée chez Josèphe sont manifestement exagérés et ne sont pas repris ici.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ténèbres assyriennes</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">733</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 9</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Capharnaüm</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30 env.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lumière : foules</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30-32</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les douze</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">31 env.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1001061144">Matthieu 4 — le texte (Capharnaüm, la lumière)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1001061144</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011560">Galilée — Étude perspicace<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011560</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/9">Ésaïe 9 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/9</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C008 — La Galilée des nations — une grande lumière</span><span>Catégorie C</span></div></div>
+</article>
+<article class="fiche" id="C009">
+<div class="visuel"><img src="images/prophe_C009_moise.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C009 · CATÉGORIE C</div>
+<h3>Le prophète comme Moïse — écoutez-le</h3>
+<div class="ref">Deutéronome 18:15-19 ; Actes 3:22-23 ; Jean 1:45 ; 6:14 ; 7:40 ; Matthieu 17:5</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 1473/29</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C009 · 0:36</div><audio controls preload="none" src="audio/fiche_C2_09_moise.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C2_09_moise.mp3 · 0:36 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Deutéronome 18:15-19 ; Actes 3:22-23 ; Jean 1:45 ; 6:14 ; 7:40 ; Matthieu 17:5</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 1473/29</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Deutéronome — P058 (18:15-19)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Jéhovah ton Dieu te suscitera d'entre tes frères un prophète comme moi : vous l'écouterez. » (Dt 18:15)</li>
+<li>« Je mettrai mes paroles dans sa bouche, et il leur dira tout ce que je lui ordonnerai. » (Dt 18:18)</li>
+<li>« Celui-ci est mon Fils bien-aimé : écoutez-le. » (Mt 17:5, la voix sur la montagne, reprenant Dt 18:15)</li>
+<li>« Toute âme qui n'écoutera pas ce Prophète sera exterminée du milieu du peuple. » (Ac 3:23, Pierre citant Moïse)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Moïse parle dans les plaines de Moab, en 1473, à la veille de l'entrée en Canaan. Le peuple, qui avait supplié à Horeb de ne plus entendre directement la voix de Dieu (Dt 18:16), reçoit un médiateur pour toujours : après Moïse, un prophète « comme » lui. Quinze siècles plus tard, Philippe dit à Nathanaël : « Nous avons trouvé celui dont Moïse a écrit » (Jn 1:45) ; la foule rassasiée s'écrie : « C'est vraiment le Prophète » (Jn 6:14) ; et Pierre, à la Pentecôte, applique l'oracle à Jésus ressuscité.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Comme moi » : médiateur d'une alliance, législateur, libérateur, faiseur de signes — le parallèle est de fonction, pas de biographie. « D'entre tes frères » : Israélite, pas devin étranger — l'oracle suit immédiatement l'interdit de la divination (Dt 18:9-14) : à la magie païenne, Dieu oppose la parole mise « dans sa bouche ». Le critère du vrai prophète suit (18:22) : ce qu'il dit arrive. « Écoutez-le » devient la formule de la transfiguration (Mt 17:5) : Dieu lui-même renvoie à Moïse. Et Jean-Baptiste, interrogé, nie être « le Prophète » (Jn 1:21) : l'attente distinguait le Christ, Élie et le Prophète — trois figures, dont Jésus remplit deux.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Jésus est « le Grand Moïse » : prophète (il prédit la ruine du temple, les guerres, la fin), médiateur (de la nouvelle alliance, comme Moïse de la Loi), libérateur (d'un salut éternel, comme Moïse d'un salut hors d'Égypte). Les publications relèvent que Jésus lui-même a attesté le Deutéronome en le citant trois fois contre Satan (Mt 4). Pierre applique la sanction de l'oracle — « exterminée du milieu du peuple » — à la génération qui refuse d'écouter : voir B007 pour 70.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1473 av. n. è.</td><td>Moïse annonce le Prophète dans les plaines de Moab</td></tr>
+<tr><td class="d">Ier s. av. n. è.</td><td>4QTestimonia : Qumrân cite Dt 18:18-19 dans une anthologie messianique</td></tr>
+<tr><td class="d">29 de n. è.</td><td>Baptême ; Philippe : « celui dont Moïse a écrit » (Jn 1:45)</td></tr>
+<tr><td class="d">32 de n. è. env.</td><td>Transfiguration : « écoutez-le » (Mt 17:5) ; les pains : « le Prophète » (Jn 6:14)</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Pierre à la Pentecôte applique Dt 18 à Jésus (Ac 3:22-23)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>L'attente est attestée avant Jésus. Le manuscrit 4QTestimonia, de Qumrân (Ier siècle avant notre ère), aligne Deutéronome 18:18-19 avec Nombres 24:17 et Deutéronome 33 : un florilège messianique qui prouve que l'oracle était lu comme messianique avant le christianisme. Les Samaritains attendaient le Taheb, le prophète-restaurateur fondé sur ce même texte — la Samaritaine du puits s'en fait l'écho (Jn 4:25 : « je sais que le Messie vient »). Jésus cite le Deutéronome contre le Tentateur : le Prophète authentifie le livre qui l'annonce.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'oracle naît face à Canaan, dans les plaines de Moab, au pied du Nebo où Moïse va mourir sans entrer : le Prophète promis entrera, lui, et fera entrer. Il renvoie à Horeb, « le jour de l'assemblée » (Dt 18:16) : le Sinaï de la peur devient la promesse d'une parole audible. Quinze siècles plus tard, la formule résonne sur une « haute montagne » de Galilée (Mt 17:1) puis au Temple de Jérusalem (Ac 3:11, le portique de Salomon) : du désert à la ville sainte, la boucle est bouclée.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La critique textuelle confirme la stabilité de l'oracle : texte massorétique, Pentateuque samaritain, Septante et manuscrits de Qumrân convergent sur Deutéronome 18:15-19, sans variante qui en affaiblisse la portée. 4QTestimonia fournit la preuve matérielle de la lecture messianique pré-chrétienne : le texte était souligné avant d'être accompli. La datation interne du Deutéronome (« un peu plus de deux mois », plaines de Moab) appartient au système chronologique de la fiche.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>« Le Prophète » avec majuscule est le titre que la foule donne (Jn 6:14 ; 7:40), pas un titre que Jésus revendique : il se dit « fils de l'homme » et laisse les œuvres parler. Jean-Baptiste nie être le Prophète (Jn 1:21) : l'attente du Ier siècle distinguait des figures que les Évangiles répartissent autrement. La date de 1473 appartient à la chronologie biblique (système de la fiche), non aux chronologies profanes. La sanction d'Actes 3:23 ne date aucun événement à venir.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Moïse annonce</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">4QTestimonia</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier s. av.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Celui de Moïse »</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Écoutez-le »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">32 env.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre applique</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2009283">Reconnaissons Jésus comme le Grand Moïse<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2009283</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011134">Deutéronome (livre du) — Étude perspicace<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011134</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/18">Deutéronome 18 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/18</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C009 — Le prophète comme Moïse — écoutez-le</span><span>Catégorie C</span></div></div>
+</article>
+<article class="fiche" id="C010">
+<div class="visuel"><img src="images/prophe_C010_miracles.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C010 · CATÉGORIE C</div>
+<h3>Les miracles — la réponse à Jean en prison</h3>
+<div class="ref">Ésaïe 35:5-6 ; Matthieu 11:2-6 ; Luc 7:18-23 ; Matthieu 15:30-31</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C010 · 0:34</div><audio controls preload="none" src="audio/fiche_C2_10_miracles.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C2_10_miracles.mp3 · 0:34 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 35:5-6 ; Matthieu 11:2-6 ; Luc 7:18-23 ; Matthieu 15:30-31</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P152 (35:1-10), P604 (35:5-6)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Alors les yeux des aveugles s'ouvriront, et les oreilles des sourds se déboucheront ; alors le boiteux sautera comme le cerf, et la langue du muet criera de joie. » (Is 35:5-6)</li>
+<li>« Les aveugles voient, les boiteux marchent, les lépreux sont purifiés, les sourds entendent, les morts sont relevés, et la bonne nouvelle est annoncée aux pauvres. » (Mt 11:5, réponse de Jésus aux envoyés de Jean)</li>
+<li>« Heureux celui pour qui je ne serai pas une occasion de trébucher ! » (Mt 11:6)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jean est en prison à Machéronte (voir C005) quand il envoie deux disciples poser la question : « Es-tu celui qui vient, ou devons-nous en attendre un autre ? » Jésus ne répond ni oui ni non : il montre. « Allez rapporter à Jean ce que vous entendez et voyez » — puis la liste. Ésaïe 35, au sens premier, chante le retour de l'exil par une « route sainte » (35:8) ; Jésus en prélève les versets 5-6 comme pièces d'identité du Messie. Juste avant, il a relevé le fils de la veuve de Naïn (Lc 7:11-17) : les envoyés ont peut-être vu un mort relevé.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Celui qui vient » (ho erchomenos), c'est le Psaume 118:26 — Jean demande si Jésus est le Béni-qui-vient. La réponse cite Ésaïe 35 en y ajoutant deux membres : les lépreux purifiés et les morts relevés — au-delà même de l'oracle. Chaque membre renvoie à des faits datés du ministère : l'aveugle-né (Jn 9), le sourd-muet de la Décapole (Mc 7:31-37, « Effata »), les boiteux de la montagne (Mt 15:30-31), les dix lépreux (Lc 17), le fils de Naïn, la fille de Jaïrus. Le dernier membre — « la bonne nouvelle aux pauvres » — est Ésaïe 61:1 (voir C007) : les deux manifestes se rejoignent dans une seule phrase.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Jésus a prouvé par ses œuvres, et non par un titre revendiqué, qu'il était le Messie : les guérisons accomplissent Ésaïe 35 et Ésaïe 61 à la lettre — « complètement guéris », « aussitôt », devant témoins. L'avertissement final vaut pour tous, y compris dans l'épreuve : la foi tient même en prison. Et les publications voient dans ces guérisons le modèle du Royaume à venir — un monde sans hôpitaux ni pharmacies — dont cette fiche ne date pas l'avènement.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe s. av. n. è.</td><td>Ésaïe 35 : la route sainte et les sens rouverts</td></tr>
+<tr><td class="d">30-32 de n. è.</td><td>Naïn, Capharnaüm, la Décapole : morts relevés, aveugles, sourds, boiteux</td></tr>
+<tr><td class="d">32 de n. è. env.</td><td>De Machéronte, Jean envoie demander : « Es-tu celui qui vient ? »</td></tr>
+<tr><td class="d">32 de n. è. env.</td><td>La réponse par les faits : Matthieu 11:4-6</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Lazare, relevé après quatre jours : le sceau (Jn 11)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le contraste avec la médecine antique fait partie du dossier : à Épidaure, on incubait des rêves ; chez Hippocrate, on prescrivait des régimes ; Jésus guérit « aussitôt » et « complètement », y compris l'aveugle de naissance (Jn 9:1 — incurable avéré) et le lépreux exclu (Mc 1:40-44, avec renvoi au prêtre selon Lévitique 14). La piscine de Siloé, où l'aveugle-né va se laver (Jn 9:7), a été dégagée en 2004-2005 : un grand bassin à marches du Ier siècle avant notre ère, exactement au lieu dit par la tradition.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La carte des miracles est celle du ministère : Naïn en Galilée du sud (le fils de la veuve), Capharnaüm (la belle-mère, le paralytique, le serviteur du centurion), la Décapole païenne (le sourd-muet — et les foules qui glorifient « le Dieu d'Israël », Mt 15:31), Siloé à Jérusalem (l'aveugle-né), Béthanie (Lazare). Chaque lieu ajoute une pièce : ville juive, territoire païen, capitale, village ami — la lumière ne connaît pas de frontière.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Les fouilles de Siloé (2004-2005) ont confirmé le décor de Jean 9 : escaliers monumentaux, eau vive du tunnel d'Ézéchias (voir B006). Le vocabulaire médical de Luc — médecin (Col 4:14) — affleure dans les récits (« forte fièvre », Lc 4:38) : les diagnostics sont posés par un professionnel antique. La « lèpre » biblique (Lévitique 13-14) est une catégorie rituelle large, constatée par le prêtre : elle recouvre des affections diverses, pas nécessairement la maladie de Hansen moderne — la fiche ne fait pas de diagnostic rétrospectif.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Les miracles ne convertissent pas mécaniquement : les villes témoins refusent (Mt 11:20-24), et « malgré tant de miracles, ils ne croyaient pas » (Jn 12:37). Jean reçoit la réponse et sera pourtant exécuté : la preuve n'épargne pas l'épreuve. Ésaïe 35, au sens premier, chante le retour d'exil — la fiche le dit, et montre le second sens révélé par Jésus. La santé universelle du Royaume est promise sans date.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 35</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Miracles</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30-32</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Question de Jean</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">32 env.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réponse par les faits</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">32 env.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lazare</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1992921">Quels bienfaits l'Évangile peut-il vous procurer ? (Mt 11:5)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1992921</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/101998483">La santé parfaite : les guérisons comme modèle<br>https://wol.jw.org/fr/wol/d/r30/lp-f/101998483</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/35">Ésaïe 35 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/35</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C010 — Les miracles — la réponse à Jean en prison</span><span>Catégorie C</span></div></div>
+</article>
+<article class="fiche" id="C011">
+<div class="visuel"><img src="images/prophe_C011_paraboles.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C011 · CATÉGORIE C</div>
+<h3>Les paraboles — j'ouvrirai ma bouche en illustrations</h3>
+<div class="ref">Psaume 78:2 ; Matthieu 13:34-35 ; Marc 4:33-34 ; Ésaïe 6:9-10</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C011 · 0:38</div><audio controls preload="none" src="audio/fiche_C2_11_paraboles.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C2_11_paraboles.mp3 · 0:38 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Psaume 78:2 ; Matthieu 13:34-35 ; Marc 4:33-34 ; Ésaïe 6:9-10</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Psaumes — P548 (78:2), P601 (78:2)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« J'ouvrirai ma bouche en paraboles ; je publierai des choses cachées depuis les temps anciens. » (Ps 78:2)</li>
+<li>« Jésus dit tout cela aux foules en paraboles, et sans parabole il ne leur parlait pas — afin que s'accomplisse ce qui avait été dit par le prophète. » (Mt 13:34-35)</li>
+<li>« C'est pourquoi je leur parle en paraboles : parce qu'en regardant ils regardent en vain, et qu'en entendant ils entendent en vain. » (Mt 13:13, citant Is 6:9-10)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le Psaume 78 est d'Asaph — « Asaph le visionnaire » (2Ch 29:30), prophète et chantre de David : un psaume historique (l'Exode, le désert, David) ouvert par un verset qui déborde son auteur. Dix siècles plus tard, « ce jour-là » (Mt 13:1), Jésus sort s'asseoir au bord de la mer ; la foule est si grande qu'il monte dans une barque et enseigne du large : le semeur, l'ivraie, la moutarde, le levain, le trésor, la perle, le filet. Les disciples demandent : « Pourquoi leur parles-tu en paraboles ? »</p>
+<h4>4 · Explication du texte</h4>
+<p>L'hébreu mashal (parabole, proverbe, énigme) devient le grec parabolê — « placer à côté » : rapprocher le ciel et la terre pour enseigner. Le verset de Matthieu 13:35 dit « depuis la fondation » (du monde) : les paraboles dévoilent des desseins voilés depuis l'origine. Double effet, expliqué par Jésus lui-même : révéler aux disciples (« il vous est donné de connaître », Mt 13:11) et voiler aux endurcis, selon Ésaïe 6 — les paraboles trient en enseignant. Asaph « prophète » : c'est le titre de l'auteur qui fait du verset une prophétie, pas seulement une préface.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Jésus a accompli le Psaume 78:2 à la lettre : aux foules, il ne parlait qu'en illustrations — semeur (les cœurs), ivraie (les deux postérités), moutarde et levain (la croissance du Royaume), trésor et perle (le prix à payer), filet (le tri final). Les publications précisent le genre : les paraboles commencent par « un homme avait… » mais sortent de l'imagination inspirée — fictions d'enseignement, pas reportages. But premier : enseigner ; but second : décourager les superficiels, qui n'aiment pas creuser.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Xe s. av. n. è.</td><td>Asaph le visionnaire ouvre son psaume par le verset-prophétie</td></tr>
+<tr><td class="d">31-32 de n. è.</td><td>Le discours en paraboles : Mt 13, Mc 4, Lc 8 — la barque-chaire</td></tr>
+<tr><td class="d">31-32 de n. è.</td><td>Explications privées aux disciples : le voile se lève pour eux</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Les paraboles du jugement : vignerons (Mt 21), noces (Mt 22), talents (Mt 25)</td></tr>
+<tr><td class="d">33 de n. è.</td><td>« Jamais homme n'a parlé comme cet homme » (Jn 7:46) : le constat des gardes</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La parabole a une histoire avant Jésus : Nathan devant David (2S 12, la brebis du pauvre), Jotham devant Sichem (Jg 9, les arbres qui se choisissent un roi). Les rabbis maniaient le mashal ; Jésus s'en distingue par l'autorité — « mais moi, je vous dis » — qui stupéfie (Mt 7:28-29). Le cadre judiciaire confirme l'impact : les gardes envoyés pour l'arrêter reviennent bredouilles et témoignent malgré eux (Jn 7:32, 45-46) — un aveu adverse, comme les prêtres de Matthieu 2 (voir C001).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Les paraboles sont le paysage galiléen transfiguré : le champ du semeur, l'ivraie des blés, la moutarde des bords du lac, le levain des cuisines, le trésor des labours, la perle des marchands, le filet des pêcheurs. La barque au large et la foule sur la plage (Mt 13:2) forment un amphithéâtre naturel : l'eau calme porte la voix. Synagogues, routes, puits, vignes — chaque décor devient une page.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'acoustique lacustre est réelle : une voix portant sur l'eau calme atteint une foule massée en pente douce — la configuration de Mt 13:2 est un dispositif oratoire. La botanique confirme le décor : la moutarde noire (Brassica nigra), graine d'un millimètre, monte à trois mètres et abrite les oiseaux. L'agronomie explique le semeur : semailles à la volée avant le labour — la semence « le long du chemin » n'est pas une maladresse du paysan, c'est la méthode du temps.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>« La plus petite de toutes les semences » est une expression proverbiale du Ier siècle, pas un traité de botanique : il existe des graines plus petites (orchidées), et la fiche le dit. Les paraboles sont des fictions inspirées, pas des faits divers : le trésor caché et la perle n'ont jamais été trouvés. « Sans parabole il ne leur parlait pas » vise les foules : aux disciples, en privé, « il expliquait tout » (Mc 4:34).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Asaph : Ps 78:2</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Xe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Barque-chaire</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">31-32</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Explications privées</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">31-32</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paraboles du jugement</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Jamais homme… »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012098">Illustrations (paraboles) — Étude perspicace<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012098</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/19/78">Psaume 78 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/19/78</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/13">Matthieu 13 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/13</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C011 — Les paraboles — j'ouvrirai ma bouche en illustrations</span><span>Catégorie C</span></div></div>
+</article>
+<article class="fiche" id="C012">
+<div class="visuel"><img src="images/prophe_C012_serviteur.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C012 · CATÉGORIE C</div>
+<h3>Le Serviteur doux — le roseau froissé</h3>
+<div class="ref">Ésaïe 42:1-4, 6-7 ; Matthieu 12:15-21 ; Matthieu 3:16-17 ; Marc 3:7-12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33/36</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C012 · 0:32</div><audio controls preload="none" src="audio/fiche_C2_12_serviteur.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C2_12_serviteur.mp3 · 0:32 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 42:1-4, 6-7 ; Matthieu 12:15-21 ; Matthieu 3:16-17 ; Marc 3:7-12</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33/36</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P158 (42:1-9), P598 (42:1-4), P612 (42:6-7)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Voici mon serviteur que je soutiens, mon élu en qui mon âme prend plaisir : j'ai mis mon esprit sur lui ; il fera connaître la justice aux nations. » (Is 42:1)</li>
+<li>« Il ne criera pas, il n'élèvera pas la voix, il ne la fera pas entendre dans la rue. Il ne brisera pas le roseau froissé, il n'éteindra pas la mèche qui fume. » (Is 42:2-3)</li>
+<li>« Celui-ci est mon Fils bien-aimé, en qui j'ai pris plaisir. » (Mt 3:17 — la voix du baptême, combinant Ps 2:7 et Is 42:1)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Premier des quatre « chants du Serviteur » (Ésaïe 42, 49, 50, 52-53). Matthieu le cite — sa plus longue citation d'Ésaïe — à un moment précis : après la guérison de l'homme à la main desséchée, un sabbat, les pharisiens complotent ; Jésus se retire, guérit tous les malades des foules, et « leur défend sévèrement de le faire connaître » (Mt 12:16). Le silence ordonné accomplit le silence annoncé : « il ne criera pas ». Serviteur puissant et doux — les deux à la fois.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois titres en un verset : serviteur (mission), élu (choix), bien-aimé (amour) — et la voix du baptême les reprend en y ajoutant « Fils » (Ps 2:7). « Il ne criera pas » : pas de démagogie, pas de zélotisme, pas de campagne — le contraire du tribun. Le roseau froissé (plante frêle des marais, une fois pliée bonne à jeter) et la mèche de lin qui fume (la lampe à huile au bord de s'éteindre) figurent les broyés : l'homme à la main desséchée, les foules éreintées, tous ceux dont la dernière étincelle vacille. « Jusqu'à ce qu'il fasse triompher la justice » : la douceur n'exclut pas le tri — elle en est le chemin.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que Jésus est ce Serviteur : oint d'esprit au baptême, il fait connaître la justice « aux nations » — et déjà les foules viennent de la Décapole, de Tyr et de Sidon (Mc 3:7-8 ; Mt 15). Il relève les humbles avec tendresse au lieu d'achever les vacillants : enfants bénis, péagers accueillis, malade de trente-huit ans relevé. Douceur qui n'est pas mollesse : aux broyeurs — scribes et pharisiens qui « écrasent » le peuple (Mt 23:4) — il oppose la fermeté. Les nations « espéreront en son nom » : Corneille, en 36, ouvre la porte (Ac 10).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe s. av. n. è.</td><td>Ésaïe 42 : le premier chant du Serviteur</td></tr>
+<tr><td class="d">29 de n. è., automne</td><td>Baptême : l'esprit descend, la voix cite le Serviteur (Mt 3:16-17)</td></tr>
+<tr><td class="d">30-32 de n. è.</td><td>Retraits, guérisons, silence ordonné : « il ne criera pas » (Mt 12)</td></tr>
+<tr><td class="d">33 de n. è.</td><td>L'entrée humble (voir C006) ; le silence devant les juges (voir catégorie D)</td></tr>
+<tr><td class="d">36 de n. è.</td><td>Corneille : les nations entrent dans l'espérance (Ac 10)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La lecture messianique du Serviteur précède le christianisme : le Targum Jonathan, paraphrase araméenne des prophètes (Ier-IIe siècle), rend Ésaïe 52:13 par « voici que mon serviteur, le Messie, prospérera » — les synagogues entendaient le Serviteur comme Messie avant Jésus. Les foules mêlées de Marc 3:7-8 (Galilée, Judée, Idumée, Transjordanie, Tyr, Sidon) montrent la justice « aux nations » en marche. Le « secret messianique » (silence ordonné) a sa logique : l'heure n'est pas venue, et le zèle politique guette.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le Serviteur est annoncé à Jérusalem, oint au Jourdain, manifesté en Galilée, accueilli jusqu'en Phénicie païenne (la Cananéenne, Mt 15:21-28 — « même les petits chiens », et sa fille guérie). « Les îles » et « les côtes lointaines » d'Ésaïe 42:4, 10 dessinent l'horizon : la douceur du Serviteur n'a pas de frontière. Le Jourdain du baptême, les synagogues de Galilée, les maisons de Capharnaüm : la justice aux nations commence dans les bourgs.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La botanique confirme la métaphore : le roseau commun (Phragmites) des marais du Houlé et du Jourdain, une fois froissé, ne se redresse pas — le geste de ne pas l'achever est une délicatesse réelle. L'archéologie domestique montre l'objet de la seconde image : les lampes à huile du Ier siècle, avec leurs mèches de lin, sont les artefacts les plus courants des fouilles — chaque auditeur tenait la métaphore entre ses mains. La main « desséchée » (atrophie) guérie instantanément un sabbat (Mt 12:10-13) joint le dossier médical.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>« Mon serviteur » désigne aussi, en Ésaïe, Israël collectif (Is 41:8 ; 44:1) et même Cyrus, « oint » pour une tâche politique (Is 45:1, voir B004) : la fiche distingue les serviteurs — le Serviteur individuel des chants n'est ni la nation ni le Perse. Le silence ordonné aux guéris est une pédagogie du temps, pas de la peur. L'année 36 (Corneille) appartient au système chronologique de la fiche. Le Serviteur souffrant (Is 52-53) attend la catégorie D.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 42</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baptême : la voix</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Il ne crie pas »</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30-32</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Douceur jusqu'au bout</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Corneille : les nations</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">36</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1986609">Il accomplit une prophétie d'Ésaïe (le Serviteur)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1986609</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1995846">N'éteignez pas la mèche de lin qui fume !<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1995846</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/42">Ésaïe 42 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/42</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C012 — Le Serviteur doux — le roseau froissé</span><span>Catégorie C</span></div></div>
+</article>
+<article class="fiche" id="C013">
+<div class="visuel"><img src="images/prophe_C013_maladies.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C013 · CATÉGORIE C</div>
+<h3>Il a porté nos maladies — les soirées de Capharnaüm</h3>
+<div class="ref">Ésaïe 53:4 ; Matthieu 8:16-17 ; Marc 1:32-34 ; Luc 4:40-41 ; 1 Pierre 2:24</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C013 · 0:32</div><audio controls preload="none" src="audio/fiche_C2_13_maladies.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C2_13_maladies.mp3 · 0:32 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 53:4 ; Matthieu 8:16-17 ; Marc 1:32-34 ; Luc 4:40-41 ; 1 Pierre 2:24</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P603 (53:4) ; le reste du chant : catégorie D</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Pourtant, ce sont nos maladies qu'il a portées, et nos douleurs dont il s'est chargé. » (Is 53:4a)</li>
+<li>« Le soir venu, on lui amena beaucoup de démoniaques ; il chassa les esprits par sa parole et guérit tous les malades — afin que s'accomplisse ce qui avait été dit par Ésaïe : Il a pris nos infirmités et porté nos maladies. » (Mt 8:16-17)</li>
+<li>« Toute la ville était rassemblée devant la porte. » (Mc 1:33)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Un soir de sabbat à Capharnaüm : le matin, Jésus a guéri un démoniaque à la synagogue puis la belle-mère de Pierre ; au coucher du soleil — la fin du sabbat, on peut de nouveau porter les malades — « toute la ville » afflue à la porte de la maison. Marc, Luc et Matthieu racontent la même soirée ; seul Matthieu la commente par Ésaïe 53:4. Le verset appartient au quatrième chant du Serviteur, celui du Serviteur souffrant : Matthieu en prélève le début pour les guérisons, avant la croix. Le reste du chant — versets 5 à 12 — attend la catégorie D.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Porter » (deux verbes hébreux : porter, se charger) dit le fardeau assumé : le Serviteur ne guérit pas de loin, il s'en charge. « Maladies » et « douleurs » couvrent le corps et l'âme — holisme hébreu : la fièvre de la belle-mère et l'oppression des démoniaques relèvent du même verbe. « Par sa parole » : pas de rite, pas d'incantation — l'autorité nue. Deux applications, un Serviteur : Matthieu applique le verset 4 aux guérisons du ministère, Pierre l'appliquera à la croix (1P 2:24, « par ses meurtrissures vous avez été guéris »). La fiche tient les deux bouts sans les confondre.</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah est que les guérisons de Jésus accomplissent Ésaïe 53:4 au sens propre : il « porte » les maladies en compatissant — « ému de pitié » devant le lépreux (Mc 1:41), en pleurs devant le tombeau de Lazare (Jn 11:35) : le Porteur pleure avec les porteurs. Les esprits chassés « par sa parole » montrent le Royaume envahissant le territoire de Satan (Mt 12:28). Et ces soirées de Capharnaüm sont des arrhes : la santé que le Royaume donnera à tous, Jésus la donne déjà à quelques-uns — sans date pour le « tous ».</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe s. av. n. è.</td><td>Ésaïe 53:4 : le Serviteur porteur, dans le chant du Souffrant</td></tr>
+<tr><td class="d">30 de n. è. env.</td><td>Capharnaüm : la synagogue, la belle-mère, puis la soirée à la porte (Mc 1)</td></tr>
+<tr><td class="d">30-32 de n. è.</td><td>Les soirées de guérisons : Mt 8, Mc 1, Lc 4 — « tous » guéris</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Lazare : le Porteur pleure, puis ordonne (Jn 11)</td></tr>
+<tr><td class="d">33 de n. è.</td><td>La croix : 1 Pierre 2:24 reprend le même verset (voir catégorie D)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Le contraste antique est total : à Épidaure, les malades dormaient dans le temple d'Asclépios en espérant un rêve ; Jésus guérit « tous » en une soirée, démons compris, « par sa parole ». Le lépreux guéri est renvoyé au prêtre « selon ce que Moïse a prescrit » (Mc 1:44, Lv 14) : la guérison réintègre dans la communauté et dans le culte. Luc, le médecin (Col 4:14), précise « une forte fièvre » (Lc 4:38) : le diagnostic d'un professionnel antique, guéri en un instant.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Tout se joue à Capharnaüm, « sa ville » (voir C008) : la synagogue le matin, la maison de Pierre le soir, la porte où « toute la ville » s'entasse. Le lac fournit la suite : juste après Matthieu 8:17, Jésus apaise la tempête — le Porteur des maladies commande aussi aux vents. Maison, porte, lac : la géographie d'une soirée qui contient le ministère entier.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Les « fortes fièvres » du bord du lac évoquent le paludisme des zones marécageuses (le Houlé) : endémie plausible, guérison instantanée. La « lèpre » de Lévitique 13-14 est une catégorie rituelle constatée par le prêtre, recouvrant des dermatoses diverses — pas nécessairement la maladie de Hansen : la fiche ne pose pas de diagnostic rétrospectif. L'architecture vérifie un détail : le paralytique descendu « à travers le toit » (Mc 2:4) suppose des toits de branchages et de terre — exactement ceux des maisons fouillées à Capharnaüm.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Ésaïe 53:4 a deux applications scripturaires — les guérisons (Mt 8:17) et la croix (1P 2:24) : cette fiche traite la première et renvoie la seconde, avec les versets 5 à 12, à la catégorie D. « Lèpre » n'est pas un diagnostic moderne. Les guérisons sont des signes pour quelques-uns, pas encore la santé pour tous : le « tous » définitif reste sans date. Les exorcismes sont rapportés comme des faits par les Évangiles ; la fiche ne les naturalise ni ne les psychologise.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 53:4</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Soirée à la porte</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30 env.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Tous » guéris</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30-32</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lazare pleuré</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La croix : 1P 2:24</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/101998483">La santé parfaite : les guérisons comme modèle<br>https://wol.jw.org/fr/wol/d/r30/lp-f/101998483</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/53">Ésaïe 53 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/53</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/8">Matthieu 8 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/8</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C013 — Il a porté nos maladies — les soirées de Capharnaüm</span><span>Catégorie C</span></div></div>
+</article>
+<article class="fiche" id="C014">
+<div class="visuel"><img src="images/prophe_C014_nazareen.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE C014 · CATÉGORIE C</div>
+<h3>Le Nazaréen — il sera appelé de ce nom</h3>
+<div class="ref">Matthieu 2:23 ; Ésaïe 11:1 ; Jérémie 23:5 ; 33:15 ; Zacharie 3:8 ; 6:12 ; Jean 1:46 ; 19:19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Système 29/33</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche C014 · 0:34</div><audio controls preload="none" src="audio/fiche_C2_14_nazareen.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_C2_14_nazareen.mp3 · 0:34 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Matthieu 2:23 ; Ésaïe 11:1 ; Jérémie 23:5 ; 33:15 ; Zacharie 3:8 ; 6:12 ; Jean 1:46 ; 19:19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 29/33</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe 11:1 — P123 ; Mt 2:23 sans entrée dédiée (lacune signalée, C8) ; contexte Mt 2 : P590, P591</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Il vint habiter dans une ville appelée Nazareth, afin que s'accomplisse ce que les prophètes avaient annoncé : Il sera appelé Nazaréen. » (Mt 2:23)</li>
+<li>« Un rameau sortira de la souche de Jessé, un rejeton [nétsèr] de ses racines portera du fruit. » (Is 11:1)</li>
+<li>« De Nazareth peut-il sortir quelque chose de bon ? » (Jn 1:46, Nathanaël)</li>
+<li>« Jésus le Nazaréen, le roi des Juifs. » (Jn 19:19, l'écriteau de Pilate)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Au retour d'Égypte (voir C003), Joseph apprend qu'Archélaüs règne sur la Judée — un cruel qui a fait tuer 3 000 Juifs dans le Temple — et, averti par Dieu, installe sa famille à Nazareth, en Galilée, hors de sa juridiction. Matthieu conclut : « afin que s'accomplisse… Il sera appelé Nazaréen ». L'énigme est célèbre : aucun verset de l'Ancien Testament ne contient cette formule. Matthieu cite « les prophètes » — au pluriel : il résume, il ne cite pas.</p>
+<h4>4 · Explication du texte</h4>
+<p>Trois pistes, données ici avec leur poids. (1) Le rejeton : l'hébreu nétsèr (Is 11:1) désigne le Messie-rejeton de Jessé ; Matthieu, parlant au pluriel, pensait peut-être aussi à la « pousse juste » de Jérémie (Jr 23:5 ; 33:15) et au « Germe » de Zacharie (Za 3:8 ; 6:12) — et Nazareth signifie probablement « ville-rejeton ». Paronomase : le Rejeton habite la ville-rejeton. (2) Le mépris : les Nazaréens étaient méprisés — « de Nazareth, rien de bon » (Jn 1:46) — et le Méprisé annoncé (Is 53:3) trouve son surnom de mépris. (3) Le surnom devenu titre : « Nazaréen » colle à Jésus (Mc 1:24, jusque dans la bouche des démons), à l'écriteau trilingue (Jn 19:19), puis aux disciples (Ac 24:5, « la secte des Nazaréens »).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah retient la première piste : l'allusion à Ésaïe 11:1 — le Messie-nétsèr, rejeton de Jessé — élargie aux « pousses » de Jérémie et de Zacharie, puisque Matthieu parle des prophètes au pluriel. Nazareth, « ville-rejeton », reçoit le Rejeton : la géographie accomplit le vocabulaire. Le surnom suit Jésus jusqu'au gibet, où Pilate l'affiche en hébreu, latin et grec — le mépris proclamé en trois langues — puis aux chrétiens eux-mêmes, « Nazaréens » aux yeux du monde.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">VIIIe-VIe s. av. n. è.</td><td>Is 11:1, Jr 23:5, Za 3:8 et 6:12 : le Rejeton, la Pousse, le Germe</td></tr>
+<tr><td class="d">1 av. n. è. env.</td><td>Installation à Nazareth : le Rejeton dans la ville-rejeton (Mt 2:23)</td></tr>
+<tr><td class="d">29-32 de n. è.</td><td>« Jésus le Nazaréen » : foules, démons (Mc 1:24), juges — le surnom colle</td></tr>
+<tr><td class="d">33 de n. è.</td><td>L'écriteau trilingue : le Nazaréen proclamé roi (Jn 19:19-20)</td></tr>
+<tr><td class="d">36+ de n. è.</td><td>« La secte des Nazaréens » : le surnom passe aux disciples (Ac 24:5)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>L'obscurité de Nazareth est elle-même un document : le bourg n'est nommé ni dans l'Ancien Testament, ni chez Josèphe qui liste les villes galiléennes, ni dans les anciennes sources rabbiniques — le mépris de Nathanaël a une base administrative. Le nom est pourtant gravé : l'inscription de Césarée (IIIe siècle de notre ère), liste sacerdotale, mentionne la famille d'Happitses résidant à Nazareth. L'écriteau trilingue de Jean 19:20 correspond à la pratique romaine du titulus affichant le motif de la condamnation.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Nazareth : une cuvette de Basse-Galilée, à l'écart de la Via Maris — l'obscurité géographique fait le mépris. À six kilomètres, Sephoris, capitale d'Antipas en chantier : le charpentier grandit à une heure de marche d'une cour royale qui l'ignore — contexte, pas récit (voir Limites). Capharnaüm est à vingt-cinq kilomètres au nord-est, Jérusalem à une centaine au sud : le Nazaréen devra marcher pour être entendu.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Les fouilles de Nazareth (maisons à cour du Ier siècle, citernes, pressoirs, silos, kokhim) confirment un bourg juif rural et pieux — le décor du mépris comme celui de l'enfance. Une maison du Ier siècle à flanc de coteau, fouillée près de l'église, montre l'habitat-type : deux pièces, cour, citerne — l'ordinaire, pas le palais. L'inscription de Césarée (IIIe siècle) atteste le nom dans la pierre. Aucun rempart, aucun monument : l'archéologie confirme l'insignifiance — et c'est elle qui accomplit.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Aucun verset ne contient la formule exacte « il sera appelé Nazaréen » : la fiche ne prétend pas le contraire — c'est une synthèse des prophètes, au pluriel, pas une citation. Le lien nétsèr-Nazareth est une paronomase probable (« signifie probablement », dit la source), pas une étymologie certaine. La piste du mépris (Is 53:3, Jn 1:46) est une lecture complémentaire proposée par des commentateurs, pas une position tranchée ici. Sephoris est un contexte géographique, jamais un lieu évangélique.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le Rejeton promis</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe-VIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nazareth</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1 env.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Le Nazaréen »</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29-32</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'écriteau</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Secte des Nazaréens »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">36+</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1001070602">Notes d'étude sur Matthieu 2:23 (nétsèr, les prophètes)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1001070602</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200000811">Branche, germe, rejeton — Étude perspicace<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200000811</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/2">Matthieu 2 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche C014 — Le Nazaréen — il sera appelé de ce nom</span><span>Catégorie C</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie C</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>C006 — L'entrée triomphale — ton roi vient à toi, humble</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zacharie 9:9</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520-518</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'ânon trouvé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33, av. Pâque</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'entrée</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pleurs sur la ville</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple, puis Béthanie</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>C007 — Ésaïe 61 à Nazareth — aujourd'hui, cette parole</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 61</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe-VIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Septante</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Onction au baptême</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lecture à Nazareth</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30 env.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rejet, puis Capharnaüm</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30 env.</text>
+</svg>
+<h4>C008 — La Galilée des nations — une grande lumière</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ténèbres assyriennes</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">733</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 9</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Capharnaüm</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30 env.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lumière : foules</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30-32</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Les douze</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">31 env.</text>
+</svg>
+<h4>C009 — Le prophète comme Moïse — écoutez-le</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Moïse annonce</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">4QTestimonia</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier s. av.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Celui de Moïse »</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Écoutez-le »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">32 env.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre applique</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>C010 — Les miracles — la réponse à Jean en prison</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 35</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Miracles</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30-32</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Question de Jean</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">32 env.</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réponse par les faits</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">32 env.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lazare</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>C011 — Les paraboles — j'ouvrirai ma bouche en illustrations</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Asaph : Ps 78:2</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Xe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Barque-chaire</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">31-32</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Explications privées</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">31-32</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Paraboles du jugement</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Jamais homme… »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>C012 — Le Serviteur doux — le roseau froissé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 42</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baptême : la voix</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">29</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Il ne crie pas »</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30-32</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Douceur jusqu'au bout</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Corneille : les nations</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">36</text>
+</svg>
+<h4>C013 — Il a porté nos maladies — les soirées de Capharnaüm</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ésaïe 53:4</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Soirée à la porte</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">30 env.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Tous » guéris</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30-32</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Lazare pleuré</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La croix : 1P 2:24</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+</svg>
+<h4>C014 — Le Nazaréen — il sera appelé de ce nom</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le Rejeton promis</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIIe-VIe s.</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nazareth</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1 env.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Le Nazaréen »</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">29-32</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'écriteau</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Secte des Nazaréens »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">36+</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 7.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-24 · phase 7, vague
+4 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

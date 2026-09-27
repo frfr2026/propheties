@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coffret II — Les archives surprises</title>
+<style>
+  :root{--navy:#0B2545;--navy2:#143c6d;--gold:#E9C46A;--cream:#F7F4EC;--ink:#1a1a1a;
+        --muted:#5b6472;--line:rgba(11,37,69,.14);--green:#1f7a44;--warn:#b07d18}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto;padding:26px 20px 70px}
+  header.hero{background:linear-gradient(155deg,#08203d 0%,var(--navy2) 100%);color:#fff;border-radius:18px;
+    padding:32px 28px;position:relative;overflow:hidden}
+  header.hero:after{content:"";position:absolute;right:-70px;bottom:-100px;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(233,196,106,.32),transparent 70%);border-radius:50%}
+  .kicker{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+  h1{margin:0;font-size:clamp(25px,4.2vw,38px);line-height:1.15;font-weight:800;letter-spacing:-.01em}
+  .sub{margin:12px 0 0;color:rgba(255,255,255,.82);max-width:66ch;font-size:15px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chip{border:1px solid rgba(233,196,106,.5);color:var(--gold);border-radius:999px;padding:5px 12px;
+    font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+  h2{font-size:19.5px;margin:42px 0 6px;color:var(--navy)}
+  h2 .num{color:var(--gold);font-weight:800;margin-right:8px}
+  .lede{margin:0 0 16px;color:var(--muted);font-size:14.5px;max-width:80ch}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+  .btn{border:1px solid rgba(11,37,69,.25);background:var(--navy);color:#fff;border-radius:999px;
+    padding:9px 18px;font-size:13.5px;cursor:pointer}
+  .btn.ghost{background:#fff;color:var(--navy)}
+  .btn:disabled{opacity:.45;cursor:default}
+
+  /* 1. enquête */
+  .steps{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+  .pill{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:4px 11px;color:var(--muted);background:#fff}
+  .pill.on{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+  .stage{min-height:150px}
+  .stage h3{margin:0 0 8px;font-size:17.5px;color:var(--navy)}
+  .stage p{margin:8px 0;font-size:14.5px}
+  .stage .meta{font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:12px}
+  .stage .big{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+
+  /* 2. questions */
+  .qs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+  .q{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+  .q button{width:100%;text-align:left;border:0;background:none;padding:15px 16px;cursor:pointer;
+    font-size:15px;font-weight:650;color:var(--navy);line-height:1.35}
+  .q .a{display:none;padding:0 16px 15px;font-size:14px;color:#33415a}
+  .q.open .a{display:block}
+  .q .tagl{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);
+    font-weight:700;margin-bottom:6px}
+
+  /* 3. pièces */
+  .pieces{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .piece{background:var(--navy);color:#fff;border-radius:14px;padding:17px}
+  .piece .d{color:var(--gold);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  .piece h4{margin:8px 0 6px;font-size:15.5px}
+  .piece p{margin:0;font-size:13px;color:rgba(255,255,255,.82)}
+
+  /* 4. échelle */
+  .ladder{display:grid;gap:9px}
+  .bar{display:grid;grid-template-columns:150px 1fr 92px;gap:12px;align-items:center;font-size:13.5px}
+  .bar .lab{color:var(--navy);font-weight:600}
+  .bar .track{background:rgba(11,37,69,.07);border-radius:99px;height:16px;overflow:hidden}
+  .bar .fill{height:100%;background:linear-gradient(90deg,var(--gold),#c98a1a);border-radius:99px;width:0;
+    transition:width .7s ease}
+  .bar .val{color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+  .ladder-note{font-size:12.5px;color:var(--muted);margin-top:10px}
+
+  /* 5. témoins */
+  .wit{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+  .wcard{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px}
+  .wcard .who{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .wcard .saith{font-size:14.5px;color:var(--navy);font-weight:650;margin:8px 0}
+  .wcard .notsay{font-size:13.5px;color:#7a4a12;background:#fdf6e7;border-left:3px solid var(--gold);
+    border-radius:0 8px 8px 0;padding:8px 10px}
+
+  /* 6. leviers */
+  .lev{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+  .lv{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;background:#fff;padding:14px 16px}
+  .lv .n{font-size:11px;color:var(--gold);font-weight:800;letter-spacing:.16em}
+  .lv h4{margin:6px 0;font-size:15px;color:var(--navy)}
+  .lv p{margin:0;font-size:13.5px;color:#33415a}
+
+  /* 7. objections */
+  .obj{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:9px;overflow:hidden}
+  .obj button{width:100%;text-align:left;background:none;border:0;padding:14px 17px;cursor:pointer;
+    font-size:14.5px;font-weight:650;color:var(--navy);display:flex;justify-content:space-between;gap:12px}
+  .obj .a{display:none;padding:0 17px 15px;font-size:13.8px;color:#33415a}
+  .obj.open .a{display:block}
+  .obj .plus{color:var(--gold);font-weight:800}
+  .open-note{font-size:12.5px;color:var(--warn);background:#fdf6e7;border-radius:8px;padding:8px 10px;margin-top:8px}
+
+  /* 8. générateur */
+  .gen{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:720px){.gen{grid-template-columns:1fr}.bar{grid-template-columns:110px 1fr 78px}}
+  select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;font-size:14px;color:var(--ink)}
+  pre{white-space:pre-wrap;background:#08203d;color:#f4f1e8;border-radius:12px;padding:16px;font-size:13.5px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;line-height:1.6;margin:0;min-height:180px}
+  footer{margin-top:30px;font-size:12.5px;color:var(--muted);line-height:1.65}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Prophéties · deuxième vague · les archives</p>
+    <h1>Les archives surprises</h1>
+    <p class="sub">Un reçu de temple, des tessons sortis d'une salle de garde brûlée, le prisme d'un roi qui se vante — et jamais de la ville qu'il n'a pas prise. <strong>Huit modules</strong> pour transformer un document daté en conversation.</p>
+    <div class="chips">
+      <span class="chip">20 cas vérifiés</span>
+      <span class="chip">75 idées</span>
+      <span class="chip">12 leviers</span>
+      <span class="chip">Aucune date pour l'avenir</span>
+    </div>
+  </header>
+
+  <h2><span class="num">01</span>L'enquête en six étapes — le reçu de Nebo-Sarsekim</h2>
+  <p class="lede">Le déroulé complet d'un contenu de 90 secondes. Avancez étape par étape : c'est exactement l'ordre à suivre à l'écran.</p>
+  <div class="card">
+    <div class="steps" id="steps"></div>
+    <div class="stage" id="stage"></div>
+    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn ghost" id="prev">← Précédent</button>
+      <button class="btn" id="next">Étape suivante →</button>
+      <button class="btn ghost" id="reset">Recommencer</button>
+    </div>
+  </div>
+
+  <h2><span class="num">02</span>Les huit questions-preuves</h2>
+  <p class="lede">Une question, un cas. Le contenu le plus court qui existe — et celui qui fait parler. Touchez pour voir la preuve cachée derrière.</p>
+  <div class="qs" id="qs"></div>
+
+  <h2><span class="num">03</span>Le mur des pièces à conviction</h2>
+  <p class="lede">Quatre objets réels, datés, conservés — et ce qu'ils ne disent pas.</p>
+  <div class="pieces" id="pieces"></div>
+
+  <h2><span class="num">04</span>L'échelle du silence</h2>
+  <p class="lede">Le temps entre l'écriture et l'accomplissement. Certains écarts se comptent en jours, d'autres en millénaires : c'est ce que le cerveau retient.</p>
+  <div class="card">
+    <div class="ladder" id="ladder"></div>
+    <p class="ladder-note">Repères : Jérusalem 701 av. n. è. · Les 70 ans (607-537) · Askalon et Ékron 604 · Babylone 539 · Thèbes 663 · Raphia 217 · le Psaume 69.</p>
+  </div>
+
+  <h2><span class="num">05</span>Le témoin hostile</h2>
+  <p class="lede">Trois sources qui ne croyaient pas — et ce que leur silence raconte.</p>
+  <div class="wit" id="wit"></div>
+
+  <h2><span class="num">06</span>Les douze leviers d'impact</h2>
+  <p class="lede">Ce qui distingue un contenu prophétique oublié d'un détail qui revient dans la conversation un mois plus tard.</p>
+  <div class="lev" id="lev"></div>
+
+  <h2><span class="num">07</span>Objections et points ouverts</h2>
+  <p class="lede">Chaque objection reçoit une réponse courte — et une ligne qui reconnaît ce qui reste ouvert. C'est cette seconde ligne qui fait la différence.</p>
+  <div id="objs"></div>
+
+  <h2><span class="num">08</span>Le générateur de carte</h2>
+  <p class="lede">Choisissez un cas et un niveau de détail : le texte de la carte est composé automatiquement, prêt à recopier à la main.</p>
+  <div class="gen">
+    <div>
+      <select id="selCase"></select>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn ghost" data-niv="courte">Version courte</button>
+        <button class="btn ghost" data-niv="complete">Version complète</button>
+        <button class="btn ghost" data-niv="question">Question seule</button>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);margin-top:12px">Rappel : ces cartes se remettent en main propre. Aucune coordonnée, aucun envoi en série. Le lien vers jw.org ne se donne qu'à la demande.</p>
+    </div>
+    <pre id="out">Choisissez un cas…</pre>
+  </div>
+
+  <footer>
+    <strong>Limites tenues.</strong> Aucune date pour l'avenir (Matthieu 24:36) · aucune prophétie appliquée à l'actualité ou à des peuples vivants · un seul système chronologique par contenu (les cas retenus ici — 539, 701, 663, 604, 595, 217, 168 av. n. è. — sont les mêmes dans toutes les chronologies) · chaque objet est réel, chaque image créditée à son musée · les points discutés sont annoncés · aucun contenu de l'organisation reproduit · fichier privé de préparation, non destiné à publication.
+  </footer>
+</div>
+
+<script>
+var ETAPES = [
+  {t:"Étape 1 — LE TEXTE", p:"On lit la liste des officiers babyloniens présents à la chute de Jérusalem. Au milieu des grands noms, un nom obscur : Sarsechim.", m:"Jérémie 39:3, 13. Rien d'autre. Aucune introduction.", big:"« … Sarsechim … »"},
+  {t:"Étape 2 — LE SILENCE", p:"On ne dit rien pendant deux secondes. Puis : « Ce nom. Est-ce qu'on peut le retrouver ailleurs ? »", m:"Le silence est une technique : il laisse la question se former dans la tête de l'auditeur.", big:"2 secondes"},
+  {t:"Étape 3 — LA DÉCOUVERTE", p:"Une tablette de 5,5 cm, entrée au British Museum en 1920, restée dans un tiroir pendant 87 ans.", m:"Elle vient de Sippar, près de Bagdad, fouillée dans les années 1870.", big:"5,5 cm"},
+  {t:"Étape 4 — LE MOT", p:"En juillet 2007, un professeur de Vienne, Michael Jursa, cherche des comptes babyloniens — et tombe sur : « 1,5 mine d'or (750 g) de Nabu-sharrussu-ukin, le chef des eunuques ».", m:"Le nom correspond à Sarsechim ; la fonction correspond aussi. Il ne cherchait pas la Bible.", big:"750 g"},
+  {t:"Étape 5 — LA DATE", p:"Le reçu est daté de la 10e année de Nabuchodonosor : 595 avant notre ère — douze ans AVANT la chute de Jérusalem.", m:"Un fonctionnaire réel, avant l'événement, dans les archives de sa propre chancellerie.", big:"595 av. n. è."},
+  {t:"Étape 6 — LA QUESTION", p:"« Un détail jeté négligemment dans le texte s'est révélé exact et vrai » (Irving Finkel, British Museum). — Et vous, qu'est-ce que vous en pensez ?", m:"FIN. Aucune conclusion. Aucune demande. On se tait.", big:"Qu'est-ce que vous en pensez ?"}
+];
+
+var QUESTIONS = [
+  {q:"Que faudrait-il pour qu'un texte soit impossible à écrire après coup ?", a:"Trois éléments : un objet contemporain, une copie antérieure à l'événement, une source extérieure hostile. Le reçu de Nebo-Sarsekim, les ostraca de Lakish et le prisme de Sennachérib en fournissent chacun un.", t:"Cas B04 · B05 · B03"},
+  {q:"Combien de siècles un livre peut-il voir devant lui ?", a:"320 ans pour la bataille de Raphia (Daniel 11:11 ; Polybe), 183 pour le nom de Cyrus, plus de 1 000 pour le Psaume 69. L'échelle du module 04 les met côte à côte.", t:"Cas B01 · vague 1"},
+  {q:"Pourquoi le roi vainqueur ne dit-il jamais qu'il a échoué ?", a:"Sennachérib se vante d'avoir enfermé Ézéchias « comme un oiseau dans une cage » et d'avoir pris 46 villes fortes : il n'écrit nulle part qu'il a pris Jérusalem, ni déposé le roi. Le tribut lui parvient après son départ.", t:"Cas B03"},
+  {q:"Qu'est-ce qui s'éteint le premier dans un royaume qui meurt ?", a:"Les signaux de feu. « Nous guettons les signaux de Lakish… car nous ne voyons plus Azéqa » : un officier l'écrit sur un tesson, retrouvé en 1935 dans une salle de garde brûlée, avec le nom divin écrit dessus.", t:"Cas B05"},
+  {q:"Pourquoi tous les voyageurs posent-ils la même question devant ces ruines ?", a:"Parce qu'elle est écrite, réponse comprise : « Pourquoi Jéhovah a-t-il fait cela à ce pays ? » — et le texte donne la réponse avant que quiconque la pose.", t:"Cas B10"},
+  {q:"Qu'est-ce qu'un détail que personne n'aurait inventé ?", a:"L'éponge de vinaigre tendue au condamné, mille ans après le psaume. Ou 750 grammes d'or sur un reçu administratif. Ces détails ne servent aucune thèse — c'est ce qui les rend solides.", t:"Cas B11 · B04"},
+  {q:"Que devient un peuple que le texte déclare effacé ?", a:"Après les destructions de 604 avant notre ère, les Philistins ne figurent plus comme groupe distinct dans les archives — et leur nom survit dans celui d'une région. Édom, lui, a tenté de rebâtir : « ils bâtiront, mais moi, je démolirai ».", t:"Cas B07 · B06"},
+  {q:"Pourquoi un livre ancien décrit-il une exécution qui n'existait pas encore ?", a:"Le Psaume 22 et Ésaïe 53 parlent de mains et de pieds percés avant que Rome n'invente la crucifixion. Ce n'est pas une interprétation : c'est une question de chronologie des techniques.", t:"Vague 1 · B13"}
+];
+
+var PIECES = [
+  {d:"5,5 cm · British Museum", n:"Le reçu de Nebo-Sarsekim", p:"Daté de 595 av. n. è. ; déchiffré en 2007. Il ne parle pas de Jérusalem : l'identification tient au nom et à la fonction. À dire."},
+  {d:"1935 · musée d'Israël", n:"Les ostraca de Lakish", p:"18 tessons dans une salle de garde brûlée. L'ostracon 4 mentionne les signaux de Lakish et l'absence d'Azéqa. Le nom divin y est écrit."},
+  {d:"Prisme · British Museum", n:"Le prisme de Taylor", p:"Sennachérib : 46 villes prises, Ézéchias enfermé « comme un oiseau dans une cage ». Et le silence sur la prise de Jérusalem."},
+  {d:"1879 · British Museum", n:"La Chronique de Nabonide", p:"« Le 16e jour, Gobryas et l'armée de Cyrus entrèrent dans Babylone sans bataille. » Soit, selon les publications, le 5-6 octobre 539 av. n. è."}
+];
+
+var ECHELLE = [
+  {lab:"Jérusalem 701", years:0.02, txt:"annoncé pendant le siège, la nuit suivante", max:1000},
+  {lab:"Les 70 ans", years:70, txt:"607-537 av. n. è.", max:1000},
+  {lab:"Askalon 604", years:20, txt:"peu après la parole de Sophonie", max:1000},
+  {lab:"Thèbes 663", years:50, txt:"Nahoum cite un fait alors récent", max:1000},
+  {lab:"Raphia 217", years:320, txt:"Daniel 11:11 → bataille de Raphia", max:1000},
+  {lab:"Cyrus", years:190, txt:"le nom annoncé 190 ans avant", max:1000},
+  {lab:"Psaume 69", years:1000, txt:"le vinaigre, environ mille ans après", max:1000}
+];
+
+var TEMOINS = [
+  {who:"Sennachérib, roi d'Assyrie (701 av. n. è.)",
+   saith:"« Lui, Ézéchias, je l'ai enfermé dans Jérusalem, sa ville royale, comme un oiseau dans une cage. »",
+   notsay:"Il ne dit pas : « j'ai pris la ville », ni « j'ai remplacé le roi ». Son propre récit s'arrête au seuil."},
+  {who:"Hérodote, historien grec (vers 450 av. n. è.)",
+   saith:"Dans l'armée assyrienne, « une nuée de souris rongea les carquois, les arcs et les poignées des boucliers » ; l'armée, sans armes, s'enfuit.",
+   notsay:"Il situe l'épisode à Péluse, en Égypte, et ne parle pas de la Bible : c'est un écho indépendant d'une catastrophe."},
+  {who:"Bérose, prêtre babylonien, cité par Josèphe",
+   saith:"Une « pestilence » envoyée par Dieu détruit l'armée : 185 000 hommes, en une nuit de siège.",
+   notsay:"On ne peut pas vérifier le chiffre ; ce que trois traditions indépendantes confirment, c'est la catastrophe."}
+];
+
+var LEVIERS = [
+  {n:"01", t:"L'objet avant le verset", p:"Le document d'abord, le texte ensuite, comme une signature. L'ordre inverse laisse croire à une construction."},
+  {n:"02", t:"La conjonction de témoins", p:"Trois traditions sans lien qui racontent le même fait : un prêtre babylonien, un historien grec, un roi assyrien."},
+  {n:"03", t:"L'aveu involontaire", p:"Le témoin hostile dit ce qui l'accable sans s'en rendre compte : « oiseau dans une cage », et jamais « j'ai pris Jérusalem »."},
+  {n:"04", t:"La date complète", p:"5-6 octobre 539. Un jour précis produit plus d'effet qu'une année, et il est vérifiable."},
+  {n:"05", t:"Le détail sans usage", p:"Ce qui n'aide aucune thèse est le meilleur indice : l'éponge de vinaigre, 750 grammes d'or, les signaux de feu."},
+  {n:"06", t:"La limite en un souffle", p:"Une seule phrase, en fin de contenu : « ce point reste discuté ». La crédibilité monte, elle ne baisse pas."},
+  {n:"07", t:"Le silence de fin", p:"Aucune conclusion, aucune demande. Le contenu dit le dernier fait, puis se tait."},
+  {n:"08", t:"La méthode offerte", p:"Donner le protocole, pas seulement le résultat : trois témoins, dix points de vérification."},
+  {n:"09", t:"L'objet à emporter", p:"Ce qui reste dans une poche prolonge la conversation pendant des semaines."},
+  {n:"10", t:"Le rendez-vous", p:"La série crée l'attente et multiplie les expositions : le mercredi des archives, six semaines."},
+  {n:"11", t:"Le rôle étranger", p:"Ne jamais conclure. Laisser la personne trouver — et le dire. Celui qui énonce est celui qui croit."},
+  {n:"12", t:"Le récit du retrait", p:"Raconter un contenu abandonné et pourquoi : c'est l'acte de crédibilité le plus rare et le plus efficace."}
+];
+
+var OBJECTIONS = [
+  {o:"« Daniel 11 finit par se tromper. »", a:"C'est l'argument des historiens qui datent le livre du IIe siècle : l'exactitude jusqu'aux événements de 168-167 avant notre ère est telle qu'ils préfèrent reculer la rédaction. Le débat est réel.", ouavert:"Après le verset 35, la suite relève de la compréhension et ne s'emploie pas comme preuve."},
+  {o:"« 185 000 hommes : personne d'autre ne les compte. »", a:"Le roi lui-même n'a jamais admis l'échec ; deux traditions indépendantes rapportent une catastrophe dans l'armée. Ce qui est attesté partout : la ville n'a pas été prise et le roi est resté en place.", ouavert:"Le chiffre exact, et la cause."},
+  {o:"« Un document administratif ne prouve pas l'existence de Dieu. »", a:"C'est exact. Il prouve qu'un livre tenu pour inventé par des siècles de critique parle de personnes réelles, avec des détails exacts. C'est une brique, pas l'édifice.", ouavert:"La conclusion, laissée à celui qui écoute."},
+  {o:"« La lettre de Lakish ne nomme pas Jérémie. »", a:"Elle mentionne un prophète et décrit les deux villes que Jérémie cite comme les dernières, dans la cendre de leur chute.", ouavert:"L'identité de ce prophète."},
+  {o:"« Osée 3:4 peut décrire n'importe quelle période de malheur. »", a:"On ne le présente pas comme une preuve, mais comme une question — et seulement après vérification de la note de la publication.", ouavert:"Tout : l'idée reste au tiroir tant que la vérification n'est pas faite."},
+  {o:"« Vous annoncez donc une date ? »", a:"Non. Matthieu 24:36. Nous parlons du passé vérifiable. Aucune date, aucun compte à rebours, aucun signe présenté comme un compte à rebours.", ouavert:"Rien : c'est une position ferme."}
+];
+
+var CASES_GEN = [
+  {id:"B04", nom:"Le reçu de Nebo-Sarsekim",
+   cour:"Jérémie 39:3 nomme un officier babylonien obscur. Un reçu cunéiforme de 5,5 cm, entré au British Museum en 1920 et déchiffré en 2007, le nomme, avec sa fonction, en 595 av. n. è.",
+   comp:"Le nom est cité dans Jérémie 39:3, 13. La tablette, déchiffrée en juillet 2007 par Michael Jursa, mentionne « Nabu-sharrussu-ukin, le chef des eunuques », et 750 grammes d'or, datés de la 10e année de Nabuchodonosor (595 av. n. è.). Un expert du British Museum a commenté : « un détail jeté négligemment dans l'Ancien Testament se révèle exact et vrai. » Ce que ce n'est pas : la tablette ne parle pas de Jérusalem, et l'identification repose sur le nom et la fonction.",
+   q:"Un fonctionnaire de rang moyen, réel, douze ans avant la chute : est-ce que ce texte a été inventé des siècles plus tard ?"},
+  {id:"B05", nom:"Les feux de Lakish",
+   cour:"« Nous guettons les signaux de Lakish, car nous ne voyons plus Azéqa. » Jérémie 34:7 dit que ces deux villes étaient les dernières.",
+   comp:"En 1935, 18 ostraca ont été retrouvés dans une salle de garde de la porte de Lakish, sous une couche de cendres. L'ostracon 4 décrit les signaux de feu et l'absence d'Azéqa ; le nom divin y est écrit. Jérémie 34:6, 7 ne laisse que Lakish et Azéqa comme villes fortes. Ce que ce n'est pas : les lettres ne nomment pas Jérémie.",
+   q:"Les derniers feux d'un royaume, écrits sur des tessons par ceux qui les allumaient : qu'est-ce que vous en pensez ?"},
+  {id:"B03", nom:"Le silence de Sennachérib",
+   cour:"En 701 av. n. è., un roi assyrien se vante d'avoir enfermé un roi de Juda « comme un oiseau dans une cage » — et n'écrit jamais qu'il a pris sa ville.",
+   comp:"Le prisme de Taylor énumère 46 villes fortes prises, puis : « lui, Ézéchias, je l'ai enfermé dans Jérusalem comme un oiseau dans une cage ». Il ne dit pas avoir pris Jérusalem, ni avoir déposé le roi ; le tribut lui parvient après son départ. Hérodote (2.141) et Bérose rapportent, indépendamment, une catastrophe dans l'armée assyrienne.",
+   q:"Pourquoi le vainqueur n'a-t-il jamais écrit qu'il avait réussi ?"},
+  {id:"B09", nom:"Babylone sans bataille",
+   cour:"« Les hommes forts de Babylone ont cessé de combattre. » La tablette d'un scribe babylonien précise même le jour : le 16e de Tashritu, soit le 5-6 octobre 539 av. n. è.",
+   comp:"La Chronique de Nabonide (British Museum, trouvée en 1879) raconte : « le 16e jour, Gobryas et l'armée de Cyrus entrèrent dans Babylone sans bataille ». Jérémie 51:30 annonçait que les défenseurs cesseraient de combattre. Cyrus lui-même n'entre qu'environ dix-sept jours plus tard. Ce que ce n'est pas : le détournement de l'Euphrate vient de sources grecques postérieures.",
+   q:"Une date de jour, un an et demi de siècles d'avance : quel genre de livre donne ces détails ?"},
+  {id:"B07", nom:"L'hiver 604 — Askalon et Ékron",
+   cour:"« Gaza sera abandonnée, Askalon deviendra une désolation. » La chronique babylonienne dit qu'Askalon fut tournée en tas de ruines ; la fouille a trouvé les briques vitrifiées.",
+   comp:"La Chronique babylonienne décrit la campagne de l'hiver 604 av. n. è. ; la fouille Leon Levy d'Askalon a mis au jour la couche de destruction, avec des briques d'argile vitrifiées par l'incendie, et le roi déporté. À Ékron, l'industrie d'huile d'olive s'arrête net. Après le Ve siècle av. n. è., les Philistins ne figurent plus comme groupe distinct dans les archives.",
+   q:"Un peuple mentionné dans les textes, disparu des archives, dont le nom survit dans celui d'une région : pourquoi le texte ancien en parlait-il au passé ?"},
+  {id:"B15", nom:"Matthieu 24:14 — une prophétie en exécution",
+   cour:"« Cette bonne nouvelle sera prêchée dans toute la terre habitée. » Aucune date annoncée — une condition observable.",
+   comp:"Rapport 2025 : plus de 1 090 langues pour jw.org, dont 795 langues complètes et 4 121 partielles ; 100 premières traductions lancées en 2025 ; plus de 6,2 milliards de personnes ayant accès à une traduction complète ; 3 272 langues encore sans aucune portion ; environ 4 milliards d'exemplaires imprimés depuis Gutenberg. Ce que ce n'est pas : un signe de calendrier. Matthieu 24:36 : « ce jour et cette heure, personne ne les connaît ».",
+   q:"Un livre qui se donne une mission mesurable — et qui la mesure : est-ce que vous en connaissez un autre ?"}
+];
+
+/* ================= RENDU ================= */
+function el(html){var d=document.createElement('div');d.innerHTML=html;return d.firstElementChild;}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* 1. enquête */
+var cur=0;
+var stepsBox=document.getElementById('steps'), stage=document.getElementById('stage');
+ETAPES.forEach(function(e,i){
+  var p=el('<span class="pill" data-i="'+i+'">Étape '+(i+1)+'</span>');
+  p.addEventListener('click',function(){cur=i;paint();});
+  stepsBox.appendChild(p);
+});
+function paint(){
+  var e=ETAPES[cur];
+  stage.innerHTML='<h3>'+esc(e.t)+'</h3><p class="big">'+esc(e.big)+'</p><p>'+esc(e.p)+'</p><div class="meta">'+esc(e.m)+'</div>';
+  var pills=stepsBox.querySelectorAll('.pill');
+  for(var i=0;i<pills.length;i++){pills[i].classList.toggle('on', i===cur);}
+  document.getElementById('prev').disabled=(cur===0);
+  document.getElementById('next').disabled=(cur===ETAPES.length-1);
+}
+document.getElementById('next').addEventListener('click',function(){if(cur<ETAPES.length-1){cur++;paint();}});
+document.getElementById('prev').addEventListener('click',function(){if(cur>0){cur--;paint();}});
+document.getElementById('reset').addEventListener('click',function(){cur=0;paint();});
+paint();
+
+/* 2. questions */
+var qs=document.getElementById('qs');
+QUESTIONS.forEach(function(o){
+  var b=el('<div class="q"><button><span class="tagl">'+esc(o.t)+'</span><br>'+esc(o.q)+'</button>'
+    +'<div class="a">'+esc(o.a)+'</div></div>');
+  b.querySelector('button').addEventListener('click',function(){b.classList.toggle('open');});
+  qs.appendChild(b);
+});
+
+/* 3. pièces */
+var pc=document.getElementById('pieces');
+PIECES.forEach(function(p){
+  pc.appendChild(el('<div class="piece"><div class="d">'+esc(p.d)+'</div><h4>'+esc(p.n)+'</h4><p>'+esc(p.p)+'</p></div>'));
+});
+
+/* 4. échelle */
+var ld=document.getElementById('ladder');
+ECHELLE.forEach(function(v){
+  var pct=Math.max(1.2,(v.years/v.max)*100);
+  ld.appendChild(el('<div class="bar"><span class="lab">'+esc(v.lab)+'</span>'
+    +'<span class="track"><span class="fill" style="width:'+pct.toFixed(1)+'%"></span></span>'
+    +'<span class="val">'+(v.years<1?'la nuit même':v.years+' ans')+'</span></div>'));
+});
+
+/* 5. témoins */
+var wt=document.getElementById('wit');
+TEMOINS.forEach(function(t){
+  wt.appendChild(el('<div class="wcard"><div class="who">'+esc(t.who)+'</div>'
+    +'<div class="saith">'+esc(t.saith)+'</div><div class="notsay">'+esc(t.notsay)+'</div></div>'));
+});
+
+/* 6. leviers */
+var lv=document.getElementById('lev');
+LEVIERS.forEach(function(l){
+  lv.appendChild(el('<div class="lv"><div class="n">'+esc(l.n)+'</div><h4>'+esc(l.t)+'</h4><p>'+esc(l.p)+'</p></div>'));
+});
+
+/* 7. objections */
+var ob=document.getElementById('objs');
+OBJECTIONS.forEach(function(o){
+  var b=el('<div class="obj"><button><span>'+esc(o.o)+'</span><span class="plus">+</span></button>'
+    +'<div class="a">'+esc(o.a)+'<div class="open-note"><strong>Ce qui reste ouvert :</strong> '+esc(o.ouavert)+'</div></div></div>');
+  b.querySelector('button').addEventListener('click',function(){
+    b.classList.toggle('open');
+    b.querySelector('.plus').textContent=b.classList.contains('open')?'\u2212':'+';
+  });
+  ob.appendChild(b);
+});
+
+/* 8. générateur */
+var sel=document.getElementById('selCase'), out=document.getElementById('out');
+CASES_GEN.forEach(function(c){ sel.appendChild(el('<option value="'+c.id+'">'+esc(c.nom)+'</option>')); });
+function gen(niv){
+  var c=null;
+  for(var i=0;i<CASES_GEN.length;i++){if(CASES_GEN[i].id===sel.value){c=CASES_GEN[i];}}
+  if(!c){return;}
+  var t='';
+  if(niv==='courte'){
+    t=c.cour+'\n\n'+c.q;
+  } else if(niv==='complete'){
+    t=c.nom.toUpperCase()+'\n\n'+c.comp+'\n\n'+c.q+'\n\n\u2014 Source \u00e0 citer telle quelle, et lien vers jw.org seulement si la personne le demande.';
+  } else {
+    t=c.q;
+  }
+  out.textContent=t;
+}
+sel.addEventListener('change',function(){gen('courte');});
+var nivBtns=document.querySelectorAll('[data-niv]');
+for(var i=0;i<nivBtns.length;i++){
+  nivBtns[i].addEventListener('click',function(){gen(this.getAttribute('data-niv'));});
+}
+gen('courte');
+</script>
+</body>
+</html>

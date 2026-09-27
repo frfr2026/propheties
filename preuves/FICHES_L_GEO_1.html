@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES K–L — La Bible et la science (2e partie) · Prophéties géographiques</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_KL_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 7</div>
+<h1>FICHES K–L</h1>
+<h2>La Bible et la science (2e partie) · Prophéties géographiques</h2>
+<p class="intro">Cette vague de transition ferme la catégorie K et ouvre la catégorie L, la dernière du projet. Côté K, deux fiches : Pierre et le jour de Jéhovah — le monde d'alors noyé, les cieux et la terre réservés au feu, les éléments dissous ; puis les sabbats de la terre — la jachère commandée, violée, et payée par soixante-dix ans de désolation. Côté L, sept prophéties géographiques : Samarie réduite en tas de ruines, Ninive ouverte aux portes des fleuves, Édom le nid d'aigle précipité, Moab ruiné en trois ans, Tyr oubliée soixante-dix ans, la Philistie rasée ville par ville, Ammon livrée aux fils de l'Orient. Mêmes dix blocs, mêmes règles : un seul système chronologique par fiche, aucune date pour l'avenir, et des limites écrites noir sur blanc.</p>
+<div class="chiffres">
+<div><b>9</b><span>fiches</span></div>
+<div><b>10</b><span>blocs par fiche</span></div>
+<div><b>37</b><span>sources</span></div>
+<div><b>9</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:30</div><audio controls preload="none" src="audio/fiche_JK_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JK_intro.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:21</div><audio controls preload="none" src="audio/fiche_KL_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_KL_intro.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:20</div><audio controls preload="none" src="audio/fiche_L2_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_L2_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#K007">K007</a>
+<a href="#K008">K008</a>
+<a href="#L001">L001</a>
+<a href="#L002">L002</a>
+<a href="#L003">L003</a>
+<a href="#L004">L004</a>
+<a href="#L005">L005</a>
+<a href="#L006">L006</a>
+<a href="#L007">L007</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#K007"><img src="images/prophe_K007_pierre.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE K007</div>
+<h3><a href="#K007">Pierre et le jour — le monde noyé, les éléments dissous</a></h3>
+<div class="meta">Accomplie (P783) / À venir (P784, P785) · 🎧 0:26</div></div></div>
+<div class="carte">
+<a class="img" href="#K008"><img src="images/prophe_K008_sabbats.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE K008</div>
+<h3><a href="#K008">Les sabbats de la terre — la jachère violée, payée 70 ans</a></h3>
+<div class="meta">Accomplie (P049) · 🎧 0:25</div></div></div>
+<div class="carte">
+<a class="img" href="#L001"><img src="images/prophe_L001_samarie.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE L001</div>
+<h3><a href="#L001">Samarie — le tas de ruines et la marche vers Jérusalem</a></h3>
+<div class="meta">Accomplie (P451, P452) · 🎧 0:21</div></div></div>
+<div class="carte">
+<a class="img" href="#L002"><img src="images/prophe_L002_ninive.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE L002</div>
+<h3><a href="#L002">Ninive — les portes des fleuves et le palais dissous</a></h3>
+<div class="meta">Accomplie (P465, P468) · 🎧 0:23</div></div></div>
+<div class="carte">
+<a class="img" href="#L003"><img src="images/prophe_L003_edom.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE L003</div>
+<h3><a href="#L003">Édom — le nid d'aigle précipité, la poix et les chacals</a></h3>
+<div class="meta">Accomplie (P151, P279, P335, P442, P444, P429 partiel) · 🎧 0:22</div></div></div>
+<div class="carte">
+<a class="img" href="#L004"><img src="images/prophe_L004_moab.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE L004</div>
+<h3><a href="#L004">Moab — ruiné en trois ans, transvasé comme un vin</a></h3>
+<div class="meta">Accomplie (P130, P276, P334, P431, P085) / Texte reçu (P277) · 🎧 0:24</div></div></div>
+<div class="carte">
+<a class="img" href="#L005"><img src="images/prophe_L005_tyr.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE L005</div>
+<h3><a href="#L005">Tyr — oubliée 70 ans, puis la harpe de la prostituée</a></h3>
+<div class="meta">Accomplie (P139) · 🎧 0:22</div></div></div>
+<div class="carte">
+<a class="img" href="#L006"><img src="images/prophe_L006_philistie.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE L006</div>
+<h3><a href="#L006">La Philistie — Gaza chauve, Ascalon silencieuse, côte retranchée</a></h3>
+<div class="meta">Accomplie (P275, P336, P480, P427) · 🎧 0:24</div></div></div>
+<div class="carte">
+<a class="img" href="#L007"><img src="images/prophe_L007_ammon.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE L007</div>
+<h3><a href="#L007">Ammon — Rabbah pâturage de chameaux, tell désolé</a></h3>
+<div class="meta">Accomplie (P278, P333, P328) · 🎧 0:24</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Dix blocs par fiche, toujours dans le même ordre. Le dixième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="K007">
+<div class="visuel"><img src="images/prophe_K007_pierre.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE K007 · CATÉGORIE K–L</div>
+<h3>Pierre et le jour — le monde noyé, les éléments dissous</h3>
+<div class="ref">2 Pierre 3:5-10 ; 2 Pierre 3:13 (P786, voir G) ; Matthieu 24:39</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P783) / À venir (P784, P785)</span>
+<span class="badge">Système mondes (alors → maintenant → nouveaux)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche K007 · 0:26</div><audio controls preload="none" src="audio/fiche_K07_pierre.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_K07_pierre.mp3 · 0:26 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>2 Pierre 3:5-10 ; 2 Pierre 3:13 (P786, voir G) ; Matthieu 24:39</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P783) / À venir (P784, P785)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système mondes (alors → maintenant → nouveaux)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Pierre — P783 (2P 3:5-6 : monde d'alors détruit par le déluge), P784 (2P 3:7 : cieux et terre réservés au feu), P785 (2P 3:10 : jour comme un voleur, cieux passés) ; rappel P786 (2P 3:13, cité en G)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Ils IGNORENT VOLONTAIREMENT : des cieux… une terre hors de l'eau et dans l'eau. » (3:5)</li>
+<li>« Le MONDE D'ALORS subit la destruction, INONDÉ par l'eau. » (3:6 — noyé !)</li>
+<li>« Les cieux et la terre de MAINTENANT sont amassés pour le FEU. » (3:7 — réservés !)</li>
+<li>« Le jour de Jéhovah viendra comme un VOLEUR. » (3:10 — soudain !)</li>
+<li>« Les cieux passeront avec FRACAS… les ÉLÉMENTS dissous… la terre DÉCOUVERTE. » (3:10)</li>
+<li>« De NOUVEAUX cieux et une NOUVELLE terre, où la JUSTICE habitera. » (3:13 — P786 !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Des moqueurs ricanent : « Où est sa présence promise ? Tout demeure comme depuis le commencement » (3:4 — C8). Pierre répond en trois mondes : le monde d'alors (noyé), le monde de maintenant (réservé au feu), les nouveaux cieux et la nouvelle terre (promis). L'argument est historique : ceux qui nient le jugement à venir « ignorent volontairement » le jugement passé — le déluge (Gn 7:11-12, 21-23 — P783), que Jésus lui-même a invoqué : « ils ne se rendirent compte de rien, jusqu'à ce que le déluge vienne » (Mt 24:39 — P783). « Mille ans comme un jour » (3:8 — C8) : la patience, pas la lenteur (3:9 — C8).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Cieux » au figuré : les puissances dirigeantes placées au-dessus des populations (voir 2010521 §3, avec Is 14:13-14) — les « cieux qui passeront » sont les autorités humaines dominant l'actuelle société impie, anéanties « dans un sifflement », donc très rapidement. « Terre » : la société humaine éloignée de Dieu (voir §4). « Éléments » (stoicheia) : les rudiments, les fondamentaux — mentalités, objectifs, manières d'agir — dont « l'esprit du monde » qui opère dans les fils de la désobéissance (voir §5, avec 1Co 2:12 ; Ép 2:1-3 — C8). « Découverte » : la terre et ses œuvres « trouvées » par le feu, sans échappatoire. Nouveaux cieux : le Royaume, établi en 1914 (voir 2010521 §10, et F017) ; nouvelle terre : la société juste (voir G).</p>
+<h4>5 · Interprétation</h4>
+<p>Le déluge est le précédent : « par la même parole » (3:7) — la parole qui noya brûlera. Différence de rythme : le déluge détruisit d'un coup, la fin viendra par étapes, au cours de la grande tribulation — d'abord Babylone détruite par les dirigeants (voir I007), puis Har-Maguédôn (voir I009, I010) — selon l'article (voir 2010521 §4). Les légendes du déluge, sur tous les continents, gardent la mémoire du précédent (voir 1992041) : Mésopotamie (tablette XI de Gilgamesh), Grèce (Deucalion), Inde (Manou), Amériques — même trame : eaux, arche, survivants. « Puisque tout doit se dissoudre, quel genre d'hommes devez-vous être ? » (3:11 — C8) : la physique débouche sur la conduite.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Alors</td><td>Monde inondé (3:6)</td></tr>
+<tr><td class="d">Mémoire</td><td>Légendes mondiales</td></tr>
+<tr><td class="d">Maintenant</td><td>Réservés au feu (3:7)</td></tr>
+<tr><td class="d">Patience</td><td>Mille ans = un jour (3:8)</td></tr>
+<tr><td class="d">Voleur</td><td>Fracas, dissous (3:10)</td></tr>
+<tr><td class="d">Promesse</td><td>Justice habitera (3:13)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Déluge : récits parallèles dans des dizaines de cultures (voir 1992041) ; en Mésopotamie, couches d'inondation à Our, Kish, Shuruppak (Woolley et autres — repères archéologiques, voir les limites). Néphilim : « géants violents » des légendes et de Genèse 6:1-4 (voir 1992041, avec 2P 2:4-5 — C8). Date du déluge : le système biblique interne le place en 2370 (repère des publications — voir F pour les conversions). Jésus (Mt 24:39 — P783) traite le déluge en fait daté : « les jours de Noé ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Hors de l'eau et dans l'eau » (3:5) : la terre émergée (Gn 1:9-10 — C8) puis submergée (Gn 7:19-20 — C8 : quinze coudées au-dessus des montagnes). « Monde » (kosmos) : l'ordre habité, pas la planète — la terre demeure (voir K003 : Ec 1:4). Ararat : l'échouage (Gn 8:4 — C8). Les légendes : du Tigre au Mexique — une mémoire mondiale d'eaux mondiales.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Sédimentologie : fossiles marins en montagne, couches sédimentaires continentales — les faits que toutes les écoles datent, et que le récit rapporte à l'année du déluge (voir les limites : pas de géologie alternative ici). Philologie : stoicheia = lettres, rudiments, principes — l'article retient les fondamentaux moraux (§5), pas les atomes : Pierre ne fait pas de la physique des particules. Chronologie : 3:8 (mille ans = un jour) parle de patience divine, pas d'équivalence calculable — aucun « jour-millénium » n'en est tiré (voir les limites). Pyrotechnie : « dissous… fondent » (3:10, 12) — le feu comme fin de l'ordre, pendant de l'eau du commencement.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Cette fiche ne propose aucune géologie du déluge : couches, fossiles et datations sont des faits constatés, leur interprétation chronologique appartient aux systèmes (voir F). 3:8 n'est pas une formule (mille ans ≠ un jour calculable). « Cieux » = autorités (voir §3) : le ciel physique ne passe pas (voir K002 : les lois demeurent ; K003 : la terre demeure). P786 (3:13, nouveaux cieux) est cité en G : cette fiche s'arrête au feu (3:10). Aucune date pour le jour — « comme un voleur » l'interdit.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Monde inondé (3:6)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Alors</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Légendes mondiales</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Mémoire</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réservés au feu (3:7)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Maintenant</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mille ans = un jour (3:8)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Patience</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fracas, dissous (3:10)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Voleur</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Justice habitera (3:13)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Promesse</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2010521">Ce que le jour de Jéhovah révélera (cieux, éléments, 2010)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2010521</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1992041">Le déluge à travers les légendes du monde (1992)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1992041</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/61/3">2 Pierre 3 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/61/3</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche K007 — Pierre et le jour — le monde noyé, les éléments dissous</span><span>Catégorie K–L</span></div></div>
+</article>
+<article class="fiche" id="K008">
+<div class="visuel"><img src="images/prophe_K008_sabbats.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE K008 · CATÉGORIE K–L</div>
+<h3>Les sabbats de la terre — la jachère violée, payée 70 ans</h3>
+<div class="ref">Lévitique 26:34, 35, 43 ; 2 Chroniques 36:20, 21 ; Jérémie 25:11 ; Daniel 9:2</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P049)</span>
+<span class="badge">Système sabbatique (7 / 49 / 70)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche K008 · 0:25</div><audio controls preload="none" src="audio/fiche_K08_sabbats.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_K08_sabbats.mp3 · 0:25 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Lévitique 26:34, 35, 43 ; 2 Chroniques 36:20, 21 ; Jérémie 25:11 ; Daniel 9:2</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P049)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système sabbatique (7 / 49 / 70)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Lévitique — P049 (Lv 26:34-35, 43 : la terre jouira de ses sabbats pendant la désolation)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Alors le pays JOUIRA de ses sabbats, pendant tous ces jours de DÉSOLATION. » (26:34)</li>
+<li>« Il se REPOSERA pour RÉCUPÉRER ses sabbats. » (26:34 — récupérer !)</li>
+<li>« Ce repos qu'il n'avait pu avoir lors de vos sabbats, quand vous y habitiez. » (26:35)</li>
+<li>« En leur absence, il jouira de ses sabbats et sera dans la DÉSOLATION. » (26:43)</li>
+<li>« Jusqu'à ce que le pays se soit ACQUITTÉ de ses sabbats : 70 ANS. » (2Ch 36:21 — P049 !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Lévitique 26 est le contrat : bénédictions (26:3-13 — pluies, récoltes, paix), puis sanctions graduées (26:14-39), puis la clause agraire (26:34-35, 43). La loi sabbatique imposait, chaque septième année : ni cultiver, ni ensemencer, ni tailler, ni moissonner — la pousse libre restant à tous, propriétaire, esclaves, salariés, étrangers (voir it-1 « Sabbatique », 1200003780). Il fallait la foi : Dieu promettait une récolte de sixième année couvrant jusqu'à la huitième (voir 1200003780, avec Lv 25:21 — C8). Compteur théorique depuis l'entrée (1473 — repère) : 121 sabbatiques + 17 jubilés avant l'Exil (voir 1200003780). Observance : partielle.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Jouira » : la terre est sujet — elle JOUIT, se REPOSE, RÉCUPÈRE : le sol est un ayant droit, pas un outil. « Acquitté » (2Ch 36:21) : vocabulaire de dette — les sabbats volés sont remboursés en désolation. 70 ans : « les Écritures ne stipulent nulle part que les Juifs avaient manqué précisément 70 sabbatiques ; mais Jéhovah imposa 70 années pour compenser toutes les années non observées » (voir 1200003780). Le non-respect des lois sabbatiques « contribua dans une large mesure à l'effondrement de la nation » (voir it-1 « Sabbat », 1200003778). Jérémie avait chiffré (25:11 — P049 ; voir B002), Daniel lut le chiffre (9:2 — P049 ; voir F), Chroniques constata le paiement (36:20-21 — P049).</p>
+<h4>5 · Interprétation</h4>
+<p>La terre a des droits : le repos septennal protège le sol, les pauvres (glanage libre) et la foi (dépendance annuelle). Violé, il se paie : 70 ans de jachère forcée pendant l'exil — « le pays se repose » pendant que le peuple est à Babylone. Le système sabbatique entier (jours et années) prend fin au sacrifice de Christ (voir 1200003778, avec Ac 15:28-29 — C8) : les chrétiens goûtent un « repos de sabbat » de foi (voir 1200003778, avec Hé 4 — C8), pas un calendrier agraire. Paul : le repos de Dieu « dure des milliers d'années » (voir 1200003778). La leçon demeure : on ne vole pas la terre sans facture.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1473 (repère)</td><td>Entrée : compteur à zéro</td></tr>
+<tr><td class="d">7e année</td><td>Ni semer ni tailler</td></tr>
+<tr><td class="d">6e année</td><td>Récolte triple</td></tr>
+<tr><td class="d">Partielle</td><td>Observance violée</td></tr>
+<tr><td class="d">Exil</td><td>70 ans : la terre se repose</td></tr>
+<tr><td class="d">Cyrus</td><td>Fin de la jachère (J001)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>2 Chroniques 36:20-21 (P049) : déportation, désolation de 70 ans, « afin que s'accomplisse la parole » — le texte lui-même fait le lien avec Lévitique 26. Jérémie 25:11 (P049 ; voir B002) : « soixante-dix ans » annoncés ; Daniel 9:2 (P049 ; voir F) : Daniel « discerna par les livres » le nombre. Retour : Cyrus (Esd 1 — C8 ; voir J001) met fin à la jachère. Jubilés : 17 théoriques (voir 1200003780) — remise des terres et des dettes tous les 49/50 ans (Lv 25 — C8), pendant social du repos du sol.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le pays : collines de Juda, plaines côtières, vallée du Jourdain — tout le terroir en jachère simultanée, du Dan à Beershéba. Babylone : le lieu de l'exil pendant que le sol se repose — peuple déplacé, terre libérée. « Vos ennemis venus l'habiter en seront stupéfaits » (26:32 — C8) : la désolation visible depuis la route. Retour : les mêmes champs, reposés, rendus aux mêmes familles (jubilé — Lv 25 — C8).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Agronomie : la jachère régénère — azote (légumineuses spontanées), matière organique, structure, rupture des cycles de parasites et d'adventices : Lv 26 commande ce que la science mesure. Dette écologique : 70 ans de repos forcé pour des siècles de surexploitation — le principe pollueur-payeur avant la lettre, appliqué au sol. Stockage : la récolte triple de sixième année (voir 1200003780) suppose greniers et conservation sur deux ans — logistique de la foi. Rythme 7 : travail/repos inscrit dans la semaine (Ex 20 — C8), l'année (Lv 25 — C8) et le siècle (jubilé).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>70 ≠ 70 sabbatiques manquées comptées : l'article le dit noir sur blanc — compensation globale, pas comptabilité (voir 1200003780). 1473 (entrée) : repère des publications, système sabbatique seul (voir F pour les conversions). Cette fiche ne fait pas de Lévitique 26 un traité d'agronomie moderne : la jachère est commandée, ses mécanismes décrits par la science, sans concordisme forcé. P048 (malédictions) et P050 (retour) appartiennent à d'autres dossiers (voir le rapport de clôture).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Entrée : compteur à zéro</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (repère)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ni semer ni tailler</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7e année</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Récolte triple</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">6e année</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Observance violée</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Partielle</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 ans : la terre se repose</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Exil</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin de la jachère (J001)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Cyrus</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200003780">Sabbatique (Année) — Étude perspicace (121+17, triple récolte)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200003780</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200003778">Sabbat — Étude perspicace (effondrement, 70 ans)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200003778</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/3/26">Lévitique 26 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/3/26</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/14/36">2 Chroniques 36 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/14/36</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche K008 — Les sabbats de la terre — la jachère violée, payée 70 ans</span><span>Catégorie K–L</span></div></div>
+</article>
+<article class="fiche" id="L001">
+<div class="visuel"><img src="images/prophe_L001_samarie.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE L001 · CATÉGORIE K–L</div>
+<h3>Samarie — le tas de ruines et la marche vers Jérusalem</h3>
+<div class="ref">Michée 1:2-9 ; Michée 1:10-16 ; 2 Rois 17:5, 6 ; 2 Rois 25:1-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P451, P452)</span>
+<span class="badge">Système sièges (740 Samarie → 607/587 Jérusalem)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche L001 · 0:21</div><audio controls preload="none" src="audio/fiche_L01_samarie.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_L01_samarie.mp3 · 0:21 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Michée 1:2-9 ; Michée 1:10-16 ; 2 Rois 17:5, 6 ; 2 Rois 25:1-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P451, P452)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système sièges (740 Samarie → 607/587 Jérusalem)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Michée — P451 (Mi 1:2-9 : tas de ruines, plaies à la porte), P452 (Mi 1:10-16 : Gath, villes livrées, exil) ; rappel P115 (Is 8:1-4, cité en A010)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Jéhovah SORT de son temple… les montagnes FONDENT, les vallées se FENDENT. » (1:3-4)</li>
+<li>« À cause de la TRANSGRESSION de Jacob… les hauts lieux de Juda. » (1:5 — Samarie + Juda !)</li>
+<li>« Je ferai de Samarie un TAS DE RUINES de la campagne. » (1:6 — ʿî : monceau !)</li>
+<li>« Je ROULERAI ses pierres dans la VALLÉE, je DÉCOUVRIRAI ses fondements. » (1:6)</li>
+<li>« Ses images MISES EN PIÈCES, ses salaires BRÛLÉS. » (1:7 — le salaire de prostituée !)</li>
+<li>« Sa plaie est INGUÉRISSABLE… elle atteint la PORTE de Jérusalem. » (1:9 — jusqu'à Jérusalem !)</li>
+<li>« Ne l'annoncez pas à GATH… à Beth-Leaphra, roule-toi dans la POUSSIÈRE. » (1:10 — P452 !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Michée, contemporain d'Ésaïe et d'Osée, prophétise ≤ 60 ans ; ses oracles contre Samarie sont antérieurs à 740 (voir si-1 « Mika », 1101990094). Capitale du Nord depuis Omri (Sichem → Thirtsa → Samarie — voir 1964686), la ville cumule : temple de Baal d'Achab (1R 16:32 — C8), veaux de Béthel et Dan (1R 12:28-29 — C8 ; voir J002), alliances égyptiennes d'Osée (2R 17:4 — C8). Le procès s'ouvre à l'échelle cosmique — « écoutez, peuples » (1:2 — C8) — puis l'arrêt tombe en deux temps : Samarie rasée (1:6-7), puis la plaie qui marche vers le sud, ville par ville (1:10-16 — P452 : Gath, Beth-Leaphra, Shaphir, Tsaanan, Beth-Haétsel, Maroth, Lakish, Morésheth, Akzib, Marésha, Adoullam).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Tas de ruines de la campagne » (ʿî haśśadeh) : pas une ruine urbaine relevable, mais un monceau de pierres en plein champ — la ville rendue à l'agriculture. « Rouler les pierres dans la vallée » : Samarie est sur une colline (achetée à Shémer, 1R 16:24 — C8) — ses pierres dégringolent la pente, les fondements mis à nu : description topographique exacte. « Salaires de prostituée » (1:7) : les offrandes idolâtres, brûlées — le culte paie. « Inguérissable » (1:9) : pas de restauration pour la capitale du schisme. Puis 1:10-16 : chaque ville est un calembour funèbre (Shaphir « belle » sort « nue-honteuse », Tsaanan « sortie » ne « sort » pas…) — la marche assyrienne épelée en jeux de mots, jusqu'à la porte de Jérusalem.</p>
+<h4>5 · Interprétation</h4>
+<p>Samarie : le schisme jugé — la capitale qui divisa le peuple (voir J002 : Béthel) est effacée la première. Juda : averti — la même plaie marche vers le sud (1:9 : « jusqu'à la porte » ; 701 : Sennachérib — voir A013 ; 607/587 : Nébucadnezzar — 2R 25:1-11, P452). Gath : « ne l'annoncez pas » (1:10) — reprise du deuil de David (2S 1:20 — C8) : que l'ennemi n'apprenne pas. Lakish (1:13) : « commencement du péché pour Sion » — la contagion du Nord vers le Sud. Morésheth (1:14) : le village de Michée lui-même (1:1 — C8) — le prophète annonce la ruine de chez lui.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Omri</td><td>Colline achetée (C8)</td></tr>
+<tr><td class="d">Avant papa</td><td>Galilée + Damas (P115/A010)</td></tr>
+<tr><td class="d">3 ans</td><td>Siège (2R 17:5)</td></tr>
+<tr><td class="d">740 (repère)</td><td>Tas de ruines (1:6)</td></tr>
+<tr><td class="d">27 290</td><td>Déportés (Sargon)</td></tr>
+<tr><td class="d">Marche</td><td>Villes → porte (1:9-16) → 2R 25</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>740 (repère des publications) : après 3 ans de siège (2R 17:5 — P451 ; voir 1964686), Samarie tombe — 6e année d'Ézéchias. Qui prit la ville ? Sargon se vante (« j'assiégeai et conquis Samerina »), mais c'est probablement Salmanasar V qui acheva (voir 1101990094 ; 1200003842 : chronique babylonienne « il dévasta Samarie », 2R 18:9-10 « on réussit à s'en emparer »). 27 290 captifs déportés (annales de Sargon — voir 1964686), remplacés par des colons (Babylone et ailleurs — 2R 17:24 — C8). Avant : Galilée déportée (2R 15:29 — P115, voir A010) et Damas prise (2R 16:9 — P115). Après : les villes de 1:10-16 (Lakish fouillée : contre-rampe assyrienne — voir A013), puis Jérusalem (2R 25 — P452).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Samarie : colline isolée au cœur d'Éphraïm — pierres roulées dans la vallée (1:6) à la lettre. La marche (1:10-16) : de Gath (Philistie — « ne l'annoncez pas ») vers l'est puis le sud judéen — Beth-Leaphra, Shaphir, Tsaanan, Maroth, Lakish (verrou du Shéphéla), Morésheth, Akzib, Marésha, Adoullam — jusqu'à « la porte de Jérusalem » (1:9). Halah, Habor, Mèdes (2R 17:6 — P451) : les lieux de déportation, en Haute-Mésopotamie et Médie.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Poliorcétique : 3 ans de siège (2R 17:5) — blocus, famine, brèche : la prise d'une colline fortifiée sans artillerie. Démographie impériale : 27 290 déportés chiffrés (Sargon) + colons importés — le transfert de populations assyrien, documenté. Onomastique : 1:10-16 — onze calembours géographiques, prouesse rhétorique intraduisible pleinement (Shaphir/shépher, Tsaanan/yātsā'…). Stratigraphie : Samarie (Sébaste) fouillée — palais d'Omri/Achab (ivoires ! 1R 22:39 — C8), niveaux de destruction assyriens.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>740 : repère des publications (convention courante : 722/720 — signalé, non tranché ici ; système des sièges seul). Sargon vs Salmanasar : la fiche suit les publications (vantardise probable de Sargon — voir 1200003842). Les calembours de 1:10-16 sont donnés en traduction : l'hébreu joue, le français explique. P115 (Damas-Samarie pillées « avant papa ») est cité en A010 : rappel, pas doublon. 607/587 : voir B002, non rediscuté ici.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Colline achetée (C8)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Omri</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Galilée + Damas (P115/A010)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant papa</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège (2R 17:5)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3 ans</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tas de ruines (1:6)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">740 (repère)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Déportés (Sargon)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">27 290</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Villes → porte (1:9-16) → 2R 25</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Marche</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990094">Mika — Toute Écriture (tas de ruines, Sargon, 740)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990094</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200003842">Sargon — Étude perspicace (vantardise, chronique)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200003842</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1964686">Veillez à ne pas profaner (3 ans, 27 290, 1964)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1964686</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/33/1">Michée 1 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/33/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche L001 — Samarie — le tas de ruines et la marche vers Jérusalem</span><span>Catégorie K–L</span></div></div>
+</article>
+<article class="fiche" id="L002">
+<div class="visuel"><img src="images/prophe_L002_ninive.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE L002 · CATÉGORIE K–L</div>
+<h3>Ninive — les portes des fleuves et le palais dissous</h3>
+<div class="ref">Nahum 2:1-10 ; Nahum 3:8-13 ; Nahum 1:8 (P463, voir A)</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P465, P468)</span>
+<span class="badge">Système sièges (663 Thèbes neutre → 632 Ninive publications)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche L002 · 0:23</div><audio controls preload="none" src="audio/fiche_L02_ninive.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_L02_ninive.mp3 · 0:23 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Nahum 2:1-10 ; Nahum 3:8-13 ; Nahum 1:8 (P463, voir A)</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P465, P468)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système sièges (663 Thèbes neutre → 632 Ninive publications)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Nahoum — P465 (Na 2:1-10 : bouclier rouge, portes des fleuves, palais fondu), P468 (Na 3:8-13 : No-Amôn, figuiers, portes ouvertes) ; rappels P447/P463/P469 (cités en A), P448 (cité en G)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Le BOUCLIER de ses vaillants est ROUGE… les chars comme des TORCHES. » (2:3)</li>
+<li>« Les chars roulent à FOLLE ALLURE… comme des ÉCLAIRS. » (2:4 — la vision !)</li>
+<li>« Ils TRÉBUCHENT… se hâtent vers la MURAILLE. » (2:5 — la panique !)</li>
+<li>« Les PORTES DES FLEUVES s'ouvrent, le PALAIS SE DISSOUT. » (2:6 — le verrou saute !)</li>
+<li>« PILLEZ l'argent, pillez l'or… TRÉSORS SANS FIN. » (2:9 — le butin !)</li>
+<li>« VIDE, VACUITÉ, SOLITUDE… cœurs FONDUS. » (2:10 — le triple vide !)</li>
+<li>« Es-tu MEILLEURE que NO-AMÔN, assise entre les FLEUVES ? » (3:8 — Thèbes !)</li>
+<li>« Tes forteresses : des FIGUIERS aux fruits PRÉCOCES — secoués, ils TOMBENT. » (3:12)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Nahoum (« consolation ») : la déclaration contre Ninive (1:1 — P463, voir A), capitale de la Puissance assyrienne — « ville de meurtres, pleine de tromperie et de rapine » (3:1 — C8 ; voir 1988127). Prophétie écrite en Juda, lieu d'Elqosh inconnu (voir si-1 « Nahoum », 1101990095). Le chapitre 2 est une vision de bataille au présent : on voit les chars, on entend les roues, on assiste à la brèche. Le chapitre 3 argumente par précédent : Thèbes (No-Amôn), capitale égyptienne assise entre les bras du Nil, détruite par les Assyriens eux-mêmes (663 — repère neutre) — « es-tu meilleure ? » (3:8). Les Ninivites avaient enterré Thèbes ; ils seront enterrés pareillement.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Portes des fleuves » (2:6) : Ninive est traversée par le Khosr (affluent du Tigre) et bordée par le Tigre — vannes, écluses, canaux : le système hydraulique qui protège devient la brèche. « Le palais se dissout » (mûg — fondre) : palais de briques crues (terre séchée) + inondation = dissolution littérale (voir science). « Comme un étang dont les eaux s'écoulent » (2:8 — C8) : la population fuit comme l'eau de la brèche — « Arrêtez ! » crie-t-on, « pas un ne se retourne ». Thèbes (3:8-10) : fleuves, mer, remparts d'eau, Pout et Libyens alliés — et pourtant exil, enfants écrasés, grands enchaînés (3:10 — C8) : le dossier que Ninive connaît par cœur, retourné contre elle. Figuiers précoces (3:12) : les forteresses tombent toutes seules dans la bouche — il suffit de secouer.</p>
+<h4>5 · Interprétation</h4>
+<p>« L'authenticité de la prophétie de Nahoum est attestée par sa réalisation à la lettre » (voir 1101990095) : qui aurait osé prédire la brèche hydraulique, le palais dissous, le vide triple ? Message de consolation pour Juda (voir 202014323 §2 : « bonne nouvelle pour le peuple ») : l'imprenable tombe comme Thèbes tomba. « La détresse ne se lèvera pas deux fois » (1:9 — C8, P463) : Ninive ne reviendra pas — elle fut si bien effacée qu'on la chercha en vain pendant des siècles, et que des critiques nièrent son existence (voir 1988127). Les ruines prouvent « que Jéhovah accomplit sa vengeance » (voir 202014323 §1).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Thèbes 663 (neutre)</td><td>Le précédent (3:8-10)</td></tr>
+<tr><td class="d">Vision</td><td>Chars-éclairs (2:3-4)</td></tr>
+<tr><td class="d">Panique</td><td>Trébuchent (2:5)</td></tr>
+<tr><td class="d">Crue</td><td>Portes ouvertes, palais dissous (2:6)</td></tr>
+<tr><td class="d">632 (publications)</td><td>Amas de ruines (chronique)</td></tr>
+<tr><td class="d">XIXe s.</td><td>Retrouvée (Layard)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>632 (repère des publications — voir 1101990095, 1988127, 202014323) : Mèdes (Cyaxare) + Babyloniens (Nabopolassar) — la Chronique babylonienne : « butin incalculable… la ville changée en amas de ruines » (voir 1988127). Mécanisme : fortes pluies → Tigre en crue → pan de muraille emporté → conquête rapide (voir 202014323 §3, avec 1:8 ; 2:6). Découverte : Botta (Khorsabad), Layard (Kuyunjik/Nimroud, XIXe s.) — palais de Sennachérib (bas-reliefs de Lakish ! voir A013) et d'Assurbanipal (bibliothèque : Gilgamesh). Thèbes 663 (neutre) : Assurbanipal pille No-Amôn — le précédent (3:8-10). Argent et or « sans fin » (2:9) : les trésors assyriens, dispersés.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Ninive : rive gauche du Tigre (face de l'actuelle Mossoul), traversée par le Khosr — « portes des fleuves » à la lettre : deux cours d'eau, un système de vannes. Murailles : plusieurs kilomètres (porte de Mashki, porte d'Adad — fouillées). Kuyunjik + Nebi Younous : les deux tells. No-Amôn/Thèbes : Haute-Égypte, entre les bras du Nil — « assise entre les fleuves » (3:8), miroir de Ninive entre Tigre et Khosr. Médie + Babylone : les deux mâchoires (nord-est et sud).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Hydraulique : crue du Tigre + Khosr gonflé = pression sur vannes et murailles — l'eau comme bélier (voir 202014323). Matériaux : briques crues (adobe) — la brique séchée au soleil FOND à l'eau : « le palais se dissout » (2:6) est de la chimie des matériaux. Épigraphie : annales assyriennes (orgueil chiffré) + Chronique babylonienne (chute datée) + stèles — triple verrou documentaire. Taphonomie urbaine : « amas de ruines » (chronique) = tells — Kuyunjik : 30+ m de stratigraphie.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>632 : repère des publications (convention courante : 612 — signalée, non tranchée ; système des sièges seul). 663 (Thèbes) : date neutre du registre. Le détail tactique (quelle vanne ? quel pan de mur ?) n'est pas reconstitué : crue + brèche (voir 202014323), sans plus. 1:8 (inondation) appartient à P463 (cité en A) : rappel, pas doublon. 3:14-19 (P469, cité en A) : l'agonie — voir A. Jonas (P447/A, P448/G) : le sursis d'un siècle — voir A et G.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le précédent (3:8-10)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Thèbes 663 (neutre)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chars-éclairs (2:3-4)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vision</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trébuchent (2:5)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Panique</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Portes ouvertes, palais dissous (2:6)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Crue</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amas de ruines (chronique)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">632 (publications)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retrouvée (Layard)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">XIXe s.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990095">Nahoum — Toute Écriture (lettre, 632, portes)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990095</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1988127">La cruelle Assyrie (chronique, introuvable, 1988)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1988127</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/202014323">Nahoum : prends exemple (Thèbes, crue, 2020)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/202014323</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/34/2">Nahoum 2 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/34/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche L002 — Ninive — les portes des fleuves et le palais dissous</span><span>Catégorie K–L</span></div></div>
+</article>
+<article class="fiche" id="L003">
+<div class="visuel"><img src="images/prophe_L003_edom.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE L003 · CATÉGORIE K–L</div>
+<h3>Édom — le nid d'aigle précipité, la poix et les chacals</h3>
+<div class="ref">Ésaïe 34:1-17 ; Jérémie 49:7-22 ; Ézéchiel 25:12-14 ; Abdias 1-4, 15-16 ; Joël 3:19 (P429)</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P151, P279, P335, P442, P444, P429 partiel)</span>
+<span class="badge">Système rochers (Séir → Pétra → désert)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche L003 · 0:22</div><audio controls preload="none" src="audio/fiche_L03_edom.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_L03_edom.mp3 · 0:22 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 34:1-17 ; Jérémie 49:7-22 ; Ézéchiel 25:12-14 ; Abdias 1-4, 15-16 ; Joël 3:19 (P429)</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P151, P279, P335, P442, P444, P429 partiel)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système rochers (Séir → Pétra → désert)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe/Jérémie/Ézéchiel/Abdias/Joël — P151 (Is 34 : désolation pour toujours, animaux), P279 (Jr 49:7-22 : Théman, Botsra, comme Sodome), P335 (Éz 25:12-14 : vengeance par Israël), P442 (Ab 1-4 : nid précipité), P444 (Ab 15-16 : comme tu as fait), P429 (Jl 3:19 : Édom désert — v.19 seul ; vv.18-21 voir G008)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Mon ÉPÉE est IVRE dans les cieux… elle descend sur ÉDOM. » (Is 34:5 — l'épée ivre !)</li>
+<li>« Torrents changés en POIX, poussière en SOUFRE… FUMÉE pour toujours. » (34:9-10)</li>
+<li>« Le PÉLICAN, le HÉRISSON… le CHACAL, l'AUTRUCHE l'habiteront. » (34:11, 13 — la faune !)</li>
+<li>« Quand tu placerais ton NID comme l'AIGLE… je t'en PRÉCIPITERAI. » (Ab 4 — P442 !)</li>
+<li>« Ah ! comme ÉSAÜ est FOUILLÉ ! » (Jr 49:10 — fouillé !)</li>
+<li>« BOTSRA : stupéfaction… comme SODOME et GOMORRHE. » (49:13, 18 — comme Sodome !)</li>
+<li>« Comme tu as FAIT, il te sera FAIT. » (Ab 15 — P444 : la réciprocité !)</li>
+<li>« ÉDOM sera un DÉSERT. » (Jl 3:19 — P429 !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Édom (« rouge ») : Ésaü, le frère (Gn 27 — C8 ; voir P018, compléments), devenu l'ennemi héréditaire — refus du passage (Nb 20:18-21 — C8), « tu as ri » de la chute de Jérusalem (Ab 11-14 — C8 ; voir P444). Trois griefs : la vengeance exercée (Éz 25:12 — P335), l'orgueil du roc (Ab 3 — P442 : « creux des rochers »), la sagesse vantée de Théman (Jr 49:7 — P279). Quatre prophètes, cinq oracles : Ésaïe 34 (le sacrifice de Botsra), Jérémie 49:7-22 (fouille + Sodome), Ézéchiel 25:12-14 (la main étendue), Abdias (le nid précipité + la réciprocité), Joël 3:19 (le désert — P429).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Nid d'aigle » (Ab 4 ; Jr 49:16 — P279) : Séla/Pétra, ville invisible, accessible par un défilé — « un ennemi ne pouvait connaître son existence ; l'envahisseur, dans le passage étroit, risquait de se trouver assiégé » (voir 1957604). « Je t'en précipiterai » : Dieu fait tomber de haut. « Épée ivre » (Is 34:5) : ivre de sang avant même de frapper. « Sacrifice à Botsra » (34:6 — C8) : la ville-capitale en victime. Poix/soufre/fumée (34:9-10) : la chimie de la mer Morte voisine (bitume) étendue au pays. « Comme Sodome » (Jr 49:18) : la comparaison terminale — pas de lendemain. « Comme tu as fait » (Ab 15) : la loi du talion entre nations.</p>
+<h4>5 · Interprétation</h4>
+<p>Cinq ans environ après la destruction de Jérusalem, les armées de Nébucadnezzar montèrent contre Édom : « rien ne put sauver les Édomites — pas même les hauteurs de Pétra » (voir 1957604). « Édom a disparu comme nation » (registre P279, P335). Puis Rome conquiert la capitale nabatéenne (début du IIe s.), la route caravanière est abandonnée, Pétra périt — « si littéralement que son existence fut oubliée plus de mille ans » (voir 1957604, avec Jl 3:19 — P429). « Aujourd'hui Pétra est désolée ; personne n'y vit… repaire d'animaux sauvages » (voir 1957604) : Ésaïe 34:11-13 à la lettre. Dernier sursaut : un Iduméen sur le trône de Judée (Hérode — Mt 2 — C8), puis rien.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Séir</td><td>Frère devenu ennemi</td></tr>
+<tr><td class="d">Botsra</td><td>Sacrifice (Is 34:6)</td></tr>
+<tr><td class="d">Nid</td><td>Séla l'invisible</td></tr>
+<tr><td class="d">+5 ans (Josèphe)</td><td>Nébucadnezzar précipite</td></tr>
+<tr><td class="d">IIe s.</td><td>Rome, puis l'oubli</td></tr>
+<tr><td class="d">Aujourd'hui</td><td>Repaire (Is 34:11-13)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Nébucadnezzar contre Édom (5e année après Jérusalem — voir 1957604 ; Josèphe, cité en L004 pour Ammon-Moab, même campagne). Séla prise par Amatsia (2R 14:7 — C8 : la ville « Roc » déjà convoitée). Nabatéens : successeurs à Pétra (Ier s. — voir les limites : pas des Édomites). Rome (IIe s.), séisme (IVe s.), oubli (VIIe-XIXe s.), Burckhardt 1812 (redécouverte — repère). Hérode l'Iduméen (37-4 — repère) : l'épilogue humain. Malachie 1:3-4 (P151 : « j'ai livré… ils rebâtiront, je démolirai ») : l'interdit de retour.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Séir : la montagne d'Édom, grès rouge du wadi Araba à l'Aqaba. Théman (nord) : la sagesse (Jr 49:7). Botsra (nord) : la capitale du sacrifice (Is 34:6). Séla/Pétra : « généralement identifiée » à Pétra (voir 1957604 — prudence gardée) — le Siq, défilé de plus d'un kilomètre, 3 à 12 m de large. Dedan (Jr 49:8 — P279) : l'oasis caravanière complice. Mer Morte : la poix et le soufre d'à côté (Is 34:9).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Zoologie d'Is 34:11-13 : pélican (qā'āt), hérisson (qippōd), hibou/chouette, corbeau, chacals, autruches — faune du désert de Judée et d'Araba, constatée : identifications hébraïques parfois incertaines (voir les limites). Géologie : grès nubien, érosion éolienne (le Siq), bitume et soufre de la mer Morte (34:9 — « asphaltite »). Hydraulique nabatéenne (postérieure) : citernes, barrages — la ville vécut d'eau captée, mourut de route perdue.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Pétra = Séla : « généralement identifiée » (voir 1957604) — la fiche garde la prudence de l'article. Les Nabatéens (Pétra I, IIe s.) ne sont PAS l'Édom jugée : successeurs, pas continuateurs — la nation édomite disparaît, le site est réoccupé. Is 34:14 (faune nocturne) : identifications non tranchées (voir Pétra : « hérisson » lui-même débattu). « Pour toujours » (34:10) : désolation durable constatée, pas spéculation. P429 : seul le v.19 (Édom) est versé ici ; vv.18-21 (source, Juda) — voir G008.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Frère devenu ennemi</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Séir</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sacrifice (Is 34:6)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Botsra</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séla l'invisible</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Nid</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nébucadnezzar précipite</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">+5 ans (Josèphe)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rome, puis l'oubli</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Repaire (Is 34:11-13)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Aujourd'hui</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1957604">La plus étrange ville bâtie par l'homme (Pétra, 1957)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1957604</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/31/1">Abdias — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/31/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/34">Ésaïe 34 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/34</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49">Jérémie 49 — Bible d'étude, notes (Édom, v.7-22)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche L003 — Édom — le nid d'aigle précipité, la poix et les chacals</span><span>Catégorie K–L</span></div></div>
+</article>
+<article class="fiche" id="L004">
+<div class="visuel"><img src="images/prophe_L004_moab.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE L004 · CATÉGORIE K–L</div>
+<h3>Moab — ruiné en trois ans, transvasé comme un vin</h3>
+<div class="ref">Ésaïe 15:1—16:14 ; Jérémie 48:1-47 ; Ézéchiel 25:8-11 ; Amos 2:1-3 (P431) ; 2 Rois 3:16-19 (P085)</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P130, P276, P334, P431, P085) / Texte reçu (P277)</span>
+<span class="badge">Système campagnes (Mésa → Assyrie → Babylone)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche L004 · 0:24</div><audio controls preload="none" src="audio/fiche_L04_moab.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_L04_moab.mp3 · 0:24 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 15:1—16:14 ; Jérémie 48:1-47 ; Ézéchiel 25:8-11 ; Amos 2:1-3 (P431) ; 2 Rois 3:16-19 (P085)</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P130, P276, P334, P431, P085) / Texte reçu (P277)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système campagnes (Mésa → Assyrie → Babylone)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe/Jérémie/Ézéchiel/Amos/Rois — P130 (Is 15-16 : trois ans exactement), P276 (Jr 48:1-46 : Camosh en exil, nation supprimée), P277 (Jr 48:47 : captifs ramenés — texte reçu), P334 (Éz 25:8-11 : aux fils de l'Orient), P431 (Am 2:1-5 : os brûlés), P085 (2R 3:16-19 : fosses, Moab livré)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Dans la NUIT, Ar-Moab DÉVASTÉE… Kir-Moab DÉVASTÉE. » (15:1 — en une nuit !)</li>
+<li>« Mon CŒUR CRIE sur Moab… fuyards jusqu'à TSOAR. » (15:5 — le cœur du prophète !)</li>
+<li>« En TROIS ANS, comme les années d'un SALARIÉ, la gloire de Moab… PETIT RESTE. » (16:14)</li>
+<li>« CAMOSH partira en EXIL, ses prêtres et ses princes avec lui. » (Jr 48:7 — le dieu déporté !)</li>
+<li>« Moab TRANQUILLE depuis sa jeunesse… jamais TRANSVASÉ. » (48:11 — le vin sur lie !)</li>
+<li>« Je lui enverrai des TRANSVASEURS. » (48:12 — on le verse !)</li>
+<li>« Moab sera ANÉANTI… il ne sera plus un PEUPLE. » (48:42 — supprimé !)</li>
+<li>« Parce qu'il a BRÛLÉ les os du roi d'Édom pour en faire de la CHAUX. » (Am 2:1 — P431 !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Moab : Loth, le neveu (Gn 19 — C8), devenu le voisin hostile — Balaam loué (voir J007), Baal-Péor (Nb 25 — C8), Eglon (Jg 3 — C8), puis Mésa révolté contre Omri (stèle de Dibon, 1868 — voir hist). Cinq oracles : Ésaïe 15-16 (le deuil — le prophète PLEURE Moab, 15:5 ; 16:11 — C8), Jérémie 48 (le procès : 46 versets, le plus long contre une nation), Ézéchiel 25:8-11 (la livraison), Amos 2:1-3 (le grief : les os brûlés), 2 Rois 3:16-19 (le prélude : fosses et eau). Motif constant : l'orgueil (« nous avons appris l'orgueil de Moab » — Is 16:6 — C8 ; Jr 48:29 — P276) et Camosh impuissant.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Trois ans, comme les années d'un salarié » (16:14) : le salarié compte au jour près (Lv 25:50 — C8 ; Jb 7:1 — C8) — le délai est de précision comptable. « Transvasé » (48:11-12) : le vin laissé sur sa lie garde un goût ; on le soutire pour l'affiner — Moab, jamais exilé, jamais affiné : Dieu envoie les « transvaseurs » (déportateurs). « Honte de Camosh comme Israël de Béthel » (48:13 — C8 ; voir J002) : le dieu national déçoit comme le veau. « Os brûlés en chaux » (Am 2:1) : profanation de sépulture + industrie (la chaux vive) — le grief daté du IXe s. Fosses (2R 3:16 — P085) : creuser sans pluie ni vent — l'eau viendra d'Édom (3:20 — P085).</p>
+<h4>5 · Interprétation</h4>
+<p>Le prélude (2R 3:20-25 — P085) : eau à l'aube, Moab trompé (« c'est du sang ! »), villes détruites, Kir-Haréseth assiégée — Mésa encerclé offre son premier-né sur la muraille (3:27 — C8 ; voir 1200013028 : SON fils, pas celui d'Édom — « déduction non plausible » écartée). La sentence (Is 16:14) : trois ans — « 2 Rois 3 ; invasions assyriennes » (registre P130). L'exécution (Jr 48) : villes prises une à une (Nebo, Kirjathaïm, Hesbon, Dibon, Aroër… — P276), Camosh exilé (48:7), nation supprimée (48:42 : « Moab cesse d'être une nation »). La livraison (Éz 25:8-11 — P334) : villes-joyaux (Beth-Yesimoth, Baal-Meon, Kirjathaïm) aux fils de l'Orient. La fin : Nébucadnezzar, 5e année après Jérusalem, contre Ammon et Moab (Josèphe — voir 1200013028).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Mésa (~840, repère)</td><td>Stèle : Camosh ordonne</td></tr>
+<tr><td class="d">Fosses (P085)</td><td>Eau, sang, Kir-Haréseth</td></tr>
+<tr><td class="d">3 ans (16:14)</td><td>Gloire ruinée</td></tr>
+<tr><td class="d">Jr 48</td><td>Villes prises, Camosh exilé</td></tr>
+<tr><td class="d">+5 ans (Josèphe)</td><td>Nébucadnezzar : fin</td></tr>
+<tr><td class="d">Supprimé</td><td>Plus un peuple (48:42)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Stèle de Mésa (Dibon/Dhiban, 1868, basalte noir, Louvre) : le roi raconte sa révolte contre Omri, ordonnée par Camosh (« Va, prends Nebo ! »), vouant Nebo à Ashtar-Camosh — dialecte quasi-hébreu, « maison de David » lue par plusieurs (voir J005/J006). Double attestation : la Bible (2R 3) + la stèle (mêmes lieux, mêmes rois) — Mésa date (~840, repère). Amos 2:1-3 (P431, fin IXe s. — voir 1200013028) : les os du roi d'Édom en chaux. Archéologie : dévastation confirmée (voir 1200013028 : Interpreter's Dictionary). Josias avait déjà profané le haut lieu de Camosh (2R 23:13 — C8 ; voir J002).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'Arnon : le fleuve-frontière nord, canyon de 500 m. Ar-Moab, Kir-Moab/Kir-Haréseth (sud) : les deux capitales du deuil (15:1). Luhith (montée en pleurs) → Horonaïm (descente en cris) : la pente vers la mer Morte (15:5). Nimrim : les eaux taries (15:6). Nebo : le mont de Moïse (Dt 34 — C8) en Moab ! Tsoar : le refuge sud (15:5 — la ville de Loth, Gn 19 — C8). Dibon : la stèle. Villes-joyaux de l'est (Éz 25:9 — P334) : la vitrine livrée aux nomades.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Œnologie : soutirage (48:11-12) — transvaser pour séparer le vin de sa lie : Moab = vin jamais soutiré, goût de fange — métaphore technique exacte. Hydrologie : fosses de 2R 3:16 (citernes sèches remplies sans pluie — ruissellement d'Édom), Nimrim à sec (15:6 — source tarie). Épigraphie : stèle de Mésa — alphabet, langue, théologie (Camosh ordonne, comme Jéhovah ordonne : guerre sainte païenne). Pyrotechnie funéraire : os → chaux vive (Am 2:1 — fours à chaux ; profanation + recyclage industriel).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Trois ans (16:14) : le texte ne date pas le point de départ — le registre retient 2 Rois 3 + invasions assyriennes, sans convertir (système des campagnes seul). Fils de Mésa (2R 3:27) : la fiche suit l'article (son propre fils ; l'autre lecture « non plausible » — voir 1200013028). P277 (48:47, captifs ramenés) : texte reçu, « à venir selon le texte » (registre) — sens non développé ici. P431 : les v.4-5 (Juda/Jérusalem, 2R 25:8-9) appartiennent au dossier judéen — versés pour mémoire.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Stèle : Camosh ordonne</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Mésa (~840, repère)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Eau, sang, Kir-Haréseth</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Fosses (P085)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gloire ruinée</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3 ans (16:14)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Villes prises, Camosh exilé</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jr 48</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nébucadnezzar : fin</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">+5 ans (Josèphe)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Plus un peuple (48:42)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Supprimé</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200013028">Moab — Étude perspicace (Mésa, Amos, Josèphe, archéologie)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200013028</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/15">Ésaïe 15 — Bible d'étude (deuil, 3 ans au ch.16)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/48">Jérémie 48 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/48</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/25">Ézéchiel 25 — Bible d'étude (Moab, v.8-11)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/25</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche L004 — Moab — ruiné en trois ans, transvasé comme un vin</span><span>Catégorie K–L</span></div></div>
+</article>
+<article class="fiche" id="L005">
+<div class="visuel"><img src="images/prophe_L005_tyr.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE L005 · CATÉGORIE K–L</div>
+<h3>Tyr — oubliée 70 ans, puis la harpe de la prostituée</h3>
+<div class="ref">Ésaïe 23:1-18 ; Zacharie 9:1-8 (P502, cité en A) ; Ézéchiel 26-28 (voir A-Tyr)</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P139)</span>
+<span class="badge">Système empires (Babylone → Perse → Grèce)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche L005 · 0:22</div><audio controls preload="none" src="audio/fiche_L05_tyr.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_L05_tyr.mp3 · 0:22 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 23:1-18 ; Zacharie 9:1-8 (P502, cité en A) ; Ézéchiel 26-28 (voir A-Tyr)</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P139)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système empires (Babylone → Perse → Grèce)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P139 (Is 23:1-18 : oubliée 70 ans, commerce repris) ; rappels P502 (Za 9, cité en A), A-Tyr (Éz 26-28, Alexandre 332)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« HURLEZ, navires de Tarsis : elle est DÉVASTÉE, plus de maison ! » (23:1 — l'avis aux navires !)</li>
+<li>« La MER a dit : je n'ai pas ACCOUCHÉ. » (23:4 — la mer stérile !)</li>
+<li>« QUI a décidé cela contre Tyr, DISTRIBUTRICE de couronnes ? » (23:8 — qui ?)</li>
+<li>« JÉHOVAH… pour PROFANER l'orgueil de toute beauté. » (23:9 — Jéhovah !)</li>
+<li>« Tyr tombera dans l'OUBLI pour 70 ANS, durée de vie d'UN ROI. » (23:15 — 70 ans !)</li>
+<li>« Prends une HARPE… chante BEAUCOUP… qu'on se SOUVIENNE de toi. » (23:16 — la chanson !)</li>
+<li>« Ses gains deviendront quelque chose de SAINT pour Jéhovah. » (23:18 — saints !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Tyr : l'île-roc phénicienne + sa ville continentale (Oushou) — « distributrice de couronnes » (23:8 : elle fonde des colonies-royaumes : Kition, Carthage…), « commerçants = princes » (23:8). Ésaïe 23 est la « déclaration contre Tyr » (suscription TM). Sa chute continentale viendra des Chaldéens sous Nébucadnezzar (voir it-1 « Isaïe », 1200002205 : « 23:1, 8, 13, 14 »). Puis l'oubli : 70 ans — « la durée d'un roi », c'est-à-dire de l'empire babylonien : pendant toute la domination de Babylone, l'île ne sera plus une puissance financière (voir ip-1/EN Tyr, jw.org). Puis la reprise sous la Perse : Cyrus tolérant, satrapie de Phénicie — Tyr « s'efforce de regagner la reconnaissance » comme la prostituée sa clientèle (voir jw.org EN). Et Jéhovah « lui accordera le succès ».</p>
+<h4>4 · Explication du texte</h4>
+<p>« Navires de Tarsis » (23:1, 14) : les gros porteurs du commerce lointain — avertis les premiers : plus de port d'attache. « Révélé depuis Kittim » (23:1 — C8 ; voir J007 : Chypre) : la nouvelle arrive par les relais maritimes. « La mer n'a pas accouché » (23:4) : Sidon la « forteresse de la mer » se voit stérile — plus de filles (colonies). « Durée d'un roi » (23:15) : un seul règne-empire — Babylone du début à la fin (voir jw.org EN). « Harpe » (23:16) : la prostituée oubliée racole en musique — le commerce comme prostitution (clients = amants, gains = salaire). « Saints pour Jéhovah » (23:18) : le salaire change de maître — cèdre tyrien pour le second temple (Esd 3:7 — C8 : Sidoniens et Tyriens fournissent ; voir B005) !</p>
+<h4>5 · Interprétation</h4>
+<p>L'orgueil profané (23:9) : la beauté commerciale humiliée — « Tyr sera abaissée, oubliée pendant 70 ans » (voir 1200002205). L'oubli mesuré : 70 ans pile — ni destruction définitive (l'île survit), ni continuité (plus de puissance) : une parenthèse impériale. La reprise accordée : Jéhovah « s'occupera de Tyr » (23:17) — le commerce reprend « avec tous les royaumes » (mondialisation perse). La consécration finale (23:18) : les gains « pour ceux qui habitent devant Jéhovah… manger à satiété, magnifiques vêtements » — le profit païen au service du culte. Épilogue : l'île elle-même tombera devant Alexandre (332 — voir A-Tyr, P502/Za 9) : l'oubli babylonien, puis la digue grecque.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Oushou</td><td>Continentale prise (Chaldéens)</td></tr>
+<tr><td class="d">70 ans</td><td>Oubli : durée d'un roi</td></tr>
+<tr><td class="d">Cyrus</td><td>Satrapie : la harpe reprend</td></tr>
+<tr><td class="d">Esd 3:7 (C8)</td><td>Cèdre : gains saints</td></tr>
+<tr><td class="d">Reprise</td><td>Tous les royaumes (23:17)</td></tr>
+<tr><td class="d">332 (repère)</td><td>L'île : Alexandre (A-Tyr)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Siège continental : 13 ans selon Josèphe (Contre Apion I, 21 — repère) — Nébucadnezzar prend Oushou, l'île tient (Éz 29:18 — C8 : « le salaire manqué »). 70 ans : la domination babylonienne (voir jw.org EN : « the duration of one king ») — de la chute continentale à Cyrus. Satrapie perse : reprise du commerce (voir jw.org EN : « Jehovah will grant her success »). Esdras 3:7 (C8) : cèdre de Tyr-Sidon pour le temple — 23:18 en acte. Alexandre 332 (repère) : digue de 800 m, île prise en 7 mois (voir A-Tyr ; Za 9:4 — P502 : « Jéhovah… frappera sa puissance en mer »).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>L'île-roc : ~800 m au large (avant la digue) — forteresse marine. Oushou (Palaetyr) : la ville continentale, prise par Nébucadnezzar. Sidon : la sœur aînée (« fille de Sidon » 23:12 — C8). Tarsis : l'ouest lointain (limites : Tartessos ? Sardaigne ? — non tranché). Kittim : Chypre, le relais (23:1, 12 ; voir J007). Le Nil : « moisson du Nil » (23:3 — C8) — le blé égyptien via Tyr. La digue : 800 m (repère) — l'île devenue presqu'île (tombolo actuel).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Thalassocratie : marine marchande + colonies + comptoirs — le modèle phénicien (Kition, Carthage, Gadès). Pourpre : le murex — « la pourpre de Tyr », teinture au coquillage (milliers de murex par gramme — artisanat standard). Organologie : kinnôr (harpe-lyre, 23:16) — l'instrument du racolage et du psaume. Économie : « gain des nations » (23:3) — place financière antique ; « salaire » (23:17-18) — comptabilité de la prostitution commerciale, puis trésorerie du temple.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Tarsis : identification non tranchée (plusieurs ports de l'ouest proposés). 70 ans : bornes exactes non fixées ici — « durée d'un roi » = l'empire babylonien (voir jw.org EN) ; système des empires seul, pas de conversion absolue. 23:18 (gains saints) : lecture proposée via Esdras 3:7, non exclusive. Alexandre (île, 332) : épilogue — voir A-Tyr (Éz 26-28) et P502 (Za 9, cité en A) : cette fiche s'arrête à la reprise perse. 13 ans (Josèphe), 800 m (digue) : repères, signalés.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Continentale prise (Chaldéens)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oushou</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oubli : durée d'un roi</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">70 ans</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Satrapie : la harpe reprend</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Cyrus</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cèdre : gains saints</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Esd 3:7 (C8)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tous les royaumes (23:17)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Reprise</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'île : Alexandre (A-Tyr)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">332 (repère)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200002205">Isaïe (Livre d') — Étude perspicace (Tyr 70 ans, Chaldéens)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200002205</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/23">Ésaïe 23 — Bible d'étude, texte intégral<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/23</a>
+<a href="https://www.jw.org/en/library/books/Isaiahs-Prophecy-Light-for-All-Mankind-I/Jehovah-Profanes-the-Pride-of-Tyre/">Jehovah Profanes the Pride of Tyre (Isaiah book, jw.org)<br>https://www.jw.org/en/library/books/Isaiahs-Prophecy-Light-for-All-Mankind-I/Jehovah-Profanes-the-Pride-of-Tyre/</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/38/9">Zacharie 9 — Bible d'étude (Tyr, Philistie, Alexandre)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/38/9</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche L005 — Tyr — oubliée 70 ans, puis la harpe de la prostituée</span><span>Catégorie K–L</span></div></div>
+</article>
+<article class="fiche" id="L006">
+<div class="visuel"><img src="images/prophe_L006_philistie.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE L006 · CATÉGORIE K–L</div>
+<h3>La Philistie — Gaza chauve, Ascalon silencieuse, côte retranchée</h3>
+<div class="ref">Jérémie 47:1-7 ; Ézéchiel 25:15-17 ; Sophonie 2:4-7 ; Joël 3:1-8</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P275, P336, P480, P427)</span>
+<span class="badge">Système campagnes (604 côte → 332 Gaza)</span>
+<span class="badge">5 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche L006 · 0:24</div><audio controls preload="none" src="audio/fiche_L06_philistie.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_L06_philistie.mp3 · 0:24 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 47:1-7 ; Ézéchiel 25:15-17 ; Sophonie 2:4-7 ; Joël 3:1-8</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P275, P336, P480, P427)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système campagnes (604 côte → 332 Gaza)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie/Ézéchiel/Sophonie/Joël — P275 (Jr 47 : Gaza rasée, Ascalon dévastée), P336 (Éz 25:15-17 : reste de la côte détruit), P480 (So 2:4-7 : les quatre villes), P427 (Jl 3:1-8 : traite aux Grecs, Alexandre)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Des EAUX viennent du NORD… torrent qui INONDE. » (Jr 47:2 — Babylone en crue !)</li>
+<li>« Les PÈRES ne se retourneront même pas pour leurs FILS. » (47:3 — la débandade !)</li>
+<li>« Jéhovah ANÉANTIRA les Philistins, derniers de KAFTOR. » (47:4 — Kaftor = Crète !)</li>
+<li>« GAZA est devenue CHAUVE… ASCALON réduite au SILENCE. » (47:5 — chauve et muette !)</li>
+<li>« ÉPÉE de Jéhovah… frappe ASCALON et le RIVAGE. » (47:7 — l'ordre !)</li>
+<li>« Gaza ABANDONNÉE, Ascalon DÉVASTÉE, Asdod CHASSÉE en plein midi, Ékron DÉRACINÉE. » (So 2:4)</li>
+<li>« Ils VENDIRENT les fils de Juda aux GRECS. » (Jl 3:6 — P427 : la traite !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La Philistie : 80 km de côte (près de Joppé à Gaza) sur 24 km de profondeur (voir it-2 « Philistie, Philistins », 1200003469) — la pentapole : Gaza, Askélon, Aschdod, Écron, Gath (voir ad, 1200013389). Origine : Kaftor/Crète (Jr 47:4, note TM ; Am 9:7 — C8) — Peuples de la mer (voir J010). Ennemis d'Israël depuis l'Exode (Ex 13:17 — C8) : Samson (voir J010), Saül (Gilboa — C8), David (Goliath — C8 ; puis suzeraineté), puis le répit, puis la traite (Jl 3:4-6 — P427 : Tyr, Sidon ET Philistie vendent les Judéens aux Yavanim/Grecs). Quatre oracles : Jérémie 47 (l'épée), Ézéchiel 25:15-17 (le retranchemeent — vengeance de la vengeance), Sophonie 2:4-7 (l'appel nominal), Joël 3 (la traite payée).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Avant que Pharaon prenne Gaza » (47:1) : oracle daté d'avant un fait — puis le vrai choc vient du NORD (47:2 : Babylone, pas l'Égypte). « Chauve » (47:5, note : tête rasée en deuil et honte) : Gaza en deuil. « Réduite au silence » (47:5 : nidmeta — anéantie) : Ascalon muette. « En plein midi » (So 2:4) : Asdod chassée à l'heure où l'on ne combat pas — surprise totale. « Déracinée » (Ékron — 'aqqēr : arracher) : calembour (Écron/'aqqaron). « Reste de la côte » (Éz 25:16 — P336) : même les survivants du littoral. « Vendus aux Grecs » (Jl 3:6) : la traite égéenne — « je vendrai vos fils aux Sabéens » (3:8 — C8) : talion commercial.</p>
+<h4>5 · Interprétation</h4>
+<p>« Où sont aujourd'hui la Philistie et ses villes ? » (voir w01, 2001124 §15) : disparues comme nation — la leçon que l'article tire avec Moab, Ammon et l'Assyrie. Exécution : 604 (repère neutre du registre, P275/P336/P480) — Nébucadnezzar rase Ascalon puis Ékron, bataille pour Gaza (voir hist). Achèvement : Alexandre (campagne de Za 9:1-8 — P427, P502) — Gaza résiste et tombe (332, repère). Épuration ethnique inversée : « le reste de la côte » (Éz 25:16) — il ne reste rien à retrancher. La côte change de maîtres (Perse, Grèce, Rome) : les Philistins s'y dissolvent — le nom seul survit (« Palestine » — exonyme romain, voir les limites).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Kaftor</td><td>Crète → côte (47:4)</td></tr>
+<tr><td class="d">Traite (P427)</td><td>Fils de Juda aux Grecs</td></tr>
+<tr><td class="d">Pharaon (?)</td><td>Gaza prise (47:1)</td></tr>
+<tr><td class="d">604 (neutre)</td><td>Ascalon, Ékron : silence</td></tr>
+<tr><td class="d">Appel (So 2:4)</td><td>Quatre villes nommées</td></tr>
+<tr><td class="d">332 (repère)</td><td>Gaza : Alexandre</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>604 (neutre) : Nébucadnezzar — la Chronique babylonienne rapporte la campagne ; Ascalon : destruction totale (fouilles Stager : poteries brisées, charbon, briques vitrifiées, blé carbonisé, toits effondrés), suivie d'un long hiatus avant l'époque perse. Ékron (Tel Miqne, Dothan) : détruite ensuite — ville de l'huile (des centaines d'installations oléicoles). Gaza : disputée avec l'Égypte (bataille — Jr 47:1 : « Pharaon »), puis Alexandre 332 (repère : siège, résistance). Traite (Jl 3:6 — P427) : esclaves judéens vers Yavan (Grèce) — commerce égéen documenté. Gath : absente des oracles (tombée plus tôt — voir les limites).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La côte : 80 × 24 km (voir 1200003469) — Gaza (sud, verrou de la Via Maris — voir J011), Ascalon (port, 19 km au nord de Gaza), Asdod (port), Ékron (intérieur, 20 km de la mer), Gath (piémont). Kaftor/Crète (47:4) : l'origine égéenne. Yavan (Jl 3:6) : la Grèce des acheteurs. Saba (3:8) : le Yémen des revendeurs — la traite dans les deux sens. Via Maris : la route des armées (nord : Babylone ; sud : Égypte) — la Philistie écrasée au milieu.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Poliorcétique : chars, cavalerie, sièges (47:3 — sabots, vacarme, fracas) — l'armée néo-babylonienne. Rites de deuil : tête rasée (47:5, note), entailles sur le corps (47:5 — interdit à Israël, Lv 19:28 — C8) — anthropologie comparée. Oléiculture : Ékron — centaines de pressoirs, ~1 000 tonnes/an estimées (repère de fouille) — première industrie de l'huile d'olive. Céramique : bichrome égéenne (rouge et noir) — marqueur philistin en stratigraphie. Fer : monopole passé (voir J010 : 1S 13) — la supériorité technologique ne sauve pas.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>« Pharaon » de 47:1 (preneur de Gaza) : lequel ? Non tranché ici. Gath : absente des quatre oracles — tombée plus tôt (Ozias, 2Ch 26:6 — C8 ?) : question posée, non tranchée. Chiffres de fouilles (Stager, Dothan) : repères archéologiques, pas versets. « Palestine » (nom romain de la province) : exonyme administratif postérieur, pas continuité nationale — la nation philistine disparaît (voir 2001124). Am 9:7 (Kaftor) : C8 — aucun P ne le couvre.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Crète → côte (47:4)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Kaftor</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fils de Juda aux Grecs</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Traite (P427)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gaza prise (47:1)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Pharaon (?)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ascalon, Ékron : silence</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">604 (neutre)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatre villes nommées</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Appel (So 2:4)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gaza : Alexandre</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">332 (repère)</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200003469">Philistie, Philistins — Étude perspicace (Crète, 80 km, pentapole)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200003469</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2001124">Cherchez Jéhovah avant le jour (où sont-elles ?, 2001)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2001124</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/47">Jérémie 47 — Bible d'étude, notes (vérifié)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/47</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/36/2">Sophonie 2 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/36/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/29/3">Joël 3 — Bible d'étude (traite, vérifié)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/29/3</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche L006 — La Philistie — Gaza chauve, Ascalon silencieuse, côte retranchée</span><span>Catégorie K–L</span></div></div>
+</article>
+<article class="fiche" id="L007">
+<div class="visuel"><img src="images/prophe_L007_ammon.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE L007 · CATÉGORIE K–L</div>
+<h3>Ammon — Rabbah pâturage de chameaux, tell désolé</h3>
+<div class="ref">Jérémie 49:1-5 ; Ézéchiel 25:1-7 ; Ézéchiel 21:19-23, 28-32 (P328)</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (P278, P333, P328)</span>
+<span class="badge">Système carrefours (Rabbah → Philadelphie → Amman)</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche L007 · 0:24</div><audio controls preload="none" src="audio/fiche_L07_ammon.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_L07_ammon.mp3 · 0:24 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 49:1-5 ; Ézéchiel 25:1-7 ; Ézéchiel 21:19-23, 28-32 (P328)</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (P278, P333, P328)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système carrefours (Rabbah → Philadelphie → Amman)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie/Ézéchiel — P278 (Jr 49:1-5 : Rabbah tell désolé), P333 (Éz 25:1-7 : fils de l'Orient, pâture), P328 (Éz 21 : carrefour, Ammon jugée)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Pourquoi MALKAM possède-t-il GAD ? » (Jr 49:1 — le dieu squatteur !)</li>
+<li>« RABBAH deviendra un TELL DÉSOLÉ, ses filles BRÛLÉES. » (49:2 — tell !)</li>
+<li>« Hurle, HESBON… Aï DÉVASTÉE ! » (49:3 — la panique !)</li>
+<li>« Tu te fiais à tes TRÉSORS… QUI viendra contre moi ? » (49:4 — qui ?)</li>
+<li>« Parce que tu as RI : Héah ! sur mon SANCTUAIRE profané… » (Éz 25:3 — le rire !)</li>
+<li>« Je te livre aux FILS DE L'ORIENT… ils mangeront tes FRUITS, boiront ton LAIT. » (25:4)</li>
+<li>« RABBAH : PÂTURE DE CHAMEAUX… villes : BERCAIL. » (25:5 — chameaux !)</li>
+<li>« Je te RETRANCHERAI… tu ne seras PLUS. » (25:7 — retranchée !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Ammon : Ben-Ammi, Loth (Gn 19 — C8) — le voisin d'au-delà du Jabbok. Contentieux : territoire de Gad convoité (Jr 49:1 — P278 ; Jg 11:13 — C8 : Jephté), Malkam/Milcom le dieu national (1R 11:5-7 — C8 : haut lieu de Salomon ; voir J002 pour Josias), et surtout le rire : « Héah ! » sur le sanctuaire profané, le pays dévasté, Juda exilé (Éz 25:3 — P333). Réponse en trois oracles : Jérémie 49:1-5 (le tell), Ézéchiel 25:1-7 (les nomades), Ézéchiel 21 (le carrefour : Nébucadnezzar hésite entre Rabbah et Jérusalem — 21:19-23 ; puis Ammon jugée à son tour — 21:28-32, P328). « Circoncis aux cœurs incirconcis » (Jr 9:25-26 — C8 ; voir 1200010244) : le compte arrive.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Malkam possède Gad » (49:1) : le dieu a un cadastre — Ammon a annexé le territoire gadite de l'est ; Malkam « partira en exil » (49:3 — C8) : dieu déporté, comme Camosh (voir L004). « Tell désolé » (tēl shemamah, 49:2) : Rabbah réduite à son monticule — un tell = une ville en couches, habitée puis abandonnée. « Fils de l'Orient » (25:4) : nomades chameliers — campements, tentes, fruits mangés, lait bu : l'économie sédentaire remplacée par le pastoralisme. « Pâture de chameaux » (25:5) : la capitale en pré. « Le roi de Babylone arrêté au carrefour… divination : Rabbah ou Juda ? » (voir 1200010244, avec Éz 21:19-23 — P328) : Juda d'abord (2R 25 — P328), Ammon ensuite (5e année après Jérusalem, Josèphe — voir L004).</p>
+<h4>5 · Interprétation</h4>
+<p>« Les Ammonites commencèrent à boire la coupe » : épée, famine, peste, dévastation (voir 1200010244). Vérification archéologique : « la Transjordanie fut considérablement dépeuplée avant le milieu du VIe siècle, et Ammon ne fut pratiquement plus habitée par des sédentaires jusqu'au IIIe siècle » (voir 1200010244) — « ainsi les Orientaux, conducteurs de chameaux, purent prendre possession du pays et y dresser leurs tentes » (Éz 25:4). « Suppression de la nation ammonite » (registre P278, P333). Survivances sans nation : Tobie l'Ammonite (Né 2:10, 19 — C8) intrigue contre le mur — des Ammonites, plus d'Ammon. Le site continue : Rabbah → Philadelphie (Ptolémées) → Amman (capitale actuelle) — continuité du LIEU (voir L : géographie !), pas du peuple.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Gad convoité</td><td>Malkam squatte (49:1)</td></tr>
+<tr><td class="d">Héah ! (25:3)</td><td>Le rire du sanctuaire</td></tr>
+<tr><td class="d">Carrefour (P328)</td><td>Juda d'abord (2R 25)</td></tr>
+<tr><td class="d">+5 ans (Josèphe)</td><td>Ammon ensuite</td></tr>
+<tr><td class="d">VIe→IIIe s.</td><td>Sédentaires : zéro</td></tr>
+<tr><td class="d">Rabbah→Amman</td><td>Tell occupé, nation supprimée</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Malkam/Milcom : dieu national (1R 11 — C8 ; Jr 49:1, 3 — P278). Carrefour (Éz 21:19-23 — P328) : hépatoscopie, flèches, téraphim (21:21 — C8) — la divination mésopotamienne choisit Juda ; 2 Rois 25:1-11 (P328) exécute. Puis Ammon : Josèphe, 5e année après Jérusalem (même campagne que Moab — voir L004). Tobie (Né 2 — C8, Ve s.) : l'Ammonite de la restauration — individu, pas nation. Philadelphie : Ptolémée II rebaptise Rabbah (IIIe s., repère) ; Dèce, Arabie romaine ; Amman : capitale du Jourdain — le tell (Jebel al-Qal'a, citadelle) toujours occupé.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Rabbah : le tell + la source (« ville des eaux », 2S 12:27 — C8) — aujourd'hui la citadelle d'Amman. Hesbon, Aï (49:3) : les villes du hurlement. La vallée « féconde » (49:4) : l'ouadi Amman — greniers d'une capitale. Gad (49:1) : le territoire convoité à l'ouest. Le Jabbok : la frontière naturelle (Nb 21:24 — C8). L'Orient : le désert d'où viennent les tentes (25:4) — bédouins d'hier et d'aujourd'hui.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Camélologie : coussinets (sable meuble), callosités poitrine/genoux, dents tout-terrain, sobre en grain, « végétation commune du désert » (voir it-1 « Chameau », 1200000871 : « animal très économique ») — le véhicule du jugement (25:5). Tellologie : monticule stratifié — chaque couche une ville ; « tell désolé » (49:2) = occupation zéro au sommet. Survey : dépeuplement sédentaire VIe→IIIe s. (voir 1200010244) — prospection de surface, tessons datants. Économie : sédentaire (fruits, lait des étables — 25:4) vs nomade (fruits mangés sur place, lait des troupeaux) — le verset décrit la substitution.</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Malkam/Milcom : variantes du nom divin (malk- = roi) — graphies non tranchées. Divination du carrefour (Éz 21:21) : pratiques rapportées, mécanisme non approuvé ni décrit — le texte constate le choix (Juda), pas la technique. Tobie (Né 2 — C8) : des individus survivent — la NATION est supprimée (registre) : la fiche ne confond pas. Philadelphie/Amman : continuité du SITE (tell occupé) — aucune continuité nationale ammonite revendiquée. Jr 9:25-26 (C8) : aucun P — vérifié.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Malkam squatte (49:1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Gad convoité</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le rire du sanctuaire</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Héah ! (25:3)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Juda d'abord (2R 25)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Carrefour (P328)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ammon ensuite</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">+5 ans (Josèphe)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sédentaires : zéro</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe→IIIe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tell occupé, nation supprimée</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rabbah→Amman</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200010244">Ammonites — Étude perspicace (coupe, carrefour, dépeuplée)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200010244</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200000871">Chameau — Étude perspicace (Éz 25:5, économique)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200000871</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/25">Ézéchiel 25 — Bible d'étude (Ammon, v.1-7)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/25</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49">Jérémie 49 — Bible d'étude (Ammon, v.1-5)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/49</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche L007 — Ammon — Rabbah pâturage de chameaux, tell désolé</span><span>Catégorie K–L</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie K–L</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>K007 — Pierre et le jour — le monde noyé, les éléments dissous</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Monde inondé (3:6)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Alors</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Légendes mondiales</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Mémoire</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réservés au feu (3:7)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Maintenant</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mille ans = un jour (3:8)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Patience</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fracas, dissous (3:10)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Voleur</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Justice habitera (3:13)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Promesse</text>
+</svg>
+<h4>K008 — Les sabbats de la terre — la jachère violée, payée 70 ans</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Entrée : compteur à zéro</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473 (repère)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ni semer ni tailler</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7e année</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Récolte triple</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">6e année</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Observance violée</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Partielle</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 ans : la terre se repose</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Exil</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fin de la jachère (J001)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Cyrus</text>
+</svg>
+<h4>L001 — Samarie — le tas de ruines et la marche vers Jérusalem</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Colline achetée (C8)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Omri</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Galilée + Damas (P115/A010)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Avant papa</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège (2R 17:5)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3 ans</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tas de ruines (1:6)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">740 (repère)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Déportés (Sargon)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">27 290</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Villes → porte (1:9-16) → 2R 25</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Marche</text>
+</svg>
+<h4>L002 — Ninive — les portes des fleuves et le palais dissous</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le précédent (3:8-10)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Thèbes 663 (neutre)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chars-éclairs (2:3-4)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vision</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trébuchent (2:5)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Panique</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Portes ouvertes, palais dissous (2:6)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Crue</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Amas de ruines (chronique)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">632 (publications)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retrouvée (Layard)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">XIXe s.</text>
+</svg>
+<h4>L003 — Édom — le nid d'aigle précipité, la poix et les chacals</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Frère devenu ennemi</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Séir</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sacrifice (Is 34:6)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Botsra</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Séla l'invisible</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Nid</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nébucadnezzar précipite</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">+5 ans (Josèphe)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rome, puis l'oubli</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Repaire (Is 34:11-13)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Aujourd'hui</text>
+</svg>
+<h4>L004 — Moab — ruiné en trois ans, transvasé comme un vin</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Stèle : Camosh ordonne</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Mésa (~840, repère)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Eau, sang, Kir-Haréseth</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Fosses (P085)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gloire ruinée</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3 ans (16:14)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Villes prises, Camosh exilé</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jr 48</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nébucadnezzar : fin</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">+5 ans (Josèphe)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Plus un peuple (48:42)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Supprimé</text>
+</svg>
+<h4>L005 — Tyr — oubliée 70 ans, puis la harpe de la prostituée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Continentale prise (Chaldéens)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Oushou</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Oubli : durée d'un roi</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">70 ans</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Satrapie : la harpe reprend</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Cyrus</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cèdre : gains saints</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Esd 3:7 (C8)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tous les royaumes (23:17)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Reprise</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'île : Alexandre (A-Tyr)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">332 (repère)</text>
+</svg>
+<h4>L006 — La Philistie — Gaza chauve, Ascalon silencieuse, côte retranchée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Crète → côte (47:4)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Kaftor</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fils de Juda aux Grecs</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Traite (P427)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gaza prise (47:1)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Pharaon (?)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ascalon, Ékron : silence</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">604 (neutre)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatre villes nommées</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Appel (So 2:4)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gaza : Alexandre</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">332 (repère)</text>
+</svg>
+<h4>L007 — Ammon — Rabbah pâturage de chameaux, tell désolé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Malkam squatte (49:1)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Gad convoité</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le rire du sanctuaire</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Héah ! (25:3)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Juda d'abord (2R 25)</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Carrefour (P328)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ammon ensuite</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">+5 ans (Josèphe)</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sédentaires : zéro</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIe→IIIe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tell occupé, nation supprimée</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rabbah→Amman</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 7.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-24 · phase 7, vague
+14 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

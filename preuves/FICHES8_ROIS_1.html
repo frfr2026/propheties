@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES RO — Rois (1) — de David à Jéroboam</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_RO_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES RO</h1>
+<h2>Rois (1) — de David à Jéroboam</h2>
+<p class="intro">Nathan promet à David une maison pour toujours — puis lui annonce que l'épée ne quittera plus la sienne ; Salomon reçoit le temple avec un double SI que les passants de 607 liront sur les ruines ; Ahiya déchire son manteau neuf en douze, un anonyme nomme Josias trois siècles à l'avance, et la femme déguisée de Jéroboam apprend au seuil que tout est fini.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_RO_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_RO_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#RO073">RO073</a>
+<a href="#RO074">RO074</a>
+<a href="#RO075">RO075</a>
+<a href="#RO076">RO076</a>
+<a href="#RO077">RO077</a>
+<a href="#RO078">RO078</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#RO073"><img src="images/prophe_RO073_alliance.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE RO073</div>
+<h3><a href="#RO073">« Je te bâtirai une maison » : trône pour toujours</a></h3>
+<div class="meta">Accomplie / À venir</div></div></div>
+<div class="carte">
+<a class="img" href="#RO074"><img src="images/prophe_RO074_epee.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE RO074</div>
+<h3><a href="#RO074">« L'épée ne s'écartera pas » : le toit jugé du toit</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#RO075"><img src="images/prophe_RO075_temple.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE RO075</div>
+<h3><a href="#RO075">« Les passants siffleront » : la maison sous condition</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#RO076"><img src="images/prophe_RO076_manteau.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE RO076</div>
+<h3><a href="#RO076">« Prends dix morceaux » : le manteau neuf en douze</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#RO077"><img src="images/prophe_RO077_josias.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE RO077</div>
+<h3><a href="#RO077">« Son nom sera Josias » : l'autel fendu, la main sèche</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#RO078"><img src="images/prophe_RO078_abiya.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE RO078</div>
+<h3><a href="#RO078">« Dès le seuil, il mourra » : la maison balayée</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="RO073">
+<div class="visuel"><img src="images/prophe_RO073_alliance.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE RO073 · CATÉGORIE RO</div>
+<h3>« Je te bâtirai une maison » : trône pour toujours</h3>
+<div class="ref">2 Samuel 7:8-16</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / À venir</span>
+<span class="badge">Alliance davidique (projet → veto → inversion → triple éternité)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche RO073</div><audio controls preload="none" src="audio/fiche_RO73_alliance.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_RO73_alliance.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>2 Samuel 7:8-16</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / À venir</td></tr>
+<tr><td class="d">Chronologie</td><td>Alliance davidique (projet → veto → inversion → triple éternité)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : 2 Samuel — P073 (7:8-16 : maison et trône pour toujours ; Salomon bâtira) ; accomplissement 1R 8:17-20 ; Ps 89:3, 4 ; Lc 1:32, 33</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Tu habites une maison de CÈDRE, et l'arche SOUS DES TENTES ! » (7:2 — tentes !)</li>
+<li>« VA, fais… » — « CETTE NUIT-LÀ : ce n'est pas TOI qui bâtiras. » (7:3-5 — nuit !)</li>
+<li>« C'est MOI qui te bâtirai une MAISON. » (7:11 — moi !)</li>
+<li>« Je t'ai pris du PÂTURAGE, d'avec les brebis. » (7:8 — pâturage !)</li>
+<li>« Je t'ai fait un GRAND NOM, comme les grands. » (7:9 — grand !)</li>
+<li>« Il BÂTIRA une maison à mon nom. » (7:13 — bâtira !)</li>
+<li>« JE LUI SERAI PÈRE, IL ME SERA FILS. » (7:14 — père !)</li>
+<li>« Ma BONTÉ ne se retirera PAS, comme de SAÜL. » (7:15 — pas !)</li>
+<li>« Ta MAISON, ton ROYAUME, ton TRÔNE : POUR TOUJOURS. » (7:16 — toujours !)</li>
+<li>« J'AI BÂTI la maison… Jéhovah a ACCOMPLI. » (1R 8:20 — accompli !)</li>
+<li>« J'ai JURÉ… son trône comme le SOLEIL. » (Ps 89:35-37 — soleil !)</li>
+<li>« Le trône de DAVID… son royaume N'AURA PAS DE FIN. » (Lc 1:32-33 — fin !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, ~1034? — « Jéhovah lui eut donné du REPOS » (7:1 : le repos PRÉCÈDE le projet — on bâtit dans la PAIX !). David dans sa maison de CÈDRE (7:2 — Hiram de Tyr, 5:11 : le ROI PAÏEN fournit le palais — les nations SERVENT !) contemple l'arche « SOUS DES TENTURES » (7:2) : le CONTRASTE (cèdre vs toile !) — « je BÂTIRAI » (le projet !). Nathan dit d'abord « VA, fais tout ce que tu as » (7:3 : le prophète APPROUVE… puis Dieu le CORRIGE « CETTE NUIT-LÀ » (7:4) : le prophète CONTREDIT en 24h (l'humilité prophétique : Nathan TRANSMET le veto contre son propre avis !).</p>
+<h4>4 · Explication du texte</h4>
+<p>L'INVERSION : « ce n'est pas TOI qui me bâtiras une maison — c'est MOI qui te bâtirai une maison » (7:5, 11) : bayit × 2 SENS (TEMPLE ↔ DYNASTIE) — le jeu de mots THÉOLOGIQUE (l'homme veut LOGER Dieu ; Dieu LOGE l'homme !). « Je t'ai pris du PÂTURAGE, d'avec les brebis » (7:8) : Dieu RAPPELLE l'origine (Bethléhem, SM071 ! : pâturage → palais — le berger COURONNÉ !). « Je t'ai fait un GRAND NOM, comme les grands de la terre » (7:9) : cf. Gn 12:2 (« je rendrai ton nom GRAND », GE003 !) — David reçoit la PROMESSE ABRAHAMIQUE (le berger entre dans l'alliance du patriarche !). « Je fixerai un LIEU… ils ne seront plus AGITÉS » (7:10 : la TERRE promise STABILISÉE — cf. Jos 21 !). « JE LUI SERAI PÈRE, IL ME SERA FILS » (7:14) : la FILIATION royale (cf. Ps 2:7 ! + Hé 1:5 CITE : « auquel des anges a-t-il jamais dit… ? » — le NT TRANCHE : Christ !). « S'il commet l'iniquité, je le CHÂTIERAI avec une VERGE D'HOMMES » (7:14) : châtiment HUMAIN (Hadad ? Rezon ? 1R 11:14, 23 : les ADVERSAIRES suscités !) — la verge CORRIGE, elle ne TUE pas. « Ma BONTÉ (hesed) ne se retirera PAS de lui, comme je l'ai retirée à SAÜL » (7:15) : l'ANTI-SAÜL — le contrat David est IRRÉVOCABLE (cf. SM070 : « Jéhovah AURAIT affermi » — ici : affermi SANS condition révocatoire !). « Ta MAISON et ton ROYAUME… ton TRÔNE… POUR TOUJOURS » (7:16) : ad-olam × 3 (maison + royaume + trône) — la TRIPLE ÉTERNITÉ !</p>
+<h4>5 · Interprétation</h4>
+<p>SALOMON (1R 8:17-20, P073) : « Jéhovah a ACCOMPLI ce qu'il avait dit… je me suis LEVÉ à la place de David… J'AI BÂTI la maison » — Salomon ENCAISSE (le fils BÂTIT, 1R 5-6 : le temple !). PSAUME 89 (Ps 89:3-4, P073) : « j'ai fait ALLIANCE avec mon ÉLU… J'AFFERMIRAI ta postérité pour toujours » — le psaume SCELLE (Éthan ! + 89:35-37 : « j'ai JURÉ par ma SAINTETÉ… sa postérité DURERA TOUJOURS, son trône comme le SOLEIL » !). LUC 1 (Lc 1:32-33, P073) : « il sera GRAND… le trône de DAVID son père… il RÉGNERA… et son royaume N'AURA PAS DE FIN » — Gabriel à Marie : l'ange CITE Nathan ! + Mt 1:1 (« fils de DAVID » !). La LIGNÉE malgré tout : Athalie (2R 11 : Joas SAUVÉ bébé — la lignée tient à UN nourrisson caché !) ; Jojakin « inscrit comme SANS ENFANTS » (Jr 22:30) — MAIS Zorobabel (Mt 1:12 : la lignée PASSE par le « maudit » — la malédiction CONTOURNÉE : pas de trône TERRESTRE, trône CÉLESTE !). « TRÔNE DE JÉHOVAH » (1Ch 29:23 : Salomon « s'assit sur le TRÔNE DE JÉHOVAH ») : le trône davidique = trône DIVIN — type du Royaume !</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">2S 7:1-3</td><td>Repos + cèdre vs tente : le projet</td></tr>
+<tr><td class="d">7:4-11</td><td>Veto nocturne + inversion : JE te bâtirai</td></tr>
+<tr><td class="d">7:12-16</td><td>Triple éternité : maison / royaume / trône</td></tr>
+<tr><td class="d">1R 8:17-20</td><td>Salomon : « j'ai bâti » — encaissement</td></tr>
+<tr><td class="d">Ps 89:3-4, 35-37</td><td>« J'ai juré » : le sceau (soleil)</td></tr>
+<tr><td class="d">Lc 1:32-33</td><td>Gabriel : « pas de fin » — l'antitype</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>DAVID (~1037-997? : 40 ANS — 7,5 Hébron + 33 Jérusalem, 2S 5:4-5 !). NATHAN (conseiller : 2S 7, 12, 1R 1 !) : le prophète de COUR qui DIT NON (ici !) et « TU ES L'HOMME » (RO074 !) — le courage EN DEUX ACTES. « Repos » (7:1) : après les Philistins (2S 5, 8 !) — le repos PRÉCÈDE le projet. Alliance « indéfiniment durable concernant les BONTÉS envers David qui sont FIDÈLES » (1958885 — Is 55:3 CITE ! + Ac 13:34 (Paul !) : les « saintes fidélités » = la RÉSURRECTION (le Ressuscité NE VOIT PAS la corruption : l'alliance davidique DÉBOUCHE sur Pâques !). « Maison » (bayit) : 7:13 « il bâtira une MAISON à mon nom » (le TEMPLE, Salomon !) + 7:11 « je te ferai une MAISON » (DYNASTIE) : le calembour DIVIN (temple ↔ dynastie : le MOT à double fond !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>JÉRUSALEM (prise 2S 5:6-9 : « forteresse de Sion… CITÉ DE DAVID » — Jébuséens : « les AVEUGLES et les BOITEUX » (5:6 : l'insulte !) + « tsinnor » (5:8 : le CANAL — prise par le TUNNEL d'eau (Siloé ? — archéologie : le puits de Warren !). « Lieu » (7:10 : « je fixerai un LIEU à mon peuple ») : la TERRE promise STABILISÉE (cf. Gn 15:18, GE008 : frontières !). « Pâturage » (7:8) : BETHLEHEM (SM071 ! — le berger de Bethléhem : Dieu RAPPELLE l'origine — pâturage → palais !). « Grands de la terre » (7:9 : shem gadol — le NOM parmi les GRANDS : David INTERNATIONAL (Hiram ! Toï de Hamath, 8:9-10 !). « Devant TOI » (7:16 : « devant toi » — l'éternité SOUS LE REGARD de David : le mort VOIT (perspective DIVINE : l'alliance TRANSCENDE la mort — 7:12 : « quand tes jours seront ACCOMPLIS » : la promesse DÉPASSE le tombeau (David MEURT, 1R 2:10, mais la MAISON VIT !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le DROIT : ALLIANCE INCONDITIONNELLE (berit olam — cf. Gn 9:16 (Noé !), Gn 17:7 (Abraham !) : Dieu JURE (Ps 89:35 : « j'ai JURÉ par ma SAINTETÉ » — le SERMENT par SOI-MÊME, cf. Gn 22:16 : « je le jure par MOI-MÊME » !) : le contrat SANS CLAUSE de sortie — vs Moïse (Dt 28 : CONDITIONNEL !) : DEUX alliances, DEUX logiques !). La GÉNÉALOGIE : Mt 1:1-16 (3 × 14 générations ! — Jéchonias « maudit » (Jr 22:30) MAIS ancêtre (Mt 1:12 : Zorobabel !) : la malédiction CONTOURNÉE — pas de trône TERRESTRE pour sa descendance, trône CÉLESTE pour Christ (qui NE S'ASSIED PAS à Jérusalem terrestre !). La RHÉTORIQUE : le CHIASME bayit (tu me bâtis (TEMPLE) ? — NON : je te bâtis (DYNASTIE) ! → le fils bâtira (TEMPLE) : A (maison proposée) → B (maison donnée) → A' (maison bâtie par le fils) — le chiasme PARFAIT !). La TYPOLOGIE : SALOMON TYPE (7:13-14 : il BÂTIT + Père/Fils — MAIS Salomon PÈCHE, 1R 11 ! : le type IMPARFAIT appelle l'ANTITYPE (Hé 1:5 : « JE LUI SERAI PÈRE » = CHRIST — le NT TRANCHE ! ; la clause-châtiment (7:14) NE MONTE PAS à l'antitype (Christ sans péché, Hé 4:15 !) : le type DÉPASSE (pécheur), l'antitype PARFAIT !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>L'ALLIANCE EN 6 TEMPS : PROJET (David : maison de cèdre vs arche sous tente — « je bâtirai » !) → VETO NOCTURNE (Nathan contredit en 24h : « ce n'est pas toi » !) → INVERSION (c'est MOI qui te bâtirai une MAISON : temple ↔ dynastie — le calembour divin !) → PROMESSE (postérité + bâtira + Père/Fils + verge-humaine + hesed-irrévocable — l'anti-Saül !) → TRIPLE ÉTERNITÉ (maison + royaume + trône, ad-olam × 3 !) → ENCAISSEMENT (Salomon : « j'ai bâti », 1R 8 ! + Ps 89 : « j'ai juré » ! + Gabriel : « pas de fin », Lc 1 !). L'homme veut loger Dieu ; Dieu loge l'homme — pour toujours.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« POUR TOUJOURS » vs 607 (le trône TERRESTRE tombe — Sédécias, 2R 25 ! — MAIS l'alliance TIENT : le trône CÉLESTE (Lc 1:33 : « pas de fin » !) : terrestre INTERROMPU, céleste ÉTERNEL — le « toujours » CHANGE d'étage !). « JE LUI SERAI PÈRE » (7:14 : Salomon (1Ch 22:10 : « il sera mon FILS » !) ET Christ (Hé 1:5 !) : DOUBLE application (type + antitype) — le texte VISE les deux : suivre le NT !). « S'il commet l'iniquité » (7:14 : Salomon, 1R 11 : idolâtrie ! — PAS Christ (sans péché, Hé 4:15 !) : la clause-châtiment NE MONTE PAS à l'antitype !). « Verge D'HOMMES » (7:14 : châtiment HUMAIN (Hadad ? Rezon ? 1R 11:14, 23 : les ADVERSAIRES suscités !) — PAS rejet (vs Saül, 7:15 ! : corrigé, pas rejeté !). « Dormiras avec tes pères » (7:12 : EUPHÉMISME — cf. SM067 : « chemin de toute la terre » ! : les euphémismes SE SUIVENT — dormir = mourir (cf. SM072, Ec 9:5 : la mort = sommeil !).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cèdre vs tente</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">7:2</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JE te bâtirai</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:11</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trône toujours</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">7:16</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Salomon bâtit</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1R 8</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas de fin</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Lc 1</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1958885">La bonté divine et le royaume (alliance David, bontés fidèles, 2S 7)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1958885</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/10/7">2 Samuel 7 — Bible d'étude (notes 7:1-29)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/10/7</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/42/1">Luc 1 — Bible d'étude (trône de David, 1:32-33)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/42/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche RO073 — « Je te bâtirai une maison » : trône pour toujours</span><span>Catégorie RO</span></div></div>
+</article>
+<article class="fiche" id="RO074">
+<div class="visuel"><img src="images/prophe_RO074_epee.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE RO074 · CATÉGORIE RO</div>
+<h3>« L'épée ne s'écartera pas » : le toit jugé du toit</h3>
+<div class="ref">2 Samuel 12:10-12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Jugement de David (parabole → aveu → épée → toit contre toit)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche RO074</div><audio controls preload="none" src="audio/fiche_RO74_epee.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_RO74_epee.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>2 Samuel 12:10-12</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Jugement de David (parabole → aveu → épée → toit contre toit)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : 2 Samuel — P074 (12:10-12 : l'épée sur la maison ; malheur des proches) ; accomplissement 2S 13-18 ; 16:21, 22</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Au temps où les ROIS SORTENT… David RESTA. » (11:1 — resta !)</li>
+<li>« Il VIT… il PRIT… il COUCHA. » (11:2-4 — vit !)</li>
+<li>« Mettez Urie… RETIREZ-VOUS. » (11:15 — retirez-vous !)</li>
+<li>« L'AGNELLE… mangeait… buvait… dormait… comme une FILLE. » (12:3 — fille !)</li>
+<li>« Il MÉRITE LA MORT… il PAIERA QUATRE FOIS ! » (12:5-6 — quatre !)</li>
+<li>« TU ES L'HOMME ! » (12:7 — toi !)</li>
+<li>« L'ÉPÉE NE S'ÉCARTERA PAS de ta maison, pour des temps indéfinis. » (12:10 — écartera !)</li>
+<li>« Je ferai LEVER le malheur DE TA MAISON. » (12:11 — maison !)</li>
+<li>« Il couchera… AUX YEUX DE CE SOLEIL. » (12:11 — soleil !)</li>
+<li>« Tu as agi EN SECRET ; moi, DEVANT TOUT ISRAËL. » (12:12 — secret !)</li>
+<li>« J'AI PÉCHÉ. » — « Jéhovah LAISSE PASSER… le FILS MOURRA. » (12:13-14 — péché !)</li>
+<li>« TENTE sur le TOIT… aux yeux de TOUT ISRAËL. » (16:22 — toit !)</li>
+<li>« MON FILS ABSALOM !… À TA PLACE ! » (18:33 — place !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, ~1030? — APRÈS Bethsabée + Urie (2S 11 !) : « au temps où les ROIS SORTENT, David RESTA » (11:1 — les rois SORTENT, David DORT (« vers le SOIR, il se LEVA de son LIT », 11:2 : le roi LÈVE-TARD — l'oisiveté AVANT la chute !) — le TOIT (11:2 : « il se PROMENAIT sur le TOIT… il VIT… il PRIT… il COUCHA » : voir → prendre → coucher — la CASCADE en 3 verbes !) — la LETTRE (11:14-15 : « mettez Urie… RETIREZ-VOUS derrière lui » : le meurtre par ENCRE — Urie PORTE sa condamnation (le facteur de sa mort !) — « la chose DÉPLUT (wayyera') aux yeux » (11:27 : le MAL aux yeux !). Nathan : la PARABOLE (12:1-4 — riche + pauvre + AGNELLE : 12:3 « elle mangeait de son morceau, buvait de sa coupe, dormait sur son sein… comme une FILLE » — l'agnelle-FILLE : Bethsabée CHIFFRÉE ! — « le riche PRIT » (12:4 : le VERBE du vol !) — David : « il MÉRITE LA MORT… il PAIERA QUATRE FOIS » (12:5-6 : FUREUR + TALION × 4 (Ex 22:1 : le droit CITÉ — David SE CONDAMNE par sa bouche !) — « TU ES L'HOMME (attah ha'ish !) » (12:7 : 3 mots hébreux — le plus COURT réquisitoire !). RÉQUISITOIRE (12:7-9) : « c'est MOI qui t'ai oint… délivré… DONNÉ (maison + femmes + Israël + Juda !)… et si PEU, J'AURAIS AJOUTÉ ! » — le DON + le SURPLUS refusé : Dieu AURAIT DONNÉ (David n'a pas DEMANDÉ : il a PRIS !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« L'ÉPÉE (herev) NE S'ÉCARTERA PAS (lo tasur) de ta maison » (12:10) : tasur = se DÉTOURNER — l'épée NE SE DÉTOURNE PAS (elle RESTE : l'hôte PERMANENT !) — « POUR DES TEMPS INDÉFINIS » (ad-olam : cf. RO073 — le MÊME ad-olam (éternité !) : la BÉNÉDICTION (trône !) et la MALÉDICTION (épée !) PARTAGENT l'éternité — les DEUX ad-olam COHABITENT !). « PUISQUE tu m'as MÉPRISÉ (ki vezi'tani) » (12:10) : bazah = mépriser — David n'a pas seulement PÉCHÉ : il a MÉPRISÉ (Dieu TRAITÉ comme RIEN — cf. 12:14 : « tu as traité Jéhovah SANS RESPECT » !). « Je vais faire SE LEVER (meqim) le MALHEUR (ra'ah) DE TA MAISON (mibbetekha) » (12:11) : qum = SE LEVER — le malheur SE LÈVE (comme un FILS SE LÈVE : le malheur-FILS !) — « de ta maison » : l'ENNEMI INTÉRIEUR (pas les Philistins : les FILS !). « Je PRENDRAI (laqahti) tes femmes… je les DONNERAI (venatatti) à ton COMPAGNON » (12:11) : PRENDRE + DONNER — les VERBES du crime RETOURNÉS (David PRIT, 11:4 → Dieu PRENDRA : le MIROIR !) — « il couchera… AUX YEUX DE CE SOLEIL (le'eyney hashemesh) » (12:11) : EN PUBLIC — le crime SECRET (toit, nuit, lettre !) → châtiment SOLAIRE (le soleil TÉMOIN !). « Tu as agi EN SECRET (bassater), moi j'agirai DEVANT TOUT ISRAËL » (12:12) : seter ↔ kol-Yisra'el — SECRET ↔ PUBLIC : l'inversion TOTALE ! « J'AI PÉCHÉ (hata'ti) » (12:13) : 1 MOT — l'aveu le PLUS COURT (vs Saül : 4 couches, SM071 ! — David : 1 mot, Saül : 4 excuses : le CONTRASTE !) — « Jéhovah LAISSE PASSER (he'evir) ton péché » (12:13 : 'avar = PASSER — le péché PASSÉ (pas effacé SANS suite : 12:14 « le FILS MOURRA » !) : pardonné MAIS frappé — PARDON + CONSÉQUENCES, les DEUX ! + Ps 51 : le psaume de l'aveu (« crée en moi un CŒUR PUR » !).</p>
+<h4>5 · Interprétation</h4>
+<p>AMNON (2S 13) : Tamar VIOLÉE (13:14 : « il la VIOLA » — le FILS répète le PÈRE (prendre une femme !)) → Absalom TUE Amnon (13:28-29 : « FRAPPEZ Amnon » — l'ÉPÉE (12:10) COMMENCE : frère tue frère !). ABSALOM (2S 15-18) : « il se procura CHAR + CHEVAUX + 50 COUREURS » (15:1 : le CORTÈGE du putsch !) + « il VOLA le CŒUR » (15:6 : wayegannov — VOLER : le VOLEUR de cœurs !) + « ABSALOM RÈGNE à Hébron ! » (15:10 : le CRI !) + David FUIT PIEDS NUS (15:30 : « il MONTAIT… PLEURANT… TÊTE COUVERTE… PIEDS NUS » — le ROI en PÉNITENT ! + « laisse-le MAUDIRE » (16:11 : Shiméï MAUDIT (pierres + poussière !) : David — « Jéhovah le lui a DIT » — le roi PARDONNE en MARCHANT !) — AHITOPHEL (16:21 : « va vers les CONCUBINES » — « on dressa une TENTE sur le TOIT… aux yeux de TOUT ISRAËL » (16:22 : le TOIT (11:2 : le crime !) → le TOIT (16:22 : le châtiment !) — MÊME LIEU : le toit JUGE ! + « devant TOUT ISRAËL » (12:12 EXACT !)) — FORÊT D'ÉPHRAÏM (18:6-15 : 20 000 morts ! + « la FORÊT DÉVORA PLUS que l'épée » (18:8 : les ARBRES TUENT — plus que les SOLDATS : la nature ENRÔLÉE !) + Absalom PENDU PAR LA TÊTE (18:9 : « sa TÊTE se prit dans le TÉRÉBINTHE » — la CHEVELURE (14:26 : 200 sicles !) — la BEAUTÉ-PIÈGE : les cheveux TUENT ! + « le mulet PASSA » (18:9 : la monture CONTINUE sans cavalier — l'image !) + Joab : 3 DARDS AU CŒUR (18:14 : « encore VIVANT » — Joab DÉSOBÉIT (« doucement », 18:5 ! : le GÉNÉRAL tue le PRINCE !) + « MON FILS ABSALOM ! QUI ME DONNERA DE MOURIR À TA PLACE ! » (18:33 : 5 × « mon fils » ! — le PÈRE pleure le PUTSCHISTE : l'amour PATERNEL &gt; la justice ROYALE ! + « la VICTOIRE se changea en DEUIL » (19:2 : gagner = pleurer — la victoire ENDEUILLÉE !). ADONIYA (1R 1-2) : « je RÉGNERAI » (1:5 + « 50 COUREURS » (1:5 : le MÊME cortège qu'Absalom — le putsch COPIÉ !) → EXÉCUTÉ (2:24-25 : « AUJOURD'HUI » (Salomon !) : l'épée CONTINUE (12:10 ad-olam !)). L'ENFANT (12:14-19) : « le fils MOURRA » — 7 JOURS (David JEÛNE + « DORMIT PAR TERRE », 12:16 !) → « l'enfant MOURUT le 7e JOUR » (12:18) + « il se LEVA… se LAVA… MANGEA » (12:20 : « je MARCHERAI vers LUI » (12:23) — le DEUIL THÉOLOGIQUE : « il ne reviendra pas vers moi » (les morts NE REVIENNENT PAS — cf. SM072, Ec 9:5 !). « QUATRE FOIS » (12:6) : 4 FILS MEURENT (enfant + Amnon + Absalom + Adoniya : le × 4 ENCAISSÉ — PROPOSÉ : le talion CHIFFRÉ !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">11:2-4</td><td>Toit : voir → prendre → coucher</td></tr>
+<tr><td class="d">11:14-15</td><td>Lettre : « retirez-vous » — Urie tué</td></tr>
+<tr><td class="d">12:1-7</td><td>Parabole + « TU ES L'HOMME »</td></tr>
+<tr><td class="d">12:10-14</td><td>Épée ad-olam + aveu + « le fils mourra »</td></tr>
+<tr><td class="d">13:28-29</td><td>Amnon tué : l'épée commence</td></tr>
+<tr><td class="d">15-18</td><td>Absalom : toit → toit + forêt + « mon fils ! »</td></tr>
+<tr><td class="d">1R 2:24-25</td><td>Adoniya : l'épée continue (le × 4 ?)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>BETHSABÉE (11:3 : « fille d'Éliam, femme d'URIE le HITTITE ») — HITTITE : l'étranger FIDÈLE (11:11 : « l'arche… sous des TENTES… et MOI j'irais ?! » — Urie REFUSE le confort : le PAÏEN fait HONTE au ROI ! + 11:9 : « il DORMIT à la PORTE » — 2 NUITS (11:9, 13 : ENIVRÉ mais FIDÈLE — l'ivresse NE CORROMPT PAS !). RABBA (11:1, 12:26-31 : Joab ASSIÈGE pendant que David PÈCHE !) → « la COURONNE… UN TALENT D'OR » (12:30 : ~34 kg ! — « avec des PIERRES PRÉCIEUSES » — sur la TÊTE de David : le BUTIN couronne le PARDONNÉ ! + 12:31 (scies/haches ? — CONTROVERSÉ : cruauté ou corvée ? — voir limites !). PS 51 : « en PÉCHÉ ma MÈRE m'a CONÇU » (51:5 : le péché ORIGINEL !) + « crée en moi un CŒUR PUR » (51:10 : bara' — CRÉER, le verbe de Gn 1:1 ! : la RE-CRÉATION demandée !) + « tu ne DÉDAIGNES PAS un cœur BRISÉ » (51:17 : zebah — SACRIFICE = cœur BRISÉ (cf. SM071 : « obéir &gt; sacrifier » — David COMPREND !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le TOIT (11:2 : « il se PROMENAIT sur le TOIT » — le toit PALATIAL (Jérusalem : terrasses !) + « elle se BAIGNAIT » (11:2 : le bain VESPRAL — la maison d'Urie VISIBLE du palais : l'urbanisme PIÈGE !) → 16:22 : TENTE sur le TOIT (« aux yeux de TOUT ISRAËL ») : le MÊME TOIT — le lieu du CRIME = lieu du CHÂTIMENT : la géographie JUGE ! RABBA (Amman : « ville des EAUX », 12:27 — Joab PREND les eaux → David PREND la ville (12:29 : « de peur que ce soit MOI » (Joab) : la GLOIRE au ROI — le général HUMBLE (pour une fois !)). MONT DES OLIVIERS (15:30 : « la MONTÉE… PLEURANT » — le ROI gravit pieds nus la montagne que JÉSUS gravira pleurant sur Jérusalem, Lc 19:41 : les LARMES en MIROIR !). MAHANAÏM (17:24 : « David arriva à MAHANAÏM » — Transjordanie : le REFUGE (cf. Gn 32:2 : « DOUBLE CAMP » — Jacob NOMMA : le lieu des DEUX CAMPS (anges !) : David Y CAMPE, protégé !). FORÊT D'ÉPHRAÏM (18:6 : Transjordanie : « la FORÊT DÉVORA » (18:8 — le LIEU COMBAT (arbres + ravins ! : la nature ENRÔLÉE (cf. Jos 10:11 : GRÊLE ! — Dieu ENRÔLE la météo, ici la FORÊT !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le DROIT : TALION × 4 (12:6 : Ex 22:1, vol de brebis — David SE CONDAMNE (il CITE le droit : le JUGE jugé par sa BOUCHE !) + « il MÉRITE LA MORT » (12:5 : PEINE CAPITALE — adultère + meurtre, Lv 20:10, Nb 35 ! : David PRONONCE sa PEINE — « tu ne MOURRAS PAS » (12:13 : GRÂCE — la peine PRONONCÉE mais SUSPENDUE : le SURSIS royal !). La PSYCHOLOGIE : la PARABOLE (12:1-4 — Nathan NE DIT PAS « tu as péché » : il RACONTE (l'agnelle-FILLE : l'émotion AVANT l'accusation !) — « TU ES l'homme » APRÈS la FUREUR (12:5-7 : David CONDAMNE puis SE RECONNAÎT — la PÉDAGOGIE : juger AUTRUI → se juger SOI (cf. Mt 7:1-5, paille/poutre : Jésus REPREND la MÉTHODE !). La MÉDECINE : le JEÛNE (12:16 : 7 JOURS, « il DORMIT PAR TERRE » + « il ne MANGEA PAS » (12:17 — les anciens SUPPLIENT : il REFUSE : le jeûne royal, deuil ANTICIPÉ !) + « il se LAVA… MANGEA » (12:20 : APRÈS la mort — « je MARCHERAI vers lui » (12:23) : le DEUIL THÉOLOGIQUE — accepter l'IRRÉVERSIBLE : la SANTÉ mentale du deuil !). La TRICHOLOGIE : ABSALOM (14:26 : « 200 SICLES » (~2,3 kg ! : la CHEVELURE-RECORD !) + « de la plante… au SOMMET : AUCUN DÉFAUT » (14:25 : le PLUS BEAU — la beauté MESURÉE (poids + perfection !) → 18:9 : la TÊTE PRISE — les cheveux TUENT : la beauté-PIÈGE (cf. SM070 : « l'apparence » — Saül BEAU ! : les BEAUX MEURENT (Saül + Absalom : la beauté NE SAUVE PAS !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE JUGEMENT EN 8 TEMPS : OISIVETÉ (les rois SORTENT, David RESTE — toit, soir, bain !) → CASCADE (voir → prendre → coucher, 11:2-4 + lettre « retirez-vous », 11:14-15 : l'encre TUE !) → PARABOLE (l'agnelle-FILLE : l'émotion !) → FUREUR (« mort ! × 4 ! » : David SE CONDAMNE !) → « TU ES L'HOMME » (3 mots : le réquisitoire !) → AVEU (1 mot : « j'ai péché » — vs Saül 4 excuses !) → GRÂCE + ÉPÉE (« tu ne mourras pas » MAIS « l'épée ad-olam » + « le fils mourra » !) → ENCAISSEMENT (Amnon, 13 → Absalom, 15-18 : toit → toit ! → Adoniya, 1R 2 ! + enfant, 12:18 : le × 4 !). Le roi qui prit l'agnelle perd quatre fils — et pleure le putschiste comme un père.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« L'ÉPÉE ad-olam » (12:10 : « temps INDÉFINIS » — pas ÉTERNEL ABSOLU : ad-olam = DURÉE INDÉFINIE (cf. RO073 : le MÊME ad-olam (trône !) : les DEUX cohabitent — bénédiction + malédiction ÉTERNELLES-PARALLÈLES !). « QUATRE fils » (PROPOSÉ : enfant + Amnon + Absalom + Adoniya = × 4 (12:6 ! : le TALION CHIFFRÉ — MAIS le texte NE DIT PAS « 4 » : PROPOSÉ (compter !), pas imposé !). RABBA 12:31 (« scies, herses, haches » : CRUAUTÉ (exécution !) ou CORVÉE (travail forcé !) ? — le VERBE (« il fit PASSER » : 'avar) est AMBIGU (passer AU FIL ou passer AU TRAVAIL ? : les versions DIVERGENT (1Ch 20:3 idem !) : NON tranché — signaler !). Ps 51:5 (« en PÉCHÉ conçu » : péché ORIGINEL (Rm 5:12 CONFIRME !) — PAS « ma mère pécha en me concevant » (la CONCEPTION (légitime !) vs la NATURE (pécheresse !) : nuance !). « Tu ne MOURRAS PAS » (12:13 : GRÂCE (peine capitale SUSPENDUE : Lv 20:10 EXIGEAIT la mort ! : Dieu PARDONNE mais FRAPPE (12:14 !) : PARDON + CONSÉQUENCES, les DEUX — le pardon N'EFFACE PAS les suites (épée ad-olam !).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Toit : il vit</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">11:2</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TU ES L'HOMME</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">12:7</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Épée ad-olam</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">12:10</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Toit : tout Israël</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">16:22</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mon fils !</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">18:33</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/10/12">2 Samuel 12 — Bible Rbi8 (parabole, TU ES, épée, 12:1-14)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/10/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/10/12">2 Samuel 12 — Bible d'étude (notes 12:1-31)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/10/12</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200013736">Samuel (livres de) — Étude (David, Bethsabée, Absalom)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200013736</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche RO074 — « L'épée ne s'écartera pas » : le toit jugé du toit</span><span>Catégorie RO</span></div></div>
+</article>
+<article class="fiche" id="RO075">
+<div class="visuel"><img src="images/prophe_RO075_temple.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE RO075 · CATÉGORIE RO</div>
+<h3>« Les passants siffleront » : la maison sous condition</h3>
+<div class="ref">1 Rois 9:3-9</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Contrat du temple (nom consacré → double SI → passants → feu)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche RO075</div><audio controls preload="none" src="audio/fiche_RO75_temple.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_RO75_temple.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>1 Rois 9:3-9</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Contrat du temple (nom consacré → double SI → passants → feu)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : 1 Rois — P075 (9:3-9 : maison rejetée ; passants) ; accomplissement 2R 25:8, 9 ; Jr 22:8, 9</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Salomon eut FINI… TOUT ce qu'il avait souhaité. » (9:1 — fini !)</li>
+<li>« Jéhovah lui APPARUT une 2e FOIS, comme à GABAON. » (9:2 — fois !)</li>
+<li>« Cette maison… j'y ai mis mon NOM POUR TOUJOURS. » (9:3 — nom !)</li>
+<li>« SI vous marchez… SI vous vous DÉTOURNEZ… » (9:4-6 — si !)</li>
+<li>« J'EXTERMINERAI Israël… je REJETTERAI la maison. » (9:7 — rejetterai !)</li>
+<li>« Israël sera PROVERBE et MOQUERIE. » (9:7 — proverbe !)</li>
+<li>« Cette maison deviendra des TAS. » (9:8 — tas !)</li>
+<li>« Les PASSANTS… STUPÉFAITS… SIFFLERONT : POURQUOI ? » (9:8 — pourquoi !)</li>
+<li>« PARCE QU'ils ont ABANDONNÉ… ATTACHÉS à d'autres dieux. » (9:9 — parce !)</li>
+<li>« Il BRÛLA la maison… la maison du ROI… TOUTES. » (2R 25:9 — brûla !)</li>
+<li>« Les NATIONS PASSERONT… POURQUOI ?… PARCE QUE. » (Jr 22:8-9 — nations !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jérusalem, ~1027? — APRÈS temple + palais (9:1 : « Salomon eut FINI… TOUT ce qu'il avait SOUHAITÉ » — 20 ANS (9:10 ! : 7 (temple, 6:38 !) + 13 (palais, 7:1 !) : le palais PRESQUE DOUBLE (13 vs 7 — les PRIORITÉS ? : le CHIFFRE parle (mais le palais = COMPLEXE de 4 bâtiments, 7:1-12 : nuance !)). 2e APPARITION (9:2 : « Jéhovah lui APPARUT une 2e FOIS, comme à GABAON » — 1re : Gabaon (3:5 : « DEMANDE ! » — sagesse !) → 2e : Jérusalem APRÈS l'ŒUVRE : Dieu REVIENT quand c'est FINI — l'inspection FINALE !). PRIÈRE EXAUCÉE (9:3 : « j'ai ENTENDU ta prière » — 8:22-53 : la DÉDICACE (à GENOUX, 8:54 ! + « le ciel… ne peuvent te CONTENIR », 8:27 : le temple INSUFFISANT — l'aveu AVANT la menace ! + « quand ils PÉCHERONT… tu les LIVRERAS », 8:33-34, 46-53 : Salomon PRÉVOIT l'exil DANS la prière — le ROI prophétise le DÉSASTRE de sa MAISON !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Cette maison… je l'ai rendue SACRÉE (hiqdashti) en y mettant mon NOM (shemi) POUR TOUJOURS (le'olam) » (9:3) : q-d-sh = CONSACRER (le temple SAINT !) — « mon NOM » (pas MA PRÉSENCE TOTALE : 8:27 — le ciel NE CONTIENT PAS ! : le NOM (représentation !) vs l'ESSENCE (incontenable !) : la NUANCE — Dieu NE TIENT PAS dans le temple : Son NOM Y RÉSIDE !). « SI vous marchez… SI vous vous DÉTOURNEZ (im-tashuvu) » (9:4-6) : le SI DOUBLE (Dt 28 ! : CONDITIONNEL — vs RO073 : INCONDITIONNEL ! : DEUX alliances — David : TOUJOURS — temple : SI ! : la maison ÉTERNELLE, le BÂTIMENT CONDITIONNEL !). « J'EXTERMINERAI (vehikharti) Israël… je REJETTERAI (veshillahti) la maison » (9:7) : karat = COUPER/EXTERMINER (cf. SM068 : « je COUPERAI ton bras » ! : le VERBE du jugement !) + shalah = REJETER/RENVOYER (le temple RÉPUDIÉ — comme une FEMME, Dt 24:1 ! : le DIVORCE architectural !). « Israël sera PROVERBE (mashal) et MOQUERIE (sheninah) » (9:7) : mashal = PROVERBE/DICTON — Israël DEVIENT un DICTON (on CITE le désastre ! — cf. DT056 : « proverbe » (Dt 28:37 : « tu deviendras… PROVERBE » — MOT POUR MOT (Moïse CITÉ 500 ans APRÈS !). « Cette maison deviendra des TAS » (9:8 : 'iyyim ? — RUINE (LSG : « si haut placée qu'ait été » : le CONTRASTE — hauteur → tas ! : le temple GRATTE-CIEL devient GRAVATS !). « Tous les PASSANTS… STUPÉFAITS… SIFFLERONT (vesharaq) » (9:8) : sharaq = SIFFLER (cf. DT061 : « les PASSANTS… siffleront », Dt 29:24 ! : MOT POUR MOT — Moïse ENCORE ! : 1R 9:8 CITE Dt 29:24 — les passants VOYAGENT (Deutéronome → Rois !). « POURQUOI (meh) Jéhovah a-t-il fait CELA ? » (9:8 : la QUESTION des passants — cf. DT061 ! : la question UNIVERSELLE !) — « PARCE QU'ils ont ABANDONNÉ… ils se sont ATTACHÉS à d'AUTRES dieux » (9:9 : la RÉPONSE — catéchisme du DÉSASTRE : abandon + attachement — les DEUX verbes (quitter Dieu = épouser les idoles !).</p>
+<h4>5 · Interprétation</h4>
+<p>607 (2R 25:8-9, P075) : « NEBUZARADAN… BRÛLA la maison de Jéhovah, la maison du ROI, et TOUTES les maisons » — le FEU TRIPLE (temple + palais + ville : TOUT BRÛLE !) + « il DÉMOLIT les MURS » (25:10 : la ville OUVERTE !) + « les COLONNES d'airain… la MER… il les BRISA » (25:13 : Yakîn/Boaz BRISÉES (cf. 7:15-22 : 18 coudées ! : les GÉANTES tombent !) + « il emporta l'AIRAIN à Babylone » (25:13 : le BUTIN (2 000+ kg ? ! : le temple DÉMÉNAGE !). JÉRÉMIE (Jr 22:8-9, P075) : « beaucoup de NATIONS PASSERONT… ils se DIRONT : POURQUOI ?… » — Jérémie CITE 1R 9:8-9 (les PASSANTS REVIENNENT, 500 ans APRÈS : la prophétie ENCAISSÉE par un PROPHÈTE ! + Jr 7:12-14 : « allez à SILO » (SM068 ! : Silo RUINÉE = temple RUINÉ — les RUINES SE CITENT !) + Jr 26:6 : « je rendrai cette maison COMME SILO » — EXPLICITE !). « PROVERBE » (9:7) : Ps 44:14 (« tu fais de nous un PROVERBE » : le psaume PLEURE — l'encaissement LYRIQUE !) + 2Ch 7:20 (« je les ARRACHERAI » : le PARALLÈLE — Chroniques CONFIRME : arracher + rejeter, les DEUX verbes !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">9:1-2</td><td>Fini (7+13 ans) + 2e apparition « comme Gabaon »</td></tr>
+<tr><td class="d">9:3</td><td>« Mon NOM pour toujours » : consécration</td></tr>
+<tr><td class="d">9:4-7</td><td>Double SI : affermi / exterminé + rejeté + PROVERBE</td></tr>
+<tr><td class="d">9:8-9</td><td>Passants : stupéfaits → SIFFLENT → « POURQUOI ? » → « PARCE QU' »</td></tr>
+<tr><td class="d">607 (2R 25:8-9)</td><td>FEU TRIPLE + murs démolis + colonnes brisées</td></tr>
+<tr><td class="d">Jr 22:8-9</td><td>Jérémie CITE : les passants REVIENNENT</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>SALOMON (~1037?-997? : 40 ANS (1R 11:42 ! — comme Saül (Ac 13:21 !) + David (2S 5:4 !) : 3 × 40 — les TROIS premiers rois, 40 ANS CHACUN (le CHIFFRE du RÈGNE-COMPLET !). TEMPLE (7 ANS, 6:38 : « la 11e année… il l'ACHEVA » + « AUCUN marteau… NE S'ENTENDIT » (6:7 : les pierres TAILLÉES AILLEURS — le SILENCE du chantier : le temple NAÎT SANS BRUIT !) + 1Ch 22:14 (« 100 000 TALENTS d'or » — David PRÉPARE (~3 400 TONNES ? ! : le STOCK — le père FINANCE !). DÉDICACE (8:65 : « 7 JOURS + 7 JOURS = 14 JOURS » de FÊTE ! + « 22 000 BŒUFS + 120 000 BREBIS » (8:63 : 142 000 bêtes ! : le SACRIFICE-FLEUVE !) + « la NUÉE REMPLIT » (8:10-11 : « les prêtres ne POUVAIENT PAS se tenir » — la GLOIRE PARALYSE (cf. Ex 40:35 ! : la nuée EMPÊCHE — Moïse AUSSI !). GABAON (3:5 : 1re apparition : « DEMANDE ce que tu veux » — « un CŒUR qui ÉCOUTE » (3:9 : lev shomea' — CŒUR-OREILLE !) + « ni RICHESSE ni GLOIRE » (3:11 : Dieu DONNE QUAND MÊME (3:13 : « ce que tu N'AS PAS demandé » : le BONUS — demander PEU = recevoir TOUT !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>MORIYA (2Ch 3:1 : « la MONTAGNE de MORIYA » — cf. Gn 22:2 : « va au pays de MORIYA », GE010 ! : Abraham SACRIFIE — le MÊME LIEU : le temple SUR l'autel d'Abraham — la montagne du SACRIFICE (2 000 ans AVANT : le LIEU PRÉDIT le BÂTIMENT !) + « l'AIRE d'Ornan » (1Ch 21:18 : David ACHÈTE (50 sicles, 2S 24:24 : « je ne veux pas OFFRIR du GRATUIT » — le prix du SACRIFICE !). « MON NOM… POUR TOUJOURS » (9:3 : le NOM RÉSIDE — Dt 12:5 : « le LIEU… pour y mettre SON NOM » : Moïse PRÉVOIT — le temple = le LIEU-NOMMÉ !). « PASSANTS » (9:8 : 'over — les VOYAGEURS (la ROUTE : Jérusalem sur les ROUTES — les CARAVANES VOIENT : les ruines comme SPECTACLE ! — cf. DT061 : « les GÉNÉRATIONS à venir… d'un pays LOINTAIN » (Dt 29:22 : les TOURISTES du désastre !). BABYLONE (2R 25:13 : l'airain EMPORTÉ — les COLONNES VOYAGENT : Yakîn/Boaz à BABYLONE ! : le temple EXILÉ (objets DÉPORTÉS — cf. Dn 1:2 : « une PARTIE des USTENSILES » : Daniel VOIT le butin !). « TAS DE RUINES » (9:8 : 607, les GRAVATS — Ps 79:1 : « ils ont fait de Jérusalem des MONCEAUX » : le psaume PHOTOGRAPHIE — les tas ENCAISSÉS !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'ARCHITECTURE : le TEMPLE (60 × 20 × 30 coudées, 6:2 : ~27 × 9 × 13,5 m — le PLAN : portique + saint + très-saint (6:3-20 : 3 PIÈCES !) + « fenêtres à GRILLES » (6:4 : les CLAIRES-VOIES — lumière TAMISÉE !) + « lames d'OR » (6:20-22 : le TRÈS-SAINT PLAQUÉ OR — le cube DORÉ (20 × 20 × 20 : le CUBE (cf. Ré 21:16 : la NOUVELLE Jérusalem CUBIQUE ! : le cube ANNONCE le cube !)). La MÉTALLURGIE : YAKÎN/BOAZ (7:15-22 : 18 coudées (~8 m !) + « CHAPITEAUX en LIS » (7:19 : 5 coudées !) + « 200 GRENADES » (7:20 : × 2 rangées ! : les COLONNES-DÉCOR — NOMS : « IL AFFERMIT » (Yakîn !) + « EN LUI la FORCE » (Boaz !) : les colonnes PRÊCHENT (affermissement + force : la THÉOLOGIE en BRONZE !) → BRISÉES (2R 25:13 : les PRÉDICATRICES TOMBENT !). L'ACOUSTIQUE : le SIFFLEMENT (sharaq, 9:8 : SIFFLER — dérision ! — cf. DT061 : Dt 29:24 (MÊME verbe ! : le SIFFLET du JUGEMENT (Jb 27:23 : « on SIFFLE » ! + Lm 2:15 : « ils SIFFLENT… sur Jérusalem » — Jérémie ENTEND : les sifflets ENCAISSÉS !). Le DROIT : le CONTRAT (9:4-6 : SI… SI… — CONDITIONNEL (vs RO073 : INCONDITIONNEL ! : DEUX contrats — David : TOUJOURS (personne !) — temple : SI (bâtiment !) : les PERSONNES DURENT, les PIERRES TOMBENT (607 : le temple TOMBE, la LIGNÉE SURVIT (Jojakin ! Zorobabel !) : le CONTRAT TIENT !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE CONTRAT EN 7 TEMPS : ACHÈVEMENT (temple 7 ans + palais 13 ans : TOUT fini !) → 2e APPARITION (« comme à Gabaon » : Dieu REVIENT quand c'est FINI !) → CONSÉCRATION (« mon NOM pour toujours » : le NOM réside, l'ESSENCE déborde !) → DOUBLE SI (marchez → affermi / détournez → exterminé + rejeté ! : CONDITIONNEL — vs David INCONDITIONNEL !) → PROVERBE + TAS (Israël DICTON, temple GRAVATS !) → PASSANTS (stupéfaits → SIFFLENT → « POURQUOI ? » → « PARCE QU'abandon + attachement » : le catéchisme du désastre ! — Moïse CITÉ mot pour mot !) → ENCAISSEMENT (607 : FEU TRIPLE + colonnes BRISÉES + airain EXILÉ ! + Jérémie CITE, Jr 22:8-9 : les passants REVIENNENT !). Dieu met Son nom dans la maison — mais garde le droit de la quitter.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« MON NOM… POUR TOUJOURS » (9:3 : le NOM (représentation !) — PAS « le temple POUR TOUJOURS » (le BÂTIMENT est CONDITIONNEL, 9:7 ! : le NOM DEMEURE (Jérusalem RESTE la ville !), le BÂTIMENT TOMBE (607 !) : nuance NOM vs PIERRES !). « SI HAUT PLACÉE » (LSG 9:8 : « si haut placée qu'ait été » — VARIANTES (TM : 'elyon ? « haute » ? : les versions DIVERGENT (hauteur vs ruine : le CONTRASTE (hauteur → tas) vs l'ÉTAT (tas !) : signaler, NON trancher !). PALAIS 13 ANS vs TEMPLE 7 (PRIORITÉS ? — palais = 4 BÂTIMENTS (7:1-12 ! : COMPLEXE (pas 1 maison !) : nuance — le CHIFFRE seul ACCUSE, le DÉTAIL NUANCE !). « 22 000 + 120 000 » (8:63 : 142 000 bêtes — EXAGÉRATION ? (14 JOURS + TOUT Israël : POSSIBLE — abattage MASSIF (~10 000/jour ! : les CHIFFRES du FESTIN (cf. 2Ch 30:24 (Ézéchias : 17 000 ! : les grands nombres CULTUELS — prendre au SÉRIEUX (foule NATIONALE !).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NOM pour toujours</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9:3</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sinon : REJETÉ</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">9:7</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Passants SIFFLENT</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9:8</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FEU TRIPLE</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« POURQUOI ? »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jr 22</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/9">1 Rois 9 — Traduction (maison, passants, 9:1-9)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/9</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1001060014">Premier livre des Rois — Texte (prière, maison, 9:3-9)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1001060014</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/9">1 Rois 9 — Bible d'étude (notes 9:1-28)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/9</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche RO075 — « Les passants siffleront » : la maison sous condition</span><span>Catégorie RO</span></div></div>
+</article>
+<article class="fiche" id="RO076">
+<div class="visuel"><img src="images/prophe_RO076_manteau.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE RO076 · CATÉGORIE RO</div>
+<h3>« Prends dix morceaux » : le manteau neuf en douze</h3>
+<div class="ref">1 Rois 11:29-39</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Schisme annoncé (manteau → motif → réserve → offre → veto)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche RO076</div><audio controls preload="none" src="audio/fiche_RO76_manteau.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_RO76_manteau.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>1 Rois 11:29-39</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Schisme annoncé (manteau → motif → réserve → offre → veto)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : 1 Rois — P076 (11:29-39 : dix tribus à Jéroboam ; affliction) ; accomplissement 1R 12:15-24</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Jéroboam… HOMME FORT… sur toute la charge de Joseph. » (11:26-28 — Joseph !)</li>
+<li>« AHIYA de SILO… VÊTU d'un MANTEAU NEUF… SEULS dans les champs. » (11:29 — neuf !)</li>
+<li>« Il SAISIT… DÉCHIRA EN DOUZE MORCEAUX. » (11:30 — douze !)</li>
+<li>« PRENDS pour toi DIX morceaux. » (11:31 — dix !)</li>
+<li>« UNE SEULE tribu lui restera. » (11:32 — une !)</li>
+<li>« PARCE QU'ils m'ont ABANDONNÉ : ASTARTÉ, KEMOSH, MILKOM. » (11:33 — parce !)</li>
+<li>« Je ne prendrai PAS… À CAUSE DE DAVID. » (11:34 — David !)</li>
+<li>« Une LAMPE à David, TOUJOURS. » (11:36 — lampe !)</li>
+<li>« SI tu ÉCOUTES… MAISON STABLE. » (11:38 — stable !)</li>
+<li>« ALLÈGE le JOUG ! » — « SERS ! » vs « SCORPIONS ! » (12:4-11 — allège !)</li>
+<li>« QUELLE PART avec David ? À TES TENTES ! » (12:16 — tentes !)</li>
+<li>« N'Y ALLEZ PAS… C'EST DE MOI que cela est venu. » (12:24 — moi !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>ROUTE de Jérusalem, ~997? — JÉROBOAM (« Éphraïmite, fils de Nebath, ZÉRÉDA », 11:26 + « sa mère… VEUVE », 11:26 : l'orphelin de PÈRE ! + « HOMME FORT et VAILLANT (gibbor hayil !) », 11:28 : le MÊME titre que Gédéon (Jg 6:12 !) + Jephté (Jg 11:1 !) : les JUGES-GIBBORIM — Jéroboam JUGE-MANQUÉ ! + Salomon l'établit « SUR TOUTE la charge de Joseph », 11:28 : CONTREMAÎTRE des corvées (Joseph = Éphraïm + Manassé ! : le SURVEILLANT des TRIBUS du NORD — il ENCAdre ceux qu'il RÉGNERA !). AHIYA (« le PROPHÈTE… de SILO », 11:29 : SILO (SM068 ! : le sanctuaire DÉCHU ENVOIE le prophète du DÉCHIREMENT — la géographie IRONIQUE ! + « VÊTU d'un MANTEAU NEUF (salmah hadashah) », 11:29 : NEUF ! (pas usé : le ROYAUME NEUF (Salomon !) DÉCHIRÉ NEUF — le SCHISME PRÉCOCE (pas d'usure : de FAUTE !) + « ils étaient SEULS TOUS LES DEUX dans les CHAMPS », 11:29 : le TÊTE-À-TÊTE (pas de TÉMOINS : l'oracle PRIVÉ — comme Samuel + Saül, 1S 9 ! : les ONCTIONS SECRÈTES !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« AHIYA SAISIT le manteau… le DÉCHIRA EN DOUZE MORCEAUX » (11:30) : qara' ! (cf. SM071 : « Jéhovah T'ARRACHE (qara') » ! : le MÊME VERBE — manteau DÉCHIRÉ : Saül PERD (1S 15 !) → Jéroboam REÇOIT (1R 11 !) : le MOTIF du manteau (TROISIÈME emploi — Samuel (arraché !) → Ahiya (déchiré !) → Élie/Élisée (2R 2:12-14 : DÉCHIRÉ en 2 + RAMASSÉ ! : le manteau TRANSFÉRÉ (pas divisé !) : nuances !). « PRENDS pour toi DIX morceaux » (11:31 : 'asarah — DIX !) — « UNE SEULE tribu lui RESTERA » (11:32 : shevet ehad — UNE !) — 10 + 1 = 11 : où est la 12e ? LÉVI (pas de TERRITOIRE, Jos 13:14 ! : 10 + 1 (Juda !) + Lévi (dispersé !) = 12 — le COMPTE JUSTE ! + Benjamin ? (12:21 : « Juda + Benjamin » ! : Benjamin AVEC Juda — le « UNE tribu » = Juda (+ Benjamin ABSORBÉ : « le PETIT Benjamin », Ps 68:27 ! : voir limites !). « PARCE QU'ils m'ont ABANDONNÉ… ASTARTÉ… KEMOSH… MILKOM » (11:33) : 3 IDOLES (Sidoniens ! Moab ! Ammon ! : les 3 VOISINS — les 3 BELLES-FAMILLES (11:1 : « il AIMA beaucoup de femmes ÉTRANGÈRES » — 700 + 300 (11:3 : 1 000 FEMMES ! : le HAREM-MUSÉE (toutes les nations !) + « ses femmes DÉTOURNÈRENT son CŒUR », 11:4 : le CŒUR (pas le CULTE SEUL : le CŒUR détourné — l'idolâtrie CARDIAQUE !). « Je ne PRENDRAI PAS… DE SA MAIN… À CAUSE DE DAVID » (11:34) : LOYAUTÉ POSTHUME (vs Salomon VIVANT : Dieu PROTÈGE le fils À CAUSE du père — RO073 ! : l'alliance COUVRE (le hesed IRRÉVOCABLE, 7:15 ! : même idolâtre, Salomon GARDE — le CONTRAT TIENT !). « Je donnerai… pour qu'il y ait TOUJOURS (kol-hayyamim) une LAMPE (nir) à David » (11:36) : nir = LAMPE (cf. 15:4 : « il lui donna une LAMPE » ! + 2R 8:19 ! + 2Ch 21:7 ! : le MOTIF de la lampe, 4 × — la DYNASTIE = LAMPE (petite FLAMME dans la NUIT : elle NE S'ÉTEINT PAS — cf. SM069 : « la lampe N'ÉTAIT PAS ÉTEINTE », 3:3 ! : les LAMPES SE RÉPONDENT !). « SI tu ÉCOUTES… je te bâtirai une MAISON STABLE (bayit ne'eman) » (11:38) : ne'eman ! (cf. SM068 : « PRÊTRE FIDÈLE (ne'eman) » + « MAISON DURABLE (ne'eman) » ! : le MÊME MOT — Jéroboam = le TSADOQ manqué : la maison STABLE OFFERTE (il REFUSERA, ch.12-14 ! : l'offre GÂCHÉE !).</p>
+<h4>5 · Interprétation</h4>
+<p>SICHEM (1R 12:1) : « TOUT Israël vint à SICHEM » — SICHEM (SM067 ! : Josué 24 ! : le lieu du « CHOISISSEZ » — on Y CHOISIT (Roboam ? Jéroboam ?) : Sichem JUGE (ENCORE !) + Jéroboam REVIENT d'ÉGYPTE (12:2 : « il S'ÉTAIT ENFUI », 11:40 — Salomon VOULAIT le TUER ! : l'exil ÉGYPTIEN (comme Joseph ! Moïse ! Jésus, Mt 2 ! : les SAUVÉS par l'ÉGYPTE !). « ALLÈGE le JOUG » (12:4 : « ton père a RENDU DUR… ALLÈGE (haqel !) » — le JOUG (ol : l'esclavage FISCAL (corvées, 5:27-30 : 30 000 + 70 000 + 80 000 ! : 180 000 corvéables — le CHIFFRE de l'OPPRESSION !) — ANCIENS : « SOIS SERVITEUR » (12:7 : 'eved — SERS ! : le CONSEIL — servir = régner (cf. Mc 10:44 ! : Jésus CONFIRME, 1 000 ans APRÈS !)) — JEUNES : « PLUS DUR ! » (12:10-11 : « mon PETIT DOIGT est plus GROS que les REINS de mon père » — l'ANATOMIE de l'ORGUEIL (doigt &gt; reins !) + « SCORPIONS » (12:11 : 'aqrabbim — FOUETS à pointes ! : les SCORPIONS (vs FOUETS (père !) : l'escalade — fouets → scorpions : la TORTURE AUGMENTÉE !). « QUELLE PART AVONS-NOUS AVEC DAVID ? » (12:16 : le CRI — cf. 2S 20:1 (Shéba : « QUELLE PART ? » — MÊME CRI : le schisme RÉPÉTÉ (Shéba MANQUÉ (Joab !), Jéroboam RÉUSSI !) + « À TES TENTES, ISRAËL ! » (12:16 : 'oheleikha — les TENTES : on RENTRE — la GRÈVE NATIONALE ! + « VOIS TA MAISON, DAVID ! » (12:16 : le LICENCIEMENT — du roi PAR le peuple : la démocratie BRUTALE !)). ADORAM LAPIDÉ (12:18 : « le PRÉPOSÉ aux CORVÉES… ils le LAPIDÈRENT » — le PERCEPTEUR TUÉ (le symbole FISCAL : tuer l'impôt !) + Roboam « se HÂTA de MONTER sur son CHAR pour FUIR » (12:18 : le ROI FUIT en CHAR — Sichem → Jérusalem : 50 km de HONTE !). « NE COMBATTEZ PAS » (12:21-24, P076) : 180 000 GUERRIERS (rassemblés !) — SHEMAYA : « AINSI dit Jéhovah : N'Y ALLEZ PAS… car C'EST DE MOI (me'itti) que CELA EST VENU » (12:24 : me'it — DE MOI ! : Dieu REVENDIQUE le schisme — le DIVORCE NATIONAL est DIVIN ! + « ils ÉCOUTÈRENT… S'EN RETOURNÈRENT » (12:24 : l'armée DÉMOBILISÉE par un VERSET — la parole &gt; 180 000 SOLDATS !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">11:26-28</td><td>Jéroboam : gibbor + contremaître de Joseph</td></tr>
+<tr><td class="d">11:29-31</td><td>Manteau NEUF → 12 morceaux : « PRENDS 10 »</td></tr>
+<tr><td class="d">11:33-39</td><td>Motif (3 idoles) + réserve (LAMPE) + offre (SI...)</td></tr>
+<tr><td class="d">11:40</td><td>Exil en Égypte (Shishaq)</td></tr>
+<tr><td class="d">12:1-11</td><td>Sichem : « ALLÈGE ! » → « SERS ! » vs « SCORPIONS ! »</td></tr>
+<tr><td class="d">12:16-18</td><td>« QUELLE PART ? » + Adoram lapidé + fuite</td></tr>
+<tr><td class="d">12:21-24</td><td>180 000 démobilisés : « C'EST DE MOI ! »</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Salomon idolâtre (11:4-8) : « il BÂTIT un HAUT LIEU à KEMOSH… à MILKOM » (11:7 : sur la MONTAGNE « FACE À Jérusalem », 11:7 — le MONT DES OLIVIERS ! : les IDOLES FACE AU TEMPLE — vis-à-vis SACRILÈGE ! + « il FIT DE MÊME pour TOUTES ses femmes », 11:8 : le HAREM-MISSIONNAIRE (chaque femme = un AUTEL ! : l'œcuménisme CONJUGAL !). « Jéhovah S'IRRITA » (11:9 : wayyit'appeph — le COURROUX ! + « celui qui lui était APPARU DEUX FOIS », 11:9 : DEUX apparitions + IDOLÂTRIE — la GRÂCE GÂCHÉE (Gabaon + Jérusalem : 2 chances !) + « je DÉCHIRERAI (qara') », 11:11 : le VERBE (DÉJÀ à Saül ! : le manteau REVIENT !). JÉROBOAM en ÉGYPTE (11:40 : « il S'ENFUIT… vers SHISHAQ ») — SHISHAQ = SHÉSHONQ Ier ! (pharaon, XXIIe dynastie : CONFIRMÉ — stèle de Megiddo ! + relief de Karnak (il CITE… 12:25-26 ? : Shishaq ENVAHIT, 1R 14:25-26 — 5e année de Roboam ! : l'ARCHÉOLOGIE CONFIRME — Karnak : liste de VILLES ! : le pharaon GRAVE, la Bible DIT VRAI !). Roboam (12:1-24 : 41 ANS en montant, 14:21 ! + « sa mère : NAAMA l'AMMONITE », 14:21 : l'AMMONITE ! — le fils d'une PAÏENNE (Milkom ?! (11:33 !) : Roboam = fils de l'IDOLÂTRIE — le fruit du HAREM !). « 180 000 » (12:21 : GUERRIERS (Juda + Benjamin !) — vs corvéables 180 000 (5:27-30 ! : le MÊME CHIFFRE (l'armée = la corvée : le peuple EXPLOITÉ devient SOLDAT (contre ses FRÈRES !) + « ils ÉCOUTÈRENT » (12:24 : Shemaya DÉSARME — un PROPHÈTE &gt; 180 000 : la parole DÉMOBILISE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>SICHEM (12:1 : entre GARIZIM/ÉBAL (SM067 ! : Dt 27 ! + Jos 24 ! : « CHOISISSEZ » — le lieu du CHOIX (on Y CHOISIT, ENCORE ! : Sichem = l'URNE nationale ! + « Jéroboam BÂTIT SICHEM », 12:25 : il s'y INSTALLE (capitale PROVISOIRE : Sichem COURONNE le schisme !). PÉNUEL (12:25 : « il BÂTIT PÉNUEL » — PÉNUEL (Gn 32:30 : Jacob : « FACE DE DIEU » ! : le lieu de la LUTTE — Jéroboam FORTIFIE « la face de Dieu » : l'ironie (il FORTIFIE le lieu SAINT pour un ROYAUME SCHISMATIQUE !). BÉTHEL + DAN (12:28-29 : « il FIT DEUX VEAUX D'OR » — BÉTHEL (sud !) + DAN (nord !) : les DEUX PÔLES (le royaume ENCADRÉ — d'idoles !) + « VOICI TES DIEUX » (12:28 : 'elleh 'eloheikha — MOT POUR MOT Ex 32:4 (le VEAU du désert ! : Jéroboam CITE Aaron — l'idolâtrie CITATIONNELLE ! + « c'est TROP pour vous de MONTER », 12:28 : rav-lakhem — TROP LOIN : prétexte GÉOGRAPHIQUE (Jérusalem = TROP HAUT : la PIÉTÉ kilométrique !). ÉGYPTE (11:40 : EXIL (Shishaq !) + 12:2 : RETOUR — le messie du NORD revient d'ÉGYPTE (cf. Mt 2:15 : « d'ÉGYPTE j'ai APPELÉ » ! : les RETOURS d'Égypte — Joseph ! Moïse ! Jéroboam ! Jésus ! : le MOTIF !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le TEXTILE : le MANTEAU NEUF (salmah hadashah, 11:29 : NEUF ! (pas usé !) — le royaume NEUF (Salomon : 40 ANS !) DÉCHIRÉ NEUF (le SCHISME PRÉCOCE — pas d'usure : de FAUTE !) + DÉCHIRÉ en 12 (pas 2 ! : le SCHISME en MORCEAUX (10 + 1 + Lévi : le COMPTE — voir limites !). L'ARITHMÉTIQUE : 10 + 1 = 11 — la 12e ? LÉVI (pas de TERRITOIRE, Jos 13:14 ! : 10 + 1 (Juda !) + Lévi (dispersé !) = 12 — le COMPTE JUSTE ! + Benjamin ? (12:21 : « Juda + Benjamin » — le « UNE » = Juda (+ Benjamin ABSORBÉ (« le PETIT Benjamin », Ps 68:27 ! : le BENJAMIN annexé ! : voir limites !). Le DROIT : le CONTRAT Jéroboam (11:38 : « SI tu ÉCOUTES… je te bâtirai une MAISON STABLE (bayit ne'eman) » — CONDITIONNEL (vs David INCONDITIONNEL ! : Jéroboam = DAVID-POTENTIEL — la maison STABLE OFFERTE : il REFUSERA (veaux, 12:28 ! : l'offre GÂCHÉE (cf. SM068 : « maison DURABLE (ne'eman) » (Tsadoq ! : le MÊME MOT — Jéroboam = le TSADOQ manqué !). La ZOOLOGIE : les SCORPIONS (12:11 : 'aqrabbim — FOUETS à POINTES (pas ANIMAUX ! : le FOUET-SCORPION (lanières + crochets !) — vs FOUETS (shotim : SIMPLES !) : l'ESCALADE (fouets → scorpions : la TORTURE AUGMENTÉE — Roboam PROMET PIRE (que Salomon ! : la surenchère STUPIDE !). La PSYCHOLOGIE : « PETIT DOIGT &gt; REINS » (12:10 : qaton &gt; motnayim — DOIGT vs REINS (l'ANATOMIE de l'ORGUEIL (le PLUS PETIT &gt; le PLUS FORT : l'absurde ROYAL — les JEUNES conseillent la FANFARONNADE : la jeunesse SANS SAGESSE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE SCHISME EN 11 TEMPS : OPPRESSION (180 000 corvéables + 1 000 femmes + 3 idoles FACE au temple !) → RENCONTRE (route, champs, SEULS : Ahiya de SILO + manteau NEUF !) → DÉCHIRURE (12 morceaux : PRENDS 10 ! — le geste !) → MOTIF (abandon + 3 idoles : le réquisitoire !) → RÉSERVE (1 tribu + LAMPE : David COUVRE !) → OFFRE (SI tu écoutes : maison STABLE ! — le contrat !) → EXIL (Égypte : Shishaq !) → SICHEM (« ALLÈGE ! » → anciens : « SERS ! » vs jeunes : « SCORPIONS ! ») → CRI (« QUELLE PART ? À TES TENTES ! » : le licenciement !) → LAPIDATION (Adoram : l'impôt TUÉ ! + Roboam FUIT !) → VETO (180 000 démobilisés : « C'EST DE MOI ! » — la parole &gt; l'armée !). Le manteau neuf déchiré en douze habille deux royaumes — et la lampe de David ne s'éteint pas.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« UNE tribu » (11:32 : shevet ehad — Juda (+ Benjamin ? (12:21 : « Juda + Benjamin » ! : le « UNE » = Juda (+ Benjamin ABSORBÉ (« le PETIT », Ps 68:27 !) + Siméon ? (enclavé DANS Juda, Jos 19:1-9, DT065 ! : Siméon ABSORBÉ — le « UNE » = Juda+ (les PETITS annexés ! : le COMPTE (10 + 1 + Lévi = 12 : JUSTE — Benjamin/Siméon INCLUS (pas comptés !) : nuance !). « LAMPE » (nir, 11:36 : DYNASTIE (pas BOUGIE ! — la LAMPE = la MAISON (15:4 ! 2R 8:19 ! 2Ch 21:7 ! : 4 × — le MOTIF (la flamme NE S'ÉTEINT PAS — cf. SM069, 3:3 !). « MAISON STABLE » (11:38 : OFFERTE (pas DONNÉE ! : CONDITIONNEL (SI tu écoutes ! : Jéroboam REFUSE (veaux ! : l'offre EXPIRE (14:10-11 : BALAYÉ ! : le contrat CADUC !). SHISHAQ (11:40 : SHÉSHONQ Ier (XXIIe dynastie : CONFIRMÉ (Karnak + Megiddo ! : le pharaon ARCHÉOLOGIQUE (1R 14:25-26 : INVASION (5e année ! : les DATES CONCORDENT (égyptologie + Bible ! : la PREUVE — mais les DÉTAILS (villes !) DIVERGENT (partiellement : signaler !). « NE COMBATTEZ PAS » (12:24 : VETO (pas PACIFISME ! : Dieu INTERDIT CETTE guerre (le schisme est DIVIN (me'itti ! : les GUERRES suivantes (Abiya/Jéroboam, 2Ch 13 !) : PERMISES — le veto est PONCTUEL (pas perpétuel ! : nuance !).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Manteau : 12 !</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">11:29</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PRENDS 10</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">11:31</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LAMPE à David</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">11:36</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">QUELLE PART ?</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">12:16</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">C'EST DE MOI</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">12:24</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101978120">Division du royaume — Récit (Ahiya déchire, dix tribus, 11:29-39)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101978120</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1102016055">Un royaume divisé — Récit (manteau, Roboam, 11-12)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1102016055</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/11">1 Rois 11 — Bible d'étude (notes 11:1-43)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/11</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche RO076 — « Prends dix morceaux » : le manteau neuf en douze</span><span>Catégorie RO</span></div></div>
+</article>
+<article class="fiche" id="RO077">
+<div class="visuel"><img src="images/prophe_RO077_josias.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE RO077 · CATÉGORIE RO</div>
+<h3>« Son nom sera Josias » : l'autel fendu, la main sèche</h3>
+<div class="ref">1 Rois 13:2-5</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Béthel jugé (usurpation → nomination → signe → lion → Josias)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche RO077</div><audio controls preload="none" src="audio/fiche_RO77_josias.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_RO77_josias.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>1 Rois 13:2-5</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Béthel jugé (usurpation → nomination → signe → lion → Josias)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : 1 Rois — P077 (13:2-5 : Josias nommé ; autel déchiré) ; accomplissement 1R 13:5 ; 2R 23:15-20</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Jéroboam près de L'AUTEL… FÊTE au 8e MOIS. » (12:32-33 — mois !)</li>
+<li>« UN HOMME DE DIEU… de JUDA… PAR LA PAROLE. » (13:1 — parole !)</li>
+<li>« Ô AUTEL, AUTEL ! » (13:2 — autel !)</li>
+<li>« Un FILS NAÎTRA à la maison de David… son NOM sera JOSIAS. » (13:2 — Josias !)</li>
+<li>« Il IMMOLERA sur TOI les PRÊTRES… on BRÛLERA des OS. » (13:2 — toi !)</li>
+<li>« SIGNE : l'AUTEL SE FENDRA, les CENDRES SE RÉPANDRONT. » (13:3 — fendra !)</li>
+<li>« SAISISSEZ-LE ! » — sa MAIN SE DESSÉCHA. » (13:4 — dessécha !)</li>
+<li>« SUPPLIE Jéhovah TON Dieu… la MAIN REDEVINT. » (13:6 — redevint !)</li>
+<li>« L'AUTEL SE FENDIT… SELON le SIGNE. » (13:5 — selon !)</li>
+<li>« Le LION le TUA… SE TINT… NE MANGEA PAS. » (13:24-28 — lion !)</li>
+<li>« Près de SES OS… » — « QUEL est ce MONUMENT ? » (13:31 ; 23:17 — monument !)</li>
+<li>« Il PRIT les OS… les BRÛLA sur l'autel… IMMOLA les prêtres. » (23:16-20 — brûla !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>BÉTHEL, ~997? — Jéroboam « SE TENAIT PRÈS DE L'AUTEL pour faire FUMER » (13:1 : le ROI OFFICIE — il FAIT le PRÊTRE (cf. SM070 : Saül OFFRE, 13:9 ! : les ROIS-PRÊTRES — Saül + Jéroboam + Ozias (EX045 ! : TROIS usurpateurs !) + « FÊTE… au 8e MOIS, le 15e JOUR » (12:32-33 : il INVENTE une FÊTE (copie de SOUKKOT (7e mois !) : le CALENDRIER SCHISMATIQUE — un MOIS de DÉCALAGE : l'idolâtrie CALENDAIRE ! + « il MONTA à l'autel » (12:33 : wayya'al — MONTER : le ROI MONTE (le PRÊTRE monte ! : l'usurpation LITURGIQUE !). « UN HOMME DE DIEU… de JUDA » (13:1 : ANONYME — cf. SM068 : « un HOMME DE DIEU » (2:27 ! : les ANONYMES (Éli + Jéroboam : les SANS-NOM jugent les ROIS ! + « PAR LA PAROLE (bidvar) », 13:1 : bidvar YHWH — PAR LA PAROLE (le MESSAGER = la PAROLE : il EST ce qu'il DIT ! + « il ARRIVA… pendant que Jéroboam… » (13:1 : le TIMING — en PLEIN SACRIFICE : l'interruption LITURGIQUE (Dieu COUPE le culte !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Ô AUTEL, AUTEL (mizbeah mizbeah !) » (13:2) : VOCATIF × 2 — il PARLE à l'AUTEL (pas au ROI ! : l'objet APOSTROPHÉ (cf. SM071 : le MANTEAU — l'objet PARLE ! : ici l'objet ÉCOUTE — les OBJETS TÉMOINS (pierres (SM067 : Sichem !) + manteaux + autels ! : le MOBILIER PROPHÉTIQUE !). « Un FILS NAÎTRA (yiwaled) à la maison de DAVID » (13:2 : yillad — NAÎTRE (FUTUR : pas ENCORE NÉ — 300 ANS d'avance ! : le fils À NAÎTRE (cf. Is 7:14 : « la VIERGE… ENFANTERA » ! : les NAISSANCES PROPHÉTIQUES !). « son NOM sera JOSIAS (Yoshiyyahou) » (13:2) : NOMMÉ ! — le SEUL ROI NOMMÉ 300 ANS AVANT (cf. CYRUS, Is 45:1 : NOMMÉ 150 ANS AVANT ! : les NOMS-ÉCLATS — Josias + Cyrus : les PRÉNOMS PROPHÉTIQUES ! — Yoshiyyahou = « JÉHOVAH SOUTIENT » : le NOM-PROGRAMME (il SOUTIENDRA — la réforme ! : l'étymologie ACCOMPLIE !). « Il IMMOLERA (vezavah) sur TOI (aleykha) les PRÊTRES des hauts lieux » (13:2 : zavah = SACRIFIER — les PRÊTRES DEVIENNENT VICTIMES (l'autel MANGE ses SERVANTS ! : le RETOURNEMENT — sacrificateurs → sacrifiés ! + « on BRÛLERA (yisrephu) sur TOI des OSSEMENTS D'HOMMES » (13:2 : saraph = BRÛLER — des OS : la PROFANATION (Nb 19:16 : les OS = IMPURETÉ ! : l'autel SOUILLÉ — par les MORTS : le culte TUÉ par les CADAVRES !). « VOICI le SIGNE (ot) : l'AUTEL SE FENDRA (yiqqara') » (13:3) : qara' ! (cf. SM071 + RO076 ! : le MÊME VERBE — manteau ARRACHÉ (Saül !) + DÉCHIRÉ (Jéroboam !) + autel FENDU (Béthel !) : TROIS qara' — le VERBE du JUGEMENT ! + « les CENDRES (deshen) SE RÉPANDRONT » (13:3 : le deshen (GRAISSE consumée ! : le RÉSIDU SACRÉ — répandu = PROFANÉ (le sacré ÉPARPILLÉ !).</p>
+<h4>5 · Interprétation</h4>
+<p>La MAIN (13:4) : « il ÉTENDIT (vayshlah) sa MAIN… « SAISISSEZ-LE ! » » — « sa MAIN SE DESSÉCHA (vattivash) » (yavesh : SÉCHER — comme la VIGNE (Ps 80 ? ! : le ROI SEC — la main-MOMIE ! + « il ne PUT PAS la RAMENER », 13:4 : la main BLOQUÉE (tendue vers le prophète : le GESTE FIGÉ — l'arrestation PÉTRIFIÉE !) — « SUPPLIE (hallel-na) Jéhovah TON Dieu », 13:6 : « TON Dieu » (pas MON ! : Jéroboam DÉMUNI — il EMPRUNTE le Dieu du PROPHÈTE ! + « la MAIN… REDEVINT » (13:6 : vattashav — RETOUR : la main REVIENT — le MIRACLE (guérison INSTANTANÉE : le bras RESSUSCITÉ !) — « VIENS… MANGE… JE TE DONNERAI », 13:7 : le ROI INVITE (repas + CADEAU : la CORRUPTION — acheter le SILENCE !) + « NON : ni PAIN ni EAU… NE REVIENS PAS », 13:8-9 : le JEÛNE + le NON-RETOUR (l'itinéraire SACRÉ — aller ≠ retour : le CHEMIN ALLER-SEUL !). L'AUTEL (13:5, P077) : « l'AUTEL SE FENDIT… les CENDRES SE RÉPANDIRENT » — « SELON le SIGNE », 13:5 : ka'ot — COMME le signe (l'encaissement IMMÉDIAT — le JOUR MÊME (13:3 : « LE MÊME JOUR » : le signe DATÉ !). JOSIAS (2R 23:15-20, P077) : ~300 ANS APRÈS (622 !) — « l'AUTEL de BÉTHEL… il le DÉMOLIT… il BRÛLA le haut lieu… POUSSIÈRE », 23:15 : le DÉMANTÈLEMENT (autel + haut lieu + Ashéra : TOUT BRÛLE !) + « il VIT les TOMBEAUX… il PRIT les OS… il les BRÛLA sur l'autel », 23:16 : les OS sur l'AUTEL (13:2 EXACT !) + « il le SOUILLA (vay'tamme'ehu) », 23:16 : tame' — SOUILLER (le VERBE — l'autel SOUILLÉ (comme PRÉDIT !) + « il IMMOLA (vayyizbah) TOUS les prêtres », 23:20 : zavah ! (13:2 EXACT ! : les PRÊTRES-VICTIMES — le RETOURNEMENT, 300 ans APRÈS !) + « QUEL est ce MONUMENT ? », 23:17 : le TOMBEAU de l'HOMME DE DIEU (épargné ! : « que PERSONNE ne TOUCHE ses OS », 23:18 : les OS PROTÉGÉS — le prophète ÉPARGNÉ (ses OS RESTENT : le TOMBEAU-TÉMOIN, 300 ans DEBOUT !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">12:32-33</td><td>Fête inventée (8e mois) + roi officie</td></tr>
+<tr><td class="d">13:1-2</td><td>« Ô AUTEL ! » + « JOSIAS » (300 ans avant)</td></tr>
+<tr><td class="d">13:3</td><td>SIGNE : « SE FENDRA » (qara' !)</td></tr>
+<tr><td class="d">13:4-6</td><td>MAIN sèche → « TON Dieu » → GUÉRIE</td></tr>
+<tr><td class="d">13:5</td><td>AUTEL FENDU : « SELON le signe »</td></tr>
+<tr><td class="d">13:11-31</td><td>VIEUX ment → jeune MANGE → LION veille → OS ensemble</td></tr>
+<tr><td class="d">622 (2R 23:15-20)</td><td>DÉMOLIT + OS + PRÊTRES + « QUEL monument ? » → ÉPARGNÉ</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>L'HOMME DE DIEU (13:11-32) : le VIEUX PROPHÈTE (de Béthel ! : « un ANGE m'a PARLÉ », 13:18 — MENSONGE ! — « il lui MENTAIT », 13:18 : le texte TRANCHE (le VIEUX MENT !) + « il MANGEA… il BUT », 13:19 : DÉSOBÉISSANCE (pain + eau INTERDITS !) + « PARCE QUE tu as DÉSOBÉI… ton CADAVRE… », 13:21-22 : le VIEUX PROPHÉTISE (VRAI, cette fois ! : le MENTEUR DIT VRAI — l'ironie !) + le LION (13:24 : « un LION le RENCONTRA et le TUA » — « le LION SE TINT PRÈS DU CADAVRE », 13:24-25, 28 : il NE MANGE PAS (ni l'HOMME ni l'ÂNE ! : le lion-GARDE — il TUE puis VEILLE : le FAUVE DISCIPLINÉ ! + « l'ÂNE SE TINT », 13:24 : l'âne CALME (près du LION ! : la ménagerie MIRACULEUSE !) + « il MIT le cadavre dans SON TOMBEAU », 13:30 : « HÉLAS, MON FRÈRE ! », 13:30 : le VIEUX PLEURE (sa VICTIME !) + « quand je MOURRAI… près de SES OS », 13:31 : les OS ENSEMBLE (le MENTEUR veut REPOSER avec le MARTYR : le REMORDS POSTHUME ! → 23:18 : ÉPARGNÉS (les DEUX ! : Josias ÉPARGNE — les OS MÊLÉS : le MENTEUR SAUVÉ par le MARTYR !). JOSIAS (622-609 : 8 ANS en montant, 2R 22:1 ! + « il FIT ce qui est DROIT », 22:2 + le LIVRE TROUVÉ (22:8 : « j'ai TROUVÉ le LIVRE » (Hilkija ! : le Deutéronome PERDU — cf. DT063 : « il SERVIRA de TÉMOIN » ! : le TÉMOIN RÉVEILLÉ !) + « il DÉCHIRA ses VÊTEMENTS », 22:11 : qara' ! (le VERBE, ENCORE ! : le ROI DÉCHIRE (ses HABITS — le REPENTIR vestimentaire !) + HULDA (22:14-20 : « PARCE QUE ton CŒUR a FONDU », 22:19 : rakak — FONDRE (le CŒUR-FONDU (vs CŒUR-DUR (Pharaon ! : le cœur qui FOND vs qui DURCIT !). « 300 ANS » (~997 → 622 : ~275-300 ANS : le DÉLAI — le NOM TIENT 300 ANS : Yoshiyyahou PRONONCÉ → Yoshiyyahou NÉ — le PRÉNOM VOYAGE (3 SIÈCLES !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>BÉTHEL (« maison de DIEU », Gn 28:19 : Jacob ! : le lieu SAINT — devenu IDOLÂTRE (le VEAU, 12:29 ! : « maison de Dieu » → maison du VEAU : le DÉTOURNEMENT toponymique ! + « BETH-AVEN », Os 4:15 : « maison de NÉANT » (Osée RENOMME — Béthel → Beth-Aven : le RENOMMAGE prophétique ! : le lieu PERD son NOM !). « De JUDA » (13:1 : le SUD JUGE le NORD — l'homme de JUDA (contre BÉTHEL (Nord ! : le schisme JUGÉ par le RESTE — la LAMPE juge les TÉNÈBRES ! + « NE REVIENS PAS par le CHEMIN », 13:9 : l'itinéraire ALLER-SEUL (pas de RETOUR — le prophète NE REVIENT PAS (comme la PAROLE, Is 55:11 : « elle NE RETOURNE PAS » ! : le chemin = la parole — aller SANS retour !). Le TOMBEAU (13:30-31 + 23:17-18) : le MONUMENT (tsiyyun : STÈLE ! : VISIBLE 300 ANS — les GENS de Béthel SAVENT (« l'homme de Dieu… de JUDA », 23:17 : la MÉMOIRE LOCALE — 300 ans de BOUCHE-À-OREILLE ! : le TOMBEAU-PAROLE — il PRÊCHE (sans parler !). SAMARIE (23:19 : « TOUTES les maisons des hauts lieux de SAMARIE » — Josias ÉTEND (Béthel → Samarie : la réforme DÉBORDE — le SUD PURIFIE le NORD (le schisme EFFACÉ (religieusement !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La MÉDECINE : la MAIN SÈCHE (13:4 : yavesh — SÉCHER (PARALYSIE ? ATROPHIE ? (soudaine !) + « il ne PUT PAS la RAMENER » (RIGIDITÉ — le bras FIGÉ (tendu !) + GUÉRISON (13:6 : INSTANTANÉE (par la PRIÈRE — le bras RESSUSCITÉ (le TISSU RESTAURÉ : le MIRACLE médical !). La ZOOLOGIE : le LION (13:24-28 : TUE + NE MANGE PAS (ni homme ni âne ! : COMPORTEMENT IMPOSSIBLE (naturellement !) + « SE TINT » ('amad — RESTER DEBOUT (en GARDE ! : le lion-SENTINELLE — il VEILLE (le cadavre !) + l'ÂNE CALME (près du LION — proie + prédateur CALMES : la ménagerie MIRACULEUSE (cf. Is 11:6 : « le LOUP… avec l'AGNEAU » ! : la PAIX eschatologique, en MINIATURE !). L'ONOMASTIQUE : JOSIAS (Yoshiyyahou : « JÉHOVAH SOUTIENT » (ys' + yah : SOUTENIR + JÉHOVAH ! : le NOM-PROGRAMME (il SOUTIENDRA — la réforme, 622 ! : l'étymologie ACCOMPLIE, 300 ans APRÈS !) + CYRUS (Koresh, Is 45:1 : NOMMÉ 150 ANS AVANT — le PARALLÈLE (Josias + Cyrus : les DEUX PRÉNOMS — les NOMS-ÉCLATS !). Le DROIT : le PROCÈS du VIEUX (13:18 : « il lui MENTAIT » — le texte JUGE (le VIEUX MENT !) + « l'ANGE » (mal'ak : PRÉTEXTE (pas d'ANGE — le MENSONGE (pieux ?) : la FAUSSE RÉVÉLATION (cf. Dt 18:20 : « le prophète qui DIRA… MOURRA » (DT058 ! : le VIEUX MÉRITE — mais le JEUNE MEURT (l'injustice APPARENTE : voir limites !). La CHRONOLOGIE : 300 ANS (le NOM TIENT 3 SIÈCLES : la PLUS LONGUE « adresse » (cf. EX053 : « l'étoile a une ADRESSE » ! : Josias a un PRÉNOM, 300 ans AVANT — le PRÉNOM-VOYAGEUR !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>BÉTHEL EN 10 TEMPS : USURPATION (le ROI officie + FÊTE inventée (8e mois ! : le culte SCHISMATIQUE !) → INTERRUPTION (« Ô AUTEL, AUTEL ! » : l'objet APOSTROPHÉ !) → NOMINATION (« un FILS… JOSIAS » : le PRÉNOM (300 ans AVANT !) + PROGRAMME (prêtres IMMOLÉS + OS BRÛLÉS !)) → SIGNE (« l'AUTEL SE FENDRA » : qara' — TROISIÈME !) → MAIN (« SAISISSEZ-LE ! » → SÈCHE → « TON Dieu ! » → GUÉRIE ! : le bras-momie ressuscité !) → REFUS (« ni PAIN ni EAU » : le jeûne !) → PIÈGE (le VIEUX MENT (« un ANGE » ! : le jeune MANGE !) → LION (TUE + VEILLE + NE MANGE PAS : le fauve discipliné !) → TOMBEAU (« près de SES OS » : le remords !) → 300 ANS (Josias : DÉMOLIT + OS sur l'autel + PRÊTRES immolés + « QUEL est ce MONUMENT ? » → ÉPARGNÉ ! : les OS VOYAGENT (protégés !)). Le prénom prononcé sur un autel neuf s'accomplit sur ses ruines — trois siècles plus tard.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le VIEUX MENT (13:18 : « il lui MENTAIT » — le JEUNE MEURT, le VIEUX VIT (INJUSTICE ? (le MENTEUR PLEURE, 13:30 ! + VEUT ses OS, 13:31 ! : le REMORDS (pas l'IMPUNITÉ — le texte JUGE (il MENT ! : la MORT du jeune = DÉSOBÉISSANCE (13:21 : « PARCE QUE tu as DÉSOBÉI » — sa FAUTE (pas le piège ! : les DEUX FAUTIFS, chacun SA PEINE — le jeune : MORT (désobéissance DIRECTE !) — le vieux : SURVIT (pour ENTERRER (sa VICTIME : la PEINE du vieux = le REMORDS — enterrer celui qu'on a TUÉ ! : nuance !). « 300 ANS » (~997 → 622 : ~275 ANS : le CHIFFRE ROND (300 : APPROXIMATION — les DATES (début de Jéroboam ~997 ? + Josias 622 : ~275 (pas 300 ! : « 300 » = ORDRE (pas CALCUL ! : signaler !). CYRUS (Is 45:1 : PARALLÈLE (pas IDENTIQUE — Cyrus : 150 ANS (Josias : 300 ! : Josias = le DOUBLE — le RECORD (du prénom-prophétique !). Le LION (13:24 : NE MANGE PAS — MIRACLE (pas NATUREL (les lions MANGENT ! : le texte DIT (tue + veille : le FAUVE DISCIPLINÉ — ne pas naturaliser ! (cf. SM069 : les VACHES, 6:12 ! : les ANIMAUX THÉOLOGIENS — vaches + lion : la ménagerie PROPHÉTIQUE !). « OS sur l'autel » (13:2 + 23:16 : SOUILLURE (Nb 19:16 : les OS = IMPURETÉ — l'autel SOUILLÉ (le culte TUÉ (par les MORTS : la PROFANATION — commandée PAR Dieu (contre un culte ILLÉGITIME : souiller le FAUX (pas le VRAI ! : nuance !).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« JOSIAS » !</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">13:2</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">MAIN sèche</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">13:4</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">AUTEL fendu</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">13:5</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LION veille</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">13:24</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">OS sur l'autel</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">622</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/13">1 Rois 13 — Traduction (autel, Josias, main, 13:1-10)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/13">1 Rois 13 — Bible d'étude (notes 13:1-34)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/23">2 Rois 23 — Bible d'étude (Josias à Béthel, 23:15-20)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/23</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche RO077 — « Son nom sera Josias » : l'autel fendu, la main sèche</span><span>Catégorie RO</span></div></div>
+</article>
+<article class="fiche" id="RO078">
+<div class="visuel"><img src="images/prophe_RO078_abiya.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE RO078 · CATÉGORIE RO</div>
+<h3>« Dès le seuil, il mourra » : la maison balayée</h3>
+<div class="ref">1 Rois 14:6-16</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Fin de Jéroboam (déguisement → démasquage → balayage → seuil)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche RO078</div><audio controls preload="none" src="audio/fiche_RO78_abiya.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_RO78_abiya.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>1 Rois 14:6-16</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Fin de Jéroboam (déguisement → démasquage → balayage → seuil)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : 1 Rois — P078 (14:6-16 : Abiya ; maison effacée) ; accomplissement 1R 14:17, 18 ; 15:29, 30</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ABIYA… TOMBAMALADE. » (14:1 — malade !)</li>
+<li>« DÉGUISE-TOI… va à SILO… AHIYA. » (14:2 — déguise !)</li>
+<li>« DIX PAINS + GÂTEAUX + MIEL. » (14:3 — pains !)</li>
+<li>« Son REGARD ÉTAIT FIXE… Jéhovah lui AVAIT DIT. » (14:4-5 — dit !)</li>
+<li>« ENTRE, FEMME DE JÉROBOAM ! POURQUOI TE DÉGUISER ? » (14:6 — entre !)</li>
+<li>« Des NOUVELLES DURES… PIRE que TOUS… JETÉ DERRIÈRE TON DOS. » (14:6-9 — dures !)</li>
+<li>« Je BALAIERAI comme le CROTTIN… CHIENS… OISEAUX. » (14:10-11 — balayerai !)</li>
+<li>« Dès que tes PIEDS ENTRERONT… le GARÇON MOURRA. » (14:12 — pieds !)</li>
+<li>« LUI SEUL… du BIEN… TOUT Israël MÈNERA DEUIL. » (14:13 — seul !)</li>
+<li>« Comme le ROSEAU… AU-DELÀ DU FLEUVE. » (14:15 — fleuve !)</li>
+<li>« Elle FRANCHIT le SEUIL… le GARÇON MOURUT. » (14:17 — seuil !)</li>
+<li>« Il ne LAISSA… PERSONNE QUI RESPIRE. » (15:29 — personne !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>SILO + TIRTSA, ~955? — ABIYA MALADE (« Abiya fils de Jéroboam TOMBAMALADE », 14:1 : halah — le FILS MOURANT (le prince-ENFANT — cf. RO074 : « le FILS MOURRA » (12:14 ! : les ENFANTS frappés — David + Jéroboam : les FILS PAIENT !). « DÉGUISE-TOI » (14:2 : hitḥappesi — SE DÉGUISER (cf. SM072 : Saül « se DÉGUISA » (28:8 ! : les ROIS DÉGUISÉS — Saül + femme de Jéroboam : les TRAVESTIS (Saül : NUIT (28:8 ! — la reine : DÉGUISEMENT (le VOILE (pas les TÉNÈBRES ! : nuances !) + « pour qu'on NE SACHE PAS », 14:2 : le SECRET — la reine ANONYME (elle CACHE sa COURONNE !). SILO (« va à SILO… AHIYA », 14:2 : SILO (RO076 ! : Ahiya DE SILO — le prophète du MANTEAU (il ANNONÇA (10 tribus ! : Jéroboam RETOURNE — au prophète de son SACRE (demander… pour son FILS (le SACREUR devenu JUGE !) + « C'EST LUI qui a ANNONCÉ que je DEVIENDRAIS ROI », 14:2 : Jéroboam SE SOUVIENT (l'oracle du MANTEAU — il CROIT (au prophète (assez pour CONSULTER (pas assez pour OBÉIR (veaux ! : la FOI SÉLECTIVE !)). « DIX PAINS + GÂTEAUX + MIEL » (14:3 : le CADEAU (pauvre ! — une REINE apporte… 10 PAINS (la REINE MENDIE (le pain du PAYSAN — l'humiliation ALIMENTAIRE ! — vs Naaman (2R 5:5 : 600 PIÈCES ! : les CADEAUX prophétiques — pauvre vs riche : les DEUX CONSULTENT !). AHIYA AVEUGLE (« il ÉTAIT VIEUX… son REGARD ÉTAIT FIXE, il NE VOYAIT PLUS », 14:4 : cf. ÉLI (1S 3:2, 4:15 : « yeux FIXES » ! : les AVEUGLES — Éli + Ahiya : les VIEUX qui NE VOIENT PAS (mais ENTENDENT (Dieu !) + « Jéhovah lui AVAIT DIT », 14:5 : Dieu PRÉVIENT — l'aveugle VOIT (par l'OREILLE ! : « la femme… VIENT… DÉGUISÉE », 14:5 : Dieu DÉMASQUE (AVANT l'arrivée — le DÉGUISEMENT ÉVENTÉ (par le CIEL !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« ENTRE, FEMME DE JÉROBOAM ! POURQUOI TE DÉGUISER ? » (14:6 : bo'i ! — ENTRE ! (l'aveugle NOMME (la DÉGUISÉE : le DÉMASQUAGE (INSTANTANÉ — elle ENTRE → il SAIT : la CONNAISSANCE prophétique (cf. Élisée + Guéhazi (2R 5:26 : « mon CŒUR n'est-il pas ALLÉ ? » ! : les PROPHÈTES VOIENT (les SECRETS !) — « je suis ENVOYÉ vers toi avec des NOUVELLES DURES (qashot) », 14:6 : qasheh — DUR (les NOUVELLES-DURES (vs « BONNES nouvelles » (besorah ! : l'ANTI-ÉVANGILE (dys-angelion !) + RÉQUISITOIRE (14:7-9) : « je t'ai ÉLEVÉ (harimoti)… je t'ai ÉTABLI (va'etten)… j'ai ARRACHÉ (va'eqra') » (qara' ! (ENCORE ! : le VERBE — QUATRIÈME (Saül ! Jéroboam ! Béthel ! + ici : ARRACHÉ (le royaume — le qara' GÉNÉRALISÉ !) + « tu as FAIT PIRE que TOUS », 14:9 : wayyara' mekol — PIRE QUE TOUS (les PRÉDÉCESSEURS : Jéroboam = le PIRE (le RECORD (du MAL — avant Achab (16:30 : « PIRE que TOUS » (Achab DÉPASSE : les PIRES SE SUCCÈDENT !) + « tu m'as JETÉ (hishlakta) DERRIÈRE TON DOS », 14:9 : shalak — JETER (Dieu JETÉ (derrière le DOS (l'image : Dieu comme ORDURE (jetée (par-dessus l'ÉPAULE ! : le MÉPRIS physique !). « Voici, je fais VENIR le MALHEUR (mevi' ra'ah) », 14:10 : bo' + ra' — VENIR + MAL (le malheur VIENT (comme les PASSANTS (RO075 ! : 9:9 : « il a fait VENIR » (MÊME VERBE — le malheur-VOYAGEUR !). « J'EXTERMINERAI… MÊME le PLUS INSIGNIFIANT » (14:10 : TM « celui qui URINE contre le MUR » (mash'tin beqir ! — le MÂLE (euphémisme CRU (TOUS les MÂLES (esclave + libre ! : l'extermination TOTALE (masculine !) + « je BALAIERAI (bi'arti) comme on BALAIE le CROTTIN (galal) », 14:10 : ba'ar — BALAYER (le CROTTIN (bouse ! : la maison = EXCRÉMENT (l'image SCATOLOGIQUE — Dieu BALAIE (les chiures ! : le MÉPRIS maximal !). « Les CHIENS MANGERONT… les OISEAUX MANGERONT », 14:11 : kelev + 'oph — CHIENS (ville !) + OISEAUX (champs ! : les FOSSOYEURS (la NON-SÉPULTURE — cf. DT059 ! : le PENDU (pas de TOMBEAU : les CADAVRES EXPOSÉS — Jézabel (2R 9:36 : « les CHIENS MANGERONT » (Élie CITE : le MOTIF (canin ! : les CHIENS PROPHÉTIQUES !). « LUI SEUL (levado)… PARCE QU'on a TROUVÉ en LUI du BIEN (davar tov) », 14:13 : badad — SEUL (Abiya SEUL enterré (le SEUL de la maison !) + « du BIEN » (tov : QUELQUE CHOSE de bon (on NE SAIT PAS QUOI — le texte TAIT (le BIEN MYSTÉRIEUX : la PIÉTÉ INCONNUE (d'un ENFANT — Dieu VOIT (ce qu'on NE VOIT PAS !) + « TOUT Israël MÈNERA DEUIL », 14:13 : saphad — le DEUIL NATIONAL (pour un ENFANT (le ROI pleuré (par le PEUPLE — l'enfant HONORÉ (le père MAUDIT !). « Dès que tes PIEDS ENTRERONT… le GARÇON MOURRA », 14:12 : le TIMING (le SEUIL = la MORT — elle ENTRE → il MEURT : la SYNCHRONICITÉ prophétique (cf. RO077 : « LE MÊME JOUR » (13:3 ! : les DÉLAIS prophétiques — jour ! seuil ! : la PRÉCISION mortelle !). « Jéhovah FRAPPERA… comme le ROSEAU (qaneh) AGITÉ DANS L'EAU », 14:15 : qaneh — ROSEAU (le TREMBLEMENT — Israël = ROSEAU (fragile ! mobile !) + « il ARRACHERA (venatash) Israël de ce BON pays », 14:15 : natash — ARRACHER (cf. SM067 : « disparaître du BON pays » (23:16 ! : les RACINES ARRACHÉES — le DÉPLANTAGE national !) + « il les DISPERSERA AU-DELÀ DU FLEUVE », 14:15 : me'ever lannahar — AU-DELÀ (de l'EUPHRATE ! : l'EXIL PRÉDIT (200 ANS AVANT (740 ! : la GÉOGRAPHIE prophétique — le FLEUVE = la FRONTIÈRE (de l'exil !) + « À CAUSE DES PIEUX SACRÉS (asharim) », 14:15 : 'asherah — les PIEUX (les POTEAUX (d'Ashéra ! : le MOTIF (de l'exil — idolâtrie → dispersion : l'ÉQUATION (RO075 ! : 9:9 : « PARCE QU'abandon » (MÊME logique !).</p>
+<h4>5 · Interprétation</h4>
+<p>Le SEUIL (14:17, P078) : « elle ARRIVA à TIRTSA… dès qu'elle FRANCHIT le SEUIL… le GARÇON MOURUT » — le SEUIL-MORT (la SYNCHRONICITÉ (EXACTE — elle ENTRE → il MEURT : le TIMING prophétique (pas AVANT (pas APRÈS : AU SEUIL !) + « on L'ENTERRA… TOUT Israël MENA DEUIL », 14:18 : DEUIL NATIONAL (l'enfant HONORÉ (14:13 EXACT !) + « COMME Jéhovah l'avait ANNONCÉ », 14:18 : ka'asher — COMME (la formule d'ENCAISSEMENT (cf. SM068 : « AFIN D'ACCOMPLIR » (1R 2:27 ! : les FORMULES d'accomplissement — comme ! afin ! : le SCEAU narratif !). BAESHA (15:29-30, P078) : « dès qu'il RÉGNA, il FRAPPA TOUTE la maison… il ne LAISSA… PERSONNE QUI RESPIRE (neshamah) » — neshamah : SOUFFLE (cf. Gn 2:7 : le SOUFFLE de VIE ! : Baesha ÉTEINT (les SOUFFLES — le GÉNOCIDE familial !) + « SELON la parole… par AHIYA », 15:29 : kadvar — SELON (ENCORE la formule !) + « À CAUSE DES PÉCHÉS… qu'il a fait COMMETTRE », 15:30 : heheti' — faire PÉCHER (Jéroboam = le FAUTEUR (il PÈCHE + fait PÉCHER : le PÉCHÉ-CONTAGIEUX — le VERBE récurrent (15:30 ! 16:26 ! 2R 3:3 ! : « les PÉCHÉS DE JÉROBOAM » — le NOM-COMMUN (du péché — le péché ÉPONYME !). Les CHIENS (14:11) : Jéroboam MEURT (14:20 : « il DORMIT » — pas de CHIENS (pour LUI ! : les CHIENS = sa MAISON (pas LUI : la NUANCE — le PÈRE enterré (les FILS mangés ? : le CONTRASTE (père vs maison !) + Nadab (15:27 : Baesha TUE (Nadab (le FILS (à GIBBETHON !) + « TOUTE la maison », 15:29 : le BALAYAGE (le CROTTIN (14:10 ! : Baesha = le BALAI (de Dieu — l'instrument SCATOLOGIQUE !). Le ROSEAU (14:15) : 740 (2R 17 ! : « il ARRACHA… il DISPERSA » (14:15 EXACT (200 ANS APRÈS !) + « AU-DELÀ DU FLEUVE », 14:15 : ASSYRIE (au-delà de l'EUPHRATE ! : la GÉOGRAPHIE (EXACTE — l'exil ASSYRIEN (pas BABYLONIEN (Nord vs Sud : les DEUX FLEUVES — Euphrate (Nord !) + Babylone (Sud ! : les EXILS géographiques !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">14:1-3</td><td>Abiya malade + « DÉGUISE-TOI » + 10 pains</td></tr>
+<tr><td class="d">14:4-6</td><td>Ahiya AVEUGLE mais PRÉVENU : « ENTRE, FEMME ! »</td></tr>
+<tr><td class="d">14:7-11</td><td>Réquisitoire + BALAYAGE (crottin !) + CHIENS/OISEAUX</td></tr>
+<tr><td class="d">14:12-13</td><td>SEUIL (timing !) + SEUL (bien mystérieux !) + DEUIL</td></tr>
+<tr><td class="d">14:15-16</td><td>ROSEAU + « AU-DELÀ DU FLEUVE » (exil 200 ans avant)</td></tr>
+<tr><td class="d">14:17-18</td><td>SEUIL : elle ENTRE → il MEURT + « COMME annoncé »</td></tr>
+<tr><td class="d">15:29-30</td><td>BAESHA : « PERSONNE QUI RESPIRE » + « SELON la parole »</td></tr>
+<tr><td class="d">740 (2R 17)</td><td>ARRACHÉ + DISPERSÉ : le roseau EXILÉ</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>TIRTSA (14:17 : CAPITALE (Jéroboam → Omri ! : « BELLE », Ct 6:4 : « BELLE comme TIRTSA » ! : la capitale-BEAUTÉ (Tell el-Far'ah ? : l'ARCHÉOLOGIE — le SITE (fouillé ! : les PALAIS (les IVOIRES ! : la BEAUTÉ (confirmée !). SILO (14:2-4 : AHIYA (le VIEUX (aveugle !) + « son REGARD ÉTAIT FIXE », 14:4 : cf. ÉLI — les AVEUGLES (les VIEUX-PROPHÈTES (Éli + Ahiya : les YEUX FIXES (mais les OREILLES (ouvertes !) + SILO DÉCHUE (SM068 ! : Jr 7:12 ! : le sanctuaire RUINÉ (ENVOIE (le prophète (du MANTEAU — la RUINE PROPHÉTISE !). BAESHA (15:27-30 : « d'Issacar » (TRIBU (pas Juda ! : le PUTSCHISTE (tue Nadab (à GIBBETHON (siège PHILISTIN ! : le MEURTRE (au FRONT (le FRONT — comme Urie (RO074 ! : 11:15 ! : les MEURTRES (au front — Urie + Nadab : les FRONTS (meurtriers !) + « il RÉGNA… 24 ANS », 15:33 : LONG RÈGNE (le BALAI RÈGNE (24 ANS — Dieu UTILISE (puis JUGE (16:1-4 : JÉHU (prophète ! : « je BALAIERAI BAESHA », 16:3 : le BALAI BALAYÉ — le RETOURNEMENT (l'instrument JETÉ !). « PIRE que TOUS » (14:9 : Jéroboam = le PIRE (AVANT Achab (16:30 : « PIRE que TOUS » (Achab DÉPASSE : les PIRES SE SUCCÈDENT — Jéroboam → Baesha → Achab : la COURSE (au PIRE — le MAL PROGRESSIF !). « DERRIÈRE TON DOS » (14:9 : hishlakta — JETER (Dieu comme ORDURE (cf. Ez 23:35 : « tu m'as JETÉ DERRIÈRE TON DOS » (Ézéchiel REPREND — le MOTIF (du DOS (Néh 9:26 ! : les DOS (accumulateurs — 3 × : le DOS NATIONAL !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>SILO → TIRTSA (14:2-17 : la REINE VOYAGE — Silo (prophète !) → Tirtsa (palais ! : ~50 km (l'ALLER (consultation !) + le RETOUR (deuil ! : le VOYAGE (de la MORT — elle VA (espoir !) → REVIENT (deuil ! : le CHEMIN (aller-retour — espoir → mort !). TIRTSA (capitale : « BELLE », Ct 6:4 ! + Tell el-Far'ah (ARCHÉOLOGIE : PALAIS + IVOIRES (la BEAUTÉ (FOUILLÉE !) + « le SEUIL de sa MAISON », 14:17 : saph — SEUIL (le LIEU (de la MORT (pas le LIT (pas la RUE : le SEUIL — la LIMITE (dedans/dehors : la mort AU SEUIL — la FRONTIÈRE (de la vie !). « AU-DELÀ DU FLEUVE » (14:15 : l'EUPHRATE (la FRONTIÈRE (de l'exil : ASSYRIE (au-delà !) + « ce BON pays » (hatovah : cf. SM067 : « BON pays » (× 3 ! : le BON (qu'on PERD — le BON-EXILÉ — la bonté PERDUE !). GIBBETHON (15:27 : SIÈGE (philistin ! : Nadab ASSIÈGE (les PHILISTINS (Baesha TUE (Nadab (AU SIÈGE : le PUTSCH (au FRONT (cf. Urie ! : les FRONTS (meurtriers !). « VILLE vs CAMPAGNE » (14:11 : 'ir + sadeh — CHIENS (ville !) + OISEAUX (champs ! : les DEUX LIEUX (couverts : NULLE PART (de TOMBEAU — la NON-SÉPULTURE (totale — ville + champs = PARTOUT ! : l'ubiquité (de l'horreur !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La MÉDECINE : ABIYA (14:1 : halah — MALADE (ENFANT (le prince-ENFANT (MOURANT : + « le GARÇON (hanna'ar) MOURRA », 14:12 : na'ar — GARÇON (cf. SM069 : Samuel na'ar ! : les GARÇONS — Samuel VIT (Abiya MEURT : les na'ar (en MIROIR !) + le SEUIL (14:17 : SYNCHRONICITÉ (elle ENTRE → il MEURT : la MORT-TIMING (pas NATURELLE (PROPHÉTIQUE : le SEUIL (déclenche !). La ZOOLOGIE : CHIENS + OISEAUX (14:11 : kelev — CHAROGNARDS (ville !) + 'oph — RAPACES (champs ! : les FOSSOYEURS (la CHAÎNE (alimentaire — les CADAVRES (nourrissent (les BÊTES : l'ÉCOLOGIE (de l'horreur ! — cf. Jézabel (2R 9:36 ! : les CHIENS (PROPHÉTIQUES — Jéroboam + Jézabel : les CANIDÉS (du jugement !). La BOTANIQUE : le ROSEAU (qaneh, 14:15 : « AGITÉ DANS L'EAU » (hannid — TREMBLER (le ROSEAU (fragile ! flexible ! : Israël = ROSEAU (pas CÈDRE (Ps 92:12 : « le JUSTE… comme le CÈDRE » ! : le CONTRASTE — cèdre (juste !) vs roseau (infidèle ! : la BOTANIQUE (morale !) + « ARRACHERA… DISPERSERA », 14:15 : natash + zarah — ARRACHER (déplanter !) + DISPERSER (vanner ! : l'AGRICULTURE (du jugement — déplantage + vannage : la MOISSON (inversée !)). La SCATOLOGIE : le CROTTIN (galal, 14:10 : BOUSE ! EXCRÉMENT ! (galal = CROTTIN (bovin ! : la maison = CHIURE (l'image SCATOLOGIQUE (MAXIMALE — Dieu BALAIE (les EXCRÉMENTS : le MÉPRIS (ABSOLU (cf. Ml 2:3 : « je RÉPANDRAI du CROTTIN sur vos VISAGES » (Malachie REPREND — le MOTIF (scatologique (2 × : les CROTTINS (prophétiques !)). Le DROIT : « PIRE que TOUS » (14:9 : SUPERLATIF (judiciaire — le RECORD (du MAL : + « faire PÉCHER » (heheti', 15:30 : le PÉCHÉ-CONTAGIEUX (Jéroboam PÈCHE + fait PÉCHER : la RESPONSABILITÉ (du CHEF — le roi-CONTAMINATEUR (cf. 1R 16:26 ! 2R 3:3 ! : « les PÉCHÉS DE JÉROBOAM » — le NOM-COMMUN (le péché ÉPONYME (comme le « complexe » (psychologie ! : les NOMS (devenus CONCEPTS !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA FIN EN 10 TEMPS : MALADIE (Abiya MOURANT : le prince-enfant !) → DÉGUISEMENT (« DÉGUISE-TOI ! » : la reine ANONYME + 10 PAINS (le cadeau pauvre !)) → SILO (Ahiya AVEUGLE (yeux FIXES : cf. ÉLI !) MAIS PRÉVENU (« Jéhovah lui AVAIT DIT » : l'aveugle VOIT !) → DÉMASQUAGE (« ENTRE, FEMME DE JÉROBOAM ! » : l'aveugle NOMME !) → NOUVELLES DURES (réquisitoire : ÉLEVÉ → ÉTABLI → ARRACHÉ (qara' ! QUATRIÈME !) + « PIRE que TOUS » + « JETÉ DERRIÈRE TON DOS » !) → BALAYAGE (EXTERMINER + BALAYER comme le CROTTIN + CHIENS/OISEAUX ! : la scatologie + les fossoyeurs !) → SEUL (Abiya SEUL enterré : « du BIEN » (MYSTÉRIEUX !) + DEUIL NATIONAL !) → SEUIL (« dès que tes PIEDS ENTRERONT… il MOURRA » : la synchronicité !) → ROSEAU + FLEUVE (« comme le ROSEAU » + « AU-DELÀ DU FLEUVE » : l'exil PRÉDIT (200 ANS AVANT !)) → ENCAISSEMENT (SEUIL : elle ENTRE → il MEURT (14:17 !) + « COMME annoncé » (14:18 !) + BAESHA : « PERSONNE QUI RESPIRE » (15:29 !) + « SELON la parole » (15:29 !)). La reine déguisée repart sans déguisement possible — et le seuil devient tombeau.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« DU BIEN » (14:13 : davar tov — ON NE SAIT PAS QUOI (le texte TAIT (le BIEN MYSTÉRIEUX (la PIÉTÉ INCONNUE : ne pas INVENTER (un ENFANT (pieux ? : le TEXTE NE DIT PAS (QUOI : respecter le SILENCE — Dieu VOIT (on NE VOIT PAS !). « Celui qui URINE contre le MUR » (14:10 : TM CRU (mash'tin beqir : le MÂLE (euphémisme CRU (Tmn ADOUCIT (« le plus INSIGNIFIANT » : les TRADUCTIONS (divergent — cru vs doux : signaler (pas TRANCHER (le SENS = TOUS les MÂLES (esclave + libre ! : le SENS CLAIR (la FORME DÉBATTUE !). Les CHIENS (14:11 : Jéroboam LUI-MÊME (« il DORMIT », 14:20 : ENTERRÉ (pas MANGÉ ! : les CHIENS = sa MAISON (DESCENDANTS (pas LUI : nuance — le PÈRE enterré (les FILS mangés ? : le CONTRASTE (père vs maison !). « PIRE que TOUS » (14:9 : AVANT Achab (16:30 : « PIRE que TOUS » (Achab DÉPASSE : le SUPERLATIF DÉPASSÉ — les PIRES SE SUCCÈDENT : le « PIRE » = JUSQU'ICI (pas ABSOLU (relatif ! : nuance — le pire PROVISOIRE !). « AU-DELÀ DU FLEUVE » (14:15 : EUPHRATE (ASSYRIE (740 : le NORD (pas le SUD (Babylone 607 ! : les DEUX EXILS — Nord (Euphrate/Assyrie !) + Sud (Babylone ! : la GÉOGRAPHIE (double — pas CONFONDRE (740 vs 607 ! : les DATES (et les LIEUX (distincts !).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« DÉGUISE-TOI »</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14:2</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« ENTRE, FEMME ! »</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">14:6</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BALAYÉ (crottin)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14:10</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SEUIL : il MEURT</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">14:17</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baesha : PERSONNE</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">15:29</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/14">1 Rois 14 — Bible d'étude (femme déguisée, balayage, 14:1-20)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/14</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/15">1 Rois 15 — Bible d'étude (Baesha, maison frappée, 15:25-34)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/15</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1001060014">Premier livre des Rois — Texte (Jéroboam, 14-15)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1001060014</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche RO078 — « Dès le seuil, il mourra » : la maison balayée</span><span>Catégorie RO</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie RO</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>RO073 — « Je te bâtirai une maison » : trône pour toujours</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cèdre vs tente</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">7:2</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JE te bâtirai</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">7:11</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Trône toujours</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">7:16</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Salomon bâtit</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1R 8</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pas de fin</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Lc 1</text>
+</svg>
+<h4>RO074 — « L'épée ne s'écartera pas » : le toit jugé du toit</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Toit : il vit</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">11:2</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TU ES L'HOMME</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">12:7</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Épée ad-olam</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">12:10</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Toit : tout Israël</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">16:22</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mon fils !</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">18:33</text>
+</svg>
+<h4>RO075 — « Les passants siffleront » : la maison sous condition</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NOM pour toujours</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9:3</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sinon : REJETÉ</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">9:7</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Passants SIFFLENT</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">9:8</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FEU TRIPLE</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« POURQUOI ? »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jr 22</text>
+</svg>
+<h4>RO076 — « Prends dix morceaux » : le manteau neuf en douze</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Manteau : 12 !</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">11:29</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PRENDS 10</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">11:31</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LAMPE à David</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">11:36</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">QUELLE PART ?</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">12:16</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">C'EST DE MOI</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">12:24</text>
+</svg>
+<h4>RO077 — « Son nom sera Josias » : l'autel fendu, la main sèche</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« JOSIAS » !</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">13:2</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">MAIN sèche</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">13:4</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">AUTEL fendu</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">13:5</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LION veille</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">13:24</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">OS sur l'autel</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">622</text>
+</svg>
+<h4>RO078 — « Dès le seuil, il mourra » : la maison balayée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« DÉGUISE-TOI »</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14:2</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« ENTRE, FEMME ! »</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">14:6</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BALAYÉ (crottin)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">14:10</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SEUIL : il MEURT</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">14:17</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Baesha : PERSONNE</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">15:29</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-13 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

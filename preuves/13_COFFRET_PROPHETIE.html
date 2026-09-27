@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coffret — Les prophéties impossibles</title>
+<style>
+  :root{
+    --navy:#0B2545; --navy2:#123a6b; --gold:#E9C46A; --cream:#F7F4EC;
+    --ink:#1a1a1a; --muted:#5b6472; --line:rgba(11,37,69,.14);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto;padding:28px 20px 70px}
+  header.hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;
+    border-radius:18px;padding:34px 30px;position:relative;overflow:hidden}
+  header.hero:after{content:"";position:absolute;inset:auto -60px -90px auto;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(233,196,106,.35),transparent 70%);border-radius:50%}
+  .kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+  h1{margin:0;font-size:clamp(26px,4.4vw,40px);line-height:1.15;font-weight:800;letter-spacing:-.01em}
+  .sub{margin:12px 0 0;color:rgba(255,255,255,.82);max-width:64ch;font-size:15px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .chip{border:1px solid rgba(233,196,106,.55);color:var(--gold);border-radius:999px;
+    padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  h2{font-size:20px;margin:44px 0 6px;color:var(--navy);letter-spacing:-.01em}
+  h2 .num{color:var(--gold);font-weight:800;margin-right:8px}
+  .lede{margin:0 0 18px;color:var(--muted);font-size:14.5px;max-width:78ch}
+
+  /* ---------- FRISE ---------- */
+  .timeline{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px 12px;
+    box-shadow:0 1px 0 rgba(11,37,69,.04)}
+  .rail{position:relative;margin:16px 0 6px;height:6px;background:linear-gradient(90deg,
+    rgba(11,37,69,.18),rgba(11,37,69,.06));border-radius:99px}
+  .nodes{position:relative;height:86px;margin-top:-11px}
+  .node{position:absolute;width:0;overflow:visible;cursor:pointer;border:0;background:none;padding:0;
+    display:flex;flex-direction:column;align-items:center;gap:6px}
+  .node .dot,.node .lbl{flex:0 0 auto}
+  .dot{width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--navy);
+    box-shadow:0 0 0 3px rgba(11,37,69,.06);transition:transform .18s,border-color .18s}
+  .node:hover .dot,.node.on .dot{transform:scale(1.35);border-color:var(--gold);background:var(--gold)}
+  .tick{position:absolute;top:-16px;height:10px;width:1px;background:rgba(11,37,69,.25)}
+  .lbl{font-size:10px;letter-spacing:.03em;color:var(--muted);width:70px;text-align:center;line-height:1.25}
+  .panel{margin-top:14px;border-top:1px dashed var(--line);padding-top:16px;min-height:132px}
+  .panel .title{font-size:17px;font-weight:750;color:var(--navy);margin:0 0 4px}
+  .panel .ecart{display:inline-block;background:var(--navy);color:var(--gold);font-size:11.5px;
+    letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin-bottom:10px}
+  .panel p{margin:6px 0;font-size:14.5px}
+  .panel .ref{color:var(--muted);font-size:13px}
+
+  /* ---------- CARTES DOSSIER ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;cursor:pointer;
+    transition:box-shadow .2s,transform .2s}
+  .card:hover{box-shadow:0 8px 26px rgba(11,37,69,.10);transform:translateY(-2px)}
+  .card .rank{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .card .hook{font-size:17.5px;font-weight:750;color:var(--navy);margin:8px 0 10px;line-height:1.3}
+  .card .plain{font-size:14px;color:#33415a;margin:0}
+  .card .more{display:none;margin-top:16px;border-top:1px dashed var(--line);padding-top:14px}
+  .card.open .more{display:block}
+  .card .sec{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+  .card ul{margin:0;padding-left:18px}
+  .card li{font-size:14px;margin:4px 0}
+  .limit{background:#fff6e2;border-left:3px solid var(--gold);padding:10px 12px;border-radius:0 8px 8px 0;
+    font-size:13.5px;color:#4a3a12}
+  .toggle{font-size:12.5px;color:var(--navy);font-weight:650;margin-top:12px;display:inline-block;
+    border-bottom:1px solid var(--gold)}
+
+  /* ---------- 3 TEMOINS ---------- */
+  .witnesses{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .wit{background:var(--navy);color:#fff;border-radius:14px;padding:18px}
+  .wit .tag{color:var(--gold);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase}
+  .wit h4{margin:8px 0 6px;font-size:16px}
+  .wit p{margin:0;font-size:13.5px;color:rgba(255,255,255,.82)}
+
+  /* ---------- OBJECTIONS ---------- */
+  .obj{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:10px;overflow:hidden}
+  .obj button{width:100%;text-align:left;background:none;border:0;padding:15px 18px;cursor:pointer;
+    font-size:15px;font-weight:650;color:var(--navy);display:flex;justify-content:space-between;gap:12px}
+  .obj .ans{display:none;padding:0 18px 16px;font-size:14px;color:#33415a}
+  .obj.open .ans{display:block}
+  .obj .plus{color:var(--gold);font-weight:800}
+
+  /* ---------- CROCHETS ---------- */
+  .hooks{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+  .hk{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;
+    padding:14px 16px}
+  .hk .ex{font-size:15px;font-weight:650;color:var(--navy)}
+  .hk .why{font-size:13px;color:var(--muted);margin-top:5px}
+
+  /* ---------- GRILLE ---------- */
+  .check{background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px 20px 18px}
+  .check label{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line);
+    font-size:14.5px;cursor:pointer}
+  .check label:last-child{border-bottom:0}
+  .check input{margin-top:4px;accent-color:#0B2545;width:17px;height:17px}
+  .score{margin-top:14px;font-size:13.5px;color:var(--muted)}
+  .score b{color:var(--navy)}
+  .score.ok b{color:#1f7a44}
+
+  /* ---------- FINAL ---------- */
+  .final{margin-top:44px;background:var(--navy);color:#fff;border-radius:18px;padding:30px 28px}
+  .final p{margin:0;font-size:clamp(18px,2.6vw,24px);line-height:1.4;font-weight:600}
+  .final span{color:var(--gold)}
+  footer{margin-top:26px;font-size:12.5px;color:var(--muted);line-height:1.6}
+  .noprint{}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Dossier prophéties · projet PREUVES</p>
+    <h1>Les prophéties impossibles</h1>
+    <p class="sub">Cinq dossiers où un texte annonce, des siècles à l'avance, <strong>un nom, une somme, une méthode ou un détail de rue</strong>. Pour chacun : le document, le témoin extérieur, la trace physique — et ce que cela ne prouve pas.</p>
+    <div class="chips">
+      <span class="chip">5 dossiers</span>
+      <span class="chip">3 témoins</span>
+      <span class="chip">1 question</span>
+      <span class="chip">Aucune date pour l'avenir</span>
+    </div>
+  </header>
+
+  <h2><span class="num">01</span>Le fil des siècles</h2>
+  <p class="lede">Touchez une date : chaque point est un détail écrit <em>puis</em> accompli. La distance entre les deux est le sujet.</p>
+  <div class="timeline">
+    <div class="rail"></div>
+    <div class="nodes" id="nodes"></div>
+    <div class="panel" id="panel"></div>
+  </div>
+
+  <h2><span class="num">02</span>Les cinq dossiers, ouverts</h2>
+  <p class="lede">Touchez une fiche pour voir le dossier complet : les preuves, et surtout la limite honnête.</p>
+  <div class="cards" id="cards"></div>
+
+  <h2><span class="num">03</span>La méthode des trois témoins</h2>
+  <p class="lede">Ce qui rend un dossier solide n'est pas le nombre de prophéties, c'est le nombre de <strong>témoins indépendants</strong>.</p>
+  <div class="witnesses">
+    <div class="wit"><div class="tag">Témoin 1</div><h4>Le document</h4><p>Le texte prophétique, sa date d'écriture, sa transmission (rouleaux de Qumrân, versions anciennes).</p></div>
+    <div class="wit"><div class="tag">Témoin 2</div><h4>La source hostile</h4><p>Un auteur qui ne croyait pas : Hérodote, Xénophon, Diodore, Josèphe, une chronique babylonienne.</p></div>
+    <div class="wit"><div class="tag">Témoin 3</div><h4>La trace physique</h4><p>Un objet de musée, un site localisable, une inscription : quelque chose qui existe encore aujourd'hui.</p></div>
+  </div>
+
+  <h2><span class="num">04</span>Répondre sans se battre</h2>
+  <p class="lede">Chaque objection majeure a une réponse courte, honnête, et qui ne nomme jamais d'adversaire.</p>
+  <div id="objs"></div>
+
+  <h2><span class="num">05</span>Neuf façons de commencer</h2>
+  <p class="lede">Les crochets qui tiennent en moins de trois secondes. Un seul par contenu.</p>
+  <div class="hooks" id="hooks"></div>
+
+  <h2><span class="num">06</span>Grille de vérification avant diffusion</h2>
+  <p class="lede">Si un point manque, le contenu reste dans le tiroir. Une seule erreur de date annule tout le dossier.</p>
+  <div class="check" id="check"></div>
+
+  <div class="final">
+    <p>« Je ne te demande rien. Seulement : <span>est-ce que quelqu'un peut savoir ça d'avance&nbsp;?</span> »</p>
+  </div>
+
+  <footer>
+    <strong>Rappels.</strong> Un seul système chronologique par contenu : ici, les dates des publications de l'organisation (Ninive 632 av. n. è., Josias 659-629, Jérusalem 607) · aucune date pour l'avenir · aucune prophétie appliquée à l'actualité ou à des personnes vivantes · les débats reconnus sont annoncés (Tyr, Daniel) · chaque image créditée · aucun contenu de l'organisation reproduit · les liens vers jw.org ou wol.jw.org ne sont transmis qu'à la demande.<br>
+    Ce fichier est un outil privé de préparation ; il n'est pas destiné à être publié en ligne.
+  </footer>
+</div>
+
+<script>
+/* ============ DONNÉES ============ */
+
+/* Frise : t = titre, d = détail, c = contexte, x = position horizontale en % */
+var CASES = [
+  {x:4,  t:"1513 av. n. è.", d:"La Loi fixe le prix d'un esclave : trente sicles d'argent (Exode 21:32).", c:"Le montant servira de mesure exacte, quinze siècles plus tard."},
+  {x:15, t:"1000 av. n. è.", d:"Un psaume décrit des mains et des pieds percés, des vêtements tirés au sort, aucun os brisé.", c:"La crucifixion n'existe pas encore : elle sera inventée par les Romains des siècles plus tard."},
+  {x:26, t:"732 av. n. è.", d:"Un prophète écrit le nom de Cyrus, qui n'est pas né.", c:"Babylone n'est alors même pas la puissance dominante."},
+  {x:38, t:"716 av. n. è.", d:"Bethléhem est désignée comme lieu de naissance du futur roi.", c:"Un décret impérial romain accomplira le détail, sept siècles plus tard."},
+  {x:51, t:"avant 632 av. n. è.", d:"Nahum annonce la fin de Ninive, alors au sommet de sa puissance.", c:"Les portes des fleuves s'ouvriront ; le fleuve deviendra l'ennemi de la ville."},
+  {x:63, t:"607 av. n. è.", d:"Ézéchiel décrit la chute de Tyr et son site devenu séchoir à filets.", c:"La ville insulaire sera prise par Alexandre, qui bâtira une chaussée avec les débris de la ville du continent."},
+  {x:73, t:"≈ 550 av. n. è.", d:"Daniel annonce quatre empires successifs, puis un Messie retranché.", c:"Le quatrième empire sera Rome ; Jérusalem serait détruite après le Messie."},
+  {x:82, t:"518 av. n. è.", d:"Zacharie évoque trente pièces d'argent jetées au potier.", c:"Le prix exact d'un esclave, jeté dans la maison de Jéhovah."},
+  {x:90, t:"300 ans avant", d:"Le nom de Josias est annoncé, avec son acte précis contre l'autel de Béthel.", c:"Il règnera 659-629 av. n. è. et fera exactement cela, jusque dans l'épargne d'un tombeau."},
+  {x:97, t:"632 av. n. è.", d:"Ninive tombe : crue, brèche, incendie, palais effondré, ville jamais relevée.", c:"Confirmé par une chronique babylonienne contemporaine et par les fouilles du XIXe siècle."}
+];
+
+var DOSSIERS = [
+  {
+    rank:"Dossier 1 · le plus fort",
+    hook:"« Un texte écrit 190 ans à l'avance donne le nom du roi qui prendra Babylone. »",
+    plain:"Ésaïe 44:28 ; 45:1 nomme Cyrus. Le prêtre qui transmit le texte ne connaissait pas la suite de l'histoire.",
+    ecart:"≈ 190 ans",
+    preuves:[
+      "Ésaïe 44:28 ; 45:1, écrit vers 732 av. n. è. ; le rouleau d'Ésaïe de Qumrân atteste la transmission du texte.",
+      "Babylone tombe en 539 av. n. è. au profit de Cyrus, sans bataille rangée, après le détournement des eaux.",
+      "Jérémie 50:38 ; 51:30 : « les portes ne seront pas fermées » et les eaux seront taries.",
+      "Hérodote, Xénophon (Cyropédie), la Chronique de Nabonide et le cylindre de Cyrus (British Museum)."
+    ],
+    limite:"Ésaïe 45 est souvent daté du VIe siècle par les critiques : l'antériorité s'appuie donc sur le rouleau de Qumrân, la Septante et les citations anciennes — à présenter, pas à taire."
+  },
+  {
+    rank:"Dossier 2 · le plus visuel",
+    hook:"« Une ville que protégeait son fleuve a été détruite par son fleuve. »",
+    plain:"Nahum annonce, pendant la splendeur de l'Assyrie, la fin de sa capitale et le rôle de l'eau.",
+    ecart:"≈ 30-40 ans",
+    preuves:[
+      "Nahum 1:8 ; 2:6 : « un flot débordant », « les portes des fleuves s'ouvriront » — les fortes pluies firent déborder le Tigre.",
+      "Ninive tombe en 632 av. n. è. face aux Babyloniens et aux Mèdes (chronologie des publications de l'organisation ; les ouvrages profanes donnent 612).",
+      "La muraille est percée du côté du Tigre ; les publications de l'organisation relèvent que de nombreux reliefs assyriens portent des traces de feu et de fumée.",
+      "Diodore de Sicile rapporte qu'un roi se jeta dans les flammes et que l'on disait dans la ville que « le fleuve deviendrait son ennemi »."
+    ],
+    limite:"La tablette cunéiforme ne porte plus la date, qui est déduite de la 14e année de Nabopolassar ; les détails du siège proviennent pour partie d'auteurs postérieurs. Cette nuance doit être dite."
+  },
+  {
+    rank:"Dossier 3 · le plus simple",
+    hook:"« Le nom d'un roi qui ne naîtra que dans trois siècles. »",
+    plain:"1 Rois 13:2 annonce Josias par son nom et par son acte contre un autel précis.",
+    ecart:"≈ 300 ans",
+    preuves:[
+      "L'accomplissement est raconté en 2 Rois 23:15-20 : autel démoli, ossements brûlés, prêtres exécutés.",
+      "Un détail supplémentaire : le tombeau du prophète de Béthel est épargné, comme annoncé (1 Rois 13:31, 32).",
+      "Appui archéologique indirect : le sceau d'un fonctionnaire de Josias, Nathan-melech (2 Rois 23:11), a été retrouvé en place à Jérusalem."
+    ],
+    limite:"Aucune inscription portant le nom de Josias n'a été retrouvée ; le sceau confirme le milieu et l'époque, pas le roi lui-même. À dire d'emblée."
+  },
+  {
+    rank:"Dossier 4 · le plus surprenant",
+    hook:"« Trente pièces : le prix exact d'un esclave, et un champ de potier acheté avec l'argent. »",
+    plain:"Zacharie 11:12, 13 annonce une somme, un geste et un lieu — trois détails qui s'emboîtent.",
+    ecart:"≈ 550 ans",
+    preuves:[
+      "Exode 21:32 fixe la valeur d'un esclave tué : trente sicles d'argent. La somme n'est pas un chiffre au hasard.",
+      "Matthieu 26:15 ; 27:3-10 : les trente pièces sont jetées dans le temple et servent à acheter le champ du potier.",
+      "Le site appelé Akeldama, « champ du sang », est localisé au sud de Jérusalem, utilisé comme cimetière d'étrangers."
+    ],
+    limite:"Matthieu 27:9 attribue la citation à Jérémie — un point que les commentateurs discutent ouvertement. À mentionner, sans détour."
+  },
+  {
+    rank:"Dossier 5 · le plus décisif",
+    hook:"« Il a décrit une exécution qui n'avait pas encore été inventée. »",
+    plain:"Psaume 22 ; Ésaïe 53 : mains et pieds percés, vêtements tirés au sort, aucun os brisé.",
+    ecart:"≈ 700-1000 ans",
+    preuves:[
+      "La crucifixion n'apparaît pas dans le monde antique avant son adoption par Rome : le texte décrit une méthode future.",
+      "Jean 19:23, 24, 33, 36 raconte le partage des vêtements et l'absence de brisure des os.",
+      "Le silence du condamné devant ses accusateurs correspond à la procédure romaine documentée (Ésaïe 53:7)."
+    ],
+    limite:"Ces rapprochements sont établis entre l'Hébreu et les récits évangéliques : on présente le fait, sans empiler les comptes de « prophéties » et sans calcul de probabilité."
+  }
+];
+
+var OBJECTIONS = [
+  {o:"« C'est écrit après coup. »",
+   r:"Trois éléments vont contre cette idée : un rouleau d'Ésaïe copié avant l'accomplissement, une traduction grecque antérieure, et des prophéties qui vont au-delà de la date supposée tardive (Rome, 70 de n. è.)."},
+  {o:"« Les prophéties sont vagues. »",
+   r:"Un nom propre, encore un nom propre, une somme exacte, une méthode d'exécution, un détail de pêche : les horoscopes ne font pas cela. On présente peu de cas, mais avec toutes leurs données."},
+  {o:"« N'importe qui pouvait prédire la chute de Tyr. »",
+   r:"Sauf la manière : les décombres jetés à la mer, et le site devenu un lieu où l'on étend les filets. C'est le détail qui rend la prédiction improbable."},
+  {o:"« La recherche date Daniel après les faits. »",
+   r:"En juin 2025, une étude de l'université de Groningue (revue PLOS ONE) a redaté un fragment de Daniel, 4Q114, entre 230 et 160 av. n. è. : le texte est alors contemporain de la période de rédaction supposée."},
+  {o:"« Et les prophéties non accomplies ? »",
+   r:"Elles existent, et elles concernent l'avenir. On ne fixe aucune date. Celles qui devaient s'accomplir se sont accomplies ; les autres ne sont pas encore dues."},
+  {o:"« Cela ne prouve pas que tout est vrai. »",
+   r:"Juste — et ce n'est pas la prétention. Un livre qui dit vrai là où l'on peut vérifier mérite d'être lu là où l'on ne peut pas encore vérifier."}
+];
+
+var HOOKS = [
+  {f:"L'écart chiffré", e:"« Il a écrit un nom 190 ans avant que l'homme soit né. »", w:"Le chiffre crée l'impossibilité."},
+  {f:"L'objet présent", e:"« Ce cylindre d'argile porte le nom du roi annoncé. »", w:"L'objet rend la chose réelle."},
+  {f:"L'anachronisme", e:"« Le texte décrit une exécution qui n'existait pas encore. »", w:"Le temps va dans le mauvais sens."},
+  {f:"Le nom propre", e:"« Trois siècles après le texte, un roi porte ce nom. »", w:"Un nom ne se devine pas."},
+  {f:"L'ironie du détail", e:"« Une ville protégée par son fleuve, détruite par son fleuve. »", w:"Un détail trop précis pour le hasard."},
+  {f:"Le chiffre sec", e:"« 70 ans. Pas 60, pas 80. Soixante-dix. »", w:"Un nombre nu ne se discute pas."},
+  {f:"La visite possible", e:"« Vous pouvez aller voir l'endroit. »", w:"La preuve est géographique."},
+  {f:"Le témoin hostile", e:"« Le premier à raconter la prise de Babylone ne croyait pas en la Bible. »", w:"Une source non suspecte."},
+  {f:"Le test ouvert", e:"« Demandez à un calculateur de prédire une ville dans 190 ans. »", w:"La personne participe."}
+];
+
+var GRILLE = [
+  "Le texte est cité exactement, avec sa référence et sa date d'écriture.",
+  "La source extérieure est nommée, datée, non confessionnelle.",
+  "La trace physique est identifiable : musée, site, inscription.",
+  "La limite honnête figure dans le contenu : ce que cela ne prouve pas.",
+  "Aucune date pour l'avenir, aucune application à l'actualité.",
+  "Aucun contenu protégé recopié ; toutes les images créditées.",
+  "Les liens vers jw.org ou wol.jw.org ne sont donnés qu'à la demande.",
+  "Le crochet tient en moins de trois secondes ou douze mots.",
+  "Un seul détail est mis en avant.",
+  "Le contenu se termine par une question ouverte, jamais par une injonction."
+];
+
+/* ============ RENDU ============ */
+
+function el(html){ var d = document.createElement('div'); d.innerHTML = html; return d.firstElementChild; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* frise */
+var nodes = document.getElementById('nodes');
+CASES.forEach(function(c, i){
+  var max = 90;
+  var left = 5 + (c.x / 100) * max;
+  var b = el('<button class="node" data-i="' + i + '" style="left:' + left + '%">'
+    + '<span class="dot"></span><span class="lbl">' + esc(c.t) + '</span></button>');
+  b.addEventListener('click', function(){ show(i); });
+  nodes.appendChild(b);
+});
+function show(i){
+  var c = CASES[i];
+  document.querySelectorAll('.node').forEach(function(n){ n.classList.remove('on'); });
+  var n = document.querySelector('.node[data-i="' + i + '"]');
+  if(n){ n.classList.add('on'); }
+  document.getElementById('panel').innerHTML = '<h3 class="title">' + esc(c.t) + '</h3>'
+    + '<p>' + esc(c.d) + '</p><p class="ref">' + esc(c.c) + '</p>';
+}
+show(2);
+
+/* dossiers */
+var cards = document.getElementById('cards');
+DOSSIERS.forEach(function(d){
+  var ul = d.preuves.map(function(p){ return '<li>' + esc(p) + '</li>'; }).join('');
+  var c = el('<article class="card">'
+    + '<div class="rank">' + esc(d.rank) + '</div>'
+    + '<div class="hook">' + esc(d.hook) + '</div>'
+    + '<p class="plain">' + esc(d.plain) + '</p>'
+    + '<span class="toggle">Ouvrir le dossier — écart ' + esc(d.ecart) + ' ▾</span>'
+    + '<div class="more">'
+    +   '<div class="sec">Les preuves</div><ul>' + ul + '</ul>'
+    +   '<div class="sec">Ce que cela ne prouve pas</div>'
+    +   '<div class="limit">' + esc(d.limite) + '</div>'
+    + '</div></article>');
+  c.addEventListener('click', function(){ c.classList.toggle('open'); });
+  cards.appendChild(c);
+});
+
+/* objections */
+var objs = document.getElementById('objs');
+OBJECTIONS.forEach(function(o){
+  var b = el('<div class="obj"><button><span>' + esc(o.o) + '</span><span class="plus">+</span></button>'
+    + '<div class="ans">' + esc(o.r) + '</div></div>');
+  b.querySelector('button').addEventListener('click', function(){
+    b.classList.toggle('open');
+    b.querySelector('.plus').textContent = b.classList.contains('open') ? '−' : '+';
+  });
+  objs.appendChild(b);
+});
+
+/* crochets */
+var hs = document.getElementById('hooks');
+HOOKS.forEach(function(h){
+  hs.appendChild(el('<div class="hk"><div class="ex">' + esc(h.e) + '</div>'
+    + '<div class="why">' + esc(h.f) + ' — ' + esc(h.w) + '</div></div>'));
+});
+
+/* grille */
+var ck = document.getElementById('check');
+var list = '<div>';
+GRILLE.forEach(function(g, i){
+  list += '<label><input type="checkbox" data-c="' + i + '"><span>' + esc(g) + '</span></label>';
+});
+list += '</div><div class="score" id="score">0 / 10 points validés.</div>';
+ck.innerHTML = list;
+ck.addEventListener('change', function(){
+  var n = ck.querySelectorAll('input:checked').length;
+  var s = document.getElementById('score');
+  s.innerHTML = '<b>' + n + ' / 10</b> points validés.' + (n === 10 ? ' Contenu prêt.' : " Tant qu'il reste un point, le contenu reste dans le tiroir.");
+  s.className = 'score' + (n === 10 ? ' ok' : '');
+});
+</script>
+</body>
+</html>

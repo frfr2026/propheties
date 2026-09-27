@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES JR — Jérémie (1) — La marmite du nord et la ville fortifiée</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_JR_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES JR</h1>
+<h2>Jérémie (1) — La marmite du nord et la ville fortifiée</h2>
+<p class="intro">C'est du nord que le malheur se déchaînera : la marmite bouillonne et penche vers le sud, les trônes des royaumes se dresseront aux portes de Jérusalem ; mais toi, tu seras une ville fortifiée, une colonne de fer, des murailles de cuivre — ils combattront contre toi et ne l'emporteront pas. Israël, né libre, est devenu un objet de pillage, car il a quitté Jéhovah ; pourtant les dispersés reviendront à Sion et l'arche ne sera plus même rappelée. Le lion monte de son fourré, le destructeur des nations marche, et une nation lointaine à la langue inconnue dévorera moissons et villes fortes.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_JR_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JR_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#JR181">JR181</a>
+<a href="#JR182">JR182</a>
+<a href="#JR183">JR183</a>
+<a href="#JR184">JR184</a>
+<a href="#JR185">JR185</a>
+<a href="#JR186">JR186</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#JR181"><img src="images/prophe_JR181_nord.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR181</div>
+<h3><a href="#JR181">« La marmite bouillonne » : du nord déferlera le malheur</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR182"><img src="images/prophe_JR182_combattront.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR182</div>
+<h3><a href="#JR182">« Ils combattront contre toi » : ville fortifiée imprenable</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR183"><img src="images/prophe_JR183_serviteur.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR183</div>
+<h3><a href="#JR183">« Israël est-il un serviteur ? » : le mal amer de l'abandon</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR184"><img src="images/prophe_JR184_arche.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR184</div>
+<h3><a href="#JR184">« Je vous ramènerai à Sion » : l'arche ne sera plus rappelée</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR185"><img src="images/prophe_JR185_lion.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR185</div>
+<h3><a href="#JR185">« Le lion monte de son fourré » : la désolation vient du nord</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#JR186"><img src="images/prophe_JR186_lointaine.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE JR186</div>
+<h3><a href="#JR186">« Une nation lointaine » : elle dévorera moissons et villes fortes</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="JR181">
+<div class="visuel"><img src="images/prophe_JR181_nord.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR181 · CATÉGORIE JR</div>
+<h3>« La marmite bouillonne » : du nord déferlera le malheur</h3>
+<div class="ref">Jérémie 1:13-16</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Marmite nord (vision → marmite → penche → nord → convoque → trônes → portes → jugements)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR181</div><audio controls preload="none" src="audio/fiche_JR181_nord.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR181_nord.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 1:13-16</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Marmite nord (vision → marmite → penche → nord → convoque → trônes → portes → jugements)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P181 (1:13-16 : malheur du nord) ; accomplissement Jr 39:1-9, 2R 25:1-11</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PAROLES… JÉRÉMIE… HILKIA… PRÊTRES… ANATHOTH… BENJAMIN… JOSIAS… TREIZIÈME… ANNÉE. » (1:1-2 — année !)</li>
+<li>« QUE… VOIS… VOIS… MARMITE… BOUILLONNE… OUVERTURE… PENCHE… NORD… SUD. » (1:13 — sud !)</li>
+<li>« NORD… MALHEUR… DÉCHAÎNERA… HABITANTS… PAYS… CONVOQUE… FAMILLES… ROYAUMES… NORD. » (1:14-15 — nord !)</li>
+<li>« VIENDRONT… PLACERA… TRÔNE… ENTRÉE… PORTES… JÉRUSALEM… MURAILLES… VILLES… JUDA. » (1:15b — Juda !)</li>
+<li>« PRONONCERAI… JUGEMENTS… MÉCHANCETÉ… ABANDONNÉ… ENCENS… DIEUX… PROSTERNÉS… MAINS. » (1:16 — mains !)</li>
+<li>« ASSIÉGÉRENT… JÉRUSALEM… BRECHE… ENTRÈRENT… SIÉGÈRENT… PORTES… PRINCES… BABYLONE… FEU. » (Jr 39:1-3,8 — feu !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Anathoth, 627 — PAROLES (les DIBRÉ (les YIRMEYAHU (les HILKIA (les KOHANIM (les PRÊTRES (les ANATHOTH (les BENYAMIN (les YOSHIYAHU (les JOSIAS (les SHLOSH (les ESRÉH (les TREIZIÈME (les SHANAH (les ANNÉE (les JEUNE (les PROPHÈTE (les TIMIDE (les ENVOYÉ (les PAROLES — les REÇUES !). La MARMITE (les SIR (les NAPUAH (les BOUILLONNE (les PANAV (les OUVERTURE (les MIPPENÉ (les PENCHE (les TSAPHON (les NORD (les NÉGUEV (les SUD (les ÉCUME (les DÉBORDE (les FEU (les ATTISÉ (les VENT (les NORD (les MARMITE — les BOUILLONNE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le NORD (les TSAPHON (les TIPPATAH (les DÉCHAÎNERA (les RAAH (les MALHEUR (les YOSHÉ (les HABITANTS (les HAARETS (les PAYS (les QORÉ (les CONVOQUE (les MISHPHOT (les FAMILLES (les MAMLEKHOT (les ROYAUMES (les BABYLONE (les EST (les ARMÉES (les NORD (les EUPHRATE (les ROUTE (les KARKEMISH (les NORD — les DÉFERLE !). Les TRÔNES (les YABOU (les VIENDRONT (les NATHAN (les PLACERA (les KISSO (les TRÔNE (les PETAH (les ENTRÉE (les SHEARIM (les PORTES (les YERUSHALAYIM (les HOMOTÉHA (les MURAILLES (les ARÉ (les VILLES (les YEHUDAH (les JUDA (les TRIBUNAL (les SIÈGE (les JUGEMENT (les TRÔNES — les DRESSÉS !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application SIÈGE : KARKEMISH (les 605 (les NÉKO (les VAINCU (les NÉBUCADNETSAR (les MAÎTRE (les 1er SIÈGE (les 605 (les 2e SIÈGE (les 597 (les 3e SIÈGE (les 588 (les BRÈCHE (les 607 (les APOLOGÉTIQUE — les TRÔNES !) + PORTES (les NERGALSHARETSER (les SAMGARNÉBO (les PRINCES (les SIÉGÈRENT (les MOYENNE (les TRIBUNAL (les SÉDÉCIAS (les FUIT (les TÉMOIN — les JUGÉ !) + MÉCHANCETÉ (les MANASSÉ (les 45 ANS (les IDOLES (les TOPHET (les ENFANTS (les BRÛLÉS (les JOSIAS (les TARD (les HISTOIRE — les CONDAMNÉE !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1:1-2</td><td>PAROLES (ANATHOTH !)</td></tr>
+<tr><td class="d">1:13</td><td>MARMITE (PENCHE !)</td></tr>
+<tr><td class="d">1:14-15</td><td>NORD (CONVOQUÉS !)</td></tr>
+<tr><td class="d">1:15b</td><td>TRÔNES (PORTES !)</td></tr>
+<tr><td class="d">1:16</td><td>JUGEMENTS (ABANDON !)</td></tr>
+<tr><td class="d">Jr 39:1-3</td><td>SIÉGÉS (MOYENNE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>KARKEMISH : EUPHRATE (les 605 (les NÉKO (les ÉGYPTE (les BATTU (les NÉBUCADNETSAR (les PRINCE (les HÉRITIER (les CHRONIQUE (les BABYLONIENNE (les CONFIRME (les ARCHÉOLOGIE — les TOURNANT !). Les SIÈGES : 605 (les DANIEL (les DÉPORTÉ (les 597 (les YEKONIA (les 10 000 (les 588 (les 18 MOIS (les FAIM (les 607 (les FEU (les CHRONOLOGIE — les TRIPLE !). ANATHOTH : BENJAMIN (les 5 KM (les PRÊTRES (les ABIATHAR (les EXILÉ (les JÉRÉMIE (les NATIF (les VILLAGE — les PROPHÈTE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le NORD : ASSYRIE (les ARAM (les ROUTE (les INVASIONS (les DÉSERT (les INFRANCHISSABLE (les EST (les CROISSANT (les FERTILE (les CONTOURNÉ (les KARKEMISH (les PASSAGE (les TOPOGRAPHIE — les MENACE !). Les PORTES (les JÉRUSALEM (les MOYENNE (les TRIBUNAL (les PRINCES (les SIÈGENT (les JUGEMENT (les PUBLIC (les SÉDÉCIAS (les CONDAMNÉ (les GÉOGRAPHIE — les TRÔNES !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La MARMITE : SIR (les CUISSON (les ÉBULLITION (les ÉCUME (les DÉBORDE (les VIANDE (les PEUPLE (les FEU (les JUGEMENT (les TEMPÉRATURE (les MONTE (les PHYSIQUE — les BOUILLONNE !). Le VENT : TSAPHON (les BORÉE (les ATTISE (les FLAMMES (les FEU (les INTENSE (les SOUFFLET (les NORD (les MÉTÉOROLOGIE — les ATTISÉ !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>PAROLES reçues (Anathoth) → MARMITE vue (bouillonne) → NORD désigné (penche) → MALHEUR promis (déchaîné) → ROYAUMES convoqués (familles) → TRÔNES dressés (portes) → JUGEMENTS prononcés (abandon).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne NOMME PAS BABYLONE ICI (le nord suffit ; le nom viendra quand le refus sera total). Ne DIT PAS que TOUTES LES VILLES TOMBERONT EN MÊME TEMPS (trois sièges : 605, 597, 607). Ne DIT PAS que la MARMITE DÉBORDE ENCORE (elle a débordé ; le feu s'est éteint à Sion). Ne DIT PAS COMMENT LES TRÔNES JUGERONT (tribunal aux portes ; Sédécias aveuglé à Ribla).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">APPELÉ (ANATHOTH !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">MONTÉ (KARKEMISH !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉ (YEKONIA !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ASSIÉGÉ (18 MOIS !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRÛLÉ (TRÔNES !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/1">Jérémie 1 — Bible d'étude (marmite, nord, trônes, 1:13-16)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/1</a>
+<a href="https://www.jw.org/en/library/bible/study-bible/books/jeremiah/1/">Jeremiah 1 — Study Bible (boiling pot, north, thrones)<br>https://www.jw.org/en/library/bible/study-bible/books/jeremiah/1/</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/1">Jérémie 1 — Référence (Anathoth, Josias, malheur, jugements)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR181 — « La marmite bouillonne » : du nord déferlera le malheur</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR182">
+<div class="visuel"><img src="images/prophe_JR182_combattront.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR182 · CATÉGORIE JR</div>
+<h3>« Ils combattront contre toi » : ville fortifiée imprenable</h3>
+<div class="ref">Jérémie 1:17-19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Fortifié mission (ceins → lève → dis → terrifié → fortifiée → fer → cuivre → combattront)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR182</div><audio controls preload="none" src="audio/fiche_JR182_combattront.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR182_combattront.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 1:17-19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Fortifié mission (ceins → lève → dis → terrifié → fortifiée → fer → cuivre → combattront)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P182 (1:17-19 : combattront, ne l'emporteront pas) ; accomplissement Jr 20, 26, 38</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« CEINS… HANCHES… LÈVE… DIS… ORDONNERAI… TERRIFIÉ… NON… TERRIFIERAI… EUX. » (1:17 — eux !)</li>
+<li>« FAIT… AUJOURD'HUI… VILLE… FORTIFIÉE… COLONNE… FER… MURAILLES… CUIVRE… PAYS. » (1:18 — pays !)</li>
+<li>« ROIS… JUDA… PRINCES… PRÊTRES… PEUPLE… COMBATTRONT… L'EMPORTERONT… NON… AVEC… DÉLIVRER. » (1:19 — délivrer !)</li>
+<li>« PASHHUR… ENTENDIT… FRAPPA… JÉRÉMIE… ENTRAVES… PORTE… BENJAMIN… LENDEMAIN… LIBÉRA. » (Jr 20:1-3 — libéra !)</li>
+<li>« SAISIRENT… PROPHÈTES… PRÊTRES… PEUPLE… MORT… MÉRITE… MICHÉE… ÉZÉCHIAS… ÉPARGNÉ. » (Jr 26:8-19 — épargné !)</li>
+<li>« JETÈRENT… CITERNE… MALKIYA… BOUE… ENFONÇA… ÉBED-MÉLEK… SORTIT… CORDE… VIE. » (Jr 38:6-13 — vie !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Anathoth, 627 — CEINS (les EZOR (les HALESEKHA (les HANCHES (les QUM (les LÈVE (les DIBBARTA (les DIS (les ATSAVVEKA (les ORDONNERAI (les AL (les TEHAT (les TERRIFIÉ (les PEN (les AHITKHA (les TERRIFIERAI (les COURSE (les TRAVAIL (les TOGE (les RELEVÉE (les PRÊT (les MISSION (les CEINS — les LÈVE !). La FORTIFIÉE (les IR (les MIBTSAR (les VILLE (les AMMUD (les COLONNE (les BARZEL (les FER (les HOMOT (les MURAILLES (les NEHOSHET (les CUIVRE (les KOL (les TOUT (les HAARETS (les PAYS (les TRIPLE (les ALLIAGE (les SIÈGE (les IMPRENABLE (les FORTIFIÉE — les FER !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Les QUATRE (les MALKHÉ (les ROIS (les YEHUDAH (les SAREHA (les PRINCES (les KOHANEHA (les PRÊTRES (les AM (les PEUPLE (les HAARETS (les NOLHAMU (les COMBATTRONT (les LO (les YUKHLU (les EMPORTERONT (les KI (les ITEKHA (les AVEC (les ANI (les LEHATSILEKHA (les DÉLIVRER (les FRONTS (les TOUS (les DÉLIVRANCE (les PROMISE (les QUATRE — les VAINCUS !). PASHHUR (les PASHUR (les IMMER (les INSPECTEUR (les MAISON (les SHAMA (les ENTENDIT (les HIKKAH (les FRAPPA (les MAHPEKHET (les ENTRAVES (les SHAAR (les PORTE (les BINYAMIN (les MOHARET (les LENDEMAIN (les YOTSI (les LIBÉRA (les MAGOR (les TERREUR (les PASHHUR — les FRAPPÉ !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application TRIPLE : ENTRAVES (les PASHHUR (les FRAPPÉ (les NUIT (les LIBÉRÉ (les MAGOR (les RENOMMÉ (les TERREUR (les APOLOGÉTIQUE — les DÉLIVRÉ !) + PROCÈS (les TEMPLE (les MORT (les RÉCLAMÉE (les MICHÉE (les PRÉCÉDENT (les ÉZÉCHIAS (les ÉPARGNA (les AHIQAM (les PROTÉGEA (les TÉMOIN — les ACQUITTÉ !) + CITERNE (les BOUE (les ENFONCÉ (les MORT (les LENTE (les ÉBED-MÉLEK (les ÉTHIOPIEN (les CORDES (les CHIFFONS (les HISTOIRE — les SORTI !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1:17</td><td>CEINS (LÈVE !)</td></tr>
+<tr><td class="d">1:18</td><td>FORTIFIÉE (CUIVRE !)</td></tr>
+<tr><td class="d">1:19</td><td>COMBATTRONT (DÉLIVRER !)</td></tr>
+<tr><td class="d">Jr 20:1-3</td><td>PASHHUR (ENTRAVES !)</td></tr>
+<tr><td class="d">Jr 26:8-19</td><td>PROCÈS (ÉPARGNÉ !)</td></tr>
+<tr><td class="d">Jr 38:6-13</td><td>CITERNE (SORTI !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PASHHUR : IMMER (les 16e CLASSE (les INSPECTEUR (les TEMPLE (les ORDRE (les PUBLIC (les ENTRAVES (les TORTURE (les MAGOR (les RENOMMÉ (les EXIL (les BABYLONE (les MORT (les CLERGÉ — les JUGE !). AHIQAM : SHAPHAN (les SCRIBE (les JOSIAS (les FILS (les GUEDALIA (les PÈRE (les PROTÉGEA (les PROCÈS (les TEMPLE (les COUR — les JUSTE !). ÉBED-MÉLEK : EUNUQUE (les ÉTHIOPIEN (les PALAIS (les COURAGE (les ROI (les 30 HOMMES (les CITERNE (les VIE (les SAUVÉE (les ÉTRANGER — les JUSTE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La CITERNE : MALKIYA (les COUR (les GARDE (les PALAIS (les BOUE (les SANS (les EAU (les ENFONCÉ (les FAIM (les MORT (les LENTE (les TOPOGRAPHIE — les TOMBEAU !). La PORTE : BENJAMIN (les NORD (les TEMPLE (les ENTRAVES (les EXPOSÉ (les HUMILIÉ (les PASSANTS (les MOQUENT (les GÉOGRAPHIE — les PILORI !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le FER : BARZEL (les DURETÉ (les COLONNE (les PORTEUSE (les INÉBRANLABLE (les ROUILLE (les NON (les ALLIAGE (les RÉSISTANCE (les MÉTALLURGIE — les FORTIFIÉ !). Le CUIVRE : NEHOSHET (les MURAILLES (les BRONZE (les BOUCLIERS (les REFLET (les SIÈGE (les MACHINES (les BRISÉES (les MÉTALLURGIE — les MURAILLES !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>CEINS ordonné (hanches) → LÈVE commandé (dis) → TERRIFIÉ interdit (eux) → FORTIFIÉE promise (ville) → FER dressé (colonne) → CUIVRE tendu (murailles) → COMBATTRONT vaincus (délivré).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS que JÉRÉMIE NE SOUFFRIRA PAS (frappé, entravé, jeté : délivré, pas épargné). Ne DIT PAS que LES QUATRE FRONTS ATTAQUERONT ENSEMBLE (rois, princes, prêtres, peuple : chacun à son tour). Ne DIT PAS que LA DÉLIVRANCE SERA IMMÉDIATE (une nuit aux entraves ; des jours dans la boue). Ne LIMITE PAS LA PROMESSE À JÉRÉMIE (tout proclamateur combattu : la classe Jérémie tient).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FORTIFIÉ (PROMESSE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FRAPPÉ (PASHHUR !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JUGÉ (TEMPLE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JETÉ (BOUE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LIBÉRÉ (GUEDALIA !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1977924">Bataille perdue — Tour de Garde 1978 (combattront, délivré, classe Jérémie)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1977924</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1001060027">Jérémie — Publication (ville fortifiée, fer, cuivre, 1:17-19)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1001060027</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/1">Jérémie 1 — Traduction du monde nouveau (ceins, combattront, avec toi)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR182 — « Ils combattront contre toi » : ville fortifiée imprenable</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR183">
+<div class="visuel"><img src="images/prophe_JR183_serviteur.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR183 · CATÉGORIE JR</div>
+<h3>« Israël est-il un serviteur ? » : le mal amer de l'abandon</h3>
+<div class="ref">Jérémie 2:14-19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Serviteur pillé (esclave → pillage → lions → villes → Noph → abandon → méchanceté → amer)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR183</div><audio controls preload="none" src="audio/fiche_JR183_serviteur.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR183_serviteur.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 2:14-19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Serviteur pillé (esclave → pillage → lions → villes → Noph → abandon → méchanceté → amer)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P183 (2:14-19 : serviteur, abandon) ; accomplissement 2R 17:6, 25:8-11</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ISRAËL… SERVITEUR… ESCLAVE… MAISON… POURQUOI… OBJET… PILLAGE… LIONS… RUGISSENT. » (2:14-15 — rugissent !)</li>
+<li>« FAIT… RETENTIR… VOIX… PAYS… STUPÉFACTION… VILLES… INCENDIÉES… HABITANT… NON. » (2:15b — non !)</li>
+<li>« FILS… NOPH… TAHPANÈS… BROUTAIENT… CRÂNE… ÉGYPTE… ALLIANCE… ROSEAU… PERCÉ. » (2:16 — percé !)</li>
+<li>« ABANDONNÉ… DIRIGEAIT… VOIE… ROUTE… ÉGYPTE… EAUX… SIHOR… ASSYRIE… FLEUVE. » (2:17-18 — fleuve !)</li>
+<li>« MÉCHANCETÉ… CORRIGERA… INFIDÉLITÉS… REPRENDRONT… MAUVAIS… AMER… QUITTÉ… EFFROI… NON. » (2:19 — non !)</li>
+<li>« SAMARIE… PRISE… DÉPORTA… HALAH… HABOR… MÈDES… JUDA… BRÛLÉE… EXIL… BABYLONE. » (2R 17:6 ; 25:8-11 — Babylone !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~627 — SERVITEUR (les HAEBED (les YISRAËL (les YELID (les BAYIT (les NÉ (les MAISON (les MADDUA (les POURQUOI (les HAYAH (les DEVENU (les LABBAZ (les PILLAGE (les LIBRE (les NAISSANCE (les FILS (les ALLIANCE (les ESCLAVE (les DE FAIT (les PARADOXE (les SERVITEUR — les PILLÉ !). Les LIONS (les KEPHIRIM (les YISHAGU (les RUGISSENT (les NATHNU (les RETENTIR (les QOLAM (les VOIX (les YASHITU (les STUPÉFACTION (les ARTSO (les PAYS (les ARIM (les VILLES (les NITSTU (les INCENDIÉES (les MEYOSHÉB (les HABITANT (les LIONS — les RUGI !)</p>
+<h4>4 · Explication du texte</h4>
+<p>NOPH (les MOPH (les MEMPHIS (les TAHPANHES (les DAPHNÉ (les YIREUKHA (les BROUTAIENT (les QODQOD (les CRÂNE (les TONDU (les HUMILIÉ (les ESCLAVES (les RASÉS (les ÉGYPTE (les ALLIÉE (les INFIDÈLE (les ROSEAU (les CASSE (les PERCE (les MAIN (les NOPH — les TOND !). L'ABANDON (les AZABTA (les YHWH (les ELOHEKHA (les BEET (les MOLIKHA (les DIRIGEAIT (les DEREK (les VOIE (les MA (les LEKHA (les POURQUOI (les DEREK (les MITSRAYIM (les SHIHOR (les NIL (les ASHUR (les NAHAR (les EUPHRATE (les EAUX (les ÉTRANGÈRES (les SOURCE (les QUITTÉE (les ABANDON — les DOUBLE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application DOUBLE : SAMARIE (les 740 (les SIÈGE (les 3 ANS (les SARGON (les 27 290 (les DÉPORTÉS (les HALAH (les HABOR (les APOLOGÉTIQUE — les TOMBÉE !) + JUDA (les 607 (les MAISON (les BRÛLÉE (les MURS (les ABATTUS (les RIBLA (les AVEUGLÉ (les EXIL (les TÉMOIN — les BRÛLÉE !) + AMER (les RA (les MAR (les MAUVAIS (les PÉCHÉ (les PUNIT (les LUI-MÊME (les CONSÉQUENCE (les HISTOIRE — les PÉDAGOGUE !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">2:14</td><td>SERVITEUR (PILLAGE !)</td></tr>
+<tr><td class="d">2:15</td><td>LIONS (INCENDIÉES !)</td></tr>
+<tr><td class="d">2:16</td><td>NOPH (CRÂNE !)</td></tr>
+<tr><td class="d">2:17-18</td><td>ABANDON (FLEUVE !)</td></tr>
+<tr><td class="d">2:19</td><td>AMER (EFFROI !)</td></tr>
+<tr><td class="d">2R 17:6</td><td>SAMARIE (DÉPORTÉE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>SARGON : NINIVE (les 722 (les SAMARIE (les PRISE (les ANNALES (les 27 290 (les DÉPORTÉS (les COLONS (les IMPORTÉS (les LIONS (les ENVOYÉS (les PRÊTRE (les RÉCLAMÉ (les ASSYRIOLOGIE — les CONFIRME !). NOPH : MEMPHIS (les CAPITALE (les PSAMMETIQUE (les ALLIANCE (les JOSIAS (les TUÉ (les MEGUIDDO (les NÉKO (les TRIBUTE (les ÉGYPTE — les ROSEAU !). TAHPANÈS : DAPHNÉ (les DELTA (les GARNISON (les JUIFS (les FUIS (les 607 (les JÉRÉMIE (les EMMENÉ (les DELTA — les REFUGE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>SIHOR : NIL (les NOIR (les LIMON (les ÉGYPTE (les EAUX (les TROUBLES (les FLEUVE (les EUPHRATE (les GRAND (les ASSYRIE (les DEUX (les ROUTES (les ESCLAVAGE (les TOPOGRAPHIE — les EAUX !). HALAH-HABOR : HABUR (les AFFLUENT (les EUPHRATE (les MÈDES (les MONTAGNES (les DÉPORTÉS (les DISPERSÉS (les GÉOGRAPHIE — les EXIL !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le CRÂNE : QODQOD (les TONDU (les BROUTÉ (les BREBIS (les HUMILIATION (les ESCLAVES (les RASÉS (les CHEVEUX (les HONNEUR (les DÉPILATION (les ANATOMIE — les TONDUE !). L'AMER : MAR (les GOÛT (les ABSINTHE (les CONSÉQUENCE (les PÉCHÉ (les SAVEUR (les RÉCOLTE (les SEMAILLES (les CHIMIE — les AMÈRE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>SERVITEUR nié (esclave ?) → PILLAGE constaté (pourquoi) → LIONS entendus (rugissent) → VILLES brûlées (sans habitant) → CRÂNE tondu (Noph) → ABANDON avoué (voie quittée) → AMER goûté (mauvais).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS qu'ISRAËL NAQUIT ESCLAVE (né libre, fils ; devenu pillage par abandon). Ne NOMME PAS LES LIONS UN PAR UN (Assyrie, Égypte, Babylone : tous les rugissants). Ne DIT PAS que L'AMERTUME SAUVERA (elle corrige ; le retour seul restaure). Ne DIT PAS que JUDA ÉCHAPPERA AU SORT DE SAMARIE (même abandon, même pillage : 607).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ASSIÉGÉE (SAMARIE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">740</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉE (SARGON !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TUÉ (MEGUIDDO !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PRÊCHÉ (ABANDON !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRÛLÉE (JUDA !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/2">Jérémie 2 — Référence (serviteur, lions, Noph, amer, 2:14-19)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/2">Jérémie 2 — Bible d'étude (pillage, abandon, infidélités)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/2">Jérémie 2 — Traduction du monde nouveau (esclave, rugissent, amère)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/2</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR183 — « Israël est-il un serviteur ? » : le mal amer de l'abandon</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR184">
+<div class="visuel"><img src="images/prophe_JR184_arche.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR184 · CATÉGORIE JR</div>
+<h3>« Je vous ramènerai à Sion » : l'arche ne sera plus rappelée</h3>
+<div class="ref">Jérémie 3:14-18</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Retour Sion (revenez → maître → un-deux → Sion → bergers → arche → trône → ensemble)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR184</div><audio controls preload="none" src="audio/fiche_JR184_arche.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR184_arche.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 3:14-18</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Retour Sion (revenez → maître → un-deux → Sion → bergers → arche → trône → ensemble)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P184 (3:14-18 : rassemblement, arche) ; accomplissement Esd 1:1-4, Jr 3:16</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« REVENEZ… DÉLOYAUX… MAÎTRE… PRENDRAI… VILLE… FAMILLE… AMÈNERAI… SION. » (3:14 — Sion !)</li>
+<li>« DONNERAI… BERGERS… CŒUR… PAÎTRONT… CONNAISSANCE… INTELLIGENCE… MULTIPLIÉS… FRUCTIFIÉ. » (3:15-16 — fructifié !)</li>
+<li>« ARCHE… ALLIANCE… DIRA… NON… PENSERA… NON… SOUVIENDRA… NON… REGRETTERA… FABRIQUERA… NON. » (3:16 — non !)</li>
+<li>« ÉPOQUE… APPELLERA… JÉRUSALEM… TRÔNE… NATIONS… RASSEMBLERONT… NOM… OBSTINATION… NON. » (3:17 — non !)</li>
+<li>« ÉPOQUE… JUDA… ISRAËL… MARCHERONT… ENSEMBLE… VIENDRONT… NORD… PAYS… HÉRITAGE… ANCÊTRES. » (3:18 — ancêtres !)</li>
+<li>« RÉVEILLA… ESPRIT… CYRUS… VOIX… PROCLAMÉE… ÉCRIT… MONTE… JÉRUSALEM… REBÂTISSE… MAISON. » (Esd 1:1-3 — maison !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~627 — REVENEZ (les SHUBU (les BANIM (les FILS (les SHOBABIM (les DÉLOYAUX (les BAALTI (les MAÎTRE (les BAKHEM (les LAQAHTI (les PRENDRAI (les EHAD (les UN (les MEIR (les VILLE (les SHNAYIM (les DEUX (les MISHPAHAH (les FAMILLE (les HEBÉTI (les AMÈNERAI (les TSIYON (les MARIAGE (les RESTAURÉ (les RESTE (les GLANÉ (les REVENEZ — les SION !). Les BERGERS (les ROIM (les KILIBBI (les CŒUR (les RAAH (les PAÎTRONT (les DÉAH (les CONNAISSANCE (les HASKEL (les INTELLIGENCE (les RIBITEM (les MULTIPLIÉS (les PHERITEM (les FRUCTIFIÉ (les ZOROBABEL (les JOSUÉ (les ESDRAS (les BERGERS — les SAGES !)</p>
+<h4>4 · Explication du texte</h4>
+<p>L'ARCHE (les ARON (les BERIT (les ALLIANCE (les LO (les YOMRU (les DIRA (les LO (les YAALEH (les PENSERA (les LEB (les LO (les YIZKERU (les SOUVIENDRA (les LO (les YIPHQODU (les REGRETTERA (les LO (les YÉASÉH (les FABRIQUERA (les OD (les CINQ (les NON (les DISPARUE (les 607 (les BRÛLÉE (les SECOND (les TEMPLE (les SANS (les SAINT (les VIDE (les ARCHE — les OUBLIÉE !). Le TRÔNE (les KISSÉ (les YHWH (les YERUSHALAYIM (les NIQWU (les RASSEMBLERONT (les KOL (les GOYIM (les LESHEM (les NOM (les LO (les YELKHU (les SUIVRONT (les SHERIRUT (les OBSTINATION (les LIBBAM (les HARA (les VILLE (les TRÔNE (les CITÉ — les TEMPLE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application RETOUR : ÉDIT (les 538 (les CYRUS (les ESPRIT (les RÉVEILLÉ (les 50 000 (les MONTENT (les ZOROBABEL (les JOSUÉ (les APOLOGÉTIQUE — les SION !) + SECOND (les TEMPLE (les 515 (les SAINT (les VIDE (les ARCHE (les ABSENTE (les JOSEPHE (les CONFIRME (les RIDEAU (les DÉCHIRÉ (les TÉMOIN — les SANS !) + ENSEMBLE (les YEHUDAH (les YISRAËL (les YAHDAB (les NORD (les RETOUR (les SAMARITAINS (les REFUSÉS (les HISTOIRE — les RÉUNIS !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">3:14</td><td>REVENEZ (SION !)</td></tr>
+<tr><td class="d">3:15</td><td>BERGERS (CONNAISSANCE !)</td></tr>
+<tr><td class="d">3:16</td><td>ARCHE (NON !)</td></tr>
+<tr><td class="d">3:17</td><td>TRÔNE (NATIONS !)</td></tr>
+<tr><td class="d">3:18</td><td>ENSEMBLE (NORD !)</td></tr>
+<tr><td class="d">Esd 1:1-3</td><td>CYRUS (MAISON !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>CYLINDRE : BABYLONE (les 539 (les POLITIQUE (les RETOUR (les DIEUX (les RESTAURÉS (les ÉDIT (les JUIFS (les 538 (les VAISSELLE (les RENDUE (les BRITISH (les MUSÉE (les ARCHÉOLOGIE — les CONFIRME !). Le SECOND : 515 (les DARIUS (les DÉDICACE (les ADAR (les ARCHE (les ABSENTE (les FLAVIUS (les TACITE (les VIDE (les POMPÉE (les 63 (les HISTOIRE — les CONSTATE !). L'ARCHE : ACACIA (les OR (les CHÉRUBINS (les 607 (les BRÛLÉE (les DISPARUE (les ÉTHIOPIE (les LÉGENDE (les TRADITION — les PERDUE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le NORD : BABYLONE (les EXIL (les CARAVANES (les RETOUR (les EUPHRATE (les DÉSERT (les PALMYRE (les DAMAS (les 1 500 KM (les 4 MOIS (les TOPOGRAPHIE — les MONTÉE !). SION : RUINES (les 70 ANS (les HERBE (les AUTEL (les REBÂTI (les PREMIER (les CULTE (les RESTAURÉ (les GÉOGRAPHIE — les REBÂTIE !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'OR : ZAHAB (les ACACIA (les PLAQUÉ (les CHÉRUBINS (les BATTU (les COFFRE (les 1,15 MÈTRE (les FEU (les FOND (les OR (les PILLÉ (les MÉTALLURGIE — les FONDU !). La MÉMOIRE : ZAKHAR (les OUBLI (les COLLECTIF (les GÉNÉRATIONS (les OBJET (les ABSENT (les CULTE (les SPIRITUEL (les PSYCHOLOGIE — les DÉPASSÉE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>REVENEZ appelés (déloyaux) → MAÎTRE épousé (je suis) → UN-DEUX glanés (ville) → SION visée (amènerai) → BERGERS donnés (connaissance) → ARCHE oubliée (cinq non) → TRÔNE élargi (Jérusalem).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS OÙ EST L'ARCHE (brûlée en 607 ; les légendes ne la rendront pas). Ne DIT PAS que LE SECOND TEMPLE VAUT LE PREMIER (sa gloire : le Messie y entrera). Ne DIT PAS que TOUS LES EXILÉS REVIENDRONT (un reste glané : un d'une ville, deux d'une famille). Ne DATE PAS LE JOUR OÙ JÉRUSALEM SERA LE TRÔNE (d'abord le retour ; enfin la Jérusalem céleste).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROMIS (RETOUR !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRÛLÉE (ARCHE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TOMBÉE (BABYLONE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROCLAMÉ (ÉDIT !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉDIÉ (SANS ARCHE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">515</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/3">Jérémie 3 — Bible d'étude (revenez, arche, trône, 3:14-18)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/3">Jérémie 3 — Référence (Sion, bergers, ensemble, nord)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/1">Esdras 1 — Traduction du monde nouveau (Cyrus, esprit, maison, 1:1-3)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/15/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR184 — « Je vous ramènerai à Sion » : l'arche ne sera plus rappelée</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR185">
+<div class="visuel"><img src="images/prophe_JR185_lion.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR185 · CATÉGORIE JR</div>
+<h3>« Le lion monte de son fourré » : la désolation vient du nord</h3>
+<div class="ref">Jérémie 4:5-8</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Lion destructeur (publiez → cor → rassemblez → étendard → nord → lion → villes → sac)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR185</div><audio controls preload="none" src="audio/fiche_JR185_lion.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR185_lion.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 4:5-8</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Lion destructeur (publiez → cor → rassemblez → étendard → nord → lion → villes → sac)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P185 (4:5-8 : lion, désolation) ; accomplissement Jr 39:1-8, 52:12-14</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PUBLIEZ… JUDA… JÉRUSALEM… SONNEZ… COR… PAYS… RASSEMBLEZ… VILLES… FORTIFIÉES. » (4:5 — fortifiées !)</li>
+<li>« ÉTENDARD… SION… ABRI… ARRÊTEZ… NON… MALHEUR… NORD… DÉSASTRE… GRAND. » (4:6 — grand !)</li>
+<li>« LION… MONTÉ… FOURRÉ… DESTRUCTEUR… NATIONS… MARCHE… SORTI… PAYS… DÉSOLATION. » (4:7 — désolation !)</li>
+<li>« VILLES… DÉVASTÉES… HABITANT… NON… CEIGNEZ… SACS… LAMENTEZ… HURLEZ… COLÈRE. » (4:7b-8 — colère !)</li>
+<li>« ASSIÉGÉE… DIX-HUIT… MOIS… FAIM… DURE… BRÈCHE… ROI… FUIT… ARABAH… CAPTURÉ. » (Jr 39:1-5 — capturé !)</li>
+<li>« BRÛLA… MAISON… PALAIS… ABATTIT… MURAILLES… EXILA… RESTE… NÉBUZARADAN… FEU. » (Jr 52:12-15 — feu !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~627 — COR (les SHOPHAR (les TIOQ (les SONNEZ (les HAGGIDU (les PUBLIEZ (les BIHUDAH (les HASHMIU (les JÉRUSALEM (les QIBBETSU (les RASSEMBLEZ (les ARÉ (les VILLES (les MIBTSAR (les FORTIFIÉES (les ALARME (les GUERRE (les INVASION (les REFUGE (les MURS (les COR — les SONNÉ !). L'ÉTENDARD (les NES (les SEO (les LEVEZ (les TSIYONAH (les SION (les HITBATSTSERU (les ABRI (les AL (les TAAMODU (les ARRÊTEZ (les RAAH (les MALHEUR (les MITSAPHON (les NORD (les SHEBER (les DÉSASTRE (les GADOL (les SIGNAL (les FEU (les COLLINES (les ÉTENDARD — les LEVÉ !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le LION (les ARYÉH (les ALAH (les MONTÉ (les MISUBBEKO (les FOURRÉ (les MASHHIT (les DESTRUCTEUR (les GOYIM (les NATIONS (les NASA (les MARCHE (les YATSA (les SORTI (les MIMEQOMO (les LISHUM (les METTRE (les ARTSEKHA (les PAYS (les LESHAMMAH (les DÉSOLATION (les BABYLONE (les EMBLÈME (les LION (les ISHTAR (les PORTE (les LION — les MONTÉ !). Les SACS (les SAQQIM (les HIGRU (les CEIGNEZ (les SIPHDU (les LAMENTEZ (les HEHILILU (les HURLEZ (les SHAB (les DÉTOURNÉE (les LO (les HARON (les ARDENTE (les APH (les COLÈRE (les DEUIL (les NATIONAL (les PÉNITENCE (les TARDIVE (les SACS — les CEINTS !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application LION : BABYLONE (les EMBLÈME (les LION (les ISHTAR (les PORTE (les 120 LIONS (les BRICQUES (les ÉMAILLÉES (les NÉBUCADNETSAR (les FOURRÉ (les APOLOGÉTIQUE — les SORTI !) + SIÈGE (les 588 (les 18 MOIS (les FAIM (les DURE (les BRÈCHE (les NUIT (les FUITE (les ARABAH (les TÉMOIN — les CAPTURÉ !) + FEU (les NÉBUZARADAN (les MAISON (les PALAIS (les MURS (les ABATTUS (les EXIL (les HISTOIRE — les BRÛLÉE !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">4:5</td><td>COR (FORTIFIÉES !)</td></tr>
+<tr><td class="d">4:6</td><td>ÉTENDARD (NORD !)</td></tr>
+<tr><td class="d">4:7</td><td>LION (DÉSOLATION !)</td></tr>
+<tr><td class="d">4:8</td><td>SACS (COLÈRE !)</td></tr>
+<tr><td class="d">Jr 39:1-5</td><td>BRÈCHE (CAPTURÉ !)</td></tr>
+<tr><td class="d">Jr 52:12-15</td><td>FEU (EXILÉE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>ISHTAR : PORTE (les BABYLONE (les LIONS (les 120 (les TAUREAUX (les DRAGONS (les BRICQUES (les ÉMAILLÉES (les KOLDEWEY (les FOUILLES (les BERLIN (les ARCHÉOLOGIE — les LION !). Le SIÈGE : JANVIER (les 588 (les REMPARTS (les BÉLIERS (les RAMPES (les FAIM (les CANNIBALISME (les LAMENTATIONS (les BRÈCHE (les JUILLET (les GUERRE — les TOTALE !). NÉBUZARADAN : GARDE (les CHEF (les AOÛT (les 607 (les FEU (les EXIL (les PAUVRES (les VIGNERONS (les RESTE — les BRÛLÉ !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le FOURRÉ : SUBBEK (les JUNGLE (les EUPHRATE (les ROSEAUX (les LIONS (les MÉSOPOTAMIE (les TANIÈRE (les SORTIE (les CHASSE (les PROIE (les JUDA (les TOPOGRAPHIE — les TANIÈRE !). L'ARABAH : VALLÉE (les JÉRICHO (les FUITE (les NUIT (les SÉDÉCIAS (les CAPTURÉ (les RIBLA (les JUGÉ (les GÉOGRAPHIE — les FUITE !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le COR : SHOPHAR (les KÉRATINE (les BÉLIER (les SON (les GRAVE (les PORTÉE (les KILOMÈTRES (les ALARME (les VIBRATION (les ACOUSTIQUE — les ALERTE !). Le SAC (les SAQ (les POIL (les CHÈVRE (les RUGUEUX (les IRRITANT (les DEUIL (les CENDRES (les TEXTILE — les PÉNITENCE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>PUBLIEZ crié (Juda) → COR sonné (pays) → RASSEMBLEZ fui (villes) → ÉTENDARD levé (Sion) → NORD montré (malheur) → LION monté (fourré) → SACS ceints (hurlez).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne NOMME PAS LE LION ICI (son emblème orne la porte d'Ishtar ; son nom : Nébucadnetsar). Ne DIT PAS que LES VILLES FORTIFIÉES TIENDRONT (refuge illusoire ; Lakish et Azéqa tombent). Ne DIT PAS que LES SACS DÉTOURNERONT LA COLÈRE (elle ne s'est pas détournée : trop tard). Ne DIT PAS la DURÉE DU SIÈGE ICI (dix-huit mois de faim : Jérémie 39 la donne).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SONNÉ (COR !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SORTI (FOURRÉ !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ASSIÉGÉ (FAIM !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">OUVERT (BRÈCHE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRÛLÉ (AOÛT !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/4">Jérémie 4 — Référence (cor, lion, sacs, 4:5-8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/4">Jérémie 4 — Bible d'étude (étendard, nord, destructeur)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/39">Jérémie 39 — Traduction du monde nouveau (siège, brèche, feu, 39:1-8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/39</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR185 — « Le lion monte de son fourré » : la désolation vient du nord</span><span>Catégorie JR</span></div></div>
+</article>
+<article class="fiche" id="JR186">
+<div class="visuel"><img src="images/prophe_JR186_lointaine.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE JR186 · CATÉGORIE JR</div>
+<h3>« Une nation lointaine » : elle dévorera moissons et villes fortes</h3>
+<div class="ref">Jérémie 5:14-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Nation lointaine (vent → feu → bois → lointaine → ancienne → langue → carquois → dévore)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche JR186</div><audio controls preload="none" src="audio/fiche_JR186_lointaine.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_JR186_lointaine.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Jérémie 5:14-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Nation lointaine (vent → feu → bois → lointaine → ancienne → langue → carquois → dévore)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Jérémie — P186 (5:14-17 : nation lointaine) ; accomplissement 2R 18:13, 24:10-16</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PROPHÈTES… VENT… PAROLE… NON… FERAI… PAROLES… FEU… BOUCHE… PEUPLE… BOIS… CONSUMERA. » (5:13-14 — consumera !)</li>
+<li>« FERAI… VENIR… NATION… LOINTAINE… ATTAQUERA… TEMPS… ANCIENNE… LANGUE… CONNAIS… NON. » (5:15 — non !)</li>
+<li>« COMPRENDS… PAROLES… NON… CARQUOIS… TOMBE… OUVERTE… GUERRIERS… TOUS… VAILLANTS. » (5:16 — vaillants !)</li>
+<li>« DÉVORERONT… MOISSON… PAIN… FILS… FILLES… BOEUFS… MOUTONS… VIGNES… FIGUIERS. » (5:17 — figuiers !)</li>
+<li>« DÉTRUIRONT… ÉPÉE… VILLES… FORTIFIÉES… CONFIANCE… ASSYRIEN… PRIT… LAKISH… TRIBUT. » (5:17b ; 2R 18:13-14 — tribut !)</li>
+<li>« MONTA… ASSIÉGEA… SORTIT… PRIT… DÉPORTA… DIX… MILLE… TRÉSORS… EXIL… BABYLONE. » (2R 24:10-16 — Babylone !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Juda, ~627 — VENT (les RUAH (les HANNABIIM (les PROPHÈTES (les HADDABAR (les PAROLE (les EYN (les NON (les LAKHEN (les CEST (les POURQUOI (les ETHEN (les FERAI (les DEBARAÏ (les PAROLES (les BEPIKHA (les BOUCHE (les LEESH (les FEU (les HAAM (les PEUPLE (les LEETSIM (les BOIS (les AKHALATAM (les CONSUMERA (les VENT — les FEU !). La LOINTAINE (les MEBI (les FERAI (les VENIR (les GOY (les NATION (les MERAHOQ (les ALÉYKHEM (les BÉT (les YISRAËL (les NEUM (les DIT (les GOY (les ÉTAN (les VAILLANTE (les YAMI (les TEMPS (les QÉDEM (les ANCIENNE (les LOINTAINE — les VIENT !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La LANGUE (les LASHON (les LO (les TEDAT (les CONNAIS (les LO (les TISHMA (les COMPRENDS (les MAH (les YEDABBER (les PAROLES (les ASHPAHTO (les CARQUOIS (les QÉBER (les TOMBE (les PATUAH (les OUVERTE (les KULAM (les TOUS (les GIBBORIM (les VAILLANTS (les AKKADIEN (les INCOMPRIS (les FLÈCHES (les MORTELLES (les LANGUE — les INCONNUE !). La DÉVORATION (les AKHAL (les QETSIRKHA (les MOISSON (les LAHMEKHA (les PAIN (les BANÉKHA (les FILS (les BENOTÉKHA (les FILLES (les TSONKHA (les MOUTONS (les BEQARKHA (les BOEUFS (les GAPHEKHA (les VIGNES (les TEÉNATKHA (les FIGUIERS (les HARAS (les DÉTRUIRONT (les BEHÉREB (les ÉPÉE (les DÉVORATION — les TOTALE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Application DOUBLE : SENNACHÉRIB (les 701 (les 46 VILLES (les LAKISH (les ASSIÉGÉE (les 300 TALENTS (les TRIBUT (les APOLOGÉTIQUE — les RANÇONNÉE !) + NÉBUCADNETSAR (les 597 (les YEKONIA (les SORTIT (les 10 000 (les DÉPORTÉS (les TRÉSORS (les PILLÉS (les TÉMOIN — les EXILÉE !) + FEU (les PAROLE (les EXÉCUTE (les ANNONCE (les JUGE (les BOIS (les CONSUMÉ (les HISTOIRE — les BRÛLÉ !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">5:13-14</td><td>VENT (FEU !)</td></tr>
+<tr><td class="d">5:15</td><td>LOINTAINE (ANCIENNE !)</td></tr>
+<tr><td class="d">5:16</td><td>CARQUOIS (VAILLANTS !)</td></tr>
+<tr><td class="d">5:17</td><td>DÉVORERONT (FIGUIERS !)</td></tr>
+<tr><td class="d">2R 18:13-14</td><td>LAKISH (TRIBUT !)</td></tr>
+<tr><td class="d">2R 24:10-16</td><td>DÉPORTA (BABYLONE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>LAKISH : 701 (les RELIEFS (les NINIVE (les SIÈGE (les RAMPES (les BÉLIERS (les DÉPORTÉS (les NUS (les ÉZÉCHIAS (les CAGE (les OISEAU (les BRITISH (les MUSÉE (les ARCHÉOLOGIE — les ASSIÉGÉE !). YEKONIA : 597 (les 18 ANS (les 3 MOIS (les RÈGNE (les SORTIT (les 10 000 (les ARTISANS (les TABLETTES (les RATIONS (les BABYLONE (les ARCHIVES — les PENSIONNÉ !). L'AKKADIEN : SÉMITIQUE (les CUNÉIFORME (les INCOMPRIS (les JUDA (les INTERPRÈTES (les RABSHAQÉ (les HÉBREU (les LINGUISTIQUE — les ÉTRANGÈRE !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le LOINTAIN : 1 500 KM (les EUPHRATE (les DÉSERT (les MARCHE (les MOIS (les ARMÉES (les RAVITAILLENT (les PILLENT (les MOISSONS (les ROUTE (les TOPOGRAPHIE — les DÉVORÉE !). Les VILLES : LAKISH (les AZÉQA (les DÉFENSES (les DOUBLES (les MURS (les CONTRESCARPE (les ÉPÉE (les PREND (les GÉOGRAPHIE — les TOMBÉES !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le CARQUOIS : ASHPAH (les FLÈCHES (les 30 (les TOMBE (les OUVERTE (les MORTS (les MULTIPLES (les ARC (les COMPOSITE (les PORTÉE (les 300 MÈTRES (les BALISTIQUE — les MORTELLE !). La MOISSON : QETSIR (les BLÉ (les ORGE (les PAIN (les RATIONS (les ARMÉE (les 100 000 (les BOUCHES (les LOGISTIQUE — les DÉVORÉE !).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>VENT dénoncé (prophètes) → FEU promis (bouche) → BOIS désigné (peuple) → LOINTAINE appelée (nation) → LANGUE inconnue (paroles) → CARQUOIS ouvert (tombe) → MOISSON dévorée (villes).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Ne DIT PAS que LA NATION EST NOMMÉE ICI (lointaine, ancienne ; Babylone se révélera). Ne DIT PAS que TOUT SERA DÉVORÉ EN UNE FOIS (701 l'ombre ; 605, 597, 607 la proie). Ne DIT PAS que LE FEU ÉPARGNERA UN RESTE ICI (le verset 18 le dit : pas entièrement). Ne DIT PAS COMMENT COMPRENDRE L'INCOMPRÉHENSIBLE (la langue inconnue : l'exil enseigne).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">RANÇONNÉE (LAKISH !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROMISE (LOINTAINE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">MONTÉE (1er SIÈGE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉE (10 000 !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉVORÉE (FEU !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/5">Jérémie 5 — Bible d'étude (feu, lointaine, langue, 5:14-17)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/24/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/5">Jérémie 5 — Référence (bois, carquois, dévoreront)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/24">2 Rois 24 — Traduction du monde nouveau (Yekonia, déportés, 24:10-16)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/12/24</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche JR186 — « Une nation lointaine » : elle dévorera moissons et villes fortes</span><span>Catégorie JR</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie JR</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>JR181 — « La marmite bouillonne » : du nord déferlera le malheur</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">APPELÉ (ANATHOTH !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">MONTÉ (KARKEMISH !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉ (YEKONIA !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ASSIÉGÉ (18 MOIS !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRÛLÉ (TRÔNES !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>JR182 — « Ils combattront contre toi » : ville fortifiée imprenable</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FORTIFIÉ (PROMESSE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">FRAPPÉ (PASHHUR !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JUGÉ (TEMPLE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">608</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">JETÉ (BOUE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">LIBÉRÉ (GUEDALIA !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>JR183 — « Israël est-il un serviteur ? » : le mal amer de l'abandon</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ASSIÉGÉE (SAMARIE !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">740</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉE (SARGON !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TUÉ (MEGUIDDO !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PRÊCHÉ (ABANDON !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRÛLÉE (JUDA !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>JR184 — « Je vous ramènerai à Sion » : l'arche ne sera plus rappelée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROMIS (RETOUR !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRÛLÉE (ARCHE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">TOMBÉE (BABYLONE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROCLAMÉ (ÉDIT !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉDIÉ (SANS ARCHE !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">515</text>
+</svg>
+<h4>JR185 — « Le lion monte de son fourré » : la désolation vient du nord</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SONNÉ (COR !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">SORTI (FOURRÉ !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ASSIÉGÉ (FAIM !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">OUVERT (BRÈCHE !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">BRÛLÉ (AOÛT !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<h4>JR186 — « Une nation lointaine » : elle dévorera moissons et villes fortes</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">RANÇONNÉE (LAKISH !)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">701</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">PROMISE (LOINTAINE !)</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">627</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">MONTÉE (1er SIÈGE !)</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">605</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉPORTÉE (10 000 !)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">DÉVORÉE (FEU !)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-31 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

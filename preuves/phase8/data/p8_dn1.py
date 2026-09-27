@@ -1,0 +1,1527 @@
+# -*- coding: utf-8 -*-
+# P8-63 : Daniel 4-7 — la raison rendue, la main sur la muraille, Balthazar jugé,
+# la fosse aux lions, les quatre bêtes, la petite corne (P373-P378)
+CAT = dict(
+    code="DN1",
+    nom="Daniel 4-7 — la raison rendue, l'écriture murale, les bêtes de la mer et la petite corne",
+    intro=(
+        "Deuxième vague Daniel : le dénouement du grand arbre — la raison rendue au roi "
+        "qui lève les yeux (4:31-36) ; la nuit de Belshatsar : la main qui écrit face au "
+        "porte-lampes, MENÉ MENÉ TEQEL PARSÎN, le royaume pesé, compté, divisé (5:5-31) ; "
+        "le réquisitoire contre les dieux d'argent qui ne voient ni n'entendent (5:23, 24) ; "
+        "les accusateurs de Daniel happés avant le fond de la fosse (6:24) ; les quatre bêtes "
+        "sorties de la mer — lion ailé, ours, léopard à quatre têtes, bête aux dents de fer (7:1-7) ; "
+        "et la petite corne aux yeux d'homme (7:8, 24-26). Aucune date pour l'avenir."
+    ),
+)
+FICHES = []
+
+# ===========================================================================
+# DN373 — Daniel 4:31, 32
+# ===========================================================================
+FICHES.append(dict(
+    n="DN373",
+    titre="La raison rendue : le Très-Haut domine sur le royaume des hommes",
+    ref="Daniel 4:31, 32",
+    statut="Accomplie",
+    cat="DN",
+    syst=(
+        "raison rendue Très-Haut domine (encore → parole → bouche → roi → voix → cieux → abattu → "
+        "arbre → royaume → ôté → séparé → hommes → herbe → bœufs → rosée → sept → temps → passes → "
+        "reconnais → Très-Haut → domine → donne → veut → plus bas → hommes → heure-même → cheveux → "
+        "aigles → ongles → oiseaux → yeux → raison → louange → surcroît)"
+    ),
+    reg=(
+        "Registre : Daniel — P373 (4:31, 32 : la raison te reviendra ; le Très-Haut domine sur le "
+        "royaume des hommes) ; 4:34-36 ; Accomplie"
+    ),
+    texte=[
+        (
+            "« ENCORE… PAROLE… BOUCHE… ROI… VOIX… CIEUX… ABATTU… ARBRE… ROYAUME… ÔTÉ… SÉPARÉ… "
+            "HOMMES… HERBE… BŒUFS… ROSÉE… SEPT… TEMPS… PASSES… RECONNAIS… TRÈS-HAUT… DOMINE… "
+            "ROYAUME… HOMMES… DONNE… VEUT… PLUS BAS… — ʿOD… MILLETA… ENCORE… PAROLE… BEPUM… "
+            "DANS LA BOUCHE… MALKHUTAH… SON ROYAUME… MIN… DE… SHEMAYYA… DES CIEUX… QETSATS… "
+            "ABATTU… ILANA… ARBRE… TAREKH… ÉLOIGNÉ… ʿISBA… HERBE… KE-TORA… COMME BŒUFS… "
+            "YITSṬEBAʿ… TREMPÉ… MIṬAL… DE ROSÉE… SHEMAYYA… DU CIEL… ʿAD… JUSQU'À… DI… QUE… "
+            "TINDAʿ… TU RECONNAISSES… ʿILLAYA… LE TRÈS-HAUT… SHALLIṬ… DOMINE… BEMALKHUT… SUR LE "
+            "ROYAUME… ENASHA… DES HOMMES… ULEMAN… ET À QUI… YITSBE… IL VEUT… YITNINNEH… IL LE "
+            "DONNE… USHEPHAL… ET PLUS BAS… ENASHA… HOMMES… — BAH… SHAʿATA… À L'HEURE MÊME… "
+            "MILLETA… LA PAROLE… S'ACCOMPLIT… ʿAL… SUR… NEVUKHADNETSAR… NEBUCADNETSAR… "
+            "UMIN… ET DES… ENASHA… HOMMES… ṬERIKH… CHASSÉ… ʿISBA… HERBE… YEʾKHOL… IL MANGE… "
+            "GISHMEH… SON CORPS… SEʿARAH… SES CHEVEUX… KENISHERIN… COMME AIGLES… REVU… "
+            "WETIFREH… ET SES ONGLES… KETZIPPERIN… COMME OISEAUX… — ḤAZOT… VISION… "
+            "UMANDAʿI… ET MA RAISON… YEṬUB… REVIENT… ʿALAY… SUR MOI… ULEʿILLAYA… ET LE TRÈS-HAUT… "
+            "BARAKHT… JE BÉNIS… ULEʿALMA… POUR TOUJOURS… ḤAYYA… VIVANT… SHALṬANEH… SA DOMINATION… "
+            "MALKHUTEH… SON ROYAUME… LA… NE… YITḤABBAL… NE SERA PAS DÉTRUIT… »"
+        ),
+        (
+            "LES TROIS JUMEAUX — Psaume 75 : « ÉLÈVE… NE… PAS… ÉLEVEZ… CORNE… PARLEZ… NUQUE… "
+            "RAIDE… NI… ÉLÈVE… ROCHE… NI… ORIENT… NI… DÉSERT… NI… MONTAGNES… ÉLÈVE… DIEU… "
+            "JUGE… ABAISSE… ÉLÈVE… COUPE… MAIN… SEIGNEUR… VIN… ÉCUMANT… ÉPICES… VERSE… LIES… "
+            "ASPIRENT… BOIVENT… CORNES… SEIGNEUR… ABAISSÉES… CORNES… JUSTE… ÉLEVÉES… » — "
+            "Job 42 : « SEIGNEUR… RÉPONDIT… JOB… PROVOQUÉ… DÉLIBÉRÉMENT… SANS… COMPRENDRE… "
+            "CHOSES… MERVEILLEUSES… IGNORE… COUVRE… DÉCLARE… INTERROGE… JE PARLERAI… VU… "
+            "OREILLE… MAINTENANT… ŒIL… VOIT… RÉTRACTE… REPENT… POUSSIÈRE… CENDRE… — SEIGNEUR… "
+            "RESTAURA… SITUATION… JOB… DÉLIVRA… CAPTIVITÉ… DOUBLA… AVOIR… PRIAIT… AMIS… "
+            "BÊTES… CINQ… MILLE… BREBIS… CHAMEAUX… PAIRES… BŒUFS… ÂNESSES… ENFANTS… FILS… "
+            "FILLES… TROIS… CÉLÈBRES… HÉRITAGE… VIEILLESSE… QUATORZE… VIT… QUATRE… GÉNÉRATIONS… "
+            "MOURUT… RASASSIÉ… JOURS… » — Psaume 33 : « JUSTES… CHANTEZ… SEIGNEUR… LOUANGE… "
+            "CONVIENT… VÉRITÉ… PAROLE… FIDÉLITÉ… ŒUVRES… JUSTICE… TERRE… PLEINE… AMOUR… "
+            "PAROLE… CIEUX… FAITS… ROUAH… SOUFFLE… BOUCHE… ARMÉE… RASSEMBLE… EAUX… MER… "
+            "PROVIDENCE… CRAGNENT… RESPECTENT… PROJETS… TIENT… GÉNÉRATIONS… CONSEIL… TIENT… "
+            "HEUREUX… NATION… DIEU… PEUPLE… CHOISI… REGARDE… VOIT… FILS… HOMMES… FORME… "
+            "CŒURS… OBSERVE… ŒUVRES… ROI… SAUVÉ… ARMÉE… PUISSANT… DÉLIVRÉ… CHEVAL… VICTOIRE… "
+            "ŒIL… SEIGNEUR… CRAIGNENT… ESPÈRENT… AMOUR… ARRACHE… AME… MORT… FAIM… RASSASIE… "
+            "ATTENDONS… SECOURS… BOUCLIER… CŒUR… RÉJOUIT… SAINT… NOM… CONFIANCE… AMOUR… SUR… NOUS… »"
+        ),
+    ],
+    contexte=(
+        "Le double verset (4:31, 32) est le PIVOT du chapitre quatre, et le chapitre quatre est le "
+        "seul texte biblique rédigé comme un ÉDIT ROYAL à la première personne : titulature universelle "
+        "(« à tous les peuples, nations et langues »), récit à la première personne, doxologie finale, "
+        "clôture par un décret. La séquence est serrée : le songe de l'observateur, le grand arbre "
+        "(v. 4-18) ; l'interprétation de Daniel, l'appel à rompre avec le péché par la miséricorde "
+        "(v. 19-27) ; DOUZE MOIS de répit (v. 28-29) ; l'orgueil sur le toit du palais royal de "
+        "Babylone — « N'est-ce pas là Babylone la Grande, que moi j'ai bâtie… par la puissance de ma "
+        "force ? » (v. 30) ; la parole entendue du ciel (v. 31) ; le verdict (v. 32) ; l'exécution "
+        "immédiate (v. 33) ; le retour de la raison (v. 34-36) ; l'édit (v. 37). Vv. 31-32 tombent donc "
+        "au MOMENT EXACT où la prophétie du songe devient histoire : ce que l'observateur du ciel avait "
+        "déclaré se réalise « à l'heure même ». Le cadre est le sommet du règne, après trente années de "
+        "campagnes, de tributs et de travaux — et l'écho profane de cette humiliation a subsisté : "
+        "Abydénus, cité par Eusèbe (Préparation évangélique 9.41), place dans la tradition chaldéenne "
+        "un roi parlant oracle SUR LE TOIT de son palais, saisi ensuite par un dieu ; Bérose, cité par "
+        "Josèphe (Contre Apion 1.20), attribue à Nebucadnetsar quarante-trois ans de règne. L'épisode "
+        "est donc situé aux confins de la fin du règne, quand le royaume n'a plus de conquête à "
+        "ajouter à sa gloire — et l'homme, plus rien à opposer à sa propre vanité."
+    ),
+    explication=(
+        "L'araméen porte le texte d'un bout à l'autre (2:4b-7:28). Trois mots commandent : "
+        "MILLETA (la « parole », mais aussi l'affaire, l'événement) — ce n'est pas un bruit, c'est un "
+        "décret qui se fait ; IDDAN / IDDANIN (« temps », « temps fixés ») — la durée de la maladie "
+        "n'est pas une fatalité biologique mais une durée comptée ; MAND Aʿ (« la connaissance, le "
+        "discernement, la raison ») — le mot qui fait le sens du chapitre : le roi perd la RAISON, puis "
+        "la RAISON lui revient, et cette raison rendue devient l'organe de la louange (« ma raison "
+        "revint sur moi et je bénis le Très-Haut », v. 34). Autre trait de grammaire : la voix passive "
+        "de 4:31 (« ton royaume s'est ôté de toi ») répond au passif de 4:14 (« que l'on t'abatte ») ; "
+        "le roi orgueilleux n'agit plus, il subit. Le but est énoncé deux fois, avec les mêmes mots : "
+        "« jusqu'à ce que tu reconnaisses que le Très-Haut est chef sur le royaume des humains » "
+        "(4:32, déjà 4:25, et de nouveau 4:34) : la réclusion n'est pas une vengeance, c'est une PÉDAGOGIE. "
+        "Le dernier trait, finement placé, est la qualification des bénéficiaires du pouvoir — « il le "
+        "donne à qui il veut, IL LE DONNE AU PLUS BAS DES HOMMES » : celui qui vient de dire « c'est moi "
+        "qui ai bâti » apprend que le trône lui-même est un prêt. Notons enfin les DÉTAILS PHYSIQUES "
+        "du v. 33 : l'herbe comme les bœufs, le corps trempé de la rosée du ciel, les cheveux qui "
+        "poussent « comme ceux des aigles », les ongles « comme ceux des oiseaux ». Ces notations ne "
+        "sont pas décoratives : elles décrivent un homme retiré des hommes assez longtemps pour que "
+        "sa chevelure et ses ongles deviennent sauvages, et elles expliquent le verbe du v. 32 — "
+        "« on te séparera des hommes »."
+    ),
+    interpretation=(
+        "Lecture chrétienne et témoins de Jéhovah : le chapitre ne laisse aucune place à l'allégorie "
+        "gratuite — il donne LUI-MÊME sa leçon, et cette leçon est théologique avant d'être morale : "
+        "« le Très-Haut est chef sur le royaume des humains » (4:32), c'est-à-dire que les trônes de la "
+        "terre ne sont pas souverains. Le verset jumeau convoqué par la Bible elle-même est Psaume 75:6, "
+        "7 : « ce n'est ni de l'orient, ni de l'occident… que vient l'élévation ; c'est Dieu qui juge : "
+        "il abaisse l'un, il élève l'autre ». Les citations internes de l'Écriture prolongent : "
+        "Proverbes 21:1 (le cœur du roi est dans la main de Jéhovah), 1 Samuel 2:7, 8, Ésaïe 40:23, 24, "
+        "Daniel 2:21 (« il change les temps et les époques, il ôte des rois et il établit des rois »), "
+        "Actes 17:26 (« il a fixé les temps et les limites de leur habitation »). Le roi "
+        "Nebucadnetsar devient ainsi, dans le livre de Daniel, le cas d'école que tout l'empire peut "
+        "lire — puisque c'est lui qui le publie. La portée pour les exilés de Juda est immédiate : si "
+        "l'orgueil du maître de Babylone a été abaissé en un instant, la « bête » elle-même n'est pas "
+        "maîtresse de l'histoire, et les soixante-dix ans annoncés à Jérusalem suivront leur cours "
+        "jusqu'à l'heure fixée. En lecture témoins de Jéhovah, le fait que « le Très-Haut soit chef » "
+        "ouvre sur la question de la domination légitime de la terre : la séquence de Daniel relie "
+        "cette confession à la pierre du chapitre deux et au Fils de l'homme du chapitre sept ; le "
+        "rétablissement de la domination divine est daté dans le système de la phase (607 av. n. è. — "
+        "1914 de n. è., « temps des nations », Luc 21:24), en accord avec le « sept temps » du même "
+        "chapitre quatre. La fiche ne tire AUCUNE date de ce verset : elle enregistre seulement que le "
+        "chapitre a un accomplissement historique — Nebucadnetsar — et une application typique."
+    ),
+    accomplissement=[
+        ("4:30, 31", "Orgueil sur le toit du palais ; la voix du ciel : la royauté ôtée"),
+        ("4:32, 33", "Séparation d'avec les hommes ; herbe des bœufs ; rosée ; cheveux-aigles ; ongles-oiseaux"),
+        ("4:34", "Yeux levés vers le ciel ; raison rendue ; bénédiction du Très-Haut"),
+        ("4:35, 36", "« Personne ne peut retenir sa main » ; honneur, splendeur et surcroît rendus"),
+        ("4:37", "Édit public : le Très-Haut peut abaisser ceux qui marchent dans l'orgueil"),
+    ],
+    hist=(
+        "PREUVES HISTORIQUES. (1) Le cadre documentaire : l'épisode est encadré par les sources "
+        "cunéiformes du règne de Nebucadnetsar — Chronique babylonienne 5 (British Museum 21946), qui "
+        "couvre 605-594 av. n. è., la prise de Jérusalem de 597, les campagnes de 599-594 ; les "
+        "inscriptions de construction (inscription dite « East India House », British Museum ; "
+        "inscriptions de Wadi Brisa et de Wadi esh-Sharba, taillées dans le rocher ; briques estampillées "
+        "de Babylone), qui développent longuement l'orgueil du bâtisseur — « j'ai fait Babylone grande », "
+        "« j'ai construit des palais dont l'éclat étonne » ; et la titulature religieuse du roi, "
+        "protecteur d'Esagila et d'Ezida, pourvoyeur des dieux. Autrement dit : le trait saillant que le "
+        "chapitre quatre met dans la bouche du roi orgueilleux est EXACTEMENT le ton des inscriptions "
+        "royales authentiques de ce roi. (2) L'écho profane de la folie : Abydénus (apud Eusèbe, "
+        "Préparation évangélique 9.41), rapportant la tradition chaldéenne, fait parler Nebucadnetsar sur "
+        "le toit de son palais, évoque son départ, sa disparition et une fin obscure ; Mégasthène, "
+        "rapporté au même endroit, décrit un roi que les dieux ont saisi et qui a « repris ses esprits » ; "
+        "Bérose (apud Josèphe, Contre Apion 1.19, 20) lui donne quarante-trois années de règne et détaille "
+        "ses travaux. Ces témoignages n'ont pas la précision du chapitre quatre et ne le répètent pas "
+        "mot pour mot — ils attestent qu'une TRADITION surprenante circulait, incompatible avec "
+        "l'image d'un règne sans ombre que les inscriptions officielles voudraient laisser. (3) Le "
+        "silence des sources officielles babyloniennes sur ces années n'est pas une objection : aucune "
+        "chronique royale du monde antique n'enregistre l'humiliation de son propre souverain, et les "
+        "documents de cour de Babylone s'arrêtent avant la fin du règne. (4) La date : le chapitre se "
+        "situe après douze mois de délai supplémentaires, donc à la fin du règne ; la tradition "
+        "ancienne (Ussher, Prideaux) plaçait la folie vers 570-563 av. n. è. La fiche enregistre ce "
+        "cadrage SANS le donner pour certain : la fin du règne de Nebucadnetsar est mal documentée, "
+        "et une corégence de son successeur complique toute datation haute."
+    ),
+    geo=(
+        "PREUVES GÉOGRAPHIQUES. Le seul lieu nommé est « le toit du palais royal de Babylone » (4:29, 30), "
+        "et ce lieu a été fouillé : Robert Koldewey, pour la Société orientale allemande, a dégagé de "
+        "1899 à 1917 le « palais sud » (Südburg) de Nebucadnetsar — cour centrale, salle du trône de "
+        "grande dimension (une cinquantaine de mètres de développement), appartements royaux, et les "
+        "célèbres soubassements voûtés parfois rapportés aux jardins suspendus de la tradition gréco-"
+        "babylonienne. Un toit praticable, d'où la ville entière se commande du regard, n'a donc rien "
+        "d'un décor de conte. La ville elle-même explique le cri du v. 30 : Babylone était un chantier "
+        "de génie — double enceinte (Imgur-Enlil à l'extérieur, Nimit-Enlil à l'intérieur), fossé "
+        "alimenté par l'Euphrate, muraille du quai, porte d'Ishtar, voie processionnelle bordée de "
+        "reliefs, temples d'Esagila et ziggourat d'Etemenanki dans la plaine absolument plate du sud "
+        "mésopotamien. Ce décor explique aussi la LOGIQUE MILITAIRE de l'orgueil : Babylone n'avait "
+        "aucune défense naturelle ; sa sécurité tenait entièrement à l'œuvre des hommes — donc à son roi. "
+        "Trois contrastes géographiques éclairent le verset : (a) la plaine sans relief et sans pierre, "
+        "où toute grandeur est artificielle ; (b) l'eau, seule richesse naturelle (Euphrate, canaux, "
+        "rosée du ciel), qui devient précisément la chose dont l'homme déchu est réduit à dépendre — "
+        "« son corps fut trempé de la rosée du ciel » ; (c) la distance sociale inscrite dans "
+        "l'architecture : le palais, au-dessus ; les pâturages du fleuve, en bas. « Séparé des hommes » "
+        "(4:32) prend alors un sens concret : chassé de la cité, l'homme le plus haut de la terre mange "
+        "l'herbe des zones humides, hors les murs."
+    ),
+    sci=(
+        "PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) Le cas médical : la description — perte de la "
+        "raison, comportement animal, réclusion de longue durée, guérison — a été rapprochée par la "
+        "psychiatrie d'une forme rare de trouble délirant que la littérature médicale du XXe siècle a "
+        "baptisée « boanthropie » (du grec bous, le bœuf) et classe dans les zoanthropies, aux côtés de "
+        "la lycanthropie clinique (des cas publiés existent, avec EEG et imagerie). R. K. Harrison "
+        "(Introduction to the Old Testament, 1966) a soutenu la plausibilité médicale du tableau ; "
+        "d'autres auteurs y ont vu une paraphrénie, un épisode maniaque ou les séquelles d'une "
+        "parasitose. L'intérêt de ces travaux n'est pas de « diagnostiquer » le roi : c'est que le "
+        "tableau décrit — perte de raison, comportement de ruminant, retour à l'état antérieur — a une "
+        "cohérence clinique interne, jusque dans le détail des cheveux et des ongles, signes de "
+        "négligence prolongée plutôt que d'une mutation prodigieuse. (2) Le motif parallèle de Qumrân : "
+        "un fragment araméen de la grotte 4 (4Q242, dit Prière de Nabonide) montre un roi frappé « par "
+        "une mauvaise maladie » pendant sept ans pour avoir exalté les dieux, guéri après avoir honoré "
+        "le Dieu Très-Haut, par l'intermédiaire d'un exilé juif. Le texte qumrânien met en scène "
+        "NABONIDE, non Nebucadnetsar ; le rapprochement des deux traditions — celle de Daniel et celle "
+        "de Qumrân — montre que le motif du roi orgueilleux humilié, puis restauré, était vivace dans le "
+        "judaïsme du second temple, attaché aux derniers rois de Babylone. (3) L'archéologie du site : "
+        "les fouilles allemandes ont livré les inscriptions de construction du roi, la porte d'Ishtar "
+        "reconstituée au musée de Pergame (Berlin) avec les lions et les dragons de Marduk, la voie "
+        "processionnelle aux lions d'Ishtar ; la ziggourat d'Etemenanki, dont la tablette dite "
+        "« d'Esagila » donne les mesures (base d'environ quatre-vingt-dix mètres de côté, sept étages), "
+        "domine le débat sur la « tour » associée à Babel — association qui relève des traditions "
+        "postérieures, non du texte de Daniel. (4) Le calendrier : le journal astronomique dit "
+        "VAT 4956, daté de la trente-septième année de Nebucadnetsar, permet de fixer des positions "
+        "planétaires par calcul rétrograde et sert d'ancrage à l'astronomie historique pour cette "
+        "période — c'est le type de document qui autorise une chronologie absolue du règne. Registre : "
+        "le chapitre est un RÉCIT DATÉ, humainement cohérent jusque dans ses détails cliniques et "
+        "architecturaux ; son caractère de miracle (guérison, raison rendue) est assumé comme miracle, "
+        "non expliqué par les sciences, qui n'ont ici qu'un rôle d'illustration et de contrôle de "
+        "plausibilité."
+    ),
+    schema=(
+        "SONGE (ARBRE, GODED) → RÉPIT (12 MOIS) → ORGUEIL (TOIT, « C'EST MOI ») → MILLETA (VOIX DU CIEL) → "
+        "SÉPARATION (HERBE, ROSÉE) → 7 IDDANIN → MAND Aʿ (YEUX LEVÉS, RAISON) → HODAʾAH (LOUANGE DU TRÈS-HAUT) → "
+        "ÉDIT (TOUS LES PEUPLES) → LEÇON (IL ABAISSE QUI MARCHE DANS L'ORGUEIL)"
+    ),
+    limites=(
+        "SHEḆAʿ IDDANIN (« sept temps », 4:16, 23, 25, 32) : la fiche tient les « temps » pour des "
+        "ANNÉES (durée marquée, cheveux et ongles : longue durée) mais le mot araméen désigne un temps "
+        "fixé, non l'année civile — un comput en saisons ou en mois reste discuté. DATATION : la "
+        "restauration vers 570-563 av. n. è. n'est pas prouvée ; la fin du règne est obscure et une "
+        "corégence brouille le repère. MÉDECINE : la « boanthropie » est un diagnostic rétrospectif et "
+        "analogique ; la guérison instantanée est tenue pour miraculeuse, la psychiatrie n'explique rien. "
+        "ÉDIT : la fiche tient le chapitre pour un décret réel diffusé par le roi (détails juridiques, "
+        "médicaux et la signature « moi, Nebucadnetsar »), sans ignorer que d'autres commentateurs y "
+        "voient une composition sapientiale juive à cadre royal. CONVERSION : la triple louange et le "
+        "titre « Roi des cieux » plaident pour une confession réelle ; la fiche s'interdit toute "
+        "affirmation sur le salut éternel du roi, qu'aucun texte ne déclare. LECTURE TYPIQUE : "
+        "l'application des « sept temps » aux 2 520 ans et des « temps des nations » à la période "
+        "607 av. n. è. — 1914 de n. è. est une lecture des Témoins de Jéhovah appuyée sur Daniel 4 et "
+        "Luc 21:24 ; elle ne se lit pas dans la lettre du verset, et cette fiche ne l'inscrit pas "
+        "comme accomplissement de 4:31, 32."
+    ),
+    tl=[
+        ("Édit (~571)", "Décret diffusé à tous les peuples ; le songe ; le conseil de Daniel"),
+        ("12 mois", "Répit ; promenade sur le toit ; « Babylone la Grande, que MOI j'ai bâtie »"),
+        ("Bah-shaata", "La parole tombe à l'heure même ; la royauté ôtée ; séparation d'avec les hommes"),
+        ("7 temps", "Herbe des bœufs ; rosée ; cheveux comme des aigles ; ongles comme des oiseaux"),
+        ("~563", "Yeux levés ; raison rendue ; louange ; honneur et surcroît rétablis"),
+    ],
+    src=[
+        ("Bible — Psaume 75 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/75"),
+        ("Bible — Job 42 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/42"),
+        ("Bible — Psaume 33 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/33"),
+        ("Bible — Daniel 4 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/4"),
+    ],
+    img="images/prophe_DN373_raison.jpg",
+))
+
+# ===========================================================================
+# DN374 — Daniel 5:5-28
+# ===========================================================================
+FICHES.append(dict(
+    n="DN374",
+    titre="La main sur la muraille : MENÉ MENÉ TEQEL PARSÎN, le royaume compté, pesé, divisé",
+    ref="Daniel 5:5-28",
+    statut="Accomplie",
+    cat="DN",
+    syst=(
+        "écriture murale royaume pesé divisé (main → doigts → paroi → palais → porte-lampes → roi → "
+        "pâleur → genoux → ceinture → cris → sages → astrologues → chaldéens → devins → or → pourpre → "
+        "collier → troisième → reine → Daniel → esprit → MENÉ → MENÉ → TEQEL → PARSÎN → compté → pesé → "
+        "divisé → Mèdes → Perses → nuit)"
+    ),
+    reg=(
+        "Registre : Daniel — P374 (5:5-28 : la main écrit sur la muraille ; ton royaume est divisé et "
+        "donné aux Mèdes et aux Perses) ; 5:30, 31 (cette nuit même) ; Accomplie"
+    ),
+    texte=[
+        (
+            "« MAIN… DOIGTS… HOMME… ÉCRIT… PAROI… PALAIS… ROI… PORTE-LAMPES… VISAGE… PÂLEUR… "
+            "PENSÉES… EFFRAIE… ARTICULATIONS… HANCHES… SE DÉLIENT… GENOUX… S'ENTRECHOQUENT… CRIE… "
+            "AMENER… MAGICIENS… ASTROLOGUES… CHALDÉENS… LIRE… ÉCRITURE… CONNAÎTRE… INTERPRÉTATION… "
+            "ANÉANTI… PIERRE… BOIS… TROISIÈME… ROYAUME… GOUVERNERA… REINE… FÊTE… DIEUX… ARGENT… OR… "
+            "DANIEL… CINQUANTE… INSCRIPTION… MENÉ… MENÉ… TEQEL… PARSÎN… — IDDA… MAIN… ṢEBAʿ… "
+            "DOIGTS… KE-TAV… COMME… YAD… ENASH… D'HOMME… KETAB… ÉCRIT… ʿAL… SUR… GIRA… PAROI… "
+            "HEYKHAL… PALAIS… MALKHUTEH… DU ROYAUME… LEQOVEL… FACE… NEHORAYYA… LES PORTE-LAMPES… "
+            "MALKA… LE ROI… ZIV… ÉCLAT… SHENOHI… SES TRAITS… ḤIVRU… CHANGÈRENT… BAḤASHBOHI… "
+            "SA PENSÉE… TERRORISENT… QIṬRE… ARTICULATIONS… ḤARṢE… HANCHES… BIRKE… GENOUX… "
+            "YISHTARAYAN… SE DÉLIENT… DA… QIṬRE… SE HEURTENT… QARA… IL CRIE… MALKHUTEH… "
+            "ḤAKKIMIN… SAGES… ASHSHAPAYYA… MAGICIENS… KASDAYE… CHALDÉENS… GAZERAYYA… DEVINS… "
+            "MILLETA… LA PAROLE… MENÉ… COMPTÉ… MENA… IL A COMPTÉ… ELAH… DIEU… MALKHUTEK… TON "
+            "ROYAUME… USHELIMEH… ET L'A ACHEVÉ… TEQILTA… PESÉ… TEQEL… PESÉ… MOZNAYYA… BALANCES… "
+            "ḤASIR… MANQUANT… PERES… DIVISÉ… PERAS… PERSES… YEHIVAT… ELLE EST DONNÉE… ULE-MADAY… "
+            "ET AUX MÈDES… U-PARAS… ET AUX PERSES… BAH… LEYLYA… LA NUIT… QEṬIL… TUÉ… BELSHAṬSAR… "
+            "MALKA… KASDAYA… ROI… CHALDÉEN… VE-DARYAVESH… ET DARIUS… MADAYA… LE MÉDIEN… QABBEL… "
+            "REÇUT… MALKHUTA… KEVAR… À ENVIRON… SHANIN… SITTIN… VE-TARTEYN… SOIXANTE… ET DEUX… »"
+        ),
+        (
+            "LES TROIS JUMEAUX — Job 31 : « ALLIANCE… YEUX… REGARDER… VIERGE… PARTAGE… DIEU… "
+            "D'EN HAUT… HÉRITAGE… TRÈS-HAUT… HAUTEURS… INIQUITÉ… PIÉGÉ… BALANCES JUSTES… SAC… "
+            "CONNAISSE… PASSE… MIEL… COUVÉ… CHOSES… ARRIVENT… ʾOZ… ÉPAULE… INFLEXIBLE… VEUVES… "
+            "ORPHELIN… MANTEAU… CHAIR… TENDRE… PÈRE… PROTÉGE… GOUFFRE… MEURS… TONDE… FILS… "
+            "ENNEMIS… SÈME… RACINES… TONDUE… MÉPRISE… SERVITEURS… SERVANTE… TUNIQUE… OUVERTE… "
+            "MAINS… ROCHERS… AUTORITÉ… JEUNE HOMME… PLÉIADE… SOLEIL… VOILE… LUNE… BISER… "
+            "DOIGTS… BŒUF… PARESSEUX… ACTION… LOUAGE… FLEURS… RÉCOLTE… LARMES… ESTOMAC… SOIF… "
+            "PORTAIS… CONFRÈRES… SÉJOUR… PROTECTION… DÉSERT… CHAMBRE… ARGENT… TONDE… MOISSON… "
+            "CHÊNES… SENTIER… DÉLIVRÉ… ÉCRIVAIN… LIVRE… ÉPAULE… TÊTE… POUSSE… ARRACHÉE… » — "
+            "Psaume 90 : « PRIÈRE… DIEU… HABITATION… GÉNÉRATION… MONTAGNES… ENFANTÉES… TERRE… "
+            "MONDE… VIEILLESSE… RETOURNES… POUSSIÈRE… RETOURS… MATIN… HERBE… FLEURIT… MÛRE… "
+            "COUPÉE… QUATRE-VINGTS… FORCE… FLÉAU… PENSÉE… LIVRE… JUGES… FAUTE… COLS… SAGESSE… "
+            "REVIENS… PITIÉ… SATISFAIS… AMOUR… ENSEIGNE… NOS JOURS… CACHÉES… TRAVAIL… MONTRONS… "
+            "RÉJOUIS… ORGUEIL… OISEAUX… REDOUTE… CRAINS… MAINS… AFFERMIS… » — Luc 12 : "
+            "« DÉFIEZ-VOUS… FERMENT… PHARISIENS… FOULE… SANG… LÈVRES… CACHÉ… RÉVÉLER… MURMURÉ… "
+            "PROCLAMÉ… BARAQUES… TOITS… AMIS… CRAIGNER… TUENT… APRÈS… POUVOIR… JETTE… GÉHENNE… "
+            "MOINEAUX… NOSSE… CHEVEUX… COMPTÉS… CRAINS… RECONNAÎT… DEVANT… HOMMES… RENIERA… "
+            "ANGES… BLASPHÈME… PARDONNÉ… RUISSEAUX… MARÉES… CACHÉES… »"
+        ),
+    ],
+    contexte=(
+        "Nous sommes dans la seule nuit qui décide d'un empire. Le chapitre cinq porte la date de "
+        "l'événement non dans son titre mais dans sa fin — « cette nuit-là, Belshatsar, roi des "
+        "Chaldéens, fut tué » (5:30) — et c'est le pivot de toute la chronologie biblique : 539 av. "
+        "n. è., la chute de Babylone. La scène : un banquet royal de mille grands, le vin servi, les "
+        "coupes du temple de Jérusalem employées pour boire, la louange des dieux d'or, d'argent, "
+        "d'airain, de fer, de bois et de pierre (5:1-4) ; puis, dans le même cadre, la main. Le détail "
+        "topographique est précis : la paroi se trouve FACE au porte-lampes (5:5) — la lumière est à "
+        "contre-jour, la main est vue, puis son écriture ; les magiciens, astrologues, chaldéens et "
+        "devins échouent (5:7, 8) ; la reine (comprise comme la reine mère, seule à oser entrer et "
+        "à rappeler l'existence de Daniel, 5:10-12) ; Daniel, enfin, refuse les dons du roi (5:17) et "
+        "prononce le réquisitoire, puis la lecture du mur (5:18-28). Le cadre historique est celui de "
+        "la fin de l'empire néo-babylonien, quand Nabonide, père de Belshatsar, résidait à Tayma, en "
+        "Arabie, et que le fils exerçait le pouvoir à Babylone. Le régime babylonien était à son "
+        "dernier souffle, et ses propres annales vont le dire en deux lignes."
+    ),
+    explication=(
+        "L'écriture est araméenne, lue par un Juif, et se prête à trois jeux simultanés — c'est la "
+        "clé du passage. (1) Les trois termes sont d'abord des UNITÉS DE POIDS babyloniennes : MENÉ, "
+        "la mine ; TEQEL, le sicle (shékel) ; PARSÎN, les demi-mines — la série descend et le dernier "
+        "mot est au pluriel, ce que Daniel corrige en le reprenant au singulier (PERES, v. 28). Lue "
+        "sur la table des poids, l'inscription dit donc une progression DÉCROISSANTE : une mine, une "
+        "mine, un sicle, des demi-sicles. Le roi a lu ses propres chiffres sans y entendre sa perte. "
+        "(2) Les mêmes consonnes sont des VERBES : MENÉ (mena, « il a compté ») ; TEQEL (teqal, « il a "
+        "pesé », d'une racine qui donne aussi le sicle) ; PARSÎN (peras, « il a divisé »). (3) Le dernier "
+        "mot porte la clé politique : PERAS, « divisé », est aussi le nom des PERSES — les mots de la "
+        "division et le nom de l'envahisseur ne font qu'un. La traduction que donne Daniel est "
+        "juridique : « Dieu a compté les jours de ton royaume et il y a mis fin » (v. 26) ; « tu as été "
+        "pesé dans les balances et tu as été trouvé léger » (v. 27) — on reconnaît l'image de la pesée "
+        "du cœur et l'instrument de mesure de la justice (balances, v. 27) ; « ton royaume a été divisé "
+        "et donné aux Mèdes et aux Perses » (v. 28). Autres traits à relever : la MAIN est décrite comme "
+        "« les doigts d'une main d'homme » (v. 5) — c'est-à-dire une main qui n'est pas celle d'un "
+        "homme, mais qui est écrite à la manière humaine ; le roi est « pesé », non jugé à vue ; et le "
+        "verdict prononce un AVENIR PROCHAIN sans donner d'heure — la fin tombera avant l'aube."
+    ),
+    interpretation=(
+        "Lecture témoins de Jéhovah : la scène est historique et le jugement est instantané. Trois "
+        "lignes de sens se superposent, et l'Écriture les noue elle-même. (1) LE PRINCIPE : les "
+        "royaumes de ce monde ont un compte, une balance et un partage ; Daniel 2 annonçait déjà le "
+        "métal de Babylone — la tête d'or — et l'arrivée de la poitrine d'argent des Mèdes et des "
+        "Perses (2:32, 39). La chute de 539 av. n. è. est donc, dans le livre, le point de bascule : "
+        "ce que la statue annonçait par les métaux arrive par une nuit de fête. (2) LA CAUSE : non "
+        "l'infériorité militaire ni une trahison, mais la profanation et l'orgueil — les vases du "
+        "sanctuaire de Jérusalem (Esdras 1:7-11 ; 2 Rois 24:13 ; 2 Chroniques 36:7, 10), l'appel aux "
+        "dieux « qui ne voient, ni n'entendent, ni ne savent » (5:23) et la confiance dans les murs "
+        "de la cité (Ésaïe 47:7, 8 ; Jérémie 51:53). (3) L'IMAGE, reprise dans le Nouveau Testament : "
+        "la chute soudaine et datée de Babylone fournit le vocabulaire de la chute de « Babylone la "
+        "Grande » (Révélation 14:8 ; 16:19 ; chapitres 17 et 18), qui disent exactement les mêmes "
+        "choses en régime symbolique — une heure, une nuit, un jugement pendant le festin, un "
+        "royaume « divisé et donné ». Les témoins de Jéhovah lisent l'épisode comme un type : le "
+        "système qui se croit éternel et qui honore ses propres dieux est pesé dans les mêmes "
+        "balances. Deux accents de la fiche : la parole de Daniel (5:23) sur « le Dieu qui tient ton "
+        "souffle dans sa main » — l'humain n'a pas de souffle en propre (Actes 17:25 ; Job 12:10 ; "
+        "Psaume 104:29) ; et le titre du roi à qui le royaume est donné, Darius le Médien (5:31), dont "
+        "l'épisode suivant (Daniel 6) montrera à quel point la domination elle aussi se reçoit."
+    ),
+    accomplissement=[
+        ("539 av. n. è. — 5:5, 6", "La main écrit face au porte-lampes ; la pâleur, les genoux, les hanches"),
+        ("5:7, 8", "Échec des sages : les magiciens ne savent ni lire ni interpréter"),
+        ("5:25-28", "Lecture : MENÉ (compté), TEQEL (pesé), PARSÎN (divisé — les Perses)"),
+        ("5:29, 30", "Daniel élevé « troisième du royaume » ; la nuit même, Belshatsar tué"),
+        ("5:30, 31", "Le royaume passe à Darius le Médien (539 av. n. è.)"),
+    ],
+    hist=(
+        "PREUVES HISTORIQUES. (1) Les annales babyloniennes : la Chronique de Nabonide (British "
+        "Museum 35382) raconte, année par année, l'absentement du roi à Tayma, le retour des fêtes, et "
+        "surtout la prise de la ville. Dans la lacune de la ligne attendue — les historiens discutent "
+        "encore de la restitution exacte — le texte mentionne l'entrée de l'armée de Cyrus dans "
+        "Babylone SANS COMBAT et la capture de Nabonide plus tard, à Sippar. La ville qui se croyait "
+        "invinçible est prise sans bataille rangée. (2) Les auteurs grecs : Hérodote (Histoires 1.191) "
+        "explique la chute par le détournement de l'Euphrate, fait entrer les Perses par le lit du "
+        "fleuve pendant une fête de nuit ; Xénophon (Cyropédie 7.5) décrit la prise de Babylone "
+        "pendant une fête où les habitants boivent, et la mise à mort de son roi, par la main de "
+        "Gobryas et Gadatas ; Bérose (apud Josèphe, Contre Apion 1.20) confirme la fin de l'empire et "
+        "le passage aux Mèdes et aux Perses. Ces trois traditions diffèrent dans les moyens — "
+        "détournement du fleuve, complicité, surprise — mais concordent sur le motif central : PRISE "
+        "DE NUIT, PENDANT UNE FÊTE, SANS SIÈGE RÉGULIER. (3) Les personnages : Belshatsar est bien "
+        "attesté, hors de la Bible, par des documents de son temps. En 1854, John Taylor publie des "
+        "cylindres trouvés à Our et y lit une prière de Nabonide pour « Bel-shar-oussour, le fils "
+        "aîné, le premier-né de ma personne », et l'inscription où Nabonide dit avoir confié la "
+        "royauté à son fils aîné. C'est ce qui éclaire la formule du chapitre cinq : le roi propose "
+        "à Daniel d'être LE TROISIÈME dans le royaume (5:7, 16, 29) — Belshatsar lui-même n'était que "
+        "le second, sous son père Nabonide. Le détail administratif le plus banal est devenu une "
+        "empreinte historique. (4) La date : 539 av. n. è. est le pivot commun des chronologies "
+        "(date neutre) ; le mois est Tashritu ; la chute est située dans la nuit du 5 au 6 octobre "
+        "539 (calendrier julien) ou, selon le comput retenu, à la mi-octobre 539 — l'écart de "
+        "conversion est signalé en « limites ». (5) La fin du roi : les sources ne concordent pas sur "
+        "l'identité de celui qui le tue (Xénophon nomme Gobryas et Gadatas). Ce que l'ensemble donne "
+        "— un roi de Babylone mort le soir de la prise — l'Écriture l'énonce en six mots : « cette "
+        "nuit-là… fut tué »."
+    ),
+    geo=(
+        "PREUVES GÉOGRAPHIQUES. Le chapitre est un plan de bâtiment : la salle du banquet, la paroi "
+        "blanchie, la position du porte-lampes, la porte par laquelle entre la reine, la salle où "
+        "Daniel reçoit la pourpre et le collier d'or — et, à quelques centaines de mètres, les murs "
+        "qui ne serviront à rien. (1) LE PALAIS : les fouilles allemandes de Koldewey ont dégagé le "
+        "complexe des palais de Nebucadnetsar au nord de la ville : le « palais sud » (Südburg) avec "
+        "une grande salle de réception pouvant accueillir une assemblée nombreuse — cadre naturel du "
+        "festin de mille grands — et le « palais nord », aux façades ornées. Le mur en cause n'est donc "
+        "pas une paroi d'enceinte, mais une MURAILLE INTÉRIEURE de salle, ce que 5:5 dit exactement : "
+        "« sur le plâtre de la paroi du palais du roi ». (2) LA LUMIÈRE : le texte précise « face au "
+        "porte-lampes » — dispositif d'éclairage mobile, connu par l'iconographie et l'archéologie des "
+        "palais néo-assyriens et néo-babyloniens (coupes à huile sur support, torchères). Une main "
+        "aperçue derrière les lampes se détache en contre-jour : le détail est le fait d'un témoin, "
+        "pas d'un conteur. (3) LA VILLE INPRENABLE : Hérodote (1.178-183) décrit les murs de Babylone, "
+        "leur largeur, les cent portes de bronze, le fleuve traversant la ville, la muraille de quai "
+        "— descriptions à réduire : l'archéologie a mesuré une double enceinte, un fossé, des dizaines "
+        "de portes seulement, mais confirme le dispositif général. La ville couvrait plusieurs "
+        "centaines d'hectares de part et d'autre de l'Euphrate, avec la ziggourat d'Etemenanki et "
+        "l'Esagila au cœur du sanctuaire de Marduk. Trois éléments éclairent la prophétie : (a) la "
+        "CONFIANCE que ce dispositif inspirait — Ésaïe 47:7, 8 fait dire à Babylone « moi, et personne "
+        "d'autre » ; (b) l'EAU comme clé militaire : c'est par le fleuve (détourné ou par un lit "
+        "abaissé) que la ville tombe selon Hérodote ; (c) le CONTRASTE de la nuit — toute la force de "
+        "Babylone est verticale, faite de briques et de portes ; le jugement, lui, arrive à hauteur "
+        "d'homme, sur une paroi intérieure, à la lumière d'une lampe."
+    ),
+    sci=(
+        "PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) La métrologie : la triple lecture de "
+        "l'inscription suppose le système pondéral babylonien — la mine (environ 500 grammes), le "
+        "sicle (1/60 de mine), la demi-mine ; les tablettes mathématiques de Mésopotamie, dont le "
+        "système sexagésimal est bien documenté, permettent de vérifier que MENÉ, TEQEL et PARSÎN "
+        "sont des unités réelles, et que leur suite décroissante forme, sur une table de pesée, une "
+        "phrase chiffrée. La fiche tient ce point pour un fait épigraphique, non pour une "
+        "coïncidence littéraire. (2) L'écriture : l'inscription est araméenne, sur plâtre, en "
+        "consonnes — d'où la multiplicité des lectures, exactement comme le texte le raconte. Le "
+        "phénomène est bien connu des épigraphistes : une écriture sémitique consonantique se lit "
+        "par vocalisation intérieure, plusieurs mots se recouvrent dans une même suite de lettres. "
+        "(3) Les tablettes : la Chronique de Nabonide (British Museum 35382), le Cylindre de Cyrus "
+        "(British Museum 90920), qui se vante justement de faire rentrer à Babylone les objets sacrés "
+        "et de « rendre leurs sanctuaires aux villes saintes » — contrepartie documentaire du sort "
+        "des vases du temple de Jérusalem (Esdras 1:7-11 en dresse l'inventaire par catégories, "
+        "5 400 objets) ; le « Récit en vers » sur Nabonide (British Museum 38299), pamphlet "
+        "babylonien hostile au roi. (4) L'astronomie : la prise de Babylone s'inscrit dans un "
+        "calendrier absolu parce que les astronomes babyloniens consignaient éclipses et positions "
+        "planétaires — ce sont ces journaux qui permettent de convertir 539 av. n. è. en dates "
+        "précises. (5) L'archéologie du lieu : les ruines de Babylone, classées au patrimoine mondial, "
+        "présentent encore la porte d'Ishtar et la voie processionnelle (originaux reconstruits à "
+        "Berlin pour la porte, en place pour une part de la voie) ; les reliefs des murs de la voie "
+        "sont des LIONS — la ville de la nuit du festin était décorée de lions d'Ishtar. Registre : "
+        "l'épisode repose sur un ensemble de faits contrôlables — métrologie, épigraphie, annales, "
+        "astronomie, archéologie — et sur un élément non contrôlable : l'écriture miraculeuse. La "
+        "fiche distingue soigneusement les deux, et n'utilise jamais le miraculeux pour valider "
+        "l'historique, ni l'historique pour prouver le miraculeux."
+    ),
+    schema=(
+        "FESTIN (MILLE GRANDS, VASES DU SANCTUAIRE) → DÉFIS (IDOLES D'OR, D'ARGENT, DE PIERRE) → "
+        "MAIN (PAROI, FACE AU PORTE-LAMPES) → TERREUR (PÂLEUR, GENOUX) → ÉCHEC DES SAGES → REINE "
+        "(SOUVIENS-TOI DE DANIEL) → RÉQUISITOIRE (5:18-24) → MENÉ (COMPTÉ) → TEQEL (PESÉ) → "
+        "PARSÎN (DIVISÉ — LES PERSES) → POURPRE (PROPOSÉE, REFUSÉE) → BAH LEYLYA (LA NUIT MÊME) → "
+        "DARIUS LE MÉDIEN (LE ROYAUME DONNÉ)"
+    ),
+    limites=(
+        "DATATION FINE : 539 av. n. è. est admise de tous ; le jour exact (nuit du 5 au 6 octobre "
+        "selon la conversion julienne, ou mi-octobre selon le calendrier civil babylonien) dépend du "
+        "système de conversion et n'est pas un point doctrinal — la fiche ne tranche pas. LA REINE : "
+        "l'identification comme reine mère (et non épouse) est très généralement retenue à cause du "
+        "rôle qu'elle joue, mais son nom n'est pas donné ; les rapprochements proposés (Nitocris "
+        "d'Hérodote, Adad-guppi mère de Nabonide) restent des hypothèses. HÉRODOTE ET XÉNOPHON : "
+        "leurs récits ne mentionnent pas d'inscription sur la muraille et divergent sur le moyen de "
+        "la prise ; la fiche tient les sources comme COMPLÉMENTAIRES, non comme équivalentes, et "
+        "l'Écriture comme le document le plus précis sur la foi de la nuit. DARIUS LE MÉDIEN (5:31) : "
+        "son identification n'est pas réglée — Ugbaru/Gobryas gouverneur de Gutium, cité par la "
+        "Chronique de Nabonide, est un candidat ; Cyaxare II de Xénophon en est un autre ; la fiche "
+        "signale le débat sans le clore, et sans en tirer de conséquence doctrinale. LA PROMOTION DE "
+        "DANIEL (5:29) : rien n'indique qu'il l'ait exercée : le chapitre enchaîne sur la mort du roi. "
+        "LE TEXTE EN DEUX LANGUES : le chapitre est araméen, comme 2:4b-7:28 ; la vocalisation des "
+        "consonnes écrites sur la paroi reste une lecture — c'est même le sujet de la scène. Enfin, "
+        "la fiche n'identifie pas nommément la « Babylone la Grande » de la Révélation : elle "
+        "enregistre la reprise d'images et de mots, et s'en tient là."
+    ),
+    tl=[
+        ("539 av. n. è.", "Babylonie : Nabonide retiré à Tayma ; Belshatsar corégent à Babylone"),
+        ("La nuit du festin", "Mille grands ; vases du sanctuaire ; louange des dieux de métal"),
+        ("Face au porte-lampes", "Doigts d'une main d'homme ; écriture ; pâleur du roi ; échec des sages"),
+        ("5:25-28", "MENÉ compté ; TEQEL pesé et trouvé léger ; PARSÎN divisé — Mèdes et Perses"),
+        ("Bah leyla", "Cette nuit-là : Belshatsar tué ; le royaume à Darius le Médien"),
+    ],
+    src=[
+        ("Bible — Job 31 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/18/31"),
+        ("Bible — Psaume 90 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/90"),
+        ("Bible — Luc 12 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/42/12"),
+        ("Bible — Daniel 5 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/5"),
+        ("« Quatre mots qui changèrent le monde » (wol)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1101999026"),
+    ],
+    img="images/prophe_DN374_muraille.jpg",
+))
+
+# ===========================================================================
+# DN375 — Daniel 5:23, 24
+# ===========================================================================
+FICHES.append(dict(
+    n="DN375",
+    titre="Balthazar jugé : les dieux d'argent ne voient ni n'entendent",
+    ref="Daniel 5:23, 24",
+    statut="Accomplie",
+    cat="DN",
+    syst=(
+        "dieux muets souffle en main jugement (roi → orgueil → vases → sanctuaire → dieux → argent → "
+        "or → airain → fer → bois → pierre → ne voient → n'entendent → ne savent → Dieu → souffle → "
+        "main → voies → non glorifié → alors → envoyé → main → écriture → sentence)"
+    ),
+    reg=(
+        "Registre : Daniel — P375 (5:23, 24 : tu n'as pas glorifié le Dieu qui tient ton souffle ; "
+        "les dieux d'argent ne sauvent pas) ; 5:30 ; Accomplie"
+    ),
+    texte=[
+        (
+            "« ÉLEVÉ… CONTRE… SEIGNEUR… CIEUX… VASES… MAISON… APPORTÉS… TOI… GRANDS… FEMMES… "
+            "CONCUBINES… VIN… DIEUX… ARGENT… OR… AIRAIN… FER… BOIS… PIERRE… NE VOIENT… "
+            "N'ENTENDENT… NE SAVENT… DIEU… SOUFFLE… MAIN… VOIES… NON GLORIFIÉ… ALORS… ENVOYÉ… "
+            "MAIN… ÉCRITURE… TRACÉE… CONDAMNATION… — ITHROVART… TU T'ES ÉLEVÉ… ʿAL… CONTRE… "
+            "MARÉ… LE SEIGNEUR… SHEMAYYA… DES CIEUX… MANEKHE… TES VASES… AʿELU… ONT APPORTÉ… "
+            "QODAMEKH… DEVANT TOI… WESHABBACHTA… ET TU AS LOUÉ… LELAHAYYA… AUX DIEUX… "
+            "DE-KHESAF… D'ARGENT… DE-DEHAV… D'OR… DE-NEḤASH… D'AIRAIN… DE-PARZEL… DE FER… "
+            "DE-AʿA… DE BOIS… DE-EVEN… DE PIERRE… DI… QUI… LA… NE… ḤAZAYIN… NE VOIENT PAS… "
+            "LA… NE… SHAMʿIN… N'ENTENDENT PAS… WELA… ET… YADAʿIN… NE SAVENT PAS… WELA… ET NON… "
+            "LE-ELAHA… AU DIEU… DI… QUI… NISHMATEKH… TON SOUFFLE… BI-DEH… DANS SA MAIN… "
+            "WEKOL… ET TOUTES… ORḤATEKH… TES VOIES… LEH… À LUI… HADARET… TU N'AS PAS RENDU "
+            "GLOIRE… BE-EDAYIN… ALORS… MIN… DE DEVANT… QODAMOHI… LUI… SHELIḤA… FUT ENVOYÉE… "
+            "YEDA… LA MAIN… WE-KHETAVA… ET L'ÉCRITURE… RESHIM… TRACÉE… KETAV… ÉCRITE… »"
+        ),
+        (
+            "LES TROIS JUMEAUX — Psaume 115 : « GLOIRE… PAS… À NOUS… SEIGNEUR… AMOUR… FIDÉLITÉ… "
+            "NATIONS… OÙ… LEUR DIEU… NOTRE DIEU… CIEUX… FAIT… CE QU'IL VEUT… IDOLES… ARGENT… "
+            "OR… MAINS… HOMMES… BOUCHE… PARLENT… YEUX… VOIENT… OREILLES… ENTENDENT… NEZ… "
+            "ODORAT… MAINS… TOUCHENT… PIEDS… MARCHENT… NE… GORGE… MURMURENT… SEMBLABLES… "
+            "DEVIENNENT… FABRIQUENT… CONFIANCE… ISRAËL… CRAINT… SECOURS… BOUCLIER… AARON… "
+            "CRAIGNENT… SEIGNEUR… BÉNIT… MAISON… PETITS… GRANDS… MULTIPLIE… BÉNIS… CIEUX… "
+            "TERRE… MORT… NE LOUENT… NOUS… BÉNIRONS… » — Jérémie 10 : « VOIE… NATIONS… "
+            "APPRENEZ… SIGNES… CIEL… NE… ÉPOUVANTEZ… ÉPOUVANTE… PEUPLES… COUTUMES… VANITÉ… "
+            "ARBRE… FORÊT… COUPÉ… ARTISAN… HACHE… ARGENT… MARTELÉ… OR… OPHIR… CLOUS… MARTEAUX… "
+            "NE BRANLE… ÉPAUVRES… NE PARLENT… PORTENT… TRANSPORTENT… NE MARCHENT… CRAINS… "
+            "MAL… BIEN… INCOMPARABLE… SEIGNEUR… GRAND… NOM… PUISSANT… ROI… NATIONS… SAGESSE… "
+            "STUPIDES… HONTEUX… COLÈRE… TERRE… PASSEZ… CIEUX… TERRE… PÉRISSENT… PART… HÉRITAGE… "
+            "FORME TOUT… TRÉSOR… FORTERESSE… CHÂTIÉ… NATIONS… NE CONNAISSENT… FAMILLES… "
+            "ÉPUISÉES… N'INVOQUENT PAS… COLLECTE… RASSEMBLÉ… SIÈGE… DEPUIS… MONDE… » — "
+            "1 Rois 18 : « TROISIÈME ANNÉE… FAIM… ÉLIE… AHAB… OBADIA… CENT PROPHÈTES… CAVERNES… "
+            "PAIN… EAU… CONVOQUE… CARMEL… QUATRE CENT CINQUANTE… PEUPLE… BOITIEZ… DEUX AVIS… "
+            "SEIGNEUR… DIEU… SUIVEZ-LE… SILENCE… TAUREAUX… CHOISISSEZ… BOIS… FEU… "
+            "N'ALLUMERONT PAS… CRIÈRENT… BAAL… DÈS LE MATIN… MIDI… RÉPONDS-NOUS… BOITAIENT… "
+            "AUTEL… MOQUAIT… CRIEZ FORT… DIEU… MÉDITE… OCCUPÉ… EN VOYAGE… SE RÉVEILLERA… "
+            "CRIÈRENT… SE TAILLADAIENT… SANG… GARDAIENT LE SILENCE… PROPHÉTISAIENT… ÉLIE… "
+            "RÉPARA… DOUZE PIERRES… AUTEL… FOSSÉ… EAU… QUATRE CRUCHES… TROIS FOIS… REMPLI… "
+            "FOSSÉ… APPROCHEZ… FEU… ÉTERNEL… DIEU… ABRAHAM… ISAAC… ISRAËL… RÉPONDS-MOI… "
+            "CŒURS… DÉTOURNÉS… TOMBA… LÉCHA… EAU… PIERRE… POUSSIÈRE… PEUPLE… TOMBA… FACE… "
+            "SEIGNEUR… DIEU… CŒURS… RETOURNÉS… SAISIS… PROPHÈTES… DESCEND… KISHON… "
+            "ÉGORGEA… L'ÉPÉE… » — trois scènes, un seul motif : ce qui a été fabriqué ne répond pas."
+        ),
+    ],
+    contexte=(
+        "Ces deux versets sont la POINTE du réquisitoire de Daniel, et tout le chapitre n'en est que "
+        "l'escalier. La structure de la nuit : le festin et les vases (5:1-4), la main et la terreur "
+        "(5:5-9), l'échec des sages et l'entrée de Daniel (5:10-17), le rappel de l'histoire — "
+        "Nebucadnetsar abaissé jusqu'à manger l'herbe, puis restauré quand il a reconnu la domination "
+        "du Très-Haut (5:18-21), et alors la sentence : « tu n'as pas humilié ton cœur, alors que tu "
+        "savais tout cela » (5:22). Le verset 23 ajoute la matière du procès : le roi s'est élevé "
+        "contre le Seigneur des cieux (« maré shemayya »), il a fait apporter les vases du sanctuaire "
+        "de Jérusalem pour y boire avec ses grands, ses femmes et ses concubines, il a loué des dieux "
+        "de métal et de pierre « qui ne voient ni n'entendent ni ne savent », et il n'a pas glorifié "
+        "le Dieu QUI TIENT SON SOUFFLE DANS SA MAIN et à qui appartiennent toutes ses voies. Le "
+        "verset 24 en tire la conséquence : « alors, de devant lui, la main fut envoyée et cette "
+        "écriture fut tracée ». Notez la construction littéraire : le rappel de Daniel est un miroir — "
+        "au père qui ne savait pas, Dieu a enseigné ; au fils qui SAVAIT, rien n'est épargné. Et "
+        "l'ordre du verset est celui d'un acte d'accusation : la profanation (les vases), le culte "
+        "rendu à des objets (les dieux), le refus de rendre gloire au donateur de la vie (le souffle). "
+        "Le contexte canonique des vases est précis : ils avaient été emportés par le même "
+        "Nebucadnetsar (Daniel 1:2 ; 2 Rois 24:13 ; 2 Chroniques 36:7, 10) et ils seront rendus, "
+        "nommés un par un, par le décret de Cyrus (Esdras 1:7-11 ; 5:14, 15)."
+    ),
+    explication=(
+        "Quatre traits d'araméen portent le sens. (1) ELAHA ILLAYA, « le Dieu Très-Haut » — le titre "
+        "qui traverse le livre (3:26 ; 4:2, 17, 24, 34 ; 5:18, 21 ; 7:18, 22, 25, 27) : ce n'est pas un "
+        "dieu local contre des dieux locaux, c'est le Très-Haut contre ce qui ne peut rien. (2) "
+        "NISHMATEKH (« ton souffle ») et BI-DEH (« dans sa main ») : la formule dit l'humain tout "
+        "entier dans la dépendance — le souffle n'est pas un avoir, c'est un prêt révocable ; le "
+        "même mot désigne le souffle de vie et ce qui va être retiré au roi dans cette même nuit. "
+        "(3) KOL-ORḤATEKH (« toutes tes voies ») : la formule du domaine total — non seulement "
+        "l'existence, mais la conduite. (4) BE-EDAYIN MIN QODAMOHI SHELIḤA YEDA (« alors, de devant "
+        "lui, la main fut envoyée ») : l'expression renvoie au langage céleste que Daniel 3:28 et "
+        "4:31 emploient déjà — ce qui arrive dans l'histoire est un ENVOI, non un hasard. Sur le "
+        "fond, deux mots du verset 24 méritent d'être rapprochés du chapitre précédent : la main "
+        "« envoyée » de 5:24 répond à la main « souveraine » de 4:31, 32 ; et la « sentence » "
+        "(l'inscription) prend, dans le même moment, trois formes chiffrées (5:25-28) — compté, pesé, "
+        "divisé. La faute est théologique ; la sanction est administrative — un règne est traité "
+        "comme un objet de comptabilité, parce que c'est ce qu'il est devant le Très-Haut. Relevons "
+        "enfin la précision des listes : argent, or, airain, fer, bois, pierre — six matières, dans "
+        "l'ordre descendant du métal au minéral, dernier degré de la fabrication humaine, et le "
+        "dernier mot du livre de Daniel sur les idoles est bien celui-là."
+    ),
+    interpretation=(
+        "Lecture témoins de Jéhovah : le verset 23 est la justification de la sentence du verset 28, "
+        "et il faut le lire avec le Psaume 115:4-8, qui est son commentaire biblique le plus proche — "
+        "« leurs idoles sont de l'argent et de l'or… elles ont une bouche mais ne parlent pas… ceux "
+        "qui les font deviennent comme elles ». Le reproche n'est pas d'abord moral, il est de "
+        "compétence : ce qui n'a ni yeux, ni oreilles, ni savoir ne peut porter une confiance, et "
+        "surtout ne peut sauver — la phrase même de 5:23 (« ils ne voient, n'entendent ni ne "
+        "savent ») est celle du prophète Jérémie 10:5, 14, 15 (« ils ne peuvent ni faire du mal ni "
+        "faire du bien… ils périront ») et de Habacuc 2:18, 19 (« malheur à qui dit au bois : "
+        "réveille-toi ! »). Le troisième chef d'accusation est le plus fort : n'avoir pas glorifié "
+        "« le Dieu qui tient ton souffle dans sa main ». C'est la formulation même que l'Écriture "
+        "réserve au Créateur en Actes 17:25 (« il ne se fait pas servir par des mains humaines, "
+        "comme s'il avait besoin de quelque chose, lui qui donne à tous la vie, le souffle et "
+        "toutes choses »), Job 12:10 et Psaume 104:29 (« tu retires leur souffle, ils meurent »). "
+        "Trois applications sont tirées par la fiche, sans sortir du texte : (a) LA LEÇON POUR "
+        "BABYLONE — le royaume qui a brûlé le sanctuaire et bu dans ses vases tombe la même nuit, "
+        "et ses dieux ne se lèvent pas ; (b) LA CONSOLATION POUR LES EXILÉS — ceux qui attendaient "
+        "la fin des soixante-dix ans (Jérémie 25:11, 12 ; 29:10 ; Daniel 9:2) voient l'empire jugé, "
+        "et les vases rendus ; (c) LA RÈGLE DE VIE — ce que le Nouveau Testament reprend en clair : "
+        "« quoi que vous fassiez, faites tout pour la gloire de Dieu » (1 Corinthiens 10:31), et "
+        "Révélation 14:7 (« craignez Dieu et rendez-lui gloire »), tandis que l'épisode du Carmel "
+        "(1 Rois 18) pose la question qui résume tout : « combien de temps boiterez-vous sur deux "
+        "avis ? » — un dieu qui n'entend pas ne répond pas par le feu."
+    ),
+    accomplissement=[
+        ("5:1-4", "Festin de mille grands ; vases du sanctuaire de Jérusalem ; louange des idoles"),
+        ("5:22, 23", "« Tu savais » : les trois chefs d'accusation — vases, dieux muets, souffle non glorifié"),
+        ("5:24", "« Alors, de devant lui, la main fut envoyée » : l'écriture tracée sur le plâtre"),
+        ("5:30", "Cette nuit-là : Belshatsar tué — les dieux d'argent n'ont pas sauvé"),
+        ("539 av. n. è.", "Le royaume aux Mèdes et aux Perses ; les vases rendus (Esdras 1:7-11)"),
+    ],
+    hist=(
+        "PREUVES HISTORIQUES. (1) Le panthéon que Daniel met en accusation n'est pas une invention "
+        "polémique : Babylone honorait Marduk (Bel), Nabu, Ishtar, Sin et Shamash ; son temple "
+        "d'Esagila et sa ziggourat d'Etemenanki dominaient la ville ; la grande fête du Nouvel An "
+        "(akitu) faisait sortir les statues divines de leurs sanctuaires et les menait en procession "
+        "jusqu'à la maison de l'akitu, hors les murs, le roi « prenant la main de Marduk ». Les "
+        "divinités étaient donc, au sens propre du mot, DÉPLACÉES ET PORTÉES — exactement ce dont "
+        "Jérémie 10:5 et 10:14 se moquent, et ce que Daniel vise. (2) Le roi à qui la sentence est "
+        "adressée est attesté hors de la Bible : Belshatsar, fils aîné de Nabonide, associé au trône "
+        "pendant l'absence de son père à Tayma ; le roi propose à Daniel d'être le TROISIÈME du "
+        "royaume (5:7, 16, 29), ce qui est la place exacte laissée par le second qu'était Belshatsar. "
+        "(3) La fin est documentée : la Chronique de Nabonide rapporte la prise de Babylone sans "
+        "bataille, la capture de Nabonide ; Xénophon décrit la mort du roi de Babylone le soir de la "
+        "prise ; le champ de ruines de la ville est là. (4) Les vases, enfin, ne disparaissent pas du "
+        "dossier : Esdras 1:7-11 en donne l'inventaire — 5 400 objets d'or et d'argent —, rendus par "
+        "décret de Cyrus la première année de son règne, ce que le Cylindre de Cyrus confirme dans sa "
+        "logique propre, en proclamant le retour des divinités dans leurs sanctuaires et la "
+        "restauration des cultes. Autrement dit : ce que le roi de Babylone avait fait des vases, "
+        "l'histoire le raconte deux fois — une fois comme sacrilège, une fois comme restitution. "
+        "(5) Sur le plan du droit : le geste de Belshatsar ne relève pas d'une simple inconvenance. "
+        "Dans le monde antique, un vase cultuel est la propriété du dieu ; le prendre, c'est en "
+        "transférer la souveraineté. Le chapitre cinq est, littéralement, un procès en "
+        "revendication, et la sentence est exécutée la nuit même."
+    ),
+    geo=(
+        "PREUVES GÉOGRAPHIQUES. (1) LE NOM DE LA VILLE : Bāb-ilāni, « la porte des dieux » — "
+        "Babylone se définissait par son clergé et ses temples avant d'être une capitale. Les "
+        "monuments religieux sont identifiés : Esagila, le sanctuaire de Marduk, avec sa cella et "
+        "son mobilier sacré, fouillé par Koldewey au début du XXe siècle ; Etemenanki, la ziggourat "
+        "« maison du fondement du ciel et de la terre », dont la tablette dite d'Esagila donne les "
+        "mesures — base d'environ quatre-vingt-dix mètres de côté, sept étages — et dont les "
+        "niveaux d'argile et les fondations sont encore visibles à l'emplacement du « Babil » "
+        "actuel. (2) LE CIRCUIT DES IDOLES : la voie processionnelle (processional way) et la "
+        "maison de l'akitu, hors les murs, dessinent un axe de procession dont les reliefs — lions "
+        "d'Ishtar, aurochs d'Adad, dragons de Marduk — sont en place, pour partie, ou reconstruits "
+        "au musée de Pergame. Autrement dit : les dieux de l'argent et de l'or mentionnés par Daniel "
+        "avaient leur itinéraire, leurs chars et leurs porteurs, et cet itinéraire est archéologique. "
+        "(3) LE FESTIN : la grande salle du palais sud, la cour, la proximité immédiate des temples, "
+        "expliquent la scène — boire « dans les vases de la maison de Dieu » supposait des vases "
+        "conservés non loin, dans les magasins du palais ou du temple. Le site est un paysage "
+        "d'argile et d'eau, sans pierre de taille locale : les dieux de pierre de la liste de "
+        "Daniel sont donc eux aussi des objets importés ou sculptés, plus fragiles encore que les "
+        "murs qui les abritent. (4) LE CONTRASTE FINAL EST GÉOGRAPHIQUE : le lendemain de cette "
+        "nuit, il n'y a plus d'empire babylonien — mais le sanctuaire de Jérusalem, à près de neuf "
+        "cents kilomètres à l'ouest-sud-ouest, va recevoir ses vases. C'est un déplacement, non une "
+        "revanche militaire, et il est daté."
+    ),
+    sci=(
+        "PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE DÉSIR DE FAIRE PARLER LES IDOLES : les "
+        "Babyloniens pratiquaient un rite complexe, dit « lavage de la bouche » (mīs pî), par lequel "
+        "une statue fabriquée par un artisan était censée devenir la demeure vivante du dieu — "
+        "rituels publiés d'après des tablettes, avec processions, incantations et ouverture de la "
+        "bouche de la statue. C'est exactement la prétention que Daniel démonte : ce qui a été "
+        "fabriqué ne peut ni voir, ni entendre, ni savoir. La critique biblique des idoles n'est donc "
+        "pas une caricature de gens crédules ; elle attaque une théologie documentée, et refuse le "
+        "seuil qu'elle s'était fixé. (2) LA VALEUR DES MÉTAUX : les inventaires d'or et d'argent des "
+        "temples babyloniens, les poids et les lingots retrouvés, et l'inventaire d'Esdras 1:9-11 "
+        "permettent de comparer des ordres de grandeur — le trésor sacré était un trésor réel, thésaurisé, "
+        "non symbolique. (3) L'ARCHÉOLOGIE DU SAC : Esagila et ses dépendances, la ziggourat, la "
+        "porte d'Ishtar et ses dragons de Marduk, les milliers de tablettes administratives des "
+        "temples de l'époque néo-babylonienne (rations, offrandes, personnel) donnent le cadre exact "
+        "dans lequel un roi pouvait se croire honoré par des dieux dont il était le pourvoyeur. "
+        "(4) LA MESURE DU SOUFFLE : le vocabulaire mésopotamien distingue la « napšu / napištu » "
+        "(souffle, gorge, vie) qui définit le vivant — les textes médicaux akkadiens la décrivent, "
+        "et sa disparition définit la mort. La formule de Daniel (« le Dieu qui tient ton souffle "
+        "dans sa main ») est donc, dans le vocabulaire même du temps, l'affirmation d'une dépendance "
+        "absolue. Registre : le texte n'attribue aucune vertu spéciale aux idoles ; il leur refuse "
+        "toute compétence ; et ce qu'il affirme de Dieu — la maîtrise du souffle — est repris, hors "
+        "de lui, par les textes bibliques parallèles et, dans le temps, par les professionnels de "
+        "la santé : ce qui respire n'est pas maître de son souffle."
+    ),
+    schema=(
+        "FESTIN (VASES, VIN, MILLE GRANDS) → ÉLÉVATION (CONTRE LE SEIGNEUR DES CIEUX) → CULTE (ARGENT, "
+        "OR, AIRAIN, FER, BOIS, PIERRE) → AVEUGLEMENT (NE VOIENT, N'ENTENDENT, NE SAVENT) → REFUS "
+        "(LE SOUFFLE NON GLORIFIÉ) → ENVOI (LA MAIN) → SENTENCE (COMPTÉ, PESÉ, DIVISÉ) → NUITS (LA "
+        "Nuit même) → RESTITUTION (LES VASES RENDUS, ESDRAS 1)"
+    ),
+    limites=(
+        "LE BANQUET : aucune source cunéiforme ne décrit la scène du festin ni la profanation des "
+        "vases ; les sources grecques (Hérodote, Xénophon) racontent la prise de la ville pendant "
+        "une fête sans mentionner l'inscription. La fiche tient la scène pour historique, sur le "
+        "témoignage du livre, sans pouvoir la corroborer par un document babylonien. LA DATATION "
+        "DU RETOUR DES VASES : Esdras 1 rattache la restitution aux soixante-dix ans et au décret "
+        "de Cyrus, et les dates 539 (décret) et 537 (retour) relèvent du système chronologique "
+        "retenu ; la fiche les situe sans en faire un point de preuve. LA NATURE DU REPROCHE (5:23) : "
+        "la formule « tu n'as pas glorifié » peut être lue de deux façons — refus personnel d'honorer "
+        "le Dieu de Daniel, ou politique religieuse babylonienne ordinaire. La fiche retient la "
+        "première, en le signalant. LES DIEUX CESSENT D'ÊTRE DES RIVAUX (5:23, 27) : le texte ne "
+        "dit pas que les dieux de Babylone seraient des forces adverses ; il dit qu'ils sont "
+        "incapables — c'est une différence de fond, à ne pas confondre. LE PASSAGE À LA RÉVÉLATION : "
+        "la fiche n'identifie pas la « Babylone la Grande » de Révélation 17, 18 ; elle se borne à "
+        "consigner la reprise des mots (une heure, un festin, un jugement) et à laisser la question "
+        "ouverte. LES PARALLÈLES DU CARMEL (1 Rois 18) : Baal n'est pas Marduk, et le Carmel n'est "
+        "pas un procès juridique ; le jumeau illustre le principe d'un dieu qui n'écoute pas, il ne "
+        "fusionne pas deux religions en une."
+    ),
+    tl=[
+        ("539 av. n. è.", "Babylone : mille grands, vases du sanctuaire, louange des dieux de métal"),
+        ("La nuit", "Daniel rappelle Nebucadnetsar — « tu savais tout cela » (5:22)"),
+        ("5:23", "Trois chefs d'accusation : vases profanés, dieux muets, souffle non glorifié"),
+        ("5:24", "« Alors la main fut envoyée » : l'écriture tracée sur le plâtre du palais"),
+        ("5:30 ; Esd 1", "Belshatsar tué ; le royaume aux Mèdes et aux Perses ; les vases rendus"),
+    ],
+    src=[
+        ("Bible — Psaume 115 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/115"),
+        ("Bible — Jérémie 10 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/10"),
+        ("Bible — 1 Rois 18 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/11/18"),
+        ("Bible — Daniel 5 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/5"),
+        ("« Le saviez-vous ? L'archéologie confirme Balthazar » (wol)", "https://wol.jw.org/fr/wol/d/r30/lp-f/2020287"),
+    ],
+    img="images/prophe_DN375_idoles.jpg",
+))
+
+# ===========================================================================
+# DN376 — Daniel 6:24
+# ===========================================================================
+FICHES.append(dict(
+    n="DN376",
+    titre="La fosse aux lions : les accusateurs happés avant le fond",
+    ref="Daniel 6:24",
+    statut="Accomplie",
+    cat="DN",
+    syst=(
+        "accusateurs fosse lions familles os broyés (roi → Darius → satrapes → ministres → Daniel → "
+        "fenêtres → Jérusalem → trois fois → édit → trente jours → délation → fosse → pierre → sceau → "
+        "anneau → nuit → ange → gueules → fermées → délivré → accusateurs → enfants → femmes → jetés → "
+        "lions → maîtrisés → avant → fond → os → broyés → décret → Dieu vivant → royaume)"
+    ),
+    reg=(
+        "Registre : Daniel — P376 (6:24 : les accusateurs de Daniel jetés aux lions avec leurs "
+        "familles) ; 6:24 ; Accomplie"
+    ),
+    texte=[
+        (
+            "« ROI… ORDONNA… AMENER… HOMMES… ACCUSÉ… DANIEL… JETÈRENT… FOSSE… LIONS… EUX… ENFANTS… "
+            "FEMMES… MAÎTRISÉS… PAS… ATTEINT… FOND… FOSSE… LIONS… ÉCRASÈRENT… OS… — BE-EDAYIN… "
+            "ALORS… MALKA… LE ROI… AMAR… ORDONNA… WE-HAYTIU… ET ON AMENA… GUBRAYA… LES HOMMES… "
+            "DI… QUI… AḴALU… AVAIENT ACCUSÉ… QARṢAYYEH… LES DÉLATEURS… DE-DANIYYEL… DE DANIEL… "
+            "U-REMON… ET ILS JETÈRENT… LE-GO… DANS LA FOSSE… DI… QUI… ARYAVATA… LES LIONS… "
+            "ANHON… EUX… BENAYHON… LEURS FILS… U-NESHAYYEHON… ET LEURS FEMMES… WE-SHALṬIU… "
+            "ET ILS DOMINÈRENT… BEHON… SUR EUX… ARYAVATA… LES LIONS… WE-KOL… ET TOUS… "
+            "GARMAYHON… LEURS OS… HADDAQU… ILS LES BROYÈRENT… ʿAD… AVANT QUE… LA… NE… "
+            "YIMṬON… ILS N'ATTEIGNENT… LE-ROSH… AU FOND… DE-GUBA… DE LA FOSSE… VE-KHEN… AINSI… "
+            "MIT… IL ARRIVA… QODAM… DEVANT… MALKHUTEH… SA ROYAUTÉ… KI… CAR… ḤAYYA… VIVANT… "
+            "ELAHEH… SON DIEU… SHELACH… ENVOYA… MALKHUTEH… U-MALKHUTEH… SON ROYAUME… "
+            "LA… NE… YITḤABBAL… NE SERA PAS DÉTRUIT… SHALṬANEH… SA DOMINATION… ʿAD… JUSQU'À… "
+            "SOFA… LA FIN… »"
+        ),
+        (
+            "LES TROIS JUMEAUX — Esther 7 : « ROI… SCEPTRE… D'OR… ESTHER… PARLA… REINE… GRAÇA… "
+            "DÉSIR… DEMANDE… MOITIÉ… DONNER… SUPPLICATION… VIE… PEUPLE… VENDU… MOI… MON PEUPLE… "
+            "AMI… VENDEUR… DÉTRUIRE… OPPRESSEUR… MÉCHANCETÉ… S'ÉCRIA… QUI… OÙ… CELUI… S'ÉPOUVANTA… "
+            "DEVANT ROI… HAMAN… MÉCHANT… ADVERSAIRE… ENNEMI… ESTHER… PÂLEUR… ENFANTS… DONNÉS… "
+            "ROI… EN COLÈRE… SE LEVA… BANQUET… VIN… PALAIS… HAMAN… SE CACHER… SUIVI… TOMBA… "
+            "LIT… HAMAN… SAISIS… FACE… COUVERT… ARBOR… QUINQUANTE… HAUTE… PRÉPARÉ… HAMAN… "
+            "MAISON… SEIGNEUR… PENDREZ… SUSPENDU… ARBOR… COLÈRE… ROI… APAISÉE… » — Psaume 7 : "
+            "CRAINTE… NON… ʿOR… FUIT… INIQUITÉ… POURSUIVI… PIÉ… TERRASSÉ… TERRE… VIE… LIT… "
+            "REPOS… CRIE… ÉCOUTE… RÉCLAME… ARRIVESSE… PACCAGER… DÉVORE… ARRACHE… SME… NATIONS… "
+            "S'ARRÊTE… RAGE… RÉVEILLE-TOI… DÉCISION… MONDE… ASSEMBLÉE… HABITE… JUGE… SONDES… "
+            "CŒURS… REINS… JUSTE… LÈVE-TOI… COLÈRE… REDOUBLE… DÉCISION… CRAINTE… HOMMES… "
+            "PÉCHENT… SE REPENT… MÉCHANT… AIGUISE… PORTE… ARC… COMPLÈTE… TROUBLE… ÉCRIT… "
+            "GARDENT… ÉTUDIE… ENFANTE… CONÇOIT… PONDS… CIEL… POURRITURE… FOSSE… CREUSE… "
+            "TOMBE… RASES… VÉNIN… APPRÊTE… LE JOUR… CRUELS… JUGEMENTS… LOUANGE… PARFAIT…? » "
+            "— Proverbes 26 : « PLUIE… NEIGE… CIEL… HONNEUR… INSENSÉ… ZÈBRE… FOUET… ÂNE… GAULE… "
+            "RETORS… BÂTON… COLS… RESPONDS… SENTENCE… PIQÛRE… ÉPINE… MAIN… IVROGNE… PARABOLE… "
+            "GARDE… DESSÈCHE… ARC… LÈPRE… MÉPRIS… FOSSE… PIERRE… TOMBE… ROUE… S'ÉCRASE… "
+            "LANGUE… ROLE… DÉTACHE… SOURNOIS… HAUTAIN… PITIÉ… CHARIOT… ABATTU… TROU… "
+            "CREUSE… TOMBE… PIERRE… « LE LÉZARD… AGRIFFÉ… MAIN… TEMPÊTE… COLÈRE… SAC… "
+            "RONGE… HÉRITAGE… AUCUNE… LANGUE… TOURNE… MENTEURS… LÈVRES… SENTINELLES… "
+            "OUVRE… »",
+        ),
+    ],
+    contexte=(
+        "Le chapitre six se déroule dans l'empire qui vient de succéder à Babylone : « Darius le "
+        "Médien » reçoit le royaume (5:31), organise sa machine administrative — 120 satrapes, trois "
+        "ministres au-dessus d'eux, Daniel parmi les trois —, et Daniel ne tarde pas à paraître "
+        "« dans l'esprit de tous » (6:3-5). Le piège suit immédiatement : les ministres cherchent une "
+        "faute « dans ce qui touche le royaume », n'en trouvent aucune, et jouent donc la carte "
+        "religieuse : un décret flatteur — « quiconque adressera une requête à un dieu ou à un homme, "
+        "sauf à toi, ô roi, pendant trente jours, sera jeté dans la fosse aux lions » (6:8). Le roi "
+        "signe, le décret est promulgué, la loi des Mèdes et des Perses ne se révoque pas (6:8, 12, "
+        "15). Daniel, qui a appris l'existence du texte, n'en change rien : il ouvre les fenêtres de "
+        "son étage supérieur, vers Jérusalem, se met à genoux trois fois par jour et continue de "
+        "prier (6:11). On vient l'arrêter en pleine prière ; le roi, attristé jusqu'à « travailler "
+        "jusqu'au coucher du soleil pour le délivrer » (6:15), finit par obéir à sa propre loi : la "
+        "fosse, la pierre, les deux sceaux — le sien et celui des grands, « pour que rien ne soit "
+        "changé à ce qui concerne Daniel » (6:17) —, la nuit sans sommeil, puis le cri de l'aube "
+        "(6:19, 20) : « Daniel, ton Dieu, celui que tu sers constamment, a-t-il pu te délivrer des "
+        "lions ? » (6:21, 22 : l'ange envoyé, les gueules fermées). Le verset 24 est le dénouement "
+        "procédural : le roi ramène Daniel de la fosse, puis ordonne d'y jeter CEUX QUI L'AVAIENT "
+        "ACCUSÉ, avec leurs enfants et leurs femmes. Le chapitre se termine par un décret public "
+        "adressé à toute la terre (6:26-28) et par la mention de la prospérité de Daniel sous Darius "
+        "et sous Cyrus le Perse."
+    ),
+    explication=(
+        "Trois points commandent la lecture du verset. (1) LE VOCABULAIRE JURIDIQUE : les hommes sont "
+        "désignés comme ceux qui « mangeaient des morceaux » de Daniel — l'araméen dit les DÉLATEURS, "
+        "les mordeurs de morceaux (qarṣayyeh, de qəraṣ, le morceau, la bouchée) ; c'est du jargon de "
+        "tribunal, celui de l'accusation. Le verset les nomme donc par leur fonction : ce sont eux "
+        "qui l'avaient « dévoré » par la parole, et ce sont eux que les fauves dévorent. (2) LA "
+        "FAMILLE : le texte énumère « leurs enfants et leurs femmes ». Le procédé est cohérent avec "
+        "la logique de la haute trahison dans l'empire achéménide, où la maison du coupable est "
+        "traitée comme une seule partie : le roi ne fait qu'exécuter, à la lettre, l'échelle prévue "
+        "par le complot. L'Écriture ne présente pas cette extension comme une justice idéale : elle "
+        "la rapporte telle qu'elle fut ordonnée, et le livre n'en tire aucun principe général ; "
+        "c'est le Psaume 7:15, 16 qui fait l'interprétation théologique du fait — « il a creusé une "
+        "fosse, il y tombe… sa violence redescend sur sa tête » (cf. Proverbes 26:27). (3) LA "
+        "PRÉCISION PHYSIQUE : « ils n'avaient pas atteint le fond de la fosse que les lions les "
+        "saisirent et écrasèrent tous leurs os ». La même fosse, la même nuit, le même fer : Daniel "
+        "en était sorti sans une marque (6:23 : « aucune blessure ne fut trouvée sur lui »). Le contraste "
+        "est dans le texte même et il est délibéré. Notons enfin la formule du v. 23 : « il n'y avait "
+        "en lui aucun tort » — l'innocence reconnue par le roi avant le châtiment des accusateurs, "
+        "qui sont donc condamnés pour délation, non pour divergence d'opinion."
+    ),
+    interpretation=(
+        "Lecture témoins de Jéhovah : Daniel 6 est le chapitre de l'intégrité coûteuse, et son "
+        "dénouement est doublement instructif. (a) LA DÉLIVRANCE EST LE FAIT DE JÉHOVAH, non d'un "
+        "hasard heureux : le roi lui-même le proclame (6:27, « il a délivré Daniel de la griffe des "
+        "lions ») ; un ange est envoyé (6:22) ; et le motif est précisé — « parce qu'il fut trouvé "
+        "innocent devant lui » (6:22), c'est-à-dire que la cause de la délivrance est la fidélité, "
+        "non l'exception. Écriture parallèle : Hébreux 11:33 vient inscrire ce type de délivrance "
+        "dans la liste de la foi (« ils ont fermé la gueule des lions ») ; 2 Timothée 4:17 en donne "
+        "l'écho personnel (« j'ai été délivré de la gueule du lion ») ; et 1 Pierre 5:8 emploie "
+        "l'image pour décrire l'adversaire : la fosse aux lions est le lieu de l'épreuve du peuple de "
+        "Dieu, et le péril y est daté, mesuré, borné. (b) LE CHÂTIMENT DES DÉLATEURS est l'inverse "
+        "exact de leur dessein : ce qu'ils ont préparé pour un autre les reçoit — « ils sont tombés "
+        "dans la fosse qu'ils ont faite » ; c'est le schéma que le livre d'Esther applique à Haman "
+        "(Esther 7:9, 10 : Haman pendu au poteau préparé pour Mardochée) et que Jéhovah énonce en "
+        "règle de gouvernement (Psaume 7:15-17 ; Proverbes 26:27). (c) LA SUITE EST PUBLIQUE : après "
+        "la fosse vient le décret (6:26-28) — « dans tout mon royaume, les hommes doivent trembler "
+        "et craindre devant le Dieu de Daniel, car il est le Dieu vivant et il demeure pour des "
+        "temps indéfinis ». Le nom qui était menacé de disparaître du pays devient la loi du pays ; "
+        "c'est l'aboutissement que la fiche enregistre : la prophétie n'est pas seulement la survie "
+        "d'un homme, c'est la reconnaissance de la domination divine au sommet de l'empire, puis la "
+        "voie ouverte pour le décret de Cyrus et le retour de l'exil."
+    ),
+    accomplissement=[
+        ("6:1-9", "Cent vingt satrapes, trois ministres ; le décret de trente jours ; les sceaux du roi"),
+        ("6:10-13", "Fenêtres vers Jérusalem ; trois fois par jour ; la délation des ministres"),
+        ("6:16-18", "Fosse, pierre, sceaux du roi et des grands ; la nuit sans sommeil"),
+        ("6:22, 23", "L'ange ferme les gueules ; Daniel innocent, sans une marque"),
+        ("6:24", "Accusateurs jugés : les lions les maîtrisent avant le fond ; tous les os broyés"),
+        ("6:26-28", "Décret universel : « il est le Dieu vivant » ; Daniel prospère sous Darius et Cyrus"),
+    ],
+    hist=(
+        "PREUVES HISTORIQUES. (1) L'APPAREIL ADMINISTRATIF : la Perse achéménide a laissé des "
+        "archives administratives massives — les tablettes élamites de Persépolis (archive de "
+        "fortification, plusieurs dizaines de milliers de documents, publiés depuis 1969) qui "
+        "enregistrent rations, voyages et la vérification par des fonctionnaires ; les sceaux et "
+        "les empreintes de sceaux ; la correspondance araméenne d'Éléphantine, en Égypte, où l'on "
+        "suit les ordres royaux jusqu'au bord du Nil. Le monde de Daniel 6 n'est donc pas un décor "
+        "vague : c'est celui des bureaux, des satrapes, des ordres écrits et des agents qui les "
+        "portent. (2) LE PRINCIPE DE L'EXÉCUTION FAMILIALE : plusieurs témoignages grecs décrivent "
+        "la pratique perse de punir la maison d'un coupable — Hérodote (Histoires 3.119) met en "
+        "scène les fils d'Intaphrène retranchés avec leur père, Hérodote encore (9.108-113) raconte "
+        "la vengeance d'Amestris sur une famille entière ; et le livre d'Esther inscrit la même "
+        "logique dans l'histoire juive (Esther 9:6-10 : les dix fils de Haman). Daniel 6:24 ne "
+        "raconte donc pas une cruauté inventée pour les besoins du récit : il rapporte l'application "
+        "d'un usage judiciaire attesté dans l'empire. (3) LES FOSSES AUX LIONS : les reliefs du "
+        "palais nord de Ninive, commandés par Assurbanipal au VIIe siècle (British Museum), montrent "
+        "des lions libérés de cages et de fosses pour la chasse royale — preuve iconographique que "
+        "le lion captif et la fosse d'animaux étaient des institutions de cour. Ils prouvent aussi "
+        "la force ordinaire des bêtes : un lion adulte écrase et brise les os, ce que le verset "
+        "décrit avec exactitude. (4) LA DATE ET LE CADRE : le chapitre se situe juste après 539 av. "
+        "n. è., quand le pouvoir passe aux Mèdes et aux Perses ; Daniel 9:1 place une révélation "
+        "« la première année de Darius » et relie cette date aux soixante-dix ans de Jérémie — ce "
+        "qui donne à l'ensemble une cohérence chronologique interne, la chute de Babylone, la fin "
+        "de la captivité annoncée et l'édit de Cyrus (Esdras 1:1-4 ; 2 Chroniques 36:22, 23) "
+        "s'enchaînant en quelques années."
+    ),
+    geo=(
+        "PREUVES GÉOGRAPHIQUES. (1) LA DIRECTION DE LA PRIÈRE : Daniel prie vers Jérusalem, fenêtres "
+        "ouvertes (6:10). Ce n'est pas une piété privée sans repère : la prière orientée vers le "
+        "sanctuaire est la règle de l'exil (1 Rois 8:44, 48 ; Psaume 137:5, 6 ; 2 Chroniques 6:34-39). "
+        "Géographiquement, Jérusalem se trouve à l'ouest-sud-ouest de Babylone, à près de neuf cents "
+        "kilomètres à vol d'oiseau — et la distance est précisément le sujet de la prière : ce qui "
+        "est loin est encore le lieu du rendez-vous. (2) LA FOSSE : le vocabulaire (fosse, pierre "
+        "posée sur l'ouverture, double sceau) décrit une fosse d'animaux, ouverte au sommet et "
+        "fermée par un bloc, dans l'enceinte d'une résidence royale — le dispositif le plus simple "
+        "et le plus sûr pour tenir des fauves dans une plaine sans relief. Le site de Babylone "
+        "montre aujourd'hui un ensemble de constructions en briques et d'excavations traditionnellement "
+        "associées au souvenir de « la fosse aux lions », près des palais — identification tardive, "
+        "que la fiche enregistre en « limites ». (3) LE PÉRIMÈTRE MILITAIRE : Babylone est une ville "
+        "d'enceintes et de cours ; les lions pouvaient être maintenus non dans une ville, mais dans "
+        "une de ces résidences fortifiées que les rois entretiennent hors des murs pour la chasse — "
+        "ce qui explique la nuit de route, l'aller-retour du roi à l'aube et la mention « la fosse du "
+        "roi ». (4) LE CONTRASTE GÉOGRAPHIQUE DU CHAPITRE : un Juif déporté, priant vers un temple "
+        "détruit, sort indemne d'une fosse creusée sur ordre impérial ; et c'est le roi de Perse qui "
+        "conclut en demandant à toute la terre de craindre le Dieu de Daniel. La géographie politique "
+        "du monde — de l'Inde à l'Éthiopie selon Esther — se met à parler de Jérusalem."
+    ),
+    sci=(
+        "PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE LION MÉSOPOTAMIEN : la sous-espèce "
+        "intéressée est le lion asiatique (Panthera leo persica), celui des reliefs et des fosses "
+        "royales ; il a occupé la Mésopotamie et l'Iran jusqu'aux temps modernes (les derniers "
+        "individus sauvages de la région furent tués au début du XXe siècle, la population résiduelle "
+        "survivant aujourd'hui dans le seul parc de Gir, en Inde). Les Écritures connaissent bien "
+        "cette présence : le lion est l'image de la puissance (Daniel 7:4), du danger (Psaume 22:13, "
+        "21) et du jugement (1 Rois 13). La fosse n'est donc pas un animal mythique, c'est un fauve "
+        "déjà présent dans le paysage. (2) LA TAPHONOMIE : un lion adulte casse et avale les os de "
+        "ses proies ; la précision du verset — la maîtrise « avant qu'ils n'atteignent le fond », "
+        "« tous les os broyés » — décrit le comportement de fauves affamés pris au niveau de "
+        "l'ouverture, et non un supplice rituel. Le contraste avec 6:23 (Daniel relevé « sans aucune "
+        "blessure ») est contrôlable sur le plan zoologique : ce qui est anormal dans le chapitre "
+        "n'est pas la férocité des lions, c'est la fermeture de leurs gueules. (3) LA SCELLÉE : "
+        "l'usage du sceau est massivement documenté pour la période — sceaux cylindriques et "
+        "cachets, impressions sur tablettes, milliers de bulles administratives à Persépolis ; "
+        "poser la pierre et y apposer deux sceaux, celui du roi et celui des grands, crée une "
+        "inviolabilité vérifiable : quiconque y touche laisse une trace. Le détail juridique du "
+        "verset 17 est donc conforme à la pratique — et c'est ce qui rend la nuit du roi insoutenable. "
+        "(4) L'INSCRIPTION DU DÉCRET : le décret final (6:26-28) reprend la formule des proclamations "
+        "impériales adressées « à tous les peuples, nations et langues » — formule connue par les "
+        "inscriptions achéménides, dont Behistun, trilingue, dressée pour être lue par tout l'empire. "
+        "Registre : les faits matériels du chapitre (fosse, pierre, sceaux, fauves, formule de "
+        "décret) sont tous des realia attestés ; l'élément non reproductible — la fermeture des "
+        "gueules — est présenté par le texte comme l'action d'un ange, et la fiche l'enregistre "
+        "comme tel."
+    ),
+    schema=(
+        "CENT VINGT SATRAPES → TROIS MINISTRES → DÉCRET DE TRENTE JOURS → DÉLATION (MORDENT UN "
+        "MORCEAU) → PRIÈRE (FENÊTRES, TROIS FOIS, JÉRUSALEM) → FOSSE → PIERRE + DEUX SCEAUX → NUIT "
+        "SANS SOMMEIL → ANGE (GUEULES FERMÉES) → AUBE (AUCUNE BLESSURE) → ACCUSATEURS (ENFANTS, "
+        "FEMMES) → OS BROYÉS AVANT LE FOND → DÉCRET UNIVERSEL → DIEU VIVANT"
+    ),
+    limites=(
+        "DARIUS LE MÉDIEN : son identification n'est pas établie. Les candidats proposés sont "
+        "Ugbaru/Gobryas, gouverneur de Gutium, qui entra dans Babylone selon la Chronique de "
+        "Nabonide ; Cyaxare II, roi mède de la Cyropédie de Xénophon ; ou un titre porté par Cyrus "
+        "lui-même dans sa jeunesse ; certains modernes y voient un personnage composite. La fiche "
+        "enregistre le débat sans le trancher et sans en tirer d'argument doctrinal. LES CENT VINGT "
+        "SATRAPES : le chiffre n'est pas celui des vingt satrapies d'Hérodote (3.89) ni des "
+        "vingt-trois pays de l'inscription de Behistun ; il faut y voir des circonscriptions d'un "
+        "autre niveau, ou un chiffre d'état-major — la fiche ne les additionne pas. LA FOSSE : "
+        "l'identification du lieu montré aujourd'hui près des ruines de Babylone comme « fosse aux "
+        "lions » est une tradition locale sans datation ; aucun élément archéologique ne la rattache "
+        "à l'épisode. LE CHÂTIMENT DE LA FAMILLE : le récit rapporte une application du droit "
+        "impérial, il ne l'érige pas en norme ; la fiche ne l'utilise pas pour justifier une "
+        "sanction collective. LE NOMBRE DES JOURS : le décret prévoyait trente jours, la fosse en "
+        "fut une nuit ; l'écart est dans le texte et souligne que la sentence divine est plus rapide "
+        "que la loi humaine. ENFIN : la fiche n'identifie pas le « lion » de 1 Pierre 5:8 ni la "
+        "« gueule du lion » de 2 Timothée 4:17 avec la fosse de Daniel ; elle signale le lien "
+        "d'image, non une équivalence."
+    ),
+    tl=[
+        ("539 av. n. è.", "Darius le Médien reçoit le royaume ; cent vingt satrapes ; trois ministres"),
+        ("Le décret", "Trente jours sans requête à aucun dieu ni homme — « loi des Mèdes et des Perses »"),
+        ("Fenêtres de l'étage", "Trois fois par jour vers Jérusalem ; délation des ministres et des satrapes"),
+        ("La nuit", "Fosse, pierre, deux sceaux ; l'ange ; le roi sans sommeil"),
+        ("À l'aube", "Daniel relevé sans blessure ; accusateurs, enfants et femmes : os broyés avant le fond"),
+    ],
+    src=[
+        ("Bible — Esther 7 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/17/7"),
+        ("Bible — Psaume 7 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/7"),
+        ("Bible — Proverbes 26 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/26"),
+        ("Bible — Daniel 6 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/6"),
+    ],
+    img="images/prophe_DN376_lions.jpg",
+))
+
+# ===========================================================================
+# DN377 — Daniel 7:1-7
+# ===========================================================================
+FICHES.append(dict(
+    n="DN377",
+    titre="Quatre bêtes sorties de la mer : lion ailé, ours, léopard, bête de fer",
+    ref="Daniel 7:1-7",
+    statut="Accomplie",
+    cat="DN",
+    syst=(
+        "quatre bêtes de la mer quatre rois successifs (vents → mer → agitation → lion → ailes d'aigle → "
+        "arraché → dressé → cœur d'homme → ours → côtes → trois → dévorer → léopard → quatre ailes → "
+        "quatre têtes → autorité donnée → quatrième → terrible → dents de fer → dix cornes)"
+    ),
+    reg=(
+        "Registre : Daniel — P377 (7:1-7 : quatre bêtes sortant de la mer) ; Daniel 2 ; Babylone, "
+        "Médo-Perse, Grèce, Rome ; Accomplie"
+    ),
+    texte=[
+        (
+            "« PREMIÈRE… ANNÉE… BELSHAṬSAR… ROI… BABYLONE… DANIEL… SONGE… VISIONS… ESPRIT… ÉCRIVIT… "
+            "RÉCIT… QUATRE… VENTS… CIEL… AGITAIENT… GRANDE… MER… QUATRE… BÊTES… GRANDES… "
+            "DIFFÉRENTES… PREMIÈRE… COMME… LION… AILES… AIGLE… REGARDAI… AILES… ARRACHÉES… "
+            "ENLEVÉE… TERRE… DRESSÉE… PIEDS… HOMME… CŒUR… HOMME… DONNÉ… AUTRE… BÊTE… SECONDE… "
+            "COMME… OURS… RELEVÉE… UN… CÔTÉ… TROIS… CÔTES… BOUCHE… DENTS… MANGEAIS… VIANDE… "
+            "BEAUCOUP… APRÈS… CELA… ENCORE… AUTRE… COMME… LÉOPARD… DOS… QUATRE… AILES… OISEAU… "
+            "QUATRE… TÊTES… BÊTE… AUTORITÉ… DONNÉE… APRÈS… CELA… VISION… NUIT… QUATRIÈME… "
+            "EFFRAYANTE… TERRIBLE… EXTRÊMEMENT… FORTE… DENTS… FER… GRANDES… MANGEAIT… BRISAIT… "
+            "PIÉTINAIT… RESTE… PIEDS… DIFFÉRENTE… TOUTES… BÊTES… DIX… CORNES… — ḤEZVE… VISION… "
+            "ḤEVA… BÊTE… YAMMA… LA MER… ARBAʿ… QUATRE… RUḤIN… VENTS… SHEMAYYA… "
+            "DES CIEUX… MAGIḤAN… SOUFFLAIENT… ĀRIYEH… LION… GAPPIN… D'AILE… NESHER… "
+            "D'AIGLE… MEṬAR… ARRACHÉES… U-NEṬILAT… ET ELLE FUT ENLEVÉE… MIN… DE… ARʿA… LA TERRE… "
+            "ʿAL… SUR… RAGLAYIN… DEUX PIEDS… K-ENASH… COMME UN HOMME… HIQIMAT… ELLE FUT DRESSÉE… "
+            "LEV… UN CŒUR… DE-ENASH… D'HOMME… YEHIV… FUT DONNÉ… DUB… OURS… "
+            "SHEḲA… UN CÔTÉ… TELAʿIN… DES CÔTES… SHALOSH… TROIS… BE-PUMMEH… DANS SA BOUCHE… "
+            "BEYN… ENTRE… SHINNAH… LES DENTS… NEMAR… LÉOPARD… GAPPIN… AILES… ARBAʿ… QUATRE… "
+            "ʿAL… SUR… GABBAH… SON DOS… REʾSHIN… TÊTES… SHELṬAN… DOMINATION… YEHIVAH… LUI FUT "
+            "DONNÉE… REVIʿAYA… QUATRIÈME… DEḤILAH… TERRIBLE… EMTAHNI… ÉPROUVANTE… TAQIFAH… "
+            "FORTE… BE-YATIRAH… À L'EXCÈS… PARZEL… DE FER… AḴALAH… DÉVORAIT… HADDAQAH… "
+            "BRISAIT… SHEʔARAH… CE QUI RESTAIT… BE-RAGLAHAH… DE SES PIEDS… RAḤITSAH… FOULAIT… "
+            "ʿASAR… DIX… QARNIN… CORNES… »"
+        ),
+        (
+            "LES TROIS JUMEAUX — Osée 13 : « ÉPHRAÏM… PARLÉ… TREMBLEMENT… SOULEVÉ… ISRAËL… BAAL… "
+            "MOURUT… AJOUTÈRENT… PÉCHER… FONTE… IDOLES… ARGENT… INTELLIGENCE… ŒUVRE… DISENT… "
+            "SACRIFIENT… EMBRASSENT… VEILLENT… VAPEUR… FUMÉE… CHIMINÉE… NUÉE… MATIN… ROSÉE… "
+            "CHASSÉE… TOURBILLON… AIRE… BRUME… FUMÉE… FENÊTRE… DAMAS… ENFANTÉS… MORT… TOMBÉ… "
+            "ÉPÉE… FERAI… ÉTÉ… PANTHÈRE… LÉOPARD… FENDRAI… OURSE… PRIVÉE… PETITS… LION… "
+            "DÉCHIRERAI… ROI… ÉTAIT… DONNÉ… RACHEtÉ… HOMME?… NATIONS… FUREUR… MORT… RÉDEMPTEUR… "
+            "SHEOL… PESTE… COMPASSION… CACHÉE… VENT… DÉSOLÉ… ÉPHRAÏM… GRAND… FÉCOND… » — "
+            "Apocalypse 13 : « DRAGON… SUR… SABLE… MER… BÊTE… MONTANT… MER… DIX… CORNES… "
+            "SEPT… TÊTES… COURONNES… NOMS… BLASPHÈME… LÉOPARD… PIEDS… OURS… GUEULE… LION… "
+            "DRAGON… DONNA… PUISSANCE… TRÔNE… AUTORITÉ… GRANDE… TÊTE… BLESSÉE… MORT… "
+            "BLESSURE… GUÉRIE… TERRE… ADMIRA… SUIVIT… BÊTE… PARLANTES… BLASPHÈMES… "
+            "QUARANTE-DEUX… MOIS… GUERRE… SAINTS… VAINCRE… AUTORITÉ… NATIONS… ADORERONT… "
+            "INSCRITS… LIVRE… VIE… AGNEAU… CAPTIVITÉ… ÉPÉE… ENDURANCE… FOI… AUTRE BÊTE… "
+            "TERRE… DEUX… CORNES… AGNEAU… PARLait… DRAGON… SIGNES… FEU… CIEL… SÉDUIT… "
+            "MARQUE… MAIN… FRONT… NOMBRE… CALCULE… SIX CENT SOIXANTE-SIX… » — Apocalypse 12 : "
+            "« GRAND… SIGNE… FEMME… SOLEIL… LUNE… PIEDS… DOUZE… ÉTOILES… ENCEINTE… CRIait… "
+            "ACCUCHER… DRAGON… ROUGE… SEPT… TÊTES… DIX… CORNES… DIADÈMES… QUEUE… TIERS… "
+            "ÉTOILES… JETÉ… ENFANT… FER… ANÉANTIR… EMMENÉ… TRÔNE… FEMME… DÉSERT… MILLE… "
+            "DEUX CENT SOIXANTE… GUERRE… MICHEL… ANGES… DRAGON… SERPENT… ANCIEN… MENTEUR… "
+            "PRÉCIPITÉ… TERRE… VOIX… ROYAUME… CHRIST… VAINQUEUR… OSENT… SANG… AGNEAU… "
+            "TÉMOIGNAGE… VIE… JOIE… CIEL… MALHEUR… TERRE… MER… DIABLE… GRANDE COLÈRE… "
+            "POURSUIVIT… AILES… AIGLE… DÉSERT… TEMPS… TEMPS… DEMI-TEMPS… SERPENT… EAU… "
+            "AVALA… TERRE… COLÈRE… RESTE… DESCENDANTS… COMMANDEMENTS… TÉMOIGNAGE… »"
+        ),
+    ],
+    contexte=(
+        "Daniel 7 ouvre la seconde moitié du livre — et la change de langue, de forme et de point de "
+        "vue. Le texte était en hébreu jusqu'à 1:1, il est araméen de 2:4 à 7:28, il redeviendra "
+        "hébreu en 8:1. Mais surtout : jusqu'ici, un roi païen racontait ses rêves et un Juif les "
+        "interprétait ; ici, « Daniel prit la parole et dit » (7:2) — la vision est donnée au prophète "
+        "lui-même, dans la première année de Belshatsar (7:1), donc plusieurs années avant le festin "
+        "du chapitre cinq. Le cadre est nocturne et cosmique : les quatre vents du ciel agitent la "
+        "grande mer, et de cette mer montent quatre bêtes « différentes l'une de l'autre ». La "
+        "position du chapitre n'est pas fortuite : c'est le CENTRE littéraire du livre, et il répond "
+        "au chapitre deux. Là, une statue d'homme faite de métaux qui se dégradent, vue par un roi "
+        "idolâtre ; ici, quatre bêtes faites de violence, vues par un serviteur de Dieu. Là, la "
+        "puissance vue de l'extérieur et de son propre point de vue — brillante, dorée, ordonnée ; "
+        "ici, vue de l'intérieur et du point de vue du ciel — dévorante, hybride, animale. Les deux "
+        "séries couvrent la même histoire. C'est l'une des plus fortes leçons de méthode du livre, et "
+        "elle précède immédiatement le procès céleste des versets 9 à 14, où les trônes sont placés et "
+        "où le Fils de l'homme reçoit la domination. Les quatre bêtes du début n'ont donc de sens que "
+        "dans leur renversement final."
+    ),
+    explication=(
+        "Six traits d'araméen portent la vision. (1) ḤEVA, « bête », désigne d'abord le vivant, "
+        "l'être animé — le mot n'est pas péjoratif en lui-même : c'est le vocabulaire du monde "
+        "créé ; son emploi dit que les empires se comportent en bêtes, non qu'ils en soient. (2) "
+        "YAMMA, la mer, avec les « quatre vents du ciel » qui la mettent en mouvement : la "
+        "combinaison décrit un lieu d'agitation et de chaos, non un point cardinal. (3) La FORMULE "
+        "DE TRANSFERT revient trois fois presque identique : « sa domination lui fut donnée » "
+        "(7:6), « son autorité lui fut donnée » (7:6), et sur le lion « un cœur d'homme lui fut "
+        "donné » (7:4). Le passif est là pour une raison : ce n'est pas la bête qui prend le "
+        "pouvoir, c'est le pouvoir qui lui est OCTROYÉ. Trois fois, donc, l'histoire des empires "
+        "est écrite à la voix passive — signe théologique, non tournure littéraire. (4) Le LION : "
+        "les ailes d'aigle lui sont « arrachées », il est « enlevé de la terre » et dressé sur deux "
+        "pieds comme un homme, et un cœur d'homme lui est donné. Ce n'est pas la fin de Babylone "
+        "qui est décrite ici, mais une HUMILIATION et une humanisation du roi — la même que le "
+        "chapitre quatre raconte en détail. (5) L'OURS : relevé « sur un côté » et trois côtes dans "
+        "la gueule ; l'image du rassasié — l'animal qui a mangé, et qui n'a pas fini. (6) La "
+        "différence de la QUATRIÈME bête est signalée trois fois : « différente de toutes les "
+        "autres », « excessivement forte », dents de fer qui MANGENT et BRISENT et PIÉTINENT. Les "
+        "trois actions définissent le mode de conquête : dévorer les peuples, briser les structures, "
+        "fouler le territoire. Les dix cornes introduites au verset 7 seront expliquées au verset "
+        "24 par dix rois. Relevons enfin que le verset 17 dit « quatre rois » et le verset 23 "
+        "« un quatrième royaume » : la vision, comme souvent chez les prophètes, fait glisser le "
+        "représentant et la puissance qu'il exerce."
+    ),
+    interpretation=(
+        "Lecture témoins de Jéhovah, avec ses sources : les quatre bêtes représentent quatre "
+        "puissances mondiales successives, dans le même ordre que les quatre métaux du chapitre "
+        "deux — le lion ailé, c'est Babylone ; l'ours, c'est la Médo-Perse ; le léopard à quatre "
+        "ailes et quatre têtes, c'est la Grèce d'Alexandre et les quatre royaumes qui se partagent "
+        "son empire ; la bête terrible aux dents de fer, c'est Rome. Trois points d'appui internes "
+        "à l'Écriture : (a) les symboles ne sont pas choisis au hasard — Jérémie compare déjà "
+        "Babylone à un lion (Jérémie 4:7 ; 50:17) et Habacuc à la puissance chaldéenne rapide "
+        "(Habacuc 1:8) ; (b) la suite est donnée par Daniel lui-même : le bélier à deux cornes est "
+        "« le roi de Médie et de Perse », le bouc est « le roi de Grèce » et ses quatre cornes "
+        "« quatre royaumes » (Daniel 8:20-22 ; 11:2-4) ; (c) les quatre directions de Daniel 8:8 "
+        "et l'autorité « donnée » du léopard correspondent aux quatre généraux qui se partagent "
+        "l'empire d'Alexandre après 323. Quant aux DIX CORNES, la Bibliothèque en ligne les "
+        "présente comme un total : non dix royaumes énumérables un à un, mais la totalité des "
+        "royaumes issus de Rome — le sens que le livre donne lui-même au mot dix, comme dans "
+        "Daniel 2:44 ou dans l'énumération des dix de l'Apocalypse. La mer chargée de vents est "
+        "lue dans le même article comme l'humanité, avec son hostilité à Dieu en effervescence — "
+        "et c'est cette mer-là que Daniel voit remuer. Deux conséquences pour la fiche : d'abord, "
+        "les bêtes ne sont pas des personnes mais des systèmes — leur succession est un enchaînement "
+        "d'empires, non de dynasties ; ensuite, le procédé est le même du chapitre deux au chapitre "
+        "sept : l'histoire est décrite du dehors comme une série de métaux, du dedans comme une "
+        "série d'appétits. L'Apocalypse reprendra l'image en un seul monstre composite (13:2 : "
+        "gueule de lion, pieds d'ours, corps de léopard), ce qui indique que, dans la lecture "
+        "chrétienne, les quatre ne sont pas seulement successifs mais finissent par se réunir en un "
+        "même système de domination."
+    ),
+    accomplissement=[
+        ("605-539 av. n. è.", "Babylone (lion à ailes d'aigle) — la même humiliation que Daniel 4"),
+        ("539-331 av. n. è.", "Médo-Perse (ours) — trois directions : Lydie 546, Babylone 539, Égypte 525"),
+        ("331-323 av. n. è.", "Grèce (léopard à quatre ailes) — Alexandre, de la mer Égée au Punjab"),
+        ("323-281 av. n. è.", "Quatre têtes : Cassandre, Lysimaque, Séleucos, Ptolémée"),
+        ("168 av. n. è. et après", "Rome (dents de fer) : Macédoine détruite en 168, Corinthe en 146"),
+    ],
+    hist=(
+        "PREUVES HISTORIQUES. (1) LA SUCCESSION DES QUATRE EMPIRES n'est pas une construction "
+        "tardive des commentateurs juifs et chrétiens : le schéma est déjà un lieu commun de "
+        "l'historiographie antique. Un auteur latin, Velleius Paterculus (1.6.3), cite un fragment "
+        "d'Aemilius Sura qui énumère les empires dans cet ordre exact — Assyriens, Mèdes, Perses, "
+        "Macédoniens, puis Rome. Polybe ouvre ses Histoires sur la question de savoir comment Rome "
+        "a soumis « presque toute la terre habitée » en moins de cinquante-trois ans. Autrement dit : "
+        "au moment où Daniel voit quatre bêtes monter de la mer, le monde méditerranéen raisonne "
+        "déjà en succession de dominations. (2) L'IDENTIFICATION INTERNE : le livre donne lui-même "
+        "deux de ses clés. Daniel 8:20, 21 nomme le bélier « roi de Médie et de Perse » et le bouc "
+        "« roi de Grèce » ; Daniel 11:2-4 décrit l'empire grec divisé vers les quatre directions à "
+        "la mort de son premier roi. Ce que le chapitre deux indique par les métaux, le livre "
+        "l'écrit en clair quelques chapitres plus loin. (3) LES FAITS : la chute de Babylone en 539 "
+        "est datée par la Chronique de Nabonide ; la conquête perse de l'Égypte par Cambyse est "
+        "datée par les sources égyptiennes et grecques (Hérodote 3.1-30) ; la bataille de Gaugamèles "
+        "(331) est datée par les historiens d'Alexandre — Arrien, Quinte-Curce, Plutarque, Diodore — "
+        "et par les tablettes astronomiques babyloniennes, qui enregistrent l'éclipse de lune du 20 "
+        "septembre 331, deux mois avant la bataille ; la mort d'Alexandre à Babylone en juin 323 et "
+        "le partage de 301 (Ipsos) puis l'équilibre de 281 (Curupédion) sont datés par les mêmes "
+        "sources. (4) LE FER DE ROME : l'expression du verset 7 trouve sa contrepartie dans "
+        "l'histoire militaire — la légion romaine écrase et piétine, et les destructions de "
+        "Carthage (146), Corinthe (146) et Numance (133) sont restées dans la mémoire antique comme "
+        "autant de villes rayées du sol. (5) LES DATES DE LA VISION : « la première année de "
+        "Belshatsar » (7:1) se situe vers 553-550 selon que l'on compte par année d'accession ou "
+        "par année de règne — l'écart est normal dans la chronologie de la fin de l'empire "
+        "néo-babylonien, et la fiche le signale sans le réduire."
+    ),
+    geo=(
+        "PREUVES GÉOGRAPHIQUES. Le tableau n'est pas une carte d'état-major, mais une géographie "
+        "parfaitement cohérente : quatre bêtes sortent d'une mer agitée par les quatre vents, et "
+        "chacune couvre un espace différent, de plus en plus large. (1) LA MER : dans le monde "
+        "biblique, la mer non maîtrisée est le lieu de l'agité, du trouble, de ce qui n'est pas "
+        "soumis (Psaume 107:23-27 ; Ésaïe 57:20 : « les méchants sont comme la mer agitée »). "
+        "L'Apocalypse en donne l'équivalent explicite : les eaux représentent « des peuples et des "
+        "foules » (17:15) ; et dans Daniel, la mer est le bassin où se mélangent les nations. "
+        "(2) BABYLONE : un empire de plaine alluviale, sans pierre ni relief, dont toute la force "
+        "consiste à dévorer — image d'un lion irrésistible en terrain plat, l'ours des montagnes "
+        "du Zagros qui mange des bêtes, le léopard rapide sur les hauteurs rocheuses, le carnivore "
+        "qui brise des os. La Mésopotamie était le pays du lion asiatique et de l'ours ; la vie "
+        "sauvage du verset sept correspond à la faune réelle du croissant fertile — ce n'est pas "
+        "une ménagerie décorative. (3) LA MÉDO-PERSE : le plateau iranien, les cols du Zagros, "
+        "les routes royales et les satrapies, un empire qui s'étend de la mer Égée à l'Indus en "
+        "trois générations — la convexité montagneuse de l'Iran explique qu'on l'ait figuré deux "
+        "millénaires durant par l'ours. (4) LA GRÈCE : un espace plus grand que son territoire, "
+        "car la mer Égée n'est pour elle qu'un bras ; le léopard correspond à la rapidité d'une "
+        "conquête qui couvre en dix ans (334-324) plus de cinq mille kilomètres jusqu'aux rives "
+        "de l'Hydaspe. (5) ROME, enfin : tout le bassin méditerranéen — mare nostrum — et un "
+        "Mode de conquête qui fonde des provinces au lieu d'annexer des corridors. La séquence des "
+        "quatre bêtes, du Tigre à la Méditerranée, de la plaine au monde, est une géographie "
+        "historique exacte."
+    ),
+    sci=(
+        "PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE LION ET L'AIGLE : Babylone a fait du lion "
+        "son emblème d'État — les cent vingt lions de briques émaillées de la voie processionnelle "
+        "et de la porte d'Ishtar, dégagés par les fouilles allemandes et partiellement reconstruits "
+        "au musée de Pergame à Berlin, attestent l'image ; un lion couché et gravé, le « lion de "
+        "Babylone » du Louvre, porte l'inscription de Nebucadnetsar. Les ailes appartiennent au "
+        "même répertoire : le génie ailé, le taureau ailé et l'aigle Imgur-Enlil apparaissent sur "
+        "les monuments mésopotamiens. La vision combine donc deux symboles royaux babyloniens réels, "
+        "et le détail « les ailes furent arrachées » correspond à une humiliation du lion — "
+        "exactement le sujet de Daniel 4. (2) LA COMBINAISON DES BÊTES DANS L'ART DU PROCHE-ORIENT : "
+        "les reliefs de Ninive montrent des fauves captifs, des lions libérés de cages, l'élevage "
+        "royal des grands animaux ; le Proche-Orient connaît donc parfaitement l'ours, le léopard "
+        "et le lion en captivité, ce qui autorise un symbolisme animal cohérent avec la réalité "
+        "zoologique. (3) LA VITESSE D'ALEXANDRE : mesurée par l'histoire moderne, sa progression "
+        "couvre en onze ans environ 22 000 km de marche ; elle justifie le quadruple aile du "
+        "léopard et l'idée d'un pouvoir de « diligence ». (4) LE FER, MÉTAL QUI BRISE : le fer "
+        "remplace le bronze comme métal de l'arme et du soc au premier millénaire avant notre ère ; "
+        "la métallurgie du fer couvre la région méditerranéenne au Ier millénaire, et les "
+        "historiens antiques associent le fer à la dureté et à la guerre — Daniel 2 en fait « le "
+        "royaume qui broie », et Daniel 7 le met dans la bouche de la bête. (5) L'ÉPIGRAPHIE DE "
+        "L'EMPEREUR : l'Apadana de Persépolis porte les reliefs des vingt-trois pays de l'empire "
+        "achéménide en procession ; l'inscription trilingue de Behistun fut dressée pour être lue "
+        "par tout l'empire ; ces monuments donnent la mesure exacte de ce que « quatre vents » "
+        "signifie lorsqu'on administre un territoire aussi vaste. Registre : la vision est un "
+        "symbole, non un document ; mais chacun de ses traits — la faune, les métaux, la vitesse, "
+        "l'expansion — correspond à des réalités matérielles contrôlables."
+    ),
+    schema=(
+        "QUATRE VENTS (CIEL) → GRANDE MER (AGITATION) → LION AILÉ (BABYLONE : AILES ARRACHÉES, CŒUR "
+        "D'HOMME) → OURS (MÉDO-PERSE : TROIS CÔTES) → LÉOPARD (GRÈCE : QUATRE AILES, QUATRE TÊTES) "
+        "→ BÊTE AUX DENTS DE FER (ROME : DIX CORNES) → PROCÈS CÉLESTE (7:9-14) → DOMINATION DONNÉE "
+        "AU FILS DE L'HOMME (7:13, 14) → ROYAUME DES SAINTS (7:27)"
+    ),
+    limites=(
+        "IDENTIFICATION : la lecture qui voit dans les quatre bêtes Babylone, Médo-Perse, Grèce et "
+        "Rome est celle des Témoins de Jéhovah et de la majorité de la tradition ; d'autres auteurs "
+        "placent la quatrième bête avant Rome, ou voient dans le lion la Babylone grecque ; la fiche "
+        "retient la lecture des quatre puissances, appuyée sur Daniel 2 et 8, sans prétendre clore "
+        "le débat savant. LE GLISSEMENT ROIS / ROYAUMES (7:17 « quatre rois », 7:23 « un quatrième "
+        "royaume ») : le texte emploie les deux mots ; la fiche ne tranche pas entre dynastie et "
+        "empire et signale que le langage prophétique désigne fréquemment la puissance par son "
+        "représentant. LES DIX CORNES : présentées comme le total des royaumes issus de la "
+        "quatrième bête, non comme une liste de dix entités datables une à une ; d'autres lectures "
+        "y voient dix rois littéraux ou dix séleucides, et plusieurs auteurs y ont vu une "
+        "énumération d'États modernes — la fiche ne retient pas ce type de calcul. LE LION "
+        "« HUMANISÉ » (7:4) : le sens retenu est celui d'une humiliation et d'un retour au bon "
+        "sens, en parallèle avec Daniel 4 ; d'autres commentateurs y lisent la fin de la monarchie "
+        "babylonienne — la fiche signale l'alternative. LES DATES : la première année de Belshatsar "
+        "n'est pas fixée au jour près (553-550), et les faits qui suivent sur la carte des empires "
+        "ont leur propre chronologie — la fiche ne les aligne pas de force. ENFIN, RIEN ICI NE DATE "
+        "L'AVENIR : le chapitre sept s'achève sur un royaume à venir, et la fiche s'arrête là où le "
+        "texte s'arrête."
+    ),
+    tl=[
+        ("~553-550 av. n. è.", "Première année de Belshatsar : la vision nocturne ; les quatre vents et la mer"),
+        ("7:4-6", "Lion ailé aux ailes arrachées, ours aux trois côtes, léopard à quatre ailes et quatre têtes"),
+        ("7:7", "Quatrième bête, dents de fer, dix cornes : Rome dans la lecture retenue"),
+        ("539 → 331 → 30 av. n. è.", "Babylone, Médo-Perse, Grèce (et Rome à partir du IIe siècle)"),
+        ("7:9-14, 27", "Le procès céleste, le Fils de l'homme, le royaume des saints : à venir"),
+    ],
+    src=[
+        ("Bible — Osée 13 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/28/13"),
+        ("Bible — Apocalypse 13 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/13"),
+        ("Bible — Apocalypse 12 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/66/12"),
+        ("Bible — Daniel 7 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/7"),
+        ("« Qui dominera le monde ? » (wol)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1101999028"),
+        ("« La lutte contre deux bêtes féroces » (wol)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1101988028"),
+    ],
+    img="images/prophe_DN377_betes.jpg",
+))
+
+# ===========================================================================
+# DN378 — Daniel 7:8, 24-26
+# ===========================================================================
+FICHES.append(dict(
+    n="DN378",
+    titre="La petite corne aux yeux d'homme : trois rois abaissés, les saints livrés",
+    ref="Daniel 7:8, 24-26",
+    statut="Accomplie / À venir",
+    cat="DN",
+    syst=(
+        "petite corne yeux d'homme bouche arrogante trois rois abaissés saints livrés "
+        "(dix cornes → autre petite → s'élève → trois arrachées → yeux d'homme → bouche → grandes "
+        "choses → dix rois → autre roi → trois abaissés → paroles contre le Très-Haut → saints "
+        "usés → temps et loi changés → livrés → temps, temps, moitié d'un temps → tribunal → "
+        "domination ôtée)"
+    ),
+    reg=(
+        "Registre : Daniel — P378 (7:8, 24-26 : la petite corne ; trois rois abaissés ; paroles "
+        "contre le Très-Haut ; les saints livrés) ; 7:25 ; histoire hellénistique et romaine ; "
+        "Accomplie / À venir"
+    ),
+    texte=[
+        (
+            "« VISION… NUIT… QUATRIÈME… BÊTE… DIX… CORNES… AUTRE… PETITE… CORNE… MONTA… ENTRE… "
+            "TROIS… DÉRACINÉES… DEVANT… YEUX… HOMME… BOUCHE… GRANDES CHOSES… — DIX… ROIS… "
+            "LÈVERONT… QUATRIÈME… ROYAUME… AUTRE… ROI… LÈVERA… PLUS… ABAISSERA… TROIS… ROIS… "
+            "PAROLES… TRÈS-HAUT… USER… SAINTS… CHANGER… TEMPS… LOI… LIVRÉS… MAIN… TEMPS… "
+            "TEMPS… MOITIÉ… TEMPS… TRIBUNAL… SIÉGÉ… DOMINATION… ÔTÉE… ANÉANTIE… DÉTRUITE… "
+            "FIN… — QARNIN… CORNES… ʿASAR… DIX… ZEʿERET… PETITE… SILQAT… MONTA… BEYNET… PARMI… "
+            "TELAṮ… TROIS… ʿEQARET… DÉRACINÉES… ʿAYNIN… DES YEUX… KʿAYNE… COMME DES YEUX… "
+            "ENASH… D'HOMME… U-PUMMEH… ET UNE BOUCHE… MEMMALEL… PARLANT… RAVREVAN… DE GRANDES "
+            "CHOSES… MALKIN… DES ROIS… YEQUMUN… SE LÈVERONT… YEHEVE… EXALTÉES… IṬRIV… IL "
+            "GÊNERA… SHALOSH… TROIS… MILLIN… DES PAROLES… LE-ʿILLAYA… CONTRE LE TRÈS-HAUT… "
+            "YEVALE… IL USERA… QADDIŠIN… LES SAINTS… BESHNA… IL CHANGERA… ZIMNIN… DES TEMPS… "
+            "VE-DAT… ET LA LOI… LEHAFSANAH… POUR LES USER… WE-YIREḤON… QADDIŠAYYA… LES SAINTS… "
+            "LE-YADAH… EN SA MAIN… ʿAD… JUSQU'À… WE-PELAG… ET LA MOITIÉ… ʿIDDAN… D'UN TEMPS… "
+            "DINNA… LE JUGEMENT… YEṮIV… SIÉGEa… SHELṬANAH… SA DOMINATION… HAʿDEHI… ELLE SERA "
+            "ÔTÉE… LEHASHMADAH… POUR L'ANÉANTIR… WE-LAHOVADAH… ET LA DÉTRUIRE… ʿAD… JUSQU'À… "
+            "SOFA… LA FIN… »"
+        ),
+        (
+            "LES TROIS JUMEAUX — 2 Thessaloniciens 2 : « VENUE… SEIGNEUR… RASSEMBLEMENT… "
+            "PRIÈRE… ESPRIT… PAROLE… LETTRE… ÉPOUVANTE… JOUR… VENU… APOSTASIE… D'ABORD… "
+            "RÉVÉLÉ… HOMME… ILLÉGALITÉ… FILS… DESTRUCTION… OPPOSE… ÉLÈVE… CONTRE… DIEU… "
+            "TEMPLE… INTASSE… DÉCLARE… DIEU… SOUVENEZ-VOUS… RETENANT… PRÉSENT… OTE… "
+            "LAISSÉ… RÉVÉLÉ… EN TEMPS… SEIGNEUR… DÉTRUIRA… SOUFFLE… BOUCHE… ANÉANTIRA… "
+            "MANIFESTATION… VENUE… SIGNE… PUISSANCE… MENTEUR… SÉDUCTION… PÉRISSENT… AMOUR… "
+            "VÉRITÉ… SALUT… PÈRE… CONSOLATION… AFFERNISSEZ… PAROLES… TRADITIONS… » — "
+            "1 Jean 2 : « ENFANTS… ÉCRIS… PÉCHÉ… PARACLET… PROPITIATION… COMMANDEMENTS… "
+            "NOUVEAU… VIEUX… LUMIÈRE… TENÈBRES… MENTEUR… PÈRE… JEUNES… VAINCU… ÉCRIS… "
+            "DERNIÈRE… HEURE… ANTÉCHRIST… VIENT… PLUSIEURS… SORTIS… CONNU… ONCTION… VÉRITÉ… "
+            "MENTEUR… NIÉ… PÈRE… FILS… DEMEURE… ÉCRIT… PROMESSE… VIE… ÉTERNEL… ENSEIGNE… "
+            "ONCTION… VÉRITÉ… PAS… MENTE… DEMEUREZ… HONTE… AUDACE… VENUE… JUSTE… PUR… "
+            "PÉCHÉ… TRANSGRESSION… IMPOSSIBLE… VU… CONNU… DEMEURE… NE PÈCHE PAS… "
+            "ENFANTS… SÉDUIT… PRATIQUE… JUSTICE… ENFANTS… DIABLE… PÈCHÉ… DÉTRUIRE… "
+            "SEMENCE… MANIFESTÉS… AMOUR… FRÈRE… CAÏN… MÉCHANT… ENTENDU… AIMONS… ACTES… "
+            "VÉRITÉ… CONDAMNE… CŒUR… DIEU… PLUS GRAND… CONNAISSONS… COMMANDEMENT… CROYONS… "
+            "DEMEURONS… » — Marc 13 : « PIERRE… OBSERVE… TEMPLE… PIERRES… BÂTIMENTS… VOIS… "
+            "RENVERSÉ… MONTAGNE… QUAND… SIGNE… SÉDUISE… NOM… PLUSIEURS… GUERRES… "
+            "NATIONS… ROYAUMES… SÉISMES… FAMINES… COMMENCEMENT… LIVRÉS… TRIBUNAUX… "
+            "FLÉTRIS… GOUVERNEURS… TÉMOIGNAGE… ÉVANGILE… NATIONS… HAINE… ENDURANCE… "
+            "ABOMINATION… DÉSOLATION… OÙ… FUIE… JUDEÉ… MONTAGNES… TOIT… MAISON… "
+            "CHAMP… MANTEAU… MALHEUR… ENCEINTES… ALLAITENT… PRIEZ… HIVER… "
+            "TRIBULATION… TELLE… JOURS… ÉCOURTÉS… PROPHÈTES… MIRACLES… POSSIBLE… "
+            "ÉLUS… FAUX… VOUS… DIT… CROIRE… PASTÈRES… CONFIRME… ENVOIE… ANGES… "
+            "RASSEMBLERA… FIGUIER… BRANCHE… FEUILLES… ÉTÉ… GÉNÉRATION… PASSE… "
+            "PASSERONT… PASSERA… PAS… CIEUX… PAROLES… JOUR… HEURE… CONNU… "
+            "VEILLEZ… PRENDRE… NUIT… PIÉGE… TOUTES… TERRE… SURVEILLEZ… PRIEZ… "
+            "TROUVÉ… DORMANT… »"
+        ),
+    ],
+    contexte=(
+        "Ces versets sont au cœur de la deuxième moitié du chapitre sept, et l'ordre du texte compte. "
+        "Les quatre bêtes sont expliquées (7:23-27), mais avant l'explication vient la VISION de la "
+        "petite corne (7:8), et après l'explication vient le verdict (7:26, 27). Le texte fonctionne "
+        "donc par enchâssement : l'histoire de la dernière corne se lit à l'intérieur du procès "
+        "céleste — aux versets 9 et 10, les trônes sont placés, le Très-Haut dont la chevelure est "
+        "comme de la laine pure siège, le livre est ouvert, une « rivière de feu » en sort ; les "
+        "milliers de milliers le servent. Entre ce tribunal (7:9-10) et son verdict (7:26), le "
+        "verset 11 fait tomber la bête, le verset 12 fait survivre les autres pour un temps, et les "
+        "versets 13, 14 donnent la domination à celui qui « vient avec les nuages du ciel », un "
+        "Fils d'homme. La « corne » de 7:8 est donc, dans le livre, la dernier-né des systèmes de "
+        "domination, et sa description est délibérément construite comme l'ANTI-FILS-DE-L'HOMME : "
+        "des yeux et une bouche, c'est-à-dire une intelligence et une parole — tout ce qu'il faut "
+        "pour usurper. Les dix cornes que le verset 24 identifie à dix rois sont du même type que "
+        "les dix du chapitre deux : l'expression désigne une totalité. Le statut enregistré par le "
+        "registre est mixte — une partie de la description a son histoire, une autre reste dans "
+        "l'avenir."
+    ),
+    explication=(
+        "Cinq mots gouvernent l'explication. (1) QEREN ZEʿERET, « une petite corne » : dans tout le "
+        "Proche-Orient ancien et dans la Bible, la corne est l'emblème de la puissance — « il "
+        "élèvera la corne de son peuple » (Psaume 148:14), « les cornes des méchants, je les "
+        "couperai » (Psaume 75:10) ; la petitesse est donc paradoxale : c'est une puissance qui "
+        "n'a pas d'importance au départ et qui s'impose par une violence directe. (2) ʿAYNIN "
+        "KEʿAYNE ʾENASH, « des yeux comme des yeux d'homme » : la vision insiste sur la "
+        "ressemblance avec l'homme — ce n'est pas un regard de fauve mais de calcul ; le livre "
+        "utilise la même image au chapitre 7 verset 4 pour humaniser le lion. (3) PEH MEMMALEL "
+        "RAVREVAN, « une bouche qui parle de grandes choses » : la formule dit l'arrogance, et "
+        "l'Écriture l'emploie à propos des ennemis du peuple de Dieu (Psaume 12:3, 4 ; 73:8, 9 ; "
+        "1 Samuel 2:3). (4) YEVALE QADDIŠIN ʿILLAYA, « il usera les saints du Très-Haut » : le "
+        "verbe (belaʾ, à la fois user et épuiser) est celui qu'on emploie pour un vêtement qui "
+        "s'use. Ce n'est pas une offensive armée, c'est une érosion — et cette précision permet de "
+        "distinguer cette persécution d'un massacre : elle laisse le peuple en vie et le consomme. "
+        "(5) LE TEMPS : « des temps et une loi », puis « temps, temps et moitié d'un temps » — "
+        "l'expression signifie trois ans et demi (Daniel 12:7 ; Apocalypse 12:14 : « un temps, des "
+        "temps et la moitié d'un temps » ; 11:2-3 : quarante-deux mois ; 12:6 : mille deux cent "
+        "soixante jours). Le livre donne ainsi la même durée en deux systèmes, un chiffre et une "
+        "expression, et cela avant que la fin ne soit fixée — c'est la marque d'une durée comptée, "
+        "bornée, non d'un temps indéfini."
+    ),
+    interpretation=(
+        "Lecture témoins de Jéhovah, avec sources : la petite corne de Daniel 7 fait partie de la "
+        "quatrième bête — elle s'élève PARMI les dix cornes, c'est-à-dire parmi les royaumes issus "
+        "de Rome, et non après eux. Dans cette lecture, elle correspond à une puissance mondiale "
+        "elle-même issue de ce monde-là, la puissance anglo-américaine, et les trois cornes "
+        "déracinées devant elle désignent trois royaumes qui lui cèdent la place. Les articles de "
+        "la Bibliothèque en ligne sur Daniel 7 soulignent trois points : la corne n'est pas "
+        "seulement un roi, mais une puissance qui « use » le peuple de Dieu ; le mot « dix » y "
+        "fonctionne comme un total (les royaumes issus de Rome) plutôt qu'une liste énumérable ; "
+        "et la fin de la corne est fixée dans le livre lui-même — le tribunal siège, sa domination "
+        "lui est ôtée (7:26). La fiche ajoute, en le tenant pour une autre lecture et non pour un "
+        "fait établi : (a) la lecture historiciste qui a identifié la corne à la papauté et les "
+        "trois rois aux Hérules (493), aux Ostrogoths (553) et aux Lombards (774), avec un "
+        "accomplissement de 538 à 1798 ; (b) la lecture qui rapporte le développement le plus "
+        "proche à Antiochus IV Épiphane (167-164 av. n. è.), dont les décrets supprimèrent le "
+        "sabbat, la circoncision et le calendrier du sanctuaire — « il changera les temps et la "
+        "loi » ; (c) la lecture futuriste qui attend un personnage unique : l'homme d'illégalité de "
+        "2 Thessaloniciens 2, que l'Épée de la bouche du Seigneur doit détruire (2Th 2:8), "
+        "les antéchrists de 1 Jean 2:18 et l'abomination de la désolation de Marc 13:14. Les trois "
+        "lectures ne s'accordent pas, mais toutes reconnaissent le même motif : une puissance "
+        "médiocre d'origine, insolente de langage, qui épuise les saints et dont la domination "
+        "expire devant le trône de Dieu. La structure théologique est identique dans les trois cas : "
+        "le temps de la corne a un terme, et ce terme est fixé par un tribunal, non par un rapport "
+        "de forces."
+    ),
+    accomplissement=[
+        ("7:8", "Une petite corne monte parmi les dix cornes : trois sont déracinées devant elle"),
+        ("7:24, 25", "Dix rois, un autre roi : paroles contre le Très-Haut, « user » les saints"),
+        ("7:25", "« Temps, temps et moitié d'un temps » : une durée comptée, puis interrompue"),
+        ("7:26", "Le tribunal siège : la domination ôtée, anéantie, détruite « jusqu'à la fin »"),
+        ("7:27 ; 2Th 2:8", "Le royaume donné aux saints ; l'illégal sera détruit (à venir)"),
+    ],
+    hist=(
+        "PREUVES HISTORIQUES. (1) ANTIOCHUS IV ÉPIPHANE (175-164 av. n. è.) fournit le dossier "
+        "historique le plus documenté : les décrets de 167 av. n. è., connus par 1 Maccabées 1:41-64 "
+        "et 2 Maccabées 6, obligent à abandonner la loi, suppriment les sacrifices quotidiens, "
+        "interdisent le sabbat et la circoncision, installent l'« abomination de la désolation » "
+        "sur l'autel du sanctuaire ; 1 Maccabées 1:20-24 décrit le pillage du temple ; l'auteur de "
+        "1 Maccabées 1:54 donne la date : le quinzième jour de Kislev, en l'an 145 de l'ère "
+        "séleucide — 167 av. n. è. (2) LES « TROIS ROIS » : chaque lecture a son candidat. La "
+        "lecture historiciste retient des royaumes barbares abattus en Italie entre le Ve et le "
+        "VIIIe siècle — Hérules, Ostrogoths, Lombards ; la lecture des Écritures grecques retient "
+        "les trois rois de la dynastie hellénistique soumis par un prétendant, ou les trois "
+        "hiérarques du monde séleucide. Les sources existent pour les deux (Jordanès, Procope, Paul "
+        "Diacre d'un côté ; Polybe, Tite-Live, les chroniques babyloniennes de l'autre), mais elles "
+        "ne disent pas la même chose — la fiche donne les deux dossiers, sans les fondre. (3) LE "
+        "DOSSIER ROMAIN : ce que les récits de persécution antiques apportent au motif de 7:25 est "
+        "un contexte vérifiable — des administrateurs qui exigent un geste religieux (le sacrifice, "
+        "la libation, l'encens), des procès, des registres. Les actes de martyrs et les lettres de "
+        "Pline à Trajan (Lettre 10, 96-97) en donnent le modèle administratif exact : on arrête, "
+        "on demande de sacrifier, on relâche celui qui le fait, on met à mort celui qui refuse. "
+        "(4) LE MOTIF DU « CHANGEMENT DES TEMPS » : fixer le calendrier, c'est fixer la religion ; "
+        "les décrets d'Antiochus, comme plus tard les réformes de calendrier impérial romain ou "
+        "révolutionnaire, modifient les fêtes — le reproche de Daniel 7:25 a donc un sens concret, "
+        "et il est attesté dans plusieurs civilisations. (5) LA DURÉE : trois ans et demi est la "
+        "durée que 1 Maccabées 4:52 et 2 Maccabées 10:5 permettent de mesurer de la désolation au "
+        "rétablissement du service du temple — quatorze cents trente jours de 167 à 164 — sans que "
+        "cela épuise le sens du verset, qui vise une durée répétable."
+    ),
+    geo=(
+        "PREUVES GÉOGRAPHIQUES. (1) LA CORNE POUSSE DANS UNE COURONNE : la vision place la petite "
+        "corne AU MILIEU des dix cornes, c'est-à-dire dans le même espace que la quatrième bête ; "
+        "la lutte n'est donc pas une conquête venue de l'extérieur, mais la poussée d'un pouvoir "
+        "issu du même système — c'est ce que la lecture témoins de Jéhovah retient en plaçant la "
+        "corne parmi les royaumes issus de Rome. (2) LE SANCTUAIRE : le chapitre sept ne nomme pas "
+        "Jérusalem ; les parallèles de Daniel 8:11-14 et 11:31, qui parlent du sanctuaire profané, "
+        "et 1 Maccabées 1:54, qui décrit l'autel souillé, donnent le lieu — la colline du temple. "
+        "Cet emplacement est archéologique : les fouilles du Mont du Temple et les vestiges des "
+        "murs hellénistiques encadrent la période, et l'arc de Titus, à Rome, conserve la seule "
+        "représentation antique connue des objets du sanctuaire emportés. (3) L'EMPIRE OÙ CELA SE "
+        "PASSE : du Tigre à l'Adriatique, de la Nubie au Caucase, l'aire séleucide — routes royales, "
+        "cités grecques (Antioche, Séleucie, Doura-Europos), colonies militaires — explique à la "
+        "fois la vitesse de la persécution et l'échec de la Lagide à imposer la même politique en "
+        "Égypte. La géographie administrative de l'empire séleucide a été récemment mieux connue par "
+        "les inscriptions grecques et la documentation cunéiforme tardive (Babylone, Uruk) qui "
+        "continue sous les Séleucides et décrit des cités, des gouverneurs, des temples. (4) DANS "
+        "LA LECTURE ROMAINE, la même logique joue : c'est le bassin méditerranéen entier qui "
+        "devient le théâtre de l'épreuve — d'Éphèse à Smyrne (Apocalypse 2:8-11) et jusqu'aux "
+        "provinces où l'on devait brûler l'encens devant l'image de l'empereur. La question de la "
+        "corne est donc autant géographique que politique : de quel côté de la Méditerranée doit-on "
+        "vénérer un pouvoir, et jusqu'où peut-on refuser ?"
+    ),
+    sci=(
+        "PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA NUMISMATIQUE D'ANTIOCHUS : les tétradrachmes "
+        "frappées à Antioche portent au droit son portrait diadémé et au revers Zeus Nicéphore, et "
+        "les légendes honorent celui qui se nommait « Théos Épiphane » — dieu manifesté. Les monnaies "
+        "vérifient à la fois l'ampleur du personnage et sa démesure : prétendre à la manifestation "
+        "divine est exactement ce que 7:25 reproche à la corne. (2) LES SCEAUX ET LES BULLES : on "
+        "connaît, par les empreintes et les archives, l'administration fiscale séleucide, les "
+        "greniers, les douanes et les garnisons — la persécution a été appliquée par une machine "
+        "d'État, non par un caprice. (3) LA DÉESSE NICÉPHORE ET LE CALENDRIER : les Séleucides "
+        "imposaient leur ère (1er octobre 312 av. n. è., ère séleucide) et leurs fêtes — le "
+        "reproche « changer les temps et la loi » est donc, techniquement, une réalité du "
+        "calendrier : on ne date plus par les lunes du sanctuaire mais par les années du roi. "
+        "(4) L'ARCHÉOLOGIE DU TEMPLE ET DES VILLES : les fouilles du Mont du Temple et des environs "
+        "de Jérusalem ont livré des strates de destruction hellénistique, des collecteurs du "
+        "second temple et des monnaies hasmonéennes frappées après la révolte ; à l'étranger, Doura-"
+        "Europos conserve le seul temple juif peint connu de l'Antiquité. (5) LE MOTIF LITTÉRAIRE "
+        "DE LA DURÉE : la durée de « temps, temps et demi-temps » est chiffrée trois fois dans la "
+        "Bible en trois unités différentes (Daniel 7:25 ; 12:7 ; Apocalypse 11:2, 3 ; 12:6, 14), "
+        "soit 1260 jours, 42 mois, 3,5 ans — une recherche de cohérence interne qui atteste un "
+        "travail de précision des auteurs, non un flou poétique. Registre : l'archéologie et la "
+        "numismatique éclairent les faits du verset 25 (décrets, échéances, monnaies, calendrier) "
+        "et rien de plus ; l'interprétation de l'identité de la corne reste du domaine de la "
+        "lecture des prophéties, et la fiche distingue les deux."
+    ),
+    schema=(
+        "DIX CORNES (TOTALITÉ) → PETITE CORNE (YEUX D'HOMME, BOUCHE) → TROIS DÉRACINÉES → PAROLES "
+        "CONTRE LE TRÈS-HAUT → LES SAINTS USÉS (ÉROSION) → TEMPS ET LOI CHANGÉS → TEMPS, TEMPS, "
+        "MOITIÉ D'UN TEMPS → TRIBUNAL (DINNA YEṮIV) → DOMINATION ÔTÉE → ROYAUME DU FILS DE L'HOMME "
+        "(7:13, 14) → SAINTS (7:27, À VENIR)"
+    ),
+    limites=(
+        "IDENTIFICATION : la corne n'est pas nommée par le texte ; la lecture témoins de Jéhovah "
+        "(une puissance issue de la quatrième bête, la dernière puissance mondiale anglo-américaine) "
+        "est celle que la fiche présente en premier, mais elle n'est pas la seule lecture, et la "
+        "fiche donne les deux grandes alternatives — papauté (historicisme) et Antiochus IV "
+        "(critique) — comme lectures, non comme faits. LES TROIS ROIS : le texte ne les nomme pas ; "
+        "les listes proposées (Hérules, Ostrogoths, Lombards ; trois rois séleucides) sont des "
+        "hypothèses historiques, et notamment pour la première, des constructions d'auteurs "
+        "postérieurs, non des identifications du livre. LE TEMPS : 3,5 ans est là une durée "
+        "symbolique mais bornée ; la fiche n'en fait pas un calcul d'années et n'inscrit aucune "
+        "date pour l'avenir ; les conversions dites « un jour pour un an » appliquées à ce verset "
+        "relèvent d'un système d'interprétation particulier et la fiche ne les applique pas ici. "
+        "LES SAINTS : la fiche retient que le mot désigne les fidèles livrés à la corne — dans la "
+        "lecture témoins de Jéhovah, ceux qui ont part au royaume (7:27) ; elle ne tranche pas le "
+        "débat entre Israël et l'ensemble des chrétiens. « USERA » : le sens d'une usure, d'une "
+        "érosion et non d'une extermination est celui du verbe araméen ; la fiche le signale, car "
+        "il modifie la manière de lire la persécution. Enfin, la fiche ne relie pas nommément la "
+        "corne aux événements politiques contemporains : elle enregistre le motif prophétique et "
+        "s'arrête, conformément à la règle de la phase — aucune date pour l'avenir, aucun total "
+        "dogmatique."
+    ),
+    tl=[
+        ("~553-550 av. n. è.", "Vision nocturne : la quatrième bête et ses dix cornes ; la petite corne"),
+        ("175-164 av. n. è.", "Antiochus IV Épiphane : décrets de 167 ; le calendrier et la loi changés"),
+        ("7:25", "« Temps, temps et moitié d'un temps » : 1260 jours / 42 mois dans les textes jumeaux"),
+        ("7:26", "Le tribunal siège ; la domination de la corne est ôtée « jusqu'à la fin »"),
+        ("7:27 ; 2Th 2:8", "Le royaume donné aux saints ; l'illégal anéanti : à venir, sans date"),
+    ],
+    src=[
+        ("Bible — 2 Thessaloniciens 2 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/53/2"),
+        ("Bible — 1 Jean 2 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/62/2"),
+        ("Bible — Marc 13 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/41/13"),
+        ("Bible — Daniel 7 (nwt)", "https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/27/7"),
+        ("« Qui dominera le monde ? » (wol)", "https://wol.jw.org/fr/wol/d/r30/lp-f/1101999028"),
+    ],
+    img="images/prophe_DN378_corne.jpg",
+))

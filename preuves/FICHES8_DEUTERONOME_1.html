@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES DT — Deutéronome (1) — épines, roi et Prophète</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_DT_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES DT</h1>
+<h2>Deutéronome (1) — épines, roi et Prophète</h2>
+<p class="intro">Aux portes de Canaan, Moïse avertit : les Cananéens épargnés deviendront des épines dans les yeux ; puis, dans son grand discours d'adieu, il déploie la dispersion et le retour, la constitution du futur roi, l'annonce du prophète comme lui, la loi du pendu — et le terrible catalogue des malédictions qui frappera Samarie, Jérusalem et, huit siècles plus tard, la ville de Titus.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio</div><audio controls preload="none" src="audio/fiche_DT_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_DT_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#DT055">DT055</a>
+<a href="#DT056">DT056</a>
+<a href="#DT057">DT057</a>
+<a href="#DT058">DT058</a>
+<a href="#DT059">DT059</a>
+<a href="#DT060">DT060</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#DT055"><img src="images/prophe_DT055_epines.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DT055</div>
+<h3><a href="#DT055">Ceux que vous laisserez seront des épines</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#DT056"><img src="images/prophe_DT056_dispersion.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DT056</div>
+<h3><a href="#DT056">Dispersion rapide, puis recherche et retour</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#DT057"><img src="images/prophe_DT057_roi.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DT057</div>
+<h3><a href="#DT057">Le roi : ni chevaux, ni femmes, ni argent</a></h3>
+<div class="meta">Accomplie (constat du récit)</div></div></div>
+<div class="carte">
+<a class="img" href="#DT058"><img src="images/prophe_DT058_prophete.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DT058</div>
+<h3><a href="#DT058">Un prophète comme Moïse</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#DT059"><img src="images/prophe_DT059_bois.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DT059</div>
+<h3><a href="#DT059">Le pendu au bois est une malédiction</a></h3>
+<div class="meta">Accomplie (application)</div></div></div>
+<div class="carte">
+<a class="img" href="#DT060"><img src="images/prophe_DT060_maledictions.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE DT060</div>
+<h3><a href="#DT060">Siège, dispersion et retour en Égypte</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="DT055">
+<div class="visuel"><img src="images/prophe_DT055_epines.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DT055 · CATÉGORIE DT</div>
+<h3>Ceux que vous laisserez seront des épines</h3>
+<div class="ref">Nombres 33:55, 56</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Avertissement pré-entrée (ordre → échec → épines → cycle)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DT055</div><audio controls preload="none" src="audio/fiche_DT55_epines.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DT55_epines.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Nombres 33:55, 56</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Avertissement pré-entrée (ordre → échec → épines → cycle)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Nombres — P055 (33:55, 56 : les non-chassés, des épines) ; accomplissement Jos 23:12, 13 ; Jg 2:3 ; 3:5-7</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Si vous NE CHASSEZ PAS les habitants du pays… » (33:55 — si !)</li>
+<li>« Ceux que vous LAISSEREZ seront des ÉPINES dans vos yeux. » (33:55 — épines !)</li>
+<li>« Des AIGUILLONS dans vos côtés. » (33:55 — aiguillons !)</li>
+<li>« Ils vous PRESSERONT dans le pays où vous habiterez. » (33:55 — presseront !)</li>
+<li>« Je VOUS FERAI ce que j'avais pensé LEUR faire. » (33:56 — vous ferai !)</li>
+<li>« Elles seront un FOUET dans vos côtés, des ÉPINES dans vos yeux. » (Jos 23:13 — fouet !)</li>
+<li>« Ils seront des ÉPINES dans vos côtés. » (Jg 2:3 — épines !)</li>
+<li>« Ils habitèrent AU MILIEU… prirent leurs filles… SERVIRENT leurs dieux. » (Jg 3:5-7 — servirent !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Plaines de Moab, ~1473 — AVANT la traversée du Jourdain : l'ordre est total — « vous chasserez TOUS les habitants, vous détruirez toutes leurs pierres sculptées, toutes leurs idoles de métal, vous démolirez tous leurs hauts lieux » (33:51-52). Puis le SI (33:55) : si l'ordre n'est exécuté qu'à moitié, le reste deviendra plaie. La logique est chirurgicale : Canaan est gangrené (cf. Gn 15:16 : « la faute des Amorites n'est pas encore à son comble » — 400 ans de patience avant l'opération), et tout fragment laissé infecte. L'avertissement vise la génération de Josué — et il la manquera : Juges 1 est le procès-verbal de l'échec, tribu par tribu.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Des ÉPINES (seqim) dans vos YEUX » (33:55) : seq = épine, piquant — dans les YEUX : la vision brouillée, l'aveuglement douloureux ; les Cananéens restés empêcheront Israël de VOIR clair (discernement religieux perdu). « Des AIGUILLONS (tseninim) dans vos CÔTÉS » : tsenina = piquant, harpon — dans les CÔTÉS (flancs) : la marche entravée, chaque pas blessé ; yeux + côtés = voir et marcher : la religion et la conduite, les deux atteintes. « Ils vous PRESSERONT (vetsararu) » : le verbe de l'oppression (tsarar — serrer, assiéger) : les épargnés deviendront assiégeants — le reste devient étau. « Je VOUS ferai ce que j'avais pensé LEUR faire » (33:56) : le RETOURNEMENT — le jugement préparé pour Canaan (dépossession) frappera Israël (déportation) : l'instrument épargné devient le bourreau, et Dieu retourne la peine contre le juge négligent.</p>
+<h4>5 · Interprétation</h4>
+<p>JOSUÉ 23:12-13 (P055) : Josué mourant RÉACTIVE l'avertissement — « si vous vous alliez à ces nations… elles seront pour vous un FILET et un PIÈGE, un FOUET dans vos côtés et des ÉPINES dans vos yeux, jusqu'à ce que vous PÉRISSIEZ » : Josué ajoute filet-piège-fouet aux épines de Moïse et nomme le terme : périr du pays. JUGES 2:3 (P055) : l'ange de Jéhovah à BOKIM (« pleureurs ») — « je ne les chasserai plus devant vous ; ils seront des ÉPINES dans vos côtés » : Dieu RETIRE son concours — la conquête s'arrête là où l'obéissance s'est arrêtée. JUGES 3:5-7 (P055) : le constat en 3 temps — « les fils d'Israël habitèrent AU MILIEU des Cananéens… prirent leurs filles pour femmes… SERVIRENT leurs dieux » : cohabitation → mariages → idolâtrie — l'épine dans l'œil est devenue le dieu sur l'autel. Le cycle des Juges (oppression → cri → juge → paix → rechute) est la mécanique des épines en marche.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1473 (Moab)</td><td>Ordre + avertissement : les épines (33:51-56)</td></tr>
+<tr><td class="d">~1473-1467</td><td>Conquête partielle ; ruse de Gabaon (Jos 9)</td></tr>
+<tr><td class="d">~1450?</td><td>Josué mourant : filet, piège, fouet, épines (Jos 23:12-13)</td></tr>
+<tr><td class="d">Jg 1</td><td>7 tribus, 7 échecs : Jébus, Guézer, Beth-Shéan…</td></tr>
+<tr><td class="d">Jg 2-3</td><td>Bokim : retrait divin ; mariages → Baals (2:3 ; 3:5-7)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>JUGES 1 — le palmarès de l'échec : Juda ne chasse pas la plaine (chars de fer, 1:19), Benjamin échoue à Jébus-Jérusalem (1:21 — les Jébusiens y resteront jusqu'à DAVID, 2S 5:6-9 !), Manassé garde Beth-Shéan, Éphraïm garde Guézer (1:29 — Guézer cananéenne jusqu'à PHARAON qui l'offrira à Salomon, 1R 9:16 !), Zabulon, Asher, Nephtali échouent pareillement : 7 tribus, 7 échecs — l'avertissement de Nb 33 est coché case par case. Les GABAONITES (Jos 9) : la ruse (vieux pain, outres rapiécées) obtient une alliance — « Jéhovah avait ordonné de chasser TOUS les habitants, donc les Gabaonites aussi » (2026482), mais le serment tient : bûcherons et porteurs d'eau — l'épine neutralisée par le serment. Les PHILISTINS : jamais chassés de la côte — 5 satrapes, Goliath, 200 ans de guerres : l'épine devenue lance.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Les ENCLAVES : JÉBUS/JÉRUSALEM (montagne de Benjamin-Juda — forteresse jébusienne imprenable jusqu'à David qui entre par le canal, 2S 5:8), GUÉZER (verrou de la route côtière — cananéenne jusqu'au pharaon beau-père de Salomon), BETH-SHÉAN et la vallée de JEZREEL (plaine des chars de fer — Jg 1:19, 4:3 : 900 chars de Sisera !), la CÔTE PHILISTINE (Gaza, Ashqalon, Ashdod, Éqrôn, Gath — pentapole intacte). BOKIM (« pleureurs », Jg 2:1-5) : le lieu où l'ange prononce le retrait — le peuple pleure et sacrifie, mais ne repart pas au combat : les larmes sans l'épée. La carte du Juges est celle de Nb 33:55 : des épines plantées dans chaque tribu — l'encerclement intérieur.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>LA TECHNOLOGIE DES CHARS (Jg 1:19 ; 4:3) : le char de fer cananéen — plateforme mobile, archers, effet de choc en plaine — contre l'infanterie israélite des montagnes : la supériorité technologique explique EXACTEMENT la carte des échecs (plaines gardées, montagnes prises) — le récit porte sa propre explication militaire. La BOTANIQUE DE L'IMAGE : seq/tsenina — les chardons et paliures du Levant, piquants de 2-3 cm qui percent les sandales : tout Israélite avait arraché des épines — l'image est prise au champ, pas au palais. La SOCIOLOGIE DU PIÈGE : minorités non assimilées → mariages mixtes (Jg 3:6) → syncrétisme (Jg 3:7) : la séquence est un classique d'anthropologie religieuse — l'avertissement de Nb 33 décrit un mécanisme social réel, vérifié tribu par tribu.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA MÉCANIQUE DES ÉPINES : ORDRE (chassez tout, 33:51-52) → ÉCHEC (Jg 1 : 7 tribus, 7 enclaves) → PLAIE (épines-yeux, aiguillons-côtés) → PIÈGE (mariages → Baals, Jg 3:5-7) → JUGEMENT RETOURNÉ (vous subirez ce qui leur était destiné, 33:56 → déportations). Bokim est la charnière : Dieu retire son concours — les épines restent, les larmes coulent, le cycle commence.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>L'ordre de destruction (herem, Dt 7:1-5) se lit dans SON cadre : « ce n'est pas à cause de ta justice… mais de la méchanceté de ces nations » (Dt 9:4-5) — jugement judiciaire après 400 ans de patience (Gn 15:16), pas modèle transposable : la fiche ne l'applique à rien d'autre. Les Gabaonites épargnés (Jos 9) ne contredisent pas Nb 33:55 : le serment prêté au nom de Jéhovah liait Israël (Jos 9:19) — l'exception confirme la règle du serment, pas celle de l'épine. « Je vous ferai… » (33:56) s'accomplit dans les déportations (740, 607), pas dans chaque oppression des Juges : ne pas antidater le retournement. Enfin, Jg 1:19 (« Jéhovah était avec Juda, mais ils ne chassèrent pas… chars de fer ») : le texte juxtapose la présence divine et l'échec militaire sans expliquer — la fiche ne spécule pas.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ordre : chassez tout</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gabaon : la ruse</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 9</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Filet et fouet</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 23</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 échecs</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 1</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bokim : les épines</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 2-3</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012489">Juges (livre des) — Étude (avertissement Nb 33:55, piège cananéen)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012489</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2026482">Ce que nous pouvons apprendre des Gabaonites (ordre Nb 33:51-52)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2026482</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/4/33">Nombres 33 — Bible d'étude (notes 33:51-56)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/4/33</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DT055 — Ceux que vous laisserez seront des épines</span><span>Catégorie DT</span></div></div>
+</article>
+<article class="fiche" id="DT056">
+<div class="visuel"><img src="images/prophe_DT056_dispersion.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DT056 · CATÉGORIE DT</div>
+<h3>Dispersion rapide, puis recherche et retour</h3>
+<div class="ref">Deutéronome 4:25-31</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Prophétie du 1er discours (longtemps → vite → peu → retour)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DT056</div><audio controls preload="none" src="audio/fiche_DT56_dispersion.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DT56_dispersion.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Deutéronome 4:25-31</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Prophétie du 1er discours (longtemps → vite → peu → retour)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Deutéronome — P056 (4:25-31 : dispersion, puis recherche et retour) ; accomplissement 2R 17:6 ; 25:21 ; Né 1:8-9</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Quand vous aurez des FILS et des PETITS-FILS, HABITÉ LONGTEMPS… » (4:25 — longtemps !)</li>
+<li>« Je prends à témoin contre vous le CIEL et la TERRE. » (4:26 — ciel et terre !)</li>
+<li>« Vous DISPARAÎTREZ vite du pays… vous n'y prolongerez pas vos jours. » (4:26 — vite !)</li>
+<li>« Jéhovah vous DISPERSERA parmi les peuples. » (4:27 — dispersera !)</li>
+<li>« Vous resterez un PETIT NOMBRE, qu'on peut compter. » (4:27 — petit nombre !)</li>
+<li>« Là, vous servirez des dieux de BOIS et de PIERRE. » (4:28 — bois et pierre !)</li>
+<li>« Si de là vous ME CHERCHEZ… vous ME TROUVEREZ. » (4:29 — trouverez !)</li>
+<li>« À LA FIN DES JOURS… vous reviendrez à Jéhovah. » (4:30 — fin des jours !)</li>
+<li>« Car Jéhovah est un Dieu MISÉRICORDIEUX ; il n'oubliera pas l'alliance. » (4:31 — miséricordieux !)</li>
+<li>« JUDA FUT EXILÉ hors de son pays. » (2R 25:21 — exilé !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Plaines de Moab, ~1473 — 1er discours de Moïse (Dt 1-4), à la génération qui VA entrer : Moïse voit au-delà de l'entrée — « quand vous aurez des fils et des petits-fils » : la prophétie prévoit des SIÈCLES d'installation AVANT la chute. Le ciel et la terre pris à témoins (4:26) : le procès a ses témoins cosmiques — ils dureront plus que les plaideurs (cf. Dt 30:19, 31:28 : la paire revient aux moments solennels). La séquence tient en 7 versets : LONGTEMPS (v.25) → corruption → DISPARITION VITE (v.26) → dispersion (v.27) → PETIT NOMBRE (v.27) → servitude idolâtre (v.28) → RECHERCHE (v.29) → retour (v.30) — toute l'histoire d'Israël en un paragraphe, 8 siècles avant la fin.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Vous DISPARAÎTREZ VITE (maher) » (4:26) : le paradoxe du verset — LONGTEMPS installés (v.25), VITE balayés : la chute est brève, l'installation fut longue ; « vous n'y prolongerez pas vos jours (lo ta'arikhun yamim) » : l'expression même de la promesse inversée (cf. Dt 5:16 : honore ton père « afin que tu prolonges tes jours » — la désobéissance raccourcit ce que l'obéissance allongeait). « Il vous DISPERSERA (hephits) » (4:27) : le verbe de BABEL (Gn 11:8-9, wayyaphets — même racine !) : la dispersion-exil réédite la dispersion-Babel — le jugement des origines revient sur le peuple élu. « Un PETIT NOMBRE (metey mispar — des hommes qu'on peut compter) » : la multitude promise à Abraham (innombrable, Gn 15:5) réduite à un effectif COMPTABLE : l'inversion mathématique de la promesse. « Des dieux de BOIS et de PIERRE » (4:28) : l'ironie — servir ce que des mains ont fabriqué, « qui ne voient ni n'entendent ni ne mangent ni ne sentent » : 4 sens niés, le néant sensoriel. « À LA FIN DES JOURS (be'aharit hayyamim) » (4:30) : LA formule de Nb 24:14 (EX053 !) — Moïse reprend le calendrier de Balaam : le retour est daté « fin des jours ».</p>
+<h4>5 · Interprétation</h4>
+<p>LE NORD — 2 ROIS 17:6 (P056) : « la 9e année d'Osée, le roi d'Assyrie prit Samarie et déporta Israël en Assyrie : HALAH, HABOR, GOZAN et villes des MÈDES » : la dispersion a une carte — 4 zones nommées, haute Mésopotamie et Iran ; le v.18 : « il ne resta que la tribu de Juda » — le « petit nombre » en actes. LE SUD — 2 ROIS 25:21 (P056) : « on frappa les chefs à Ribla… JUDA FUT EXILÉ HORS DE SON PAYS » : la phrase la plus brève et la plus lourde des Rois — 7 mots pour 8 siècles ; « vite » (4:26) : 18 mois de siège (Jr 52:4-6), et c'est fini. LE RETOUR — NÉHÉMIE 1:8-9 (P056, cf. EX050) : « si vous revenez à moi… je vous rassemblerai, même du BOUT DES CIEUX » : la recherche (4:29) exaucée — Néhémie obtient le retour parce qu'il prononce le retour. Le CIEL ET LA TERRE (4:26) ont vu : les témoins cosmiques ont assisté à tout — dispersion, petit nombre, recherche, retour.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1473 (Moab)</td><td>Longtemps → vite → peu → recherche → retour (4:25-31)</td></tr>
+<tr><td class="d">740-718</td><td>Nord : Samarie → Halah, Habor, Gozan, Mèdes (2R 17:6)</td></tr>
+<tr><td class="d">609-607</td><td>Sud : « Juda fut exilé hors de son pays » (2R 25:21)</td></tr>
+<tr><td class="d">537</td><td>Cyrus : le petit nombre revient (Esd 1-2)</td></tr>
+<tr><td class="d">455</td><td>Néhémie : « bout des cieux » rassemblé (Né 1:8-9)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>740-718 : chute de SAMARIE (3 ans de siège — Salmanasar V puis Sargon II ; cf. EX048) — les 10 tribus dispersées en Assyrie et Médie, remplacées par des colons (2R 17:24 : les futurs SAMARITAINS — la dispersion crée le schisme). 609-607 : chute de JÉRUSALEM (3 déportations : 609 Daniel, 597 Ézéchiel, 587/607 la ville — cf. EX048, DT060) — « Juda fut exilé hors de son pays ». Le « PETIT NOMBRE » : restes — les pauvres laissés (2R 25:12), Guedalia assassiné (25:25), la fuite en Égypte (Jr 43) : le nombre fond jusqu'au comptable. 537 : Cyrus — ~50 000 reviennent (Esd 2) : un « petit nombre » revient d'un « petit nombre » — le reste du reste. Les papyri d'ÉLÉPHANTINE (Égypte, Ve s.) : garnison juive avec temple — la dispersion est archéologiquement attestée jusque sur le Nil.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La CARTE DE LA DISPERSION (2R 17:6) : HALAH et HABOR (haute Mésopotamie , triangle du Khabour), GOZAN (Guzana/Tell Halaf — fouillée : palais araméen !), VILLES DES MÈDES (Iran occidental — Ecbatane/Hamadan) : 4 zones à 1 000-1 500 km de Samarie — l'Assyrie disperse loin et mélange (politique impériale : brasser les peuples pour briser les révoltes). Le SUD : BABYLONE (Euphrate) — exil groupé (le Sud reste ensemble, le Nord fut éparpillé : deux dispersions, deux géographies). « Du BOUT DES CIEUX » (Né 1:9) : Suse, Babylone, l'Égypte — l'empire perse comme nasse à Juifs, puis le retour : ~1 500 km en caravanes (cf. EX050). Le PAYS VIDE : 70 ans de jachère (EX049) — la dispersion du peuple EST le sabbat de la terre : DT056 et EX049 sont le même événement vu des deux côtés.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La DIPLOMATIQUE DES TÉMOINS : les traités hittites invoquaient les dieux comme témoins-garants ; Moïse invoque le CIEL et la TERRE (4:26) — la création au lieu des dieux : pas de panthéon convoqué, l'univers lui-même est l'huissier. La DÉMOGRAPHIE DU RESTE : metey mispar (« hommes de nombre ») — la multitude abrahamique (Gn 15:5 : « compte les étoiles, SI tu peux ») réduite au comptable : l'inversion est quantifiée — d'innombrable à dénombrable. La LINGUISTIQUE DE HEPHITS : Babel (Gn 11:8) → exil (Dt 4:27) — le même verbe encadre la Genèse et les Rois : la dispersion est un jugement-type, récurrent, nommé. L'ÉCONOMIE ASSYRIENNE : déporter = repeupler = imposer — les colons de 2R 17:24 paient le tribut à la place des déportés : la dispersion est une machine fiscale autant que militaire.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA PARABOLE EN 7 TEMPS : LONGTEMPS (installation, v.25) → corruption → VITE (chute brève, v.26) → dispersion (v.27) → PETIT NOMBRE (v.27) → idoles de bois (v.28) → RECHERCHE (v.29) → retour (v.30-31, miséricorde). Témoins : ciel + terre (v.26) — le procès est public, cosmique, et le verdict s'exécute en deux fois : Nord (740), Sud (607).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« VITE » (4:26) ne contredit pas les siècles d'installation (4:25) : vite = UNE FOIS le jugement déclenché (sièges de 3 ans et 18 mois) — la lenteur de la patience, puis la rapidité de l'exécution. Deux dispersions DISTINCTES : Nord 740 (Assyrie, éparpillement) et Sud 607 (Babylone, exil groupé) — les confondre, c'est brouiller la carte. Le retour (Né 1:8-9) est PARTIEL (un reste, ~50 000) — pas le retour total : « petit nombre » à l'aller comme au retour. « Fin des jours » (4:30) : le registre classe P056 Accomplie (retour de Babylone) — la fiche suit le registre ; d'autres y voient aussi les derniers jours (débats signalés, non tranchés ici). Enfin, les « dieux de bois » (4:28) : ironie prophétique, pas ethnographie — les exilés ont globalement RÉSISTÉ à l'idolâtrie babylonienne (Daniel, Esther).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ciel et terre témoins</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nord dispersé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">740</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sud exilé</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus : retour</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bout des cieux</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">455</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/4">Deutéronome 4 — Bible d'étude (notes 4:25-31)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/4</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2011736">Quand l'ancienne Jérusalem a-t-elle été détruite ? (dispersion, 70 ans, retour)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2011736</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/16/1">Néhémie 1 — Bible d'étude (8-9 : rassemblés du bout des cieux)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/16/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DT056 — Dispersion rapide, puis recherche et retour</span><span>Catégorie DT</span></div></div>
+</article>
+<article class="fiche" id="DT057">
+<div class="visuel"><img src="images/prophe_DT057_roi.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DT057 · CATÉGORIE DT</div>
+<h3>Le roi : ni chevaux, ni femmes, ni argent</h3>
+<div class="ref">Deutéronome 17:14-20</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (constat du récit)</span>
+<span class="badge">Constitution royale (3 ne-pas + 1 devoir → test Salomon)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DT057</div><audio controls preload="none" src="audio/fiche_DT57_roi.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DT57_roi.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Deutéronome 17:14-20</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (constat du récit)</td></tr>
+<tr><td class="d">Chronologie</td><td>Constitution royale (3 ne-pas + 1 devoir → test Salomon)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Deutéronome — P057 (17:14-20 : le roi, loi préventive) ; accomplissement 1R 4:26 ; 10:14-29 ; 11:1-8</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Quand tu diras : JE VEUX UN ROI, comme toutes les nations… » (17:14 — je veux !)</li>
+<li>« Tu établiras un roi que CHOISIRA Jéhovah, D'ENTRE TES FRÈRES. » (17:15 — frères !)</li>
+<li>« Il ne MULTIPLIERA PAS les CHEVAUX, ni ne ramènera en ÉGYPTE. » (17:16 — chevaux !)</li>
+<li>« Il ne MULTIPLIERA PAS les FEMMES, de peur que son cœur S'ÉGARE. » (17:17 — s'égare !)</li>
+<li>« Il ne MULTIPLIERA PAS l'ARGENT et l'OR. » (17:17 — argent et or !)</li>
+<li>« Il ÉCRIRA pour lui une COPIE de cette loi… il y LIRA tous les jours. » (17:18-19 — écrira !)</li>
+<li>« 1 400 CHARS, 12 000 cavaliers… chevaux amenés D'ÉGYPTE. » (1R 10:26-29 — d'Égypte !)</li>
+<li>« 666 TALENTS D'OR par an… l'argent compté pour RIEN. » (1R 10:14-21 — 666 !)</li>
+<li>« 700 princesses, 300 concubines… ses femmes DÉTOURNÈRENT son cœur. » (1R 11:1-4 — détournèrent !)</li>
+<li>« Jéhovah dit : je DÉCHIRERAI le royaume. » (1R 11:11 — déchirerai !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Plaines de Moab, ~1473 — AVANT l'entrée, avant même l'idée d'un roi : Dieu rédige la CONSTITUTION d'une monarchie qui n'existe pas — « QUAND tu diras : je veux un roi COMME TOUTES LES NATIONS » (17:14) : Dieu prévoit la demande de 1 Samuel 8 (« établis sur nous un roi pour nous juger, comme toutes les nations », 1S 8:5 — MOT POUR MOT !) quatre siècles à l'avance. La loi n'interdit pas le roi (Dieu avait promis des rois à Abraham, Gn 17:6, 16), elle l'ENCADRE : élu par Dieu (17:15), pris entre frères (pas d'étranger — anti-tyran importé), limité en 3 points, obligé en 1 devoir. C'est le premier texte constitutionnel limitant un pouvoir royal — 3 000 ans avant les chartes modernes.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Il ne MULTIPLIERA PAS (lo yarbeh) » (× 3, 17:16-17) : le verbe yarbah (multiplier, accumuler) — la triple accumulation interdite : CHEVAUX (susim — l'arme absolue, le char de guerre : le roi ne doit pas bâtir sa puissance sur la cavalerie), « NI RAMENER le peuple en ÉGYPTE pour des chevaux » : le commerce des chevaux RAMÈNE en Égypte — la route commerciale devient route de l'apostasie (retour au pays de la servitude pour du matériel !) ; FEMMES (nashim — « de peur que son cœur (levavo) S'ÉGARE (yassur) » : les mariages royaux sont des traités, les traités apportent des dieux, les dieux égarent le cœur — la chaîne causale est écrite dans la loi) ; ARGENT ET OR : la thésaurisation — le roi-trésor. « Il ÉCRIRA (vekhatav) pour lui une COPIE (mishneh) » (17:18) : le ROI COPISTE — le premier devoir du souverain est un devoir de SCRIBE : copier la loi de sa main, la garder « auprès de lui », y lire « TOUS LES JOURS » (17:19) : le pouvoir alphabétisé, contrôlé par le texte — « pour qu'il ne s'élève pas AU-DESSUS DE SES FRÈRES » (17:20) : la copie rabat l'orgueil.</p>
+<h4>5 · Interprétation</h4>
+<p>SALOMON — le test grandeur nature, 3 violations documentées : CHEVAUX (1R 4:26 ; 10:26-29, P057) — « 1 400 chars, 12 000 cavaliers… les chevaux étaient amenés D'ÉGYPTE et de Qoué » : LE RETOUR EN ÉGYPTE POUR DES CHEVAUX, mot pour mot Dt 17:16 ! Villes de chars (Megiddo, Hatsor, Guézer — 1R 9:15, 19) : l'infrastructure de la violation. FEMMES (1R 11:1-8, P057) — « 700 princesses et 300 concubines… SES FEMMES DÉTOURNÈRENT SON CŒUR » (11:3-4 : mot pour mot Dt 17:17 !) : fille de Pharaon + Moabites, Ammonites, Édomites, Sidoniennes, Hittites — 6 nations, 6 cultes ; hauts lieux pour Kemosh et Molek FACE À JÉRUSALEM (11:7) : l'égarement a une adresse. ARGENT (1R 10:14-29, P057) — « 666 TALENTS D'OR PAR AN » (10:14 — ~22 tonnes !) + tributs + commerce : « l'argent n'était compté pour RIEN » (10:21) — la dévaluation par abondance. VERDICT (1R 11:9-13) : « Jéhovah fut irrité… je DÉCHIRERAI le royaume » : la loi de Dt 17 juge le roi de 1R 11 — 4 siècles entre la constitution et le procès. Statut registre : « constat du récit » — c'est le RÉCIT des Rois qui constate, article par article.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1473 (Moab)</td><td>Constitution : 3 ne-pas + copie quotidienne (17:14-20)</td></tr>
+<tr><td class="d">~1117?</td><td>Demande : « un roi comme les nations » (1S 8:5)</td></tr>
+<tr><td class="d">~1037-998</td><td>Salomon : chars d'Égypte, 666 talents, 1000 femmes (1R 10-11)</td></tr>
+<tr><td class="d">~998</td><td>Verdict : « je déchirerai le royaume » (1R 11:11-13)</td></tr>
+<tr><td class="d">Schisme</td><td>10 tribus perdues : la loi exécutée</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>SALOMON (40 ans de règne, 1R 11:42 ; temple fondé 1034, 1R 6:1) : le plus sage des rois, pris au triple piège — la sagesse n'immunise pas contre la loi : « il aima beaucoup de femmes étrangères » (11:1) MALGRÉ les Proverbes. Les ÉCURIES DE MEGIDDO (fouilles : vastes complexes à auges et poteaux) : attribuées à Salomon (villes de chars, 1R 9:15), puis réattribuées par certains aux Omrides (Achab) — DÉBAT OUVERT, la fiche le signale (voir limites) : dans les deux cas, l'archéologie atteste l'infrastructure équestre royale. 666 TALENTS : ~22-23 tonnes d'or par an (talent ≈ 34 kg) — sans compter tributs, taxes et commerce (10:15) : le budget d'un empire commercial (flotte d'Ophir, 1R 9:26-28 : 420 talents en une expédition !). Le SCHISME (~998) : Roboam/Jéroboam — la déchirure annoncée (11:11-13) exécutée à la mort de Salomon : 10 tribus perdues pour 3 violations.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>ÉGYPTE (chevaux — 1R 10:28-29) : le Nil = haras de l'Antiquité (élevage royal, chars légers) — Salomon y achète au prix catalogue (150 sicles le cheval, 600 le char — 10:29 : le TARIF est donné !) : le commerce interdit est CHIFFRÉ. QOUÉ (Cilicie, sud de l'Anatolie) : 2e fournisseur — la route du nord complète la route du sud : Israël importe la cavalerie des deux empires. MEGIDDO-HATSOR-GUÉZER (1R 9:15) : le triangle des villes de chars — verrous du pays, parkings de la violation. OPHIR (or — 1R 9:28) : destination lointaine (Arabie ? Inde ? — débattue) : l'or vient du bout du monde, l'interdit est mondial. FACE À JÉRUSALEM (11:7) : les hauts lieux païens sur le mont des Oliviers — l'égarement du cœur (v.4) a une géographie : on voit les idoles depuis le Temple.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>L'HIPPOLOGIE MILITAIRE : le char = arme de pointe du Bronze récent (cf. DT055 : chars de fer cananéens) — Salomon compense l'infériorité originelle par l'importation massive ; la LOI interdisait précisément la solution païenne : « les uns aux chars, les autres aux chevaux — nous, au nom de Jéhovah » (Ps 20:8) ; « malheur à ceux qui descendent en Égypte pour du secours et s'appuient sur des chevaux » (Is 31:1) : toute la Bible répète Dt 17:16. L'ÉCONOMIE : 666 talents/an → « l'argent comme des pierres à Jérusalem » (1R 10:27) : HYPERABONDANCE → DÉVALUATION — le premier cas documenté d'inflation par l'or ; les impôts de Salomon (12 districts, 1R 4:7-19) financent la machine : le peuple paie la violation (« ton père a rendu notre joug DUR », 1R 12:4). La PSYCHOLOGIE : « ses femmes détournèrent son cœur » (11:4) — alliances matrimoniales = alliances religieuses : la loi nommait la chaîne (femmes → dieux → égarement), le récit la vérifie.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA GRILLE ET LE TEST : 3 NE-PAS (chevaux / femmes / or) + 1 DEVOIR (copier + lire tous les jours) → SALOMON : 3 violations CHIFFRÉES (1 400 chars d'Égypte / 1 000 femmes / 666 talents) + devoir NON ATTESTÉ (aucune copie mentionnée !) → VERDICT : royaume déchiré (1R 11:11-13). La loi de 1473 juge le roi de 1030 : la constitution tient son procès 4 siècles après sa promulgation.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Statut « CONSTAT DU RÉCIT » : c'est le récit des Rois qui documente la violation — pas une étiquette prophétique directe : la fiche respecte le classement du registre. Chiffres des STALLES : 40 000 (1R 4:26) vs 4 000 (2Ch 9:25) — variante textuelle (faute de copiste probable sur les nombres) : signalée, non tranchée. MEGIDDO : attribution salomonienne DÉBATTUE (Omrides possibles) — l'archéologie atteste l'infrastructure, pas le règne. La loi n'INTERDIT PAS la royauté : elle l'encadre (Gn 17:6, 16 : des rois promis à Abraham) — lire Dt 17 comme anti-monarchique, c'est le trahir. Enfin, le « devoir de copie » (17:18) : aucun récit ne montre Salomon copiant la loi — silence éloquent, mais silence : la fiche ne conclut pas au-delà du texte.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Constitution royale</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Comme les nations »</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1S 8</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chevaux + or</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1R 10</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">1000 femmes → verdict</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1R 11</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Royaume déchiré</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">998</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/17">Deutéronome 17 — Bible d'étude (14-20, loi du roi)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/17</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/10">1 Rois 10 — Bible d'étude (chevaux, 666 talents)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/11">1 Rois 11 — Bible d'étude (1000 femmes, verdict)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/11</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DT057 — Le roi : ni chevaux, ni femmes, ni argent</span><span>Catégorie DT</span></div></div>
+</article>
+<article class="fiche" id="DT058">
+<div class="visuel"><img src="images/prophe_DT058_prophete.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DT058 · CATÉGORIE DT</div>
+<h3>Un prophète comme Moïse</h3>
+<div class="ref">Deutéronome 18:15-19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Annonce messianique (besoin → promesse → test → Pierre/Étienne)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DT058</div><audio controls preload="none" src="audio/fiche_DT58_prophete.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DT58_prophete.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Deutéronome 18:15-19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Annonce messianique (besoin → promesse → test → Pierre/Étienne)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Deutéronome — P058 (18:15-19 : prophète comme Moïse) ; accomplissement Ac 3:19-23 ; 7:37</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Un PROPHÈTE du milieu de toi, D'ENTRE TES FRÈRES, COMME MOI. » (18:15 — comme moi !)</li>
+<li>« C'est LUI que vous écouterez. » (18:15 — lui !)</li>
+<li>« Comme tu l'as DEMANDÉ à Horeb : que je n'entende plus la voix. » (18:16 — demandé !)</li>
+<li>« Je METTRAI mes paroles DANS SA BOUCHE. » (18:18 — dans sa bouche !)</li>
+<li>« Il leur dira TOUT ce que je lui commanderai. » (18:18 — tout !)</li>
+<li>« Si quelqu'un N'ÉCOUTE PAS… je lui en DEMANDERAI COMPTE. » (18:19 — compte !)</li>
+<li>« Moïse a dit : Jéhovah vous suscitera un prophète COMME MOI. » (Ac 3:22 — comme moi !)</li>
+<li>« TOUTE ÂME qui n'écoutera pas sera EXTERMINÉE. » (Ac 3:23 — exterminée !)</li>
+<li>« C'est ce Moïse qui a dit : Dieu vous suscitera un prophète. » (Ac 7:37 — dit !)</li>
+<li>« Si vous croyiez Moïse, vous ME CROIRIEZ : il a écrit DE MOI. » (Jn 5:46 — de moi !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Plaines de Moab, ~1473 — juste APRÈS l'interdiction de l'occultisme (18:9-14 : devins, augures, magiciens, nécromants — « TOI, pas ainsi ! ») : Dieu ne laisse pas le vide — Il supprime les faux canaux et donne le VRAI : un prophète. Le RAPPEL D'HOREB (18:16) : « comme tu l'as demandé à Horeb — que je n'entende plus la voix de Jéhovah, que je ne voie plus ce grand feu, DE PEUR QUE JE MEURE » (cf. Ex 20:19 : « parle-nous, TOI ») : le peuple avait demandé un MÉDIATEUR par peur — Dieu promet le Médiateur par excellence. La Tora elle-même garde la place vide : « il ne s'est plus levé EN ISRAËL de prophète COMME MOÏSE » (Dt 34:10) — l'épitaphe atteste la non-venue : la case reste ouverte à la fin du Pentateuque.</p>
+<h4>4 · Explication du texte</h4>
+<p>« DU MILIEU DE TOI, D'ENTRE TES FRÈRES (miqqirbekha me'aheykha) » (18:15) : double appartenance — ISRAÉLITE (pas un Balaam importé ! — cf. EX052-54 : le devin païen bénit, mais le Prophète naît dedans) ; « COMME MOI (kamoni) » : comme MOÏSE — médiateur de l'alliance, libérateur du joug, législateur, « face à face » avec Dieu (Nb 12:8) : la ressemblance porte sur la FONCTION, pas le visage. « Je METTRAI mes paroles DANS SA BOUCHE (natatti devaray bephiv) » (18:18) : Dieu mettait des paroles dans la bouche de Balaam MALGRÉ lui (Nb 23:5 — EX052 !) ; ici, dans la bouche ÉLUE : même verbe, sens inverse — le porte-voix forcé vs le porte-parole aimé. « Il dira TOUT (kol) ce que je lui commanderai » : PLÉNITUDE — aucun filtre (Jésus : « je ne fais rien de moi-même, je dis ce que le Père m'a enseigné », Jn 8:28). « Je lui en DEMANDERAI COMPTE (dârash) » (18:19) : refuser le Prophète = répondre devant Dieu — Pierre durcit : « sera EXTERMINÉE » (Ac 3:23).</p>
+<h4>5 · Interprétation</h4>
+<p>PIERRE (Ac 3:19-23, P058) : au Portique de Salomon, après la guérison du boiteux — « Moïse, en effet, a dit : Jéhovah vous suscitera d'entre vos frères un prophète comme moi ; vous l'écouterez… toute âme qui n'écoutera pas ce prophète sera exterminée » : Pierre applique Dt 18 à JÉSUS, EN PUBLIC, À JÉRUSALEM, 50 jours après la Pentecôte — l'application est datée, placée, signée. ÉTIENNE (Ac 7:37, P058) : devant le SANHÉDRIN — « c'est ce Moïse qui a dit aux fils d'Israël : Dieu vous suscitera d'entre vos frères un prophète comme moi » : le martyr meurt sur cette citation (7:59-60) — la prophétie scellée par le premier sang chrétien. JÉSUS (Jn 5:46) : « si vous croyiez Moïse, vous me croiriez, car il a écrit DE MOI » — auto-application. Les PARALLÈLES (102004243) : enfant menacé à la naissance (Pharaon / Hérode), 40 (ans de désert / jours de jeûne), médiateur (Sinaï / nouvelle alliance), libérateur (Égypte / péché), montagne (loi / sermon), face rayonnante (Ex 34 / Transfiguration) — une douzaine de points : « seul Jésus s'est montré véritablement un prophète comme Moïse ».</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Horeb (~1513)</td><td>Demande : « parle-nous, toi » (Ex 20:19 ; Dt 18:16)</td></tr>
+<tr><td class="d">~1473 (Moab)</td><td>Promesse : prophète comme Moïse (18:15-19 + test 20-22)</td></tr>
+<tr><td class="d">Dt 34:10</td><td>Case vide : « aucun comme Moïse »</td></tr>
+<tr><td class="d">29-33 n. è.</td><td>Jésus : « Moïse a écrit de moi » (Jn 5:46) ; foules : « le Prophète »</td></tr>
+<tr><td class="d">33-34 n. è.</td><td>Pierre (Ac 3:22-23) + Étienne (Ac 7:37) : application publique</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>L'ATTENTE JUIVE (Ier s.) : « ES-TU LE PROPHÈTE ? » (Jn 1:21 — ARTICLE défini : les prêtres demandent à Jean-Baptiste s'il est LE Prophète de Dt 18 !) ; « c'est VRAIMENT le Prophète qui vient dans le monde » (Jn 6:14, après les pains — la manne refaite !) ; « c'est le Prophète (Jn 7:40) : la prophétie avait créé l'attente que Jésus remplit — les foules connaissaient la référence. DT 34:10 (« aucun prophète comme Moïse ») : l'aveu canonique — ni Samuel, ni Élie, ni Isaïe, ni Jérémie ne remplirent la case : 14 siècles de vacance, puis Jésus. « Dieu a confié tant à Moïse qu'à Jésus la direction de Sa maison » (1991848 — Nb 12:7 ; Hé 3:2-6) : Moïse fidèle SERVITEUR, Jésus fidèle FILS — la ressemblance hiérarchisée. ÉTIENNE (~33/34) : premier martyr — lapidé pour avoir cité, entre autres, Dt 18:15.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>4 LIEUX, 15 SIÈCLES : HOREB (la DEMANDE, 18:16 — le peuple tremble devant le feu et réclame un médiateur) → MOAB (la PROMESSE, 18:15-19 — Moïse annonce le Prophète aux portes de Canaan) → PORTIQUE DE SALOMON (l'APPLICATION, Ac 3:11, 22 — Pierre cite Dt 18 sous les colonnades du Temple) → SANHÉDRIN (le TÉMOIGNAGE, Ac 7:37, 57-60 — Étienne cite et meurt hors la ville). BETHLEHEM (Mi 5:1) : le Prophète naît « d'entre les frères » — de Juda, de David, du bourg prédit : l'origine géographique est elle-même prophétisée. NAZARETH-CAPERNAÜM : le ministère galiléen — « un prophète comme Moïse » enseigne en plein air, sur la montagne (Mt 5-7 : le Sinaï du royaume).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Le PROTOCOLE COMPLET (Dt 18:15-22) : PROMESSE (15-19 : le Prophète vient) + TEST (20-22 : « si la chose n'arrive pas, Jéhovah ne l'a pas dite » — critère de falsifiabilité : le VRAI se reconnaît à l'accomplissement) + SANCTION (20 : le faux prophète meurt ; 19 : qui n'écoute pas répond) : le chapitre est un protocole épistémologique — annonce, vérification, peine. La CASE VIDE (Dt 34:10) : la Tora se termine en attestant la NON-VENUE — falsifiabilité interne : si aucun « comme Moïse » ne vient, Dt 18:15 reste impayé ; Pierre et Étienne encaissent le chèque en public. La STATISTIQUE DES PARALLÈLES : une douzaine de similitudes Moïse-Jésus (102004243) — naissance menacée, Égypte, 40, médiateur, libérateur, montagne, gloire faciale, intercession, rejet par les frères : la convergence dépasse le hasard littéraire.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE CIRCUIT DU PROPHÈTE : BESOIN (peur d'Horeb → « parle-nous, toi », Ex 20:19) → PROMESSE (un prophète comme Moïse, Dt 18:15-19) → TEST (l'accomplissement vérifie, 18:21-22) → VACANCE (aucun comme Moïse, Dt 34:10) → ACCOMPLISSEMENT (Pierre au Portique + Étienne au Sanhédrin citent Dt 18) → SANCTION (qui n'écoute pas répond, 18:19 ; Ac 3:23). « C'est LUI que vous écouterez » (18:15) — l'impératif traverse 15 siècles et se pose sur Jésus.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« COMME MOI » ne signifie pas copie conforme : Jésus est PLUS que Moïse — « le Fils au-dessus du serviteur » (Hé 3:3-6) : la ressemblance (médiateur, libérateur) n'abolit pas la supériorité. La promesse n'accrédite pas tout PRÉTENDANT : le test suit aussitôt (18:20-22 — faux prophètes punis ; cf. Bar Kokhba, EX053 : les faux « comme Moïse » échouent au test). « Sera exterminée » (Ac 3:23) : jugement DIVIN, pas programme humain — 70 ap. n. è. (DT060) en est l'accomplissement historique plausible, sans forcer le texte. Ne pas réduire Jésus à « prophète » : il est aussi PRÊTRE (Ps 110), ROI (Ps 2), FILS (Ps 2:7) — Dt 18 donne une facette, pas le portrait. Enfin, Mahomet revendiqué par certains comme le Prophète : « d'entre tes FRÈRES » (18:15, 18 — Israélites, cf. 17:15 : « d'entre tes frères », pas un étranger) tranche — la fiche suit Pierre (Ac 3:22).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Parle-nous, toi »</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Horeb</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prophète promis + test</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Case vide</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 34</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« De moi » + foules</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre + Étienne</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ac 3/7</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1991848">En quel sens Jésus était-il un prophète tel que Moïse ? (Ac 3:22, maison)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1991848</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2009283">Reconnaissons Jésus comme le Grand Moïse (prophète, médiateur, libérateur)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2009283</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/18">Deutéronome 18 — Bible d'étude (notes 18:15-19)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/18</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DT058 — Un prophète comme Moïse</span><span>Catégorie DT</span></div></div>
+</article>
+<article class="fiche" id="DT059">
+<div class="visuel"><img src="images/prophe_DT059_bois.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DT059 · CATÉGORIE DT</div>
+<h3>Le pendu au bois est une malédiction</h3>
+<div class="ref">Deutéronome 21:22, 23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (application)</span>
+<span class="badge">Loi pénale devenue preuve (pendu → décroché → Paul cite)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DT059</div><audio controls preload="none" src="audio/fiche_DT59_bois.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DT59_bois.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Deutéronome 21:22, 23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (application)</td></tr>
+<tr><td class="d">Chronologie</td><td>Loi pénale devenue preuve (pendu → décroché → Paul cite)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Deutéronome — P059 (21:22, 23 : pendu, maudit) ; accomplissement Galates 3:13</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Si un homme a commis un péché digne de MORT… tu le PENDRAS au bois. » (21:22 — pendras !)</li>
+<li>« Tu ne laisseras pas son cadavre LA NUIT sur le bois. » (21:23 — pas la nuit !)</li>
+<li>« Tu l'enterreras LE JOUR MÊME. » (21:23 — jour même !)</li>
+<li>« Car le PENDU est une MALÉDICTION de Dieu. » (21:23 — malédiction !)</li>
+<li>« Tu ne SOUILLERAS PAS ton sol. » (21:23 — sol !)</li>
+<li>« Christ nous a rachetés, DEVENU MALÉDICTION pour nous. » (Ga 3:13 — devenu !)</li>
+<li>« Car il est écrit : MAUDIT quiconque est pendu au bois. » (Ga 3:13 — écrit !)</li>
+<li>« On brisa les jambes… pour qu'ils ne restent pas sur les poteaux. » (Jn 19:31 — brisa !)</li>
+<li>« Josué les descendit des bois AU COUCHER DU SOLEIL. » (Jos 10:27 — coucher !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Plaines de Moab, ~1473 — loi PÉNALE, pas oracle : le supplicié (lapidé, puis) exposé pendu au bois ne doit pas passer la nuit exposé — double motif : la DIGNITÉ (« même le criminel est enterré le jour même ») et la PURETÉ du pays (« tu ne souilleras pas ton sol » — un cadavre exposé pollue la terre donnée). Le FONDEMENT (21:23) : « car le pendu (qilelat Elohim) EST une malédiction de Dieu » — le pendu n'est pas seulement maudit, il EST malédiction : son exposition prolongée, c'est la malédiction affichée sur le pays. PRÉCÉDENTS : le roi d'Aï (Jos 8:29 : « jusqu'au soir »), les 5 rois (Jos 10:26-27 : « jusqu'au soir… au coucher du soleil on les descendit ») — la loi s'applique dès la conquête, à l'heure dite.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Tu le PENDRAS (vetalita) au BOIS ('ets) » (21:22) : pendaison = EXPOSITION post-mortem (le supplice tue, le bois affiche) ; 'ets = arbre, bois, poteau — polysémie : l'arbre d'Absalom (2S 18:9, pris par la tête au térébinthe — pendu vivant, ironie royale !), le bois de la potence d'Haman (Est 7:10 — 50 coudées !), le poteau romain : un seul mot pour tous les bois de justice. « Tu ne laisseras pas PASSER LA NUIT (lo talin) » : le verbe loun (passer la nuit) — le cadavre n'a pas droit à une nuit sur le bois : l'urgence est légale, pas sentimentale. « QILELAT ELOHIM » (21:23) : littéralement « MALÉDICTION DE Dieu » — « le pendu EST une malédiction » (1200001088 : « littéralement : est une malédiction ») : qualification ontologique — l'exposé INCARNE la malédiction. « Tu ne SOUILLERAS PAS (lo tetamme) TON SOL » : le pays est saint (donné) — la malédiction affichée le contamine : décrocher, c'est purifier.</p>
+<h4>5 · Interprétation</h4>
+<p>PAUL (Ga 3:13, P059) — « Christ, par rachat, nous a libérés de la malédiction de la Loi, ÉTANT DEVENU MALÉDICTION POUR NOUS, parce qu'il est écrit : MAUDIT EST QUICONQUE EST PENDU AU BOIS » : Paul CITE Dt 21:23 comme PREUVE — la mort sur poteau n'est pas un accident de l'histoire, c'est une QUALIFICATION juridique : Jésus, parfait observant de la Loi, ENDOSSE la malédiction qui pesait sur les violateurs — « bien qu'ayant lui-même observé parfaitement la Loi, Jésus s'est chargé de la malédiction » (1200012809). « Il a été maudit NON PAS en raison de ses péchés, puisqu'il n'en avait commis aucun, MAIS POUR LES PÉCHÉS DE L'HUMANITÉ » (2000046). JEAN 19:31 — l'application HORODATÉE : « comme c'était la Préparation… pour que les corps ne restent pas sur les poteaux pendant le sabbat… on demanda de briser les jambes » : le soir du 14 Nisan 33, les prêtres eux-mêmes font appliquer Dt 21:23 à Jésus — la loi du pendu exécutée sur le Pendu, par ses ennemis, à l'heure dite.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1473 (Moab)</td><td>Loi : pendu = malédiction, inhumé le jour même (21:22-23)</td></tr>
+<tr><td class="d">~1473-1467</td><td>Précédents : Aï, 5 rois décrochés au coucher (Jos 8:29 ; 10:27)</td></tr>
+<tr><td class="d">14 Nisan 33</td><td>Jésus pendu ; jambes brisées pour décrocher (Jn 19:31-33)</td></tr>
+<tr><td class="d">14 Nisan 33 soir</td><td>Décroché + sépulcre neuf : « le jour même » tenu</td></tr>
+<tr><td class="d">~50-52?</td><td>Paul cite Dt 21:23 : « devenu malédiction pour nous » (Ga 3:13)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>La CRUCIFIXION romaine : supplice servile (Cicéron : « le plus cruel et le plus hideux ») — réservé aux esclaves, brigands, rebelles ; Jésus crucifié ENTRE DEUX BRIGANDS (Mt 27:38 : « avec des sans-loi », cf. Is 53:12) — le traitement des maudits, à la lettre. Le POTEAU (stauros : pieu, poteau — Tmn : « poteau de supplice », 2000046) : Jésus « attaché sur un poteau, jugé coupable par la plus haute autorité juive, méprisé et fui » (2000046). 14 NISAN 33 : condamné le matin, mort à la 9e heure (15h), décroché avant le soir — le délai Dt 21:23 (« le jour même ») tenu à quelques heures près, sous pression du « grand sabbat » (Jn 19:31 — 15 Nisan). « Le poteau, qui est POUR LES JUIFS OCCASION DE TRÉBUCHER, est en réalité SAGESSE DE DIEU » (2000046 — 1Co 1:23-24) : le scandale expliqué par la loi même qui le causait.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>GOLGOTHA (« lieu du crâne », Jn 19:17) : HORS LA VILLE (Hé 13:12 — « Jésus a souffert HORS DE LA PORTE ») : le bois des maudits est planté hors les murs — la malédiction est exposée hors du camp (cf. Lv 16, le bouc émissaire chassé au désert : même logique spatiale — le péché sort). Le SÉPULCRE NEUF (Joseph d'Arimathée, Mt 27:59-60) : à proximité — la hâte de Dt 21:23 (« le jour même ») explique la tombe d'emprunt : pas le temps du caveau familial. JÉRUSALEM 14 NISAN : des centaines de milliers de pèlerins (Pâque) — le Pendu est exposé devant Israël rassemblé : la « malédiction » affichée au maximum d'audience, puis décrochée avant le sabbat. AÏ et MAQQÉDA (Jos 8, 10) : les précédents — rois cananéens décrochés « au coucher du soleil » : la loi avait ses habitudes, le Calvaire les suit.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>MÉDECINE LÉGALE — le CRURIFRAGIUM (Jn 19:31-33) : briser les jambes → le crucifié ne peut plus se soulever pour respirer → asphyxie rapide : la loi MOSAÏQUE (décrocher avant la nuit) dicte un geste MÉDICO-LÉGAL romain — Dt 21:23 commande, le marteau exécute ; Jésus, déjà mort, échappe au brisement (« pas un de ses os ne sera brisé », Jn 19:36 — cf. EX042, l'os de l'agneau !). LINGUISTIQUE — 'ets (hébreu : arbre/bois) → XYLON (LXX de Dt 21:23, reprise par Paul Ga 3:13) → stauros (récits de la Passion) : la chaîne lexicale soude la loi, l'épître et l'événement — un seul « bois » en trois langues. DROIT — la malédiction TRANSFÉRABLE : substitution pénale — l'innocent QUALIFIÉ « malédiction » rachète les maudits ; « en agréant ce sacrifice, Jéhovah a figurément cloué au poteau la Loi » (2000046 — Col 2:14) : le bois porte la Loi elle-même.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE BOIS EN 3 TEMPS : LOI (le pendu EST malédiction → décrocher le jour même, Dt 21:22-23) → FAIT (Jésus pendu + décroché avant le sabbat PAR SES ENNEMIS, Jn 19:31) → SENS (Paul : Il DEVINT malédiction POUR NOUS, Ga 3:13). Le scandale (pendu = maudit, 1Co 1:23) retourné en sagesse : c'est PARCE QUE maudit (qualifié) qu'Il rachète (les maudits).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Statut « APPLICATION » (registre) : Paul APPLIQUE la loi (typologie juridique) — Dt 21:22-23 visait d'abord les CRIMINELS israélites, pas directement le Messie : ne pas en faire une prophétie messianique directe au sens strict — c'est une LOI devenue PREUVE. Jésus « maudit = QUALIFIÉ juridiquement, jamais coupable : « il n'avait commis aucun péché » (2000046) — confondre qualification et culpabilité, c'est manquer Ga 3:13. Le débat CROIX / POTEAU : la fiche suit la Tmn (poteau, stauros = pieu) SANS polémiquer — l'essentiel (pendu au bois + Dt 21:23 cité) ne dépend pas de la forme. Enfin, « tu ne souilleras pas ton sol » (21:23) : motif de pureté du PAYS — ne pas moraliser en règle funéraire universelle (les patriarches gardaient leurs morts, Gn 23).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pendu = malédiction</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décrochés au coucher</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 8/10</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jambes brisées</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 (14 N.)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Le jour même »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 soir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Pour nous »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ga 3</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2000046">Le persécuteur voit une formidable lumière (pendu, Ga 3:13, poteau)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2000046</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001088">Malédiction, maudire — Étude (Dt 21:23, litt. « est une malédiction »)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001088</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/48/3">Galates 3 — Bible d'étude (3:13, devenu malédiction)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/48/3</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DT059 — Le pendu au bois est une malédiction</span><span>Catégorie DT</span></div></div>
+</article>
+<article class="fiche" id="DT060">
+<div class="visuel"><img src="images/prophe_DT060_maledictions.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE DT060 · CATÉGORIE DT</div>
+<h3>Siège, dispersion et retour en Égypte</h3>
+<div class="ref">Deutéronome 28:15-68</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Catalogue des malédictions (si → défaite → siège → dispersion → Égypte)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche DT060</div><audio controls preload="none" src="audio/fiche_DT60_maledictions.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_DT60_maledictions.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Deutéronome 28:15-68</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Catalogue des malédictions (si → défaite → siège → dispersion → Égypte)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Deutéronome — P060 (28:15-68 : siège, dispersion, retour en Égypte) ; accomplissement 2R 6:24-29 ; 17:5-6 ; Lm 4:9-11 ; Lc 19:43, 44 ; 21:24</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« SI tu N'ÉCOUTES PAS… toutes ces malédictions VIENDRONT et T'ATTEINDRONT. » (28:15 — t'atteindront !)</li>
+<li>« Jéhovah te fera BATTRE devant tes ennemis. » (28:25 — battre !)</li>
+<li>« Tes fils et tes filles seront LIVRÉS À UN AUTRE PEUPLE. » (28:32 — livrés !)</li>
+<li>« Une NATION DE LOIN, du bout de la terre, VOLERA COMME L'AIGLE. » (28:49 — aigle !)</li>
+<li>« Dont tu n'entendras pas la LANGUE… visage FAROUCHE. » (28:49-50 — farouche !)</li>
+<li>« Tu MANGERAS tes propres enfants… tant le siège sera TERRIBLE. » (28:53 — terrible !)</li>
+<li>« La femme DÉLICATE… les mangera EN SECRET. » (28:56-57 — en secret !)</li>
+<li>« Jéhovah te DISPERSERA d'un BOUT DE LA TERRE à l'autre. » (28:64 — bout à bout !)</li>
+<li>« Jéhovah te RAMÈNERA EN ÉGYPTE PAR BATEAUX… sans ACHETEUR. » (28:68 — sans acheteur !)</li>
+<li>« DONNE TON FILS, nous le mangerons AUJOURD'HUI. » (2R 6:28 — aujourd'hui !)</li>
+<li>« Tes ennemis bâtiront une PALISSADE contre toi. » (Lc 19:43 — palissade !)</li>
+<li>« Ils tomberont sous l'ÉPÉE, emmenés CAPTIFS… Jérusalem PIÉTINÉE. » (Lc 21:24 — piétinée !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Plaines de Moab, ~1473 — le chapitre le plus long du Deutéronome (68 versets) : 14 versets de BÉNÉDICTIONS (28:1-14) + 54 versets de MALÉDICTIONS (28:15-68) — l'asymétrie EST le message : le détail dissuade. Chiasme avec LÉVITIQUE 26 (EX048-EX050 !) : Moïse réédite le catalogue à la génération suivante — Lv 26 (Sinaï, pères) → Dt 28 (Moab, fils) : le même avertissement, crescer. La structure : SI conditionnel (v.15) → malédictions champêtres (16-19) → peste et sécheresse (20-24) → DÉFAITE militaire (25-26) → maladies (27, 35, 58-62) → OPPRESSION (29-34) → ROI EMENÉ (36-37) → stérilité (38-44) → NATION-AIGLE (49-50) → SIÈGE cannibale (52-57) → plaies d'Égypte (58-61) → DISPERSION (62-65) → RETOUR EN ÉGYPTE (66-68) : la descente aux enfers en 9 paliers.</p>
+<h4>4 · Explication du texte</h4>
+<p>« T'ATTEINDRONT (vehissigukha) » (28:15) : le verbe de la POURSUITE (poursuivre et RATTRAPER — cf. EX044 : Pharaon poursuit Israël ; ici les malédictions poursuivent Israël : le poursuivant est devenu la poursuite !). « Une NATION DE LOIN… qui VOLE COMME L'AIGLE (nesher) » (28:49) : nesher = aigle/vautour — et l'AIGLE (aquila) est l'ENSEIGNE DES LÉGIONS ROMAINES : le mot hébreu de 1473 rencontre l'étendard latin de 70 — « dont tu n'entendras pas la LANGUE » : le LATIN, incompréhensible aux Juifs ; « visage FAROUCHE… ni vieillard ni enfant » (28:50) : la discipline romaine sans pitié. « Tu MANGERAS (ve'akhalta) tes propres enfants » (28:53) : le verbe manger, sujet les parents, objet les enfants — puis la GRADATION : l'homme délicat (54-55) → la femme délicate (56-57, « qui n'aurait jamais posé la plante de son pied » — la plus raffinée !) → « le placenta… EN SECRET » : le raffinement n'immunise pas, il mesure la chute. « PAR BATEAUX (ba'oniyyot) » (28:68) : sortis d'Égypte À PIED SEC (Ex 14), ils y rentreront ENCHAÎNÉS PAR MER — l'Exode INVERSÉ ; « vous vous vendrez… SANS ACHETEUR » : invendables MÊME COMME ESCLAVES — le marché saturé de captifs, le prix de l'homme à zéro.</p>
+<h4>5 · Interprétation</h4>
+<p>SAMARIE / BEN-HADAD (2R 6:24-29, P060) : siège syrien (~IXe s.) — « tête d'âne : 80 sicles… cab de fiente : 5 sicles » (6:25 : l'INDICE DES PRIX du siège !) — puis les deux mères : « DONNE TON FILS, nous le mangerons aujourd'hui ; demain le mien » (6:28-29) : Dt 28:53-57 MOT POUR MOT, avec contrat (« aujourd'hui/demain ») et trahison (la 2e cache son fils) : le siège cannibale DOCUMENTÉ. SAMARIE / ASSYRIE (2R 17:5-6, P060) : 3 ans de siège, déportation — Dt 28:64 (dispersion) sur le Nord. JÉRUSALEM / BABYLONE (Lm 4:9-11, P060) : « les mains des femmes COMPATISSANTES ont cuit leurs enfants » (4:10 : « compatissantes » — les rahamaniyot ! Dt 28:56 : la « délicate » !) — Jérémie CONSTATE Dt 28 sous les ruines : « Jéhovah a accompli sa fureur » (4:11). JÉSUS (Lc 19:43-44 ; 21:24, P060) : « tes ennemis bâtiront une PALISSADE (kharax) contre toi, t'encercleront » (19:43 — 33 ap. n. è.) → TITUS 70 : circonvallation de 7 km en 3 jours (Josèphe) ; « ils tomberont sous l'épée, emmenés captifs parmi toutes les nations, Jérusalem PIÉTINÉE » (21:24) : Dt 28:64 en grec. JOSÈPHE (Guerre VI) : famine — foin, cuir, ENFANTS (Marie fille d'Éléazar mange son fils, VI.201-213 — le cas Dt 28:57 avec nom et adresse !) ; 97 000 captifs, une partie envoyée EN ÉGYPTE aux travaux — Dt 28:68 : le retour par bateaux, « sans acheteur » (marché saturé).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1473 (Moab)</td><td>Catalogue : si → aigle → siège → dispersion → Égypte (28:15-68)</td></tr>
+<tr><td class="d">~850</td><td>Samarie/Ben-Hadad : 80 sicles, deux mères (2R 6:24-29)</td></tr>
+<tr><td class="d">740-718 / 588-607</td><td>Assyrie (3 ans) ; Babylone (18 mois) ; Lm 4:10 constate</td></tr>
+<tr><td class="d">33 n. è.</td><td>Jésus : palissade + piétinée (Lc 19:43-44 ; 21:24)</td></tr>
+<tr><td class="d">66-70 n. è.</td><td>Titus : kharax, famine, 97 000 captifs, Égypte (Josèphe)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Les SIÈGES EN CASCADE : Samarie ~850 (Ben-Hadad II, 2R 6 — Joram), Samarie 740-718 (Salmanasar/Sargon — 3 ANS, 2R 17:5), Jérusalem 609 (1re déportation, Daniel), 597 (2e, Ézéchiel), 588-607 (18 MOIS, Jr 52:4-6 — famine : « il n'y avait plus de pain », 52:6), Jérusalem 66-70 (Titus : 5 MOIS de siège, temple brûlé 9/10 Ab 70). TITUS (70) : palissade de circonvallation (kharax de Lc 19:43 ! — mur + fossé + 13 forts, 7 km, 3 jours), famine telle que « les gens furent réduits à manger du foin, du cuir et même leurs enfants » (1200012382 — Josèphe, renvoyant à Dt 28:56-57 !). MARIE FILLE D'ÉLÉAZAR (Guerre VI.201-213) : rôti son enfant, en offre la moitié aux pillards — le récit le plus atroce de Josèphe, et la signature de Dt 28:57 (« en secret » — découverte par l'odeur). 97 000 CAPTIFS (Josèphe) : dispersés (mines, cirques, Égypte) — « d'un bout de la terre à l'autre » (28:64), prix effondré (« sans acheteur », 28:68).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>SAMARIE : colline isolée (100 m), eau par tunnel — assiégée 2 fois (Syriens, Assyriens) : la position forte affamée, pas prise d'assaut. JÉRUSALEM : 3 MURS (nord), vallées (Cédron, Hinnom) — « imprenable » sauf par famine : les 4 sièges réussis (607, 70) sont des famines, pas des brèches. La PALISSADE DE TITUS (kharax) : 7 km autour de la ville — la topographie retournée : les vallées qui protégeaient deviennent la fosse aux affamés. « Du BOUT DE LA TERRE » (28:49) : ROME à 2 300 km — l'aigle (aquila d'argent au bout des hampes) vole depuis l'ouest ; « d'un BOUT À L'AUTRE » (28:64) : la dispersion 70 couvre l'empire (mines d'Égypte, cirques de Syrie, Rome). ÉGYPTE PAR BATEAUX (28:68) : Jaffa/Césarée → Alexandrie — la Méditerranée au lieu de la mer Rouge, les chaînes au lieu du bâton : l'anti-Exode a sa route maritime.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>La POLIORCÉTIQUE (art des sièges) : circonvallation (mur autour de l'assiégé) + contrevallation (mur contre les secours) — Titus applique le manuel romain : famine = arme principale, assaut = finition ; Dt 28:52 (« il t'assiégera dans toutes tes portes ») décrit la doctrine avant les Romains. L'ÉPIDÉMIOLOGIE DE SIÈGE (28:58-61 : « toutes les plaies ») : promiscuité + cadavres + eau croupie = typhus, dysenterie, peste — les maladies tuent plus que les machines. L'ÉCONOMIE DE FAMINE (2R 6:25) : tête d'âne 80 sicles (~900 g d'argent pour un déchet !), cab de fiente 5 sicles : l'hyperinflation CHIFFRÉE — l'indice des prix du siège, le plus ancien relevé d'inflation de famine. LINGUISTIQUE — nesher → AQUILA : l'aigle-étendard romain (argent, ailes déployées, foudre aux serres) : chaque légion portait le verset 49 au bout d'une hampe — les Juifs de 70 VOYAIENT l'aigle de Moïse flotter sur les manipules.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA DESCENTE EN 9 PALIERS : SI (v.15 : condition) → campagne frappée (16-24) → DÉFAITE (25-26) → maladies (27-35) → oppression (29-34) → roi emmené (36-37) → AIGLE (49-50 : Rome) → SIÈGE cannibale (52-57) → DISPERSION (62-65) → ÉGYPTE PAR BATEAUX (66-68 : l'anti-Exode). 4 constats sur 8 siècles : Rois (Samarie) → Lamentations (Jérusalem 607) → Luc (annonce 33) → Josèphe (constat 70). Chaque vague vérifie le catalogue — le catalogue survit à chaque vague.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>V.53-57 (siège cannibale) : accompli à Samarie (2R 6), Jérusalem 607 (Lm 4) et 70 (Josèphe) — la fiche CONSTATE sans complaisance, et l'image montre le SIÈGE (murailles, palissade), JAMAIS la scène : pudeur imposée. « Nation-aigle » (49-50) : ROME pour 70, mais ASSYRIE (740) et BABYLONE (607) pour les vagues précédentes — le symbole vaut pour CHAQUE vague : ne pas exclusiviser (l'aigle assyrienne existe aussi !). V.68 (bateaux, sans acheteur) : Josèphe atteste des captifs envoyés en Égypte ; « sans acheteur » = marché saturé — interprétation PROPOSÉE, signalée comme telle. Dt 28 ≠ Lv 26 : DEUX catalogues distincts (Sinaï/Moab, pères/fils — EX048 vs DT060) — ne pas fusionner : Moïse réédite, il ne répète pas (Dt 28 ajoute l'aigle, les bateaux, le détail du siège). Enfin, Lc 19:43-44 et 21:24 : Jésus ANNONCE 70 en écho à Dt 28 — accomplissement direct de Jésus, accomplissement typique de Moïse : deux niveaux distingués.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Catalogue 68 v.</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Samarie : 80 sicles</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">850</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assyrie, Babylone</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">718/607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Palissade » (Lc 19)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Titus : l'aigle</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">70</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/28">Deutéronome 28 — Bible d'étude (texte 28:15-68, siège, dispersion)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/5/28</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012382">Jérusalem — Étude (70 : famine, enfants, Dt 28:56-57)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012382</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/42/21">Luc 21 — Bible d'étude (21:24, captifs, piétinée)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/42/21</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche DT060 — Siège, dispersion et retour en Égypte</span><span>Catégorie DT</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie DT</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>DT055 — Ceux que vous laisserez seront des épines</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ordre : chassez tout</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gabaon : la ruse</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 9</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Filet et fouet</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 23</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 échecs</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 1</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bokim : les épines</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Jg 2-3</text>
+</svg>
+<h4>DT056 — Dispersion rapide, puis recherche et retour</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ciel et terre témoins</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nord dispersé</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">740</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sud exilé</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus : retour</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bout des cieux</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">455</text>
+</svg>
+<h4>DT057 — Le roi : ni chevaux, ni femmes, ni argent</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Constitution royale</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Comme les nations »</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1S 8</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chevaux + or</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1R 10</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">1000 femmes → verdict</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1R 11</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Royaume déchiré</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">998</text>
+</svg>
+<h4>DT058 — Un prophète comme Moïse</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Parle-nous, toi »</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Horeb</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prophète promis + test</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Case vide</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Dt 34</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« De moi » + foules</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pierre + Étienne</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ac 3/7</text>
+</svg>
+<h4>DT059 — Le pendu au bois est une malédiction</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pendu = malédiction</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décrochés au coucher</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jos 8/10</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jambes brisées</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33 (14 N.)</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Le jour même »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33 soir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Pour nous »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ga 3</text>
+</svg>
+<h4>DT060 — Siège, dispersion et retour en Égypte</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Catalogue 68 v.</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1473</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Samarie : 80 sicles</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">850</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Assyrie, Babylone</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">718/607</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Palissade » (Lc 19)</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Titus : l'aigle</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">70</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-10 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES I–J — Le livre de la Révélation (2e partie) · Personnages et lieux nommés d'avance</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_IJ_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 7</div>
+<h1>FICHES I–J</h1>
+<h2>Le livre de la Révélation (2e partie) · Personnages et lieux nommés d'avance</h2>
+<p class="intro">Cette vague de transition ferme la catégorie I et ouvre la catégorie J. Côté Révélation, six dernières fiches : la bête de la mer (composite de Daniel 7, six têtes nommées, le coup mortel de 1914-1918), la bête de la terre et 666 (deux cornes d'agneau, le feu, l'image, la marque sur les actes et les pensées, 6 inférieur à 7 trois fois — variante 616 signalée), Babylone la Grande (le mystère, les eaux expliquées, les rois qui pleurent par égoïsme, « sortez », la meule), la moisson et la vendange (les trois anges, le mûr, le pressoir, les 1 600 stades), les bols et Harmaguédon (les dernières plaies, l'Euphrate, les grenouilles, le hapax, le tell de 20 mètres, pas de guerre nucléaire) et le Roi guerrier (Alléluia, les noces, le ciel ouvert, le lac, les mille ans). La catégorie I compte ainsi 10 fiches et est terminée. Côté nommés d'avance, trois premières fiches : Cyrus (deux siècles, berger et oint, « appelle ce qui n'est pas », le Grand Cyrus), Josias (300 ans, l'autel de Béthel debout trois siècles, la sépulture épargnée) et Bethléhem (Éphrata qui précise, les origines des temps indéfinis, le recensement qui fait monter). Périmètre : la suite de J et les catégories K-L appartiennent aux vagues suivantes.</p>
+<div class="chiffres">
+<div><b>9</b><span>fiches</span></div>
+<div><b>10</b><span>blocs par fiche</span></div>
+<div><b>36</b><span>sources</span></div>
+<div><b>9</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:27</div><audio controls preload="none" src="audio/fiche_HI00_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_HI00_intro.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:27</div><audio controls preload="none" src="audio/fiche_IJ00_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_IJ00_intro.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:37</div><audio controls preload="none" src="audio/fiche_J2_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_J2_intro.mp3.</div></div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:30</div><audio controls preload="none" src="audio/fiche_JK_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_JK_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#I005">I005</a>
+<a href="#I006">I006</a>
+<a href="#I007">I007</a>
+<a href="#I008">I008</a>
+<a href="#I009">I009</a>
+<a href="#I010">I010</a>
+<a href="#J001">J001</a>
+<a href="#J002">J002</a>
+<a href="#J003">J003</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#I005"><img src="images/prophe_I005_bete.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE I005</div>
+<h3><a href="#I005">La bête de la mer — composite, couronnée, blessée, adorée</a></h3>
+<div class="meta">En cours (chevauchée politique ; 8e : voir I007) · 🎧 0:29</div></div></div>
+<div class="carte">
+<a class="img" href="#I006"><img src="images/prophe_I006_666.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE I006</div>
+<h3><a href="#I006">La bête de la terre et 666 — l'agneau qui parle dragon</a></h3>
+<div class="meta">En cours (image : 1920+ ; « parle » : à venir) · 🎧 0:33</div></div></div>
+<div class="carte">
+<a class="img" href="#I007"><img src="images/prophe_I007_babylone.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE I007</div>
+<h3><a href="#I007">Babylone la Grande — le mystère, les eaux, la meule</a></h3>
+<div class="meta">En cours (« sortez » ; « une heure » : à venir) · 🎧 0:37</div></div></div>
+<div class="carte">
+<a class="img" href="#I008"><img src="images/prophe_I008_moisson.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE I008</div>
+<h3><a href="#I008">La moisson et la vendange — mûre, pressoir, 1 600 stades</a></h3>
+<div class="meta">En cours (« dès maintenant » ; « mûre » : à venir) · 🎧 0:31</div></div></div>
+<div class="carte">
+<a class="img" href="#I009"><img src="images/prophe_I009_bols.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE I009</div>
+<h3><a href="#I009">Les bols et Harmaguédon — dernières, Euphrate, grenouilles, lieu</a></h3>
+<div class="meta">À venir (rassemblement ; « c'est fait » : à venir) · 🎧 0:31</div></div></div>
+<div class="carte">
+<a class="img" href="#I010"><img src="images/prophe_I010_guerrier.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE I010</div>
+<h3><a href="#I010">Le Roi guerrier — Alléluia, noces, ciel ouvert, lac</a></h3>
+<div class="meta">À venir (« ouvert » ; 1000 : voir F017) · 🎧 0:33</div></div></div>
+<div class="carte">
+<a class="img" href="#J001"><img src="images/prophe_J001_cyrus.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE J001</div>
+<h3><a href="#J001">Cyrus nommé — berger, oint, et le Grand Cyrus</a></h3>
+<div class="meta">Accomplie (539-537 ; Grand Cyrus : 1919) · 🎧 0:32</div></div></div>
+<div class="carte">
+<a class="img" href="#J002"><img src="images/prophe_J002_josias.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE J002</div>
+<h3><a href="#J002">Josias nommé — l'autel accusé, la sépulture épargnée</a></h3>
+<div class="meta">Accomplie (~930 → 622 : 300 ans) · 🎧 0:29</div></div></div>
+<div class="carte">
+<a class="img" href="#J003"><img src="images/prophe_J003_bethlehem.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE J003</div>
+<h3><a href="#J003">Bethléhem Éphrata — petite, et les origines éternelles</a></h3>
+<div class="meta">Accomplie (~750 → 2 av. n. è. : 700 ans) · 🎧 0:30</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Dix blocs par fiche, toujours dans le même ordre. Le dixième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="I005">
+<div class="visuel"><img src="images/prophe_I005_bete.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE I005 · CATÉGORIE I–J</div>
+<h3>La bête de la mer — composite, couronnée, blessée, adorée</h3>
+<div class="ref">Révélation 13:1-10 ; Daniel 7:2-8, 21, 25 ; Ésaïe 57:20 ; Luc 4:6 ; Jérémie 15:2</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">En cours (chevauchée politique ; 8e : voir I007)</span>
+<span class="badge">Système puissances · 1914</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche I005 · 0:29</div><audio controls preload="none" src="audio/fiche_I05_bete.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_I05_bete.mp3 · 0:29 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Révélation 13:1-10 ; Daniel 7:2-8, 21, 25 ; Ésaïe 57:20 ; Luc 4:6 ; Jérémie 15:2</td></tr>
+<tr><td class="d">Statut</td><td>En cours (chevauchée politique ; 8e : voir I007)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système puissances · 1914</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Révélation — P864 (13:1-2), P865 (13:3), P866 (13:4), P867 (13:5-6), P868 (13:7-8), P869 (13:8), P870 (13:9-10), P871 (13:1)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Une bête sauvage MONTE DE LA MER : 10 cornes, 7 têtes, DIADEMES sur les cornes, NOMS BLASPHÉMATOIRES sur les têtes. » (Ré 13:1 — le sable de 12:18 !)</li>
+<li>« LÉOPARD, pieds d'OURS, gueule de LION — le DRAGON lui DONNE puissance, trône, grand pouvoir. » (13:2 — composite de Daniel 7 ! edôken !)</li>
+<li>« Une tête MORTELLEMENT blessée — GUÉRIE — toute la terre suit avec ADMIRATION. » (13:3 — sphagmenèn !)</li>
+<li>« Ils adorent le DRAGON… ils adorent la BÊTE : QUI comparable ? QUI peut combattre ? » (13:4 — double adoration !)</li>
+<li>« GUEULE orgueilleuse, BLASPHÈMES — 42 MOIS — nom, TENTE, ciel blasphémés. » (13:5-6 — 1 260 jours !)</li>
+<li>« GUERRE aux saints — les VAINCRE — TOUTE tribu, peuple, langue, nation — tous adorent, sauf le ROULEAU de vie. » (13:7-8 — Da 7:21 !)</li>
+<li>« OREILLE : captivité… ÉPÉE… — ENDURANCE et FOI des saints. » (13:9-10 — hupomonè ! Jr 15:2 !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>« Sable de la mer » (12:18 — voir I004 : le dragon sur le sable → la bête sort de la mer !). « MER » (Is 57:20 : « les méchants… MER AGITÉE » ! — Is 17:12, Da 7:2 : voir E002 !). COMPOSITE : Daniel 7 (lion, ours, léopard, terrible — voir E002 !) — 13:2 en reprend TROIS. « Dragon DONNE » (edôken, 13:2 — Lc 4:6 : « LIVRÉE » ! — Jn 12:31, 14:30 !). « 7 TÊTES » (comme le dragon, 12:3 ! — « 7 ROIS », 17:9-10 : voir I007 ! — SIX nommées par l'illustration : ÉGYPTE, ASSYRIE, BABYLONIE, MÉDO-PERSE, GRÈCE, ROME — 7e : voir I007 !). « 10 cornes » (Da 7:7 — voir E002 !). « DIADEMES » (13:1 : SUR LES CORNES — dragon : sur les TÊTES, 12:3 — différence renvoyée, voir Limites). « NOMS blasphématoires » (« lutté… PRÉTENDU faire… ce que SEUL le Royaume » !). « Blessure MORTELLE » (« coup d'ÉPÉE », 13:14 — WWI : « coup MORTEL pendant le PREMIER conflit international » — guérie : voir I006 !). « 42 MOIS » (1 260 jours : voir F016 — Da 7:25 : voir E005 !). « VAINCRE » (Da 7:21 — voir E005 ! — 1918 : voir F016 !). « ROULEAU de vie » (Da 12:1 — voir H006 ! — « fondation… Agneau TUÉ » !). « Captivité… épée » (Jr 15:2, 43:11 ! — « ENDURANCE… FOI » : voir H010 !). Note catholique 1914 (Murphy : « 5 tombées… Rome… » — CITÉE comme parallèle !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Monte » (anabainon : ÉMERGE !). « Thèrion » (BÊTE SAUVAGE !). « Diadèma » (DIADEMES : royauté !). « Blasphèmia » (noms CONTRE Dieu !). « Léopard-ours-lion » (Da 7 INVERSÉ : vitesse + force + gueule !). « Edôken » (DONNA : le dragon INVESTIT !). « Sphagmenèn » (ÉGORGÉE : 13:3 ! — « mortelle… GUÉRIE » : résurrection POLITIQUE !). « Thaumazô » (ADMIRATION : 13:3 !). « Tis homoios » (« QUI comparable » : 13:4 — chant de CULTE !). « Stoma » (GUEULE : 13:5 !). « Megala » (ORGUEILLEUSES : grandes !). « 42 MOIS » (3,5 ans : F016 !). « Skènè » (TENTE : 13:6 — voir G005 !). « Polemos » (GUERRE : 13:7 !). « Nikèsai » (VAINCRE : aoriste !). « Pasa phylè » (TOUTE : 4 termes — voir G007 !). « Biblion » (ROULEAU : 13:8 !). « Ous » (OREILLE : 13:9 — « qui a » !). « Aichmalôsia » (CAPTIVITÉ : 13:10 !). « Machaira » (ÉPÉE : 13:10 !).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah : l'organisation POLITIQUE — visible, terrestre (« forme CONTINUE… siècles… puissances SUCCÉDÉ »). « 7 têtes = 7 puissances » (SIX : Égypte → Rome — 7e : voir I007). « Cornes » (« avancer et COMBATTRE… au nom des sept »). « Noms » (prétention blasphématoire). « Coup mortel » (WWI : premier conflit INTERNATIONAL). « Guérie » (1920 : voir I006 — SDN !). « 42 mois » (voir F016). « Vaincre » (1918 : voir F016). « Adorent » (culte du politique : 13:4, 8 !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Égypte → Rome</td><td>Six têtes : les puissances (illustration citée)</td></tr>
+<tr><td class="d">~96 de n. è.</td><td>« L'un EST » : Rome (voir I007)</td></tr>
+<tr><td class="d">1914-1918</td><td>Coup MORTEL : premier conflit international</td></tr>
+<tr><td class="d">1920 de n. è.</td><td>Guérie : l'image (voir I006)</td></tr>
+<tr><td class="d">1914-1918</td><td>42 mois : vaincre (voir F016)</td></tr>
+<tr><td class="d">En cours</td><td>« Adorent » : culte du politique</td></tr>
+<tr><td class="d">8e (voir I007)</td><td>« Était… n'est pas » : l'image montée</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Six puissances (Égypte, Assyrie, Babylonie, Médo-Perse, Grèce, Rome — illustration CITÉE). WWI (« premier conflit INTERNATIONAL »). SDN (1920 : Genève — voir I006). Note Murphy 1914 (catholique : « 5… Rome… Antéchrist » — parallèle cité). Rome (~96 : « l'un est » — voir I007).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« MER » (humanité détachée : Is 57:20 !). « Toute tribu… nation » (MONDE). « Sable » (12:18 : le dragon regarde). « Ciel » (blasphème : « ceux qui HABITENT »).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>SEPT : plénitude (voir I001). DIX : plénitude (voir I001). 42 mois = 1 260 jours (voir F016). Diadèma : ROYAUTÉ (grec). Biblion : ROULEAU (papyrus).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Diadèmes (cornes contre têtes, 13:1 contre 12:3) : différence non expliquée ici — renvoyée. 7e tête : voir I007. Guérie (SDN) : détail voir I006. « Image » : voir I006.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tête 1</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Égypte</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tête 6 : « est »</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rome</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Coup MORTEL</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914-18</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Guérie : image</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1920</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vaincre (F016)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">42 mois</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Adorent »</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1986081">Les bêtes de l'Apocalypse (mer, 7 rois, coup WWI, 1986)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1986081</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1966405">Éviter la marque (mer = humanité, 7 têtes, 666, 1966)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1966405</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/13">Révélation 13 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/13</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche I005 — La bête de la mer — composite, couronnée, blessée, adorée</span><span>Catégorie I–J</span></div></div>
+</article>
+<article class="fiche" id="I006">
+<div class="visuel"><img src="images/prophe_I006_666.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE I006 · CATÉGORIE I–J</div>
+<h3>La bête de la terre et 666 — l'agneau qui parle dragon</h3>
+<div class="ref">Révélation 13:11-18 ; 1 Rois 18:38 ; Deutéronome 6:8 ; Exode 13:9 ; Ésaïe 6:3</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">En cours (image : 1920+ ; « parle » : à venir)</span>
+<span class="badge">Dates neutres (1919-1945) · symboles</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche I006 · 0:33</div><audio controls preload="none" src="audio/fiche_I06_666.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_I06_666.mp3 · 0:33 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Révélation 13:11-18 ; 1 Rois 18:38 ; Deutéronome 6:8 ; Exode 13:9 ; Ésaïe 6:3</td></tr>
+<tr><td class="d">Statut</td><td>En cours (image : 1920+ ; « parle » : à venir)</td></tr>
+<tr><td class="d">Chronologie</td><td>Dates neutres (1919-1945) · symboles</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Révélation — P872 (13:11), P873 (13:12-13), P874 (13:14), P876 (13:16-17), P877 (13:18)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Une AUTRE bête monte de la TERRE : 2 cornes comme un AGNEAU — et elle PARLE comme un DRAGON. » (Ré 13:11 — contraste !)</li>
+<li>« Toute l'autorité de la première — faire ADORER la première, la GUÉRIE. » (13:12 — exousia !)</li>
+<li>« GRANDS signes : du FEU DESCEND du ciel aux YEUX des hommes. » (13:13 — sèmeia megala ! pyr ! — Élie, 1R 18 !)</li>
+<li>« Elle ÉGARE… : faites une IMAGE de la bête — ANIMÉE, elle PARLE, elle fait TUER les refusants. » (13:14-15 — eikôn ! pneuma !)</li>
+<li>« MARQUE sur main droite ou FRONT — sans elle : ni ACHETER ni VENDRE — nom ou NOMBRE du nom. » (13:16-17 — charagma !)</li>
+<li>« SAGESSE : CALCULE — nombre HUMAIN : 666. » (13:18 — sophia ! psèphizatô ! anthrôpou !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>« TERRE » (gè : contre MER — sens renvoyé, voir Limites). « 2 CORNES » (duo : la double puissance anglo-américaine — renvoi nominal !). « AGNEAU » (arnion : DOUCEUR apparente — « PARLE dragon » : paroles sataniques !). « FEU du ciel » (13:13 : Élie, 1R 18:38 ! — « aux YEUX » : spectacle ! — voir H009 : signes !). « IMAGE » (eikôn, 13:14 : SDN 1920 → ONU 1945 — renvoi nominal pour le détail !). « ANIMÉE » (pneuma : SOUFFLE — « PARLE » : laléô !). « Premier conflit » : GB + USA « favorisé l'ADORATION… amenant les nations à FAIRE UNE IMAGE » (après WWI !). « MARQUE » (charagma : gravure — CONTREFAÇON du sceau, voir G006 ! — Dt 6:8, Ex 13:9 : main + front du COMMANDEMENT !). « ACHETER… VENDRE » (agorazô : marché — voir G006 ! — PRESSION économique !). « 616 » (variante manuscrite : signalée, NON retenue — voir Limites).</p>
+<h4>4 · Explication du texte</h4>
+<p>« DUO » (deux : DOUBLE puissance !). « Arnion » (AGNEAU : doux !). « Lalei » (PARLE : dragon !). « Exousia » (AUTORITÉ : de la première !). « Proskuneô » (ADORER : culte !). « Sèmeia megala » (GRANDS signes — voir H009 !). « Pyr » (FEU : 1R 18 ! — imitation d'Élie !). « Planaô » (ÉGARE — voir H009 !). « Eikôn » (IMAGE : copie — SDN→ONU : renvoi !). « Pneuma » (SOUFFLE : animée !). « Apokteinô » (TUER : les refusants !). « Charagma » (MARQUE : gravure, sceau !). « MAIN » (ACTES !) + « FRONT » (PENSÉES !) — CITÉ : « diriger nos vies… nos actions… notre pensée » ! « Agorazô » (ACHETER : marché !). « Sophia » (SAGESSE : 13:18 !). « Psèphizatô » (CALCULE : compter — psèphos : caillou !). « Anthrôpou » (HUMAIN : entité HUMAINE — pas démon !). « 666 » (6 &lt; 7, voir I001 ! — ×3 : Is 6:3, triple SAINT — CONTRASTE : imperfection ACCENTUÉE — « jamais 7 » ! — « hauteur d'imperfection » !).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah : DEUX cornes (double puissance : renvoi nominal). « Favorisé » (GB + USA après WWI : l'image !). FEU (imitation d'Élie — spectacle !). IMAGE (SDN → ONU : renvoi nominal). MARQUE (main = actes, front = pensées — « PAS laisser… diriger » !). 666 (HUMAIN ! — 6 contre 7, trois fois : imperfection accentuée !). « Acheter/vendre » (pressions quotidiennes : ENDURER — voir H010 !). 616 (variante : signalée — texte reçu : 666 !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1914-1918</td><td>Coup mortel : voir I005</td></tr>
+<tr><td class="d">1919-1920</td><td>GB + USA : « favorisé » — IMAGE (SDN, Genève)</td></tr>
+<tr><td class="d">1945 de n. è.</td><td>ONU : San Francisco (renvoi nominal)</td></tr>
+<tr><td class="d">En cours</td><td>« Marque » : pressions acheter/vendre</td></tr>
+<tr><td class="d">« Parle » (à venir)</td><td>Image : tuer les refusants (I suite)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>SDN (1920 : Genève — « image »). ONU (1945 : San Francisco — renvoi). GB + USA (1919 : « favorisé l'adoration »). Élie (1R 18 : feu du ciel !). Dt 6:8, Ex 13:9 (main + front : le commandement — CONTREFAÇON !). 616 (variante : signalée).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« TERRE » (contre mer : renvoyé). « Ciel » (le feu DESCEND). « Marché » (acheter + vendre : MONDE). Genève, San Francisco (images : faits).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>6 &lt; 7 : arithmétique SYMBOLIQUE (voir I001). ×3 : INSISTANCE (Is 6:3 : triple saint — contraste). 616 : VARIANTE manuscrite (signalée, non retenue). Psèphos : caillou à compter (CALCULE). Charagma : gravure, sceau (MARQUE).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>« Terre » (contre mer) : sens renvoyé. Double puissance : renvoi nominal. SDN → ONU : renvoi nominal pour le détail. 616 : signalée, non retenue (gématrie : non faite). « Image parle » : vagues suivantes.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Coup (I005)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914-18</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">IMAGE : SDN</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1919-20</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ONU : renvoi</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1945</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Marque »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Parle »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1966405">Éviter la marque (image, marque, 666, calcul, 1966)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1966405</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2009124">Points marquants Révélation II (13:16-17, main, front, 2009)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2009124</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/13">Révélation 13 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/13</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche I006 — La bête de la terre et 666 — l'agneau qui parle dragon</span><span>Catégorie I–J</span></div></div>
+</article>
+<article class="fiche" id="I007">
+<div class="visuel"><img src="images/prophe_I007_babylone.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE I007 · CATÉGORIE I–J</div>
+<h3>Babylone la Grande — le mystère, les eaux, la meule</h3>
+<div class="ref">Révélation 17:1-18 ; 18:1-24 ; Ésaïe 21:9 ; Jérémie 50-51 ; 51:63-64</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">En cours (« sortez » ; « une heure » : à venir)</span>
+<span class="badge">Système Babel/539/1919</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche I007 · 0:37</div><audio controls preload="none" src="audio/fiche_I07_babylone.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_I07_babylone.mp3 · 0:37 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Révélation 17:1-18 ; 18:1-24 ; Ésaïe 21:9 ; Jérémie 50-51 ; 51:63-64</td></tr>
+<tr><td class="d">Statut</td><td>En cours (« sortez » ; « une heure » : à venir)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système Babel/539/1919</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Révélation — P898 (17:1-2), P899 (17:3-4), P900 (17:5), P901 (17:6), P902 (17:8), P903 (17:9-11), P904 (17:12-14), P905 (17:15-16), P906 (17:17), P907 (18:1-2), P908 (18:3), P909 (18:4-5), P910 (18:6-8), P911 (18:9-11), P912 (18:12-17), P913 (18:17-19), P914 (18:20), P915 (18:21-22), P916 (18:23-24) ; Ésaïe — P135 (21:1-10) ; Jérémie — P288 (51:1-14), P292 (51:45-48), P293 (51:49-58) ; 17:7, 18 sans entrée (C8)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« La grande PROSTITUÉE assise sur les EAUX : rois FORNIQUÉ, habitants ENIVRÉS du VIN. » (Ré 17:1-2 — pornè !)</li>
+<li>« DÉSERT : femme sur bête ÉCARLATE — POURPRE, OR, perles — COUPE d'immondices — MYSTÈRE : Babylone la Grande, MÈRE des prostituées. » (17:3-5 — mustèrion !)</li>
+<li>« IVRE du SANG des saints, du SANG des témoins de Jésus. » (17:6 — methyô !)</li>
+<li>« ÉTAIT, N'EST PAS, monte de l'ABÎME, va à la DESTRUCTION. » (17:8 — logique temporelle !)</li>
+<li>« 7 MONTAGNES… 7 ROIS : 5 TOMBÉS, 1 EST, 1 À VENIR (peu) — la bête : 8e ROI. » (17:9-11 — orè !)</li>
+<li>« 10 cornes : PAS ENCORE rois — UNE HEURE avec la bête — MÊME intention — combattent l'AGNEAU — l'Agneau VAINCRA. » (17:12-14 — arnion !)</li>
+<li>« Les EAUX = peuples, foules, nations, langues. » (17:15 — le livre S'EXPLIQUE !)</li>
+<li>« Les cornes HAÏRONT : NUE, CHAIRS mangées, BRÛLÉE — Dieu a mis dans leur CŒUR. » (17:16-17 — phase 1, voir H006 !)</li>
+<li>« EST TOMBÉE… démons… SORTEZ d'elle, mon peuple — UN SEUL JOUR — UNE SEULE HEURE. » (18:2-10 — epesen ! exelthate ! — Is 21:9 !)</li>
+<li>« MEULE jetée : JAMAIS retrouvée — PHARMAKEIA : toutes nations ÉGARÉES — SANG des tués. » (18:21-24 — mulinos !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>« Ange aux BOLS » (17:1 — voir I009 : « VIENS, je te MONTRERAI » !). « DÉSERT » (17:3 : erèmos — lieu du jugement !). « ÉCARLATE » (kokkinos : la bête COPIE 13:1 !). « MYSTÈRE » (mustèrion, 17:5 !). « MÈRE » (mètèr : « DIRIGE l'institution » !). « IVRE » (methyô, 17:6 !). « ÉTAIT/N'EST PAS » (17:8 : SDN→ONU ? — « ABÎME » : 1939-1945 ? — renvoi nominal !). « 7 MONTAGNES » (17:9 : orè — PAS Rome : « Rome… FER… LOI » — Rome MILITAIRE ≠ prostituée !). « 7 ROIS » (17:10 : 5 TOMBÉS — Égypte→Grèce, voir I005 ! — 1 EST : Rome, ~96 ! — 1 À VENIR : « peu » !). « 8e » (17:11 : l'image — renvoi !). « 10 cornes » (17:12 : « PAS ENCORE… UNE HEURE » !). « AGNEAU » (arnion, 17:14 — « Seigneur… Roi… VAINCRA » !). « Dieu CŒUR » (17:17 : « SON intention » — phase 1, voir H006 !). « GRANDE VILLE » (17:18 : polis — C8 !). 18 : « TOMBÉE » (epesen, 18:2 — Is 21:9, P135 ! — « DÉMONS… OISEAUX » !). « SORTEZ » (exelthate, 18:4 — « mon PEUPLE » ! — Jr 51:45, P292 ! Is 48:20, sans P !). « UN JOUR » (18:8 — voir H006 !). « UNE HEURE » (18:10 — 17:12 !). « Marchands » (18:11-17 : luxe ! — « ÂMES » — 18:13 : sômata… psychas : TRAITE — corps ET âmes !). « MEULE » (mulinos, 18:21 — Jr 51:63-64, sans P : Seraya JETTE le livre ! — « JAMAIS » !). « PHARMAKEIA » (18:23 : SPIRITES — « TOUTES… ÉGARÉES » !). « SANG » (18:24 : « prophètes… saints… TUÉS » !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Pornè » (PROSTITUÉE — contre l'ÉPOUSE, 19:7 : voir I010 !). « Kathèmai » (ASSISE : trône !). « Porneuô » (FORNIQUÉ : avec les ROIS !). « Oinos » (VIN : enivrant !). « Porphyra » (POURPRE : royal !). « Chrysos » (OR : richesse !). « Potèrion » (COUPE : immondices !). « Mustèrion » (MYSTÈRE : front !). « Mètèr » (MÈRE : source !). « Methyô » (IVRE : de sang !). « Abyssos » (ABÎME : 17:8 !). « Orè » (MONTAGNES : 17:9 !). « Hora » (HEURE : 17:12 !). « Gnômè » (INTENTION : 17:13 !). « Nikèsai » (VAINCRA : l'Agneau !). « Hudata » (EAUX : 17:15 — 4 termes !). « Miseô » (HAÏRONT : 17:16 !). « Gymnè » (NUE : dépouillée !). « Katakaiô » (BRÛLÉE : complètement !). « Kardia » (CŒUR : Dieu met !). « Epesen » (TOMBÉE : 18:2 !). « Exelthate » (SORTEZ : 18:4 !). « Mulinos » (MEULE : énorme !). « Pharmakeia » (SPIRITES : drogues + sortilèges !). « Planaô » (ÉGARÉES : 18:23 !).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah : « l'empire UNIVERSEL de la FAUSSE RELIGION » (« partie IMMONDE » du système !). « Milliers… NON regroupés » (« unis : OBJECTIFS + ACTIONS » !). « PAS Rome » (militaire de fer !). « Influence GOUVERNEMENTS » (considérable !). « Rois PLEURENT » (« ÉGOÏSTES » : « PARAVENT… RECRUTEMENT… SOUMISSION » — CITÉ !). « Gouvernements S'EN PRENDRONT » (« BIENTÔT » — « Dieu VEILLERA » !). « SORTEZ » (« AVANT qu'il soit TROP TARD » !). « JAMAIS retrouvée » (18:21 !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Babel (Gn 10-11)</td><td>Nimrod : confusion — la « mère »</td></tr>
+<tr><td class="d">AT</td><td>Jr 50-51, Is 13, 21, Da 5 : Babylone jugée</td></tr>
+<tr><td class="d">~96 de n. è.</td><td>Vision : le mystère expliqué</td></tr>
+<tr><td class="d">Siècles</td><td>« Mère » : les filles (fornication, vin)</td></tr>
+<tr><td class="d">1919 de n. è.</td><td>Grand Cyrus : délivrance (voir J001)</td></tr>
+<tr><td class="d">En cours</td><td>« SORTEZ » : mon peuple (18:4)</td></tr>
+<tr><td class="d">« Une heure » (à venir)</td><td>Cornes : nue, mangée, brûlée (phase 1)</td></tr>
+<tr><td class="d">« JAMAIS » (à venir)</td><td>Meule : jamais retrouvée (18:21)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Babel (Gn 11 : confusion des langues !). 539 (chute AT — voir J001). 1919 (délivrance — Grand Cyrus, voir J001). Note Murphy 1914 (voir I005). Luxe antique (18:12-13 : cargaisons !). Seraya (Jr 51:63-64 : livre JETÉ dans l'Euphrate — sans P !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« EAUX » (peuples : 17:15 !). « DÉSERT » (17:3 : jugement !). « MONTAGNES » (17:9). « Grande VILLE » (17:18 — C8 !). « Marchands… MER » (18:17-19 : capitaines, matelots !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>« Était/pas » : LOGIQUE temporelle (17:8). « UNE heure » : unanimité INSTANTANÉE (17:12). Meule : moulin ANTIQUE (énorme — 18:21). Pharmakeia : PHARMACIE (drogues + sortilèges). « Âmes » (18:13 : TRAITE — corps + âmes).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>7e et 8e rois : renvoyés aux publications. « Abîme » (17:8) : renvoi nominal. Jr 51:63-64, Is 48:20 : mentions sans P. Révélation 17:7, 18 sans entrée (C8).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Mère »</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Babel</text>
+<circle cx="154.3" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="154.3" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugée : Jr 51</text>
+<text x="154.3" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">AT</text>
+<circle cx="248.6" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="248.6" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mystère</text>
+<text x="248.6" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">96</text>
+<circle cx="342.9" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="342.9" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Filles</text>
+<text x="342.9" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Siècles</text>
+<circle cx="437.1" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="437.1" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Grand Cyrus</text>
+<text x="437.1" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919</text>
+<circle cx="531.4" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="531.4" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« SORTEZ »</text>
+<text x="531.4" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+<circle cx="625.7" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="625.7" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« 1 heure »</text>
+<text x="625.7" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Meule</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">« JAMAIS »</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200000531">Babylone la Grande — Insight (description, pas Rome, marchands)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200000531</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1989240">Un mystère : qui est Babylone ? (eaux, rois, mère, 1989)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1989240</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2009124">Points marquants Révélation II (rois pleurent, Q, 2009)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2009124</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/17">Révélation 17 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/17</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche I007 — Babylone la Grande — le mystère, les eaux, la meule</span><span>Catégorie I–J</span></div></div>
+</article>
+<article class="fiche" id="I008">
+<div class="visuel"><img src="images/prophe_I008_moisson.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE I008 · CATÉGORIE I–J</div>
+<h3>La moisson et la vendange — mûre, pressoir, 1 600 stades</h3>
+<div class="ref">Révélation 14:6-20 ; Joël 3:13 ; Ésaïe 63:1-6 ; Matthieu 13:39</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">En cours (« dès maintenant » ; « mûre » : à venir)</span>
+<span class="badge">Système 1914 · mesures</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche I008 · 0:31</div><audio controls preload="none" src="audio/fiche_I08_moisson.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_I08_moisson.mp3 · 0:31 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Révélation 14:6-20 ; Joël 3:13 ; Ésaïe 63:1-6 ; Matthieu 13:39</td></tr>
+<tr><td class="d">Statut</td><td>En cours (« dès maintenant » ; « mûre » : à venir)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 1914 · mesures</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Révélation — P880 (14:6-7), P881 (14:8), P882 (14:9-11), P883 (14:12), P884 (14:13), P885 (14:14-16), P886 (14:17-20) ; Joël — P428 (3:9-17) ; Mt 13:39 sans entrée (C8, voir H004)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ÉVANGILE ÉTERNEL… HEURE du jugement : CRAIGNEZ, ADOREZ le CRÉATEUR. » (Ré 14:6-7 — voir H004 ! hôra !)</li>
+<li>« Babylone la GRANDE est TOMBÉE : VIN CAPITEUX de son impudicité à TOUTES. » (14:8 — voir I007 ! Is 21:9 !)</li>
+<li>« Bête, image, MARQUE : VIN de Dieu SANS MÉLANGE — TOURMENT, FUMÉE, PAS DE REPOS. » (14:9-11 — akratou ! basanismos ! — renvoyé !)</li>
+<li>« ENDURANCE des saints : COMMANDEMENTS + FOI de Jésus. » (14:12 — hupomonè ! voir H010 !)</li>
+<li>« HEUREUX les morts… DÈS MAINTENANT : REPOSENT — leurs œuvres les SUIVENT. » (14:13 — aparti ! 2e makarios !)</li>
+<li>« NUÉE blanche : fils d'homme, COURONNE, FAUCILLE — LANCE : la moisson est MÛRE. » (14:14-16 — stephanos ! exèranthè !)</li>
+<li>« VENDANGE : RAISINS mûrs — jetée dans le GRAND PRESSOIR — HORS de la ville — SANG jusqu'aux MORS, 1 600 STADES. » (14:17-20 — lènos ! chalinos !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>« 3 ANGES » (14:6, 8, 9 : Éternel ! Tombée ! Marque !). « HEURE » (hôra, 14:7 !). « VIN » (oinos, 14:8, 10 : « CAPITEUX » !). « SANS MÉLANGE » (akratou, 14:10 : PUR !). « TOURMENT » (basanismos, 14:11 : « FUMÉE… siècles » — sens RENVOYÉ : destruction définitive — voir Limites). « DÈS MAINTENANT » (aparti, 14:13 : 1914+ !). « NUÉE BLANCHE » (nephelè leukè, 14:14 !). « COURONNE » (stephanos : 1914 — voir I002 !). « MÛRE » (exèranthè : DESSÉCHÉE !). « RAISINS mûrs » (èkmasan, 14:18 !). « PRESSOIR » (lènos, 14:19-20 !). « HORS de la ville » (14:20 !). « MORS » (chalinos : ~1,5 m !). « 1 600 STADES » (~300 km : « longueur Palestine » !). Joël 3:13 (P428 : « FAUCILLE… pressoir PLEIN… cuves REGORGENT » — « méchanceté GRANDE » !). Ésaïe 63:1-6 (sans P : « foulé SEUL… vêtements ROUGES » !). Mt 13:39 (« moisson = FIN… ANGES » — C8, voir H004 !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Aionios » (ÉTERNEL — voir H004 !). « Hôra » (HEURE : 14:7 !). « Phobeô » (CRAIGNEZ !). « Ktizô » (CRÉÉ : mer, sources !). « Thymos » (CAPITEUX : fureur !). « Akratou » (SANS MÉLANGE : pur !). « Basanismos » (TOURMENT : renvoyé !). « Kapnos » (FUMÉE : 14:11 !). « Anapausis » (REPOS : « PAS » !). « Hupomonè » (ENDURANCE — voir H010 !). « Entolè » (COMMANDEMENTS !). « Pistis » (FOI !). « Makarios » (HEUREUX : 2e !). « Aparti » (DÈS MAINTENANT !). « Akoloutheô » (SUIVENT : œuvres !). « Nephelè » (NUÉE : blanche !). « Stephanos » (COURONNE : 1914 !). « Drepanon » (FAUCILLE : affilée !). « Pempsom » (LANCE !). « Exèranthè » (DESSÉCHÉE : mûre !). « Trugaô » (VENDANGE !). « Staphylè » (RAISINS !). « Lènos » (PRESSOIR : grand !). « Chalinos » (MORS : ~1,5 m !). « Stadion » (STADE : ~185 m !).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah : « NOTRE ÉPOQUE » (temps de la fin !). « ANGES SEULS capables » (ampleur de la tâche !). « 5e/6e anges » (vendange : 14:17-18 !). « Vigne… JAMAIS racine » (définitif — « fruit MORTEL » ôté !). « Moisson = Harmaguédon » (« CARNAGE… faucille affilée » — CITÉ !). « Rassemblement » (adorateurs : lieu de FAVEUR — voir G007 !). « Cuve » (la colère : grandeur + sang !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Joël (AT)</td><td>Faucille : « méchanceté GRANDE » (3:13)</td></tr>
+<tr><td class="d">Ésaïe 63 (AT)</td><td>Pressoir : « foulé SEUL » (sans P)</td></tr>
+<tr><td class="d">33 de n. è.</td><td>Mt 13:39 : « moisson = FIN » (C8)</td></tr>
+<tr><td class="d">1914 + de n. è.</td><td>« DÈS MAINTENANT » : heureux, reposent</td></tr>
+<tr><td class="d">En cours</td><td>« Mûre » : desséchée (exèranthè)</td></tr>
+<tr><td class="d">« 1 600 » (à venir)</td><td>Pressoir : sang, mors (voir I009)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Pressoir antique (foulé aux PIEDS !). Stade (~185 m : 1 600 ≈ 296 km !). Mors (~1,5 m : profondeur du sang !). « Ville » (Jérusalem : HORS !). Joël (sauterelles → faucille : P423-P428 !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« 1 600 » (Palestine NORD-SUD : ~300 km !). « Hors ville » (exclusion : 14:20). « Cuves » (Joël : REGORGENT !). « Mer, sources » (14:7 : Créateur !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>1 600 × 185 m ≈ 296 km : CALCUL (Palestine !). « Mors » (~1,5 m : PROFONDEUR !). 1 600 = 40 × 40 : CONSTAT arithmétique (pas d'interprétation — voir Limites). 4 × 4 × 10 × 10 : CONSTAT (voir Limites). Exèranthè : DESSÉCHÉE (botanique !).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>« Tourment » (14:11) : sens renvoyé aux publications (destruction définitive). Ésaïe 63 : mention sans P. 1 600 : constats arithmétiques — PAS d'interprétation numérologique. Mt 13:39 sans entrée (C8 — voir H004).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Faucille : 3:13</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Joël</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pressoir : SEUL</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Is 63</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mt 13 : FIN</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« MAINTENANT »</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1914 +</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Mûre »</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« 1 600 »</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1966485">L'écrasement de la vigne (époque, anges, cuve, 1966)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1966485</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1985080">Har-Maguédon, guerre d'un Dieu d'amour (moisson, 1600, 1985)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1985080</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/14">Révélation 14 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/14</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche I008 — La moisson et la vendange — mûre, pressoir, 1 600 stades</span><span>Catégorie I–J</span></div></div>
+</article>
+<article class="fiche" id="I009">
+<div class="visuel"><img src="images/prophe_I009_bols.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE I009 · CATÉGORIE I–J</div>
+<h3>Les bols et Harmaguédon — dernières, Euphrate, grenouilles, lieu</h3>
+<div class="ref">Révélation 15:1-8 ; 16:1-21 ; Exode 7-10 ; Joël 3:2 ; Habaquq 2:3 ; Jérémie 25:33</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir (rassemblement ; « c'est fait » : à venir)</span>
+<span class="badge">Système types · 96</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche I009 · 0:31</div><audio controls preload="none" src="audio/fiche_I09_bols.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_I09_bols.mp3 · 0:31 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Révélation 15:1-8 ; 16:1-21 ; Exode 7-10 ; Joël 3:2 ; Habaquq 2:3 ; Jérémie 25:33</td></tr>
+<tr><td class="d">Statut</td><td>À venir (rassemblement ; « c'est fait » : à venir)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système types · 96</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Révélation — P887 (15:1), P888 (15:2-4), P889 (15:5-8), P890 (16:1-2), P891 (16:3), P892 (16:4-7), P893 (16:8-9), P894 (16:10-11), P895 (16:12), P896 (16:13-16), P897 (16:17-21)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« 7 DERNIÈRES plaies : la FUREUR MENÉE À TERME. » (Ré 15:1 — eschatai ! etelesthè !)</li>
+<li>« MER de verre + FEU — cantique de MOÏSE et de l'AGNEAU : JUSTES, VRAIES. » (15:2-4 — Ex 15 !)</li>
+<li>« Temple : FUMÉE — NUL ne pouvait ENTRER. » (15:8 — Ex 40 ! 1R 8 ! Is 6 !)</li>
+<li>« VERSEZ : ulcère (marque) — MER sang de MORT — FLEUVES sang. » (16:1-4 — phialè ! helkos !)</li>
+<li>« Tu es JUSTE, SAINT — sang des saints : sang À BOIRE — DIGNES — OUI. » (16:5-7 — dikaios ! axioi ! nai !)</li>
+<li>« SOLEIL brûle — TRÔNE ténèbres — langue mordue — PAS REPENTIS. » (16:8-11 — 9:20-21 !)</li>
+<li>« EUPHRATE ASSÉCHÉ : rois de l'ORIENT — Cyrus ! » (16:12 — anatolè ! voir J001 !)</li>
+<li>« 3 bouches : GRENOUILLES — DÉMONS, SIGNES — rois du monde ENTIER rassemblés. » (16:13-14 — batrachoi ! Ex 8 !)</li>
+<li>« VOLEUR — HEUREUX qui veille : VÊTEMENTS, pas HONTE. » (16:15 — 3e makarios ! voir H001 !)</li>
+<li>« HAPAX : Har-Maguédon — en HÉBREU. » (16:16 — 1× dans la Bible !)</li>
+<li>« C'EST FAIT — SÉISME JAMAIS — Babylone COUPE — îles, montagnes — GRÊLE TALENT. » (16:17-21 — gegonen ! ~34 kg !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>« DERNIÈRES » (eschatai, 15:1 !). « TERMÉE » (etelesthè : ACHEVÉE !). « VERRE + FEU » (15:2 : Ex 24:10 ! Éz 1:22 !). « Moïse + Agneau » (15:3 : Ex 15 !). « FUMÉE » (15:8 : Ex 40:35 ! 1R 8:11 ! Is 6:4 !). « 7 BOLS » (phialè : COUPES ! — contre trompettes : TOTAL, pas tiers — APPEL puis JUGEMENT !). « JUSTE » (dikaios, 16:5 : « qui ES » !). « DIGNES » (axioi, 16:6 !). « OUI » (nai, 16:7 : l'AUTEL répond !). « Pas repentis » (16:9, 11 — 9:20-21 : voir I003 !). « EUPHRATE » (16:12 : Cyrus — voir J001 ! — « rois ORIENT » : anatolè — LEVER du soleil !). « GRENOUILLES » (batrachoi : Ex 8:6 ! — « 3 BOUCHES » : dragon, bête, FAUX PROPHÈTE !). « Démons » (daimonia, 16:14 : « PAROLES inspirées » !). « VOLEUR » (16:15 — voir H001 ! — « VÊTEMENTS » : himation — « HONTE » : aschèmosynè !). « Har-Maguédon » (HAPAX : 1× ! — « en HÉBREU » !). « C'EST FAIT » (gegonen, 16:17 — 21:6 : voir G005 !). « SÉISME JAMAIS » (16:18 !). « Babylone COUPE » (16:19 — voir I007 !). « TALENT » (~34 kg, 16:21 !). HAR-MAGUÉDON : « Har » (MONTAGNE !) + « Meguiddo » (« RASSEMBLEMENT de troupes » !). « Tell 20 m » (PAS de montagne — mesure !). « Lieu » = TOPOS (CONDITION, situation !). « PAS nucléaire » (définition !). « PAS Moyen-Orient seul » (UNIVERSELLE — Jr 25:33 ! « TOUTE » !). « Rois… serviteurs » (représentants terrestres !). « Armées CIEL » (19:14 — voir I010 !). « Temps FIXÉ » (Ha 2:3 : « pas en RETARD » — sans P !). « Ruine… RUINENT » (11:18 — voir I003 !). Meguiddo : Débora (Jg 5:19 : « rois CANAAN… Taanak » !). Guidéon (Jg 7 : « 300… épée de JÉHOVAH » !). Josias (2R 23:29 — C8, voir J002 ! Néko !). Via Maris (ROUTE !). « 6e-7e bols » (rassemblent : 16:12 + 16:17-21 !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Eschatai » (DERNIÈRES : 15:1 !). « Thymos » (FUREUR !). « Etelesthè » (ACHEVÉE !). « Hyalinè » (VERRE : 15:2 !). « Pyr » (FEU : mêlé !). « Ôdè » (CANTIQUE : Moïse !). « Dikaiai » (JUSTES : voies !). « Kapnos » (FUMÉE : 15:8 !). « Phialè » (BOLS : coupes !). « Ekcheô » (VERSEZ !). « Helkos » (ULCÈRE : 16:2 !). « Haima » (SANG : mer, fleuves !). « Nekros » (« de MORT » : 16:3 !). « Dikaios » (JUSTE : 16:5 !). « Hosios » (SAINT : 16:5 !). « Axioi » (DIGNES : 16:6 !). « Nai » (OUI : 16:7 !). « Kaumatizô » (BRÛLE : 16:8 !). « Skotos » (TÉNÈBRES : 16:10 !). « Xèrainô » (ASSÉCHÉ : 16:12 !). « Anatolè » (ORIENT : lever !). « Batrachoi » (GRENOUILLES : coassantes !). « Sèmeia » (SIGNES : démons !). « Himation » (VÊTEMENTS : 16:15 !). « Har » (MONTAGNE !). « Topos » (LIEU-condition !). « Gegonen » (C'EST FAIT !). « Seismos » (SÉISME : jamais !). « Talanton » (TALENT : ~34 kg !).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah : « DERNIÈRES » (fureur à son terme !). TOTAL (contre tiers : trompettes = APPEL, bols = JUGEMENT !). « JUSTE » (vindication : 16:5-7 !). « Cyrus » (Euphrate : TYPE — voir J001 !). « Grenouilles » (Ex 8 : propagande coassante — 3 bouches !). « Voleur » (voir H001 !). « HAPAX » (1× dans toute la Bible !). « PAS lieu » (condition mondiale !). « PAS nucléaire » (définition !). « Guerre de JÉHOVAH » (pas humaine — armées invisibles !). « Temps fixé » (Ha 2:3 : pas en retard !). « Paix ENSUITE » (voir G009 !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Exode (AT)</td><td>Plaies : ulcère, sang, ténèbres, grêle (types)</td></tr>
+<tr><td class="d">Cyrus (539)</td><td>Euphrate asséché : TYPE (voir J001)</td></tr>
+<tr><td class="d">Meguiddo (AT)</td><td>Débora, Guidéon : TYPES décisifs</td></tr>
+<tr><td class="d">~96 de n. è.</td><td>Vision : les 7 bols</td></tr>
+<tr><td class="d">1919 + de n. è.</td><td>Bols : APPLICATION renvoyée aux publications</td></tr>
+<tr><td class="d">« C'EST FAIT » (à venir)</td><td>7e bol : séisme, grêle, Babylone</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Ex 7-10 (ulcère, sang, ténèbres, grêle : 4 plaies reprises !). Ex 8:6 (grenouilles d'Égypte !). Cyrus (539 : Euphrate — voir J001). Débora (~1200 ? Jg 5 : Taanak !). Guidéon (Jg 7 : 300 !). Tell 20 m (archéologie : PAS de montagne !). Ha 2:3 (temps fixé — sans P).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Euphrate (le GRAND fleuve : 16:12 !). Meguiddo (plaine de YIZRÉEL !). Via Maris (ROUTE des armées !). « Îles… montagnes » (16:20 : relief ôté !). « TOUTE terre » (universelle : 16:14 !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Talent (~34 kg : GRÊLON — 16:21 !). Tell 20 m : MESURE (pas de montagne !). HAPAX : 1× — statistique (16:16 !). Topos : lieu = CONDITION (grec). Eschatai : DERNIÈRES (fin de série !).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Bols : APPLICATION (proclamations ?) renvoyée aux publications. 2 Rois 23:29 sans entrée (C8 — voir J002). « Montagne » : pas de montagne — signalé. Habaquq 2:3 : mention sans P.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Plaies : types</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Exode</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus : Euphrate</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Débora : type</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Meguiddo</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision : 7</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">96</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Application : renvoi</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919 +</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« C'EST FAIT »</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2005881">Harmaguédon : un nouveau départ (lieu, universelle, temps, 2005)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2005881</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001884">Har-Maguédôn — Insight (topos, futur, bols, voleur)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001884</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101989210">Har-Maguédon — définition (pas nucléaire, tell, Da 2:44)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101989210</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/16">Révélation 16 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/16</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche I009 — Les bols et Harmaguédon — dernières, Euphrate, grenouilles, lieu</span><span>Catégorie I–J</span></div></div>
+</article>
+<article class="fiche" id="I010">
+<div class="visuel"><img src="images/prophe_I010_guerrier.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE I010 · CATÉGORIE I–J</div>
+<h3>Le Roi guerrier — Alléluia, noces, ciel ouvert, lac</h3>
+<div class="ref">Révélation 19:1-21 ; 20:1-6 ; Psaume 2:9 ; Ézéchiel 39:17-20 ; Ésaïe 63:1-6</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">À venir (« ouvert » ; 1000 : voir F017)</span>
+<span class="badge">Système 1914 (I002) · F017</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche I010 · 0:33</div><audio controls preload="none" src="audio/fiche_I10_guerrier.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_I10_guerrier.mp3 · 0:33 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Révélation 19:1-21 ; 20:1-6 ; Psaume 2:9 ; Ézéchiel 39:17-20 ; Ésaïe 63:1-6</td></tr>
+<tr><td class="d">Statut</td><td>À venir (« ouvert » ; 1000 : voir F017)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 1914 (I002) · F017</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Révélation — P917 (19:1-2), P918 (19:6-8), P919 (19:9), P920 (19:10) ; 19:11-21 sans entrée (C8) ; ch. 20 : voir F017</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ALLÉLUIA : SALUT, gloire — Babylone JUGÉE, sang VENGÉ. » (Ré 19:1-2 — voir G009 ! I007 !)</li>
+<li>« ALLÉLUIA : le Seigneur… RÈGNE — NOCES de l'Agneau — ÉPOUSE PRÊTE — LIN FIN. » (19:6-8 — gamos ! bussinos ! — 144 000, voir G006 !)</li>
+<li>« HEUREUX les INVITÉS au repas des noces. » (19:9 — 4e makarios ! — invités : renvoyés !)</li>
+<li>« ADORE DIEU : conserviteur — TÉMOIGNAGE de Jésus = ESPRIT de la prophétie. » (19:10 — sundoulos !)</li>
+<li>« Ciel OUVERT : BLANC — FIDÈLE et VÉRIDIQUE — yeux FLAMME — DIADEMES — NOM que nul — SANG — PAROLE de Dieu. » (19:11-13 — C8 ! logos !)</li>
+<li>« ARMÉES du ciel : BLANC, LIN — ÉPÉE de la bouche — FER — PRESSOIR foulé LUI-MÊME — ROI des rois. » (19:14-16 — C8 ! rhomphaia ! Ps 2:9 !)</li>
+<li>« SOUPER de Dieu : OISEAUX — CHAIR de rois… libres… esclaves. » (19:17-18 — C8 ! deipnon ! Éz 39 !)</li>
+<li>« Bête + ROIS + armées : GUERRE contre le cavalier — bête + FAUX PROPHÈTE : VIVANTS dans le LAC DE FEU — autres : ÉPÉE — oiseaux RASSASIÉS. » (19:19-21 — C8 !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>« ALLÉLUIA » (19:1, 3, 4, 6 : 4× — voir G009 !). « NOCES » (gamos, 19:7 ! — « ÉPOUSE » : gunè — les 144 000 : voir G006 ! — « LIN FIN » : bussinos — « ACTES JUSTES », 19:8 !). « HEUREUX » (19:9 : 4e makarios — « INVITÉS » : renvoyés, voir Limites). « ADORE DIEU » (19:10 : « CONSERVITEUR » — sundoulos ! — « TÉMOIGNAGE Jésus = ESPRIT PROPHÉTIE » !). « Ciel OUVERT » (19:11 — C8 !). « BLANC » (voir I002 : MÊME cavalier — « achève » !). « FIDÈLE… VÉRIDIQUE » (6:2 → 19:11 !). « FLAMME » (1:14 — voir I001 !). « DIADEMES » (diadèmata : PLURIEL — contre 1 COURONNE, 6:2 — constat, voir Limites). « NOM… NUL » (19:12 — C8 !). « SANG » (19:13 — C8 ! — Is 63, voir I008 !). « PAROLE » (logos : Jn 1:1 — voir I002 !). « ARMÉES » (strateumata, 19:14 — « BLANC… LIN » !). « ÉPÉE » (rhomphaia : 1:16 — voir I001 !). « FER » (Ps 2:9 — 12:5 : voir I004 !). « PRESSOIR » (19:15 — voir I008 ! — « FOULE LUI-MÊME » !). « ROI… SEIGNEUR » (19:16 : « CUISSE » — renvoyée, voir Limites). « SOUPER » (deipnon, 19:17 — « OISEAUX » — Éz 39:17-20, sans P !). « CHAIR » (19:18 : « rois… chefs… LIBRES… esclaves » !). « Bête… ROIS… GUERRE » (19:19 : « contre… armée » !). « Bête… FAUX PROPHÈTE » (19:20 : « VIVANTS… LAC DE FEU » — « SOUFRE » !). « ÉPÉE… RASSASIÉS » (19:21 !). Ch. 20 (voir F017 : ABÎME ! 1 000 ! RÈGNE ! 2e mort ! — voir G004 : résurrection !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Hallèlou-YAH » (LOUEZ Yah — 4× !). « Gamos » (NOCES : 19:7 !). « Gunè » (ÉPOUSE : prête !). « Bussinos » (LIN FIN : actes justes !). « Makarios » (HEUREUX : 4e !). « Sundoulos » (CONSERVITEUR : 19:10 !). « Pneuma » (ESPRIT : de la prophétie !). « Èneôgmenon » (OUVERT : ciel !). « Leukos » (BLANC : justice !). « Pistos » (FIDÈLE !). « Alèthinos » (VÉRIDIQUE !). « Phlox » (FLAMME : yeux !). « Diadèmata » (DIADEMES : royautés !). « Onoma » (NOM : inconnu !). « Haima » (SANG : trempé !). « Logos » (PAROLE : Jn 1:1 !). « Strateumata » (ARMÉES : célestes !). « Rhomphaia » (ÉPÉE : longue !). « Sidèra » (FER : sceptre !). « Lènos » (PRESSOIR : foulé !). « Basileus » (ROI : des rois !). « Mèros » (CUISSE : inscription !). « Deipnon » (SOUPER : oiseaux !). « Sarx » (CHAIR : mangée !). « Limnè » (LAC : de feu !). « Theion » (SOUFRE !).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah : « ALLÉLUIA » (Babylone jugée : voir G009, I007 !). « NOCES » (144 000-Épouse : voir G006 !). « ÉPOUSE PRÊTE » (19:7 !). « Invités » : renvoyés (voir Limites). « ADORE DIEU » (anges : conserviteurs !). « BLANC » (voir I002 : le MÊME — « achève sa victoire » !). « DIADEMES » (constat : 1 → n !). « PAROLE » (Jn 1:1 !). « PRESSOIR » (voir I008 : foulé LUI-MÊME !). « SOUPER » (Éz 39 : Gog !). « LAC » (destruction — « 2e MORT », 20:14 : voir F017 !). Ch. 20 (voir F017 : millénium ! — voir G004 : résurrection !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">1914 de n. è.</td><td>Blanc : couronne (voir I002)</td></tr>
+<tr><td class="d">Babylone (à venir)</td><td>Jugée : voir I007 (phase 1)</td></tr>
+<tr><td class="d">« ALLÉLUIA » (à venir)</td><td>19:1-6 : salut, règne</td></tr>
+<tr><td class="d">« NOCES » (à venir)</td><td>19:7-9 : Épouse prête, invités</td></tr>
+<tr><td class="d">« OUVERT » (à venir)</td><td>19:11 : le Roi sort</td></tr>
+<tr><td class="d">« LAC » (à venir)</td><td>19:20 : bête + faux prophète</td></tr>
+<tr><td class="d">1 000 (à venir)</td><td>Ch. 20 : voir F017</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Noces (coutume : CONTRAT, repas !). Souper (Éz 39 : Gog — sans P !). Lac (soufre : Sodome, Gn 19 !). Cuisse (inscription : COUTUME ? — renvoyée, voir Limites). « 2e mort » (20:14 : voir F017 !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Ciel OUVERT » (19:11 : sortie !). « Zénith » (19:17 : soleil — oiseaux !). « Lac » (topographie FINALE : 19:20 !). « 1 000 » (terre : voir F017 !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>« ALLÉLUIA ×4 » : COMPTE (19:1-6 !). « Couronne → diadèmes » (1 → n : CONSTAT — voir Limites). Limnè : LAC (2e mort !). « 1 000 » (voir F017 : ans solaires !). 4e makarios (19:9 : liste I001 !).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Révélation 19:11-21 sans entrée (C8). Invités (19:9) : identification renvoyée. Cuisse (19:16) : coutume renvoyée. Couronne/diadèmes (6:2/19:12) : constat, non expliqué. Ch. 20 : voir F017 (millénium, 2e mort).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Blanc (I002)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugée (I007)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Babylone</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« ALLÉLUIA »</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« NOCES »</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« OUVERT »</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« LAC »</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Voir F017</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1 000</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2005881">Harmaguédon : un nouveau départ (19:14, Roi des rois, 2005)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2005881</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/19">Révélation 19 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/19</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/20">Révélation 20 — Bible d'étude, notes (abîme, 1000, voir F017)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/66/20</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche I010 — Le Roi guerrier — Alléluia, noces, ciel ouvert, lac</span><span>Catégorie I–J</span></div></div>
+</article>
+<article class="fiche" id="J001">
+<div class="visuel"><img src="images/prophe_J001_cyrus.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE J001 · CATÉGORIE I–J</div>
+<h3>Cyrus nommé — berger, oint, et le Grand Cyrus</h3>
+<div class="ref">Ésaïe 44:24-28 ; 45:1-7, 13 ; 46:10-11 ; 48:14-15 ; Esdras 1:1-4 ; Romains 4:17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (539-537 ; Grand Cyrus : 1919)</span>
+<span class="badge">Système 732/607/539/537</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche J001 · 0:32</div><audio controls preload="none" src="audio/fiche_J01_cyrus.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_J01_cyrus.mp3 · 0:32 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ésaïe 44:24-28 ; 45:1-7, 13 ; 46:10-11 ; 48:14-15 ; Esdras 1:1-4 ; Romains 4:17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (539-537 ; Grand Cyrus : 1919)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 732/607/539/537</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ésaïe — P160 (44:24-28), P161 (45:1-7), P163 (46:8-11), P165 (48:14-15) ; Esdras — P105 (1:1-4) ; Daniel — P374 (5:5-28), P375 (5:23-24)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ABÎME : ÉVAPORE-toi — je DESSÉCHERAI tes fleuves. » (Is 44:27 — tsula : l'Euphrate !)</li>
+<li>« Je dis de CYRUS : mon BERGER — TOUTE ma volonté — Jérusalem REBÂTIE, temple FONDÉ. » (44:28 — Koresh ! ro'i ! — ~732, pas encore détruite !)</li>
+<li>« À mon OINT, à Cyrus : MAIN DROITE — nations, CEINTURE des rois — PORTES pas fermées. » (45:1 — mashiah ! — païen OINT !)</li>
+<li>« J'aplanirai — portes d'AIRAIN, verrous de FER — TRÉSORS des ténèbres. » (45:2-3 — nehoshèt ! barzèl !)</li>
+<li>« Je t'ai appelé par ton NOM — SANS me connaître. » (45:4 — 2× ! yada !)</li>
+<li>« SUSCITÉ dans la justice — ma VILLE — mes captifs — SANS rançon. » (45:13 — hinnam : GRATUIT !)</li>
+<li>« Mon DESSEIN subsistera — OISEAU DE PROIE de l'EST. » (46:10-11 — atsati ! ayit !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Ésaïe, ~732 (Juda : Achaz, Ézéchias ! — « 2 SIÈCLES avant » ! — « siècle et demi avant le POUVOIR » !). « Jérusalem DEBOUT » (chute : 607 — pas encore !). « Temple DEBOUT » (fondé : Salomon — « FONDÉ » : à reposer !). « Cyrus PAS NÉ » (« désolation AVANT naissance » !). « BERGER » (ro'i : titre ROYAL — 2S 5:2 ! Ps 78:71 !). « OINT » (mashiah, 45:1 : seul non-Israélite oint !). « Rm 4:17 » (« APPELLE… CE QUI N'EST PAS » — Insight CITE !). « Libre arbitre » (w24 : « pas porté ATTEINTE » — RENVOYÉ, voir Limites). « Grand Cyrus » (Jésus, 1919 : renvoi nominal !). « Édit NON annulé » (« ne pouvait PERMETTRE » — Esd 6 : Darius !). « Jéhovah… m'a CHARGÉ » (Esd 1:2, P105 !).</p>
+<h4>4 · Explication du texte</h4>
+<p>« KORESH » (NOMMÉ : 44:28 !). « Ro'i » (BERGER : guide, nourrit !). « Hèphèts » (VOLONTÉ : plaisir !). « Tibbaneh » (REBÂTIE !). « Tiwwasèd » (FONDÉ : fondations !). « Tsula » (ABÎME : 44:27 !). « Mashiah » (OINT : 45:1 !). « Hèhèzaqti » (TENUE : main droite !). « Ceinture » (DÉSARMER les rois !). « Portes » (« pas FERMÉES » !). « Yashar » (APLANIR : 45:2 !). « Nehoshèt » (AIRAIN !). « Barzèl » (FER !). « Trésors » (« TÉNÈBRES » : 45:3 !). « Qara » (APPELÉ : par nom !). « Yada » (CONNAÎTRE : « sans » !). « Hinnam » (SANS rançon : GRATUIT !). « Atsati » (DESSEIN : 46:10 !). « Ayit » (OISEAU DE PROIE : 46:11 !). « Mizrah » (EST : Perse !).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah : « 2 SIÈCLES » (732 → 539 !). « Berger » (malgré païen : mission !). « Oint » (consacré à la tâche !). « Rm 4:17 » (appelle ce qui n'est pas !). « Libre arbitre » (w24 : renvoi !). « Grand Cyrus » (Jésus, 1919 : renvoi nominal — délivrance de Babylone la Grande : voir I007 !). « Édit non annulé » (Esd 6 : Darius confirme !). « CHARGÉ » (Esd 1:2 : Cyrus RECONNAÎT !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~732 av. n. è.</td><td>Ésaïe : le NOM (Jérusalem debout)</td></tr>
+<tr><td class="d">607 av. n. è.</td><td>Chute : Jérusalem détruite</td></tr>
+<tr><td class="d">539 av. n. è.</td><td>11/12 oct : NUIT — gué, portes, banquet (Da 5)</td></tr>
+<tr><td class="d">538 av. n. è.</td><td>Décret : « CHARGÉ » (Esd 1:1-4)</td></tr>
+<tr><td class="d">537 av. n. è.</td><td>Retour : 42 360 (voir B002)</td></tr>
+<tr><td class="d">515 av. n. è.</td><td>Temple : achevé (voir F015)</td></tr>
+<tr><td class="d">1919 de n. è.</td><td>Grand Cyrus : Jésus délivre (renvoi)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>539 (Nabonide, Balthasar : banquet — Da 5, P374-375 !). Hérodote (gué, banquet !). Xénophon (Cyropédie !). Cylindre (1879 : « Marduk… Cyrus » — politique religieuse !). 1QIsa (rouleau : TEXTE avant — antériorité prouvée !). Décret (Esd 1:1-4, P105 !). 42 360 (Esd 2:64 : dénombrement — « SANS rançon » !). Lydie (547 : Crésus — « nations » !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Euphrate (le GUÉ : 44:27 !). Babylone (les PORTES : « airain » !). « EST » (Perse : Anshan !). Jérusalem (REBÂTIE : 44:28 !). « Nations » (Lydie 547, Babylone 539 !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>732 − 539 ≈ 193 ans : « 2 SIÈCLES » ! « 11/12 oct » (539 : nuit datée !). 1QIsa (IIe s. av. : copie — l'ORIGINAL : VIIIe s. — antériorité !). Cylindre (1879 : corroboration profane !). 42 360 (Esd 2:64 : CHIFFRE !).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Libre arbitre : mécanisme renvoyé à w24 (prescience sans contrainte). « Grand Cyrus » : renvoi nominal. 2 Chroniques 36:22-23 : P104 = 20-21 (22-23 : couvert par P105). « Agradatès » (Strabon) : tradition profane NON retenue.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NOM : Cyrus</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NUIT : 11/12 oct</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décret : CHARGÉ</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour : 42 360</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Temple</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">515</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Grand Cyrus</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200001102">Cyrus — Insight (siècle et demi, berger, Rm 4:17)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200001102</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/202026082">Prophétie écrite deux siècles à l'avance (Euphrate, Esd 1, 2020)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/202026082</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/45">Ésaïe 45 — Bible d'étude, notes (oint, portes, nom)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/45</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/44">Ésaïe 44 — Bible d'étude, notes (Berger, rebâtie, fondé)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/44</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche J001 — Cyrus nommé — berger, oint, et le Grand Cyrus</span><span>Catégorie I–J</span></div></div>
+</article>
+<article class="fiche" id="J002">
+<div class="visuel"><img src="images/prophe_J002_josias.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE J002 · CATÉGORIE I–J</div>
+<h3>Josias nommé — l'autel accusé, la sépulture épargnée</h3>
+<div class="ref">1 Rois 12:26-33 ; 13:1-6, 24 ; 2 Rois 22:1 ; 23:15-18, 29 ; 2 Chroniques 34:3</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (~930 → 622 : 300 ans)</span>
+<span class="badge">Système 930/722/640/609</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche J002 · 0:29</div><audio controls preload="none" src="audio/fiche_J02_josias.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_J02_josias.mp3 · 0:29 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>1 Rois 12:26-33 ; 13:1-6, 24 ; 2 Rois 22:1 ; 23:15-18, 29 ; 2 Chroniques 34:3</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (~930 → 622 : 300 ans)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 930/722/640/609</td></tr>
+<tr><td class="d">Registre</td><td>Registre : 1 Rois — P077 (13:2-5) ; 2 Rois 23 sans entrée (C8)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Un homme de Dieu arriva de JUDA à BÉTHEL — Jéroboam à l'autel, ENCENS. » (1R 13:1 — ANONYME ! roi-prêtre !)</li>
+<li>« AUTEL, AUTEL : un FILS à la maison de DAVID — son NOM : JOSIAS — IMMOLERA les prêtres — OSSEMENTS brûlés. » (13:2 — Yoshiyyah : « Jéhovah SOUTIENT » !)</li>
+<li>« SIGNE : l'autel se FENDRA, la GRAISSE se répandra. » (13:3 — mophèt !)</li>
+<li>« La MAIN du roi… SÉCHÉE — l'autel se FENDIT — la main GUÉRIE. » (13:4-6 — tiyabash !)</li>
+<li>« Béthel : autel DÉMOLI, BRÛLÉ, POUSSIÈRE — OSSEMENTS des sépulcres BRÛLÉS. » (2R 23:15-16 — C8 !)</li>
+<li>« QUELLE stèle ? — l'homme de Dieu… — la SÉPULTURE ÉPARGNÉE. » (23:17-18 — C8 ! respect !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>SCHISME, ~930 (Jéroboam : 1R 12 ! — « VEAUX » : Dan + Béthel ! — « FÊTE », 12:32 ! — « prêtres… PEUPLE », 12:31 !). « Homme de Dieu » (ANONYME — « de JUDA » !). « Jéroboam… ENCENS » (roi-PRÊTRE !). « BÉTHEL » (beth-el : « maison de Dieu » — « BETH-AVEN », Os 4:15 : « maison de MAL » !). « Veau… ASSYRIE » (Os 10:5-6 : emporté ! — « autel TOUJOURS LÀ » : debout 300 ans !). « 18e ANNÉE » (purge « jusqu'aux villes de SAMARIE » — absolu non repris, voir Limites). « 8 ANS… 31 ANS » (640-609 : 2R 22:1 — « Yedida » !). « LIVRE » (622 : 2R 22:8 — « TROUVÉ » ! — « pas de son VIVANT », 22:20 !). « Meguiddo » (609 : 2R 23:29 — C8 ! Néko — voir I009 !). « LION » (13:24 : arièh — « DÉSOBÉI » — NON développé, voir Limites).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Mizbèah, mizbèah » (AUTEL, AUTEL : l'OBJET accusé !). « Hinneh » (VOICI !). « Bèn… David » (FILS… DAVID !). « YOSHIYYAH » (Jéhovah SOUTIENT !). « Zabah » (IMMOLERA : sacrifiera !). « Atsamot » (OSSEMENTS !). « Mophèt » (SIGNE : 13:3 !). « Yiqqara » (FENDU !). « Dèshèn » (GRAISSE : répandue !). « Yad » (MAIN : 13:4 !). « Tiyabash » (SÉCHÉE : paralysée !). « Arièh » (LION : 13:24 !). « Nathats » (DÉMOLI : 23:15 !). « Saraph » (BRÛLÉ !). « Aphar » (POUSSIÈRE !). « Tsiyyun » (STÈLE : 23:17 !). « Malat » (ÉPARGNÉE : 23:18 !).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah : « 300 ANS » (« prophétie VIEILLE de 300 ans » ! — « 300 ans PLUS TÔT » ! — « PLUS de 300 ans » !). « S'est RÉALISÉE ENTIÈREMENT » (1R 13 + 2R 23 + Am 3:14 !). « L'a BEL ET BIEN fait » (fendu l'autel !). « Courage… FOI » (combat contre le faux culte !). « Humilité » (faveur !). « ÉPARGNA » (23:18 : respect du prophète !). « Os… prêtres de BAAL » (23:4-20 !).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~930 av. n. è.</td><td>Béthel : le NOM (schisme, veaux)</td></tr>
+<tr><td class="d">930-722 av. n. è.</td><td>Royaume Nord : l'autel debout</td></tr>
+<tr><td class="d">722 av. n. è.</td><td>Samarie : chute (Assyrie)</td></tr>
+<tr><td class="d">640 av. n. è.</td><td>Josias : 8 ans (31 ans)</td></tr>
+<tr><td class="d">628 av. n. è.</td><td>12e année : réforme (2Ch 34:3)</td></tr>
+<tr><td class="d">622 av. n. è.</td><td>18e année : LIVRE + Béthel (os, poussière)</td></tr>
+<tr><td class="d">609 av. n. è.</td><td>Meguiddo : mort (Néko — voir I009)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>930 (schisme : Jéroboam !). 722 (Samarie : Assyrie !). 640-609 (31 ans : 2R 22:1 !). 628 (12e année : 2Ch 34:3 !). 622 (18e année : LIVRE + purge !). « Veau emporté » (Os 10 : Assyrie !). « Autel toujours là » (300 ans DEBOUT !). Néko (609 : Meguiddo !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Béthel (FRONTIÈRE — ~12 km N de Jérusalem !). Dan (veau NORD !). Samarie (villes : purge !). « Sépulcres… MONTAGNE » (23:16 !). Meguiddo (mort — voir I009 !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>930 − 622 ≈ 308 ans : « 300 » ! « PLUS de 300 » (trois publications !). « 350-360 » (comptes NON retenus — profanes, voir Limites). « Nom + acte + lieu » : TROIS précisions ! « Signe IMMÉDIAT » (autel fendu : VÉRIFICATION !).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>2 Rois 23 sans entrée (C8). « 642 » (absolu Insight) : NON repris — « 18e année » seule. « 350-360 » : comptes profanes non retenus. Lion (13:24) : épisode non développé. Amos 3:14 : cité par Insight, sans P.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NOM : Josias</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">930</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Samarie</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">8 ans</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">640</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">12e : réforme</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">628</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">18e : BÉTHEL !</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">622</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Meguiddo</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1102025936">Il a ramené le peuple à Jéhovah (300 ans, ossements, courage)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1102025936</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200000682">Béthel — Insight (veau emporté, autel là, 18e année)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200000682</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/13">1 Rois 13 — Bible d'étude, notes<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/11/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/23">2 Rois 23 — Bible d'étude, notes (Béthel, os, sépulture)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/12/23</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche J002 — Josias nommé — l'autel accusé, la sépulture épargnée</span><span>Catégorie I–J</span></div></div>
+</article>
+<article class="fiche" id="J003">
+<div class="visuel"><img src="images/prophe_J003_bethlehem.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE J003 · CATÉGORIE I–J</div>
+<h3>Bethléhem Éphrata — petite, et les origines éternelles</h3>
+<div class="ref">Michée 5:1-3 ; Matthieu 2:1-6 ; Luc 2:1-7, 11 ; Jean 7:42 ; 1 Samuel 16:1 ; Genèse 35:19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie (~750 → 2 av. n. è. : 700 ans)</span>
+<span class="badge">Système 750/2 · David</span>
+<span class="badge">4 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche J003 · 0:30</div><audio controls preload="none" src="audio/fiche_J03_bethleem.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_J03_bethleem.mp3 · 0:30 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Michée 5:1-3 ; Matthieu 2:1-6 ; Luc 2:1-7, 11 ; Jean 7:42 ; 1 Samuel 16:1 ; Genèse 35:19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie (~750 → 2 av. n. è. : 700 ans)</td></tr>
+<tr><td class="d">Chronologie</td><td>Système 750/2 · David</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Michée — P457 (5:2), P585 (5:2), P589 (5:2) ; Mt 2, Lc 2, Jn 7:42 sans entrée (C8)</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« SIÈGE… VERGE sur la JOUE du JUGE d'Israël. » (Mi 5:1 — tsur ! shophet ! — humilié !)</li>
+<li>« Bethléhem EPHRATA — PETITE entre les MILLIERS — de toi SORTIRA le DOMINATEUR — POUR MOI — ORIGINES d'ANCIENNETÉ, jours ÉTERNELS. » (5:2 — tsa'ir ! moshel ! miqedem ! olam !)</li>
+<li>« Il les LIVRERA jusqu'à ce qu'ENFANTE celle qui doit enfanter — le RESTE REVIENDRA. » (5:3 — yoledèt ! shear ! — Is 7:14 !)</li>
+<li>« Hérode… MAGES d'Orient… scribes : OÙ le Christ ? — Bethléhem — PAS LA MOINDRE — CONDUCTEUR qui PAÎTRA. » (Mt 2:1-6 — C8 ! hègoumenos ! poimanei !)</li>
+<li>« RECENSEMENT d'Auguste — Quirinius — MONTA de Nazareth : ville de DAVID — CRÈCHE. » (Lc 2:1-7 — C8 ! apographè ! phatnè !)</li>
+<li>« L'ÉCRITURE dit : de la descendance de DAVID, de Bethléhem. » (Jn 7:42 — C8 ! la foule SAIT !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Michée, ~750 (Moresheth ! — contemporain d'Ésaïe ! — « 700 ANS avant » !). « SIÈGE » (5:1 : tsur — Sancherib, 701 !). « JUGE… JOUE » (5:1 : shophet — HUMILIÉ !). « 2 BETHLÉHEM » (Zabulon : Jos 19:15 ! — EPHRATA PRÉCISE !). « EPHRATA » (ephrathah : « FÉCONDITÉ » ! — Gn 35:16-19 : RACHEL ! — « Ephrath… Bethléhem » !). « PETITE » (tsa'ir ! — « MILLIERS » : alphè — CLANS !). « POUR MOI » (li : pour DIEU !). « ORIGINES » (motsaot : SORTIES ! — « ANCIENNETÉ » : miqedem ! — « ÉTERNELS » : mime olam — « temps INDÉFINIS » ! — Jn 1:1 ! 17:5 ! Col 1:15 ! — « au ciel » : renvoi nominal !). « ENFANTERA » (5:3 : yoledèt — Is 7:14 ! — « RESTE » : shear !). Hérode (Mt 2 : « GRAND », 37-4 ! — « TROUBLÉ » !). « MAGES » (magoi, 2:1 — « ORIENT » !). « Scribes » (2:4 : « OÙ… CHRIST » !). « PAS LA MOINDRE » (2:6 : INVERSION ! — « CONDUCTEUR » : hègoumenos ! — « PAÎTRA » : poimanei — BERGER !). « RECENSEMENT » (apographè, Lc 2:1 — « AUGUSTE » ! — « Quirinius », 2:2 : « PREMIER » — RENVOYÉE, voir Limites). « MONTA » (2:4 : anabainô — Nazareth → Bethléhem : ~150 km !). « Ville de DAVID » (2:4, 2:11 !). « CRÈCHE » (phatnè, 2:7 !). « Foule CONNAÎT » (Jn 7:42 : « l'Écriture DIT » !). David (1S 16:1 ! 17:12 : « ÉPHRATIEN » — « 8e fils » !). Ruth (Moab : « CHAMPS… Boaz » — Mt 1:5 : « Obed… Jessé » !). « Maison du PAIN » (beth-lehem — « pain de VIE », Jn 6:35 : NON fait — voir Limites).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Tsur » (SIÈGE : 5:1 !). « Shophet » (JUGE : frappé !). « Beth-lehem » (MAISON du PAIN !). « Ephrathah » (FÉCONDITÉ : précise !). « Tsa'ir » (PETITE !). « Alphè » (MILLIERS : clans !). « Yatsa » (SORTIRA !). « Moshel » (DOMINATEUR !). « Li » (POUR MOI : Dieu !). « Motsaot » (ORIGINES : sorties !). « Miqedem » (ANCIENNETÉ !). « Olam » (INDÉFINIS : éternels !). « Shear » (RESTE : 5:3 !). « Magoi » (MAGES !). « Hègoumenos » (CONDUCTEUR : 2:6 !). « Poimainô » (PAÎTRA : berger !). « Apographè » (RECENSEMENT : enregistrement !). « Anabainô » (MONTA : ~150 km !). « Phatnè » (CRÈCHE !).</p>
+<h4>5 · Interprétation</h4>
+<p>La compréhension des Témoins de Jéhovah : « 700 ANS » (750 → 2 !). « LAQUELLE » (Éphrata : celle de DAVID !). « PETITE » (contraste — « pas la moindre » : INVERSION !). « ORIGINES » (ciel avant : renvoi nominal — Jn 17:5 !). « Scribes SAVAIENT » (Mt 2:5 : réponse immédiate !). « Foule SAVAIT » (Jn 7:42 !). « Recensement » (Dieu MEUT Auguste : « TOUTE » la terre !). « Quirinius » : question renvoyée (voir Limites). « Pain » (beth-lehem / Jn 6:35 : NON fait — voir Limites).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Rachel (Gn 35)</td><td>Ephrath : « Bethléhem » (tombeau)</td></tr>
+<tr><td class="d">Ruth (Moab)</td><td>Champs : Boaz — Obed, Jessé (Mt 1:5)</td></tr>
+<tr><td class="d">~1070 av. n. è.</td><td>David : oint, 8e fils (1S 16)</td></tr>
+<tr><td class="d">~750 av. n. è.</td><td>Michée : le NOM (petite, origines)</td></tr>
+<tr><td class="d">2 av. n. è.</td><td>Recensement : montée, crèche (Lc 2)</td></tr>
+<tr><td class="d">Hérode (Mt 2)</td><td>Scribes : « Bethléhem » — pas la moindre</td></tr>
+<tr><td class="d">~30 de n. è.</td><td>Foule : « l'Écriture dit » (Jn 7:42)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>~750 (Michée : Moresheth !). 37-4 (Hérode le Grand !). Auguste (recensement : « toute » !). Quirinius (Lc 2:2 : « premier » — RENVOYÉE !). David (~1070 : onction, 1S 16 !). Mt 1:5 (Ruth → Obed → Jessé !). Jos 19:15 (Bethléhem de Zabulon !).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« 9 km » (SUD de Jérusalem !). « EPHRATA » (district : précise !). « Nazareth → Bethléhem » (~150 km : MONTA !). « Champs » (Ruth ! bergers ! Lc 2:8 !). « 2 Bethléhem » (Zabulon : Jos 19:15 !).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>750 − 2 ≈ 748 ans : « 700 » ! « 9 km » : DISTANCE (Jérusalem !). « ~150 km » : MONTÉE (Nazareth !). Olam : INDÉFINI (temps !). Apographè : ENREGISTREMENT (recensement !). Alphè : CLAN, millier (tribu !).</p>
+<h4>10 · Ce que cette fiche ne dit pas</h4>
+<p>Matthieu 2, Luc 2, Jean 7:42 sans entrée (C8). Quirinius (Lc 2:2) : question renvoyée aux publications (dates profanes). « Pain de vie » (Jn 6:35) : rapprochement NON fait par les publications — pas de concordisme. 1S 16, Ruth, Gn 35 : cross-refs sans P.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ephrath</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Rachel</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Boaz : Obed</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ruth</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">David : oint</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1070</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NOM : Bethléhem</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">750</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Crèche : montée</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2 av.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Scribes : sait</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Hérode</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Foule : sait</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/33/5">Michée 5 — Bible d'étude, notes (Éphrata, origines, reste)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/33/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/2">Matthieu 2 — Bible d'étude, notes (Hérode, scribes, Bethléhem)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/40/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/42/2">Luc 2 — Bible d'étude, notes (recensement, montée, crèche)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/42/2</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112">Prophéties — tableau des accomplissements<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101965112</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche J003 — Bethléhem Éphrata — petite, et les origines éternelles</span><span>Catégorie I–J</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie I–J</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>I005 — La bête de la mer — composite, couronnée, blessée, adorée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tête 1</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Égypte</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tête 6 : « est »</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Rome</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Coup MORTEL</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914-18</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Guérie : image</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1920</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vaincre (F016)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">42 mois</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Adorent »</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+</svg>
+<h4>I006 — La bête de la terre et 666 — l'agneau qui parle dragon</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Coup (I005)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914-18</text>
+<circle cx="225.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="225.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">IMAGE : SDN</text>
+<text x="225.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1919-20</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ONU : renvoi</text>
+<text x="390.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1945</text>
+<circle cx="555.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="555.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Marque »</text>
+<text x="555.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Parle »</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>I007 — Babylone la Grande — le mystère, les eaux, la meule</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Mère »</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Babel</text>
+<circle cx="154.3" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="154.3" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugée : Jr 51</text>
+<text x="154.3" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">AT</text>
+<circle cx="248.6" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="248.6" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mystère</text>
+<text x="248.6" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">96</text>
+<circle cx="342.9" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="342.9" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Filles</text>
+<text x="342.9" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Siècles</text>
+<circle cx="437.1" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="437.1" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Grand Cyrus</text>
+<text x="437.1" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919</text>
+<circle cx="531.4" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="531.4" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« SORTEZ »</text>
+<text x="531.4" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+<circle cx="625.7" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="625.7" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« 1 heure »</text>
+<text x="625.7" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Meule</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">« JAMAIS »</text>
+</svg>
+<h4>I008 — La moisson et la vendange — mûre, pressoir, 1 600 stades</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Faucille : 3:13</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Joël</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pressoir : SEUL</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Is 63</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mt 13 : FIN</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">33</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« MAINTENANT »</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1914 +</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Mûre »</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">En cours</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« 1 600 »</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>I009 — Les bols et Harmaguédon — dernières, Euphrate, grenouilles, lieu</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Plaies : types</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Exode</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Cyrus : Euphrate</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Débora : type</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Meguiddo</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision : 7</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">96</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Application : renvoi</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919 +</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« C'EST FAIT »</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+</svg>
+<h4>I010 — Le Roi guerrier — Alléluia, noces, ciel ouvert, lac</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Blanc (I002)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1914</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jugée (I007)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Babylone</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« ALLÉLUIA »</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« NOCES »</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« OUVERT »</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« LAC »</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">À venir</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Voir F017</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1 000</text>
+</svg>
+<h4>J001 — Cyrus nommé — berger, oint, et le Grand Cyrus</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NOM : Cyrus</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">732</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NUIT : 11/12 oct</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Décret : CHARGÉ</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour : 42 360</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Temple</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">515</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Grand Cyrus</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1919</text>
+</svg>
+<h4>J002 — Josias nommé — l'autel accusé, la sépulture épargnée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NOM : Josias</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">930</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Samarie</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">722</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">8 ans</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">640</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">12e : réforme</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">628</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">18e : BÉTHEL !</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">622</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Meguiddo</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">609</text>
+</svg>
+<h4>J003 — Bethléhem Éphrata — petite, et les origines éternelles</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ephrath</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Rachel</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Boaz : Obed</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ruth</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">David : oint</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1070</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">NOM : Bethléhem</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">750</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Crèche : montée</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2 av.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Scribes : sait</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Hérode</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Foule : sait</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">30</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 7.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-24 · phase 7, vague
+11 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

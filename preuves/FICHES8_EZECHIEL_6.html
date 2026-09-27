@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES EZ — Ézéchiel (6) — la marmite rouillée, le deuil interdit, les nations jugées</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_EZ331_marmite.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES EZ</h1>
+<h2>Ézéchiel (6) — la marmite rouillée, le deuil interdit, les nations jugées</h2>
+<p class="intro">Le jour même où le siège commence, la marmite rouillée bout (EZ331), et le prophète perd les délices de ses yeux sans droit au deuil : signe du temple perdu (EZ332). Puis le regard pivote vers les voisins moqueurs : Ammon livrée aux fils de l'Orient (EZ333), Moab et Séir ouverts (EZ334), Édom vengée par Israël (EZ335), et les Philistins retranchés jusqu'au dernier du littoral (EZ336).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#EZ331">EZ331</a>
+<a href="#EZ332">EZ332</a>
+<a href="#EZ333">EZ333</a>
+<a href="#EZ334">EZ334</a>
+<a href="#EZ335">EZ335</a>
+<a href="#EZ336">EZ336</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#EZ331"><img src="images/prophe_EZ331_marmite.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ331</div>
+<h3><a href="#EZ331">« La marmite rouillée » : le siège daté au jour près</a></h3>
+<div class="meta">Accomplie · 🎧 0:26</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ332"><img src="images/prophe_EZ332_veuve.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ332</div>
+<h3><a href="#EZ332">« Les délices de tes yeux » : le deuil interdit comme signe</a></h3>
+<div class="meta">Accomplie · 🎧 0:29</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ333"><img src="images/prophe_EZ333_ammon.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ333</div>
+<h3><a href="#EZ333">« Rabba, pâturage de chameaux » : Ammon livrée à l'Orient</a></h3>
+<div class="meta">Accomplie · 🎧 0:22</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ334"><img src="images/prophe_EZ334_moab.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ334</div>
+<h3><a href="#EZ334">« Comme toutes les nations » : Moab et Séir ouverts</a></h3>
+<div class="meta">Accomplie · 🎧 0:26</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ335"><img src="images/prophe_EZ335_edom.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ335</div>
+<h3><a href="#EZ335">« Ils connaîtront ma vengeance » : Édom par la main d'Israël</a></h3>
+<div class="meta">Accomplie · 🎧 0:27</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ336"><img src="images/prophe_EZ336_philistins.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ336</div>
+<h3><a href="#EZ336">« Le reste du littoral » : les Philistins retranchés</a></h3>
+<div class="meta">Accomplie · 🎧 0:25</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="EZ331">
+<div class="visuel"><img src="images/prophe_EZ331_marmite.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ331 · CATÉGORIE EZ</div>
+<h3>« La marmite rouillée » : le siège daté au jour près</h3>
+<div class="ref">Ézéchiel 24:1-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">marmite rouillée siège datée (neuvième → année → dixième → mois → dixième → jour → parole → écris → date → jour → roi → Babylone → Jérusalem → jour → propose → parabole → maison → rebelle → place → marmite → verse → eau → rassemble → morceaux → bon → morceau → cuisse → épaule → remplis → os → meilleur → bétail → bois → bouillir → bouillons → os → cuisent → malheur → ville → sang → marmite → rouille → sort → tire → morceau → morceau → sort → sang → milieu → roc → nu → versé → terre → poussière → fureur → venger → sang → roc → nu → couvert → malheur → ville → sang → bûcher → entasse → bois → allume → feu → consume → viande → assaisonne → os → brûlés → place → vide → braises → chauffe → bronze → rougisse → souillure → fonde → rouille → consume → lassé → efforts → rouille → sort → feu → rouille → souillure → infamie → purifiée → purifiée → souillure → purifiée → assouvi → fureur → parlé → viendra → ferai → reculerai → pitié → repentirai → voies → actions → jugera)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ331 · 0:26</div><audio controls preload="none" src="audio/fiche_EZ331_marmite.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ331_marmite.mp3 · 0:26 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 24:1-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>marmite rouillée siège datée (neuvième → année → dixième → mois → dixième → jour → parole → écris → date → jour → roi → Babylone → Jérusalem → jour → propose → parabole → maison → rebelle → place → marmite → verse → eau → rassemble → morceaux → bon → morceau → cuisse → épaule → remplis → os → meilleur → bétail → bois → bouillir → bouillons → os → cuisent → malheur → ville → sang → marmite → rouille → sort → tire → morceau → morceau → sort → sang → milieu → roc → nu → versé → terre → poussière → fureur → venger → sang → roc → nu → couvert → malheur → ville → sang → bûcher → entasse → bois → allume → feu → consume → viande → assaisonne → os → brûlés → place → vide → braises → chauffe → bronze → rougisse → souillure → fonde → rouille → consume → lassé → efforts → rouille → sort → feu → rouille → souillure → infamie → purifiée → purifiée → souillure → purifiée → assouvi → fureur → parlé → viendra → ferai → reculerai → pitié → repentirai → voies → actions → jugera)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P331 (24:1-14 : marmite rouillée, ville donnée, mousse séchée) ; 2R 25:1-11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« NEUVIÈME… ANNÉE… DIXIÈME… MOIS… DIXIÈME… JOUR… PAROLE… ÉCRIS… DATE… JOUR… ROI… BABYLONE… JÉRUSALEM… JOUR… DIX… TÉBETH… AN… NEUF… JANVIER… CINQ-CENT-QUATRE-VINGT-HUIT… PROCÈS-VERBAL… DATÉ… GREFFE… CÉLESTE… ÉCRIS… KETOB… ENCRE… PROPHÉTIQUE… INDÉLÉBILE… JOUR… MÊME… BÉÉTSÉM… PONCTUALITÉ… DIVINE… ABSOLUE… SIÈGE… OUVERT… JÉRUSALEM… MURAILLE… FERMÉE… HISTOIRE… BASCULE. » (24:1-2 — bascule !)</li>
+<li>« PROPOSE… PARABOLE… MAISON… REBELLE… PLACE… MARMITE… VERSE… EAU… RASSEMBLE… MORCEAUX… CUISSE… ÉPAULE… OS… BÉTAIL… BOIS… BOUILLIR… BOUILLONS… SIR… CHAUDRON… BRONZE… CUISINE… GUERRE… RECETTE… JUGEMENT… MORCEAUX… CHOISIS… NOTABLES… FLEUR… NATION… CUISSE… SHOQ… ÉPAULE… KATÉPH… MEILLEURS… OS… ÉLITE… BOUILLON… SIÈGE… FEU… GUERRE… RATAH… BOUILLONNE… GROS… REMOUS… FAMINE… ÉPIDÉMIE… INGRÉDIENTS… AMERS. » (24:3-5 — amers !)</li>
+<li>« MALHEUR… VILLE… SANG… MARMITE… ROUILLE… SORT… TIRE… MORCEAU… SORT… HELAH… ROUILLE… VERT-DE-GRIS… OXYDE… CUIVRE… PÉCHÉ… INCRUSTÉ… VILLE… SANG… DAMIM… MEURTRES… TOPHET… URIE… SORT… GORAL… INTERDIT… AUCUN… ÉPARGNÉ… LOTERIE… GRÂCE… ANNULÉE… MORCEAU… MORCEAU… DÉPORTATION… VAGUES… SUCCESSIVES… CINQ-CENT-QUATRE-VINGT-DIX-SEPT… CINQ-CENT-QUATRE-VINGT-SEPT… CINQ-CENT-QUATRE-VINGT-DEUX… EXIL… ÉGRENÉ. » (24:6 — égrené !)</li>
+<li>« SANG… MILIEU… ROC… NU… TERRE… POUSSIÈRE… FUREUR… VENGER… COUVERT… TSAHIYAH… SELA… ROCHER… NU… LÉVITIQUE… DIX-SEPT… TREIZE… SANG… COUVERT… POUSSIÈRE… CHASSE… GIBIER… JÉRUSALEM… EXPOSE… CRIMES… PLACE… PUBLIQUE… SANS… HONTE… SANS… COUVERTURE… DIEU… EXPOSE… VENGEANCE… MÊME… ROCHER… TRIBUNAL… CIEL… OUVERT… TÉMOINS… NATIONS… VOISINES… SCANDALE… PUBLIC. » (24:7-8 — public !)</li>
+<li>« MALHEUR… VILLE… SANG… BÛCHER… BOIS… FEU… VIANDE… ASSAISONNE… OS… BRÛLÉS… VIDE… BRAISES… CHAUFFE… BRONZE… ROUGISSE… SOUILLURE… FONDE… ROUILLE… CONSUME… MADURAH… BÛCHER… GÉANT… TAVLIN… ÉPICES… ASSAISONNEMENT… IRONIE… MACABRE… CUISINE… SOIGNÉE… VIDE… RÉQAH… BRAISES… GEHALIM… MÉTAL… ROUGE… BLANC… TEMPÉRATURE… FUSION… SOUILLURE… TUMAH… FONDUE… ROUILLE… CONSUMÉE… PURIFICATION… THERMIQUE… TOTALE… RADICALE. » (24:9-11 — radicale !)</li>
+<li>« LASSÉ… EFFORTS… ROUILLE… FEU… SOUILLURE… INFAMIE… PURIFIÉE… ASSOUVI… FUREUR… PARLÉ… VIENDRA… FERAI… RECULERAI… Pitié… REPENTIRAI… VOIES… ACTIONS… JUGERA… NILÉH… LASSÉE… FATIGUÉE… EFFORTS… DIVINS… ÉPUISÉS… SIÈCLES… PATIENCE… CONSOMMÉS… TUMAH… ZIMMAH… SOUILLURE… INFAMIE… DOUBLE… DIAGNOSTIC… TAHAR… PURIFIER… ÉCHEC… CONSTATÉ… HÉMAH… ASSOUVIE… FIN… HISTOIRE… II… ROIS… VINGT-CINQ… INCENDIE… AOÛT… CINQ-CENT-QUATRE-VINGT-SEPT… PAROLE… TENUE… MOT… MOT. » (24:12-14 — mot !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La DATE-GREFFE (les VAYHI (les FUT (les BASHSHANAH (les ANNÉE (les HATTESHIÏT (les NEUVIÈME (les BAHODÉSH (les MOIS (les HAASIRI (les DIXIÈME (les BEASOR (les DIXIÈME (les LAHODÉSH (les MOIS (les HAYAH (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les KETOB (les ÉCRIS (les LEKHA (les TOI (les ET (les SHÉM (les NOM (les HAYYOM (les JOUR (les ET (les ÉTSÉM (les OS (les HAYYOM (les JOUR (les HAZZÉH (les CE (les SAMAKH (les JETÉ (les MÉLÉKH (les ROI (les BABÉL (les BABYLONE (les EL (les YERUSHALAYIM (les JÉRUSALEM (les BEÉTSÉM (les MÊME (les HAYYOM (les JOUR (les HAZZÉH (les CE (les DATE (les ENCRE (les JOUR-MÊME — les GREFFÉ !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le CHAUDRON-SIÈGE (les UMESHOL (les PROPOSE (les EL (les BÉYT (les MAISON (les HAMMERI (les REBELLE (les MASHAL (les PARABOLE (les VEAMARTA (les DIRAS (les ALÉHEM (les EUX (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les SHAPHOT (les PLACE (les HASSIR (les MARMITE (les SHAPHOT (les PLACE (les VEGAM (les AUSSI (les YETSOQ (les VERSE (les BAH (les ELLE (les MAYIM (les EAU (les ÉSOPH (les RASSEMBLE (les NETAHÉHA (les MORCEAUX (les ÉLÉHA (les ELLE (les KOL (les TOUT (les NÉTAH (les MORCEAU (les TOB (les BON (les YARÉKH (les CUISSE (les VEKHATÉPH (les ÉPAULE (les MIBHAR (les MEILLEURS (les ATSAMOT (les OS (les MALLÉ (les REMPLIS (les MIBHAR (les MEILLEUR (les HATSON (les BÉTAIL (les LAQOAH (les PRENDS (les VEGAM (les AUSSI (les DUR (les TAS (les HAATSAMIM (les OS (les TAHTÉHA (les DESSOUS (les RATHEHA (les BOUILLIR (les RETAHÉHA (les BOUILLONS (les GAM (les AUSSI (les BASHSHELU (les CUISENT (les ATSAMÉHA (les OS (les BETOKHAH (les ELLE (les CHAUDRON (les MORCEAUX (les BOUILLONS — les SIÈGE !)</p>
+<h4>5 · Interprétation</h4>
+<p>La ROUILLE-FEUE (les MALHEUR (les HOY (les VILLE (les DAMIM (les SANGS (les MARMITE (les HELAH (les ROUILLE (les SORT (les LO (les NON (les MORCEAU (les MORCEAU (les SORT (les GORAL (les NON (les SANG (les ROC (les TSAHIYAH (les NU (les TERRE (les POUSSIÈRE (les NON (les FUREUR (les VENGEANCE (les SANG (les ROC (les COUVERT (les NON (les BÛCHER (les MADURAH (les GRAND (les BOIS (les FEU (les VIANDE (les ÉPICES (les TAVLIN (les OS (les BRÛLÉS (les VIDE (les RÉQAH (les BRAISES (les GEHALIM (les BRONZE (les NEHOSHÉT (les ROUGE (les SOUILLURE (les FONDUE (les ROUILLE (les CONSUMÉE (les LASSÉE (les NILÉH (les EFFORTS (les ROUILLE (les FEU (les INFAMIE (les ZIMMAH (les PURIFIÉE (les NON (les FUREUR (les ASSOUVIE (les PARLÉ (les FERAI (les NON (les Pitié (les NON (les REPENTIR (les VOIES (les JUGÉE (les JANVIER (les CINQ-CENT-QUATRE-VINGT-HUIT (les SIÈGE (les AOÛT (les CINQ-CENT-QUATRE-VINGT-SEPT (les INCENDIE (les DIX-HUIT (les MOIS (les BOUILLON (les ROUILLE — les FEU !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">24:1-2</td><td>BASCULE (TÉBETH !)</td></tr>
+<tr><td class="d">24:3-5</td><td>AMERS (SIR !)</td></tr>
+<tr><td class="d">24:6</td><td>ÉGRENÉ (GORAL !)</td></tr>
+<tr><td class="d">24:7-8</td><td>PUBLIC (TSAHIYAH !)</td></tr>
+<tr><td class="d">24:9-11</td><td>RADICALE (MADURAH !)</td></tr>
+<tr><td class="d">24:12-14</td><td>MOT (NILÉH !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>10 Tébeth an 9 = 15 janvier 588 (v. 1 ; 2R 25:1, Jr 39:1, 52:4 — triple synchronisme !) : KETOB, ordre d'écrire la date — BEÉTSÉM HAYYOM, ce jour même, le siège commence à 1 200 km, le prophète le date en direct ; la recette (vv. 3-5, SIR) : morceaux choisis (notables, cf. Ps 87), cuisse SHOQ, épaule KATÉPH, os d'élite, bouillons RATAH (siège, famine, peste) ; HOY à la ville DAMIM (v. 6), rouille HELAH in détachable, GORAL interdit (vagues 597/587/582, Jr 52:28-30) ; sang sur TSAHIYAH (vv. 7-8, violation de Lv 17:13 — crimes exposés, vengeance exposée) ; MADURAH géant, épices TAVLIN (ironie), os brûlés, marmite vide sur GEHALIM, bronze rouge, TUMAH fondue (vv. 9-11) ; NILÉH : efforts divins lassés, ZIMMAH constatée, HÉMAH assouvie, triple NON (pas de recul, pitié, repentir, v. 14) ; août 587 : 2R 25:9 — la marmite vide passe au feu.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Tel-Abib→Jérusalem : l'oracle date en direct un siège lointain (v. 1-2) — la preuve de la transmission instantanée ; le SIR (v. 3) : chaudron de bronze, ustensile du temple (Ex 27:3) détourné en image du jugement — la cuisine sacrée devient cuisine de guerre ; le TSAHIYAH (v. 7) : rocher nu — les dalles de la ville où le sang reste visible ; la marmite vide sur braises (v. 11) : la ville vidée de ses habitants (déportations), puis chauffée à blanc (incendie).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>2 Rois 25:1-11 + Jérémie 39:1 + 52:4 — le QUADRUPLE PROCÈS-VERBAL (même date, siège, brèche, incendie) ; Michée 3:2-3 (Rbi8 + nwtsty — les chefs « dépècent… comme de la viande dans la marmite ») — le PARALLÈLE du chaudron cannibale ; Psaume 66:10 (nwt — « tu nous as éprouvés… comme on affine l'argent ») — le CREUSET épurateur ; Lévitique 17:13 (sang couvert de poussière) — la LOI violée au verset 7.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>15 JANV. 588 : DATE GREFFÉE (KETOB) → RECETTE : MORCEAUX CHOISIS + BOUILLONS → HOY : ROUILLE + SANG SUR ROC → MADURAH : CUISSON TOTALE → MARMITE VIDE AU ROUGE → AOÛT 587 : INCENDIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Ce jour même » (v. 2) : datation prophétique en direct — la fiche la rapporte comme revendication du texte, corroborée par 2R 25:1/Jr 39:1/Jr 52:4 ; HELAH (v. 6, 11-12) : rouille/vert-de-gris du bronze — image de souillure in détachable, pas analyse métallurgique ; « je ne me repentirai pas » (v. 14) : irrévocabilité du décret de 588 — compatible avec les appels ultérieurs (le siège punition, puis la restauration) — deux temps distingués.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Date greffée ; siège</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">15 janv. 588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bouillons : famine, peste</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Marmite vide au feu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">août 587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/33/3">Bible — Michée 3 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/33/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/33/3">Bible — Michée 3 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/33/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/66">Bible — Psaume 66 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/66</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ331 — « La marmite rouillée » : le siège daté au jour près</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ332">
+<div class="visuel"><img src="images/prophe_EZ332_veuve.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ332 · CATÉGORIE EZ</div>
+<h3>« Les délices de tes yeux » : le deuil interdit comme signe</h3>
+<div class="ref">Ézéchiel 24:15-27</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">femme deuil interdit signe (enlève → coup → délices → yeux → lamenteras → pleureras → larmes → couleront → soupire → silence → deuil → morts → turban → chaussures → voile → moustache → pain → hommes → parlai → peuple → matin → femme → mourut → soir → matin → ordonné → peuple → expliqueras → signifie → fais → parole → dis → maison → Israël → profane → sanctuaire → orgueil → force → délices → yeux → sollicitude → fils → filles → laissés → tomberont → épée → ferez → voilerez → moustache → mangerez → pain → hommes → turbans → têtes → chaussures → pieds → lamenterez → pleurerez → consumerez → fautes → gémirez → signe → ferez → viendra → saurez → jour → enlèverai → force → joie → gloire → délices → yeux → âme → fils → filles → fuyard → viendra → entendre → oreilles → bouche → ouvrira → fuyard → parleras → muet → signe → saurez)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ332 · 0:29</div><audio controls preload="none" src="audio/fiche_EZ332_veuve.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ332_veuve.mp3 · 0:29 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 24:15-27</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>femme deuil interdit signe (enlève → coup → délices → yeux → lamenteras → pleureras → larmes → couleront → soupire → silence → deuil → morts → turban → chaussures → voile → moustache → pain → hommes → parlai → peuple → matin → femme → mourut → soir → matin → ordonné → peuple → expliqueras → signifie → fais → parole → dis → maison → Israël → profane → sanctuaire → orgueil → force → délices → yeux → sollicitude → fils → filles → laissés → tomberont → épée → ferez → voilerez → moustache → mangerez → pain → hommes → turbans → têtes → chaussures → pieds → lamenterez → pleurerez → consumerez → fautes → gémirez → signe → ferez → viendra → saurez → jour → enlèverai → force → joie → gloire → délices → yeux → âme → fils → filles → fuyard → viendra → entendre → oreilles → bouche → ouvrira → fuyard → parleras → muet → signe → saurez)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P332 (24:15-27 : mort de sa femme, fugitif) ; Éz 24:24-25 ; 33:21-22 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« ENLÈVE… COUP… DÉLICES… YEUX… LAMENTERAS… PLEURERAS… LARMES… COULERONT… MAGÉPHAH… COUP… UNIQUE… SOUDAIN… MAHMAD… DÉLICES… DÉSIR… ÉPOUSE… ANONYME… NOM… EFFACÉ… HISTOIRE… INTIMITÉ… PROTÉGÉE… DIEU… CONNAÎT… LECTEUR… NON… ORDRE… INHUMAIN… APPARENCE… SIGNE… ABSOLU… PRIX… PROPHÉTIE… CHAIR… PROPHÈTE… BRISÉ… MISSION… ENTIÈRE. » (24:16 — entière !)</li>
+<li>« SOUPIRE… SILENCE… DEUIL… MORTS… TURBAN… CHAUSSURES… VOILE… MOUSTACHE… PAIN… HOMMES… ÉBÈL… RITES… INTERDITS… SEPT… DÉFENSES… DOM… SILENCIEUX… PEÉR… TURBAN… GARDÉ… TÊTE… NUE… REFUSÉE… NAAL… CHAUSSURES… GARDÉES… PIEDS… NUS… REFUSÉS… SAPham… MOUSTACHE… DÉCOUVERTE… HONTE… REFUSÉE… LÉHEM… PAIN… DEUIL… REFUSÉ… JEÛNE… INVERSÉ… NORMALITÉ… SCANDALEUSE… PROTOCOLE… FUNÉRAIRE… VIOLÉ… PUBLIC… CHOQUÉ… QUESTION… FORCÉE. » (24:17 — forcée !)</li>
+<li>« PARLAI… PEUPLE… MATIN… FEMME… MOURUT… SOIR… MATIN… ORDONNÉ… DIBBARTI… SERMON… MATINAL… DERNIER… PETIT-DÉJEUNER… ÉPOUSE… VIVANTE… SOIR… ÉRÉB… CADAVRE… MAISON… NUIT… BLANCHE… PROPHÈTE… VEUF… AUBE… SHAHAR… TURBAN… CHAUSSURES… TRAVAIL… NORMAL… VOISINS… HORRIFIÉS… DEUIL… ABSENT… ABSENCE… PRÉSENCE… SIGNE… HURLANT… SILENCE. » (24:18 — silence !)</li>
+<li>« PEUPLE… EXPLIQUERAS… SIGNIFIE… FAIS… PAROLE… DIS… MAISON… ISRAËL… PROFANE… SANCTUAIRE… ORGUEIL… FORCE… DÉLICES… YEUX… SOLLICITUDE… FILS… FILLES… LAISSÉS… ÉPÉE… QUESTION… UNIQUE… LIVRE… SEULE… FOIS… EXILÉS… INTERROGENT… DIRECT… DIALOGUE… INÉDIT… RÉPONSE… MIROIR… MAHMAD… ÉPOUSE… MAHMAD… TEMPLE… MÊME… MOT… TRANSFERT… TEMPLE… ÉPOUSE… NATIONALE… VEUVAGE… COLLECTIF… ANNONCÉ… FILS… FILLES… ÉPÉE… DEUIL… IMPOSSIBLE… LARMES… TARIES… HORREUR. » (24:19-21 — horreur !)</li>
+<li>« FEREZ… VOILEREZ… MOUSTACHE… MANGEREZ… PAIN… TURBANS… CHAUSSURES… LAMENTEREZ… PLEUREREZ… CONSUMEREZ… FAUTES… GÉMIREZ… SIGNE… FEREZ… VIENDRA… SAUREZ… MIMÉTISME… ORDONNÉ… DEUIL… INTERDIT… COLLECTIF… MAQQIM… CONSUMENT… DÉPÉRISSENT… FAUTES… AVONOT… NAHAM… GÉMISSEZ… ENTRE… VOUS… GROGNEMENTS… SURVIVANTS… TRAUMATISME… NATIONAL… MUTISME… THÉRAPEUTIQUE… IMPOSSIBLE… PLAIE… BÉANTE… HISTOIRE… JUIVE… NEUF… AV… COMMÉMORÉ… ENCORE. » (24:22-24 — encore !)</li>
+<li>« JOUR… ENLÈVERAI… FORCE… JOIE… GLOIRE… DÉLICES… YEUX… ÂME… FUYARD… VIENDRA… ENTENDRE… OREILLES… BOUCHE… OUVRIRA… PARLERAS… MUET… SIGNE… SAUREZ… PALIT… FUYARD… ÉCHAPPÉ… JANVIER… CINQ-CENT-QUATRE-VINGT-SIX… CINQ… MOIS… ROUTE… JÉRUSALEM… TEL-ABIB… NOUVELLE… VILLE… FRAPPÉE… BOUCHE… OUVERTE… ÉZÉCHIEL… TROIS… VINGT-SIX… MUTISME… LEVÉ… PAROLE… LIBÉRÉE… SIGNE… CONFIRMÉ… TRENTE-TROIS… VINGT-ET-UN… BOUCLE… BOUCLÉE… PROPHÉTIE… SCELLÉE. » (24:25-27 — scellée !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le COUP-INTERDIT (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les HINENI (les VOICI (les LOQÉAH (les ENLÈVE (les MIMMÉKHA (les TOI (les ET (les MAHMAD (les DÉLICES (les ÉYNÉKHA (les YEUX (les BEMAGÉPHAH (les COUP (les VELO (les NON (les TISSPOD (les LAMENTERAS (les VELO (les NON (les TIBKÉH (les PLEURERAS (les VELO (les NON (les TABO (les COULERA (les DIMATÉKHA (les LARMES (les COUP (les DÉLICES (les LARMES — les INTERDITES !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le RITE-INVERSÉ (les HÉANÉH (les SOUPIRE (les DOM (les SILENCE (les ÉBÈL (les DEUIL (les MÉTIM (les MORTS (les LO (les NON (les TAASÉH (les FERAS (les PÉÉRKHA (les TURBAN (les HABOSH (les ATTACHE (les ALÉKHA (les TOI (les UNEALÉKHA (les CHAUSSURES (les TASIM (les METS (les BERAGLÉKHA (les PIEDS (les VELO (les NON (les TEATÉH (les VOILE (les AL (les SAPHAM (les MOUSTACHE (les VELÉHEM (les PAIN (les ANASHIM (les HOMMES (les LO (les NON (les TOKHÉL (les MANGERAS (les VAADABBÉR (les PARLAI (les EL (les HAAM (les PEUPLE (les BABBOQÉR (les MATIN (les VATTAMOT (les MOURUT (les ISHTI (les FEMME (les BAÉRÉB (les SOIR (les VAAAS (les FIS (les BABBOQÉR (les MATIN (les KAASHER (les COMME (les TSUVVÉTI (les ORDONNÉ (les MATIN (les SOIR (les MATIN — les ORDONNÉ !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le MIROIR-TEMPLE (les QUESTION (les PEUPLE (les UNIQUE (les LIVRE (les EXPLIQUE (les SIGNIFIE (les FAIS (les RÉPONSE (les PROFANE (les MEHALLÉL (les SANCTUAIRE (les MIQDASHI (les ORGUEIL (les GÉON (les FORCE (les MAHMAD (les DÉLICES (les YEUX (les SOLLICITUDE (les MAHMAL (les FILS (les FILLES (les ÉPÉE (les FEREZ (les VOILE (les NON (les PAIN (les NON (les TURBANS (les CHAUSSURES (les LARMES (les NON (les CONSUMENT (les MAQQIM (les FAUTES (les GÉMISSEZ (les NAHAM (les SIGNE (les MOT (les MÊME (les MAHMAD (les ÉPOUSE (les TEMPLE (les VEUVAGE (les PROPHÈTE (les VEUVAGE (les NATION (les JOUR (les FORCE (les ENLEVÉE (les JOIE (les GLOIRE (les FUYARD (les PALIT (les OREILLES (les BOUCHE (les OUVERTE (les MUET (les NON (les PAROLE (les LIBÉRÉE (les TRENTE-TROIS (les VINGT-ET-UN (les JANVIER (les CINQ-CENT-QUATRE-VINGT-SIX (les MIROIR — les TEMPLE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">24:16</td><td>ENTIÈRE (MAGÉPHAH !)</td></tr>
+<tr><td class="d">24:17</td><td>FORCÉE (PÉÉR !)</td></tr>
+<tr><td class="d">24:18</td><td>SILENCE (ÉRÉB !)</td></tr>
+<tr><td class="d">24:19-21</td><td>HORREUR (MAHMAD !)</td></tr>
+<tr><td class="d">24:22-24</td><td>ENCORE (MAQQIM !)</td></tr>
+<tr><td class="d">24:25-27/33</td><td>SCELLÉE (PALIT !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>588 (siège en cours) : MAGÉPHAH — l'épouse anonyme (nom effacé, intimité protégée) enlevée « par un coup » (v. 16, MAHMAD ÉYNÉKHA) ; sept défenses funéraires (v. 17 : DOM silencieux, PÉÉR gardé, chaussures gardées, SAPHAM découvert, LÉHEM ANASHIM refusé) — protocole inversé ; matin/soir/matin : sermon, mort, obéissance (v. 18) ; L'UNIQUE question directe des exilés du livre (v. 19) — réponse : MEHALLÉL, je profane mon sanctuaire — GÉON UZZEKHEM, MAHMAD ÉYNÉKHEM (même mot qu'épouse !), fils et filles à l'épée (vv. 20-21) ; mimétisme ordonné : pas de voile, pas de pain, turbans et chaussures, MAQQIM dans les fautes, NAHAM mutuel (vv. 22-24, Ézéchiel MOT) ; le jour J : PALIT, fuyard aux oreilles, bouche ouverte, fin du mutisme d'Éz 3:26 (vv. 25-27) ; 8 janvier 586 : Éz 33:21-22 — boucle bouclée ; le 9 Av commémore encore.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Tel-Abib : la maison du prophète — chambre mortuaire sans deuil, voisins horrifiés (v. 18-19) ; Jérusalem : le MIQDASH, MAHMAD national — GÉON (orgueil), MAHMAL (sollicitude) ; la route du PALIT (v. 26) : ~1 200 km en ~5 mois — la nouvelle du veuvage national voyage ; les oreilles (v. 26, OZNÉKHA) : l'ouïe rouvre la bouche (v. 27) — géographie du corps prophétique.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 24:24-25 + 33:21-22 — le DOUBLE PROCÈS-VERBAL (signe prescrit, fuyard entendu, bouche ouverte) ; Lévitique 10:6 (nwt — Aaron interdit de deuil après Nadab et Abihu : « ne découvrez pas vos têtes ») — le PRÉCÉDENT sacerdotal (Ézéchiel est prêtre !) ; Amos 8:10 (nwt — « deuil d'un fils unique », fin amère) — le DEUIL national ; Psaume 39:2,10 (nwt — « je garderai un bâillon… je suis resté muet ») — le MUTISME volontaire.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>588 : MAGÉPHAH (ÉPOUSE ENLEVÉE) → 7 DÉFENSES (RITE INVERSÉ) → MATIN/SOIR/MATIN → QUESTION UNIQUE → MIROIR : MAHMAD = TEMPLE → MIMÉTISME → JANV. 586 : PALIT, BOUCHE OUVERTE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Nom de l'épouse effacé : le texte protège l'intimité — la fiche n'invente rien (ni nom, ni âge, ni cause) ; « je profane mon sanctuaire » (v. 21, MEHALLÉL) : Dieu livre son temple — paradoxe assumé (sainteté bafouée par les siens, puis par les nations) ; deuil interdit vs 9 Av : l'interdit vaut pour le choc (sidération), la commémoration naît ensuite — deux temps distingués ; cause de la mort : non dite (MAGÉPHAH = coup, pas maladie nommée) — silence respecté.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Magéphah ; rite inversé</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mutisme ; veuvage signe</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-586</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Palit ; bouche ouverte</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">8 janv. 586</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/3/10">Bible — Lévitique 10 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/3/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/30/8">Bible — Amos 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/30/8</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/39">Bible — Psaume 39 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/39</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ332 — « Les délices de tes yeux » : le deuil interdit comme signe</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ333">
+<div class="visuel"><img src="images/prophe_EZ333_ammon.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ333 · CATÉGORIE EZ</div>
+<h3>« Rabba, pâturage de chameaux » : Ammon livrée à l'Orient</h3>
+<div class="ref">Ézéchiel 25:1-7</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Ammon Orient livrée moquée (tourne → face → Ammonites → prophétise → dis → Ammonites → écoutez → parole → dit → sanctuaire → profané → terre → Israël → dévastée → maison → Juda → captivité → donne → possession → fils → Orient → campements → demeures → mangeront → fruits → boiront → lait → ferai → Rabba → pâturage → chameaux → pays → Ammonites → gîte → bétail → saurez → battu → mains → frappé → pied → réjoui → mépris → âme → terre → Israël → étendrai → main → livrerai → proie → nations → retrancherai → peuples → périr → pays → détruirai → sauras)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ333 · 0:22</div><audio controls preload="none" src="audio/fiche_EZ333_ammon.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ333_ammon.mp3 · 0:22 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 25:1-7</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Ammon Orient livrée moquée (tourne → face → Ammonites → prophétise → dis → Ammonites → écoutez → parole → dit → sanctuaire → profané → terre → Israël → dévastée → maison → Juda → captivité → donne → possession → fils → Orient → campements → demeures → mangeront → fruits → boiront → lait → ferai → Rabba → pâturage → chameaux → pays → Ammonites → gîte → bétail → saurez → battu → mains → frappé → pied → réjoui → mépris → âme → terre → Israël → étendrai → main → livrerai → proie → nations → retrancherai → peuples → périr → pays → détruirai → sauras)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P333 (25:1-7 : Ammon livrée, Rabbah pâturage) ; Jr 49:2 ; suppression Ammon ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« TOURNE… FACE… AMMONITES… PROPHÉTISE… DIS… ÉCOUTEZ… PAROLE… PIVOT… GÉOPOLITIQUE… VINGT-QUATRE… CHAPITRES… JUDA… VINGT-CINQ… NATIONS… REGARD… EST… TRANSJORDANIE… BEN-AMMI… LOT… NEVEU… ABRAHAM… GENÈSE… DIX-NEUF… PARENTÉ… HONTEUSE… INCESTE… GROTTES… TSOAR… VOISINS… FRÈRES… ENNEMIS… AMMON… MOAB… ÉDOM… TRIO… LOT-ESAU… JUGÉS… ORDRE… GÉOGRAPHIQUE… NORD… SUD… PUIS… OUEST… PHILISTINS. » (25:1-2 — philistins !)</li>
+<li>« DIT… SANCTUAIRE… PROFANÉ… TERRE… ISRAËL… DÉVASTÉE… MAISON… JUDA… CAPTIVITÉ… HÉAH… AH… AH… ONOMATOPÉE… JOIE… MAUVAISE… SCHADENFREUDE… TRIPLE… MOTIF… ALLÉGRESSE… TEMPLE… BRÛLÉ… PAYS… RUINÉ… PEUPLE… DÉPORTÉ… MOQUERIE… SACRILÈGE… RIRE… CIMETIÈRE… VOISIN… DANSE… RUINES… FRÈRE… DIEU… NOTE… ARCHIVE… CÉLESTE… DOSSIER… AMMON… CHARGÉ… PIÈCE… PREMIÈRE. » (25:3 — première !)</li>
+<li>« DONNE… POSSESSION… FILS… ORIENT… CAMPEMENTS… DEMEURES… MANGERONT… FRUITS… BOIRONT… LAIT… BENÉ-QÉDÉM… NOMADES… DÉSERT… SYRO-ARABIQUE… BÉDOUINS… NABATÉENS… TIRAH… ENCEINTES… CIRCULAIRES… TENTES… MISHKAN… DEMEURES… MOBILES… SÉDENTAIRES… REMPLACÉS… NOMADES… FRUITS… VIGNES… LAIT… TROUPEAUX… ÉCONOMIE… PILLÉE… SUR… PLACE… OCCUPATION… PASTORALE… DÉFINITIVE. » (25:4 — définitive !)</li>
+<li>« FERAI… RABBA… PÂTURAGE… CHAMEAUX… PAYS… GÎTE… BÉTAIL… SAUREZ… NAVÉH… PARC… ENCLOS… GAMAL… CHAMEAUX… DROMADAIRES… CARAVANES… MARBÉTS… COUCHETTE… TROUPEAUX… MENU… BÉTAIL… RABBA… CAPITALE… FORTERESSE… DEUX… SAMUEL… DOUZE… SIÈGE… DAVID… URIE… MORT… MURS… FIERS… DÉMANTELÉS… BURCKHARDT… DIX-NEUVIÈME… SIÈCLE… ARABES… CHAMEAUX… RUINES… PHILADELPHIE… PTOLÉMÉE… VESTIGES… AMPHITHÉÂTRE… DÉSERT… VÉRIFIÉ… VOYAGEURS. » (25:5 — voyageurs !)</li>
+<li>« BATTU… MAINS… FRAPPÉ… PIED… RÉJOUI… MÉPRIS… ÂME… TERRE… ISRAËL… MAHA… KAP… FRAPPER… PAUME… RAQA… PIED… TRÉPIGNER… DANSE… MÉPRISANTE… SHÉAT… DÉDAIN… NÉPHÉSH… ÂME… ENTIÈRE… CORPS… ENTIER… EXULTE… MAINS… PIEDS… CŒUR… TRIPLE… GESTE… ACCUSATION… PRÉCISE… TRIBUNAL… TÉMOINS… OCULAIRES… DIVINS… PIÈCE… SECONDE… DOSSIER… COMPLET… VERDICT… IMMINENT… APPEL… IMPOSSIBLE. » (25:6 — impossible !)</li>
+<li>« ÉTENDRAI… MAIN… LIVRERAI… PROIE… NATIONS… RETRANCHERAI… PEUPLES… PÉRIR… PAYS… DÉTRUIRAI… SAURAS… NATITAH… ÉTENDUE… BAZ… BUTIN… PILLAGE… HIKHRATTI… RETRANCHEMENT… HASHMAD… DESTRUCTION… CINQ… VERBES… ANÉANTISSEMENT… GRADUÉ… PROIE… RETRANCHEMENT… DISPARITION… PAYS… DESTRUCTION… NATION… CINQ-CENT-QUATRE-VINGT-UN… NÉBUCADNETSAR… INVADE… AMMON… PUIS… NABATÉENS… TROIS-CENT-DOUZE… PUIS… ARABES… SEPTIÈME… SIÈCLE… AMMONITES… FONDUS… HISTOIRE… NOM… EFFACÉ… CARTE… JÉRÉMIE… QUARANTE-NEUF… DEUX… RABBA… MONCEAU… RUINES… CONFIRMÉ. » (25:7 — confirmé !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le PIVOT-NATIONS (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les SIM (les TOURNE (les PHANÉKHA (les FACE (les EL (les BENÉ (les FILS (les AMMON (les AMMON (les VEHINNABÉ (les PROPHÉTISE (les ALÉHEM (les EUX (les VEAMARTA (les DIRAS (les LIBNÉ (les FILS (les AMMON (les AMMON (les SHIMU (les ÉCOUTEZ (les DEBAR (les PAROLE (les ADONAY (les SOUVERAIN (les YEHOVIH (les PIVOT (les FACE (les EST — les AMMON !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le HÉAH-JUGÉ (les YAAN (les PARCE QUE (les AMERÉKH (les DIT (les HÉAH (les AH-AH (les EL (les MIQDASHI (les SANCTUAIRE (les KI (les QUAND (les NIHAL (les PROFANÉ (les VEÉL (les TERRE (les ADMAT (les YISRAÉL (les ISRAËL (les KI (les QUAND (les NASHAMMAH (les DÉVASTÉE (les VEÉL (les MAISON (les BÉYT (les YEHUDAH (les JUDA (les KI (les QUAND (les HALKHU (les ALLAIENT (les BAGOLAH (les CAPTIVITÉ (les LAKHÉN (les CÈST POURQUOI (les HINENI (les VOICI (les NOTENKHA (les DONNE (les LEVENÉ (les FILS (les QÉDÉM (les ORIENT (les LEMORASHAH (les POSSESSION (les VEYASHSHIBU (les ÉTABLIRONT (les TIROTÉHEM (les CAMPEMENTS (les BAKH (les TOI (les VENATNU (les PLACERONT (les MISHKENÉHEM (les DEMEURES (les BAKH (les TOI (les HÉMMAH (les ILS (les YOKHLU (les MANGERONT (les PHIRYÉKH (les FRUITS (les VEHÉMMAH (les ILS (les YISHTU (les BOIRONT (les HALABÉKH (les LAIT (les HÉAH (les QÉDÉM (les LAIT — les PILLÉ !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le PÂTURAGE-VÉRIFIÉ (les RABBA (les NAVEH (les PARC (les GAMAL (les CHAMEAUX (les PAYS (les MARBÉTS (les GÎTE (les TSON (les BÉTAIL (les SAUREZ (les JÉHOVAH (les MAINS (les MAHA (les KAP (les FRAPPÉES (les PIED (les RAQA (les TRÉPIGNÉ (les JOIE (les SHÉAT (les MÉPRIS (les NÉPHÉSH (les ÂME (les MAIN (les NATITAH (les ÉTENDUE (les PROIE (les BAZ (les NATIONS (les RETRANCHÉE (les HIKHRATTI (les PEUPLES (les PÉRIR (les PAYS (les DÉTRUITE (les HASHMAD (les SAURAS (les ÉPARGNÉE (les VINGT-ET-UN (les DIX-NEUF (les CROISÉE (les JÉRUSALEM (les DABORD (les MOQUÉE (les ENSUITE (les VINGT-ET-UN (les VINGT-HUIT (les ÉPÉE (les CINQ-CENT-QUATRE-VINGT-UN (les BABYLONE (les INVADE (les TROIS-CENT-DOUZE (les NABATÉENS (les ROYAUME (les PÉTRA (les AMMAN (les PHILADELPHIE (les PTOLÉMÉE (les RUINES (les BURCKHARDT (les CHAMEAUX (les BÉDOUINS (les ARABES (les SEPTIÈME (les SIÈCLE (les FONDUES (les NOM (les EFFACÉ (les PÂTURAGE — les VÉRIFIÉ !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">25:1-2</td><td>PHILISTINS (PIVOT !)</td></tr>
+<tr><td class="d">25:3</td><td>PREMIÈRE (HÉAH !)</td></tr>
+<tr><td class="d">25:4</td><td>DÉFINITIVE (QÉDÉM !)</td></tr>
+<tr><td class="d">25:5</td><td>VOYAGEURS (NAVEH !)</td></tr>
+<tr><td class="d">25:6</td><td>IMPOSSIBLE (RAQA !)</td></tr>
+<tr><td class="d">25:7/Jr49</td><td>CONFIRMÉ (BAZ !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Après 587 (sanctuaire profané, terre dévastée, Juda déporté — v. 3, HÉAH triple) : Ammon, épargnée à la croisée d'Éz 21:19 (Jérusalem d'abord), avait exulté — mains frappées (MAHA KAP), pied trépignant (RAQA), mépris d'âme (SHÉAT NÉPHÉSH, v. 6) ; sentence : livrée aux BENÉ-QÉDÉM (v. 4, nomades du désert syro-arabique, TIRAH/MISHKAN), Rabba-NAVÉH GAMAL (v. 5), pays-MARBÉTS (v. 5), cinq verbes d'anéantissement gradué (v. 7 : proie, retranchement, périssement, destruction) ; vers 581 : NéBUCADNETSAR envahit Ammon (cf. Éz 21:28-32, l'épée aussi pour Ammon) ; 312 : les Nabatéens (arabes, Pétra) occupent le territoire ; Amman-Philadelphie ptolémaïque puis romaine ; XIXe siècle : Burckhardt trouve des Bédouins parquant leurs chameaux dans les ruines — NAVÉH GAMAL photographié ; VIIe siècle : fusion arabe — le nom d'Ammon effacé (Jr 49:2 : Rabba « monceau de ruines » confirmée par l'archéologie).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Rabba des Ammonites (v. 5, Amman, ~40 km à l'est du Jourdain) : capitale-forteresse (2S 12:26-31, Urie) → parc à chameaux ; les BENÉ-QÉDÉM (v. 4) : tribus de l'est (Jg 6:5, Madian-Chameaux déjà !) — le désert avance vers l'ouest ; TIRAH (v. 4, enceintes circulaires, cf. Gn 25:16, Nb 31:10) : l'architecture nomade remplace les murs ; le pays-gîte (MARBÉTS, v. 5) : transhumance permanente — la carte sédentaire effacée.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Jérémie 49:2 (« Rabba… monceau de ruines ») + suppression attestée (nabatéenne, romaine, arabe) — le DOUBLE PROCÈS-VERBAL ; 1 Samuel 11:1-11 (nwt — Nahash l'Ammonite, œil droit, Yabesh délivrée) — l'ANTÉCÉDENT de la cruauté ammonite ; 2 Samuel 12:26-31 (nwt — Rabba prise par David, couronne de Milkom) — la CAPITALE d'alors ; Juges 11:12-28 (nwt — Jephté plaide 300 ans d'histoire contre le roi d'Ammon) — le DOSSIER frontalier.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>587 : HÉAH TRIPLE (TEMPLE/PAYS/PEUPLE) → MAHA + RAQA (DANSE MÉPRIS) → LIVRAISON QÉDÉM → RABBA-NAVÉH → 581 : BABYLONE → 312 : NABATÉENS → XIXe : CHAMEAUX (BURCKHARDT) → NOM EFFACÉ</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Chronologie 581 (invasion babylonienne d'Ammon) : déduite d'Éz 21:28-32 + Flavius Josèphe (Ant. X) — pas de tablette datée au jour, assumé ; les BENÉ-QÉDÉM : Nabatéens identifiés par convergence (Pétra, 312, extension Ammon-Moab-Syrie) — lecture standard, pas nom dans Éz 25 ; Burckhardt (XIXe) : témoignage de voyageur (chameaux parqués) — illustration, pas preuve unique ; l'effacement du nom : national (plus d'Ammonites comme peuple) — pas individuel (gènes fondus).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Héah ; sentence</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babylone ; Nabatéens</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">581–312</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chameaux ; nom effacé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">XIXe–?</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/11">Bible — 1 Samuel 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/9/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/10/12">Bible — 2 Samuel 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/10/12</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/11">Bible — Juges 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/11</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ333 — « Rabba, pâturage de chameaux » : Ammon livrée à l'Orient</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ334">
+<div class="visuel"><img src="images/prophe_EZ334_moab.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ334 · CATÉGORIE EZ</div>
+<h3>« Comme toutes les nations » : Moab et Séir ouverts</h3>
+<div class="ref">Ézéchiel 25:8-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Moab Séir flanc ouvert (dit → Souverain → Moab → Séir → disent → maison → Juda → nations → ouvrirai → flanc → Moab → villes → villes → frontière → gloire → pays → Beth-Jeshimoth → Baal-Méon → Kiriathaïm → fils → Orient → Ammonites → donnerai → possession → Ammonites → mentionnés → nations → exercerai → jugements → Moab → sauront)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ334 · 0:26</div><audio controls preload="none" src="audio/fiche_EZ334_moab.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ334_moab.mp3 · 0:26 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 25:8-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Moab Séir flanc ouvert (dit → Souverain → Moab → Séir → disent → maison → Juda → nations → ouvrirai → flanc → Moab → villes → villes → frontière → gloire → pays → Beth-Jeshimoth → Baal-Méon → Kiriathaïm → fils → Orient → Ammonites → donnerai → possession → Ammonites → mentionnés → nations → exercerai → jugements → Moab → sauront)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P334 (25:8-11 : Moab raillé, Kiriathaim dest.) ; Moab effacé ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DIT… SOUVERAIN… MOAB… SÉIR… DISENT… MAISON… JUDA… NATIONS… KEMO… KOL… HAGGOYIM… COMME… TOUTES… NATIONS… JUDA… RABAISSÉ… ÉLECTION… NIÉE… MOAB… LOT… AÎNÉE… SÉIR… ÉSAÜ… ÉDOM… DUO… TRANSJORDANIE… SUD… ZONE… RIRE… CONCERTÉ… RABAISSEMENT… THÉOLOGIQUE… PIRE… MOQUERIE… AMMON… JUDA… BANALISÉ… PEUPLE… ÉLU… DÉCLASSÉ… DIEU… INSULTÉ… TRAVERS… PEUPLE… DOSSIER… MOAB… CHARGÉ… PIÈCE… UNIQUE… SUFFISANTE. » (25:8 — suffisante !)</li>
+<li>« OUVRIRAI… FLANC… MOAB… VILLES… FRONTIÈRE… GLOIRE… PAYS… PTIHAT… OUVERTURE… KATÉPH… ÉPAULE… FLANC… MOAB… PLATEAU… DÉFENDU… FALAISES… ARNON… ZÉRED… VERROUS… NATURELS… DIEU… DÉSERROUILLE… STRATÉGIQUE… FRONTIÈRE… MAMAAR… VILLES… MARCHES… BETH-JESHIMOTH… MAISON… DÉSERTS… NORD… BAAL-MÉON… MAÎTRE… DEMEURE… NORD… KIRIATHAÏM… DOUBLE… VILLE… NORD… TRIPTYQUE… FRONTALIER… TIFÉRÉT… GLOIRE… FLEURONS… OFFERTS… PREMIERS… ASSAUT. » (25:9 — assaut !)</li>
+<li>« FILS… ORIENT… AMMONITES… DONNERAI… POSSESSION… AMMONITES… MENTIONNÉS… NATIONS… MÊME… VERDICT… AMMON… VINGT-CINQ… QUATRE… LOT… SOLIDAIRE… CHÂTIMENT… QÉDÉM… HÉRITE… DOUBLE… PART… MOAB… AMMON… ZÉKHÉR… SOUVENIR… EFFACÉ… MENTION… INTERDITE… HISTOIRE… AMMONITES… RAYÉS… ANNALES… DAMNATIO… MÉMORIAE… DIVINE… OUBLI… PROGRAMMÉ… NOM… SURVIT… BIBLE… SEULE… PEUPLE… DISPARU… CARTE… MONDE. » (25:10 — monde !)</li>
+<li>« EXERCERAI… JUGEMENTS… MOAB… SAURONT… SHEPHATIM… PLURIEL… JUGEMENTS… MULTIPLES… VAGUES… SUCCESSIVES… BABYLONE… PERSE… NABATÉENS… ARABES… GRADATION… INÉLUCTABLE… YADA… CONNAÎTRE… EXPÉRIENCE… DOULOUREUSE… PÉDAGOGIE… JUGEMENT… CONNAISSANCE… FORCÉE… THÉOLOGIE… COERCITIVE… NATIONS… ÉCOLE… HISTOIRE… MOAB… EFFACÉ… LEÇON… GRAVÉE… RUINES… KÉRAK… DIBON… STÈLE… MÉSHA… MUSÉE… LOUVRE… SOUVENIR… PIERRE… SEUL. » (25:11 — seul !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le RABAISSEMENT-JUGÉ (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les YAAN (les PARCE QUE (les AMOR (les DIRE (les MOAB (les MOAB (les VESÉÏR (les SÉIR (les HINNÉH (les VOICI (les KEBÉYT (les COMME-MAISON (les YEHUDAH (les JUDA (les KEKHOL (les COMME-TOUTES (les HAGGOYIM (les NATIONS (les RABAISSEMENT (les ÉLECTION (les NIÉE (les MOAB — les SÉIR !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le FLANC-OUVERT (les LAKHÉN (les CÈST POURQUOI (les HINENI (les VOICI (les POTÉAH (les OUVRE (les ET (les KÉTÉPH (les FLANC (les MOAB (les MOAB (les MÉHEARIM (les VILLES (les MÉARAV (les VILLES (les MIQQATSÉHU (les FRONTIÈRE (les TIPHÉRÉT (les GLOIRE (les ÉRÉTS (les PAYS (les BÉYT (les BETH (les HAYESHIMOT (les JESHIMOTH (les BAAL (les BAAL (les MEON (les MÉON (les VEQIRYATAYIM (les KIRIATHAÏM (les FLANC (les VILLES (les GLOIRE (les TRIPTYQUE — les OFFERT !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le ZÉKHÉR-EFFACÉ (les ORIENT (les QÉDÉM (les AMMON (les MÊME (les VERDICT (les POSSESSION (les MORASHAH (les SOUVENIR (les ZÉKHÉR (les EFFACÉ (les NON (les MENTION (les NATIONS (les JUGEMENTS (les SHEPHATIM (les MULTIPLES (les CONNAÎTRONT (les YADA (les BABYLONE (les CINQ-CENT-QUATRE-VINGT-UN (les PERSE (les NABATÉENS (les TROIS-CENT-DOUZE (les ARABES (les MOAB (les EFFACÉ (les STÈLE (les MÉSHA (les NEUVIÈME (les SIÈCLE (les LOUVRE (les TÉMOIN (les PIERRE (les DIBON (les KÉRAK (les RUINES (les NOM (les BIBLE (les SEULE (les ZÉKHÉR — les EFFACÉ !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">25:8</td><td>SUFFISANTE (GOYIM !)</td></tr>
+<tr><td class="d">25:9</td><td>ASSAUT (KATÉPH !)</td></tr>
+<tr><td class="d">25:10</td><td>MONDE (ZÉKHÉR !)</td></tr>
+<tr><td class="d">25:11</td><td>SEUL (MÉSHA !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Après 587 : Moab et Séir (Édom) rabaissent Juda — KEKHOL HAGGOYIM (v. 8) ; sentence : KÉTÉPH ouvert (v. 9) — le flanc du plateau désverrouillé, triptyque frontalier offert (Beth-Jeshimoth des marais du Jourdain, Baal-Méon, Kiriathaïm — TIPHÉRÉT ÉRÉTS, cf. Nb 32:37-38, Jos 13:17-19) ; même verdict qu'Ammon : QÉDÉM hérite, ZÉKHÉR effacé (v. 10, DAMNATIO MEMORIAE) ; SHEPHATIM multiples (v. 11) : 581 (Babylone), Perse, 312 (Nabatéens), Arabes ; Moab disparaît comme nation ; la stèle de Mésha (IXe s., Diban/Dibon, Louvre) — Kemosh, YHWH, Omri — témoin de pierre du royaume effacé ; Kérak, Dibon : ruines ; le nom ne survit que dans la Bible.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Le KÉTÉPH (v. 9, épaule/flanc) : le plateau moabite (~1 000 m), défendu par l'Arnon (nord) et le Zéred (sud) — verrous naturels ; Beth-Jeshimoth (v. 9) : au nord-est de la mer Morte (Nb 33:49, campement final d'Israël !) — ironie : porte d'entrée d'Israël, porte d'invasion de Moab ; Baal-Méon et Kiriathaïm (v. 9, Nb 32:37-38) : villes rubénites disputées — la frontière nord, toujours contestée, toujours ouverte ; QÉDÉM hérite (v. 10) : le désert mange le plateau.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Stèle de Mésha (Louvre, IXe s.) + suppression moabite (nabatéenne→arabe) — le DOUBLE PROCÈS-VERBAL ; Amos 2:1-2 (nwt — « Moab… a brûlé les os du roi d'Édom » en chaux, Qeriyoth dévorée) — le FEU jumeau ; Ésaïe 15 (Rbi8) + 16 (nwtsty — fardeau de Moab : Ar, Qir, Dibon, Hesbon, vignes de Sibma) — le DEUIL détaillé ; Nombres 32:37-38 + Josué 13:17-19 (Baal-Méon, Kiriathaïm reconstruites) — le TRIPTYQUE enraciné.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>587 : KEKHOL GOYIM (RABAISSEMENT) → KÉTÉPH OUVERT (VERROUS SAUTÉS) → TRIPTYQUE OFFERT → QÉDÉM HÉRITE → ZÉKHÉR EFFACÉ → 581→312→VIIe : SHEPHATIM → STÈLE AU LOUVRE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« J'ouvrirai le flanc » (v. 9) : image militaire (désverrouillage stratégique) — la fiche la lit comme invasion facilitée, pas faille géologique ; Séir (v. 8) : Édom associée au propos — jugée séparément au v. 12-14 (EZ335) — deux foudres distinguées ; chronologie 581 : même déduction qu'Ammon (Éz 21 + Josèphe) — assumée ; stèle de Mésha : antérieure (IXe s.) — témoin du royaume, pas de la chute.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rabais ; sentence</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babylone ; Nabatéens</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">581–312</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arabes ; stèle Louvre</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIe–XIXe</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/30/2">Bible — Amos 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/30/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/15">Bible — Ésaïe 15 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/15</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/16">Bible — Ésaïe 16 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/23/16</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ334 — « Comme toutes les nations » : Moab et Séir ouverts</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ335">
+<div class="visuel"><img src="images/prophe_EZ335_edom.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ335 · CATÉGORIE EZ</div>
+<h3>« Ils connaîtront ma vengeance » : Édom par la main d'Israël</h3>
+<div class="ref">Ézéchiel 25:12-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Édom vengeance Israël main (dit → Souverain → Édom → agi → vengeance → maison → Juda → rendu → coupable → vengeant → étendre → main → Édom → retrancherai → hommes → bêtes → ferai → désert → Téman → Dedan → tomberont → épée → exercerai → vengeance → Édom → main → peuple → Israël → traiteront → Édom → colère → fureur → connaîtront → vengeance)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ335 · 0:27</div><audio controls preload="none" src="audio/fiche_EZ335_edom.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ335_edom.mp3 · 0:27 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 25:12-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Édom vengeance Israël main (dit → Souverain → Édom → agi → vengeance → maison → Juda → rendu → coupable → vengeant → étendre → main → Édom → retrancherai → hommes → bêtes → ferai → désert → Téman → Dedan → tomberont → épée → exercerai → vengeance → Édom → main → peuple → Israël → traiteront → Édom → colère → fureur → connaîtront → vengeance)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P335 (25:12-14 : Édom vengé, Israël instrument) ; Édom soumis ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DIT… SOUVERAIN… ÉDOM… AGI… VENGEANCE… MAISON… JUDA… RENDU… COUPABLE… VENGEANT… NAQAM… VENGEANCE… ASHAM… CULPABILITÉ… ASHOM… GRAVEMENT… VERBE… DOUBLÉ… FAUTE… AGGRAVÉE… ÉDOM… ÉSAÜ… FRÈRE… JACOB… HAINE… MILLÉNAIRE… GENÈSE… VINGT-SEPT… BÉNÉDICTION… VOLÉE… RANCOEUR… HÉRÉDITAIRE… NOMBRES… VINGT… REFUS… PASSAGE… ABDIAS… JOUR… DÉTRESSE… PILLAGE… JÉRUSALEM… PSAUME… CENT-TRENTE-SEPT… RASEZ… RASEZ… CINQ-CENT-QUATRE-VINGT-SEPT… SACCAGE… PARTICIPÉ… CRIME… FRATRICIDE… AGGRAVANT… SUPRÊME. » (25:12 — suprême !)</li>
+<li>« ÉTENDRE… MAIN… ÉDOM… RETRANCHERAI… HOMMES… BÊTES… FERAI… DÉSERT… TÉMAN… DEDAN… TOMBERONT… ÉPÉE… NATITAH… ÉTENDUE… HIKHRATTI… RETRANCHEMENT… ADAM… UBEHÉMAH… HOMMES… BÊTES… TOTALITÉ… VIVANT… HORBÂH… DÉSERT… RUINE… ARIDITÉ… TÉMAN… NORD… DEDAN… SUD… MÉRIDIEN… COMPLET… TOUT… TERRITOIRE… HEREB… ÉPÉE… CHUTE… TÉMAN… SAGES… OBADIA… HUIT… SAGESSE… PÉRIRA… DEDAN… CARAVANES… ÉSAïE… VINGT-ET-UN… PISTES… COUPÉES… ÉCONOMIE… SAGESSE… ANÉANTIES. » (25:13 — anéanties !)</li>
+<li>« EXERCERAI… VENGEANCE… ÉDOM… MAIN… PEUPLE… ISRAËL… TRAITERONT… COLÈRE… FUREUR… CONNAÎTRONT… VENGEANCE… BEYAD… PAR… MAIN… INSTRUMENT… ISRAËL… BOURREAU… DÉSIGNÉ… VENGEANCE… DIVINE… DÉLÉGUÉE… NIQMATI… MA… VENGEANCE… POSSESSIF… DIEU… PROPRIÉTAIRE… MAIN-D'ŒUVRE… PEUPLE… ÉLU… APHI… BAHAMATI… COLÈRE… FUREUR… DOSAGE… DIVIN… EXÉCUTION… HUMAINE… DAVID… DEUX… SAMUEL… HUIT… JUDA… MACCHABÉE… JEAN… HYRCAN… CENT-VINGT-NEUF… CIRCONCISION… FORCÉE… IDUMÉENS… JUDAïSÉS… HÉRODE… IDUMÉEN… ROI… JUIFS… IRONIE… HISTOIRE… VENGEANCE… CONNUE… CHAIR… PEUPLE. » (25:14 — peuple !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La FAUTE-FRATRICIDE (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les YAAN (les PARCE QUE (les ASOT (les AGIR (les ÉDOM (les ÉDOM (les BINQOM (les VENGEANCE (les LEBÉYT (les MAISON (les YEHUDAH (les JUDA (les VAYYESHEMU (les COUPABLES (les ASHOM (les GRAVEMENT (les UVENAQMOU (les VENGEANT (les BAHÉM (les EUX (les FAUTE (les FRÈRE (les FRÈRE (les ÉSAÜ (les JACOB — les MILLÉNAIRE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le MÉRIDIEN-DÉSERT (les LAKHÉN (les CÈST POURQUOI (les NATITAH (les ÉTENDRAI (les ET (les YADI (les MAIN (les AL (les ÉDOM (les ÉDOM (les VEHIKHRATTI (les RETRANCHERAI (les MIMMÉNNAH (les ELLE (les ADAM (les HOMMES (les UBEHÉMAH (les BÊTES (les UNETATTIAH (les FERAI (les HORBAH (les DÉSERT (les MITTÉMAN (les TÉMAN (les VEAD (les JUSQUÀ (les DEDAN (les DEDAN (les BEHÉRÉB (les ÉPÉE (les YIPPÉLU (les TOMBERONT (les NORD (les SUD (les ÉPÉE (les CHUTE (les MÉRIDIEN — les DÉSERT !)</p>
+<h4>5 · Interprétation</h4>
+<p>La MAIN-ISRAËL (les VENGEANCE (les NIQMATI (les MA (les ÉDOM (les MAIN (les BEYAD (les PEUPLE (les ISRAËL (les TRAITERONT (les ASU (les COLÈRE (les APHI (les FUREUR (les HAMATI (les CONNAÎTRONT (les YADA (les VENGEANCE (les DAVID (les HUIT (les DEUX-SAMUEL (les GARNISONS (les ÉDOM (les AMATSIA (les JOAS (les SÉLA (les OZIAS (les ÉLATH (les JUDA (les MACCHABÉE (les MARISA (les ADORA (les HYRCAN (les CENT-VINGT-NEUF (les CIRCONCISION (les IDUMÉE (les JUDAÏSÉE (les HÉRODE (les ROI (les IRONIE (les PÉTRA (les NABATÉENS (les ÉDOM (les POUSSÉ (les NÉGUEV (les TITUS (les SOIXANTE-DIX (les FIN (les MAIN — les ISRAËL !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">25:12</td><td>SUPRÊME (ASHAM !)</td></tr>
+<tr><td class="d">25:13</td><td>ANÉANTIES (HORBAH !)</td></tr>
+<tr><td class="d">25:14</td><td>PEUPLE (BEYAD !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Après 587 (Édom a pillé Jérusalem — Ab 11-14, Ps 137:7 « rasez ! », Éz 35:5) : ASHAM aggravé (v. 12, fratricide Ésaü-Jacob) ; sentence : HIKHRATTI (hommes+bêtes), HORBAH de TÉMAN (nord, sages d'Ab 8) à DEDAN (sud, caravanes d'Is 21:13) — méridien complet, HEREB (v. 13) ; NIQMATI par BEYAD Israël (v. 14) : David (2S 8:13-14, garnisons), Amatsia (2R 14:7, Séla), Ozias (2R 14:22, Élath), Judas Macchabée (Marisa, Adora), Jean Hyrcan (~129, Idumée judaïsée, circoncision) ; parallèlement : Nabatéens à Pétra (VIe s.), Édom poussé au Néguev (Idumée) ; 70 : Titus achève ; Hérode l'Iduméen roi des Juifs — l'instrument couronne l'ironie ; « ils connaîtront ma vengeance » : dans leur chair nationale, par la main promise.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>MITTÉMAN VEAD DEDAN (v. 13) : du nord (Téman, région de Ma'an, sagesse) au sud (Dedan, oasis d'al-Ula, caravanes) — ~500 km de méridien édomite condamné ; la route du Roi (Nm 20:17, refusée) : l'axe caravaneer — Dedan coupée, l'économie saigne ; Pétra (VIe s.) : les Nabatéens occupent le cœur montagneux (Sela) — Édom exilé de ses rochers vers le Néguev (Idumée) ; Marisa-Adora (Macchabées) : l'Idumée conquise — BEYAD accompli au nord.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Abdias 11-14 + Psaume 137:7 + Ézéchiel 35:5 (le pillage 587) + judaïsation Hyrcan (~129, Josèphe) — le QUADRUPLE PROCÈS-VERBAL ; Joël 3:19 (nwt — « Édom deviendra un désert… violence contre Juda… sang innocent ») — le JUMEAU méridien ; Ésaïe 34 (Rbi8 — « mon épée… sur Édom », Botsra, festin) — le FESTIN de l'épée ; Malachie 1:2-4 (Rbi8 — « j'ai aimé Jacob… Ésaü… désert… ils rebâtiront, je démolirai ») — l'ÉPILOGUE canonique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>587 : PILLAGE FRATRICIDE (AB 11-14) → ASHAM GRAVÉ → HORBAH TÉMAN-DEDAN → BEYAD ISRAËL : DAVID → AMATSIA → MACCHABÉE → HYRCAN 129 → IDUMÉE JUDAÏSÉE → HÉRODE → 70 : FIN</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>BEYAD AMMI YISRAÉL (v. 14) : instrument multiple (David→Hyrcan, ~900 ans) — la fiche assume la lecture longue (vendetta nationale, pas un soir) ; « depuis Téman jusqu'à Dedan » : mérinord-sud complet — Téman/Dedan localisés (Ma'an/al-Ula) par convergence — pas GPS antique ; circoncision forcée (Hyrcan, Josèphe Ant. XIII) : témoignage unique — rapporté comme tel ; Édom→Idumée : glissement géographique (montagnes→Néguev) sous pression nabatéenne — reconstitution standard.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pillage ; Asham</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">David ; Macchabées</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Xe–IIe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hyrcan ; Hérode ; fin</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">129–70</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/29/3">Bible — Joël 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/29/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/34">Bible — Ésaïe 34 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/23/34</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/39/1">Bible — Malachie 1 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/39/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ335 — « Ils connaîtront ma vengeance » : Édom par la main d'Israël</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ336">
+<div class="visuel"><img src="images/prophe_EZ336_philistins.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ336 · CATÉGORIE EZ</div>
+<h3>« Le reste du littoral » : les Philistins retranchés</h3>
+<div class="ref">Ézéchiel 25:15-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Philistins retranchés littoral (dit → Souverain → Philistins → agi → vengeance → vengés → mépris → âme → détruire → haine → éternelle → étendrai → main → Philistins → retrancherai → Kéréthiens → périr → reste → littoral → mer → périront → exercerai → vengeances → châtiments → fureur → sauront → exercerai → vengeance)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ336 · 0:25</div><audio controls preload="none" src="audio/fiche_EZ336_philistins.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ336_philistins.mp3 · 0:25 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 25:15-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Philistins retranchés littoral (dit → Souverain → Philistins → agi → vengeance → vengés → mépris → âme → détruire → haine → éternelle → étendrai → main → Philistins → retrancherai → Kéréthiens → périr → reste → littoral → mer → périront → exercerai → vengeances → châtiments → fureur → sauront → exercerai → vengeance)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P336 (25:15-17 : Philistins jugés, Kerethiens) ; Philistins effacés ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DIT… SOUVERAIN… PHILISTINS… AGI… VENGEANCE… VENGÉS… MÉPRIS… ÂME… DÉTRUIRE… HAINE… ÉTERNELLE… PÉLÈSHÉT… PEUPLES… MER… TREIZIÈME… SIÈCLE… ÉGÉE… CRÈTE… CAPHTOR… PENTAPOLE… GAZA… ASHKELON… ASHDOD… ÉKRON… GATH… SHÉAT… MÉPRIS… NÉPHÉSH… ÂME… MÊME… MOT… AMMON… VINGT-CINQ… SIX… ÉBAT… OLAM… HAINE… ÉTERNELLE… MÊME… MOT… ÉDOM… TRENTE-CINQ… CINQ… DUO… MOTIFS… FUSIONNÉS… ACCUSATION… MAXIMALE… MASHHIT… DESTRUCTION… INTENTION… GÉNOCIDAIRE… EXTERMINATION… ISRAËL… PROJET… AVOUÉ… TRIBUNAL. » (25:15 — tribunal !)</li>
+<li>« ÉTENDRAI… MAIN… PHILISTINS… RETRANCHERAI… KÉRÉTHIENS… PÉRIR… RESTE… LITTORAL… MER… PÉRIRONT… NATITAH… ÉTENDUE… HIKHRATTI… RETRANCHEMENT… KÉRÉTIM… CRÉTOIS… GARDE… DAVID… DEUX… SAMUEL… HUIT… MERCENAIRES… ÉGÉENS… INTÉGRÉS… ISRAËL… IRONIE… GARDES… ÉTRANGERS… FIDÈLES… NATION… MÈRE… INFIDÈLE… SHEÉRIT… RESTE… HOB… CÔTE… HAYYAM… MER… LITTORAL… COMPLET… GAZA… ASHKELON… SIX-CENT-QUATRE… NÉBUCADNETSAR… RASE… ASHKELON… ARCHÉOLOGIE… COUCHE… DESTRUCTION… EXIL… MÉSOPOTAMIE… TABLETTES… GAZA… EXILÉS… NOMS… ENCORE. » (25:16 — encore !)</li>
+<li>« EXERCERAI… VENGEANCES… CHÂTIMENTS… FUREUR… SAURONT… EXERCERAI… VENGEANCE… NEQAMOT… PLURIEL… VENGEANCES… MULTIPLES… GEDOLOT… GRANDES… TOKHÉHOT… CHÂTIMENTS… CORRECTIONS… HÉMAH… FUREUR… ARDENTE… GRADATION… FINALE… SÉRIE… NATIONS… POINT… ORGUE… VENGEANCE… POSSESSIVE… NIQMATI… CLÔTURE… CYCLE… AMMON… MOAB… ÉDOM… PHILISTINS… QUATUOR… VOISINS… JUGÉS… CINQ… SIÈCLES… HÉRODOTE… PALAISTINÉ… NOM… GÉOGRAPHIQUE… PEUPLE… EFFACÉ… ADN… ASHKELON… DIX-NEUF… EUROPÉEN… PUIS… FONDU… SCIENCE… CONFIRME… DISPARITION… INSCRITE… GÈNES… PIERRE… MER. » (25:17 — mer !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le QUATUOR-CLOS (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les YAAN (les PARCE QUE (les ASOT (les AGIR (les PÉLISHTIM (les PHILISTINS (les BINQAMAH (les VENGEANCE (les VAYYINNAQMOU (les VENGÉS (les NAQAM (les VENGEANCE (les BISHAT (les MÉPRIS (les BENÉPHÉSH (les ÂME (les LEMASHHIT (les DÉTRUIRE (les ÉBAT (les HAINE (les OLAM (les ÉTERNELLE (les VENGEANCE (les MÉPRIS (les HAINE (les ÉTERNELLE (les QUATUOR (les CLOS — les JUGÉS !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le LITTORAL-RASÉ (les LAKHÉN (les CÈST POURQUOI (les NATITAH (les ÉTENDRAI (les ET (les YADI (les MAIN (les AL (les PÉLISHTIM (les PHILISTINS (les VEHIKHRATTI (les RETRANCHERAI (les ET (les KÉRÉTIM (les KÉRÉTHIENS (les VEHEEBADTI (les PÉRIR (les ET (les SHEÉRIT (les RESTE (les HOB (les LITTORAL (les HAYYAM (les MER (les VEABADU (les PÉRIRONT (les MAIN (les KÉRÉTIM (les RESTE (les LITTORAL (les MER (les RASÉ — les PÉRI !)</p>
+<h4>5 · Interprétation</h4>
+<p>La PALAISTINÉ-VIDE (les VENGEANCES (les NEQAMOT (les GRANDES (les GEDOLOT (les CHÂTIMENTS (les TOKHÉHOT (les FUREUR (les HÉMAH (les SAURONT (les YADA (les VENGEANCE (les NIQMATI (les MA (les NÉBUCADNETSAR (les SIX-CENT-QUATRE (les SIX-CENT-TROIS (les ASHKELON (les RASÉE (les GAZA (les APHÉQ (les ÉKRON (les EXIL (les MÉSOPOTAMIE (les TABLETTES (les GAZA (les EXILÉS (les NOMS (les PERSE (les PHÉNICIENS (les CÔTE (les HÉRODOTE (les CINQUIÈME (les SIÈCLE (les PALAISTINÉ (les NOM (les GÉOGRAPHIE (les PEUPLE (les EFFACÉ (les ADN (les ASHKELON (les DIX-NEUF (les EUROPÉEN (les ASSIMILÉ (les GÈNES (les PIERRE (les MER (les VIDE — les JUGÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">25:15</td><td>TRIBUNAL (OLAM !)</td></tr>
+<tr><td class="d">25:16</td><td>ENCORE (HOB !)</td></tr>
+<tr><td class="d">25:17</td><td>MER (NEQAMOT !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>Après 587 : les Philistins (PENTAPOLE égéenne, XIIIe s.) — NAQAM + BISHAT NÉPHÉSH + MASHHIT + ÉBAT OLAM (v. 15, les quatre motifs fusionnant Ammon et Édom — accusation maximale) ; sentence : HIKHRATTI les KÉRÉTIM (v. 16, Crétois — cf. 1S 30:14, So 2:5, la garde de David en 2S 8:18 issue d'eux !), SHEÉRIT HOB HAYYAM (reste du littoral) ; 604/603 : NéBUCADNETSAR rase Ashkelon (couche de destruction massive fouillée — des milliers de tessons, ville incendiée), Gaza, Aphéq, Ékron ; exilés « hommes de Gaza » aux tablettes mésopotamiennes (~150 ans de présence) ; Perse : côte aux Phéniciens ; Ve s. : Hérodote dit « Palaistiné » — nom géographique sans peuple ; 2019 : ADN d'Ashkelon — apport européen XIIIe s., puis dilution totale — la disparition inscrite dans les gènes ; Jr 47, Am 1:6-8, So 2:4-7, Za 9:5-7 : le chœur des oracles accompli.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>SHEÉRIT HOB HAYYAM (v. 16) : le littoral sud-palestinien (~80 km, Gaza→Jaffa) — plaine côtière, route de l'encens, ports ; Ashkelon (Jr 47:5, Za 9:5) : fouilles — couche 604, rempart effondré, entrepôts brûlés ; Ékron (Tel Miqne) : presses à huile (100+), puis abandon ; les KÉRÉTIM (v. 16) : Crétois-Caphtor (Am 9:7, Jr 47:4, Dt 2:23) — l'origine égéenne nommée au moment de l'effacement ; Palaistiné (Hérodote) : le nom survit, le peuple fond — géographie sans nation.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Couche 604 Ashkelon (fouilles) + tablettes « hommes de Gaza » + ADN 2019 (apport européen puis dilution) + Hérodote « Palaistiné » — le QUADRUPLE PROCÈS-VERBAL ; Jérémie 47 (Rbi8 — « les Philistins… Tyr et Sidon… Gaza… Ashkelon ») — le JUMEAU détaillé ; Zacharie 9:5-7 (Rbi8 — « Ashkelon ne sera plus… Ékron comme Jébusien ») — l'ASSIMILATION prédite ; 2 Chroniques 26:6 (nwt — Ozias démantèle Gath, Yabné, Ashdod) — le PRÉLUDE judéen.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>587 : NAQAM + ÉBAT OLAM (4 MOTIFS) → HIKHRATTI KÉRÉTIM → 604/603 : ASHKELON RASÉE → EXIL GAZA (TABLETTES) → PERSE : CÔTE PHÉNICIENNE → HÉRODOTE : PALAISTINÉ VIDE → 2019 : ADN CONFIRME</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>KÉRÉTIM (v. 16) : Crétois/Caphtor — identification standard (1S 30:14, So 2:5, Jr 47:4) mais l'ethnographie des Peuples de la mer reste débattue — assumée ; couche 604 Ashkelon : datation babylonienne (céramique, chroniques) — convergence, pas étiquette ; ADN 2019 : échantillon Ashkelon (XIIIe→Xe s.) — dilution locale prouvée, généralisation prudente ; « Palaistiné » (Hérodote) : nom régional — continuité toponymique, pas ethnique.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ashkelon rasée ; exil</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">604/603</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Côte phénic. ; Palaistiné</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Perse–Ve s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ADN : dilution totale</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2019</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/47">Bible — Jérémie 47 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/24/47</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/38/9">Bible — Zacharie 9 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/38/9</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/26">Bible — 2 Chroniques 26 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/14/26</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ336 — « Le reste du littoral » : les Philistins retranchés</span><span>Catégorie EZ</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie EZ</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>EZ331 — « La marmite rouillée » : le siège daté au jour près</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Date greffée ; siège</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">15 janv. 588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bouillons : famine, peste</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Marmite vide au feu</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">août 587</text>
+</svg>
+<h4>EZ332 — « Les délices de tes yeux » : le deuil interdit comme signe</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Magéphah ; rite inversé</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mutisme ; veuvage signe</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-586</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Palit ; bouche ouverte</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">8 janv. 586</text>
+</svg>
+<h4>EZ333 — « Rabba, pâturage de chameaux » : Ammon livrée à l'Orient</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Héah ; sentence</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babylone ; Nabatéens</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">581–312</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chameaux ; nom effacé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">XIXe–?</text>
+</svg>
+<h4>EZ334 — « Comme toutes les nations » : Moab et Séir ouverts</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rabais ; sentence</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Babylone ; Nabatéens</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">581–312</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arabes ; stèle Louvre</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">VIIe–XIXe</text>
+</svg>
+<h4>EZ335 — « Ils connaîtront ma vengeance » : Édom par la main d'Israël</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pillage ; Asham</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">David ; Macchabées</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Xe–IIe s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hyrcan ; Hérode ; fin</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">129–70</text>
+</svg>
+<h4>EZ336 — « Le reste du littoral » : les Philistins retranchés</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Ashkelon rasée ; exil</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">604/603</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Côte phénic. ; Palaistiné</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Perse–Ve s.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">ADN : dilution totale</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">2019</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+P8-56 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

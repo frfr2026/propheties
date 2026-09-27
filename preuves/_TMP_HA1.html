@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES HA1 — Habacuc 1-2 — Jusqu'à quand ? les Chaldéens, le juste vivra par sa fidélité et les malheurs sur Babylone</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_HA470_chaldeens.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES HA1</h1>
+<h2>Habacuc 1-2 — Jusqu'à quand ? les Chaldéens, le juste vivra par sa fidélité et les malheurs sur Babylone</h2>
+<p class="intro">Le livre du prophète qui ose poser ses questions à Dieu et qui reçoit des réponses. Habacuc crie : « Jusqu'à quand, ô Jéhovah, faudra-t-il que je crie au secours sans que tu entendes ? » — il voit la violence, la loi sans force, le jugement qui ne se rend pas. La réponse divine le laisse stupéfait : « voyez parmi les nations et regardez, et soyez stupéfaits… car voici que je fais venir les Chaldéens, nation enragée et sans pitié », dont les chevaux sont plus rapides que les léopards et qui ramassent des prisonniers comme du sable. Le prophète revient alors avec une seconde question, plus forte que la première : puisque les yeux de Dieu sont trop purs pour voir le mal, pourquoi garde-t-il le silence quand le méchant engloutit un plus juste que lui ? Et il attend, à son poste de garde, la réponse qui va tout tenir : « écris la vision… le juste vivra par sa fidélité ». Suit la litanie des malheurs contre le Chaldéen — celui qui amasse des profits injustes, celui qui bâtit une ville en versant le sang, celui qui fait boire ses compagnons pour voir leur nudité, celui qui dit au bois « réveille-toi » — entrecoupée de la promesse qui éclaire tout le livre : « la terre sera remplie de la connaissance de la gloire de Jéhovah comme les eaux recouvrent le fond de la mer ».</p>
+<div class="chiffres">
+<div><b>4</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>20</b><span>sources</span></div>
+<div><b>0</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#HA470">HA470</a>
+<a href="#HA471">HA471</a>
+<a href="#HA472">HA472</a>
+<a href="#HA473">HA473</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#HA470"><img src="images/prophe_HA470_chaldeens.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE HA470</div>
+<h3><a href="#HA470">« Regardez parmi les nations et soyez stupéfaits » : les Chaldéens, les chevaux plus rapides que les léopards et les prisonniers ramassés comme du sable</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#HA471"><img src="images/prophe_HA471_filets.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE HA471</div>
+<h3><a href="#HA471">« Tes yeux sont trop purs pour voir le mal » : le méchant qui avale un plus juste que lui, l'hameçon et les filets</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#HA472"><img src="images/prophe_HA472_vision.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE HA472</div>
+<h3><a href="#HA472">« Écris la vision… car le juste vivra par sa fidélité » : la réponse du poste de garde et le verset cité trois fois dans les Écritures grecques</a></h3>
+<div class="meta">Accomplie / En cours</div></div></div>
+<div class="carte">
+<a class="img" href="#HA473"><img src="images/prophe_HA473_pierre.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE HA473</div>
+<h3><a href="#HA473">« Malheur à celui qui amasse le butin d'autrui » : les malheurs sur le Chaldéen, la pierre qui crie du mur et la gloire qui remplit la terre</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="HA470">
+<div class="visuel"><img src="images/prophe_HA470_chaldeens.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE HA470 · CATÉGORIE HA1</div>
+<h3>« Regardez parmi les nations et soyez stupéfaits » : les Chaldéens, les chevaux plus rapides que les léopards et les prisonniers ramassés comme du sable</h3>
+<div class="ref">Habacuc 1:5-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">voyez parmi les nations et regardez et soyez stupéfaits l'un l'autre car je suis en train de faire une action en vos jours que vous ne croiriez pas si on la racontait car voici que je fais venir les chaldéens nation enragée et sans pitié qui envahit de vastes étendues de pays pour s'emparer d'habitations qui ne sont pas à elle ils sont effrayants et redoutables c'est d'eux-mêmes que sortent leur justice et leur dignité leurs chevaux sont plus rapides que les léopards plus féroces que les loups le soir leurs chevaux de guerre arrivent au galop ils viennent de loin ils volent comme l'aigle qui se précipite sur sa proie ils viennent tous pour agir avec violence ils ramassent des prisonniers comme du sable ils se moquent des rois et rient des hauts fonctionnaires ils rient de toutes les forteresses ils amassent de la poussière et s'en emparent alors ils passent comme le vent mais ils deviennent coupables en attribuant leur force à leur dieu (habacuc 1:5-11 ; 2 rois 24:1-4 ; 25:1-11 ; accomplie)</span>
+<span class="badge">5 sources</span>
+</div>
+
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Habacuc 1:5-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>voyez parmi les nations et regardez et soyez stupéfaits l'un l'autre car je suis en train de faire une action en vos jours que vous ne croiriez pas si on la racontait car voici que je fais venir les chaldéens nation enragée et sans pitié qui envahit de vastes étendues de pays pour s'emparer d'habitations qui ne sont pas à elle ils sont effrayants et redoutables c'est d'eux-mêmes que sortent leur justice et leur dignité leurs chevaux sont plus rapides que les léopards plus féroces que les loups le soir leurs chevaux de guerre arrivent au galop ils viennent de loin ils volent comme l'aigle qui se précipite sur sa proie ils viennent tous pour agir avec violence ils ramassent des prisonniers comme du sable ils se moquent des rois et rient des hauts fonctionnaires ils rient de toutes les forteresses ils amassent de la poussière et s'en emparent alors ils passent comme le vent mais ils deviennent coupables en attribuant leur force à leur dieu (habacuc 1:5-11 ; 2 rois 24:1-4 ; 25:1-11 ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Habacuc — P470 (1:5-11 : je fais venir les Chaldéens, nation enragée ; ils se moquent des rois) ; 2 Rois 24:1-4 ; 25:1-11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« VOYEZ PARMI LES NATIONS… ET REGARDEZ… ET SOYEZ STUPÉFAITS… CAR JE SUIS EN TRAIN DE FAIRE UNE ACTION… EN VOS JOURS… QUE VOUS NE CROIRIEZ PAS… SI ON LA RACONTAIT… »… « CAR VOICI QUE JE FAIS VENIR… LES CHALDÉENS… NATION ENRAGÉE ET SANS PITIÉ… QUI ENVAHIT DE VASTES ÉTENDUES DE PAYS… POUR S'EMPARER D'HABITATIONS… QUI NE SONT PAS À ELLE… »… « ILS SONT EFFRAYANTS ET REDOUTABLES… C'EST D'EUX-MÊMES QUE SORTENT LEUR JUSTICE… ET LEUR DIGNITÉ… LEURS CHEVAUX SONT PLUS RAPIDES QUE LES LÉOPARDS… PLUS FÉROCES QUE LES LOUPS LE SOIR… »… « LEURS CHEVAUX DE GUERRE ARRIVENT AU GALOP… LEURS CHEVAUX VIENNENT DE LOIN… ILS VOLENT COMME L'AIGLE… QUI SE PRÉCIPITE SUR SA PROIE… »… « ILS VIENNENT TOUS POUR AGIR AVEC VIOLENCE… AVANÇANT TOUS ENSEMBLE… ILS SONT COMME LE VENT D'EST… ET ILS RAMASSENT DES PRISONNIERS… COMME DU SABLE… »… « ILS SE MOQUENT DES ROIS… ET RIENT DES HAUTS FONCTIONNAIRES… ILS RIENT DE TOUTES LES FORTERESSES… ILS AMASSENT DE LA POUSSIÈRE… ET S'EN EMPARENT… »… « ALORS ILS PASSENT COMME LE VENT… ET ILS DEVIENNENT COUPABLES… EN ATTRIBUANT LEUR FORCE… À LEUR DIEU… »… — RAʾAH… VOIR… HITBONEN… REGARDER AVEC ATTENTION… TEMAHU… SOYEZ STUPÉFAITS… POʿAL… L'ACTION, L'ŒUVRE… KASDIM… LES CHALDÉENS, LA BABYLONIE DU SUD… MAR… AMER… NIMHAR… IMPÉTUEUX, PRÉCIPITÉ… MISHKENOT… LES HABITATIONS… NAMER… LE LÉOPARD… ZEʾEV ʿEREV… LE LOUP DU SOIR… PARASH… LE CAVALIER, LE CHEVAL… QAL… RAPIDE, LÉGER… NESHER… L'AIGLE… ṬAREF… LA PROIE… ḤAMAS… LA VIOLENCE… QADIM… LE VENT D'EST… SHEVI… LE CAPTIF… ḤOL… LE SABLE… LAʿAG… SE MOQUER… MIVTSAR… LA FORTERESSE… ʿAFAR… LA POUSSIÈRE… ʾASHAM… DEVENIR COUPABLE… ḤELO… SA FORCE… ʾELOHO… SON DIEU… — 626 AV. N. È.… 625… BABYLONE… NABOPOLASSAR… 612… 609… 597… 607-586… 2 ROIS 24:1-4… 2 ROIS 25:1-11… 2 CHRONIQUES 36… CHRONIQUE BABYLONIENNE… ÉSAÏE 10:5-7… JÉRÉMIE 25:9… »</li>
+<li>LES TROIS JUMEAUX — 2 Rois 24:1-4 : « en ses jours, Neboukadnetsar le roi de Babylone monta… alors Jéhovah envoya contre lui des bandes de Chaldéens… pour détruire Juda… c'est à cause des péchés de Manassé, tout le sang innocent qu'il avait versé » — le texte historique qui énonce explicitement que ces bandes de Chaldéens étaient envoyées par Jéhovah, exactement le langage d'Habacuc 1:6. Ésaïe 10:5-7 : « Oh ! l'Assyrien, la verge de ma colère… je l'envoie contre une nation impie… mais lui, ce n'est pas ainsi qu'il le pense, ce n'est pas cela que son cœur médite » — la déclaration de principe que le prophète contemporain applique au premier empire despotique, et que Dieu applique ici aux Chaldéens : l'instrument ne connaît pas les desseins de celui qui l'emploie. Jérémie 25:9 : « voici que j'envoie chercher toutes les familles du nord… et mon serviteur Neboukadnetsar, roi de Babylone, et je les ferai venir contre ce pays » — la même formule « mon serviteur » appliquée, un siècle après Habacuc, au souverain que le prophète voit venir de loin.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le livre s'ouvre par une plainte. Le titre le présente comme « la déclaration que le prophète Habacuc a reçue dans une vision » ; mais le prophète ne se contente pas de rapporter des oracles, il adresse une question directe : jusqu'à quand faudra-t-il crier au secours sans être entendu, contre la violence qui n'est pas réprimée ? Il décrit l'état du pays — le pillage, la violence, la contestation et les disputes devant lui, la loi sans force, le jugement qui sort faussé, le méchant qui cerne le juste. Le registre du projet rattache les versets 5 à 11 à l'oracle sur les Chaldéens, et le climat du royaume de Juda au temps de Habacuc correspond à cette description : le règne de Manassé, l'un des plus longs et des plus meurtriers de l'histoire de Juda, et le long déclin qui précède les invasions babyloniennes. La réponse divine prend la forme d'une annonce : « voyez parmi les nations et regardez, et soyez stupéfaits » ; ce que Dieu va faire en ces jours-là dépassera la crédibilité de ses auditeurs. Les versets qui suivent décrivent avec une précision militaire l'instrument par lequel la réponse arrive : la nation chaldéenne, « enragée et sans pitié », qui envahit des étendues de pays pour prendre les demeures d'autrui, redoutable au point de tirer d'elle-même son droit et sa dignité, rapide comme le léopard, féroce comme le loup du soir, ses cavaliers volant comme l'aigle sur sa proie, ramassant des captifs comme du sable, se moquant des rois et des forteresses — puis, après avoir passé comme le vent, coupables d'attribuer leur force à leur dieu.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE CONTEXTE HISTORIQUE ET SON CARACTÈRE STUPÉFIANT : l'annonce est présentée comme difficile à croire « même si on la racontait », ce qui correspond à la situation des auditeurs : les Babyloniens n'étaient pas encore la puissance dominante, et l'Assyrie occupait encore la scène. Un commentaire protestant relève que les Babyloniens « ne représentaient pas encore une menace », ce qui rendait la prophétie inconcevable aux Judéens ; le fait qu'elle se soit réalisée en une quinzaine d'années est souligné par les exégètes. (2) LES DÉTAILS DE LA CAVALERIE : la comparaison du cheval avec le léopard joue sur la vitesse et la soudaineté de l'attaque, celle du cavalier avec l'aigle, sur la précipitation de la descente ; le loup du soir est le prédateur affamé qui chasse à la nuit tombante. Ces images appartiennent à la poésie prophétique, mais leur arrière-plan est concret : la cavalerie chaldéenne était réputée, et l'aigle figure dans l'iconographie impériale mésopotamienne. (3) LE DROIT QUE LA NATION TIRE D'ELLE-MÊME : la formule du verset 7 signifie que l'envahisseur ne reconnaît aucun droit supérieur ; c'est le portrait d'une puissance qui se prend pour sa propre loi. Le contraste avec le droit divin qui n'est « pas fort » dans le pays (verset 4) est délibéré. (4) LA FORCE ATTRIBUÉE À SON DIEU : le dernier verset du passage est le pivot du livre. Le Chaldéen n'est pas blâmé seulement pour sa violence, mais pour l'interprétation religieuse de sa victoire — il attribue sa force à son dieu, c'est-à-dire à un dieu qui n'est autre que sa propre puissance. C'est précisément l'objection que Habacuc portera ensuite à Dieu, et la raison pour laquelle le sort du Chaldéen sera lui-même jugé.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 35 — Habaqouq » et l'article « Combien de temps reste-t-il aux méchants ? » commentent ces versets en détail. L'article cite Habaqouq 1:6-11 : « voici que je suscite les Chaldéens, la nation amère et impétueuse, qui va vers les régions de la terre qui sont grandes ouvertes… » ; il relève que « les chevaux de Babylone sont plus rapides que des léopards véloces », que « sa cavalerie est plus féroce que des loups affamés qui chassent la nuit », que « depuis la lointaine Babylone, ils foncent sur Juda » et qu'« ils volent comme un aigle pressé d'engloutir un repas savoureux ». Le même article précise qu'« en attaquant Juda et sa capitale, Jérusalem, les Babyloniens agiront selon leurs désirs » et qu'« ils ne sauront pas qu'ils sont l'instrument avec lequel Dieu exécute son jugement juste contre un peuple infidèle ». Lecture commune et exégèse : la Bible Annotée, dans ses notes sur le premier chapitre, replace la plainte initiale dans la bouche « des fidèles qui souffrent de l'oppression des méchants » et montre que la réponse divine passe par un instrument encore plus impitoyable que les oppresseurs du pays ; les commentateurs relèvent que la description de l'armée chaldéenne est l'une des plus denses de la littérature prophétique et que le lien entre l'instrument et Celui qui l'emploie est affirmé à la première personne : « je fais venir ».</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Période du ministère</td><td>L'oracle est consigné : la venue des Chaldéens annoncée comme une action stupéfiante de Jéhovah (Habacuc 1:5-11)</td></tr>
+<tr><td class="d">625 av. n. è.</td><td>Nabopolassar affermit son pouvoir à Babylone ; la nouvelle puissance chaldéenne entre en scène</td></tr>
+<tr><td class="d">612 av. n. è.</td><td>Chute de Ninive : l'Assyrie s'effondre, la Babylonie devient la puissance dominante du Proche-Orient</td></tr>
+<tr><td class="d">609 av. n. è.</td><td>Victoire de Babylone à Karkemish ; le contrôle du Levant passe à Neboukadnetsar</td></tr>
+<tr><td class="d">597 av. n. è.</td><td>Première descente contre Jérusalem : soumission de Yoaïkin, déportation d'une partie de la population (2 Rois 24:10-16)</td></tr>
+<tr><td class="d">607-586 av. n. è.</td><td>Siège et prise de Jérusalem ; la ville est détruite et la population déportée (2 Rois 25:1-11)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) L'ESSOR CHALDÉEN : les sources babyloniennes, dont la chronique de Nabopolassar et les textes de cour, documentent l'accession au pouvoir de la dynastie chaldéenne à partir de 626 av. n. è. et la transformation de Babylone en puissance dominante — exactement l'élément que le prophète présente comme stupéfiant. (2) LA CHUTE DE NINIVE : la chronique babylonienne rapporte la prise de la capitale assyrienne ; la disparition de l'oppresseur du nord ouvre la voie à la nouvelle puissance, comme le suppose l'oracle. (3) LA CAMPAGNE DE 609 : les sources babyloniennes mentionnent la bataille de Karkemish et la mainmise sur la Syrie-Palestine — contexte immédiat du « pays grand ouvert » évoqué par le prophète. (4) LA PRISE DE JÉRUSALEM : la chronique de Neboukadnetsar relative à sa septième année (597 av. n. è.) rapporte le siège de Jérusalem et la déportation du roi ; 2 Rois 24:10-16 donne le récit biblique correspondant. (5) LES BANDES CHALDÉENNES : 2 Rois 24:1-4 décrit précisément des « bandes de Chaldéens » envoyées contre Juda, ce qui correspond au vocabulaire militaire du passage ; le texte attribue explicitement ces raids à Jéhovah. (6) LA CAVALERIE ET LES PRISES DE VILLES : les reliefs assyriens puis babyloniens représentent cavaliers, archers montés et convois de captifs ; les sources administratives babyloniennes comptabilisent les prisonniers, ce qui donne un contenu concret à la formule « ils ramassent des prisonniers comme du sable ». (7) PRUDENCE : les sources confirment l'ascension chaldéenne et les campagnes contre Juda ; elles ne permettent pas d'identifier l'événement précis qui a provoqué la première plainte du prophète.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE PAYS CHALDÉEN : la Babylonie du Sud, marécageuse et parcourue de canaux, forme l'assise de la dynastie chaldéenne ; son éloignement de Juda, noté par l'article cité (« depuis la lointaine Babylone »), rendait l'annonce d'autant moins croyable. (2) LES AXES DE L'INVASION : les armées babyloniennes remontaient la vallée de l'Euphrate puis descendaient par la Syrie vers le Levant ; elles longeaient ensuite la côte ou la vallée du Jourdain pour atteindre la montagne de Juda. (3) « LES RÉGIONS GRANDES OUVERTES » : l'expression désigne les espaces découverts et les plaines faciles à parcourir ; le pays de Juda, encaissé dans ses montagnes, offrait l'exemple même d'un terrain difficile, ce qui souligne la portée de l'annonce. (4) LE VENT D'EST : en Palestine, le vent d'est est le vent brûlant qui vient du désert et dessèche la végétation ; employé pour décrire la marche compacte de l'envahisseur, il évoque un fléau irrésistible. (5) LES LÉOPARDS ET LES AIGLES : la faune de la région — félins des fourrés et grands rapaces migrateurs — fournit au prophète ses images ; l'aigle qui fond sur sa proie est une scène observable dans les reliefs et la nature. (6) LES FORTERESSES RIDICULISÉES : les places fortes de Juda, comme Lakish, Azéqa et Béer-Shéva, jalonnent les routes d'invasion ; le verset 10 affirme que l'envahisseur n'en tient compte, ce que l'archéologie des destructions du VIe siècle confirme dans les faits.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES ARCHIVES BABYLONIENNES : tablettes administratives, contrats et listes de rations provenant de Babylonie mentionnent des déportés judéens et donnent des dates précises sur les campagnes ; leur étude, menée depuis le XIXe siècle, constitue un ensemble documentaire de premier ordre. (2) LES NIVEAUX DE DESTRUCTION : les fouilles de Jérusalem, de Lakish et d'autres sites de Juda ont relevé des couches de destruction datées de la fin du VIIe et du début du VIe siècle, correspondant aux campagnes babyloniennes. (3) LES BULLES ET LES SCEAUX : les cachets d'argile brûlés retrouvés dans les quartiers détruits portent des noms de scribes et d'administrateurs de la période finale de la monarchie ; ils attestent la réalité de l'administration balayée par l'invasion. (4) LES OSTRACA DE LAKISH : la correspondance militaire du temps du siège signale les mouvements de troupes et l'attente des secours égyptiens, et se réfère à des postes d'observation — documents contemporains de la menace décrite par le prophète. (5) LA MÉTROLOGIE ET L'ÉQUIPEMENT : l'étude des pointes de flèches, des poids et des équipements militaires retrouvés en contexte de destruction documente le matériel de guerre des armées chaldéennes. (6) L'ARCHÉOASTRONOMIE ET LA CHRONOLOGIE : la chronique astronomique babylonienne (VAT 4956) et la tablette de l'éclipse solaire de 568 av. n. è. servent d'ancrage à la chronologie néo-babylonienne, ce qui permet de dater avec précision les campagnes de Neboukadnetsar. (7) PRUDENCE : l'archéologie documente les invasions, les destructions et les déportations ; elle n'établit pas la dimension d'avertissement divin qui structure le texte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>PLAINTE DU PROPHÈTE (1:1-4, cadre du passage) : « JUSQU'À QUAND, Ô JÉHOVAH ? » — LA VIOLENCE, LA LOI SANS FORCE, LE JUGEMENT QUI SORT FAUSSÉ → RÉPONSE DIVINE : « VOYEZ PARMI LES NATIONS ET REGARDEZ, ET SOYEZ STUPÉFAITS » (1:5) → L'INSTRUMENT : « JE FAIS VENIR LES CHALDÉENS, NATION ENRAGÉE ET SANS PITIÉ » (1:6) → LEUR CARACTÈRE : EFFRAYANTS, REDOUTABLES, TIRANT D'EUX-MÊMES LEUR DROIT (1:7) → LEUR VITESSE : CHEVAUX PLUS RAPIDES QUE LES LÉOPARDS, CAVALIERS COMME L'AIGLE (1:8) → LEUR ŒUVRE : LA VIOLENCE, LES CAPTIFS COMME DU SABLE, LA MOQUERIE DES ROIS ET DES FORTERESSES (1:9, 10) → VERDICT ANTICIPÉ : « ILS PASSENT COMME LE VENT… COUPABLES EN ATTRIBUANT LEUR FORCE À LEUR DIEU » (1:11) → HISTOIRE : 625-609-597-607/586 → 2 ROIS 24:1-4 ; 25:1-11</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (2 Rois 24:1-4 ; 25:1-11) et le statut « Accomplie ». ÉTENDUE DU PASSAGE : le registre rattache le passage à Habacuc 1:5-11 ; la plainte des versets 1 à 4 est présentée dans la fiche comme le cadre du passage et non comme une entrée du registre. LES ANIMAUX : la fiche explique les comparaisons du léopard, du loup et de l'aigle comme des images de vitesse et de férocité, sans en faire des symboles précis d'une puissance particulière. LE VERSET 7 : la fiche rapporte la formule sur le droit que la nation tire d'elle-même sans en tirer de commentaire politique. LA DATE DE COMPOSITION : la fiche ne tranche pas entre les datations proposées pour le ministère de Habacuc, l'essentiel étant que l'annonce précède la venue des Chaldéens. LES PRISES DE VILLES : la fiche mentionne les destructions relevées par l'archéologie sans dresser de liste exhaustive des sites. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des versets 12 à 17 (fiche suivante) ni des malheurs du chapitre 2 ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Règne de Manassé : violence et effusion de sang en Juda, arrière-plan du climat décrit en Habacuc 1:2-4</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 716-687 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Habacuc consigne l'oracle : les Chaldéens annoncés comme instrument du jugement</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 632-628 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nabopolassar fonde la dynastie chaldéenne à Babylone</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">626 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Ninive : effondrement de l'Assyrie</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bataille de Karkemish : Babylone contrôle le Levant</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Descentes contre Jérusalem, déportations et destruction de la ville (2 Rois 24:10-16 ; 25:1-11)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597 puis 607-586 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/4">Bible — Psaume 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/2">Bible — Deutéronome 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/5/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/6/3">Bible — Josué 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/6/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/2">Bible — Juges 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/2</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990096">Livre de la Bible numéro 35 — Habaqouq — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990096</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche HA470 — « Regardez parmi les nations et soyez stupéfaits » : les Chaldéens, les chevaux plus rapides que les léopards et les prisonniers ramassés comme du sable</span><span>Catégorie HA1</span></div></div>
+</article>
+<article class="fiche" id="HA471">
+<div class="visuel"><img src="images/prophe_HA471_filets.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE HA471 · CATÉGORIE HA1</div>
+<h3>« Tes yeux sont trop purs pour voir le mal » : le méchant qui avale un plus juste que lui, l'hameçon et les filets</h3>
+<div class="ref">Habacuc 1:12-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">n'es-tu pas dès les temps anciens ô jéhovah mon dieu mon saint tu ne meurs pas ô jéhovah tu l'as établi pour juger ô rocher tu l'as fondé pour reprendre tu as les yeux trop purs pour voir le mal tu ne peux pas regarder l'oppression pourquoi regardes-tu les traîtres et gardes-tu le silence quand un méchant engloutit un plus juste que lui tu fais les hommes comme les poissons de la mer comme les reptiles qui n'ont pas de chef il les fait tous monter avec l'hameçon il les tire avec son filet il les rassemble dans sa senne c'est pourquoi il se réjouit et exulte c'est pourquoi il sacrifie à son filet et offre de l'encens à sa senne car par eux sa portion est grasse et sa nourriture succulente est-ce pour cela qu'il videra sa senne et tuera des nations constamment sans pitié (habacuc 1:12-17 ; habacuc 2:1-4 (réponse) ; accomplie)</span>
+<span class="badge">5 sources</span>
+</div>
+
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Habacuc 1:12-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>n'es-tu pas dès les temps anciens ô jéhovah mon dieu mon saint tu ne meurs pas ô jéhovah tu l'as établi pour juger ô rocher tu l'as fondé pour reprendre tu as les yeux trop purs pour voir le mal tu ne peux pas regarder l'oppression pourquoi regardes-tu les traîtres et gardes-tu le silence quand un méchant engloutit un plus juste que lui tu fais les hommes comme les poissons de la mer comme les reptiles qui n'ont pas de chef il les fait tous monter avec l'hameçon il les tire avec son filet il les rassemble dans sa senne c'est pourquoi il se réjouit et exulte c'est pourquoi il sacrifie à son filet et offre de l'encens à sa senne car par eux sa portion est grasse et sa nourriture succulente est-ce pour cela qu'il videra sa senne et tuera des nations constamment sans pitié (habacuc 1:12-17 ; habacuc 2:1-4 (réponse) ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Habacuc — P471 (1:12-17 : jusqu'à quand ? Le méchant avale un plus juste que lui) ; Habacuc 2:1-4 (réponse) ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« N'ES-TU PAS DÈS LES TEMPS ANCIENS… Ô JÉHOVAH MON DIEU… MON SAINT…? TU NE MEURS PAS… »… « Ô JÉHOVAH… TU L'AS ÉTABLI POUR JUGER… Ô ROCHER… TU L'AS FONDÉ POUR REPRENDRE… »… « TU AS LES YEUX TROP PURS POUR VOIR LE MAL… TU NE PEUX PAS REGARDER L'OPPRESSION… POURQUOI REGARDES-TU LES TRAÎTRES… ET GARDES-TU LE SILENCE… QUAND UN MÉCHANT ENGLOUTIT… UN PLUS JUSTE QUE LUI…? »… « TU FAIS LES HOMMES… COMME LES POISSONS DE LA MER… COMME LES REPTILES… QUI N'ONT PAS DE CHEF… »… « IL LES FAIT TOUS MONTER AVEC L'HAMEÇON… IL LES TIRE AVEC SON FILET… IL LES RASSEMBLE DANS SA SENNE… C'EST POURQUOI IL SE RÉJOUIT… ET EXULTE… »… « C'EST POURQUOI IL SACRIFIE À SON FILET… ET OFFRE DE L'ENCENS À SA SENNE… CAR PAR EUX SA PORTION EST GRASSE… ET SA NOURRITURE SUCCULENTE… »… « EST-CE POUR CELA QU'IL VIDERA SA SENNE… ET TUERA DES NATIONS CONSTAMMENT… SANS PITIÉ…? »… — QEDEM… DÈS LES TEMPS ANCIENS… ʾELOHAI QEDOSHI… MON DIEU, MON SAINT… LOʾ NAMUT… NOUS NE MOURONS PAS, TU NE MEURS PAS… TSUR… LE ROCHER… YASAD… FONDER, AFFERMIR… YAKHAḤ… REPRENDRE, CHÂTIER… ṬAHOR ʿENAYIM… PURS DE YEUX… RAʿ… LE MAL… ʿAMAL… L'OPPRESSION, LA PEINE… BOGED… LE TRAÎTRE, LE PERFIDE… ḤARASH… GARDER LE SILENCE… BALAʿ… ENGLOUTIR, AVALER… TSADDIQ… LE JUSTE… DAG… LE POISSON… REMES… LE REPTILE… ḤAKKAH… L'HAMEÇON… ḤEREM… LE FILET… MIKMERET… LA SENNE, LE GRAND FILET… SAMEAḤ… SE RÉJOUIR… GIL… EXULTER… ZAVAḤ… SACRIFIER… QITTER… OFFRIR DE L'ENCENS… ḤELEQ… LA PORTION, LE BUTIN… BRIʾAH… LA NOURRITURE GRASSE… RIQ… VIDER… HARAG… TUER… GOYIM… LES NATIONS… RAḤAM… LA COMPASSION… — 607… 586… 539… PSAUME 73… JÉRÉMIE 12:1-4… PSAUME 94:3… »</li>
+<li>LES TROIS JUMEAUX — Psaume 73:2-14 : « pour moi, mes pieds ont presque trébuché… car j'ai été envieux de ceux qui se vantent, quand je voyais la prospérité des méchants… ils ne sont pas dans la peine des hommes… voici ce que sont les méchants : toujours tranquilles, ils amassent des richesses » — le même étonnement que celui de Habacuc, formulé dans un psaume où le fidèle finit par trouver la réponse dans le sanctuaire : ce que le prophète attend, le psalmiste l'a contemplé. Psaume 94:3, 4 : « jusqu'à quand les méchants, ô Jéhovah, jusqu'à quand les méchants triompheront-ils ? Ils vomissent des paroles insolentes, tous ceux qui commettent l'injustice se vantent » — la plainte parallèle, presque mot pour mot, sur le silence apparent de Dieu. Jérémie 12:1 : « tu es juste, ô Jéhovah, quand je t'adresse des reproches ; pourtant je veux te parler de justice : pourquoi la voie des méchants est-elle prospère ? » — la même question posée par un prophète un siècle plus tard, en des termes qui montrent la permanence du débat dans la foi d'Israël.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La première réponse de Dieu n'a pas apaisé le prophète, elle a multiplié ses questions. Le verset 12 commence par une confession : « n'es-tu pas dès les temps anciens, ô Jéhovah mon Dieu, mon Saint ? Tu ne meurs pas. » Habacuc sait que Dieu est éternel, qu'il a établi le Chaldéen pour juger et qu'il l'a « fondé pour reprendre » — il ne conteste donc pas le jugement en tant que tel. Sa difficulté porte sur un point précis : si les yeux de Dieu sont trop purs pour voir le mal, comment peut-il regarder les traîtres et garder le silence « quand un méchant engloutit un plus juste que lui » ? Il pousse la logique jusqu'au bout en employant trois images : les hommes traités comme des poissons de la mer, sans chef ni protecteur ; la pêche à l'hameçon, au filet et à la senne, qui ramasse tout sans distinction ; et, dernière touche, le pêcheur qui se met à sacrifier à son propre filet et à brûler de l'encens en l'honneur de sa senne, parce qu'ils font sa prospérité. La question finale est une supplication autant qu'une protestation : « est-ce pour cela qu'il videra sa senne et tuera des nations constamment, sans pitié ? » C'est à cette question que la suite du livre répond, dans la scène du poste de garde du chapitre 2. Le registre rattache l'accomplissement de cette entrée à la réponse donnée en Habacuc 2:1-4.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) UNE OBJECTION DE JUSTICE : le prophète ne discute pas la souveraineté de Dieu, il la confesse ; il demande comment la sainteté divine peut laisser l'instrument du jugement dépasser la mesure et frapper aussi les justes, enveloppés dans la catastrophe nationale. La Bible Annotée, dans ses notes, identifie précisément ce point : « ce peuple féroce frappe non seulement les vrais coupables qui ont attiré sur eux la colère céleste, mais encore les justes, les membres innocents de la nation », et rappelle que ces « plus justes que lui » ne sont pas le peuple dans son ensemble — dont les versets 2 et 3 ont décrit la corruption — mais les fidèles d'Israël. (2) LES TROIS ENGINS DE PÊCHE : l'hameçon prend l'individu, le filet ramasse le banc, la senne traîne le fond et ne laisse rien. Les commentateurs y voient la gradation des moyens de ruse et de violence employés par l'empire pour subjuguer les peuples ; l'image est d'autant plus frappante que la mer est un espace sans frontière ni maître, où les êtres vivants sont livrés sans recours. (3) LE SACRIFICE AU FILET : c'est le trait le plus ironique du passage. Le pêcheur qui attribue son succès à son instrument — au point de lui offrir de l'encens — décrit une religion de la force, exactement ce que le verset 11 du chapitre précédent reprochait au Chaldéen. Les commentateurs rapprochent cette scène des prophéties postérieures contre l'idolâtrie et de la critique des empires qui divinisent leur propre puissance. (4) LA QUESTION SANS RÉPONSE IMMÉDIATE : le passage se termine sur une interrogation. C'est le procédé littéraire du livre : la réponse viendra au chapitre suivant, après que le prophète s'est posté pour l'attendre. Les exégètes relèvent que la structure de dialogue fait de Habacuc un livre unique dans le corpus prophétique.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Combien de temps reste-t-il aux méchants ? » suit précisément ce mouvement. Il cite Habaqouq 1:12 : « n'es-tu pas dès les temps anciens, ô Jéhovah ? Ô mon Dieu, mon Saint, tu ne meurs pas », et commente : « lorsque Habaqouq comprend mieux le dessein de Jéhovah, l'espoir grandit dans son cœur. Totalement confiant, il adore Jéhovah » ; il précise que « Jéhovah est effectivement Dieu “depuis des temps indéfinis et pour des temps indéfinis”, à jamais », puis reconnaît la difficulté du prophète : « on saisit facilement pourquoi Habaqouq a du mal à comprendre que Dieu se serve des Babyloniens méchants pour exécuter son jugement. Ces Chaldéens sans pitié ne sont pas des adorateurs de Jéhovah. » Lecture commune et exégèse : les commentaires rapprochent cette plainte du Psaume 73 et de Jérémie 12, qui posent la même question ; ils soulignent que la réponse divine ne consistera pas à expliquer le détail de la justice de Dieu mais à assurer que le jugement tombera aussi sur l'orgueilleux, et que le juste, lui, vivra par sa fidélité — phrase qui deviendra l'un des versets les plus cités du Nouveau Testament.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Période du ministère</td><td>La seconde plainte est consignée : le méchant qui engloutit un plus juste que lui (Habacuc 1:12-17)</td></tr>
+<tr><td class="d">607-586 av. n. è.</td><td>L'invasion babylonienne frappe Juda sans distinction apparente : justes et injustes subissent la catastrophe nationale (2 Rois 25 ; Lamentations 1:3-5)</td></tr>
+<tr><td class="d">539 av. n. è.</td><td>Babylone est renversée par les Mèdes et les Perses : la question « est-ce pour cela qu'il videra sa senne sans pitié ? » reçoit sa réponse historique</td></tr>
+<tr><td class="d">537 av. n. è.</td><td>Les Judéens déportés sont libérés et retournent dans leur pays — les « engloutis » de 607 sont rendus (Esdras 1:1-4)</td></tr>
+<tr><td class="d">Ensuite</td><td>Le principe demeure dans les Écritures : le juste vivra par sa fidélité, et l'orgueilleux n'est pas dans le droit chemin (Habacuc 2:4)</td></tr>
+<tr><td class="d">Périodes suivantes</td><td>L'article cité applique la question posée au sort de l'oppression à travers l'histoire, jusqu'à l'exécution complète du jugement divin</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA DESTRUCTION DE JÉRUSALEM : 2 Rois 25 et le livre des Lamentations décrivent une catastrophe nationale qui frappe l'ensemble de la population — c'est exactement le cadre du problème posé par le prophète, et non un simple cas de rétribution individuelle. (2) LES DÉPORTATIONS : les tablettes de rations babyloniennes mentionnent des Judéens déportés de toutes conditions, ce qui confirme le caractère collectif de l'épreuve. (3) LES CONQUÊTES BABYLONIENNES : la chronique de Neboukadnetsar énumère les campagnes en Syrie-Palestine, avec les villes prises année après année — la « senne » qui ramasse tout, selon l'image du prophète. (4) LES RELIEFS ET L'ICONOGRAPHIE IMPÉRIALE : les grands empires de l'époque se représentaient en maîtres de la nature et des hommes, avec des scènes de capture au filet, à l'hameçon ou au lasso dans l'art mésopotamien et égyptien ; cette iconographie éclaire l'arrière-plan de l'image. (5) LES PSAUMES DE PLAINTE : Psaume 73 et Psaume 94, Jérémie 12, appartiennent à la même veine que Habacuc 1:12-17 ; la présence du même débat dans plusieurs textes, sur plusieurs siècles, montre qu'il s'agit d'une question constante de la foi d'Israël et non d'une singularité littéraire. (6) LA CHUTE DE BABYLONE : la prise de Babylone par Cyrus en 539 av. n. è. est rapportée par la chronique de Nabonide et par Hérodote ; elle répond, dans l'histoire, à la question du prophète sur l'impunité de la puissance de proie. (7) PRUDENCE : les sources documentent les invasions, les déportations et la chute de Babylone ; elles ne permettent pas d'identifier les personnes visées par l'expression « un plus juste que lui ».</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA MER ET LES POISSONS : la Méditerranée, toute proche, et les eaux douces de la région fournissent au prophète l'image des poissons sans maître ; la pêche au filet et à la senne était une activité familière sur la côte et autour du lac de Galilée. (2) LA PÊCHE AU FILET : les filets et les sennes décrits correspondent aux engins retrouvés et représentés dans l'iconographie égyptienne et grecque ; ils ramassent indifféremment, ce qui fait leur valeur comme image. (3) LE ROCHER : le prophète appelle Dieu « ô Rocher », un titre qui prend tout son sens dans un paysage de falaises et de massifs calcaires, où le rocher est le refuge naturel et le fondement stable. (4) LA POSITION DE JUDA : coincé entre l'Égypte et la Mésopotamie, le pays constitue un couloir où les empires se croisent ; les « nations » tuées sans pitié sont celles de tout le croissant fertile, comme le suggère l'ampleur du texte. (5) LES ROUTES DES DÉPORTATIONS : de Jérusalem vers la Babylonie, les convois suivent l'itinéraire du nord par la Syrie avant de redescendre l'Euphrate ; les sites de résidence des déportés judéens sont identifiés par les tablettes, ce qui donne une assise géographique au sort des « engloutis ». (6) LE DÉCOR PASTORAL ET MARITIME : le texte mêle les images du berger, du pêcheur et du rocher, comme le font habituellement les écrits hébreux pour décrire la condition humaine selon plusieurs milieux de vie.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES TABLETTES DE RATIONS DE BABYLONE : ces documents administratifs, retrouvés dans le palais royal, mentionnent des distributions d'huile et de grain à des personnes détenues ou déplacées, dont le roi judéen Yoaïkin et sa suite ; ils fournissent une preuve matérielle du sort des populations englouties par l'empire. (2) LES INVENTAIRES DE PRISONNIERS : les annales babyloniennes et assyriennes comptabilisent les captifs avec une précision administrative ; la formule « ils ramassent des prisonniers comme du sable » correspond à une pratique documentée et chiffrée. (3) LES NIVEAUX D'ABANDON DANS LA CAMPAGNE DE JUDA : les prospections montrent un effondrement de l'habitat rural après 586 av. n. è., ce qui mesure l'ampleur de la catastrophe subie par toutes les couches de la population. (4) L'ARCHÉOLOGIE DE LA PÊCHE : les vestiges de poids de filet et d'hameçons en os ou en bronze sont fréquents sur les sites côtiers et lacustres de la région ; ils confirment la familiarité de l'image employée par le prophète. (5) LA MÉTALLURGIE ET L'ICONOGRAPHIE : les reliefs et les sceaux montrant des personnages capturés au filet ou au lasso, attestés en Mésopotamie et en Égypte, documentent l'usage symbolique de ces engins pour désigner la conquête. (6) LA TRANSMISSION DU VERSET 4 : la citation de Habacuc 2:4 en Romains 1:17, Galates 3:11 et Hébreux 10:38 montre la diffusion du livre et l'importance attachée à sa réponse, ce que l'étude des manuscrits et des citations anciennes permet de suivre. (7) PRUDENCE : l'archéologie documente les déportations, l'abandon des campagnes et les engins de pêche ; la question du silence apparent de Dieu relève du propos du texte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>CONFESSION : « N'ES-TU PAS DÈS LES TEMPS ANCIENS, Ô JÉHOVAH MON DIEU, MON SAINT ? » (1:12) → RECONNAISSANCE DU RÔLE DE L'INSTRUMENT : « TU L'AS ÉTABLI POUR JUGER… FONDÉ POUR REPRENDRE » (1:12) → OBJECTION : « TES YEUX SONT TROP PURS POUR VOIR LE MAL… POURQUOI GARDES-TU LE SILENCE QUAND UN MÉCHANT ENGLOUTIT UN PLUS JUSTE QUE LUI ? » (1:13) → PREMIÈRE IMAGE : LES HOMMES COMME LES POISSONS DE LA MER SANS CHEF (1:14) → SECONDE IMAGE : L'HAMEÇON, LE FILET, LA SENNE (1:15) → IRONIE : LE PÊCHEUR QUI SACRIFIE À SON FILET ET OFFRE DE L'ENCENS À SA SENNE (1:16) → QUESTION FINALE : « EST-CE POUR CELA QU'IL TUERA DES NATIONS SANS PITIÉ ? » (1:17) → RÉPONSE ANNONCÉE : LE POSTE DE GARDE ET LA VISION DU CHAPITRE 2 (registre : Habacuc 2:1-4)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Habacuc 2:1-4 (réponse)) et le statut « Accomplie ». LES « PLUS JUSTES » : la fiche reprend la lecture courante selon laquelle l'expression désigne les fidèles d'Israël enveloppés dans la catastrophe nationale, sans les identifier à un groupe précis. LE SACRIFICE AU FILET : la fiche le présente comme la critique d'une religion de la force, sans entrer dans l'analyse comparée des cultes mésopotamiens. LES ENGINS DE PÊCHE : la fiche décrit les trois engins cités sans entreprendre leur étude technique détaillée. LE VERSET 12 : la fiche signale les variantes de traduction du dernier membre de phrase (« tu ne meurs pas » / « nous ne mourrons pas ») sans en tirer de conclusion textuelle. LA CHUTE DE BABYLONE : la fiche la mentionne comme réponse historique à la question posée, sans en faire une interprétation du verset 17 lui-même. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des malheurs du chapitre 2 (fiches suivantes) ni du cantique du chapitre 3 ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Habacuc consigne sa seconde plainte : le silence apparent de Dieu devant l'injustice (Habacuc 1:12-17)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 632 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Jérusalem : la catastrophe frappe justes et injustes, l'objection du prophète se vérifie dans l'histoire (2 Rois 25)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Période de l'exil : les Judéens déportés en Babylonie, dont le roi Yoaïkin, sont documentés par les tablettes de rations</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607-537 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus : la puissance de proie est à son tour jugée (chronique de Nabonide)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus et retour des captifs (Esdras 1:1-4)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La réponse divine est consignée en Habacuc 2:1-4 : « le juste vivra par sa fidélité »</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/73">Bible — Psaume 73 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/73</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/3">Bible — Proverbes 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/4">Bible — Proverbes 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/20/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/1">Bible — Juges 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/7/1</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200011742">Habacuc (Livre de) — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200011742</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche HA471 — « Tes yeux sont trop purs pour voir le mal » : le méchant qui avale un plus juste que lui, l'hameçon et les filets</span><span>Catégorie HA1</span></div></div>
+</article>
+<article class="fiche" id="HA472">
+<div class="visuel"><img src="images/prophe_HA472_vision.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE HA472 · CATÉGORIE HA1</div>
+<h3>« Écris la vision… car le juste vivra par sa fidélité » : la réponse du poste de garde et le verset cité trois fois dans les Écritures grecques</h3>
+<div class="ref">Habacuc 2:1-4</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie / En cours</span>
+<span class="badge">je me tiendrai à mon poste de garde et je me placerai sur la tour de guet je resterai aux aguets pour voir ce qu'il me dira et ce que je répondrai à la remontrance qui me sera faite alors jéhovah me répondit et dit écris la vision grave-la sur des tablettes afin que celui qui la lit la lise couramment car la vision est encore pour un temps fixé elle parle de la fin et ne mentira pas même si elle tarde attends-la car elle se réalisera à coup sûr et ne sera pas en retard voici l'âme de celui qui est enflé d'orgueil n'est pas droite en lui mais le juste vivra par sa fidélité (habacuc 2:3, 4 ; hébreux 10:36-39 ; accomplie / en cours)</span>
+<span class="badge">5 sources</span>
+</div>
+
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Habacuc 2:1-4</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie / En cours</td></tr>
+<tr><td class="d">Chronologie</td><td>je me tiendrai à mon poste de garde et je me placerai sur la tour de guet je resterai aux aguets pour voir ce qu'il me dira et ce que je répondrai à la remontrance qui me sera faite alors jéhovah me répondit et dit écris la vision grave-la sur des tablettes afin que celui qui la lit la lise couramment car la vision est encore pour un temps fixé elle parle de la fin et ne mentira pas même si elle tarde attends-la car elle se réalisera à coup sûr et ne sera pas en retard voici l'âme de celui qui est enflé d'orgueil n'est pas droite en lui mais le juste vivra par sa fidélité (habacuc 2:3, 4 ; hébreux 10:36-39 ; accomplie / en cours)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Habacuc — P472 (2:1-4 : écris la vision ; elle s'accomplira sans faute ; le juste vivra par sa fidélité) ; Hébreux 10:36-39 ; Habacuc 2:3, 4 ; Accomplie / En cours</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« JE ME TIENDRAI À MON POSTE DE GARDE… ET JE ME PLACERAI SUR LA TOUR DE GUET… JE RESTERAI AUX AGUETS… POUR VOIR CE QU'IL ME DIRA… ET CE QUE JE RÉPONDRAI… À LA REMONTRANCE QUI ME SERA FAITE… »… « ALORS JÉHOVAH ME RÉPONDIT ET DIT… ÉCRIS LA VISION… GRAVE-LA SUR DES TABLETTES… AFIN QUE CELUI QUI LA LIT… LA LISE COURAMMENT… »… « CAR LA VISION EST ENCORE POUR UN TEMPS FIXÉ… ELLE PARLE DE LA FIN… ET NE MENTIRA PAS… MÊME SI ELLE TARDE… ATTENDS-LA… CAR ELLE SE RÉALISERA À COUP SÛR… ET NE SERA PAS EN RETARD… »… « VOICI… L'ÂME DE CELUI QUI EST ENFLÉ D'ORGUEIL… N'EST PAS DROITE EN LUI… MAIS LE JUSTE… VIVRA PAR SA FIDÉLITÉ… »… — MISHMERET… LE POSTE DE GARDE… MATSOR… LA TOUR DE GUET, LE FORT… TSAFAH… GUETTER, ÉPIER… YAKHAḤ… REPRENDRE, ARGUMENTER… KETOV ḤAZON… ÉCRIS LA VISION… BEʾER ʿAL HALUḤOT… GRAVE-LA SUR LES TABLETTES… LEMAʿAN YARUTS QOREʾ BO… AFIN QUE CELUI QUI LA LIT COURE… MOʿED… LE TEMPS FIXÉ… QETS… LA FIN… KAZAV… MENTIR… MAHMAH… TARDER… ḤAKAH… ATTENDRE… ʿUPPEL… ENFLÉ, GONFLÉ D'ORGUEIL… YASHAR… DROIT… TSADDIQ… LE JUSTE… ʾEMOUNAH… LA FIDÉLITÉ, LA CONSTANCE… ḤAYAH… VIVRE… — ROMAINS 1:17… GALATES 3:11… HÉBREUX 10:36-39… 539… 537… TRADITION DE LA MISHNA ET DU TALMUD… 1513-1517 LUTHER… VAT 4956… »</li>
+<li>LES TROIS JUMEAUX — Hébreux 10:36-39 : « car vous avez besoin d'endurance, pour qu'après avoir fait la volonté de Dieu, vous receviez ce qui est promis. Car encore un peu de temps, et celui qui vient viendra et il ne tardera pas. Mais mon juste vivra par la foi ; et s'il se retire, mon âme ne prend pas plaisir en lui » — la citation du verset de Habacuc dans les Écritures grecques, avec le même vocabulaire du délai, de l'attente et de la foi, et l'avertissement contre le retrait, ce qui constitue l'accomplissement retenu par le registre. Romains 1:17 : « car en lui la justice de Dieu se révèle par la foi et pour la foi, comme c'est écrit : mais le juste vivra par la foi » — la formule paulinienne qui a fait de ce verset la référence de la justification par la foi ; Galates 3:11 l'emploie dans le même sens. Ésaïe 28:16 : « voici que je pose en Sion une pierre, une pierre éprouvée, une pierre angulaire de prix, un fondement sûr : celui qui a foi en elle ne sera pas pris de panique » — le texte parallèle qui associe, comme Habacuc, la foi, la durée de l'attente et la solidité du fondement.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le chapitre 2 s'ouvre par une décision : le prophète va se poster à son poste de garde, se placer sur la tour de guet et rester aux aguets pour voir ce que Dieu lui dira et ce qu'il répondra à la remontrance qui lui est faite. L'image est celle du guetteur qui scrute l'horizon depuis un point élevé ; elle situe Habacuc dans l'attente d'une réponse après ses deux plaintes. La réponse vient, et elle commence par un ordre d'écriture : « écris la vision, grave-la sur des tablettes, afin que celui qui la lit la lise couramment ». Le sens du mot employé pour la fin de la phrase est discuté : il peut signifier que celui qui court, en passant, doit pouvoir lire l'inscription, ou que le lecteur doit pouvoir la parcourir sans effort — dans les deux cas, l'ordre est celui d'une publication claire et durable. Puis vient la parole sur le délai : la vision est « encore pour un temps fixé », elle parle de la fin et ne mentira pas ; même si elle tarde, il faut l'attendre, parce qu'elle se réalisera à coup sûr. Le verset 4 oppose enfin deux figures : l'âme enflée d'orgueil qui n'est pas droite, et le juste qui vivra par sa fidélité. Le registre du projet rattache l'accomplissement de cette entrée à Hébreux 10:36-39 et à Habacuc 2:3, 4, et lui donne le statut « Accomplie / En cours » : la parole s'est réalisée dans l'histoire — la chute de Babylone et la délivrance des captifs — et le principe demeure en vigueur pour ceux qui attendent.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA TOUR DE GUET ET L'ATTENTE : en se plaçant sur la tour, le prophète prend la position de celui qui surveille ; le mot employé pour « poste de garde » désigne une fonction de vigilance, et celui pour « tour de guet » un ouvrage de défense. La Bible Annotée rend le passage : « je veux me tenir à mon poste et me placer sur un lieu élevé ; je serai attentif à voir ce qu'il me dira », et compare la situation à celle d'un guetteur qui attend un signal. Les commentateurs relèvent que cette scène a fait de Habacuc le prophète de l'attente patiente de la réponse divine. (2) L'ORDRE D'ÉCRIRE : écrire la vision sur des tablettes afin qu'elle soit lisible « couramment » signifie qu'elle doit servir à d'autres, pas seulement au prophète. Les exégètes notent que cette consigne de publicité durable est exceptionnelle dans le corpus prophétique et qu'elle souligne la portée collective du message. (3) LE TEMPS FIXÉ ET LE DÉLAI : la réponse divine ne dit pas quand la vision s'accomplira, elle garantit qu'elle s'accomplira, et elle demande l'attente — quatrième occurrence du vocabulaire de l'attente qui structure le livre. La Bible Annotée commente : « la prédiction se rapporte à un temps fixé par Dieu pour son accomplissement, et qui est encore éloigné ; elle a hâte d'arriver à son terme ». (4) LE VERSET 4 ET SA POSTÉRITÉ : la seconde moitié du verset — « le juste vivra par sa fidélité » — est citée trois fois dans les Écritures grecques : Romains 1:17, Galates 3:11 et Hébreux 10:38. La Bible Annotée observe que Paul « retranche le pronom sa, de manière à prendre la notion de foi dans le sens absolu », et que la version grecque ancienne porte peut-être « ma fidélité » — au sens de la fidélité de Dieu à ses promesses. Le registre retient le statut mixte « Accomplie / En cours » : le verset s'est vérifié dans les faits de l'histoire et il reste la règle de vie de ceux qui attendent.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Combien de temps reste-t-il aux méchants ? » cite Habaqouq 2:3 : « car la vision est encore pour le temps fixé… même si elle tarde, attends-la », et explique que lorsqu'il comprend mieux le dessein de Jéhovah, le prophète retrouve l'espoir et adore Dieu ; l'article « Dieu exécutera-t-il le méchant ? Habacuc répond par l'affirmative » présente Habacuc comme celui qui donne « l'entière assurance que Dieu agira bientôt contre les méchants du monde entier », et rappelle que la promesse du verset 14 — la terre remplie de la connaissance de la gloire de Jéhovah — demeure la perspective du livre. Lecture commune et exégèse : les commentaires relèvent que le verset 4 a joué un rôle décisif dans l'histoire de la théologie chrétienne, et que la Réforme du XVIe siècle y a vu le texte fondateur de la doctrine de la justification par la foi ; ils notent aussi que sa formulation hébraïque tient en trois mots et que la difficulté de traduction porte sur le rattachement des mots « par la foi » au juste ou au verbe « vivra ». La Bible Annotée expose les deux options et conclut que la pensée de Paul, comme celle de Habacuc, est que le fidèle n'a le caractère de juste qu'en vertu de sa foi.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Période du ministère</td><td>La réponse est consignée : la vision écrite pour le temps fixé, l'orgueilleux déclaré non droit, le juste vivant par sa fidélité (Habacuc 2:1-4)</td></tr>
+<tr><td class="d">607-586 av. n. è.</td><td>Le châtiment annoncé s'abat sur Juda : début de la réalisation de la vision dans le temps fixé (2 Rois 25)</td></tr>
+<tr><td class="d">539 av. n. è.</td><td>Chute de Babylone par les Médes et les Perses : l'orgueil condamné tombe, comme annoncé (chronique de Nabonide)</td></tr>
+<tr><td class="d">537 av. n. è.</td><td>Édit de Cyrus : les captifs reviennent, ce qui donne un contenu concret au fait que la vision « ne mentira pas » (Esdras 1:1-4)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Le verset est cité en Romains 1:17, Galates 3:11 et Hébreux 10:36-39, accomplissement retenu par le registre</td></tr>
+<tr><td class="d">En cours</td><td>Le principe demeure : l'endurance et la fidélité gardent en vie celui qui attend, ce qui correspond au statut « Accomplie / En cours » du registre</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA RÉALISATION HISTORIQUE DE LA VISION : la chute de Jérusalem, la déportation, puis la prise de Babylone en 539 av. n. è. et le retour des captifs constituent la trame des événements que la vision annonçait ; la chronique de Nabonide rapporte la prise de la ville, et les documents de la période perse confirment l'édit autorisant le retour. (2) LA CITATION DANS LES ÉCRITURES GRECQUES : les trois citations du verset 4 dans les lettres du premier siècle montrent qu'il était un texte de référence dans les premières communautés chrétiennes ; leur présence est un fait de transmission littéraire vérifiable par les manuscrits. (3) L'HISTOIRE DE LA LECTURE : les commentaires et les traductions anciennes attestent que le verset a été lu dès l'Antiquité comme la formule de la fidélité et de la constance ; les réformateurs du XVIe siècle y ont appuyé leur enseignement sur la foi. (4) L'ATTENTE DU TEMPS FIXÉ : les textes prophétiques emploient souvent la notion de temps fixé et de délai (Daniel 8:17-19 ; 11:35 ; Ésaïe 60) ; la présence du même vocabulaire chez plusieurs auteurs montre qu'il s'agit d'un langage établi de la prophétie biblique. (5) LES CONDITIONS HISTORIQUES DU MINISTÈRE : la tradition rabbinique place Habacuc sous Manassé, dont le règne est décrit comme l'un des plus violents de Juda (2 Rois 21:16) ; cette situation explique la plainte initiale et le besoin d'une réponse durable. (6) LES ROULEAUX : un commentaire suivi (pesher) du livre de Habacuc figure parmi les manuscrits de la mer Morte, ce qui atteste l'intérêt porté à ce texte à l'époque du second temple, comme le montrent les études qumraniennes. (7) PRUDENCE : les sources documentent la trame événementielle et la postérité du verset ; elles n'expliquent pas le calendrier du « temps fixé » de Dieu, que le texte présente comme un délai d'attente.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA TOUR DE GUET : les tours de garde dominaient les vignes, les champs et les routes de la montagne de Juda ; on y montait pour surveiller les cultures, les troupeaux et les mouvements de troupes. La position du prophète est celle d'un observateur placé en hauteur, dans un dispositif réel. (2) LE POINT ÉLEVÉ DE JÉRUSALEM : la ville est bâtie sur un éperon entouré de vallées ; la perspective de la tour de guet suppose un horizon ouvert vers le nord et l'est, d'où venaient les armées. (3) LES TABLETTES ET L'ÉCRITURE : les tablettes de bois, de cire ou de pierre portant des inscriptions publiques étaient exposées à la lecture dans les villes du Proche-Orient ; l'ordre d'écrire « afin qu'on la lise couramment » renvoie à ces supports visibles. (4) LA BABYLONIE, LOINTAIN CHEMIN : la vision concernait une puissance située à des centaines de kilomètres à l'est ; l'attente du lecteur était donc aussi une attente géographique, celle d'un événement venu de loin. (5) LA SITUATION DE CARREFOUR : entre l'Égypte et l'Empire chaldéen, le pays où vit le prophète est le terre-plein de deux puissances ; la promesse d'un « temps fixé » est aussi celle d'une sortie de cette position exposée. (6) LES ROUTES DU RETOUR : de la Babylonie vers la Judée, les convois empruntaient les routes du nord par la Syrie, puis descendaient par la vallée du Jourdain ou par la côte : la géographie du retour illustre, dans l'espace, ce que le verset dit du temps.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LE PESHER DE HABACUC : le commentaire du livre retrouvé à Qumrân, à côté d'autres fragments, montre la place du livre dans les bibliothèques de l'époque du second temple ; l'état et la datation de ces manuscrits sont établis par la paléographie et la stratigraphie des grottes. (2) LES TABLETTES PORTANT DES TEXTES PROPHÉTIQUES : les inscriptions exposées publiquement sont attestées par l'archéologie et par l'iconographie égyptienne et mésopotamienne ; elles confirment la faisabilité et le sens de l'ordre donné au prophète. (3) LES DOCUMENTS BABYLONIENS DATÉS : les tablettes astronomiques (dont le texte désigné VAT 4956) et les chroniques permettent de fixer avec précision la chronologie des dernières années de l'Empire chaldéen, donc le cadre du « temps fixé » relatif à la chute de Babylone. (4) LES ARCHIVES DE LA PÉRIODE PERSE : les textes administratifs et les sceaux de la province de Yehoud, ainsi que les archives d'Éléphantine, documentent la mise en œuvre de la politique impériale de retour des populations déportées. (5) LA TRANSMISSION DU TEXTE : la comparaison du texte hébreu massorétique avec la version grecque ancienne et les citations du Nouveau Testament permet de suivre les variantes du verset 4, notamment celle entre « sa fidélité » et « ma fidélité ». (6) L'ÉPIGRAPHIE HÉBRAÏQUE : les poids, sceaux et inscriptions de l'époque de la monarchie montrent que l'écriture hébraïque paléo-hébraïque était employée pour des textes administratifs et publics, contexte de l'ordre reçu par le prophète. (7) PRUDENCE : l'archéologie et l'épigraphie documentent les manuscrits, les tablettes et la chronologie ; l'évaluation de la foi et de la fidélité comme principe de vie relève du message du texte.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LE POSTE DE GARDE : « JE ME TIENDRAI À MON POSTE… JE RESTERAI AUX AGUETS » (2:1) → LA RÉPONSE : « ÉCRIS LA VISION, GRAVE-LA SUR DES TABLETTES, AFIN QUE CELUI QUI LA LIT LA LISE COURAMMENT » (2:2) → LE DÉLAI : « LA VISION EST ENCORE POUR UN TEMPS FIXÉ ; ELLE PARLE DE LA FIN ET NE MENTIRA PAS » (2:3) → L'ATTENTE : « MÊME SI ELLE TARDE, ATTENDS-LA ; CAR ELLE SE RÉALISERA À COUP SÛR » (2:3) → LES DEUX FIGURES : L'ÂME ENFLÉE D'ORGUEIL N'EST PAS DROITE / LE JUSTE VIVRA PAR SA FIDÉLITÉ (2:4) → HISTOIRE : 607-586, 539, 537 → CITATIONS : ROMAINS 1:17 ; GALATES 3:11 ; HÉBREUX 10:36-39 → REPÈRES CHRONOLOGIQUES : JÉRUSALEM 607-586 AV. N. È. ; BABYLONE 539 ; RETOUR DES CAPTIFS 537 (ESDRAS 1) → STATUT DU REGISTRE : ACCOMPLIE / EN COURS</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Hébreux 10:36-39 ; Habacuc 2:3, 4) et le statut mixte « Accomplie / En cours ». LE DELAI : la fiche indique que le texte présente la vision comme destinée à un temps fixé et demande l'attente, sans fixer de date ni de calcul. LE VERSET 4 : la fiche signale les deux rattachements possibles de « par la foi » (au juste ou au verbe vivra) et la variante « sa foi / ma fidélité », sans trancher. LA CITATION PAULINIENNE : la fiche rapporte les trois citations des Écritures grecques et le rôle historique du verset, sans entrer dans l'histoire des doctrines. LA TOUR DE GUET : la fiche décrit la fonction de cette construction dans le paysage rural, sans l'identifier à un ouvrage précis. L'ORDRE D'ÉCRIRE : la fiche présente les deux lectures de la formule finale du verset 2 sans choisir entre elles. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des malheurs du chapitre 2, versets 5 à 20 (fiches suivantes) ni du cantique du chapitre 3 ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Habacuc reçoit la réponse à ses plaintes : écrire la vision pour le temps fixé (Habacuc 2:1-4)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 632 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Jérusalem et début de l'exil : la vision commence à se réaliser</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607-586 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus : l'orgueil condamné tombe</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus et retour des captifs (Esdras 1:1-4)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le livre est copié et commenté à Qumrân (pesher de Habacuc)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe-Ier siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le verset 4 est cité en Romains 1:17, Galates 3:11 et Hébreux 10:36-39</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/10">Bible — Hébreux 10 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/58/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/59/1">Bible — Jacques 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/59/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/62/3">Bible — 1 Jean 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/62/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/4">Bible — Galates 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/48/4</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2000083">Combien de temps reste-t-il aux méchants ? — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2000083</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche HA472 — « Écris la vision… car le juste vivra par sa fidélité » : la réponse du poste de garde et le verset cité trois fois dans les Écritures grecques</span><span>Catégorie HA1</span></div></div>
+</article>
+<article class="fiche" id="HA473">
+<div class="visuel"><img src="images/prophe_HA473_pierre.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE HA473 · CATÉGORIE HA1</div>
+<h3>« Malheur à celui qui amasse le butin d'autrui » : les malheurs sur le Chaldéen, la pierre qui crie du mur et la gloire qui remplit la terre</h3>
+<div class="ref">Habacuc 2:5-17</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">de plus le vin est traître l'homme orgueilleux ne reste pas en place il ouvre largement sa gorge comme le shéol et il est comme la mort il ne se rassasie jamais il rassemble vers lui toutes les nations et il amasse vers lui tous les peuples ne se lèveront-ils pas soudain pour le mordre ceux qui te doivent et ne se réveilleront-ils pas ceux qui te feront trembler malheur à celui qui amasse des profits injustes pour sa maison afin de placer son nid en hauteur et d'échapper à la main du malheur tes complots ont amené la honte sur ta famille en éliminant de nombreux peuples tu pèches contre toi-même une pierre du mur criera et une poutre de la charpente lui répondra malheur à celui qui bâtit une ville en versant le sang à celui qui établit une cité par l'injustice quand des peuples se fatiguent pour ce qui finit au feu et que des nations s'épuisent pour rien n'est-ce pas parce que jéhovah des armées le veut car la terre sera remplie de la connaissance de la gloire de jéhovah comme les eaux recouvrent le fond de la mer (habacuc 2:5-17 ; renversement de babylone en 539 av. n. è. ; accomplie)</span>
+<span class="badge">5 sources</span>
+</div>
+
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Habacuc 2:5-17</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>de plus le vin est traître l'homme orgueilleux ne reste pas en place il ouvre largement sa gorge comme le shéol et il est comme la mort il ne se rassasie jamais il rassemble vers lui toutes les nations et il amasse vers lui tous les peuples ne se lèveront-ils pas soudain pour le mordre ceux qui te doivent et ne se réveilleront-ils pas ceux qui te feront trembler malheur à celui qui amasse des profits injustes pour sa maison afin de placer son nid en hauteur et d'échapper à la main du malheur tes complots ont amené la honte sur ta famille en éliminant de nombreux peuples tu pèches contre toi-même une pierre du mur criera et une poutre de la charpente lui répondra malheur à celui qui bâtit une ville en versant le sang à celui qui établit une cité par l'injustice quand des peuples se fatiguent pour ce qui finit au feu et que des nations s'épuisent pour rien n'est-ce pas parce que jéhovah des armées le veut car la terre sera remplie de la connaissance de la gloire de jéhovah comme les eaux recouvrent le fond de la mer (habacuc 2:5-17 ; renversement de babylone en 539 av. n. è. ; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Habacuc — P473 (2:5-17 : malheur à qui amasse le butin d'autrui ; la pierre crie depuis la muraille) ; renversement de Babylone en 539 av. n. è. ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DE PLUS… LE VIN EST TRAÎTRE… L'HOMME ORGUEILLEUX NE RESTE PAS EN PLACE… IL OUVRE LARGEMENT SA GORGE COMME LE SHÉOL… ET IL EST COMME LA MORT… IL NE SE RASSASIE JAMAIS… IL RASSEMBLE VERS LUI TOUTES LES NATIONS… ET IL AMASSE VERS LUI TOUS LES PEUPLES… »… « NE SE LÈVERONT-ILS PAS SOUDAIN… POUR TE MORDRE… CEUX QUI TE DOIVENT…? ET NE SE RÉVEILLERONT-ILS PAS… CEUX QUI TE FERONT TREMBLER…? »… « MALHEUR À CELUI QUI AMASSE DES PROFITS INJUSTES POUR SA MAISON… AFIN DE PLACER SON NID EN HAUTEUR… ET D'ÉCHAPPER À LA MAIN DU MALHEUR…! »… « TES COMPLOTS ONT AMENÉ LA HONTE SUR TA FAMILLE… EN ÉLIMINANT DE NOMBREUX PEUPLES… TU PÈCHES CONTRE TOI-MÊME… »… « UNE PIERRE DU MUR CRIERA… ET UNE POUTRE DE LA CHARPENTE… LUI RÉPONDRA… »… « MALHEUR À CELUI QUI BÂTIT UNE VILLE EN VERSANT LE SANG… À CELUI QUI ÉTABLIT UNE CITÉ PAR L'INJUSTICE…! »… « QUAND DES PEUPLES SE FATIGUENT POUR CE QUI FINIT AU FEU… ET QUE DES NATIONS S'ÉPUISENT POUR RIEN… N'EST-CE PAS PARCE QUE JÉHOVAH DES ARMÉES LE VEUT…? »… « CAR LA TERRE SERA REMPLIE… DE LA CONNAISSANCE DE LA GLOIRE DE JÉHOVAH… COMME LES EAUX RECOUVRENT LE FOND DE LA MER… »… « MALHEUR À CELUI QUI FAIT BOIRE QUELQUE CHOSE À SES COMPAGNONS… EN Y AJOUTANT FUREUR ET COLÈRE… POUR LES ENIVRER ET REGARDER LEUR NUDITÉ…! »… « TU SERAS GORGÉ DE HONTE PLUTÔT QUE DE GLOIRE… BOIS À TON TOUR… LA COUPE DANS LA MAIN DROITE DE JÉHOVAH VIENDRA VERS TOI AUSSI… ET LA HONTE RECOUVRIRA TA GLOIRE… »… « LA VIOLENCE FAITE AU LIBAN TE COUVRIRA… ET LA DESTRUCTION DES BÊTES TE SAISIRA… À CAUSE DU SANG DES HOMMES QUE TU AS VERSÉ… »… — YAYIN BOGED… LE VIN TRAÎTRE… YAHIR… ORGUEILLEUX, INSOLENT… SHEʾOL… LE SHÉOL, LE SÉJOUR DES MORTS… MAVET… LA MORT… HOY… MALHEUR… BOTSEAʿ… AMASSER DES PROFITS INJUSTES… QINNO… SON NID… MAROM… LA HAUTEUR… ḤERPAH… LA HONTE… ʾEVEN MIQQIR… LA PIERRE DU MUR… KAFIS… LA POUTRE, LA SOLIVE… DAM… LE SANG… ʿAMAL… LA FATIGUE, LA PEINE… ʾESH… LE FEU… ḤEVER… LA COUPE, LE SORT… QALON… LA HONTE… LEBANON… LE LIBAN… ḤAMAS… LA VIOLENCE… NESHAMOT ʾADAM… LES ÂMES DES HOMMES… — 612… 605… 597… 586… 539… CHRONIQUE DE NABONIDE… HÉRODOTE… CYRUS… DANIEL 5… JÉRÉMIE 50-51… ÉSAÏE 13-14… 2 CHRONIQUES 36:22, 23… »</li>
+<li>LES TROIS JUMEAUX — 1 Corinthiens 3:12-15 : « si quelqu'un bâtit sur ce fondement avec de l'or, de l'argent, des pierres précieuses, du bois, du foin, du chaume, l'œuvre de chacun deviendra manifeste… car elle sera révélée par le feu » — le même critère de construction « pour ce qui finit au feu » appliqué au travail de chaque personne, ce qui montre la postérité du message de Habacuc dans la prédication apostolique. 2 Corinthiens 3:18 : « nous sommes transformés en la même image, de gloire en gloire, par le Seigneur, l'Esprit » — la promesse de la gloire, employée en contrepoint du jugement annoncé sur la gloire de Babylone. Jérémie 50 et 51 : « annoncez parmi les nations… Babylone est prise, Bél est couvert de honte, Mérodak est effondré » et la descendance du peuple déporté — la prophétie parallèle du renversement de la même puissance en 539 av. n. è. ; le registre du projet rattache l'accomplissement de cette entrée au renversement de Babylone en 539 av. n. è.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Après la réponse qui a fixé le principe de la fidélité, le chapitre 2 se poursuit par une suite de sentences contre le Chaldéen. Elles sont introduites par un portrait : le vin est traître, l'homme orgueilleux qui ouvre sa gorge comme le shéol et ne se rassasie jamais. L'image est celle d'un appétit insatiable, illustré par l'accumulation des nations et des peuples. Vient alors la menace du retournement : ceux qui sont débités soudain se lèveront — « ne se lèveront-ils pas soudain pour te mordre, ceux qui te doivent ? » — et commencent les malheurs. Le premier visa celui qui amasse des profits injustes pour sa maison et place son nid en hauteur : la pierre du mur crie, la poutre lui répond ; tout ce qui a été bâti sur l'extorsion témoigne contre le bâtisseur. Le deuxième vise celui qui bâtit une ville en versant le sang et fonde une cité sur l'injustice ; la suite énonce la limite de tous ces travaux : les peuples se fatiguent pour ce qui finit au feu et les nations s'épuisent pour rien, « parce que Jéhovah des armées le veut ». Entre les malheurs jaillit la déclaration qui éclaire le livre entier : « la terre sera remplie de la connaissance de la gloire de Jéhovah comme les eaux recouvrent le fond de la mer. » Le troisième malheur s'en prend à celui qui fait boire ses compagnons pour les enivrer et regarder leur nudité : la coupe de la main droite de Jéhovah reviendra vers lui. Le quatrième rappelle que la violence faite au Liban et la destruction des bêtes couvriront le coupable, « à cause du sang des hommes versé ». Le registre du projet rattache l'accomplissement de cette entrée au renversement de Babylone en 539 av. n. è.</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LA FORME DES MALHEURS : le passage comporte une suite de malheurs (hoy en hébreu), procédé littéraire que l'on retrouve chez Isaïe et Amos, et dont la structure donne son rythme à la seconde partie du chapitre. Chaque malheur décrit un crime — accumulation, construction sur le sang, ivresse imposée, violence — et annonce le retournement correspondant. Les commentaires soulignent le parallélisme entre le crime et le châtiment, à la manière de la loi du talion appliquée aux empires. (2) LA PIERRE QUI CRIE DU MUR : l'image suppose une ville dont les matériaux eux-mêmes — pierre taillée et poutre de charpente — sont autant de témoins. Elle rejoint des textes bibliques où la terre et les éléments rendent témoignage contre les coupables (Genèse 4:10 : le sang d'Abel crie du sol ; Josué 24:27 : la pierre est témoin). Les exégètes y voient la dénonciation des constructions durables fondées sur l'injustice : ce qui devait assurer la sécurité deviendra la preuve du crime. (3) LA LIMITE DU TRAVAIL DES PEUPLES : le verset 13 pose la question qui ruine toute entreprise impériale — à quoi bon faire peiner des peuples pour ce qui finit au feu ? La réponse est donnée par les restes archéologiques des capitales mésopotamiennes, consumées par les flammes, dont Ninive et Babylone fournissent les exemples. (4) LA CONNAISSANCE DE LA GLOIRE : la phrase centrale du chapitre est à la fois une constatation de ce que sera la conséquence du jugement et une promesse de portée universelle — la terre remplie de la connaissance de la gloire de Jéhovah comme les eaux recouvrent le fond de la mer. Le mot employé pour « connaissance » désigne une connaissance relationnelle et non une simple information, ce qui donne à la promesse une force particulière. L'article « Dieu exécutera-t-il le méchant ? » la met en rapport avec l'exécution du jugement divin sur les méchants, présente et à venir.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Dieu exécutera-t-il le méchant ? Habacuc répond par l'affirmative » cite cette phrase en conclusion de son développement : alors seulement, « la terre sera remplie de la connaissance de la gloire de Jéhovah comme les eaux recouvrent la mer », et il précise que « Jéhovah exécuta vraiment son jugement sur tous les méchants du pays de Juda », que les Babyloniens servirent d'instruments « sans le savoir », et que leur jugement arriva en 539 avant notre ère « lorsque Babylone fut renversée par les Mèdes et les Perses » ; il rappelle enfin que la prophétie d'Habacuc annonce aussi la fin d'une domination opposée au culte pur. Lecture commune et exégèse : les commentateurs rapprochent les malheurs de Habacuc 2 des oracles contre Babylone d'Isaïe 13-14 et de Jérémie 50-51, et relèvent que la déclaration du verset 14 reprend un thème présent chez Isaïe 11:9 — la connaissance de Jéhovah remplissant la terre — ce qui montre la cohérence du message prophétique. Ils notent également que la chute de Babylone en 539 est l'événement le plus documenté de l'histoire du Proche-Orient ancien pour cette période, ce qui donne à l'annonce un ancrage chronologique précis.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">Période du ministère</td><td>Les malheurs sont consignés contre le Chaldéen : profits injustes, ville bâtie sur le sang, ivresse imposée, violence (Habacuc 2:5-17)</td></tr>
+<tr><td class="d">605-586 av. n. è.</td><td>Babylone pille les nations : temples vidés, populations déportées, villes détruites au cours des campagnes de Neboukadnetsar</td></tr>
+<tr><td class="d">539 av. n. è.</td><td>Babylone est prise par Cyrus ; le renversement annoncé s'accomplit, accomplissement retenu par le registre (chronique de Nabonide ; Daniel 5)</td></tr>
+<tr><td class="d">539-537 av. n. è.</td><td>Proclamation de Cyrus autorisant le retour des peuples déportés, dont les Judéens (Esdras 1:1-4 ; 2 Chroniques 36:22, 23)</td></tr>
+<tr><td class="d">Après 539 av. n. è.</td><td>La Babylonie perd son statut d'empire ; elle passe ensuite sous domination perse, grecque et parthe</td></tr>
+<tr><td class="d">Époques suivantes</td><td>Le motif du jugement de la cité de proie est repris dans les Écritures grecques à propos de Babylone la grande (Révélation 17-18)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA PRISE DE BABYLONE : la chronique de Nabonide rapporte l'entrée de Cyrus dans Babylone en 539 av. n. è. sans combat majeur, et le cylindre de Cyrus décrit la politique de restauration et de retour des populations déportées — documents contemporains de l'événement retenu par le registre. (2) LE PILLAGE DES TEMPLES : les textes babyloniens mentionnent les trésors déposés dans les sanctuaires et les inventaires de butin ; la restitution des objets sacrés par Cyrus, mentionnée dans le cylindre et rapportée en Esdras 1:7-11, confirme l'ampleur des biens accumulés à Babylone. (3) LES DÉPORTATIONS : les tablettes de rations mentionnent des déportés de plusieurs peuples, dont des Judéens, installés en Babylonie ; l'accumulation des peuples décrite par le prophète est ainsi documentée. (4) LA CONSTRUCTION SUR LE TRAVAIL FORCÉ : les inscriptions royales de Neboukadnetsar décrivent les grands travaux de Babylone — murs, temples, palais, voie processionnelle — et l'emploi de travailleurs venus de tout l'empire ; le verset 13 sur les peuples qui se fatiguent pour ce qui finit au feu prend ici tout son sens. (5) LA CHUTE DÉFINITIVE : après 539, la Babylonie demeure un pays mais cesse d'être un empire ; les sources perses, grecques et plus tardives attestent ce changement de statut. (6) LES PARALLÈLES PROPHÉTIQUES : Isaïe 13-14 et Jérémie 50-51, ainsi que Daniel 5, décrivent le même renversement ; la convergence de quatre textes bibliques et de sources cunéiformes rend la trame historique difficilement contestable. (7) PRUDENCE : les sources documentent la prise de la ville, la politique de Cyrus et l'ampleur des travaux babyloniens ; elles ne permettent pas de rattacher chaque malheur du chapitre à un épisode précis.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA VILLE D'EAU : Babylone était traversée par l'Euphrate et bordée de canaux, avec des quais, des ponts et des ouvrages hydrauliques ; Hérodote décrit la ville et ses défenses, et les fouilles allemandes ont mis au jour les remparts, la voie processionnelle et les fondations des grands édifices. (2) LE NID EN HAUTEUR : l'image du nid placé haut renvoie aux ziggourats et aux constructions élevées de la Babylonie, dont les vestiges subsistent ; elle évoque aussi les nids d'aigle ou de vautour sur les falaises, motif déjà employé par les prophètes pour l'orgueil (Jérémie 49:16 ; Abdias 4). (3) LE LIBAN : le pays des cèdres, au nord-ouest, fournissait le bois de construction des temples de Mésopotamie ; sa mention au verset 17 rappelle l'exploitation des forêts et le travail forcé imposés par les empires, thème attesté par les inscriptions de construction. (4) LA COUPE ET L'IVRESSE : l'usage de faire boire les vaincus pour les avilir est attesté dans l'iconographie du Proche-Orient, notamment sur des reliefs représentant des captifs humiliés ; l'image de la coupe de la colère est un motif biblique fréquent (Isaïe 51:17 ; Jérémie 25:15). (5) LE FOND DE LA MER : la comparaison des eaux recouvrant le fond de la mer s'appuie sur un spectacle familier aux gens de la côte méditerranéenne et sur l'observation des eaux profondes comme d'un espace totalement recouvert. (6) LES CAPITALES CONSUMÉES : la limite du travail des peuples — ce qui finit au feu — est illustrée par les sites mêmes de Ninive et de Babylone, dont les palais portent les traces d'incendie et dont les briques servirent ensuite de carrière.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES FOUILLES DE BABYLONE : les campagnes conduites par la Deutsche Orient-Gesellschaft à partir de 1899 ont dégagé la voie processionnelle, la porte d'Ishtar, les murs d'enceinte et les fondations de l'Etemenanki ; ces vestiges documentent la ville que le prophète décrit comme un amas de richesses. (2) LE CYLINDRE DE CYRUS : cette inscription en argile décrit la politique du conquérant — restauration des sanctuaires, retour des populations déportées et de leurs objets sacrés ; elle fournit un contexte direct à l'accomplissement retenu par le registre. (3) LA CHRONIQUE DE NABONIDE : le texte cunéiforme rapporte la chute de la ville en 539 av. n. è. et la fin du dernier roi chaldéen ; cette chronique sert d'ancrage chronologique. (4) LES TABLETTES ADMINISTRATIVES : les archives de l'Eanna et d'autres institutions documentent la gestion des temple, les tributs et l'emploi de travailleurs étrangers — toile de fond des malheurs du chapitre. (5) LA MÉTALLURGIE ET LES TRÉSORS : la dispersion des objets de luxe babyloniens après 539 dans les sites voisins est interprétée par les archéologues comme l'effet du transfert de pouvoir et du pillage assorti. (6) LA TYPOLOGIE DES MALHEURS : l'étude comparative des « malheurs » (hoy) dans la littérature prophétique montre que ce genre sert à dénoncer les injustices sociales et l'idolâtrie ; Habacuc 2 en présente une variante appliquée à une puissance étrangère. (7) PRUDENCE : l'archéologie confirme la splendeur et la chute de Babylone ; elle n'établit pas le jugement moral que le texte prononce.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>L'APPÉTIT INSATIABLE : « IL OUVRE LARGEMENT SA GORGE COMME LE SHÉOL… IL NE SE RASSASIE JAMAIS » (2:5) → LE RETOURNEMENT : « NE SE LÈVERONT-ILS PAS SOUDAIN POUR TE MORDER, CEUX QUI TE DOIVENT ? » (2:7) → 1er MALHEUR : LES PROFITS INJUSTES, LE NID EN HAUTEUR, LA PIERRE DU MUR QUI CRIE (2:9-11) → 2e MALHEUR : LA VILLE BÂTIE SUR LE SANG ; LES PEUPLES SE FATIGUENT POUR CE QUI FINIT AU FEU (2:12, 13) → LA PROMESSE : « LA TERRE SERA REMPLIE DE LA CONNAISSANCE DE LA GLOIRE DE JÉHOVAH COMME LES EAUX RECOUVRENT LE FOND DE LA MER » (2:14) → 3e MALHEUR : CELUI QUI ENIVRE SES COMPAGNONS ; LA COUPE REVIENT SUR LUI (2:15, 16) → 4e MALHEUR : LA VIOLENCE FAITE AU LIBAN ET LE SANG VERSÉ (2:17) → HISTOIRE : 605-586, PUIS 539 : BABYLONE RENVERSÉE (REGISTRE) → 537 : RETOUR DES DÉPORTÉS (ESDRAS 1)</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (renversement de Babylone en 539 av. n. è.) et le statut « Accomplie ». LE NOMBRE DES MALHEURS : la fiche traite les quatre premiers malheurs du passage, le cinquième — contre l'idolâtrie — faisant l'objet de l'entrée suivante du registre. LES IMAGES DE L'IVRESSE : la fiche les présente comme des figures d'humiliation et de jugement, sans entrer dans l'analyse détaillée des pratiques de guerre de l'époque. LE LIBAN : la fiche mentionne son rôle dans l'approvisionnement en bois sans dresser l'inventaire des campagnes assyriennes et babyloniennes dans la région. LE VERSET 14 : la fiche expose la promesse dans son sens de connaissance et de gloire, sans en fixer les modalités d'accomplissement. LA CHUTE DE BABYLONE : la fiche la rapporte selon les sources cunéiformes et bibliques, sans entrer dans les discussions sur la composition de l'armée de Cyrus. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas du dernier malheur ni du psaume du chapitre 3 (vague suivante) ; elle ne formule aucune application aux communautés religieuses actuelles, la règle du projet étant de ne présenter que les preuves.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Habacuc consigne les malheurs contre le Chaldéen (Habacuc 2:5-17)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 632 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Victoire de Neboukadnetsar à Karkemish : début de la domination babylonienne sur le Levant</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction de Jérusalem et exil : l'accumulation des peuples par Babylone atteint son point culminant</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">586 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus : les malheurs s'accomplissent (chronique de Nabonide ; Daniel 5)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus : retour des Judéens déportés et restitution des objets du temple (Esdras 1:1-11)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le motif est repris dans les Écritures grecques pour la chute de Babylone la grande (Révélation 17-18)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/2">Bible — 2 Corinthiens 2 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/3">Bible — 2 Corinthiens 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/47/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/3">Bible — 1 Corinthiens 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/46/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/59/4">Bible — Jacques 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/59/4</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1981569">Dieu exécutera-t-il le méchant ? Habacuc répond par l'affirmative — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1981569</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche HA473 — « Malheur à celui qui amasse le butin d'autrui » : les malheurs sur le Chaldéen, la pierre qui crie du mur et la gloire qui remplit la terre</span><span>Catégorie HA1</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie HA1</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>HA470 — « Regardez parmi les nations et soyez stupéfaits » : les Chaldéens, les chevaux plus rapides que les léopards et les prisonniers ramassés comme du sable</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Règne de Manassé : violence et effusion de sang en Juda, arrière-plan du climat décrit en Habacuc 1:2-4</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 716-687 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Habacuc consigne l'oracle : les Chaldéens annoncés comme instrument du jugement</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 632-628 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nabopolassar fonde la dynastie chaldéenne à Babylone</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">626 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Ninive : effondrement de l'Assyrie</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">612 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Bataille de Karkemish : Babylone contrôle le Levant</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">609 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Descentes contre Jérusalem, déportations et destruction de la ville (2 Rois 24:10-16 ; 25:1-11)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">597 puis 607-586 av. n. è.</text>
+</svg>
+<h4>HA471 — « Tes yeux sont trop purs pour voir le mal » : le méchant qui avale un plus juste que lui, l'hameçon et les filets</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Habacuc consigne sa seconde plainte : le silence apparent de Dieu devant l'injustice (Habacuc 1:12-17)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 632 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Jérusalem : la catastrophe frappe justes et injustes, l'objection du prophète se vérifie dans l'histoire (2 Rois 25)</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Période de l'exil : les Judéens déportés en Babylonie, dont le roi Yoaïkin, sont documentés par les tablettes de rations</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">607-537 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus : la puissance de proie est à son tour jugée (chronique de Nabonide)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus et retour des captifs (Esdras 1:1-4)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La réponse divine est consignée en Habacuc 2:1-4 : « le juste vivra par sa fidélité »</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<h4>HA472 — « Écris la vision… car le juste vivra par sa fidélité » : la réponse du poste de garde et le verset cité trois fois dans les Écritures grecques</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Habacuc reçoit la réponse à ses plaintes : écrire la vision pour le temps fixé (Habacuc 2:1-4)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 632 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Chute de Jérusalem et début de l'exil : la vision commence à se réaliser</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">607-586 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus : l'orgueil condamné tombe</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus et retour des captifs (Esdras 1:1-4)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le livre est copié et commenté à Qumrân (pesher de Habacuc)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">IIe-Ier siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le verset 4 est cité en Romains 1:17, Galates 3:11 et Hébreux 10:36-39</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>HA473 — « Malheur à celui qui amasse le butin d'autrui » : les malheurs sur le Chaldéen, la pierre qui crie du mur et la gloire qui remplit la terre</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Habacuc consigne les malheurs contre le Chaldéen (Habacuc 2:5-17)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Vers 632 av. n. è.</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Victoire de Neboukadnetsar à Karkemish : début de la domination babylonienne sur le Levant</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">605 av. n. è.</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Destruction de Jérusalem et exil : l'accumulation des peuples par Babylone atteint son point culminant</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">586 av. n. è.</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus : les malheurs s'accomplissent (chronique de Nabonide ; Daniel 5)</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus : retour des Judéens déportés et restitution des objets du temple (Esdras 1:1-11)</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le motif est repris dans les Écritures grecques pour la chute de Babylone la grande (Révélation 17-18)</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

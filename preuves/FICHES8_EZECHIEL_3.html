@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES EZ — Ézéchiel (3) — le sanctuaire en exil, le prince aveugle, les faux prophètes</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_EZ313_sanctuaire.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES EZ</h1>
+<h2>Ézéchiel (3) — le sanctuaire en exil, le prince aveugle, les faux prophètes</h2>
+<p class="intro">Aux exilés méprisés, Dieu promet d'être un sanctuaire dans les pays et de les rassembler avec un cœur nouveau (EZ313). Puis le prince est mimé : bagage à l'épaule, mur percé, face voilée — il partira sans voir (EZ314), et le pain se mangera avec tremblement (EZ315). « Plus de délai » : la parole s'exécute de leurs jours (EZ316). Les faux prophètes badigeonnent un mur qui tombera (EZ317), et ceux qui consultent avec des idoles sur le cœur recevront leur réponse (EZ318).</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#EZ313">EZ313</a>
+<a href="#EZ314">EZ314</a>
+<a href="#EZ315">EZ315</a>
+<a href="#EZ316">EZ316</a>
+<a href="#EZ317">EZ317</a>
+<a href="#EZ318">EZ318</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#EZ313"><img src="images/prophe_EZ313_sanctuaire.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ313</div>
+<h3><a href="#EZ313">« Je serai pour eux un sanctuaire » : Dieu en exil avec les exilés</a></h3>
+<div class="meta">Accomplie · 🎧 0:18</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ314"><img src="images/prophe_EZ314_prince.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ314</div>
+<h3><a href="#EZ314">« Il ne verra pas » : le prince au mur percé</a></h3>
+<div class="meta">Accomplie · 🎧 0:15</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ315"><img src="images/prophe_EZ315_tremblement.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ315</div>
+<h3><a href="#EZ315">« Ton pain avec tremblement » : le siège mimé à table</a></h3>
+<div class="meta">Accomplie · 🎧 0:14</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ316"><img src="images/prophe_EZ316_delai.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ316</div>
+<h3><a href="#EZ316">« Plus de délai » : la parole s'exécute de leurs jours</a></h3>
+<div class="meta">Accomplie · 🎧 0:12</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ317"><img src="images/prophe_EZ317_faux.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ317</div>
+<h3><a href="#EZ317">« Le mur badigeonné » : faux prophètes et pluie torrentielle</a></h3>
+<div class="meta">Accomplie · 🎧 0:13</div></div></div>
+<div class="carte">
+<a class="img" href="#EZ318"><img src="images/prophe_EZ318_idoles.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE EZ318</div>
+<h3><a href="#EZ318">« Leurs idoles sur leur cœur » : la consultation piégée</a></h3>
+<div class="meta">Accomplie · 🎧 0:13</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="EZ313">
+<div class="visuel"><img src="images/prophe_EZ313_sanctuaire.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ313 · CATÉGORIE EZ</div>
+<h3>« Je serai pour eux un sanctuaire » : Dieu en exil avec les exilés</h3>
+<div class="ref">Ézéchiel 11:16-21</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">sanctuaire exil rassemblement promis (dis → éloignés → nations → dispersés → pays → serai → sanctuaire → peu → pays → allés → dis → rassemblerai → peuples → recueillerai → pays → dispersés → donnerai → terre → Israël → entreront → ôteront → infamies → abominations → donnerai → cœur → esprit → nouveau → ôterai → pierre → chair)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ313 · 0:18</div><audio controls preload="none" src="audio/fiche_EZ313_sanctuaire.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ313_sanctuaire.mp3 · 0:18 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 11:16-21</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>sanctuaire exil rassemblement promis (dis → éloignés → nations → dispersés → pays → serai → sanctuaire → peu → pays → allés → dis → rassemblerai → peuples → recueillerai → pays → dispersés → donnerai → terre → Israël → entreront → ôteront → infamies → abominations → donnerai → cœur → esprit → nouveau → ôterai → pierre → chair)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P313 (11:16-21 : sanctuaire dans les pays ; rassemblés) ; Esd 1:1-4 ; Éz 11:17 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« DIS… ÉLOIGNÉS… NATIONS… DISPERSÉS… PAYS… SERAI… SANCTUAIRE… PEU… PAYS… ALLÉS… MIQDASH-MEAT… PETIT… SANCTUAIRE… PEU… TEMPS… SOIXANTE-DIX… ANS… DIEU… DÉMÉNAGE… EXIL… PRÉSENCE… PORTABLE… TEMPLE… DÉTRUIT… CULTE… SURVIT. » (11:16 — survit !)</li>
+<li>« RASSEMBLERAI… PEUPLES… RECUEILLERAI… PAYS… DISPERSÉS… DONNERAI… TERRE… ISRAËL… RÉPONSE… MOQUERIE… JÉRUSALEM… RESTEZ-Y… EXIL… CANAAN… DON… RENOUVELÉ… BANNISSEMENT… TEMPORAIRE… PROPRIÉTÉ… DIVINE… RESTITUÉE… HÉRITIERS… PARDONNÉS. » (11:17 — pardonnés !)</li>
+<li>« ENTRERONT… ÔTERONT… INFAMIES… ABOMINATIONS… SHIQQUTSIM… ORDURES… TOÉBOT… NETTOYAGE… PURIFICATION… TERRE… ASSAINIE… IDOLÂTRIE… EXIL… GUÉRIE… JAMAIS… RECHUTE… POST-EXIL… MONOTHÉISME… STRICT… SYNAGOGUE… NAÎT… BABYLONE. » (11:18 — Babylone !)</li>
+<li>« DONNERAI… CŒUR… UN… ESPRIT… NOUVEAU… ÔTERAI… PIERRE… CHAIR… MARCHENT… STATUTS… GARDENT… PRATIQUENT… SERONT… PEUPLE… SERAI… DIEU… CARDIOLOGIE… DIVINE… GREFFE… CŒUR… TRENTE-SIX… VINGT-SIX… ÉCHO… ALLIANCE… NOUVELLE… JÉRÉMIE… TRENTE-ET-UN. » (11:19-20 — trente-et-un !)</li>
+<li>« CŒUR… MARCHE… ORDURES… ABOMINATIONS… RETOMBER… CONDUITE… TÊTE… RÉSERVE… PROMESSE… CONDITIONNELLE… IMPÉNITENTS… EXCLUS… GRÂCE… OFFERTE… TOUS… SAISIE… QUELQUES… RESTE… THÉOLOGIE… ÉLECTION… RESPONSABILITÉ… TENSION… ASSUMÉE… MYSTÈRE. » (11:21 — mystère !)</li>
+<li>« ESDRAS… UN… PREMIÈRE… CYRUS… ACCOMPLIT… PAROLE… JÉRÉMIE… EXCITE… ESPRIT… DÉCRET… MAISON… JÉRUSALEM… MONTENT… QUARANTE-DEUX… MILLE… VASES… RESTITUÉS… SANCTUAIRE… PORTABLE… DEVIENT… TEMPLE… REBÂTI… RETOUR… PROMESSE… TENUE. » (Esd 1 — tenue !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le MIQDASH-MEAT, an 6 — LAKHÉN (les CÈST POURQUOI (les ÉMOR (les DIS (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les KI (les OUI (les HIRHAQTI (les ÉLOIGNÉS (les BAGOYIM (les NATIONS (les VEKHI (les OUI (les HAPHITSOTIM (les DISPERSÉS (les BAARATSOT (les PAYS (les VAÉHI (les SERAI (les LAHEM (les EUX (les LEMIQDASH (les SANCTUAIRE (les MEAT (les PEU (les BAARATSOT (les PAYS (les ASHER (les OÙ (les BA U (les ALLÉS (les SHAM (les LAKHÉN (les CÈST POURQUOI (les ÉMOR (les DIS (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les VEQIBBASTI (les RASSEMBLERAI (les ÉTKHEM (les VOUS (les MIN (les ENTRE (les HAAMMIM (les PEUPLES (les VEASAHTI (les RECUEILLERAI (les ÉTKHEM (les VOUS (les MIN (les HAARATSOT (les PAYS (les ASHER (les OÙ (les NAPHOTSOTEM (les DISPERSÉS (les BAHEM (les VENATATTI (les DONNERAI (les LAKHEM (les VOUS (les ET (les ADMAT (les TERRE (les YISRAÉL (les ISRAËL (les SANCTUAIRE (les PEU (les RASSEMBLERAI — les TERRE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le CŒUR-NOUVEAU (les UBA U (les ENTRERONT (les SHAMMAH (les LÀ (les VEHÉSIYU (les ÔTERONT (les ET (les KOL (les TOUTES (les SHIQQUTSÉHA (les INFAMIES (les VEÉT (les KOL (les TOABOTÉHA (les ABOMINATIONS (les MIMMENNAH (les ELLE (les VENATATTI (les DONNERAI (les LAHEM (les EUX (les LÉB (les CŒUR (les ÉHAD (les UN (les VERUUAH (les ESPRIT (les HADASHAH (les NOUVEAU (les ÉTTÉN (les METTRAI (les BEQIRBAM (les EUX (les VAHASIROTI (les ÔTERAI (les LÉB (les CŒUR (les HAÉBÉN (les PIERRE (les MIBBESARAM (les CHAIR (les VENATATTI (les DONNERAI (les LAHEM (les EUX (les LÉB (les CŒUR (les BASAR (les CHAIR (les LEMAAN (les AFIN QUE (les BEHUQQOTAY (les STATUTS (les YÉLÉKHU (les MARCHENT (les VEÉT (les MISHPATAY (les LOIS (les YISHMERU (les GARDENT (les VEASU (les PRATIQUENT (les OTAM (les LES (les VEHAYU (les SERONT (les LI (les MOI (les LEAM (les PEUPLE (les VAANI (les JE (les ÉHYEH (les SERAI (les LAHEM (les EUX (les LÉLOHIM (les DIEU (les VEÉL (les CEUX (les LIBBAM (les CŒUR (les EL (les VERS (les SHIQQUTSÉHEM (les ORDURES (les VETOABOTÉHEM (les ABOMINATIONS (les HOLÉKH (les MARCHE (les DARKAM (les CONDUITE (les BEROSHAM (les TÊTE (les NATATTI (les RETOMBER (les NEUM (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les CŒUR (les PIERRE-CHAIR (les PEUPLE — les DIEU !)</p>
+<h4>5 · Interprétation</h4>
+<p>La SYNAGOGUE-AVANT-LHEURE (les TEMPLE (les CONDAMNÉ (les GLOIRE (les PARTIE (les ONZE (les VINGT-TROIS (les MAIS (les DIEU (les PRÉSENT (les BABYLONE (les KEBAR (les TEL-ABIB (les PRIÈRE (les LECTURE (les COMMUNAUTÉ (les SANS (les SACRIFICES (les SANS (les PRÊTRES (les SANS (les AUTEL (les CULTE (les PORTABLE (les EXIL (les LABORATOIRE (les JUDAÏSME (les SECOND (les TEMPLE (les SYNAGOGUE (les NAISSANTE (les SOIXANTE-DIX (les ANS (les ÉCOLE (les MONOTHÉISME (les PURIFIÉ (les IDOLÂTRIE (les GUÉRIE (les DÉFINITIVEMENT (les RETOUR (les PURIFIÉS (les TERRE (les PURIFIÉE (les SANCTUAIRE — les PRÉSENT !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">11:16</td><td>SURVIT (MEAT !)</td></tr>
+<tr><td class="d">11:17</td><td>PARDONNÉS (DON !)</td></tr>
+<tr><td class="d">11:18</td><td>BABYLONE (NETTOYAGE !)</td></tr>
+<tr><td class="d">11:19-20</td><td>TRENTE-ET-UN (CHAIR !)</td></tr>
+<tr><td class="d">11:21</td><td>MYSTÈRE (RÉSERVE !)</td></tr>
+<tr><td class="d">537/Esd1</td><td>TENUE (RETOUR !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>An 6 (SIXIÈME-ANNÉE) : aux exilés méprisés par Jérusalem (« éloignez-vous de Jéhovah, le pays nous est donné » v. 15), Dieu répond : JE déménage avec vous (v. 16, miqdash meat — « sanctuaire pour peu », les 70 ans) ; 539/537 : rassemblement (v. 17 ; Esd 1:1-4, 2:64-65) ; purification (v. 18) : l'idolâtrie, guérie par l'exil, ne reparaît jamais (post-exil : monothéisme strict, synagogue, canon) ; cœur nouveau (v. 19-20 ; Éz 36:26-27, Jr 31:33) : Zorobabel, Esdras, Néhémie — génération réformée.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Dans les pays où ils sont allés » (v. 16) : Tel-Abib, Késar, Babylone — colonies du Kebar ; « je vous donnerai la terre » (v. 17, don renouvelé) : le retour par l'arc babylonien (~900 km) ; la synagogue : née en exil (maisons de prière, lecture) — la forme portable du sanctuaire promis, qui survit au second Temple détruit en 70 apr.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 36:26-27 (Rbi8 — cœur nouveau, esprit nouveau, pierre ôtée) — le DÉVELOPPEMENT du verset 19, même greffe cardiaque ; Psaume 106:47 (« rassemble-nous d'entre les nations ») — la PRIÈRE exaucée par le verset 17 ; Michée 4:6-7 (rassemblerai la boiteuse, Jéhovah régnera) — le PARALLÈLE du rassemblement ; Esdras 1:1-4 + 2:64-65 — le PROCÈS-VERBAL du retour.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>592 : EXILÉS MÉPRISÉS → DIEU DÉMÉNAGE (SANCTUAIRE-POUR-PEU) → 70 ANS : ÉCOLE DU MONOTHÉISME → 537 : RASSEMBLEMENT → PURIFICATION → CŒUR NOUVEAU → TEMPLE REBÂTI</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Pour peu » (meat — v. 16) : peu de temps (70 ans) ou petit sanctuaire (présence réduite) — les deux lectures convergent (présence réelle, temporaire, partielle) ; « cœur nouveau » : accompli partiellement au retour (réformes fragiles, Ml) — plénitude reportée (Jr 31, nouvelle alliance) ; la fiche assume l'accomplissement initial (registre : Accomplie).</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sanctuaire promis en exil</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 ans : école, synagogue</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">592-539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rassemblement ; cœur nouveau</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/106">Bible — Psaume 106 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/106</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/36">Bible — Ézékiel 36 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/36</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/33/4">Bible — Michée 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/33/4</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ313 — « Je serai pour eux un sanctuaire » : Dieu en exil avec les exilés</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ314">
+<div class="visuel"><img src="images/prophe_EZ314_prince.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ314 · CATÉGORIE EZ</div>
+<h3>« Il ne verra pas » : le prince au mur percé</h3>
+<div class="ref">Ézéchiel 12:1-16</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">prince exilé aveugle annoncé (maison → rebelle → yeux → voir → voient → oreilles → entendre → entendent → fais → bagage → exil → sors → jour → yeux → lieu → autre → verront → sors → bagage → jour → exil → sors → soir → exil → perce → mur → yeux → sors → charge → épaule → obscurité → couvre → face → verras → pays → signe → Israël)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ314 · 0:15</div><audio controls preload="none" src="audio/fiche_EZ314_prince.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ314_prince.mp3 · 0:15 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 12:1-16</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>prince exilé aveugle annoncé (maison → rebelle → yeux → voir → voient → oreilles → entendre → entendent → fais → bagage → exil → sors → jour → yeux → lieu → autre → verront → sors → bagage → jour → exil → sors → soir → exil → perce → mur → yeux → sors → charge → épaule → obscurité → couvre → face → verras → pays → signe → Israël)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P314 (12:1-16 : signe de l'exil, le prince partira, il n'y verra pas) ; 2R 25:4-7 ; Jr 52:7-11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MAISON… REBELLE… YEUX… VOIR… VOIENT… OREILLES… ENTENDRE… ENTENDENT… FAIS… BAGAGE… EXIL… SORS… JOUR… YEUX… LIEU… AUTRE… VERRONT… THÉÂTRE… RUE… TEL-ABIB… DÉMÉNAGEMENT… PUBLIC… BAGAGES… TÉMOINS… VOISINS… INTERLOQUÉS… PEUT-ÊTRE. » (12:1-3 — peut-être !)</li>
+<li>« SORS… BAGAGE… JOUR… EXIL… SORS… SOIR… EXIL… PERCE… MUR… YEUX… SORS… CHARGE… ÉPAULE… OBSCURITÉ… COUVRE… FACE… VERRAS… PAYS… SIGNE… ISRAËL… NUIT… MUR… ÉPAULE… VISAGE… VOILÉ… CHORÉGRAPHIE… EXACTE… FUITE… ROYALE… RÉPÉTÉE. » (12:4-6 — répétée !)</li>
+<li>« FIS… ORDONNÉ… BAGAGE… JOUR… MUR… PERCÉ… SOIR… MAIN… SORTI… OBSCURITÉ… ÉPAULE… YEUX… MATIN… PAROLE… MAISON… ISRAËL… DIT… FAIS-TU… OBÉISSANCE… LITTÉRALE… PERFORMANCE… INTÉGRALE… PUBLIC… QUESTIONNE… LENDEMAIN… PIÉGÉS… CURIOSITÉ. » (12:7-9 — curiosité !)</li>
+<li>« DIS… ORACLE… PRINCE… JÉRUSALEM… MAISON… ISRAËL… MILIEU… SUIS… SIGNE… FERA… IRONT… EXIL… CAPTIVITÉ… PRINCE… NASSI… NON… ROI… MÉLÉK… YOYAKIN… LÉGITIME… PRISONNIER… TSIDQIYA… PRINCE… USURPATEUR… TITRE… DÉGRADÉ… PROTOCOLE… DIVIN. » (12:10 — divin !)</li>
+<li>« PRINCE… CHARGERA… ÉPAULE… OBSCURITÉ… SORTIRA… PERCERA… MUR… SORTIR… COUVRIRA… FACE… VERRA… PAYS… ÉTENDRAI… FILET… PRIS… RETS… AMÈNERAI… BABYLONE… VERRA… MOURRA… PARADOXE… ANNONCÉ… AVEUGLÉ… RIBLA… VOYAGE… NOIR… MORT… PRISON. » (12:12-13 — prison !)</li>
+<li>« AIDES… TROUPES… DISPERSERAI… VENT… ÉPÉE… DERRIÈRE… SAURONT… DISPERSERAI… NATIONS… DISPERSERAI… PAYS… LAISSERAI… HOMMES… ÉPÉE… FAMINE… PESTE… RACONTENT… ABOMINATIONS… NATIONS… SAURONT… JÉHOVAH… TÉMOINS… FORCE… MISSIONNAIRES… JUGEMENT. » (12:14-16 — jugement !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le BAGAGE, an 6 — VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les BETOKH (les MILIEU (les BÉYT (les MAISON (les HAMMERI (les REBELLE (les ATTAH (les TOI (les YOSHÉB (les HABITES (les ASHER (les QUI (les ÉYNAYIM (les YEUX (les LAHEM (les EUX (les LIROT (les VOIR (les VELO (les NON (les RAU (les VOIENT (les OZNAYIM (les OREILLES (les LAHEM (les EUX (les LISHMOA (les ENTENDRE (les VELO (les NON (les SHAMÉU (les ENTENDENT (les KI (les CAR (les BÉYT (les MAISON (les MERI (les REBELLE (les HÉM (les VEATTAH (les TOI (les BEN (les FILS (les ADAM (les HOMME (les ASÉH (les FAIS (les LEKHA (les TOI (les KHELÉ (les BAGAGE (les GOLAH (les EXIL (les UGALÉH (les SORS (les YOMAM (les JOUR (les LEÉYNÉHEM (les YEUX (les VEGALITA (les SORTIRAS (les MIMMEQOMKHA (les LIEU (les EL (les MAQOM (les AUTRE (les AHÉR (les LEÉYNÉHEM (les YEUX (les ULAY (les PEUT-ÊTRE (les YIRU (les VERRONT (les KI (les CAR (les BÉYT (les MAISON (les MERI (les REBELLE (les HÉM (les BAGAGE (les JOUR (les PEUT-ÊTRE — les VERRONT !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La NUIT-PERCÉE (les VEHOTSETA (les SORS (les KHÉLÉKHA (les BAGAGE (les KEKHLÉ (les COMME-BAGAGE (les GOLAH (les EXIL (les YOMAM (les JOUR (les LEÉYNÉHEM (les YEUX (les VEATTAH (les TOI (les TÉTSÉ (les SORS (les BAÉREB (les SOIR (les LEÉYNÉHEM (les YEUX (les KEMOTSAÉ (les COMME-SORTIE (les GOLAH (les EXIL (les LEÉYNÉHEM (les YEUX (les HATOR (les PERCE (les LEKHA (les TOI (les BAQQIR (les MUR (les VEHOTSÉTA (les SORS (les BO (les LÀ (les BAALATAH (les OBSCURITÉ (les TISSA (les CHARGE (les AL (les KATÉPH (les ÉPAULE (les LEÉYNÉHEM (les YEUX (les TOTSI (les SORTIRAS (les PHANÉKHA (les FACE (les TEKHASSÉH (les COUVRE (les VELO (les NON (les TIRÉH (les VERRAS (les ET (les HAARÉTS (les PAYS (les KI (les CAR (les MOT (les SIGNE (les NETATTIKHA (les FAIS (les LEBÉYT (les MAISON (les YISRAÉL (les ISRAËL (les VAAAS (les FIS (les KÉN (les AINSI (les KAASHER (les COMME (les TSUVVÉTI (les ORDONNÉ (les KHÉLAY (les BAGAGE (les HOTSÉTI (les SORTIS (les KIKHLÉ (les COMME-BAGAGE (les GOLAH (les EXIL (les YOMAM (les JOUR (les UBAÉREB (les SOIR (les HATARTI (les PERÇAI (les LI (les MOI (les BAQQIR (les MUR (les BEYAD (les MAIN (les BAALATAH (les OBSCURITÉ (les HOTSÉTI (les SORTIS (les AL (les KATÉPH (les ÉPAULE (les NASATI (les CHARGEAI (les LEÉYNÉHEM (les YEUX (les NUIT (les MUR (les ÉPAULE — les VOILÉ !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le FILET-RIBLA (les MATIN (les QUESTION (les QUE-FAIS-TU (les RÉPONSE (les ORACLE (les NASSI (les PRINCE (les YERUSHALAYIM (les JÉRUSALEM (les MOINEAU (les MUSARAIGNE (les TSIDQIYA (les DÉGRADÉ (les MIROIR (les PARFAIT (les BAGAGE (les ÉPAULE (les MUR (les PERCÉ (les NUIT (les VISAGE (les VOILÉ (les JUILLET (les CINQ-CENT-QUATRE-VINGT-SEPT (les JARDIN (les ROI (les DEUX (les MURS (les JORDAN (les FUIT (les JÉRICO (les PRIS (les RIBLA (les FILS (les ÉGORGÉS (les YEUX (les CREVÉS (les CAPTIF (les VOYAGE (les AVEUGLE (les BABYLONE (les JAMAIS (les VUE (les MORT (les PRISON (les JÉRÉMIE (les CINQUANTE-DEUX (les FILET — les PRIS !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">12:1-6</td><td>RÉPÉTÉE (MIME !)</td></tr>
+<tr><td class="d">12:7-9</td><td>CURIOSITÉ (LENDEMAIN !)</td></tr>
+<tr><td class="d">12:10</td><td>DIVIN (PRINCE !)</td></tr>
+<tr><td class="d">12:12-13</td><td>PRISON (AVEUGLE !)</td></tr>
+<tr><td class="d">12:14-15</td><td>JUGEMENT (VENTS !)</td></tr>
+<tr><td class="d">2R25/Jr52</td><td>VUE (RIBLA !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>592 : mime de Tel-Abib (bagage de jour, mur percé le soir, sortie nocturne, face voilée — vv. 1-11) avec clé : le NASSI de Jérusalem (v. 12 ; « prince », pas « roi » — Yoyakîn reste le roi légitime, Ez 17:13, 2R 24:15) ; 587 : brèche, fuite nocturne par le jardin du roi entre les deux murs (2R 25:4, Jr 52:7), capture à Jéricho ; Ribla : fils égorgés sous ses yeux, yeux crevés (2R 25:7, Jr 52:11) — « amené à Babylone… il ne la verra pas… il y mourra » (v. 13) lettre par lettre ; dispersion des troupes (v. 14 ; 2R 25:5).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Le prince au milieu d'eux » (v. 12) : Jérusalem assiégée ; la porte entre les deux murs du jardin du roi (2R 25:4 — Siloé, sud-est) ; route de la Araba vers Jéricho (~25 km) ; capture « dans les plaines de Jéricho » (2R 25:5) ; remontée à Ribla sur l'Oronte (~400 km) ; voyage aveugle Ribla→Babylone (~700 km) — « il ne la verra pas » en chaque kilomètre.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>2 Rois 25:4-7 + Jérémie 52:7-11 — le PROCÈS-VERBAL (fuite, capture, Ribla, aveuglement, mort à Babylone) ; Ézéchiel 17 (nwtsty — l'aigle, le cèdre, le roi conduit à Babylone) — la FABLE du même destin ; Ézéchiel 19 (nwt + nwtsty — lionceau pris, conduit avec des crochets, mis en cage) — la COMPLAINTE du prince capturé.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>592 : MIME (BAGAGE/NUIT/MUR/VOILE) → CLÉ : LE NASSI → 587 : FUITE NOCTURNE PAR LE JARDIN → JÉRICHO : CAPTURE → RIBLA : AVEUGLEMENT → BABYLONE INVISIBLE : MORT</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Prince » vs « roi » (v. 10, 12) : la fiche suit la lecture standard (Sédécias dégradé car Yoyakîn légitime — cf. Éz 17:13, 2R 24:15) ; « ils sauront » (vv. 15-16) : formule de reconnaissance, pas conversion universelle ; le « reste » de conteurs (v. 16) : accompli par les survivants dispersés — identification narrative, pas nominative.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mime du bagage à Tel-Abib</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite, Jéricho, Ribla</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort aveugle à Babylone</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587–?</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/17">Bible — Ézékiel 17 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/17</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/19">Bible — Ézékiel 19 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/19</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/19">Bible — Ézékiel 19 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/19</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ314 — « Il ne verra pas » : le prince au mur percé</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ315">
+<div class="visuel"><img src="images/prophe_EZ315_tremblement.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ315 · CATÉGORIE EZ</div>
+<h3>« Ton pain avec tremblement » : le siège mimé à table</h3>
+<div class="ref">Ézéchiel 12:17-20</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">pain tremblement siège annoncé (mangeras → pain → tremblement → boiras → eau → inquiétude → angoisse → diras → peuple → pays → dit → Souverain → habitants → Jérusalem → terre → Israël → mangeront → pain → inquiétude → boiront → eau → stupeur → pays → dépouillé → contient → violence → habitants → villes → habitées → dévastées → désolation → saurez)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ315 · 0:14</div><audio controls preload="none" src="audio/fiche_EZ315_tremblement.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ315_tremblement.mp3 · 0:14 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 12:17-20</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>pain tremblement siège annoncé (mangeras → pain → tremblement → boiras → eau → inquiétude → angoisse → diras → peuple → pays → dit → Souverain → habitants → Jérusalem → terre → Israël → mangeront → pain → inquiétude → boiront → eau → stupeur → pays → dépouillé → contient → violence → habitants → villes → habitées → dévastées → désolation → saurez)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P315 (12:17-20 : pain avec tremblement ; villes dévastées) ; Jr 52:12-16 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« MANGERAS… PAIN… TREMBLEMENT… BOIRAS… EAU… INQUIÉTUDE… ANGOISSE… RAASH… SECOUSSE… SÉISME… INTÉRIEUR… CUILLÈRE… TREMBLANTE… GORGÉE… COMPTÉE… TABLE… PROPHÉTIQUE… CHAQUE… REPAS… SERMON… APPÉTIT… COUPÉ… PUBLIC… MAL… À… L'AISE. » (12:18 — à l'aise !)</li>
+<li>« DIRAS… PEUPLE… PAYS… DIT… SOUVERAIN… HABITANTS… JÉRUSALEM… TERRE… ISRAËL… MANGERONT… PAIN… INQUIÉTUDE… BOIRONT… EAU… STUPEUR… DAAGAH… ANXIÉTÉ… SHIMAMON… STUPEUR… RATIONS… SIÈGE… COMPTE… CALORIES… PEUR… PROCHAIN… CONVOI… JAMAIS. » (12:19 — jamais !)</li>
+<li>« PAYS… DÉPOUILLÉ… CONTIENT… VIOLENCE… HABITANTS… HAMAS… VIOLENCE… INJUSTICE… CONCUSSION… RICHES… AFFAMENT… PAUVRES… SIÈGE… NIVELLE… GRENIERS… CONFISQUÉS… PRIX… FOLIE… CAB… FIENTE… COLOMBE… ARGENT… ROIS… SECOND… LIVRE… CHAPITRE… SIX. » (12:19 — six !)</li>
+<li>« VILLES… HABITÉES… DÉVASTÉES… PAYS… DÉSOLATION… SAUREZ… JÉHOVAH… NOSHABOT… HABITÉES… YEHERABNA… RUINÉES… CONTRASTE… TOTAL… RUES… PLEINES… RUES… VIDES… MAISONS… ÉCROULÉES… VIGNES… ARRACHÉES… MONTAGNE… SION… LABOURÉE… CHAMP… MICHÉE… TROIS. » (12:20 — trois !)</li>
+<li>« QUATRE… TROIZE… RAPPEL… PAIN… POIDS… EAU… MESURE… STUPEUR… DÉPÉRISSENT… FAUTES… SIÈGE… DOUBLE… ANNONCE… QUATRE… DOUZE… TREMBLEMENT… MISE… EN… SCÈNE… CONTINUE… LENTEUR… PÉDAGOGIE… DIVINE… RÉPÉTITION… JUGEMENT… CERTAIN… AUCUNE… ÉCHAPPATOIRE. » (Éz 4 — échappatoire !)</li>
+<li>« JÉRÉMIE… CINQUANTE-DEUX… NÉBUZARADAN… BRÛLE… MAISON… JÉHOVAH… MAISON… ROI… MAISONS… JÉRUSALEM… MURS… DÉMOLIS… PAUVRES… VIGNERONS… LABOUREURS… LAISSÉS… VILLES… DÉVASTÉES… PAYS… DÉSOLATION… MOT… POUR… MOT… TABLE… PROPHÉTIQUE… CONFIRMÉE. » (Jr 52 — confirmée !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le REPAS-TREMBLANT (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les LAHMEKHA (les PAIN (les BERAASH (les TREMBLEMENT (les TOKHÉL (les MANGERAS (les UMÉMÉKHA (les EAU (les BEDAAGAH (les INQUIÉTUDE (les UBESHIMAMON (les ANGOISSE (les TISHTÉH (les BOIRAS (les NÉBUZARADAN (les BRÛLE (les VEAMARTA (les DIRAS (les EL (les AM (les PEUPLE (les HAARÉTS (les PAYS (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les LEYOSHBÉ (les HABITANTS (les YERUSHALAYIM (les JÉRUSALEM (les AL (les SUR (les ADMAT (les TERRE (les YISRAÉL (les ISRAËL (les LAHMAM (les PAIN (les BIDAAGAH (les INQUIÉTUDE (les YOKHÉLU (les MANGERONT (les UMÉMÉHEM (les EAU (les BESHIMAMON (les STUPEUR (les YISHTU (les BOIRONT (les LEMAAN (les CAR (les TÉSHAM (les DÉPOUILLÉE (les ARTSAH (les TERRE (les MIMMALOAH (les CONTENU (les MÉHAMAS (les VIOLENCE (les KOL (les TOUS (les YOSHÉBÉHA (les HABITANTS (les PAIN (les EAU (les INQUIÉTUDE — les STUPEUR !)</p>
+<h4>4 · Explication du texte</h4>
+<p>La DÉSOLATION (les VEHEARIM (les VILLES (les HANNOSHABOT (les HABITÉES (les YEHÉRABNA (les DÉVASTÉES (les VEHAARÉTS (les PAYS (les SHEMAMAH (les DÉSOLATION (les TIHYÉH (les SERA (les VIDAATEM (les SAUREZ (les KI (les QUE (les ANI (les JE (les YEHOVAH (les RAASH (les TREMBLEMENT (les CORPS (les ENTIER (les SECOUSSE (les TERREUR (les SISMIQUE (les DAAGAH (les INQUIÉTUDE (les SOUCI (les RONGEUR (les ANXIÉTÉ (les QUOTIDIENNE (les SHIMAMON (les STUPEUR (les HÉBÉTUDE (les SIDÉRATION (les TRAUMATISME (les HAMAS (les VIOLENCE (les INJUSTICE (les EXPLOITATION (les CAUSE (les JUGEMENT (les MORALE (les SIÈGE (les SALAIRE (les OPPRESSION (les PAUVRES (les AFFAMÉS (les AVANT (les SIÈGE (les RICHES (les AFFAMÉS (les PENDANT (les ÉGALITÉ (les FAIM (les DÉSOLATION — les JÉHOVAH !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le SIÈGE-CONFIRMÉ (les QUATRE (les RATIONS (les DOUZE (les TREMBLEMENT (les DOUBLE (les ANNONCE (les AUCUN (les DOUTE (les CINQ-CENT-QUATRE-VINGT-HUIT (les INVESTISSEMENT (les CINQ-CENT-QUATRE-VINGT-SEPT (les FAMINE (les PRÉVALUT (les VILLE (les PAIN (les MANQUA (les PEUPLE (les PAYS (les JÉRÉMIE (les CINQUANTE-DEUX (les SIX (les MÈRES (les ENFANTS (les LAMENTATIONS (les QUATRE (les NEUF (les HEUREUX (les PERCÉS (les ÉPÉE (les ÉPUISÉS (les FAIM (les NÉBUZARADAN (les BRÛLE (les DÉMOLIT (les DÉPORTE (les VIGNERONS (les LABOUREURS (les RESTENT (les VILLES (les VIDES (les PAYS (les DÉSOLÉ (les TABLE — les CONFIRMÉE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">12:18</td><td>L'AISE (TABLE !)</td></tr>
+<tr><td class="d">12:19a</td><td>JAMAIS (STUPEUR !)</td></tr>
+<tr><td class="d">12:19b</td><td>SIX (HAMAS !)</td></tr>
+<tr><td class="d">12:20</td><td>TROIS (RUINES !)</td></tr>
+<tr><td class="d">Éz4</td><td>ÉCHAPPATOIRE (DOUBLE !)</td></tr>
+<tr><td class="d">Jr52</td><td>CONFIRMÉE (BRÛLE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>592 : mime alimentaire (manger tremblant, boire anxieux — v. 18) + clé : Jérusalem mangera et boira ainsi, le pays dépouillé à cause du HAMAS (v. 19), villes ruinées, pays désolé (v. 20) ; écho d'Éz 4 (pain au poids, eau à la mesure) ; 587 : « la famine prévalut dans la ville, il n'y avait plus de pain » (Jr 52:6 ; Lm 4:3-10) ; août 587 : Nébuzaradan brûle maison de Dieu, maison du roi, maisons de Jérusalem, démolit les murs (Jr 52:12-14), ne laisse que des vignerons et laboureurs (v. 16) — villes dévastées, pays en désolation.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Les habitants de Jérusalem » (v. 19) : ville close, greniers épuisés ; « villes habitées… dévastées » (v. 20) : Lakish, Azéqa et les forteresses du Néguev tombent (Jr 34:7) ; « le pays… désolation » : déportation en vagues (Jr 52:28-30), terre sabbatique forcée ; seuls « les pauvres du pays » restent (Jr 52:16) — vignes et champs sans maîtres.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Jérémie 52:6,12-16 — le PROCÈS-VERBAL (famine absolue, incendie, démolition, reliquat pauvre) ; Lamentations 4:3-10 — le REPORTAGE (mères, enfants, faim pire que l'épée) ; Jérémie 14 (nwt — sécheresse, famine, le peuple affamé) — le PARALLÈLE du jugement par la faim ; Aggée 1 (nwt — « vous mangez, mais sans vous rassasier ») + Joël 1 (nwt — deuil de la moisson) — la FAIM comme langage divin.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>592 : REPAS-TREMBLANT (MIME) → CLÉ : JÉRUSALEM MANGERA AINSI → 588-587 : SIÈGE, FAMINE ABSOLUE → AOÛT 587 : INCENDIE, DÉMOLITION → VILLES VIDES, PAYS DÉSOLÉ</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Le mime de table (v. 18) n'est pas répété dans le récit (acte continu probable, non daté fin) ; HAMAS (v. 19) : cause morale affirmée par le texte — la fiche la rapporte sans reconstituer les cas ; « vous saurez » (v. 20) : reconnaissance du jugement, pas nécessairement repentir — la suite (siège méprisé) le confirme.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mime du pain tremblant</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège ; famine absolue</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Incendie ; désolation</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">août 587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/14">Bible — Jérémie 14 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/24/14</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/37/1">Bible — Aggée 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/37/1</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/29/1">Bible — Joël 1 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/29/1</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ315 — « Ton pain avec tremblement » : le siège mimé à table</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ316">
+<div class="visuel"><img src="images/prophe_EZ316_delai.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ316 · CATÉGORIE EZ</div>
+<h3>« Plus de délai » : la parole s'exécute de leurs jours</h3>
+<div class="ref">Ézéchiel 12:21-28</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">délai aboli parole exécutée (jours → prolongent → vision → évanouit → proverbe → cesser → dira → Israël → jours → approchent → vision → accomplit → vision → vaine → divination → flatteuse → milieu → parlerai → parole → dirai → accomplira → différée → jours → rebelle → dirai → accomplirai → vision → jours → lointains → prophétise → temps → éloignés → paroles → différée → dirai → accomplira)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ316 · 0:12</div><audio controls preload="none" src="audio/fiche_EZ316_delai.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ316_delai.mp3 · 0:12 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 12:21-28</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>délai aboli parole exécutée (jours → prolongent → vision → évanouit → proverbe → cesser → dira → Israël → jours → approchent → vision → accomplit → vision → vaine → divination → flatteuse → milieu → parlerai → parole → dirai → accomplira → différée → jours → rebelle → dirai → accomplirai → vision → jours → lointains → prophétise → temps → éloignés → paroles → différée → dirai → accomplira)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P316 (12:21-28 : les jours approchent, plus de délai) ; Éz 33:21-22 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PROVERBE… TERRE… ISRAËL… JOURS… PROLONGENT… VISION… ÉVANOUIT… MASHAL… MOQUERIE… POPULAIRE… GRAFFITI… RUELLES… TEL-ABIB… JÉRUSALEM… DICTON… SCEPTIQUES… ÉZÉCHIEL… PARLE… RIEN… ARRIVE… CALENDRIER… MOQUEUR… PATIENCE… USÉE… FOI… ÉRODÉE. » (12:22 — érodée !)</li>
+<li>« FERAI… CESSER… PROVERBE… DIRA… ISRAËL… DIRAS… JOURS… APPROCHENT… VISION… ACCOMPLIT… HASHBOTI… ABOLITION… OFFICIELLE… DICTON… INTERDIT… REMPLACÉ… ANTIDOTE… PROVERBIAL… MÊME… MONNAIE… SLOGAN… CONTRE… SLOGAN… DIEU… RÉPLIQUE… RUE. » (12:23 — rue !)</li>
+<li>« VISION… VAINE… DIVINATION… FLATTEUSE… MILIEU… MAISON… ISRAËL… SHAW… NÉANT… MENTHE… DOUCE… OREILLES… DÉMANGEAISON… PAIX… MENSONGÈRE… CONCURRENCE… DÉLOYALE… VRAI… PROPHÈTE… RIDICULISÉ… FAUX… APPLAUDIS… BALANCE… INVERSÉE… BIENTÔT… SILENCE. » (12:24 — silence !)</li>
+<li>« PARLERAI… PAROLE… DIRAI… ACCOMPLIRA… DIFFÉRÉE… JOURS… REBELLE… DIRAI… ACCOMPLIRAI… LO… TIMMASHEKH… NIÉE… DURÉE… VERBE… TRACTÉ… RETARD… ANNULÉ… DE… VOS… JOURS… GÉNÉRATION… TÉMOIN… CONTEMPORAINS… JUGÉS… CONTEMPORAINEMENT… ÉCHÉANCE… VIVANTE. » (12:25 — vivante !)</li>
+<li>« MAISON… ISRAËL… DIT… VISION… VOIT… JOURS… LOINTAINS… PROPHÉTISE… TEMPS… ÉLOIGNÉS… SECOND… PROVERBE… REPORT… FUTUR… LOINTAIN… THÉOLOGIE… PROCRASTINATION… VRAI… MAIS… PAS… NOUS… PAS… MAINTENANT… PETITS-ENFANTS… PEUT-ÊTRE… CONFORT… ILLUSOIRE. » (12:27 — illusoire !)</li>
+<li>« AUCUNE… PAROLES… DIFFÉRÉE… PAROLE… DIRAI… ACCOMPLIRA… CINQ… ANS… PLUS… TARD… FUYARD… ARRIVE… JANVIER… CINQ-CENT-QUATRE-VINGT-SIX… VILLE… FRAPPÉE… BOUCHE… OUVERTE… TRENTE-TROIS… VINGT-ET-UN… PROVERBE… ENTERRÉ… PAROLE… DEBOUT… DÉLAI… ZÉRO. » (12:28 — zéro !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le PROVERBE-MOQUEUR (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les MAH (les QUEL (les HAMMASHAL (les PROVERBE (les HAZZÉH (les CE (les LAKHEM (les VOUS (les AL (les SUR (les ADMAT (les TERRE (les YISRAÉL (les ISRAËL (les LÉMOR (les DISANT (les YAARKHU (les PROLONGENT (les HAYYAMIM (les JOURS (les VEABAD (les ÉVANOUIT (les KOL (les TOUTE (les HAZON (les VISION (les LAKHÉN (les CÈST POURQUOI (les ÉMOR (les DIS (les ALÉHEM (les EUX (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les HASHBOTI (les CESSER (les ET (les HAMMASHAL (les PROVERBE (les HAZZÉH (les VELO (les NON (les YIMSHELU (les DIRA (les OTO (les LE (les OD (les PLUS (les BEYISRAÉL (les ISRAËL (les KI (les CAR (les IM (les DABBER (les DIS (les ALÉHEM (les EUX (les QAREBU (les APPROCHENT (les HAYYAMIM (les JOURS (les UDEBAR (les PAROLE (les KOL (les TOUTE (les HAZON (les VISION (les JOURS (les VISION (les PROVERBE — les ABOLI !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le DÉLAI-ZÉRO (les KI (les CAR (les LO (les NON (les YIHYÉH (les AURA (les OD (les PLUS (les KOL (les TOUTE (les HAZON (les VISION (les SHAW (les VAINE (les UMIQSAM (les DIVINATION (les HALAQ (les FLATTEUSE (les BETOKH (les MILIEU (les BÉYT (les MAISON (les YISRAÉL (les ISRAËL (les KI (les CAR (les ANI (les MOI (les YEHOVAH (les ADABBÉR (les PARLERAI (les ET (les ASHER (les QUE (les ADABBÉR (les DIRAI (les DABAR (les PAROLE (les VETÉASÉH (les ACCOMPLIRA (les LO (les NON (les TIMMASHÉKH (les DIFFÉRÉE (les OD (les PLUS (les KI (les CAR (les BIMÉKHEM (les JOURS (les BÉYT (les MAISON (les HAMMERI (les REBELLE (les ADABBÉR (les DIRAI (les DABAR (les PAROLE (les VAASITIV (les ACCOMPLIRAI (les NEUM (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les LO-TIMMASHEKH (les NON-DIFFÉRÉE (les VERBE (les MASHASH (les TIRER (les TRAÎNER (les RETARD (les TRACTÉ (les CORDE (les COUPÉE (les ÉCHÉANCE (les IMMÉDIATE (les PAROLE — les EXÉCUTÉE !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le FUYARD-JANVIER (les SECOND (les PROVERBE (les VISION (les LOINTAINE (les TEMPS (les ÉLOIGNÉS (les MÊME (les RÉPONSE (les AUCUNE (les PAROLE (les DIFFÉRÉE (les CINQ (les ANS (les COMPTE (les REBOURS (les CINQ-CENT-QUATRE-VINGT-HUIT (les SIÈGE (les CINQ-CENT-QUATRE-VINGT-SEPT (les BRÈCHE (les JANVIER (les CINQ-CENT-QUATRE-VINGT-SIX (les FUYARD (les HAPPELETAH (les ÉCHAPPÉ (les BATAILLE (les ANNONCE (les VILLE (les FRAPPÉE (les HUKKETAH (les HAÏR (les BOUCHE (les OUVERTE (les SILENCE (les ROMPU (les MUTISME (les LEVÉ (les TRENTE-TROIS (les VINGT-ET-UN (les VINGT-DEUX (les PROVERBE (les MOQUEUR (les ENTERRÉ (les PAROLE (les DEBOUT (les FUYARD — les PREUVE !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">12:22</td><td>ÉRODÉE (MASHAL !)</td></tr>
+<tr><td class="d">12:23</td><td>RUE (ABOLI !)</td></tr>
+<tr><td class="d">12:24</td><td>SILENCE (FLATTEUSE !)</td></tr>
+<tr><td class="d">12:25</td><td>VIVANTE (ZÉRO !)</td></tr>
+<tr><td class="d">12:27</td><td>ILLUSOIRE (REPORT !)</td></tr>
+<tr><td class="d">12:28/33</td><td>ZÉRO (FUYARD !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>592 : deux proverbes sceptiques — « les jours se prolongent, toute vision s'évanouit » (v. 22) et « vision pour des jours lointains » (v. 27) ; Dieu abolit le premier (v. 23), réfute le second (v. 28) : LO-TIMMASHEKH, « plus différée » (vv. 25, 28), « de vos jours, maison rebelle » (v. 25) ; 588-587 : siège puis brèche — chaque vision datée s'exécute ; 8 janvier 586 : le fuyard annonce « la ville a été frappée », la bouche d'Ézéchiel s'ouvre (Éz 33:21-22) — le délai zéro, constaté.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>« Sur la terre d'Israël » (v. 22) : le proverbe circule des deux côtés de l'exil (Tel-Abib et Jérusalem) ; « de vos jours » (v. 25) : la génération des exilés de 597 voit tout en 5-6 ans ; le fuyard (33:21) : ~1 200 km Jérusalem→Babylone en ~5 mois — la nouvelle voyage, le délai meurt en route.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 33:21-22 (nwtsty — le fuyard, la ville frappée, la bouche ouverte) — le CONSTAT du délai zéro ; Habacuc 2:2-3 (nwtsty — « si elle tarde, attends-la, elle s'accomplira, elle ne sera pas en retard ») — le PARALLÈLE du rendez-vous tenu ; 2 Pierre 3:3-9 (« là où est la promesse ?… le Seigneur ne tarde pas ») — le MÊME proverbe moqueur, réfuté à nouveau.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>592 : PROVERBE MOQUEUR (RIEN N'ARRIVE) + REPORT (LOIN) → ABOLITION : LO-TIMMASHEKH → 588 : SIÈGE → 587 : BRÈCHE → JANV. 586 : FUYARD « VILLE FRAPPÉE » → PROVERBE ENTERRÉ</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Plus de vision vaine » (v. 24) : cessation du crédit des flatteurs après 587, pas disparition absolue des faux prophètes (cf. Éz 13, contemporain) ; « de vos jours » (v. 25) : l'échéance vise le jugement 588-586, pas chaque oracle du livre (restaurations lointaines : ch. 40-48) ; la fiche distingue l'échéance jugée (Accomplie) des horizons restaurés.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Proverbes moqueurs réfutés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège ; brèche ; visions tenues</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuyard ; délai zéro</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">janv. 586</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/33">Bible — Ézékiel 33 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/33</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/35/2">Bible — Habaquq 2 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/35/2</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/61/3">Bible — 2 Pierre 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/61/3</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ316 — « Plus de délai » : la parole s'exécute de leurs jours</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ317">
+<div class="visuel"><img src="images/prophe_EZ317_faux.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ317 · CATÉGORIE EZ</div>
+<h3>« Le mur badigeonné » : faux prophètes et pluie torrentielle</h3>
+<div class="ref">Ézéchiel 13:1-23</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">faux prophètes mur badigeonné condamnés (prophétise → fils → prophétisent → cœur → écoutez → parole → malheur → prophètes → insensés → suivent → esprit → voient → renards → ruines → montés → brèche → réparé → mur → tiennent → bataille → jour → vision → vaine → divination → mensongère → dit → envoie → espèrent → accomplisse → annoncez → vain → divination → mensonge → dit → parlé → main → retranchés → conseil → inscrits → livre → entreront → terre → saurez)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ317 · 0:13</div><audio controls preload="none" src="audio/fiche_EZ317_faux.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ317_faux.mp3 · 0:13 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 13:1-23</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>faux prophètes mur badigeonné condamnés (prophétise → fils → prophétisent → cœur → écoutez → parole → malheur → prophètes → insensés → suivent → esprit → voient → renards → ruines → montés → brèche → réparé → mur → tiennent → bataille → jour → vision → vaine → divination → mensongère → dit → envoie → espèrent → accomplisse → annoncez → vain → divination → mensonge → dit → parlé → main → retranchés → conseil → inscrits → livre → entreront → terre → saurez)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P317 (13:1-23 : faux prophètes, visions disparaîtront) ; Éz 13:23 ; Jr 28:16-17 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PROPHÉTISE… PROPHÈTES… ISRAËL… PROPHÉTISENT… CŒUR… ÉCOUTEZ… PAROLE… MALHEUR… INSENSÉS… SUIVENT… ESPRIT… VOIENT… NEBALIM… INSENSÉS… RUUAH… SOUFFLE… PROPRE… SOURCE… CARDIAQUE… NON… CÉLESTE… INSPIRATION… AUTOPRODUITE… ÉCOUTE… THÉÂTRE… JÉHOVAH… RÉQUISITOIRE… OUVERT. » (13:1-3 — ouvert !)</li>
+<li>« RENARDS… RUINES… PROPHÈTES… MONTÉS… BRÈCHE… RÉPARÉ… MUR… MAISON… ISRAËL… TENIR… BATAILLE… JOUR… SHUALIM… CHAROGNARDS… DÉCOMBRES… TROUS… MURS… ÉCROULÉS… AU… LIEU… MAÇONS… BRÈCHE… SENTINELLES… GUERRE… JOUR… JÉHOVAH… DÉSERTEURS… CHANTANTS… PAIX. » (13:4-5 — paix !)</li>
+<li>« VISION… VAINE… DIVINATION… MENSONGÈRE… DIT… JÉHOVAH… ENVOIE… ESPÈRENT… ACCOMPLISSE… ANNONCEZ… VAIN… DIVINATION… MENSONGE… DIT… PARLÉ… NEUM… FORMULE… VOLÉE… SCEAU… CONTREFAIT… ESPOIR… DIEU… RATIFIE… BLANC-SEING… CÉLESTE… REFUSÉ… SIGNATURE… NIÉE… PUBLIQUEMENT. » (13:6-7 — publiquement !)</li>
+<li>« MAIN… PROPHÈTES… VOIENT… VAIN… DEVINENT… MENSONGE… CONSEIL… PEUPLE… INSCRITS… LIVRE… MAISON… ISRAËL… ENTRERONT… TERRE… SAUREZ… EXCOMMUNICATION… TRIPLE… SOD… CONSEIL… SEPHER… REGISTRE… ERETS… TERRITOIRE… RAYÉS… ASSEMBLÉE… ARCHIVES… GÉOGRAPHIE… ANATHÈME… TOTAL. » (13:8-9 — total !)</li>
+<li>« ÉGARENT… PEUPLE… PAIX… PAIX… CONSTRUIT… MUR… BADIGEONNENT… PLÂTRE… TAPEL… BOUE… CHAUX… MAQUILLAGE… FISSURES… ALLIANCES… ÉGYPTE… RÉVOLTE… BABYLONE… CONSEIL… SUICIDAIRE… COSMÉTIQUE… RUINE… ARCHITECTES… MENSONGE… CERTIFIÉ… ÉCROULEMENT… GARANTI. » (13:10 — garanti !)</li>
+<li>« PLUIE… TORRENTIELLE… TOMBERA… GRÊLONS… TOMBERONT… VENT… TEMPÊTE… FENDRA… MUR… TOMBÉ… BADIGEON… GÉSHEM… DÉLUGE… ÉLBONHE… GRÊLE… RUUAH… OURAGAN… TRIPLE… ASSAUT… NÉBUCADNETSAR… SIÈGE… FAMINE… ÉPÉE… OÙ… PLÂTRE… QUESTION… RHÉTORIQUE… DÉCOMBRES… RÉPONDENT. » (13:11-14 — répondent !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Les INSENSÉS (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les HINNABÉ (les PROPHÉTISE (les EL (les NEBIÉ (les PROPHÈTES (les YISRAÉL (les ISRAËL (les HANNIBBEIM (les PROPHÉTISENT (les MILLIBBAM (les CŒUR (les VEAMARTA (les DIRAS (les SHIMU (les ÉCOUTEZ (les DEBAR (les PAROLE (les YEHOVAH (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les HOY (les MALHEUR (les AL (les HANNABIIM (les PROPHÈTES (les HANNABALIM (les INSENSÉS (les ASHER (les QUI (les HOLEKHIM (les SUIVENT (les AHAR (les RUHAHM (les ESPRIT (les UBLI (les SANS (les RAU (les VOIR (les SHUALIM (les RENARDS (les BAHARABOT (les RUINES (les NEBIÉKHA (les PROPHÈTES (les YISRAÉL (les ISRAËL (les HAYU (les LO (les NON (les ALITEM (les MONTÉS (les BAPPERETS (les BRÈCHE (les VATIGDERU (les RÉPARÉ (les GADÉR (les MUR (les AL (les BÉYT (les MAISON (les YISRAÉL (les ISRAËL (les LAAMOD (les TENIR (les BAMMILHAMAH (les BATAILLE (les BEYOM (les JOUR (les YEHOVAH (les INSENSÉS (les RENARDS (les BRÈCHE — les DÉSERTÉE !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le BADIGEON (les SHAW (les VAIN (les HAZU (les VOIENT (les VEQÉSÉM (les DIVINATION (les KAZAB (les MENSONGE (les HAOMRIM (les DISANT (les NEUM (les DIT (les YEHOVAH (les VAYEHOVAH (les LO (les NON (les SHELAHAM (les ENVOYÉS (les VEYIHALU (les ESPÈRENT (les LEQAYYÉM (les ACCOMPLIR (les DABAR (les PAROLE (les HALO (les NON (les MEHÉZÉ (les VISION (les SHAW (les VAIN (les HAZITÉM (les VOYEZ (les UMIQSAM (les DIVINATION (les KAZAB (les MENSONGE (les AMARTÉM (les DITES (les NEUM (les DIT (les YEHOVAH (les VAANI (les JE (les LO (les NON (les DIBBARTI (les PARLÉ (les YAAN (les CAR (les UBYAAN (les HITU (les ÉGARENT (les ET (les AMMI (les PEUPLE (les LÉMOR (les DISANT (les SHALOM (les PAIX (les VEÉYN (les NON (les SHALOM (les PAIX (les VEHU (les IL (les BONÉH (les CONSTRUIT (les HAYITS (les MUR (les VEHINNAM (les EUX (les TAHIM (les BADIGEONNENT (les OTO (les TAPÉL (les PLÂTRE (les ÉMOR (les DIS (les EL (les TAHÉ (les BADIGEONNEURS (les HATTAPÉL (les PLÂTRE (les ASHER (les QUIL (les YIPPÓL (les TOMBERA (les GÉSHEM (les PLUIE (les SHOTÉPH (les TORRENTIELLE (les YIHYÉH (les VEABNÉ (les GRÊLONS (les ÉLGEBISH (les TIPPÓLNAH (les TOMBERONT (les VERUAH (les VENT (les SEAAROT (les TEMPÊTE (les TEBAQQÉA (les FENDRA (les MASHAL (les PROVERBE (les AYÉH (les OÙ (les HATTIYAH (les BADIGEON (les ASHER (les QUE (les TAHTÉM (les MÎTES (les PLUIE (les GRÊLE (les VENT — les ÉCROULÉ !)</p>
+<h4>5 · Interprétation</h4>
+<p>Les COUSSINETS-HANANIA (les PROPHÉTESSES (les Filles (les PEUPLE (les CŒUR (les COUSINETS (les KÉSATOTh (les BANDELETTES (les MISPAHot (les VOILES (les TÊTES (les CHASSE (les NEFASHOT (les ÂMES (les FILETS (les MAGIE (les ORGE (les POIGNÉES (les PAIN (les MORCEAUX (les TUENT (les VIVANTS (les FONT-VIVRE (les MOURANTS (les MENSONGES (les PEUPLE (les ÉCOUTE (les DÉCHIRERAI (les DÉLIVRERAI (les SAUREZ (les HANANIA (les GUIBÉON (les JOUG (les BRISÉ (les DEUX (les ANS (les JÉRÉMIE (les FER (les COU (les MÊME (les ANNÉE (les SEPTIÈME (les MOIS (les MOURUT (les VINGT-HUIT (les SEIZE (les DIX-SEPT (les MUR — les TOMBÉ !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">13:1-3</td><td>OUVERT (CŒUR !)</td></tr>
+<tr><td class="d">13:4-5</td><td>PAIX (RENARDS !)</td></tr>
+<tr><td class="d">13:6-9</td><td>TOTAL (ANATHÈME !)</td></tr>
+<tr><td class="d">13:10</td><td>GARANTI (TAPEL !)</td></tr>
+<tr><td class="d">13:11-14</td><td>RÉPONDENT (ORAGE !)</td></tr>
+<tr><td class="d">Jr28</td><td>TOMBÉ (HANANIA !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>592 : double réquisitoire — prophètes « de leur cœur » (vv. 1-9 : renards, brèche désertée, formule volée, triple exclusion) et prophétesses aux coussinets/voiles chassant les âmes pour de l'orge (vv. 17-19), délivrance promise (vv. 20-23) ; le mur (alliances anti-babyloniennes, révolte Égypte) badigeonné de « paix » (v. 10) ; 594 : Hanania brise le joug, promet la fin en 2 ans (Jr 28) — meurt le 7e mois de la même année (Jr 28:16-17), premier badigeon décollé ; 588-587 : pluie torrentielle, grêle, tempête (vv. 11-14) — siège, famine, épée ; « où est le badigeon ? » (v. 12), les décombres répondent.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Tel-Abib (prophètes de l'exil visés aux vv. 1-16) et Jérusalem (Hanania, ch. 28, brise le joug dans la maison de Dieu) — le mensonge des deux côtés du désert ; le mur : les remparts de Jérusalem badigeonnés de confiance (alliances), percés en 587 ; les prophétesses (vv. 17-23) : officines domestiques, filets magiques déchirés par Dieu.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Jérémie 28:15-17 — le PROCÈS-VERBAL (Hanania non envoyé, révolte prêchée, mort le 7e mois) ; Ézéchiel 13 (nwt + nwtsty + Rbi8 — triple traduction du réquisitoire : renards, badigeon, coussinets) — le TEXTE intégral sous trois éclairages ; Jérémie 14:13-16 + 23:16-22 — les PARALLÈLES (paix mensongère, songes de leur cœur).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>592 : RÉQUISITOIRE (PROPHÈTES + PROPHÉTESSES) → MUR BADIGEONNÉ DE « PAIX » → 594 : HANANIA MEURT (1ER BADIGEON) → 588-587 : ORAGE (SIÈGE/FAMINE/ÉPÉE) → « OÙ EST LE BADIGEON ? »</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>Identification du « mur » (v. 10) : la fiche suit la lecture standard (système d'alliances + fausse sécurité) — le texte ne nomme pas l'alliance égyptienne explicitement ; les pratiques des prophétesses (vv. 18-19 : coussinets, voiles) : vocabulaire rare, magie domestique probable — traduction incertaine assumée ; Hanania (594) précède l'oracle (592) : cité comme accomplissement-type du jugement des flatteurs, pas comme suite chronologique.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hanania meurt (7e mois)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">594</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réquisitoire Éz 13</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Orage ; mur tombé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/13">Bible — Ézékiel 13 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/13">Bible — Ézékiel 13 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/13</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/13">Bible — Ézékiel 13 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/13</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ317 — « Le mur badigeonné » : faux prophètes et pluie torrentielle</span><span>Catégorie EZ</span></div></div>
+</article>
+<article class="fiche" id="EZ318">
+<div class="visuel"><img src="images/prophe_EZ318_idoles.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE EZ318 · CATÉGORIE EZ</div>
+<h3>« Leurs idoles sur leur cœur » : la consultation piégée</h3>
+<div class="ref">Ézéchiel 14:1-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">idoles cœur consultation condamnée (hommes → anciens → Israël → vinrent → assirent → parole → hommes → monter → idoles → cœur → achoppement → faute → face → consulter → parle → dis → homme → maison → Israël → monter → idoles → cœur → achoppement → faute → face → vient → prophète → répondrai → multitude → idoles → saisir → maison → Israël → cœur → détournés → idoles → dis → maison → Israël → revenez → détournez → idoles → détournez → faces → abominations)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche EZ318 · 0:13</div><audio controls preload="none" src="audio/fiche_EZ318_idoles.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_EZ318_idoles.mp3 · 0:13 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Ézéchiel 14:1-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>idoles cœur consultation condamnée (hommes → anciens → Israël → vinrent → assirent → parole → hommes → monter → idoles → cœur → achoppement → faute → face → consulter → parle → dis → homme → maison → Israël → monter → idoles → cœur → achoppement → faute → face → vient → prophète → répondrai → multitude → idoles → saisir → maison → Israël → cœur → détournés → idoles → dis → maison → Israël → revenez → détournez → idoles → détournez → faces → abominations)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Ézéchiel — P318 (14:1-11 : idoles sur le cœur, réponse selon les idoles) ; Éz 14:8-10 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« HOMMES… ANCIENS… ISRAËL… VINRENT… ASSIRENT… DEVANT… DÉLÉGATION… OFFICIELLE… BARBES… GRAVES… BANQUETTE… PROPHÈTE… CONSULTATION… SOLENNELLE… QUESTION… PRÉPARÉE… VISAGES… PIEUX… CŒURS… MEUBLÉS… AILLEURS… AUDIENCE… PIÉGÉE… PIÉGEURS… PIÉGÉS. » (14:1 — piégés !)</li>
+<li>« HOMMES… MONTER… IDOLES… CŒUR… ACHOPPEMENT… FAUTE… FACE… CONSULTER… HEÉLU… MONTER… GILLULÉHEM… CROTTES… DIVINITÉS… BOUSE… SURNOM… MÉPRISANT… AL-LIBBAM… SUR-CŒUR… TRÔNE… INTÉRIEUR… OCCUPÉ… MIKHSHOL… PIERRE… TREBUCHEMENT… TROTTOIR… FATAL. » (14:3 — fatal !)</li>
+<li>« PARLE… DIS… HOMME… MAISON… ISRAËL… MONTER… IDOLES… CŒUR… ACHOPPEMENT… FACE… VIENT… PROPHÈTE… RÉPONDRAI… MULTITUDE… IDOLES… NAANÉH… RÉPONDRAI… BO… EN-LUI… DANS… MESURE… IDOLES… TARIF… DOSE… RÉPONSE… CALIBRÉE… PÉCHÉ… MIROIR… JUGEMENT… PERSONNALISÉ. » (14:4 — personnalisé !)</li>
+<li>« SAISIR… MAISON… ISRAËL… CŒUR… DÉTOURNÉS… IDOLES… LEMAAN… TEPHOS… SAISIR… PRENDRE… FILET… CŒUR… LUI-MÊME… HAMEÇON… PIÈGE… DIVIN… CONTRE… PIÉGEURS… ZARU… ÉTRANGERS… DEVENUS… ÉLOIGNÉS… ALLIANCE… ROMPUE… CÔTÉ… HUMAIN… FIDÉLITÉ… RESTE… DIVIN. » (14:5 — divin !)</li>
+<li>« REVENEZ… DÉTOURNEZ… IDOLES… DÉTOURNEZ… FACES… ABOMINATIONS… SHUBU… IMPÉRATIF… PLURIEL… VAHASHIBU… RETOUR… ACTIF… HASIBBU… DÉTOURNER… VISAGES… DOUBLE… MOUVEMENT… CŒUR… FACE… INTÉRIEUR… EXTÉRIEUR… REPENTIR… COMPLET… EXIGÉ… OFFERT… GRATUIT… URGENT. » (14:6 — urgent !)</li>
+<li>« FACE… HOMME… SIGNE… PROVERBE… RETRANCHERAI… MILIEU… PEUPLE… SAUREZ… PROPHÈTE… SÉDUIRE… PAROLE… SÉDUIRAI… ÉTENDRAI… MAIN… DÉTRUIRAI… PORTERONT… FAUTE… CONSULTANT… PROPHÈTE… ÉGALITÉ… PEINE… COMPLICITÉ… TARIF… UNIQUE… SÉDUCTION… PARTAGÉE… RUINE… COMMUNE. » (14:8-10 — commune !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La DÉLÉGATION (les VAYABOU (les VINRENT (les ÉLAY (les MOI (les ANASHIM (les HOMMES (les MIZZIqné (les ANCIENS (les YISRAÉL (les ISRAËL (les VAYYESHBU (les ASSIRENT (les LEFANAY (les DEVANT (les VAYHI (les FUT (les DEBAR (les PAROLE (les YEHOVAH (les ÉLAY (les MOI (les LÉMOR (les DISANT (les BEN (les FILS (les ADAM (les HOMME (les HAANASHIM (les HOMMES (les HAÉLLÉH (les CES (les HEÉLU (les MONTER (les GILLULÉHEM (les IDOLES (les AL (les SUR (les LIBBAM (les CŒUR (les UMIKHSHOL (les ACHOPPEMENT (les AVONAM (les FAUTE (les NATNU (les MIS (les NOKHAH (les DEVANT (les PHENÉHEM (les FACE (les HAIDDARESH (les CONSULTER (les IDDARÉSH (les LAISSERAI (les LAHEM (les EUX (les QUESTION (les RHÉTORIQUE (les RÉPONSE (les NON (les AUDIENCE (les DÉTOURNÉE (les CONSULTANTS (les JUGÉS (les AVANT (les QUESTION (les DÉLÉGATION (les ANCIENS (les CŒUR — les MEUBLÉ !)</p>
+<h4>4 · Explication du texte</h4>
+<p>Le MIROIR-TARIF (les LAKHÉN (les CÈST POURQUOI (les DABBÉR (les PARLE (les OTAM (les EUX (les VEAMARTA (les DIRAS (les ALÉHEM (les EUX (les KOH (les AINSI (les AMAR (les DIT (les ADONAY (les SOUVERAIN (les YEHOVIH (les ISH (les HOMME (les ISH (les CHAQUE (les MIBBÉYT (les MAISON (les YISRAÉL (les ISRAËL (les ASHER (les QUI (les YAALÉH (les MONTE (les GILLULAV (les IDOLES (les EL (les SUR (les LIBBO (les CŒUR (les UMIKHSHOL (les ACHOPPEMENT (les AVONO (les FAUTE (les YITTÉN (les MET (les NOKHAH (les DEVANT (les PHANAV (les FACE (les UBA (les VIENT (les EL (les HANNABI (les PROPHÈTE (les ANI (les MOI (les YEHOVAH (les NAANÉH (les RÉPONDRAI (les LO (les LUI (les BAH (les EN-ELLE (les BEROB (les MULTITUDE (les GILLULAV (les IDOLES (les LEMAAN (les AFIN (les TEPHOS (les SAISIR (les ET (les BÉYT (les MAISON (les YISRAÉL (les ISRAËL (les BELIBBAM (les CŒUR (les ASHER (les CAR (les NAZORU (les DÉTOURNÉS (les MÉALAY (les MOI (les BIGLULÉHEM (les IDOLES (les KULLAM (les TOUS (les MIROIR (les RÉPONSE (les IDOLES — les SAISIS !)</p>
+<h4>5 · Interprétation</h4>
+<p>Le SÉDUIT-SÉDUCTEUR (les SHUBU (les REVENEZ (les OFFRE (les OUVERTE (les ÉTRANGER (les GÉR (les INCLUS (les MÊME (les LOI (les RÉPONDRAI (les MOI-MÊME (les BÉATSMI (les PERSONNE (les FACE (les CONTRE (les OT (les SIGNE (les MASHAL (les PROVERBE (les RETRANCHEMENT (les MILIEU (les PEUPLE (les PROPHÈTE (les PATTÉ (les SÉDUIT (les DIBBER (les PAROLE (les PITTIti (les SÉDUIRAI (les PARADOXE (les ENDURCISSEMENT (les TYPE (les PHARAON (les MAIN (les ÉTENDUE (les DÉTRUIT (les MILIEU (les FAUTE (les ÉGALE (les CONSULTANT (les PROPHÈTE (les NE (les SÉGARERA (les PLUS (les SOUILLERA (les PLUS (les PEUPLE (les DIEU (les SÉDUIT — les DÉTRUIT !)</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">14:1</td><td>PIÉGÉS (BARBES !)</td></tr>
+<tr><td class="d">14:3</td><td>FATAL (CROTTES !)</td></tr>
+<tr><td class="d">14:4</td><td>PERSONNALISÉ (TARIF !)</td></tr>
+<tr><td class="d">14:5</td><td>DIVIN (FILET !)</td></tr>
+<tr><td class="d">14:6</td><td>URGENT (SHUBU !)</td></tr>
+<tr><td class="d">14:8-10</td><td>COMMUNE (ÉGALE !)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>592/591 : des anciens s'assoient devant Ézéchiel (v. 1 ; scène rejouée en 20:1, an 7) — Dieu dévoile le dispositif avant la question : idoles « sur le cœur » (GILLULIM, « crottes »), achoppement devant la face (v. 3) ; règle énoncée : réponse « selon la multitude de ses idoles » (v. 4), saisie par le cœur (v. 5), appel SHUBU (v. 6), retranchement du consultant (v. 8) et destruction du prophète séduit-séducteur, faute égale (vv. 9-10) — exécutés en 588-586 : les consultants persistent (20:1, 33:30-33), les flatteurs périssent avec leur public (ch. 13), la maison cesse de s'égarer par l'exil-purge (v. 11 ; cf. 11:18-20).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Tel-Abib : la maison du prophète, salle d'audience (v. 1) — les anciens viennent, la réponse les attend ; « sur le cœur » (v. 3) : géographie intérieure — le sanctuaire rival loge dans la poitrine ; « retranché du milieu de mon peuple » (v. 8, 10) : excision communautaire — l'exilé idolâtre perd l'exil même, avant-goût de la dispersion totale.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Ézéchiel 14 (nwt + Rbi8 + nwtsty — triple traduction : délégation, miroir-tarif, séduit-séducteur) — le TEXTE intégral sous trois éclairages ; Ézéchiel 20:1-3 (même scène, an 7 : « me laisserai-je consulter ?… je ne me laisserai pas consulter ») — la RÉCIDIVE constatée ; Ézéchiel 33:30-33 (ils écoutent comme un chant d'amour, sans pratiquer) — le MÊME cœur partagé, jusqu'au bout.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>591 : ANCIENS ASSIS (CONSULTATION) → RADIOGRAPHIE : IDOLES SUR LE CŒUR → RÈGLE : RÉPONSE-MIROIR + SHUBU → REFUS → 588-586 : RETRANCHEMENT + DESTRUCTION ÉGALE → MAISON PURGÉE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Je séduirai ce prophète » (v. 9, PITTIti) : paradoxe d'endurcissement judiciaire (type Ex 7:3, 1R 22:22) — Dieu livre le flatteur à son mensonge, ne le contraint pas à mentir ; la fiche rapporte le texte sans résoudre le mystère ; accomplissement (registre : Éz 14:8-10, auto-référence) : exécutions 588-586 attestées globalement (ch. 13, Jr 28, siège) — pas de procès-verbal nominatif par consultant.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Anciens assis ; radiographie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">592/591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Récidive : 20:1-3</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">591 (an 7)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retranchement ; purge</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588-586</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/14">Bible — Ézékiel 14 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/26/14</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/14">Bible — Ézékiel 14 (Rbi8)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/26/14</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/14">Bible — Ézékiel 14 (nwtsty)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/26/14</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche EZ318 — « Leurs idoles sur leur cœur » : la consultation piégée</span><span>Catégorie EZ</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie EZ</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>EZ313 — « Je serai pour eux un sanctuaire » : Dieu en exil avec les exilés</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sanctuaire promis en exil</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 ans : école, synagogue</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">592-539</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Rassemblement ; cœur nouveau</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537</text>
+</svg>
+<h4>EZ314 — « Il ne verra pas » : le prince au mur percé</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mime du bagage à Tel-Abib</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuite, Jéricho, Ribla</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mort aveugle à Babylone</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">587–?</text>
+</svg>
+<h4>EZ315 — « Ton pain avec tremblement » : le siège mimé à table</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Mime du pain tremblant</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège ; famine absolue</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Incendie ; désolation</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">août 587</text>
+</svg>
+<h4>EZ316 — « Plus de délai » : la parole s'exécute de leurs jours</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Proverbes moqueurs réfutés</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Siège ; brèche ; visions tenues</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fuyard ; délai zéro</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">janv. 586</text>
+</svg>
+<h4>EZ317 — « Le mur badigeonné » : faux prophètes et pluie torrentielle</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Hanania meurt (7e mois)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">594</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réquisitoire Éz 13</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">SIXIÈME-ANNÉE</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Orage ; mur tombé</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588-587</text>
+</svg>
+<h4>EZ318 — « Leurs idoles sur leur cœur » : la consultation piégée</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Anciens assis ; radiographie</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">592/591</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Récidive : 20:1-3</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">591 (an 7)</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retranchement ; purge</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">588-586</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-53 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

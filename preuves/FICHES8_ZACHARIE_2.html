@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES ZA2 — Zacharie 4-6 — Le chandelier et les deux oints, le rouleau volant, les quatre chars et la couronne du Germe</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_ZA495_chandelier.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES ZA2</h1>
+<h2>Zacharie 4-6 — Le chandelier et les deux oints, le rouleau volant, les quatre chars et la couronne du Germe</h2>
+<p class="intro">Quatre fiches sur la seconde moitié des visions de la nuit et sur le geste public qui les scelle : le chandelier d'or alimenté par deux oliviers, avec la parole la plus citée du livre — « ni par puissance ni par force, mais par mon esprit » ; le rouleau volant de vingt coudées qui porte la malédiction sur le voleur et le parjure, et l'épha de la méchanceté emporté au pays de Shinéar ; les quatre chars et leurs chevaux qui sortent d'entre deux montagnes de bronze pour parcourir la terre ; enfin la couronne d'argent et d'or posée sur la tête de Yehoshoua, et l'annonce de l'homme dont le nom est Germe, qui bâtira le temple de Jéhovah et sera prêtre sur son trône. Contexte, explication, intention, accomplissement, preuves historiques, géographiques et scientifiques, chronologies et sources vérifiables : chaque fiche suit le même plan en onze blocs, et rejoint le registre sans le commenter.</p>
+<div class="chiffres">
+<div><b>4</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>27</b><span>sources</span></div>
+<div><b>4</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#ZA495">ZA495</a>
+<a href="#ZA496">ZA496</a>
+<a href="#ZA497">ZA497</a>
+<a href="#ZA498">ZA498</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#ZA495"><img src="images/prophe_ZA495_chandelier.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE ZA495</div>
+<h3><a href="#ZA495">« Ni par puissance ni par force, mais par mon esprit » : le chandelier d'or, les deux oliviers et les mains de Zorobabel</a></h3>
+<div class="meta">Accomplie · 🎧 0:12</div></div></div>
+<div class="carte">
+<a class="img" href="#ZA496"><img src="images/prophe_ZA496_rouleau.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE ZA496</div>
+<h3><a href="#ZA496">Le rouleau volant de vingt coudées et l'épha de la méchanceté : la malédiction qui entre dans la maison du voleur, la femme au poids de plomb, les ailes de cigogne vers Shinéar</a></h3>
+<div class="meta">Accomplie · 🎧 0:12</div></div></div>
+<div class="carte">
+<a class="img" href="#ZA497"><img src="images/prophe_ZA497_chars.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE ZA497</div>
+<h3><a href="#ZA497">Les quatre chars entre les deux montagnes de bronze : les quatre vents du ciel, les chevaux roux, noirs, blancs et mouchetés, et l'esprit apaisé dans le pays du nord</a></h3>
+<div class="meta">Accomplie · 🎧 0:11</div></div></div>
+<div class="carte">
+<a class="img" href="#ZA498"><img src="images/prophe_ZA498_couronne.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE ZA498</div>
+<h3><a href="#ZA498">« Voici l'homme dont le nom est Germe » : la couronne d'argent et d'or sur la tête de Yehoshoua, le temple bâti, le prêtre sur son trône et ceux qui viennent de loin</a></h3>
+<div class="meta">Accomplie · 🎧 0:12</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="ZA495">
+<div class="visuel"><img src="images/prophe_ZA495_chandelier.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE ZA495 · CATÉGORIE ZA2</div>
+<h3>« Ni par puissance ni par force, mais par mon esprit » : le chandelier d'or, les deux oliviers et les mains de Zorobabel</h3>
+<div class="ref">Zacharie 4:1-14</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">ni par puissance ni par force mais par mon esprit dit jéhovah des armées les mains de zorobabel ont fondé cette maison et ses mains l'achèveront qui es-tu grande montagne devant zorobabel tu deviendras une plaine il fera sortir la pierre du faîte avec des acclamations grâce grâce pour elle ceux qui méprisaient le jour des petits commencements se réjouiront en voyant le fil à plomb dans la main de zorobabel ce sont là les yeux de jéhovah qui parcourent toute la terre les deux fils de l'huile se tiennent devant le seigneur de toute la terre (zacharie 4:6-9, 14 ; esdras 6:14, 15; accomplie)</span>
+<span class="badge">6 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche ZA495 · 0:12</div><audio controls preload="none" src="audio/fiche_ZA495_chandelier.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_ZA495_chandelier.mp3 · 0:12 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Zacharie 4:1-14</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>ni par puissance ni par force mais par mon esprit dit jéhovah des armées les mains de zorobabel ont fondé cette maison et ses mains l'achèveront qui es-tu grande montagne devant zorobabel tu deviendras une plaine il fera sortir la pierre du faîte avec des acclamations grâce grâce pour elle ceux qui méprisaient le jour des petits commencements se réjouiront en voyant le fil à plomb dans la main de zorobabel ce sont là les yeux de jéhovah qui parcourent toute la terre les deux fils de l'huile se tiennent devant le seigneur de toute la terre (zacharie 4:6-9, 14 ; esdras 6:14, 15; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Zacharie — P495 (4:1-14 : ni par puissance ni par force, mais par mon esprit ; les mains de Zorobabel achèveront) ; Zacharie 4:6-9, 14 ; Esdras 6:14, 15 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« NI PAR PUISSANCE NI PAR FORCE, MAIS PAR MON ESPRIT », DIT JÉHOVAH DES ARMÉES… « QUI ES-TU, GRANDE MONTAGNE, DEVANT ZOROBABEL ? TU DEVIENDRAS UNE PLAINE… »… « LES MAINS DE ZOROBABEL ONT FONDÉ CETTE MAISON, ET SES MAINS L'ACHÈVERONT… »… « CEUX QUI MÉPRISAIENT LE JOUR DES PETITS COMMENCEMENTS SE RÉJOUIRONT EN VOYANT LE FIL À PLOMB DANS LA MAIN DE ZOROBABEL… »… « CE SONT LÀ LES YEUX DE JÉHOVAH QUI PARCOURENT TOUTE LA TERRE… »… « CE SONT LES DEUX FILS DE L'HUILE FRAÎCHE QUI SE TIENNENT DEVANT LE SEIGNEUR DE TOUTE LA TERRE… »… — MENORAT ZAHAV KULLAH… LE CHANDELIER TOUT D'OR, SUR LE MODÈLE DE CELUI DU TABERNACLE, EXODE 25:31-40… GULLAH… LA COUPE, LE RÉSERVOIR D'HUILE PLACÉ À SON SOMMET… SHIVʿAH NEROT… SEPT LAMPES… SHIVʿAH MUTSAQOT… SEPT CONDUITS QUI AMÈNENT L'HUILE, LITTÉRALEMENT SEPT VERSOIRS… SHENAYIM ZEYTIM… DEUX OLIVIERS, L'UN À LA DROITE DE LA COUPE, L'UN À SA GAUCHE… LO BE-ḤAYIL WE-LO BE-KOḤA KI IM BE-RUḤI… NI PAR ARMÉE NI PAR VIGUEUR, MAIS PAR MON SOUFFLE, MON ESPRIT… ḤAYIL… LA FORCE MILITAIRE, LE POUVOIR DES ARMÉES… KOḤA… LA VIGUEUR PHYSIQUE, L'ÉNERGIE DE L'HOMME… HA-HAR HA-GADOL… LA GRANDE MONTAGNE, L'OBSTACLE QUI SEMBLE INFINI… HA-ʾEVEN HA-ROʾSHAH… LA PIERRE DE TÊTE, CELLE DU FAÎTE, QUE L'ON MET EN DERNIER… ḤEN ḤEN LAH… GRÂCE, GRÂCE POUR ELLE, L'ACCLAMATION DES PORTEURS… HA-ʾEVEN HA-BEDIL… LA PIERRE DE L'ÉTAIN, LE FIL À PLOMB DU MAÇON… ʿENE YHWH… LES YEUX DE JÉHOVAH… BENEY HA-YITS'HAR… LES FILS DE L'HUILE CLAIRE, LES DEUX HOMMES OINTS… ʾADON KOL HA-ʾARETS… LE SEIGNEUR, LE MAÎTRE DE TOUTE LA TERRE… — 520-518… ESDRAS 3:8-13… 4:1-5, 24… 5:1, 2… 6:1-12… 6:14, 15… AGGÉE 2:4… ZACHARIE 3:9… APOCALYPSE 11:3, 4… HÉBREUX 1:14… »</li>
+<li>LES TROIS RENVOIS — Apocalypse 11:3, 4 : « je ferai prophétiser mes deux témoins… Ceux-ci sont symbolisés par les deux oliviers et les deux porte-lampes qui se tiennent devant le Seigneur de la terre » — la vision du chandelier sert de grille de lecture à un texte du dernier livre, où deux témoins reprennent exactement la figure des deux oliviers. Zacharie 3:9 : « voici la pierre que j'ai placée devant Yehoshoua : il y a sept yeux sur cette seule pierre » — la pierre et ses sept yeux reviennent d'une vision à l'autre, ce qui unit les chapitres 3 et 4. Exode 25:31-40 : « tu feras un chandelier en or pur… tu feras sept lampes… on les allumera de façon à éclairer l'espace devant lui » — le modèle du sanctuaire, auquel la vision emprunte la forme du chandelier, mais dont elle écarte la main de l'homme : l'huile descend des oliviers par des conduits, sans que personne la verse.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La cinquième vision reprend au petit matin de la même nuit, celle du 24e jour du onzième mois de la deuxième année de Darius. Le prophète est réveillé « comme on réveille un homme de son sommeil » — un détail qui souligne que la série de visions n'est pas un rêve ordinaire : l'ange revient et le tire lui-même de la torpeur. La question d'ouverture porte sur ce qu'il voit : un chandelier entièrement en or, à coupe et à sept lampes, alimenté par sept conduits, et flanqué de deux oliviers qui déversent l'huile de part et d'autre. Le prophète répète sa question, l'ange s'étonne qu'il ne comprenne pas, puis donne une réponse qui, de prime abord, ne décrit pas l'objet : « Ceci est la parole de Jéhovah à Zorobabel : ni par puissance ni par force, mais par mon esprit. » Suivent trois déclarations datées par la même nuit : la grande montagne deviendra une plaine ; les mains de Zorobabel qui ont posé les fondations achèveront la maison ; le jour des petits commencements, méprisé par certains, se terminera par la joie de voir le fil à plomb dans la main du gouverneur. Une seconde parole précise que les sept lampes sont les yeux de Jéhovah qui parcourent la terre, et la vision se clôt par l'identification des deux oliviers : « les deux fils de l'huile fraîche qui se tiennent devant le Seigneur de toute la terre » — le grand prêtre et le gouverneur, les deux hommes dont l'huile fait vivre la lumière du sanctuaire. Le registre du projet rattache cette entrée aux versets 1 à 14, retient les versets 6 à 9 et 14 avec Esdras 6:14, 15 comme accomplissement, et lui donne le statut « Accomplie ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre observations. (1) LA DOUBLE NÉGATION COMME MÉTHODE : la phrase centrale oppose deux termes précis — la puissance militaire et la vigueur personnelle — à un troisième qui n'appartient pas à l'homme : l'esprit de Dieu. Les commentateurs en tirent une loi constante des Écritures : ce qui est entrepris pour Dieu ne s'achève pas par le bras de l'homme. Le contexte immédiat du livre le confirme : le chantier était arrêté depuis quinze ans, une interdiction royale pesait sur Jérusalem, et la communauté ne disposait ni d'armée ni de crédit. La vision ne dit pas que l'effort humain est inutile — Zorobabel doit tenir le fil à plomb — mais que la force ne vient pas de lui. (2) LE DÉTAIL DU CHANDELIER : contrairement au chandelier du sanctuaire, où des prêtres apportent l'huile, ici l'huile descend des arbres par des conduits d'or, sans main d'homme : le récipient se remplit seul. Les commentateurs lisent là l'image d'un peuple qui vit du don de Dieu et non de ses propres réserves, et notent le triplement symbolique du chiffre sept : sept lampes, sept conduits, sept yeux. Que les deux oliviers soient appelés « fils de l'huile fraîche » accentue l'idée d'un approvisionnement vivant, renouvelé, non d'un fonds épuisable. (3) LA GRANDE MONTAGNE ET LA PIERRE DU FAÎTE : l'obstacle est décrit comme un relief que l'on ne peut franchir ; il devient plaine, c'est-à-dire qu'il cesse d'être un obstacle. La « pierre du faîte » est la dernière pierre, celle qui couronne l'édifice et que la tradition juive a souvent mise en relation avec la pierre angulaire des textes messianiques. Les porteurs la hissent en criant « grâce, grâce pour elle », formule de bénédiction. (4) LE « JOUR DES PETITS COMMENCEMENTS » : l'expression vise ceux qui, ayant connu la première maison, trouvaient mesquin le second sanctuaire — le livre d'Esdras rapporte que les anciens pleuraient en voyant les fondations (Esdras 3:12, 13), et Aggée répondra à la même déception. La vision renverse ce jugement : ce n'est pas la taille de l'ouvrage qui compte, mais la présence de l'esprit de Dieu. Le fil à plomb dans la main de Zorobabel devient ainsi le signe de l'achèvement promis.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Des chars et une couronne te protègent » (document 2017607) applique l'ensemble des visions à la protection divine du peuple et rappelle que Jéhovah « utilise ses anges pour protéger et fortifier son peuple », citant Malachie 3:6 et Hébreux 1:7, 14. La formule du chandelier alimenté sans main d'homme est constamment lue par les commentateurs comme la démonstration que la puissance spirituelle, et non l'appareil humain, fait aboutir l'œuvre de Dieu ; l'article insiste sur le fait que la promesse de protection valut aussi pour les constructeurs du temple, qui « n'avaient donc pas à s'inquiéter de l'opposition de leurs ennemis ». L'« Étude perspicace des Écritures » (document 1200004682) et le portail « Livre de la Bible numéro 38 — Zekaria » (document 1101990099) placent cette vision dans l'économie du livre, où quatre des huit visions portent réconfort et quatre avertissement. Exégèse comparée : les commentateurs relèvent que les deux oints — le prêtre et le gouverneur — annoncent déjà la réunion des deux fonctions que le chapitre 6 couronnera symboliquement, et que l'Apocalypse reprend l'image des deux oliviers pour deux témoins. Ils remarquent aussi que les sept yeux de Jéhovah qui parcourent la terre répondent au rapport des cavaliers du chapitre 1 : la terre peut être « tranquille », Jéhovah ne l'est pas. La leçon tirée de la grande montagne devenue plaine est régulièrement appliquée à l'opposition organisée contre l'ouvrage : elle est plaçable dans une perspective où l'obstacle le plus massif se dissout devant l'entreprise de Dieu.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">538-537 av. n. è.</td><td>Retour de la première vague de déportés ; rétablissement de l'autel sur son emplacement ancien (Esdras 3:1-6)</td></tr>
+<tr><td class="d">536 av. n. è.</td><td>Pose des fondations du second temple, avec les larmes des anciens et les cris de joie (Esdras 3:8-13 ; Aggée 2:3)</td></tr>
+<tr><td class="d">522-520 av. n. è.</td><td>Interdiction perse et arrêt des travaux pendant quinze ans (Esdras 4:21-24)</td></tr>
+<tr><td class="d">24e jour du 11e mois, 519 av. n. è.</td><td>La vision du chandelier : « ni par puissance ni par force, mais par mon esprit », et la promesse que Zorobabel achèvera (Zacharie 4:1-14)</td></tr>
+<tr><td class="d">520-516 av. n. è.</td><td>Reprise du chantier sous Zorobabel et Yehoshoua, avec l'appui des prophètes Aggée et Zekaria (Esdras 5:1, 2)</td></tr>
+<tr><td class="d">516 av. n. è.</td><td>Décret de Darius confirmé après recherche dans les archives d'Ecbatane ; les frais prélevés sur le trésor royal (Esdras 6:1-12)</td></tr>
+<tr><td class="d">3e jour d'Adar, 516 av. n. è.</td><td>Achèvement de la maison : « les anciens des Juifs bâtissaient et avançaient, grâce à la prophétie d'Aggée et de Zekaria » (Esdras 6:14, 15)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA CHRONOLOGIE : la reprise des travaux en 520 et l'achèvement en 516 av. n. è. sont datés par le livre d'Esdras selon les années de règne de Darius, dans un ordre de faits que la documentation perse permet de situer. (2) LE DÉCRET ET LES ARCHIVES : Esdras 6 raconte la procédure administrative — lettre de Tattenaï, gouverneur au-delà du Fleuve, et de Shetar-Boznaï à Darius ; recherche dans la maison des archives à Babylone ; découverte d'un rouleau à Ecbatane ; confirmation de l'édit de Cyrus et nouvelle instruction : les frais pris sur le trésor royal, les animaux pour les sacrifices fournis chaque jour. Ce type de procédure — vérification d'un privilège ancien, arbitrage impérial, financement du culte — correspond aux usages administratifs achéménides connus. (3) LES PERSONNAGES : Zorobabel, fils de Shealtiel, est présenté comme gouverneur de Yehoud et comme descendant de David (Aggée 1:1 ; 2:23 ; Esdras 5:2) ; Yehoshoua, fils de Yehotsadaq, comme grand prêtre. (4) LE CONTEXTE DES TRAVAUX : l'arrêt du chantier sous le règne de Cambyse (522) et sa reprise sous Darius Ier (521-486) s'inscrivent dans les troubles de l'accession de ce dernier au trône, qui expliquent la prudence de la communauté et le ton même des prophéties. (5) LE FINANCEMENT : la mention de l'or et de l'argent pour la maison de Dieu et la fourniture de matériaux par le trésor impérial rejoint ce que l'on sait des chantiers royaux et des sanctuaires subventionnés. (6) PRUDENCE : les sources établissent la datation, les protagonistes et la procédure administrative ; elles n'énumèrent pas les étapes techniques du chantier, et la vision elle-même est un discours prophétique, non une pièce d'archive.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE SITE : le second temple est bâti sur l'emplacement du premier, sur la hauteur de Morija, dans une petite province montagneuse — Yehoud — dont la capitale, Jérusalem, reste sans muraille jusqu'au milieu du siècle suivant. (2) LE RELIEF ET L'IMAGE DE LA MONTAGNE : la comparaison de l'obstacle avec une « grande montagne » s'enracine dans un paysage où toute circulation se fait par vallées et contreforts ; la région de Jérusalem est ceinturée de reliefs — mont des Oliviers, collines de Juda — et les fouilles ont montré l'existence de carrières antiques aux abords de la ville. (3) LES MATÉRIAUX : l'or est importé — la région n'en produit pas — tandis que la pierre vient des carrières locales et le bois de cèdre du Liban, par la côte puis l'intérieur (Esdras 3:7). (4) L'OLIVIER DANS LE PAYSAGE : l'olivier est l'arbre caractéristique des collines du Levant, avec sa rusticité et sa longévité ; l'image de deux oliviers alimentant un chandelier parle immédiatement à un peuple qui vit de cette culture, et les terrasses d'oliviers sont encore la marque du paysage autour de Jérusalem. (5) L'EAU DE L'HUILE : le pressage des olives se faisait sur place, dans des installations rupestres dont de nombreux exemplaires ont été retrouvés dans la région. (6) LES VOIES DE RETOUR : la mention du trésor impérial et des matériaux importés rappelle que le chantier dépendait de routes — la route côtière, la route de la Transjordanie — et d'un ravitaillement extérieur.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES LAMPES ET L'HUILE : la lampe à huile du premier millénaire est un objet de terre cuite ou de métal, à bec, alimenté par de l'huile d'olive et une mèche de lin ; les lampes retrouvées en abondance dans les strates de la période perse rendent concrète l'image du chandelier, et les analyses de résidus confirment l'usage de l'huile végétale. (2) L'OR ET SA PURETÉ : le chandelier du sanctuaire était en or pur, travaillé au marteau, et l'or est un métal chimiquement stable qui ne s'oxyde pas — d'où sa valeur symbolique de durée, de pureté et de lumière ; les analyses de provenance de l'or du Proche-Orient ancien montrent des approvisionnements lointains, souvent par le commerce. (3) LA MÉTALLURGIE DU FER À PLOMB ET « LA PIERRE D'ÉTAIN » : la mention du fil à plomb renvoie à un outil d'usage courant chez les maçons et charpentiers du Proche-Orient, dont le principe — un poids suspendu à un fil — n'a pas changé ; le plomb, dense et facile à fondre, est bien attesté dans l'artisanat antique. (4) L'OLIVIER : sa biologie explique la force de l'image — arbre qui rejette de sa souche, producteur d'huile pour la lumière comme pour l'alimentation, capable de survivre à la sécheresse ; les études paléobotaniques montrent sa présence ancienne et continue dans les collines du Levant. (5) LES CARRIÈRES ET LES BLOCS : les travaux de terrain autour du mont du Temple ont mis au jour des blocs monumentaux, des traces de taille et des carrières de la période du second temple, ce qui documente la reprise de grands chantiers à Jérusalem. (6) LA TRANSMISSION DU TEXTE : les fragments de rouleaux des Douze Prophètes retrouvés au désert de Juda, notamment dans le rouleau dit des Douze petits prophètes, permettent de vérifier l'état textuel de Zekaria dans l'Antiquité. (7) PRUDENCE : l'archéologie documente les lampes, l'huile, l'or et les chantiers ; elle ne mesure pas le rapport entre l'esprit de Dieu et l'achèvement d'un bâtiment, qui appartient au registre de la foi.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA VISION (4:1-3) : LE CHANDELIER TOUT D'OR · LA COUPE À SON SOMMET · SEPT LAMPES ET SEPT CONDUITS · DEUX OLIVIERS, À DROITE ET À GAUCHE DE LA COUPE → LA PAROLE À ZOROBABEL (4:6) : « NI PAR PUISSANCE NI PAR FORCE, MAIS PAR MON ESPRIT » → LES TROIS PROMESSES (4:7-9) : « QUI ES-TU, GRANDE MONTAGNE ? » → UNE PLAINE · « LES MAINS DE ZOROBABEL ONT FONDÉ CETTE MAISON, ET SES MAINS L'ACHÈVERONT » · « LA PIERRE DU FAÎTE », ACCLAMÉE « GRÂCE, GRÂCE POUR ELLE » → LE SIGNE (4:10) : LE FIL À PLOMB DANS LA MAIN DE ZOROBABEL · LES SEPT YEUX DE JÉHOVAH QUI PARCOURENT LA TERRE · LE JOUR DES PETITS COMMENCEMENTS RENVERSÉ → L'IDENTIFICATION (4:11-14) : LES DEUX OLIVIERS = LES DEUX FILS DE L'HUILE FRAÎCHE, DEBOUT DEVANT LE SEIGNEUR DE TOUTE LA TERRE → HISTOIRE : FONDATIONS 536 · ARRÊT 522-520 · VISION 519 · REPRISE · TEMPLE ACHEVÉ 516 (ESDRAS 6:14, 15) → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Zacharie 4:6-9, 14 ; Esdras 6:14, 15) et le statut « Accomplie ». LA NATURE DE LA VISION : symbolique, elle est expliquée par l'ange lui-même, et la fiche s'en tient à cette explication sans en proposer d'autre. LES DEUX OINTS : la fiche les identifie comme le grand prêtre et le gouverneur, conformément au contexte du livre, et signale que leurs fonctions distinctes annoncent la réunion royale et sacerdotale du chapitre 6. LA GRANDE MONTAGNE : identifiée comme l'image de l'obstacle, sans être assimilée à une puissance politique précise. LA PIERRE DU FAÎTE : la fiche la présente comme la pierre de couronnement de l'édifice et ne développe pas les relectures qui en font un titre du Messie. LES SEPT YEUX : rapprochés de Zacharie 3:9 sans débat sur les explications anciennes. LES SOURCES EXTERNES : elles servent d'éclairage historique, géographique et archéologique. CE QUE CETTE FICHE NE DIT PAS : elle ne traite ni des chapitres 1 à 3 (fiches précédentes) ni des chapitres 5 et 6 (fiches suivantes), et ne formule aucune application aux communautés religieuses actuelles.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour de la première vague ; autel rétabli sur son emplacement (Esdras 3:1-6)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fondations du second temple posées ; larmes et acclamations (Esdras 3:8-13)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">536 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Interdiction royale ; les travaux cessent (Esdras 4:21-24)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">522 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision du chandelier et parole à Zorobabel (Zacharie 4:1-14)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 11e mois, 519 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Aggée et Zekaria stimulent la reprise ; Zorobabel et Yehoshoua reprennent le chantier (Aggée 1:12-14 ; Esdras 5:1, 2)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Procédure devant Darius ; décret confirmé par les archives (Esdras 6:1-12)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519-516 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement et inauguration de la maison (Esdras 6:14-18)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/10">Bible — Esdras 10 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/16/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/41/4">Bible — Marc 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/41/4</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/8">Bible — Psaume 8 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/8</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2017607">Des chars et une couronne te protègent — La Tour de Garde (w17 octobre, p. 26-30)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2017607</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990099">Livre de la Bible numéro 38 — Zekaria — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990099</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200014577">Zacharie (Livre de) — Auxiliaire pour une meilleure intelligence de la Bible<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200014577</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche ZA495 — « Ni par puissance ni par force, mais par mon esprit » : le chandelier d'or, les deux oliviers et les mains de Zorobabel</span><span>Catégorie ZA2</span></div></div>
+</article>
+<article class="fiche" id="ZA496">
+<div class="visuel"><img src="images/prophe_ZA496_rouleau.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE ZA496 · CATÉGORIE ZA2</div>
+<h3>Le rouleau volant de vingt coudées et l'épha de la méchanceté : la malédiction qui entre dans la maison du voleur, la femme au poids de plomb, les ailes de cigogne vers Shinéar</h3>
+<div class="ref">Zacharie 5:1-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">je levai de nouveau les yeux et je vis un rouleau qui volait long de vingt coudées et large de dix coudées c'est la malédiction qui se répand sur la face de tout le pays tout voleur sera retranché d'après elle et tout homme qui jure faussement par mon nom sera retranché je la déchaînerai elle entrera chez le voleur et chez celui qui jure faussement par mon nom elle s'établira au milieu de sa maison et la consumera avec ses poutres et ses pierres puis une femme assise au milieu de l'épha et il dit c'est la méchanceté et il la jeta au milieu de l'épha et jeta le poids de plomb sur son ouverture deux femmes avec des ailes comme celles de la cigogne emportèrent l'épha au pays de shinéar (zacharie 5:4, 11; accomplie)</span>
+<span class="badge">7 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche ZA496 · 0:12</div><audio controls preload="none" src="audio/fiche_ZA496_rouleau.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_ZA496_rouleau.mp3 · 0:12 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Zacharie 5:1-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>je levai de nouveau les yeux et je vis un rouleau qui volait long de vingt coudées et large de dix coudées c'est la malédiction qui se répand sur la face de tout le pays tout voleur sera retranché d'après elle et tout homme qui jure faussement par mon nom sera retranché je la déchaînerai elle entrera chez le voleur et chez celui qui jure faussement par mon nom elle s'établira au milieu de sa maison et la consumera avec ses poutres et ses pierres puis une femme assise au milieu de l'épha et il dit c'est la méchanceté et il la jeta au milieu de l'épha et jeta le poids de plomb sur son ouverture deux femmes avec des ailes comme celles de la cigogne emportèrent l'épha au pays de shinéar (zacharie 5:4, 11; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Zacharie — P496 (5:1-11 : le rouleau volant ; le voleur et le parjure seront retranchés ; l'épha emportée à Shinéar) ; Zacharie 5:4, 11 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« JE LEVAI DE NOUVEAU LES YEUX ET JE VIS UN ROULEAU QUI VOLAIT… LONG DE VINGT COUDÉES ET LARGE DE DIX COUDÉES… »… « C'EST LA MALÉDICTION QUI SE RÉPAND SUR LA FACE DE TOUT LE PAYS… »… « TOUT VOLEUR SERA RETRANCHÉ… ET TOUT HOMME QUI JURE FAUSSEMENT PAR MON NOM SERA RETRANCHÉ… »… « JE LA DÉCHAÎNERAI… ELLE ENTRERA CHEZ LE VOLEUR ET CHEZ CELUI QUI JURE FAUSSEMENT PAR MON NOM ; ELLE S'ÉTABLIRA AU MILIEU DE SA MAISON ET LA CONSUMERA, AVEC SES POUTRES ET SES PIERRES… »… « PUIS IL Y EUT UNE FEMME ASSISE AU MILIEU DE L'ÉPHA… »… « ET IL DIT : C'EST LA MÉCHANCETÉ… »… « ET IL LA JETA AU MILIEU DE L'ÉPHA, ET IL JETA LE POIDS DE PLOMB SUR SON OUVERTURE… »… « LES FEMMES AVAIENT DES AILES COMME CELLES DE LA CIGOGNE… »… « OÙ EMPORTENT-ELLES L'ÉPHA ?… ELLES VONT LUI BÂTIR UNE MAISON AU PAYS DE SHINÉAR… »… — MEGILLAH… LE ROULEAU, LE LIVRE DÉPLOYÉ QUE LE PROPHÈTE VOIT EN PLEIN VOL… ʿESRIM ʾAMMAH ʾORKO WE-ʿESER ʾAMMAH ROSHḤO… VINGT COUDÉES DE LONG, DIX DE LARGE, LES PROPORTIONS MÊMES DU LIEU SAINT (1 ROIS 6:2, 3)… HA-ʾALAH… LA MALÉDICTION, TERME DE L'ALLIANCE, DEUTÉRONOME 27-28… NIQAH… ÊTRE RETRANCHÉ, PURGÉ, NETTOYÉ DE LA COMMUNAUTÉ… HA-GANNAV… LE VOLEUR… HA-NISHBAʿ LA-SHAQER… CELUI QUI JURE POUR LE MENSONGE, QUI PREND LE NOM DIVIN EN TÉMOIN D'UN FAUX SERMENT… WE-KHILTAH… ELLE LA CONSUMERA, LA DÉVORERA COMME UN FEU… ʾEYPHAH… L'ÉPHA, LA PLUS GRANDE MESURE DE CAPACITÉ DES GRAINS, ENVIRON VINGT-DEUX LITRES… ʾISHAH… LA FEMME… HA-RISHʿAH… LA MÉCHANCETÉ, LA MALICE, L'INIQUITÉ INSTALLÉE… KIKKAR ʿOFERET… LE TALENT DE PLOMB, UN POIDS D'ENVIRON TRENTE-QUATRE KILOGRAMMES JETÉ SUR L'OUVERTURE COMME UN SCEAU… ḤASIDAH… LA CIGOGNE, OISEAU MIGRATEUR PUR SELON LA LOI, JÉRÉMIE 8:7… SHINʿAR… SHINÉAR, LE PAYS DES DEUX FLEUVES, LA BABYLONIE, GENÈSE 10:10 ; 11:2 ; DANIEL 1:2… — 519… LÉVITIQUE 19:11, 12… EXODE 20:7, 15… MALACHIE 3:5… »</li>
+<li>LES TROIS RENVOIS — Lévitique 19:11, 12 : « vous ne volerez pas, vous ne mentirez pas, vous n'agirez pas faussement l'un envers l'autre, et vous ne jurerez pas faussement par mon nom » — la malédiction du rouleau vise exactement ces deux transgressions. Malachie 3:5 : « je m'approcherai de vous pour le jugement, et je serai un témoin empressé contre les sorciers, contre les adultères, contre les parjures, contre ceux qui oppriment le salarié… » — le livre qui suit Zekaria dans le recueil prolonge la même menace. Apocalypse 21:8 et 22:15 placent les voleurs et les menteurs hors de la ville, ce qui montre que ces catégories restent, dans la littérature biblique, les marqueurs d'une exclusion.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La sixième vision ajoute au rouleau la question du mal qui reste dans le pays. Le chantier reprend, mais la communauté n'est pas sainte : des vols, des faux serments, des compromissions ont accompagné la reconstruction. Le prophète voit un rouleau — un livre déployé, écrit, volant dans l'air — de vingt coudées sur dix. La dimension n'est pas décorative : elle correspond aux proportions du lieu saint, ce qui place la malédiction écrite du côté de la sainteté de Dieu et non du caprice humain. L'ange explique que la malédiction « se répand sur la face de tout le pays » et qu'elle atteint deux catégories : le voleur et celui qui jure faussement par le nom divin — l'atteinte au prochain et l'atteinte au nom de Dieu. Le châtiment est décrit avec une précision domestique saisissante : la malédiction entre dans la maison, s'y établit et la consume, poutres et pierres. La septième vision prend la suite, avec un décor plus étrange encore : un épha, la grande mesure de capacité, se déplace ; un disque de plomb se soulève et découvre une femme assise à l'intérieur ; l'ange la nomme « la méchanceté », la repousse dans la mesure et referme celle-ci avec le poids de plomb. Deux femmes ailées comme des cigognes emportent alors l'épha entre ciel et terre, et répondent à la question du prophète qu'elles vont lui bâtir une maison au pays de Shinéar, où elle sera déposée à demeure. Le registre du projet rattache l'entrée aux versets 1 à 11, retient les versets 4 et 11 comme accomplissement, et lui donne le statut « Accomplie ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE ROULEAU ET SES DIMENSIONS : vingt coudées sur dix — environ neuf mètres sur quatre et demi. La comparaison avec les proportions du sanctuaire est un lieu commun de l'exégèse : le vestibule et le lieu saint du temple se mesuraient selon ces mêmes nombres, et les chérubins du lieu très saint avaient dix coudées. Le rouleau porte donc la marque du sanctuaire : la malédiction sort de la présence de Dieu, elle n'est pas une imprécation humaine. Le livre écrit, déployé, visible de tous, évoque aussi les grands rouleaux de la Loi que l'on exposait : ce que le peuple avait entendu, il le voit maintenant voler au-dessus du pays. (2) LES DEUX CRIMES : le vol et le parjure ne sont pas choisis au hasard. Ils résument les deux tables de la Loi : le tort fait au prochain et le mépris du nom divin. La formulation est juridique — être « retranché », purgé du pays — et la mention de la maison consumée évoque la solidarité de la famille dans la faute et la sanction, principe attesté dans les textes législatifs. Les prophètes contemporains dénoncent les mêmes maux : Malachie, peu après, mettra côte à côte le faux serment, l'adultère et l'oppression du salarié. (3) L'ÉPHA, LA FEMME ET LE PLOMB : l'épha est la mesure de référence du commerce des grains. Mettre la méchanceté dans une mesure, c'est la réduire à une quantité, la rendre finie, mesurable, transportable — donc expédiable. Les commentateurs notent que la femme « assise » est installée, que l'ange la repousse lorsqu'elle cherche à sortir, et que le poids de plomb scelle l'ouverture comme un sceau : le mal est enfermé, jugé, condamné à partir. (4) SHINÉAR ET LE SENS DE L'EXPÉDITION : Shinéar est le nom ancien de la plaine mésopotamienne, le pays de Babel, celui de la tour et de l'exil. Y renvoyer la méchanceté, c'est à la fois purifier le pays d'où elle est chassée et la renvoyer là où elle a prospéré. La précision finale — « quand elle sera prête, elle sera déposée là à demeure » — suggère que l'expédition n'est pas un simple déménagement mais un jugement différé, la fin du récit n'étant pas la disparition du mal, mais sa relégation loin du peuple de Dieu.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : le portail « Livre de la Bible numéro 38 — Zekaria » (document 1101990099) décrit la série des huit visions et en donne la fonction — consoler et avertir —, le rouleau et l'épha relevant du second registre. L'article « Des chars et une couronne te protègent » (document 2017607) résume la situation au moment de ces visions : la malhonnêteté et d'autres mauvaises actions subsistaient à Jérusalem, et le temple était loin d'être achevé, ce qui explique la place de ces deux visions dans l'ensemble. L'« Étude perspicace des Écritures » et l'« Auxiliaire » (documents 1200004682, 1200014577) traitent du livre de Zekaria et de ses visions. Exégèse comparée : plusieurs commentateurs relèvent que Zekaria est le prophète des mêmes maux que dénoncent ses contemporains, et que la séquence va du pardon — la purification du grand prêtre — à l'exigence : un peuple pardonné demeure un peuple tenu par la Loi. On souligne également que la mesure est l'instrument d'une comptabilité exacte : le mal n'est pas une fumée qu'on laisse s'évaporer, il est pesé et embarqué. Les explications anciennes de la femme dans l'épha vont de l'idolâtrie à une figure plus large de la corruption morale établie au milieu du peuple, et la perspective de Shinéar est lue comme le retour du mal à son point d'origine, la ville de l'idolâtrie et de l'orgueil humain.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">538-520 av. n. è.</td><td>La communauté revenue vit sans muraille ni temple achevé ; la prophétie dénonce vols et faux serments (Zacharie 5:3, 4 ; Malachie 3:5)</td></tr>
+<tr><td class="d">519 av. n. è.</td><td>Les deux visions du rouleau et de l'épha sont données dans la même nuit de visions (Zacharie 5:1-11)</td></tr>
+<tr><td class="d">520-516 av. n. è.</td><td>Le chantier du temple reprend : le « grand jour » de Jéhovah purifiant son peuple est annoncé avant l'achèvement (Zacharie 8:3 ; Esdras 6:14)</td></tr>
+<tr><td class="d">Ve siècle av. n. è.</td><td>Les réformes de Néhémie traitent nommément les parjures, les dettes et le commerce malhonnête (Néhémie 5:1-13 ; 13:10-18)</td></tr>
+<tr><td class="d">Ensuite</td><td>Les prophètes postérieurs poursuivent la même exigence : vérité, justice et fidélité dans les serments (Malachie 3:5 ; 4:1)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Les Écritures grecques reprennent la condamnation du vol et du faux serment, et demandent que le serment soit remplacé par la vérité simple (Matthieu 5:33-37 ; Éphésiens 4:28)</td></tr>
+<tr><td class="d">Aujourd'hui</td><td>L'application morale constante : ce que la mesure a pesé, la conscience doit le porter — le mal ne s'évapore pas, il est jugé (Ecclésiaste 12:14 ; Romains 14:12)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) L'UNITÉ DE MESURE : l'épha apparaît dans toute la législation et dans les récits — offrandes, transactions, taxes — et son volume est estimé à vingt-deux litres environ, le homer valant dix éphas. (2) LES POIDS ET LES SCEAUX : les fouilles ont livré des pesons marqués, des jarres estampillées et des noms d'administrateurs, ce qui documente la surveillance du commerce à l'époque perse et l'existence d'une comptabilité publique. (3) LA MALÉDICTION COMME ACTE JURIDIQUE : dans l'Antiquité, les traités et les contrats comportaient des formules de malédiction contre celui qui violerait les clauses ; le rouleau écrit, déployé et lu, évoque le document de l'alliance avec ses bénédictions et ses malédictions, selon la forme donnée en Deutéronome 27 et 28. (4) LE NOM DE SHINÉAR : la concordance des mentions bibliques — Babel, la tour, l'exil, la vision de Daniel — désigne la plaine de Mésopotamie ; l'identification de la Babylonie avec le pays du mal organisé se poursuit dans l'Apocalypse, où la ville symbolique reprend les traits de Babylone. (5) LES MIGRATIONS D'OISEAUX : la cigogne est un migrateur qui traverse le Levant deux fois par an, ce que le livre de Jérémie note comme un exemple de fidélité instinctive (Jérémie 8:7) ; sa présence dans la vision est donc un motif familier, non exotique. (6) PRUDENCE : les sources établissent les mesures, les pratiques administratives et le sens de Shinéar ; elles ne permettent pas de reconstituer l'exécution de la malédiction sur des personnes nommées, le texte restant une vision.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LE PAYS VISÉ : la malédiction « se répand sur la face de tout le pays » — la vision embrasse Yehoud dans son étendue réelle, de Bethléem aux collines du nord, telle que l'ont organisée les listes d'Esdras et de Néhémie. (2) LA MAISON CONSUMÉE : poutres et pierres décrivent la construction du pays, murs de moellons et charpente de bois, où l'incendie d'une charpente entraîne l'effondrement de la maçonnerie — un détail réaliste qu'un habitant des collines pouvait vérifier partout. (3) LE ROULEAU ET LE SANCTUAIRE : les dimensions du rouleau étant celles du lieu saint, la vision se lit par rapport au site précis du temple, au sommet de la ville, visible de tout le pays alentour. (4) SHINÉAR : le pays des deux fleuves, à quelque huit cents kilomètres à vol d'oiseau de Jérusalem, atteint par l'itinéraire du nord par lequel on venait aussi en sens inverse — c'est précisément la route du retour des exilés, que la « maison » construite en Shinéar renverse. (5) LE VENT ET LES AILES : l'ange précise que le vent soufflait dans les ailes des femmes, ce qui renvoie aux vents dominants sur la région, d'ouest en est, capables de pousser vers la Mésopotamie — cohérence d'un tableau qui emprunte ses moyens de transport à la réalité atmosphérique du pays. (6) LES GRAINS ET LES MESURES : la mesure des grains est au cœur de la vie économique des hautes terres, où l'orge et le blé étaient stockés dans des silos souterrains et des jarres ; l'épha servait quotidiennement sur les marchés.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LES JARRES ET LES SILOS : l'archéologie du Levant a livré des silos, des jarres de stockage et des installations de battage, ce qui donne un contenu matériel précis à la mesure de l'épha et à l'image du grain compté. (2) LE PLOMB : métal dense — densité très supérieure à celle du fer — facile à fondre et à mouler ; les poids en plomb et en pierre sont attestés en nombre et les analyses montrent des approvisionnements parfois lointains ; l'usage de plaques de plomb pour sceller ou couvrir est connu de l'artisanat antique. (3) LA PESÉE ET LA JUSTICE COMMERCIALE : les textes législatifs exigent des balances justes et des poids exacts ; les critères archéologiques — poids inscrits, jeux de pesons calibrés — confirment que la pratique de la mesure et du scellé était contrôlée. (4) LES MATÉRIAUX DE LA MAISON : poutres de bois et murs de pierre correspondent aux techniques de construction documentées régionalement, avec des charpentes posées sur des murs de moellons liés au mortier de terre, dont la combustion entraîne la ruine de l'ensemble. (5) LE ROULEAU : les rouleaux de cuir et de papyrus de la région, dont ceux du désert de Juda, donnent une idée concrète d'un document déployé de plusieurs mètres de longueur, et de la façon dont on écrivait recto verso pour un texte long. (6) LA FAUNE : la cigogne blanche, migratrice commune dans le couloir levantin, et le comportement des oiseaux portés par les vents thermiques au printemps y sont documentés par les ornithologues de la région. (7) PRUDENCE : ces éléments éclairent le vocabulaire et les images ; ils ne valident pas mécaniquement la vision comme événement, qui relève du témoignage prophétique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA SIXIÈME VISION (5:1-4) : UN ROULEAU QUI VOLE · 20 COUDÉES × 10 COUDÉES, LES PROPORTIONS DU LIEU SAINT · C'EST LA MALÉDICTION QUI SE RÉPAND SUR TOUT LE PAYS → DEUX CRIMES, DEUX TABLES DE LA LOI : LE VOLEUR (CONTRE LE PROCHAIN) ET LE PARJURE (CONTRE LE NOM DIVIN) → LA MALÉDICTION ENTRE DANS LA MAISON, S'Y INSTALLE, LA CONSUME, POUTRES ET PIERRES → LA SEPTIÈME VISION (5:5-11) : L'ÉPHA QUI SORT · LE DISQUE DE PLOMB SOULEVÉ · UNE FEMME ASSISE DEDANS, APPELÉE « LA MÉCHANCETÉ » · ELLE EST REPOUSSÉE ET LE POIDS DE PLOMB FERME L'OUVERTURE → DEUX FEMMES AILÉES COMME DES CIGOGNES, LE VENT DANS LEURS AILES, EMPORTENT L'ÉPHA ENTRE TERRE ET CIEL → SHINÉAR : « ELLES VONT LUI BÂTIR UNE MAISON AU PAYS DE SHINÉAR » → HISTOIRE : LA COMMUNAUTÉ DU RETOUR APPELÉE À LA SAINTETÉ · MALACHIE 3:5 · NÉHÉMIE 5 ET 13 → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Zacharie 5:4, 11) et le statut « Accomplie ». LE GENRE : les deux scènes sont des visions expliquées par l'ange ; la fiche suit ces explications et n'en construit pas d'autres. LA FEMME ET LE PLAID : la fiche ne va pas au-delà de l'identification donnée par l'ange — « c'est la méchanceté ». LE PAYS DE SHINÉAR : décrit comme la plaine mésopotamienne ancienne, sans être assimilé à une puissance politique moderne. LES MESURES : données en coudées avec une équivalence approximative en unités actuelles, sans prétendre à une précision au centimètre. L'EXÉCUTION : la fiche ne présente aucune application individuelle de la malédiction à des personnes identifiées. LES SOURCES EXTERNES : elles servent d'éclairage historique, géographique et archéologique. CE QUE CETTE FICHE NE DIT PAS : elle ne traite ni du chandelier (fiche précédente) ni des chars et du couronnement (fiches suivantes), et ne formule aucune application aux communautés religieuses actuelles.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour de l'exil ; la communauté s'installe dans un pays sans sanctuaire achevé ni muraille</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">538-537 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise des travaux après quinze ans d'interruption (Aggée 1:14 ; Esdras 5:2)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">520 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sixième et septième visions : le rouleau volant, puis l'épha et la femme (Zacharie 5:1-11)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 11e mois, 519 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Procédure devant Darius ; le chantier se poursuit (Esdras 6:1-12)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519-516 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple est achevé ; le culte organisé (Esdras 6:14-18)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réformes de Néhémie : serments, dettes, marché du sabbat (Néhémie 5:1-13 ; 13:10-22)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Malachie reprend l'accusation : contre les parjures, les oppresseurs et les voleurs (Malachie 3:5)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/5">Bible — Zacharie 5 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/38/5</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/7">Bible — Matthieu 7 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/40/7</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/9">Bible — Psaume 9 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/9</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990099">Livre de la Bible numéro 38 — Zekaria — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990099</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2017607">Des chars et une couronne te protègent — La Tour de Garde (w17 octobre, p. 26-30)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2017607</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200004682">Zacharie (Livre de) — Étude perspicace des Écritures — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200004682</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2007882">Points marquants des livres de Haggaï et de Zekaria — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2007882</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche ZA496 — Le rouleau volant de vingt coudées et l'épha de la méchanceté : la malédiction qui entre dans la maison du voleur, la femme au poids de plomb, les ailes de cigogne vers Shinéar</span><span>Catégorie ZA2</span></div></div>
+</article>
+<article class="fiche" id="ZA497">
+<div class="visuel"><img src="images/prophe_ZA497_chars.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE ZA497 · CATÉGORIE ZA2</div>
+<h3>Les quatre chars entre les deux montagnes de bronze : les quatre vents du ciel, les chevaux roux, noirs, blancs et mouchetés, et l'esprit apaisé dans le pays du nord</h3>
+<div class="ref">Zacharie 6:1-8</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">je levai de nouveau les yeux et je vis quatre chars qui sortaient d'entre deux montagnes et les montagnes étaient des montagnes de bronze au premier char il y avait des chevaux roux au second des chevaux noirs au troisième des chevaux blancs et au quatrième des chevaux mouchetés vigoureux ce sont les quatre vents des cieux qui viennent de se tenir devant le seigneur de toute la terre le char aux chevaux noirs sortit vers le pays du nord les blancs sortirent après eux les mouchetés vers le pays du midi et ils parcoururent la terre ceux qui vont vers le pays du nord ont fait descendre mon esprit dans le pays du nord (zacharie 6:7, 8; accomplie)</span>
+<span class="badge">7 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche ZA497 · 0:11</div><audio controls preload="none" src="audio/fiche_ZA497_chars.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_ZA497_chars.mp3 · 0:11 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Zacharie 6:1-8</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>je levai de nouveau les yeux et je vis quatre chars qui sortaient d'entre deux montagnes et les montagnes étaient des montagnes de bronze au premier char il y avait des chevaux roux au second des chevaux noirs au troisième des chevaux blancs et au quatrième des chevaux mouchetés vigoureux ce sont les quatre vents des cieux qui viennent de se tenir devant le seigneur de toute la terre le char aux chevaux noirs sortit vers le pays du nord les blancs sortirent après eux les mouchetés vers le pays du midi et ils parcoururent la terre ceux qui vont vers le pays du nord ont fait descendre mon esprit dans le pays du nord (zacharie 6:7, 8; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Zacharie — P497 (6:1-8 : les quatre chars et les chevaux qui parcourent toute la terre) ; Zacharie 6:7, 8 ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« JE LEVAI DE NOUVEAU LES YEUX ET JE VIS : QUATRE CHARS QUI SORTAIENT D'ENTRE DEUX MONTAGNES, ET LES MONTAGNES ÉTAIENT DES MONTAGNES DE BRONZE… »… « AU PREMIER CHAR IL Y AVAIT DES CHEVAUX ROUX ; AU SECOND CHAR, DES CHEVAUX NOIRS ; AU TROISIÈME CHAR, DES CHEVAUX BLANCS ; ET AU QUATRIÈME CHAR, DES CHEVAUX MOUCHETÉS, VIGOUREUX… »… « CE SONT LES QUATRE VENTS DES CIEUX QUI VIENNENT DE SE TENIR DEVANT LE SEIGNEUR DE TOUTE LA TERRE… »… « LE CHAR AUQUEL IL Y A DES CHEVAUX NOIRS SORTIT VERS LE PAYS DU NORD… »… « VIENS VOIR : CEUX QUI VONT VERS LE PAYS DU NORD ONT FAIT DESCENDRE MON ESPRIT SUR LE PAYS DU NORD… »… — ʾARBAʿ MERKAVOT… QUATRE CHARS, AU SENS DE CHARS DE GUERRE, LE TERME HÉBREU DÉSIGNANT SPÉCIALEMENT LES CHARS DE COMBAT… HA-HARIM NEḤOSHET… LES DEUX MONTAGNES DE CUIVRE OU DE BRONZE, MÉTAL DE VALEUR ET DE SOLIDITÉ, EMPLOYÉ DANS LE TABERNACLE ET DANS LE TEMPLE, EXODE 27:1-6 ; 1 ROIS 7:13-16… BAʿALEY HA-ROSHAH… LES CHEVAUX ROUX, DE LA COULEUR DU FEU… SHEḤORIM… LES NOIRS… LEBANIM… LES BLANCS… BERUDIM ʾAMUTSIM… LES MOUCHETÉS, PIE, PUISSANTS… ʾARBAʿ RUḤOT HA-SHAMAYIM… LES QUATRE VENTS, LES QUATRE SOUFFLES DES CIEUX — LES QUATRE POINTS CARDINAUX, LA TOTALITÉ DE L'ESPACE… HA-MIT'HALLEKHIM… CEUX QUI VONT ET VIENNENT, QUI PARCOURENT… ʾADON KOL HA-ʾARETS… LE MAÎTRE DE TOUTE LA TERRE, DEVANT QUI ILS SE PRÉSENTENT AVANT DE PARTIR… ʾERETS TSAPHON… LE PAYS DU NORD, LA DIRECTION D'OÙ VENAIENT ASSYRIENS ET BABYLONIENS, JÉRÉMIE 1:13-15 ; 4:6 ; 46:10… HENIḤA ET RUḤI… FAIRE DESCENDRE, FAIRE REPOSER MON ESPRIT — L'APAISEMENT DE LA COLÈRE, ÉZÉCHIEL 5:13… — 519… DANIEL 2:35, 44, 45… DANIEL 11:40, 44, 45… ÉZÉCHIEL 38:2, 10-12, 15, 16… JOËL 4:12… PSAUME 34:7… PSAUME 103:20, 21… 2 ROIS 6:17… HÉBREUX 1:7, 14… APOCALYPSE 6:1-8… 7:1… 18:4… 19:11, 14, 15, 19… »</li>
+<li>LES TROIS RENVOIS — 2 Rois 6:17 : « Jéhovah, ouvre ses yeux pour qu'il voie… et Jéhovah ouvrit les yeux du serviteur, et il vit : la montagne était pleine de chevaux et de chars de feu autour d'Élisha » — la vision de Zekaria donne une forme définitive à cette réalité que le prophète du nord avait montrée : une armée céleste interposée entre l'ennemi et le serviteur de Dieu. Apocalypse 7:1 : « je vis quatre anges qui se tenaient debout aux quatre coins de la terre, retenant les quatre vents de la terre » — le motif des quatre vents, repris dans le dernier livre, garde la signification d'un pouvoir universel et encadré. Daniel 11:44, 45 : « il sortira en grande fureur pour détruire et exterminer beaucoup… et il viendra à sa fin, sans que personne lui porte secours » — la fin du roi du nord, telle que la prophétie daniélique l'annonce, donne son horizon historique à la mention du « pays du nord ».</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La huitième et dernière vision clôt la nuit inaugurale du prophète. Le tableau reprend celui de la première vision — des chevaux, des patrouilles, un rapport sur l'état de la terre — mais l'échelle change : il ne s'agit plus de cavaliers montés qui rendent compte, mais de quatre chars de guerre lancés d'entre deux montagnes de bronze. Les attelages sont décrits par la couleur : roux, noirs, blancs, mouchetés et vigoureux. Le prophète demande ce qu'ils sont ; l'ange répond qu'il s'agit des « quatre vents des cieux » qui viennent de se présenter devant le Maître de toute la terre avant de partir. Le déploiement est ensuite précisé : les chevaux noirs sortent vers le pays du nord, les blancs les suivent, les mouchetés vers le pays du midi, et l'ensemble demande et reçoit la permission de parcourir la terre. Le dernier mot est donné au nord : « ceux qui vont vers le pays du nord ont fait descendre mon esprit sur le pays du nord », ce que plusieurs traductions rendent par l'apaisement ou l'assouvissement de la colère divine contre ce pays. L'explication de la vision était nécessaire : elle enseigne que ce ne sont pas les empires qui décident du sort du peuple de Dieu, mais des agents envoyés par le Maître de toute la terre, dont la course obéit à un ordre. Le registre du projet rattache l'entrée aux versets 1 à 8, retient les versets 7 et 8 comme accomplissement, et lui donne le statut « Accomplie ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LES CHARS ET LES QUATRE VENTS : le mot employé pour « char » désigne l'engin de guerre, et « les quatre vents des cieux » signifient l'extension de leur course aux quatre directions du monde. La formulation rappelle les textes qui parlent des quatre coins de la terre, des quatre vents et des quatre extrémités du ciel : il n'existe pas de territoire soustrait à cette patrouille. Le fait que les attelages « se tiennent devant le Seigneur de toute la terre » avant de partir ajoute l'idée d'une délibération et d'un ordre : ils reçoivent une mission, ils n'agissent pas de leur propre chef. (2) LES DEUX MONTAGNES DE BRONZE : le défilé entre deux reliefs métalliques est une image d'encadrement et de stabilité. Le bronze est le métal du sanctuaire — l'autel des sacrifices, le bassin, les deux colonnes du temple de Salomon portaient ce matériau — et l'exégèse y voit la marque d'un décret inébranlable. Le fait que les chars sortent « d'entre » elles, comme d'une porte, suggère que leur force vient de ce sanctuaire-là et non d'ailleurs. La tradition a voulu reconnaître dans les deux montagnes des hauteurs réelles de Jérusalem — Morija et le mont des Oliviers — avec la vallée entre elles, ce qui rattache la vision à la topographie de la ville que les exilés reconstruisaient. (3) LES QUATRE COULEURS ET LEUR FONCTION : les couleurs servent d'abord à distinguer les unités, comme dans un rapport militaire ; les mentions de « vigoureux » marquent le besoin d'endurance pour une course longue. Le détail n'est pas gratuit : il donne à la vision la précision d'un déploiement réel. (4) LE PAYS DU NORD ET L'APAISEMENT : dans toute la littérature prophétique, le nord est la direction d'où vient le danger — c'est par là que sont arrivés les Assyriens, c'est par là que Babylone a pris Jérusalem. Que les chars y aillent, et que le résultat soit la colère divine apaisée sur ce pays, signifie que la source historique du malheur du peuple est traitée. La mention, à la fin, que les quatre attelages reçoivent la permission d'aller « parcourir la terre » étend cette assurance au monde entier : ce qui a été fait au nord vaut pour toutes les directions.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Des chars et une couronne te protègent » (document 2017607) commente précisément cette vision. Il y est dit que « dans la Bible, les montagnes peuvent représenter des royaumes ou des gouvernements », que les deux montagnes font penser à celles de Daniel 2:35, 45 — l'une représentant la souveraineté universelle de Jéhovah, l'autre le Royaume confié au Messie —, et que le cuivre, métal de valeur employé dans le tabernacle puis dans le temple, « symbolise donc très bien la qualité supérieure de la souveraineté universelle de Jéhovah et du Royaume messianique, qui apporteront aux humains la stabilité et de nombreux bienfaits ». Le même article identifie les conducteurs des chars : « Les conducteurs sont des anges, probablement des groupes d'anges… Ces anges sortent de devant le Seigneur de toute la terre, qui leur a donné une mission… aller dans des territoires précis pour protéger les serviteurs de Jéhovah, particulièrement contre Babylone, le “pays du nord”. Par cette vision, Jéhovah a fait savoir à ses serviteurs qu'ils ne seraient plus jamais esclaves de Babylone. » Il cite Malachie 3:6 et Hébreux 1:7, 14 pour montrer que « Jéhovah utilise ses anges pour protéger et fortifier son peuple », puis 2 Rois 6:15-17 et le Psaume 34:7. Exégèse comparée : les commentateurs soulignent le parallèle avec la première vision — là les chevaux patrouillent et rapportent que la terre est tranquille, ici ils sont attelés à des chars et exécutent ; et ils relèvent que les mêmes couleurs reviennent dans l'Apocalypse pour les quatre cavaliers, signe de la postérité de cette imagerie dans la littérature biblique.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">539 av. n. è.</td><td>Babylone tombe ; l'empire qui avait déporté Juda cesse d'être une puissance dominante (Daniel 5:30, 31)</td></tr>
+<tr><td class="d">538-537 av. n. è.</td><td>Cyrus autorise le retour et la reconstruction du temple ; la première vague arrive à Jérusalem (Esdras 1:1-4 ; 2:1)</td></tr>
+<tr><td class="d">522-520 av. n. è.</td><td>Opposition locale et interdiction royale, puis reprise des travaux (Esdras 4:21-24 ; 5:1, 2)</td></tr>
+<tr><td class="d">24e jour du 11e mois, 519 av. n. è.</td><td>La vision des quatre chars : le pays du nord traité, la permission de parcourir la terre (Zacharie 6:1-8)</td></tr>
+<tr><td class="d">519-516 av. n. è.</td><td>Le chantier du temple est mené à terme malgré l'opposition (Esdras 6:14, 15 ; Aggée 2:4, 5)</td></tr>
+<tr><td class="d">Ensuite</td><td>Babylone ne reconquiert jamais Juda ; la province reste sous administration perse puis grecque, sans nouvelle déportation de masse</td></tr>
+<tr><td class="d">Aujourd'hui</td><td>La protection angélique annoncée dans la vision est présentée comme toujours en vigueur pour les serviteurs de Dieu (Psaume 34:7 ; Hébreux 1:14)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LA CHUTE DE BABYLONE : la prise de la ville par Cyrus en 539 av. n. è. est connue par les sources cunéiformes — notamment la chronique babylonienne et le cylindre de Cyrus — et elle met fin à l'empire néo-babylonien ; c'est l'arrière-plan immédiat de la vision. (2) LE « PAYS DU NORD » : dans la géographie de Jérusalem, la route des invasions venait du nord ; Jérémie situe la menace dans cette direction, et la littérature prophétique qualifie Babylone de pays du nord. (3) LES CHARS DE GUERRE PERSES : les reliefs de Persépolis et les sceaux achéménides montrent des chars attelés, les chevaux tenus par des palefreniers et un appareil militaire organisé ; les quatre attelages de la vision s'inscrivent dans un monde où le char reste l'arme prestigieuse. (4) L'ADMINISTRATION IMPÉRIALE : les archives de Persépolis et les documents de la satrapie au-delà du Fleuve montrent une administration qui contrôle les provinces, les routes et les mouvements — le fond historique sur lequel se détache l'affirmation que le Maître de toute la terre a ses propres courriers. (5) LES SANCTUAIRES DE MÉTAL : l'emploi du bronze dans la fabrication du mobilier du sanctuaire — autel, bassin et colonnes — est attesté par les textes et par les techniques de fonte connues au Levant. (6) PRUDENCE : les sources établissent la chute de Babylone, la géographie de l'invasion et le monde du char ; elles ne décrivent pas les mouvements d'agents célestes, qui relèvent du contenu de la vision.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LES DEUX RELIEFS : la tradition exégétique situe le décor entre Morija, porteuse du temple, et le mont des Oliviers, avec la vallée — le Cédron — qui les sépare ; la vision des chars qui sortent de ce passage rattache l'action au relief précis de la ville. (2) LA VALLÉE ENTRE LES DEUX : les textes prophétiques donnent à cette dépression un rôle de lieu de jugement, et le nom qui lui est associé signifie précisément « Jéhovah juge ». (3) LA GEOGRAPHIE DU NORD : pour un habitant de Yehoud, le nord n'est pas un point cardinal abstrait mais un itinéraire — la route qui longe la côte et remonte vers la Syrie, puis vers l'Euphrate : c'est la route des invasions et celle du retour des déportés. (4) LE SUD ET LE RÔLE DES DIRECTIONS : que les chevaux mouchetés partent vers le pays du midi complète le tableau : le Néguev et l'Égypte ferment l'horizon méridional, et les deux directions opposées encadrent le territoire du peuple. (5) LE CUIVRE ET SA PROVENANCE : le minerai de cuivre du Levant provient de gisements attestés, notamment dans la vallée de Timna et sur le plateau du Faynan ; les textes et les vestiges de fonte donnent un contenu matériel à l'image des montagnes de bronze. (6) LE PAYSAGE DU CHAR : les chars exigent des surfaces praticables ; la parenté entre l'image d'une course universelle et une région vallonnée souligne qu'il s'agit d'un tableau symbolique, non d'une manœuvre locale.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) LA MÉTALLURGIE DU CUIVRE : les recherches sur les sites de production du Levant — fours, scories, creusets — documentent dès le deuxième millénaire une industrie du cuivre importante ; le bronze, alliage de cuivre et d'étain, servait pour l'armement, l'outillage et le décor du sanctuaire, selon des techniques dont on a retrouvé les traces. (2) LES COULEURS DU CHEVAL : les quatre robes décrites — le roux, le noir, le blanc et le pie — correspondent aux principales variantes de robe du cheval, dont la génétique moderne montre qu'elles reposent sur quelques gènes majeurs de la pigmentation ; la mention du cheval pie, dont le pelage associe taches sombres et fond clair, est attestée dans l'art et l'élevage antiques. (3) L'ÉLEVAGE ET L'IMPORT : le cheval n'est pas originaire de la région ; les textes de la période perse documentent des haras et des relais sur les routes impériales, et les chevaux étaient un bien coûteux importé du nord-est — ce qui donne du relief au fait que la vision met en scène quatre équipages de prix. (4) LES CHARRIOTS : les pièces de char retrouvées dans des tombes et les représentations égyptiennes et assyriennes permettent de restituer la structure — la caisse, le timon, la roue et l'essieu — et montrent la rapidité obtenue avec des roues à rayons. (5) LA MÉTÉOROLOGIE DES QUATRE VENTS : l'expression renvoie aux vents dominants ; le Levant est traversé par des circulations saisonnières contrastées — vents d'ouest humides portant la pluie, vents d'est secs du désert — et les récits bibliques emploient souvent le vent comme instrument : un vocabulaire que les données météorologiques de la région rendent explicite. (6) LES SANCTUAIRES DE FEU ET DE CHARS : les fouilles de sanctuaires du Levant, avec les modèles de chars et de chevaux en terre cuite retrouvés dans certaines régions, montrent la fréquence de ces images pour les armées célestes, ce qui éclaire le langage de la vision. (7) PRUDENCE : les sciences documentent les matériaux, les animaux et les techniques ; elles ne se prononcent pas sur l'existence et l'objet de la mission des anges, qui appartient au témoignage prophétique.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>LA HUITIÈME VISION (6:1-3) : QUATRE CHARS SORTANT D'ENTRE DEUX MONTAGNES DE BRONZE · ROUX · NOIRS · BLANCS · MOUCHETÉS ET VIGOUREUX → L'IDENTIFICATION (6:5) : « LES QUATRE VENTS DES CIEUX », DEBOUT DEVANT LE SEIGNEUR DE TOUTE LA TERRE AVANT DE PARTIR → LE DÉPLOIEMENT (6:6, 7) : LES NOIRS VERS LE PAYS DU NORD · LES BLANCS APRÈS EUX · LES MOUCHETÉS VERS LE PAYS DU MIDI · PERMISSION DE PARCOURIR LA TERRE → LE RÉSULTAT (6:8) : « CEUX QUI VONT VERS LE PAYS DU NORD ONT FAIT DESCENDRE MON ESPRIT SUR LE PAYS DU NORD » → INTERPRÉTATION PUBLIÉE : LES MONTAGNES = SOUVERAINETÉ DE JÉHOVAH ET ROYAUME MESSIANIQUE (DANIEL 2:35, 45) · LES CONDUCTEURS = ANGES (HÉBREUX 1:7, 14) · MISSION : PROTÉGER LES SERVITEURS DE DIEU CONTRE BABYLONE, LE « PAYS DU NORD » → HISTOIRE : CHUTE DE BABYLONE 539 · RETOUR 537 · TEMPLE ACHEVÉ 516 → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Zacharie 6:7, 8) et le statut « Accomplie ». LE GENRE : vision symbolique expliquée par l'ange ; la fiche suit cette explication. LES DEUX MONTAGNES : présentées selon l'interprétation des publications — souveraineté de Jéhovah et Royaume messianique — et selon la tradition topographique, sans trancher entre les lectures proposées par les commentateurs. LES CONDUCTEURS : identifiés comme des anges, sans développement sur leur organisation. LE PAYS DU NORD : identifié à la direction historique de l'invasion babylonienne, sans transposition à un pays moderne précis. LES COULEURS : décrites comme marques distinctives d'unités, sans attribution symbolique systématique. LES SOURCES EXTERNES : elles servent d'éclairage historique, géographique et archéologique. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas du chandelier ni du rouleau volant (fiches précédentes) ni du couronnement du chapitre 6 (fiche suivante), et ne formule aucune application aux communautés religieuses actuelles.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus ; fin de l'empire néo-babylonien (chronique babylonienne)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus autorisant le retour et la reconstruction du temple (Esdras 1:1-4)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arrivée de la première vague de rapatriés ; autel rétabli (Esdras 2:64-70 ; 3:1-6)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Interdiction royale ; arrêt des travaux à Jérusalem (Esdras 4:21-24)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">522 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision des quatre chars et des deux montagnes de bronze (Zacharie 6:1-8)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 11e mois, 519 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise et achèvement du chantier du temple (Aggée 1:12-14 ; Esdras 6:14, 15)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">520-516 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Juda demeure dans la province de Yehoud, sans nouvelle déportation de masse ; la ville est rebâtie avec ses murailles (Néhémie 3-6)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è. et après</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/10">Bible — Psaume 10 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/10</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/11">Bible — Psaume 11 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/11</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/42/4">Bible — Luc 4 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/42/4</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2017607">Des chars et une couronne te protègent — La Tour de Garde (w17 octobre, p. 26-30)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2017607</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101990099">Livre de la Bible numéro 38 — Zekaria — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101990099</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200004682">Zacharie (Livre de) — Étude perspicace des Écritures — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200004682</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/13">Bible — Psaume 13 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/19/13</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche ZA497 — Les quatre chars entre les deux montagnes de bronze : les quatre vents du ciel, les chevaux roux, noirs, blancs et mouchetés, et l'esprit apaisé dans le pays du nord</span><span>Catégorie ZA2</span></div></div>
+</article>
+<article class="fiche" id="ZA498">
+<div class="visuel"><img src="images/prophe_ZA498_couronne.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE ZA498 · CATÉGORIE ZA2</div>
+<h3>« Voici l'homme dont le nom est Germe » : la couronne d'argent et d'or sur la tête de Yehoshoua, le temple bâti, le prêtre sur son trône et ceux qui viennent de loin</h3>
+<div class="ref">Zacharie 6:9-15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">prends de l'argent et de l'or fais des couronnes et mets-les sur la tête de yehoshoua fils de yehotsadaq le grand prêtre et tu lui diras voici l'homme dont le nom est germe il germera de son propre lieu et il bâtira le temple de jéhovah oui c'est lui qui bâtira le temple de jéhovah et il portera la dignité il siégera et dominera sur son trône et il deviendra prêtre sur son trône et il y aura entre les deux un conseil de paix la couronne sera un mémorial dans le temple de jéhovah ceux qui sont loin viendront et bâtiront le temple de jéhovah (zacharie 6:12, 13 ; hébreux 6:20 ; 7:1-3, 15-17; accomplie)</span>
+<span class="badge">7 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche ZA498 · 0:12</div><audio controls preload="none" src="audio/fiche_ZA498_couronne.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_ZA498_couronne.mp3 · 0:12 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Zacharie 6:9-15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>prends de l'argent et de l'or fais des couronnes et mets-les sur la tête de yehoshoua fils de yehotsadaq le grand prêtre et tu lui diras voici l'homme dont le nom est germe il germera de son propre lieu et il bâtira le temple de jéhovah oui c'est lui qui bâtira le temple de jéhovah et il portera la dignité il siégera et dominera sur son trône et il deviendra prêtre sur son trône et il y aura entre les deux un conseil de paix la couronne sera un mémorial dans le temple de jéhovah ceux qui sont loin viendront et bâtiront le temple de jéhovah (zacharie 6:12, 13 ; hébreux 6:20 ; 7:1-3, 15-17; accomplie)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Zacharie — P498 (6:9-15 : voici l'homme dont le nom est Germe ; il bâtira le temple et deviendra roi-prêtre) ; Zacharie 6:12, 13 ; Jésus, Roi-Prêtre (Hébreux 6:20 ; 7:1-3, 15-17) ; Accomplie</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« PRENDS DE L'ARGENT ET DE L'OR, FAIS DES COURONNES, ET METS-LES SUR LA TÊTE DE YEHOSHOUA, FILS DE YEHOTSADAQ, LE GRAND PRÊTRE… »… « VOICI L'HOMME DONT LE NOM EST GERME… IL GERMERA DE SON PROPRE LIEU, ET IL BÂTIRA LE TEMPLE DE JÉHOVAH… »… « C'EST LUI QUI BÂTIRA LE TEMPLE DE JÉHOVAH, ET IL PORTERA LA DIGNITÉ… IL SIÉGERA ET DOMINERA SUR SON TRÔNE… IL DEVIENDRA PRÊTRE SUR SON TRÔNE, ET IL Y AURA ENTRE LES DEUX UN CONSEIL DE PAIX… »… « LA COURONNE SERA UN MÉMORIAL DANS LE TEMPLE DE JÉHOVAH… »… « CEUX QUI SONT LOIN VIENDRONT ET BÂTIRONT LE TEMPLE DE JÉHOVAH… »… — TSEMAH… LE GERME, LE REJETON QUI POUSSE, TERME MESSIANIQUE DÉJÀ EMPLOYÉ PAR JÉRÉMIE 23:5 ET 33:15, PAR ISAÏE 4:2 ET 11:1, ET REPRIS EN ZACHARIE 3:8… WE-TSAḤ MI-TAḤTAV… IL GERMERA DE SOUS LUI, DE SON PROPRE LIEU, DE SA SOUCHE… WE-HU YIVNEH ʾET-HEKHAL YHWH… ET LUI, IL BÂTIRA LE PALAIS, LE TEMPLE DE JÉHOVAH… HOD WE-YASHAV U-MASHAL ʿAL KISʾO… IL PORTERA LA MAJESTÉ, IL SIÉGERA ET DOMINERA SUR SON TRÔNE… WE-HAYAH KHOHEN ʿAL KISʾO… ET IL SERA PRÊTRE SUR SON TRÔNE — LA RÉUNION DES DEUX FONCTIONS QUE LA LOI SÉPARAIT… ʿATSAT SHALOM… UN CONSEIL, UNE DÉCISION DE PAIX ENTRE LES DEUX… ʿATAROT… LES COURONNES, UN DIADÈME COMPOSÉ, DIFFÉRENT DU TURBAN SACERDOTAL… ZIKKARON… MÉMORIAL, SOUVENIR DÉPOSÉ DEVANT DIEU… HA-REḤOQIM… CEUX QUI SONT LOIN, LES ÉLOIGNÉS, LES ÉTRANGERS… HELEM… HELDAÏ, VARIANTE DU NOM DONNÉ EN 6:10… — 519… ESDRAS 6:14, 15… PSAUME 110:1, 4… GENÈSE 14:18-20… 2 SAMUEL 7:12-14… JÉRÉMIE 23:5, 6… 33:15-17… ISAÏE 4:2… 11:1… MATTHIEU 2:23… LUC 1:32, 33… HÉBREUX 3:3-6… 6:20… 7:1-3, 11-17… 1 PIERRE 2:5… ÉPHÉSIENS 2:19-22… APOCALYPSE 14:1-4… 19:12… »</li>
+<li>LES TROIS RENVOIS — Psaume 110:1, 4 : « La déclaration de Jéhovah à mon Seigneur : “Assieds-toi à ma droite…”… Jéhovah a juré, et il ne le regrettera pas : “Tu es prêtre pour toujours à la manière de Melkisédek” » — le seul texte de l'Ancien Testament qui joint explicitement le trône et une prêtrise d'un autre ordre que celui d'Aaron, et qui donne au couronnement de Yehoshoua son horizon. Genèse 14:18-20 : « Melkisédek, roi de Salem, apporta du pain et du vin ; il était prêtre du Dieu Très-Haut » — la figure historique du roi-prêtre, antérieure à la séparation des fonctions sous la Loi. 1 Pierre 2:5 : « vous êtes édifiés comme des pierres dans une maison spirituelle, pour être une sainte prêtrise » — la construction du temple annoncée par la prophétie se poursuit, dans les écrits chrétiens, sous la forme d'un édifice de personnes.</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La dernière scène du cycle n'est plus une vision nocturne : c'est un ordre donné au prophète, en plein jour, avec des gestes à accomplir devant témoins. Jéhovah lui commande d'aller chez Yoshiya, fils de Tsephania, où se trouvent trois hommes revenus de Babylonie — Heldaï, Tobiya et Yedaïa — porteurs d'argent et d'or. Zekaria doit prendre ce métal, faire des couronnes et les poser sur la tête de Yehoshoua, le grand prêtre. Le geste est d'une audace calculée : la couronne appartient à la maison de David, et le grand prêtre n'est pas de cette lignée ; Zorobabel, qui l'est, n'est pas mentionné dans la cérémonie. L'explication suit immédiatement : le couronnement est prophétique, et le discours que le prophète doit tenir annonce un homme « dont le nom est Germe », qui germera de son propre lieu, bâtira le temple de Jéhovah, portera la dignité, siégera et dominera sur son trône, et deviendra prêtre sur son trône — « et il y aura entre les deux un conseil de paix ». La couronne doit ensuite être conservée dans le temple comme mémorial pour les donateurs. Le dernier verset étend la perspective : des gens venus de loin viendront bâtir le temple, et l'on saura que Jéhovah des armées a envoyé son prophète — le tout assorti d'une condition d'écoute. Le registre du projet rattache l'entrée aux versets 9 à 15, retient les versets 12 et 13 avec Hébreux 6:20 et 7:1-3, 15-17 comme accomplissement, et lui donne le statut « Accomplie ».</p>
+<h4>4 · Explication du texte</h4>
+<p>Quatre notations. (1) LE GESTE ET SON ANOMALIE : poser une couronne sur un grand prêtre est un acte sans précédent dans la procédure sacerdotale, qui prévoyait un turban et non un diadème. La précision du texte — des couronnes au pluriel, ou un diadème composé — souligne la solennité du geste. Les commentateurs insistent : Yehoshoua n'est pas devenu roi ; il a servi de signe. Le mot employé dans la suite du livre pour désigner les compagnons du grand prêtre — « hommes de présage » — s'applique ici à l'action elle-même. (2) LE NOM DU GERME : Tsemah signifie le rejeton qui pousse, la pousse sortie de la souche. Trois prophètes l'emploient pour désigner le descendant de David : Isaïe pour le rameau issu du tronc d'Isaï, Jérémie pour le germe juste que Dieu suscitera à David, Zekaria deux fois — ici et au chapitre 3. La suite du texte dit qu'il « germera de son propre lieu », c'est-à-dire qu'il tirera son origine de sa propre souche, et non d'une greffe étrangère : c'est la lignée de David, réduite à un tronc, qui produira la pousse. (3) LE TEMPLE ET LE TRÔNE : les deux verbes du passage se répondent — bâtir et régner. Dans l'histoire immédiate, c'est Zorobabel qui achèvera le sanctuaire ; mais l'homme dont il est question ici bâtit le temple et s'assied sur un trône avec un prêtre à sa droite, dans une harmonie que la Loi, en séparant les tribus de Lévi et de Juda, n'avait jamais réalisée. L'Écriture désigne un tel roi-prêtre en la personne de Melkisédek, et un seul texte le promet pour l'avenir : le Psaume 110. (4) LE MÉMORIAL ET LES LOINTAINS : conserver la couronne dans le temple, c'est transformer un objet en témoignage permanent — les donateurs et leurs noms demeurent devant Dieu. Quant à « ceux qui sont loin », l'expression ne désigne pas seulement les exilés restés à distance : dans le vocabulaire prophétique, elle inclut les étrangers qui se joignent au culte de Jéhovah. La condition finale — « cela arrivera si vous écoutez vraiment la voix de Jéhovah » — rappelle que la promesse n'exempte pas de l'obéissance.</p>
+<h4>5 · Interprétation</h4>
+<p>Lecture des publications : l'article « Des chars et une couronne te protègent » (document 2017607) raconte la scène telle que la vivent les contemporains — « cette couronne est-elle pour le gouverneur Zorobabel, qui appartient à la tribu de Juda et qui est descendant de David ? Non. Jéhovah dit à Zekaria de mettre la couronne sur la tête du grand prêtre Yoshoua. Voilà qui a dû surprendre tous ceux qui ont observé la scène. » Il poursuit : « Le grand prêtre Yoshoua est-il devenu roi en recevant la couronne ? Non. N'étant pas un descendant de David, il ne pouvait pas devenir roi. Ce couronnement était prophétique. Il annonçait que quelqu'un, appelé “Germe”, serait roi et prêtre pour toujours. La Bible indique clairement que “Germe”, ou “rejeton”, est Jésus Christ (Is. 11:1 ; Mat. 2:23, note) » ; il ajoute que Jésus, en plus d'être Roi et Grand Prêtre, a reçu la mission de bâtir le temple de Jéhovah, et cite Malachie 3:1-3 pour l'affinage des chrétiens ainsi que Révélation 14:1-4 et 20:6 pour ceux qui gouvernent avec lui. Exégèse comparée : les commentateurs lisent l'ensemble du passage comme l'annonce de la réunion définitive des deux offices, accomplie en celui qui est à la fois le rejeton de David et le prêtre selon l'ordre de Melkisédek ; ils relèvent que l'appel « voici l'homme » annonce la présentation publique d'un personnage, et notent la proximité du mot employé par Pilate pour présenter Jésus. La couronne conservée dans le temple est rattachée à la pratique des dépôts votifs : ce que les fidèles consacrent à Dieu demeure dans sa maison en témoignage.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">519 av. n. è.</td><td>Le geste est accompli : l'argent et l'or des revenus de Babylonie sont transformés en couronne et posés sur la tête de Yehoshoua (Zacharie 6:9-11)</td></tr>
+<tr><td class="d">519-516 av. n. è.</td><td>Zorobabel, « l'anneau à cachet » choisi par Jéhovah, poursuit et achève le temple (Aggée 2:23 ; Esdras 6:14, 15)</td></tr>
+<tr><td class="d">3e jour d'Adar, 516 av. n. è.</td><td>Le temple est achevé et inauguré ; la couronne y demeure en mémorial (Esdras 6:15-18 ; Zacharie 6:14)</td></tr>
+<tr><td class="d">Ve siècle av. n. è. et après</td><td>Le second temple reste le centre du culte ; les dons des exilés et des lointains affluent (Esdras 7:15-20 ; 8:26-30)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>Jésus, issu de la lignée de Zorobabel, est présenté comme roi et prêtre (Matthieu 1:12, 13 ; Luc 3:27 ; Hébreux 6:20 ; 7:1-3, 15-17)</td></tr>
+<tr><td class="d">Ier siècle de n. è.</td><td>La prêtrise selon l'ordre de Melkisédek est reconnue en Jésus, qui n'appartient pas à la tribu de Lévi mais est « prêtre pour toujours » (Psaume 110:4 ; Hébreux 7:15-17)</td></tr>
+<tr><td class="d">Ensuite</td><td>Des hommes « venus de loin » participent à l'édification du temple spirituel : les Écritures grecques décrivent des croyants de toutes origines bâtis en une maison spirituelle (Éphésiens 2:19-22 ; 1 Pierre 2:5)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>PREUVES HISTORIQUES. (1) LES TROIS DÉLÉGUÉS ET LEUR NOM : Heldaï, Tobiya et Yedaïa apparaissent comme des hommes revenus de Babylonie porteurs de dons ; leurs noms à finale théophore — la terminaison qui abrège le nom divin — sont caractéristiques des Juifs de la diaspora perse qui conservaient le culte de leurs pères. (2) YOSHIYA FILS DE TSEPHANIA : la demeure où se déroule la scène est celle d'une famille sacerdotale de Jérusalem, ce qui rattache l'épisode au milieu des prêtres du retour ; un Tsephania, prêtre, est mentionné ailleurs dans les récits de la fin du royaume et de l'exil. (3) LES DONS POUR LE SANCTUAIRE : la pratique des collectes d'or et d'argent auprès des exilés pour l'entretien du temple est attestée par les livres d'Esdras, où Cyrus remet les ustensiles de la maison de Jéhovah et où les chefs de famille offrent volontairement pour l'ouvrage ; l'argent devient la monnaie de compte des transactions de la province perse de Yehoud, comme le montrent les poids et les monnaies retrouvés. (4) LA COURONNE DÉPOSÉE : les inventaires de temples antiques mentionnent des objets précieux conservés en mémoire des donateurs — couronnes, disques votifs et inscriptions commémoratives —, ce qui donne un cadre concret au « mémorial » du verset 14. (5) LES TITRES MESSIANIQUES : le mot « Germe » appartient à une série d'expressions employées par les prophètes pour désigner le descendant de David attendu ; sa reprise dans Zacharie 3:8 et 6:12 montre que le livre se lit lui-même comme un ensemble cohérent autour de cette promesse. (6) PRUDENCE : les sources attestent les personnages, les collectes et les usages du temple ; elles ne permettent pas de reconstituer le détail de la cérémonie ni l'aspect exact des couronnes.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>PREUVES GÉOGRAPHIQUES. (1) LA ROUTE DE BABYLONE : les trois hommes arrivent du pays de l'exil, à environ huit cents kilomètres de Jérusalem, par la vallée de l'Euphrate puis la route du nord ; les récits d'Esdras donnent un ordre de grandeur du voyage — quatre mois pour une caravane officielle, et bien davantage pour un groupe avec familles et bagages. (2) LA MAISON DE YOSHIYA : la scène se situe dans une demeure de Jérusalem, dans une ville encore sans muraille, dont les quartiers se reconstruisaient autour du chantier du temple. (3) LE SANCTUAIRE COMME LIEU DU MÉMORIAL : la couronne reste « dans le temple de Jéhovah », c'est-à-dire sur le seul site de la ville investi d'une fonction cultuelle — ce que les textes postérieurs décrivent comme le lieu des trésors et des dépôts. (4) LES « LOINTAINS » : l'expression embrasse la géographie de la diaspora et des nations ; les livres d'Esdras et de Néhémie montrent la présence de Juifs dispersés de l'Égypte à la Perse, et le livre de Zekaria lui-même annoncera des peuples venant de toutes les directions vers Jérusalem. (5) LA BABYLONIE ET SES MINERAIS : l'or et l'argent rapportés de Mésopotamie s'inscrivent dans des circuits commerciaux anciens reliant la Mésopotamie, l'Iran et le Levant, où les métaux circulaient sous forme de lingots, de bijoux et de monnaie pesée. (6) LES MINES ET LES ATELIERS : la transformation de ces métaux en couronne suppose un artisanat local, dans une ville où les orfèvres sont attestés par les listes de métiers du retour.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>PREUVES SCIENTIFIQUES ET ARCHÉOLOGIQUES. (1) L'ARGENT ET SA MÉTALLURGIE : l'argent s'obtient à partir de minerais plombo-argentifères par un procédé de coupellation — l'oxydation sépare le plomb de l'argent ; les analyses de provenance, par les traces d'éléments présents dans le métal, permettent de suivre des circuits d'approvisionnement parfois très lointains, ce qui situe les dons de la vision dans des réseaux commerciaux réels. (2) L'OR : métal inaltérable, il se travaille au marteau et à la fonte ; les bijoux et diadèmes antiques retrouvés dans les tombes et les trésors montrent que la forme composite, faite de plusieurs bandeaux ou cercles, était courante dans les parures de dignité. (3) LES POIDS ET LA MONNAIE PESÉE : dans la province perse de Yehoud, les paiements se font au poids ; les pesons inscrits et les monnaies de la période attestent un système de compte vérifiable, cohérent avec la mention d'argent et d'or apportés par des particuliers. (4) LES DÉPÔTS VOTIFS : l'archéologie des sanctuaires méditerranéens a livré des milliers d'objets déposés en remerciement ou en souvenir, souvent conservés dans des salles du trésor, avec les inventaires gravés sur pierre qui les recensent — un éclairage direct sur la couronne « en mémorial » du texte. (5) L'ORFÈVRERIE RÉGIONALE : les ateliers d'orfèvrerie du Levant de la période perse sont attestés par des objets et des rebuts de fabrication, ce qui confirme la faisabilité technique de la couronne décrite. (6) LA GÉNÉALOGIE ET LES TEXTES : la généalogie de Zorobabel dans les écrits postérieurs et les listes de rapatriés fournissent une base documentaire au fait que la promesse attachée au « Germe » est rattachée à une lignée réelle, vérifiable dans le texte. (7) PRUDENCE : ces données éclairent le geste et les matériaux ; elles ne valident pas par elles-mêmes l'identification du Germe, qui repose sur la lecture des prophètes et sur son accomplissement dans les Écritures grecques.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>L'ORDRE (6:9-11) : ALLER CHEZ YOSHIYA · PRENDRE L'ARGENT ET L'OR DES TROIS REVENUS DE BABYLONIE · FAIRE DES COURONNES · LES POSER SUR LA TÊTE DE YEHOSHOUA, LE GRAND PRÊTRE → L'ANOMALIE : LA COURONNE N'APPARTIENT PAS AU GRAND PRÊTRE MAIS À LA LIGNÉE DE DAVID → LA CLÉ (6:12, 13) : « VOICI L'HOMME DONT LE NOM EST GERME » · IL GERMERA DE SON PROPRE LIEU · IL BÂTIRA LE TEMPLE DE JÉHOVAH · IL PORTERA LA DIGNITÉ · IL SIÉGERA ET DOMINERA SUR SON TRÔNE · IL DEVIENDRA PRÊTRE SUR SON TRÔNE · « ENTRE LES DEUX, UN CONSEIL DE PAIX » → LE MÉMORIAL (6:14) : LA COURONNE CONSERVÉE DANS LE TEMPLE POUR HELDAÏ, TOBIYA, YEDAÏA ET LE FILS DE TSEPHANIA → L'OUVERTURE (6:15) : « CEUX QUI SONT LOIN VIENDRONT ET BÂTIRONT LE TEMPLE » · CONDITION : ÉCOUTER LA VOIX DE JÉHOVAH → ACCOMPLISSEMENT : MÊME JOUR QUE L'ACHÈVEMENT DU TEMPLE 516 AV. N. È. · JÉSUS ROI-PRÊTRE SELON L'ORDRE DE MELKISÉDEK (PSAUME 110:4 ; HÉBREUX 7) → STATUT DU REGISTRE : ACCOMPLIE</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>STATUT : la fiche enregistre l'accomplissement avec les références du registre (Zacharie 6:12, 13 ; Hébreux 6:20 ; 7:1-3, 15-17) et le statut « Accomplie ». LE COURONNEMENT : présenté comme un acte symbolique, la fiche ne lui attribue aucune royauté réelle sur Yehoshoua. ZOROBABEL : la fiche note son absence de la scène sans en tirer de conclusion sur son statut personnel. LE MÉMORIAL : décrit selon le texte, sans spéculation sur l'emplacement exact de la couronne dans le sanctuaire. LES « LOINTAINS » : l'expression est présentée avec son amplitude prophétique, sans désignation de peuples contemporains. LES FONCTIONS RÉUNIES : la fiche expose la lecture messianique retenue par le registre sans entrer dans les controverses sur le sacerdoce. LES SOURCES EXTERNES : elles servent d'éclairage historique, géographique et archéologique. CE QUE CETTE FICHE NE DIT PAS : elle ne traite pas des visions des chapitres 4 et 5 (fiches précédentes) ni des chapitres 7 à 14, et ne formule aucune application aux communautés religieuses actuelles.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arrivée de Heldaï, Tobiya et Yedaïa porteurs d'argent et d'or ; couronnement symbolique de Yehoshoua (Zacharie 6:9-11)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Annonce de l'homme dont le nom est Germe : il bâtira le temple et sera prêtre sur son trône (Zacharie 6:12, 13)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zorobabel poursuit les travaux ; Aggée annonce qu'il sera comme l'anneau à cachet de Jéhovah (Aggée 2:23)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">519-516 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple est achevé ; la couronne y demeure en mémorial (Esdras 6:15 ; Zacharie 6:14)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">De nouveaux dons d'argent et d'or arrivent de Babylonie pour la maison de Dieu (Esdras 7:15-20)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">458 av. n. è. et après</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La ville est rebâtie avec ses murailles ; le culte du second temple s'organise (Néhémie 3-6 ; 12:44-47)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus, roi et grand prêtre selon l'ordre de Melkisédek, bâtit la maison spirituelle de Dieu (Hébreux 3:3-6 ; 6:20 ; 7:15-17 ; 1 Pierre 2:5)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/43/3">Bible — Jean 3 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/43/3</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/43/6">Bible — Jean 6 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/43/6</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/19">Bible — Actes 19 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/44/19</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/43/12">Bible — Jean 12 (nwt)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwt/43/12</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2017607">Des chars et une couronne te protègent — La Tour de Garde (w17 octobre, p. 26-30)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2017607</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/2007882">Points marquants des livres de Haggaï et de Zekaria — BIBLIOTHÈQUE EN LIGNE Watchtower<br>https://wol.jw.org/fr/wol/d/r30/lp-f/2007882</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200014577">Zacharie (Livre de) — Auxiliaire pour une meilleure intelligence de la Bible<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200014577</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche ZA498 — « Voici l'homme dont le nom est Germe » : la couronne d'argent et d'or sur la tête de Yehoshoua, le temple bâti, le prêtre sur son trône et ceux qui viennent de loin</span><span>Catégorie ZA2</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie ZA2</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>ZA495 — « Ni par puissance ni par force, mais par mon esprit » : le chandelier d'or, les deux oliviers et les mains de Zorobabel</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour de la première vague ; autel rétabli sur son emplacement (Esdras 3:1-6)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Fondations du second temple posées ; larmes et acclamations (Esdras 3:8-13)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">536 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Interdiction royale ; les travaux cessent (Esdras 4:21-24)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">522 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision du chandelier et parole à Zorobabel (Zacharie 4:1-14)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 11e mois, 519 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Aggée et Zekaria stimulent la reprise ; Zorobabel et Yehoshoua reprennent le chantier (Aggée 1:12-14 ; Esdras 5:1, 2)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">520 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Procédure devant Darius ; décret confirmé par les archives (Esdras 6:1-12)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519-516 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Achèvement et inauguration de la maison (Esdras 6:14-18)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+</svg>
+<h4>ZA496 — Le rouleau volant de vingt coudées et l'épha de la méchanceté : la malédiction qui entre dans la maison du voleur, la femme au poids de plomb, les ailes de cigogne vers Shinéar</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Retour de l'exil ; la communauté s'installe dans un pays sans sanctuaire achevé ni muraille</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">538-537 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise des travaux après quinze ans d'interruption (Aggée 1:14 ; Esdras 5:2)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">520 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sixième et septième visions : le rouleau volant, puis l'épha et la femme (Zacharie 5:1-11)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 11e mois, 519 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Procédure devant Darius ; le chantier se poursuit (Esdras 6:1-12)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519-516 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple est achevé ; le culte organisé (Esdras 6:14-18)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Réformes de Néhémie : serments, dettes, marché du sabbat (Néhémie 5:1-13 ; 13:10-22)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Malachie reprend l'accusation : contre les parjures, les oppresseurs et les voleurs (Malachie 3:5)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ensuite</text>
+</svg>
+<h4>ZA497 — Les quatre chars entre les deux montagnes de bronze : les quatre vents du ciel, les chevaux roux, noirs, blancs et mouchetés, et l'esprit apaisé dans le pays du nord</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Prise de Babylone par Cyrus ; fin de l'empire néo-babylonien (chronique babylonienne)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">539 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Édit de Cyrus autorisant le retour et la reconstruction du temple (Esdras 1:1-4)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">538 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arrivée de la première vague de rapatriés ; autel rétabli (Esdras 2:64-70 ; 3:1-6)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">537 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Interdiction royale ; arrêt des travaux à Jérusalem (Esdras 4:21-24)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">522 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vision des quatre chars et des deux montagnes de bronze (Zacharie 6:1-8)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">24e jour du 11e mois, 519 av. n. è.</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Reprise et achèvement du chantier du temple (Aggée 1:12-14 ; Esdras 6:14, 15)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">520-516 av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Juda demeure dans la province de Yehoud, sans nouvelle déportation de masse ; la ville est rebâtie avec ses murailles (Néhémie 3-6)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è. et après</text>
+</svg>
+<h4>ZA498 — « Voici l'homme dont le nom est Germe » : la couronne d'argent et d'or sur la tête de Yehoshoua, le temple bâti, le prêtre sur son trône et ceux qui viennent de loin</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Arrivée de Heldaï, Tobiya et Yedaïa porteurs d'argent et d'or ; couronnement symbolique de Yehoshoua (Zacharie 6:9-11)</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è.</text>
+<circle cx="170.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="170.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Annonce de l'homme dont le nom est Germe : il bâtira le temple et sera prêtre sur son trône (Zacharie 6:12, 13)</text>
+<text x="170.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">519 av. n. è.</text>
+<circle cx="280.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="280.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Zorobabel poursuit les travaux ; Aggée annonce qu'il sera comme l'anneau à cachet de Jéhovah (Aggée 2:23)</text>
+<text x="280.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">519-516 av. n. è.</text>
+<circle cx="390.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="390.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le temple est achevé ; la couronne y demeure en mémorial (Esdras 6:15 ; Zacharie 6:14)</text>
+<text x="390.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">3e jour d'Adar, 516 av. n. è.</text>
+<circle cx="500.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">De nouveaux dons d'argent et d'or arrivent de Babylonie pour la maison de Dieu (Esdras 7:15-20)</text>
+<text x="500.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">458 av. n. è. et après</text>
+<circle cx="610.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="610.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La ville est rebâtie avec ses murailles ; le culte du second temple s'organise (Néhémie 3-6 ; 12:44-47)</text>
+<text x="610.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Ve siècle av. n. è.</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Jésus, roi et grand prêtre selon l'ordre de Melkisédek, bâtit la maison spirituelle de Dieu (Hébreux 3:3-6 ; 6:20 ; 7:15-17 ; 1 Pierre 2:5)</text>
+<text x="720.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ier siècle de n. è.</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-26 · phase 8, vague
+1 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

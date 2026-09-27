@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FICHES GE — Genèse (4) — Béthel et Joseph</title>
+<style>
+:root{
+ --jw-bleu:#1a4a8a; --jw-bleu-fonce:#0B2545; --jw-bleu-clair:#e8eef7;
+ --jw-or:#E9C46A; --jw-or-fonce:#7a5b12;
+ --fond:#eef1f6; --carte:#ffffff; --creme:#faf8f2; --encre:#1b2430;
+ --gris:#5b6472; --bord:#d8dee9; --ok:#2e7d32; --radius:14px;
+ --ombre:0 2px 10px rgba(11,37,69,.10),0 10px 28px rgba(11,37,69,.08);
+ --ombre-legere:0 1px 4px rgba(11,37,69,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--fond);color:var(--encre);
+ font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.6;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(12px,3vw,28px) 40px;}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;
+ background:linear-gradient(135deg,var(--jw-bleu-fonce),#12345f 60%,#1a4a8a);}
+.hero img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.38;}
+.hero .voile{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(11,37,69,.25),rgba(11,37,69,.82));}
+.hero .contenu{position:relative;max-width:1060px;margin:0 auto;
+ padding:clamp(28px,6vw,64px) clamp(12px,3vw,28px) clamp(22px,4vw,40px);}
+.kicker{color:var(--jw-or);text-transform:uppercase;letter-spacing:3px;
+ font-size:12px;font-weight:700;margin-bottom:10px;}
+.hero h1{font-size:clamp(28px,5vw,46px);margin:0 0 6px;line-height:1.08;}
+.hero h2{font-size:clamp(16px,2.6vw,22px);color:var(--jw-or);font-weight:600;
+ margin:0 0 14px;}
+.hero p.intro{color:#dbe4f2;font-size:15px;max-width:660px;margin:0 0 18px;}
+.chiffres{display:flex;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin:6px 0 4px;}
+.chiffres div{border-left:3px solid var(--jw-or);padding-left:12px;}
+.chiffres b{display:block;font-size:clamp(20px,3vw,28px);}
+.chiffres span{font-size:11px;color:#aab6cc;text-transform:uppercase;
+ letter-spacing:1px;}
+/* ---------- lecteur audio ---------- */
+.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+ backdrop-filter:blur(3px);border-radius:var(--radius);padding:10px 14px;
+ margin-top:16px;max-width:640px;}
+.player .t{font-size:12px;color:var(--jw-or);font-weight:700;
+ text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.player audio{width:100%;height:38px;display:block;}
+.player.fiche{background:var(--jw-bleu-clair);border-color:#b9c9e2;}
+.player.fiche .t{color:var(--jw-bleu);}
+.print-audio{display:none;}
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);
+ border-bottom:3px solid var(--jw-or);}
+.nav .bar{max-width:1060px;margin:0 auto;padding:8px clamp(12px,3vw,28px);
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav a{color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;
+ padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.10);
+ white-space:nowrap;}
+.nav a:hover{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+.nav a.accueil{background:var(--jw-or);color:var(--jw-bleu-fonce);}
+/* ---------- cartes sommaire ---------- */
+h1.t{font-size:clamp(22px,3.4vw,30px);color:var(--jw-bleu-fonce);
+ margin:34px 0 4px;}
+.st{color:var(--gris);font-size:14px;margin-bottom:16px;}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+ gap:18px;margin:16px 0 8px;}
+.carte{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre-legere);border:1px solid var(--bord);
+ transition:transform .25s ease,box-shadow .25s ease;display:flex;
+ flex-direction:column;}
+.carte:hover{transform:translateY(-5px);box-shadow:var(--ombre);}
+.carte a.img{display:block;aspect-ratio:16/9;overflow:hidden;background:#dfe5ee;}
+.carte a.img img{width:100%;height:100%;object-fit:cover;display:block;}
+.carte .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;
+ flex:1;}
+.carte .num{font-size:11px;font-weight:800;letter-spacing:2px;
+ color:var(--jw-bleu);}
+.carte h3{margin:0;font-size:17px;line-height:1.3;}
+.carte h3 a{color:var(--jw-bleu-fonce);text-decoration:none;}
+.carte h3 a:hover{color:var(--jw-bleu);}
+.carte .meta{font-size:12px;color:var(--gris);margin-top:auto;}
+/* ---------- fiche ---------- */
+.fiche{background:var(--carte);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--ombre);border:1px solid var(--bord);margin:26px 0;
+ scroll-margin-top:64px;}
+.fiche .visuel{position:relative;aspect-ratio:21/9;max-height:340px;
+ overflow:hidden;background:#dfe5ee;}
+.fiche .visuel img{width:100%;height:100%;object-fit:cover;display:block;}
+.fiche .visuel .legende{position:absolute;left:0;right:0;bottom:0;
+ padding:22px 20px 8px;font-size:11px;color:#e8eef7;
+ background:linear-gradient(180deg,transparent,rgba(11,37,69,.85));}
+.fiche .hd{background:var(--jw-bleu-fonce);color:#fff;padding:16px 22px 14px;}
+.fiche .hd .num{color:var(--jw-or);font-weight:800;font-size:11px;
+ letter-spacing:2px;}
+.fiche .hd h3{margin:4px 0 6px;font-size:clamp(20px,3vw,26px);line-height:1.2;}
+.fiche .hd .ref{font-family:Consolas,"Courier New",monospace;font-size:12px;
+ color:#b9c5d8;}
+.fiche .bd{padding:18px clamp(14px,3vw,26px) 22px;}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.badge{background:var(--jw-bleu-clair);border:1px solid #b9c9e2;
+ border-radius:20px;padding:3px 12px;font-size:12px;color:var(--jw-bleu);
+ font-weight:600;}
+.badge.or{background:#fdf6e3;border-color:var(--jw-or);color:var(--jw-or-fonce);}
+.fiche h4{font-size:12.5px;text-transform:uppercase;letter-spacing:1.5px;
+ color:var(--jw-bleu-fonce);margin:20px 0 8px;border-left:5px solid var(--jw-or);
+ padding-left:9px;}
+.fiche h4:first-of-type{margin-top:4px;}
+.fiche p{margin:0 0 10px;font-size:14.5px;}
+.txt{background:#f4f7fb;border-left:4px solid var(--jw-or);border-radius:0 10px
+ 10px 0;padding:10px 14px;margin:0 0 12px;}
+.txt li{font-size:14px;margin-bottom:6px;font-style:italic;}
+.attn{background:#fff8e8;border:1px solid var(--jw-or);border-left:5px solid
+ var(--jw-or);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.attn b{color:var(--jw-or-fonce);}
+.cadre{background:var(--creme);border:1px solid var(--bord);border-left:5px solid
+ var(--jw-bleu);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;
+ margin:12px 0;}
+.grille2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0 12px;
+ background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:var(--ombre-legere);}
+th,td{border:1px solid var(--bord);padding:6px 9px;text-align:left;
+ vertical-align:top;}
+th{background:var(--jw-bleu-fonce);color:#fff;font-size:11px;
+ text-transform:uppercase;letter-spacing:.4px;}
+td.d{white-space:nowrap;font-weight:700;color:var(--jw-bleu);}
+tr:nth-child(even) td{background:#f7f9fc;}
+.src{columns:2;column-gap:16px;font-size:12px;}
+.src a{color:var(--jw-bleu);display:block;margin-bottom:5px;
+ word-break:break-all;}
+svg{max-width:100%;height:auto;}
+ul.plain{list-style:none;padding-left:0;}
+ul.plain li{font-size:14px;margin-bottom:7px;}
+.pied{border-top:1px solid var(--bord);margin-top:14px;padding-top:8px;
+ font-size:11.5px;color:var(--gris);display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:6px;}
+.haut{position:fixed;right:16px;bottom:16px;z-index:60;background:
+ var(--jw-bleu-fonce);color:#fff;text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 14px;border-radius:24px;
+ box-shadow:var(--ombre);border:2px solid var(--jw-or);}
+.prog{position:fixed;top:0;left:0;height:4px;background:var(--jw-or);width:0;
+ z-index:70;}
+footer.site{background:var(--jw-bleu-fonce);color:#aab6cc;font-size:12px;
+ margin-top:30px;}
+footer.site .in{max-width:1060px;margin:0 auto;
+ padding:20px clamp(12px,3vw,28px);}
+@media(max-width:640px){.grille2{grid-template-columns:1fr;}.src{columns:1;}
+ .fiche .visuel{aspect-ratio:16/9;}}
+@media print{
+ body{background:#fff;font-size:12px;}
+ .nav,.haut,.prog,.player audio{display:none !important;}
+ .print-audio{display:block;font-size:11px;color:var(--gris);
+  border:1px dashed #999;border-radius:8px;padding:5px 9px;margin-top:8px;}
+ .hero img.fond{opacity:.18;}
+ .hero{color:#000;background:#fff;border-bottom:3px solid var(--jw-bleu-fonce);}
+ .hero .voile{display:none;}
+ .hero h1,.hero h2,.hero p.intro,.chiffres b{color:#000 !important;}
+ .kicker{color:var(--jw-or-fonce);}
+ .chiffres span{color:#333;}
+ .carte,.fiche{box-shadow:none;break-inside:avoid;}
+ .fiche{border:1.5px solid #999;}
+ .wrap{max-width:none;}
+ @page{size:A4;margin:11mm;}
+}
+</style></head><body>
+<div class="prog" id="prog"></div>
+<a class="haut" href="#haut">↑ Haut</a>
+
+<header class="hero" id="haut">
+<img class="fond" src="images/prophe_GE_couverture.jpg" alt="">
+<div class="voile"></div>
+<div class="contenu">
+<div class="kicker">Bibliothèque privée · projet PREUVES · phase 8</div>
+<h1>FICHES GE</h1>
+<h2>Genèse (4) — Béthel et Joseph</h2>
+<p class="intro">À Béthel, Jacob fuyard reçoit en songe la terre, la postérité-poussière et la promesse du retour — puis, de retour, l'annonce d'une nation et de rois. Son fils Joseph rêve de domination, interprète les songes en prison puis devant Pharaon, et sauve ainsi toute la maison de Jacob pendant sept années de famine.</p>
+<div class="chiffres">
+<div><b>6</b><span>fiches</span></div>
+<div><b>11</b><span>blocs par fiche</span></div>
+<div><b>18</b><span>sources</span></div>
+<div><b>6</b><span>pistes audio</span></div>
+<div><b>0</b><span>date pour l'avenir</span></div>
+</div>
+<div class="player"><div class="t">🎧 Introduction audio · 0:25</div><audio controls preload="none" src="audio/fiche_GE_intro.mp3"></audio><div class="print-audio">🔊 Piste : audio/fiche_GE_intro.mp3.</div></div>
+</div></header>
+
+<nav class="nav" aria-label="Fiches"><div class="bar">
+<a class="accueil" href="#haut">⌂ Sommaire</a>
+<a href="SITE_LOCAL.html">REPÈRES · accueil</a>
+<a href="#GE019">GE019</a>
+<a href="#GE020">GE020</a>
+<a href="#GE021">GE021</a>
+<a href="#GE022">GE022</a>
+<a href="#GE023">GE023</a>
+<a href="#GE024">GE024</a>
+<a href="#chronos">Chronologies</a><a href="#rappels">Rappels</a>
+</div></nav>
+
+<div class="wrap">
+<h1 class="t">Les fiches de cette catégorie</h1>
+<div class="st">Chaque carte ouvre la fiche complète : illustration, texte,
+preuves, chronologie, sources et piste audio.</div>
+<div class="grille">
+<div class="carte">
+<a class="img" href="#GE019"><img src="images/prophe_GE019_bethel.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE019</div>
+<h3><a href="#GE019">Béthel : la terre, la poussière, le retour</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE020"><img src="images/prophe_GE020_nations.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE020</div>
+<h3><a href="#GE020">Une nation et une assemblée de nations</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE021"><img src="images/prophe_GE021_reves.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE021</div>
+<h3><a href="#GE021">Les rêves de Joseph : gerbes, soleil, lune, étoiles</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE022"><img src="images/prophe_GE022_echanson.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE022</div>
+<h3><a href="#GE022">Trois jours : l'échanson et le panetier</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE023"><img src="images/prophe_GE023_famine.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE023</div>
+<h3><a href="#GE023">Sept vaches grasses, sept vaches maigres</a></h3>
+<div class="meta">Accomplie</div></div></div>
+<div class="carte">
+<a class="img" href="#GE024"><img src="images/prophe_GE024_preserve.jpg" alt="" loading="lazy"></a>
+<div class="txt"><div class="num">FICHE GE024</div>
+<h3><a href="#GE024">Dieu m'a envoyé pour vous conserver la vie</a></h3>
+<div class="meta">Accomplie</div></div></div>
+</div>
+<h1 class="t">Mode d'emploi de la catégorie</h1>
+<div class="st">Onze blocs par fiche, toujours dans le même ordre. Le onzième
+n'est jamais vide.</div>
+<div class="cadre"><b>Comment lire une fiche.</b> On commence par le contexte :
+sans lui, l'explication n'a pas de sol. On passe ensuite à l'exégèse — le
+vocabulaire, le genre littéraire, la structure — avant toute interprétation.
+L'interprétation donnée est <b>celle des Témoins de Jéhovah, avec sa source</b> ;
+elle n'est jamais présentée comme la seule lecture possible. Viennent alors les
+preuves, classées en trois registres distincts : historique (les documents),
+géographique (le site), scientifique (la fouille, la datation, la mesure). On
+termine toujours par les limites.</div>
+<div class="grille2">
+<div class="cadre"><b>Les trois registres de preuve.</b><br>
+<b>Historique</b> — une tablette, une chronique, un auteur profane.<br>
+<b>Géographique</b> — le relief, l'eau, la route : ce qui rendait le lieu
+habitable, et ce qui l'a vidé.<br>
+<b>Scientifique</b> — l'archéologie, l'épigraphie, la datation, parfois la
+géologie ou l'hydrologie.</div>
+<div class="cadre"><b>Les trois règles de la phase.</b><br>
+1. <b>Un seul système chronologique par fiche.</b> Quand la chronologie profane
+diffère, l'écart est signalé, jamais escamoté.<br>
+2. <b>Aucune date pour l'avenir.</b><br>
+3. <b>Aucun total dogmatique.</b> Une fiche vaut par sa précision, pas par son
+nombre.</div>
+</div>
+<div class="attn"><b>Avertissement général.</b> Plusieurs de ces oracles annoncent
+qu'un lieu « ne sera plus habité ». Certains de ces lieux sont aujourd'hui des
+villes peuplées — Saïda, Amman, Gaza, Mossoul. Ces fiches le disent et le
+situent : l'oracle vise un peuple, une cité antique ou un système politique, non
+l'usage immémorial d'un site. Un dossier qui cacherait ces écarts perdrait le
+seul avantage qu'il a : la vérifiabilité.</div>
+<article class="fiche" id="GE019">
+<div class="visuel"><img src="images/prophe_GE019_bethel.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE019 · CATÉGORIE GE</div>
+<h3>Béthel : la terre, la poussière, le retour</h3>
+<div class="ref">Genèse 28:13-15</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Alliance abrahamique (Béthel → retour → nation)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE019</div><audio controls preload="none" src="audio/fiche_GE19_bethel.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE19_bethel.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 28:13-15</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Alliance abrahamique (Béthel → retour → nation)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P019 (28:13-15 : la terre, une postérité comme la poussière, le retour) ; accomplissement Gn 33:18 ; 35:6-12</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Une échelle (sullam) dressée sur la terre, son sommet touchant le ciel. » (28:12 — le pont !)</li>
+<li>« Des anges de Dieu y montaient et descendaient. » (28:12 — le va-et-vient !)</li>
+<li>« Je suis Jéhovah, le Dieu d'Abraham ton père, le Dieu d'Isaac. » (28:13 — les pères !)</li>
+<li>« Cette terre sur laquelle tu es couché, je te la donnerai, à toi et à ta postérité. » (28:13 — la terre !)</li>
+<li>« Ta postérité sera comme la poussière de la terre. » (28:14 — la poussière !)</li>
+<li>« Tu t'étendras à l'occident, à l'orient, au nord et au midi. » (28:14 — les quatre !)</li>
+<li>« Toutes les familles du sol se béniront en toi et en ta postérité. » (28:14 — toutes !)</li>
+<li>« Je suis avec toi, je te garderai partout où tu iras. » (28:15 — avec toi !)</li>
+<li>« Je te ramènerai dans cette terre-ci. » (28:15 — LE RETOUR !)</li>
+<li>« Je ne t'abandonnerai pas jusqu'à ce que j'aie fait ce que je t'ai dit. » (28:15 — jusqu'à !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Jacob fuit : Ésaü veut le tuer (27:41), Rébecca l'expédie chez Laban à Haran (27:43 ; ~1781 av. n. è., Jacob a ~77 ans). Première nuit : près de Louz, une pierre pour oreiller — un fugitif seul, sans escorte, sans dot, avec une bénédiction volée pour tout bagage. Et c'est là, au point le plus bas, que Jéhovah lui parle pour la première fois : le songe de l'échelle. Jacob s'éveille : « Que ce lieu est redoutable ! Ce n'est rien d'autre que la maison de Dieu » (28:17) — il rebaptise Louz en Béthel, « maison de Dieu » (TM 28:19), dresse une colonne ointe (28:18) et fait vœu de la dîme (28:20-22). La promesse faite à Abraham (12:2-3, 7) puis à Isaac (26:2-4) passe officiellement au troisième maillon — « Dieu l'avait constitué héritier de l'alliance abrahamique » à Béthel (Jacob, it).</p>
+<h4>4 · Explication du texte</h4>
+<p>« Sullam » (28:12) : le mot hébreu est unique dans la Bible (hapax) — « échelle » ou « escalier / rampe monumentale » (TM) : l'image est celle d'un chantier entre ciel et terre, avec les anges en ouvriers-messagers. Les PROMESSES reprennent le triptyque abrahamique en l'élargissant : terre (le sol sous son corps — « sur laquelle tu es couché », la promesse touche le dormeur), postérité (« poussière » — après les étoiles 15:5 et le sable 22:17, la troisième mesure d'innombrable), bénédiction des nations (28:14 = 12:3, mot pour mot). NOUVEAUTÉ : les quatre directions (« tu t'étendras… » — expansion territoriale annoncée) et la promesse PERSONNELLE : « je suis avec toi… je te ramènerai… je ne t'abandonnerai pas » (28:15) — un contrat d'escorte divine, daté et signé, pour vingt ans d'exil à venir.</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement en trois temps, registre à l'appui : LE RETOUR — Jacob rentre « sain et sauf » à Sichem (33:18 — P019) puis à Béthel même (35:6 — P019), trente ans après le songe, avec femmes, enfants, troupeaux ; la « terreur de Dieu » paralyse les voisins vengeurs (35:5). LA POSTÉRITÉ — d'un dormeur seul aux 600 000 hommes de l'Exode (Ex 12:37), à « Juda et Israël nombreux comme le sable » sous Salomon (1R 4:20). LES QUATRE DIRECTIONS — le royaume de Salomon « du Fleuve à la frontière d'Égypte » (1R 4:21) avec des vassaux aux quatre vents. Et l'échelle elle-même : Jésus la reprend — « vous verrez le ciel ouvert et les anges de Dieu montant et descendant sur le Fils de l'homme » (Jn 1:51) : le pont Béthel, c'est lui.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1781 (songe)</td><td>Louz : terre + poussière + retour promis (28:13-15)</td></tr>
+<tr><td class="d">~1781 (réveil)</td><td>Béthel nommée, colonne ointe, dîme vouée (28:17-22)</td></tr>
+<tr><td class="d">~1761 (retour)</td><td>Sichem sain et sauf ; autel El-Élohé-Israël (33:18-20)</td></tr>
+<tr><td class="d">~1759 (Béthel)</td><td>De retour à Béthel ; alliance reformulée (35:6-12)</td></tr>
+<tr><td class="d">1513 (Exode)</td><td>600 000 hommes : la poussière compte (Ex 12:37)</td></tr>
+<tr><td class="d">Salomon</td><td>Quatre directions : du Fleuve à l'Égypte (1R 4:21)</td></tr>
+<tr><td class="d">Jn 1:51 (Jésus)</td><td>L'échelle, c'est le Fils de l'homme</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>CHRONOLOGIE : songe ~1781 (fuite) → 20 ans chez Laban (14 pour les filles + 6 pour le troupeau, 31:41) → retour ~1761 → Sichem (ch. 34) → Béthel (35:1-7, « une trentaine d'années » après le songe, dit l'article Jacob). La colonne ointe (masseba, 28:18) : pratique courante au Bronze moyen — stèles de culte attestées à Hazor, Guézer ; Jacob n'invente rien, il consacre. Le vœu de dîme (28:22) précède la Loi de 250 ans : la dîme est antérieure à Moïse (cf. Abraham à Melchisédek, 14:20). Luz la Cananéenne devient Béthel l'Israélite : le changement de nom scelle le transfert d'héritage — comme Abram→Abraham.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>BÉTHEL = Beïtin, ~17 km au nord de Jérusalem, sur la ligne de partage des eaux (~880 m d'altitude) — carrefour des routes nord-sud et est-ouest. Le songe a lieu sur la « montée de Béthel » qu'empruntent tous les voyageurs Haran-Canaan : Jacob dort sur l'itinéraire même de son exil. « Le Dieu de Béthel » (31:13, El-Beth-El 35:7) : Jéhovah se nomme d'après un LIEU — unique dans la Bible — parce que ce lieu est devenu la borne de l'alliance. De Beér-Shéba à Béthel : ~80 km à pied, trois jours : le fugitif est encore en pays connu quand Dieu le rattrape — l'escorte commence avant la frontière.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Linguistique : « sullam » apparenté à l'accadien « simmiltu » (escalier, rampe de ziggourat) — les auditeurs mésopotamiens de Jacob visualisaient une rampe monumentale, pas une échelle de meunier ; les anges « montent et descendent » comme sur les rampes des temples-tours d'Our et de Babylone. Critique textuelle : TM, LXX et Pentateuque samaritain concordent sur 28:13-15 ; la LXX rend sullam par « klimax » (d'où « climax »). Psychologie du récit : le songe suit la structure des « songes d'incubation » antiques (dormir en un lieu pour recevoir un oracle) — sauf qu'ici c'est Dieu qui choisit le lieu et le moment, pas le dormeur qui provoque la vision.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Fuite (Ésaü vengeur) → Nuit à Louz (pierre-oreiller) → Songe : sullam + anges + voix → Triptyque renouvelé (terre + poussière + nations) + 4 directions + escorte (« je te ramènerai ») → Réveil : Béthel + colonne + dîme → 20 ans d'exil → Retour (Sichem 33:18, Béthel 35:6) → Nation (Exode) → Royaume (Salomon) → Échelle-Christ (Jn 1:51).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>L'âge de Jacob à la fuite (~77 ans) est calculé (130 ans en 1728, 47:9 ; 20 ans chez Laban ; Joseph né ~1767) — pas donné par un verset. « Sullam » : échelle ou rampe monumentale ? La fiche présente les deux (TM : « ou échelle »). Le vœu de Jacob (28:20-22, « SI Dieu… ALORS Jéhovah sera mon Dieu ») ressemble à un marchandage — la fiche le cite sans le juger : c'est le langage des vœux antiques (cf. Anne, 1S 1:11). Beïtin = Béthel : identification quasi unanime (fouilles Albright) mais inférée, pas inscrite. L'application Jn 1:51 est donnée par Jésus lui-même — pas une invention de la fiche.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La terre + le retour</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1781 (songe)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Maison de Dieu</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Béthel</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sichem, sain et sauf</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1761 (retour)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">600 000 hommes</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatre directions</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'échelle-Christ</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jn 1:51</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/28">Genèse 28 — Bible d'étude (13-15, promesse à Jacob)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/28</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012229">Jacob — Étude perspicace (Béthel, retour, alliance)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012229</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1962442">Une prophétie sur Celui à qui appartiendra l'obéissance (Béthel)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1962442</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE019 — Béthel : la terre, la poussière, le retour</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE020">
+<div class="visuel"><img src="images/prophe_GE020_nations.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE020 · CATÉGORIE GE</div>
+<h3>Une nation et une assemblée de nations</h3>
+<div class="ref">Genèse 35:11, 12</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Alliance abrahamique (Béthel confirmé → nation → rois)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE020</div><audio controls preload="none" src="audio/fiche_GE20_nations.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE20_nations.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 35:11, 12</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Alliance abrahamique (Béthel confirmé → nation → rois)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P020 (35:11, 12 : une nation et une assemblée de nations sortiront de Jacob) ; accomplissement Ex 1:7 ; 1R 4:20</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Ton nom est Jacob. On ne t'appellera plus Jacob, mais Israël sera ton nom. » (35:10 — Israël !)</li>
+<li>« Je suis le Dieu Tout-Puissant (El Shaddaï). » (35:11 — Shaddaï !)</li>
+<li>« Sois fécond et multiplie-toi. » (35:11 — fécond !)</li>
+<li>« Une NATION sortira de toi. » (35:11 — une nation !)</li>
+<li>« Et une ASSEMBLÉE DE NATIONS. » (35:11 — des nations !)</li>
+<li>« Des ROIS sortiront de tes reins. » (35:11 — des rois !)</li>
+<li>« Le pays donné à Abraham et à Isaac, je te le donnerai. » (35:12 — le pays !)</li>
+<li>« Et à ta postérité après toi je donnerai ce pays. » (35:12 — après toi !)</li>
+<li>« Les fils d'Israël furent féconds, pullulèrent, devinrent très nombreux. » (Ex 1:7 — la nation !)</li>
+<li>« Juda et Israël étaient nombreux, comme le sable au bord de la mer. » (1R 4:20 — les nations !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>De retour de Paddân-Aram (~1759), Jacob remonte à Béthel sur ordre divin (35:1) — trente ans après le songe (P019), au même endroit. Il enterre les dieux étrangers sous le térébinthe (35:4), bâtit l'autel El-Beth-El (35:7), et Dieu lui apparaît « de nouveau » (35:9 — le mot compte : seconde visite à Béthel). Cette fois, pas de songe : une proclamation. Le nom reçu au Yabboq dans la lutte (32:28) est ici CONFIRMÉ solennellement (35:10), puis l'alliance est reformulée en version définitive : un seul homme → une nation → des nations → des rois. C'est le testament territorial de la Genèse : après Béthel-35, Dieu ne parlera plus à Jacob qu'en vision de nuit à Beér-Shéba (46:2).</p>
+<h4>4 · Explication du texte</h4>
+<p>« El Shaddaï » (35:11) : le nom de l'alliance abrahamique (17:1 — même titre pour la même promesse : fécondité + nations + rois, 17:5-6). « Une nation (goy) » : Israël comme peuple unique — le mot vise l'entité politique constituée. « Une assemblée (qehal) de nations (goyim) » : qehal = assemblée convoquée, organisée — pas une foule, un corps constitué de peuples ; la formule est presque unique (cf. 28:3 « communauté de peuples », 48:4 — Jacob lui-même la reprendra sur son lit de mort). « Des rois sortiront de tes reins » (35:11, litt. « de tes lombes ») : la royauté est inscrite dans la biologie même du patriarche — Saül, David et sa lignée en sortiront littéralement. « Le pays que j'ai donné à Abraham et à Isaac » (35:12) : troisième transmission, mêmes bornes (15:18) — le titre de propriété passe de main en main.</p>
+<h4>5 · Interprétation</h4>
+<p>LA NATION — « les fils d'Israël furent féconds et pullulèrent… le pays en fut rempli » (Ex 1:7 — P020) : en Égypte, les 70 deviennent une nation si nombreuse que Pharaon s'en effraie. L'ASSEMBLÉE DE NATIONS — les douze tribus, chacune avec son territoire, sa bannière, son prince (Nb 2 ; Jos 13-19) : un corps de peuples sous un seul Dieu ; puis Juda et Israël, « nombreux comme le sable » (1R 4:20 — P020). LES ROIS — de Saül à Sédécias, dix-neuf rois de Juda issus des « reins » de Jacob par Juda, jusqu'au Roi messianique, « Shilo » annoncé par Jacob lui-même (49:10). LE PAYS — « Jéhovah donna à Israël tout le pays qu'il avait juré » (Jos 21:43) : le titre de propriété est exécuté.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1759 (Béthel)</td><td>Nom Israël confirmé ; nations + rois annoncés (35:10-12)</td></tr>
+<tr><td class="d">1728 (Égypte)</td><td>70 âmes entrent ; la nation commence (46:27)</td></tr>
+<tr><td class="d">Ex 1:7</td><td>« Pullulèrent… le pays en fut rempli »</td></tr>
+<tr><td class="d">1513 (Exode)</td><td>600 000 hommes : la nation sort constituée</td></tr>
+<tr><td class="d">Josué</td><td>Douze territoires : l'assemblée des tribus</td></tr>
+<tr><td class="d">~1117-607</td><td>Les rois : Saül → Sédécias</td></tr>
+<tr><td class="d">Salomon (1R 4)</td><td>« Nombreux comme le sable » (v. 20)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>NOM CONFIRMÉ : Jacob lutte au Yabboq (~1761, Peniël) et reçoit le nom d'Israël — « Dieu lutte / qui lutte avec Dieu » (32:28) ; Béthel-35 le confirme officiellement, et « dès lors Jacob fut fréquemment appelé Israël » (it, Israël). Les ROIS : Saül (~1117), David (~1077), Salomon (~1037)… Sédécias (607) — quatre siècles de monarchie issue des « reins ». La formule « nation + assemblée de nations » trouve son écho en Édom aussi (Ésaü, frère jumeau, produit rois et chefs, ch. 36) — mais l'alliance, elle, passe par Jacob seul. Rachel meurt sur le chemin, juste après Béthel (35:16-19) : la proclamation royale et le deuil se touchent — Benjamin naît, Israël est nommé.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>Béthel, seconde visite : Jacob y avait dormi fugitif, il y revient patriarche avec « tout le peuple qui était avec lui » (35:6) — le lieu du songe devient le lieu du culte (autel, colonne, libation d'huile, 35:7, 14). Le pays promis (35:12) : les bornes d'Abraham (15:18, el-Arish → Euphrate) valent pour Jacob — un territoire défini, pas une vague « terre ». De Béthel, la famille repart vers le sud (Ephrata, Migdal-Éder, Hébron, 35:16-27) : l'itinéraire des patriarches se referme là où Abraham avait campé. Sichem (33:18) → Béthel (35:6) → Hébron (35:27) : le triangle patriarcal est bouclé.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Lexicographie : « qehal goyim » (assemblée de nations) est quasi unique dans la Bible hébraïque — les exégètes notent la nuance avec « qehal ammim » (assemblée de peuples, 28:3 ; 48:4) : « goyim » connote les entités nationales constituées, « ammim » les parentèles. Le TM porte « Élohim » pluriel d'excellence avec verbe au singulier (usage constant de la Genèse). Critique textuelle : 35:11-12 stable en TM, LXX (« ethnos kai synagôgai ethnôn » — nation et synagogues/assemblées de nations) et Samaritain. Démographie : 70 âmes (46:27) → 600 000 hommes (~1513) en 215 ans — croissance ~3 %/an, compatible avec Ex 1:7 (« pullulèrent ») et les fécondités antiques élevées.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Béthel-1 (songe, fuite) → 20 ans d'exil → Yabboq (nom : Israël) → Béthel-2 (proclamation : nation + nations + rois + pays) → Rachel meurt / Benjamin naît → 70 en Égypte → Nation (Ex 1:7) → Tribus-territoires (Josué) → Rois (Saül→Sédécias) → « Comme le sable » (1R 4:20) → Roi-Messie (49:10).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>« Assemblée de nations » : la fiche suit le registre (Ex 1:7 ; 1R 4:20 — Israël et ses tribus) ; certaines lectures modernes y projettent des empires contemporains — hors registre, hors fiche. La distinction goyim/ammim est réelle en hébreu mais son poids théologique est débattu — la fiche la signale sans trancher. Dates (~1759 pour Béthel-2) : reconstruites, pas versées. « Des rois » : accomplissement monarchique terrestre documenté ; l'extension messianique passe par 49:10 (fiche ultérieure), pas par ce seul verset.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nations + rois promis</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1759 (Béthel)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 âmes</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1728</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La nation pullule</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ex 1:7</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">600 000 hommes</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Saül → Sédécias</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Monarchie</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Comme le sable</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/35">Genèse 35 — Bible d'étude (10-12, Israël, nations, rois)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/35</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/35">Genèse 35 — lecture + notes (Béthel, El-Beth-El)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/Rbi8/1/35</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200012229">Jacob — Étude perspicace (Béthel, alliance reformulée)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200012229</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE020 — Une nation et une assemblée de nations</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE021">
+<div class="visuel"><img src="images/prophe_GE021_reves.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE021 · CATÉGORIE GE</div>
+<h3>Les rêves de Joseph : gerbes, soleil, lune, étoiles</h3>
+<div class="ref">Genèse 37:5-11</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Joseph (rêves → fosse → palais → prostrations)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE021</div><audio controls preload="none" src="audio/fiche_GE21_reves.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE21_reves.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 37:5-11</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Joseph (rêves → fosse → palais → prostrations)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P021 (37:5-11 : les rêves de Joseph, sa famille se prosternera) ; accomplissement Gn 42:6 ; 43:26 ; 44:14 ; 50:18</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Joseph fit un rêve et le raconta à ses frères, qui le détestèrent encore plus. » (37:5 — le récit !)</li>
+<li>« Nous étions en train de lier des gerbes dans les champs. » (37:7 — les gerbes !)</li>
+<li>« Ma gerbe se dressa et se tint debout. » (37:7 — debout !)</li>
+<li>« Vos gerbes l'entourèrent et se prosternèrent devant ma gerbe. » (37:7 — prosternées !)</li>
+<li>« Prétendrais-tu devenir notre roi et nous gouverner ? » (37:8 — roi !)</li>
+<li>« Le soleil, la lune et onze étoiles se prosternaient devant moi. » (37:9 — les astres !)</li>
+<li>« Viendrons-nous, moi, ta mère et tes frères, nous prosterner jusqu'à terre ? » (37:10 — Jacob !)</li>
+<li>« Ses frères furent jaloux de lui, mais son père garda la chose en mémoire. » (37:11 — mémoire !)</li>
+<li>« Les frères de Joseph vinrent se prosterner devant lui, face contre terre. » (42:6 — ACCOMPLI !)</li>
+<li>« Ses frères tombèrent devant lui : nous voici, tes serviteurs. » (50:18 — TOUT EST ACCOMPLI !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Hébron, ~1750 av. n. è. Joseph a 17 ans (37:2) : fils préféré de la femme aimée (Rachel, morte à la naissance de Benjamin), porteur de la tunique distinctive (37:3 — « tunique de dessus rayée », TM), rapporteur des mauvaises paroles de ses frères (37:2). En Orient, raconter un rêve de domination à ses aînés est une provocation pure — et Joseph le fait DEUX fois, « avec une grande franchise de langage et sans aucune crainte de leur déplaire » (Joseph, fidèle témoin). Réaction : haine (37:4-5, 8), jalousie (37:11), complot meurtrier (37:18-20 : « tuons-le, et voyons ce que deviendront ses rêves ! ») — les frères veulent tuer les rêves en tuant le rêveur. Ils le vendent 20 sicles (37:28) : c'est cette vente qui mettra les rêves en route vers l'Égypte.</p>
+<h4>4 · Explication du texte</h4>
+<p>DEUX rêves, UN message (cf. Pharaon, 41:32 : la répétition = certitude) : le premier, agricole (gerbes — le pain, l'économie, la survie), le second, cosmique (astres — l'autorité universelle sur la maison). « Soleil et lune » = les parents, « onze étoiles » = les onze frères (it, Étoile : « ses parents étaient représentés par le soleil et la lune, et ses onze frères par onze étoiles »). « Se prosterner » (shahah) : le verbe du vassal devant le souverain — les frères le comprennent instantanément : « prétendrais-tu devenir notre ROI ? » (37:8 — ils traduisent le symbole mieux que Joseph). Jacob réprimande (« que signifie ce rêve ? », 37:10) MAIS « garda la chose en mémoire » (37:11 — shamar : garder comme un trésor, même verbe qu'en Lc 2:19 pour Marie) : le père gronde en public et médite en secret.</p>
+<h4>5 · Interprétation</h4>
+<p>Quatre prostrations, registre à l'appui : 42:6 — les dix frères « face contre terre » devant le gouverneur inconnu (Joseph « se souvint des rêves », 42:9 — le récit boucle explicitement) ; 43:26 — les onze (avec Benjamin) se prosternent à nouveau ; 44:14 — Juda et ses frères « tombèrent devant lui » après la coupe retrouvée ; 50:18 — après la mort de Jacob, « nous voici, tes serviteurs ». Du « tuons-le, voyons ses rêves » (37:20) au « nous sommes tes serviteurs » (50:18) : les frères prononcent eux-mêmes l'épitaphe de leur complot. Le rêve des GERBES s'accomplit dans le pain (c'est le blé qui amène les frères à se prosterner), le rêve des ASTRES dans le gouvernement (Joseph règne sur toute la maison de Jacob pendant 80 ans).</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1750 (rêves)</td><td>Gerbes + astres racontés ; haine des frères (37:5-11)</td></tr>
+<tr><td class="d">~1750 (vente)</td><td>Dothân : 20 sicles, convoi vers l'Égypte (37:28)</td></tr>
+<tr><td class="d">~1737 (trône)</td><td>30 ans, premier ministre (41:46)</td></tr>
+<tr><td class="d">1728 (1re)</td><td>Les dix, face contre terre ; Joseph se souvient (42:6-9)</td></tr>
+<tr><td class="d">1727 (2e-3e)</td><td>Les onze (43:26) ; Juda et ses frères (44:14)</td></tr>
+<tr><td class="d">~1711 (4e)</td><td>« Nous voici, tes serviteurs » (50:18)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>CHRONOLOGIE : rêves ~1750 (17 ans) → vendu ~1750 → 13 ans esclave/prison → 30 ans premier ministre (~1737) → prostrations 1728-1727 (an 2 de la famine) → 50:18 (~1711, mort de Jacob) : 39 ans entre le rêve et son dernier accomplissement. 20 SICLES (37:28) : prix d'un jeune esclave au Bronze moyen — les archives de Mari et de Nuzi confirment ~20-30 sicles au IIe millénaire (contre 50-60 au Ier) : le chiffre trahit l'époque réelle de l'événement, pas celle d'un rédacteur tardif. Dothân (37:17) : Tell Dothan fouillé, citernes du Bronze — la « citerne » (bôr) où Joseph est jeté existe encore en modèle. La caravane « ismaélite-madianite » (37:25-28) : deux noms, un convoi mixte — les Madianites, cousins ismaélites par Qétoura, commercent ensemble (cf. Jg 8:24, les Madianites « ismaélites »).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>HÉBRON (rêves, 37:14) → SICHEM → DOTHÂN (~20 km au nord de Sichem, sur la route des caravanes Galaad-Égypte) : Joseph cherche ses frères au nord, la caravane descend au sud — la géographie du commerce antique fait le reste. Le convoi porte « aromates, baume et myrrhe » (37:25) : les produits de Galaad (cf. Jr 8:22, le baume de Galaad) vers l'Égypte — la route commerciale historique Via Maris intérieure. De Dothân à l'Égypte : ~350 km à pied, enchaîné à un convoi — le trajet exact du rêve vers son accomplissement : c'est en Égypte, pas à Hébron, que les gerbes se prosterneront.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Symbolique astrale : soleil-lune-étoiles comme hiérarchie familiale — motif courant dans l'iconographie proche-orientale (stèles : disque solaire, croissant et étoiles au-dessus du roi). Oniromancie antique : à Mari et en Égypte, les rêves de domination sont classés « menaçants » et exigent des rites d'exorcisme — les frères réagissent en hommes du IIe millénaire : tuer le rêveur conjure le rêve. Psychologie narrative : le double rêve (terrestre puis céleste) suit la gradation typique des récits de vocation antiques — mais ici le héros ne comprend PAS (il raconte naïvement) : l'ironie dramatique est totale, les persécuteurs sont les exégètes (« tu serais roi ? ») et les instruments (la vente accomplit le programme).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>17 ans : 2 rêves racontés naïvement → Haine (« tu serais roi ? » — eux comprennent !) → Complot (« voyons ses rêves ! ») → Vente 20 sicles → 13 ans d'effacement → Trône d'Égypte → Famine : les frères descendent → 4 prostrations (42:6 ; 43:26 ; 44:14 ; 50:18) → « Nous sommes tes serviteurs » : les tueurs de rêves prononcent l'accomplissement.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>La LUNE : Rachel est MORTE avant les prostrations (35:19) — elle ne se prosterne jamais littéralement devant Joseph ; le symbole vise la famille entière (certains proposent Léa, « mère » survivante — hypothèse, pas verset). Jacob se prosterne-t-il ? Il « s'inclina » devant Pharaon (47:7-10, bénédiction, pas prostration devant Joseph) — le registre ne cite que les frères (42:6 ; 43:26 ; 44:14 ; 50:18) : la fiche suit le registre. Joseph « rapporteur » (37:2) et naïf : le récit ne l'idéalise pas — ses défauts font partie du tableau. Les prix de Mari/Nuzi : argument de cohérence historique, pas preuve au sens strict.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gerbes + astres</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1750 (rêves)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">20 sicles</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~1750 (vente)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier ministre</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Face contre terre</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1728</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">2e et 3e fois</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1727</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tes serviteurs</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~1711</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1961168">Joseph, un fidèle témoin de Jéhovah (rêves, prostrations)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1961168</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1200014123">Étoile — Étude perspicace (soleil, lune, onze étoiles)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1200014123</a>
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/37">Genèse 37 — Bible d'étude (5-11, les deux rêves)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/37</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE021 — Les rêves de Joseph : gerbes, soleil, lune, étoiles</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE022">
+<div class="visuel"><img src="images/prophe_GE022_echanson.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE022 · CATÉGORIE GE</div>
+<h3>Trois jours : l'échanson et le panetier</h3>
+<div class="ref">Genèse 40:8-19</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Joseph (prison → interprétations → palais)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE022</div><audio controls preload="none" src="audio/fiche_GE22_echanson.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE22_echanson.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 40:8-19</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Joseph (prison → interprétations → palais)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P022 (40:8-19 : trois jours, échanson rétabli, panetier pendu) ; accomplissement Gn 40:20-22</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Les explications n'appartiennent-elles pas à Dieu ? » (40:8 — à Dieu !)</li>
+<li>« Racontez-moi donc [vos rêves]. » (40:8 — racontez !)</li>
+<li>« Un cep devant moi : trois sarments ; il bourgeonna, fleurit, mûrit. » (40:9-10 — le cep !)</li>
+<li>« Je pressais les raisins dans la coupe de Pharaon. » (40:11 — la coupe !)</li>
+<li>« Les trois sarments sont trois jours. » (40:12 — trois jours !)</li>
+<li>« Pharaon élèvera ta tête et te rétablira dans ta charge. » (40:13 — rétabli !)</li>
+<li>« Trois corbeilles de pain blanc sur ma tête. » (40:16 — les corbeilles !)</li>
+<li>« Les oiseaux les mangeaient dans la corbeille. » (40:17 — les oiseaux !)</li>
+<li>« Les trois corbeilles sont trois jours. » (40:18 — trois jours !)</li>
+<li>« Pharaon élèvera ta tête de dessus toi : il te pendra au bois. » (40:19 — pendu !)</li>
+<li>« Le troisième jour, anniversaire de Pharaon… il rétablit l'échanson et pendit le panetier. » (40:20-22 — TOUT ACCOMPLI !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>La prison « où les prisonniers du roi étaient enfermés » (39:20), ~1739 av. n. è. Joseph y est depuis des années — calomnié par la femme de Potiphar, oublié des hommes, « Jéhovah était avec Joseph » (39:21). Deux hauts dignitaires disgraciés le rejoignent : le grand échanson (mashqé — celui qui verse à boire au roi, goûteur officiel, rempart contre l'empoisonnement) et le grand panetier (ophé — fournisseur du pain royal). Une même nuit, deux rêves ; un même matin, deux visages abattus (40:6). Joseph, l'esclave-intendant de la prison (39:22), remarque, interroge, écoute — et prononce la phrase qui fait de lui un prophète : « les explications appartiennent à Dieu » (40:8). Premier exercice public du don qui le mènera au trône.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Nasa rosh » (« élever la tête ») : le même verbe pour les deux hommes (40:13, 19) — avec deux sens opposés : RELEVER la tête (grâce, rétablissement) ou ENLEVER la tête (décapitation puis exposition — « te pendra au bois », 40:19). Le jeu de mots est intraduisible et intentionnel : une seule phrase, deux destins. TROIS = TROIS : sarments-jours, corbeilles-jours — la clé est arithmétique, pas symbolique : le délai est compté, vérifiable sous 72 heures. Le CEP qui bourgeonne-fleurit-mûrit en un rêve (40:10) : la vie accélérée — signe de restauration ; les OISEAUX qui mangent le pain du roi (40:17) : la nourriture soustraite au maître — signe de rejet. Joseph ajoute une supplique personnelle (40:14-15 : « souviens-toi de moi ») — le prophète reste un prisonnier qui espère.</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement au jour près : « le troisième jour, jour de l'anniversaire de Pharaon » (40:20 — P022), les deux sentences tombent ensemble — « selon l'interprétation que Joseph leur avait donnée » (40:22 — P022 : le récit souligne la conformité). Double portée : IMMÉDIATE — Joseph est authentifié comme interprète (« les explications appartiennent à Dieu » vérifié en 72 h) ; DIFFÉRÉE — l'échanson oublie Joseph DEUX ANS (40:23 ; 41:1) puis s'en souvient au moment exact des songes de Pharaon (41:9-13) : l'oubli fait partie du plan — une libération anticipée aurait fait manquer à Joseph son rendez-vous avec Pharaon. La prison est l'école, les dignitaires sont l'examen, Pharaon sera la promotion.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1739 (rêves)</td><td>Une nuit, deux rêves, deux visages abattus (40:5-7)</td></tr>
+<tr><td class="d">~1739 (clés)</td><td>« À Dieu les explications » ; 3 = 3 jours (40:8-19)</td></tr>
+<tr><td class="d">J+3 (annivers.)</td><td>Échanson rétabli, panetier pendu (40:20-22)</td></tr>
+<tr><td class="d">« Selon… »</td><td>Conformité soulignée par le récit (40:22)</td></tr>
+<tr><td class="d">+2 ans (oubli)</td><td>L'échanson oublie Joseph (40:23)</td></tr>
+<tr><td class="d">~1737 (souvenir)</td><td>« Je rappelle aujourd'hui mes fautes » (41:9)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>L'ÉCHANSON royal : fonction attestée dans tout l'Orient (cf. Néhémie, échanson d'Artaxerxès, Né 1:11) — goûter avant le roi, une charge de confiance absolue qui donne accès à l'oreille du souverain : c'est pourquoi son témoignage (41:9-13) suffira à faire sortir Joseph. L'ANNIVERSAIRE de Pharaon (40:20) : les fêtes royales (couronnement, jubilés-sed, anniversaires) sont les jours de grâces et de sentences — le récit connaît l'usage de cour. LE BOIS (40:19) : l'exposition/pal après exécution, pratique égyptienne et perse attestée (cf. Haman, Est 7:10). CHRONOLOGIE : ~1739 (prison) → 2 ans d'oubli → ~1737 (Pharaon) : l'échanson restauré sert le vin du roi pendant deux ans avant que le souvenir ne remonte.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>La prison « du roi » : dans la capitale du delta (méridionale ? Memphis ? — « la capitale semble avoir été près du delta du Nil », it, Nation nouvelle), la prison d'État jouxte le palais — dignitaires et esclave hébreu sous le même toit. La VIGNE du rêve (40:9-11) : l'Égypte cultive la vigne dans le delta et le Fayoum — les tombes thébaines peignent vendanges, pressoirs et caves : le cep de l'échanson est un cep égyptien, pas cananéen. Le PAIN blanc (40:16 — « pain blanc », farine fine) : la boulangerie royale, des dizaines de sortes de pains attestées par les offrandes funéraires. Cour, cep, pain : tout le rêve sent l'Égypte — preuve interne d'authenticité du cadre.</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Botanique onirique : bourgeon → fleur → grappe mûre (40:10) en une seule vision — cycle phénologique complet, impossible en nature, naturel en rêve : le récit distingue le temps réel du temps onirique. Ornithologie funéraire : les oiseaux qui mangent la chair exposée (40:19) — milans et vautours du Nil, charognards documentés ; l'image du cadavre sans sépulture est la suprême malédiction égyptienne (peuple obsédé par la conservation du corps — cf. l'embaumement de Jacob, 50:2-3). Philologie : « nasa rosh » aux deux sens est attesté (cf. 2R 25:27, Evil-Merodac « éleva la tête » de Yoïakîn = le grâcia) — le calembour de Joseph joue sur un vrai double usage royal.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Prison : 2 dignitaires, 2 rêves, 1 nuit → « Les explications appartiennent à Dieu » → Cep : 3 sarments = 3 jours → tête RELEVÉE (grâce) → Corbeilles : 3 = 3 jours → tête ENLEVÉE (bois) → 3e jour : anniversaire → double sentence conforme (40:20-22) → L'oubli (2 ans) → Le souvenir (41:9) → Pharaon : la prison mène au palais.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>La faute des deux dignitaires : inconnue (« ils avaient offensé », 40:1 — sans détail ; complot ? négligence ? empoisonnement manqué ? — le récit tait, la fiche tait). « Pendre au bois » : décapitation + exposition ou empalement ? Le texte dit « élever la tête de dessus toi » puis « pendre » — la fiche cite sans trancher le mode. L'échanson « oublia » (40:23) : ingratitude ou providence — le texte donne le fait, pas le motif ; la fiche propose la lecture providentielle comme interprétation, pas comme verset. Capitale du Pharaon : non nommée — « près du delta » (it), sans plus.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux rêves</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1739 (prison)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">3 = 3 jours</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">La clé</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Grâce + sentence</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">J+3</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Selon l'interprétation</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">40:22</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'oubli</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">+2 ans</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le souvenir</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/40">Genèse 40 — Bible d'étude (8-19, les deux interprétations)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/40</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1961168">Joseph, un fidèle témoin de Jéhovah (interprétations exactes)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1961168</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1970006">Jéhovah donne l'abondance en période de famine (40:8 ; 41:16)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1970006</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE022 — Trois jours : l'échanson et le panetier</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE023">
+<div class="visuel"><img src="images/prophe_GE023_famine.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE023 · CATÉGORIE GE</div>
+<h3>Sept vaches grasses, sept vaches maigres</h3>
+<div class="ref">Genèse 41:25-32</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Joseph (Pharaon → premier ministre → famine gérée)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE023</div><audio controls preload="none" src="audio/fiche_GE23_famine.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE23_famine.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 41:25-32</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Joseph (Pharaon → premier ministre → famine gérée)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P023 (41:25-32 : sept années d'abondance, puis sept années de famine) ; accomplissement Gn 41:47-54</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Ce n'est pas moi ! Dieu donnera à Pharaon une réponse de paix. » (41:16 — pas moi !)</li>
+<li>« Sept vaches belles et grasses montaient du Nil. » (41:18 — les grasses !)</li>
+<li>« Sept vaches chétives et laides montaient derrière elles. » (41:19 — les maigres !)</li>
+<li>« Les maigres mangèrent les grasses — sans qu'on s'en aperçoive. » (41:20-21 — englouties !)</li>
+<li>« Sept épis pleins et beaux, puis sept épis vides, brûlés par le vent d'est. » (41:22-23 — les épis !)</li>
+<li>« Les songes de Pharaon sont UN SEUL songe. » (41:25 — un seul !)</li>
+<li>« Sept années d'abondance dans tout le pays d'Égypte. » (41:29 — sept !)</li>
+<li>« Sept années de famine les suivront — on oubliera toute l'abondance. » (41:30 — oubli !)</li>
+<li>« La famine épuisera le pays. » (41:30 — épuisera !)</li>
+<li>« Le songe répété : la chose est ARRÊTÉE de la part de Dieu, Dieu se hâtera de l'exécuter. » (41:32 — ARRÊTÉE !)</li>
+<li>« Les sept années d'abondance vinrent… puis commencèrent les sept années de famine, comme Joseph l'avait dit. » (41:53-54 — COMME DIT !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Le palais, ~1737 av. n. è. « Au bout de deux ans » (41:1 — deux ans après l'échanson), Pharaon rêve deux fois la même nuit : vaches du Nil, épis d'une même tige. Au matin, « son esprit fut agité » (41:8) — ni magiciens (hartummim) ni sages ne peuvent expliquer : la caste savante de l'empire capitule. L'échanson se souvient (41:9-13), on « fait courir » Joseph hors de la fosse (41:14 — bôr, « citerne », TM : le même mot que la citerne de Dothân ! De bôr en bôr, la fosse mène au trône), on le rase (usage égyptien — les Sémites portent la barbe), on le change — et l'esclave tondu fait face au dieu-roi. Première phrase : « ce n'est pas moi » (41:16) — le témoin fidèle honore son Dieu « devant ce souverain adorateur du soleil » (1970006).</p>
+<h4>4 · Explication du texte</h4>
+<p>« UN SEUL songe » (41:25) : vaches et épis disent la même chose — bétail et blé, les deux mamelles de l'Égypte. « Répété… arrêté » (41:32) : la répétition n'est pas redondance, c'est SCEAU — « Dieu se hâtera » : imminence + certitude. Les maigres qui mangent les grasses « sans qu'on s'en aperçoive » (41:21 — détail répété par Pharaon lui-même, 41:21) : la famine EFFACE l'abondance sans en garder trace — « on oubliera toute cette abondance » (41:30-31). Le vent d'est (qadim, 41:23, 27) : le sirocco desséchant — les Égyptiens le connaissent : le khamsin qui grille les moissons. Joseph ne se contente pas d'interpréter : il PROPOSE (41:33-36 — prélever un cinquième, stocker sous la main de Pharaon) : le prophète est aussi un administrateur — et c'est le plan qui vaut le poste (41:39-41).</p>
+<h4>5 · Interprétation</h4>
+<p>Accomplissement daté au chapitre près : « les sept années d'abondance vinrent comme Joseph l'avait dit… puis commencèrent les sept années de famine, comme Joseph l'avait dit » (41:53-54 — P023 : deux fois « comme dit », le récit pointe deux fois la conformité). Joseph « amassa du blé en quantité considérable » (41:49 — « comme le sable de la mer, jusqu'à cesser de compter ») puis « ouvrit les entrepôts » (41:56). Portée triple : L'ÉGYPTE est sauvée (« pour l'Égypte, Joseph était un sauveur », it) ; LA MAISON DE JACOB est attirée (le blé fait descendre les frères — les rêves de 37 s'accomplissent par la famine de 41) ; LES NATIONS affluent (« de tous les pays on venait », 41:57). Et Pharaon confesse : « trouverions-nous un homme en qui soit l'esprit de Dieu ? » (41:38) — le païen authentifie le prophète.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1737 (rêves)</td><td>Vaches + épis ; sages muets (41:1-8)</td></tr>
+<tr><td class="d">~1737 (clé)</td><td>UN songe : 7 + 7 ; répété = arrêté (41:25-32)</td></tr>
+<tr><td class="d">~1737 (trône)</td><td>30 ans ; anneau, char, abrék (41:41-46)</td></tr>
+<tr><td class="d">~1737-1730</td><td>7 ans : blé comme le sable (41:47-49)</td></tr>
+<tr><td class="d">~1730-1723</td><td>7 ans : famine « comme dit » (41:53-54)</td></tr>
+<tr><td class="d">1728 (Canaan)</td><td>Jacob envoie ses fils acheter du blé (42:1-3)</td></tr>
+<tr><td class="d">41:57</td><td>« De tous les pays on venait en Égypte »</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>CHRONOLOGIE : ~1737 (Joseph 30 ans devant Pharaon, 41:46) → 7 ans d'abondance (~1737-1730) → 7 ans de famine (~1730-1723) → Jacob descend en 1728 (an 2 : « deux ans… encore cinq ans », 45:6 ✓). Joseph premier ministre « pendant treize ans esclave et prisonnier » avant (1101963005). « Seulement par le trône je serai plus grand que toi » (41:40, TM) : la corégence de fait — anneau, collier d'or, second char, cri « abrék » (41:42-43 — terme d'honneur, TM). La STÈLE DE LA FAMINE (Séhel, île d'Éléphantine) : texte gravé sous les Ptolémées racontant SEPT ANS de famine sous Djéser (IIIe dynastie) — parallèle littéraire célèbre : l'Égypte connaissait le motif des 7 ans ; la stèle est tardive (voir limites) mais prouve la vraisemblance culturelle du récit.</p>
+<h4>8 · Preuves géographiques</h4>
+<p>LE NIL, personnage du rêve : les vaches « montent du Nil » (41:18 — ye'or) — en Égypte tout vient du fleuve : crue = abondance, décrue = famine. Les greniers pharaoniques : silos coniques en brique crue, modèles funéraires (tombe de Meketrê), « greniers de Joseph » de la tradition populaire à Saqqarah. Le cinquième prélevé (41:34) : impôt de 20 % — l'administration égyptienne, championne du recensement et du stockage, fournit la machine ; Joseph fournit le plan. « De tous les pays » (41:57) : Canaan, Syrie, Transjordanie frappés aussi — la famine est régionale (sécheresse du Levant + décrue du Nil : le couple climatique fatal, connu des archives).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Climatologie : les famines égyptiennes suivent les basses crues du Nil (mousson éthiopienne faible) — les nilomètres (Rhoda, Éléphantine) mesuraient la crue au doigt près, et les archives arabes médiévales confirment des séries de 7 mauvaises crues consécutives (ex. 1064-1071 de n. è. : 7 ans de famine sous les Fatimides — le chiffre sept a un fond climatique réel). Agronomie : le blé stocké en silos scellés se conserve 7+ ans en climat sec — le plan septennal est techniquement viable. Égyptologie : rasage (41:14), anneau-sceau (41:42), « père de Pharaon » (45:8, titre de vizir « it-netjer » ?) — le chapitre fourmille de détails de cour authentiques (noms, titres, rites).</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>2 ans après l'échanson → 2 rêves, 1 nuit → Sages muets → Souvenir (41:9) → Fosse → rasage → trône → « Pas moi — Dieu » → UN songe : 7 + 7 → Répété = ARRÊTÉ → Plan (1/5, greniers) → Anneau + char + abrék → 7 ans : blé comme le sable → 7 ans : famine — « comme Joseph l'avait dit » × 2 → Tous les pays affluent.</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>La stèle de la famine : gravée ~200 av. n. è. pour des événements prétendus de ~2600 av. n. è. — propagande sacerdotale tardive, PAS une attestation contemporaine de Joseph ; la fiche la cite comme parallèle culturel, jamais comme preuve. Le Pharaon : non nommé (comme toujours dans Joseph — contraste avec l'Exode qui ne nomme pas non plus) : Hyksôs ou Moyen Empire ? Débat ouvert — la fiche suit la chronologie interne (XVIIIe s.) sans identifier le roi. « Abrék » (41:43) : sens exact incertain (« à genoux » ? terme d'honneur ? — TM : « apparemment un terme invitant à manifester honneur et respect »). Tsaphnath-Panéah (41:45) : étymologies multiples, non tranchées.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vaches + épis</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737 (rêves)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 + 7, arrêté</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">La clé</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">30 ans, abrék</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737 (trône)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Blé comme sable</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737-1730</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Famine « comme dit »</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1730-1723</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tous les pays</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">41:57</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/41">Genèse 41 — Bible d'étude (25-32, sept + sept ; 38-44, élévation)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/41</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1970006">Jéhovah donne l'abondance en période de famine (blé, premier ministre)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1970006</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101963005">Une nation nouvelle est délivrée (13 ans, 7 ans, 1728)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101963005</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE023 — Sept vaches grasses, sept vaches maigres</span><span>Catégorie GE</span></div></div>
+</article>
+<article class="fiche" id="GE024">
+<div class="visuel"><img src="images/prophe_GE024_preserve.jpg" alt="" loading="lazy"><div class="legende">Illustration — image générée pour ce dossier privé : ni photographie d'un site réel, ni reproduction d'un artefact.</div></div>
+<div class="hd">
+<div class="num">FICHE GE024 · CATÉGORIE GE</div>
+<h3>Dieu m'a envoyé pour vous conserver la vie</h3>
+<div class="ref">Genèse 45:7-11 ; 50:20</div></div><div class="bd">
+<div class="badges">
+<span class="badge or">Accomplie</span>
+<span class="badge">Joseph (providence → Goshen → grand peuple)</span>
+<span class="badge">3 sources</span>
+<span class="badge">🎧 version audio</span>
+</div>
+<div class="player fiche"><div class="t">🎧 Écouter la fiche GE024</div><audio controls preload="none" src="audio/fiche_GE24_preserve.mp3"></audio><div class="print-audio">🔊 Piste audio : audio/fiche_GE24_preserve.mp3 (ouvrir le fichier dans le dossier pour l’écouter).</div></div>
+<h4>1 · Identification</h4>
+<table><tbody>
+<tr><td class="d">Référence</td><td>Genèse 45:7-11 ; 50:20</td></tr>
+<tr><td class="d">Statut</td><td>Accomplie</td></tr>
+<tr><td class="d">Chronologie</td><td>Joseph (providence → Goshen → grand peuple)</td></tr>
+<tr><td class="d">Registre</td><td>Registre : Genèse — P024 (45:7-11 ; 50:20 : Jacob sera préservé avec toute sa maison) ; accomplissement Gn 46:26-27 ; 47:11-12</td></tr>
+</tbody></table>
+<h4>2 · Le texte</h4><div class="txt"><ul>
+<li>« Je suis Joseph votre frère, que vous avez vendu pour l'Égypte. » (45:4 — c'est moi !)</li>
+<li>« Ne vous affligez pas de m'avoir vendu ici. » (45:5 — ne pleurez pas !)</li>
+<li>« C'est pour vous conserver LA VIE que Dieu m'a envoyé devant vous. » (45:5 — la vie !)</li>
+<li>« Deux ans de famine ; encore cinq ans sans labour ni moisson. » (45:6 — 2 + 5 !)</li>
+<li>« Dieu m'a envoyé pour vous conserver un RESTE dans le pays. » (45:7 — un reste !)</li>
+<li>« Et pour vous conserver la vie par une GRANDE DÉLIVRANCE. » (45:7 — délivrance !)</li>
+<li>« Ce n'est pas vous qui m'avez envoyé ici, c'est Dieu. » (45:8 — pas vous !)</li>
+<li>« Tu habiteras au pays de GOSHEN, près de moi. » (45:10 — Goshen !)</li>
+<li>« Je te nourrirai là — cinq années encore. » (45:11 — nourri !)</li>
+<li>« Vous aviez pensé du mal contre moi : Dieu l'a pensé en BIEN. » (50:20 — en bien !)</li>
+<li>« Afin de conserver la vie à un GRAND PEUPLE. » (50:20 — grand peuple !)</li>
+<li>« Joseph établit son père et ses frères dans la contrée de Ramsès. » (47:11 — INSTALLÉS !)</li>
+</ul></div>
+<h4>3 · Contexte</h4>
+<p>Deux scènes, dix-sept ans d'écart. (1) ~1728 : le palais, an 2 de la famine. Juda vient d'offrir sa vie pour Benjamin (44:33 — le repentir est prouvé), Joseph « ne put se contenir » (45:1), renvoie les Égyptiens, pleure si fort qu'on l'entend jusqu'au palais (45:2) — et se révèle : « je suis Joseph ». Terreur des frères (45:3) — et la phrase qui retourne vingt ans de culpabilité : « c'est Dieu qui m'a envoyé » (45:5-8, trois fois « Dieu m'a envoyé »). (2) ~1711 : après la mort de Jacob, les frères craignent la vengeance (50:15) — seconde absolution, définitive : « vous aviez pensé du mal… Dieu l'a pensé en bien » (50:20). Entre les deux : la descente en Égypte (1728), l'installation à Goshen, dix-sept ans de paix (47:28). La Genèse se referme sur cette théologie : le mal des hommes, matière première du bien de Dieu.</p>
+<h4>4 · Explication du texte</h4>
+<p>« Pour vous conserver la vie » (45:5, lehahayot) : le verbe « faire vivre » — Joseph définit sa mission en UN mot : vivifier. « Un RESTE (she'erit) dans le pays » (45:7) : le vocabulaire du « reste » — repris par les prophètes (Is 10:20-22, le « reste reviendra ») : la maison de Jacob EST le premier « reste » sauvé de l'histoire biblique. « Ce n'est pas vous… c'est Dieu » (45:8) : non pas négation du crime (ils l'ont VENDU, 45:4 le rappelle), mais affirmation d'une causalité supérieure qui traverse le crime sans l'absoudre — les frères restent coupables (50:17 demande pardon), et Dieu reste souverain. « Dieu l'a pensé en bien » (50:20 — hasham, « penser, projeter, tramer » : le MÊME verbe pour le mal des frères et le bien de Dieu) : deux trames, un seul métier — Dieu tisse le salut avec le fil du crime.</p>
+<h4>5 · Interprétation</h4>
+<p>La promesse-préservation s'exécute en trois actes : L'ENTRÉE — « toutes les âmes de la maison de Jacob venues en Égypte : 70 » (46:27 — P024), avec le visa de Dieu lui-même à Beér-Shéba (« ne crains pas de descendre… j'y ferai de toi une grande nation », 46:3) ; L'INSTALLATION — « Joseph établit son père et ses frères… dans la contrée de Ramsès, comme Pharaon l'avait ordonné » (47:11 — P024), « il les nourrit de pain » (47:12 — P024) pendant les cinq dernières années de famine ; LA MULTIPLICATION — les 70 deviennent la nation d'Ex 1:7, puis les 600 000 de l'Exode. « Afin de conserver la vie à un GRAND PEUPLE » (50:20) : le « grand peuple » de 50:20, c'est Israël — et, au-delà, « le Grand Joseph » (1970006) : Jésus, préposé à la nourriture de vie.</p>
+<h4>6 · L’accomplissement</h4>
+<table><thead><tr><th>Quand</th><th>Événement</th></tr></thead><tbody>
+<tr><td class="d">~1728 (révélation)</td><td>« Je suis Joseph » ; « Dieu m'a envoyé » × 3 (45:4-8)</td></tr>
+<tr><td class="d">1728 (visa)</td><td>Beér-Shéba : « j'y ferai une grande nation » (46:3)</td></tr>
+<tr><td class="d">1728 (entrée)</td><td>70 âmes de la maison de Jacob (46:26-27)</td></tr>
+<tr><td class="d">1728 (Goshen)</td><td>Contrée de Ramsès ; nourris de pain (47:11-12)</td></tr>
+<tr><td class="d">1711 (paix)</td><td>Jacob meurt à 147 ans ; 17 ans en Égypte (47:28)</td></tr>
+<tr><td class="d">~1711 (absolution)</td><td>« Dieu l'a pensé en bien… grand peuple » (50:20)</td></tr>
+<tr><td class="d">1513 (Exode)</td><td>600 000 hommes + les os de Joseph (Ex 13:19)</td></tr>
+</tbody></table>
+<h4>7 · Preuves historiques</h4>
+<p>CHRONOLOGIE : 1728 (descente, Jacob 130 ans, 47:9) → 1711 (mort de Jacob, 147 ans, après 17 ans en Égypte, 47:28 ✓) → ~1657 (mort de Joseph, 110 ans). 70 ÂMES (46:27) : le décompte détaillé (46:8-27) liste 66 + Joseph et ses 2 fils + Jacob = 70 — chiffre repris en Ex 1:5 et Dt 10:22. EMBAUMEMENT : Jacob embaumé 40 jours, pleuré 70 jours (50:2-3) — durées égyptiennes authentiques (Hérodote : ~70 jours de deuil) ; convoi avec chars et cavaliers « très considérable » (50:9) jusqu'à Macpéla. Joseph embaumé à son tour, « mis dans un cercueil en Égypte » (50:26) — dernier verset de la Genèse : un cercueil en attente de l'Exode (son serment : « vous ferez remonter mes os », 50:25 — exécuté en Ex 13:19, Jos 24:32).</p>
+<h4>8 · Preuves géographiques</h4>
+<p>GOSHEN « la contrée de Ramsès » (47:11), « à l'est du delta du Nil » (1101963005) : la lisière orientale du delta — pâturages pour les troupeaux d'Hébreux (bergers « en abomination aux Égyptiens », 46:34 — d'où la séparation résidentielle), à l'écart des crues et des villes. « Près de moi » (45:10) : la capitale du delta est proche — Joseph visite, administre, nourrit. Beér-Shéba (46:1-5) : dernière étape cananéenne, sacrifices au « Dieu de son père Isaac », visa nocturne — la frontière franchie avec Dieu. Le convoi funèbre remonte « au-delà du Jourdain » jusqu'à l'aire d'Atad (50:10) puis Macpéla (50:13) : les Égyptiens pleurent un Hébreu en Canaan — « deuil important pour les Égyptiens » (50:11, Abel-Mitsraïm).</p>
+<h4>9 · Preuves scientifiques et archéologiques</h4>
+<p>Momification : 40 jours d'embaumement + 70 jours de deuil (50:2-3) — fourchettes confirmées par Hérodote (II, 86-88 : 70 jours) et les papyri : le récit connaît les usages funéraires égyptiens au jour près. Démographie : 70 → 600 000 hommes en 215 ans (1728-1513) — soit ~2 millions de personnes : croissance ~3 %/an, forte mais documentée pour des populations pastorales prolifiques en période faste (« pullulèrent », Ex 1:7). Critique textuelle : 70 (TM, 46:27) vs 75 (LXX ; Ac 7:14 suit la LXX — elle ajoute 5 descendants de Manassé et Éphraïm, 46:20 LXX) : divergence expliquée et stable — Étienne cite la Bible grecque de son auditoire. Pastoralisme : moutons et chèvres au delta oriental — compatible avec l'archéologie du Ouadi Toumilat.</p>
+<h4>10 · Schéma · l'essentiel en bref</h4>
+<p>Vente (le mal, 37) → Fosse → Prison → Palais (le plan, 41) → Famine (l'outil) → « C'est Dieu qui m'a envoyé » × 3 (45:5-8) → 70 âmes (46:27) → Goshen-Ramsès, nourris (47:11-12) → 17 ans de paix → « Dieu l'a pensé en bien » (50:20) → Grand peuple (Ex 1:7) → Exode (os de Joseph, Ex 13:19).</p>
+<h4>11 · Ce que cette fiche ne dit pas</h4>
+<p>70 vs 75 : la fiche expose les deux chiffres (TM 70, LXX/Ac 7:14 : 75 avec les petits-fils) — divergence de recensement, pas contradiction théologique. « Ce n'est pas vous » (45:8) : la fiche maintient les deux vérités (culpabilité des frères + souveraineté de Dieu) sans les dissoudre — mystère assumé, comme en 50:17 (pardon demandé = faute réelle). Localisation exacte de Goshen : delta oriental (consensus), limites précises débattues (Ouadi Toumilat ? — hypothèse). Joseph « père de Pharaon » (45:8) : titre de dignité (cf. vizir), pas paternité — la fiche ne spécule pas sur le protocole exact.</p>
+<h4>Chronologie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Dieu m'a envoyé »</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1728</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Beér-Shéba</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (visa)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 âmes</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (entrée)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nourris 5 ans</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Goshen</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pensé en bien</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1711</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Grand peuple + os</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+</svg>
+<h4>Sources</h4><div class="src">
+<a href="https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/50">Genèse 45-50 — Bible d'étude (45:5-8 ; 50:20, préservation)<br>https://wol.jw.org/fr/wol/b/r30/lp-f/nwtsty/1/50</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1101963005">Une nation nouvelle est délivrée (1728, Goshen, 70 personnes)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1101963005</a>
+<a href="https://wol.jw.org/fr/wol/d/r30/lp-f/1961168">Joseph, un fidèle témoin de Jéhovah (préservation de la maison)<br>https://wol.jw.org/fr/wol/d/r30/lp-f/1961168</a>
+</div>
+</div>
+<div class="bd" style="padding-top:0"><div class="pied"><span>Fiche GE024 — Dieu m'a envoyé pour vous conserver la vie</span><span>Catégorie GE</span></div></div>
+</article>
+<h1 class="t" id="chronos" style="scroll-margin-top:64px">
+Chronologie de la catégorie GE</h1>
+<div class="st">Toutes les fiches sur une seule ligne. Chaque ville a son propre
+axe : les comparer revient à les confondre.</div>
+<h4>GE019 — Béthel : la terre, la poussière, le retour</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La terre + le retour</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1781 (songe)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Maison de Dieu</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Béthel</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Sichem, sain et sauf</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1761 (retour)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">600 000 hommes</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Quatre directions</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'échelle-Christ</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Jn 1:51</text>
+</svg>
+<h4>GE020 — Une nation et une assemblée de nations</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nations + rois promis</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1759 (Béthel)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 âmes</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1728</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">La nation pullule</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Ex 1:7</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">600 000 hommes</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Saül → Sédécias</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">Monarchie</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Comme le sable</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Salomon</text>
+</svg>
+<h4>GE021 — Les rêves de Joseph : gerbes, soleil, lune, étoiles</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Gerbes + astres</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1750 (rêves)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">20 sicles</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~1750 (vente)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Premier ministre</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Face contre terre</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1728</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">2e et 3e fois</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1727</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tes serviteurs</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~1711</text>
+</svg>
+<h4>GE022 — Trois jours : l'échanson et le panetier</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Deux rêves</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1739 (prison)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">3 = 3 jours</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">La clé</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Grâce + sentence</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">J+3</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Selon l'interprétation</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">40:22</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">L'oubli</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">+2 ans</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Le souvenir</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737</text>
+</svg>
+<h4>GE023 — Sept vaches grasses, sept vaches maigres</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Vaches + épis</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737 (rêves)</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">7 + 7, arrêté</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">La clé</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">30 ans, abrék</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737 (trône)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Blé comme sable</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">~1737-1730</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Famine « comme dit »</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1730-1723</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Tous les pays</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">41:57</text>
+</svg>
+<h4>GE024 — Dieu m'a envoyé pour vous conserver la vie</h4>
+<svg viewBox="0 0 780 112" role="img" aria-label="Chronologie">
+<line x1="36" y1="56" x2="744" y2="56" stroke="#1a4a8a" stroke-width="3" stroke-linecap="round"/>
+<circle cx="60.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="60.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">« Dieu m'a envoyé »</text>
+<text x="60.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1728</text>
+<circle cx="192.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="192.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Beér-Shéba</text>
+<text x="192.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (visa)</text>
+<circle cx="324.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="324.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">70 âmes</text>
+<text x="324.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">1728 (entrée)</text>
+<circle cx="456.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="456.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Nourris 5 ans</text>
+<text x="456.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">Goshen</text>
+<circle cx="588.0" cy="56" r="6" fill="#1a4a8a" stroke="#0B2545" stroke-width="1.6"/>
+<text x="588.0" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Pensé en bien</text>
+<text x="588.0" y="52" text-anchor="middle" font-size="10.5" fill="#5b6472">~1711</text>
+<circle cx="720.0" cy="56" r="8" fill="#E9C46A" stroke="#0B2545" stroke-width="1.6"/>
+<text x="720.0" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0B2545">Grand peuple + os</text>
+<text x="720.0" y="100" text-anchor="middle" font-size="10.5" fill="#5b6472">1513</text>
+</svg>
+<div class="attn"><b>Remarque de méthode.</b> Ces chronologies ne
+sont pas sur la même échelle et ne doivent pas être additionnées. Chaque fiche a
+son propre axe : la comparaison n'a de sens qu'à l'intérieur d'une même
+fiche.</div>
+<h1 class="t" id="rappels" style="scroll-margin-top:64px">
+Rappels et transmission</h1>
+<div class="st">Ce qui vaut pour toute la phase 8.</div>
+<table><thead><tr><th style="width:23%">Règle</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td><b>Un seul système</b></td><td>607 · 539 · 537 · 455 · 29 · 33 · 36 ·
+1914. Les dates neutres (701, 604, 539, 332, 105) sont signalées comme telles.
+Un seul système par fiche.</td></tr>
+<tr><td><b>Aucune date</b></td><td>Ce qui n'est pas accompli reste sans date.</td></tr>
+<tr><td><b>Aucun total</b></td><td>La Bibliothèque en ligne écrit qu'il est
+préférable de ne pas se montrer trop affirmatif quant au nombre exact des
+prophéties messianiques.</td></tr>
+<tr><td><b>Un à un</b></td><td>De personne à personne. Jamais de diffusion
+publique, jamais d'envoi groupé.</td></tr>
+<tr><td><b>Liens officiels</b></td><td>www.jw.org et wol.jw.org uniquement. Aucun
+extrait de publication n'est recopié, hébergé ni republié.</td></tr>
+<tr><td><b>Aucune collecte</b></td><td>Aucune donnée personnelle n'est demandée
+ni stockée.</td></tr>
+</tbody></table>
+</div>
+<footer class="site"><div class="in">
+Généré le 2026-09-25 · phase 8, vague
+P8-4 · projet PREUVES. Sources : Bibliothèque en ligne
+Watchtower (wol.jw.org) et www.jw.org. Aucun contenu protégé n'est reproduit :
+les références bibliques sont citées par phrases courtes.<br>
+Usage strictement privé. Liens exclusivement vers www.jw.org et wol.jw.org.
+Aucune date pour l'avenir.
+</div></footer>
+<script>
+(function(){var p=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;
+var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=x+'%';},
+{passive:true});})();
+</script>
+</body></html>

@@ -1,0 +1,640 @@
+# AUDIT DE COMPLÉTUDE DU REGISTRE DES PROPHÉTIES (P001–P1000)
+
+*Date : 27 septembre 2026 · Périmètre : fichiers `16_` à `21_` et `23_REGISTRE_PROPHETIES*.md` (1 000 entrées) · Aucune fiche n'a été rédigée : ce document audite la liste et propose des compléments.*
+
+---
+
+## 0. Résumé
+
+- **1 000 entrées lues** et décomposées en **1 248 segments** (livre / chapitre / versets) par un analyseur de références qui gère les plages multi-chapitres (ex. « Ézéchiel 40:1-48:35 ») et les listes (« Isaïe 37:6, 7, 33-35 »). Chaque passage candidat a ensuite été contrôlé verset par verset contre ces segments.
+- **Verdict : le registre n'est pas complet.** Les livres prophétiques (Isaïe 13–27, Jérémie, Lamentations, Ézéchiel, Daniel, les Douze) et la Révélation (183 entrées, 22 chapitres couverts) sont quasi exhaustifs ; les lacunes se concentrent dans le **Pentateuque** (annonces ponctuelles et plaies), les **livres historiques** (oracles d'Élie, Élisée, Samuel, Nathan, Gad…), les **Psaumes** (promesses terrestres et textes appliqués au Christ par Hébreux), **Isaïe 1–12 et 28–66** (chapitres entiers sans entrée : 3, 4, 12, 18, 32, 51, 62), les **paroles de Jésus hors Matthieu 24 et récit de la Passion** (Luc 1–2, Jean 14–16, Luc 22:28-30, 23:43…), **Actes** (1:11 ; 17:31 ; 24:15) et quelques textes majeurs des **épîtres** (Romains 8:18-23 ; Hébreux 9:28 ; 2 Pierre 2:1-3 ; 1 Jean 2:17).
+- **226 propositions d'ajout** (numérotées P1001 à P1226), toutes vérifiées comme passages bibliques réels à contenu prédictif : **127 de priorité A** (prophétie explicite absente, ou passage que le Nouveau Testament ou une publication de wol.jw.org présente comme prophétie), **82 de priorité B** (prophétie réelle mais mineure, ou complément d'une entrée existante), **17 de priorité C** (cas limites : typologie, assertions, promesses conditionnelles — à trancher).
+- **Deux lignes du tableau de référence « Prophéties remarquables concernant Jésus » (it-2 « Messie », p. 272) manquent au registre : Michée 5:1 et Psaume 69:8.** Toutes les autres lignes de ce tableau, du tableau de l'*Auxiliaire* (ad p. 1008), de l'appendice de *Qu'enseigne réellement la Bible ?* et du cahier *Vie et ministère* (mwb16 mai p. 6, Psaume 22) y figurent déjà.
+- Les lacunes déjà signalées dans les fiches de la phase 7 sont confirmées : **Nombres 21:4-9** (fiches D012, E003) et **Matthieu 2:23** (fiche C014).
+- **Mise à jour du 27/09/2026 (soir)** : les 127 propositions de priorité A ont été intégrées au registre (partie 15, `24_REGISTRE_PROPHETIES_8.md`, P1001-P1120 après 9 fusions d'entrées similaires) ; les 97 propositions B/C restent en attente dans `25_PROPOSITIONS_B_C_EN_ATTENTE.md`. La table n° d'audit → numéro P définitif est dans `phase9/tools/correspondance_audit_registre.tsv`. La justification et la priorité de chacune se trouvent ici (§ 5). Les fiches correspondantes sont produites en phase 9 (`phase9/00_WORKFLOW_PHASE9.md`).
+
+---
+
+## 1. Méthode
+
+1. **Lecture intégrale** des 1 000 lignes (référence, teneur, accomplissement, statut) et regroupement par livre et par section.
+2. **Analyse des références** : chaque référence est convertie en segments `(livre, chapitre, v1, v2)` ; les plages multi-chapitres et les listes de versets sont développées. Un candidat est déclaré « absent » seulement si aucun de ses versets n'est couvert par un segment du registre ; il est déclaré « complément » s'il chevauche partiellement une entrée existante (le numéro de l'entrée est alors indiqué).
+3. **Constitution de la liste des candidats** (environ 600 passages testés), à partir de quatre sources :
+   - une revue systématique livre par livre des passages à contenu prédictif (annonces datées, oracles, signes, promesses formulées au futur, paraboles prophétiques, citations d'accomplissement du Nouveau Testament) ;
+   - les tableaux de référence disponibles sur **wol.jw.org** : *Étude perspicace* vol. 2, « Messie », tableau p. 272 (wol 1200003018) ; *Auxiliaire pour une meilleure intelligence de la Bible*, « Messie », p. 1008 (wol 1200012949) ; *Qu'enseigne réellement la Bible ?*, appendice « Jésus Christ, le Messie promis » (wol 1102005152) ; *Cahier Vie et ministère* mai 2016 p. 6 (wol 202016170) ; *La Tour de Garde* 2011, « Questions des lecteurs » sur le nombre des prophéties messianiques (wol 2011607) ; « Prophéties » (wol 1101965112) et « Les prédictions de Jéhovah s'accomplissent » (jw.org wp20080101) pour les prophéties sur les nations ; ainsi que des articles ponctuels cités en § 5 (Actes 1:11, Psaume 37, Isaïe 66:8, Osée 13:14, Luc 22:28-30) ;
+   - des listes publiques (« plus de 300 prophéties accomplies par Jésus » : hozana.org, jesus1.fr, about-jesus.org, learnreligions.com). Ces listes contiennent de nombreux passages sans contenu prédictif (Psaume 138:1-6, Psaume 40:2-5, Daniel 10:5, 6…) : elles n'ont servi que de filet, et **seuls les passages revérifiés dans le texte biblique et réellement prédictifs ont été retenus** (Psaume 38:11 en priorité C, Psaume 69:8, Michée 5:1, Isaïe 11:1 / Matthieu 2:23, Osée 13:14) ;
+   - l'*Encyclopedia of Biblical Prophecy* de J. Barton Payne (1 817 prédictions, 8 352 versets ; 737 sujets) comme **ordre de grandeur** seulement : sa méthode (une entrée par thème et par livre) n'est pas celle du registre, et sa première entrée (Genèse 2:17) a été vérifiée absente du registre.
+4. **Filtres appliqués** aux propositions : (a) le passage existe et dit bien ce que la teneur résume ; (b) il annonce un événement ou un état futur identifiable (pas un simple principe, une prière ou une promesse de présence) ; (c) l'accomplissement est référencé ou son statut est « À venir » ; (d) statuts limités aux quatre valeurs du registre ; (e) chronologie des publications (607 / 539 / 537 / 455 / 29 / 33 / 70 / 1914) ; (f) aucune date pour l'avenir ; (g) aucune reproduction de contenu protégé (les publications sont citées, pas recopiées).
+5. **Sortie** : propositions numérotées P1001 et suivantes, dans l'ordre canonique, avec priorité et justification (§ 5) ; passages examinés et écartés (§ 6) ; doublons internes (§ 7).
+
+---
+
+## 2. Constat par livre
+
+| Livre | Entrées au registre | Chapitres sans aucune entrée | Propositions | Appréciation |
+|---|---|---|---|---|
+| Genèse | 42 | 25 sur 50 | 12 | Lacunaire |
+| Exode | 10 | 32 sur 40 | 11 | Lacunaire |
+| Lévitique | 3 | 26 sur 27 | 3 | Quelques lacunes |
+| Nombres | 6 | 31 sur 36 | 6 | Quelques lacunes |
+| Deutéronome | 11 | 24 sur 34 | 3 | Quelques lacunes |
+| Josué | 2 | 22 sur 24 | 3 | Quelques lacunes |
+| Juges | 5 | 16 sur 21 | 3 | Quelques lacunes |
+| Ruth | 2 | 1, 2, 3 | 0 | Aucune proposition |
+| 1 Samuel | 5 | 26 sur 31 | 8 | Lacunaire |
+| 2 Samuel | 3 | 22 sur 24 | 5 | Quelques lacunes |
+| 1 Rois | 9 | 13 sur 22 | 9 | Lacunaire |
+| 2 Rois | 16 | 2, 6, 11, 12, 14, 15, 16, 17, 18, 23, 24, 25 | 6 | Quelques lacunes |
+| 1 Chroniques | 2 | 27 sur 29 | 0 | Aucune proposition |
+| 2 Chroniques | 5 | 31 sur 36 | 4 | Quelques lacunes |
+| Esdras | 1 | 2, 3, 4, 5, 6, 7, 8, 9, 10 | 0 | Aucune proposition |
+| Néhémie | 1 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 | 0 | Aucune proposition |
+| Esther | 0 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | 0 | Sans prophétie |
+| Job | 3 | 39 sur 42 | 1 | Quasi complet |
+| Psaumes | 66 | 122 psaumes sur 150 (normal : la plupart ne sont pas prophétiques) | 18 | Lacunaire |
+| Proverbes | 2 | 29 sur 31 | 1 | Quasi complet |
+| Ecclésiaste | 1 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 | 0 | Aucune proposition |
+| Cantique des Cantiques | 1 | 1, 2, 4, 5, 7 | 0 | Aucune proposition |
+| Isaïe | 95 | 3, 4, 12, 18, 32, 36, 51, 57, 58, 62, 64 | 43 | Lacunaire |
+| Jérémie | 119 | 41 | 4 | Quelques lacunes |
+| Lamentations | 4 | 3 | 0 | Aucune proposition |
+| Ézéchiel | 69 | 1 | 0 | Aucune proposition |
+| Daniel | 46 | 3 | 2 | Quasi complet |
+| Osée | 16 | 6, 12, 13 | 3 | Quelques lacunes |
+| Joël | 7 | — | 0 | Aucune proposition |
+| Amos | 12 | — | 0 | Aucune proposition |
+| Abdias | 5 | — | 0 | Aucune proposition |
+| Jonas | 4 | 2 | 0 | Aucune proposition |
+| Michée | 14 | — | 1 | Quasi complet |
+| Nahum | 7 | — | 0 | Aucune proposition |
+| Habacuc | 6 | — | 0 | Aucune proposition |
+| Sophonie | 9 | — | 0 | Aucune proposition |
+| Aggée | 6 | — | 0 | Aucune proposition |
+| Zacharie | 27 | — | 2 | Quasi complet |
+| Malachie | 10 | — | 0 | Aucune proposition |
+| Matthieu | 49 | 16 sur 28 | 21 | Lacunaire |
+| Marc | 13 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 15, 16 | 0 | Aucune proposition |
+| Luc | 11 | 17 sur 24 | 14 | Lacunaire |
+| Jean | 10 | 1, 3, 4, 7, 8, 9, 17, 19, 20 | 14 | Lacunaire |
+| Actes | 12 | 17 sur 28 | 8 | Lacunaire |
+| Romains | 11 | 1, 3, 6, 7, 8, 12, 13 | 2 | Quasi complet |
+| 1 Corinthiens | 5 | 15 sur 16 | 3 | Quelques lacunes |
+| 2 Corinthiens | 3 | 1, 2, 3, 6, 7, 8, 9, 10, 11, 12 | 1 | Quasi complet |
+| Galates | 3 | 1, 2, 6 | 0 | Aucune proposition |
+| Éphésiens | 5 | 3 | 0 | Aucune proposition |
+| Philippiens | 2 | 2, 4 | 2 | Quasi complet |
+| Colossiens | 1 | 1, 2, 4 | 0 | Aucune proposition |
+| 1 Thessaloniciens | 4 | 1, 2, 3 | 1 | Quasi complet |
+| 2 Thessaloniciens | 4 | — | 1 | Quasi complet |
+| 1 Timothée | 1 | 1, 2, 3, 5, 6 | 0 | Aucune proposition |
+| 2 Timothée | 4 | 1, 2 | 2 | Quasi complet |
+| Tite | 1 | 1, 3 | 0 | Aucune proposition |
+| Philémon | 0 | 1 | 0 | Sans prophétie (hors proposition Philémon 22) |
+| Hébreux | 7 | 2, 3, 5, 6, 7 | 3 | Quelques lacunes |
+| Jacques | 3 | 1, 2, 3, 4 | 0 | Aucune proposition |
+| 1 Pierre | 5 | 3 | 2 | Quasi complet |
+| 2 Pierre | 6 | 2 | 2 | Quasi complet |
+| 1 Jean | 3 | 1, 5 | 1 | Quasi complet |
+| 2 Jean | 0 | 1 | 0 | Sans prophétie |
+| 3 Jean | 0 | 1 | 0 | Sans prophétie |
+| Jude | 2 | — | 1 | Quasi complet |
+| Révélation | 183 | — | 0 | Aucune proposition |
+
+*Lecture : « chapitres sans aucune entrée » signale seulement l'absence de toute référence dans ce chapitre ; pour les livres narratifs ou sapientiaux, c'est normal. « Aucune proposition » signifie qu'aucun passage prédictif non couvert n'a été trouvé dans ce livre, ou que les manques sont traités sous un livre parallèle (Marc sous Matthieu ; 1 Chroniques 17 sous 2 Samuel 7 ; 2 Chroniques 18 sous 1 Rois 22). Les propositions du § 5 ne visent que les passages réellement prédictifs.*
+
+---
+
+## 3. Points forts du registre
+
+- **Révélation** : 183 entrées, les 22 chapitres couverts (ch. 1 : 6 ; 2 : 7 ; 3 : 8 ; 4 : 4 ; 5 : 3 ; 6 : 10 ; 7 : 6 ; 8 : 7 ; 9 : 5 ; 10 : 4 ; 11 : 5 ; 12 : 7 ; 13 : 14 ; 14 : 9 ; 15 : 3 ; 16 : 8 ; 17 : 9 ; 18 : 10 ; 19 : 14 ; 20 : 16 ; 21 : 15 ; 22 : 13). Aucune lacune de fond.
+- **Ézéchiel** (69 entrées), **Daniel** (46), **Jérémie** (119), **Lamentations**, **les Douze** (123 entrées) : tous les oracles datés y sont ; seuls quatre compléments mineurs (Jérémie 10:17-22 ; 49:6 ; 50:4-8 ; 50:21-32), deux versets de Daniel 12, Osée 6 et 13, Michée 5:1 et Zacharie 11:1-3, 15-17 manquent.
+- **Isaïe 13–27** (oracles sur les nations et « apocalypse d'Isaïe ») : complet, à l'exception de 14:28-32 (Philistie), 17:12-14, 18 et 26:20, 21.
+- **Matthieu 24–25** et **Marc 13** : couverture verset par verset (avec doublons entre les deux, voir § 7).
+- Les **prophéties messianiques** des tableaux de référence (it-2, ad, bh) sont toutes présentes sauf deux (Michée 5:1 ; Psaume 69:8).
+
+---
+
+## 4. Lacunes identifiées (synthèse)
+
+| Domaine | Nature des manques | Exemples (priorité A) |
+|---|---|---|
+| Genèse 1–24 | Premières sentences et annonces datées | 2:17 ; 3:16-19 ; 6:3 ; 6:13-7:4 ; 8:21–9:17 ; 18:20–19:13 |
+| Exode | Annonces des plaies et de la sortie ; programme de la conquête | 3:18-22 ; 4:21-23 ; 7:17–10:4 ; 11:4-8 ; 14:13-18 ; 15:14-17 ; 17:14 ; 23:20-31 |
+| Nombres – Josué – Juges | Signes et oracles de victoire | Nombres 16:28-30 ; 20:12 ; 21:8, 9 ; Deutéronome 12:5 ; 31:3-8 ; Josué 3:10-13 ; 6:2-5 ; Juges 4:6-9 ; 7:7-15 ; 9:7-20 |
+| Samuel – Rois – Chroniques | Oracles d'Anne, Samuel, Nathan, Gad, Élie, Élisée, prophètes anonymes | 1 Samuel 2:1-10 ; 8:11-18 ; 10:1-9 ; 2 Samuel 12:14 ; 1 Rois 3:12, 13 ; 13:20-24 ; 17:14 ; 18:1, 41-45 ; 19:15-18 ; 21:29 ; 2 Rois 2:3-10 ; 8:1-3 ; 14:25 ; 19:29-31 ; 2 Chroniques 21:12-15 |
+| Psaumes | Promesses terrestres ; psaumes du règne ; textes appliqués au Christ par Hébreux ou Matthieu | 8:2 ; 37:9-11, 29 ; 45:16, 17 ; 46:8-10 ; 69:8 ; 95:7-11 ; 96:10-13 ; 102:13-22 ; 102:25-27 ; 132:13-18 |
+| Isaïe 1–12, 28–66 | Chapitres entiers ou blocs sans entrée | 1:24-31 ; 2:10-22 ; 3–4 ; 5:1-25 ; 7:15, 16 ; 9:8–10:4 ; 10:24-34 ; 26:20, 21 ; 29:17-24 ; 30 ; 32 ; 41:8-20 ; 43:14-21 ; 45:22-25 ; 48:20-22 ; 49:8-21 ; 51 ; 52:1-12 ; 55:10-13 ; 57:14-21 ; 61:4-11 ; 62 ; 65:1-16 ; 66:7-14 |
+| Évangiles | Récits de l'enfance (Luc 1–2), prophéties de Jean le Baptiste, paroles de Jésus hors Matthieu 24 et Passion | Matthieu 3:11, 12 ; 8:11, 12 ; 11:20-24 ; 12:41, 42 ; 16:18, 19 ; 16:27, 28 ; 19:28 ; 20:22, 23 ; 23:34-39 ; 26:29 ; 26:32 ; Luc 1:13-17 ; 1:31-35 ; 1:67-79 ; 2:25-35 ; 19:11-27 ; 22:28-30 ; 23:43 ; 24:46-49 ; Jean 3:14 ; 4:21-24 ; 10:17, 18 ; 11:4-23 ; 14:16–16:15 ; 16:16-22 |
+| Actes et épîtres | Textes de référence sur le retour, le jugement et la résurrection ; prophéties d'apostasie | Actes 1:11 ; 13:11 ; 17:31 ; 24:15 ; Romains 8:18-23 ; 1 Corinthiens 6:2, 3 ; 13:8-10 ; Philippiens 2:9-11 ; 2 Timothée 4:1 ; Hébreux 9:27, 28 ; 12:26-28 ; 2 Pierre 2:1-3 ; 1 Jean 2:17 |
+| Côté « Écritures hébraïques » d'entrées NT existantes | L'entrée NT existe, la prophétie source manque | Isaïe 45:23 (P731) ; Psaume 18:49 ; 117:1 (P732) ; Psaume 97:7 (P766) ; Psaume 95:7-11 (P767) ; Osée 13:14 (P738) ; Habacuc 2:3 côté Hébreux 10:37 (P472) |
+
+---
+
+## 5. Propositions d'ajout (P1001 à P1226)
+
+*Priorité : **A** = prophétie explicite absente, ou passage présenté comme prophétie par le NT ou par une publication (wol.jw.org) ; **B** = prophétie réelle mais mineure, ou complément d'une entrée existante ; **C** = cas limite (typologie, assertion, promesse conditionnelle) à trancher avant intégration. Les lignes A au format du registre sont intégrées dans `24_REGISTRE_PROPHETIES_8.md` (P1001-P1120) ; les lignes B/C sont dans `25_PROPOSITIONS_B_C_EN_ATTENTE.md`.*
+
+
+### Genèse
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1001 | Genèse 2:17 | « Le jour où tu en mangeras, tu mourras » : sentence de mort annoncée à Adam | Genèse 3:19 ; 5:5 ; Romains 5:12 | Accomplie | A | Première prédiction de la Bible (c'est par elle que Payne ouvre son Encyclopedia) ; Romains 5:12 en fait l'origine de la mort humaine. |
+| P1002 | Genèse 3:16-19 | Sentence : douleurs de la grossesse, domination du mari, sol maudit, sueur, retour à la poussière | Genèse 5:5 ; Romains 5:12 ; 8:20-22 | Accomplie ; En cours | A | Prédiction explicite des conséquences du péché ; Romains 8:20 (« soumise à la futilité ») y renvoie. |
+| P1003 | Genèse 4:11, 12 | Caïn : le sol ne donnera plus sa force ; « errant et fugitif sur la terre » | Genèse 4:16 | Accomplie | B | Sentence individuelle à valeur prédictive. |
+| P1004 | Genèse 6:3 | « Ses jours se monteront à cent vingt ans » : délai fixé avant le Déluge | Genèse 7:6, 11 ; 1 Pierre 3:20 | Accomplie | A | Cf. it-1 « Déluge » : les 120 ans sont le délai accordé avant le Déluge, non une durée de vie. |
+| P1005 | Genèse 6:13, 17 ; 7:4 | Le Déluge annoncé : toute chair détruite ; « encore sept jours » ; quarante jours et quarante nuits de pluie | Genèse 7:10-12, 21-23 ; 2 Pierre 3:6 | Accomplie | A | Annonce datée, accomplissement rapporté dans le même livre ; 2 Pierre 3:5, 6 (P783) en rappelle l'exécution. |
+| P1006 | Genèse 8:21, 22 ; 9:11-17 | Plus jamais de déluge ; semailles et moisson, froid et chaud, été et hiver ne cesseront pas ; l'arc-en-ciel comme signe d'alliance | Depuis le Déluge ; Isaïe 54:9 | En cours | A | Promesse-prophétie permanente citée en Isaïe 54:9. |
+| P1007 | Genèse 15:15 | Abraham ira vers ses pères en paix et sera enterré dans une bonne vieillesse | Genèse 25:7, 8 | Accomplie | B | Prédiction personnelle explicite, accomplie en Genèse 25. |
+| P1008 | Genèse 17:4-8, 16 | Père d'une foule de nations ; des rois sortiront de lui et de Sara ; le pays de Canaan en possession durable | Genèse 25:1-4 ; 36:31 ; 1 Samuel 16:13 ; Romains 4:17 | Accomplie | B | Complète P003/P004/P010 (qui ne couvrent pas 17:4-8, 16) ; cité en Romains 4:17. |
+| P1009 | Genèse 18:20, 21 ; 19:12, 13 | Sodome et Gomorrhe : « nous allons détruire ce lieu » | Genèse 19:24-29 ; 2 Pierre 2:6 ; Jude 7 | Accomplie | A | Annonce explicite aux anges/à Lot ; le NT en fait un exemple prophétique (2 Pierre 2:6). |
+| P1010 | Genèse 20:7 | Abraham priera pour Abimélek, qui vivra ; sinon, « tu mourras, toi et tous les tiens » | Genèse 20:17, 18 | Accomplie | B | Parole divine conditionnelle, accomplie dans le récit. |
+| P1011 | Genèse 24:7 | « Il enverra son ange devant toi » : une femme pour Isaac sera trouvée dans la parenté | Genèse 24:15-27, 48 | Accomplie | B | Prédiction d'Abraham confirmée par le récit (24:48). |
+| P1012 | Genèse 48:21 | « Dieu vous ramènera au pays de vos ancêtres » | Josué 21:43-45 | Accomplie | B | Parallèle de Genèse 50:24 (P038) ; prononcée par Jacob. |
+
+### Exode
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1013 | Exode 3:18-22 | Pharaon ne laissera pas partir le peuple ; Dieu frappera l'Égypte de ses prodiges ; Israël sortira les mains pleines (dépouillement des Égyptiens) | Exode 5:2 ; 7:14–12:36 ; 12:35, 36 | Accomplie | A | Programme prophétique de tout le récit de la sortie ; complète P006 (Genèse 15:14). |
+| P1014 | Exode 4:21-23 | Pharaon endurcira son cœur ; « je tuerai ton fils premier-né » | Exode 12:29, 30 | Accomplie | A | Annonce de la dixième plaie dès la vocation de Moïse. |
+| P1015 | Exode 7:3-5 | Signes multipliés ; l'Égypte saura que je suis Jéhovah ; sortie « par de grands jugements » | Exode 7:14–12:36 ; 14:4, 18 | Accomplie | B | Sommaire prophétique des plaies ; peut être fusionné avec l'entrée précédente. |
+| P1016 | Exode 7:17 ; 8:2, 21 ; 9:3, 18 ; 10:4 | Six plaies annoncées la veille : sang, grenouilles, taons, peste, grêle, sauterelles | Exode 7:20 ; 8:6, 24 ; 9:6, 23 ; 10:13 | Accomplie | A | Chaque annonce est suivie d'un accomplissement daté dans le texte ; P042 ne couvre que la dixième plaie. |
+| P1017 | Exode 8:22, 23 ; 9:4 ; 11:7 | Distinction annoncée entre l'Égypte et Israël : Goshèn épargné | Exode 8:24 ; 9:6, 7, 26 ; 10:23 ; 12:13 | Accomplie | B | Détail prédictif vérifiable dans le récit. |
+| P1018 | Exode 11:4-8 | « Vers minuit » tout premier-né mourra ; grand cri en Égypte ; les serviteurs de Pharaon supplieront Israël de partir | Exode 12:29-33 | Accomplie | A | Annonce détaillée de la dixième plaie ; P042 traite du signe du sang, non de l'annonce. |
+| P1019 | Exode 14:13, 14, 17, 18 | « Les Égyptiens que vous voyez aujourd'hui, vous ne les reverrez plus jamais » ; Jéhovah se glorifiera par Pharaon et son armée | Exode 14:26-31 | Accomplie | A | P044 ne couvre que la poursuite (14:4) ; l'anéantissement est annoncé ici. |
+| P1020 | Exode 15:14-17 | Les peuples trembleront : Philistie, Édom, Moab et Canaan fondront ; Israël planté sur la montagne de l'héritage | Josué 2:9-11 ; 5:1 ; 1 Rois 8:13 | Accomplie | A | Cantique prophétique ; Rahab en atteste l'accomplissement (Josué 2:9-11). |
+| P1021 | Exode 16:6-8, 12 | « Ce soir vous mangerez de la viande et au matin vous serez rassasiés de pain » | Exode 16:13-15 | Accomplie | B | Annonce à court terme accomplie dans le récit. |
+| P1022 | Exode 17:14, 16 ; Deutéronome 25:17-19 | Le souvenir d'Amalek sera effacé de dessous les cieux | 1 Samuel 15:2-8 ; 1 Chroniques 4:42, 43 ; Esther 9:5-10 | Accomplie | A | it-1 « Amaléqites » : disparition progressive de Saül à Ézéchias ; P054 (Nombres 24:20) est le seul écho au registre. |
+| P1023 | Exode 23:20-31 ; 34:10, 11, 24 | Un ange devant Israël ; les frelons ; les nations chassées « peu à peu » ; frontières de la mer Rouge à l'Euphrate ; « personne ne convoitera ton pays » pendant les fêtes | Josué 24:12 ; Juges 2:1-3 ; 1 Rois 4:21 | Accomplie | A | Programme de la conquête ; P047 (Exode 33:1-3) n'en reprend que l'ange. |
+
+### Lévitique
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1024 | Lévitique 16:2-34 (avec Hébreux 9:7-12, 24-28 ; 10:1-4) | Le jour des Propitiations, « ombre des bonnes choses à venir » : le grand prêtre entre avec le sang dans le Très-Saint | 33 de n. è. ; Hébreux 9:24-26 | Accomplie | C | Prophétie typologique explicitement qualifiée d'« ombre » (Hébreux 10:1 ; Colossiens 2:17) ; même statut que P628/P629 déjà au registre. |
+| P1025 | Lévitique 23:9-11 (avec 1 Corinthiens 15:20, 23) | La gerbe des prémices balancée le lendemain du sabbat (16 nisan) | 16 nisan 33 : résurrection de Jésus, « prémices de ceux qui se sont endormis » | Accomplie | C | Typologie reconnue par Paul (1 Corinthiens 15:20) ; à trancher comme l'entrée précédente. |
+| P1026 | Lévitique 26:3-13 ; Deutéronome 28:1-14 | Bénédictions conditionnelles : pluies en leur temps, paix, victoire, prospérité, « je marcherai au milieu de vous » | 1 Rois 4:20-25 (règne de Salomon) ; 2 Chroniques 7:14 | Accomplie (1er accomplissement) | C | Le registre ne retient que les malédictions (P048, P060) ; les bénédictions sont l'autre volet de la même prophétie conditionnelle. |
+
+### Nombres
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1027 | Nombres 11:18-20, 31-34 | De la viande « pendant un mois entier », jusqu'au dégoût ; le peuple frappé à Qibroth-Hattaava | Nombres 11:31-34 | Accomplie | B | Annonce suivie d'un accomplissement dans le même chapitre. |
+| P1028 | Nombres 16:28-30 | Signe donné par Moïse : « si Jéhovah crée quelque chose de nouveau et que le sol ouvre sa bouche » | Nombres 16:31-35 | Accomplie | A | Prophétie-signe de validation du prophète (cf. Deutéronome 18:22). |
+| P1029 | Nombres 20:12, 24 ; 27:12-14 ; Deutéronome 32:48-52 | Moïse et Aaron n'introduiront pas le peuple dans le pays ; Aaron mourra sur le mont Hor | Nombres 20:28 ; Deutéronome 34:4, 5 | Accomplie | A | Sentence prédictive répétée quatre fois, accomplie dans le Pentateuque. |
+| P1030 | Nombres 21:8, 9 (avec Jean 3:14, 15) | Le serpent de cuivre : « quiconque le regardera vivra » ; type du Fils de l'homme élevé | Nombres 21:9 ; Jean 3:14, 15 ; 12:32-34 | Accomplie | A | Lacune déjà signalée par les fiches D012 et E003 ; Jésus lui-même en fait la clé de sa mort (Jean 3:14). |
+| P1031 | Nombres 23:7-10 | Premier oracle de Balaam : « comment maudirais-je ceux que Dieu n'a pas maudits ? » ; un peuple qui demeure à part ; « la poussière de Jacob » | Nombres 23:11 ; 24:10 ; Deutéronome 23:5 | Accomplie | B | Complète P052 (2e oracle) et P053/P054 (4e oracle). |
+| P1032 | Nombres 24:3-9 | Troisième oracle : Israël comme des jardins au bord du fleuve ; « son roi sera plus haut qu'Agag » ; « qui te bénit est béni » | 1 Samuel 15:8, 32, 33 ; 2 Samuel 8:1-14 | Accomplie | B | Complète la série des oracles de Balaam. |
+
+### Deutéronome
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1033 | Deutéronome 12:5, 10, 11 | Le lieu que Jéhovah choisira « pour y mettre son nom », après le repos accordé | 2 Samuel 7:1, 13 ; 1 Rois 8:29 ; 2 Chroniques 6:6 ; Psaume 132:13 | Accomplie | A | Prophétie du sanctuaire central, accomplie à Jérusalem sous David/Salomon. |
+| P1034 | Deutéronome 15:11 | « Il ne cessera jamais d'y avoir des pauvres dans le pays » | Matthieu 26:11 ; Jean 12:8 | Accomplie ; En cours | C | Assertion prédictive reprise par Jésus ; cas limite. |
+| P1035 | Deutéronome 31:3-8, 23 ; Josué 1:2-9 | Josué fera entrer le peuple ; Jéhovah détruira les nations devant lui ; « nul ne tiendra devant toi tous les jours de ta vie » | Josué 21:43-45 ; 23:9, 14 | Accomplie | A | Josué 21:45 et 23:14 constatent explicitement l'accomplissement (« pas une parole n'a failli »). |
+
+### Josué
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1036 | Josué 3:10-13 | Les eaux du Jourdain s'arrêteront quand les prêtres y poseront le pied | Josué 3:14-17 | Accomplie | A | Prophétie-signe annoncée puis réalisée. |
+| P1037 | Josué 6:2-5 | Jéricho livrée ; au septième jour, au son des cors, la muraille tombera | Josué 6:15-21 | Accomplie | A | Annonce détaillée ; accomplissement dans le même chapitre. |
+| P1038 | Josué 8:1, 2, 7 ; 10:8 ; 11:6 | Aï, la coalition amorite et Hatsor livrées : « demain, à cette heure-ci » | Josué 8:18-28 ; 10:10-14 ; 11:7-11 | Accomplie | B | Oracles de victoire à court terme ; groupables en une entrée. |
+
+### Juges
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1039 | Juges 4:6-9 | Sisera attiré au torrent de Qishôn et livré ; « Jéhovah vendra Sisera dans la main d'une femme » | Juges 4:14-22 ; 5:24-27 | Accomplie | A | Prophétie de Débora, accomplie par Yaël. |
+| P1040 | Juges 7:7, 9-15 | « Avec les trois cents hommes je vous sauverai » ; le songe du pain d'orge : Madian livré | Juges 7:19-25 ; 8:10-12 | Accomplie | A | Annonce divine + songe prophétique interprété (7:14). |
+| P1041 | Juges 9:7-20, 56, 57 | Fable de Yotham : un feu sortira d'Abimélek et dévorera Sichem, et de Sichem pour dévorer Abimélek | Juges 9:22-57 | Accomplie | A | Le texte lui-même conclut à l'accomplissement (9:56, 57). |
+
+### 1 Samuel
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1042 | 1 Samuel 2:1-10 | Prière d'Anne : Jéhovah « jugera les extrémités de la terre », « donnera la force à son roi et élèvera la corne de son oint » | 1 Samuel 16:13 ; Luc 1:46-55, 69 ; Psaume 2 | Accomplie (1er accomplissement) ; À venir | A | Il n'y a pas encore de roi en Israël : la parole est prophétique (cf. it-1 « Anne ») ; Marie la reprend (Luc 1:46-55). |
+| P1043 | 1 Samuel 8:11-18 | Le droit du roi : conscription, réquisitions, dîme ; « ce jour-là vous crierez à cause de votre roi » | 1 Rois 5:13-16 ; 12:4 ; 21:7-16 | Accomplie | A | Avertissement prophétique de Samuel, vérifié sous Salomon et Achab. |
+| P1044 | 1 Samuel 9:15-17 ; 10:1-9 | Saül désigné la veille ; trois signes annoncés : les ânesses retrouvées, les trois hommes, la troupe de prophètes | 1 Samuel 10:9-13 | Accomplie | A | Signes à court terme « tous arrivés ce jour-là » (10:9). |
+| P1045 | 1 Samuel 12:16-18 | Tonnerre et pluie au temps de la moisson des blés, signe de la faute du peuple | 1 Samuel 12:18 | Accomplie | B | Prophétie-signe de Samuel. |
+| P1046 | 1 Samuel 17:45-47 | « Aujourd'hui Jéhovah te livrera en ma main » ; « toute la terre saura qu'il y a un Dieu en Israël » | 1 Samuel 17:49-54 | Accomplie | B | Déclaration prédictive de David, accomplie le jour même. |
+| P1047 | 1 Samuel 23:2-4, 11, 12 | Oracles pour Qeïla : « tu frapperas les Philistins » ; « ils te livreront » | 1 Samuel 23:5, 13 | Accomplie | B | Réponses divines par l'éphod, vérifiées dans le récit. |
+| P1048 | 1 Samuel 24:20 ; 25:28-31 ; 26:10 | David régnera « à coup sûr » ; « une maison durable » ; Saül mourra de la main de Jéhovah ou à la guerre | 1 Samuel 31:1-6 ; 2 Samuel 5:1-5 | Accomplie | B | Trois annonces convergentes (Saül, Abigaïl, David) ; complète P070/P071. |
+| P1049 | 1 Samuel 30:8 | « Poursuis-les, car tu les rattraperas et tu délivreras » | 1 Samuel 30:17-19 | Accomplie | B | Oracle à court terme. |
+
+### 2 Samuel
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1050 | 2 Samuel 3:9, 10, 18 ; 5:2 | Jéhovah a juré de transférer le royaume de Saül à David ; « par la main de David je sauverai Israël des Philistins » ; « tu feras paître mon peuple » | 2 Samuel 5:3, 17-25 ; 8:1 | Accomplie | B | Paroles prophétiques rappelées par Abner et les tribus. |
+| P1051 | 2 Samuel 5:19, 23, 24 | Deux oracles contre les Philistins : « je les livrerai » ; « le bruit d'une marche dans les cimes des mûriers » | 2 Samuel 5:20, 25 | Accomplie | B | Oracles de bataille accomplis dans le récit. |
+| P1052 | 2 Samuel 12:14 | « Le fils qui vient de te naître mourra » | 2 Samuel 12:18 | Accomplie | A | Complète P074 (Nathan, 12:10-12) qui s'arrête avant cette sentence. |
+| P1053 | 2 Samuel 23:1-7 | Dernières paroles de David : celui qui domine avec justice « est comme la lumière du matin » ; l'alliance de durée indéfinie ; les vauriens brûlés | Luc 1:32, 33, 78 ; Malachie 4:2 ; Matthieu 13:41, 42 | Accomplie (1er accomplissement) ; À venir | B | Oracle messianique (« l'esprit de Jéhovah a parlé par moi », 23:2) ; il complète P073. |
+| P1054 | 2 Samuel 24:12-15 ; 1 Chroniques 21:10-14 | Trois fléaux proposés à David ; la peste pendant trois jours | 2 Samuel 24:15-25 | Accomplie | B | Annonce par Gad ; accomplie le jour même. |
+
+### 1 Rois
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1055 | 1 Rois 3:12, 13 | Un cœur sage sans égal ; richesse et gloire : « aucun roi ne sera comme toi » | 1 Rois 4:29-34 ; 10:23, 24 | Accomplie | A | Promesse prédictive ; 1 Rois 10:23 en constate la réalisation. |
+| P1056 | 1 Rois 11:11-13 | Le royaume arraché à Salomon, mais aux jours de son fils ; une tribu laissée à cause de David | 1 Rois 12:16-20 | Accomplie | B | Même prophétie que P076 (Ahiya), mais adressée à Salomon lui-même. |
+| P1057 | 1 Rois 13:20-24 | L'homme de Dieu de Juda : « ton cadavre n'entrera pas dans la tombe de tes ancêtres » | 1 Rois 13:24-30 | Accomplie | A | Sentence prophétique accomplie dans le chapitre (le lion). |
+| P1058 | 1 Rois 17:14 | La jarre de farine ne s'épuisera pas, la cruche d'huile ne manquera pas, jusqu'à la pluie | 1 Rois 17:16 | Accomplie | A | Prophétie d'Élie à la veuve de Sarepta. |
+| P1059 | 1 Rois 18:1, 41-45 | « Je vais donner de la pluie sur le pays » ; « il y a le bruit d'une averse » | 1 Rois 18:45 ; Jacques 5:18 | Accomplie | A | Contrepartie de P080 (sécheresse) ; Jacques 5:17, 18 en atteste. |
+| P1060 | 1 Rois 19:15-18 | Hazaël roi de Syrie, Jéhu roi d'Israël, Élisée prophète ; « je laisserai sept mille hommes » | 1 Rois 19:19-21 ; 2 Rois 8:13-15 ; 9:1-13 ; Romains 11:4 | Accomplie | A | Triple prophétie accomplie dans 1-2 Rois ; Paul cite 19:18 (Romains 11:4). |
+| P1061 | 1 Rois 20:35, 36, 42 | Le lion tuera le compagnon désobéissant ; à Achab : « ta vie pour sa vie, ton peuple pour son peuple » | 1 Rois 20:36 ; 22:34-37 | Accomplie | B | Deux sentences prophétiques ; complète P081/P082. |
+| P1062 | 1 Rois 21:29 | Le malheur reporté : « je le ferai venir aux jours de son fils » | 2 Rois 9:24-26 ; 10:1-11 | Accomplie | A | Modulation prophétique de P082 après l'humiliation d'Achab. |
+| P1063 | 1 Rois 22:25, 28 ; 2 Chroniques 18:24, 27 | Tsidqiya se cachera « de chambre en chambre » ; « si tu reviens en paix, Jéhovah n'a pas parlé par moi » | 1 Rois 22:34-37 | Accomplie | B | Complète P083 (Mikaïa). |
+
+### 2 Rois
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1064 | 2 Rois 2:3, 5, 9, 10 | Élie enlevé « aujourd'hui » ; « si tu me vois enlevé, il en sera ainsi pour toi » (double part d'esprit) | 2 Rois 2:11-15 | Accomplie | A | Annonce connue des fils des prophètes et condition posée par Élie, vérifiées le jour même. |
+| P1065 | 2 Rois 2:21, 22 | Les eaux de Jéricho assainies : « il n'en viendra plus ni mort ni stérilité » | 2 Rois 2:22 (« jusqu'à ce jour ») | Accomplie | B | Parole d'Élisée à effet durable. |
+| P1066 | 2 Rois 8:1-3 | « Jéhovah a appelé une famine ; elle viendra sur le pays pendant sept ans » | 2 Rois 8:3-6 | Accomplie | A | Prophétie d'Élisée à la Sunamite ; complète P086. |
+| P1067 | 2 Rois 14:25 | Parole de Jonas : Jéroboam II rétablira la frontière d'Israël de Hamath à la mer de la Araba | 2 Rois 14:25-28 | Accomplie | A | Seule prophétie de Jonas hors du livre de Jonas ; absente du registre (P446-P450 ne couvrent que Ninive). |
+| P1068 | 2 Rois 19:29-31 ; Isaïe 37:30-32 | Signe pour Ézéchias : deux années de repousse spontanée, la troisième on sèmera ; un reste sortira de Jérusalem | 2 Rois 19:35-37 ; 2 Chroniques 32:22, 23 | Accomplie | A | Complète P094/P095/P153, qui omettent ce signe. |
+| P1069 | 2 Rois 19:21-28 ; Isaïe 37:22-29 | Contre Sennachérib : « je mettrai mon crochet dans ton nez… je te ferai retourner par le chemin par lequel tu es venu » | 2 Rois 19:35-37 | Accomplie | B | Complète P094/P153. |
+
+### 2 Chroniques
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1070 | 2 Chroniques 16:7-9 | Hanani à Asa : « désormais il y aura des guerres contre toi » | 2 Chroniques 16:9 ; 1 Rois 15:32 | Accomplie | B | Sentence prophétique brève. |
+| P1071 | 2 Chroniques 20:37 | Éliézer à Josaphat : « Jéhovah démolira tes ouvrages » — les navires brisés | 2 Chroniques 20:37 ; 1 Rois 22:48 | Accomplie | B | Annonce suivie de l'accomplissement dans le même verset. |
+| P1072 | 2 Chroniques 21:12-15 | Lettre d'Élie à Yehoram : grand fléau sur le peuple, ses fils et ses femmes ; maladie des intestins « jusqu'à ce qu'ils sortent » | 2 Chroniques 21:16-19 | Accomplie | A | Prophétie écrite, accomplissement détaillé (cf. it-1 « Éliya » ; it-2 « Yehoram »). |
+| P1073 | 2 Chroniques 25:7-9, 15, 16 | Amatsia : renvoyer les mercenaires d'Éphraïm, « Dieu a de quoi te donner bien plus » ; « Dieu a résolu de te détruire » | 2 Chroniques 25:11-13, 20-24, 27 | Accomplie | B | Deux oracles d'hommes de Dieu accomplis dans le chapitre. |
+
+### Job
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1074 | Job 33:23-25 | Élihou : un messager, « une rançon », « que sa chair devienne plus fraîche que dans sa jeunesse » | Matthieu 20:28 ; Isaïe 35:5, 6 ; Révélation 21:4 | À venir | C | Texte souvent lu comme prophétique de la rançon et du rétablissement ; cas limite. |
+
+### Psaumes
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1075 | Psaume 8:2 | « De la bouche des enfants et des nourrissons tu as fait sortir une louange » | Matthieu 21:15, 16 | Accomplie | A | Jésus applique le texte aux enfants du temple (Matthieu 21:16) ; absent alors que P526/P610 couvrent 8:4-8. |
+| P1076 | Psaume 18:49 ; 117:1 (avec 2 Samuel 22:50) | Les nations loueront Jéhovah avec son peuple | Romains 15:9-11 ; Actes 10:34-48 | Accomplie | B | Côté Écritures hébraïques de P732 (Romains 15:9-12) ; seul Isaïe 11:10 y est déjà au registre. |
+| P1077 | Psaume 37:9-11, 22, 29, 34 | Les méchants retranchés ; « les humbles posséderont la terre » et y résideront pour toujours | Matthieu 5:5 ; Révélation 21:3, 4 | À venir | A | w86, Questions des lecteurs (wol 1986007) : Matthieu 5:5 est « une parole prophétique très importante » fondée sur Psaume 37:11, 29 ; texte central de l'espérance terrestre. |
+| P1078 | Psaume 38:11 | « Mes amis et mes compagnons se tiennent à l'écart de ma plaie » | Luc 23:49 ; Matthieu 26:56 | Accomplie | C | Figure dans les listes messianiques classiques (non WT) ; parallèle de P535 (Psaume 31:11). |
+| P1079 | Psaume 45:16, 17 | « À la place de tes ancêtres il y aura tes fils ; tu les établiras princes par toute la terre » ; nom rappelé de génération en génération | Isaïe 32:1 ; Matthieu 19:28 | À venir | A | P540 s'arrête à 45:7 ; les publications appliquent 45:16 aux « princes » du monde nouveau. |
+| P1080 | Psaume 46:8-10 | Il fait cesser les guerres jusqu'à l'extrémité de la terre ; il brise l'arc, coupe la lance, brûle les chars | Isaïe 2:4 ; Révélation 19:11-21 ; 21:4 | À venir | A | Texte fréquemment cité pour la fin des guerres ; absent alors qu'Isaïe 2:4 (P108) et Michée 4:3 y sont. |
+| P1081 | Psaume 49:15 ; 73:24 | « Dieu rachètera mon âme de la main du Schéol » ; « tu me prendras dans la gloire » | Jean 5:28, 29 ; 1 Corinthiens 15:55 | À venir | B | Espérance de résurrection formulée comme certitude ; même nature que Job 14:13-15 (P563). |
+| P1082 | Psaume 50:3-6 | « Notre Dieu viendra » ; il appelle les cieux et la terre pour juger son peuple : « rassemblez-moi mes fidèles » | Matthieu 24:31 ; 1 Thessaloniciens 4:16, 17 | En cours ; À venir | C | Psaume de jugement à valeur prophétique ; cas limite. |
+| P1083 | Psaume 69:8 | « Je suis devenu un étranger pour mes frères, un inconnu pour les fils de ma mère » | Jean 1:11 ; 7:3-5 ; Marc 3:21 | Accomplie | A | Tableau « Prophéties remarquables concernant Jésus » (it-2 « Messie », p. 272 ; wol 1200003018) ; seul élément de ce tableau absent du registre avec Michée 5:1. |
+| P1084 | Psaume 86:9 | « Toutes les nations que tu as faites viendront se prosterner devant toi et glorifieront ton nom » | Révélation 15:4 ; 7:9, 10 | En cours ; À venir | B | Révélation 15:4 en reprend les termes. |
+| P1085 | Psaume 89:19-29 | David : « je l'établirai premier-né, le plus élevé des rois de la terre » ; alliance et descendance pour toujours | Colossiens 1:15, 18 ; Révélation 1:5 ; 19:16 | Accomplie (1er accomplissement) ; En cours | B | Complète P549/P576 (89:3, 4, 35-37). |
+| P1086 | Psaume 95:7-11 | « Aujourd'hui, si vous écoutez sa voix… » ; « ils n'entreront pas dans mon repos » | Hébreux 3:7-19 ; 4:1-11 | Accomplie (1er accomplissement) ; En cours | A | Hébreux 4:7 dit que David parlait « si longtemps après » du repos à venir ; côté Écritures hébraïques de P767. |
+| P1087 | Psaume 96:10-13 ; 98:7-9 (avec 9:7, 8 ; 67:4) | « Jéhovah est devenu roi » ; il vient « juger la terre avec justice et les peuples avec droiture » | Actes 17:31 ; Révélation 11:15-18 ; 19:11 | En cours ; À venir | A | Psaumes du règne appliqués au Royaume ; Actes 17:31 en reprend le vocabulaire. |
+| P1088 | Psaume 97:7 | « Prosternez-vous devant lui, vous tous les dieux » | Hébreux 1:6 | Accomplie | B | Cité en P766 (Hébreux 1:5-9) mais sans entrée propre. |
+| P1089 | Psaume 102:13-22 | Le temps de faveur pour Sion ; les nations craindront le nom de Jéhovah ; « écrit pour la génération à venir, pour un peuple qui sera créé » | Esdras 1:1-4 ; Isaïe 43:21 ; 1 Pierre 2:9 | Accomplie (1er accomplissement) ; En cours | A | Prophétie de rétablissement se déclarant elle-même écrite pour l'avenir (102:18). |
+| P1090 | Psaume 102:25-27 | Les cieux et la terre périront comme un vêtement ; « toi, tu es le même, et tes années ne finiront pas » — appliqué au Fils | Hébreux 1:10-12 | Accomplie ; À venir | A | Hébreux 1:10-12 l'applique au Fils ; P766 ne couvre qu'Hébreux 1:5-9. |
+| P1091 | Psaume 104:5 ; Ecclésiaste 1:4 (avec Psaume 78:69 ; Isaïe 45:18) | La terre fondée « pour toujours », jamais ébranlée ; « la terre subsiste pour toujours » | Révélation 21:3, 4 | En cours | C | Assertions à valeur prophétique (permanence de la terre), très utilisées dans les publications ; cas limite. |
+| P1092 | Psaume 132:13-18 | Jéhovah a choisi Sion : « c'est ici mon lieu de repos pour toujours » ; « je ferai germer une corne pour David ; j'ai préparé une lampe pour mon oint » | Luc 1:69 ; 1 Rois 11:36 ; Matthieu 1:1 | Accomplie | A | La « corne » est reprise par Zacharie (Luc 1:69) ; P558/P577 ne couvrent que 132:11, 12. |
+| P1093 | Proverbes 2:21, 22 ; 10:30 | « Les hommes droits résideront sur la terre » ; les méchants en seront retranchés ; « le juste ne sera jamais ébranlé » | Psaume 37:29 ; Matthieu 5:5 | À venir | C | Même promesse que Psaume 37 sous forme sapientiale ; cas limite. |
+
+### Isaïe
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1094 | Isaïe 1:24-31 | Purification de Sion : « je rétablirai tes juges comme au début » ; « ville de justice » ; les transgresseurs brisés ensemble | Esdras 7:25 ; Néhémie 8-10 ; application messianique | Accomplie (1er accomplissement) ; À venir | A | P107 ne couvre que 1:7-9. |
+| P1095 | Isaïe 2:10-22 | Le jour de Jéhovah contre tout ce qui est orgueilleux ; les idoles jetées aux musaraignes et aux chauves-souris ; les hommes entreront dans les cavernes | 607 av. n. è. ; Révélation 6:15-17 | Accomplie (1er accomplissement) ; À venir | A | Révélation 6:15, 16 reprend 2:19 ; absent alors que 2:2-4 (P108) y est. |
+| P1096 | Isaïe 3:1–4:1 | Jérusalem privée de soutien et de pain ; des enfants pour chefs ; les filles de Sion dépouillées de leurs parures ; « sept femmes saisiront un seul homme » | 2 Rois 24:14 ; 25:1-21 (607 av. n. è.) | Accomplie | A | Chapitre entier de jugement sans entrée. |
+| P1097 | Isaïe 4:2-6 | « Le germe de Jéhovah » ; les rescapés de Sion appelés saints ; nuée le jour et feu la nuit, abri contre l'orage | Jérémie 23:5 ; Zacharie 3:8 ; 537 av. n. è. | Accomplie (1er accomplissement) ; À venir | A | Premier emploi du « germe » messianique ; les autres (P218, P494, P498) sont au registre. |
+| P1098 | Isaïe 5:1-7 | Le chant de la vigne : haie ôtée, muraille abattue, vigne piétinée, plus de pluie sur elle | 740-607 av. n. è. ; Matthieu 21:33-43 | Accomplie | A | Jésus en reprend l'image (Matthieu 21:33) ; P696 couvre la parabole mais non sa source. |
+| P1099 | Isaïe 5:8-25 | Six malheurs : maisons désertes, dix arpents pour un bath ; « mon peuple ira en exil faute de connaissance » ; le Schéol s'est élargi | 740-607 av. n. è. | Accomplie | A | P109 commence à 5:26. |
+| P1100 | Isaïe 7:15, 16 | Avant que l'enfant sache rejeter le mal et choisir le bien, le pays des deux rois (Syrie, Éphraïm) sera abandonné | 2 Rois 15:29, 30 ; 16:9 (732 av. n. è.) | Accomplie | A | P113 ne retient que 7:14 ; P115 (8:1-4) est le signe parallèle. |
+| P1101 | Isaïe 9:8-21 ; 10:1-4 | Contre Éphraïm et Samarie : Syriens et Philistins dévoreront Israël ; Manassé contre Éphraïm ; « sa main est encore étendue » | 2 Rois 15:29 ; 17:5, 6 (740 av. n. è.) | Accomplie | A | Bloc de jugement sans entrée entre P120 et P121. |
+| P1102 | Isaïe 10:24-34 | « N'aie pas peur de l'Assyrien » ; « encore très peu de temps » ; marche de l'envahisseur d'Ayath à Nob ; il agite la main contre Sion ; le fourré abattu par le fer | 2 Rois 19:32-36 (732 av. n. è.) | Accomplie | A | P121 s'arrête à 10:19. |
+| P1103 | Isaïe 12:1-6 | « En ce jour-là tu diras » : chant de délivrance ; « vous puiserez l'eau aux sources du salut » | 537 av. n. è. ; application chrétienne | Accomplie (1er accomplissement) | C | Chant prophétique (« en ce jour-là ») ; cas limite. |
+| P1104 | Isaïe 14:28-32 | Contre la Philistie, l'année de la mort d'Achaz : « du serpent sortira une vipère » ; la famine tuera ta racine ; une fumée vient du nord | 2 Rois 18:8 ; campagne de Sennachérib (732 av. n. è.) | Accomplie | A | Seul oracle contre une nation des chapitres 13-23 absent du registre. |
+| P1105 | Isaïe 17:12-14 | Le grondement des peuples nombreux : « au soir, l'effroi ; avant le matin, ils ne sont plus » | 2 Rois 19:35 (732 av. n. è.) | Accomplie | A | P131 s'arrête à 17:11. |
+| P1106 | Isaïe 18:1-7 | Le pays des insectes bourdonnants (Éthiopie) : un présent sera apporté à Jéhovah des armées au mont Sion | 2 Chroniques 32:23 ; Sophonie 3:10 ; Actes 8:27 | Accomplie | B | Chapitre sans entrée ; portée discutée. |
+| P1107 | Isaïe 26:20, 21 | « Entre dans tes chambres intérieures… cache-toi jusqu'à ce que la fureur soit passée » ; Jéhovah sort pour demander compte | 539 av. n. è. ; grande tribulation (Matthieu 24:21) | Accomplie (1er accomplissement) ; À venir | A | Texte majeur des publications sur la grande tribulation ; P142 s'arrête à 26:19. |
+| P1108 | Isaïe 29:17-24 | Le Liban redeviendra un verger ; les sourds entendront les paroles du livre ; le tyran ne sera plus ; « Jacob ne rougira plus » | Matthieu 11:5 ; 537 av. n. è. | Accomplie (1er accomplissement) ; En cours | A | P147 s'arrête à 29:14. |
+| P1109 | Isaïe 30:1-17 | Malheur à ceux qui descendent en Égypte : l'Égypte est « Rahab qui reste inactive » ; « mille fuiront devant la menace d'un seul » | 2 Rois 18:21 ; 24:7 ; 607 av. n. è. | Accomplie | A | P148 commence à 30:27. |
+| P1110 | Isaïe 30:18-26 | Jéhovah attend pour faire grâce ; pluie pour la semence ; « la lumière de la lune deviendra comme la lumière du soleil, sept fois plus forte » | 537 av. n. è. ; Révélation 21:23 ; 22:2 | Accomplie (1er accomplissement) ; À venir | A | Volet de rétablissement du même discours. |
+| P1111 | Isaïe 31:1-3 | Ceux qui descendent en Égypte : « l'Égyptien est un homme et non un Dieu » ; celui qui aide et celui qui est aidé trébucheront ensemble | 2 Rois 24:7 ; Jérémie 37:7 | Accomplie | B | P149 commence à 31:4. |
+| P1112 | Isaïe 32:1-8 | « Un roi régnera pour la justice, et des princes gouverneront pour le droit » ; chacun sera comme un abri contre le vent | Depuis 1914 ; Psaume 45:16 ; Révélation 20:6 | En cours ; À venir | A | Texte de référence des publications sur le Roi et les « princes » ; chapitre sans entrée. |
+| P1113 | Isaïe 32:9-20 | Femmes insouciantes : « dans un an et quelques jours vous tremblerez » ; palais abandonnés « jusqu'à ce que l'esprit soit répandu » ; le désert devient un verger ; paix et sécurité | 607 puis 537 av. n. è. ; Actes 2:17 | Accomplie (1er accomplissement) | B | Suite du chapitre 32. |
+| P1114 | Isaïe 33:1-12 | Malheur au dévastateur : « quand tu auras fini de dévaster, tu seras dévasté » ; « maintenant je me lève » ; les peuples brûlés comme la chaux | 2 Rois 19:35-37 ; chute de Ninive (632 av. n. è.) | Accomplie | B | P150 commence à 33:17. |
+| P1115 | Isaïe 41:8-20 | « N'aie pas peur, Israël mon serviteur » ; ceux qui s'irritent contre toi périront ; des fleuves sur les hauteurs dénudées, cèdres et acacias au désert | 537 av. n. è. ; Isaïe 35:6, 7 | Accomplie (1er accomplissement) ; À venir | A | P157 ne retient que 41:2-4, 25 (Cyrus). |
+| P1116 | Isaïe 43:14-21 | « À cause de vous j'envoie à Babylone » : les Chaldéens fuient dans leurs navires ; « je fais une chose nouvelle » : un chemin dans le désert | 539-537 av. n. è. | Accomplie | A | P159 ne retient que 43:5-7. |
+| P1117 | Isaïe 44:1-5 | « Je verserai mon esprit sur ta descendance » ; « celui-ci dira : j'appartiens à Jéhovah » ; d'autres se réclameront du nom de Jacob | Actes 2:17 ; Zacharie 8:23 | Accomplie (1er accomplissement) ; En cours | B | Chapitre couvert seulement à partir de 44:24 (P160). |
+| P1118 | Isaïe 45:13-17 | Cyrus rebâtira ma ville et renverra mes exilés sans rançon ; Égyptiens, Éthiopiens et Sabéens passeront enchaînés vers Israël ; « Israël sauvé pour toujours » | Esdras 1:1-4 ; Isaïe 60:14 | Accomplie (1er accomplissement) | B | P161 s'arrête à 45:7. |
+| P1119 | Isaïe 45:22-25 | « Tournez-vous vers moi et soyez sauvés, vous toutes les extrémités de la terre » ; « devant moi tout genou pliera, toute langue jurera » | Romains 14:11 ; Philippiens 2:10, 11 | En cours ; À venir | A | Côté Écritures hébraïques de P731 ; absent. |
+| P1120 | Isaïe 48:20-22 | « Sortez de Babylone ! Fuyez de Chaldée ! » ; ils n'ont pas eu soif dans les déserts ; « pas de paix pour les méchants » | 537 av. n. è. ; Révélation 18:4 | Accomplie (1er accomplissement) | A | P165 ne retient que 48:14, 15. |
+| P1121 | Isaïe 49:8-13 | « Au temps de faveur je t'ai répondu » ; alliance pour le peuple ; « sortez ! » aux prisonniers ; retour du nord, de l'ouest et du pays de Sinim | 2 Corinthiens 6:2 ; 537 av. n. è. | Accomplie | A | Paul cite 49:8 comme accompli « maintenant » (2 Corinthiens 6:2). |
+| P1122 | Isaïe 49:14-21 | Sion : « Jéhovah m'a oubliée » — « une femme oublie-t-elle son nourrisson ? » ; tes fils accourent, tes destructeurs s'en vont ; « le lieu est trop étroit » | 537 av. n. è. ; Galates 4:27 | Accomplie (1er accomplissement) | A | P167 ne retient que 49:22, 23. |
+| P1123 | Isaïe 49:24-26 | Le butin repris au fort ; « je ferai manger à tes oppresseurs leur propre chair » ; toute chair saura que Jéhovah est ton Sauveur | 539 av. n. è. | Accomplie | B | Fin du chapitre 49. |
+| P1124 | Isaïe 51:1-8, 11 | Sion consolée : son désert comme l'Éden ; « ma justice sera pour toujours » ; « les rachetés de Jéhovah reviendront à Sion avec des cris de joie » | 537 av. n. è. ; Isaïe 35:10 | Accomplie (1er accomplissement) | A | Chapitre 51 sans entrée. |
+| P1125 | Isaïe 51:17-23 | La coupe de la fureur ôtée de la main de Jérusalem et mise dans celle de ses tourmenteurs | 539 av. n. è. ; Jérémie 25:15-29 | Accomplie | A | Renversement annoncé, accompli à la chute de Babylone. |
+| P1126 | Isaïe 52:1-6 | « Réveille-toi, Sion » ; plus d'incirconcis ni d'impur ; « mon peuple connaîtra mon nom en ce jour-là » | 537 av. n. è. ; Joël 2:32 | Accomplie (1er accomplissement) | A | P169 commence à 52:7. |
+| P1127 | Isaïe 52:11, 12 | « Sortez de là, ne touchez rien d'impur » ; « vous ne sortirez pas dans la précipitation » : Jéhovah devant et derrière | 537 av. n. è. ; 2 Corinthiens 6:17 | Accomplie (1er accomplissement) | A | Paul l'applique aux chrétiens (2 Corinthiens 6:17). |
+| P1128 | Isaïe 55:10-13 | Ma parole « ne reviendra pas vers moi sans résultat » ; « vous sortirez dans la joie » ; le genévrier au lieu de l'épine ; « un signe qui ne sera pas retranché » | 537 av. n. è. | Accomplie (1er accomplissement) ; En cours | A | P173 s'arrête à 55:5. |
+| P1129 | Isaïe 57:14-21 | « Frayez le chemin » ; « je le guérirai » ; « paix à celui qui est loin et à celui qui est proche » ; « pas de paix pour les méchants » | Éphésiens 2:17 ; Actes 2:39 | Accomplie | A | Éphésiens 2:17 cite 57:19 comme accompli en Christ. |
+| P1130 | Isaïe 58:8-14 | Promesses conditionnelles : ta lumière poindra comme l'aurore ; « on t'appellera réparateur de brèches » ; tes ruines antiques rebâties | Néhémie 2:17 ; 6:15 | Accomplie (1er accomplissement) | C | Promesse conditionnelle ; cas limite. |
+| P1131 | Isaïe 59:15-19 | Jéhovah revêt la justice comme une cuirasse et le salut comme un casque ; rétribution aux îles ; « on craindra le nom de Jéhovah depuis le couchant » | Éphésiens 6:14-17 ; Révélation 19:11-16 | En cours ; À venir | B | Complète P175 (59:20). |
+| P1132 | Isaïe 61:4-11 | Ils rebâtiront les ruines antiques ; « vous serez appelés prêtres de Jéhovah » ; double portion ; alliance de durée indéfinie ; la justice germera devant toutes les nations | 537 av. n. è. ; 1 Pierre 2:9 ; Révélation 20:6 | Accomplie (1er accomplissement) ; En cours | A | P177/P596/P605 s'arrêtent à 61:3. |
+| P1133 | Isaïe 62:1-12 | Sion recevra un nom nouveau (« Mon plaisir est en elle ») ; ses gardiens sur les murailles ; plus d'ennemis pour manger son grain ; « dites à la fille de Sion : voici, ton salut vient » | Matthieu 21:5 ; 537 av. n. è. | Accomplie (1er accomplissement) ; En cours | A | Matthieu 21:5 combine 62:11 et Zacharie 9:9 ; chapitre sans entrée. |
+| P1134 | Isaïe 65:1-7 | « Je me suis laissé trouver par ceux qui ne me cherchaient pas » ; peuple obstiné qui sacrifie dans les jardins ; rétribution mesurée dans leur sein | Romains 10:20, 21 ; 70 de n. è. | Accomplie | A | Paul cite 65:1, 2 comme accompli (Romains 10:20, 21). |
+| P1135 | Isaïe 65:8-16 | « Ne le détruis pas, il y a une bénédiction dans la grappe » ; Sharôn et Akor pour mes serviteurs ; « mes serviteurs mangeront, mais vous aurez faim » ; nom laissé pour malédiction, serviteurs appelés d'un autre nom | 537 av. n. è. ; Actes 11:26 ; contraste 65:13-15 dans les publications | Accomplie (1er accomplissement) ; En cours | A | P179 commence à 65:17. |
+| P1136 | Isaïe 66:7-14 | Sion enfante avant les douleurs : « un pays naît-il en un jour ? une nation d'un seul coup ? » ; la paix comme un fleuve ; « vous serez consolés à Jérusalem » | 537 av. n. è. ; w10 (wol 2010813, « La Bible avait-elle prédit la création de l'État d'Israël ? ») ; application à 1919 | Accomplie (1er accomplissement) ; En cours | A | P180 commence à 66:15. |
+
+### Jérémie
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1137 | Jérémie 10:17-22 | « Ramasse ton paquet » : Jéhovah lance les habitants comme avec une fronde ; un grand vacarme vient du nord ; les villes de Juda désertes | 607 av. n. è. | Accomplie | B | Seul passage de jugement de Jérémie 1-25 sans entrée. |
+| P1138 | Jérémie 49:6 | « Ensuite je rassemblerai les captifs des Ammonites » | Après 537 av. n. è. (Néhémie 2:10, 19 : Ammonites de nouveau présents) | Accomplie | B | Complète P278 ; même schéma que 48:47 (P277) et 49:39 (P282). |
+| P1139 | Jérémie 50:4-8 | Israël et Juda reviendront ensemble en pleurant, chercheront Jéhovah, alliance de durée indéfinie ; « fuyez de Babylone » | Esdras 1:5 ; 2:1-70 | Accomplie | B | Complète P283-P287 (Babylone), qui omettent 50:4-8. |
+| P1140 | Jérémie 50:21-32 | « Monte contre Merathaïm et Peqod » ; le marteau de toute la terre brisé ; Babylone prise au piège « sans le savoir » ; l'arrogant trébuchera | 539 av. n. è. | Accomplie | B | Complète P283-P287. |
+
+### Daniel
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1141 | Daniel 12:10 | « Beaucoup se purifieront… les méchants ne comprendront pas, mais les perspicaces comprendront » | Depuis 1914 ; Matthieu 24:45 | En cours | B | Seul verset prédictif du chapitre 12 hors registre avec 12:13. |
+| P1142 | Daniel 12:13 | « Tu te reposeras, mais tu te lèveras pour ton lot à la fin des jours » : résurrection de Daniel | À venir ; Hébreux 11:32-40 | À venir | A | Promesse personnelle de résurrection ; conclusion du livre. |
+
+### Osée, Michée, Zacharie
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1143 | Osée 6:1-3 | « Après deux jours il nous fera revivre ; le troisième jour il nous relèvera » ; il viendra comme la pluie de printemps | 537 av. n. è. (rétablissement) ; application ultérieure discutée | Accomplie (1er accomplissement) | B | Chapitre sans entrée ; portée à trancher. |
+| P1144 | Osée 13:14 | « De la main du Schéol je les rachèterai ; de la mort je les recouvrerai. Où sont tes aiguillons, ô Mort ? » | 1 Corinthiens 15:54-57 ; Révélation 20:13, 14 | Accomplie (1er accomplissement) ; À venir | A | w95 (wol 1995122) : « la victoire sur la mort, annoncée prophétiquement » ; P738 ne cite qu'Isaïe 25:8. |
+| P1145 | Osée 13:15, 16 | Un vent d'est de Jéhovah dessèchera Éphraïm ; Samarie tenue pour coupable : « ils tomberont par l'épée, leurs enfants seront écrasés » | 2 Rois 17:5, 6 (740 av. n. è.) | Accomplie | A | Chapitres 12-13 d'Osée sans aucune entrée. |
+| P1146 | Michée 5:1 | « Avec le bâton ils frapperont sur la joue le juge d'Israël » | Matthieu 26:67 ; 27:30 ; Jean 19:3 | Accomplie | A | Tableau « Prophéties remarquables concernant Jésus » (it-2 « Messie », p. 272 ; wol 1200003018). |
+| P1147 | Zacharie 11:1-3 | « Ouvre tes portes, Liban, pour que le feu dévore tes cèdres » ; les bergers hurlent ; l'orgueil du Jourdain dévasté | 70 de n. è. (contexte 11:4-14) | Accomplie | B | Prologue de la section 11 dont le reste est au registre (P506, P507). |
+| P1148 | Zacharie 11:15-17 | Le berger insensé qui ne s'occupe pas des brebis ; « l'épée sur son bras et sur son œil droit » | Matthieu 23:1-39 ; Jean 11:47-53 ; 70 de n. è. | Accomplie | A | P506/P507 s'arrêtent à 11:13. |
+
+### Évangiles
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1149 | Matthieu 1:20-23 | L'ange à Joseph : « elle mettra au monde un fils ; tu l'appelleras Jésus, car il sauvera son peuple de ses péchés » | Matthieu 1:25 ; Luc 2:21 ; Actes 4:12 | Accomplie ; En cours | A | Annonce angélique ; P113/P588 ne couvrent qu'Isaïe 7:14. |
+| P1150 | Matthieu 2:13 | « Hérode va rechercher le petit enfant pour le faire périr » | Matthieu 2:16-18 | Accomplie | B | Avertissement prophétique en songe ; complète P239/P590. |
+| P1151 | Matthieu 2:23 (avec Isaïe 11:1, « rejeton », hébreu nétser) | « Il sera appelé Nazaréen » : « ce qui avait été dit par les prophètes » | Matthieu 2:23 ; Jean 1:45, 46 ; Actes 24:5 | Accomplie | B | Lacune signalée par la fiche C014 ; nwtsty Mt 2:23 (jeu sur nétser). |
+| P1152 | Matthieu 3:11, 12 ; Marc 1:7, 8 ; Luc 3:16, 17 ; Jean 1:33 | Jean : « il vous baptisera avec de l'esprit saint et du feu » ; il nettoiera son aire et brûlera la paille | Actes 1:5 ; 2:1-4 ; 70 de n. è. | Accomplie | A | Prophétie du précurseur reprise par Jésus (Actes 1:5). |
+| P1153 | Matthieu 8:11, 12 ; Luc 13:28, 29 | Beaucoup viendront de l'est et de l'ouest s'étendre à table avec Abraham ; « les fils du royaume seront jetés dehors » | Actes 10:44-48 ; Matthieu 21:43 | Accomplie ; En cours | A | Annonce de l'entrée des nations ; complète P686. |
+| P1154 | Matthieu 9:15 ; Marc 2:19, 20 ; Luc 5:34, 35 | « Des jours viendront où l'époux leur sera enlevé ; alors ils jeûneront » | 33 de n. è. ; Actes 13:2, 3 | Accomplie | B | Première allusion prédictive de Jésus à sa mort. |
+| P1155 | Matthieu 10:23 | « Vous n'aurez pas achevé le circuit des villes d'Israël avant que le Fils de l'homme arrive » | 70 de n. è. ; Matthieu 24:14 | Accomplie (1er accomplissement) ; En cours | B | Complète P708. |
+| P1156 | Matthieu 11:20-24 ; Luc 10:13-15 | Chorazin, Bethsaïda, Capernaüm : « tu descendras dans l'hadès » ; plus supportable pour Tyr, Sidon et Sodome au jour du jugement | Sites ruinés des trois villes ; Révélation 20:11-13 | Accomplie ; À venir | A | Malédiction prophétique sur trois villes identifiées. |
+| P1157 | Matthieu 12:41, 42 ; Luc 11:31, 32 | Les hommes de Ninive et la reine du Sud « se lèveront au jugement avec cette génération » | Jean 5:28, 29 ; Actes 24:15 | À venir | A | Prophétie de résurrection nominative ; P450/P644 ne couvrent que le signe de Jonas. |
+| P1158 | Matthieu 16:18, 19 | « Sur ce roc je bâtirai mon assemblée, et les portes de l'hadès ne la vaincront pas » ; les clés du royaume à Pierre | Actes 2:14-41 ; 8:14-17 ; 10:44-48 | Accomplie ; En cours | A | Prophétie fondatrice de l'assemblée ; usage des « clés » en Actes 2, 8 et 10. |
+| P1159 | Matthieu 16:27, 28 ; Marc 9:1 ; Luc 9:26, 27 | Le Fils de l'homme viendra dans la gloire de son Père avec ses anges ; « quelques-uns ne goûteront pas la mort avant d'avoir vu le Fils de l'homme venir dans son royaume » | Transfiguration (Matthieu 17:1-9 ; 2 Pierre 1:16-18) ; Matthieu 25:31 | Accomplie (1er accomplissement) ; À venir | A | 2 Pierre 1:16-18 identifie l'accomplissement. |
+| P1160 | Matthieu 17:11, 12 ; Marc 9:12, 13 | « Élie vient et rétablira toutes choses » ; « Élie est déjà venu et ils ne l'ont pas reconnu » | Jean le Baptiste (Luc 1:17) ; Malachie 4:5, 6 | Accomplie (1er accomplissement) | B | Côté Évangiles de P519/P594. |
+| P1161 | Matthieu 17:27 | Le premier poisson pris aura un statère dans la bouche | Matthieu 17:27 | Accomplie | B | Prédiction ponctuelle de Jésus. |
+| P1162 | Matthieu 19:28 ; Luc 22:28-30 | « Lors de la recréation… vous siégerez sur douze trônes pour juger les douze tribus d'Israël » ; « je fais avec vous une alliance pour un royaume » | Révélation 20:4-6 ; 1 Corinthiens 6:2, 3 | En cours ; À venir | A | it-2 « Royaume de Dieu » (wol 1200002615, « alliance pour un royaume ») ; nwtsty Lc 22:28-30. |
+| P1163 | Matthieu 20:22, 23 ; Marc 10:38, 39 | « Vous boirez ma coupe » : Jacques et Jean partageront ses souffrances | Actes 12:2 ; Révélation 1:9 | Accomplie | A | Accomplissement nominatif (Jacques exécuté, Jean exilé). |
+| P1164 | Matthieu 21:1-3 ; Marc 11:1-6 ; Luc 19:29-34 | « Vous trouverez une ânesse attachée et un ânon avec elle » | Matthieu 21:6, 7 | Accomplie | B | Prescience à court terme ; P503 couvre Zacharie 9:9, non l'ordre de Jésus. |
+| P1165 | Matthieu 23:34-36 ; Luc 11:49-51 | « Je vous envoie des prophètes… vous en tuerez, vous en fouetterez dans vos synagogues » ; tout le sang juste viendra sur cette génération | Actes 7:58-60 ; 12:2 ; 70 de n. è. | Accomplie | A | Complète P685 (23:37, 38). |
+| P1166 | Matthieu 23:39 ; Luc 13:35 | « Vous ne me verrez plus jusqu'à ce que vous disiez : Béni soit celui qui vient au nom de Jéhovah ! » | Matthieu 24:30 ; Révélation 1:7 | À venir | A | Complète P685. |
+| P1167 | Matthieu 26:2, 18 ; Marc 14:13-16 ; Luc 22:7-13 | « Dans deux jours… le Fils de l'homme sera livré » ; « mon temps fixé est proche » ; l'homme portant une cruche d'eau, la grande pièce meublée | Matthieu 26:47-50 ; Luc 22:13 | Accomplie | B | Prédictions à court terme de la dernière semaine. |
+| P1168 | Matthieu 26:29 ; Marc 14:25 ; Luc 22:16, 18 | « Je ne boirai plus du produit de la vigne jusqu'au jour où je le boirai, nouveau, avec vous dans le royaume de mon Père » | Depuis 1914 ; Révélation 19:9 | En cours ; À venir | A | Parole prophétique du Mémorial. |
+| P1169 | Matthieu 26:32 ; 28:7, 10 ; Marc 14:28 ; 16:7 | « Après avoir été relevé, je vous précéderai en Galilée » | Matthieu 28:16-20 ; Jean 21:1-14 | Accomplie | A | Prédiction répétée par l'ange le matin de la résurrection. |
+| P1170 | Luc 1:13-17, 20 | Gabriel à Zacharie : Élisabeth aura un fils, Jean, rempli d'esprit saint, marchant devant Dieu « avec l'esprit et la puissance d'Élie » ; Zacharie muet jusqu'à la naissance | Luc 1:57-64 ; 3:2-6 ; Matthieu 11:14 | Accomplie | A | Première prophétie des Écritures grecques. |
+| P1171 | Luc 1:31-33, 35 | Gabriel à Marie : « tu concevras et tu mettras au monde un fils… Jéhovah Dieu lui donnera le trône de David son père ; il régnera pour toujours » ; « ce qui naîtra sera appelé saint, Fils de Dieu » | Luc 2:7 ; Actes 2:30-36 ; Révélation 11:15 | Accomplie ; En cours | A | Prophétie directe de la naissance et de la royauté ; le tableau it-2 « Messie » la cite comme accomplissement d'Isaïe 7:14. |
+| P1172 | Luc 1:46-55 | Magnificat : « toutes les générations me déclareront heureuse » ; il a renversé les puissants, élevé les humbles, secouru Israël selon la promesse | Depuis le Ier siècle ; Luc 1:48 | Accomplie ; En cours | B | Chant prophétique de Marie. |
+| P1173 | Luc 1:67-79 | Zacharie « prophétisa » : « une corne de salut dans la maison de David » ; l'enfant sera « prophète du Très-Haut », marchera devant Jéhovah pour préparer ses chemins ; « l'aurore d'en haut » | Luc 3:3-6 ; Matthieu 3:1-3 ; 4:16 | Accomplie | A | Le texte lui-même le qualifie de prophétie (1:67). |
+| P1174 | Luc 2:10-12 | L'ange aux bergers : « il vous est né aujourd'hui un Sauveur, qui est Christ le Seigneur » ; signe : un bébé emmailloté dans une mangeoire | Luc 2:16-20 | Accomplie | B | Annonce avec signe vérifiable. |
+| P1175 | Luc 2:25-32 | Siméon : il ne mourrait pas avant d'avoir vu le Christ ; l'enfant, « lumière pour ôter le voile de dessus les nations et gloire d'Israël » | Luc 2:28-30 ; Actes 13:47 ; 26:23 | Accomplie | A | Révélation personnelle puis oracle inspiré (2:26, 27). |
+| P1176 | Luc 2:34, 35 | « Cet enfant est placé pour la chute et le relèvement de beaucoup en Israël et comme signe contredit… une longue épée te transpercera l'âme » | Jean 19:25 ; Actes 4:11, 12 ; 28:22 | Accomplie | A | Prophétie de Siméon à Marie. |
+| P1177 | Luc 5:10 ; Matthieu 4:19 | « Désormais tu prendras des hommes vivants » : pêcheurs d'hommes | Actes 2:41 ; 4:4 | Accomplie | B | Annonce de l'œuvre des apôtres. |
+| P1178 | Luc 12:11, 12 ; Matthieu 10:19, 20 | « L'esprit saint vous enseignera à l'heure même ce qu'il faut dire » | Actes 4:8-13 ; 6:10 ; 7:55 | Accomplie | B | Sous-partie distincte de P708. |
+| P1179 | Luc 12:49-53 ; Matthieu 10:34-36 | « J'ai un baptême dont je dois être baptisé » ; division dans les maisons : le père contre le fils (Michée 7:6) | 33 de n. è. ; Actes 14:2 ; 28:22 | Accomplie ; En cours | B | Michée 7:6 (P461) est cité ; l'entrée Évangiles manque. |
+| P1180 | Luc 13:32, 33 | « Aujourd'hui et demain je chasse les démons… et le troisième jour j'aurai fini » ; « un prophète ne peut périr hors de Jérusalem » | Luc 23:33 (33 de n. è.) | Accomplie | B | Prédiction du lieu de sa mort. |
+| P1181 | Luc 19:11-27 | Les mines : un homme de haute naissance part « recevoir la royauté et revenir » ; ses citoyens envoient une ambassade ; comptes rendus ; les ennemis exécutés | 33 puis 1914 ; Matthieu 25:14-30 (P676) ; jugement à venir | Accomplie (1er accomplissement) ; En cours ; À venir | A | Parabole prophétique distincte des talents (P676) : elle annonce le départ, le délai et le retour du Roi. |
+| P1182 | Luc 23:43 | « Tu seras avec moi dans le Paradis » | À venir ; Révélation 21:3, 4 ; Actes 24:15 | À venir | A | Promesse prophétique majeure de l'espérance terrestre ; absente. |
+| P1183 | Luc 24:46-49 ; Actes 1:4, 5 | La repentance prêchée dans toutes les nations « en commençant par Jérusalem » ; « restez dans la ville jusqu'à ce que vous soyez revêtus de la puissance d'en haut » ; « baptisés dans l'esprit saint dans peu de jours » | Actes 2:1-4, 38-41 | Accomplie | A | Complète P700 (Actes 1:8). |
+| P1184 | Jean 1:42 | « Tu seras appelé Céphas » | Jean 1:42 ; Matthieu 16:18 ; Galates 2:9 | Accomplie | C | Prédiction de nom ; cas limite. |
+| P1185 | Jean 1:51 | « Vous verrez le ciel ouvert et les anges de Dieu monter et descendre vers le Fils de l'homme » | Matthieu 4:11 ; Luc 22:43 ; Actes 1:10, 11 | Accomplie ; En cours | B | Reprise prophétique de Genèse 28:12. |
+| P1186 | Jean 3:14, 15 ; 8:28 | « Comme Moïse a élevé le serpent dans le désert, il faut que le Fils de l'homme soit élevé » ; « quand vous aurez élevé le Fils de l'homme, alors vous saurez que c'est moi » | Jean 19:17, 18 ; Actes 2:36, 37 | Accomplie | A | P702/P1000 ne couvrent que 12:32 ; lien avec Nombres 21:8, 9. |
+| P1187 | Jean 4:21-24 | « L'heure vient où ce n'est ni sur cette montagne ni à Jérusalem que vous adorerez le Père » ; les vrais adorateurs adoreront « avec l'esprit et la vérité » | Actes 8:5-17 ; Hébreux 9:8-11 ; 70 de n. è. | Accomplie | A | Prophétie sur la fin du culte au temple. |
+| P1188 | Jean 5:25 | « L'heure vient, et c'est maintenant, où les morts entendront la voix du Fils de Dieu, et ceux qui auront écouté vivront » | Éphésiens 2:1, 5 ; Jean 11:43, 44 | Accomplie (1er accomplissement) ; En cours | B | Complète P995 (5:28, 29). |
+| P1189 | Jean 6:70, 71 ; 13:18, 19 | « L'un de vous est un calomniateur » ; « je vous le dis dès maintenant, avant que cela arrive, afin que… vous croyiez que je suis » (Psaume 41:9) | Jean 13:26-30 ; 18:2-5 | Accomplie | B | Complète P704/P613 ; 13:19 énonce la fonction même de la prophétie. |
+| P1190 | Jean 7:33, 34 ; 8:21 ; 13:33 ; 16:5 | « Encore un peu de temps… je m'en vais vers celui qui m'a envoyé ; vous me chercherez et ne me trouverez pas » | Actes 1:9-11 | Accomplie | B | Annonces répétées du départ. |
+| P1191 | Jean 10:17, 18 | « Je livre mon âme, afin de la recevoir de nouveau… j'ai pouvoir de la recevoir de nouveau » | Actes 2:24, 32 ; Jean 2:19-22 | Accomplie | A | Prédiction explicite de la résurrection ; complète P707. |
+| P1192 | Jean 11:4, 11, 23 | « Cette maladie n'a pas pour but la mort » ; « Lazare s'est endormi, mais je vais le réveiller » ; « ton frère se relèvera » | Jean 11:43, 44 | Accomplie | A | Triple annonce accomplie dans le chapitre. |
+| P1193 | Jean 12:24 (avec 6:51) | Le grain de blé qui meurt porte beaucoup de fruit ; « le pain que je donnerai, c'est ma chair pour la vie du monde » | 33 de n. è. ; Actes 2:41 ; 1 Corinthiens 15:20, 36-38 | Accomplie | C | Images prédictives de la mort et de ses fruits ; cas limite. |
+| P1194 | Jean 13:36 (avec 21:18, 19) | À Pierre : « tu me suivras plus tard » | 2 Pierre 1:14 ; martyre de Pierre | Accomplie | B | Complète P999. |
+| P1195 | Jean 14:16, 17, 26 ; 15:26 ; 16:7-15 | L'assistant, « l'esprit de la vérité », sera envoyé : il enseignera, rappellera, « vous guidera dans toute la vérité et vous annoncera les choses à venir » ; il convaincra le monde | Actes 2:1-4, 33 ; 1 Jean 2:20, 27 | Accomplie | A | Prophétie centrale du discours d'adieu ; P709 ne couvre que la persécution. |
+| P1196 | Jean 14:19 ; 16:16-22 | « Encore un peu de temps et le monde ne me verra plus, mais vous me verrez » ; « votre tristesse se changera en joie », comme la femme qui enfante | Jean 20:19, 20 ; Actes 10:40, 41 | Accomplie | A | Prédiction des apparitions post-résurrection. |
+| P1197 | Jean 21:22, 23 | « Si je veux qu'il demeure jusqu'à ce que je vienne » : Jean survivra aux autres apôtres et verra la « venue » en vision | Révélation 1:1, 9, 10 ; 22:20 | Accomplie | C | Application donnée par les publications (Jean voit la présence en vision) ; cas limite. |
+
+### Actes
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1198 | Actes 1:11 | « Ce Jésus… viendra de la même manière que vous l'avez vu s'en aller au ciel » | Depuis 1914 ; Matthieu 24:3 ; Révélation 1:7 | En cours | A | nwtsty Ac 1:11 (note « viendra de la même manière ») ; w05 15/1 p. 10-15 (wol 2005043). |
+| P1199 | Actes 13:11 | Élymas : « la main de Jéhovah est sur toi, tu seras aveugle et tu ne verras pas la lumière du soleil pendant un temps » | Actes 13:11, 12 | Accomplie | A | Prophétie apostolique accomplie sur-le-champ. |
+| P1200 | Actes 17:31 | « Il a fixé un jour où il va juger la terre habitée avec justice par un homme qu'il a désigné », garantie donnée : sa résurrection | À venir ; Jean 5:22 ; Révélation 20:11-13 | À venir | A | Déclaration prophétique de Paul à l'Aréopage. |
+| P1201 | Actes 20:25, 38 | « Vous ne verrez plus mon visage, vous tous parmi lesquels j'ai prêché le Royaume » | Actes 21:33 ; 28:16-31 (Paul ne revient pas à Éphèse avant sa mort selon Actes) | Accomplie | B | Complète P718 (20:22-24) et P719 (20:29, 30). |
+| P1202 | Actes 23:3 | À Ananias : « Dieu va te frapper, muraille blanchie » | Assassinat d'Ananias en 66 de n. è. (Josèphe, Guerre des Juifs II, 441) | Accomplie | C | Parole à portée prédictive ; accomplissement extra-biblique ; cas limite. |
+| P1203 | Actes 24:15 | « Il va y avoir une résurrection tant des justes que des injustes » | À venir ; Jean 5:28, 29 ; Révélation 20:12, 13 | À venir | A | Texte de référence de l'espérance de la résurrection ; cité en accomplissement de P995/P996 mais sans entrée propre. |
+| P1204 | Actes 27:10 | « Le voyage se fera avec dommage et grande perte, pour la cargaison, le bateau et nos âmes » (précisé en 27:22-24) | Actes 27:41-44 | Accomplie | B | Complète P722. |
+| P1205 | Actes 28:25-28 | Isaïe 6:9, 10 appliqué aux Juifs de Rome ; « ce salut de Dieu a été envoyé aux nations ; elles, elles l'écouteront » | Depuis 61 de n. è. ; Colossiens 1:23 | Accomplie ; En cours | B | Côté Actes de P110/P602, avec une prédiction propre (28:28). |
+
+### Épîtres
+
+| N° | Référence | Teneur | Accomplissement | Statut | Prio. | Justification / source |
+|---|---|---|---|---|---|---|
+| P1206 | Romains 8:18-23 | La révélation des fils de Dieu ; « la création elle-même sera libérée de l'esclavage de la corruption » ; gémissements dans l'attente de l'adoption | Révélation 20:6 ; 21:4 | À venir | A | Prophétie paulinienne majeure sur le Règne millénaire ; absente. |
+| P1207 | Romains 11:12, 15 | Leur « plénitude » ; l'admission d'Israël sera « la vie d'entre les morts » | Romains 11:25, 26 | Accomplie (1er accomplissement) ; En cours | C | Complète P729 ; cas limite. |
+| P1208 | 1 Corinthiens 6:2, 3 | « Les saints jugeront le monde » ; « nous jugerons des anges » | Révélation 20:4 ; Jude 6 | À venir | A | Prophétie sur le rôle des cohéritiers ; absente. |
+| P1209 | 1 Corinthiens 13:8-10 | Les dons de prophétie, de langues et de connaissance « seront abolis… quand ce qui est complet sera arrivé » | Fin du Ier siècle (mort des apôtres ; Actes 8:18) | Accomplie | A | Prédiction de la cessation des dons miraculeux ; absente. |
+| P1210 | 1 Corinthiens 15:20-23 | Christ, « prémices de ceux qui se sont endormis » ; « chacun à son rang : Christ, puis ceux qui appartiennent au Christ durant sa présence » | 33 de n. è. ; 1 Thessaloniciens 4:16 | Accomplie (1er accomplissement) ; En cours | B | Complète P735 (15:22-26) sur l'ordre des résurrections. |
+| P1211 | 2 Corinthiens 12:1-4 | Paul « enlevé jusqu'au troisième ciel », « dans le paradis » : vision des choses à venir | Révélation 21:1-5 ; Luc 23:43 | À venir | C | Vision prophétique sans contenu détaillé ; cas limite. |
+| P1212 | Philippiens 1:19, 25, 26 ; Philémon 22 | « Je resterai et je demeurerai avec vous tous » ; « préparez-moi un logement » : libération de la première captivité romaine annoncée | Actes 28:30 ; 1 Timothée 1:3 ; Tite 1:5 (vers 61 de n. è.) | Accomplie | B | Prédiction personnelle de Paul, accomplie selon les épîtres pastorales (cf. it-2 « Paul »). |
+| P1213 | Philippiens 2:9-11 | Nom au-dessus de tout nom : « qu'au nom de Jésus fléchisse tout genou… et que toute langue reconnaisse ouvertement que Jésus Christ est Seigneur » | Isaïe 45:23 ; Révélation 5:13 | En cours ; À venir | A | Cité en accomplissement de P731 mais sans entrée propre. |
+| P1214 | 1 Thessaloniciens 3:4 | « Nous vous disions d'avance que nous allions subir des tribulations, et c'est ce qui est arrivé » | Actes 17:5-10 ; 1 Thessaloniciens 2:14 | Accomplie | B | Prédiction apostolique dont le texte constate l'accomplissement. |
+| P1215 | 2 Thessaloniciens 2:6, 7, 9-12 | « Ce qui fait obstacle » ; le mystère de l'illégalité déjà à l'œuvre ; présence de l'homme d'illégalité avec signes mensongers ; « opération d'erreur » sur ceux qui n'ont pas aimé la vérité | Après la mort des apôtres ; 1 Jean 2:18, 19 | Accomplie (1er accomplissement) ; En cours | B | Complète P757/P758 (2:3 et 2:8). |
+| P1216 | 2 Timothée 4:1 ; Actes 10:42 ; 1 Pierre 4:5 | Christ Jésus « va juger les vivants et les morts », lors de sa manifestation et de son royaume | À venir ; Jean 5:22-29 | À venir | A | Formule prophétique commune à Pierre et Paul ; absente. |
+| P1217 | 2 Timothée 4:6, 7 ; 2 Pierre 1:14 | « Le moment de ma libération est proche » ; « l'enlèvement de ma tente est proche » : Paul et Pierre annoncent leur mort | Vers 64-65 de n. è. ; Jean 21:18, 19 | Accomplie | B | Complète P764 et P999. |
+| P1218 | Hébreux 9:27, 28 | « Le Christ… apparaîtra une seconde fois, en dehors du péché, à ceux qui l'attendent ardemment pour leur salut » | Depuis 1914 ; Révélation 1:7 ; Matthieu 24:30 | En cours ; À venir | A | Seule mention explicite d'une « seconde » apparition ; absente. |
+| P1219 | Hébreux 10:36, 37 (Habacuc 2:3, 4) | « Encore très peu de temps, et celui qui vient arrivera et ne tardera pas » | 70 de n. è. ; présence depuis 1914 | Accomplie (1er accomplissement) ; En cours | B | Côté Écritures grecques de P472. |
+| P1220 | Hébreux 12:26-28 (Aggée 2:6) | « Encore une fois j'ébranlerai non seulement la terre mais aussi le ciel » : enlèvement des choses ébranlées ; « un royaume qui ne peut être ébranlé » | À venir ; Révélation 21:1 ; Daniel 2:44 | À venir | A | Complète P487 par une application eschatologique explicite. |
+| P1221 | 1 Pierre 1:4-7, 13 | Héritage « réservé dans les cieux » ; « salut prêt à être révélé dans la dernière période » ; « révélation de Jésus Christ » | 1 Thessaloniciens 4:16 ; Révélation 2:10 | En cours ; À venir | B | Prophétie sur l'issue de l'appel céleste. |
+| P1222 | 1 Pierre 5:4 | « Quand le berger en chef aura été manifesté, vous recevrez la couronne de gloire » | 2 Timothée 4:8 ; Révélation 2:10 | En cours | B | Cité en accomplissement de P764 mais sans entrée. |
+| P1223 | 2 Pierre 1:19 | La parole prophétique, lampe « jusqu'à ce que le jour commence à poindre et qu'une étoile du matin se lève » | Révélation 22:16 ; Nombres 24:17 ; depuis 1914 | Accomplie (1er accomplissement) ; En cours | B | Complète P781. |
+| P1224 | 2 Pierre 2:1-3 | « Il y aura parmi vous de faux enseignants qui introduiront des sectes destructrices » ; « beaucoup suivront leur inconduite » ; « ils vous exploiteront avec des paroles trompeuses » | Apostasie dès la fin du Ier siècle ; Actes 20:29, 30 ; 2 Timothée 4:3, 4 | Accomplie ; En cours | A | Prophétie d'apostasie parallèle à P719/P760/P763 ; absente. |
+| P1225 | 1 Jean 2:17 | « Le monde est en train de passer, et son désir aussi, mais celui qui fait la volonté de Dieu demeure pour toujours » | 1 Corinthiens 7:31 ; Révélation 21:1-4 | En cours ; À venir | A | Texte de référence des publications ; absent. |
+| P1226 | Jude 6 ; 2 Pierre 2:4 | Les anges qui ont abandonné leur demeure, « réservés avec des liens éternels, dans l'obscurité, pour le jugement du grand jour » | Révélation 20:1-3, 10 | À venir | B | Prophétie sur le jugement des démons ; absente. |
+
+---
+
+## 6. Passages examinés et non retenus
+
+*Tous ces passages existent ; ils ont été écartés soit parce qu'ils n'annoncent rien de précis, soit parce que l'entrée correspondante existe déjà (le numéro est indiqué).*
+
+| Passage(s) | Motif |
+|---|---|
+| Genèse 31:3 ; 46:4a ; Exode 3:12a | Promesses de présence (« je serai avec toi ») : assurance, non prédiction d'un événement. |
+| Genèse 21:13, 18 | Doublon de P009/P010 (Ismaël). |
+| Exode 12:14-17 ; Lévitique 23 (fêtes) | Ordonnances ; seule la typologie explicitée par le NT est proposée (Lévitique 16 et 23:9-11, priorité C). |
+| Deutéronome 18:20-22 | Critère du vrai prophète, non prophétie. |
+| Josué 13:6 ; 23:5 | Reprise de la promesse de conquête déjà couverte (P047, P067 et proposition Deutéronome 31). |
+| Ruth 2:12 ; 4:11 | Souhaits de bénédiction (4:11, 12 déjà en P520). |
+| 1 Samuel 16:1-13 | Choix et onction de David : acte, non annonce (la royauté est annoncée en P070/P071). |
+| 2 Rois 20:1 ; Isaïe 38:1 | Sentence « tu vas mourir » aussitôt révisée : intégrée à P096/P154. |
+| 1 Chroniques 17:11-14 ; 28:6, 7 ; 2 Chroniques 7:19-22 ; 18:16-22 ; 34:24-28 | Parallèles des Chroniques déjà couverts par 2 Samuel 7 (P073/P575), 1 Rois 9 (P075), 1 Rois 22 (P083), 2 Rois 22 (P099). |
+| 2 Chroniques 15:1-7 | Discours d'Azaria : constat historique plus qu'annonce ; portée prophétique discutée. |
+| Esther 4:14 | « Le secours viendra d'ailleurs » : parole de foi de Mardochée ; pas d'annonce précise. |
+| Psaume 1:5, 6 ; 90:10 ; 145:20 ; 147:2 ; 149:6-9 | Énoncés sapientiaux ou descriptifs ; pas de prédiction datable. |
+| Psaume 40:2-5 ; 138:1-6 ; Daniel 10:5, 6 (listes « 300 prophéties ») | Citations sans contenu prédictif : écartées conformément à la règle d'exclusion de tout passage non prophétique. |
+| Isaïe 42:10-25 ; 43:22-28 ; 44:6-23 ; 46:3-7 ; 50:1-3 ; 56:9-12 ; 63:7–64:12 | Exhortations, controverses ou prière ; la part prédictive est déjà couverte par les entrées voisines. |
+| Jérémie 1:10 ; 4:27 ; 5:18 ; 11:11 | Formules reprises ailleurs au registre (P181, P182, P234). |
+| Lamentations 3:31-33 | Principe de consolation, non prédiction (4:22 déjà en P299). |
+| Osée 12:9 | Mention brève, sans accomplissement identifiable distinct de P418. |
+| Matthieu 5:18 ; 6:10 ; 7:22, 23 ; 12:32 ; 18:7 ; 19:30 ; 28:20 ; Jean 4:14 ; 14:12 | Promesses, prières ou principes : pas d'annonce d'événement identifiable. |
+| Matthieu 17:22, 23 ; Marc 8:31 ; 9:31 ; Luc 9:22 ; 18:31-33 ; 24:7, 46 | Parallèles des annonces de la Passion déjà en P703. |
+| Matthieu 26:64 ; Luc 22:69 | Parallèles de Marc 14:62, déjà au registre (P991). |
+| Luc 4:21 ; 17:22-27 ; 21:32 ; Marc 13 (P981-P989) | Accomplissement constaté ou parallèles synoptiques déjà couverts (P668, P666). |
+| Actes 2:17-21 ; 3:22, 23 ; 7:6, 7, 37 ; 13:33-41 ; 15:16-18 ; 28:26, 27 | Citations d'accomplissement dont le texte source est déjà au registre (P426, P058, P006, P527, P441, P110). |
+| Romains 2:5, 16 ; 13:11, 12 ; 1 Corinthiens 1:7, 8 ; 3:13 ; 4:5 ; 7:29-31 ; 11:26 ; Galates 6:7-9 ; Éphésiens 1:14 ; 2:7 ; Colossiens 3:6 ; 1 Thessaloniciens 1:10 ; 2:19 ; 1 Timothée 6:14 ; Jacques 1:12 ; 1 Pierre 4:7, 13 ; 2 Pierre 3:12 ; 1 Jean 2:28 | Allusions au « jour », à la présence ou à la récompense sans contenu prédictif propre ; couvertes par les entrées thématiques existantes (P740, P752-P756, P765, P784-P786). |
+| Galates 3:16 ; 4:26, 27 ; Éphésiens 2:17 ; 4:8 ; Hébreux 1:13 ; 2:5-9 ; 3:7-11 ; 7:17 ; 10:30 | Citations d'accomplissement dont l'entrée source est proposée ou existante (Genèse 22:18, Isaïe 54:1, Isaïe 57:19, Psaume 68:18, 110:1, 8:4-8, 95:7-11, 110:4, Deutéronome 32:35). |
+
+---
+
+## 7. Doublons et chevauchements internes au registre
+
+*Détectés automatiquement (mêmes versets dans deux entrées). Ils ne sont pas des erreurs en soi — la partie 8 (messianique) relit volontairement des textes déjà inscrits — mais ils comptent pour la production des fiches : une fiche de renvoi suffit quand la fiche principale existe (voir `FICHES_MANQUANTES.md`).*
+
+| Entrée | Reprend les versets de | Catégorie |
+|---|---|---|
+| P570 | P1 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P571 | P3, P13 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P572 | P29 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P573 | P53 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P574 | P73 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P576 | P549 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P577 | P558 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P578 | P120 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P579 | P123, P124 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P580 | P218 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P581 | P252, P253 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P582 | P355 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P583 | P359 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P584 | P379 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P585 | P457 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P586 | P489 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P587 | P498 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P588 | P113 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P589 | P457, P585 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P590 | P239 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P591 | P420 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P592 | P156 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P593 | P516 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P594 | P519 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P595 | P385 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P596 | P177 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P597 | P119 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P598 | P158 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P599 | P524 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P600 | P145 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P601 | P548 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P602 | P110 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P603 | P171 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P604 | P152 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P605 | P177, P596 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P606 | P544 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P607 | P556 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P608 | P552 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P609 | P554 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P610 | P526 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P611 | P523 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P612 | P158 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P613 | P539 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P614 | P507 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P615 | P507 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P616 | P541 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P617 | P551 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P618 | P171 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P619 | P537 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P621 | P537, P543 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P622 | P510 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P623 | P168 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P624 | P171 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P625 | P171 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P626 | P171 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P627 | P171 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P628 | P59 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P630 | P529 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P631 | P530 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P632 | P531 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P633 | P531 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P634 | P532 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P635 | P545 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P636 | P536 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P638 | P509 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P639 | P385 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P640 | P385 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P641 | P385 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P642 | P527 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P643 | P171 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P644 | P450 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P645 | P542 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P646 | P170 | Partie 8 (messianique) : relecture d'une entrée antérieure |
+| P649 | P648 | Évangiles / Actes : chevauchement partiel (parallèles synoptiques ou découpage) |
+| P650 | P648, P649 | Évangiles / Actes : chevauchement partiel (parallèles synoptiques ou découpage) |
+| P651 | P648, P649, P650 | Évangiles / Actes : chevauchement partiel (parallèles synoptiques ou découpage) |
+| P653 | P652 | Évangiles / Actes : chevauchement partiel (parallèles synoptiques ou découpage) |
+| P689 | P385, P639 | Évangiles / Actes : chevauchement partiel (parallèles synoptiques ou découpage) |
+| P690 | P684 | Évangiles / Actes : chevauchement partiel (parallèles synoptiques ou découpage) |
+| P697 | P687 | Évangiles / Actes : chevauchement partiel (parallèles synoptiques ou découpage) |
+| P708 | P655 | Évangiles / Actes : chevauchement partiel (parallèles synoptiques ou découpage) |
+| P709 | P655 | Évangiles / Actes : chevauchement partiel (parallèles synoptiques ou découpage) |
+| P805 | P798 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P806 | P799 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P807 | P801 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P808 | P802 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P809 | P803 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P810 | P803 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P811 | P804 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P812 | P804 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P829 | P820 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P830 | P823 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P831 | P824 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P869 | P868 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P871 | P864 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P913 | P912 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P932 | P931 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P934 | P933 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P939 | P938 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P972 | P949 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P973 | P931 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P974 | P936 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P975 | P947, P948 | Révélation : mêmes versets dans deux sections (à harmoniser) |
+| P981 | P679 | Partie 14 (Marc / Jean, compléments) : parallèle d'une entrée existante |
+| P982 | P649 | Partie 14 (Marc / Jean, compléments) : parallèle d'une entrée existante |
+| P983 | P708 | Partie 14 (Marc / Jean, compléments) : parallèle d'une entrée existante |
+| P985 | P682 | Partie 14 (Marc / Jean, compléments) : parallèle d'une entrée existante |
+| P998 | P709 | Partie 14 (Marc / Jean, compléments) : parallèle d'une entrée existante |
+| P1000 | P702 | Partie 14 (Marc / Jean, compléments) : parallèle d'une entrée existante |
+
+---
+
+## 8. Comparaison avec les recensements externes
+
+| Recensement | Chiffre | Usage dans cet audit |
+|---|---|---|
+| J. Barton Payne, *Encyclopedia of Biblical Prophecy* (1973, rééd. 2020) | 1 817 prédictions, 8 352 versets (27 % de la Bible), 737 sujets | Ordre de grandeur ; confirme que le registre (1 000 entrées) est du bon ordre, mais que Payne compte des annonces ponctuelles (Genèse 2:17, plaies, oracles des Rois) que le registre n'a pas encore |
+| A. Edersheim (cité par it-2 « Messie ») | 456 passages tenus pour messianiques par l'ancienne synagogue | Non repris : beaucoup n'ont pas de contenu prophétique explicite (réserve rappelée en wol 2011607) |
+| Listes « 300 prophéties accomplies par Jésus » | 300 à 351 items | Filet seulement ; la majorité des items non retenus sont des citations non prédictives |
+| Tableau it-2 « Messie » p. 272 / ad p. 1008 | ≈ 40 lignes | 100 % couvertes sauf Michée 5:1 et Psaume 69:8 |
+
+Conformément à la règle 5 du registre, **aucun total n'est présenté comme définitif** : le nombre d'entrées dépend du découpage (une entrée par oracle, ou par verset comme dans la Révélation).
+
+---
+
+## 9. Suites proposées
+
+1. Valider les propositions de priorité A (intégration directe), arbitrer B (intégrer ou fusionner avec l'entrée existante indiquée) et trancher C (règle à fixer : la typologie explicitée par le NT est-elle « prophétie » ? Le registre a déjà répondu oui pour P628 et P629).
+2. ~~Intégrer les lignes retenues~~ **Fait le 27/09/2026** pour la priorité A (`24_REGISTRE_PROPHETIES_8.md`, partie 15) ; reste à trancher les 97 B/C (`25_PROPOSITIONS_B_C_EN_ATTENTE.md`) et à mettre à jour le tableau récapitulatif de `23_REGISTRE_PROPHETIES_7.md` (nombre d'entrées ; Philémon passerait dans les livres avec entrée si la proposition « Philippiens 1:19, 25, 26 ; Philémon 22 » est retenue).
+3. Harmoniser les doublons de la Révélation (§ 7) et décider si les entrées de la partie 8 qui répètent une entrée antérieure reçoivent une fiche propre ou un renvoi.
+4. Produire les fiches manquantes selon `FICHES_MANQUANTES.md` (P520–P1000 d'abord, puis les ajouts validés).

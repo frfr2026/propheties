@@ -1,0 +1,227 @@
+n_audit	resultat	reference
+1001	P1001	Genèse 2:17
+1002	P1002	Genèse 3:16-19
+1003	en attente (B)	Genèse 4:11, 12
+1004	P1003	Genèse 6:3
+1005	P1004	Genèse 6:13, 17 ; 7:4
+1006	P1005	Genèse 8:21, 22 ; 9:11-17
+1007	en attente (B)	Genèse 15:15
+1008	en attente (B)	Genèse 17:4-8, 16
+1009	P1006	Genèse 18:20, 21 ; 19:12, 13
+1010	en attente (B)	Genèse 20:7
+1011	en attente (B)	Genèse 24:7
+1012	en attente (B)	Genèse 48:21
+1013	P1007	Exode 3:18-22 ; 7:3-5
+1014	P1008	Exode 4:21-23 ; 11:4-8
+1015	fusionné → voir n° audit 1013	Exode 7:3-5
+1016	P1009	Exode 7:17 ; 8:2, 21-23 ; 9:3, 4, 18 ; 10:4 ; 11:7
+1017	fusionné → voir n° audit 1016	Exode 8:22, 23 ; 9:4 ; 11:7
+1018	fusionné → voir n° audit 1014	Exode 11:4-8
+1019	P1010	Exode 14:13, 14, 17, 18
+1020	P1011	Exode 15:14-17
+1021	en attente (B)	Exode 16:6-8, 12
+1022	P1012	Exode 17:14, 16 ; Deutéronome 25:17-19
+1023	P1013	Exode 23:20-31 ; 34:10, 11, 24
+1024	en attente (C)	Lévitique 16:2-34 (avec Hébreux 9:7-12, 24-28 ; 10:1-4)
+1025	en attente (C)	Lévitique 23:9-11 (avec 1 Corinthiens 15:20, 23)
+1026	en attente (C)	Lévitique 26:3-13 ; Deutéronome 28:1-14
+1027	en attente (B)	Nombres 11:18-20, 31-34
+1028	P1014	Nombres 16:28-30
+1029	P1015	Nombres 20:12, 24 ; 27:12-14 ; Deutéronome 32:48-52
+1030	P1016	Nombres 21:8, 9 ; Jean 3:14, 15 ; 8:28 ; 12:32-34
+1031	en attente (B)	Nombres 23:7-10
+1032	en attente (B)	Nombres 24:3-9
+1033	P1017	Deutéronome 12:5, 10, 11
+1034	en attente (C)	Deutéronome 15:11
+1035	P1018	Deutéronome 31:3-8, 23 ; Josué 1:2-9
+1036	P1019	Josué 3:10-13
+1037	P1020	Josué 6:2-5
+1038	en attente (B)	Josué 8:1, 2, 7 ; 10:8 ; 11:6
+1039	P1021	Juges 4:6-9
+1040	P1022	Juges 7:7, 9-15
+1041	P1023	Juges 9:7-20, 56, 57
+1042	P1024	1 Samuel 2:1-10
+1043	P1025	1 Samuel 8:11-18
+1044	P1026	1 Samuel 9:15-17 ; 10:1-9
+1045	en attente (B)	1 Samuel 12:16-18
+1046	en attente (B)	1 Samuel 17:45-47
+1047	en attente (B)	1 Samuel 23:2-4, 11, 12
+1048	en attente (B)	1 Samuel 24:20 ; 25:28-31 ; 26:10
+1049	en attente (B)	1 Samuel 30:8
+1050	en attente (B)	2 Samuel 3:9, 10, 18 ; 5:2
+1051	en attente (B)	2 Samuel 5:19, 23, 24
+1052	P1027	2 Samuel 12:14
+1053	en attente (B)	2 Samuel 23:1-7
+1054	en attente (B)	2 Samuel 24:12-15 ; 1 Chroniques 21:10-14
+1055	P1028	1 Rois 3:12, 13
+1056	en attente (B)	1 Rois 11:11-13
+1057	P1029	1 Rois 13:20-24
+1058	P1030	1 Rois 17:14
+1059	P1031	1 Rois 18:1, 41-45
+1060	P1032	1 Rois 19:15-18
+1061	en attente (B)	1 Rois 20:35, 36, 42
+1062	P1033	1 Rois 21:29
+1063	en attente (B)	1 Rois 22:25, 28 ; 2 Chroniques 18:24, 27
+1064	P1034	2 Rois 2:3, 5, 9, 10
+1065	en attente (B)	2 Rois 2:21, 22
+1066	P1035	2 Rois 8:1-3
+1067	P1036	2 Rois 14:25
+1068	P1037	2 Rois 19:29-31 ; Isaïe 37:30-32
+1069	en attente (B)	2 Rois 19:21-28 ; Isaïe 37:22-29
+1070	en attente (B)	2 Chroniques 16:7-9
+1071	en attente (B)	2 Chroniques 20:37
+1072	P1038	2 Chroniques 21:12-15
+1073	en attente (B)	2 Chroniques 25:7-9, 15, 16
+1074	en attente (C)	Job 33:23-25
+1075	P1039	Psaume 8:2
+1076	en attente (B)	Psaume 18:49 ; 117:1 (avec 2 Samuel 22:50)
+1077	P1040	Psaume 37:9-11, 22, 29, 34
+1078	en attente (C)	Psaume 38:11
+1079	P1041	Psaume 45:16, 17
+1080	P1042	Psaume 46:8-10
+1081	en attente (B)	Psaume 49:15 ; 73:24
+1082	en attente (C)	Psaume 50:3-6
+1083	P1043	Psaume 69:8
+1084	en attente (B)	Psaume 86:9
+1085	en attente (B)	Psaume 89:19-29
+1086	P1044	Psaume 95:7-11
+1087	P1045	Psaume 96:10-13 ; 98:7-9 (avec 9:7, 8 ; 67:4)
+1088	en attente (B)	Psaume 97:7
+1089	P1046	Psaume 102:13-22
+1090	P1047	Psaume 102:25-27
+1091	en attente (C)	Psaume 104:5 ; Ecclésiaste 1:4 (avec Psaume 78:69 ; Isaïe 45:18)
+1092	P1048	Psaume 132:13-18
+1093	en attente (C)	Proverbes 2:21, 22 ; 10:30
+1094	P1049	Isaïe 1:24-31
+1095	P1050	Isaïe 2:10-22
+1096	P1051	Isaïe 3:1–4:1
+1097	P1052	Isaïe 4:2-6
+1098	P1053	Isaïe 5:1-7
+1099	P1054	Isaïe 5:8-25
+1100	P1055	Isaïe 7:15, 16
+1101	P1056	Isaïe 9:8-21 ; 10:1-4
+1102	P1057	Isaïe 10:24-34
+1103	en attente (C)	Isaïe 12:1-6
+1104	P1058	Isaïe 14:28-32
+1105	P1059	Isaïe 17:12-14
+1106	en attente (B)	Isaïe 18:1-7
+1107	P1060	Isaïe 26:20, 21
+1108	P1061	Isaïe 29:17-24
+1109	P1062	Isaïe 30:1-17
+1110	P1063	Isaïe 30:18-26
+1111	en attente (B)	Isaïe 31:1-3
+1112	P1064	Isaïe 32:1-8
+1113	en attente (B)	Isaïe 32:9-20
+1114	en attente (B)	Isaïe 33:1-12
+1115	P1065	Isaïe 41:8-20
+1116	P1066	Isaïe 43:14-21
+1117	en attente (B)	Isaïe 44:1-5
+1118	en attente (B)	Isaïe 45:13-17
+1119	P1067	Isaïe 45:22-25 ; Philippiens 2:9-11
+1120	P1068	Isaïe 48:20-22 ; 52:11, 12
+1121	P1069	Isaïe 49:8-13
+1122	P1070	Isaïe 49:14-21
+1123	en attente (B)	Isaïe 49:24-26
+1124	P1071	Isaïe 51:1-8, 11
+1125	P1072	Isaïe 51:17-23
+1126	P1073	Isaïe 52:1-6
+1127	fusionné → voir n° audit 1120	Isaïe 52:11, 12
+1128	P1074	Isaïe 55:10-13
+1129	P1075	Isaïe 57:14-21
+1130	en attente (C)	Isaïe 58:8-14
+1131	en attente (B)	Isaïe 59:15-19
+1132	P1076	Isaïe 61:4-11
+1133	P1077	Isaïe 62:1-12
+1134	P1078	Isaïe 65:1-7
+1135	P1079	Isaïe 65:8-16
+1136	P1080	Isaïe 66:7-14
+1137	en attente (B)	Jérémie 10:17-22
+1138	en attente (B)	Jérémie 49:6
+1139	en attente (B)	Jérémie 50:4-8
+1140	en attente (B)	Jérémie 50:21-32
+1141	en attente (B)	Daniel 12:10
+1142	P1081	Daniel 12:13
+1143	en attente (B)	Osée 6:1-3
+1144	P1082	Osée 13:14
+1145	P1083	Osée 13:15, 16
+1146	P1084	Michée 5:1
+1147	en attente (B)	Zacharie 11:1-3
+1148	P1085	Zacharie 11:15-17
+1149	P1086	Matthieu 1:20-23
+1150	en attente (B)	Matthieu 2:13
+1151	en attente (B)	Matthieu 2:23 (avec Isaïe 11:1, « rejeton », hébreu nétser)
+1152	P1087	Matthieu 3:11, 12 ; Marc 1:7, 8 ; Luc 3:16, 17 ; Jean 1:33
+1153	P1088	Matthieu 8:11, 12 ; Luc 13:28, 29
+1154	en attente (B)	Matthieu 9:15 ; Marc 2:19, 20 ; Luc 5:34, 35
+1155	en attente (B)	Matthieu 10:23
+1156	P1089	Matthieu 11:20-24 ; Luc 10:13-15
+1157	P1090	Matthieu 12:41, 42 ; Luc 11:31, 32
+1158	P1091	Matthieu 16:18, 19
+1159	P1092	Matthieu 16:27, 28 ; Marc 9:1 ; Luc 9:26, 27
+1160	en attente (B)	Matthieu 17:11, 12 ; Marc 9:12, 13
+1161	en attente (B)	Matthieu 17:27
+1162	P1093	Matthieu 19:28 ; Luc 22:28-30 ; 1 Corinthiens 6:2, 3
+1163	P1094	Matthieu 20:22, 23 ; Marc 10:38, 39
+1164	en attente (B)	Matthieu 21:1-3 ; Marc 11:1-6 ; Luc 19:29-34
+1165	P1095	Matthieu 23:34-36 ; Luc 11:49-51
+1166	P1096	Matthieu 23:39 ; Luc 13:35
+1167	en attente (B)	Matthieu 26:2, 18 ; Marc 14:13-16 ; Luc 22:7-13
+1168	P1097	Matthieu 26:29 ; Marc 14:25 ; Luc 22:16, 18
+1169	P1098	Matthieu 26:32 ; 28:7, 10 ; Marc 14:28 ; 16:7
+1170	P1099	Luc 1:13-17, 20
+1171	P1100	Luc 1:31-33, 35
+1172	en attente (B)	Luc 1:46-55
+1173	P1101	Luc 1:67-79
+1174	en attente (B)	Luc 2:10-12
+1175	P1102	Luc 2:25-32
+1176	P1103	Luc 2:34, 35
+1177	en attente (B)	Luc 5:10 ; Matthieu 4:19
+1178	en attente (B)	Luc 12:11, 12 ; Matthieu 10:19, 20
+1179	en attente (B)	Luc 12:49-53 ; Matthieu 10:34-36
+1180	en attente (B)	Luc 13:32, 33
+1181	P1104	Luc 19:11-27
+1182	P1105	Luc 23:43
+1183	P1106	Luc 24:46-49 ; Actes 1:4, 5
+1184	en attente (C)	Jean 1:42
+1185	en attente (B)	Jean 1:51
+1186	fusionné → voir n° audit 1030	Jean 3:14, 15 ; 8:28
+1187	P1107	Jean 4:21-24
+1188	en attente (B)	Jean 5:25
+1189	en attente (B)	Jean 6:70, 71 ; 13:18, 19
+1190	en attente (B)	Jean 7:33, 34 ; 8:21 ; 13:33 ; 16:5
+1191	P1108	Jean 10:17, 18
+1192	P1109	Jean 11:4, 11, 23
+1193	en attente (C)	Jean 12:24 (avec 6:51)
+1194	en attente (B)	Jean 13:36 (avec 21:18, 19)
+1195	P1110	Jean 14:16, 17, 26 ; 15:26 ; 16:7-15
+1196	P1111	Jean 14:19 ; 16:16-22
+1197	en attente (C)	Jean 21:22, 23
+1198	P1112	Actes 1:11 ; Hébreux 9:27, 28
+1199	P1113	Actes 13:11
+1200	P1114	Actes 10:42 ; 17:31 ; 2 Timothée 4:1 ; 1 Pierre 4:5
+1201	en attente (B)	Actes 20:25, 38
+1202	en attente (C)	Actes 23:3
+1203	P1115	Actes 24:15
+1204	en attente (B)	Actes 27:10
+1205	en attente (B)	Actes 28:25-28
+1206	P1116	Romains 8:18-23
+1207	en attente (C)	Romains 11:12, 15
+1208	fusionné → voir n° audit 1162	1 Corinthiens 6:2, 3
+1209	P1117	1 Corinthiens 13:8-10
+1210	en attente (B)	1 Corinthiens 15:20-23
+1211	en attente (C)	2 Corinthiens 12:1-4
+1212	en attente (B)	Philippiens 1:19, 25, 26 ; Philémon 22
+1213	fusionné → voir n° audit 1119	Philippiens 2:9-11
+1214	en attente (B)	1 Thessaloniciens 3:4
+1215	en attente (B)	2 Thessaloniciens 2:6, 7, 9-12
+1216	fusionné → voir n° audit 1200	2 Timothée 4:1 ; Actes 10:42 ; 1 Pierre 4:5
+1217	en attente (B)	2 Timothée 4:6, 7 ; 2 Pierre 1:14
+1218	fusionné → voir n° audit 1198	Hébreux 9:27, 28
+1219	en attente (B)	Hébreux 10:36, 37 (Habacuc 2:3, 4)
+1220	P1118	Hébreux 12:26-28 (Aggée 2:6)
+1221	en attente (B)	1 Pierre 1:4-7, 13
+1222	en attente (B)	1 Pierre 5:4
+1223	en attente (B)	2 Pierre 1:19
+1224	P1119	2 Pierre 2:1-3
+1225	P1120	1 Jean 2:17
+1226	en attente (B)	Jude 6 ; 2 Pierre 2:4

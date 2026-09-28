@@ -18,7 +18,8 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'INDEX_GENE
 FILES = ['16_REGISTRE_PROPHETIES.md', '17_REGISTRE_PROPHETIES_2.md',
          '18_REGISTRE_PROPHETIES_3.md', '19_REGISTRE_PROPHETIES_4.md',
          '20_REGISTRE_PROPHETIES_5.md', '21_REGISTRE_PROPHETIES_6.md',
-         '23_REGISTRE_PROPHETIES_7.md']
+         '23_REGISTRE_PROPHETIES_7.md',
+         '24_REGISTRE_PROPHETIES_8.md']
 PART_RE = re.compile(r'^#{1,3}\s*PARTIE\s+(\d+)\s*[—–-]\s*(.+?)\s*$')
 ROW_RE = re.compile(r"^\|\s*P(\d{3,4})\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*$")
 

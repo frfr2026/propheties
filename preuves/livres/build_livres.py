@@ -13,7 +13,8 @@ OUT = BASE
 REG = ['16_REGISTRE_PROPHETIES.md', '17_REGISTRE_PROPHETIES_2.md',
        '18_REGISTRE_PROPHETIES_3.md', '19_REGISTRE_PROPHETIES_4.md',
        '20_REGISTRE_PROPHETIES_5.md', '21_REGISTRE_PROPHETIES_6.md',
-       '23_REGISTRE_PROPHETIES_7.md']
+       '23_REGISTRE_PROPHETIES_7.md',
+       '24_REGISTRE_PROPHETIES_8.md']
 
 PART_RE = re.compile(r'^#{1,3}\s*PARTIE\s+(\d+)\s*[—–-]\s*(.+?)\s*$')
 HEAD_RE = re.compile(r'^(#{2,3})\s+(.+?)\s*$')
